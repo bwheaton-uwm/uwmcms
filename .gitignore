@@ -13,6 +13,11 @@ config/*/acquia_contenthub.admin_settings.yml
 config/*/acquia_lift.settings.yml
 config/*/fb_instant_articles.settings.yml
 
+# Ignore devel configs
+config/*/system.menu.devel.yml
+config/*/devel.settings.yml
+config/*/devel.toolbar.settings.yml
+
 # Ignore drupal core.
 docroot/core
 
