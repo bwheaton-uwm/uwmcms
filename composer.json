@@ -39,7 +39,7 @@
     },
     "require": {
         "acquia/blt": "9.2.0-alpha3",
-        "acquia/lightning": "3.2.0",
+        "acquia/lightning": "3.2.2",
         "drupal/access_unpublished": "^1.0-alpha3",
         "drupal/acquia_contenthub": "~1.0",
         "drupal/acquia_lift": "~3.0",

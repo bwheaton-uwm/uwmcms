@@ -103,3 +103,5 @@ views: 8.4.5
 paragraphs: 1.2.0
 lightning: 3.003.0
 views_ui: 8.5.7
+media_library: 8.6.2
+config_split: 1.4.0

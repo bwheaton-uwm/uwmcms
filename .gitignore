@@ -9,6 +9,7 @@ box/local.config.yml
 local.blt.yml
 
 # Ignore sensitive configs
+config/*/acquia_connector.settings.yml
 config/*/acquia_contenthub.admin_settings.yml
 config/*/acquia_lift.settings.yml
 config/*/fb_instant_articles.settings.yml

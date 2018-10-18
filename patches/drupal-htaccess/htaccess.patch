@@ -1,8 +1,8 @@
 diff --git a/docroot/.htaccess b/docroot/.htaccess
-index efce1877..78a2e642 100755
+index efce1877..6db55786 100755
 --- a/docroot/.htaccess
 +++ b/docroot/.htaccess
-@@ -1,3 +1,596 @@
+@@ -1,3 +1,646 @@
 +##
 +#
 +# Begin UW Medicine special .htaccess rules
@@ -74,7 +74,7 @@ index efce1877..78a2e642 100755
 +  #
 +  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
 +  RewriteCond %{REQUEST_URI} !^/index.php$
-+  RewriteCond %{REQUEST_URI} !^/(user|admin|themes|core|simplesaml|sites|libraries|profiles|modules|node|sitemaps)(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/(user|admin|themes|core|simplesaml|sites|libraries|profiles|modules|node|sitemaps|lp)(/)?(?(1).*|$)
 +  RewriteCond %{REQUEST_URI} !^/(views|editor|media_browser|toolbar|filter|contextual|history)/.+
 +  RewriteCond %{REQUEST_URI} !^/?$
 +  RewriteCond %{REQUEST_URI} !^/bios(/)?(?(1).*|$)
@@ -279,6 +279,10 @@ index efce1877..78a2e642 100755
 +  RewriteCond %{REQUEST_URI} !^/locations/allergy-asthma-and-immunology-uwmc(/)?(?(1).*|$)
 +  RewriteCond %{REQUEST_URI} !^/locations/allergy-harborview(/)?(?(1).*|$)
 +  # End Allergy & Immunology #
++  # Start Liver Transplant #
++  RewriteCond %{REQUEST_URI} !^/services/liver(/)?(?(1)(providers|locations|transplant|transplant/living-donor-liver-transplant|infectious-disease|patients-families|referrals|transplant-team)|$)?(?(2).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/northwest-medical-specialties(/)?(?(1).*|$)
++  # End Liver Transplant #
 +  RewriteRule ^(.*)$ - [CO=uwm-proxied-page-visit:true:%{HTTP_HOST}:0:/,C]
 +  RewriteRule ^(.*)$ https://www2.uwmedicine.org%{REQUEST_URI} [L,P]
 +
@@ -288,7 +292,7 @@ index efce1877..78a2e642 100755
 +  # Reverse proxy rules for stakeholder review pages. These should be served from Drupal.
 +  RewriteCond %{HTTP_HOST} ^www.uwmedicinetest.org
 +  RewriteCond %{REQUEST_URI} !^/index.php$
-+  RewriteCond %{REQUEST_URI} !^/(user|admin|themes|core|simplesaml|sites|libraries|profiles|modules|node|sitemaps)(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/(user|admin|themes|core|simplesaml|sites|libraries|profiles|modules|node|sitemaps|lp)(/)?(?(1).*|$)
 +  RewriteCond %{REQUEST_URI} !^/(views|editor|media_browser|toolbar|filter|contextual|history)/.+
 +  RewriteCond %{REQUEST_URI} !^/?$
 +  RewriteCond %{REQUEST_URI} !^/patient-care/making-an-appointment$
@@ -409,6 +413,7 @@ index efce1877..78a2e642 100755
 +  RewriteCond %{REQUEST_URI} !^/locations/vascular-laboratory-at-harborview(/)?(?(1).*|$)
 +  RewriteCond %{REQUEST_URI} !^/locations/vascular-laboratory-uwmc(/)?(?(1).*|$)
 +  RewriteCond %{REQUEST_URI} !^/locations/vascular-surgery-eastside-specialty-center(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/vascular-northwest(/)?(?(1).*|$)
 +  RewriteCond %{REQUEST_URI} !^/services/vascular(/)?(?(1).*|$)
 +  RewriteCond %{REQUEST_URI} !^/services/vascular-care(/)?(?(1).*|$)
 +  # End Vascular #
@@ -529,7 +534,7 @@ index efce1877..78a2e642 100755
 +  # Start Liver Transplant #
 +  RewriteCond %{REQUEST_URI} !^/services/liver(/)?(?(1)(providers|locations|transplant|transplant/living-donor-liver-transplant|infectious-disease|patients-families|referrals|transplant-team)|$)?(?(2).*|$)
 +  RewriteCond %{REQUEST_URI} !^/locations/northwest-medical-specialties(/)?(?(1).*|$)
-+  # End Liver Care
++  # End Liver Transplant #
 +  # Start Rehab Medicine #
 +  RewriteCond %{REQUEST_URI} !^/services/rehabilitation-medicine(/)?(?(1).*|$)
 +  RewriteCond %{REQUEST_URI} !^/services/rehabilitation(/)?(?(1)(providers|locations|neuro-rehab-program|health-library|videos|inpatient|faq|patient-education)|$)?(?(2).*|$)
@@ -575,6 +580,51 @@ index efce1877..78a2e642 100755
 +  RewriteCond %{REQUEST_URI} !^/locations/thoracic-surgery-harborview(/)?(?(1).*|$)
 +  RewriteCond %{REQUEST_URI} !^/locations/breast-clinic-northwest(/)?(?(1).*|$)
 +  # End Cancer Care #
++  # Start Orthopedic Surgery and Sports Medicine #
++  RewriteCond %{REQUEST_URI} !^/services/ssoh(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/services/orthopedic-surgery-sports-medicine(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/services/foot-ankle(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/services/hip-knee(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/services/hes(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/services/sports-medicine(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/advanced-manual-therapy-nwhmc(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/exercise-training-center-uwmc-roosevelt(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/foot-and-ankle-center-hmc(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/foot-and-ankle-center-uwmc-roosevelt(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/hand-elbow-shoulder-center-eastside(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/hand-elbow-shoulder-harborview(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/hand-elbow-shoulder-uwmc-roosevelt(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/hip-and-knee-center-eastside(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/hip-knee-center-northwest(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/hip-knee-center-ballard(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/hip-and-knee-center-uwmc-roosevelt(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/neurological-surgery-uwmc(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/northwest-hospital-foot-and-ankle-clinic(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/orthopaedic-trauma-surgery-harborview(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/orthopedic-oncology-center-uwmc-roosevelt(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/prosthetics-and-orthotics-eastlake(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/spine-center-eastside(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/spine-center-harborview(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/sports-concussion-program-harborview(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/sports-medicine-center-eastside(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/sports-medicine-harborview(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/sports-medicine-center(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/the-sports-medicine-clinic-ballard(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/the-sports-medicine-clinic-nwhmc(/)?(?(1).*|$)
++  # End Orthopedic Surgery and Sports Medicine #
++  # Start Spine Care #
++  RewriteCond %{REQUEST_URI} !^/services/spine(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/services/spine-care(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/neurological-surgery-uwmc(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/northwest-neurosurgery(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/spine-center-eastside(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/spine-center-harborview(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/sports-medicine-center-eastside(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/sports-medicine-harborview(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/sports-medicine-center(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/the-sports-medicine-clinic-ballard(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/the-sports-medicine-clinic-nwhmc(/)?(?(1).*|$)
++  # End Spine Care #
 +  RewriteRule ^(.*)$ - [CO=uwm-proxied-page-visit:true:%{HTTP_HOST}:0:/,C]
 +  RewriteRule ^(.*)$ https://www2.uwmedicine.org%{REQUEST_URI} [L,P]
 +
@@ -599,7 +649,7 @@ index efce1877..78a2e642 100755
  #
  # Apache/PHP/Drupal settings:
  #
-@@ -149,7 +742,11 @@ AddEncoding gzip svgz
+@@ -149,7 +792,11 @@ AddEncoding gzip svgz
    # Allow access to Statistics module's custom front controller.
    # Copy and adapt this rule to directly execute PHP files in contributed or
    # custom modules or to run another PHP application in the same directory.
