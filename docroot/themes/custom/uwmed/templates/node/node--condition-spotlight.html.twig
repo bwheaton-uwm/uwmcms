@@ -92,7 +92,7 @@ view_mode ? view_mode|clean_class,
     </h4>
 
     <div{{ content_attributes.addClass('condition-spotlight__content swipe') }}>
-      {{ content }}
+      {{ content|without('field_condition_spotlight_type') }}
     </div>
   </article>
 </div>

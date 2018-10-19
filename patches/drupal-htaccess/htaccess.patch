@@ -1,8 +1,8 @@
 diff --git a/docroot/.htaccess b/docroot/.htaccess
-index efce1877..6db55786 100755
+index efce1877..703f620e 100755
 --- a/docroot/.htaccess
 +++ b/docroot/.htaccess
-@@ -1,3 +1,646 @@
+@@ -1,3 +1,656 @@
 +##
 +#
 +# Begin UW Medicine special .htaccess rules
@@ -283,6 +283,15 @@ index efce1877..6db55786 100755
 +  RewriteCond %{REQUEST_URI} !^/services/liver(/)?(?(1)(providers|locations|transplant|transplant/living-donor-liver-transplant|infectious-disease|patients-families|referrals|transplant-team)|$)?(?(2).*|$)
 +  RewriteCond %{REQUEST_URI} !^/locations/northwest-medical-specialties(/)?(?(1).*|$)
 +  # End Liver Transplant #
++  # Start Laboratory Medicine & Pathology #
++  RewriteCond %{REQUEST_URI} !^/services/laboratory-medicine-and-pathology(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/clinical-lab-northwest(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/clinical-lab-uwmc(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/clinical-lab-harborview(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/clinical-lab-eastside(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/clinical-lab-uwmc-roosevelt(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/clinical-lab-outpatient-medical-center(/)?(?(1).*|$)
++  # End Laboratory Medicine & Pathology #
 +  RewriteRule ^(.*)$ - [CO=uwm-proxied-page-visit:true:%{HTTP_HOST}:0:/,C]
 +  RewriteRule ^(.*)$ https://www2.uwmedicine.org%{REQUEST_URI} [L,P]
 +
@@ -611,6 +620,7 @@ index efce1877..6db55786 100755
 +  RewriteCond %{REQUEST_URI} !^/locations/sports-medicine-center(/)?(?(1).*|$)
 +  RewriteCond %{REQUEST_URI} !^/locations/the-sports-medicine-clinic-ballard(/)?(?(1).*|$)
 +  RewriteCond %{REQUEST_URI} !^/locations/the-sports-medicine-clinic-nwhmc(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} !^/locations/hand-elbow-nw(/)?(?(1).*|$)
 +  # End Orthopedic Surgery and Sports Medicine #
 +  # Start Spine Care #
 +  RewriteCond %{REQUEST_URI} !^/services/spine(/)?(?(1).*|$)
@@ -649,7 +659,7 @@ index efce1877..6db55786 100755
  #
  # Apache/PHP/Drupal settings:
  #
-@@ -149,7 +792,11 @@ AddEncoding gzip svgz
+@@ -149,7 +802,11 @@ AddEncoding gzip svgz
    # Allow access to Statistics module's custom front controller.
    # Copy and adapt this rule to directly execute PHP files in contributed or
    # custom modules or to run another PHP application in the same directory.
