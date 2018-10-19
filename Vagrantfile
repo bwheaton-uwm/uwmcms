@@ -11,3 +11,7 @@ ENV['DRUPALVM_DIR'] = "vendor/geerlingguy/drupal-vm"
 
 # Load the real Vagrantfile
 load "#{__dir__}/#{ENV['DRUPALVM_DIR']}/Vagrantfile"
+
+Vagrant.configure("2") do |config|
+  config.vm.network "private_network", ip: "192.168.223.36"
+end
