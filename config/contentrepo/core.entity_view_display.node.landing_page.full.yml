@@ -1,4 +1,4 @@
-uuid: f32399d6-03b4-4d40-8608-696f6e6d0476
+uuid: 646c66a1-cdf4-4f88-a260-a930724f3902
 langcode: en
 status: true
 dependencies:
@@ -68,11 +68,6 @@ targetEntityType: node
 bundle: landing_page
 mode: full
 content:
-  content_moderation_control:
-    weight: -20
-    settings: {  }
-    third_party_settings: {  }
-    region: content
   field_meta_tags:
     type: metatag_empty_formatter
     region: content
@@ -92,4 +87,5 @@ content:
     region: content
 hidden:
   body: true
+  content_moderation_control: true
   panelizer: true

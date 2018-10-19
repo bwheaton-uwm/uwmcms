@@ -1,6 +1,6 @@
 uuid: c6cbdc2e-b07b-472a-b35d-b151cd2c29cd
-name: 'UWM Content Repository'
-mail: uwmdev@uw.edu
+name: 'Drush Site-Install'
+mail: admin@example.com
 slogan: ''
 page:
   403: ''

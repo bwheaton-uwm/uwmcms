@@ -1,4 +1,4 @@
-uuid: 6da3c325-976c-4425-b618-a9e3b7bf886d
+uuid: 54729f5a-aa60-4c97-8051-5aef9a9758d8
 langcode: en
 status: true
 dependencies:
@@ -27,11 +27,6 @@ content:
     third_party_settings: {  }
     type: text_summary_or_trimmed
     region: content
-  content_moderation_control:
-    weight: -20
-    settings: {  }
-    third_party_settings: {  }
-    region: content
   field_meta_tags:
     type: metatag_empty_formatter
     region: content
@@ -50,4 +45,5 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
+  content_moderation_control: true
   panelizer: true

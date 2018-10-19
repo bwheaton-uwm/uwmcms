@@ -297,7 +297,7 @@ $config_directories = array(
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = '';
+$settings['hash_salt'] = 'BwprX2a8ggYV0h1L9XiZJHOqkPX7XEFjFmBEKgY7i_-IGd6N8FXXdPljYdJq5_0yTYWxzTq4YA';
 
 /**
  * Deployment identifier.
@@ -801,3 +801,13 @@ $settings['install_profile'] = 'lightning';
 $config_directories['sync'] = '../config/contentrepo';
 $config_directories['vcs'] = '../config/contentrepo';
 
+$databases['default']['default'] = array (
+  'database' => 'drupal_contentrepo',
+  'username' => 'drupal',
+  'password' => 'drupal',
+  'prefix' => '',
+  'host' => 'localhost',
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+);

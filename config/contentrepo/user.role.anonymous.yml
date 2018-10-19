@@ -1,4 +1,4 @@
-uuid: 3bd7e23a-5a73-4595-a6cc-ed2b3739c720
+uuid: 1eabd6a1-6cc8-4817-8a6b-a4b3aa416099
 langcode: en
 status: true
 dependencies: {  }
@@ -11,4 +11,5 @@ is_admin: false
 permissions:
   - 'access content'
   - 'access site-wide contact form'
+  - 'perform pull replication'
   - 'view media'

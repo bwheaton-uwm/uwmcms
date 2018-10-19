@@ -1,6 +1,6 @@
 content_roles:
   creator:
-    enabled: false
+    enabled: true
     label: '? creator'
     permissions:
       - 'create ? content'
@@ -24,7 +24,7 @@ content_roles:
       - 'view latest version'
       - 'use moderation sidebar'
   reviewer:
-    enabled: false
+    enabled: true
     label: '? reviewer'
     permissions:
       - 'access content overview'
