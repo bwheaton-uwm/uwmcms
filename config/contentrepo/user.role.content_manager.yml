@@ -1,0 +1,66 @@
+uuid: 6eb56163-389f-4bd1-9652-013918a8340a
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+third_party_settings:
+  lightning_core:
+    description: ''
+id: content_manager
+label: 'Content Manager'
+weight: 3
+is_admin: null
+permissions:
+  - 'access image_browser entity browser pages'
+  - 'access media overview'
+  - 'access media_browser entity browser pages'
+  - 'create media'
+  - 'create paragraph content media'
+  - 'create paragraph content uwm_accordion'
+  - 'create paragraph content uwm_accordion_section'
+  - 'create paragraph content uwm_basic_content'
+  - 'create paragraph content uwm_block'
+  - 'create paragraph content uwm_full_html'
+  - 'create paragraph content uwm_section'
+  - 'create paragraph content uwm_view'
+  - 'create url aliases'
+  - 'delete any media'
+  - 'delete media'
+  - 'delete paragraph content media'
+  - 'delete paragraph content uwm_accordion'
+  - 'delete paragraph content uwm_accordion_section'
+  - 'delete paragraph content uwm_basic_content'
+  - 'delete paragraph content uwm_block'
+  - 'delete paragraph content uwm_full_html'
+  - 'delete paragraph content uwm_section'
+  - 'delete paragraph content uwm_view'
+  - 'update any media'
+  - 'update media'
+  - 'update paragraph content media'
+  - 'update paragraph content uwm_accordion'
+  - 'update paragraph content uwm_accordion_section'
+  - 'update paragraph content uwm_basic_content'
+  - 'update paragraph content uwm_block'
+  - 'update paragraph content uwm_full_html'
+  - 'update paragraph content uwm_section'
+  - 'update paragraph content uwm_view'
+  - 'use editorial transition archive'
+  - 'use editorial transition archived_published'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition publish'
+  - 'use editorial transition review'
+  - 'use text format rich_text'
+  - 'view all media revisions'
+  - 'view all revisions'
+  - 'view any unpublished content'
+  - 'view latest version'
+  - 'view own unpublished content'
+  - 'view paragraph content media'
+  - 'view paragraph content uwm_accordion'
+  - 'view paragraph content uwm_accordion_section'
+  - 'view paragraph content uwm_basic_content'
+  - 'view paragraph content uwm_block'
+  - 'view paragraph content uwm_full_html'
+  - 'view paragraph content uwm_section'
+  - 'view paragraph content uwm_view'

@@ -1,0 +1,9 @@
+uuid: 25393b66-83d1-431e-9c25-a355b991cb1f
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_basic_content
+label: 'Basic Content'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

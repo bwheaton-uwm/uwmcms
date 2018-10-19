@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "108b066c7f5fd3a2a68d4d8fa122c95b",
+    "content-hash": "5f655ca04815c39af5cb8baacedc4008",
     "packages": [
         {
             "name": "acquia/blt",
@@ -1477,16 +1477,16 @@
         },
         {
             "name": "consolidation/output-formatters",
-            "version": "3.3.1",
+            "version": "3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/output-formatters.git",
-                "reference": "853d2d462a191d44a25a5593d8fe2c4a1e59e382"
+                "reference": "8f4a5696632cc1d3c8cfdea8e9b3c8cea38afda6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/output-formatters/zipball/853d2d462a191d44a25a5593d8fe2c4a1e59e382",
-                "reference": "853d2d462a191d44a25a5593d8fe2c4a1e59e382",
+                "url": "https://api.github.com/repos/consolidation/output-formatters/zipball/8f4a5696632cc1d3c8cfdea8e9b3c8cea38afda6",
+                "reference": "8f4a5696632cc1d3c8cfdea8e9b3c8cea38afda6",
                 "shasum": ""
             },
             "require": {
@@ -1529,7 +1529,7 @@
                 }
             ],
             "description": "Format text by applying transformations provided by plug-in formatters.",
-            "time": "2018-10-16T01:14:51+00:00"
+            "time": "2018-10-18T22:19:33+00:00"
         },
         {
             "name": "consolidation/robo",
@@ -1741,6 +1741,49 @@
             ],
             "description": "Provides a way to patch Composer packages.",
             "time": "2018-05-11T18:00:16+00:00"
+        },
+        {
+            "name": "cweagans/php-webdam-client",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cweagans/php-webdam-client.git",
+                "reference": "8cca72b87858c9994ba1208960d8abd267d5b115"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cweagans/php-webdam-client/zipball/8cca72b87858c9994ba1208960d8abd267d5b115",
+                "reference": "8cca72b87858c9994ba1208960d8abd267d5b115",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": ">=4.1.4 <7.0",
+                "guzzlehttp/psr7": "~1.0",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "cweagans\\webdam\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cameron Eagans",
+                    "email": "me@cweagans.net",
+                    "homepage": "https://cweagans.net"
+                }
+            ],
+            "description": "Integrates with the Webdam.com API.",
+            "homepage": "https://github.com/cweagans/php-webdam-client",
+            "time": "2017-09-22T00:02:06+00:00"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -3988,6 +4031,48 @@
             }
         },
         {
+            "name": "drupal/ckeditor_bs_grid",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/ckeditor_bs_grid",
+                "reference": "1e848925ab8952972ed7645737881a9bae43bb97"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.x-dev",
+                    "datestamp": "1516145884",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "b_sharpe",
+                    "homepage": "https://www.drupal.org/user/2512258"
+                }
+            ],
+            "description": "Ckeditor plugin for adding Bootstrap grids inline",
+            "homepage": "https://www.drupal.org/project/ckeditor_bs_grid",
+            "support": {
+                "source": "http://cgit.drupalcode.org/ckeditor_bs_grid"
+            },
+            "time": "2018-01-16T23:31:53+00:00"
+        },
+        {
             "name": "drupal/ckeditor_liststyle",
             "version": "1.3.0",
             "source": {
@@ -5010,7 +5095,8 @@
                     "2885441 - EntityReferenceAutocompleteWidget should define its size setting as an integer": "https://www.drupal.org/files/issues/2885441-2.patch",
                     "2815221 - Add quickedit to the latest-revision route": "https://www.drupal.org/files/issues/2018-10-17/2815221-reroll-8.6.1.patch",
                     "1356276 - Allow profiles to define a base/parent profile and load them in the correct order": "https://www.drupal.org/files/issues/2018-10-05/1356276-515.patch",
-                    "2914389 - Allow profiles to exclude dependencies of their parent": "https://www.drupal.org/files/issues/2018-07-09/2914389-8-do-not-test.patch"
+                    "2914389 - Allow profiles to exclude dependencies of their parent": "https://www.drupal.org/files/issues/2018-07-09/2914389-8-do-not-test.patch",
+                    "#2241865: Do not create a new file entity to overwrite an existing entity": "https://www.drupal.org/files/issues/2241865-50.patch"
                 }
             },
             "autoload": {
@@ -6553,6 +6639,67 @@
             }
         },
         {
+            "name": "drupal/fallback_formatter",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/fallback_formatter",
+                "reference": "8.x-1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/fallback_formatter-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "65288e69133ef61262249a0b6d059f55c9baff58"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0",
+                    "datestamp": "1468356839",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Dave Reid",
+                    "homepage": "https://www.drupal.org/user/53892"
+                },
+                {
+                    "name": "Drupal Media Team",
+                    "homepage": "https://www.drupal.org/user/3260690"
+                },
+                {
+                    "name": "Drupal media CI",
+                    "homepage": "https://www.drupal.org/user/3057985"
+                },
+                {
+                    "name": "slashrsm",
+                    "homepage": "https://www.drupal.org/user/744628"
+                }
+            ],
+            "description": "Provides a field formatter that can attempt multiple formatters and the first one that returns output wins.",
+            "homepage": "https://www.drupal.org/project/fallback_formatter",
+            "support": {
+                "source": "http://cgit.drupalcode.org/fallback_formatter",
+                "issues": "https://www.drupal.org/project/issues/fallback_formatter",
+                "irc": "irc://irc.freenode.org/drupal-media"
+            }
+        },
+        {
             "name": "drupal/fb_instant_articles",
             "version": "dev-2.x",
             "source": {
@@ -8053,6 +8200,82 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/linkit",
                 "issues": "http://drupal.org/project/linkit"
+            }
+        },
+        {
+            "name": "drupal/media_acquiadam",
+            "version": "1.32.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/media_acquiadam",
+                "reference": "8.x-1.32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/media_acquiadam-8.x-1.32.zip",
+                "reference": "8.x-1.32",
+                "shasum": "65a1b42a876fbdca88f0eaa8fb2f89d07a5e1fa1"
+            },
+            "require": {
+                "cweagans/php-webdam-client": "dev-master",
+                "drupal/core": "^8.4",
+                "drupal/fallback_formatter": "*"
+            },
+            "require-dev": {
+                "drupal/entity_usage": "*",
+                "drupal/fallback_formatter": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.32",
+                    "datestamp": "1529441320",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                },
+                "patches": {
+                    "drupal/core": {
+                        "#2241865: Do not create a new file entity to overwrite an existing entity": "https://www.drupal.org/files/issues/2241865-50.patch"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Mobomo",
+                    "homepage": "https://www.mobomo.com",
+                    "email": "sales@mobomo.com"
+                },
+                {
+                    "name": "Cameron Eagans",
+                    "homepage": "https://www.cweagans.net",
+                    "email": "me@cweagans.net"
+                },
+                {
+                    "name": "cweagans",
+                    "homepage": "https://www.drupal.org/user/404732"
+                },
+                {
+                    "name": "seanpclark",
+                    "homepage": "https://www.drupal.org/user/375472"
+                },
+                {
+                    "name": "steven.wichers",
+                    "homepage": "https://www.drupal.org/user/1774136"
+                }
+            ],
+            "description": "Integrates the Media module ecosystem with Acquia DAM.",
+            "homepage": "https://www.drupal.org/project/media_acquiadam",
+            "support": {
+                "source": "http://cgit.drupalcode.org/media_acquiadam"
             }
         },
         {
@@ -12065,6 +12288,68 @@
             "homepage": "https://www.drupal.org/project/views_templates",
             "support": {
                 "source": "http://cgit.drupalcode.org/views_templates"
+            }
+        },
+        {
+            "name": "drupal/viewsreference",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/viewsreference",
+                "reference": "8.x-1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/viewsreference-8.x-1.2.zip",
+                "reference": "8.x-1.2",
+                "shasum": "5ccceed4ebb1b55c6a459431829e7c72477171b5"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "conflict": {
+                "drupal/viewsreferennce": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.2",
+                    "datestamp": "1515538984",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "New Zeal",
+                    "homepage": "https://www.drupal.org/user/93571"
+                },
+                {
+                    "name": "joekers",
+                    "homepage": "https://www.drupal.org/user/2229066"
+                },
+                {
+                    "name": "seanB",
+                    "homepage": "https://www.drupal.org/user/545912"
+                }
+            ],
+            "description": "Views Reference",
+            "homepage": "http://drupal.org/project/viewsreference",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/viewsreference",
+                "issues": "http://drupal.org/project/issues/viewsreference"
             }
         },
         {
@@ -18432,6 +18717,38 @@
             "time": "2018-04-11T23:41:25+00:00"
         },
         {
+            "name": "uwmweb/uwm_paragraphs",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/uwmweb/uwm_paragraphs.git",
+                "reference": "ab60ae51a6dc710b62576d01356d8b8446709fca"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwm_paragraphs/uwmweb-uwm_paragraphs-ab60ae51a6dc710b62576d01356d8b8446709fca-zip-7b9ee9.tar",
+                "reference": "ab60ae51a6dc710b62576d01356d8b8446709fca",
+                "shasum": "d9b6302e81448dadf1171328b33b36a1c2368bdf"
+            },
+            "require": {
+                "drupal/core": "~8",
+                "drupal/entity_reference_revisions": "~1.3",
+                "drupal/paragraphs": "~1.2",
+                "drupal/viewsreference": "~1.2",
+                "drupal/webform": "~5.0-rc1"
+            },
+            "type": "drupal-module",
+            "license": [
+                "GPL-2.0"
+            ],
+            "description": "A suite of Paragraph bundles for sites on the UW Medicine Enterprise CMS.",
+            "support": {
+                "source": "https://github.com/uwmweb/uwm_paragraphs/tree/master",
+                "issues": "https://github.com/uwmweb/uwm_paragraphs/issues"
+            },
+            "time": "2018-10-16T18:22:34+00:00"
+        },
+        {
             "name": "vardot/blazy",
             "version": "1.8.2.1",
             "source": {
@@ -19890,6 +20207,7 @@
         "drupal/auto_entitylabel": 10,
         "drupal/better_exposed_filters": 15,
         "drupal/calendar": 20,
+        "drupal/ckeditor_bs_grid": 20,
         "drupal/conditional_fields": 15,
         "drupal/date": 20,
         "drupal/deploy": 10,
@@ -19910,6 +20228,7 @@
         "drupal/simplesamlphp_auth": 5,
         "drupal/trash": 15,
         "drupal/xmlsitemap": 15,
+        "uwmweb/uwm_paragraphs": 20,
         "sensiolabs-de/deprecation-detector": 20
     },
     "prefer-stable": true,

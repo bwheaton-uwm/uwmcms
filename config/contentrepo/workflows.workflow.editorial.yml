@@ -3,8 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - node.type.landing_page
-    - node.type.page
+    - node.type.uwm_basic_page
   module:
     - content_moderation
 _core:
@@ -73,5 +72,4 @@ type_settings:
         - review
   entity_types:
     node:
-      - landing_page
-      - page
+      - uwm_basic_page

@@ -1,0 +1,9 @@
+uuid: 91d69155-78bd-48c5-bc2f-c6cb0db94c18
+langcode: en
+status: true
+dependencies: {  }
+id: media
+label: Media
+icon_uuid: null
+description: 'Place a media file.'
+behavior_plugins: {  }

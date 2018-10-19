@@ -784,6 +784,19 @@ if (file_exists('/var/www/site-php')) {
   require '/var/www/site-php/uwmed/contentrepo-settings.inc';
 }
 
+if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+
+  $secrets_file = sprintf(
+    '/mnt/gfs/%s.%s/nobackup/contentrepo.secrets.settings.php',
+    $_ENV['AH_SITE_GROUP'],
+    $_ENV['AH_SITE_ENVIRONMENT']);
+
+  if (file_exists($secrets_file)) {
+    require $secrets_file;
+  }
+
+}
+
 /**
  * BLT makes the assumption that, if using multisite, the default configuration
  * directory should be shared between all multi-sites, and each multisite will

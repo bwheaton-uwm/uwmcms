@@ -10,9 +10,11 @@ module:
   block_content: 0
   breakpoint: 0
   ckeditor: 0
+  ckeditor_bs_grid: 0
   components: 0
   conditional_fields: 0
   config: 0
+  config_update: 0
   conflict: 0
   consumers: 0
   contact: 0
@@ -36,6 +38,7 @@ module:
   entity_embed: 0
   entity_reference: 0
   entity_reference_revisions: 0
+  fallback_formatter: 0
   field: 0
   field_group: 0
   field_ui: 0
@@ -72,6 +75,8 @@ module:
   link_attributes: 0
   linkit: 0
   media: 0
+  media_acquiadam: 0
+  media_acquiadam_example: 0
   media_entity_instagram: 0
   media_entity_twitter: 0
   menu_ui: 0
@@ -128,11 +133,13 @@ module:
   twig_tweak: 0
   update: 0
   user: 0
+  uwm_paragraphs: 0
   uwmcs_extension: 0
   video_embed_field: 0
   video_embed_media: 0
   views_infinite_scroll: 0
   views_ui: 0
+  viewsreference: 0
   workflows: 0
   menu_link_content: 1
   pathauto: 1

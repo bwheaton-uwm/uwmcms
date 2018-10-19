@@ -1,0 +1,33 @@
+uuid: 25823e54-5d15-411d-a1a7-c5c626269e54
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_full_html.uwm_unrestricted
+    - paragraphs.paragraphs_type.uwm_full_html
+  module:
+    - content_moderation
+    - text
+id: paragraph.uwm_full_html.default
+targetEntityType: paragraph
+bundle: uwm_full_html
+mode: default
+content:
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+  uwm_unrestricted:
+    weight: 101
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -17,6 +17,7 @@ settings:
         -
           name: Formatting
           items:
+            - bs_grid
             - Bold
             - Italic
             - Strike
@@ -55,6 +56,8 @@ settings:
       language_list: un
     stylescombo:
       styles: ''
+    linkit:
+      linkit_profile: ''
 image_upload:
   status: true
   scheme: public

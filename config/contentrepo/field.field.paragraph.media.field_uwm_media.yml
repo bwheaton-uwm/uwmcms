@@ -1,0 +1,28 @@
+uuid: b52f81a1-db08-4112-8333-5e133a191a13
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_media
+    - media.type.acquia_dam_asset
+    - paragraphs.paragraphs_type.media
+id: paragraph.media.field_uwm_media
+field_name: field_uwm_media
+entity_type: paragraph
+bundle: media
+label: Media
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      acquia_dam_asset: acquia_dam_asset
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

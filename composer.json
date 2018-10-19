@@ -56,6 +56,7 @@
         "drupal/bootstrap": "^3.5",
         "drupal/breakpoints": "^1.1",
         "drupal/calendar": "1.x-dev",
+        "drupal/ckeditor_bs_grid": "1.x-dev",
         "drupal/ckeditor_liststyle": "^1.1",
         "drupal/components": "^1.0",
         "drupal/conditional_fields": "^1.0@alpha",
@@ -78,6 +79,7 @@
         "drupal/honeypot": "^1.27",
         "drupal/link_attributes": "^1.1",
         "drupal/linkit": "^4.3",
+        "drupal/media_acquiadam": "^1.32",
         "drupal/media_entity": "^2",
         "drupal/media_entity_actions": "^1.0@alpha",
         "drupal/media_entity_soundcloud": "2.x-dev",
@@ -110,7 +112,8 @@
         "drupal/views_taxonomy_term_name_depth": "^1.2",
         "drupal/webform": "5.0-rc3",
         "drupal/xmlsitemap": "^1.0@alpha",
-        "nategood/httpful": "^0.2.20"
+        "nategood/httpful": "^0.2.20",
+        "uwmweb/uwm_paragraphs": "dev-master"
     },
     "require-dev": {
         "geerlingguy/drupal-vm": "^4.8"

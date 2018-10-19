@@ -1,0 +1,22 @@
+uuid: 82e2235a-bb23-4cc7-aeb9-df2f6e61c14e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.media.field_uwm_media
+    - paragraphs.paragraphs_type.media
+id: paragraph.media.default
+targetEntityType: paragraph
+bundle: media
+mode: default
+content:
+  field_uwm_media:
+    type: entity_reference_entity_view
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+hidden: {  }
