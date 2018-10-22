@@ -133,3 +133,9 @@ seckit: 1.0.0
 devel: 1.2.0
 config_ignore: 2.1.0
 media_library: 8.6.2
+migrate: 8.6.1
+migrate_drupal: 8.6.1
+replication: 1.0.0-beta15
+workspace: 1.0.0-beta15
+deploy: 1.0.0-beta11
+relaxed: 1.0.0-beta14

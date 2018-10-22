@@ -107,3 +107,5 @@ deploy: 1.0.0-beta11
 basic_auth: 8.6.1
 rest: 8.6.1
 relaxed: 1.0.0-beta14
+devel_generate: 1.2.0
+devel: 1.2.0

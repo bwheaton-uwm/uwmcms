@@ -1,0 +1,30 @@
+uuid: e412c607-5e8d-45d1-9939-1f5a65378b14
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.workspace.basic.field_workspace_custom_descripti
+    - multiversion.type.basic
+  module:
+    - content_moderation
+    - workspace
+id: workspace.basic.default
+targetEntityType: workspace
+bundle: basic
+mode: default
+content:
+  field_workspace_custom_descripti:
+    weight: 101
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+hidden: {  }

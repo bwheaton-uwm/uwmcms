@@ -1,0 +1,19 @@
+uuid: 32de8058-1e32-4220-b6be-eb221956114b
+langcode: en
+status: true
+dependencies:
+  module:
+    - multiversion
+id: workspace.field_workspace_custom_descripti
+field_name: field_workspace_custom_descripti
+entity_type: workspace
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
