@@ -1,0 +1,13 @@
+uuid: b6b096c6-2d6b-4266-926e-3ef27546534b
+langcode: en
+status: true
+dependencies:
+  module:
+    - vbo_export
+_core:
+  default_config_hash: O22Zh8j-2AH2A8MghlhiatrWHgT-e1MyRb--X4rbTsY
+id: vbo_export_generate_csv_action
+label: 'Generate csv from selected results'
+type: node
+plugin: vbo_export_generate_csv_action
+configuration: {  }

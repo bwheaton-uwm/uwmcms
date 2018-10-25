@@ -1,4 +1,4 @@
-uuid: 14c13f3a-02f8-4343-a15e-adcfda26f558
+uuid: aa9f1013-9be4-45ed-b850-0370c64d7b6e
 langcode: en
 status: true
 dependencies: {  }
@@ -12,6 +12,4 @@ permissions:
   - 'access content'
   - 'access shortcuts'
   - 'access site-wide contact form'
-  - 'perform pull replication'
-  - 'perform push replication'
   - 'view media'

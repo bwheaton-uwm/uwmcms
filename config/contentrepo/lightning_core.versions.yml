@@ -109,3 +109,6 @@ rest: 8.6.1
 relaxed: 1.0.0-beta14
 devel_generate: 1.2.0
 devel: 1.2.0
+views_bulk_operations: 2.4.0
+vbo_export: 2.0.0
+views_bulk_edit: 2.2.0
