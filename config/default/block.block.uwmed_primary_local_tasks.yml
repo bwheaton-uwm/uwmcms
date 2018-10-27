@@ -11,7 +11,7 @@ _core:
 id: uwmed_primary_local_tasks
 theme: uwmed
 region: content_header
-weight: -4
+weight: -7
 provider: null
 plugin: local_tasks_block
 settings:

@@ -261,21 +261,6 @@ display:
           entity_field: type
           plugin_id: bundle
       sorts:
-        created:
-          id: created
-          table: node_field_data
-          field: created
-          order: DESC
-          entity_type: node
-          entity_field: created
-          plugin_id: date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          exposed: false
-          expose:
-            label: ''
-          granularity: second
         field_weight_value:
           id: field_weight_value
           table: node__field_weight

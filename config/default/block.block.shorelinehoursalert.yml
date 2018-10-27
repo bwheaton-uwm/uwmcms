@@ -12,7 +12,7 @@ dependencies:
 id: shorelinehoursalert
 theme: uwmed
 region: content_header
-weight: 0
+weight: 1
 provider: null
 plugin: 'block_content:4251608c-fbd9-47be-87e7-39935e1bebec'
 settings:
