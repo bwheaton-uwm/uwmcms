@@ -41,6 +41,7 @@ apache_vhosts:
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
   - servername: "huddle.{{ drupal_domain }}"
     documentroot: "{{ drupal_core_path }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
   - servername: "calendar.{{ drupal_domain }}"
     documentroot: "{{ drupal_core_path }}"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"

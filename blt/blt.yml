@@ -25,7 +25,7 @@ drush:
 modules:
   local:
     enable: [dblog, devel, seckit, views_ui]
-    uninstall: [acquia_connector, shield, simplesamlphp_auth]
+    uninstall: [ shield, simplesamlphp_auth]
   ci:
     enable: {  }
     uninstall: [acquia_connector]
@@ -70,6 +70,9 @@ multisites:
   - chew
   - huddle
   - calendar
+  - contentrepo
+  - uwmedicineorg
+  
 behat:
   paths: {  }
   web-driver: selenium
