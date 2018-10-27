@@ -1,0 +1,7 @@
+uuid: 3a891833-51af-4c3e-ad60-14067fc8e567
+langcode: en
+status: true
+dependencies: {  }
+id: biosres_local
+label: biosres.local
+uri: aHR0cDovL3JlbGF4ZWQ6cmVsYXhlZEBiaW9zcmVzLmxvY2FsL3JlbGF4ZWQ=

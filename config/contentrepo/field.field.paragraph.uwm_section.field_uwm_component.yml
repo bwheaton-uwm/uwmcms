@@ -1,0 +1,68 @@
+uuid: 873ee63d-6f44-4bb3-971d-0a5574fc1610
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_component
+    - paragraphs.paragraphs_type.uwm_accordion
+    - paragraphs.paragraphs_type.uwm_basic_content
+    - paragraphs.paragraphs_type.uwm_block
+    - paragraphs.paragraphs_type.uwm_full_html
+    - paragraphs.paragraphs_type.uwm_media
+    - paragraphs.paragraphs_type.uwm_section
+    - paragraphs.paragraphs_type.uwm_view
+  module:
+    - entity_reference_revisions
+id: paragraph.uwm_section.field_uwm_component
+field_name: field_uwm_component
+entity_type: paragraph
+bundle: uwm_section
+label: Component
+description: "You can add the following components to a section:\r\n<ul>\r\n<li><strong>Basic Content</strong>: A rich text editor that supports common text formatting including lists and call to action buttons. Create columns, add embedded images, and use the 'view more' functionality.</li>\r\n<li><strong>Accordion</strong>: A multi-part component that groups content together in expandable panels.</li>\r\n<li><strong>Media</strong>: Add an asset from WebDAM, embed a YouTube video or add other media to a page.</li>\r\n<li><strong>Drupal Block</strong>: Display a piece of reusable content from Drupal's custom block library.</li>\r\n</ul>"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      uwm_basic_content: uwm_basic_content
+      uwm_accordion: uwm_accordion
+      uwm_media: uwm_media
+      uwm_block: uwm_block
+      uwm_view: uwm_view
+      uwm_full_html: uwm_full_html
+    target_bundles_drag_drop:
+      uwm_basic_content:
+        enabled: true
+        weight: -21
+      uwm_accordion:
+        enabled: true
+        weight: -20
+      uwm_media:
+        enabled: true
+        weight: -19
+      uwm_accordion_section:
+        weight: -18
+        enabled: false
+      uwm_block:
+        enabled: true
+        weight: -17
+      uwm_view:
+        enabled: true
+        weight: -16
+      uwm_section:
+        weight: -15
+        enabled: false
+      uwm_full_html:
+        enabled: true
+        weight: -14
+      uwm_image_hero:
+        weight: -13
+        enabled: false
+      uwm_link_with_icon:
+        weight: -12
+        enabled: false
+field_type: entity_reference_revisions

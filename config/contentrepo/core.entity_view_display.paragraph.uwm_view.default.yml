@@ -1,0 +1,27 @@
+uuid: ea76f7ce-9330-44fb-818c-2d35b3093a02
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_view.uwm_view
+    - paragraphs.paragraphs_type.uwm_view
+  module:
+    - viewsreference
+_core:
+  default_config_hash: hPs5XWBboV6SU3LXj4FrR2SFia-Hn6q6V4XfSnYzJpc
+id: paragraph.uwm_view.default
+targetEntityType: paragraph
+bundle: uwm_view
+mode: default
+content:
+  uwm_view:
+    weight: 2
+    label: hidden
+    settings:
+      render_view: '1'
+    third_party_settings: {  }
+    type: viewsreference_formatter
+    region: content
+hidden:
+  created: true
+  uid: true

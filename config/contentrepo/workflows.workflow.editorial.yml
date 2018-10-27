@@ -1,10 +1,9 @@
-uuid: 0185a766-3be5-43bb-9757-082d01c568c5
+uuid: ce625cf2-bedd-4838-833c-41ed9f01d24f
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.landing_page
-    - node.type.page
+    - node.type.uwm_basic_page
   module:
     - content_moderation
 _core:
@@ -73,5 +72,4 @@ type_settings:
         - review
   entity_types:
     node:
-      - landing_page
-      - page
+      - uwm_basic_page

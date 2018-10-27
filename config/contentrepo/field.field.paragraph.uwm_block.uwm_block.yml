@@ -1,0 +1,25 @@
+uuid: e218c9eb-cd68-4310-939d-cf880b081fd8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.uwm_block
+    - paragraphs.paragraphs_type.uwm_block
+_core:
+  default_config_hash: sEyZcMRGuQCFEZC7iIVWDjviH_At6rjbh-ErGNOh2C4
+id: paragraph.uwm_block.uwm_block
+field_name: uwm_block
+entity_type: paragraph
+bundle: uwm_block
+label: Block
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block'
+  handler_settings:
+    target_bundles: null
+    auto_create: true
+field_type: entity_reference

@@ -1,0 +1,7 @@
+uuid: 191f390c-471f-457a-a43e-f36985b7caa4
+langcode: en
+status: true
+dependencies: {  }
+id: uwmed_local
+label: uwmed.local
+uri: aHR0cDovL3JlbGF4ZWQ6cmVsYXhlZEB1d21lZC5sb2NhbC9yZWxheGVk

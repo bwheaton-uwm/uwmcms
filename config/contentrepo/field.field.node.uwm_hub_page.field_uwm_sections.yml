@@ -1,0 +1,54 @@
+uuid: 9e563824-1122-4e5c-a335-fda5fc2be8c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_sections
+    - node.type.uwm_hub_page
+    - paragraphs.paragraphs_type.uwm_basic_content
+    - paragraphs.paragraphs_type.uwm_block
+  module:
+    - entity_reference_revisions
+id: node.uwm_hub_page.field_uwm_sections
+field_name: field_uwm_sections
+entity_type: node
+bundle: uwm_hub_page
+label: Sections
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      uwm_basic_content: uwm_basic_content
+      uwm_block: uwm_block
+    target_bundles_drag_drop:
+      media:
+        weight: 9
+        enabled: false
+      uwm_accordion:
+        weight: 10
+        enabled: false
+      uwm_accordion_section:
+        weight: 11
+        enabled: false
+      uwm_basic_content:
+        enabled: true
+        weight: 12
+      uwm_block:
+        enabled: true
+        weight: 13
+      uwm_full_html:
+        weight: 14
+        enabled: false
+      uwm_section:
+        weight: 15
+        enabled: false
+      uwm_view:
+        weight: 16
+        enabled: false
+field_type: entity_reference_revisions

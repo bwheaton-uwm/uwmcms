@@ -1,4 +1,4 @@
-uuid: eee2f497-3c07-4022-8725-67fbb4010a61
+uuid: 53882d74-578e-4080-9fff-480384835c9f
 langcode: en
 status: true
 dependencies:
@@ -6,6 +6,7 @@ dependencies:
     - views.view.media
   module:
     - lightning_media
+    - media_acquiadam
     - views
 _core:
   default_config_hash: kT3o2OhRMWgZX6kGxRYSsItntaw241e3UwpGCD3RpJE
@@ -27,7 +28,7 @@ widgets:
       submit_text: Place
       form_mode: media_browser
     uuid: 8b142f33-59d1-47b1-9e3a-4ae85d8376fa
-    weight: -8
+    weight: -7
     label: 'Create embed'
     id: embed_code
   044d2af7-314b-4830-8b6d-64896bbb861e:
@@ -36,16 +37,24 @@ widgets:
       form_mode: media_browser
       return_file: false
     uuid: 044d2af7-314b-4830-8b6d-64896bbb861e
-    weight: -9
+    weight: -8
     label: Upload
     id: file_upload
-  21a7f7fb-5bad-4523-8458-a07da91271a3:
+  fbad55ac-b105-4da5-b3cf-ee4340971038:
     settings:
       view: media
       view_display: entity_browser_1
       submit_text: Place
       auto_select: false
-    uuid: 21a7f7fb-5bad-4523-8458-a07da91271a3
-    weight: -10
+    uuid: fbad55ac-b105-4da5-b3cf-ee4340971038
+    weight: -9
     label: Library
     id: view
+  7b4d1723-9905-427d-bd36-daf536251344:
+    settings:
+      media_type: acquia_dam_asset
+      submit_text: Place
+    uuid: 7b4d1723-9905-427d-bd36-daf536251344
+    weight: -10
+    label: 'Acquia DAM'
+    id: acquiadam

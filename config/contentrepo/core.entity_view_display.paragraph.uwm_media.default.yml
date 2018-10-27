@@ -1,0 +1,22 @@
+uuid: 4cb7d67d-5097-4af1-b90f-906eec147a59
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_media.field_uwm_media
+    - paragraphs.paragraphs_type.uwm_media
+id: paragraph.uwm_media.default
+targetEntityType: paragraph
+bundle: uwm_media
+mode: default
+content:
+  field_uwm_media:
+    weight: 0
+    label: above
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden: {  }

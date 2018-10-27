@@ -1,0 +1,39 @@
+uuid: 34c7ef5e-74d3-4d29-b33d-6c13b88c0ae5
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:be6671e5-432a-4b9a-ba44-fa155b23fb5b'
+  module:
+    - block_content
+    - ctools
+    - system
+  theme:
+    - uwmed
+id: alertforneighborhoodearlyclosurealertoctober2620184pm
+theme: uwmed
+region: content_header
+weight: -2
+provider: null
+plugin: 'block_content:be6671e5-432a-4b9a-ba44-fa155b23fb5b'
+settings:
+  id: 'block_content:be6671e5-432a-4b9a-ba44-fa155b23fb5b'
+  label: 'Alert for Neighborhood early closure October 26, 2018: 4pm'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      uwm_clinic: uwm_clinic
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+  request_path:
+    id: request_path
+    pages: "/locations/primary-care-factoria\r\n/locations/primary-care-issaquah\r\n/locations/urgent-care-issaquah\r\n/locations/primary-care-shoreline\r\n/locations/urgent-care-shoreline\r\n/locations/primary-care-smokey-point\r\n/locations/primary-care-woodinville"
+    negate: false
+    context_mapping: {  }

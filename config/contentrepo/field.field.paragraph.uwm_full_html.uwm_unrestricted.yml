@@ -1,0 +1,26 @@
+uuid: 793f23fb-e35e-4291-863f-3cecae7920e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.uwm_unrestricted
+    - paragraphs.paragraphs_type.uwm_full_html
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    rich_text: '0'
+    plain_text: '0'
+id: paragraph.uwm_full_html.uwm_unrestricted
+field_name: uwm_unrestricted
+entity_type: paragraph
+bundle: uwm_full_html
+label: Unrestricted
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

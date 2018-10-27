@@ -1,0 +1,23 @@
+uuid: 3fb03bd7-b74d-409b-8671-4dabfc3bb05f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_link
+    - paragraphs.paragraphs_type.uwm_link_with_icon
+  module:
+    - link
+id: paragraph.uwm_link_with_icon.field_uwm_link
+field_name: field_uwm_link
+entity_type: paragraph
+bundle: uwm_link_with_icon
+label: Link
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

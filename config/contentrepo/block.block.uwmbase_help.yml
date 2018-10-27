@@ -1,0 +1,22 @@
+uuid: d79810fa-8d0c-4d0a-8da0-8156b23ad98f
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - uwmbase
+_core:
+  default_config_hash: 7KUVgNmGmMaizJXAKcvTmdQt2elPO-eJwWJr8WnAy6s
+id: uwmbase_help
+theme: uwmbase
+region: help
+weight: -30
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

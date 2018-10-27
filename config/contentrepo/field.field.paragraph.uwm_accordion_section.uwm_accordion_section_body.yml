@@ -1,0 +1,64 @@
+uuid: b39332e9-36f7-4558-bea0-2b64db6ec060
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.uwm_accordion_section_body
+    - paragraphs.paragraphs_type.uwm_accordion_section
+    - paragraphs.paragraphs_type.uwm_basic_content
+    - paragraphs.paragraphs_type.uwm_full_html
+    - paragraphs.paragraphs_type.uwm_media
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: OQFSGVq2QWtA3R3BILeCTnYHM7rvMimkDpJpEJvkIIw
+id: paragraph.uwm_accordion_section.uwm_accordion_section_body
+field_name: uwm_accordion_section_body
+entity_type: paragraph
+bundle: uwm_accordion_section
+label: 'Accordion Section Body'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      uwm_basic_content: uwm_basic_content
+      uwm_media: uwm_media
+      uwm_full_html: uwm_full_html
+    target_bundles_drag_drop:
+      uwm_basic_content:
+        enabled: true
+        weight: -21
+      uwm_media:
+        enabled: true
+        weight: -20
+      uwm_full_html:
+        enabled: true
+        weight: -19
+      uwm_block:
+        weight: -18
+        enabled: false
+      uwm_view:
+        weight: -17
+        enabled: false
+      uwm_accordion:
+        weight: -16
+        enabled: false
+      uwm_accordion_section:
+        weight: -15
+        enabled: false
+      uwm_section:
+        weight: -14
+        enabled: false
+      uwm_image_hero:
+        weight: -13
+        enabled: false
+      uwm_link_with_icon:
+        weight: -12
+        enabled: false
+field_type: entity_reference_revisions

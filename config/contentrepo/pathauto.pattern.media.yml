@@ -1,4 +1,4 @@
-uuid: f82e493c-ac9d-4a66-b5eb-2875e69ac085
+uuid: 08bce42b-9096-4e72-adbf-a313ef4e725d
 langcode: en
 status: true
 dependencies:
@@ -12,5 +12,5 @@ type: 'canonical_entities:media'
 pattern: 'media/[media:bundle:target_id]/[media:mid]'
 selection_criteria: {  }
 selection_logic: and
-weight: -5
+weight: -8
 relationships: {  }

@@ -1,0 +1,57 @@
+uuid: 76a7e877-87e2-4a5d-a04b-bf3928fbba23
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.uwm_hub_page.field_meta_tags
+    - field.field.node.uwm_hub_page.field_uwm_page_path_name
+    - field.field.node.uwm_hub_page.field_uwm_parent_page
+    - field.field.node.uwm_hub_page.field_uwm_sections
+    - node.type.uwm_hub_page
+  module:
+    - entity_reference_revisions
+    - metatag
+    - user
+id: node.uwm_hub_page.default
+targetEntityType: node
+bundle: uwm_hub_page
+mode: default
+content:
+  field_meta_tags:
+    weight: 104
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
+  field_uwm_page_path_name:
+    weight: 102
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_uwm_parent_page:
+    weight: 103
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_uwm_sections:
+    weight: 101
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

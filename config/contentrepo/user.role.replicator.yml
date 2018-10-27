@@ -1,4 +1,4 @@
-uuid: f89f7a53-c86b-4f5c-af7f-e2df617b1a14
+uuid: f17c335e-472a-4835-a7bc-b38b9c884a40
 langcode: en
 status: true
 dependencies: {  }
@@ -10,5 +10,4 @@ permissions:
   - 'administer users'
   - 'administer workspaces'
   - 'bypass node access'
-  - 'perform pull replication'
   - 'perform push replication'

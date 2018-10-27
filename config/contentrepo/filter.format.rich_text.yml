@@ -1,4 +1,4 @@
-uuid: 90dc3b8f-c7d6-4480-b4c9-399d05577379
+uuid: 9aec4386-b6ab-4c6c-8ba7-d29c56ff6ca2
 langcode: en
 status: true
 dependencies:
@@ -47,7 +47,7 @@ filters:
     status: true
     weight: -50
     settings:
-      allowed_html: '<a href hreflang> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <s> <sup> <sub> <img src alt data-entity-type data-entity-uuid data-align data-caption> <table> <caption> <tbody> <thead> <tfoot> <th> <td> <tr> <hr> <p> <br> <h1> <pre> <drupal-entity data-* title alt>'
+      allowed_html: '<a href aria-controls aria-expanded data-target data-toggle hreflang class id target role> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h3 id class> <h4 id class> <h5 id class> <h6 id class> <s> <sup> <sub> <img src alt data-entity-type data-entity-uuid data-align data-caption> <table> <caption> <tbody> <thead> <tfoot> <th> <td> <tr> <hr> <p> <br> <pre> <drupal-entity data-* title alt> <div class id>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_autop:

@@ -1,4 +1,4 @@
-uuid: 603700ce-680d-4465-b2c8-04a6db127c9e
+uuid: ad208924-3c44-4526-9a2e-335ae6671096
 langcode: en
 status: true
 dependencies:
@@ -77,8 +77,9 @@ display:
         options:
           view_modes:
             'entity:node':
-              landing_page: teaser
-              page: teaser
+              uwm_basic_page: default
+              uwm_homepage: default
+              uwm_hub_page: default
       fields:
         rendered:
           table: search_api_index_content

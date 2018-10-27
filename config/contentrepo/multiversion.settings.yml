@@ -31,5 +31,6 @@ enabled_entity_types:
   - taxonomy_term
   - menu_link_content
   - replication_log
+  - paragraph
 _core:
   default_config_hash: 6_asT1b4YxagkCEkp5UI1S6MlT9k4Ffb4gc5r6uCksU

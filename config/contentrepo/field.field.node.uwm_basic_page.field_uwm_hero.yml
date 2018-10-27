@@ -1,0 +1,58 @@
+uuid: 2f3fe26d-86d4-4ff3-8b1c-4d99be1abfa3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_hero
+    - node.type.uwm_basic_page
+    - paragraphs.paragraphs_type.uwm_image_hero
+  module:
+    - entity_reference_revisions
+id: node.uwm_basic_page.field_uwm_hero
+field_name: field_uwm_hero
+entity_type: node
+bundle: uwm_basic_page
+label: Hero
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      uwm_image_hero: uwm_image_hero
+    target_bundles_drag_drop:
+      uwm_accordion:
+        weight: 11
+        enabled: false
+      uwm_accordion_section:
+        weight: 12
+        enabled: false
+      uwm_basic_content:
+        weight: 13
+        enabled: false
+      uwm_block:
+        weight: 14
+        enabled: false
+      uwm_full_html:
+        weight: 15
+        enabled: false
+      uwm_image_hero:
+        enabled: true
+        weight: 16
+      uwm_link_with_icon:
+        weight: 17
+        enabled: false
+      uwm_media:
+        weight: 18
+        enabled: false
+      uwm_section:
+        weight: 19
+        enabled: false
+      uwm_view:
+        weight: 20
+        enabled: false
+field_type: entity_reference_revisions

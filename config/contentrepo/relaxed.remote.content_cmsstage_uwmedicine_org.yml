@@ -1,0 +1,7 @@
+uuid: c05fbacc-4ac5-4019-98aa-ec4064124689
+langcode: en
+status: true
+dependencies: {  }
+id: content_cmsstage_uwmedicine_org
+label: content.cmsstage.uwmedicine.org
+uri: aHR0cHM6Ly9yZWxheGVkOnJlbGF4ZWRAY29udGVudC5jbXNzdGFnZS51d21lZGljaW5lLm9yZy9yZWxheGVk

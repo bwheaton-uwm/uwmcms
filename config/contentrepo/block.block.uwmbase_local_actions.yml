@@ -1,0 +1,20 @@
+uuid: 404c68ad-a5b1-4d58-9e60-0f994ef59c89
+langcode: en
+status: true
+dependencies:
+  theme:
+    - uwmbase
+_core:
+  default_config_hash: SoECx-tfiCrMPw4wg7drv8aGNsG82qei8xV0vepi8NI
+id: uwmbase_local_actions
+theme: uwmbase
+region: content
+weight: -20
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

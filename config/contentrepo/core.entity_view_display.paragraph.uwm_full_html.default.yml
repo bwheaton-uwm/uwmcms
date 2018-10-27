@@ -1,0 +1,22 @@
+uuid: 56381696-de7d-48b1-a00f-fc3be24c81c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_full_html.uwm_unrestricted
+    - paragraphs.paragraphs_type.uwm_full_html
+  module:
+    - text
+id: paragraph.uwm_full_html.default
+targetEntityType: paragraph
+bundle: uwm_full_html
+mode: default
+content:
+  uwm_unrestricted:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

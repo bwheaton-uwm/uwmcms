@@ -1,0 +1,19 @@
+uuid: e02f7473-99b9-46fa-bc77-b132d66c01f8
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - paragraphs
+id: paragraph.field_uwm_link
+field_name: field_uwm_link
+entity_type: paragraph
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

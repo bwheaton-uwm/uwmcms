@@ -1,0 +1,22 @@
+uuid: 07f572ee-8295-43c3-811e-272f3ab0fbab
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - uwmbase
+_core:
+  default_config_hash: AO3bR6uS7k4T1fsCILLoVf4Y294BEGRHzfkYePXeFmA
+id: uwmbase_content
+theme: uwmbase
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

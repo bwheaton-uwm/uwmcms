@@ -1,0 +1,23 @@
+uuid: 007785bf-6408-47ea-bae0-62d60f904868
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.uwm_show_button
+    - paragraphs.paragraphs_type.uwm_accordion_section
+_core:
+  default_config_hash: NRLApEky_R0C5FQILJkcbgJjGKKdUm35kO5jpT0qZZk
+id: paragraph.uwm_accordion_section.uwm_show_button
+field_name: uwm_show_button
+entity_type: paragraph
+bundle: uwm_accordion_section
+label: 'Display expanded'
+description: 'Check to have this accordion section appear open on page load.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

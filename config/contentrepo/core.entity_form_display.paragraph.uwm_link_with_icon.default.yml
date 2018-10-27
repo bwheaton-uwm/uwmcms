@@ -1,0 +1,37 @@
+uuid: 0c7ad42f-6479-4f04-b778-d9cca5370435
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_link_with_icon.field_uwm_icon
+    - field.field.paragraph.uwm_link_with_icon.field_uwm_link
+    - paragraphs.paragraphs_type.uwm_link_with_icon
+  module:
+    - link
+id: paragraph.uwm_link_with_icon.default
+targetEntityType: paragraph
+bundle: uwm_link_with_icon
+mode: default
+content:
+  field_uwm_icon:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_uwm_link:
+    weight: 0
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+hidden:
+  created: true
+  moderation_state: true
+  status: true
+  uid: true
