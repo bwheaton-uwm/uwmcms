@@ -1,0 +1,28 @@
+uuid: 85b3e20e-811d-4d76-bb28-2ef6086640ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_featured_specialties
+    - node.type.uwm_medical_specialty
+    - taxonomy.vocabulary.uw_medicine_specialties
+id: node.uwm_medical_specialty.field_featured_specialties
+field_name: field_featured_specialties
+entity_type: node
+bundle: uwm_medical_specialty
+label: 'Featured Specialties'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      uw_medicine_specialties: uw_medicine_specialties
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

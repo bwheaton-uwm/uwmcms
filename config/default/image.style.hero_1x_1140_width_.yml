@@ -1,0 +1,15 @@
+uuid: e0b6ffad-8008-4130-aba6-f1d9f0af1f01
+langcode: en
+status: true
+dependencies: {  }
+name: hero_1x_1140_width_
+label: 'Hero@1x (1140 width)'
+effects:
+  6f49d036-8e80-43c5-a0f1-98dd6918747a:
+    uuid: 6f49d036-8e80-43c5-a0f1-98dd6918747a
+    id: image_scale
+    weight: 1
+    data:
+      width: 1140
+      height: null
+      upscale: true

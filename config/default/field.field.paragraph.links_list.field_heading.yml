@@ -1,0 +1,27 @@
+uuid: 8e812b0d-540b-4634-93c0-ac2c0b6bb95a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.links_list
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    plain_text: plain_text
+    simple_formatted_text: '0'
+    rich_text: '0'
+id: paragraph.links_list.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: links_list
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

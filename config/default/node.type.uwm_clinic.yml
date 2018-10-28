@@ -1,0 +1,19 @@
+uuid: b66ed566-6764-41a5-8f8c-f2a87ffed969
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: 5YJZbVUYycSo7ymVZnMwmvytiKmX03hJ0dloGv_lv-M
+name: 'UW Clinic'
+type: uwm_clinic
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,14 @@
+uuid: f747a1f9-8080-4f58-98e6-8e3640351390
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.staff_clinic_manager
+  module:
+    - user
+id: user_remove_role_action.staff_clinic_manager
+label: 'Remove the Staff Clinic Manager role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: staff_clinic_manager

@@ -1,0 +1,7 @@
+uuid: f0cc5a32-de59-4d36-8aa1-c902622d255f
+langcode: en
+status: true
+dependencies: {  }
+id: node__uwm_clinic
+label: 'Content: UWM Clinic'
+tags: {  }

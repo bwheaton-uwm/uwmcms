@@ -1,0 +1,37 @@
+uuid: 8315c0c1-e336-496a-9b6e-c79afcc0c43f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.content_topics
+  module:
+    - path
+    - text
+id: taxonomy_term.content_topics.default
+targetEntityType: taxonomy_term
+bundle: content_topics
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

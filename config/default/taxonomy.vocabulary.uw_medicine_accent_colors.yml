@@ -1,0 +1,9 @@
+uuid: a5c2f73e-8acb-436a-8a80-ef407354bcf0
+langcode: en
+status: true
+dependencies: {  }
+name: 'UW Medicine Accent Colors'
+vid: uw_medicine_accent_colors
+description: 'Select an accent color and CSS will take care of the rest.'
+hierarchy: 0
+weight: 0

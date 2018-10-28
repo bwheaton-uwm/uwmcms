@@ -1,0 +1,49 @@
+uuid: 1176ecab-2d2b-410e-b4ca-30eb09a86bd0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bottom_content_blocks
+    - node.type.uwm_medical_service
+    - paragraphs.paragraphs_type.content_snippet
+  module:
+    - entity_reference_revisions
+id: node.uwm_medical_service.field_bottom_content_blocks
+field_name: field_bottom_content_blocks
+entity_type: node
+bundle: uwm_medical_service
+label: 'Care Now Content Blocks'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      content_snippet: content_snippet
+    target_bundles_drag_drop:
+      content_snippet:
+        enabled: true
+        weight: 8
+      feature_story:
+        weight: 9
+        enabled: false
+      homepage_section:
+        weight: 10
+        enabled: false
+      link_with_icon:
+        weight: 11
+        enabled: false
+      links_list:
+        weight: 12
+        enabled: false
+      media_feature:
+        weight: 13
+        enabled: false
+      reusable_content:
+        weight: 14
+        enabled: false
+field_type: entity_reference_revisions

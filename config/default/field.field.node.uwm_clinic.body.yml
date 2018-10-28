@@ -1,0 +1,28 @@
+uuid: 21ea95b4-c559-4318-81f0-2bb5046b1b55
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.uwm_clinic
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    simple_formatted_text: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: node.uwm_clinic.body
+field_name: body
+entity_type: node
+bundle: uwm_clinic
+label: Body
+description: 'The main content of this page. '
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

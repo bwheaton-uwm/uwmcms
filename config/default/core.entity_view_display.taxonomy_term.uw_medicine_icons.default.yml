@@ -1,0 +1,21 @@
+uuid: b8d10065-f647-41c5-b1c7-bf35d21ec8eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.uw_medicine_icons
+  module:
+    - text
+id: taxonomy_term.uw_medicine_icons.default
+targetEntityType: taxonomy_term
+bundle: uw_medicine_icons
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,33 @@
+uuid: 2fb18764-ec6e-4da3-be04-f060d3b02187
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.content_spotlight
+  module:
+    - node
+    - views
+  theme:
+    - uwmed
+id: views_block__content_spotlight_interior_page_bottom
+theme: uwmed
+region: content
+weight: -4
+provider: null
+plugin: 'views_block:content_spotlight-block_1'
+settings:
+  id: 'views_block:content_spotlight-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      uwm_medical_service: uwm_medical_service
+      uwm_medical_specialty: uwm_medical_specialty
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

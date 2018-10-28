@@ -1,0 +1,46 @@
+uuid: d9b102a7-a626-45f3-b049-7f2ab65c729b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.uw_page_styling.field_code_label
+    - taxonomy.vocabulary.uw_page_styling
+  module:
+    - path
+    - text
+id: taxonomy_term.uw_page_styling.default
+targetEntityType: taxonomy_term
+bundle: uw_page_styling
+mode: default
+content:
+  description:
+    type: text_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_code_label:
+    weight: 31
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  name:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

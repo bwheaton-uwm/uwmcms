@@ -1,0 +1,14 @@
+uuid: 6b0761b5-a979-4e66-bc60-7e0597d27422
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - node
+third_party_settings:
+  lightning_core:
+    description: 'UWM card display, for including this content on another page.'
+id: node.card_display
+label: 'Card Display'
+targetEntityType: node
+cache: true

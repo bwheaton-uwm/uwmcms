@@ -1,0 +1,23 @@
+uuid: 1bede9c3-ac2d-4db5-90d5-20403141ac76
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_weight
+    - node.type.uwm_medical_specialty
+id: node.uwm_medical_specialty.field_weight
+field_name: field_weight
+entity_type: node
+bundle: uwm_medical_specialty
+label: Weight
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,19 @@
+uuid: ee7064ec-4cf8-4ebd-a325-ff320641bc83
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_code_label
+    - taxonomy.vocabulary.uw_page_styling
+id: taxonomy_term.uw_page_styling.field_code_label
+field_name: field_code_label
+entity_type: taxonomy_term
+bundle: uw_page_styling
+label: 'Code Label'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

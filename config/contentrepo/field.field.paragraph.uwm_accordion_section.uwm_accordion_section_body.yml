@@ -7,6 +7,7 @@ dependencies:
     - paragraphs.paragraphs_type.uwm_accordion_section
     - paragraphs.paragraphs_type.uwm_basic_content
     - paragraphs.paragraphs_type.uwm_full_html
+    - paragraphs.paragraphs_type.uwm_grid
     - paragraphs.paragraphs_type.uwm_media
   module:
     - entity_reference_revisions
@@ -30,6 +31,7 @@ settings:
       uwm_basic_content: uwm_basic_content
       uwm_media: uwm_media
       uwm_full_html: uwm_full_html
+      uwm_grid: uwm_grid
     target_bundles_drag_drop:
       uwm_basic_content:
         enabled: true
@@ -61,4 +63,13 @@ settings:
       uwm_link_with_icon:
         weight: -12
         enabled: false
+      headshot_card:
+        weight: 14
+        enabled: false
+      detailed_contact_card:
+        weight: 15
+        enabled: false
+      uwm_grid:
+        enabled: true
+        weight: 21
 field_type: entity_reference_revisions

@@ -1,0 +1,59 @@
+uuid: 9e225daa-8724-469f-ab3a-8038f915369f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_blocks
+    - node.type.uwm_medical_specialty
+    - paragraphs.paragraphs_type.content_snippet
+    - paragraphs.paragraphs_type.links_list
+    - paragraphs.paragraphs_type.reusable_content
+  module:
+    - entity_reference_revisions
+id: node.uwm_medical_specialty.field_content_blocks
+field_name: field_content_blocks
+entity_type: node
+bundle: uwm_medical_specialty
+label: 'Content Blocks'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      content_snippet: content_snippet
+      links_list: links_list
+      reusable_content: reusable_content
+    target_bundles_drag_drop:
+      accordion_panel:
+        weight: 10
+        enabled: false
+      content_snippet:
+        enabled: true
+        weight: 11
+      feature_story:
+        weight: 12
+        enabled: false
+      homepage_section:
+        weight: 13
+        enabled: false
+      links_list:
+        enabled: true
+        weight: 14
+      link_with_icon:
+        weight: 15
+        enabled: false
+      media_feature:
+        weight: 16
+        enabled: false
+      quiz_question:
+        weight: 17
+        enabled: false
+      reusable_content:
+        enabled: true
+        weight: 18
+field_type: entity_reference_revisions

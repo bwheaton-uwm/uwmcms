@@ -1,0 +1,27 @@
+uuid: 81bff25f-d9eb-4cd1-b8d1-9f25a0e9abed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.content_snippet
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    plain_text: plain_text
+    simple_formatted_text: '0'
+    rich_text: '0'
+id: paragraph.content_snippet.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: content_snippet
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

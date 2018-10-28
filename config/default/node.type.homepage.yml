@@ -1,0 +1,17 @@
+uuid: f6fc2e84-e46f-41be-874e-d2da39867bac
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'UW Homepage'
+type: homepage
+description: 'The uwmedicine.org homepage.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

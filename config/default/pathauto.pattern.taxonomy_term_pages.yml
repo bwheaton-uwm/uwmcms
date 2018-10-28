@@ -1,0 +1,14 @@
+uuid: 54ef8ab3-ab06-428b-be9e-62022bfb0a42
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term_pages
+label: 'Taxonomy term pages'
+type: 'canonical_entities:taxonomy_term'
+pattern: 'topics/[term:name]'
+selection_criteria: {  }
+selection_logic: and
+weight: 0
+relationships: {  }

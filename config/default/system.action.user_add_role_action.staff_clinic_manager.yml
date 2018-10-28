@@ -1,0 +1,14 @@
+uuid: 07b31af5-217f-4b53-82a3-43c9a8ef24a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.staff_clinic_manager
+  module:
+    - user
+id: user_add_role_action.staff_clinic_manager
+label: 'Add the Staff Clinic Manager role to the selected users'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: staff_clinic_manager

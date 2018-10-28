@@ -1,0 +1,9 @@
+uuid: 27bd165e-f6e0-4922-97f7-21110e89c970
+langcode: en
+status: true
+dependencies: {  }
+name: 'UW Medicine Specialties'
+vid: uw_medicine_specialties
+description: ''
+hierarchy: 0
+weight: 0

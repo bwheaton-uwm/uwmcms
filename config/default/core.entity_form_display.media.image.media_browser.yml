@@ -1,0 +1,74 @@
+uuid: d5f412d9-e73b-4cfb-9413-904931b39130
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_browser
+    - field.field.media.image.field_content_topics
+    - field.field.media.image.field_digital_properties
+    - field.field.media.image.field_media_in_library
+    - field.field.media.image.image
+    - image.style.medium
+    - media.type.image
+  module:
+    - datetime
+    - image
+    - lightning_media
+    - path
+_core:
+  default_config_hash: XAs-0xJN_RSqL0AwDm_5FnHvxR7U1H1asYTOBUKcnsE
+id: media.image.media_browser
+targetEntityType: media
+bundle: image
+mode: media_browser
+content:
+  field_media_in_library:
+    type: boolean_checkbox
+    weight: 3
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    region: content
+  image:
+    type: image_image
+    weight: 2
+    settings:
+      preview_image_style: medium
+      progress_indicator: throbber
+    third_party_settings:
+      lightning_media:
+        file_links: false
+        remove_button: false
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  scheduled_publication:
+    type: datetime_default
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 100
+    region: content
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_content_topics: true
+  field_digital_properties: true
+  uid: true

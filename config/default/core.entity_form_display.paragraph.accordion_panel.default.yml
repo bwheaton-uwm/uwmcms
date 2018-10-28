@@ -1,0 +1,56 @@
+uuid: 92018565-b30d-4691-a9ef-e01f3f7a058c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.accordion_panel.field_heading
+    - field.field.paragraph.accordion_panel.field_sub
+    - field.field.paragraph.accordion_panel.field_text_snippet
+    - paragraphs.paragraphs_type.accordion_panel
+  module:
+    - datetime
+    - paragraphs
+    - text
+id: paragraph.accordion_panel.default
+targetEntityType: paragraph
+bundle: accordion_panel
+mode: default
+content:
+  field_heading:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+  field_sub:
+    type: entity_reference_paragraphs
+    weight: 8
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_text_snippet:
+    weight: 7
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  scheduled_publication:
+    type: datetime_default
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

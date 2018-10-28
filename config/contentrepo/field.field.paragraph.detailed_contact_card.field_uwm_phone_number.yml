@@ -1,0 +1,21 @@
+uuid: ba3e55fd-34c9-49bd-8398-4ebf4a3d5b48
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_phone_number
+    - paragraphs.paragraphs_type.detailed_contact_card
+  module:
+    - telephone
+id: paragraph.detailed_contact_card.field_uwm_phone_number
+field_name: field_uwm_phone_number
+entity_type: paragraph
+bundle: detailed_contact_card
+label: 'Phone Number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

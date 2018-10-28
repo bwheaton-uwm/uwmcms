@@ -1,0 +1,15 @@
+uuid: 72cbf7b6-b5b0-44a9-a4c9-048f04612a63
+langcode: en
+status: true
+dependencies: {  }
+name: huge_1080x1080_
+label: 'Huge (1080x1080)'
+effects:
+  3ec43005-af74-469f-88d8-117cd53aa0a4:
+    uuid: 3ec43005-af74-469f-88d8-117cd53aa0a4
+    id: image_scale
+    weight: 1
+    data:
+      width: 1080
+      height: 1080
+      upscale: false

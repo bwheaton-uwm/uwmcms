@@ -1,0 +1,9 @@
+uuid: f85887c8-7935-4992-8aaf-e1f14ad5fff0
+langcode: en
+status: true
+dependencies: {  }
+name: 'Condition Spotlight Type'
+vid: condition_spotlight_type
+description: ''
+hierarchy: 0
+weight: 0

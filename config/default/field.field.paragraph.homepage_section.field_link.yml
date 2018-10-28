@@ -1,0 +1,23 @@
+uuid: 239cc2fa-6d3c-45f0-90a6-c80b3f1988fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_link
+    - paragraphs.paragraphs_type.homepage_section
+  module:
+    - link
+id: paragraph.homepage_section.field_link
+field_name: field_link
+entity_type: paragraph
+bundle: homepage_section
+label: 'View More Link'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

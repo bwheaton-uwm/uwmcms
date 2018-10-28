@@ -1,0 +1,29 @@
+uuid: 1541c827-dd25-4717-b072-797e6f565cc3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.fact_page
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    plain_text: '0'
+    simple_formatted_text: '0'
+    basic_html: '0'
+    full_html: '0'
+id: node.fact_page.body
+field_name: body
+entity_type: node
+bundle: fact_page
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

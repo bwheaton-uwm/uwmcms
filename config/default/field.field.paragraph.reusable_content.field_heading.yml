@@ -1,0 +1,29 @@
+uuid: e1d8d1ff-61ae-4fe8-9132-4de846cb9b35
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.reusable_content
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    plain_text: plain_text
+    simple_formatted_text: '0'
+    rich_text: '0'
+    full_html: '0'
+    basic_html: '0'
+id: paragraph.reusable_content.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: reusable_content
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

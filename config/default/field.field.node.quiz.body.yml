@@ -1,0 +1,29 @@
+uuid: f5430753-12d8-4c65-8a76-8dac01a1d333
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.quiz
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    plain_text: '0'
+    simple_formatted_text: '0'
+    full_html: '0'
+id: node.quiz.body
+field_name: body
+entity_type: node
+bundle: quiz
+label: Introduction
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

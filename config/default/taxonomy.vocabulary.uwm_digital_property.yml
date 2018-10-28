@@ -1,0 +1,9 @@
+uuid: b0fa4e0f-5962-415a-ab50-648c14173060
+langcode: en
+status: true
+dependencies: {  }
+name: 'UW Digital Properties'
+vid: uwm_digital_property
+description: ''
+hierarchy: 1
+weight: 0

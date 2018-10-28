@@ -1,0 +1,68 @@
+uuid: 512d435a-0078-4e15-8ef9-710f1000d52b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.quiz_question.field_answer_list
+    - field.field.paragraph.quiz_question.field_correct_answer_prompt
+    - field.field.paragraph.quiz_question.field_incorrect_answer_prompt
+    - field.field.paragraph.quiz_question.field_integer
+    - field.field.paragraph.quiz_question.field_text_snippet
+    - paragraphs.paragraphs_type.quiz_question
+  module:
+    - datetime
+    - text
+id: paragraph.quiz_question.default
+targetEntityType: paragraph
+bundle: quiz_question
+mode: default
+content:
+  field_answer_list:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+  field_correct_answer_prompt:
+    weight: 9
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_incorrect_answer_prompt:
+    weight: 10
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_integer:
+    weight: 8
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_text_snippet:
+    weight: 6
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  scheduled_publication:
+    type: datetime_default
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

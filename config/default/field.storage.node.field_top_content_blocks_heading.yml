@@ -1,0 +1,21 @@
+uuid: 3d538f87-bf93-47d3-a7e2-9a485d1a4e38
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_top_content_blocks_heading
+field_name: field_top_content_blocks_heading
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

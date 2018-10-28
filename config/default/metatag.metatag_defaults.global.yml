@@ -1,0 +1,19 @@
+uuid: e7c9b933-2b17-4a90-9c33-fd6ced8e8f4a
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 5rOnjIF_aDyGBmfXNhJnkPXxQMlem0CmVmggV-TF3Fg
+id: global
+label: Global
+tags:
+  title: '[current-page:title] | [site:name]'
+  og_site_name: '[site:name]'
+  og_title: '[current-page:title] | [site:name]'
+  og_type: website
+  og_url: '[node:url]'
+  twitter_cards_title: '[node:title] | [site:name]'
+  twitter_cards_type: summary
+  twitter_cards_site: '@uwmedicine'
+  twitter_cards_page_url: '[node:url]'
+  twitter_cards_site_id: '36784717'

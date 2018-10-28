@@ -1,0 +1,41 @@
+uuid: 16eb9414-050b-4717-84c8-a5f47b902100
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.media_paragraph_minimal_display
+    - field.field.paragraph.media_feature.field_heading
+    - field.field.paragraph.media_feature.field_media
+    - field.field.paragraph.media_feature.field_text_snippet
+    - paragraphs.paragraphs_type.media_feature
+  module:
+    - text
+id: paragraph.media_feature.media_paragraph_minimal_display
+targetEntityType: paragraph
+bundle: media_feature
+mode: media_paragraph_minimal_display
+content:
+  field_heading:
+    type: text_default
+    weight: 0
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_media:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: embedded
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_text_snippet:
+    type: text_default
+    weight: 2
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

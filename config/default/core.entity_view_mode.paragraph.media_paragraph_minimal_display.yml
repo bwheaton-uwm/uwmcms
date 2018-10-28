@@ -1,0 +1,14 @@
+uuid: 52546300-bc7b-425c-a6cf-068c7fe75972
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - paragraphs
+third_party_settings:
+  lightning_core:
+    description: ''
+id: paragraph.media_paragraph_minimal_display
+label: 'Media Paragraph Minimal Display'
+targetEntityType: paragraph
+cache: true

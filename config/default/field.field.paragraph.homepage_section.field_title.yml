@@ -1,0 +1,19 @@
+uuid: 7700b32c-0580-4f1f-90be-57fde8de2906
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.homepage_section
+id: paragraph.homepage_section.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: homepage_section
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

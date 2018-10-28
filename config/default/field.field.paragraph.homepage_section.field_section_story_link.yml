@@ -1,0 +1,23 @@
+uuid: 963cdb5e-1aa4-4b51-bfd5-0c3fb5d27357
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_section_story_link
+    - paragraphs.paragraphs_type.homepage_section
+  module:
+    - link
+id: paragraph.homepage_section.field_section_story_link
+field_name: field_section_story_link
+entity_type: paragraph
+bundle: homepage_section
+label: 'Section Story Link'
+description: 'The section story link appears in the bottom right corner of the section image. The format should be: &lt;strong&gt;Name&lt;/strong&gt; / Story title'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

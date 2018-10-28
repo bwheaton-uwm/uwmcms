@@ -1,0 +1,25 @@
+uuid: a59a66a4-30fc-4ced-b249-588e21361035
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_node_media
+    - node.type.uwm_clinic
+id: node.uwm_clinic.field_node_media
+field_name: field_node_media
+entity_type: node
+bundle: uwm_clinic
+label: 'Node Media'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: uwm_media_browser
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference

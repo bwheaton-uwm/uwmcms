@@ -1,0 +1,31 @@
+uuid: cc946036-844a-49a1-a604-9bd2201895c6
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+  theme:
+    - uwmed
+_core:
+  default_config_hash: CyX_aDKAka2_eihevNLscCHDYrzDgIqwWzFVEFRKIww
+id: uwmed_primary_local_tasks
+theme: uwmed
+region: content_header
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: false
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

@@ -1,0 +1,25 @@
+uuid: 2b25986c-f8c9-4402-b67e-844c6a9700a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.huge_1080x1080_
+    - image.style.large
+    - image.style.medium
+    - image.style.thumbnail
+id: default_responsive_image
+label: 'Default Responsive Image'
+image_style_mappings:
+  -
+    breakpoint_id: responsive_image.viewport_sizing
+    multiplier: 1x
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: '(min-width: 40em) 40vw, 90vw'
+      sizes_image_styles:
+        - huge_1080x1080_
+        - large
+        - medium
+        - thumbnail
+breakpoint_group: responsive_image
+fallback_image_style: medium

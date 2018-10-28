@@ -1,0 +1,28 @@
+uuid: f257f06a-12d6-48ec-a10b-7fdbaa21e16f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subheading
+    - node.type.uwm_medical_service
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    simple_formatted_text: simple_formatted_text
+    plain_text: '0'
+    basic_html: '0'
+    full_html: '0'
+id: node.uwm_medical_service.field_subheading
+field_name: field_subheading
+entity_type: node
+bundle: uwm_medical_service
+label: Subheading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

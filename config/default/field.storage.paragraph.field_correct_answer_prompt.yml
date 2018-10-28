@@ -1,0 +1,19 @@
+uuid: f613d421-9d1f-44b9-a6d4-e3b4c2490ed4
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+id: paragraph.field_correct_answer_prompt
+field_name: field_correct_answer_prompt
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

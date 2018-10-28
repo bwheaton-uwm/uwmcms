@@ -1,0 +1,46 @@
+uuid: f4284c73-ec01-45f6-8d35-9e1d3cfee7de
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_feature_story
+    - node.type.uwm_medical_service
+    - paragraphs.paragraphs_type.feature_story
+  module:
+    - entity_reference_revisions
+id: node.uwm_medical_service.field_feature_story
+field_name: field_feature_story
+entity_type: node
+bundle: uwm_medical_service
+label: 'Feature Story'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      feature_story: feature_story
+    target_bundles_drag_drop:
+      blurb_and_list:
+        weight: 7
+        enabled: false
+      content_snippet:
+        weight: 8
+        enabled: false
+      feature_story:
+        enabled: true
+        weight: 9
+      homepage_section:
+        weight: 10
+        enabled: false
+      link_with_icon:
+        weight: 11
+        enabled: false
+      links_list:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

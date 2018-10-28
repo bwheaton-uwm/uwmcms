@@ -1,0 +1,14 @@
+uuid: dab1c31e-602c-44c3-bdb8-a1042b99d981
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - paragraphs
+third_party_settings:
+  lightning_core:
+    description: 'View mode specific to the Medical Service content type.'
+id: paragraph.medical_service
+label: 'Medical Service'
+targetEntityType: paragraph
+cache: true

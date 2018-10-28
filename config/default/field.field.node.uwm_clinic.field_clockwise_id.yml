@@ -1,0 +1,23 @@
+uuid: adc6479d-ef11-4d78-b9c7-d7c0a45ac5af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_clockwise_id
+    - node.type.uwm_clinic
+id: node.uwm_clinic.field_clockwise_id
+field_name: field_clockwise_id
+entity_type: node
+bundle: uwm_clinic
+label: 'Clockwise Id'
+description: 'Optional. If provided, we will read the clinic wait-time from www.clockwisemd.com. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

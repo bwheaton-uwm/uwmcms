@@ -1,0 +1,20 @@
+uuid: 0dea43cd-b9ab-4cb6-a920-a7dff06ac967
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - taxonomy
+id: media.field_content_topics
+field_name: field_content_topics
+entity_type: media
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

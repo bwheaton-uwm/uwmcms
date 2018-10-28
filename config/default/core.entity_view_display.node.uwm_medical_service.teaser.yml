@@ -1,0 +1,55 @@
+uuid: 34506ccc-d194-4c0c-bbfb-74e54743f284
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.uwm_medical_service.field_accordion
+    - field.field.node.uwm_medical_service.field_blocks
+    - field.field.node.uwm_medical_service.field_bottom_content_blocks
+    - field.field.node.uwm_medical_service.field_common_services
+    - field.field.node.uwm_medical_service.field_condition_spotlight
+    - field.field.node.uwm_medical_service.field_feature_story
+    - field.field.node.uwm_medical_service.field_featured_specialties
+    - field.field.node.uwm_medical_service.field_image
+    - field.field.node.uwm_medical_service.field_information_manager_url
+    - field.field.node.uwm_medical_service.field_links_with_icon
+    - field.field.node.uwm_medical_service.field_meta_tags
+    - field.field.node.uwm_medical_service.field_proof_points
+    - field.field.node.uwm_medical_service.field_quiz
+    - field.field.node.uwm_medical_service.field_sub_title
+    - field.field.node.uwm_medical_service.field_subheading
+    - node.type.uwm_medical_service
+  module:
+    - user
+id: node.uwm_medical_service.teaser
+targetEntityType: node
+bundle: uwm_medical_service
+mode: teaser
+content:
+  content_moderation_control:
+    weight: -20
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_accordion: true
+  field_blocks: true
+  field_bottom_content_blocks: true
+  field_common_services: true
+  field_condition_spotlight: true
+  field_feature_story: true
+  field_featured_specialties: true
+  field_image: true
+  field_information_manager_url: true
+  field_links_with_icon: true
+  field_meta_tags: true
+  field_proof_points: true
+  field_quiz: true
+  field_sub_title: true
+  field_subheading: true

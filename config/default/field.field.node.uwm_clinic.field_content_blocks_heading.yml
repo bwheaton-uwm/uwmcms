@@ -1,0 +1,19 @@
+uuid: 09a07e97-15e8-4df7-92b2-7a0e286b94a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_blocks_heading
+    - node.type.uwm_clinic
+id: node.uwm_clinic.field_content_blocks_heading
+field_name: field_content_blocks_heading
+entity_type: node
+bundle: uwm_clinic
+label: 'Content Blocks Heading'
+description: 'An optional leader to show above the group of blocks. It''s formatted as a h2 or h3 header. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

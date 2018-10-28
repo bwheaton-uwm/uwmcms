@@ -1,0 +1,9 @@
+uuid: 22387cca-89a1-45eb-bd6a-b7d8d7a932f2
+langcode: en
+status: true
+dependencies: {  }
+id: content_snippet
+label: 'Content Snippet'
+icon_uuid: null
+description: 'Simple repeatable content for adding content blurbs or a call-to-action.'
+behavior_plugins: {  }

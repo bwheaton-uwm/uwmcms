@@ -1,0 +1,9 @@
+uuid: 2123c695-28e9-43c5-8ad3-7189ea981e36
+langcode: en
+status: true
+dependencies: {  }
+id: quiz_question
+label: 'Quiz Question'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,23 @@
+uuid: dbc2e577-7df6-4299-807a-82054330f84d
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
+id: authenticated
+label: 'Authenticated user'
+weight: 1
+is_admin: false
+permissions:
+  - 'access content'
+  - 'access shortcuts'
+  - 'access site-wide contact form'
+  - 'use text format rich_text'
+  - 'view media'
+  - 'view own unpublished content'
+  - 'view paragraph content content_snippet'
+  - 'view paragraph content homepage_section'
+  - 'view paragraph content link_with_icon'
+  - 'view paragraph content links_list'
+  - 'view paragraph content media_feature'
+  - 'view paragraph content reusable_content'

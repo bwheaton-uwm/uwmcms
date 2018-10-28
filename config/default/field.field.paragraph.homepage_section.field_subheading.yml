@@ -1,0 +1,21 @@
+uuid: 0916bce1-7126-4e2a-a05d-db06bcbf2abf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_subheading
+    - paragraphs.paragraphs_type.homepage_section
+  module:
+    - text
+id: paragraph.homepage_section.field_subheading
+field_name: field_subheading
+entity_type: paragraph
+bundle: homepage_section
+label: Subheading
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

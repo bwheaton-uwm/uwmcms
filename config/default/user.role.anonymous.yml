@@ -1,0 +1,24 @@
+uuid: d9405d24-5116-4f57-8792-ba07dedaa789
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
+id: anonymous
+label: 'Anonymous user'
+weight: 0
+is_admin: false
+permissions:
+  - 'access content'
+  - 'access site-wide contact form'
+  - 'generate uwmcs reader'
+  - 'use text format simple_formatted_text'
+  - 'view media'
+  - 'view paragraph content accordion_panel'
+  - 'view paragraph content content_snippet'
+  - 'view paragraph content feature_story'
+  - 'view paragraph content homepage_section'
+  - 'view paragraph content link_with_icon'
+  - 'view paragraph content links_list'
+  - 'view paragraph content media_feature'
+  - 'view paragraph content reusable_content'

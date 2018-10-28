@@ -1,0 +1,45 @@
+uuid: d72f7b73-034b-4b65-85f3-8fc11b808c3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.medical_service
+    - field.field.paragraph.content_snippet.field_heading
+    - field.field.paragraph.content_snippet.field_link
+    - field.field.paragraph.content_snippet.field_text_snippet
+    - paragraphs.paragraphs_type.content_snippet
+  module:
+    - link
+    - text
+id: paragraph.content_snippet.medical_service
+targetEntityType: paragraph
+bundle: content_snippet
+mode: medical_service
+content:
+  field_heading:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_link:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_text_snippet:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

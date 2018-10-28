@@ -1,0 +1,9 @@
+uuid: e048dad5-ca8c-4463-b5f6-5b24b399422b
+langcode: en
+status: true
+dependencies: {  }
+id: feature_story
+label: 'Feature Story'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

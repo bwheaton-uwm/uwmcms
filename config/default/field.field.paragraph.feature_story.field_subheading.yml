@@ -1,0 +1,29 @@
+uuid: a89d1184-3cd4-43f9-ae14-465c4c0f98cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_subheading
+    - paragraphs.paragraphs_type.feature_story
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    simple_formatted_text: simple_formatted_text
+    basic_html: basic_html
+    full_html: full_html
+    plain_text: '0'
+    no_wysiwyg: '0'
+id: paragraph.feature_story.field_subheading
+field_name: field_subheading
+entity_type: paragraph
+bundle: feature_story
+label: Teaser
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

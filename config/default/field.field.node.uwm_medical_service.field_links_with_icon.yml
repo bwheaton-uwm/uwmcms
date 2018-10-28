@@ -1,0 +1,43 @@
+uuid: adedb4dc-b250-4b8b-8fb5-8585f1d75ecb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_links_with_icon
+    - node.type.uwm_medical_service
+    - paragraphs.paragraphs_type.link_with_icon
+  module:
+    - entity_reference_revisions
+id: node.uwm_medical_service.field_links_with_icon
+field_name: field_links_with_icon
+entity_type: node
+bundle: uwm_medical_service
+label: 'Hero Links with Icon'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      link_with_icon: link_with_icon
+    target_bundles_drag_drop:
+      blurb_and_list:
+        weight: 6
+        enabled: false
+      content_snippet:
+        weight: 7
+        enabled: false
+      homepage_section:
+        weight: 8
+        enabled: false
+      link_with_icon:
+        enabled: true
+        weight: 9
+      links_list:
+        weight: 10
+        enabled: false
+field_type: entity_reference_revisions

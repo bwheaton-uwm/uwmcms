@@ -1,0 +1,7 @@
+uuid: be486567-10e9-4422-a601-00ff2067e3f5
+langcode: en
+status: true
+dependencies: {  }
+id: node__uwm_medical_service
+label: 'Content: UWM Medical Service'
+tags: {  }

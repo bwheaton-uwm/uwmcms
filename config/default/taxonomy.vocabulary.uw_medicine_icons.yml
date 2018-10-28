@@ -1,0 +1,9 @@
+uuid: 91731eda-3c4e-4911-90d3-dde61ae8dafa
+langcode: en
+status: true
+dependencies: {  }
+name: 'UW Medicine Icons'
+vid: uw_medicine_icons
+description: ''
+hierarchy: 1
+weight: 0

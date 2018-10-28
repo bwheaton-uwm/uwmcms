@@ -1,0 +1,23 @@
+uuid: e9579abb-e2b2-4e56-abde-5ebdef6705eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_custom_appointment_link
+    - node.type.uwm_clinic
+  module:
+    - link
+id: node.uwm_clinic.field_custom_appointment_link
+field_name: field_custom_appointment_link
+entity_type: node
+bundle: uwm_clinic
+label: 'Custom Appointment Link'
+description: 'If the "Make an Appointment" link on this page should go somewhere other than /services/making-an-appointment, please enter it here.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

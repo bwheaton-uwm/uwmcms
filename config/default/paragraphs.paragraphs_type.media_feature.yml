@@ -1,0 +1,9 @@
+uuid: 68fd483a-977f-4223-a195-ea167d0b825a
+langcode: en
+status: true
+dependencies: {  }
+id: media_feature
+label: 'Media Feature'
+icon_uuid: null
+description: 'A letterbox video (or image), for highlighting a provider along title and description. Appears as a highlighted block. '
+behavior_plugins: {  }

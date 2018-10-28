@@ -1,0 +1,30 @@
+uuid: 4f4b9178-dfd6-4d14-8020-d3d2b7464a46
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.uwm_terms
+  module:
+    - system
+    - views
+  theme:
+    - uwmed
+id: uwmed_views_block__uwm_terms_block_1
+theme: uwmed
+region: content_header
+weight: -6
+provider: null
+plugin: 'views_block:uwm_terms-block_1'
+settings:
+  id: 'views_block:uwm_terms-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: '/admin/structure/taxonomy/manage/uw_medicine_icons/*'
+    negate: false
+    context_mapping: {  }

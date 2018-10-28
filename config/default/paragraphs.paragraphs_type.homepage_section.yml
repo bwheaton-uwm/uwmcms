@@ -1,0 +1,9 @@
+uuid: 2b1fcec2-8054-4132-9f87-4917b976897f
+langcode: en
+status: true
+dependencies: {  }
+id: homepage_section
+label: 'Homepage Section'
+icon_uuid: null
+description: 'Homepage sections display the content for the Patient Care, Medical Research, and UW School of Medicine sections.'
+behavior_plugins: {  }

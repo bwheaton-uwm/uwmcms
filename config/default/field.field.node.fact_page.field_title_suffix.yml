@@ -1,0 +1,28 @@
+uuid: 8a8b6981-7e5c-4534-aee8-0392f977d5f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_title_suffix
+    - node.type.fact_page
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    plain_text: '0'
+    simple_formatted_text: '0'
+    basic_html: '0'
+    full_html: '0'
+id: node.fact_page.field_title_suffix
+field_name: field_title_suffix
+entity_type: node
+bundle: fact_page
+label: 'Title Suffix'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

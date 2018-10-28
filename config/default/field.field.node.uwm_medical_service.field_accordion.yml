@@ -1,0 +1,55 @@
+uuid: 2f0c2009-4217-4aaf-ac77-6ee79be7addd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_accordion
+    - node.type.uwm_medical_service
+    - paragraphs.paragraphs_type.accordion_panel
+  module:
+    - entity_reference_revisions
+id: node.uwm_medical_service.field_accordion
+field_name: field_accordion
+entity_type: node
+bundle: uwm_medical_service
+label: 'Common Services Accordion'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      accordion_panel: accordion_panel
+    target_bundles_drag_drop:
+      accordion_panel:
+        enabled: true
+        weight: 10
+      content_snippet:
+        weight: 11
+        enabled: false
+      feature_story:
+        weight: 12
+        enabled: false
+      homepage_section:
+        weight: 13
+        enabled: false
+      links_list:
+        weight: 14
+        enabled: false
+      link_with_icon:
+        weight: 15
+        enabled: false
+      media_feature:
+        weight: 16
+        enabled: false
+      quiz_question:
+        weight: 17
+        enabled: false
+      reusable_content:
+        weight: 18
+        enabled: false
+field_type: entity_reference_revisions

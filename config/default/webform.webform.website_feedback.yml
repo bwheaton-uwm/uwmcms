@@ -1,0 +1,207 @@
+uuid: 417ee1d4-17c0-4139-838b-bce2a62b352f
+langcode: en
+status: open
+dependencies:
+  module:
+    - honeypot
+third_party_settings:
+  honeypot:
+    time_restriction: true
+open: null
+close: null
+uid: 1
+template: false
+id: website_feedback
+title: 'Website Feedback'
+description: ''
+category: ''
+elements: "processed_text:\n  '#type': processed_text\n  '#wrapper_attributes':\n    class:\n      - 'col-lg-9 col-md-9'\n  '#display_on': both\n  '#text': '<h2 class=\"page-title\">Website Feedback</h2>'\n  '#format': full_html\nhesder:\n  '#type': webform_markup\n  '#wrapper_attributes':\n    class:\n      - 'col-lg-9 col-md-9'\n  '#markup': '<p>Please note that UW Medicine cannot address a medical emergency through this form. <strong>If you are experiencing a medical emergency, please call 9‑1‑1 or go to the nearest emergency room. </strong>UW Medicine is also unable to provide a medical opinion without a clinical consultation. If you would like to make an appointment for an office visit, please call 1.877.520.5000.</p>'\nyour_feedback:\n  '#type': fieldset\n  '#title': 'Your Feedback'\n  '#attributes':\n    class:\n      - 'col-lg-9 col-md-9'\n  subject:\n    '#type': textfield\n    '#title': Subject\n    '#required': true\n  message:\n    '#type': textarea\n    '#title': 'Message (Do not use this form to communicate specific healthcare or financial information.)'\n    '#placeholder': 'Please share a little about the issue you are experiencing...'\n    '#required': true\n  your_name:\n    '#type': webform_name\n    '#title': 'Your Name'\n    '#title__access': false\n    '#middle__access': false\n    '#suffix__access': false\n    '#degree__access': false\n  your_email:\n    '#type': email\n    '#title': 'Your Email'\n  privacy_confirmation:\n    '#type': checkbox\n    '#title': \"Privacy Confirmation - By checking this box, I acknowledge that I have read and accepted the University of \\_<a href=\\\"http://www.washington.edu/online/privacy/\\\" target=\\\"_blank\\\">UW Online Privacy Statement</a>.\"\n    '#more_title': 'More information'\n    '#required': true\nfooter:\n  '#type': webform_markup\n  '#wrapper_attributes':\n    class:\n      - 'col-lg-9 col-md-9'\n  '#markup': \"<p>We are committed to protecting your privacy. The information provided above will only be used as a means to contact you and not for marketing purposes. For information about our privacy practices, including any online monitoring activity such as tracking or analytics, visit the <a href=\\\"http://www.washington.edu/online/privacy/\\\" target=\\\"_blank\\\">UW Online Privacy Statement</a>. Additional questions, concerns or inquiries can be sent to <a href=\\\"mailto:uwmweb@uw.edu\\\">uwmweb@uw.edu</a>.<br />\\n&nbsp;</p>\"\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#attributes':\n    class:\n      - 'col-lg-9 col-md-9'\n"
+css: ''
+javascript: ''
+settings:
+  ajax: true
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: /node/feedback
+  page_confirm_path: /node/feedback/thanks
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_login: false
+  form_login_message: ''
+  submission_label: ''
+  submission_log: false
+  submission_user_columns: {  }
+  submission_login: false
+  submission_login_message: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_start_label: ''
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_title: 'Thanks '
+  confirmation_message: "<h2 class=\"page-title\">Thank you for contacting UW Medicine.</h2>\r\nWe appreciate your feedback. A response to your feedback will be sent to the e-mail address that you provided. Please note that we cannot process medical matters through our web feedback form. If you would like to make an appointment with UW Medicine, please call 1.877.520.5000"
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    label: Email
+    handler_id: email
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: uwmweb@uw.edu
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: '[webform_submission:values:your_email:raw]'
+      from_options: {  }
+      from_name: '[webform_submission:values:your_name:value]'
+      subject: default
+      body: '[webform_submission:values]'
+      excluded_elements:
+        your_name: your_name
+        your_email: your_email
+      ignore_access: false
+      exclude_empty: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_1:
+    id: email
+    label: 'Confirmation of Feedback Submission'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:your_email:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: no_reply@uwmedicine.org
+      from_options: {  }
+      from_name: default
+      subject: 'Confirmation of your Feedback Submitted on [webform_submission:created]'
+      body: "<p>Thank you for contacting UW Medicine. This is an automated message to confirm that your message was received and has been forwarded to a UW Medicine representative. We process inquiries Monday through Friday during regular business hours and try to respond within three business days. If you do not receive a response, you may reply to this message.<br />\n<br />\n<strong>Please note: If you are experiencing a medical emergency, please call 9-1-1. </strong></p>\n\n<h5>Confidentiality Note: This message is intended for use only by the individual or entity to which it is addressed and may contain information that is privileged, confidential and exempt from disclosure under applicable law. If the reader of this message is not the intended recipient or the employee or agent responsible for delivering the message to the intended recipient, you are hereby notified that any dissemination, distribution or copying of this communication is strictly prohibited. If you have received this communication in error, please contact the sender immediately and destroy the material in its entirety, whether electronic or hard copy. Thank you.</h5>"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

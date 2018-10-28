@@ -1,0 +1,21 @@
+uuid: ce3e7d70-6224-4a89-9144-5d1fda643afd
+langcode: en
+status: true
+dependencies:
+  config:
+    - entityqueue.entity_queue.homepage_content_spotlight
+id: entity_subqueue.homepage_content_spotlight.default
+targetEntityType: entity_subqueue
+bundle: homepage_content_spotlight
+mode: default
+content:
+  items:
+    label: hidden
+    type: entity_reference_entity_view
+    weight: 0
+    region: content
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+hidden: {  }

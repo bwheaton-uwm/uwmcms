@@ -1,0 +1,29 @@
+uuid: 7d30f037-4d3e-4436-a551-5fc49a988cbf
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.content_snippet.field_featured_image
+    - field.field.paragraph.content_snippet.field_heading
+    - field.field.paragraph.content_snippet.field_link
+    - field.field.paragraph.content_snippet.field_text_snippet
+    - paragraphs.paragraphs_type.content_snippet
+  module:
+    - text
+id: paragraph.content_snippet.preview
+targetEntityType: paragraph
+bundle: content_snippet
+mode: preview
+content:
+  field_heading:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  field_featured_image: true
+  field_link: true
+  field_text_snippet: true

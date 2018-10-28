@@ -1,0 +1,28 @@
+uuid: b5322bd7-2468-45b2-b3ab-80537107071b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_digital_properties
+    - media.type.document
+    - taxonomy.vocabulary.uwm_digital_property
+id: media.document.field_digital_properties
+field_name: field_digital_properties
+entity_type: media
+bundle: document
+label: 'Digital Properties'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      uwm_digital_property: uwm_digital_property
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

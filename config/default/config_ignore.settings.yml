@@ -1,0 +1,7 @@
+ignored_config_entities:
+  0: acquia_connector.settings
+  2: devel.settings
+  4: devel.toolbar.settings
+  6: system.menu.devel
+_core:
+  default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk

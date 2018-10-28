@@ -1,0 +1,8 @@
+uuid: af08c38e-f52d-4870-9217-af7b49160cf4
+langcode: en
+status: true
+dependencies: {  }
+name: 'No Wysiwyg'
+format: no_wysiwyg
+weight: 0
+filters: {  }

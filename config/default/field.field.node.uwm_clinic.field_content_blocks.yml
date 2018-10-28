@@ -1,0 +1,50 @@
+uuid: 922fd3d7-8f2d-4523-8708-ff8ff6c0b7ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_blocks
+    - node.type.uwm_clinic
+    - paragraphs.paragraphs_type.content_snippet
+    - paragraphs.paragraphs_type.links_list
+    - paragraphs.paragraphs_type.reusable_content
+  module:
+    - entity_reference_revisions
+id: node.uwm_clinic.field_content_blocks
+field_name: field_content_blocks
+entity_type: node
+bundle: uwm_clinic
+label: 'Content Blocks'
+description: 'Add paragraphs to this section. Each shows in columns as a unique block of content. Individual paragraphs can have free-text or stylized lists of links, etc. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      content_snippet: content_snippet
+      reusable_content: reusable_content
+      links_list: links_list
+    target_bundles_drag_drop:
+      blurb_and_list:
+        weight: 4
+        enabled: false
+      homepage_section:
+        weight: 5
+        enabled: false
+      content_snippet:
+        enabled: true
+        weight: 6
+      link_with_icon:
+        weight: 6
+        enabled: false
+      reusable_content:
+        enabled: true
+        weight: 7
+      links_list:
+        enabled: true
+        weight: 10
+field_type: entity_reference_revisions

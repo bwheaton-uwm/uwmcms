@@ -1,0 +1,32 @@
+uuid: 9f7bc989-ba0e-4477-a1f0-991f5ece479c
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.content_spotlights
+  module:
+    - ctools
+    - views
+  theme:
+    - uwmed
+id: views_block__content_spotlights_block_1
+theme: uwmed
+region: content_innner_sidebar
+weight: 0
+provider: null
+plugin: 'views_block:content_spotlights-block_1'
+settings:
+  id: 'views_block:content_spotlights-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      uwm_provider: uwm_provider
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

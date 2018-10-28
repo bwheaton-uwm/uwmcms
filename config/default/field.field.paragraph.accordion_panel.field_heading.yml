@@ -1,0 +1,28 @@
+uuid: f067b858-1870-4393-b19c-1a69981e4dc3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.accordion_panel
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    plain_text: '0'
+    simple_formatted_text: '0'
+    basic_html: '0'
+    full_html: '0'
+id: paragraph.accordion_panel.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: accordion_panel
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

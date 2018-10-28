@@ -1,0 +1,9 @@
+uuid: eb5fbe37-ec78-438e-991c-9a59a7d9ead4
+langcode: en
+status: true
+dependencies: {  }
+id: links_list
+label: 'List of Links'
+icon_uuid: null
+description: 'Simple repeatable paragraph for a list of links and "call-to-action."'
+behavior_plugins: {  }

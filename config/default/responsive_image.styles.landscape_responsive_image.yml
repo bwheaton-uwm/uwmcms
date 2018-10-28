@@ -1,0 +1,23 @@
+uuid: 7f86020c-b28f-4bbc-ad7e-99f48edbfd30
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.hero
+    - image.style.hero_1x_1140_width_
+    - image.style.hero_667px_width_
+id: landscape_responsive_image
+label: 'Landscape Responsive Image'
+image_style_mappings:
+  -
+    breakpoint_id: responsive_image.viewport_sizing
+    multiplier: 1x
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: '(min-width:700px) 700px, 100vw'
+      sizes_image_styles:
+        - hero
+        - hero_1x_1140_width_
+        - hero_667px_width_
+breakpoint_group: responsive_image
+fallback_image_style: hero_1x_1140_width_

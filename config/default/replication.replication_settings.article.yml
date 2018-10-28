@@ -1,0 +1,12 @@
+uuid: 92a977ae-0f51-477e-9dac-7b5a43e9caf5
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: pHTPME76CFPLUQCnEoWAJQOoAfUoDvSlYUS0k9WivJI
+id: article
+label: 'Replicate only article entities'
+filter_id: entity_type
+parameters:
+  types:
+    - node.article

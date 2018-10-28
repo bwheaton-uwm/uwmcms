@@ -1,0 +1,30 @@
+uuid: b2d00abc-388f-4547-bbc5-48240f1517fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.uwm_terms
+  module:
+    - system
+    - views
+  theme:
+    - adminimal_theme
+id: views_block__uwm_terms_block_1_2
+theme: adminimal_theme
+region: content
+weight: -1
+provider: null
+plugin: 'views_block:uwm_terms-block_1'
+settings:
+  id: 'views_block:uwm_terms-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: '/node/*/edit'
+    negate: false
+    context_mapping: {  }

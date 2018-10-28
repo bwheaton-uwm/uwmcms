@@ -1,0 +1,56 @@
+uuid: 132a71f6-46d4-471a-b27b-c72bd225791f
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+  module:
+    - ckeditor
+format: full_html
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Formatting
+          items:
+            - Bold
+            - Italic
+            - Styles
+        -
+          name: Links
+          items:
+            - DrupalLink
+            - DrupalUnlink
+        -
+          name: Lists
+          items:
+            - BulletedList
+            - NumberedList
+            - Outdent
+            - Indent
+        -
+          name: Media
+          items:
+            - Blockquote
+            - DrupalImage
+            - media_browser
+            - node
+        -
+          name: Tools
+          items:
+            - Source
+  plugins:
+    language:
+      language_list: un
+    stylescombo:
+      styles: "h2|H2\r\nh3|H3\r\naddress|Address\r\nblockquote|Blockquote\r\ndiv.uwm-right-letterbox|Right Letterbox"
+image_upload:
+  status: false
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

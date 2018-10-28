@@ -1,0 +1,28 @@
+uuid: c73868e4-00c9-481a-851f-e0c3ef08a9dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_body_summary
+    - node.type.uwm_clinic
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    plain_text: plain_text
+    simple_formatted_text: simple_formatted_text
+    basic_html: basic_html
+    full_html: '0'
+id: node.uwm_clinic.field_body_summary
+field_name: field_body_summary
+entity_type: node
+bundle: uwm_clinic
+label: 'Body Summary'
+description: 'Optional. Provide a welcome intro for use with the clinic''s card-display. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

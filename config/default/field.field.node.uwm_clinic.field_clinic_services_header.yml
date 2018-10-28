@@ -1,0 +1,21 @@
+uuid: d2e36638-651d-418e-835e-4e7f5f530f94
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_clinic_services_header
+    - node.type.uwm_clinic
+id: node.uwm_clinic.field_clinic_services_header
+field_name: field_clinic_services_header
+entity_type: node
+bundle: uwm_clinic
+label: 'Clinic Services Header'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'This clinic offers primary care, including:'
+default_value_callback: ''
+settings: {  }
+field_type: string

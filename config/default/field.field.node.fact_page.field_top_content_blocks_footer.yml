@@ -1,0 +1,28 @@
+uuid: 89731c3d-dac7-454f-a250-830757df9d94
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_top_content_blocks_footer
+    - node.type.fact_page
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    plain_text: '0'
+    simple_formatted_text: '0'
+    basic_html: '0'
+    full_html: '0'
+id: node.fact_page.field_top_content_blocks_footer
+field_name: field_top_content_blocks_footer
+entity_type: node
+bundle: fact_page
+label: Afterwards
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

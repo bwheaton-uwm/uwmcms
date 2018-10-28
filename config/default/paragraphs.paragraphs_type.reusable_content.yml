@@ -1,0 +1,9 @@
+uuid: 176da4fe-e7ec-4b80-bcd5-f67074448707
+langcode: en
+status: true
+dependencies: {  }
+id: reusable_content
+label: 'Reusable Content'
+icon_uuid: null
+description: 'Simple paragraph for embedding existing content.'
+behavior_plugins: {  }

@@ -1,0 +1,7 @@
+uuid: 3d57f799-e7f2-4508-b099-3ee5d074734b
+langcode: en
+status: true
+dependencies: {  }
+id: node__uwm_provider
+label: 'Content: UWM Provider'
+tags: {  }

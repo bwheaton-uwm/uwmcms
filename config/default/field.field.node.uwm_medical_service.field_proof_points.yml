@@ -1,0 +1,43 @@
+uuid: 96df309a-e173-40ae-90db-4db2b6409404
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_proof_points
+    - node.type.uwm_medical_service
+    - paragraphs.paragraphs_type.content_snippet
+  module:
+    - entity_reference_revisions
+id: node.uwm_medical_service.field_proof_points
+field_name: field_proof_points
+entity_type: node
+bundle: uwm_medical_service
+label: 'Proof Points'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      content_snippet: content_snippet
+    target_bundles_drag_drop:
+      blurb_and_list:
+        weight: 6
+        enabled: false
+      content_snippet:
+        enabled: true
+        weight: 7
+      homepage_section:
+        weight: 8
+        enabled: false
+      links_list:
+        weight: 9
+        enabled: false
+      link_with_icon:
+        weight: 10
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,94 @@
+uuid: 0ca456a4-b468-4cc2-97c8-6cc097f5c08e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.links_list.field_content_link
+    - field.field.paragraph.links_list.field_heading
+    - field.field.paragraph.links_list.field_link
+    - field.field.paragraph.links_list.field_links_paragraph
+    - field.field.paragraph.links_list.field_text_snippet
+    - paragraphs.paragraphs_type.links_list
+  module:
+    - allowed_formats
+    - datetime
+    - field_group
+    - link
+    - paragraphs
+    - text
+third_party_settings:
+  field_group:
+    group_list_of_links:
+      children:
+        - field_heading
+        - field_text_snippet
+        - field_links_paragraph
+        - field_link
+      parent_name: ''
+      weight: 0
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'List of Links'
+id: paragraph.links_list.default
+targetEntityType: paragraph
+bundle: links_list
+mode: default
+content:
+  field_heading:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+    type: text_textfield
+    region: content
+  field_link:
+    weight: 4
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_links_paragraph:
+    type: entity_reference_paragraphs
+    weight: 3
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_text_snippet:
+    weight: 2
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+    type: text_textarea
+    region: content
+  scheduled_publication:
+    type: datetime_default
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_content_link: true
+  status: true
+  uid: true

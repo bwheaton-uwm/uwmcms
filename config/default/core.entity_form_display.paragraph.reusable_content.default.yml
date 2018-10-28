@@ -1,0 +1,71 @@
+uuid: 4a6204f5-26f2-4471-9a26-83f01feae98d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.reusable_content.field_heading
+    - field.field.paragraph.reusable_content.field_other_reference
+    - field.field.paragraph.reusable_content.field_webform_reference
+    - paragraphs.paragraphs_type.reusable_content
+  module:
+    - allowed_formats
+    - datetime
+    - field_group
+    - text
+    - webform
+third_party_settings:
+  field_group:
+    group_default:
+      children:
+        - field_heading
+        - field_other_reference
+        - field_webform_reference
+      parent_name: ''
+      weight: 0
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Reusable content'
+id: paragraph.reusable_content.default
+targetEntityType: paragraph
+bundle: reusable_content
+mode: default
+content:
+  field_heading:
+    weight: 21
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+    type: text_textfield
+    region: content
+  field_other_reference:
+    weight: 22
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_webform_reference:
+    weight: 23
+    settings:
+      default_data: false
+    third_party_settings: {  }
+    type: webform_entity_reference_select
+    region: content
+  scheduled_publication:
+    type: datetime_default
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

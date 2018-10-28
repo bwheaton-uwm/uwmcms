@@ -1,0 +1,50 @@
+uuid: 6b10ae3d-e1ee-4284-9fd6-3ee2a2e198f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bottom_content_blocks
+    - node.type.uwm_clinic
+    - paragraphs.paragraphs_type.content_snippet
+    - paragraphs.paragraphs_type.links_list
+    - paragraphs.paragraphs_type.reusable_content
+  module:
+    - entity_reference_revisions
+id: node.uwm_clinic.field_bottom_content_blocks
+field_name: field_bottom_content_blocks
+entity_type: node
+bundle: uwm_clinic
+label: 'Bottom Content Blocks'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      content_snippet: content_snippet
+      links_list: links_list
+      reusable_content: reusable_content
+    target_bundles_drag_drop:
+      blurb_and_list:
+        weight: 7
+        enabled: false
+      content_snippet:
+        enabled: true
+        weight: 8
+      homepage_section:
+        weight: 9
+        enabled: false
+      link_with_icon:
+        weight: 10
+        enabled: false
+      links_list:
+        enabled: true
+        weight: 11
+      reusable_content:
+        enabled: true
+        weight: 12
+field_type: entity_reference_revisions

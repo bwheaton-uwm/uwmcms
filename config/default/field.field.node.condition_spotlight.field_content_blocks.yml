@@ -1,0 +1,46 @@
+uuid: 5843224d-6e7c-4548-93bc-12cc77dfb978
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_blocks
+    - node.type.condition_spotlight
+    - paragraphs.paragraphs_type.content_snippet
+  module:
+    - entity_reference_revisions
+id: node.condition_spotlight.field_content_blocks
+field_name: field_content_blocks
+entity_type: node
+bundle: condition_spotlight
+label: 'Content Blocks'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      content_snippet: content_snippet
+    target_bundles_drag_drop:
+      blurb_and_list:
+        weight: 7
+        enabled: false
+      content_snippet:
+        enabled: true
+        weight: 8
+      feature_story:
+        weight: 9
+        enabled: false
+      homepage_section:
+        weight: 10
+        enabled: false
+      link_with_icon:
+        weight: 11
+        enabled: false
+      links_list:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

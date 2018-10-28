@@ -1,0 +1,31 @@
+uuid: cb07f765-7a96-43b8-87fe-35d990ef39f5
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:409ee3c9-b811-4834-871b-d78d7aaf65c9'
+  module:
+    - block_content
+    - system
+  theme:
+    - uwmed
+id: emergencymedicine
+theme: uwmed
+region: content
+weight: -6
+provider: null
+plugin: 'block_content:409ee3c9-b811-4834-871b-d78d7aaf65c9'
+settings:
+  id: 'block_content:409ee3c9-b811-4834-871b-d78d7aaf65c9'
+  label: 'Emergency Medicine'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /services/urgent-care
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,22 @@
+uuid: a6eec351-5300-41e4-ae92-ea5d5d8f04da
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.uwm_medical_service
+id: node.uwm_medical_service.promote
+field_name: promote
+entity_type: node
+bundle: uwm_medical_service
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

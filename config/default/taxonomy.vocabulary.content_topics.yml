@@ -1,0 +1,9 @@
+uuid: 9607f59f-ae8f-4d9b-ba43-c47c34e6feda
+langcode: en
+status: true
+dependencies: {  }
+name: 'Content Topics'
+vid: content_topics
+description: ''
+hierarchy: 0
+weight: 0

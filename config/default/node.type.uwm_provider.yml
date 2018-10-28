@@ -1,0 +1,19 @@
+uuid: 68672098-29cc-4f75-ba8e-b4e1cc6a01ac
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: kF_fcqOqkXLxljTJZNl6FhSUdbkDrDuK_1UsL8NEeFk
+name: 'UW Provider'
+type: uwm_provider
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

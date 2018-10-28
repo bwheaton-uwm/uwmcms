@@ -1,0 +1,38 @@
+uuid: 39419c1e-b280-43c3-9a0f-823e72cb0e98
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_clinic_image
+    - node.type.uwm_clinic
+  module:
+    - image
+id: node.uwm_clinic.field_clinic_image
+field_name: field_clinic_image
+entity_type: node
+bundle: uwm_clinic
+label: 'Clinic Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: 'clinic-images/[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: 600x600
+  alt_field: true
+  alt_field_required: false
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: c71152d7-4ce1-46c1-a207-896b37bf001a
+    alt: ''
+    title: 'UW Medicine'
+    width: 782
+    height: 368
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

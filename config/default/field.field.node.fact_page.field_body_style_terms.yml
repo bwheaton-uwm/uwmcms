@@ -1,0 +1,28 @@
+uuid: f6553489-7848-4099-a59e-d65e97ef7917
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_body_style_terms
+    - node.type.fact_page
+    - taxonomy.vocabulary.uw_page_styling
+id: node.fact_page.field_body_style_terms
+field_name: field_body_style_terms
+entity_type: node
+bundle: fact_page
+label: 'Body Style'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      uw_page_styling: uw_page_styling
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

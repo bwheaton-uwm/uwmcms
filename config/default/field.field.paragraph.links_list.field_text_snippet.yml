@@ -1,0 +1,28 @@
+uuid: 6a209609-6f1d-4a41-8bbe-9448a8ec9733
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_snippet
+    - paragraphs.paragraphs_type.links_list
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    plain_text: '0'
+    simple_formatted_text: '0'
+    basic_html: '0'
+    full_html: '0'
+id: paragraph.links_list.field_text_snippet
+field_name: field_text_snippet
+entity_type: paragraph
+bundle: links_list
+label: 'Text Snippet'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

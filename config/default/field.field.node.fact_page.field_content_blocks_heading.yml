@@ -1,0 +1,19 @@
+uuid: 72b0c44d-8fc5-4701-b991-4b7539880ad7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_blocks_heading
+    - node.type.fact_page
+id: node.fact_page.field_content_blocks_heading
+field_name: field_content_blocks_heading
+entity_type: node
+bundle: fact_page
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

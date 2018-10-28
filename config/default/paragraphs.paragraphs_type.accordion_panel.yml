@@ -1,0 +1,9 @@
+uuid: 776cd1db-8379-41f1-a799-6525148714e1
+langcode: en
+status: true
+dependencies: {  }
+id: accordion_panel
+label: 'Accordion Panel'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

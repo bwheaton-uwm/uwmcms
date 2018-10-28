@@ -1,0 +1,28 @@
+uuid: 5ac34b86-e134-4f08-9f52-c4e0f41df057
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.basic
+    - field.storage.node.field_blocks
+    - node.type.uwm_medical_service
+id: node.uwm_medical_service.field_blocks
+field_name: field_blocks
+entity_type: node
+bundle: uwm_medical_service
+label: Blocks
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      basic: basic
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

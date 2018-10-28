@@ -1,0 +1,7 @@
+uuid: dfdf3494-82fa-4cd5-a470-b7a102b56b6e
+langcode: en
+status: true
+dependencies: {  }
+id: node__landing_page
+label: 'Content: Landing page'
+tags: {  }

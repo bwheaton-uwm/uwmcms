@@ -1,0 +1,52 @@
+uuid: de2b8dcc-323f-476a-a36f-00a61c8ab3b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_sub
+    - paragraphs.paragraphs_type.accordion_panel
+    - paragraphs.paragraphs_type.content_snippet
+  module:
+    - entity_reference_revisions
+id: paragraph.accordion_panel.field_sub
+field_name: field_sub
+entity_type: paragraph
+bundle: accordion_panel
+label: Sub-panel
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      content_snippet: content_snippet
+    target_bundles_drag_drop:
+      accordion_panel:
+        weight: 9
+        enabled: false
+      content_snippet:
+        enabled: true
+        weight: 10
+      feature_story:
+        weight: 11
+        enabled: false
+      homepage_section:
+        weight: 12
+        enabled: false
+      link_with_icon:
+        weight: 13
+        enabled: false
+      links_list:
+        weight: 14
+        enabled: false
+      media_feature:
+        weight: 15
+        enabled: false
+      reusable_content:
+        weight: 16
+        enabled: false
+field_type: entity_reference_revisions

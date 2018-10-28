@@ -1,0 +1,19 @@
+uuid: ae7a3b39-d06c-46ef-a4d2-9f65ee6d9266
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_information_manager_url
+    - node.type.uwm_medical_specialty
+id: node.uwm_medical_specialty.field_information_manager_url
+field_name: field_information_manager_url
+entity_type: node
+bundle: uwm_medical_specialty
+label: 'Information Manager URL'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

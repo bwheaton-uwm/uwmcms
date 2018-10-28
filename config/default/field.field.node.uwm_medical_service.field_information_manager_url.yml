@@ -1,0 +1,19 @@
+uuid: 824dae14-80cf-4a1b-a9e4-69e1e08235d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_information_manager_url
+    - node.type.uwm_medical_service
+id: node.uwm_medical_service.field_information_manager_url
+field_name: field_information_manager_url
+entity_type: node
+bundle: uwm_medical_service
+label: 'Information Manager URL'
+description: 'Provide the Information Manager URL, so that Drupal templates can be filled in with this additional data. For example, http://webservices.uwmedicine.org/api/medicalservice/60.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

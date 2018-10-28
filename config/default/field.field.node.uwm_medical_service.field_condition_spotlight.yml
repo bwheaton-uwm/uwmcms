@@ -1,0 +1,29 @@
+uuid: 55f3d439-919f-4111-9d7d-83c0efc8e888
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_condition_spotlight
+    - node.type.condition_spotlight
+    - node.type.uwm_medical_service
+id: node.uwm_medical_service.field_condition_spotlight
+field_name: field_condition_spotlight
+entity_type: node
+bundle: uwm_medical_service
+label: 'Condition Spotlight'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      condition_spotlight: condition_spotlight
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

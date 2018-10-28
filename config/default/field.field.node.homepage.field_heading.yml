@@ -1,0 +1,27 @@
+uuid: 3454faec-9bb2-4743-a243-7fae4fd27e93
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_heading
+    - node.type.homepage
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    simple_formatted_text: simple_formatted_text
+    rich_text: '0'
+    plain_text: '0'
+id: node.homepage.field_heading
+field_name: field_heading
+entity_type: node
+bundle: homepage
+label: Heading
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

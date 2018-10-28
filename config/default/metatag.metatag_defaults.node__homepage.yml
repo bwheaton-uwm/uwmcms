@@ -1,0 +1,7 @@
+uuid: 22f9db45-6579-465e-aacd-cb53d5f51fdd
+langcode: en
+status: true
+dependencies: {  }
+id: node__homepage
+label: 'Content: Homepage'
+tags: {  }

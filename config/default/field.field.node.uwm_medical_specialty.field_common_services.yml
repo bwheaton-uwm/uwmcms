@@ -1,0 +1,55 @@
+uuid: f6b62df8-7df0-42e1-b4e8-1be7769ad5b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_common_services
+    - node.type.uwm_medical_specialty
+    - paragraphs.paragraphs_type.content_snippet
+  module:
+    - entity_reference_revisions
+id: node.uwm_medical_specialty.field_common_services
+field_name: field_common_services
+entity_type: node
+bundle: uwm_medical_specialty
+label: 'Common Services'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      content_snippet: content_snippet
+    target_bundles_drag_drop:
+      accordion_panel:
+        weight: 10
+        enabled: false
+      content_snippet:
+        enabled: true
+        weight: 11
+      feature_story:
+        weight: 12
+        enabled: false
+      homepage_section:
+        weight: 13
+        enabled: false
+      links_list:
+        weight: 14
+        enabled: false
+      link_with_icon:
+        weight: 15
+        enabled: false
+      media_feature:
+        weight: 16
+        enabled: false
+      quiz_question:
+        weight: 17
+        enabled: false
+      reusable_content:
+        weight: 18
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,7 @@
+uuid: 4bc73d62-133d-4b37-b372-9a2c26db974f
+langcode: en
+status: true
+dependencies: {  }
+id: node__condition_spotlight
+label: 'Content: Condition Spotlight'
+tags: {  }

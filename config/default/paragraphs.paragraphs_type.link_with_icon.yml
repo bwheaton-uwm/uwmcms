@@ -1,0 +1,9 @@
+uuid: 7efe21eb-697e-4fdb-bbfd-b1103ec61d1c
+langcode: en
+status: true
+dependencies: {  }
+id: link_with_icon
+label: 'Link with Icon'
+icon_uuid: null
+description: 'Links with an icon can be styled to display as a button, or as a list of links.'
+behavior_plugins: {  }

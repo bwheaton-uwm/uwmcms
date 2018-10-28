@@ -1,0 +1,77 @@
+uuid: f16e0b45-7601-4f55-af8e-bb0dc2200b19
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.detailed_contact_card.field_uwm_address
+    - field.field.paragraph.detailed_contact_card.field_uwm_assistant
+    - field.field.paragraph.detailed_contact_card.field_uwm_email_address
+    - field.field.paragraph.detailed_contact_card.field_uwm_fax_number
+    - field.field.paragraph.detailed_contact_card.field_uwm_image
+    - field.field.paragraph.detailed_contact_card.field_uwm_name
+    - field.field.paragraph.detailed_contact_card.field_uwm_phone_number
+    - image.style.uwm_headshot
+    - paragraphs.paragraphs_type.detailed_contact_card
+  module:
+    - image
+    - telephone
+    - text
+id: paragraph.detailed_contact_card.default
+targetEntityType: paragraph
+bundle: detailed_contact_card
+mode: default
+content:
+  field_uwm_address:
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_uwm_assistant:
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_uwm_email_address:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_uwm_fax_number:
+    weight: 3
+    label: above
+    settings:
+      title: ''
+    third_party_settings: {  }
+    type: telephone_link
+    region: content
+  field_uwm_image:
+    weight: 0
+    label: above
+    settings:
+      image_style: uwm_headshot
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_uwm_name:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_uwm_phone_number:
+    weight: 2
+    label: above
+    settings:
+      title: ''
+    third_party_settings: {  }
+    type: telephone_link
+    region: content
+hidden: {  }

@@ -1,0 +1,22 @@
+uuid: bebc4720-c424-4995-b12c-4346ac5d9e23
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+third_party_settings:
+  lightning_core:
+    description: ''
+id: staff_clinic_manager
+label: 'Staff Clinic Manager'
+weight: 9
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'administer nodes'
+  - 'create field_clinic_wait_time_snippet'
+  - 'edit any uwm_clinic content'
+  - 'edit field_clinic_wait_time_snippet'
+  - 'edit own field_clinic_wait_time_snippet'
+  - 'view field_clinic_wait_time_snippet'
+  - 'view own field_clinic_wait_time_snippet'

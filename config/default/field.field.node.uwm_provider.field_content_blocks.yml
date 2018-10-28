@@ -1,0 +1,55 @@
+uuid: b4cd4865-fd58-4a03-865c-688737c7275f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_blocks
+    - node.type.uwm_provider
+    - paragraphs.paragraphs_type.content_snippet
+    - paragraphs.paragraphs_type.links_list
+    - paragraphs.paragraphs_type.media_feature
+    - paragraphs.paragraphs_type.reusable_content
+  module:
+    - entity_reference_revisions
+id: node.uwm_provider.field_content_blocks
+field_name: field_content_blocks
+entity_type: node
+bundle: uwm_provider
+label: 'Side Content Blocks'
+description: 'Option content snippets, or a featured video, for the provider side-bar. '
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      content_snippet: content_snippet
+      media_feature: media_feature
+      links_list: links_list
+      reusable_content: reusable_content
+    target_bundles_drag_drop:
+      blurb_and_list:
+        weight: 7
+        enabled: false
+      content_snippet:
+        enabled: true
+        weight: 8
+      media_feature:
+        enabled: true
+        weight: 8
+      homepage_section:
+        weight: 9
+        enabled: false
+      link_with_icon:
+        weight: 10
+        enabled: false
+      links_list:
+        enabled: true
+        weight: 11
+      reusable_content:
+        enabled: true
+        weight: 12
+field_type: entity_reference_revisions

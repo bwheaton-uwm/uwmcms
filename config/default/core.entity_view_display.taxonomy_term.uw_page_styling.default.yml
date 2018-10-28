@@ -1,0 +1,30 @@
+uuid: 47da16fb-af84-4b6f-be0a-460dbde9f5b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.uw_page_styling.field_code_label
+    - taxonomy.vocabulary.uw_page_styling
+  module:
+    - text
+id: taxonomy_term.uw_page_styling.default
+targetEntityType: taxonomy_term
+bundle: uw_page_styling
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_code_label:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

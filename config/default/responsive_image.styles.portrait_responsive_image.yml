@@ -1,0 +1,23 @@
+uuid: 5ce1998d-13d4-4294-94b7-c4d4a5efd79a
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.portrait_large
+    - image.style.portrait_medium
+    - image.style.portrait_small
+id: portrait_responsive_image
+label: 'Portrait Responsive Image'
+image_style_mappings:
+  -
+    breakpoint_id: responsive_image.viewport_sizing
+    multiplier: 1x
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: '(min-width: 40em) 40vw, 90vw'
+      sizes_image_styles:
+        - portrait_large
+        - portrait_medium
+        - portrait_small
+breakpoint_group: responsive_image
+fallback_image_style: portrait_medium

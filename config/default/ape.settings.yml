@@ -1,0 +1,7 @@
+alternatives: '/locations/location-hours/*'
+exclusions: ''
+lifetime:
+  alternatives: 900
+  301: 0
+  302: 0
+  404: 0

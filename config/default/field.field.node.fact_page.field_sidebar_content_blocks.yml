@@ -1,0 +1,61 @@
+uuid: 52f4f799-d1a8-4889-94f7-750541fdfbd6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sidebar_content_blocks
+    - node.type.fact_page
+    - paragraphs.paragraphs_type.content_snippet
+    - paragraphs.paragraphs_type.links_list
+    - paragraphs.paragraphs_type.media_feature
+    - paragraphs.paragraphs_type.reusable_content
+  module:
+    - entity_reference_revisions
+id: node.fact_page.field_sidebar_content_blocks
+field_name: field_sidebar_content_blocks
+entity_type: node
+bundle: fact_page
+label: 'Sidebar Content Blocks'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      content_snippet: content_snippet
+      links_list: links_list
+      media_feature: media_feature
+      reusable_content: reusable_content
+    target_bundles_drag_drop:
+      content_snippet:
+        enabled: true
+        weight: -19
+      links_list:
+        enabled: true
+        weight: -18
+      media_feature:
+        enabled: true
+        weight: -17
+      reusable_content:
+        enabled: true
+        weight: -16
+      accordion_panel:
+        weight: -15
+        enabled: false
+      feature_story:
+        weight: -14
+        enabled: false
+      homepage_section:
+        weight: -13
+        enabled: false
+      link_with_icon:
+        weight: -12
+        enabled: false
+      quiz_question:
+        weight: -11
+        enabled: false
+field_type: entity_reference_revisions

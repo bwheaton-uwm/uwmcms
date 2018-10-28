@@ -1,0 +1,23 @@
+uuid: 9c73e5b4-1b1c-4607-a551-cc75ff8f4254
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_meta_tags
+    - node.type.uwm_provider
+  module:
+    - metatag
+id: node.uwm_provider.field_meta_tags
+field_name: field_meta_tags
+entity_type: node
+bundle: uwm_provider
+label: 'Meta tags'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 'a:0:{}'
+default_value_callback: ''
+settings: {  }
+field_type: metatag

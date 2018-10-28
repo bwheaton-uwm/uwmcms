@@ -1,0 +1,61 @@
+uuid: f5cbe8af-98c7-4135-8214-4190a080130a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_top_content_blocks
+    - node.type.fact_page
+    - paragraphs.paragraphs_type.content_snippet
+    - paragraphs.paragraphs_type.links_list
+    - paragraphs.paragraphs_type.media_feature
+    - paragraphs.paragraphs_type.reusable_content
+  module:
+    - entity_reference_revisions
+id: node.fact_page.field_top_content_blocks
+field_name: field_top_content_blocks
+entity_type: node
+bundle: fact_page
+label: 'Top Content Blocks'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      content_snippet: content_snippet
+      links_list: links_list
+      media_feature: media_feature
+      reusable_content: reusable_content
+    target_bundles_drag_drop:
+      accordion_panel:
+        weight: 10
+        enabled: false
+      content_snippet:
+        enabled: true
+        weight: 11
+      feature_story:
+        weight: 12
+        enabled: false
+      homepage_section:
+        weight: 13
+        enabled: false
+      link_with_icon:
+        weight: 14
+        enabled: false
+      links_list:
+        enabled: true
+        weight: 15
+      media_feature:
+        enabled: true
+        weight: 16
+      quiz_question:
+        weight: 17
+        enabled: false
+      reusable_content:
+        enabled: true
+        weight: 18
+field_type: entity_reference_revisions

@@ -1,0 +1,14 @@
+uuid: 3ccf4b35-a5dc-4955-8fab-27993dfd35b9
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - paragraphs
+third_party_settings:
+  lightning_core:
+    description: ''
+id: paragraph.image_header_paragraph
+label: 'Content Paragraph w Image Header'
+targetEntityType: paragraph
+cache: true

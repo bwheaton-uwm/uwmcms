@@ -1,0 +1,32 @@
+uuid: 0b66b468-3eca-4511-a96a-623eed97ea04
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_node_media
+    - media.type.document
+    - media.type.image
+    - media.type.video
+    - node.type.uwm_provider
+id: node.uwm_provider.field_node_media
+field_name: field_node_media
+entity_type: node
+bundle: uwm_provider
+label: 'Node Media'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      document: document
+      image: image
+      video: video
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: document
+field_type: entity_reference

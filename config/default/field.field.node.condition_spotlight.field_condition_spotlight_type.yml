@@ -1,0 +1,33 @@
+uuid: a8d516b3-5cbe-4016-ab91-4f2bd5ae6222
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_condition_spotlight_type
+    - node.type.condition_spotlight
+    - taxonomy.vocabulary.condition_spotlight_type
+  content:
+    - 'taxonomy_term:condition_spotlight_type:05787d54-b0aa-4e44-b191-d7afd8294471'
+id: node.condition_spotlight.field_condition_spotlight_type
+field_name: field_condition_spotlight_type
+entity_type: node
+bundle: condition_spotlight
+label: 'Condition Spotlight Type'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 05787d54-b0aa-4e44-b191-d7afd8294471
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      condition_spotlight_type: condition_spotlight_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

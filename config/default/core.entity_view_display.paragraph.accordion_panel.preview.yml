@@ -1,0 +1,27 @@
+uuid: c7072110-f0fa-47a9-b0af-3c028ea6f12a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.accordion_panel.field_heading
+    - field.field.paragraph.accordion_panel.field_sub
+    - field.field.paragraph.accordion_panel.field_text_snippet
+    - paragraphs.paragraphs_type.accordion_panel
+  module:
+    - text
+id: paragraph.accordion_panel.preview
+targetEntityType: paragraph
+bundle: accordion_panel
+mode: preview
+content:
+  field_heading:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  field_sub: true
+  field_text_snippet: true

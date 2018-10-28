@@ -1,0 +1,27 @@
+uuid: aed098b8-39b6-4f3f-9715-4d3f99796e8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subheading
+    - node.type.homepage
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    simple_formatted_text: simple_formatted_text
+    rich_text: '0'
+    plain_text: '0'
+id: node.homepage.field_subheading
+field_name: field_subheading
+entity_type: node
+bundle: homepage
+label: Subheading
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

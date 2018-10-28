@@ -1,0 +1,15 @@
+uuid: 88572f11-c662-4b21-83e1-ad224859c823
+name: 'UW Medicine'
+mail: uwmweb@uw.edu
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node/6
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: AyT9s8OUcclfALRE_imByOMgtZ19eOlqdF6zI3p7yqo
+mail_notification: ''

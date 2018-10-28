@@ -1,0 +1,28 @@
+uuid: e8db2f5e-9843-462e-8a02-6628328804ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.content_topics
+  module:
+    - panelizer
+    - text
+third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
+id: taxonomy_term.content_topics.default
+targetEntityType: taxonomy_term
+bundle: content_topics
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

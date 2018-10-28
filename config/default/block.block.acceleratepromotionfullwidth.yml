@@ -1,0 +1,27 @@
+uuid: 787250a7-c016-4771-8b6d-52b11b3f872b
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+    - uwmed_uwmcms_blocks
+  theme:
+    - uwmed
+id: acceleratepromotionfullwidth
+theme: uwmed
+region: content
+weight: -3
+provider: null
+plugin: accelerate_promotion_full_width_block
+settings:
+  id: accelerate_promotion_full_width_block
+  label: 'Accelerate Promotion Full-width'
+  provider: uwmed_uwmcms_blocks
+  label_display: '0'
+  accelerate_promotion_full_width_string: '<div class="accelerate-promotion-block__content visible-lg col-lg-7"><p>Right now, UW researchers, faculty and students are leading efforts to find cures, promote health and wellness around the world, and improve our community. Accelerate: The Campaign for UW Medicine allows you to be a part of this exciting future. See what''s happening now and make a gift today.</p></div><div class="accelerate-promotion-block__cta"><a class="btn btn-default" href="http://www.acceleratemed.org">Learn More</a></div>'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

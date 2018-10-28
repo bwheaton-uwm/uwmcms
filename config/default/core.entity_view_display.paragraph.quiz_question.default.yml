@@ -1,0 +1,56 @@
+uuid: 2f508f20-2b59-4b15-873b-71beb0b45834
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.quiz_question.field_answer_list
+    - field.field.paragraph.quiz_question.field_correct_answer_prompt
+    - field.field.paragraph.quiz_question.field_incorrect_answer_prompt
+    - field.field.paragraph.quiz_question.field_integer
+    - field.field.paragraph.quiz_question.field_text_snippet
+    - paragraphs.paragraphs_type.quiz_question
+  module:
+    - text
+id: paragraph.quiz_question.default
+targetEntityType: paragraph
+bundle: quiz_question
+mode: default
+content:
+  field_answer_list:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_correct_answer_prompt:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_incorrect_answer_prompt:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_integer:
+    weight: 2
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_text_snippet:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

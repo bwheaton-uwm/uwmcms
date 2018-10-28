@@ -1,0 +1,19 @@
+uuid: f9a42e85-da1b-4ec3-beab-83440bbd8ac4
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_top_content_blocks_footer
+field_name: field_top_content_blocks_footer
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

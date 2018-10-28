@@ -1,0 +1,28 @@
+uuid: 0f69974f-82a0-4b00-97d4-7de6a2dc501d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_caption
+    - media.type.video
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    plain_text: plain_text
+    simple_formatted_text: simple_formatted_text
+    basic_html: basic_html
+    full_html: '0'
+id: media.video.field_media_caption
+field_name: field_media_caption
+entity_type: media
+bundle: video
+label: 'Media Subtext'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

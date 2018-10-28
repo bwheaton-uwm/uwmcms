@@ -1,0 +1,28 @@
+uuid: 66125346-63c4-4e74-89b3-c33aa66d86da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_quiz
+    - node.type.quiz
+    - node.type.uwm_medical_service
+id: node.uwm_medical_service.field_quiz
+field_name: field_quiz
+entity_type: node
+bundle: uwm_medical_service
+label: Quiz
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      quiz: quiz
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
