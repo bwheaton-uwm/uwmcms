@@ -14,7 +14,6 @@ module:
   components: 0
   config: 0
   config_filter: 0
-  config_ignore: 0
   config_split: 0
   consumers: 0
   contact: 0
@@ -26,7 +25,6 @@ module:
   ctools_block: 0
   datetime: 0
   dblog: 0
-  devel: 0
   diff: 0
   dynamic_page_cache: 0
   editor: 0
@@ -73,7 +71,6 @@ module:
   media_entity_actions: 0
   media_entity_instagram: 0
   media_entity_twitter: 0
-  media_library: 0
   menu_ui: 0
   metatag: 0
   metatag_open_graph: 0
@@ -104,8 +101,8 @@ module:
   responsive_image: 0
   search_api: 0
   search_api_db: 0
-  seckit: 0
   serialization: 0
+  shield: 0
   shortcut: 0
   simple_oauth: 0
   simple_sitemap: 0
