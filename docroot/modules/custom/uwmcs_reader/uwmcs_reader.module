@@ -118,9 +118,15 @@ function uwmcs_reader_node_access(NodeInterface $node, $op, AccountInterface $ac
       if (!empty($node->field_information_manager_url->value)) {
 
         $fetcher = new UwmFetcher();
-        $data = $fetcher->getUrl($node->field_information_manager_url->value);
+        $apiUrl = $node->field_information_manager_url->value;
+        $data = $fetcher->getUrl($apiUrl);
 
         if (empty($data->id)) {
+
+          \Drupal::logger(__FUNCTION__)
+            ->warning(__FUNCTION__ . ' Cannot find API data so deleting node. Node: ' . $node->id() . ' User: ' . $account->getAccountName() . ' Slug: ' . $node->toLink()->toString() . ' Data: ' . $apiUrl);
+
+          $node->delete();
 
           return AccessResult::forbidden();
         }
