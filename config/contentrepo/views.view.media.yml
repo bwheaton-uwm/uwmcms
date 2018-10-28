@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.media.image
     - image.style.medium
+    - image.style.thumbnail
     - media.type.image
   module:
     - entity_browser
@@ -195,14 +195,14 @@ display:
           selected_actions: {  }
           entity_type: media
           plugin_id: bulk_form
-        image:
-          id: image
-          table: media__image
-          field: image
+        thumbnail__target_id:
+          id: thumbnail__target_id
+          table: media_field_data
+          field: thumbnail__target_id
           relationship: none
           group_type: group
           admin_label: ''
-          label: Image
+          label: Thumbnail
           exclude: false
           alter:
             alter_text: false
@@ -246,7 +246,7 @@ display:
           click_sort_column: target_id
           type: image
           settings:
-            image_style: medium
+            image_style: thumbnail
             image_link: ''
           group_column: ''
           group_columns: {  }
@@ -258,6 +258,8 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          entity_type: media
+          entity_field: thumbnail
           plugin_id: field
         name:
           id: name
@@ -832,8 +834,7 @@ display:
         - url
         - url.query_args
         - user.permissions
-      tags:
-        - 'config:field.storage.media.image'
+      tags: {  }
   entity_browser_1:
     display_plugin: entity_browser
     id: entity_browser_1
@@ -866,10 +867,10 @@ display:
         type: fields
         options: {  }
       fields:
-        image:
-          id: image
-          table: media__image
-          field: image
+        thumbnail__target_id:
+          id: thumbnail__target_id
+          table: media_field_data
+          field: thumbnail__target_id
           relationship: none
           group_type: group
           admin_label: ''
@@ -906,7 +907,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: false
+          element_label_colon: true
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -929,6 +930,8 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          entity_type: media
+          entity_field: thumbnail
           plugin_id: field
         entity_browser_select:
           id: entity_browser_select
@@ -1254,8 +1257,7 @@ display:
         - url
         - url.query_args
         - user.permissions
-      tags:
-        - 'config:field.storage.media.image'
+      tags: {  }
   entity_browser_2:
     display_plugin: entity_browser
     id: entity_browser_2
@@ -1288,10 +1290,10 @@ display:
         type: fields
         options: {  }
       fields:
-        image:
-          id: image
-          table: media__image
-          field: image
+        thumbnail__target_id:
+          id: thumbnail__target_id
+          table: media_field_data
+          field: thumbnail__target_id
           relationship: none
           group_type: group
           admin_label: ''
@@ -1328,7 +1330,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: false
+          element_label_colon: true
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -1351,6 +1353,8 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          entity_type: media
+          entity_field: thumbnail
           plugin_id: field
         entity_browser_select:
           id: entity_browser_select
@@ -1638,8 +1642,7 @@ display:
         - url
         - url.query_args
         - user.permissions
-      tags:
-        - 'config:field.storage.media.image'
+      tags: {  }
   media_page_list:
     display_plugin: page
     id: media_page_list
@@ -1657,5 +1660,4 @@ display:
         - url
         - url.query_args
         - user.permissions
-      tags:
-        - 'config:field.storage.media.image'
+      tags: {  }
