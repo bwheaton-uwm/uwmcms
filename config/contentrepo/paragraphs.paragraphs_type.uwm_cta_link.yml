@@ -1,0 +1,9 @@
+uuid: 1c1c84a9-0434-4b92-b456-d044e51e74b9
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_cta_link
+label: 'CTA Link'
+icon_uuid: null
+description: 'A CTA Link expands the full-width of its container, is in title case, and has a > character on the right.'
+behavior_plugins: {  }

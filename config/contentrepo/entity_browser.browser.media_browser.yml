@@ -6,18 +6,17 @@ dependencies:
     - views.view.media
   module:
     - lightning_media
-    - media_acquiadam
     - views
 _core:
   default_config_hash: kT3o2OhRMWgZX6kGxRYSsItntaw241e3UwpGCD3RpJE
 name: media_browser
 label: 'Media browser'
-display: iframe
+display: modal
 display_configuration:
-  width: 100%
-  height: '640'
+  width: '720'
+  height: ''
   link_text: 'Select entities'
-  auto_open: true
+  auto_open: false
 selection_display: no_display
 selection_display_configuration: {  }
 widget_selector: tabs
@@ -50,11 +49,3 @@ widgets:
     weight: -9
     label: Library
     id: view
-  7b4d1723-9905-427d-bd36-daf536251344:
-    settings:
-      media_type: acquia_dam_asset
-      submit_text: Place
-    uuid: 7b4d1723-9905-427d-bd36-daf536251344
-    weight: -10
-    label: 'Acquia DAM'
-    id: acquiadam

@@ -1,0 +1,78 @@
+uuid: 1c5a5a8d-771f-4b1a-b386-a3f1253db998
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_card_footer
+    - paragraphs.paragraphs_type.uwm_basic_content
+    - paragraphs.paragraphs_type.uwm_card
+    - paragraphs.paragraphs_type.uwm_cta_link
+  module:
+    - entity_reference_revisions
+id: paragraph.uwm_card.field_uwm_card_footer
+field_name: field_uwm_card_footer
+entity_type: paragraph
+bundle: uwm_card
+label: Footer
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      uwm_basic_content: uwm_basic_content
+      uwm_cta_link: uwm_cta_link
+    target_bundles_drag_drop:
+      uwm_card:
+        weight: 15
+        enabled: false
+      detailed_contact_card:
+        weight: 16
+        enabled: false
+      headshot_card:
+        weight: 17
+        enabled: false
+      uwm_accordion:
+        weight: 18
+        enabled: false
+      uwm_accordion_section:
+        weight: 19
+        enabled: false
+      uwm_basic_content:
+        enabled: true
+        weight: 20
+      uwm_block:
+        weight: 21
+        enabled: false
+      uwm_full_html:
+        weight: 22
+        enabled: false
+      uwm_grid:
+        weight: 23
+        enabled: false
+      uwm_cta_link:
+        enabled: true
+        weight: 24
+      uwm_image_hero:
+        weight: 24
+        enabled: false
+      uwm_link_with_icon:
+        weight: 25
+        enabled: false
+      uwm_media:
+        weight: 26
+        enabled: false
+      uwm_image:
+        weight: 27
+        enabled: false
+      uwm_section:
+        weight: 27
+        enabled: false
+      uwm_view:
+        weight: 28
+        enabled: false
+field_type: entity_reference_revisions

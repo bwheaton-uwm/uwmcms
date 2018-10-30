@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.uwm_hub_page.field_meta_tags
+    - field.field.node.uwm_hub_page.field_uwm_hero
     - field.field.node.uwm_hub_page.field_uwm_page_path_name
     - field.field.node.uwm_hub_page.field_uwm_parent_page
     - field.field.node.uwm_hub_page.field_uwm_sections
@@ -23,6 +24,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
+    region: content
+  field_uwm_hero:
+    weight: 105
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
     region: content
   field_uwm_page_path_name:
     weight: 102

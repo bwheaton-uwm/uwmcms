@@ -1,0 +1,44 @@
+uuid: 7bfbbb87-33c7-4ca5-b963-df8255e759d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_card.field_uwm_card_content
+    - field.field.paragraph.uwm_card.field_uwm_card_footer
+    - field.field.paragraph.uwm_card.field_uwm_card_header
+    - paragraphs.paragraphs_type.uwm_card
+  module:
+    - entity_reference_revisions
+id: paragraph.uwm_card.default
+targetEntityType: paragraph
+bundle: uwm_card
+mode: default
+content:
+  field_uwm_card_content:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_uwm_card_footer:
+    type: entity_reference_revisions_entity_view
+    weight: 2
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_uwm_card_header:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }

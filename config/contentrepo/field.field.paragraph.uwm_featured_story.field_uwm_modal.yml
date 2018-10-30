@@ -1,0 +1,82 @@
+uuid: 21cb6b4b-e768-4c9d-9cf3-1f500b3a3f5f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_modal
+    - paragraphs.paragraphs_type.uwm_featured_story
+    - paragraphs.paragraphs_type.uwm_modal
+  module:
+    - entity_reference_revisions
+id: paragraph.uwm_featured_story.field_uwm_modal
+field_name: field_uwm_modal
+entity_type: paragraph
+bundle: uwm_featured_story
+label: Modal
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      uwm_modal: uwm_modal
+    target_bundles_drag_drop:
+      uwm_modal:
+        enabled: true
+        weight: 19
+      detailed_contact_card:
+        weight: 20
+        enabled: false
+      headshot_card:
+        weight: 21
+        enabled: false
+      uwm_accordion:
+        weight: 22
+        enabled: false
+      uwm_accordion_section:
+        weight: 23
+        enabled: false
+      uwm_basic_content:
+        weight: 24
+        enabled: false
+      uwm_block:
+        weight: 25
+        enabled: false
+      uwm_card:
+        weight: 26
+        enabled: false
+      uwm_cta_link:
+        weight: 27
+        enabled: false
+      uwm_featured_story:
+        weight: 28
+        enabled: false
+      uwm_full_html:
+        weight: 29
+        enabled: false
+      uwm_grid:
+        weight: 30
+        enabled: false
+      uwm_image:
+        weight: 31
+        enabled: false
+      uwm_image_hero:
+        weight: 32
+        enabled: false
+      uwm_link_with_icon:
+        weight: 33
+        enabled: false
+      uwm_media:
+        weight: 34
+        enabled: false
+      uwm_section:
+        weight: 35
+        enabled: false
+      uwm_view:
+        weight: 36
+        enabled: false
+field_type: entity_reference_revisions

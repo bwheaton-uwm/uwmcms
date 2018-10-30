@@ -1,20 +1,19 @@
-uuid: 973c0938-cfc9-451a-bc91-7a2964fffbfe
+uuid: 0da6c2e2-a845-4fa0-8acc-a8948ce14cb7
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_uwm_columns
-    - paragraphs.paragraphs_type.detailed_contact_card
-    - paragraphs.paragraphs_type.headshot_card
+    - field.storage.paragraph.field_uwm_card_header
     - paragraphs.paragraphs_type.uwm_card
-    - paragraphs.paragraphs_type.uwm_grid
+    - paragraphs.paragraphs_type.uwm_cta_link
+    - paragraphs.paragraphs_type.uwm_image
   module:
     - entity_reference_revisions
-id: paragraph.uwm_grid.field_uwm_columns
-field_name: field_uwm_columns
+id: paragraph.uwm_card.field_uwm_card_header
+field_name: field_uwm_card_header
 entity_type: paragraph
-bundle: uwm_grid
-label: Columns
+bundle: uwm_card
+label: Header
 description: ''
 required: false
 translatable: false
@@ -25,56 +24,55 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
-      uwm_card: uwm_card
-      headshot_card: headshot_card
-      detailed_contact_card: detailed_contact_card
+      uwm_cta_link: uwm_cta_link
+      uwm_image: uwm_image
     target_bundles_drag_drop:
       uwm_card:
-        enabled: true
-        weight: -33
-      headshot_card:
-        enabled: true
-        weight: -32
+        weight: 15
+        enabled: false
       detailed_contact_card:
-        enabled: true
-        weight: -31
+        weight: 16
+        enabled: false
+      headshot_card:
+        weight: 17
+        enabled: false
       uwm_accordion:
-        weight: -30
+        weight: 18
         enabled: false
       uwm_accordion_section:
-        weight: -29
+        weight: 19
         enabled: false
       uwm_basic_content:
-        weight: -28
+        weight: 20
         enabled: false
       uwm_block:
-        weight: -27
+        weight: 21
         enabled: false
       uwm_full_html:
-        weight: -26
+        weight: 22
         enabled: false
       uwm_grid:
-        weight: -25
-        enabled: false
-      uwm_image_hero:
-        weight: -24
-        enabled: false
-      uwm_link_with_icon:
-        weight: -23
+        weight: 23
         enabled: false
       uwm_cta_link:
-        weight: -22
+        enabled: true
+        weight: 24
+      uwm_image_hero:
+        weight: 24
+        enabled: false
+      uwm_link_with_icon:
+        weight: 25
         enabled: false
       uwm_media:
-        weight: -21
-        enabled: false
-      uwm_section:
-        weight: -20
-        enabled: false
-      uwm_view:
-        weight: -19
+        weight: 26
         enabled: false
       uwm_image:
-        weight: -18
+        enabled: true
+        weight: 27
+      uwm_section:
+        weight: 27
+        enabled: false
+      uwm_view:
+        weight: 28
         enabled: false
 field_type: entity_reference_revisions

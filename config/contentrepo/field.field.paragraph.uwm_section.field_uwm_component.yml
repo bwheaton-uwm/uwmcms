@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.uwm_basic_content
     - paragraphs.paragraphs_type.uwm_block
     - paragraphs.paragraphs_type.uwm_full_html
+    - paragraphs.paragraphs_type.uwm_grid
     - paragraphs.paragraphs_type.uwm_media
     - paragraphs.paragraphs_type.uwm_section
     - paragraphs.paragraphs_type.uwm_view
@@ -31,38 +32,57 @@ settings:
       uwm_basic_content: uwm_basic_content
       uwm_accordion: uwm_accordion
       uwm_media: uwm_media
+      uwm_grid: uwm_grid
       uwm_block: uwm_block
       uwm_view: uwm_view
       uwm_full_html: uwm_full_html
     target_bundles_drag_drop:
       uwm_basic_content:
         enabled: true
-        weight: -21
+        weight: -33
       uwm_accordion:
         enabled: true
-        weight: -20
+        weight: -32
       uwm_media:
         enabled: true
-        weight: -19
+        weight: -31
+      uwm_grid:
+        enabled: true
+        weight: -30
       uwm_accordion_section:
-        weight: -18
+        weight: -29
         enabled: false
       uwm_block:
         enabled: true
-        weight: -17
+        weight: -28
       uwm_view:
         enabled: true
-        weight: -16
+        weight: -27
       uwm_section:
-        weight: -15
+        weight: -26
         enabled: false
       uwm_full_html:
         enabled: true
-        weight: -14
+        weight: -25
       uwm_image_hero:
-        weight: -13
+        weight: -24
         enabled: false
       uwm_link_with_icon:
-        weight: -12
+        weight: -23
+        enabled: false
+      detailed_contact_card:
+        weight: -22
+        enabled: false
+      headshot_card:
+        weight: -21
+        enabled: false
+      uwm_card:
+        weight: -20
+        enabled: false
+      uwm_cta_link:
+        weight: -19
+        enabled: false
+      uwm_image:
+        weight: -18
         enabled: false
 field_type: entity_reference_revisions

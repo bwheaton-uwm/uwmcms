@@ -24,11 +24,11 @@ drush:
   default_alias: '${drush.aliases.local}'
 modules:
   local:
-    enable: [dblog, devel, views_ui]
+    enable: [acquia_connector, dblog, devel, views_ui]
     uninstall: [ shield, simplesamlphp_auth]
   ci:
     enable: {  }
-    uninstall: [acquia_connector]
+    uninstall: []
   dev:
     enable: [acquia_connector]
     uninstall: {  }

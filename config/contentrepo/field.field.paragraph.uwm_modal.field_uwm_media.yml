@@ -1,20 +1,17 @@
-uuid: 92704991-260e-4e29-a4fd-82c46bf2a0a9
+uuid: 44ff590a-2474-437b-a8ed-9db62465ddc9
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_uwm_media
-    - media.type.image
-    - media.type.instagram
-    - media.type.tweet
     - media.type.video
-    - paragraphs.paragraphs_type.uwm_media
-id: paragraph.uwm_media.field_uwm_media
+    - paragraphs.paragraphs_type.uwm_modal
+id: paragraph.uwm_modal.field_uwm_media
 field_name: field_uwm_media
 entity_type: paragraph
-bundle: uwm_media
+bundle: uwm_modal
 label: Media
-description: 'Embed an image, instagram post, tweet, or video on a page.'
+description: ''
 required: false
 translatable: true
 default_value: {  }
@@ -23,12 +20,9 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
-      image: image
-      instagram: instagram
-      tweet: tweet
       video: video
     sort:
       field: _none
     auto_create: false
-    auto_create_bundle: image
+    auto_create_bundle: ''
 field_type: entity_reference

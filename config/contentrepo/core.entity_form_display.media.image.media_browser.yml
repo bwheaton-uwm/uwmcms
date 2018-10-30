@@ -6,7 +6,7 @@ dependencies:
     - core.entity_form_mode.media.media_browser
     - field.field.media.image.field_media_in_library
     - field.field.media.image.image
-    - image.style.crop_focal_point
+    - image.style.medium
     - media.type.image
   module:
     - focal_point
@@ -29,7 +29,7 @@ content:
     type: image_focal_point
     weight: 1
     settings:
-      preview_image_style: crop_focal_point
+      preview_image_style: medium
       progress_indicator: throbber
       preview_link: true
       offsets: '50,50'
