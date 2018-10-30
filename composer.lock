@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "079fa01e5fe0a36b176e48baa2622240",
+    "content-hash": "6368bf1e7261d2b566353c2aa2cef4bb",
     "packages": [
         {
             "name": "acquia/blt",
@@ -3535,7 +3535,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.2",
-                    "datestamp": "1500416942",
+                    "datestamp": "1540166580",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3650,7 +3650,7 @@
                 },
                 "drupal": {
                     "version": "8.x-3.0-alpha4",
-                    "datestamp": "1525044484",
+                    "datestamp": "1540513084",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Alpha releases are not covered by Drupal security advisories."
@@ -3662,6 +3662,10 @@
                 "GPL-2.0-or-later"
             ],
             "authors": [
+                {
+                    "name": "chr.fritsch",
+                    "homepage": "https://www.drupal.org/user/2103716"
+                },
                 {
                     "name": "jkopel",
                     "homepage": "https://www.drupal.org/user/66207"
@@ -19071,7 +19075,7 @@
                 "type": "tar",
                 "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/ckeditor_bs_grid/uwmweb-ckeditor_bs_grid-e2bd7a01273019212bcce473fa62e7c655d65b3a-zip-b9915b.tar",
                 "reference": "e2bd7a01273019212bcce473fa62e7c655d65b3a",
-                "shasum": "507cfbd5c446bb4c2705b65a760388c3144e25fa"
+                "shasum": "5f251394a93f6afee8d0c797020621515adbb97a"
             },
             "require": {
                 "drupal/core": "~8"
@@ -19099,7 +19103,7 @@
                 "type": "tar",
                 "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwm_paragraphs/uwmweb-uwm_paragraphs-ab60ae51a6dc710b62576d01356d8b8446709fca-zip-7b9ee9.tar",
                 "reference": "ab60ae51a6dc710b62576d01356d8b8446709fca",
-                "shasum": "455a76e29a7eaca06a20b590ff9df69833d73b3a"
+                "shasum": "e2e9f6214e7f89d130af43f6625000f89838ff66"
             },
             "require": {
                 "drupal/core": "~8",

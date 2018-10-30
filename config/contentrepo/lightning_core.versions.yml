@@ -156,3 +156,4 @@ vbo_export: 2.0.0
 config_split: 1.4.0
 rabbit_hole: 1.0.0-beta4
 rh_media: 0.0.0
+acquia_contenthub: 1.31.0

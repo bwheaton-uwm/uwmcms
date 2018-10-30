@@ -1,4 +1,6 @@
 module:
+  acquia_connector: 0
+  acquia_contenthub: 0
   admin_toolbar: 0
   admin_toolbar_links_access_filter: 0
   admin_toolbar_tools: 0
@@ -30,8 +32,6 @@ module:
   ctools_block: 0
   datetime: 0
   dblog: 0
-  deploy: 0
-  devel: 0
   diff: 0
   dropzonejs: 0
   editor: 0
@@ -92,7 +92,6 @@ module:
   migrate: 0
   migrate_drupal: 0
   moderation_sidebar: 0
-  multiversion: 0
   name: 0
   node: 0
   openapi: 0
@@ -111,8 +110,6 @@ module:
   quickedit: 0
   rabbit_hole: 0
   rdf: 0
-  relaxed: 0
-  replication: 0
   responsive_favicons: 0
   rest: 0
   rh_media: 0
@@ -133,7 +130,6 @@ module:
   text: 0
   token: 0
   toolbar: 0
-  trash: 0
   twig_tweak: 0
   update: 0
   user: 0
@@ -144,13 +140,11 @@ module:
   video_embed_media: 0
   views_bulk_operations: 0
   views_infinite_scroll: 0
-  views_ui: 0
   viewsreference: 0
   workflows: 0
   menu_link_content: 1
   pathauto: 1
   views: 10
-  workspace: 10
   paragraphs: 11
   lightning: 1000
 theme:
