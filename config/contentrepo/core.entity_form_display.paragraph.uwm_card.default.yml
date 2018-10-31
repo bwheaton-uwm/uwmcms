@@ -24,7 +24,7 @@ content:
       edit_mode: open
       closed_mode: summary
       autocollapse: none
-      add_mode: dropdown
+      add_mode: button
       form_display_mode: default
       default_paragraph_type: _none
     third_party_settings: {  }
@@ -38,7 +38,7 @@ content:
       edit_mode: open
       closed_mode: summary
       autocollapse: none
-      add_mode: dropdown
+      add_mode: button
       form_display_mode: default
       default_paragraph_type: _none
     third_party_settings: {  }
@@ -52,7 +52,7 @@ content:
       edit_mode: open
       closed_mode: summary
       autocollapse: none
-      add_mode: dropdown
+      add_mode: button
       form_display_mode: default
       default_paragraph_type: _none
     third_party_settings: {  }

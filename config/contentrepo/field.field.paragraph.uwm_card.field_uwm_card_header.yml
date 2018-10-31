@@ -24,55 +24,61 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
-      uwm_cta_link: uwm_cta_link
       uwm_image: uwm_image
+      uwm_cta_link: uwm_cta_link
     target_bundles_drag_drop:
       uwm_card:
-        weight: 15
+        weight: -37
         enabled: false
       detailed_contact_card:
-        weight: 16
+        weight: -36
         enabled: false
       headshot_card:
-        weight: 17
+        weight: -35
         enabled: false
       uwm_accordion:
-        weight: 18
+        weight: -34
         enabled: false
       uwm_accordion_section:
-        weight: 19
+        weight: -33
         enabled: false
       uwm_basic_content:
-        weight: 20
+        weight: -32
         enabled: false
       uwm_block:
-        weight: 21
+        weight: -31
         enabled: false
       uwm_full_html:
-        weight: 22
+        weight: -30
         enabled: false
       uwm_grid:
-        weight: 23
-        enabled: false
-      uwm_cta_link:
-        enabled: true
-        weight: 24
-      uwm_image_hero:
-        weight: 24
-        enabled: false
-      uwm_link_with_icon:
-        weight: 25
-        enabled: false
-      uwm_media:
-        weight: 26
+        weight: -29
         enabled: false
       uwm_image:
         enabled: true
-        weight: 27
+        weight: -28
+      uwm_cta_link:
+        enabled: true
+        weight: -27
+      uwm_image_hero:
+        weight: -26
+        enabled: false
+      uwm_link_with_icon:
+        weight: -25
+        enabled: false
+      uwm_media:
+        weight: -24
+        enabled: false
+      uwm_featured_story:
+        weight: -23
+        enabled: false
       uwm_section:
-        weight: 27
+        weight: -22
         enabled: false
       uwm_view:
-        weight: 28
+        weight: -21
+        enabled: false
+      uwm_modal:
+        weight: -20
         enabled: false
 field_type: entity_reference_revisions

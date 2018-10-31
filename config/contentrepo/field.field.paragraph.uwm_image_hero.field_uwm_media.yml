@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_uwm_media
-    - media.type.acquia_dam_asset
+    - media.type.image
     - paragraphs.paragraphs_type.uwm_image_hero
 id: paragraph.uwm_image_hero.field_uwm_media
 field_name: field_uwm_media
@@ -20,7 +20,7 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
-      acquia_dam_asset: acquia_dam_asset
+      image: image
     sort:
       field: _none
     auto_create: false
