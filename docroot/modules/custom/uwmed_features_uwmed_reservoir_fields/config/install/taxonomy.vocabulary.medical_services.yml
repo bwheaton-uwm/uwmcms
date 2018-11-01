@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-name: 'Medical Services'
-vid: medical_services
-description: ''
-hierarchy: 0
-weight: 0

@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: degree
-label: Degree
-icon_uuid: null
-description: 'Data imported from the "extEducations" field in the IM API.'
-behavior_plugins: {  }

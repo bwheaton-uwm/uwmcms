@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-name: Specialities
-vid: specialities
-description: ''
-hierarchy: 0
-weight: 0

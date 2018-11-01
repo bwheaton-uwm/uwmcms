@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-name: 'Areas of Expertise'
-vid: expertise
-description: ''
-hierarchy: 0
-weight: 0
