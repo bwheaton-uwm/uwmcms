@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: education_history
+label: 'Education History'
+icon_uuid: null
+description: 'Data imported from the "educationHistories" field in the IM API.'
+behavior_plugins: {  }

@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Education Institutions'
+vid: education_institutions
+description: ''
+hierarchy: 0
+weight: 0

@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_clinics
+    - node.type.uwm_clinic
+    - taxonomy.vocabulary.buildings
+id: taxonomy_term.buildings.field_clinics
+field_name: field_clinics
+entity_type: taxonomy_term
+bundle: buildings
+label: Clinics
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      uwm_clinic: uwm_clinic
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

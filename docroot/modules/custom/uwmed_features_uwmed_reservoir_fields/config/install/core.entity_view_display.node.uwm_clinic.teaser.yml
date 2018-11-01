@@ -1,0 +1,57 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.uwm_clinic.field_affiliates
+    - field.field.node.uwm_clinic.field_box_number
+    - field.field.node.uwm_clinic.field_building
+    - field.field.node.uwm_clinic.field_display_appointment_link
+    - field.field.node.uwm_clinic.field_external_url
+    - field.field.node.uwm_clinic.field_fax_number
+    - field.field.node.uwm_clinic.field_floor
+    - field.field.node.uwm_clinic.field_hours_of_operation
+    - field.field.node.uwm_clinic.field_image
+    - field.field.node.uwm_clinic.uwm_unique_id
+    - field.field.node.uwm_clinic.field_internal_url
+    - field.field.node.uwm_clinic.field_is_call_center_serviced
+    - field.field.node.uwm_clinic.field_medical_services
+    - field.field.node.uwm_clinic.field_meta_tags
+    - field.field.node.uwm_clinic.field_phone_number
+    - field.field.node.uwm_clinic.field_providers
+    - field.field.node.uwm_clinic.field_room_number
+    - node.type.uwm_clinic
+  module:
+    - field_layout
+    - layout_discovery
+    - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: node.uwm_clinic.teaser
+targetEntityType: node
+bundle: uwm_clinic
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_affiliates: true
+  field_box_number: true
+  field_building: true
+  field_display_appointment_link: true
+  field_external_url: true
+  field_fax_number: true
+  field_floor: true
+  field_hours_of_operation: true
+  field_image: true
+  field_internal_url: true
+  field_is_call_center_serviced: true
+  field_medical_services: true
+  field_meta_tags: true
+  field_phone_number: true
+  field_providers: true
+  field_room_number: true
+  uwm_unique_id: true

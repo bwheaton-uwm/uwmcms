@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: hours_for_day
+label: 'Hours for Day'
+icon_uuid: null
+description: 'Clinic hours for a specific day of week (referenced by Hours of Operation).'
+behavior_plugins: {  }

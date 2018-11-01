@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: award
+label: Award
+icon_uuid: null
+description: 'Data imported from "bioAwards" in the IM API.'
+behavior_plugins: {  }

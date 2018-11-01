@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_education_history
+    - node.type.uwm_provider
+    - paragraphs.paragraphs_type.education_history
+  module:
+    - entity_reference_revisions
+id: node.uwm_provider.field_education_history
+field_name: field_education_history
+entity_type: node
+bundle: uwm_provider
+label: 'Education History'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      education_history: education_history
+    target_bundles_drag_drop:
+      award:
+        weight: 7
+        enabled: false
+      board_certification:
+        weight: 8
+        enabled: false
+      degree:
+        weight: 9
+        enabled: false
+      education_history:
+        enabled: true
+        weight: 10
+      hours_for_day:
+        weight: 11
+        enabled: false
+      hours_of_operation:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

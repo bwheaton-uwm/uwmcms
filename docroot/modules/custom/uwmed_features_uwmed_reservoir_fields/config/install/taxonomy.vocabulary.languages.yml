@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Languages
+vid: languages
+description: ''
+hierarchy: 0
+weight: 0

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_is_always_open
+    - paragraphs.paragraphs_type.hours_of_operation
+id: paragraph.hours_of_operation.field_is_always_open
+field_name: field_is_always_open
+entity_type: paragraph
+bundle: hours_of_operation
+label: 'Is always open?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

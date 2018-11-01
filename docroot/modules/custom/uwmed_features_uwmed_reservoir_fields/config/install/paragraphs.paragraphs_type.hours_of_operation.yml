@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: hours_of_operation
+label: 'Hours of Operation'
+icon_uuid: null
+description: 'Manage a clinic''s open hours.'
+behavior_plugins: {  }

@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_expertises
+    - node.type.uwm_provider
+    - taxonomy.vocabulary.expertise
+id: node.uwm_provider.field_expertises
+field_name: field_expertises
+entity_type: node
+bundle: uwm_provider
+label: 'Areas of Expertise'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      expertise: expertise
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

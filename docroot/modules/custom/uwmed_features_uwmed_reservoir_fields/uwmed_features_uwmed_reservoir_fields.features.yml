@@ -1,0 +1,13 @@
+bundle: uwmed_features
+excluded:
+  - field.storage.node.body
+  - field.storage.node.field_meta_tags
+  - field.storage.media.field_image
+  - field.storage.node.field_image
+  - core.entity_form_display.media.image.default
+  - core.entity_view_display.media.image.default
+  - field.field.media.image.field_image
+  - acquia_contenthub.entity.node
+  - acquia_contenthub.entity.paragraph
+  - acquia_contenthub.entity.taxonomy_term
+required: true

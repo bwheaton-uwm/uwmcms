@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.uwm_unique_id
+    - node.type.uwm_provider
+id: node.uwm_provider.uwm_unique_id
+field_name: uwm_unique_id
+entity_type: node
+bundle: uwm_provider
+label: 'Universal Id or Source URL'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

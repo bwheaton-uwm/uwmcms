@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_puma_id
+    - node.type.uwm_provider
+id: node.uwm_provider.field_puma_id
+field_name: field_puma_id
+entity_type: node
+bundle: uwm_provider
+label: 'PUMA ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

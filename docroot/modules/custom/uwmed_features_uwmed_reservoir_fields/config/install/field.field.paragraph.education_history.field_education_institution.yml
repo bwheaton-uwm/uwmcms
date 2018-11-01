@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_education_institution
+    - paragraphs.paragraphs_type.education_history
+    - taxonomy.vocabulary.education_institutions
+id: paragraph.education_history.field_education_institution
+field_name: field_education_institution
+entity_type: paragraph
+bundle: education_history
+label: 'Education Institution'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      education_institutions: education_institutions
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
