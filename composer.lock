@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c2167834412e3834335a33186be5eb48",
+    "content-hash": "0064151a00c52991441216338b599697",
     "packages": [
         {
             "name": "acquia/blt",
@@ -9200,17 +9200,11 @@
         },
         {
             "name": "drupal/multiversion",
-            "version": "1.0.0-beta26",
+            "version": "dev-1.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/multiversion",
-                "reference": "8.x-1.0-beta26"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/multiversion-8.x-1.0-beta26.zip",
-                "reference": "8.x-1.0-beta26",
-                "shasum": "a8dc7b6996f899fdad3e3ab89912d1a0df62575b"
+                "reference": "c8b42baf7b43674a6d02878faaabe55053cc6e77"
             },
             "require": {
                 "drupal/conflict": "^1-beta",
@@ -9229,11 +9223,11 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta26",
-                    "datestamp": "1538056080",
+                    "version": "8.x-1.0-beta26+0-dev",
+                    "datestamp": "1538053680",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -9263,7 +9257,8 @@
             "homepage": "https://www.drupal.org/project/multiversion",
             "support": {
                 "source": "http://cgit.drupalcode.org/multiversion"
-            }
+            },
+            "time": "2018-09-27T13:04:34+00:00"
         },
         {
             "name": "drupal/name",
@@ -10032,6 +10027,62 @@
             "homepage": "https://www.drupal.org/project/paragraphs_admin",
             "support": {
                 "source": "http://cgit.drupalcode.org/paragraphs_admin"
+            }
+        },
+        {
+            "name": "drupal/path_redirect_import",
+            "version": "1.0.0-beta1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/path_redirect_import",
+                "reference": "8.x-1.0-beta1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/path_redirect_import-8.x-1.0-beta1.zip",
+                "reference": "8.x-1.0-beta1",
+                "shasum": "b072114023a1dc44ceb31969b13083afb4120dd7"
+            },
+            "require": {
+                "drupal/core": "~8.0",
+                "drupal/redirect": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-beta1",
+                    "datestamp": "1485452283",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "gabrielu",
+                    "homepage": "https://www.drupal.org/user/279352"
+                },
+                {
+                    "name": "plopesc",
+                    "homepage": "https://www.drupal.org/user/282415"
+                },
+                {
+                    "name": "tjwelde",
+                    "homepage": "https://www.drupal.org/user/3411453"
+                }
+            ],
+            "description": "Provides the ability to import redirects for the Redirect module",
+            "homepage": "https://www.drupal.org/project/path_redirect_import",
+            "support": {
+                "source": "http://cgit.drupalcode.org/path_redirect_import"
             }
         },
         {
@@ -20622,8 +20673,10 @@
         "drupal/hierarchical_term_formatter": 15,
         "drupal/media_entity_actions": 15,
         "drupal/media_entity_soundcloud": 20,
+        "drupal/multiversion": 20,
         "drupal/name": 10,
         "drupal/page_manager": 10,
+        "drupal/path_redirect_import": 10,
         "drupal/rabbit_hole": 20,
         "drupal/relaxed": 10,
         "drupal/sharethis": 20,
