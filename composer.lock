@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "079fa01e5fe0a36b176e48baa2622240",
+    "content-hash": "c2167834412e3834335a33186be5eb48",
     "packages": [
         {
             "name": "acquia/blt",
@@ -9908,17 +9908,17 @@
         },
         {
             "name": "drupal/paragraphs",
-            "version": "1.2.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/paragraphs",
-                "reference": "8.x-1.2"
+                "reference": "8.x-1.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/paragraphs-8.x-1.2.zip",
-                "reference": "8.x-1.2",
-                "shasum": "6efc9d4351d4b21a55e7a6428c78495aaca662ef"
+                "url": "https://ftp.drupal.org/files/projects/paragraphs-8.x-1.5.zip",
+                "reference": "8.x-1.5",
+                "shasum": "85ba97dd1c602d33fc5904b6e1df5973312afa94"
             },
             "require": {
                 "drupal/core": "~8",
@@ -9926,12 +9926,19 @@
             },
             "require-dev": {
                 "drupal/block_field": "~1.0",
+                "drupal/ctools": "3.x-dev",
                 "drupal/diff": "~1.0",
+                "drupal/entity_browser": "1.x-dev",
+                "drupal/entity_usage": "2.x-dev",
                 "drupal/field_group": "~1.0",
                 "drupal/inline_entity_form": "~1.0",
+                "drupal/paragraphs-paragraphs_library": "*",
                 "drupal/replicate": "~1.0",
-                "drupal/search_api": "*",
+                "drupal/search_api": "~1.0",
                 "drupal/search_api_db": "*"
+            },
+            "suggest": {
+                "drupal/entity_browser": "Recommended for an improved user experience when using the Paragraphs library module"
             },
             "type": "drupal-module",
             "extra": {
@@ -9939,8 +9946,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.2",
-                    "datestamp": "1527502684",
+                    "version": "8.x-1.5",
+                    "datestamp": "1541009695",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
