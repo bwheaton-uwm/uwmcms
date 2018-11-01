@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0064151a00c52991441216338b599697",
+    "content-hash": "6c02f42b13a70541c7e910e0013acd6a",
     "packages": [
         {
             "name": "acquia/blt",
@@ -19179,17 +19179,17 @@
         },
         {
             "name": "uwmweb/uwmbase",
-            "version": "dev-initial-styles",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/uwmweb/uwmbase.git",
-                "reference": "df9ad74cfb7c30cdb645ee6218e3af70b59fd1fa"
+                "reference": "e1d1e4cbd33efc94bc2af17b64b94260f0fe3f56"
             },
             "dist": {
                 "type": "tar",
-                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-df9ad74cfb7c30cdb645ee6218e3af70b59fd1fa-zip-8187c5.tar",
-                "reference": "df9ad74cfb7c30cdb645ee6218e3af70b59fd1fa",
-                "shasum": "6677b532706bdbbd833a7ccc2ad909b8e100139d"
+                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-e1d1e4cbd33efc94bc2af17b64b94260f0fe3f56-zip-9566d6.tar",
+                "reference": "e1d1e4cbd33efc94bc2af17b64b94260f0fe3f56",
+                "shasum": "e6dfb50167022cdd1d61bbe7c5b9860af4144b33"
             },
             "type": "drupal-theme",
             "license": [
@@ -19197,10 +19197,10 @@
             ],
             "description": "UW Medicine base theme and component library, a Zen sub-theme using Bootstrap 4.",
             "support": {
-                "source": "https://github.com/uwmweb/uwmbase/tree/initial-styles",
+                "source": "https://github.com/uwmweb/uwmbase/tree/master",
                 "issues": "https://github.com/uwmweb/uwmbase/issues"
             },
-            "time": "2018-10-29T16:07:12+00:00"
+            "time": "2018-11-01T22:12:31+00:00"
         },
         {
             "name": "vardot/blazy",
