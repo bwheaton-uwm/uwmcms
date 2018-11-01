@@ -1,0 +1,29 @@
+uuid: 8ca41ca7-c023-4f5e-af63-d7cec3ccaa28
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_medical_services
+    - node.type.uwm_clinic
+    - taxonomy.vocabulary.medical_services
+id: node.uwm_clinic.field_medical_services
+field_name: field_medical_services
+entity_type: node
+bundle: uwm_clinic
+label: 'Medical Services'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      medical_services: medical_services
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

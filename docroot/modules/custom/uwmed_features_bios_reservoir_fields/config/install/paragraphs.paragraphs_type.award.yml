@@ -1,0 +1,9 @@
+uuid: d5a7faa7-8e2a-4814-ae87-37794b0ac920
+langcode: en
+status: true
+dependencies: {  }
+id: award
+label: Award
+icon_uuid: null
+description: 'Data imported from "bioAwards" in the IM API.'
+behavior_plugins: {  }

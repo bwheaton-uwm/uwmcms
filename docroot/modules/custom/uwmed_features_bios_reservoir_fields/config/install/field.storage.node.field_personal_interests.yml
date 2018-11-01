@@ -1,0 +1,19 @@
+uuid: 6e244ca9-3fdb-4374-b433-e5c0c8bd7a7b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_personal_interests
+field_name: field_personal_interests
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

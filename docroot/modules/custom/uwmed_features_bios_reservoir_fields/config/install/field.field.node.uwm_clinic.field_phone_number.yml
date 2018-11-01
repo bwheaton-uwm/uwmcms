@@ -1,0 +1,21 @@
+uuid: f23b2667-ea04-48f4-968e-8b1cbec9576d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phone_number
+    - node.type.uwm_clinic
+  module:
+    - telephone
+id: node.uwm_clinic.field_phone_number
+field_name: field_phone_number
+entity_type: node
+bundle: uwm_clinic
+label: 'Phone Number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

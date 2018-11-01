@@ -1,0 +1,5 @@
+bundle: uwmed_features
+excluded:
+  - acquia_contenthub.entity.node
+  - acquia_contenthub.entity.paragraph
+required: true

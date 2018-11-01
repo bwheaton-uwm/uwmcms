@@ -1,0 +1,22 @@
+uuid: 1efdc6df-04ab-490e-a4a2-3a60bb392155
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.uwm_provider
+id: node.uwm_provider.status
+field_name: status
+entity_type: node
+bundle: uwm_provider
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

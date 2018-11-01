@@ -1,0 +1,9 @@
+uuid: 724ffd64-bb7c-4d7a-b8f0-04c81f0bbdb6
+langcode: en
+status: true
+dependencies: {  }
+name: Affiliates
+vid: affiliates
+description: ''
+hierarchy: 0
+weight: 0

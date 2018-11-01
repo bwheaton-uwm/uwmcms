@@ -1,0 +1,19 @@
+uuid: e4db3218-8451-4cae-9b0c-360ab88dfe03
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_internal_url
+    - node.type.uwm_clinic
+id: node.uwm_clinic.field_internal_url
+field_name: field_internal_url
+entity_type: node
+bundle: uwm_clinic
+label: 'Internal Url'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

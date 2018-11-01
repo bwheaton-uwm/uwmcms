@@ -1,0 +1,23 @@
+uuid: 5b5536f1-3333-415a-a9db-26fb137b030d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_is_primary
+    - paragraphs.paragraphs_type.board_certification
+id: paragraph.board_certification.field_is_primary
+field_name: field_is_primary
+entity_type: paragraph
+bundle: board_certification
+label: 'Is primary?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

@@ -1,0 +1,21 @@
+uuid: 8b1d2b11-93e1-4e19-8ba2-a78e6b1c6a6f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_fax_number
+    - node.type.uwm_clinic
+  module:
+    - telephone
+id: node.uwm_clinic.field_fax_number
+field_name: field_fax_number
+entity_type: node
+bundle: uwm_clinic
+label: 'Fax Number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

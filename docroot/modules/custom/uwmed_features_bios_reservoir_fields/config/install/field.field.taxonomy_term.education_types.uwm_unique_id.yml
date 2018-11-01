@@ -1,0 +1,19 @@
+uuid: a8af9f51-caec-4af5-a123-55b5d69d95b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.uwm_unique_id
+    - taxonomy.vocabulary.education_types
+id: taxonomy_term.education_types.uwm_unique_id
+field_name: uwm_unique_id
+entity_type: taxonomy_term
+bundle: education_types
+label: 'Universal Id or Source URL'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

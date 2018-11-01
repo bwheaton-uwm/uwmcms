@@ -1,0 +1,20 @@
+name: 'bios reservoir paragraphs'
+type: module
+core: 8.x
+dependencies:
+  - acquia_contenthub
+  - entity_reference_revisions
+  - field
+  - field_group
+  - field_layout
+  - image
+  - layout_discovery
+  - metatag
+  - name
+  - node
+  - options
+  - paragraphs
+  - telephone
+  - text
+  - user
+package: 'UWMed Features'

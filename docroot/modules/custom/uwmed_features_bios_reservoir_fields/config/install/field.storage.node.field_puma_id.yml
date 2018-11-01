@@ -1,0 +1,20 @@
+uuid: 2f2e04e0-2479-4c4c-8559-a32da91b8130
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_puma_id
+field_name: field_puma_id
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

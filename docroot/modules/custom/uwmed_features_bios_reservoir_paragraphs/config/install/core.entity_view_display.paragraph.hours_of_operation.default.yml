@@ -1,0 +1,50 @@
+uuid: c7e629a6-4572-4e28-830b-67d6abed69ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hours_of_operation.field_hours
+    - field.field.paragraph.hours_of_operation.field_hours_type
+    - field.field.paragraph.hours_of_operation.field_is_always_open
+    - paragraphs.paragraphs_type.hours_of_operation
+  module:
+    - entity_reference_revisions
+    - field_layout
+    - layout_discovery
+    - options
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: paragraph.hours_of_operation.default
+targetEntityType: paragraph
+bundle: hours_of_operation
+mode: default
+content:
+  field_hours:
+    type: entity_reference_revisions_entity_view
+    weight: 2
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_hours_type:
+    weight: 0
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_is_always_open:
+    weight: 1
+    label: inline
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+hidden: {  }

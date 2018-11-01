@@ -1,0 +1,21 @@
+uuid: 4d51db74-f831-4fa1-91b5-9f7477da85b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hours_type
+    - paragraphs.paragraphs_type.hours_of_operation
+  module:
+    - options
+id: paragraph.hours_of_operation.field_hours_type
+field_name: field_hours_type
+entity_type: paragraph
+bundle: hours_of_operation
+label: 'Hours Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

@@ -1,0 +1,13 @@
+name: 'bios reservoir taxonomies'
+type: module
+core: 8.x
+dependencies:
+  - address
+  - field
+  - field_layout
+  - geolocation
+  - layout_discovery
+  - path
+  - taxonomy
+  - text
+package: 'UWMed Features'

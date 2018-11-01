@@ -1,0 +1,45 @@
+uuid: 2669e01e-c6f4-447e-84b9-a4a03b82c05c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.medical_services.field_clinics
+    - field.field.taxonomy_term.medical_services.uwm_unique_id
+    - taxonomy.vocabulary.medical_services
+  module:
+    - field_layout
+    - layout_discovery
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: taxonomy_term.medical_services.default
+targetEntityType: taxonomy_term
+bundle: medical_services
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_clinics:
+    weight: 2
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  uwm_unique_id:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

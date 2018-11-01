@@ -1,0 +1,19 @@
+uuid: 7eb51bda-d2a8-424b-9a3d-615efdad37f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_year
+    - paragraphs.paragraphs_type.award
+id: paragraph.award.field_year
+field_name: field_year
+entity_type: paragraph
+bundle: award
+label: Year
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

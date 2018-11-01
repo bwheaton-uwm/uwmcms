@@ -1,0 +1,9 @@
+uuid: 8c760bf6-ba33-485e-84ae-666d4f80975b
+langcode: en
+status: true
+dependencies: {  }
+name: Specialities
+vid: specialities
+description: ''
+hierarchy: 0
+weight: 0

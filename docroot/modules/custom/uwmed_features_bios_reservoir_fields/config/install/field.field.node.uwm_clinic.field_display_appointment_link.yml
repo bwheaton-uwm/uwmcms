@@ -1,0 +1,23 @@
+uuid: 103bcc87-3b1e-4778-a071-a6fbd6345c60
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_appointment_link
+    - node.type.uwm_clinic
+id: node.uwm_clinic.field_display_appointment_link
+field_name: field_display_appointment_link
+entity_type: node
+bundle: uwm_clinic
+label: 'Display Make an Appointment link?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

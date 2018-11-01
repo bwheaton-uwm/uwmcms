@@ -1,0 +1,29 @@
+uuid: 7202b6d5-f77f-463d-87a1-674154375203
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_education_type
+    - paragraphs.paragraphs_type.education_history
+    - taxonomy.vocabulary.education_types
+id: paragraph.education_history.field_education_type
+field_name: field_education_type
+entity_type: paragraph
+bundle: education_history
+label: 'Education Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      education_types: education_types
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,22 @@
+uuid: b37cac85-0878-4f87-b844-0c24ac3cb0e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_biography
+    - node.type.uwm_provider
+  module:
+    - text
+id: node.uwm_provider.field_biography
+field_name: field_biography
+entity_type: node
+bundle: uwm_provider
+label: Biography
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary
