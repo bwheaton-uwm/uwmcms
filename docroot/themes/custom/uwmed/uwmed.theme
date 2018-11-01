@@ -87,6 +87,26 @@ function uwmed_preprocess_html(&$variables) {
  * Implements theme_preprocess_page().
  */
 function uwmed_preprocess_page(&$variables) {
+  // http://uwmed.local/?fix-entity-type
+  if (stripos($_SERVER['REQUEST_URI'], 'fix-entity-type') !== FALSE) {
+
+    // @see docroot/modules/contrib/multiversion/src/MultiversionManager.php#337
+    $types = ['media' => []];
+    $supported_entity_types = \Drupal::config('multiversion.settings')
+      ->get('supported_entity_types') ?: [];
+
+    if ($supported_entity_types) {
+      try {
+
+        \Drupal::service('multiversion.manager')
+          ->disableEntityTypes($types);
+
+      }
+      catch (Exception $e) {
+        \Drupal::logger('multiversion_cleanup')->error($e->getMessage());
+      }
+    }
+  }
 }
 
 /**
