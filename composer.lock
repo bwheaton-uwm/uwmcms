@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c02f42b13a70541c7e910e0013acd6a",
+    "content-hash": "d2425fe339b28e2c9a9b11b2b9f10d98",
     "packages": [
         {
             "name": "acquia/blt",
@@ -19179,17 +19179,17 @@
         },
         {
             "name": "uwmweb/uwmbase",
-            "version": "dev-master",
+            "version": "dev-initial-styles",
             "source": {
                 "type": "git",
                 "url": "https://github.com/uwmweb/uwmbase.git",
-                "reference": "e1d1e4cbd33efc94bc2af17b64b94260f0fe3f56"
+                "reference": "8f63dd0fa971d702934e4be2855282b671f44667"
             },
             "dist": {
                 "type": "tar",
-                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-e1d1e4cbd33efc94bc2af17b64b94260f0fe3f56-zip-9566d6.tar",
-                "reference": "e1d1e4cbd33efc94bc2af17b64b94260f0fe3f56",
-                "shasum": "e6dfb50167022cdd1d61bbe7c5b9860af4144b33"
+                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-8f63dd0fa971d702934e4be2855282b671f44667-zip-be8ce1.tar",
+                "reference": "8f63dd0fa971d702934e4be2855282b671f44667",
+                "shasum": "80ba5712914b0ff976fb13a22f04e2a93981bf5b"
             },
             "type": "drupal-theme",
             "license": [
@@ -19197,10 +19197,35 @@
             ],
             "description": "UW Medicine base theme and component library, a Zen sub-theme using Bootstrap 4.",
             "support": {
-                "source": "https://github.com/uwmweb/uwmbase/tree/master",
+                "source": "https://github.com/uwmweb/uwmbase/tree/initial-styles",
                 "issues": "https://github.com/uwmweb/uwmbase/issues"
             },
-            "time": "2018-11-01T22:12:31+00:00"
+            "time": "2018-11-02T22:05:11+00:00"
+        },
+        {
+            "name": "uwmweb/uwmedicineorg_theme",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/uwmweb/uwmedicineorg_theme.git",
+                "reference": "7073e3e440a3dc75812056d30259459f6f49ac52"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmedicineorg_theme/uwmweb-uwmedicineorg_theme-7073e3e440a3dc75812056d30259459f6f49ac52-zip-0a228d.tar",
+                "reference": "7073e3e440a3dc75812056d30259459f6f49ac52",
+                "shasum": "70e7db52bab4b117c91f99b9b1b8d3ecc213c502"
+            },
+            "type": "drupal-theme",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Theme for uwmedicine.org, which is a sub-theme of the UW Medicine base theme and component library",
+            "support": {
+                "source": "https://github.com/uwmweb/uwmedicineorg_theme/tree/master",
+                "issues": "https://github.com/uwmweb/uwmedicineorg_theme/issues"
+            },
+            "time": "2018-11-01T15:53:03+00:00"
         },
         {
             "name": "vardot/blazy",
@@ -20688,6 +20713,7 @@
         "uwmweb/ckeditor_bs_grid": 20,
         "uwmweb/uwm_paragraphs": 20,
         "uwmweb/uwmbase": 20,
+        "uwmweb/uwmedicineorg_theme": 20,
         "sensiolabs-de/deprecation-detector": 20
     },
     "prefer-stable": true,

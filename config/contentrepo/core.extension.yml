@@ -156,6 +156,7 @@ theme:
   adminimal_theme: 0
   uwmbase: 0
   zen: 0
+  uwmedicineorg: 0
 profile: lightning
 _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc

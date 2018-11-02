@@ -1,0 +1,22 @@
+uuid: 4978a6f5-b073-4cda-be92-cd8ac90d9ca0
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - uwmedicineorg
+_core:
+  default_config_hash: 8I8iACSa0sKO3k3jlvUG1ge52rfcKX7USJAQYnzuBgg
+id: uwmedicineorg_help
+theme: uwmedicineorg
+region: content
+weight: -30
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

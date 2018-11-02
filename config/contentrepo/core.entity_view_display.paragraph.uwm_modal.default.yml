@@ -15,7 +15,7 @@ mode: default
 content:
   field_uwm_media:
     weight: 0
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
@@ -23,7 +23,7 @@ content:
     region: content
   uwm_text:
     weight: 1
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default

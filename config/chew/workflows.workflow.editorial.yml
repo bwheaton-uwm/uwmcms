@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
-    - node.type.article
-    - node.type.promotion
-    - node.type.webform
+  - node.type.article
+  - node.type.promotion
+  - node.type.webform
   module:
-    - content_moderation
+  - content_moderation
 _core:
   default_config_hash: T_JxNjYlfoRBi7Bj1zs5Xv9xv1btuBkKp5C1tNrjMhI
 id: editorial
@@ -34,13 +34,13 @@ type_settings:
     archive:
       label: Archive
       from:
-        - published
+      - published
       to: archived
       weight: 2
     archived_published:
       label: 'Restore from archive'
       from:
-        - archived
+      - archived
       to: published
       weight: 4
     create_new_draft:
@@ -48,18 +48,17 @@ type_settings:
       to: draft
       weight: 0
       from:
-        - archived
-        - draft
-        - published
+      - archived
+      - draft
     publish:
       label: Publish
       to: published
       weight: 1
       from:
-        - draft
-        - published
+      - draft
+      - published
   entity_types:
     node:
-      - article
-      - promotion
-      - webform
+    - article
+    - promotion
+    - webform

@@ -17,7 +17,7 @@ mode: default
 content:
   field_uwm_image:
     weight: 0
-    label: above
+    label: hidden
     settings:
       image_style: uwm_headshot
       image_link: ''
@@ -26,7 +26,7 @@ content:
     region: content
   uwm_text:
     weight: 1
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default

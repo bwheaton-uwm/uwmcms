@@ -19,14 +19,14 @@ content:
     type: entity_reference_label
     weight: 2
     region: content
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
   field_uwm_component:
     type: entity_reference_revisions_entity_view
     weight: 1
-    label: above
+    label: hidden
     settings:
       view_mode: default
       link: ''
@@ -34,7 +34,7 @@ content:
     region: content
   field_uwm_section_heading:
     weight: 0
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default

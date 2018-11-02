@@ -12,7 +12,14 @@ dependencies:
   module:
     - entity_reference_revisions
     - metatag
+    - panelizer
     - user
+third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
 id: node.uwm_hub_page.default
 targetEntityType: node
 bundle: uwm_hub_page
@@ -20,14 +27,14 @@ mode: default
 content:
   field_meta_tags:
     weight: 104
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
     region: content
   field_uwm_hero:
     weight: 105
-    label: above
+    label: hidden
     settings:
       view_mode: default
       link: ''
@@ -36,7 +43,7 @@ content:
     region: content
   field_uwm_page_path_name:
     weight: 102
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
@@ -44,7 +51,7 @@ content:
     region: content
   field_uwm_parent_page:
     weight: 103
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
@@ -52,7 +59,7 @@ content:
     region: content
   field_uwm_sections:
     weight: 101
-    label: above
+    label: hidden
     settings:
       view_mode: default
       link: ''
@@ -61,7 +68,8 @@ content:
     region: content
   links:
     weight: 100
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
-hidden: {  }
+hidden:
+  content_moderation_control: true

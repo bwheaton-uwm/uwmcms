@@ -9,3 +9,10 @@ project:
   local:
     protocol: http
     hostname: content.uwmed.local
+command-hooks:
+  frontend-reqs:
+    dir: '${docroot}/themes/contrib/uwmbase'
+    command: 'npm install'
+  frontend-assets:
+    dir: '${docroot}/themes/contrib/uwmbase'
+    command: 'gulp'
