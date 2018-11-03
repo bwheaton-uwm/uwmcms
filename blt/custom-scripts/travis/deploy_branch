@@ -4,7 +4,6 @@ set -ev
 
 blt frontend --site=default
 blt frontend --site=chew
-blt frontend --site=contentrepo
 
 blt artifact:deploy --commit-msg "Automated commit by Travis CI for Build ${TRAVIS_BUILD_ID}" --branch "${TRAVIS_BRANCH}-build" --ignore-dirty --no-interaction --verbose
 
