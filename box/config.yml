@@ -48,6 +48,9 @@ apache_vhosts:
   - servername: "content.{{ drupal_domain }}"
     documentroot: "{{ drupal_core_path }}"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+  - servername: "stevie.{{ drupal_domain }}"
+    documentroot: "{{ drupal_core_path }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
   - servername: "beta.{{ drupal_domain }}"
     documentroot: "{{ drupal_core_path }}"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
@@ -75,6 +78,9 @@ mysql_databases:
     encoding: utf8
     collation: utf8_general_ci
   - name: drupal_contentrepo
+    encoding: utf8
+    collation: utf8_general_ci
+  - name: drupal_stevie
     encoding: utf8
     collation: utf8_general_ci
   - name: drupal_uwmedicineorg

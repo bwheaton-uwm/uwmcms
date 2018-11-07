@@ -71,6 +71,7 @@ multisites:
   - huddle
   - calendar
   - contentrepo
+  - stevie
   - uwmedicineorg
   
 behat:

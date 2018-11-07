@@ -1,0 +1,15 @@
+diff --git a/core/lib/Drupal/Core/Field/Entity/BaseFieldOverride.php b/core/lib/Drupal/Core/Field/Entity/BaseFieldOverride.php
+index 555e22a260..cc8d0235d4 100644
+--- a/core/lib/Drupal/Core/Field/Entity/BaseFieldOverride.php
++++ b/core/lib/Drupal/Core/Field/Entity/BaseFieldOverride.php
+@@ -221,7 +221,9 @@ public static function postDelete(EntityStorageInterface $storage, array $field_
+       // @todo This assumes that there isn't a non-config-based override that
+       //   we're returning to, but that might not be the case:
+       //   https://www.drupal.org/node/2321071.
+-      $entity_manager->getStorage($field_override->getTargetEntityTypeId())->onFieldDefinitionUpdate($field_override->getBaseFieldDefinition(), $field_override);
++      if ($base_definition = $field_override->getBaseFieldDefinition()) {
++        $entity_manager->getStorage($field_override->getTargetEntityTypeId())->onFieldDefinitionUpdate($base_definition, $field_override);
++      }
+     }
+   }
+ 
