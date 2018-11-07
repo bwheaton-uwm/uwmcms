@@ -1,0 +1,9 @@
+uuid: d77e5346-30f4-4aa5-a660-9fd1072b1294
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_image_hero
+label: 'Image Hero'
+icon_uuid: null
+description: 'Page title is displayed over an image, with ghost buttons on the right.'
+behavior_plugins: {  }

@@ -1,0 +1,77 @@
+uuid: 2888d13e-8ddf-429f-b411-d94ca44c0049
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.rich_text
+  module:
+    - ckeditor
+_core:
+  default_config_hash: 0bVELtfx9sXhjZ6s6W-dJo8SW-IR9jiEIEylzm-2Cro
+format: rich_text
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Formatting
+          items:
+            - Bold
+            - Italic
+            - '-'
+            - RemoveFormat
+            - '-'
+            - Cut
+            - PasteFromWord
+            - Copy
+        -
+          name: Linking
+          items:
+            - Linkit
+            - DrupalUnlink
+        -
+          name: Lists
+          items:
+            - BulletedList
+            - NumberedList
+            - Indent
+            - Outdent
+        -
+          name: Media
+          items:
+            - media_browser
+        -
+          name: 'Block Formatting'
+          items:
+            - Format
+            - Styles
+        -
+          name: Templates
+          items:
+            - bs_grid
+            - Templates
+        -
+          name: Tools
+          items:
+            - ShowBlocks
+            - Source
+            - Maximize
+  plugins:
+    language:
+      language_list: un
+    stylescombo:
+      styles: "a.btn.btn-cta.btn-purple|Purple CTA Button\r\na.btn.btn-cta.btn-green|Green CTA Button\r\np.subheading|Subheading"
+    templates:
+      template_path: ''
+      replace_content: 0
+    linkit:
+      linkit_profile: content
+image_upload:
+  status: true
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

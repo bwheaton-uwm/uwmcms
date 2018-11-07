@@ -1,0 +1,26 @@
+uuid: d0e34eca-01f7-4b0e-b78b-753b29526ddf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.uwm_text
+    - paragraphs.paragraphs_type.uwm_basic_content
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    rich_text: rich_text
+    plain_text: '0'
+id: paragraph.uwm_basic_content.uwm_text
+field_name: uwm_text
+entity_type: paragraph
+bundle: uwm_basic_content
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

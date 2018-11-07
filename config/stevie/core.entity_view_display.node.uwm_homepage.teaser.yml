@@ -1,0 +1,20 @@
+uuid: eedcd765-4776-4bcb-84c5-b28c6988c037
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.uwm_homepage
+  module:
+    - user
+id: node.uwm_homepage.teaser
+targetEntityType: node
+bundle: uwm_homepage
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

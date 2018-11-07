@@ -1,0 +1,20 @@
+uuid: 0b3ccbf6-4fa3-4ea5-9bd5-b76b88842bc5
+langcode: en
+status: true
+dependencies:
+  theme:
+    - uwmedicineorg
+_core:
+  default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
+id: uwmedicineorg_local_actions
+theme: uwmedicineorg
+region: content
+weight: -20
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

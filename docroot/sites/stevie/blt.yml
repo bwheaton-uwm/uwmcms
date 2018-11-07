@@ -8,7 +8,7 @@ project:
   human_name: stevie
   local:
     protocol: http
-    hostname: content.uwmed.local
+    hostname: stevie.uwmed.local
 command-hooks:
   frontend-reqs:
     dir: '${docroot}/themes/contrib/uwmbase'

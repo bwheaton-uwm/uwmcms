@@ -1,0 +1,19 @@
+uuid: 903270a5-768a-47e1-839c-a56f26855265
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_page_path_name
+    - node.type.uwm_basic_page
+id: node.uwm_basic_page.field_uwm_page_path_name
+field_name: field_uwm_page_path_name
+entity_type: node
+bundle: uwm_basic_page
+label: 'Page URL Name'
+description: 'Please enter the desired URL path for this page. If you chose a Parent Page above, this page''s full URL will be structured like: /parent-page-url/page-url-name'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

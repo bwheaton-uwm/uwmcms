@@ -1,0 +1,27 @@
+uuid: e549a9e1-d3a7-44a2-ae68-7bf87d54aa2e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_assistant
+    - paragraphs.paragraphs_type.detailed_contact_card
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    rich_text: rich_text
+    plain_text: plain_text
+    unrestricted: '0'
+id: paragraph.detailed_contact_card.field_uwm_assistant
+field_name: field_uwm_assistant
+entity_type: paragraph
+bundle: detailed_contact_card
+label: 'Assistant Name and Email'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

@@ -1,0 +1,19 @@
+uuid: 5d28396b-f253-4e3f-8a25-e217962d82e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.uwm_homepage
+  module:
+    - user
+id: node.uwm_homepage.default
+targetEntityType: node
+bundle: uwm_homepage
+mode: default
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

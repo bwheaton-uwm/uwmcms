@@ -1,0 +1,21 @@
+uuid: 366c927e-6667-421a-91d5-5dca66b6722f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_fax_number
+    - paragraphs.paragraphs_type.detailed_contact_card
+  module:
+    - telephone
+id: paragraph.detailed_contact_card.field_uwm_fax_number
+field_name: field_uwm_fax_number
+entity_type: paragraph
+bundle: detailed_contact_card
+label: 'Fax Number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

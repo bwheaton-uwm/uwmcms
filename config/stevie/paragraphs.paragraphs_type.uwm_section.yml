@@ -1,0 +1,9 @@
+uuid: b207b9ad-0175-4be9-8774-8f933bbb86b8
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_section
+label: Section
+icon_uuid: null
+description: 'Pages are composed of sections and sections are composed of components.'
+behavior_plugins: {  }

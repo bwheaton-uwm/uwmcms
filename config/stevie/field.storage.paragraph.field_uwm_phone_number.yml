@@ -1,0 +1,19 @@
+uuid: f3a8b67b-adb4-484b-ace6-928f88fb02dd
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - telephone
+id: paragraph.field_uwm_phone_number
+field_name: field_uwm_phone_number
+entity_type: paragraph
+type: telephone
+settings: {  }
+module: telephone
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,23 @@
+uuid: 05b92eda-c78a-414d-bb57-71a4816be507
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.uwm_show_indicators
+    - paragraphs.paragraphs_type.uwm_accordion
+_core:
+  default_config_hash: '-IhPK2hbTy1huw-sdJRZVG-uJ_IFRGHL-8OfWR1eIyc'
+id: paragraph.uwm_accordion.uwm_show_indicators
+field_name: uwm_show_indicators
+entity_type: paragraph
+bundle: uwm_accordion
+label: 'Show Indicators'
+description: 'Check to display open/close indicators for accordions in this section.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

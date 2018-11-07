@@ -1,0 +1,11 @@
+uuid: 1be88294-d16d-4661-87d7-1bb64c3ee8f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.document
+id: media_type_document
+action: page_redirect
+allow_override: 1
+redirect: '[media:field_document:entity:url]'
+redirect_code: 301

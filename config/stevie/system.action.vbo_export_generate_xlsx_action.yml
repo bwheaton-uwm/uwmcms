@@ -1,0 +1,13 @@
+uuid: 439ec602-37a9-4e58-90e9-69e0bcf89868
+langcode: en
+status: true
+dependencies:
+  module:
+    - vbo_export
+_core:
+  default_config_hash: EBr1C4AnqZ7DCXGP6fUKTSydf_eDmfS0Tk6QqqaDMJI
+id: vbo_export_generate_xlsx_action
+label: 'Generate xlsx from selected results'
+type: node
+plugin: vbo_export_generate_xlsx_action
+configuration: {  }

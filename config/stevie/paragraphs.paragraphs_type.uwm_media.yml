@@ -1,0 +1,9 @@
+uuid: 4135bb44-6301-4b36-9656-c888b23ec21d
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_media
+label: Media
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

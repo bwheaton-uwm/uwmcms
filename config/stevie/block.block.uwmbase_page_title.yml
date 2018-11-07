@@ -1,0 +1,20 @@
+uuid: 967330da-8f38-4c17-ab94-4db4180140ff
+langcode: en
+status: true
+dependencies:
+  theme:
+    - uwmbase
+_core:
+  default_config_hash: B9SJ_KIVvO8USpSuVzUWzmvoNIZtwUm8Bpz608aL_Bw
+id: uwmbase_page_title
+theme: uwmbase
+region: title
+weight: -50
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

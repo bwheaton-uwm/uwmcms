@@ -1,0 +1,23 @@
+uuid: 6c3bd9a8-9b82-4e36-b857-947ee48ce450
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - media
+id: uploaded_documents
+label: 'Uploaded Documents'
+type: 'canonical_entities:media'
+pattern: '[media:field_uwm_parent_page:entity:url:path]/[media:name]'
+selection_criteria:
+  461d1380-1ccd-4a32-972c-d096e7406887:
+    id: 'entity_bundle:media'
+    bundles:
+      document: document
+    negate: false
+    context_mapping:
+      media: media
+    uuid: 461d1380-1ccd-4a32-972c-d096e7406887
+selection_logic: and
+weight: -8
+relationships: {  }

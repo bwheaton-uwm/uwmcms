@@ -1,0 +1,27 @@
+uuid: 731d6c2b-4fcb-42e5-acd7-8e766c77fbc5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.uwm_text
+    - paragraphs.paragraphs_type.uwm_modal
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    unrestricted: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: paragraph.uwm_modal.uwm_text
+field_name: uwm_text
+entity_type: paragraph
+bundle: uwm_modal
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

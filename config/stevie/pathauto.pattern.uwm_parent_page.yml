@@ -1,0 +1,14 @@
+uuid: 7a17e567-7551-4e34-858a-6c545bc1c139
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: uwm_parent_page
+label: 'Parent Page'
+type: 'canonical_entities:node'
+pattern: '[node:field_uwm_parent_page:entity:url:path]/[node:field_uwm_page_path_name]'
+selection_criteria: {  }
+selection_logic: and
+weight: -10
+relationships: {  }

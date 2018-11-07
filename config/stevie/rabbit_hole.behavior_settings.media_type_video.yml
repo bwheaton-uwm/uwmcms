@@ -1,0 +1,11 @@
+uuid: 5a372a55-37d0-4ba3-80b8-534b1a20b684
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.video
+id: media_type_video
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301

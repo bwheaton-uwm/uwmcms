@@ -1,0 +1,52 @@
+uuid: d770eb7c-bbac-4e79-b586-a30c5138cdb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_sections
+    - node.type.uwm_basic_page
+    - paragraphs.paragraphs_type.uwm_section
+  module:
+    - entity_reference_revisions
+id: node.uwm_basic_page.field_uwm_sections
+field_name: field_uwm_sections
+entity_type: node
+bundle: uwm_basic_page
+label: Sections
+description: 'Pages are composed of sections and sections are composed of components. You should create a new section for each H2-level heading you have on a page.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      uwm_section: uwm_section
+    target_bundles_drag_drop:
+      media:
+        weight: 9
+        enabled: false
+      uwm_accordion:
+        weight: 10
+        enabled: false
+      uwm_accordion_section:
+        weight: 11
+        enabled: false
+      uwm_basic_content:
+        weight: 12
+        enabled: false
+      uwm_block:
+        weight: 13
+        enabled: false
+      uwm_full_html:
+        weight: 14
+        enabled: false
+      uwm_section:
+        enabled: true
+        weight: 15
+      uwm_view:
+        weight: 16
+        enabled: false
+field_type: entity_reference_revisions

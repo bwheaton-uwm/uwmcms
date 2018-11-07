@@ -1,0 +1,36 @@
+uuid: c2360260-cd63-4a26-82b4-6ec8c083267a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_view.uwm_view
+    - paragraphs.paragraphs_type.uwm_view
+  module:
+    - content_moderation
+    - viewsreference
+_core:
+  default_config_hash: zPOlypFifYfDi3xlHZH8YtDzd5NNQ_YWq4zbOEkFqNM
+id: paragraph.uwm_view.default
+targetEntityType: paragraph
+bundle: uwm_view
+mode: default
+content:
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+  uwm_view:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: '60'
+      placeholder: ''
+    third_party_settings: {  }
+    type: viewsreference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

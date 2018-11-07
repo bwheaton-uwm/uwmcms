@@ -1,0 +1,27 @@
+uuid: ceb0ef6f-5c88-4e84-96e7-9bee7cda159f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.uwm_text
+    - paragraphs.paragraphs_type.headshot_card
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    rich_text: rich_text
+    plain_text: plain_text
+    unrestricted: '0'
+id: paragraph.headshot_card.uwm_text
+field_name: uwm_text
+entity_type: paragraph
+bundle: headshot_card
+label: 'Name and Title'
+description: 'Enter the person''s name on the first line and their title on a second line.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,40 @@
+uuid: 805fd19f-664a-4644-a98a-1af53203c9a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_cta_link.field_uwm_accent_color
+    - field.field.paragraph.uwm_cta_link.field_uwm_link
+    - paragraphs.paragraphs_type.uwm_cta_link
+  module:
+    - content_moderation
+    - link
+id: paragraph.uwm_cta_link.default
+targetEntityType: paragraph
+bundle: uwm_cta_link
+mode: default
+content:
+  field_uwm_accent_color:
+    weight: 102
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_uwm_link:
+    weight: 101
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

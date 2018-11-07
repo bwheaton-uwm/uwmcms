@@ -1,0 +1,9 @@
+uuid: 89264a99-f030-4270-8ae1-5cd496d1c194
+langcode: en
+status: true
+dependencies: {  }
+name: 'UWM Column Widths'
+vid: uwm_column_widths
+description: ''
+hierarchy: 0
+weight: 0

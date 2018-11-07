@@ -1,0 +1,47 @@
+uuid: f54a3bb0-ada7-4eb1-92a9-16991eb85bc5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_grid.field_uwm_column_spacing
+    - field.field.paragraph.uwm_grid.field_uwm_columns
+    - field.field.paragraph.uwm_grid.field_uwm_columns_per_row
+    - paragraphs.paragraphs_type.uwm_grid
+  module:
+    - paragraphs
+id: paragraph.uwm_grid.default
+targetEntityType: paragraph
+bundle: uwm_grid
+mode: default
+content:
+  field_uwm_column_spacing:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_uwm_columns:
+    type: paragraphs
+    weight: 2
+    settings:
+      title: 'Column component'
+      title_plural: 'Column components'
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+  field_uwm_columns_per_row:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  moderation_state: true
+  status: true
+  uid: true
