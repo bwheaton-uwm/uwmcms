@@ -780,8 +780,9 @@ if (!file_exists('/var/www/site-php') && empty($_ENV['AH_SITE_ENVIRONMENT'])) {
 }
 
 
-if (file_exists('/var/www/site-php')) {
-  require '/var/www/site-php/uwmed/stevie-settings.inc';
+$file = '/var/www/site-php/uwmed/stevie-settings.inc'; 
+if (file_exists($file)) {
+  require $file;
 }
 
 if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
