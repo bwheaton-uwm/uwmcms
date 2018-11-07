@@ -84,6 +84,7 @@ module:
   media_entity_instagram: 0
   media_entity_twitter: 0
   media_library: 0
+  menu_export: 0
   menu_ui: 0
   metatag: 0
   metatag_open_graph: 0
@@ -110,6 +111,7 @@ module:
   quickedit: 0
   rabbit_hole: 0
   rdf: 0
+  redirect: 0
   responsive_favicons: 0
   rest: 0
   rh_media: 0
@@ -133,7 +135,6 @@ module:
   twig_tweak: 0
   update: 0
   user: 0
-  uwm_paragraphs: 0
   uwmcs_extension: 0
   vbo_export: 0
   video_embed_field: 0

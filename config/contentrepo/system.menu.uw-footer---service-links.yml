@@ -1,0 +1,8 @@
+uuid: 73499a52-a3a1-4976-9847-cb2abe9c74c4
+langcode: en
+status: true
+dependencies: {  }
+id: uw-footer---service-links
+label: 'UWM Footer - Service Links'
+description: ''
+locked: false

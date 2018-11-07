@@ -71,8 +71,7 @@ multisites:
   - huddle
   - calendar
   - contentrepo
-  - uwmedicineorg
-  
+
 behat:
   paths: {  }
   web-driver: selenium

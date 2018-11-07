@@ -101,7 +101,7 @@
         "drupal/media_entity_actions": "^1.0@alpha",
         "drupal/media_entity_soundcloud": "2.x-dev",
         "drupal/menu_block": "^1.4",
-        "drupal/menu_export": "^1.0",
+        "drupal/menu_export": "^1.2",
         "drupal/migrate_plus": "^2.0",
         "drupal/migrate_tools": "^2.0",
         "drupal/minifyhtml": "^1.1",
