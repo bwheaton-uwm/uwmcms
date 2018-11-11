@@ -6,7 +6,13 @@ dependencies:
     - field.field.paragraph.uwm_view.uwm_view
     - paragraphs.paragraphs_type.uwm_view
   module:
+    - field_layout
+    - layout_discovery
     - viewsreference
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: hPs5XWBboV6SU3LXj4FrR2SFia-Hn6q6V4XfSnYzJpc
 id: paragraph.uwm_view.default

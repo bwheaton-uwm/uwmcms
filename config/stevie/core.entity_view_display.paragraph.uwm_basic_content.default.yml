@@ -6,7 +6,13 @@ dependencies:
     - field.field.paragraph.uwm_basic_content.uwm_text
     - paragraphs.paragraphs_type.uwm_basic_content
   module:
+    - field_layout
+    - layout_discovery
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.uwm_basic_content.default
 targetEntityType: paragraph
 bundle: uwm_basic_content

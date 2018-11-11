@@ -7,7 +7,13 @@ dependencies:
     - field.field.media.video_file.field_media_video_file
     - media.type.video_file
   module:
+    - field_layout
     - file
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: caM44LmMqnda-SUlBbdgdae5SICk875uFUPvoHPLdZU
 id: media.video_file.default

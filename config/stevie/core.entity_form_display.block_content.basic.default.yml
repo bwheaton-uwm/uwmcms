@@ -7,7 +7,13 @@ dependencies:
     - field.field.block_content.basic.body
   module:
     - content_moderation
+    - field_layout
+    - layout_discovery
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: S0f54eS7by2OoFl_NrvBK9UGTPx51cktxKhvwMy0Jls
 id: block_content.basic.default

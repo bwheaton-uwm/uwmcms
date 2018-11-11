@@ -7,7 +7,13 @@ dependencies:
     - field.field.paragraph.uwm_link_with_icon.field_uwm_link
     - paragraphs.paragraphs_type.uwm_link_with_icon
   module:
+    - field_layout
+    - layout_discovery
     - link
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.uwm_link_with_icon.default
 targetEntityType: paragraph
 bundle: uwm_link_with_icon

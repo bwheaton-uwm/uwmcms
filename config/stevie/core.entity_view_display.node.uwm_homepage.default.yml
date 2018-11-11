@@ -5,7 +5,13 @@ dependencies:
   config:
     - node.type.uwm_homepage
   module:
+    - field_layout
+    - layout_discovery
     - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: node.uwm_homepage.default
 targetEntityType: node
 bundle: uwm_homepage
@@ -16,4 +22,5 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
-hidden: {  }
+hidden:
+  content_moderation_control: true
