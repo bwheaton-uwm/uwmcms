@@ -1,0 +1,9 @@
+uuid: 1d359549-3ce3-4bff-99a8-e9f3f58df3b6
+langcode: en
+status: true
+dependencies: {  }
+name: 'Areas of Expertise'
+vid: expertise
+description: ''
+hierarchy: 0
+weight: 0

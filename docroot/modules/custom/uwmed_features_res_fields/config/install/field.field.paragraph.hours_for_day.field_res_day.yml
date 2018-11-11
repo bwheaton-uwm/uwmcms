@@ -1,0 +1,21 @@
+uuid: a6597736-373a-464a-86bb-15f19bb3f3c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_res_day
+    - paragraphs.paragraphs_type.hours_for_day
+  module:
+    - options
+id: paragraph.hours_for_day.field_res_day
+field_name: field_res_day
+entity_type: paragraph
+bundle: hours_for_day
+label: 'Day of Week'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

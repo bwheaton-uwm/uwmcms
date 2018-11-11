@@ -1,0 +1,19 @@
+uuid: b48da14b-4459-4e71-b69a-7e5bc240f402
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_res_language_code
+    - taxonomy.vocabulary.languages
+id: taxonomy_term.languages.field_res_language_code
+field_name: field_res_language_code
+entity_type: taxonomy_term
+bundle: languages
+label: 'Language Code'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

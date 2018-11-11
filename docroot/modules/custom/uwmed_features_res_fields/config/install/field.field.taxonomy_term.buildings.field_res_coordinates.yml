@@ -1,0 +1,21 @@
+uuid: 9f284ea5-2ad3-4414-90d6-7521cc4ee1ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_res_coordinates
+    - taxonomy.vocabulary.buildings
+  module:
+    - geolocation
+id: taxonomy_term.buildings.field_res_coordinates
+field_name: field_res_coordinates
+entity_type: taxonomy_term
+bundle: buildings
+label: Coordinates
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geolocation
