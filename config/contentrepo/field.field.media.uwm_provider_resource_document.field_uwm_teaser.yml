@@ -1,0 +1,27 @@
+uuid: 405fd1e3-b645-4694-8b9a-bb1433f87da7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_uwm_teaser
+    - media.type.uwm_provider_resource_document
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    unrestricted: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: media.uwm_provider_resource_document.field_uwm_teaser
+field_name: field_uwm_teaser
+entity_type: media
+bundle: uwm_provider_resource_document
+label: Teaser
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

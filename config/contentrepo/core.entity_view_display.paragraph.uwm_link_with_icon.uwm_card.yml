@@ -1,17 +1,18 @@
-uuid: 7a18df24-ca96-41f8-91d8-61015ba58481
+uuid: 0672d076-50e4-40d2-a3eb-80dc236ddc53
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.paragraph.uwm_card
     - field.field.paragraph.uwm_link_with_icon.field_uwm_icon
     - field.field.paragraph.uwm_link_with_icon.field_uwm_link
     - paragraphs.paragraphs_type.uwm_link_with_icon
   module:
     - link
-id: paragraph.uwm_link_with_icon.default
+id: paragraph.uwm_link_with_icon.uwm_card
 targetEntityType: paragraph
 bundle: uwm_link_with_icon
-mode: default
+mode: uwm_card
 content:
   field_uwm_icon:
     weight: 0

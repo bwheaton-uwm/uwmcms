@@ -26,7 +26,7 @@ bundle: uwm_basic_page
 mode: default
 content:
   field_meta_tags:
-    weight: 101
+    weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -34,7 +34,7 @@ content:
     region: content
   field_uwm_hero:
     type: entity_reference_revisions_entity_view
-    weight: 106
+    weight: 4
     label: hidden
     settings:
       view_mode: default
@@ -42,7 +42,7 @@ content:
     third_party_settings: {  }
     region: content
   field_uwm_page_path_name:
-    weight: 104
+    weight: 2
     label: hidden
     settings:
       link_to_entity: false
@@ -50,7 +50,7 @@ content:
     type: string
     region: content
   field_uwm_parent_page:
-    weight: 105
+    weight: 3
     label: hidden
     settings:
       link: true
@@ -58,7 +58,7 @@ content:
     type: entity_reference_label
     region: content
   field_uwm_sections:
-    weight: 102
+    weight: 0
     label: hidden
     settings:
       view_mode: default
@@ -66,10 +66,6 @@ content:
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
     region: content
-  links:
-    weight: 100
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   content_moderation_control: true
+  links: true

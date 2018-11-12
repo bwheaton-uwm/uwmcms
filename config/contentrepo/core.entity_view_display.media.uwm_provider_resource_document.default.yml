@@ -1,0 +1,109 @@
+uuid: 80aab691-22f4-44bc-9100-9df11efa03b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.uwm_provider_resource_document.field_media_file
+    - field.field.media.uwm_provider_resource_document.field_media_in_library
+    - field.field.media.uwm_provider_resource_document.field_uwm_description
+    - field.field.media.uwm_provider_resource_document.field_uwm_prov_res_doc_type
+    - field.field.media.uwm_provider_resource_document.field_uwm_prov_res_specialty
+    - field.field.media.uwm_provider_resource_document.field_uwm_prov_res_sub_specialty
+    - field.field.media.uwm_provider_resource_document.field_uwm_teaser
+    - field.field.media.uwm_provider_resource_document.image
+    - image.style.thumbnail
+    - media.type.uwm_provider_resource_document
+  module:
+    - file
+    - image
+    - text
+    - user
+id: media.uwm_provider_resource_document.default
+targetEntityType: media
+bundle: uwm_provider_resource_document
+mode: default
+content:
+  created:
+    label: hidden
+    type: timestamp
+    weight: 0
+    region: content
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+  field_media_file:
+    weight: 6
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    type: file_default
+    region: content
+  field_uwm_description:
+    weight: 8
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_uwm_prov_res_doc_type:
+    weight: 12
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_uwm_prov_res_specialty:
+    weight: 10
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_uwm_prov_res_sub_specialty:
+    weight: 11
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_uwm_teaser:
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  image:
+    weight: 9
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  thumbnail:
+    type: image
+    weight: 5
+    label: hidden
+    settings:
+      image_style: thumbnail
+      image_link: ''
+    region: content
+    third_party_settings: {  }
+  uid:
+    label: hidden
+    type: author
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_media_in_library: true
+  name: true

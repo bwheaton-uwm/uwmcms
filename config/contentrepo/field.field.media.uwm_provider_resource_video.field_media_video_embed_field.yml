@@ -1,0 +1,22 @@
+uuid: bfeb3b57-80a1-4975-b609-327e6a6f4750
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_video_embed_field
+    - media.type.uwm_provider_resource_video
+  module:
+    - video_embed_field
+id: media.uwm_provider_resource_video.field_media_video_embed_field
+field_name: field_media_video_embed_field
+entity_type: media
+bundle: uwm_provider_resource_video
+label: 'Video Url'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_providers: {  }
+field_type: video_embed_field

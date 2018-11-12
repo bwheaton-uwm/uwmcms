@@ -1,0 +1,9 @@
+uuid: d7a06c35-b041-4d06-abe6-f064a1018266
+langcode: en
+status: true
+dependencies: {  }
+name: 'UWM Provider Resource Document Type'
+vid: uwm_provider_resource_doc_type
+description: ''
+hierarchy: 0
+weight: 0
