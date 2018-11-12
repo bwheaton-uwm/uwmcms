@@ -12,6 +12,8 @@ dependencies:
   module:
     - content_moderation
     - field_group
+    - field_layout
+    - layout_discovery
     - metatag
     - paragraphs
     - path
@@ -54,6 +56,9 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Content Sections'
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: node.uwm_hub_page.default
 targetEntityType: node
 bundle: uwm_hub_page

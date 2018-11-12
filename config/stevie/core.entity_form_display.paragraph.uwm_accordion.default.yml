@@ -8,8 +8,13 @@ dependencies:
     - field.field.paragraph.uwm_accordion.uwm_show_indicators
     - paragraphs.paragraphs_type.uwm_accordion
   module:
-    - content_moderation
+    - field_layout
+    - layout_discovery
     - paragraphs
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: scev7vW3d6K_yTrDLDKxO48-pfXEbImr_1xEp_VW0qM
 id: paragraph.uwm_accordion.default

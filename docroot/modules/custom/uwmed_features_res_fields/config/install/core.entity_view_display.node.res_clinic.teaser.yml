@@ -1,0 +1,58 @@
+uuid: f2c3ae98-1ec3-4f03-8cfe-e88a7b69eff9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.res_clinic.field_res_affiliates
+    - field.field.node.res_clinic.field_res_box_number
+    - field.field.node.res_clinic.field_res_building
+    - field.field.node.res_clinic.field_res_displayaptslink
+    - field.field.node.res_clinic.field_res_external_url
+    - field.field.node.res_clinic.field_res_fax_number
+    - field.field.node.res_clinic.field_res_floor
+    - field.field.node.res_clinic.field_res_hours_of_operation
+    - field.field.node.res_clinic.field_res_image
+    - field.field.node.res_clinic.uwm_unique_id
+    - field.field.node.res_clinic.field_res_internal_url
+    - field.field.node.res_clinic.field_res_iscallcenterserviced
+    - field.field.node.res_clinic.field_res_medical_services
+    - field.field.node.res_clinic.field_res_meta_tags
+    - field.field.node.res_clinic.field_res_phone_number
+    - field.field.node.res_clinic.field_res_providers
+    - field.field.node.res_clinic.field_res_room_number
+    - node.type.res_clinic
+  module:
+    - field_layout
+    - layout_discovery
+    - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: node.res_clinic.teaser
+targetEntityType: node
+bundle: res_clinic
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_res_affiliates: true
+  field_res_box_number: true
+  field_res_building: true
+  field_res_displayaptslink: true
+  field_res_external_url: true
+  field_res_fax_number: true
+  field_res_floor: true
+  field_res_hours_of_operation: true
+  field_res_image: true
+  field_res_internal_url: true
+  field_res_iscallcenterserviced: true
+  field_res_medical_services: true
+  field_res_meta_tags: true
+  field_res_phone_number: true
+  field_res_providers: true
+  field_res_room_number: true
+  uwm_unique_id: true

@@ -9,9 +9,15 @@ dependencies:
     - image.style.thumbnail
     - media.type.document
   module:
+    - field_layout
     - file
     - image
+    - layout_discovery
     - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: 4tgcXj_iKv9Fw3xmONUfCHKqO7OeOa11qVesruN4k4k
 id: media.document.default

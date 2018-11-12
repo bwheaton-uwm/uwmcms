@@ -1,0 +1,19 @@
+uuid: 2cf8dd3a-b9da-4594-9170-444c0f7e88bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.uwm_unique_id
+    - taxonomy.vocabulary.languages
+id: taxonomy_term.languages.uwm_unique_id
+field_name: uwm_unique_id
+entity_type: taxonomy_term
+bundle: languages
+label: 'Universal Id or Source URL'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,34 @@
+uuid: e4d4d46f-cfac-4dad-80fd-62554a2873b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_hours_of_operation
+    - node.type.res_clinic
+    - paragraphs.paragraphs_type.hours_of_operation
+  module:
+    - entity_reference_revisions
+id: node.res_clinic.field_res_hours_of_operation
+field_name: field_res_hours_of_operation
+entity_type: node
+bundle: res_clinic
+label: 'Hours of Operation'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      hours_of_operation: hours_of_operation
+    target_bundles_drag_drop:
+      hours_for_day:
+        weight: 3
+        enabled: false
+      hours_of_operation:
+        enabled: true
+        weight: 4
+field_type: entity_reference_revisions

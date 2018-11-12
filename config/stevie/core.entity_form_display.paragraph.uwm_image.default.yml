@@ -7,8 +7,13 @@ dependencies:
     - image.style.thumbnail
     - paragraphs.paragraphs_type.uwm_image
   module:
-    - content_moderation
+    - field_layout
     - image
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.uwm_image.default
 targetEntityType: paragraph
 bundle: uwm_image

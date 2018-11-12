@@ -1,0 +1,9 @@
+uuid: 950b6884-f8c5-47c2-8216-b3a70443120e
+langcode: en
+status: true
+dependencies: {  }
+id: hours_of_operation
+label: 'Hours of Operation'
+icon_uuid: null
+description: 'Manage a clinic''s open hours.'
+behavior_plugins: {  }

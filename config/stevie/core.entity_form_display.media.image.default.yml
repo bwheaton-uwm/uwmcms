@@ -8,8 +8,14 @@ dependencies:
     - image.style.medium
     - media.type.image
   module:
+    - field_layout
     - focal_point
+    - layout_discovery
     - lightning_media
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: kyoAHlZTGIuGTaQuBblGBk8EhfnVKOl19_0j5WbpQqM
 id: media.image.default

@@ -4,6 +4,7 @@ module:
   acquia_contenthub_diagnostic: 0
   acquia_contenthub_status: 0
   acquia_contenthub_subscriber: 0
+  address: 0
   admin_toolbar: 0
   admin_toolbar_links_access_filter: 0
   admin_toolbar_tools: 0
@@ -49,10 +50,12 @@ module:
   fallback_formatter: 0
   field: 0
   field_group: 0
+  field_layout: 0
   field_ui: 0
   file: 0
   filter: 0
   focal_point: 0
+  geolocation: 0
   google_tag: 0
   help: 0
   history: 0

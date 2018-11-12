@@ -4,9 +4,20 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.uwm_hub_page.field_meta_tags
+    - field.field.node.uwm_hub_page.field_uwm_hero
+    - field.field.node.uwm_hub_page.field_uwm_page_path_name
+    - field.field.node.uwm_hub_page.field_uwm_parent_page
+    - field.field.node.uwm_hub_page.field_uwm_sections
     - node.type.uwm_hub_page
   module:
+    - field_layout
+    - layout_discovery
     - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: node.uwm_hub_page.teaser
 targetEntityType: node
 bundle: uwm_hub_page

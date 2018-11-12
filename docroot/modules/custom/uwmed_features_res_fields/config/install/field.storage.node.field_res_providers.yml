@@ -1,0 +1,19 @@
+uuid: bc6bfdf2-5f7c-4b6c-9ea0-e9ca2e0c714d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_res_providers
+field_name: field_res_providers
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

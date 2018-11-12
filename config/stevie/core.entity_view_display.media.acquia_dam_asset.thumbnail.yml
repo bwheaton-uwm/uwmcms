@@ -11,7 +11,13 @@ dependencies:
     - image.style.medium
     - media.type.acquia_dam_asset
   module:
+    - field_layout
     - image
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: fek-HmkX8fb8R7vd9dFood-t6sk81w4djUDABj5XN5w
 id: media.acquia_dam_asset.thumbnail
