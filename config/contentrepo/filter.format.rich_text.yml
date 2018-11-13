@@ -47,31 +47,31 @@ filters:
     status: true
     weight: -50
     settings:
-      allowed_html: '<a href aria-controls aria-expanded data-target data-toggle hreflang class id target role> <em> <strong> <cite> <blockquote cite> <code> <ul type class> <ol start type class> <li class> <dl class> <dt class> <dd class> <h3 id class> <h4 id class> <h5 id class> <h6 id class> <s> <sup> <sub> <img class src alt data-entity-type data-entity-uuid data-align data-caption class> <table class> <caption> <tbody class> <thead class> <tfoot class> <th class> <td class> <tr class> <hr> <p class> <br> <pre> <drupal-entity data-* title alt> <div class id> <span class>'
+      allowed_html: '<a href aria-controls aria-expanded data-target data-toggle hreflang class="btn btn-cta m* p*" id target role> <em> <strong> <cite> <blockquote cite> <code> <ul type class> <ol start type class> <li class> <dl class> <dt class> <dd class> <h3 id class> <h4 id class> <h5 id class> <h6 id class> <s> <sup> <sub> <img class src alt data-entity-type data-entity-uuid data-align data-caption class> <table class> <caption> <tbody class> <thead class> <tfoot class> <th class> <td class> <tr class> <hr> <p class> <br> <pre> <drupal-entity data-* title alt> <div class id> <span class>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_autop:
     id: filter_autop
     provider: filter
     status: false
-    weight: -43
+    weight: -42
     settings: {  }
   filter_html_escape:
     id: filter_html_escape
     provider: filter
     status: false
-    weight: -44
+    weight: -43
     settings: {  }
   filter_html_image_secure:
     id: filter_html_image_secure
     provider: filter
     status: false
-    weight: -41
+    weight: -40
     settings: {  }
   filter_url:
     id: filter_url
     provider: filter
     status: false
-    weight: -42
+    weight: -41
     settings:
       filter_url_length: 72

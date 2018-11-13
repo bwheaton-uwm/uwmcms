@@ -1,0 +1,22 @@
+uuid: 9892ab18-4c2f-483b-be1c-a533a7d183f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_accent_heading.field_uwm_short_formatted_text
+    - paragraphs.paragraphs_type.uwm_accent_heading
+  module:
+    - text
+id: paragraph.uwm_accent_heading.default
+targetEntityType: paragraph
+bundle: uwm_accent_heading
+mode: default
+content:
+  field_uwm_short_formatted_text:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

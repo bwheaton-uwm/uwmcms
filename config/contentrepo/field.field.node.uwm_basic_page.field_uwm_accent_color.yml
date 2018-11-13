@@ -1,15 +1,15 @@
-uuid: 72390c11-02ac-48ed-a090-0ee95c5d0b42
+uuid: 1255f5ac-7200-4be5-8687-fb1bb4ae0736
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_uwm_accent_color
-    - paragraphs.paragraphs_type.uwm_cta_link
+    - field.storage.node.field_uwm_accent_color
+    - node.type.uwm_basic_page
     - taxonomy.vocabulary.uwm_accent_colors
-id: paragraph.uwm_cta_link.field_uwm_accent_color
+id: node.uwm_basic_page.field_uwm_accent_color
 field_name: field_uwm_accent_color
-entity_type: paragraph
-bundle: uwm_cta_link
+entity_type: node
+bundle: uwm_basic_page
 label: 'Accent Color'
 description: ''
 required: false

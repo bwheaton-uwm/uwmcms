@@ -139,6 +139,7 @@ module:
   vbo_export: 0
   video_embed_field: 0
   video_embed_media: 0
+  views_bulk_edit: 0
   views_bulk_operations: 0
   views_infinite_scroll: 0
   views_ui: 0
@@ -146,6 +147,7 @@ module:
   workflows: 0
   menu_link_content: 1
   pathauto: 1
+  views_url_alias_node: 2
   views: 10
   paragraphs: 11
   lightning: 1000

@@ -34,7 +34,6 @@ class TwigExtension extends \Twig_Extension {
         'uwm_extract_parts', [$this, 'extractArrayValues']),
       new \Twig_SimpleFunction(
         'uwm_get_sharepoint_location_image', [$this, 'getSharepointLocationImage']),
-
     ];
   }
 
@@ -65,6 +64,8 @@ class TwigExtension extends \Twig_Extension {
         'uwm_format_phone', [$this, 'formatPhone']),
       new \Twig_SimpleFilter(
         'uwm_arraycount_styles', [$this, 'collectionCssClasses']),
+      new \Twig_SimpleFilter(
+        'uwm_format_accent_class', [$this, 'formatAccentClass']),
 
     ];
   }
@@ -387,6 +388,28 @@ class TwigExtension extends \Twig_Extension {
     }
 
     return $cssClasses;
+
+  }
+
+  /**
+   * Description text.
+   *
+   * @param string|null $accentColor
+   *   Description text.
+   *
+   * @return string
+   *   Description text.
+   */
+  public static function formatAccentClass(string $accentColor = '') {
+
+    $suffixPattern = '/(.*)\s\(.*\)/';
+    $suffixReplacement = '${1}';
+    $accentClass = preg_replace($suffixPattern, $suffixReplacement, $accentColor);
+
+    $spacePattern = '/\s/';
+    $spaceReplacement = '-';
+    $accentClass = preg_replace($spacePattern, $spaceReplacement, $accentClass);
+    return strtolower($accentClass);
 
   }
 

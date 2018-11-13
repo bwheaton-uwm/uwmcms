@@ -59,7 +59,7 @@ settings:
             - Maximize
   plugins:
     stylescombo:
-      styles: "a.btn.btn-cta.btn-purple|Education (Light Purple) CTA Button\r\na.btn.btn-cta.btn-blue|ALNW (Blue) CTA Button\r\na.btn.btn-cta.btn-orange|Research (Orange) CTA Button\r\na.btn.btn-cta.btn-teal|Provider Resources (Teal) CTA Button\r\na.btn.btn-cta.btn-primary|About (Dark Purple) CTA Button\r\na.btn.btn-cta.btn-yellow|Yellow CTA Button\r\np.subheading|Subheading"
+      styles: "a.btn.btn-cta|CTA Button\r\np.subheading|Subheading"
     language:
       language_list: un
     templates:

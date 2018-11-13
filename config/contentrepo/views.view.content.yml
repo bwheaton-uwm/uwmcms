@@ -8,6 +8,8 @@ dependencies:
     - content_moderation
     - node
     - user
+    - views_bulk_operations
+    - views_url_alias_node
 _core:
   default_config_hash: tS8PbpJX90aRFC3-UTgXzdqkq7_2frk2pz4TMijEebM
 id: content
@@ -60,23 +62,28 @@ display:
           summary: ''
           description: ''
           columns:
-            node_bulk_form: node_bulk_form
+            views_bulk_operations_bulk_form: views_bulk_operations_bulk_form
             title: title
+            alias: alias
             type: type
             name: name
-            status: status
             changed: changed
-            edit_node: edit_node
-            delete_node: delete_node
-            dropbutton: dropbutton
-            timestamp: title
+            moderation_state: moderation_state
+            operations: operations
           info:
-            node_bulk_form:
+            views_bulk_operations_bulk_form:
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
             title:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            alias:
               sortable: true
               default_sort_order: asc
               align: ''
@@ -91,19 +98,12 @@ display:
               empty_column: false
               responsive: ''
             name:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: priority-low
-            status:
               sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
-              responsive: ''
+              responsive: priority-low
             changed:
               sortable: true
               default_sort_order: desc
@@ -111,30 +111,14 @@ display:
               separator: ''
               empty_column: false
               responsive: priority-low
-            edit_node:
-              sortable: false
+            moderation_state:
+              sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            delete_node:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            dropbutton:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            timestamp:
-              sortable: false
-              default_sort_order: asc
+            operations:
               align: ''
               separator: ''
               empty_column: false
@@ -144,22 +128,109 @@ display:
       row:
         type: fields
       fields:
-        node_bulk_form:
-          id: node_bulk_form
-          table: node
-          field: node_bulk_form
-          label: ''
+        views_bulk_operations_bulk_form:
+          id: views_bulk_operations_bulk_form
+          table: views
+          field: views_bulk_operations_bulk_form
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Views bulk operations'
           exclude: false
           alter:
             alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
           element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
           element_default_classes: true
           empty: ''
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          plugin_id: node_bulk_form
-          entity_type: node
+          batch: true
+          batch_size: 10
+          form_step: true
+          buttons: false
+          clear_on_exposed: 0
+          action_title: Action
+          selected_actions:
+            node_unpromote_action: 0
+            node_unpublish_action: node_unpublish_action
+            node_publish_action: node_publish_action
+            node_unpublish_by_keyword_action: 0
+            node_assign_owner_action: 0
+            node_promote_action: 0
+            node_save_action: node_save_action
+            node_make_sticky_action: 0
+            node_make_unsticky_action: 0
+            vbo_export_generate_xlsx_action: vbo_export_generate_xlsx_action
+            vbo_export_generate_csv_action: vbo_export_generate_csv_action
+            views_bulk_edit: views_bulk_edit
+            views_bulk_operations_delete_entity: views_bulk_operations_delete_entity
+            pathauto_update_alias: pathauto_update_alias
+            'entity:save_action:node': 'entity:save_action:node'
+            'entity:unpublish_action:node': 'entity:unpublish_action:node'
+            'entity:publish_action:node': 'entity:publish_action:node'
+            'entity:delete_action:node': 'entity:delete_action:node'
+          preconfiguration:
+            node_unpublish_action:
+              label_override: ''
+            node_publish_action:
+              label_override: ''
+            node_save_action:
+              label_override: ''
+            vbo_export_generate_xlsx_action:
+              label_override: ''
+              strip_tags: 0
+            vbo_export_generate_csv_action:
+              label_override: ''
+              strip_tags: 0
+              separator: ;
+            views_bulk_edit:
+              label_override: ''
+              get_bundles_from_results: 1
+            views_bulk_operations_delete_entity:
+              label_override: ''
+            pathauto_update_alias:
+              label_override: ''
+            'entity:save_action:node':
+              label_override: ''
+            'entity:unpublish_action:node':
+              label_override: ''
+            'entity:publish_action:node':
+              label_override: ''
+            'entity:delete_action:node':
+              label_override: ''
+          plugin_id: views_bulk_operations_bulk_form
         title:
           id: title
           table: node_field_data
@@ -180,6 +251,55 @@ display:
           settings:
             link_to_entity: true
           plugin_id: field
+        alias:
+          id: alias
+          table: views_url_alias_node
+          field: alias
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'URL alias'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          plugin_id: standard
         type:
           id: type
           table: node_field_data
@@ -576,6 +696,47 @@ display:
             group_items: {  }
           entity_type: node
           plugin_id: moderation_state_filter
+        alias:
+          id: alias
+          table: views_url_alias_node
+          field: alias
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: alias_op
+            label: 'URL alias'
+            description: ''
+            use_operator: false
+            operator: alias_op
+            identifier: alias
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              replicator: '0'
+              administrator: '0'
+              content_manager: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: string
       sorts: {  }
       title: Content
       empty:

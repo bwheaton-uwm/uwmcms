@@ -38,8 +38,9 @@ content:
     label: hidden
     settings:
       image_style: ''
+      image_link: ''
     third_party_settings: {  }
-    type: image_url
+    type: image
     region: content
   field_uwm_modal:
     type: entity_reference_revisions_entity_view

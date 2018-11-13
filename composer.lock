@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fd16a78b14ece5335fd2de226777bb2f",
+    "content-hash": "300eeeb70485916b1c0a7f65a0a5d480",
     "packages": [
         {
             "name": "acquia/blt",
@@ -12356,6 +12356,59 @@
             }
         },
         {
+            "name": "drupal/views_bulk_edit",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/views_bulk_edit",
+                "reference": "8.x-2.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/views_bulk_edit-8.x-2.2.zip",
+                "reference": "8.x-2.2",
+                "shasum": "6a096dc73fab842c1b000d8788241ed9d3a17427"
+            },
+            "require": {
+                "drupal/core": "*",
+                "drupal/views_bulk_operations": "~1.0 | ~2.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-2.2",
+                    "datestamp": "1532689085",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Marcin Grabias",
+                    "homepage": "https://www.drupal.org/u/graber"
+                },
+                {
+                    "name": "benjy",
+                    "homepage": "https://www.drupal.org/user/1852732"
+                }
+            ],
+            "description": "Allows bulk edition of entity field values.",
+            "homepage": "https://www.drupal.org/project/views_bulk_edit",
+            "support": {
+                "source": "http://cgit.drupalcode.org/views_bulk_edit",
+                "issues": "https://www.drupal.org/project/issues/views_bulk_edit?version=8.x"
+            }
+        },
+        {
             "name": "drupal/views_bulk_operations",
             "version": "2.4.0",
             "source": {
@@ -12576,6 +12629,60 @@
             "homepage": "https://www.drupal.org/project/views_templates",
             "support": {
                 "source": "http://cgit.drupalcode.org/views_templates"
+            }
+        },
+        {
+            "name": "drupal/views_url_alias",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/views_url_alias",
+                "reference": "8.x-1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/views_url_alias-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "ff707784674bcb8429d3701f34f06a4bf7b910a7"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0",
+                    "datestamp": "1517375880",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "L-four",
+                    "homepage": "https://www.drupal.org/user/357826"
+                },
+                {
+                    "name": "erikwebb",
+                    "homepage": "https://www.drupal.org/user/273404"
+                },
+                {
+                    "name": "jrockowitz",
+                    "homepage": "https://www.drupal.org/user/371407"
+                }
+            ],
+            "homepage": "https://www.drupal.org/project/views_url_alias",
+            "support": {
+                "source": "http://cgit.drupalcode.org/views_url_alias"
             }
         },
         {
@@ -19183,13 +19290,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/uwmweb/uwmbase.git",
-                "reference": "f0a461cf752d5e4fc2682cd56c47d6ab3397191a"
+                "reference": "481d8a3aee7ad3b0821e93bbc9d2c7d9e949f574"
             },
             "dist": {
                 "type": "tar",
-                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-f0a461cf752d5e4fc2682cd56c47d6ab3397191a-zip-bb83ea.tar",
-                "reference": "f0a461cf752d5e4fc2682cd56c47d6ab3397191a",
-                "shasum": "d714b4d0bc70f0ff697d2ef1d0569bb27d7481d7"
+                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-481d8a3aee7ad3b0821e93bbc9d2c7d9e949f574-zip-2a22b4.tar",
+                "reference": "481d8a3aee7ad3b0821e93bbc9d2c7d9e949f574",
+                "shasum": "c8c6d97d7a919d5fff2714424cbe4009b40d49aa"
             },
             "type": "drupal-theme",
             "license": [
@@ -19200,7 +19307,7 @@
                 "source": "https://github.com/uwmweb/uwmbase/tree/initial-styles",
                 "issues": "https://github.com/uwmweb/uwmbase/issues"
             },
-            "time": "2018-11-09T21:58:20+00:00"
+            "time": "2018-11-13T00:23:27+00:00"
         },
         {
             "name": "uwmweb/uwmedicineorg_theme",
