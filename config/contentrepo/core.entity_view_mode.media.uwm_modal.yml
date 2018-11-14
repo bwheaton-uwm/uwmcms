@@ -1,0 +1,14 @@
+uuid: 96157eb3-bbc7-43ee-830d-d0f0877e347a
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: 'View mode for displaying content in a modal.'
+id: media.uwm_modal
+label: Modal
+targetEntityType: media
+cache: true
