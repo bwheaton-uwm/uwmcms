@@ -162,3 +162,10 @@ acquia_contenthub: 1.31.0
 acquia_contenthub_subscriber: 1.31.0
 acquia_contenthub_status: 1.31.0
 geolocation: 1.11.0
+search_api_solr: 1.2.0
+acquia_search: 1.14.0
+facets: 1.1.0
+geocoder: 2.0.0-beta7
+geofield: 1.0.0-beta5
+search_api_autocomplete: 1.1.0
+search_api_location: 1.0.0-alpha1
