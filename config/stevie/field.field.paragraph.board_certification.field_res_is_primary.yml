@@ -1,0 +1,25 @@
+uuid: 5b5536f1-3333-415a-a9db-26fb137b030d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_res_is_primary
+    - paragraphs.paragraphs_type.board_certification
+_core:
+  default_config_hash: 9zOyCjBmdixGL6iwXbz5q_IS_f3QPzySe-fjuqgN-IY
+id: paragraph.board_certification.field_res_is_primary
+field_name: field_res_is_primary
+entity_type: paragraph
+bundle: board_certification
+label: 'Is primary?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

@@ -77,6 +77,8 @@ display:
         options:
           view_modes:
             'entity:node':
+              res_clinic: default
+              res_provider: default
               uwm_basic_page: default
               uwm_homepage: default
               uwm_hub_page: default

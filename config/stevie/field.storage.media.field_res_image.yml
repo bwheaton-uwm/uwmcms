@@ -1,0 +1,25 @@
+uuid: e7bfebc2-88cb-454a-b039-a9b9e1a5d058
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - media
+_core:
+  default_config_hash: 7ZiBIyfKcMSeW7hYnjoiVOA7ZUvdaeQbcvZGfoefHzQ
+id: media.field_res_image
+field_name: field_res_image
+entity_type: media
+type: file
+settings:
+  display_field: true
+  display_default: true
+  uri_scheme: public
+  target_type: file
+module: file
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

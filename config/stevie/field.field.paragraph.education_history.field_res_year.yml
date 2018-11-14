@@ -1,0 +1,21 @@
+uuid: 1dc77d24-bb96-44a7-9af1-a2bae6ece273
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_res_year
+    - paragraphs.paragraphs_type.education_history
+_core:
+  default_config_hash: vkhAofuJRtdC8IEGB6BgEiRDmDN_QNYD9Qqjmt2vR4Y
+id: paragraph.education_history.field_res_year
+field_name: field_res_year
+entity_type: paragraph
+bundle: education_history
+label: 'Graduation Year'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

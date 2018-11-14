@@ -1,0 +1,23 @@
+uuid: f23b2667-ea04-48f4-968e-8b1cbec9576d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_phone_number
+    - node.type.res_clinic
+  module:
+    - telephone
+_core:
+  default_config_hash: NXaFUVuPObrB9h4-SwUn52yJpjUwBdyzqr1t5dK3Y1A
+id: node.res_clinic.field_res_phone_number
+field_name: field_res_phone_number
+entity_type: node
+bundle: res_clinic
+label: 'Phone Number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

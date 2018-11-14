@@ -1,0 +1,31 @@
+uuid: 8405ad85-9624-410b-9ced-195b5b2b95c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_floor
+    - node.type.res_clinic
+    - taxonomy.vocabulary.floors
+_core:
+  default_config_hash: EOGuhc3vssUdA-jw49P9je_xc0HwhRtV1imWb4xDVtk
+id: node.res_clinic.field_res_floor
+field_name: field_res_floor
+entity_type: node
+bundle: res_clinic
+label: Floor
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      floors: floors
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

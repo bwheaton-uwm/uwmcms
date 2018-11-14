@@ -1,0 +1,29 @@
+uuid: eb97922a-7aed-41b5-88ff-a9ae77b86263
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: 5pC1vLC3_Gwf-Jq2rpY06xOvP3DyBNJruVWOaqMRDVM
+id: paragraph.field_res_hours_type
+field_name: field_res_hours_type
+entity_type: paragraph
+type: list_integer
+settings:
+  allowed_values:
+    -
+      value: 0
+      label: 'Hours of Operation'
+    -
+      value: 1
+      label: 'Urgent Care Hours'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

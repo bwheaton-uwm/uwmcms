@@ -1,0 +1,20 @@
+uuid: e44a381f-3724-403a-b76f-a5d71d1b2979
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: YlaifkbGXtciy93R8wRDllGne0eY9qPt5VXfORBz__k
+id: node.field_res_displayaptslink
+field_name: field_res_displayaptslink
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

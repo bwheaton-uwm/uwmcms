@@ -1,0 +1,11 @@
+uuid: 4c521ec8-5053-4a68-b9bc-cda2248df050
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: X_e5ns20qNLH7mn9VMTglFkwRZmEI4-0Lq_N-D6gY5Y
+name: Degrees
+vid: degrees
+description: ''
+hierarchy: 0
+weight: 0

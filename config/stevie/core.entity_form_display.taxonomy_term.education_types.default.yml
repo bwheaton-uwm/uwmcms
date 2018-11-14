@@ -1,0 +1,54 @@
+uuid: 34e79986-ea17-4fa1-82c2-ae107287a7b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.education_types.uwm_unique_id
+    - taxonomy.vocabulary.education_types
+  module:
+    - field_layout
+    - layout_discovery
+    - path
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+_core:
+  default_config_hash: pxtfAr5ez9k6Hxo1dfTnQxMcs3rSYuELWglSXxzZVSI
+id: taxonomy_term.education_types.default
+targetEntityType: taxonomy_term
+bundle: education_types
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uwm_unique_id:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden: {  }

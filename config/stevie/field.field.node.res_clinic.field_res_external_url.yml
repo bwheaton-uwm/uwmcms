@@ -1,0 +1,21 @@
+uuid: 35808c09-6a9b-45dc-8ba7-16dbc277af0e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_external_url
+    - node.type.res_clinic
+_core:
+  default_config_hash: yVUZs3KeoLcFAsXy_RzcQUiwOmwAkKqhm3ttKMnA4cc
+id: node.res_clinic.field_res_external_url
+field_name: field_res_external_url
+entity_type: node
+bundle: res_clinic
+label: 'External Url'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
