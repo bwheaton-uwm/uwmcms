@@ -1,8 +1,9 @@
-uuid: edf6bf0e-984a-4499-9b80-b229459a65ef
+uuid: 17e1a450-e54b-4fcc-88ae-852e456bc629
 langcode: en
-status: true
+status: false
 dependencies:
   config:
+    - core.entity_view_mode.paragraph.uwm_featured_story
     - field.field.paragraph.uwm_featured_story.field_uwm_bottom_border_options
     - field.field.paragraph.uwm_featured_story.field_uwm_card_content
     - field.field.paragraph.uwm_featured_story.field_uwm_image
@@ -11,10 +12,10 @@ dependencies:
   module:
     - entity_reference_revisions
     - image
-id: paragraph.uwm_featured_story.default
+id: paragraph.uwm_featured_story.uwm_featured_story
 targetEntityType: paragraph
 bundle: uwm_featured_story
-mode: default
+mode: uwm_featured_story
 content:
   field_uwm_bottom_border_options:
     weight: 3
@@ -47,7 +48,7 @@ content:
     weight: 2
     label: hidden
     settings:
-      view_mode: uwm_featured_story
+      view_mode: default
       link: ''
     third_party_settings: {  }
     region: content
