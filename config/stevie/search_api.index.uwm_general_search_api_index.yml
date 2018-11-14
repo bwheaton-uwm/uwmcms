@@ -3,18 +3,150 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.media.field_acquiadam_asset_descrip
+    - field.storage.node.field_res_expertises
+    - field.storage.node.field_res_external_url
+    - field.storage.node.field_res_internal_url
+    - field.storage.node.field_res_medical_services
     - search_api.server.database
+    - core.entity_view_mode.media.embedded
+    - core.entity_view_mode.node.search_result
   module:
-    - search_api
-    - node
     - file
+    - token
     - media
     - taxonomy
+    - node
+    - search_api
 id: uwm_general_search_api_index
 name: 'UWM General - Search API Index'
 description: ''
 read_only: false
-field_settings: {  }
+field_settings:
+  field_acquiadam_asset_descrip:
+    label: Description
+    datasource_id: 'entity:media'
+    property_path: field_acquiadam_asset_descrip
+    type: text
+    dependencies:
+      config:
+        - field.storage.media.field_acquiadam_asset_descrip
+  field_res_expertises:
+    label: 'Areas of Expertise'
+    datasource_id: 'entity:node'
+    property_path: field_res_expertises
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_res_expertises
+  field_res_external_url:
+    label: 'External Url'
+    datasource_id: 'entity:node'
+    property_path: field_res_external_url
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_external_url
+  field_res_internal_url:
+    label: 'Internal Url'
+    datasource_id: 'entity:node'
+    property_path: field_res_internal_url
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_internal_url
+  field_res_medical_services:
+    label: 'Medical Services'
+    datasource_id: 'entity:node'
+    property_path: field_res_medical_services
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_medical_services
+  filename:
+    label: Filename
+    datasource_id: 'entity:file'
+    property_path: filename
+    type: text
+    dependencies:
+      module:
+        - file
+  menu_link:
+    label: 'Menu link'
+    datasource_id: 'entity:node'
+    property_path: menu_link
+    type: text
+    dependencies:
+      module:
+        - token
+  name:
+    label: Name
+    datasource_id: 'entity:media'
+    property_path: name
+    type: text
+    dependencies:
+      module:
+        - media
+  name_1:
+    label: Name
+    datasource_id: 'entity:taxonomy_term'
+    property_path: name
+    type: text
+    dependencies:
+      module:
+        - taxonomy
+  promote:
+    label: 'Promoted to front page'
+    datasource_id: 'entity:node'
+    property_path: promote
+    type: boolean
+    dependencies:
+      module:
+        - node
+  rendered_item:
+    label: 'Rendered HTML output'
+    property_path: rendered_item
+    type: text
+    configuration:
+      roles:
+        anonymous: anonymous
+      view_mode:
+        'entity:file':
+          file: default
+        'entity:media':
+          acquia_dam_asset: embedded
+          audio_file: embedded
+          document: embedded
+          image: embedded
+          instagram: embedded
+          tweet: embedded
+          video: embedded
+          video_file: embedded
+        'entity:node':
+          res_clinic: search_result
+          res_provider: search_result
+          uwm_basic_page: search_result
+          uwm_homepage: search_result
+          uwm_hub_page: search_result
+        'entity:taxonomy_term':
+          medical_services: default
+          specialities: default
+  sticky:
+    label: 'Sticky at top of lists'
+    datasource_id: 'entity:node'
+    property_path: sticky
+    type: boolean
+    dependencies:
+      module:
+        - node
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    dependencies:
+      module:
+        - node
 datasource_settings:
   'entity:file': {  }
   'entity:media':
@@ -43,7 +175,43 @@ datasource_settings:
 processor_settings:
   add_url: {  }
   aggregated_field: {  }
+  hierarchy:
+    fields:
+      field_res_expertises: taxonomy_term-parent
+      field_res_medical_services: taxonomy_term-parent
+    weights:
+      preprocess_index: -45
   rendered_item: {  }
+  type_boost:
+    boosts:
+      'entity:file':
+        datasource_boost: !!float 1
+      'entity:media':
+        datasource_boost: !!float 1
+        bundle_boosts:
+          acquia_dam_asset: !!float 0
+          audio_file: !!float 0
+          document: !!float 0
+          image: !!float 0
+          instagram: !!float 0
+          tweet: !!float 0
+          video: !!float 0
+          video_file: !!float 0
+      'entity:node':
+        datasource_boost: !!float 3
+        bundle_boosts:
+          res_clinic: !!float 0
+          res_provider: !!float 0
+          uwm_basic_page: !!float 5
+          uwm_homepage: !!float 0
+          uwm_hub_page: !!float 8
+      'entity:taxonomy_term':
+        datasource_boost: !!float 5
+        bundle_boosts:
+          medical_services: !!float 13
+          specialities: !!float 8
+    weights:
+      preprocess_index: 0
 tracker_settings:
   default:
     indexing_order: fifo
