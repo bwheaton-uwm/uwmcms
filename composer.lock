@@ -4492,17 +4492,17 @@
         },
         {
             "name": "drupal/config_filter",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/config_filter",
-                "reference": "8.x-1.3"
+                "reference": "8.x-1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/config_filter-8.x-1.3.zip",
-                "reference": "8.x-1.3",
-                "shasum": "56255a17c45dcbb0af713215885a8d74214d2ebc"
+                "url": "https://ftp.drupal.org/files/projects/config_filter-8.x-1.4.zip",
+                "reference": "8.x-1.4",
+                "shasum": "4b2b7f4dfc8358212f9e25f63dcc77cc2c1dcf6c"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -4516,8 +4516,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.3",
-                    "datestamp": "1537978080",
+                    "version": "8.x-1.4",
+                    "datestamp": "1542184982",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -12172,17 +12172,17 @@
         },
         {
             "name": "drupal/simple_oauth",
-            "version": "3.10.0",
+            "version": "3.11.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/simple_oauth",
-                "reference": "8.x-3.10"
+                "reference": "8.x-3.11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/simple_oauth-8.x-3.10.zip",
-                "reference": "8.x-3.10",
-                "shasum": "04fcea46ba6cc9db883043b6ac4c5d3d4d04d4a5"
+                "url": "https://ftp.drupal.org/files/projects/simple_oauth-8.x-3.11.zip",
+                "reference": "8.x-3.11",
+                "shasum": "be8af4281de14256fc12d65ec2d996732af701b5"
             },
             "require": {
                 "drupal/consumers": "^1.0.0-beta3",
@@ -12195,8 +12195,8 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.10",
-                    "datestamp": "1536851884",
+                    "version": "8.x-3.11",
+                    "datestamp": "1542151980",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -12226,7 +12226,7 @@
         },
         {
             "name": "drupal/simple_oauth_extras",
-            "version": "3.10.0",
+            "version": "3.11.0",
             "require": {
                 "drupal/core": "~8.0",
                 "drupal/simple_oauth": "self.version"
@@ -12237,8 +12237,8 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.10",
-                    "datestamp": "1536851884",
+                    "version": "8.x-3.11",
+                    "datestamp": "1542151980",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -17569,16 +17569,16 @@
         },
         {
             "name": "simplesamlphp/saml2",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/saml2.git",
-                "reference": "b3a040ec186f4a3749228b8c13642c5295fc451b"
+                "reference": "5e660396a3760ef3c628f28a11a66e4850a1d9b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/saml2/zipball/b3a040ec186f4a3749228b8c13642c5295fc451b",
-                "reference": "b3a040ec186f4a3749228b8c13642c5295fc451b",
+                "url": "https://api.github.com/repos/simplesamlphp/saml2/zipball/5e660396a3760ef3c628f28a11a66e4850a1d9b1",
+                "reference": "5e660396a3760ef3c628f28a11a66e4850a1d9b1",
                 "shasum": ""
             },
             "require": {
@@ -17622,7 +17622,7 @@
                 }
             ],
             "description": "SAML2 PHP library from SimpleSAMLphp",
-            "time": "2018-09-27T14:09:06+00:00"
+            "time": "2018-11-14T14:01:27+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp",
@@ -20076,13 +20076,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/uwmweb/uwmbase.git",
-                "reference": "481d8a3aee7ad3b0821e93bbc9d2c7d9e949f574"
+                "reference": "9ee2fcbaa6ec19cd75b846e7ac84078f68d7f16e"
             },
             "dist": {
                 "type": "tar",
-                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-481d8a3aee7ad3b0821e93bbc9d2c7d9e949f574-zip-2a22b4.tar",
-                "reference": "481d8a3aee7ad3b0821e93bbc9d2c7d9e949f574",
-                "shasum": "66e618eb38636d79944e8a4a858f8219c7edb1ec"
+                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-9ee2fcbaa6ec19cd75b846e7ac84078f68d7f16e-zip-3a5c5e.tar",
+                "reference": "9ee2fcbaa6ec19cd75b846e7ac84078f68d7f16e",
+                "shasum": "2a9caaca4236e689bd8e8eef667218021ced06bd"
             },
             "type": "drupal-theme",
             "license": [
@@ -20093,7 +20093,7 @@
                 "source": "https://github.com/uwmweb/uwmbase/tree/initial-styles",
                 "issues": "https://github.com/uwmweb/uwmbase/issues"
             },
-            "time": "2018-11-13T00:23:27+00:00"
+            "time": "2018-11-14T00:17:56+00:00"
         },
         {
             "name": "uwmweb/uwmedicineorg_theme",
