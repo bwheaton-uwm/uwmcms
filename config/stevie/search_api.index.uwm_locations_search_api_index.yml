@@ -16,17 +16,21 @@ field_settings: {  }
 datasource_settings:
   'entity:node':
     bundles:
-      default: true
+      default: false
       selected:
-        - uwm_basic_page
+        - res_clinic
     languages:
       default: true
       selected: {  }
   'entity:taxonomy_term':
     bundles:
-      default: true
+      default: false
       selected:
-        - uwm_icons
+        - buildings
+        - campuses
+        - expertise
+        - medical_services
+        - specialities
     languages:
       default: true
       selected: {  }

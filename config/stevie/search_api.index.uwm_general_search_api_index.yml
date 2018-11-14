@@ -33,8 +33,10 @@ datasource_settings:
       selected: {  }
   'entity:taxonomy_term':
     bundles:
-      default: true
-      selected: {  }
+      default: false
+      selected:
+        - medical_services
+        - specialities
     languages:
       default: true
       selected: {  }

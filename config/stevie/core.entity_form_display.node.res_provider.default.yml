@@ -30,6 +30,7 @@ dependencies:
     - image
     - layout_discovery
     - metatag
+    - name
     - paragraphs
     - text
 third_party_settings:
@@ -45,7 +46,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 13
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -56,7 +57,7 @@ content:
     type: name_default
     region: content
   field_res_affiliates:
-    weight: 12
+    weight: 16
     settings:
       match_operator: CONTAINS
       size: 60
@@ -65,7 +66,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_biography:
-    weight: 1
+    weight: 5
     settings:
       rows: 9
       summary_rows: 3
@@ -75,7 +76,7 @@ content:
     region: content
   field_res_board_certifications:
     type: entity_reference_paragraphs
-    weight: 3
+    weight: 7
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -86,7 +87,7 @@ content:
     third_party_settings: {  }
     region: content
   field_res_clinics:
-    weight: 10
+    weight: 14
     settings:
       match_operator: CONTAINS
       size: 60
@@ -96,7 +97,7 @@ content:
     region: content
   field_res_degrees:
     type: entity_reference_paragraphs
-    weight: 4
+    weight: 9
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -108,7 +109,7 @@ content:
     region: content
   field_res_education_history:
     type: entity_reference_paragraphs
-    weight: 6
+    weight: 8
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -119,7 +120,7 @@ content:
     third_party_settings: {  }
     region: content
   field_res_expertises:
-    weight: 14
+    weight: 4
     settings:
       match_operator: CONTAINS
       size: 60
@@ -128,13 +129,13 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_gender:
-    weight: 17
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_res_image:
-    weight: 9
+    weight: 13
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -142,7 +143,7 @@ content:
     type: image_image
     region: content
   field_res_internal_url:
-    weight: 7
+    weight: 11
     settings:
       size: 60
       placeholder: ''
@@ -150,14 +151,14 @@ content:
     type: string_textfield
     region: content
   field_res_isacceptingnewpts:
-    weight: 26
+    weight: 25
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_res_languages:
-    weight: 21
+    weight: 3
     settings:
       match_operator: CONTAINS
       size: 60
@@ -166,7 +167,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_medical_services:
-    weight: 18
+    weight: 20
     settings:
       match_operator: CONTAINS
       size: 60
@@ -180,15 +181,21 @@ content:
     third_party_settings: {  }
     type: metatag_firehose
     region: content
+  field_res_name:
+    type: name_default
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_res_npi:
-    weight: 25
+    weight: 24
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_res_personal_interests:
-    weight: 2
+    weight: 6
     settings:
       rows: 5
       placeholder: ''
@@ -196,21 +203,21 @@ content:
     type: text_textarea
     region: content
   field_res_pubmed_ids:
-    weight: 5
+    weight: 10
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_res_puma_id:
-    weight: 24
+    weight: 23
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   moderation_state:
-    weight: 27
+    weight: 26
     settings:
       size: 60
       placeholder: ''
@@ -221,21 +228,21 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 16
+    weight: 19
     region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 11
+    weight: 15
     third_party_settings: {  }
     region: content
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 19
+    weight: 21
     region: content
     third_party_settings: {  }
   title:
@@ -248,7 +255,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 15
+    weight: 18
     settings:
       match_operator: CONTAINS
       size: 60
@@ -256,7 +263,7 @@ content:
     region: content
     third_party_settings: {  }
   uwm_unique_id:
-    weight: 8
+    weight: 12
     settings:
       size: 60
       placeholder: ''
@@ -264,5 +271,4 @@ content:
     type: string_textfield
     region: content
 hidden:
-  field_res_name: true
   path: true

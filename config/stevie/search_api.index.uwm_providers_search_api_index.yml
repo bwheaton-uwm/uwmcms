@@ -3,21 +3,152 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_res_expertises
+    - field.storage.node.field_res_biography
+    - field.storage.node.field_res_board_certifications
+    - field.storage.node.field_res_degrees
+    - field.storage.node.field_res_education_history
+    - field.storage.node.field_res_gender
+    - field.storage.node.field_res_languages
+    - field.storage.node.field_res_npi
+    - field.storage.node.field_res_personal_interests
+    - field.storage.taxonomy_term.field_res_clinics
+    - field.storage.taxonomy_term.field_res_language_code
     - search_api.server.database
   module:
-    - search_api
     - node
+    - taxonomy
+    - search_api
 id: uwm_providers_search_api_index
 name: 'UWM Providers - Search API Index'
 description: ''
 read_only: false
-field_settings: {  }
+field_settings:
+  field_res_biography:
+    label: Biography
+    datasource_id: 'entity:node'
+    property_path: field_res_biography
+    type: text
+    boost: !!float 8
+    dependencies:
+      config:
+        - field.storage.node.field_res_biography
+  field_res_board_certifications:
+    label: 'Board Certifications'
+    datasource_id: 'entity:node'
+    property_path: field_res_board_certifications
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_board_certifications
+  field_res_clinics:
+    label: Clinics
+    datasource_id: 'entity:taxonomy_term'
+    property_path: field_res_clinics
+    type: integer
+    dependencies:
+      config:
+        - field.storage.taxonomy_term.field_res_clinics
+  field_res_degrees:
+    label: Degrees
+    datasource_id: 'entity:node'
+    property_path: field_res_degrees
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_degrees
+  field_res_education_history:
+    label: 'Education History'
+    datasource_id: 'entity:node'
+    property_path: field_res_education_history
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_education_history
+  field_res_expertises:
+    label: 'Areas of Expertise'
+    datasource_id: 'entity:node'
+    property_path: field_res_expertises
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_res_expertises
+  field_res_gender:
+    label: Gender
+    datasource_id: 'entity:node'
+    property_path: field_res_gender
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_gender
+  field_res_language_code:
+    label: 'Language Code'
+    datasource_id: 'entity:taxonomy_term'
+    property_path: field_res_language_code
+    type: string
+    dependencies:
+      config:
+        - field.storage.taxonomy_term.field_res_language_code
+  field_res_languages:
+    label: Languages
+    datasource_id: 'entity:node'
+    property_path: field_res_languages
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_res_languages
+  field_res_npi:
+    label: NPI
+    datasource_id: 'entity:node'
+    property_path: field_res_npi
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_res_npi
+  field_res_personal_interests:
+    label: 'Personal Interests'
+    datasource_id: 'entity:node'
+    property_path: field_res_personal_interests
+    type: text
+    boost: !!float 5
+    dependencies:
+      config:
+        - field.storage.node.field_res_personal_interests
+  name:
+    label: Name
+    datasource_id: 'entity:taxonomy_term'
+    property_path: name
+    type: string
+    dependencies:
+      module:
+        - taxonomy
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    boost: !!float 21
+    dependencies:
+      module:
+        - node
 datasource_settings:
   'entity:node':
     bundles:
       default: false
       selected:
-        - uwm_basic_page
+        - res_provider
+    languages:
+      default: true
+      selected: {  }
+  'entity:taxonomy_term':
+    bundles:
+      default: false
+      selected:
+        - board_certifications
+        - expertise
+        - languages
+        - medical_services
+        - specialities
     languages:
       default: true
       selected: {  }
