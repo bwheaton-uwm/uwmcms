@@ -15,11 +15,6 @@ name: 'Acquia Search Solr Index'
 description: ''
 read_only: false
 field_settings:
-  search_api_language:
-    label: 'Item language'
-    datasource_id: null
-    property_path: search_api_language
-    type: string
   body:
     label: Body
     datasource_id: 'entity:node'
@@ -28,6 +23,11 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.body
+  search_api_language:
+    label: 'Item language'
+    datasource_id: null
+    property_path: search_api_language
+    type: string
   title:
     label: Title
     datasource_id: 'entity:node'

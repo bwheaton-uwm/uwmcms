@@ -3,50 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.taxonomy_term.field_res_campus
-    - field.storage.node.field_res_medical_services
     - search_api.server.uwmed_local_solr
   module:
-    - taxonomy
-    - node
     - search_api
+    - node
+    - taxonomy
 id: uwm_locations_search_api_index
 name: 'UWM Locations - Search API Index'
 description: ''
 read_only: false
-field_settings:
-  field_res_campus:
-    label: Campus
-    datasource_id: 'entity:taxonomy_term'
-    property_path: field_res_campus
-    type: text
-    dependencies:
-      config:
-        - field.storage.taxonomy_term.field_res_campus
-  field_res_medical_services:
-    label: 'Medical Services'
-    datasource_id: 'entity:node'
-    property_path: field_res_medical_services
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_res_medical_services
-  name:
-    label: Name
-    datasource_id: 'entity:taxonomy_term'
-    property_path: name
-    type: text
-    dependencies:
-      module:
-        - taxonomy
-  title:
-    label: Title
-    datasource_id: 'entity:node'
-    property_path: title
-    type: text
-    dependencies:
-      module:
-        - node
+field_settings: {  }
 datasource_settings:
   'entity:node':
     bundles:
@@ -71,12 +37,6 @@ datasource_settings:
 processor_settings:
   add_url: {  }
   aggregated_field: {  }
-  hierarchy:
-    fields:
-      field_res_campus: taxonomy_term-parent
-      field_res_medical_services: taxonomy_term-parent
-    weights:
-      preprocess_index: -45
   rendered_item: {  }
 tracker_settings:
   default:

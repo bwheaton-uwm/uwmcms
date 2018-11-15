@@ -45,7 +45,7 @@ field_settings:
     label: Clinics
     datasource_id: 'entity:taxonomy_term'
     property_path: field_res_clinics
-    type: text
+    type: integer
     dependencies:
       config:
         - field.storage.taxonomy_term.field_res_clinics
@@ -85,7 +85,7 @@ field_settings:
     label: 'Language Code'
     datasource_id: 'entity:taxonomy_term'
     property_path: field_res_language_code
-    type: text
+    type: string
     dependencies:
       config:
         - field.storage.taxonomy_term.field_res_language_code
@@ -118,7 +118,7 @@ field_settings:
     label: Name
     datasource_id: 'entity:taxonomy_term'
     property_path: name
-    type: text
+    type: string
     dependencies:
       module:
         - taxonomy
