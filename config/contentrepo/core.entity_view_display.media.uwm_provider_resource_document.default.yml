@@ -6,50 +6,39 @@ dependencies:
     - field.field.media.uwm_provider_resource_document.field_media_file
     - field.field.media.uwm_provider_resource_document.field_media_in_library
     - field.field.media.uwm_provider_resource_document.field_uwm_description
+    - field.field.media.uwm_provider_resource_document.field_uwm_external_url
     - field.field.media.uwm_provider_resource_document.field_uwm_prov_res_doc_type
+    - field.field.media.uwm_provider_resource_document.field_uwm_prov_res_media_type
     - field.field.media.uwm_provider_resource_document.field_uwm_prov_res_specialty
     - field.field.media.uwm_provider_resource_document.field_uwm_prov_res_sub_specialty
     - field.field.media.uwm_provider_resource_document.field_uwm_teaser
     - field.field.media.uwm_provider_resource_document.image
-    - image.style.thumbnail
     - media.type.uwm_provider_resource_document
   module:
     - file
-    - image
     - text
-    - user
 id: media.uwm_provider_resource_document.default
 targetEntityType: media
 bundle: uwm_provider_resource_document
 mode: default
 content:
-  created:
-    label: hidden
-    type: timestamp
-    weight: 0
-    region: content
-    settings:
-      date_format: medium
-      custom_date_format: ''
-      timezone: ''
-    third_party_settings: {  }
   field_media_file:
-    weight: 6
-    label: above
+    weight: 1
+    label: hidden
     settings:
       use_description_as_link_text: true
     third_party_settings: {  }
     type: file_default
     region: content
   field_uwm_description:
-    weight: 8
-    label: above
+    weight: 0
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
-  field_uwm_prov_res_doc_type:
-    weight: 12
+  field_uwm_prov_res_media_type:
+    weight: 4
     label: above
     settings:
       link: true
@@ -57,53 +46,28 @@ content:
     type: entity_reference_label
     region: content
   field_uwm_prov_res_specialty:
-    weight: 10
+    weight: 2
     label: above
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
   field_uwm_prov_res_sub_specialty:
-    weight: 11
+    weight: 3
     label: above
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  field_uwm_teaser:
-    weight: 7
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: text_default
-    region: content
-  image:
-    weight: 9
-    label: above
-    settings:
-      image_style: ''
-      image_link: ''
-    third_party_settings: {  }
-    type: image
-    region: content
-  thumbnail:
-    type: image
-    weight: 5
-    label: hidden
-    settings:
-      image_style: thumbnail
-      image_link: ''
-    region: content
-    third_party_settings: {  }
-  uid:
-    label: hidden
-    type: author
-    weight: 0
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
+  created: true
   field_media_in_library: true
+  field_uwm_external_url: true
+  field_uwm_prov_res_doc_type: true
+  field_uwm_teaser: true
+  image: true
   name: true
+  thumbnail: true
+  uid: true

@@ -7,6 +7,7 @@ dependencies:
     - field.field.media.uwm_provider_resource_video.field_media_in_library
     - field.field.media.uwm_provider_resource_video.field_media_video_embed_field
     - field.field.media.uwm_provider_resource_video.field_uwm_description
+    - field.field.media.uwm_provider_resource_video.field_uwm_prov_res_media_type
     - field.field.media.uwm_provider_resource_video.field_uwm_prov_res_specialty
     - field.field.media.uwm_provider_resource_video.field_uwm_prov_res_sub_specialty
     - field.field.media.uwm_provider_resource_video.field_uwm_prov_res_video_type
@@ -28,7 +29,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 10
+    weight: 11
     third_party_settings: {  }
     region: content
   field_media_video_embed_field:
@@ -38,21 +39,27 @@ content:
     type: video_embed_field_textfield
     region: content
   field_uwm_description:
-    weight: 6
+    weight: 7
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
     region: content
-  field_uwm_prov_res_specialty:
+  field_uwm_prov_res_media_type:
     weight: 3
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
-  field_uwm_prov_res_sub_specialty:
+  field_uwm_prov_res_specialty:
     weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_uwm_prov_res_sub_specialty:
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -64,7 +71,7 @@ content:
     type: options_select
     region: content
   field_uwm_teaser:
-    weight: 5
+    weight: 6
     settings:
       size: 60
       placeholder: ''
@@ -73,7 +80,7 @@ content:
     region: content
   image:
     type: entity_browser_file
-    weight: 7
+    weight: 8
     settings:
       entity_browser: image_browser
       field_widget_remove: true
@@ -86,7 +93,7 @@ content:
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 9
+    weight: 10
     settings: {  }
     region: content
     third_party_settings: {  }
@@ -100,7 +107,7 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
