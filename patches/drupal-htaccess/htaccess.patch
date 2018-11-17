@@ -1,5 +1,5 @@
 diff --git a/docroot/.htaccess b/docroot/.htaccess
-index efce1877..4c6510b9 100755
+index efce1877..62a7e016 100755
 --- a/docroot/.htaccess
 +++ b/docroot/.htaccess
 @@ -1,3 +1,998 @@
@@ -504,7 +504,7 @@ index efce1877..4c6510b9 100755
 +  RewriteCond %{REQUEST_URI} ^/airliftnw(/)?(?(1).*|$) [OR]
 +  # END AIRLIFTNW #
 +  # START PATIENT RESOURCES #
-+  RewriteCond %{REQUEST_URI} ^/patient-resources(/)?(?(1).*|$)
++  RewriteCond %{REQUEST_URI} ^/patient-resources(/)?(?(1).*|$) [OR]
 +  # END PATIENT RESOURCES #
 +  # START Provider Resource #
 +  RewriteCond %{REQUEST_URI} ^/provider-resource(/)?(?(1).*|$)
