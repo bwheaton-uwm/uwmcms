@@ -1,0 +1,10 @@
+name: uwm_res_import
+description: 'UWMCMS Migrate import routines'
+package: UWMed
+type: module
+core: 8.x
+dependencies:
+  - migrate_plus
+  - migrate_tools
+
+

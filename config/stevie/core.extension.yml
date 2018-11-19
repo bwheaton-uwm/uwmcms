@@ -105,6 +105,8 @@ module:
   metatag_verification: 0
   migrate: 0
   migrate_drupal: 0
+  migrate_plus: 0
+  migrate_tools: 0
   moderation_sidebar: 0
   name: 0
   node: 0
@@ -151,7 +153,9 @@ module:
   update: 0
   user: 0
   uwm_paragraphs: 0
+  uwm_res_import: 0
   uwmcs_extension: 0
+  uwmcs_utils: 0
   uwmed_features_res_fields: 0
   vbo_export: 0
   video_embed_field: 0

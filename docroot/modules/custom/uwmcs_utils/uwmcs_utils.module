@@ -16,6 +16,15 @@ use Drupal\taxonomy\Entity\Term;
 use Drupal\views\ViewExecutable;
 
 /**
+ * Implements hook_entity_presave().
+ */
+function uwmcs_utils_entity_presave(Drupal\Core\Entity\EntityInterface $entity) {
+
+    $route_match = \Drupal::routeMatch();
+
+}
+
+/**
  * Implements hook_ENTITY_TYPE_presave().
  */
 function uwmcs_utils_menu_link_content_presave(EntityInterface $entity) {

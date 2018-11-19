@@ -1,0 +1,184 @@
+# Migration configuration for imported articles.
+id: uwm_res_import_clinics
+#label: Import articles from Drupal
+migration_group: uwm
+migration_dependencies: {}
+
+dependencies:
+  enforced:
+    module:
+    - uwm_res_import
+
+destination:
+  plugin: entity:node
+
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+
+  urls: https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic
+
+  ids:
+    nid:
+      type: integer
+
+  item_selector: data/
+
+  fields:
+    -
+      name: nid
+      label: 'Nid'
+      selector: /attributes/nid
+    -
+      name: vid
+      label: 'Vid'
+      selector: /attributes/vid
+    -
+      name: uuid
+      label: 'Uuid'
+      selector: /attributes/uuid
+    -
+      name: title
+      label: 'Title'
+      selector: /attributes/title
+    -
+      name: created
+      label: 'Created'
+      selector: /attributes/created
+    -
+      name: changed
+      label: 'Changed'
+      selector: /attributes/changed
+    -
+      name: status
+      label: 'Status'
+      selector: /attributes/status
+    -
+      name: sticky
+      label: 'Sticky'
+      selector: /attributes/sticky
+    -
+      name: promote
+      label: 'Promote'
+      selector: /attributes/promote
+    -
+      name: default_langcode
+      label: 'Default Langcode'
+      selector: /attributes/default_langcode
+    -
+      name: path
+      label: 'Path'
+      selector: /attributes/path
+    -
+      name: body
+      label: 'Body'
+      selector: /attributes/body
+    -
+      name: uid
+      label: 'Uid'
+      selector: /relationships/uid
+#    -
+#      name: field_image
+#      label: 'Field image'
+#      selector: /relationships/field_image
+
+
+    -
+      name: field_res_box_number
+      label: field_res_box_number
+      selector: /attributes/field_res_box_number
+
+    -
+      name: field_res_displayaptslink
+      label: field_res_displayaptslink
+      selector: /attributes/field_res_displayaptslink
+
+    -
+      name: field_res_external_url
+      label: field_res_external_url
+      selector: /attributes/field_res_external_url
+
+    -
+      name: field_res_fax_number
+      label: field_res_fax_number
+      selector: /attributes/field_res_fax_number
+
+    -
+      name: field_res_internal_url
+      label: field_res_internal_url
+      selector: /attributes/field_res_internal_url
+
+    -
+      name: field_res_iscallcenterserviced
+      label: field_res_iscallcenterserviced
+      selector: /attributes/field_res_iscallcenterserviced
+
+#    -
+#      name: field_res_meta_tags
+#      label: field_res_meta_tags
+#      selector: /attributes/field_res_meta_tags
+
+    -
+      name: field_res_phone_number
+      label: field_res_phone_number
+      selector: /attributes/field_res_phone_number
+
+    -
+      name: field_res_room_number
+      label: field_res_room_number
+      selector: /attributes/field_res_room_number
+
+    -
+      name: uwm_unique_id
+      label: uwm_unique_id
+      selector: /attributes/uwm_unique_id
+
+
+
+
+process:
+  type:
+    plugin: default_value
+    default_value: res_clinic
+
+  uuid: uuid
+  title: title
+  created: created
+  changed: changed
+  status: status
+  sticky: sticky
+  promote: promote
+  default_language: default_language
+  path: path
+
+  body/value:
+    plugin: extract
+    source: body
+    index:
+      - value
+  body/format:
+    plugin: extract
+    source: body
+    index:
+      - format
+
+#  field_image:
+#    plugin: migration
+#    migration: uwm_reservoir_import_images
+#    source: field_image/data/id
+
+  uid:
+    plugin: default_value
+    default_value: 1
+
+  field_res_box_number: field_res_box_number
+  field_res_displayaptslink: field_res_displayaptslink
+  field_res_external_url: field_res_external_url
+  field_res_fax_number: field_res_fax_number
+  field_res_internal_url: field_res_internal_url
+  field_res_iscallcenterserviced: field_res_iscallcenterserviced
+#  field_res_meta_tags: field_res_meta_tags
+  field_res_phone_number: field_res_phone_number
+  field_res_room_number: field_res_room_number
+  uwm_unique_id: uwm_unique_id

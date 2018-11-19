@@ -1,0 +1,8 @@
+<?php
+/**
+ * Implements hook_uninstall().
+ */
+function uwm_res_import_import_uninstall() {
+  db_query("DELETE FROM {config} WHERE name LIKE 'migrate.migration.uwm_res_import%'");
+  drupal_flush_all_caches();
+}

@@ -170,3 +170,8 @@ geofield: 1.0.0-beta5
 search_api_autocomplete: 1.1.0
 search_api_location: 1.0.0-alpha1
 uwmed_features_res_fields: 0.0.0
+migrate_plus: 4.0.0
+migrate_tools: 4.0.0
+uwm_reservoir_import: 0.0.0
+uwmcs_utils: 0.0.0
+uwm_res_import: 0.0.0
