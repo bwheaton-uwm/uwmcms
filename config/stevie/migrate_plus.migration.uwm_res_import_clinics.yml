@@ -1,4 +1,4 @@
-uuid: a141f42d-479c-41d3-a0aa-8e08f85bb684
+uuid: 543ef563-d429-494f-8cee-c96ab5a99601
 langcode: en
 status: true
 dependencies:
@@ -6,7 +6,7 @@ dependencies:
     module:
       - uwm_res_import
 _core:
-  default_config_hash: Wku3UAgiHYAn4kRiqQqeVui8RZsOkkUxn83sJ0yo4gs
+  default_config_hash: npdHQTiFrd8J9EnAVC8fvgZaajnbQmBtkUcgUlzVoEQ
 id: uwm_res_import_clinics
 class: null
 field_plugin_method: null
@@ -101,10 +101,6 @@ source:
       label: field_res_iscallcenterserviced
       selector: /attributes/field_res_iscallcenterserviced
     -
-      name: field_res_meta_tags
-      label: field_res_meta_tags
-      selector: /attributes/field_res_meta_tags
-    -
       name: field_res_phone_number
       label: field_res_phone_number
       selector: /attributes/field_res_phone_number
@@ -148,7 +144,6 @@ process:
   field_res_fax_number: field_res_fax_number
   field_res_internal_url: field_res_internal_url
   field_res_iscallcenterserviced: field_res_iscallcenterserviced
-  field_res_meta_tags: field_res_meta_tags
   field_res_phone_number: field_res_phone_number
   field_res_room_number: field_res_room_number
   uwm_unique_id: uwm_unique_id
