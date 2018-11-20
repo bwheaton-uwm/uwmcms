@@ -1,4 +1,4 @@
-uuid: 543ef563-d429-494f-8cee-c96ab5a99601
+uuid: 3ee302dc-5a3d-4468-b024-f56c23bd49d9
 langcode: en
 status: true
 dependencies:
@@ -6,7 +6,7 @@ dependencies:
     module:
       - uwm_res_import
 _core:
-  default_config_hash: npdHQTiFrd8J9EnAVC8fvgZaajnbQmBtkUcgUlzVoEQ
+  default_config_hash: 2rHJNa9GykDQvB0nsxtAtzAC__m8_XM-Cnhl7iWKjUw
 id: uwm_res_import_clinics
 class: null
 field_plugin_method: null
@@ -18,7 +18,11 @@ source:
   plugin: url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  urls: 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic'
+  urls:
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?filter[title][path]=title&filter[title][value]=UW+Neighborhood+Belltown+Clinic&filter[title][operator]=='
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Boffset%5D=0&page%5Blimit%5D=5&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Boffset%5D=5&page%5Blimit%5D=5&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Boffset%5D=10&page%5Blimit%5D=5&sort=nid'
   ids:
     nid:
       type: integer
@@ -112,11 +116,43 @@ source:
       name: uwm_unique_id
       label: uwm_unique_id
       selector: /attributes/uwm_unique_id
+    -
+      name: menu_link
+      label: menu_link
+      selector: /relationships/menu_link
+    -
+      name: field_res_affiliates
+      label: field_res_affiliates
+      selector: /relationships/field_res_affiliates
+    -
+      name: field_res_building
+      label: field_res_building
+      selector: /relationships/field_res_building
+    -
+      name: field_res_floor
+      label: field_res_floor
+      selector: /relationships/field_res_floor
+    -
+      name: field_res_hours_of_operation
+      label: field_res_hours_of_operation
+      selector: /relationships/field_res_hours_of_operation
+    -
+      name: field_res_image
+      label: field_res_image
+      selector: /relationships/field_res_image
+    -
+      name: field_res_medical_services
+      label: field_res_medical_services
+      selector: /relationships/field_res_medical_services
+    -
+      name: field_res_providers
+      label: field_res_providers
+      selector: /relationships/field_res_providers
 process:
+  uuid: uuid
   type:
     plugin: default_value
     default_value: res_clinic
-  uuid: uuid
   title: title
   created: created
   changed: changed
@@ -124,17 +160,6 @@ process:
   sticky: sticky
   promote: promote
   default_language: default_language
-  path: path
-  body/value:
-    plugin: extract
-    source: body
-    index:
-      - value
-  body/format:
-    plugin: extract
-    source: body
-    index:
-      - format
   uid:
     plugin: default_value
     default_value: 1

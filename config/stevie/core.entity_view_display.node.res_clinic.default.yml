@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.res_clinic.field_res_phone_number
     - field.field.node.res_clinic.field_res_providers
     - field.field.node.res_clinic.field_res_room_number
+    - field.field.node.res_clinic.field_testing_top_content
     - field.field.node.res_clinic.uwm_unique_id
     - image.style.large
     - node.type.res_clinic
@@ -29,6 +30,7 @@ dependencies:
     - layout_discovery
     - metatag
     - telephone
+    - text
     - user
 third_party_settings:
   field_layout:
@@ -173,6 +175,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  field_testing_top_content:
+    weight: 23
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
     region: content
   links:
     weight: 5

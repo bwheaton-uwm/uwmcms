@@ -17,7 +17,12 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
 
-  urls: https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic
+#  urls: https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic
+  urls:
+    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?filter[title][path]=title&filter[title][value]=UW+Neighborhood+Belltown+Clinic&filter[title][operator]==
+    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Boffset%5D=0&page%5Blimit%5D=5&sort=nid
+    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Boffset%5D=5&page%5Blimit%5D=5&sort=nid
+    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Boffset%5D=10&page%5Blimit%5D=5&sort=nid
 
   ids:
     nid:
@@ -134,15 +139,52 @@ source:
       label: uwm_unique_id
       selector: /attributes/uwm_unique_id
 
+    -
+      name: menu_link
+      label: menu_link
+      selector: /relationships/menu_link
 
+    -
+      name: field_res_affiliates
+      label: field_res_affiliates
+      selector: /relationships/field_res_affiliates
+
+    -
+      name: field_res_building
+      label: field_res_building
+      selector: /relationships/field_res_building
+
+    -
+      name: field_res_floor
+      label: field_res_floor
+      selector: /relationships/field_res_floor
+
+    -
+      name: field_res_hours_of_operation
+      label: field_res_hours_of_operation
+      selector: /relationships/field_res_hours_of_operation
+
+    -
+      name: field_res_image
+      label: field_res_image
+      selector: /relationships/field_res_image
+
+    -
+      name: field_res_medical_services
+      label: field_res_medical_services
+      selector: /relationships/field_res_medical_services
+
+    -
+      name: field_res_providers
+      label: field_res_providers
+      selector: /relationships/field_res_providers
 
 
 process:
+  uuid: uuid
   type:
     plugin: default_value
     default_value: res_clinic
-
-  uuid: uuid
   title: title
   created: created
   changed: changed
@@ -150,18 +192,18 @@ process:
   sticky: sticky
   promote: promote
   default_language: default_language
-  path: path
+  #
 
-  body/value:
-    plugin: extract
-    source: body
-    index:
-      - value
-  body/format:
-    plugin: extract
-    source: body
-    index:
-      - format
+#  body/value:
+#    plugin: extract
+#    source: body
+#    index:
+#      - value
+#  body/format:
+#    plugin: extract
+#    source: body
+#    index:
+#      - format
 
 #  field_image:
 #    plugin: migration
@@ -179,6 +221,11 @@ process:
   field_res_internal_url: field_res_internal_url
   field_res_iscallcenterserviced: field_res_iscallcenterserviced
 #  field_res_meta_tags: field_res_meta_tags
+
   field_res_phone_number: field_res_phone_number
   field_res_room_number: field_res_room_number
+#  field_res_hours_of_operation:
+#    plugin: uwm_migrate_paragraphs
+#    source: field_res_hours_of_operation
   uwm_unique_id: uwm_unique_id
+
