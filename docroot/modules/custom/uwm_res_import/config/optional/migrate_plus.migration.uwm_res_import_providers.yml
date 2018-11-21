@@ -1,6 +1,6 @@
 # Migration configuration for imported articles.
 id: uwm_res_import_providers
-#label: Import articles from Drupal
+label: uwm_res_import_providers
 migration_group: uwm
 #migration_dependencies:
 #  require:

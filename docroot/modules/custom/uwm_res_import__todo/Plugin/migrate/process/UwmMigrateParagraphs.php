@@ -46,7 +46,7 @@ class UwmMigrateParagraphs extends ProcessPluginBase {
       foreach ($data as $dataItem) {
 
         if (strlen($current)) {
-          $paragraphs[] = static::createTextParagraph($dataItem);
+          //$paragraphs[] = static::createTextParagraph($dataItem);
 
         }
 

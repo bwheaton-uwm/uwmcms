@@ -34,7 +34,7 @@ class UwmMigrateRes extends SqlBase {
 
   public function prepare($entity, stdClass $row) {
     // Let's pretend we couldn't have done this as easily in prepareRow...
-    $entity->title = 'My site: ' . $row->source_title;
+    // $entity->title = 'My site: ' . $row->source_title;
   }
 
   public function prepareRow($row) {

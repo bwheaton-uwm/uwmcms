@@ -1,8 +1,11 @@
 # Migration configuration for imported articles.
 id: uwm_res_import_clinics
-#label: Import articles from Drupal
+label: uwm_res_import_clinics
 migration_group: uwm
 migration_dependencies: {}
+#migration_dependencies:
+#  required:
+#  - uwm_res_import_medical_services
 
 dependencies:
   enforced:
@@ -19,10 +22,12 @@ source:
 
 #  urls: https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic
   urls:
-    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?filter[title][path]=title&filter[title][value]=UW+Neighborhood+Belltown+Clinic&filter[title][operator]==
-    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Boffset%5D=0&page%5Blimit%5D=5&sort=nid
+    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?filter%5Btitle%5D%5Boperator%5D=%3D&filter%5Btitle%5D%5Bpath%5D=title&filter%5Btitle%5D%5Bvalue%5D=UW%20Neighborhood%20Belltown%20Clinic&sort=nid
+    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=0&sort=nid
     - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Boffset%5D=5&page%5Blimit%5D=5&sort=nid
     - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Boffset%5D=10&page%5Blimit%5D=5&sort=nid
+    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Boffset%5D=15&page%5Blimit%5D=5&sort=nid
+
 
   ids:
     nid:
@@ -87,7 +92,6 @@ source:
 #      name: field_image
 #      label: 'Field image'
 #      selector: /relationships/field_image
-
 
     -
       name: field_res_box_number
@@ -172,7 +176,22 @@ source:
     -
       name: field_res_medical_services
       label: field_res_medical_services
-      selector: /relationships/field_res_medical_services
+      selector: /relationships/field_res_medical_services/data
+
+    -
+      name: source_field_test_m_services1
+      label: source_field_test_m_services1
+      selector: /relationships/field_res_medical_services/data
+
+    -
+      name: source_field_test_m_services2
+      label: source_field_test_m_services2
+      selector: /relationships/field_res_medical_services/data
+
+    -
+      name: source_field_test_m_services3
+      label: source_field_test_m_services3
+      selector: /relationships/field_res_medical_services/data
 
     -
       name: field_res_providers
@@ -228,4 +247,48 @@ process:
 #    plugin: uwm_migrate_paragraphs
 #    source: field_res_hours_of_operation
   uwm_unique_id: uwm_unique_id
+
+#  field_res_medical_services: field_res_medical_services
+
+  field_res_medical_services:
+    plugin: uwm_term_value
+    source: field_res_medical_services
+
+  field_test_m_services1:
+    -
+      plugin: uwm_term_value1
+      source: source_field_test_m_services1
+    -
+      plugin: entity_generate
+
+  field_test_m_services2:
+    plugin: entity_generate
+    source: source_field_test_m_services2
+
+  field_test_m_services3/target_id: source_field_test_m_services3
+
+
+
+#  field_res_medical_services:
+#    -
+#      plugin: uwm_term_value
+#      source: field_res_medical_services
+#    -
+#      plugin: explode
+#      delimiter: ', '
+#      target_id: tid
+
+#  field_res_medical_services:
+#    plugin: migration_lookup
+#    migration: uwm_res_import_medical_services
+#    source: field_res_medical_services
+
+#  field_res_medical_services:
+#    plugin: entity_lookup
+#    source: field_res_medical_services
+#    value_key: id
+#    bundle_key: uuid
+#    bundle: medical_services
+#    entity_type: taxonomy_term
+#    ignore_case: true
 
