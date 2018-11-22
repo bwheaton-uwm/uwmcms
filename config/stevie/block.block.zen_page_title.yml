@@ -1,0 +1,20 @@
+uuid: 2056b88b-0dae-4390-be9b-065451bc742e
+langcode: en
+status: true
+dependencies:
+  theme:
+    - zen
+_core:
+  default_config_hash: B9SJ_KIVvO8USpSuVzUWzmvoNIZtwUm8Bpz608aL_Bw
+id: zen_page_title
+theme: zen
+region: sidebar_first
+weight: -50
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

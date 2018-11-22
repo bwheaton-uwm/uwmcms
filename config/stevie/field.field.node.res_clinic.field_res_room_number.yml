@@ -1,0 +1,21 @@
+uuid: f80add0f-d63b-4203-acf5-e816f80334e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_room_number
+    - node.type.res_clinic
+_core:
+  default_config_hash: B4vOfxhnD3EdzcevnRUqpZN0eKi1YGIbJMasd_juyME
+id: node.res_clinic.field_res_room_number
+field_name: field_res_room_number
+entity_type: node
+bundle: res_clinic
+label: 'Room Number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

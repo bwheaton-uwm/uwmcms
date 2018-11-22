@@ -1,0 +1,152 @@
+<?php
+
+/**
+ * @file
+ * Custom module for small, utility-type routines.
+ */
+
+use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\Plugin\MigrateSourceInterface;
+use Drupal\migrate\Row;
+
+/**
+ * Implements hook_migration_plugins_alter().
+ */
+function uwm_res_import_migration_plugins_alter(&$migrations) {
+
+  foreach ($migrations as $id => $migration) {
+
+    if ($migration['id'] == 'my_migrate_id') {
+
+      $config = \Drupal::service('config.factory')
+        ->getEditable('migrate_plus.migration.' . $migration['id']);
+
+      $config->set('source.urls', 'http://example_api');
+      $config->save();
+
+    }
+
+  }
+
+}
+
+
+/**
+ * Implements hook_migrate_prepare_row().
+ */
+function uwm_res_import_migrate_prepare_row(Row $row, MigrateSourceInterface $source, MigrationInterface $migration) {
+
+  /***
+   *
+   *
+   *
+   */
+//  $da = 'field_res_medical_services';
+//  $dd = $row->getSourceProperty($da);
+//  //if(!empty($dd[0]['type']) && stripos($dd[0]['type'], 'taxonomy_term') !== FALSE) {
+//
+//    $newValues = [];
+//    foreach($dd['data'] as $di) {
+//
+//      $term = \Drupal::service('entity.repository')->loadEntityByUuid('taxonomy_term', $di['id']);
+//
+//      if ($term && $term->id()) {
+//        $newValues[] = $term;
+//      }
+//
+//    //}
+//    $row->setDestinationProperty($da, $newValues);
+//  }
+
+
+//  /***
+//   *
+//   *
+//   *
+//   */
+//  $da = 'source_field_test_m_services1';
+//  $dd = $row->getSourceProperty($da);
+//  if(!empty($dd[0]['type']) && stripos($dd[0]['type'], 'taxonomy_term') !== FALSE) {
+//
+//    $newValues = [];
+//    foreach($dd as $di) {
+//
+//      $term = \Drupal::service('entity.repository')->loadEntityByUuid('taxonomy_term', $di['id']);
+//
+//      if ($term && $term->id()) {
+//        $newValues[] = $term->name->value;
+//      }
+//
+//    }
+//    $row->setDestinationProperty($da, $newValues);
+//    $row->setDestinationProperty('field_test_m_services1', $newValues);
+//
+//  }
+
+
+//  /***
+//   *
+//   *
+//   *
+//   */
+//  $da = 'source_field_test_m_services2';
+//  $dd = $row->getSourceProperty($da);
+//  if(!empty($dd[0]['type']) && stripos($dd[0]['type'], 'taxonomy_term') !== FALSE) {
+//
+//    $newValues = [];
+//    foreach($dd as $di) {
+//
+//      $term = \Drupal::service('entity.repository')->loadEntityByUuid('taxonomy_term', $di['id']);
+//
+//      if ($term) {
+//        $newValues[] = $term->name->value;
+//      }
+//
+//    }
+//    $row->setSourceProperty($da, $newValues);
+//    $row->setDestinationProperty('field_test_m_services2', $newValues);
+//  }
+//
+//  /***
+//   *
+//   *
+//   *
+//   */
+//  $da = 'source_field_test_m_services3';
+//  $dd = $row->getSourceProperty($da);
+//  if(!empty($dd[0]['type']) && stripos($dd[0]['type'], 'taxonomy_term') !== FALSE) {
+//
+//    $newValues = [];
+//    foreach($dd as $di) {
+//
+//      $term = \Drupal::service('entity.repository')->loadEntityByUuid('taxonomy_term', $di['id']);
+//
+//      if ($term) {
+//        $newValues[] = $term->id();
+//      }
+//
+//    }
+//    $row->setSourceProperty($da, $newValues);
+//    //$row->setDestinationProperty('field_test_m_services3', $newValues);
+//  }
+
+
+  //  if (!empty($collection['data'])) {
+//
+//    foreach ($collection['data'] as $item) {
+//
+//      $uuid = $item['id'] ?? NULL;
+//      if ($uuid) {
+//        $term = \Drupal::service('entity.repository')
+//          ->loadEntityByUuid('taxonomy_term', $uuid);
+//        $tid = $term ? $term->id() : '';
+//        $row->setDestinationProperty("term_id", $tid);
+//      }
+//
+//    }
+//
+//    //parent::prepareRow($row);
+//
+//  }
+
+}

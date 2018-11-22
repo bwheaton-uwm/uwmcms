@@ -1,0 +1,21 @@
+uuid: 483e96dc-ce74-4dbb-8921-6dca410332ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.uwm_accordion_section_title
+    - paragraphs.paragraphs_type.uwm_accordion_section
+_core:
+  default_config_hash: BTKvSyhQ5pOTVjyz1W1ymdRR73Ab-DP_hRpF8pdj_GU
+id: paragraph.uwm_accordion_section.uwm_accordion_section_title
+field_name: uwm_accordion_section_title
+entity_type: paragraph
+bundle: uwm_accordion_section
+label: 'Accordion Section Title (H3)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,29 @@
+uuid: c7b09cd7-bc6e-4ff2-97c4-51bd52d45af5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_icon
+    - paragraphs.paragraphs_type.uwm_link_with_icon
+    - taxonomy.vocabulary.uwm_icons
+id: paragraph.uwm_link_with_icon.field_uwm_icon
+field_name: field_uwm_icon
+entity_type: paragraph
+bundle: uwm_link_with_icon
+label: Icon
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      uwm_icons: uwm_icons
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,21 @@
+uuid: 5ad90deb-2f0a-4096-a670-76eab3d5656d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_personal_interests
+    - node.type.res_provider
+  module:
+    - text
+id: node.res_provider.field_res_personal_interests
+field_name: field_res_personal_interests
+entity_type: node
+bundle: res_provider
+label: 'Personal Interests'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,21 @@
+uuid: 19612048-9bb4-4e04-8f2e-c7aea0405db6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_box_number
+    - node.type.res_clinic
+_core:
+  default_config_hash: fDe4DOiCdAx8aPxPwyhcS6rwj4mbhVWfVfnK0GWXGIE
+id: node.res_clinic.field_res_box_number
+field_name: field_res_box_number
+entity_type: node
+bundle: res_clinic
+label: 'Box Number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,28 @@
+uuid: 07f61a4a-aec6-4284-9c17-515fa73b802e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.uwm_view
+    - paragraphs.paragraphs_type.uwm_view
+  module:
+    - viewsreference
+_core:
+  default_config_hash: BRFZaTPYtgP0cZXsM0sdXQZyYJBDL0PC1JChNwaL7cs
+id: paragraph.uwm_view.uwm_view
+field_name: uwm_view
+entity_type: paragraph
+bundle: uwm_view
+label: View
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings: {  }
+  plugin_types:
+    block: block
+  preselect_views: {  }
+field_type: viewsreference

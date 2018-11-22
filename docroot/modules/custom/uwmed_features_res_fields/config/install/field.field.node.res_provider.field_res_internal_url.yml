@@ -1,0 +1,19 @@
+uuid: 3b4d1335-1516-4ae8-87a2-ece9479a1f92
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_internal_url
+    - node.type.res_provider
+id: node.res_provider.field_res_internal_url
+field_name: field_res_internal_url
+entity_type: node
+bundle: res_provider
+label: 'Internal Url'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

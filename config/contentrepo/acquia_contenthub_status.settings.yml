@@ -1,0 +1,6 @@
+threshold: 10
+limit: 100
+send_notification: false
+notify_emails: {  }
+_core:
+  default_config_hash: 7eIAygxvYxFgN7xAWAdm8qC1hlLXqO4tNZid8f3ShDk

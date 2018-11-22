@@ -1,0 +1,9 @@
+uuid: c3aa0fcd-a781-42bb-85ce-f5f50a77228c
+langcode: en
+status: true
+dependencies: {  }
+name: 'Board Certifications'
+vid: board_certifications
+description: ''
+hierarchy: 0
+weight: 0

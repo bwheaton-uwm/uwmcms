@@ -1,0 +1,84 @@
+uuid: 0da6c2e2-a845-4fa0-8acc-a8948ce14cb7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_card_header
+    - paragraphs.paragraphs_type.uwm_card
+    - paragraphs.paragraphs_type.uwm_cta_link
+    - paragraphs.paragraphs_type.uwm_image
+  module:
+    - entity_reference_revisions
+id: paragraph.uwm_card.field_uwm_card_header
+field_name: field_uwm_card_header
+entity_type: paragraph
+bundle: uwm_card
+label: Header
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      uwm_image: uwm_image
+      uwm_cta_link: uwm_cta_link
+    target_bundles_drag_drop:
+      uwm_card:
+        weight: -37
+        enabled: false
+      detailed_contact_card:
+        weight: -36
+        enabled: false
+      headshot_card:
+        weight: -35
+        enabled: false
+      uwm_accordion:
+        weight: -34
+        enabled: false
+      uwm_accordion_section:
+        weight: -33
+        enabled: false
+      uwm_basic_content:
+        weight: -32
+        enabled: false
+      uwm_block:
+        weight: -31
+        enabled: false
+      uwm_full_html:
+        weight: -30
+        enabled: false
+      uwm_grid:
+        weight: -29
+        enabled: false
+      uwm_image:
+        enabled: true
+        weight: -28
+      uwm_cta_link:
+        enabled: true
+        weight: -27
+      uwm_image_hero:
+        weight: -26
+        enabled: false
+      uwm_link_with_icon:
+        weight: -25
+        enabled: false
+      uwm_media:
+        weight: -24
+        enabled: false
+      uwm_featured_story:
+        weight: -23
+        enabled: false
+      uwm_section:
+        weight: -22
+        enabled: false
+      uwm_view:
+        weight: -21
+        enabled: false
+      uwm_modal:
+        weight: -20
+        enabled: false
+field_type: entity_reference_revisions

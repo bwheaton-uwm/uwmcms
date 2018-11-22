@@ -1,0 +1,11 @@
+uuid: 1547255e-06bb-4e12-bd1d-3133d1d07fdf
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: KgzRERBPmcatKmGRl9RHTXDV29BGsfUmwIgSfYv2CCI
+id: board_certification
+label: 'Board Certification'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

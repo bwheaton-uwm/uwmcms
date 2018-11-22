@@ -1,0 +1,19 @@
+uuid: 14e5192b-0e50-4423-81d4-6dbf31aba4bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_email_address
+    - paragraphs.paragraphs_type.detailed_contact_card
+id: paragraph.detailed_contact_card.field_uwm_email_address
+field_name: field_uwm_email_address
+entity_type: paragraph
+bundle: detailed_contact_card
+label: 'Email Address'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

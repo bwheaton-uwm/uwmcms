@@ -1,0 +1,9 @@
+uuid: ed987ae9-81ed-417a-9119-3d2abcccb62f
+langcode: en
+status: true
+dependencies: {  }
+id: detailed_contact_card
+label: 'Detailed Contact Card'
+icon_uuid: null
+description: 'A detailed contact card includes the person''s Photo, Name, Title, Phone, Fax, Email, Assistant, and Address.'
+behavior_plugins: {  }

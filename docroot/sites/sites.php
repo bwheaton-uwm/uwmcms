@@ -79,6 +79,12 @@ $sites['content.cmsdev.uwmedicine.org'] = 'contentrepo';
 $sites['content.cmsstage.uwmedicine.org'] = 'contentrepo';
 $sites['content.cmsra.uwmedicine.org'] = 'contentrepo';
 
+$sites['stevie.uwmed.local'] = 'stevie';
+$sites['stevie.cms.uwmedicine.org'] = '';
+$sites['stevie.cmsdev.uwmedicine.org'] = 'stevie';
+$sites['stevie.cmsstage.uwmedicine.org'] = 'stevie';
+$sites['stevie.cmsra.uwmedicine.org'] = '';
+
 $sites['beta.uwmed.local'] = 'uwmedicineorg';
 $sites['beta.cms.uwmedicine.org'] = 'uwmedicineorg';
 $sites['beta.cmsdev.uwmedicine.org'] = 'uwmedicineorg';

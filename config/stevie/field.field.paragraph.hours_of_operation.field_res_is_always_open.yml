@@ -1,0 +1,25 @@
+uuid: e3be9ca0-ae76-4873-80d6-daa82be50160
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_res_is_always_open
+    - paragraphs.paragraphs_type.hours_of_operation
+_core:
+  default_config_hash: SdkKMyQ9479XkVEqyCl1J9d0wrbq84PxgI2vxmaZ1sM
+id: paragraph.hours_of_operation.field_res_is_always_open
+field_name: field_res_is_always_open
+entity_type: paragraph
+bundle: hours_of_operation
+label: 'Is always open?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

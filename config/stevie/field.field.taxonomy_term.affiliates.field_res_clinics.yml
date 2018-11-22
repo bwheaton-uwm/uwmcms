@@ -1,0 +1,30 @@
+uuid: 0a2dbaec-7c2e-4d69-90ca-51ec24b3e074
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_res_clinics
+    - node.type.res_clinic
+    - taxonomy.vocabulary.affiliates
+_core:
+  default_config_hash: 1oNZ9_2JYwegbeq_8esU36Rgw4g-11bEyNxWUh2PJjM
+id: taxonomy_term.affiliates.field_res_clinics
+field_name: field_res_clinics
+entity_type: taxonomy_term
+bundle: affiliates
+label: Clinics
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      res_clinic: res_clinic
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

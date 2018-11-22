@@ -1,0 +1,22 @@
+uuid: 28a0a144-3abb-47a2-9cdf-a2bd74cf8a14
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+_core:
+  default_config_hash: zAE3Wgi5KV-bZ34YLkCFxyLfm1a-FNpWD7AwwM56S7g
+id: paragraph.uwm_accordion_section
+field_name: uwm_accordion_section
+entity_type: paragraph
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

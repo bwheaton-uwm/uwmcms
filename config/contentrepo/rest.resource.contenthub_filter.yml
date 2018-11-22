@@ -1,0 +1,34 @@
+uuid: afb735e1-a2b6-4adc-a0b9-78ef1692c59d
+langcode: en
+status: true
+dependencies:
+  module:
+    - acquia_contenthub_subscriber
+    - serialization
+    - user
+_core:
+  default_config_hash: ql2WveJzCvsTaT0k7AkTGP1BuTuMRV9oY4uVP9PIjfA
+id: contenthub_filter
+plugin_id: contenthub_filter
+granularity: method
+configuration:
+  GET:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie
+  POST:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie
+  PATCH:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie
+  DELETE:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie

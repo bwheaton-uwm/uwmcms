@@ -1,0 +1,23 @@
+uuid: 23ee3cd8-5e57-411e-aadd-c960933c85f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_columns_per_row
+    - paragraphs.paragraphs_type.uwm_grid
+  module:
+    - options
+id: paragraph.uwm_grid.field_uwm_columns_per_row
+field_name: field_uwm_columns_per_row
+entity_type: paragraph
+bundle: uwm_grid
+label: 'Number of Columns Per Row'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 4
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

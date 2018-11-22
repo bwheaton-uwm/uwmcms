@@ -1,0 +1,21 @@
+uuid: c1825e06-b1c4-4822-b627-c76bcb7576e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_res_start_time
+    - paragraphs.paragraphs_type.hours_for_day
+  module:
+    - options
+id: paragraph.hours_for_day.field_res_start_time
+field_name: field_res_start_time
+entity_type: paragraph
+bundle: hours_for_day
+label: 'Start Time'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

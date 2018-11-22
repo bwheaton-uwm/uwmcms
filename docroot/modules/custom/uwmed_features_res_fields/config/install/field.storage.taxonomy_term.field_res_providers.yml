@@ -1,0 +1,20 @@
+uuid: f6b96afa-d7cc-49e4-bba7-064a44a8e48a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: taxonomy_term.field_res_providers
+field_name: field_res_providers
+entity_type: taxonomy_term
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

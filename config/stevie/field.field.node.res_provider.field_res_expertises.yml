@@ -1,0 +1,31 @@
+uuid: dd4fd072-674f-43fe-94f2-144147465ca0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_expertises
+    - node.type.res_provider
+    - taxonomy.vocabulary.expertise
+_core:
+  default_config_hash: nBxYzQHz96DY5fEGsl5JUIsIU6MK5g40pB8jp9u7gHc
+id: node.res_provider.field_res_expertises
+field_name: field_res_expertises
+entity_type: node
+bundle: res_provider
+label: 'Areas of Expertise'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      expertise: expertise
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

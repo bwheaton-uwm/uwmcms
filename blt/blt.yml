@@ -24,19 +24,19 @@ drush:
   default_alias: '${drush.aliases.local}'
 modules:
   local:
-    enable: [acquia_connector, dblog, devel, views_ui]
-    uninstall: [ shield, simplesamlphp_auth]
+    enable: [dblog, devel, views_ui, views_ui]
+    uninstall: [acquia_connector, shield, simplesamlphp_auth, acquia_purge]
   ci:
     enable: {  }
-    uninstall: []
+    uninstall: {  }
   dev:
-    enable: [acquia_connector]
+    enable: [acquia_connector, shield]
     uninstall: {  }
   test:
-    enable: [acquia_connector]
+    enable: [acquia_connector, shield]
     uninstall: [devel, views_ui]
   prod:
-    enable: [acquia_connector]
+    enable: [acquia_connector, shield]
     uninstall: [devel, views_ui]
 disable-targets:
   validate:
@@ -71,13 +71,13 @@ multisites:
   - huddle
   - calendar
   - contentrepo
-
+  - stevie
+  - uwmedicineorg
 behat:
   paths: {  }
   web-driver: selenium
 cm.allow-overrides: false
 cloud:
   appId: 9394ee80-5a9e-429f-a976-264b955abd86
-
 setup:
   strategy: sync

@@ -1,0 +1,48 @@
+uuid: 53dd87ad-17c3-4e6d-b2bd-a3fa02b3b9bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_board_certifications
+    - node.type.res_provider
+    - paragraphs.paragraphs_type.board_certification
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: ohTtvvca97Qe2LyUkx3VC3QSWVSyn3od9eTiEhXxHJE
+id: node.res_provider.field_res_board_certifications
+field_name: field_res_board_certifications
+entity_type: node
+bundle: res_provider
+label: 'Board Certifications'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      board_certification: board_certification
+    target_bundles_drag_drop:
+      award:
+        weight: 7
+        enabled: false
+      board_certification:
+        enabled: true
+        weight: 8
+      degree:
+        weight: 9
+        enabled: false
+      education_history:
+        weight: 10
+        enabled: false
+      hours_for_day:
+        weight: 11
+        enabled: false
+      hours_of_operation:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

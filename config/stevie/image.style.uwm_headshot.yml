@@ -1,0 +1,17 @@
+uuid: 0be469bb-10b8-4630-b4f8-ffcb7f30244d
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: uwm_headshot
+label: Headshot
+effects:
+  d46185b4-350f-4bd6-8fd7-bf1d9fd6ccde:
+    uuid: d46185b4-350f-4bd6-8fd7-bf1d9fd6ccde
+    id: focal_point_crop
+    weight: 1
+    data:
+      width: 250
+      height: 310
+      crop_type: focal_point

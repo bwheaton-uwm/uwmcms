@@ -1,0 +1,19 @@
+uuid: cd602dd3-627e-4705-b35b-7c74f39d1efc
+langcode: en
+status: true
+dependencies:
+  module:
+    - geolocation
+    - taxonomy
+id: taxonomy_term.field_res_coordinates
+field_name: field_res_coordinates
+entity_type: taxonomy_term
+type: geolocation
+settings: {  }
+module: geolocation
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

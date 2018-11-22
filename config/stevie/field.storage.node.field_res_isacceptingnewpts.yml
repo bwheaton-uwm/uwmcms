@@ -1,0 +1,20 @@
+uuid: 29fdf3c1-3095-4d5c-a2c1-6ed519f3f742
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: bf4Y_8fMHPHjpGp1N2q0xPxC01LUuAdwPtOgpV7aA8g
+id: node.field_res_isacceptingnewpts
+field_name: field_res_isacceptingnewpts
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

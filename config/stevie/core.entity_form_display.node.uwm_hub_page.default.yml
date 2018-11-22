@@ -1,0 +1,143 @@
+uuid: 62be9141-2830-47be-a132-d0c66ed3ef38
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.uwm_hub_page.field_meta_tags
+    - field.field.node.uwm_hub_page.field_uwm_hero
+    - field.field.node.uwm_hub_page.field_uwm_page_path_name
+    - field.field.node.uwm_hub_page.field_uwm_parent_page
+    - field.field.node.uwm_hub_page.field_uwm_sections
+    - node.type.uwm_hub_page
+  module:
+    - content_moderation
+    - field_group
+    - field_layout
+    - layout_discovery
+    - metatag
+    - paragraphs
+    - path
+third_party_settings:
+  field_group:
+    group_page_settings:
+      children:
+        - field_uwm_parent_page
+        - field_uwm_page_path_name
+      parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Page Settings'
+    group_hero_area:
+      children:
+        - field_uwm_hero
+      parent_name: ''
+      weight: 2
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Hero Area (Required)'
+    group_content_sections:
+      children:
+        - field_uwm_sections
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Content Sections'
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: node.uwm_hub_page.default
+targetEntityType: node
+bundle: uwm_hub_page
+mode: default
+content:
+  field_meta_tags:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
+    region: content
+  field_uwm_hero:
+    weight: 26
+    settings:
+      title: Hero
+      title_plural: Heros
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: uwm_image_hero
+    third_party_settings: {  }
+    type: paragraphs
+    region: content
+  field_uwm_page_path_name:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_uwm_parent_page:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_uwm_sections:
+    weight: 3
+    settings:
+      title: Section
+      title_plural: Sections
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    type: paragraphs
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 4
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  promote: true
+  status: true
+  sticky: true
+  uid: true

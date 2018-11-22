@@ -1,0 +1,48 @@
+uuid: c3845632-ac9c-4655-a843-e8e7bdeba7e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_degrees
+    - node.type.res_provider
+    - paragraphs.paragraphs_type.degree
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: JKe5z1BuhS7nFED3rMcpLDz7kKEOvl9AEMYK3BwpLhg
+id: node.res_provider.field_res_degrees
+field_name: field_res_degrees
+entity_type: node
+bundle: res_provider
+label: Degrees
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      degree: degree
+    target_bundles_drag_drop:
+      award:
+        weight: 7
+        enabled: false
+      board_certification:
+        weight: 8
+        enabled: false
+      degree:
+        enabled: true
+        weight: 9
+      education_history:
+        weight: 10
+        enabled: false
+      hours_for_day:
+        weight: 11
+        enabled: false
+      hours_of_operation:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

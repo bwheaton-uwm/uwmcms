@@ -1,0 +1,21 @@
+uuid: 84b178da-8d1d-4f0a-a02d-2fd758fec7e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.uwm_unique_id
+    - taxonomy.vocabulary.campuses
+_core:
+  default_config_hash: tkG8YBTZfR-1mxZyBgfRXQ_-EWvc2dj_Kl88LnUcQhc
+id: taxonomy_term.campuses.uwm_unique_id
+field_name: uwm_unique_id
+entity_type: taxonomy_term
+bundle: campuses
+label: 'Universal Id or Source URL'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

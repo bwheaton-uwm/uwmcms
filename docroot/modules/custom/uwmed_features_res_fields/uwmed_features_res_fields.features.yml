@@ -1,0 +1,5 @@
+bundle: uwmed_features
+excluded:
+  - core.entity_form_display.media.image.default
+  - core.entity_view_display.media.image.default
+  - field.field.media.image.field_res_image

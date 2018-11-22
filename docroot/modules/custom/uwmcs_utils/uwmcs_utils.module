@@ -16,6 +16,15 @@ use Drupal\taxonomy\Entity\Term;
 use Drupal\views\ViewExecutable;
 
 /**
+ * Implements hook_entity_presave().
+ */
+function uwmcs_utils_entity_presave(Drupal\Core\Entity\EntityInterface $entity) {
+
+    $t = 0;
+
+}
+
+/**
  * Implements hook_ENTITY_TYPE_presave().
  */
 function uwmcs_utils_menu_link_content_presave(EntityInterface $entity) {
@@ -121,5 +130,33 @@ function uwmcs_utils_entity_view_alter(array &$build, EntityInterface $entity, E
     }
 
   }
+
+}
+
+/**
+ * Implements my_module_acquia_contenthub_process_webhook_alter().
+ *
+ * This function and code from Acquia deletes content from this site
+ * if it has been deleted from the original Content Hub publishing site. 
+ * 
+ * @see https://docs.acquia.com/lift/contenthub/sharing/delete/
+ */
+function uwmcs_utils_acquia_contenthub_process_webhook_alter($webhook) {
+
+if($webhook['status'] == 'successful' && $webhook['crud'] == 'delete') {
+
+   $entity_repository = \Drupal::service('entity.repository');
+   foreach($webhook['assets'] as $asset) {
+    
+      $entity = $entity_repository->loadEntityByUuid($asset['type'], $asset['uuid']);
+      if($entity) {
+
+      $entity->delete();
+
+      }
+
+   }
+
+}
 
 }

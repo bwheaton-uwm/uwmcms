@@ -1,0 +1,30 @@
+uuid: 8e38379f-9a09-4932-8066-e872639b3389
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_image.field_uwm_image
+    - paragraphs.paragraphs_type.uwm_image
+  module:
+    - field_layout
+    - image
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: paragraph.uwm_image.default
+targetEntityType: paragraph
+bundle: uwm_image
+mode: default
+content:
+  field_uwm_image:
+    weight: 0
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+hidden: {  }

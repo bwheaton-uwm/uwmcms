@@ -1,0 +1,25 @@
+uuid: ff3ddb44-ca1e-4d5d-a7b2-d5af9bb32f3d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_isacceptingnewpts
+    - node.type.res_provider
+_core:
+  default_config_hash: RBPL8ARl5flGAk3A7ffdceXcEQ1SkUSq1MCpFdkB6g8
+id: node.res_provider.field_res_isacceptingnewpts
+field_name: field_res_isacceptingnewpts
+entity_type: node
+bundle: res_provider
+label: 'Is accepting new patients?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean
