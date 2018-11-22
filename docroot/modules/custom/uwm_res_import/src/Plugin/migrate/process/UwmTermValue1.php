@@ -33,21 +33,21 @@ class UwmTermValue1 extends ProcessPluginBase {
 
 
     //    if (!empty($value[0]['type']) && stripos($value[0]['type'], 'taxonomy_term') !== FALSE) {
+    //
+    //      $newFieldValues = [];
+    //      foreach ($value as $data) {
 
+    //        $term = \Drupal::service('entity.repository')
+    //          ->loadEntityByUuid('taxonomy_term', $data['id']);
 
     $term = \Drupal::service('entity.repository')
-      ->loadEntityByUuid('taxonomy_term', $value['id']);
+      ->loadEntityByUuid('taxonomy_term', $value);
 
     if ($term && $term->id()) {
-      return $term->name->value;
+      return $term->id();
     }
-
     return NULL;
 
-    // }
-
-
   }
-
 
 }

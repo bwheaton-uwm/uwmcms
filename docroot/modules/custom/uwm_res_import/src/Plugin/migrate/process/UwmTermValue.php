@@ -31,21 +31,24 @@ class UwmTermValue extends ProcessPluginBase {
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
 
-
-    if (!empty($value['type']) && stripos($value['type'], 'taxonomy_term') !== FALSE) {
-
+    if($value['id']) {
       $term = \Drupal::service('entity.repository')
         ->loadEntityByUuid('taxonomy_term', $value['id']);
 
       if ($term && $term->id()) {
-        return ['target_id' => $term->id()];
+        return $term->name->value;
       }
 
       return NULL;
     }
 
-
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function prepareRow(Row $row) {
+    $nid = $row->getSourceProperty('nid');
+  }
 
 }

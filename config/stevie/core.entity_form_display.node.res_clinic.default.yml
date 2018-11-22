@@ -19,6 +19,9 @@ dependencies:
     - field.field.node.res_clinic.field_res_phone_number
     - field.field.node.res_clinic.field_res_providers
     - field.field.node.res_clinic.field_res_room_number
+    - field.field.node.res_clinic.field_test_m_services1
+    - field.field.node.res_clinic.field_test_m_services2
+    - field.field.node.res_clinic.field_test_m_services3
     - field.field.node.res_clinic.field_testing_top_content
     - field.field.node.res_clinic.uwm_unique_id
     - image.style.thumbnail
@@ -178,6 +181,33 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  field_test_m_services1:
+    weight: 28
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_test_m_services2:
+    weight: 29
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_test_m_services3:
+    weight: 30
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   field_testing_top_content:
     weight: 27

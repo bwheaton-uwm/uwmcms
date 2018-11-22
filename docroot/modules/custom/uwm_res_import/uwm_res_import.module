@@ -84,51 +84,51 @@ function uwm_res_import_migrate_prepare_row(Row $row, MigrateSourceInterface $so
 //  }
 
 
-  /***
-   *
-   *
-   *
-   */
-  $da = 'source_field_test_m_services2';
-  $dd = $row->getSourceProperty($da);
-  if(!empty($dd[0]['type']) && stripos($dd[0]['type'], 'taxonomy_term') !== FALSE) {
-
-    $newValues = [];
-    foreach($dd as $di) {
-
-      $term = \Drupal::service('entity.repository')->loadEntityByUuid('taxonomy_term', $di['id']);
-
-      if ($term) {
-        $newValues[] = $term->name->value;
-      }
-
-    }
-    $row->setSourceProperty($da, $newValues);
-    $row->setDestinationProperty('field_test_m_services2', $newValues);
-  }
-
-  /***
-   *
-   *
-   *
-   */
-  $da = 'source_field_test_m_services3';
-  $dd = $row->getSourceProperty($da);
-  if(!empty($dd[0]['type']) && stripos($dd[0]['type'], 'taxonomy_term') !== FALSE) {
-
-    $newValues = [];
-    foreach($dd as $di) {
-
-      $term = \Drupal::service('entity.repository')->loadEntityByUuid('taxonomy_term', $di['id']);
-
-      if ($term) {
-        $newValues[] = $term->id();
-      }
-
-    }
-    $row->setSourceProperty($da, $newValues);
-    //$row->setDestinationProperty('field_test_m_services3', $newValues);
-  }
+//  /***
+//   *
+//   *
+//   *
+//   */
+//  $da = 'source_field_test_m_services2';
+//  $dd = $row->getSourceProperty($da);
+//  if(!empty($dd[0]['type']) && stripos($dd[0]['type'], 'taxonomy_term') !== FALSE) {
+//
+//    $newValues = [];
+//    foreach($dd as $di) {
+//
+//      $term = \Drupal::service('entity.repository')->loadEntityByUuid('taxonomy_term', $di['id']);
+//
+//      if ($term) {
+//        $newValues[] = $term->name->value;
+//      }
+//
+//    }
+//    $row->setSourceProperty($da, $newValues);
+//    $row->setDestinationProperty('field_test_m_services2', $newValues);
+//  }
+//
+//  /***
+//   *
+//   *
+//   *
+//   */
+//  $da = 'source_field_test_m_services3';
+//  $dd = $row->getSourceProperty($da);
+//  if(!empty($dd[0]['type']) && stripos($dd[0]['type'], 'taxonomy_term') !== FALSE) {
+//
+//    $newValues = [];
+//    foreach($dd as $di) {
+//
+//      $term = \Drupal::service('entity.repository')->loadEntityByUuid('taxonomy_term', $di['id']);
+//
+//      if ($term) {
+//        $newValues[] = $term->id();
+//      }
+//
+//    }
+//    $row->setSourceProperty($da, $newValues);
+//    //$row->setDestinationProperty('field_test_m_services3', $newValues);
+//  }
 
 
   //  if (!empty($collection['data'])) {
