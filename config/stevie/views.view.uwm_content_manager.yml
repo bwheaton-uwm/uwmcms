@@ -600,7 +600,7 @@ display:
         - 'config:workflow_list'
   page_1:
     display_options:
-      path: admin/content/node
+      path: admin/content
       menu:
         type: 'default tab'
         title: Content

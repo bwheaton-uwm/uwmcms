@@ -292,4 +292,3 @@ process:
 #    bundle: medical_services
 #    entity_type: taxonomy_term
 #    ignore_case: true
-

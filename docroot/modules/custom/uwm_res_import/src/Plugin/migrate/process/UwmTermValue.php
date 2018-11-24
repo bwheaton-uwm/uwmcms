@@ -2,11 +2,9 @@
 
 namespace Drupal\uwm_res_import\Plugin\migrate\process;
 
-use Drupal\migrate\MigrateException;
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\Row;
-
 
 /**
  * Perform custom value transformations.
@@ -22,7 +20,6 @@ use Drupal\migrate\Row;
  *   plugin: transform_value
  *   source: text
  * @endcode
- *
  */
 class UwmTermValue extends ProcessPluginBase {
 
@@ -31,7 +28,7 @@ class UwmTermValue extends ProcessPluginBase {
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
 
-    if($value['id']) {
+    if ($value['id']) {
       $term = \Drupal::service('entity.repository')
         ->loadEntityByUuid('taxonomy_term', $value['id']);
 

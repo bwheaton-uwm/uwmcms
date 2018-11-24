@@ -23,6 +23,7 @@ source:
 
   urls:
     - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?filter[field_res_npi]=1952486755
+    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?filter[field_res_npi]=1952486755&include=field_res_affiliates,field_res_board_certifications,field_res_clinics,field_res_degrees,field_res_education_history,field_res_expertises,field_res_expertises,field_res_languages,field_res_medical_services
     - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Boffset%5D=50&page%5Blimit%5D=50
 
   ids:
@@ -136,6 +137,7 @@ source:
 
 
 
+
 process:
   type:
     plugin: default_value
@@ -176,7 +178,9 @@ process:
 
 #  field_res_biography: field_res_biography
   field_res_biography/value: field_res_biography/value
-  field_res_biography/format: field_res_biography/format
+  field_res_biography/format:
+    plugin: default_value
+    default_value: unrestricted
   field_res_biography/processed: field_res_biography/processed
   field_res_biography/summary: field_res_biography/summary
 
@@ -202,7 +206,9 @@ process:
 
 #  field_res_personal_interests: field_res_personal_interests
   field_res_personal_interests/value: field_res_personal_interests/value
-  field_res_personal_interests/format: field_res_personal_interests/format
+  field_res_personal_interests/format:
+    plugin: default_value
+    default_value: unrestricted
   field_res_personal_interests/processed: field_res_personal_interests/processed
 
   field_res_pubmed_ids: field_res_pubmed_ids

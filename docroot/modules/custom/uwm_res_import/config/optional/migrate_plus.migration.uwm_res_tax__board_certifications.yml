@@ -1,0 +1,44 @@
+#res taxonomy: board_certifications
+id: uwm_res_tax__board_certifications
+label: uwm_res_tax__board_certifications
+migration_group: uwm
+migration_dependencies: {}
+
+destination:
+  plugin: entity:taxonomy_term
+  default_bundle: board_certifications
+
+
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+
+  urls:
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=25&page%5Boffset%5D=0&sort=name
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Boffset%5D=25&page%5Blimit%5D=25&sort=name
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Boffset%5D=50&page%5Blimit%5D=25&sort=name
+
+
+  ids:
+    tid:
+      type: integer
+
+  item_selector: data/
+
+  fields:
+  - name: tid
+    label: tid
+    selector: /attributes/tid
+  - name: uuid
+    label: uuid
+    selector: /attributes/uuid
+  - name: name
+    label: name
+    selector: /attributes/name
+
+process:
+  uuid: uuid
+  tid: term_id
+  name: name
+  uwm_unique_id: uwm_unique_id

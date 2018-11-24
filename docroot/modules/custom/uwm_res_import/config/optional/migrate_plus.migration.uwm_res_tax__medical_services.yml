@@ -1,6 +1,6 @@
 #res taxonomy: medical_services
-id: uwm_res_import_medical_services
-label: uwm_res_import_medical_services
+id: uwm_res_tax__medical_services
+label: uwm_res_tax__medical_services
 migration_group: uwm
 migration_dependencies: {}
 
