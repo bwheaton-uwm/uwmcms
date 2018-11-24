@@ -1,0 +1,217 @@
+uuid: 65291442-99d5-465c-a418-5b1fd5967a77
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - uwm_res_import
+_core:
+  default_config_hash: rDVgLUrrILIq8hp3LsrHZ1KrMtQb39GkqASnQAkwCsc
+id: uwm_res_import_clinics
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: uwm
+label: uwm_res_import_clinics
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  urls:
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=0&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=1&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=2&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=3&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=4&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=5&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=6&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=7&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=8&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=9&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=10&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=11&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=12&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=13&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=14&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=15&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=16&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=17&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=18&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=19&sort=nid'
+  ids:
+    nid:
+      type: integer
+  item_selector: data/
+  fields:
+    -
+      name: nid
+      label: Nid
+      selector: /attributes/nid
+    -
+      name: vid
+      label: Vid
+      selector: /attributes/vid
+    -
+      name: uuid
+      label: Uuid
+      selector: /attributes/uuid
+    -
+      name: title
+      label: Title
+      selector: /attributes/title
+    -
+      name: created
+      label: Created
+      selector: /attributes/created
+    -
+      name: changed
+      label: Changed
+      selector: /attributes/changed
+    -
+      name: status
+      label: Status
+      selector: /attributes/status
+    -
+      name: sticky
+      label: Sticky
+      selector: /attributes/sticky
+    -
+      name: promote
+      label: Promote
+      selector: /attributes/promote
+    -
+      name: default_langcode
+      label: 'Default Langcode'
+      selector: /attributes/default_langcode
+    -
+      name: path
+      label: Path
+      selector: /attributes/path
+    -
+      name: body
+      label: Body
+      selector: /attributes/body
+    -
+      name: uid
+      label: Uid
+      selector: /relationships/uid
+    -
+      name: field_res_box_number
+      label: field_res_box_number
+      selector: /attributes/field_res_box_number
+    -
+      name: field_res_displayaptslink
+      label: field_res_displayaptslink
+      selector: /attributes/field_res_displayaptslink
+    -
+      name: field_res_external_url
+      label: field_res_external_url
+      selector: /attributes/field_res_external_url
+    -
+      name: field_res_fax_number
+      label: field_res_fax_number
+      selector: /attributes/field_res_fax_number
+    -
+      name: field_res_internal_url
+      label: field_res_internal_url
+      selector: /attributes/field_res_internal_url
+    -
+      name: field_res_iscallcenterserviced
+      label: field_res_iscallcenterserviced
+      selector: /attributes/field_res_iscallcenterserviced
+    -
+      name: field_res_phone_number
+      label: field_res_phone_number
+      selector: /attributes/field_res_phone_number
+    -
+      name: field_res_room_number
+      label: field_res_room_number
+      selector: /attributes/field_res_room_number
+    -
+      name: uwm_unique_id
+      label: uwm_unique_id
+      selector: /attributes/uwm_unique_id
+    -
+      name: menu_link
+      label: menu_link
+      selector: /relationships/menu_link
+    -
+      name: field_res_affiliates
+      label: field_res_affiliates
+      selector: /relationships/field_res_affiliates
+    -
+      name: field_res_building
+      label: field_res_building
+      selector: /relationships/field_res_building
+    -
+      name: field_res_floor
+      label: field_res_floor
+      selector: /relationships/field_res_floor
+    -
+      name: field_res_hours_of_operation
+      label: field_res_hours_of_operation
+      selector: /relationships/field_res_hours_of_operation
+    -
+      name: field_res_image
+      label: field_res_image
+      selector: /relationships/field_res_image
+    -
+      name: field_res_medical_services
+      label: field_res_medical_services
+      selector: /relationships/field_res_medical_services/data
+    -
+      name: field_res_medical_services1
+      label: field_res_medical_services1
+      selector: /relationships/field_res_medical_services/data
+    -
+      name: field_res_providers
+      label: field_res_providers
+      selector: /relationships/field_res_providers
+process:
+  uuid: uuid
+  type:
+    plugin: default_value
+    default_value: res_clinic
+  title: title
+  created: created
+  changed: changed
+  status: status
+  sticky: sticky
+  promote: promote
+  default_language: default_language
+  uid:
+    plugin: default_value
+    default_value: 1
+  field_res_box_number: field_res_box_number
+  field_res_displayaptslink: field_res_displayaptslink
+  field_res_external_url: field_res_external_url
+  field_res_fax_number: field_res_fax_number
+  field_res_internal_url: field_res_internal_url
+  field_res_iscallcenterserviced: field_res_iscallcenterserviced
+  field_res_phone_number: field_res_phone_number
+  field_res_room_number: field_res_room_number
+  uwm_unique_id: uwm_unique_id
+  field_res_medical_services:
+    -
+      plugin: uwm_term_value
+      source: field_res_medical_services
+    -
+      plugin: skip_on_empty
+      method: process
+    -
+      plugin: entity_generate
+  field_test_m_services1:
+    plugin: sub_process
+    source: field_res_medical_services1
+    process:
+      target_id:
+        -
+          plugin: uwm_term_value1
+          source: id
+        -
+          plugin: skip_on_empty
+          method: process
+destination:
+  plugin: 'entity:node'
+migration_dependencies: {  }
