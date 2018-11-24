@@ -19,7 +19,11 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
 
-  urls: https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider
+#  urls: https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider
+
+  urls:
+    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?filter[field_res_npi]=1952486755
+    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Boffset%5D=50&page%5Blimit%5D=50
 
   ids:
     nid:
@@ -145,24 +149,63 @@ process:
   sticky: sticky
   promote: promote
   default_language: default_language
-  path: path
+#  path: path
 
-  body/value:
-    plugin: extract
-    source: body
-    index:
-      - value
+#  path/pathauto:
+#    plugin: default_value
+#    default_value: 0 # Disable pathauto
+#  path/alias:
+#    plugin: concat
+#    source:
+#      - constants/slash
+#      - url
+
+#  path: path
+#    alias: alias
+#    pid: pid
+#    langcode: langcode
+
   body/format:
-    plugin: extract
-    source: body
-    index:
-      - format
-
-  # field_image:
-  #   plugin: migration
-  #   migration: uwm_reservoir_import_images
-  #   source: field_image/data/id
+    plugin: default_value
+    default_value: unrestricted
+  body/value: body/value
 
   uid:
     plugin: default_value
     default_value: 1
+
+#  field_res_biography: field_res_biography
+  field_res_biography/value: field_res_biography/value
+  field_res_biography/format: field_res_biography/format
+  field_res_biography/processed: field_res_biography/processed
+  field_res_biography/summary: field_res_biography/summary
+
+  field_res_gender: field_res_gender
+  field_res_internal_url: field_res_internal_url
+  field_res_isacceptingnewpts: field_res_isacceptingnewpts
+  field_res_meta_tags: field_res_meta_tags
+
+#  field_res_name: field_res_name
+  field_res_name/title: field_res_name/title
+  field_res_name/given: field_res_name/given
+  field_res_name/middle: field_res_name/middle
+  field_res_name/family: field_res_name/family
+  field_res_name/generational: field_res_name/generational
+  field_res_name/credentials: field_res_name/credentials
+
+  field_res_npi: field_res_npi
+
+#  field_res_personal_interests: field_res_personal_interests
+#    value: value
+#    format: format
+#    processed: processed
+
+#  field_res_personal_interests: field_res_personal_interests
+  field_res_personal_interests/value: field_res_personal_interests/value
+  field_res_personal_interests/format: field_res_personal_interests/format
+  field_res_personal_interests/processed: field_res_personal_interests/processed
+
+  field_res_pubmed_ids: field_res_pubmed_ids
+
+  field_res_puma_id: field_res_puma_id
+  uwm_unique_id: uwm_unique_id

@@ -1,4 +1,4 @@
-uuid: 4513322a-b340-4e76-b47e-a960093c743f
+uuid: 66dd6720-d107-4a87-a7ed-01d0aea0ff1d
 langcode: en
 status: true
 dependencies:
@@ -6,7 +6,7 @@ dependencies:
     module:
       - uwm_res_import
 _core:
-  default_config_hash: jQIhlC1HVW5TLUq_NP7ebNWMKrKcaT7oKuNVM12zqvY
+  default_config_hash: ZsH7Q_NK-6wEzas2koHA7pA4UMn6SzEqlD7e1HD1sC4
 id: uwm_res_import_providers
 class: null
 field_plugin_method: null
@@ -18,7 +18,9 @@ source:
   plugin: url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  urls: 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider'
+  urls:
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?filter[field_res_npi]=1952486755'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Boffset%5D=50&page%5Blimit%5D=50'
   ids:
     nid:
       type: integer
@@ -136,20 +138,34 @@ process:
   sticky: sticky
   promote: promote
   default_language: default_language
-  path: path
-  body/value:
-    plugin: extract
-    source: body
-    index:
-      - value
   body/format:
-    plugin: extract
-    source: body
-    index:
-      - format
+    plugin: default_value
+    default_value: unrestricted
+  body/value: body/value
   uid:
     plugin: default_value
     default_value: 1
+  field_res_biography/value: field_res_biography/value
+  field_res_biography/format: field_res_biography/format
+  field_res_biography/processed: field_res_biography/processed
+  field_res_biography/summary: field_res_biography/summary
+  field_res_gender: field_res_gender
+  field_res_internal_url: field_res_internal_url
+  field_res_isacceptingnewpts: field_res_isacceptingnewpts
+  field_res_meta_tags: field_res_meta_tags
+  field_res_name/title: field_res_name/title
+  field_res_name/given: field_res_name/given
+  field_res_name/middle: field_res_name/middle
+  field_res_name/family: field_res_name/family
+  field_res_name/generational: field_res_name/generational
+  field_res_name/credentials: field_res_name/credentials
+  field_res_npi: field_res_npi
+  field_res_personal_interests/value: field_res_personal_interests/value
+  field_res_personal_interests/format: field_res_personal_interests/format
+  field_res_personal_interests/processed: field_res_personal_interests/processed
+  field_res_pubmed_ids: field_res_pubmed_ids
+  field_res_puma_id: field_res_puma_id
+  uwm_unique_id: uwm_unique_id
 destination:
   plugin: 'entity:node'
 migration_dependencies: null

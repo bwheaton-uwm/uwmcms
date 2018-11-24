@@ -23,10 +23,10 @@ source:
 #  urls: https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic
   urls:
     - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?filter%5Btitle%5D%5Boperator%5D=%3D&filter%5Btitle%5D%5Bpath%5D=title&filter%5Btitle%5D%5Bvalue%5D=UW%20Neighborhood%20Belltown%20Clinic&sort=nid
-#    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=0&sort=nid
+    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=0&sort=nid
 #    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Boffset%5D=5&page%5Blimit%5D=5&sort=nid
 #    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Boffset%5D=10&page%5Blimit%5D=5&sort=nid
-    #- https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Boffset%5D=15&page%5Blimit%5D=5&sort=nid
+#    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Boffset%5D=15&page%5Blimit%5D=5&sort=nid
 
 
   ids:

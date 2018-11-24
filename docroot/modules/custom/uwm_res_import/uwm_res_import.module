@@ -11,17 +11,19 @@ use Drupal\migrate\Row;
 
 /**
  * Implements hook_migration_plugins_alter().
+ *
+ * This routine is cached with the migration. Drush cr for debugging.
  */
 function uwm_res_import_migration_plugins_alter(&$migrations) {
 
   foreach ($migrations as $id => $migration) {
 
-    if ($migration['id'] == 'my_migrate_id') {
+    if ($migration['id'] == 'uwm_res_import_clinics') {
 
       $config = \Drupal::service('config.factory')
         ->getEditable('migrate_plus.migration.' . $migration['id']);
 
-      $config->set('source.urls', 'http://example_api');
+      $config->set('source.urls', _u_clinics_import_urls());
       $config->save();
 
     }
@@ -36,6 +38,7 @@ function uwm_res_import_migration_plugins_alter(&$migrations) {
  */
 function uwm_res_import_migrate_prepare_row(Row $row, MigrateSourceInterface $source, MigrationInterface $migration) {
 
+  $i = 0;
   /***
    *
    *
@@ -150,3 +153,17 @@ function uwm_res_import_migrate_prepare_row(Row $row, MigrateSourceInterface $so
 //  }
 
 }
+
+
+function _u_clinics_import_urls() {
+
+  $urls = [];
+  $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D={{page}}&sort=nid';
+  for($i = 0;$i < 20;$i++) {
+    $urls[] = str_replace('{{page}}', $i, $url);
+  }
+  return $urls;
+}
+
+
+
