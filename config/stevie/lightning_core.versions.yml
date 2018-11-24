@@ -175,3 +175,5 @@ migrate_tools: 4.0.0
 uwm_reservoir_import: 0.0.0
 uwmcs_utils: 0.0.0
 uwm_res_import: 0.0.0
+uwm_drush_commands: 0.0.0
+uwm_commands: 0.0.0

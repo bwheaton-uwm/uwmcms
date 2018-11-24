@@ -1,4 +1,4 @@
-uuid: 65291442-99d5-465c-a418-5b1fd5967a77
+uuid: 705eb6e9-d646-4a07-b028-07ea689e4293
 langcode: en
 status: true
 dependencies:
@@ -19,26 +19,36 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
   urls:
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=0&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=1&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=2&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=3&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=4&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=5&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=6&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=7&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=8&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=9&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=10&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=11&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=12&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=13&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=14&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=15&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=16&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=17&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=18&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=19&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=0&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=1&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=2&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=3&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=4&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=5&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=6&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=7&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=8&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=9&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=10&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=11&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=12&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=13&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=14&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=15&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=16&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=17&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=18&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=19&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=20&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=21&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=22&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=23&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=24&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=25&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=26&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=27&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=28&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D=29&sort=nid'
   ids:
     nid:
       type: integer

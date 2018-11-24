@@ -152,6 +152,7 @@ module:
   twig_tweak: 0
   update: 0
   user: 0
+  uwm_commands: 0
   uwm_paragraphs: 0
   uwm_res_import: 0
   uwmcs_extension: 0

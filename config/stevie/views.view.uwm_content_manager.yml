@@ -1,6 +1,6 @@
 uuid: 2f122556-0907-483d-a705-3d3bc1cedea7
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - workflows.workflow.editorial
@@ -42,7 +42,7 @@ display:
       pager:
         type: full
         options:
-          items_per_page: 50
+          items_per_page: 25
           offset: 0
           id: 0
           total_pages: null
@@ -454,6 +454,49 @@ display:
           plugin_id: string
           entity_type: node
           entity_field: title
+        uuid:
+          id: uuid
+          table: node
+          field: uuid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: uuid_op
+            label: UUID
+            description: ''
+            use_operator: false
+            operator: uuid_op
+            identifier: uuid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              replicator: '0'
+              administrator: '0'
+              content_manager: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: uuid
+          plugin_id: string
         type:
           id: type
           table: node_field_data
