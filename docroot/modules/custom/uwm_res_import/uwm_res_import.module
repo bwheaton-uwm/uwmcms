@@ -24,9 +24,12 @@ function uwm_res_import_migration_plugins_alter(&$migrations) {
       $config = \Drupal::service('config.factory')
         ->getEditable('migrate_plus.migration.' . $migration['id']);
 
-      $config->set('source.urls', call_user_func($urlsFunction));
+      $urls = call_user_func($urlsFunction);
+      $config->set('source.urls', $urls);
       $config->save();
 
+      \Drupal::logger(__FUNCTION__)
+        ->info('Added URLs to migration: ' . json_encode($urls));
     }
 
   }
@@ -51,10 +54,15 @@ function uwm_res_import_migrate_prepare_row(Row $row, MigrateSourceInterface $so
 function uwm_res_import_clinics_source_urls() {
 
   $urls = [];
-  $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D={{page}}&sort=nid';
-  for ($i = 0; $i < 30; $i++) {
-    $urls[] = str_replace('{{page}}', $i, $url);
-  }
+  $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D={{limit}}&page%5Boffset%5D={{offset}}&sort=nid';
+  $offset = 0;
+  $limit = 50;
+  do {
+
+    $urls[] = str_replace('{{offset}}', $offset, str_replace('{{limit}}', $limit, $url));
+
+  } while ($offset = $offset + $limit);
+
   return $urls;
 
 }
@@ -68,10 +76,103 @@ function uwm_res_import_clinics_source_urls() {
 function uwm_res_import_providers_source_urls() {
 
   $urls = [];
-  $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=10&page%5Boffset%5D={{page}}&sort=nid';
-  for ($i = 0; $i < 250; $i++) {
-    $urls[] = str_replace('{{page}}', $i, $url);
-  }
+  $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D={{limit}}&page%5Boffset%5D={{offset}}&sort=nid';
+  $offset = 0;
+  $limit = 50;
+  do {
+
+    $urls[] = str_replace('{{offset}}', $offset, str_replace('{{limit}}', $limit, $url));
+
+  } while ($offset = $offset + $limit);
+
+  return $urls;
+
+}
+
+/**
+ * Provides array of URLs for migration source.
+ *
+ * @return array
+ *   Description here.
+ */
+function uwm_res_tax__board_certifications_source_urls() {
+
+  $urls = [];
+  $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D={{limit}}&page%5Boffset%5D={{offset}}';
+  $offset = 0;
+  $limit = 50;
+  do {
+
+    $urls[] = str_replace('{{offset}}', $offset, str_replace('{{limit}}', $limit, $url));
+
+  } while (($offset = $offset + $limit) && $offset < 500);
+
+  return $urls;
+
+}
+
+/**
+ * Provides array of URLs for migration source.
+ *
+ * @return array
+ *   Description here.
+ */
+function uwm_res_tax__expertise_source_urls() {
+
+  $urls = [];
+  $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D={{limit}}&page%5Boffset%5D={{offset}}';
+  $offset = 0;
+  $limit = 50;
+  do {
+
+    $urls[] = str_replace('{{offset}}', $offset, str_replace('{{limit}}', $limit, $url));
+
+  } while (($offset = $offset + $limit) && $offset < 1000);
+
+  return $urls;
+
+}
+
+/**
+ * Provides array of URLs for migration source.
+ *
+ * @return array
+ *   Description here.
+ */
+function uwm_res_tax__education_institutions_source_urls() {
+
+  $urls = [];
+  $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page%5Blimit%5D={{limit}}&page%5Boffset%5D={{offset}}';
+  $offset = 0;
+  $limit = 50;
+  do {
+
+    $urls[] = str_replace('{{offset}}', $offset, str_replace('{{limit}}', $limit, $url));
+
+  } while (($offset = $offset + $limit) && $offset < 4000);
+
+  return $urls;
+
+}
+
+/**
+ * Provides array of URLs for migration source.
+ *
+ * @return array
+ *   Description here.
+ */
+function uwm_res_tax__languages_source_urls() {
+
+  $urls = [];
+  $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page%5Blimit%5D={{limit}}&page%5Boffset%5D={{offset}}';
+  $offset = 0;
+  $limit = 50;
+  do {
+
+    $urls[] = str_replace('{{offset}}', $offset, str_replace('{{limit}}', $limit, $url));
+
+  } while (($offset = $offset + $limit) && $offset < 600);
+
   return $urls;
 
 }
