@@ -192,7 +192,12 @@
       "merge-scripts": true,
       "replace": false,
       "ignore-duplicates": true
-    }
+    },
+  "patches": {
+      "drupal/media_entity": {
+          "Undefined function media_entity_copy_icons() fix": "./patches/2934599-11.patch"
+      }
+  }
   },
   "config":
   {

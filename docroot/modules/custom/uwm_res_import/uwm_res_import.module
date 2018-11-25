@@ -18,22 +18,13 @@ function uwm_res_import_migration_plugins_alter(&$migrations) {
 
   foreach ($migrations as $id => $migration) {
 
-    if ($migration['id'] == 'uwm_res_import_clinics') {
+    $urlsFunction = $migration['id'] . '_source_urls';
+    if (function_exists($urlsFunction)) {
 
       $config = \Drupal::service('config.factory')
         ->getEditable('migrate_plus.migration.' . $migration['id']);
 
-      $config->set('source.urls', _uwm_clinic_import_urls());
-      $config->save();
-
-    }
-
-    elseif ($migration['id'] == 'uwm_res_import_providers') {
-
-      $config = \Drupal::service('config.factory')
-        ->getEditable('migrate_plus.migration.' . $migration['id']);
-
-      $config->set('source.urls', _uwm_provider_import_urls());
+      $config->set('source.urls', call_user_func($urlsFunction));
       $config->save();
 
     }
@@ -57,7 +48,7 @@ function uwm_res_import_migrate_prepare_row(Row $row, MigrateSourceInterface $so
  * @return array
  *   Description here.
  */
-function _uwm_clinic_import_urls() {
+function uwm_res_import_clinics_source_urls() {
 
   $urls = [];
   $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=10&page%5Boffset%5D={{page}}&sort=nid';
@@ -74,7 +65,7 @@ function _uwm_clinic_import_urls() {
  * @return array
  *   Description here.
  */
-function _uwm_provider_import_urls() {
+function uwm_res_import_providers_source_urls() {
 
   $urls = [];
   $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=10&page%5Boffset%5D={{page}}&sort=nid';

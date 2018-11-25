@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "33be09670a3bccea18bbe1fe2ad70f50",
+    "content-hash": "f0f5dcbf6400f06a4341db9373d56f3c",
     "packages": [
         {
             "name": "acquia/blt",
@@ -3284,17 +3284,17 @@
         },
         {
             "name": "drupal/admin_toolbar",
-            "version": "1.24.0",
+            "version": "1.25.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/admin_toolbar",
-                "reference": "8.x-1.24"
+                "reference": "8.x-1.25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/admin_toolbar-8.x-1.24.zip",
-                "reference": "8.x-1.24",
-                "shasum": "682ffa443a1e339583022eb6adbb00c1103ea6d4"
+                "url": "https://ftp.drupal.org/files/projects/admin_toolbar-8.x-1.25.zip",
+                "reference": "8.x-1.25",
+                "shasum": "bc24929d5e49932518797c1228e647e98b03542b"
             },
             "require": {
                 "drupal/core": "*"
@@ -3305,8 +3305,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.24",
-                    "datestamp": "1527523080",
+                    "version": "8.x-1.25",
+                    "datestamp": "1542915180",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5582,22 +5582,22 @@
         },
         {
             "name": "drupal/deploy",
-            "version": "1.0.0-beta13",
+            "version": "1.0.0-beta14",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/deploy",
-                "reference": "8.x-1.0-beta13"
+                "reference": "8.x-1.0-beta14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/deploy-8.x-1.0-beta13.zip",
-                "reference": "8.x-1.0-beta13",
-                "shasum": "7a1b65bb9d98d4175a763474120baa0cc61e1b53"
+                "url": "https://ftp.drupal.org/files/projects/deploy-8.x-1.0-beta14.zip",
+                "reference": "8.x-1.0-beta14",
+                "shasum": "cc18d06b3be6069c390de84df4ce421806906841"
             },
             "require": {
                 "drupal/core": "~8.0",
                 "drupal/workspace": "*",
-                "relaxedws/replicator": "~1.0.1"
+                "relaxedws/replicator": "~1.1.0"
             },
             "type": "drupal-module",
             "extra": {
@@ -5605,8 +5605,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta13",
-                    "datestamp": "1542015480",
+                    "version": "8.x-1.0-beta14",
+                    "datestamp": "1542884880",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Beta releases are not covered by Drupal security advisories."
@@ -6806,17 +6806,17 @@
         },
         {
             "name": "drupal/facets",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/facets",
-                "reference": "8.x-1.1"
+                "reference": "8.x-1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/facets-8.x-1.1.zip",
-                "reference": "8.x-1.1",
-                "shasum": "d916790b16da4e42b1615bc03221d4d81905ec3f"
+                "url": "https://ftp.drupal.org/files/projects/facets-8.x-1.2.zip",
+                "reference": "8.x-1.2",
+                "shasum": "bf0f9249d90025dcd16c0af7b7cd59e515fb9d9e"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -6830,8 +6830,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.1",
-                    "datestamp": "1533065280",
+                    "version": "8.x-1.2",
+                    "datestamp": "1543065481",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -7337,17 +7337,17 @@
         },
         {
             "name": "drupal/geofield",
-            "version": "1.0.0-beta5",
+            "version": "1.0.0-beta6",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/geofield",
-                "reference": "8.x-1.0-beta5"
+                "reference": "8.x-1.0-beta6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/geofield-8.x-1.0-beta5.zip",
-                "reference": "8.x-1.0-beta5",
-                "shasum": "82a8f4ee8875fd59f75a0d09dd9dca6e11ce7479"
+                "url": "https://ftp.drupal.org/files/projects/geofield-8.x-1.0-beta6.zip",
+                "reference": "8.x-1.0-beta6",
+                "shasum": "633f0574b9649fe43078f470446af143b24c08fe"
             },
             "require": {
                 "drupal/core": "~8.0",
@@ -7359,8 +7359,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta5",
-                    "datestamp": "1541776980",
+                    "version": "8.x-1.0-beta6",
+                    "datestamp": "1542895980",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Beta releases are not covered by Drupal security advisories."
@@ -8771,6 +8771,9 @@
                         "status": "not-covered",
                         "message": "Beta releases are not covered by Drupal security advisories."
                     }
+                },
+                "patches_applied": {
+                    "Undefined function media_entity_copy_icons() fix": "./patches/2934599-11.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -11208,23 +11211,23 @@
         },
         {
             "name": "drupal/relaxed",
-            "version": "1.0.0-beta15",
+            "version": "1.0.0-beta16",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/relaxed",
-                "reference": "8.x-1.0-beta15"
+                "reference": "8.x-1.0-beta16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/relaxed-8.x-1.0-beta15.zip",
-                "reference": "8.x-1.0-beta15",
-                "shasum": "56db07dc8ea7b06797efe813a30fd3976ac4724c"
+                "url": "https://ftp.drupal.org/files/projects/relaxed-8.x-1.0-beta16.zip",
+                "reference": "8.x-1.0-beta16",
+                "shasum": "bb551f7808497ee2e1e2fa9e6c4611870cf436a3"
             },
             "require": {
                 "drupal/core": "^8.3",
                 "drupal/multiversion": "*",
                 "drupal/replication": "*",
-                "relaxedws/replicator": "~1.0.1"
+                "relaxedws/replicator": "~1.1.0"
             },
             "require-dev": {
                 "drupal/encrypt": "*",
@@ -11237,8 +11240,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta15",
-                    "datestamp": "1542015480",
+                    "version": "8.x-1.0-beta16",
+                    "datestamp": "1542885180",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Beta releases are not covered by Drupal security advisories."
@@ -11279,17 +11282,17 @@
         },
         {
             "name": "drupal/replication",
-            "version": "1.0.0-beta16",
+            "version": "1.0.0-beta17",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/replication",
-                "reference": "8.x-1.0-beta16"
+                "reference": "8.x-1.0-beta17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/replication-8.x-1.0-beta16.zip",
-                "reference": "8.x-1.0-beta16",
-                "shasum": "ad6ba379790a1c5f676f7f91496eef6587e92da0"
+                "url": "https://ftp.drupal.org/files/projects/replication-8.x-1.0-beta17.zip",
+                "reference": "8.x-1.0-beta17",
+                "shasum": "ff3b3e722bc52859546e67352d091751c392b5ab"
             },
             "require": {
                 "drupal/core": "~8.0",
@@ -11301,8 +11304,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta16",
-                    "datestamp": "1540975980",
+                    "version": "8.x-1.0-beta17",
+                    "datestamp": "1542884580",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Beta releases are not covered by Drupal security advisories."
@@ -16885,16 +16888,16 @@
         },
         {
             "name": "relaxedws/couchdb",
-            "version": "1.0.1",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/relaxedws/couchdb-client.git",
-                "reference": "6199e4b05b156b66ea04a268ec2cafa043fe6fb5"
+                "reference": "ba8b5c0e7d1d965f84e8306668187627ecdc96c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/relaxedws/couchdb-client/zipball/6199e4b05b156b66ea04a268ec2cafa043fe6fb5",
-                "reference": "6199e4b05b156b66ea04a268ec2cafa043fe6fb5",
+                "url": "https://api.github.com/repos/relaxedws/couchdb-client/zipball/ba8b5c0e7d1d965f84e8306668187627ecdc96c1",
+                "reference": "ba8b5c0e7d1d965f84e8306668187627ecdc96c1",
                 "shasum": ""
             },
             "require": {
@@ -16934,7 +16937,7 @@
                 "couchdb",
                 "persistence"
             ],
-            "time": "2018-06-15T09:07:46+00:00"
+            "time": "2018-11-22T10:13:21+00:00"
         },
         {
             "name": "relaxedws/lca",
@@ -16971,20 +16974,20 @@
         },
         {
             "name": "relaxedws/replicator",
-            "version": "1.0.3",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/relaxedws/couchdb-replicator.git",
-                "reference": "db7a11b7f4dbace31cfb29f9e10ea86e4c9fdcf1"
+                "reference": "4c2cda36c4b03c1f0401928a9c9926e98f32b940"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/relaxedws/couchdb-replicator/zipball/db7a11b7f4dbace31cfb29f9e10ea86e4c9fdcf1",
-                "reference": "db7a11b7f4dbace31cfb29f9e10ea86e4c9fdcf1",
+                "url": "https://api.github.com/repos/relaxedws/couchdb-replicator/zipball/4c2cda36c4b03c1f0401928a9c9926e98f32b940",
+                "reference": "4c2cda36c4b03c1f0401928a9c9926e98f32b940",
                 "shasum": ""
             },
             "require": {
-                "relaxedws/couchdb": "~1.0.1"
+                "relaxedws/couchdb": "~2.0.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "4.8.*"
@@ -17006,7 +17009,7 @@
                 }
             ],
             "description": "couchdb-replicator",
-            "time": "2018-08-27T13:14:22+00:00"
+            "time": "2018-11-16T10:40:40+00:00"
         },
         {
             "name": "robrichards/xmlseclibs",
@@ -18061,16 +18064,16 @@
         },
         {
             "name": "swagger-api/swagger-ui",
-            "version": "v3.20.0",
+            "version": "v3.20.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swagger-api/swagger-ui.git",
-                "reference": "db9e24541f65bd5d19506277b0869d098f3f704c"
+                "reference": "b8a677ba2744c8566d2295452f3def660b50a27f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/db9e24541f65bd5d19506277b0869d098f3f704c",
-                "reference": "db9e24541f65bd5d19506277b0869d098f3f704c",
+                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/b8a677ba2744c8566d2295452f3def660b50a27f",
+                "reference": "b8a677ba2744c8566d2295452f3def660b50a27f",
                 "shasum": ""
             },
             "type": "library",
@@ -18114,7 +18117,7 @@
                 "swagger",
                 "ui"
             ],
-            "time": "2018-11-17T01:13:28+00:00"
+            "time": "2018-11-24T01:51:23+00:00"
         },
         {
             "name": "symfony-cmf/routing",
