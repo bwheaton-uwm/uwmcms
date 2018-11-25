@@ -61,7 +61,7 @@ function uwm_res_import_clinics_source_urls() {
 
     $urls[] = str_replace('{{offset}}', $offset, str_replace('{{limit}}', $limit, $url));
 
-  } while while (($offset = $offset + $limit) && $offset < 500);
+  } while (($offset = $offset + $limit) && $offset < 500);
 
   return $urls;
 
@@ -83,7 +83,7 @@ function uwm_res_import_providers_source_urls() {
 
     $urls[] = str_replace('{{offset}}', $offset, str_replace('{{limit}}', $limit, $url));
 
-  } while while (($offset = $offset + $limit) && $offset < 4000);
+  } while (($offset = $offset + $limit) && $offset < 4000);
 
   return $urls;
 
