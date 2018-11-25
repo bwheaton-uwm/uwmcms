@@ -12,6 +12,7 @@ use Drush\Commands\DrushCommands;
  * of the services file to use.
  */
 class UwmCommands extends DrushCommands {
+
   /**
    * Echos back hello with the argument provided.
    *
