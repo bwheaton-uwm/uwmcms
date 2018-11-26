@@ -1,4 +1,4 @@
-uuid: 93722bd4-10b5-43fd-9604-6c77b7dd502c
+uuid: b7793f2a-74be-42f6-8d7b-65803afb6450
 langcode: en
 status: true
 dependencies:
@@ -6,7 +6,7 @@ dependencies:
     module:
       - uwm_res_import
 _core:
-  default_config_hash: jzqQsLmmoxtQt5Wjwkh5TEih-3YQC_KRukd_cF69J2A
+  default_config_hash: ZGhqLdMqV9kN4jLM3BGnxy2LTE8O4zKkHprWwcvWLBQ
 id: uwm_res_import_providers3
 class: null
 field_plugin_method: null
