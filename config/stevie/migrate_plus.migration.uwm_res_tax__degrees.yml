@@ -1,7 +1,9 @@
-uuid: ba59f6b1-4625-4f3c-9757-ef90cd06c035
+uuid: 8c3f3c68-b057-4592-98a4-558abc1da96c
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: KIpF_PeVAjbPXcMH8zzFpXSLOuXDHcS3I6ANkJdWI5c
 id: uwm_res_tax__degrees
 class: null
 field_plugin_method: null

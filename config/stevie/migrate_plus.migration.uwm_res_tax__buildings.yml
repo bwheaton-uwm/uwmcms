@@ -1,7 +1,9 @@
-uuid: f3c2e452-a615-4d00-bc0a-bf5d4bcd06f2
+uuid: 64cefe64-1413-43b4-8b11-98f4a867c7b4
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: zupbztv7aceCNCmi1rlgIHnRtm_pGQ_s1Sb76J8lCGY
 id: uwm_res_tax__buildings
 class: null
 field_plugin_method: null

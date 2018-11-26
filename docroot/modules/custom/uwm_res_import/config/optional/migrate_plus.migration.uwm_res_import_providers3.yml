@@ -134,7 +134,58 @@ source:
       label: uwm_unique_id
       selector: /attributes/uwm_unique_id
 
-
+#    -
+#      name: type
+#      label: type
+#      selector: /relationships/type/data
+#    -
+#      name: revision_uid
+#      label: revision_uid
+#      selector: /relationships/revision_uid/data
+#    -
+#      name: uid
+#      label: uid
+#      selector: /relationships/uid/data
+#    -
+#      name: menu_link
+#      label: menu_link
+#      selector: /relationships/menu_link/data
+    -
+      name: field_res_affiliates
+      label: field_res_affiliates
+      selector: /relationships/field_res_affiliates/data
+    -
+      name: field_res_board_certifications
+      label: field_res_board_certifications
+      selector: /relationships/field_res_board_certifications/data
+    -
+      name: field_res_clinics
+      label: field_res_clinics
+      selector: /relationships/field_res_clinics/data
+    -
+      name: field_res_degrees
+      label: field_res_degrees
+      selector: /relationships/field_res_degrees/data
+    -
+      name: field_res_education_history
+      label: field_res_education_history
+      selector: /relationships/field_res_education_history/data
+    -
+      name: field_res_expertises
+      label: field_res_expertises
+      selector: /relationships/field_res_expertises/data
+    -
+      name: field_res_image
+      label: field_res_image
+      selector: /relationships/field_res_image/data
+    -
+      name: field_res_languages
+      label: field_res_languages
+      selector: /relationships/field_res_languages/data
+    -
+      name: field_res_medical_services
+      label: field_res_medical_services
+      selector: /relationships/field_res_medical_services/data
 
 
 process:
@@ -214,3 +265,109 @@ process:
 
   field_res_puma_id: field_res_puma_id
   uwm_unique_id: uwm_unique_id
+
+
+  field_res_affiliates:
+    plugin: sub_process
+    source: field_res_affiliates
+    process:
+      target_id:
+      -
+        plugin: uwm_term_value1
+        source: id
+      -
+        plugin: skip_on_empty
+        method: process
+
+
+  field_res_board_certifications:
+    plugin: sub_process
+    source: field_res_board_certifications
+    process:
+      target_id:
+      -
+        plugin: uwm_term_value1
+        source: id
+      -
+        plugin: skip_on_empty
+        method: process
+
+
+#  field_res_clinics:
+#    plugin: sub_process
+#    source: field_res_clinics
+#    process:
+#      target_id:
+#      -
+#        plugin: uwm_term_value1
+#        source: id
+#      -
+#        plugin: skip_on_empty
+#        method: process
+
+
+  field_res_degrees:
+    plugin: sub_process
+    source: field_res_degrees
+    process:
+      target_id:
+      -
+        plugin: uwm_term_value1
+        source: id
+      -
+        plugin: skip_on_empty
+        method: process
+
+
+  field_res_education_history:
+    plugin: sub_process
+    source: field_res_education_history
+    process:
+      target_id:
+      -
+        plugin: uwm_term_value1
+        source: id
+      -
+        plugin: skip_on_empty
+        method: process
+
+
+  field_res_expertises:
+    plugin: sub_process
+    source: field_res_expertises
+    process:
+      target_id:
+      -
+        plugin: uwm_term_value1
+        source: id
+      -
+        plugin: skip_on_empty
+        method: process
+
+
+#  field_res_image: field_res_image
+
+  field_res_languages:
+    plugin: sub_process
+    source: field_res_languages
+    process:
+      target_id:
+      -
+        plugin: uwm_term_value1
+        source: id
+      -
+        plugin: skip_on_empty
+        method: process
+
+
+  field_res_medical_services:
+    plugin: sub_process
+    source: field_res_medical_services
+    process:
+      target_id:
+      -
+        plugin: uwm_term_value1
+        source: id
+      -
+        plugin: skip_on_empty
+        method: process
