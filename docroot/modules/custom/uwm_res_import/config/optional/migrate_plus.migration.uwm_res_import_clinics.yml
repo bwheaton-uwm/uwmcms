@@ -1,6 +1,6 @@
 # Migration configuration for imported articles.
-id: uwm_res_import_clinics
-label: uwm_res_import_clinics
+id: uwm_res_import_clinics2
+label: uwm_res_import_clinics2
 migration_group: uwm
 migration_dependencies: {}
 #migration_dependencies:

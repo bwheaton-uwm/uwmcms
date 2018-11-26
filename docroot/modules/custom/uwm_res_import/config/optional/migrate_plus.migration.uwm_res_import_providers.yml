@@ -1,6 +1,6 @@
 # Migration configuration for imported articles.
-id: uwm_res_import_providers
-label: uwm_res_import_providers
+id: uwm_res_import_providers2
+label: uwm_res_import_providers2
 migration_group: uwm
 #migration_dependencies:
 #  require:
