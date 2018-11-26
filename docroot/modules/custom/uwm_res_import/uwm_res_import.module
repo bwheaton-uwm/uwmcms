@@ -51,7 +51,7 @@ function uwm_res_import_migrate_prepare_row(Row $row, MigrateSourceInterface $so
  * @return array
  *   Description here.
  */
-function uwm_res_import_clinics2_source_urls() {
+function uwm_res_import_clinics3_source_urls() {
 
   $urls = [];
   $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D={{limit}}&page%5Boffset%5D={{offset}}&sort=nid';
@@ -73,7 +73,7 @@ function uwm_res_import_clinics2_source_urls() {
  * @return array
  *   Description here.
  */
-function uwm_res_import_providers2_source_urls() {
+function uwm_res_import_providers3_source_urls() {
 
   $urls = [];
   $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D={{limit}}&page%5Boffset%5D={{offset}}&sort=nid';

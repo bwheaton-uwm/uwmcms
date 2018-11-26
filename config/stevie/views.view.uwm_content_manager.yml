@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - system.menu.admin
     - workflows.workflow.editorial
   module:
     - content_moderation
@@ -645,12 +646,14 @@ display:
     display_options:
       path: admin/content
       menu:
-        type: 'default tab'
+        type: normal
         title: Content
         description: ''
+        expanded: true
+        parent: ''
+        weight: -100
+        context: '0'
         menu_name: admin
-        weight: -10
-        context: ''
       tab_options:
         type: normal
         title: Content

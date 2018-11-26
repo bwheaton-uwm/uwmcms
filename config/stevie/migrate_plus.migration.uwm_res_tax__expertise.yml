@@ -2,8 +2,6 @@ uuid: 009e6481-9f10-42a1-bc71-1868ac9172fc
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: BxdBet8eZl3cu4Qg-Egutgi-Eb9AOf14WxGI8xem4bY
 id: uwm_res_tax__expertise
 class: null
 field_plugin_method: null
@@ -16,9 +14,26 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
   urls:
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=25&page%5Boffset%5D=0&sort=name'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Boffset%5D=25&page%5Blimit%5D=25&sort=name'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Boffset%5D=50&page%5Blimit%5D=25&sort=name'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=0'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=50'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=100'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=150'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=200'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=250'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=300'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=350'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=400'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=450'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=500'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=550'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=600'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=650'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=700'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=750'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=800'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=850'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=900'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D=50&page%5Boffset%5D=950'
   ids:
     tid:
       type: integer

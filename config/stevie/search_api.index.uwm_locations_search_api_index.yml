@@ -1,6 +1,6 @@
 uuid: 073f373e-5463-49c9-be3d-49531a2825a5
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - search_api.server.uwmed_local_solr

@@ -1,0 +1,253 @@
+uuid: 93722bd4-10b5-43fd-9604-6c77b7dd502c
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - uwm_res_import
+_core:
+  default_config_hash: jzqQsLmmoxtQt5Wjwkh5TEih-3YQC_KRukd_cF69J2A
+id: uwm_res_import_providers3
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: uwm
+label: uwm_res_import_providers3
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  urls:
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=0&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=50&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=100&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=150&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=200&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=250&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=300&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=350&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=400&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=450&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=500&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=550&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=600&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=650&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=700&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=750&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=800&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=850&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=900&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=950&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1000&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1050&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1100&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1150&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1200&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1250&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1300&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1350&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1400&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1450&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1500&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1550&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1600&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1650&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1700&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1750&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1800&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1850&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1900&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=1950&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2000&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2050&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2100&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2150&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2200&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2250&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2300&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2350&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2400&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2450&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2500&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2550&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2600&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2650&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2700&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2750&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2800&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2850&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2900&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=2950&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3000&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3050&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3100&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3150&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3200&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3250&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3300&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3350&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3400&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3450&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3500&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3550&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3600&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3650&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3700&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3750&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3800&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3850&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3900&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3950&sort=nid'
+  ids:
+    nid:
+      type: integer
+  item_selector: data/
+  fields:
+    -
+      name: nid
+      label: Nid
+      selector: /attributes/nid
+    -
+      name: vid
+      label: Vid
+      selector: /attributes/vid
+    -
+      name: uuid
+      label: Uuid
+      selector: /attributes/uuid
+    -
+      name: title
+      label: Title
+      selector: /attributes/title
+    -
+      name: created
+      label: Created
+      selector: /attributes/created
+    -
+      name: changed
+      label: Changed
+      selector: /attributes/changed
+    -
+      name: status
+      label: Status
+      selector: /attributes/status
+    -
+      name: sticky
+      label: Sticky
+      selector: /attributes/sticky
+    -
+      name: promote
+      label: Promote
+      selector: /attributes/promote
+    -
+      name: default_langcode
+      label: 'Default Langcode'
+      selector: /attributes/default_langcode
+    -
+      name: path
+      label: Path
+      selector: /attributes/path
+    -
+      name: body
+      label: Body
+      selector: /attributes/body
+    -
+      name: uid
+      label: Uid
+      selector: /relationships/uid
+    -
+      name: field_image
+      label: 'Field image'
+      selector: /relationships/field_image
+    -
+      name: field_res_biography
+      label: field_res_biography
+      selector: /attributes/field_res_biography
+    -
+      name: field_res_gender
+      label: field_res_gender
+      selector: /attributes/field_res_gender
+    -
+      name: field_res_internal_url
+      label: field_res_internal_url
+      selector: /attributes/field_res_internal_url
+    -
+      name: field_res_isacceptingnewpts
+      label: field_res_isacceptingnewpts
+      selector: /attributes/field_res_isacceptingnewpts
+    -
+      name: field_res_meta_tags
+      label: field_res_meta_tags
+      selector: /attributes/field_res_meta_tags
+    -
+      name: field_res_name
+      label: field_res_name
+      selector: /attributes/field_res_name
+    -
+      name: field_res_npi
+      label: field_res_npi
+      selector: /attributes/field_res_npi
+    -
+      name: field_res_personal_interests
+      label: field_res_personal_interests
+      selector: /attributes/field_res_personal_interests
+    -
+      name: field_res_pubmed_ids
+      label: field_res_pubmed_ids
+      selector: /attributes/field_res_pubmed_ids
+    -
+      name: field_res_puma_id
+      label: field_res_puma_id
+      selector: /attributes/field_res_puma_id
+    -
+      name: uwm_unique_id
+      label: uwm_unique_id
+      selector: /attributes/uwm_unique_id
+process:
+  type:
+    plugin: default_value
+    default_value: res_provider
+  uuid: uuid
+  title: title
+  created: created
+  changed: changed
+  status: status
+  sticky: sticky
+  promote: promote
+  default_language: default_language
+  body/format:
+    plugin: default_value
+    default_value: unrestricted
+  body/value: body/value
+  uid:
+    plugin: default_value
+    default_value: 1
+  field_res_biography/value: field_res_biography/value
+  field_res_biography/format:
+    plugin: default_value
+    default_value: unrestricted
+  field_res_biography/processed: field_res_biography/processed
+  field_res_biography/summary: field_res_biography/summary
+  field_res_gender: field_res_gender
+  field_res_internal_url: field_res_internal_url
+  field_res_isacceptingnewpts: field_res_isacceptingnewpts
+  field_res_meta_tags: field_res_meta_tags
+  field_res_name/title: field_res_name/title
+  field_res_name/given: field_res_name/given
+  field_res_name/middle: field_res_name/middle
+  field_res_name/family: field_res_name/family
+  field_res_name/generational: field_res_name/generational
+  field_res_name/credentials: field_res_name/credentials
+  field_res_npi: field_res_npi
+  field_res_personal_interests/value: field_res_personal_interests/value
+  field_res_personal_interests/format:
+    plugin: default_value
+    default_value: unrestricted
+  field_res_personal_interests/processed: field_res_personal_interests/processed
+  field_res_pubmed_ids: field_res_pubmed_ids
+  field_res_puma_id: field_res_puma_id
+  uwm_unique_id: uwm_unique_id
+destination:
+  plugin: 'entity:node'
+migration_dependencies: null

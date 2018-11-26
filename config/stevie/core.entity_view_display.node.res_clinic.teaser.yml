@@ -57,4 +57,8 @@ hidden:
   field_res_phone_number: true
   field_res_providers: true
   field_res_room_number: true
+  field_test_m_services1: true
+  field_test_m_services2: true
+  field_test_m_services3: true
+  field_testing_top_content: true
   uwm_unique_id: true

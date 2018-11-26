@@ -1,6 +1,6 @@
 # Migration configuration for imported articles.
-id: uwm_res_import_providers2
-label: uwm_res_import_providers2
+id: uwm_res_import_providers3
+label: uwm_res_import_providers3
 migration_group: uwm
 #migration_dependencies:
 #  require:
@@ -23,8 +23,7 @@ source:
 
   urls:
     - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?filter[field_res_npi]=1952486755
-    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?filter[field_res_npi]=1952486755&include=field_res_affiliates,field_res_board_certifications,field_res_clinics,field_res_degrees,field_res_education_history,field_res_expertises,field_res_expertises,field_res_languages,field_res_medical_services
-    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Boffset%5D=50&page%5Blimit%5D=50
+    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Boffset%5D=50&page%5Blimit%5D=5
 
   ids:
     nid:
