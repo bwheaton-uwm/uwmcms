@@ -1,0 +1,14 @@
+uuid: e4c9fb96-d381-4e65-9cd3-1fac5ab913a4
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - node
+third_party_settings:
+  lightning_core:
+    description: ''
+id: node.search_
+label: 'Search Result'
+targetEntityType: node
+cache: true

@@ -3,11 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - search_api.server.search_api_solr
+    - search_api.server.uwmed_local_solr
   module:
     - search_api
     - node
-    - taxonomy
 id: uwm_locations_search_api_index
 name: 'UWM Locations - Search API Index'
 description: ''
@@ -22,18 +21,6 @@ datasource_settings:
     languages:
       default: true
       selected: {  }
-  'entity:taxonomy_term':
-    bundles:
-      default: false
-      selected:
-        - buildings
-        - campuses
-        - expertise
-        - medical_services
-        - specialities
-    languages:
-      default: true
-      selected: {  }
 processor_settings:
   add_url: {  }
   aggregated_field: {  }
@@ -44,4 +31,4 @@ tracker_settings:
 options:
   index_directly: true
   cron_limit: 50
-server: search_api_solr
+server: uwmed_local_solr

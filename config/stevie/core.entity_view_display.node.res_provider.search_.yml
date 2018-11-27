@@ -1,8 +1,9 @@
-uuid: abbf6082-2203-4893-aada-a7b4d5adc9c0
+uuid: a08239f2-2496-4cf2-808c-ecad4c476788
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.search_
     - field.field.node.res_provider.field_res_affiliates
     - field.field.node.res_provider.field_res_biography
     - field.field.node.res_provider.field_res_board_certifications
@@ -30,7 +31,7 @@ dependencies:
     - field_layout
     - image
     - layout_discovery
-    - metatag
+    - name
     - options
     - panelizer
     - text
@@ -46,10 +47,10 @@ third_party_settings:
     default: default
 _core:
   default_config_hash: VprWwN3mbiPcSLh-Gc3vJcE50N6ggx16rsVBCVFsZNE
-id: node.res_provider.default
+id: node.res_provider.search_
 targetEntityType: node
 bundle: res_provider
-mode: default
+mode: search_
 content:
   field_name:
     weight: 0
@@ -67,16 +68,8 @@ content:
     third_party_settings: {  }
     type: name_default
     region: content
-  field_res_affiliates:
-    weight: 9
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   field_res_biography:
-    weight: 5
+    weight: 3
     label: above
     settings: {  }
     third_party_settings: {  }
@@ -84,33 +77,7 @@ content:
     region: content
   field_res_board_certifications:
     type: entity_reference_revisions_entity_view
-    weight: 12
-    label: above
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    region: content
-  field_res_clinics:
     weight: 7
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_res_degrees:
-    type: entity_reference_revisions_entity_view
-    weight: 13
-    label: above
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    region: content
-  field_res_education_history:
-    type: entity_reference_revisions_entity_view
-    weight: 14
     label: above
     settings:
       view_mode: default
@@ -118,7 +85,7 @@ content:
     third_party_settings: {  }
     region: content
   field_res_expertises:
-    weight: 15
+    weight: 9
     label: above
     settings:
       link: true
@@ -126,14 +93,14 @@ content:
     type: entity_reference_label
     region: content
   field_res_gender:
-    weight: 4
+    weight: 2
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
   field_res_image:
-    weight: 16
+    weight: 8
     label: above
     settings:
       image_style: large
@@ -141,16 +108,8 @@ content:
     third_party_settings: {  }
     type: image
     region: content
-  field_res_internal_url:
-    weight: 19
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
   field_res_isacceptingnewpts:
-    weight: 10
+    weight: 5
     label: above
     settings:
       format: default
@@ -160,7 +119,7 @@ content:
     type: boolean
     region: content
   field_res_languages:
-    weight: 3
+    weight: 1
     label: above
     settings:
       link: true
@@ -168,66 +127,49 @@ content:
     type: entity_reference_label
     region: content
   field_res_medical_services:
-    weight: 11
+    weight: 6
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  field_res_meta_tags:
-    weight: 18
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: metatag_empty_formatter
+  field_res_name:
+    type: name_default
+    weight: 0
     region: content
-  field_res_npi:
-    weight: 1
     label: above
     settings:
-      thousand_separator: ''
-      prefix_suffix: true
+      format: default
+      markup: false
+      output: default
+      multiple: default
+      multiple_delimiter: ', '
+      multiple_and: text
+      multiple_delimiter_precedes_last: never
+      multiple_el_al_min: '3'
+      multiple_el_al_first: '1'
     third_party_settings: {  }
-    type: number_integer
-    region: content
   field_res_personal_interests:
-    weight: 6
+    weight: 4
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
-  field_res_pubmed_ids:
-    weight: 8
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    type: number_integer
-    region: content
-  field_res_puma_id:
-    weight: 2
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    type: number_integer
-    region: content
   links:
-    weight: 17
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
-  uwm_unique_id:
-    weight: 20
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
 hidden:
-  field_res_name: true
+  field_res_affiliates: true
+  field_res_clinics: true
+  field_res_degrees: true
+  field_res_education_history: true
+  field_res_internal_url: true
+  field_res_meta_tags: true
+  field_res_npi: true
+  field_res_pubmed_ids: true
+  field_res_puma_id: true
+  uwm_unique_id: true

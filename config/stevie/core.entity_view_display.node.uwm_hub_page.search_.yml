@@ -1,0 +1,50 @@
+uuid: 42f98c39-981c-45b1-ad67-cf430ee3727a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_
+    - field.field.node.uwm_hub_page.field_meta_tags
+    - field.field.node.uwm_hub_page.field_uwm_hero
+    - field.field.node.uwm_hub_page.field_uwm_page_path_name
+    - field.field.node.uwm_hub_page.field_uwm_parent_page
+    - field.field.node.uwm_hub_page.field_uwm_sections
+    - node.type.uwm_hub_page
+  module:
+    - field_layout
+    - layout_discovery
+    - panelizer
+    - paragraphs
+    - user
+third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: node.uwm_hub_page.search_
+targetEntityType: node
+bundle: uwm_hub_page
+mode: search_
+content:
+  field_uwm_sections:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: paragraph_summary
+    region: content
+  links:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  content_moderation_control: true
+  field_meta_tags: true
+  field_uwm_hero: true
+  field_uwm_page_path_name: true
+  field_uwm_parent_page: true
