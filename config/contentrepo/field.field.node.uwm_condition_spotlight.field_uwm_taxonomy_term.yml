@@ -1,0 +1,29 @@
+uuid: 1baa8397-9dcf-4a0f-baa4-c0f0aeaf0117
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_taxonomy_term
+    - node.type.uwm_condition_spotlight
+    - taxonomy.vocabulary.uwm_condition_spotlight_type
+id: node.uwm_condition_spotlight.field_uwm_taxonomy_term
+field_name: field_uwm_taxonomy_term
+entity_type: node
+bundle: uwm_condition_spotlight
+label: 'Condition Spotlight Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      uwm_condition_spotlight_type: uwm_condition_spotlight_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

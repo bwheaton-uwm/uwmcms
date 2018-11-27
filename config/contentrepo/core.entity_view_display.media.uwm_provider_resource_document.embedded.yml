@@ -1,8 +1,9 @@
-uuid: 80aab691-22f4-44bc-9100-9df11efa03b8
+uuid: 665f7537-a857-42aa-8050-f064ca08229c
 langcode: en
-status: true
+status: false
 dependencies:
   config:
+    - core.entity_view_mode.media.embedded
     - field.field.media.uwm_provider_resource_document.field_media_file
     - field.field.media.uwm_provider_resource_document.field_media_in_library
     - field.field.media.uwm_provider_resource_document.field_uwm_description
@@ -17,42 +18,57 @@ dependencies:
   module:
     - file
     - text
-id: media.uwm_provider_resource_document.default
+id: media.uwm_provider_resource_document.embedded
 targetEntityType: media
 bundle: uwm_provider_resource_document
-mode: default
+mode: embedded
 content:
   field_media_file:
-    weight: 0
+    weight: 1
     label: hidden
-    settings: {  }
+    settings:
+      use_description_as_link_text: true
     third_party_settings: {  }
-    type: file_url_plain
+    type: file_default
     region: content
   field_uwm_description:
-    weight: 2
+    weight: 0
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
-  name:
-    type: string
-    weight: 1
-    region: content
-    label: hidden
+  field_uwm_prov_res_media_type:
+    weight: 4
+    label: above
     settings:
-      link_to_entity: false
+      link: true
     third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_uwm_prov_res_specialty:
+    weight: 2
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_uwm_prov_res_sub_specialty:
+    weight: 3
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
 hidden:
   created: true
   field_media_in_library: true
   field_uwm_external_url: true
   field_uwm_prov_res_doc_type: true
-  field_uwm_prov_res_media_type: true
-  field_uwm_prov_res_specialty: true
-  field_uwm_prov_res_sub_specialty: true
   field_uwm_teaser: true
   image: true
+  name: true
   thumbnail: true
   uid: true

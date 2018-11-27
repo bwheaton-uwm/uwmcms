@@ -78,8 +78,10 @@ display:
           view_modes:
             'entity:node':
               uwm_basic_page: default
+              uwm_condition_spotlight: default
               uwm_homepage: default
               uwm_hub_page: default
+              uwm_quiz: default
       fields:
         rendered:
           table: search_api_index_content

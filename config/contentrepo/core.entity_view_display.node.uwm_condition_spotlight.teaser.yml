@@ -1,0 +1,20 @@
+uuid: 920e8ffe-e723-4068-a07f-80b1c7cbd533
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.uwm_condition_spotlight
+  module:
+    - user
+id: node.uwm_condition_spotlight.teaser
+targetEntityType: node
+bundle: uwm_condition_spotlight
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }
