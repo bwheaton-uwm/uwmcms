@@ -1,0 +1,12 @@
+uuid: cfc3fe4b-75b0-4cf1-891b-22ca556f6cc3
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_view_more_toggle
+label: 'View More Toggle'
+image: ''
+description: 'Add a view more link to make pages with long text blocks more digestible.'
+html:
+  value: "<div class=\"collapse\" id=\"viewMoreCollapse1\">\r\n<div>\r\n<p>&lt;-- <strong>Start Hidden Content</strong></p>\r\n\r\n<p>How to use this template:</p>\r\n\r\n<ol>\r\n\t<li>Select the default content (including &lt;-- and --&gt;)</li>\r\n\t<li>Paste in the content that you want to be hidden when a user initially visits this page</li>\r\n\t<li>Ensure the View More button remains after pasting in content</li>\r\n</ol>\r\n\r\n<p>Note: if you already have a view more link on this page, please edit the source code for this content area and change the id 'viewMoreCollapse1' to a unique id, perhaps viewMoreCollapse2. This id appears three times for each view more link, please be sure to replace all instances.</p>\r\n\r\n<p><strong>End Hidden Content --&gt;</strong></p>\r\n</div>\r\n\r\n<p><a aria-controls=\"viewMoreCollapse1\" aria-expanded=\"false\" class=\"view-more-link js-view-more\" data-target=\"#viewMoreCollapse1\" data-toggle=\"collapse\" role=\"button\">View More</a></p>\r\n</div>\r\n"
+  format: rich_text
+weight: 1

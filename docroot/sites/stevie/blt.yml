@@ -1,0 +1,18 @@
+drush:
+  aliases:
+    remote: stevie.dev
+    local: self
+cm.core.dirs.sync.path: '${cm.core.path}/stevie'
+project:
+  machine_name: stevie
+  human_name: stevie
+  local:
+    protocol: http
+    hostname: stevie.uwmed.local
+command-hooks:
+  frontend-reqs:
+    dir: '${docroot}/themes/contrib/uwmbase'
+    command: 'npm install'
+  frontend-assets:
+    dir: '${docroot}/themes/contrib/uwmbase'
+    command: 'gulp'

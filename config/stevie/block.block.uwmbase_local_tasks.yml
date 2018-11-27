@@ -1,0 +1,22 @@
+uuid: 0d4fb49d-3819-4d38-8fb0-543190de3e9d
+langcode: en
+status: true
+dependencies:
+  theme:
+    - uwmbase
+_core:
+  default_config_hash: H0SmmLbfr6Gr0PaWIFiLq_sC6ZDVsB6Wd59fX5WUEII
+id: uwmbase_local_tasks
+theme: uwmbase
+region: content
+weight: -40
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

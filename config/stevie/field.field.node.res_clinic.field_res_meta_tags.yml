@@ -1,0 +1,25 @@
+uuid: 8d7bb83a-fd9f-4561-b0f3-8367caac26f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_meta_tags
+    - node.type.res_clinic
+  module:
+    - metatag
+_core:
+  default_config_hash: x-rhpMB08UyEfRp9a6-qmKwTkGDJUmISy8PYAqf8FRg
+id: node.res_clinic.field_res_meta_tags
+field_name: field_res_meta_tags
+entity_type: node
+bundle: res_clinic
+label: 'Meta tags'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'a:0:{}'
+default_value_callback: ''
+settings: {  }
+field_type: metatag

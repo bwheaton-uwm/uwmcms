@@ -1,0 +1,9 @@
+uuid: 4ee61545-14de-4f3c-9393-6adf09b57788
+langcode: en
+status: true
+dependencies: {  }
+name: 'UWM Icons'
+vid: uwm_icons
+description: ''
+hierarchy: 0
+weight: 0

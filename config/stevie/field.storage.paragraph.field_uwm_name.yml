@@ -1,0 +1,20 @@
+uuid: c08ccfde-0c83-4f86-aac3-4397d90a067c
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+id: paragraph.field_uwm_name
+field_name: field_uwm_name
+entity_type: paragraph
+type: text
+settings:
+  max_length: 1000
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

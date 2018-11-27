@@ -1,0 +1,28 @@
+uuid: 22885936-0ab0-4fc9-a2f0-52b0e2cd2085
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_basic_content.uwm_text
+    - paragraphs.paragraphs_type.uwm_basic_content
+  module:
+    - field_layout
+    - layout_discovery
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: paragraph.uwm_basic_content.default
+targetEntityType: paragraph
+bundle: uwm_basic_content
+mode: default
+content:
+  uwm_text:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

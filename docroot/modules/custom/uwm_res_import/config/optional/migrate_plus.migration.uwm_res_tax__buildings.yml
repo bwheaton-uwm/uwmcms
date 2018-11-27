@@ -1,0 +1,43 @@
+#res taxonomy: buildings
+id: uwm_res_tax__buildings
+label: uwm_res_tax__buildings
+migration_group: uwm
+migration_dependencies: {}
+
+destination:
+  plugin: entity:taxonomy_term
+  default_bundle: buildings
+
+
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+
+  urls:
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/buildings?page%5Boffset%5D=0&page%5Blimit%5D=50
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/buildings?page%5Boffset%5D=50&page%5Blimit%5D=50
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/buildings?page%5Boffset%5D=100&page%5Blimit%5D=50
+
+  ids:
+    tid:
+      type: integer
+
+  item_selector: data/
+
+  fields:
+  - name: tid
+    label: tid
+    selector: /attributes/tid
+  - name: uuid
+    label: uuid
+    selector: /attributes/uuid
+  - name: name
+    label: name
+    selector: /attributes/name
+
+process:
+  uuid: uuid
+  tid: term_id
+  name: name
+  uwm_unique_id: uwm_unique_id

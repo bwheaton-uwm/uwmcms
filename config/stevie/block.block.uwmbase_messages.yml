@@ -1,0 +1,22 @@
+uuid: 281da394-c75b-4525-bffd-c43be63e2751
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - uwmbase
+_core:
+  default_config_hash: ooqG585f7VlLPZe9lIe6NG3RSNLdffLImuDFk-EvelM
+id: uwmbase_messages
+theme: uwmbase
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

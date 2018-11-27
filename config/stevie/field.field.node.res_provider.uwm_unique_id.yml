@@ -1,0 +1,21 @@
+uuid: 6bb69cf2-5cbb-4b96-8910-4730870b12a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.uwm_unique_id
+    - node.type.res_provider
+_core:
+  default_config_hash: LP-8VTjEKttylWhBoJ1hHj2YyDJtD9O5s5iDnEP7PrE
+id: node.res_provider.uwm_unique_id
+field_name: uwm_unique_id
+entity_type: node
+bundle: res_provider
+label: 'Universal Id or Source URL'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,5 @@
+services:
+  uwm_drush_commands.commands:
+    class: \Drupal\uwm_commands\Commands\UwmCommands
+    tags:
+      - { name: drush.command }

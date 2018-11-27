@@ -1,0 +1,22 @@
+uuid: 840ea594-c38b-4f9b-832d-9e52f8fd44e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.uwm_basic_page
+id: node.uwm_basic_page.status
+field_name: status
+entity_type: node
+bundle: uwm_basic_page
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

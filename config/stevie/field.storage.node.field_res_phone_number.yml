@@ -1,0 +1,21 @@
+uuid: 24239866-7fad-4bd8-87c8-63a29b55d2ea
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - telephone
+_core:
+  default_config_hash: kpe-ptidy1gZ-mGtZYietyYfaUCK4sprCQKF7aYukts
+id: node.field_res_phone_number
+field_name: field_res_phone_number
+entity_type: node
+type: telephone
+settings: {  }
+module: telephone
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

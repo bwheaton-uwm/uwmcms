@@ -1,0 +1,31 @@
+uuid: 895edbf5-c2db-4cd6-8c6e-dacebbfa83aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_res_education_institution
+    - paragraphs.paragraphs_type.degree
+    - taxonomy.vocabulary.education_institutions
+_core:
+  default_config_hash: tJNSLBCnnPpEpG78kF6-JECK0Q4bIm7ha6r3SizemEs
+id: paragraph.degree.field_res_education_institution
+field_name: field_res_education_institution
+entity_type: paragraph
+bundle: degree
+label: 'Education Institution'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      education_institutions: education_institutions
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

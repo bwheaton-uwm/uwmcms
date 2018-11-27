@@ -1,0 +1,22 @@
+uuid: 7b37eb0b-65c9-4d00-bd3f-358c20eaaf5e
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: XrgczyF4wyP26-bFyBxdrlUF-Cuiuu1IuFiUOtWSA0M
+id: media.field_acquiadam_asset_id
+field_name: field_acquiadam_asset_id
+entity_type: media
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,11 @@
+uuid: a92466f6-bde3-4c56-9fe2-7b331591d449
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ax1teOkncWeVDjYq8kCGUJ0LQp_keyd9sOhXoifhAz8
+name: 'Education Specialties'
+vid: ed
+description: ''
+hierarchy: 0
+weight: 0

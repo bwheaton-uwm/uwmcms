@@ -1,0 +1,9 @@
+uuid: c61f5f22-001f-45f1-bba5-708e5b772bb1
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_featured_story
+label: 'Featured Story'
+icon_uuid: null
+description: 'A featured story has a background image with a content card over it. Optionally, it can include a video play button that opens a video in a modal.'
+behavior_plugins: {  }

@@ -1,0 +1,23 @@
+uuid: 4c954f96-1ad3-4af1-b212-47d1f49b30b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_npi
+    - node.type.res_provider
+id: node.res_provider.field_res_npi
+field_name: field_res_npi
+entity_type: node
+bundle: res_provider
+label: NPI
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

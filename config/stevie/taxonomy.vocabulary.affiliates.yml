@@ -1,0 +1,11 @@
+uuid: 724ffd64-bb7c-4d7a-b8f0-04c81f0bbdb6
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: UcHw9PxzCyGiwvMowmKH-qbiLtuD_4zmRY8hC9Jl-Qk
+name: Affiliates
+vid: affiliates
+description: ''
+hierarchy: 0
+weight: 0

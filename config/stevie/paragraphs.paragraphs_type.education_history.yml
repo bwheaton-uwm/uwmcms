@@ -1,0 +1,11 @@
+uuid: 4e1bd73a-009e-49b2-bd9b-2530772ceff3
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: F1EptJhmFFTUrgkhhAPfa6ZxexN8B7IDTV1CLbexVoQ
+id: education_history
+label: 'Education History'
+icon_uuid: null
+description: 'Data imported from the "educationHistories" field in the IM API.'
+behavior_plugins: {  }

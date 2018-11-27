@@ -1,0 +1,84 @@
+uuid: 9e563824-1122-4e5c-a335-fda5fc2be8c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_sections
+    - node.type.uwm_hub_page
+    - paragraphs.paragraphs_type.uwm_featured_story
+    - paragraphs.paragraphs_type.uwm_section
+  module:
+    - entity_reference_revisions
+id: node.uwm_hub_page.field_uwm_sections
+field_name: field_uwm_sections
+entity_type: node
+bundle: uwm_hub_page
+label: 'Sections (H2)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      uwm_section: uwm_section
+      uwm_featured_story: uwm_featured_story
+    target_bundles_drag_drop:
+      uwm_basic_content:
+        weight: -33
+        enabled: false
+      uwm_accordion:
+        weight: -32
+        enabled: false
+      uwm_accordion_section:
+        weight: -31
+        enabled: false
+      uwm_block:
+        weight: -30
+        enabled: false
+      uwm_full_html:
+        weight: -29
+        enabled: false
+      uwm_section:
+        enabled: true
+        weight: -28
+      uwm_view:
+        weight: -27
+        enabled: false
+      detailed_contact_card:
+        weight: -26
+        enabled: false
+      headshot_card:
+        weight: -25
+        enabled: false
+      uwm_card:
+        weight: -24
+        enabled: false
+      uwm_cta_link:
+        weight: -23
+        enabled: false
+      uwm_grid:
+        weight: -22
+        enabled: false
+      uwm_image:
+        weight: -21
+        enabled: false
+      uwm_image_hero:
+        weight: -20
+        enabled: false
+      uwm_link_with_icon:
+        weight: -19
+        enabled: false
+      uwm_media:
+        weight: -18
+        enabled: false
+      uwm_modal:
+        weight: 19
+        enabled: false
+      uwm_featured_story:
+        enabled: true
+        weight: 28
+field_type: entity_reference_revisions

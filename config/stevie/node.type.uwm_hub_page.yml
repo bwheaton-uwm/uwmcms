@@ -1,0 +1,17 @@
+uuid: 80f56f64-3f54-4dbf-a5a6-72d9d2dfc727
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Hub page'
+type: uwm_hub_page
+description: 'A hub page can be thought of as a "section homepage". Hub pages can display featured stories, sub-section callouts, quick links, related content and more.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

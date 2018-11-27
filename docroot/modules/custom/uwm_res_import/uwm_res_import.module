@@ -1,0 +1,178 @@
+<?php
+
+/**
+ * @file
+ * Custom module for small, utility-type routines.
+ */
+
+use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\Plugin\MigrateSourceInterface;
+use Drupal\migrate\Row;
+
+/**
+ * Implements hook_migration_plugins_alter().
+ *
+ * This routine is cached with the migration. Drush cr for debugging.
+ */
+function uwm_res_import_migration_plugins_alter(&$migrations) {
+
+  foreach ($migrations as $id => $migration) {
+
+    $urlsFunction = $migration['id'] . '_source_urls';
+    if (function_exists($urlsFunction)) {
+
+      $config = \Drupal::service('config.factory')
+        ->getEditable('migrate_plus.migration.' . $migration['id']);
+
+      $urls = call_user_func($urlsFunction);
+      $config->set('source.urls', $urls);
+      $config->save();
+
+      \Drupal::logger(__FUNCTION__)
+        ->info('Added URLs to migration: ' . json_encode($urls));
+    }
+
+  }
+
+}
+
+/**
+ * Implements hook_migrate_prepare_row().
+ */
+function uwm_res_import_migrate_prepare_row(Row $row, MigrateSourceInterface $source, MigrationInterface $migration) {
+
+  $i = 0;
+
+}
+
+/**
+ * Provides array of URLs for migration source.
+ *
+ * @return array
+ *   Description here.
+ */
+function uwm_res_import_clinics3_source_urls() {
+
+  $urls = [];
+  $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D={{limit}}&page%5Boffset%5D={{offset}}&sort=nid';
+  $offset = 0;
+  $limit = 50;
+  do {
+
+    $urls[] = str_replace('{{offset}}', $offset, str_replace('{{limit}}', $limit, $url));
+
+  } while (($offset = $offset + $limit) && $offset < 500);
+
+  return $urls;
+
+}
+
+/**
+ * Provides array of URLs for migration source.
+ *
+ * @return array
+ *   Description here.
+ */
+function uwm_res_import_providers3_source_urls() {
+
+  $urls = [];
+  $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D={{limit}}&page%5Boffset%5D={{offset}}&sort=nid';
+  $offset = 0;
+  $limit = 50;
+  do {
+
+    $urls[] = str_replace('{{offset}}', $offset, str_replace('{{limit}}', $limit, $url));
+
+  } while (($offset = $offset + $limit) && $offset < 4000);
+
+  return $urls;
+
+}
+
+/**
+ * Provides array of URLs for migration source.
+ *
+ * @return array
+ *   Description here.
+ */
+function uwm_res_tax__board_certifications_source_urls() {
+
+  $urls = [];
+  $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D={{limit}}&page%5Boffset%5D={{offset}}';
+  $offset = 0;
+  $limit = 50;
+  do {
+
+    $urls[] = str_replace('{{offset}}', $offset, str_replace('{{limit}}', $limit, $url));
+
+  } while (($offset = $offset + $limit) && $offset < 500);
+
+  return $urls;
+
+}
+
+/**
+ * Provides array of URLs for migration source.
+ *
+ * @return array
+ *   Description here.
+ */
+function uwm_res_tax__expertise_source_urls() {
+
+  $urls = [];
+  $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D={{limit}}&page%5Boffset%5D={{offset}}';
+  $offset = 0;
+  $limit = 50;
+  do {
+
+    $urls[] = str_replace('{{offset}}', $offset, str_replace('{{limit}}', $limit, $url));
+
+  } while (($offset = $offset + $limit) && $offset < 1000);
+
+  return $urls;
+
+}
+
+/**
+ * Provides array of URLs for migration source.
+ *
+ * @return array
+ *   Description here.
+ */
+function uwm_res_tax__education_institutions_source_urls() {
+
+  $urls = [];
+  $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page%5Blimit%5D={{limit}}&page%5Boffset%5D={{offset}}';
+  $offset = 0;
+  $limit = 50;
+  do {
+
+    $urls[] = str_replace('{{offset}}', $offset, str_replace('{{limit}}', $limit, $url));
+
+  } while (($offset = $offset + $limit) && $offset < 4000);
+
+  return $urls;
+
+}
+
+/**
+ * Provides array of URLs for migration source.
+ *
+ * @return array
+ *   Description here.
+ */
+function uwm_res_tax__languages_source_urls() {
+
+  $urls = [];
+  $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page%5Blimit%5D={{limit}}&page%5Boffset%5D={{offset}}';
+  $offset = 0;
+  $limit = 50;
+  do {
+
+    $urls[] = str_replace('{{offset}}', $offset, str_replace('{{limit}}', $limit, $url));
+
+  } while (($offset = $offset + $limit) && $offset < 600);
+
+  return $urls;
+
+}

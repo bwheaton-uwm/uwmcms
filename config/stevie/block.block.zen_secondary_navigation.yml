@@ -1,0 +1,26 @@
+uuid: 4ebfcbfc-180b-4be2-99c9-22b81bb92245
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - zen
+_core:
+  default_config_hash: GqD65mJD5I1H86_oIPhiqb1Jw7JvjaY-iFDBuPrgZfo
+id: zen_secondary_navigation
+theme: zen
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Secondary navigation'
+  provider: system
+  label_display: '0'
+  level: 2
+  depth: 0
+visibility: {  }

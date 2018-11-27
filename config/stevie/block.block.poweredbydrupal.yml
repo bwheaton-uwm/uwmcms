@@ -1,0 +1,20 @@
+uuid: b9201ec4-d48f-420d-aa02-3bfcbb7f228b
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - uwmbase
+id: poweredbydrupal
+theme: uwmbase
+region: bottom
+weight: 0
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  provider: system
+  label_display: '0'
+visibility: {  }

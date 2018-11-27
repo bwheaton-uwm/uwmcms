@@ -1,0 +1,31 @@
+uuid: 63f9871b-e98c-4a38-b2f2-dc1d81308b57
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_res_campus
+    - taxonomy.vocabulary.buildings
+    - taxonomy.vocabulary.campuses
+_core:
+  default_config_hash: LJVtjtxZnf-f1-rUyO-qFtmVu30KzAGFy-Y7vLyAUdw
+id: taxonomy_term.buildings.field_res_campus
+field_name: field_res_campus
+entity_type: taxonomy_term
+bundle: buildings
+label: Campus
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      campuses: campuses
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

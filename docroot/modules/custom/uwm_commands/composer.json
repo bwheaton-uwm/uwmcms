@@ -1,0 +1,17 @@
+{
+  "name": "drupal/uwm_commands",
+  "description": "UWM Drush 9 commands.",
+  "type": "drupal-module",
+  "autoload": {
+    "psr-4": {
+      "Drupal\\uwm_commands\\": "src/"
+    }
+  },
+  "extra": {
+    "drush": {
+      "services": {
+        "drush.services.yml": "^9"
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+uuid: 5d72f7c9-dce7-4884-b9d1-1d53138fb93a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.uwm_unique_id
+    - taxonomy.vocabulary.medical_services
+_core:
+  default_config_hash: uiigiMeMSF4w8Sc-yWCYWzure1DmtJE-_dQa_syaank
+id: taxonomy_term.medical_services.uwm_unique_id
+field_name: uwm_unique_id
+entity_type: taxonomy_term
+bundle: medical_services
+label: 'Universal Id or Source URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

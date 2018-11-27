@@ -1,0 +1,72 @@
+uuid: 5d6ffd9d-aa33-402d-b728-2efc99b2352e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.degrees.field_res_degree_code
+    - field.field.taxonomy_term.degrees.field_res_degree_name
+    - field.field.taxonomy_term.degrees.uwm_unique_id
+    - taxonomy.vocabulary.degrees
+  module:
+    - field_layout
+    - layout_discovery
+    - path
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+_core:
+  default_config_hash: 447_7Rs3V8e5s6oFKxoYSovnaNcjPRZfgdxq04hcAPc
+id: taxonomy_term.degrees.default
+targetEntityType: taxonomy_term
+bundle: degrees
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 0
+    region: content
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  field_res_degree_code:
+    weight: 31
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_res_degree_name:
+    weight: 32
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  name:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uwm_unique_id:
+    weight: 33
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden: {  }

@@ -1,0 +1,25 @@
+uuid: e2daea57-7cdc-4c37-9bed-3dee1dab1e83
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_puma_id
+    - node.type.res_provider
+_core:
+  default_config_hash: 81zDt5m_zsTyisb3jNRDWN8SYeZW-VPxp8FK4bAzZ3s
+id: node.res_provider.field_res_puma_id
+field_name: field_res_puma_id
+entity_type: node
+bundle: res_provider
+label: 'PUMA ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,21 @@
+uuid: 03a708c6-a7e0-4cdb-afaa-d49c8a6b99b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_res_year
+    - paragraphs.paragraphs_type.board_certification
+_core:
+  default_config_hash: CDicIEWfocKMb4Yl-iO6DLmJW2rCd58ZG5qFfDfqFUw
+id: paragraph.board_certification.field_res_year
+field_name: field_res_year
+entity_type: paragraph
+bundle: board_certification
+label: Year
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

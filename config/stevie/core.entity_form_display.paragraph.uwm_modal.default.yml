@@ -1,0 +1,53 @@
+uuid: 6c65cd7e-612f-4fca-a9c3-ee623e0bb62b
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.media_browser
+    - field.field.paragraph.uwm_modal.field_uwm_media
+    - field.field.paragraph.uwm_modal.uwm_text
+    - paragraphs.paragraphs_type.uwm_modal
+  module:
+    - allowed_formats
+    - entity_browser
+    - field_layout
+    - layout_discovery
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: paragraph.uwm_modal.default
+targetEntityType: paragraph
+bundle: uwm_modal
+mode: default
+content:
+  field_uwm_media:
+    weight: 0
+    settings:
+      entity_browser: media_browser
+      field_widget_display: label
+      field_widget_edit: true
+      field_widget_remove: true
+      selection_mode: selection_append
+      open: false
+      field_widget_display_settings: {  }
+    third_party_settings: {  }
+    type: entity_browser_entity_reference
+    region: content
+  uwm_text:
+    weight: 1
+    settings:
+      rows: 1
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '0'
+        hide_guidelines: '0'
+    type: text_textarea
+    region: content
+hidden:
+  created: true
+  moderation_state: true
+  status: true
+  uid: true

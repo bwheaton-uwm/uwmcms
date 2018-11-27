@@ -1,0 +1,9 @@
+uuid: 4c521ec8-5053-4a68-b9bc-cda2248df050
+langcode: en
+status: true
+dependencies: {  }
+name: Degrees
+vid: degrees
+description: ''
+hierarchy: 0
+weight: 0

@@ -1,0 +1,21 @@
+uuid: 70edf235-7fe3-4b34-809a-0c398c80e35e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_res_degree_name
+    - taxonomy.vocabulary.degrees
+_core:
+  default_config_hash: quOH9AXq7mm8xQ8kXYmgAALSYwpKGUHULQJ1jNw7bQw
+id: taxonomy_term.degrees.field_res_degree_name
+field_name: field_res_degree_name
+entity_type: taxonomy_term
+bundle: degrees
+label: 'Degree Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
