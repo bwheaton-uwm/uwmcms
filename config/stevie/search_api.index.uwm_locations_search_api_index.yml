@@ -1,9 +1,9 @@
 uuid: 073f373e-5463-49c9-be3d-49531a2825a5
 langcode: en
-status: false
+status: true
 dependencies:
   config:
-    - search_api.server.uwmed_local_solr
+    - search_api.server.search_api_solr
   module:
     - search_api
     - node
@@ -44,4 +44,4 @@ tracker_settings:
 options:
   index_directly: true
   cron_limit: 50
-server: uwmed_local_solr
+server: search_api_solr
