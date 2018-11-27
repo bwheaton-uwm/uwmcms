@@ -6,6 +6,8 @@ dependencies:
     - field.storage.node.field_uwm_taxonomy_term
     - node.type.uwm_condition_spotlight
     - taxonomy.vocabulary.uwm_condition_spotlight_type
+  content:
+    - 'taxonomy_term:uwm_condition_spotlight_type:7190e367-b8ed-41b0-bf96-e8ad76b8da70'
 id: node.uwm_condition_spotlight.field_uwm_taxonomy_term
 field_name: field_uwm_taxonomy_term
 entity_type: node
@@ -14,7 +16,9 @@ label: 'Condition Spotlight Type'
 description: ''
 required: false
 translatable: false
-default_value: {  }
+default_value:
+  -
+    target_uuid: 7190e367-b8ed-41b0-bf96-e8ad76b8da70
 default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'

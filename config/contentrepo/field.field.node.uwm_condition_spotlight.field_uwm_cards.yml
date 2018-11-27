@@ -1,22 +1,21 @@
-uuid: 649ae430-4516-417f-987c-9ccf97994860
+uuid: 8ee4631f-0038-4ad4-a12f-bf1118fbe5cf
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_uwm_sections
+    - field.storage.node.field_uwm_cards
     - node.type.uwm_condition_spotlight
-    - paragraphs.paragraphs_type.uwm_basic_content
-    - paragraphs.paragraphs_type.uwm_cta_link
+    - paragraphs.paragraphs_type.uwm_card
   module:
     - entity_reference_revisions
-id: node.uwm_condition_spotlight.field_uwm_sections
-field_name: field_uwm_sections
+id: node.uwm_condition_spotlight.field_uwm_cards
+field_name: field_uwm_cards
 entity_type: node
 bundle: uwm_condition_spotlight
-label: Sections
+label: Cards
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
@@ -24,8 +23,7 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
-      uwm_basic_content: uwm_basic_content
-      uwm_cta_link: uwm_cta_link
+      uwm_card: uwm_card
     target_bundles_drag_drop:
       detailed_contact_card:
         weight: 21
@@ -43,17 +41,17 @@ settings:
         weight: 25
         enabled: false
       uwm_basic_content:
-        enabled: true
         weight: 26
+        enabled: false
       uwm_block:
         weight: 27
         enabled: false
       uwm_card:
-        weight: 28
-        enabled: false
-      uwm_cta_link:
         enabled: true
+        weight: 28
+      uwm_cta_link:
         weight: 29
+        enabled: false
       uwm_featured_story:
         weight: 30
         enabled: false

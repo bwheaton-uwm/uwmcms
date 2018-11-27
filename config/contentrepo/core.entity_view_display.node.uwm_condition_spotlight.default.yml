@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.uwm_condition_spotlight.field_uwm_sections
+    - field.field.node.uwm_condition_spotlight.field_uwm_cards
     - field.field.node.uwm_condition_spotlight.field_uwm_taxonomy_term
     - node.type.uwm_condition_spotlight
   module:
@@ -14,14 +14,14 @@ targetEntityType: node
 bundle: uwm_condition_spotlight
 mode: default
 content:
-  field_uwm_sections:
-    weight: 102
+  field_uwm_cards:
+    type: entity_reference_revisions_entity_view
+    weight: 104
     label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
     region: content
   field_uwm_taxonomy_term:
     weight: 103
