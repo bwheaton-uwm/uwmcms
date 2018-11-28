@@ -3,13 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_res_expertises
     - field.storage.node.field_res_biography
     - field.storage.node.field_res_board_certifications
     - field.storage.node.field_res_degrees
     - field.storage.node.field_res_education_history
-    - field.storage.node.field_res_expertises
     - field.storage.node.field_res_gender
     - field.storage.node.field_res_languages
+    - field.storage.node.field_res_medical_services
     - field.storage.node.field_res_npi
     - field.storage.node.field_res_personal_interests
     - search_api.server.database
@@ -58,7 +59,7 @@ field_settings:
     label: 'Areas of Expertise'
     datasource_id: 'entity:node'
     property_path: field_res_expertises
-    type: integer
+    type: text
     dependencies:
       config:
         - field.storage.node.field_res_expertises
@@ -78,6 +79,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_languages
+  field_res_medical_services:
+    label: 'Medical Services'
+    datasource_id: 'entity:node'
+    property_path: field_res_medical_services
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_medical_services
   field_res_npi:
     label: NPI
     datasource_id: 'entity:node'

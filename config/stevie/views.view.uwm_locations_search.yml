@@ -36,10 +36,10 @@ display:
         type: basic
         options:
           submit_button: Apply
-          reset_button: false
+          reset_button: true
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
+          expose_sort_order: false
           sort_asc_label: Asc
           sort_desc_label: Desc
       pager:
@@ -120,7 +120,51 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-      filters: {  }
+      filters:
+        search_api_fulltext:
+          id: search_api_fulltext
+          table: search_api_index_uwm_locations_search_api_index
+          field: search_api_fulltext
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: search_api_fulltext_op
+            label: 'Fulltext search'
+            description: ''
+            use_operator: false
+            operator: search_api_fulltext_op
+            identifier: s
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              replicator: '0'
+              administrator: '0'
+              content_manager: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          parse_mode: terms
+          min_length: null
+          fields: {  }
+          plugin_id: search_api_fulltext
       sorts: {  }
       title: Locations
       header: {  }
@@ -133,6 +177,7 @@ display:
       max-age: -1
       contexts:
         - 'languages:language_interface'
+        - url
         - url.query_args
       tags: {  }
   page_1:
@@ -143,9 +188,11 @@ display:
     display_options:
       display_extenders: {  }
       path: search/locations
+      exposed_block: true
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_interface'
+        - url
         - url.query_args
       tags: {  }

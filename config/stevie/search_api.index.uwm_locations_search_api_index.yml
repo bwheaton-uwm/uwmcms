@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_res_affiliates
+    - field.storage.node.field_res_medical_services
     - search_api.server.uwmed_local_solr
   module:
     - search_api
@@ -11,7 +13,23 @@ id: uwm_locations_search_api_index
 name: 'UWM Locations - Search API Index'
 description: ''
 read_only: false
-field_settings: {  }
+field_settings:
+  field_res_affiliates:
+    label: Affiliates
+    datasource_id: 'entity:node'
+    property_path: field_res_affiliates
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_res_affiliates
+  field_res_medical_services:
+    label: 'Medical Services'
+    datasource_id: 'entity:node'
+    property_path: field_res_medical_services
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_res_medical_services
 datasource_settings:
   'entity:node':
     bundles:
