@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0f5dcbf6400f06a4341db9373d56f3c",
+    "content-hash": "d93617fbf620412a9b9e7725163a3c5c",
     "packages": [
         {
             "name": "acquia/blt",
@@ -20201,17 +20201,17 @@
         },
         {
             "name": "uwmweb/uwmbase",
-            "version": "dev-initial-styles",
+            "version": "dev-features/search",
             "source": {
                 "type": "git",
                 "url": "https://github.com/uwmweb/uwmbase.git",
-                "reference": "307fa4fa3c95e747783c1fdda3c214ebad8f59e6"
+                "reference": "95a45fd2891fb047c14f6ba23ccd8ba323f2aced"
             },
             "dist": {
                 "type": "tar",
-                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-307fa4fa3c95e747783c1fdda3c214ebad8f59e6-zip-aa23c7.tar",
-                "reference": "307fa4fa3c95e747783c1fdda3c214ebad8f59e6",
-                "shasum": "aabb4aadf4bd8a2875d505273423cbba34f70e9d"
+                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-95a45fd2891fb047c14f6ba23ccd8ba323f2aced-zip-c05048.tar",
+                "reference": "95a45fd2891fb047c14f6ba23ccd8ba323f2aced",
+                "shasum": "be00e2b03648b68eb5670136b8b52987481d40b8"
             },
             "type": "drupal-theme",
             "license": [
@@ -20222,7 +20222,7 @@
                 "source": "https://github.com/uwmweb/uwmbase/tree/initial-styles",
                 "issues": "https://github.com/uwmweb/uwmbase/issues"
             },
-            "time": "2018-11-21T00:32:21+00:00"
+            "time": "2018-11-27T18:44:10+00:00"
         },
         {
             "name": "uwmweb/uwmedicineorg_theme",

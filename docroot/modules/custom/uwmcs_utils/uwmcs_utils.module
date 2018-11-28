@@ -40,7 +40,6 @@ function uwmcs_utils_menu_link_content_presave(EntityInterface $entity) {
  */
 function uwmcs_utils_page_attachments(array &$attachments) {
 
-
   $attachments['#attached']['library'][] = 'uwmcs_utils/uwm-page-css';
 
   $admin_context = \Drupal::service('router.admin_context');
