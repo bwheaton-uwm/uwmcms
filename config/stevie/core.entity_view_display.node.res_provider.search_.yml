@@ -24,10 +24,9 @@ dependencies:
     - field.field.node.res_provider.field_res_pubmed_ids
     - field.field.node.res_provider.field_res_puma_id
     - field.field.node.res_provider.uwm_unique_id
-    - image.style.large
+    - image.style.thumbnail
     - node.type.res_provider
   module:
-    - entity_reference_revisions
     - field_layout
     - image
     - layout_discovery
@@ -69,48 +68,40 @@ content:
     type: name_default
     region: content
   field_res_biography:
-    weight: 3
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: text_default
-    region: content
-  field_res_board_certifications:
-    type: entity_reference_revisions_entity_view
-    weight: 7
-    label: above
+    weight: 4
+    label: inline
     settings:
-      view_mode: default
-      link: ''
+      trim_length: 300
     third_party_settings: {  }
+    type: text_summary_or_trimmed
     region: content
   field_res_expertises:
-    weight: 9
-    label: above
+    type: entity_reference_label
+    weight: 7
+    region: content
+    label: inline
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   field_res_gender:
-    weight: 2
-    label: above
+    weight: 3
+    label: inline
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
   field_res_image:
-    weight: 8
+    weight: 1
     label: above
     settings:
-      image_style: large
-      image_link: file
+      image_style: thumbnail
+      image_link: content
     third_party_settings: {  }
     type: image
     region: content
   field_res_isacceptingnewpts:
     weight: 5
-    label: above
+    label: inline
     settings:
       format: default
       format_custom_false: ''
@@ -119,16 +110,16 @@ content:
     type: boolean
     region: content
   field_res_languages:
-    weight: 1
-    label: above
+    weight: 2
+    label: inline
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
   field_res_medical_services:
     weight: 6
-    label: above
+    label: inline
     settings:
       link: true
     third_party_settings: {  }
@@ -138,7 +129,7 @@ content:
     type: name_default
     weight: 0
     region: content
-    label: above
+    label: inline
     settings:
       format: default
       markup: false
@@ -150,26 +141,21 @@ content:
       multiple_el_al_min: '3'
       multiple_el_al_first: '1'
     third_party_settings: {  }
-  field_res_personal_interests:
-    weight: 4
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: text_default
-    region: content
   links:
-    weight: 10
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   field_res_affiliates: true
+  field_res_board_certifications: true
   field_res_clinics: true
   field_res_degrees: true
   field_res_education_history: true
   field_res_internal_url: true
   field_res_meta_tags: true
   field_res_npi: true
+  field_res_personal_interests: true
   field_res_pubmed_ids: true
   field_res_puma_id: true
   uwm_unique_id: true

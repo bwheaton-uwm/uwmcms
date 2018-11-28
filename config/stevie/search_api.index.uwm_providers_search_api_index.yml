@@ -4,15 +4,9 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_res_expertises
-    - field.storage.node.field_res_biography
-    - field.storage.node.field_res_board_certifications
-    - field.storage.node.field_res_degrees
-    - field.storage.node.field_res_education_history
     - field.storage.node.field_res_gender
     - field.storage.node.field_res_languages
     - field.storage.node.field_res_medical_services
-    - field.storage.node.field_res_npi
-    - field.storage.node.field_res_personal_interests
     - search_api.server.database
   module:
     - node
@@ -22,44 +16,21 @@ name: 'UWM Providers - Search API Index'
 description: ''
 read_only: false
 field_settings:
-  field_res_biography:
-    label: Biography
-    datasource_id: 'entity:node'
-    property_path: field_res_biography
-    type: text
-    boost: !!float 8
-    dependencies:
-      config:
-        - field.storage.node.field_res_biography
-  field_res_board_certifications:
-    label: 'Board Certifications'
-    datasource_id: 'entity:node'
-    property_path: field_res_board_certifications
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_res_board_certifications
-  field_res_degrees:
-    label: Degrees
-    datasource_id: 'entity:node'
-    property_path: field_res_degrees
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_res_degrees
-  field_res_education_history:
-    label: 'Education History'
-    datasource_id: 'entity:node'
-    property_path: field_res_education_history
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_res_education_history
   field_res_expertises:
     label: 'Areas of Expertise'
     datasource_id: 'entity:node'
     property_path: field_res_expertises
+    type: string
+    boost: !!float 5
+    dependencies:
+      config:
+        - field.storage.node.field_res_expertises
+  field_res_expertises_1:
+    label: 'Areas of Expertise'
+    datasource_id: 'entity:node'
+    property_path: field_res_expertises
     type: text
+    boost: !!float 8
     dependencies:
       config:
         - field.storage.node.field_res_expertises
@@ -67,7 +38,7 @@ field_settings:
     label: Gender
     datasource_id: 'entity:node'
     property_path: field_res_gender
-    type: text
+    type: string
     dependencies:
       config:
         - field.storage.node.field_res_gender
@@ -75,7 +46,7 @@ field_settings:
     label: Languages
     datasource_id: 'entity:node'
     property_path: field_res_languages
-    type: integer
+    type: string
     dependencies:
       config:
         - field.storage.node.field_res_languages
@@ -83,27 +54,20 @@ field_settings:
     label: 'Medical Services'
     datasource_id: 'entity:node'
     property_path: field_res_medical_services
-    type: text
+    type: string
+    boost: !!float 8
     dependencies:
       config:
         - field.storage.node.field_res_medical_services
-  field_res_npi:
-    label: NPI
+  field_res_medical_services_1:
+    label: 'Medical Services'
     datasource_id: 'entity:node'
-    property_path: field_res_npi
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_res_npi
-  field_res_personal_interests:
-    label: 'Personal Interests'
-    datasource_id: 'entity:node'
-    property_path: field_res_personal_interests
+    property_path: field_res_medical_services
     type: text
-    boost: !!float 5
+    boost: !!float 8
     dependencies:
       config:
-        - field.storage.node.field_res_personal_interests
+        - field.storage.node.field_res_medical_services
   title:
     label: Title
     datasource_id: 'entity:node'

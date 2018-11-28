@@ -10,8 +10,8 @@ description: 'The Drupal database.'
 backend: search_api_db
 backend_config:
   database: 'default:default'
-  min_chars: 3
+  min_chars: 2
+  matching: words
   autocomplete:
     suggest_suffix: true
     suggest_words: true
-  matching: words

@@ -1,29 +1,29 @@
-uuid: 40aa65aa-aa26-48a8-bbc8-a25fc48ccc5c
+uuid: 31d5df1e-17e0-49fe-8a44-62b53fca25a7
 langcode: en
 status: true
 dependencies:
   config:
-    - facets.facet.areas_of_expertise
+    - facets.facet.provider_facet_gender
   module:
     - facets
     - system
   theme:
     - uwmbase
-id: areasofexpertise
+id: providerfacetgender
 theme: uwmbase
 region: content_top
-weight: -4
+weight: 0
 provider: null
-plugin: 'facet_block:areas_of_expertise'
+plugin: 'facet_block:provider_facet_gender'
 settings:
-  id: 'facet_block:areas_of_expertise'
-  label: 'Areas of Expertise'
+  id: 'facet_block:provider_facet_gender'
+  label: 'Provider Facet Gender'
   provider: facets
   label_display: visible
-  block_id: areasofexpertise
+  block_id: providerfacetgender
 visibility:
   request_path:
     id: request_path
-    pages: '/search/providers/*'
+    pages: '/search/providers*'
     negate: false
     context_mapping: {  }

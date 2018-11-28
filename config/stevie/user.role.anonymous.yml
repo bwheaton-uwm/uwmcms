@@ -11,6 +11,7 @@ is_admin: false
 permissions:
   - 'access content'
   - 'access site-wide contact form'
+  - 'use text format basic_html'
   - 'view media'
   - 'view paragraph content detailed_contact_card'
   - 'view paragraph content headshot_card'
