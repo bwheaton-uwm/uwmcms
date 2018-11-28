@@ -1,0 +1,29 @@
+uuid: f5f20f5a-c112-4033-9a27-1c435daba109
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.uwm_provider_search
+  module:
+    - system
+    - views
+  theme:
+    - uwmbase
+id: exposedformuwm_provider_searchpage_1
+theme: uwmbase
+region: content_top
+weight: -7
+provider: null
+plugin: 'views_exposed_filter_block:uwm_provider_search-page_1'
+settings:
+  id: 'views_exposed_filter_block:uwm_provider_search-page_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+visibility:
+  request_path:
+    id: request_path
+    pages: '/search/providers/*'
+    negate: false
+    context_mapping: {  }

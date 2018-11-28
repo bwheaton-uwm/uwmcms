@@ -1,0 +1,29 @@
+uuid: ce407d3a-4460-449a-8dd0-1e31b0351974
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.gender
+  module:
+    - facets
+    - system
+  theme:
+    - uwmbase
+id: gender
+theme: uwmbase
+region: content_top
+weight: -5
+provider: null
+plugin: 'facet_block:gender'
+settings:
+  id: 'facet_block:gender'
+  label: Gender
+  provider: facets
+  label_display: visible
+  block_id: gender
+visibility:
+  request_path:
+    id: request_path
+    pages: '/search/providers/*'
+    negate: false
+    context_mapping: {  }

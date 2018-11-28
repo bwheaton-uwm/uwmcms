@@ -1,0 +1,29 @@
+uuid: 40aa65aa-aa26-48a8-bbc8-a25fc48ccc5c
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.areas_of_expertise
+  module:
+    - facets
+    - system
+  theme:
+    - uwmbase
+id: areasofexpertise
+theme: uwmbase
+region: content_top
+weight: -4
+provider: null
+plugin: 'facet_block:areas_of_expertise'
+settings:
+  id: 'facet_block:areas_of_expertise'
+  label: 'Areas of Expertise'
+  provider: facets
+  label_display: visible
+  block_id: areasofexpertise
+visibility:
+  request_path:
+    id: request_path
+    pages: '/search/providers/*'
+    negate: false
+    context_mapping: {  }
