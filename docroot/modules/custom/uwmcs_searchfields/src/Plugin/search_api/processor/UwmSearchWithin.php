@@ -8,8 +8,8 @@ use Drupal\search_api\Datasource\DatasourceInterface;
 use Drupal\search_api\Item\ItemInterface;
 use Drupal\search_api\Processor\ProcessorPluginBase;
 use Drupal\search_api\Processor\ProcessorProperty;
-//use Drupal\uwmcs_searchfields\Controller\UwmSearchInfoMgrHelper;
 
+// Use Drupal\uwmcs_searchfields\Controller\UwmSearchInfoMgrHelper;.
 /**
  * Provides a value to the Search API for the "Search within" drop-down.
  *
@@ -27,7 +27,6 @@ use Drupal\search_api\Processor\ProcessorProperty;
  *   locked = true,
  *   hidden = false,
  * )
- *
  */
 class UwmSearchWithin extends ProcessorPluginBase {
 
@@ -81,7 +80,7 @@ class UwmSearchWithin extends ProcessorPluginBase {
     $entity = $item->getOriginalObject(TRUE)->getValue();
     if ($entity instanceof NodeInterface) {
 
-      // $data = UwmSearchUtils::extractAllApiMatches($node, self::FIELD_NAME);
+      // $data = UwmSearchUtils::extractAllApiMatches($node, self::FIELD_NAME);.
       $newValues = [];
 
       self::setValueForContentTypes($entity, $newValues);
@@ -143,7 +142,7 @@ class UwmSearchWithin extends ProcessorPluginBase {
 
     if ($node->getType() === 'res_clinic' || $node->getType() === 'res_provider') {
 
-      if($node->hasField('field_res_medical_services')) {
+      if ($node->hasField('field_res_medical_services')) {
 
         $medicalServices = $node->get('field_res_medical_services')->getValue();
         if (!empty($medicalServices)) {
@@ -152,7 +151,7 @@ class UwmSearchWithin extends ProcessorPluginBase {
 
       }
 
-      if($node->hasField('field_res_expertises')) {
+      if ($node->hasField('field_res_expertises')) {
 
         $expertises = $node->get('field_res_expertises')->getValue();
         if (!empty($expertise)) {

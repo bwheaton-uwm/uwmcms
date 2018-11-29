@@ -5,12 +5,6 @@
  * Adds values for search indexing.
  */
 
-use Drupal\Core\Entity\EntityInterface;
-use Drupal\node\NodeInterface;
-use Drupal\uwmcs_searchfields\Controller\UwmSearchInfoMgrHelper;
-use Drupal\views\ViewExecutable;
-use Drupal\node\Entity\Node;
-
 /**
  * Implements hook_entity_load().
  */
