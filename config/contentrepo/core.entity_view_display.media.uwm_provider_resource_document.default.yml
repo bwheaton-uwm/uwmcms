@@ -23,14 +23,14 @@ bundle: uwm_provider_resource_document
 mode: default
 content:
   field_media_file:
-    weight: 0
+    weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: file_url_plain
     region: content
   field_uwm_description:
-    weight: 2
+    weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -38,7 +38,7 @@ content:
     region: content
   name:
     type: string
-    weight: 1
+    weight: 0
     region: content
     label: hidden
     settings:

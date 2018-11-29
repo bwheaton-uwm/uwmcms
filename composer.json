@@ -70,7 +70,7 @@
         "drupal/ape": "^1.2",
         "drupal/auto_entitylabel": "^2.0@beta",
         "drupal/better_exposed_filters": "^3.0@alpha",
-        "drupal/bootstrap": "^3.5",
+        "drupal/bootstrap": "^3.14",
         "drupal/breakpoints": "^1.1",
         "drupal/calendar": "1.x-dev",
         "drupal/ckeditor_liststyle": "^1.1",

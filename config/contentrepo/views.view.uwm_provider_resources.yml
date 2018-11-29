@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.media.field_uwm_external_url
     - field.storage.media.field_uwm_prov_res_media_type
     - field.storage.media.field_uwm_teaser
     - field.storage.media.image
@@ -20,6 +21,7 @@ dependencies:
   module:
     - better_exposed_filters
     - image
+    - link
     - media
     - taxonomy
     - text
@@ -325,7 +327,7 @@ display:
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: true
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -365,7 +367,7 @@ display:
             suffix: ''
             target: ''
             nl2br: false
-            max_length: 148
+            max_length: 140
             word_boundary: true
             ellipsis: true
             more_link: false
@@ -584,18 +586,18 @@ display:
           absolute: false
           entity_type: media
           plugin_id: entity_link
-        nothing:
-          id: nothing
-          table: views
-          field: nothing
+        field_uwm_external_url:
+          id: field_uwm_external_url
+          table: media__field_uwm_external_url
+          field: field_uwm_external_url
           relationship: none
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: true
           alter:
-            alter_text: true
-            text: "<div class=\"row\">\r\n<div class=\"col-12\"><p class=\"h6 uwm-accent-heading card-title\">{{ field_uwm_prov_res_media_type|trim('s', 'right') }}</p></div>\r\n<div class=\"col-lg-6\"><a href=\"{{ view_media }}\">{{ image }}</a></div>\r\n<div class=\"col-lg-6 pl-lg-0\"><p><strong>{{ name }}</strong></p><p>{{ field_uwm_teaser }}</p></div>\r\n</div>"
+            alter_text: false
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -628,6 +630,73 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: null
+            url_only: true
+            url_plain: true
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: "{% set link = field_uwm_external_url ? field_uwm_external_url : view_media %}\r\n<div class=\"row\">\r\n<div class=\"col-12\"><p class=\"h6 uwm-accent-heading card-title\">{% if field_uwm_prov_res_media_type|render is not sameas('News') %}{{ field_uwm_prov_res_media_type|trim('s', 'right') }}{% else %}{{ field_uwm_prov_res_media_type }}{% endif %}</p></div>\r\n<div class=\"col-lg-6\"><a class=\"image-wrapper\" href=\"{{ link }}\">{{ image }}</a></div>\r\n<div class=\"col-lg-6 pl-lg-0\"><p><strong><a href=\"{{ link }}\">{{ name }}</a></strong></p><p>{{ field_uwm_teaser }}</p></div>\r\n</div>\r\n<div class=\"row\"><div class=\"col-lg-6 pl-lg-0 offset-lg-6\"><p class=\"mb-0\"><a class=\"d-block btn btn-outline-dark text-center text-uppercase\" href=\"{{ link }}\">See resource</a></p></div></div>"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: '0'
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: false
           empty: ''
           hide_empty: false
           empty_zero: false
@@ -903,7 +972,7 @@ display:
           empty: false
           tokenize: false
           content:
-            value: '<a class="js-link-copy btn btn-teal text-white">Copy link</a>'
+            value: '<p class="m-0 p-3 font-weight-bold">Save Your Search <br /><a tabindex="0" class="js-link-copy btn btn-outline-teal mt-3">Copy link</a></p>'
             format: unrestricted
           plugin_id: text
       footer: {  }
@@ -925,6 +994,7 @@ display:
         - user
         - user.permissions
       tags:
+        - 'config:field.storage.media.field_uwm_external_url'
         - 'config:field.storage.media.field_uwm_prov_res_media_type'
         - 'config:field.storage.media.field_uwm_teaser'
         - 'config:field.storage.media.image'
@@ -1159,18 +1229,19 @@ display:
           automatic_width: false
           alignment: horizontal
           col_class_default: false
-          col_class_custom: card
+          col_class_custom: 'card justify-content-between'
           row_class_default: false
           row_class_custom: card-deck
       row:
         type: fields
         options:
-          default_field_elements: true
+          default_field_elements: false
           inline: {  }
           separator: ''
           hide_empty: false
       use_ajax: true
       arguments: {  }
+      block_description: Filter
     cache_metadata:
       max-age: -1
       contexts:
@@ -1180,6 +1251,7 @@ display:
         - user
         - user.permissions
       tags:
+        - 'config:field.storage.media.field_uwm_external_url'
         - 'config:field.storage.media.field_uwm_prov_res_media_type'
         - 'config:field.storage.media.field_uwm_teaser'
         - 'config:field.storage.media.image'

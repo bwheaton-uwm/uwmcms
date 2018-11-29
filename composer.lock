@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "300eeeb70485916b1c0a7f65a0a5d480",
+    "content-hash": "96984e245e83c0987745ce80227690e1",
     "packages": [
         {
             "name": "acquia/blt",
@@ -3750,17 +3750,17 @@
         },
         {
             "name": "drupal/bootstrap",
-            "version": "3.13.0",
+            "version": "3.15.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/bootstrap",
-                "reference": "8.x-3.13"
+                "reference": "8.x-3.15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/bootstrap-8.x-3.13.zip",
-                "reference": "8.x-3.13",
-                "shasum": "a75f0cd8e8b115282b419ca143d7810be1a4f5f3"
+                "url": "https://ftp.drupal.org/files/projects/bootstrap-8.x-3.15.zip",
+                "reference": "8.x-3.15",
+                "shasum": "5d92e99afcb7724d43d71cfedad5fd63eb30ad62"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -3771,8 +3771,8 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.13",
-                    "datestamp": "1536786480",
+                    "version": "8.x-3.15",
+                    "datestamp": "1542871980",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -19290,13 +19290,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/uwmweb/uwmbase.git",
-                "reference": "95a45fd2891fb047c14f6ba23ccd8ba323f2aced"
+                "reference": "604dd895a566e44e510b6f3bde28e9ee31bacca2"
             },
             "dist": {
                 "type": "tar",
-                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-95a45fd2891fb047c14f6ba23ccd8ba323f2aced-zip-c05048.tar",
-                "reference": "95a45fd2891fb047c14f6ba23ccd8ba323f2aced",
-                "shasum": "0331a1b6243f660769550bcd8d181ba5de7353e2"
+                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-604dd895a566e44e510b6f3bde28e9ee31bacca2-zip-c90cfe.tar",
+                "reference": "604dd895a566e44e510b6f3bde28e9ee31bacca2",
+                "shasum": "7b2b3591a2ed6c37c2a5aa3a81952f8bc3983cbd"
             },
             "type": "drupal-theme",
             "license": [
@@ -19307,7 +19307,7 @@
                 "source": "https://github.com/uwmweb/uwmbase/tree/initial-styles",
                 "issues": "https://github.com/uwmweb/uwmbase/issues"
             },
-            "time": "2018-11-27T18:44:10+00:00"
+            "time": "2018-11-29T22:46:45+00:00"
         },
         {
             "name": "uwmweb/uwmedicineorg_theme",
