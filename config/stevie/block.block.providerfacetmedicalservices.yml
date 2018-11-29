@@ -19,7 +19,7 @@ settings:
   id: 'facet_block:provider_facet_medical_services'
   label: 'Provider Facet Medical Services'
   provider: facets
-  label_display: visible
+  label_display: '0'
   block_id: providerfacetmedicalservices
 visibility:
   request_path:

@@ -6,24 +6,19 @@ dependencies:
     - search_api.server.database
   module:
     - search_api
+    - uwmcs_searchfields
     - node
-    - file
-    - media
     - taxonomy
 id: uwm_general_search_api_index
 name: 'UWM General - Search API Index'
 description: ''
 read_only: false
-field_settings: {  }
+field_settings:
+  uwmsearchwithin:
+    label: UwmSearchWithin
+    property_path: uwmsearchwithin
+    type: string
 datasource_settings:
-  'entity:file': {  }
-  'entity:media':
-    bundles:
-      default: true
-      selected: {  }
-    languages:
-      default: true
-      selected: {  }
   'entity:node':
     bundles:
       default: true
@@ -35,12 +30,16 @@ datasource_settings:
     bundles:
       default: false
       selected:
+        - affiliates
+        - buildings
+        - expertise
         - medical_services
         - specialities
     languages:
       default: true
       selected: {  }
 processor_settings:
+  UwmSearchWithin: {  }
   add_url: {  }
   aggregated_field: {  }
   rendered_item: {  }

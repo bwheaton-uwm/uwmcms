@@ -70,7 +70,7 @@ display:
         options:
           view_modes:
             'entity:node':
-              res_provider: search_
+              res_provider: search_result
       fields:
         field_res_biography:
           table: search_api_index_uwm_providers_search_api_index
@@ -190,7 +190,17 @@ display:
           plugin_id: search_api_fulltext
       sorts: {  }
       title: 'UWM Search Providers'
-      header: {  }
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          content: 'Displaying @start - @end of @total'
+          plugin_id: result
       footer: {  }
       empty: {  }
       relationships: {  }

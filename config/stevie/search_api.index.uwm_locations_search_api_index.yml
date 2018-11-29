@@ -8,6 +8,7 @@ dependencies:
     - search_api.server.uwmed_local_solr
   module:
     - search_api
+    - uwmcs_searchfields
     - node
 id: uwm_locations_search_api_index
 name: 'UWM Locations - Search API Index'
@@ -30,6 +31,10 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_medical_services
+  uwmsearchwithin:
+    label: UwmSearchWithin
+    property_path: uwmsearchwithin
+    type: string
 datasource_settings:
   'entity:node':
     bundles:
@@ -40,6 +45,7 @@ datasource_settings:
       default: true
       selected: {  }
 processor_settings:
+  UwmSearchWithin: {  }
   add_url: {  }
   aggregated_field: {  }
   rendered_item: {  }

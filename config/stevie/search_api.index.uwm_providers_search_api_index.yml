@@ -11,6 +11,7 @@ dependencies:
   module:
     - node
     - search_api
+    - uwmcs_searchfields
 id: uwm_providers_search_api_index
 name: 'UWM Providers - Search API Index'
 description: ''
@@ -22,15 +23,6 @@ field_settings:
     property_path: field_res_expertises
     type: string
     boost: !!float 5
-    dependencies:
-      config:
-        - field.storage.node.field_res_expertises
-  field_res_expertises_1:
-    label: 'Areas of Expertise'
-    datasource_id: 'entity:node'
-    property_path: field_res_expertises
-    type: text
-    boost: !!float 8
     dependencies:
       config:
         - field.storage.node.field_res_expertises
@@ -59,15 +51,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_medical_services
-  field_res_medical_services_1:
-    label: 'Medical Services'
-    datasource_id: 'entity:node'
-    property_path: field_res_medical_services
-    type: text
-    boost: !!float 8
-    dependencies:
-      config:
-        - field.storage.node.field_res_medical_services
   title:
     label: Title
     datasource_id: 'entity:node'
@@ -77,6 +60,10 @@ field_settings:
     dependencies:
       module:
         - node
+  uwmsearchwithin:
+    label: UwmSearchWithin
+    property_path: uwmsearchwithin
+    type: string
 datasource_settings:
   'entity:node':
     bundles:
@@ -87,6 +74,7 @@ datasource_settings:
       default: true
       selected: {  }
 processor_settings:
+  UwmSearchWithin: {  }
   add_url: {  }
   aggregated_field: {  }
   rendered_item: {  }

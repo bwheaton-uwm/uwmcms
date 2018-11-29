@@ -19,7 +19,7 @@ settings:
   id: 'facet_block:provider_facet_languages'
   label: 'Provider Facet Languages'
   provider: facets
-  label_display: visible
+  label_display: '0'
   block_id: providerfacetlanguages
 visibility:
   request_path:

@@ -1,9 +1,9 @@
-uuid: 42f98c39-981c-45b1-ad67-cf430ee3727a
+uuid: b0ba7dd3-e1af-4b0d-8aa5-3ca2f0c88b9e
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.search_
+    - core.entity_view_mode.node.search_result
     - field.field.node.uwm_hub_page.field_meta_tags
     - field.field.node.uwm_hub_page.field_uwm_hero
     - field.field.node.uwm_hub_page.field_uwm_page_path_name
@@ -25,11 +25,26 @@ third_party_settings:
   field_layout:
     id: layout_onecol
     settings: {  }
-id: node.uwm_hub_page.search_
+id: node.uwm_hub_page.search_result
 targetEntityType: node
 bundle: uwm_hub_page
-mode: search_
+mode: search_result
 content:
+  field_uwm_hero:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: paragraph_summary
+    region: content
+  field_uwm_parent_page:
+    weight: 2
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
   field_uwm_sections:
     weight: 0
     label: hidden
@@ -38,13 +53,11 @@ content:
     type: paragraph_summary
     region: content
   links:
-    weight: 1
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   content_moderation_control: true
   field_meta_tags: true
-  field_uwm_hero: true
   field_uwm_page_path_name: true
-  field_uwm_parent_page: true

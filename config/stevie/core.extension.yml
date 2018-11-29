@@ -156,6 +156,7 @@ module:
   uwm_paragraphs: 0
   uwm_res_import: 0
   uwmcs_extension: 0
+  uwmcs_searchfields: 0
   uwmcs_utils: 0
   uwmed_features_res_fields: 0
   vbo_export: 0

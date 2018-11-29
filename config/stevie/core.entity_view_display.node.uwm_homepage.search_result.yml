@@ -1,9 +1,9 @@
-uuid: 7890c5ff-ed70-4940-8dea-b25c38e7890f
+uuid: b120b359-fb30-4cd6-93cb-84cb3e0c979b
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.search_
+    - core.entity_view_mode.node.search_result
     - node.type.uwm_homepage
   module:
     - field_layout
@@ -19,10 +19,10 @@ third_party_settings:
     custom: false
     allow: false
     default: default
-id: node.uwm_homepage.search_
+id: node.uwm_homepage.search_result
 targetEntityType: node
 bundle: uwm_homepage
-mode: search_
+mode: search_result
 content:
   links:
     weight: 100

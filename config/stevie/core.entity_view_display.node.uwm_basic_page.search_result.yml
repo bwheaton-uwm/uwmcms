@@ -1,9 +1,9 @@
-uuid: 0708969c-4ae8-456e-b675-25fea57a1063
+uuid: b5a47bce-1e2e-43d5-a202-ddc5aab01190
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.search_
+    - core.entity_view_mode.node.search_result
     - field.field.node.uwm_basic_page.field_meta_tags
     - field.field.node.uwm_basic_page.field_uwm_hero
     - field.field.node.uwm_basic_page.field_uwm_page_path_name
@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.uwm_basic_page.field_uwm_sections
     - node.type.uwm_basic_page
   module:
+    - entity_reference_revisions
     - field_layout
     - layout_discovery
     - panelizer
@@ -25,32 +26,37 @@ third_party_settings:
   field_layout:
     id: layout_onecol
     settings: {  }
-id: node.uwm_basic_page.search_
+id: node.uwm_basic_page.search_result
 targetEntityType: node
 bundle: uwm_basic_page
-mode: search_
+mode: search_result
 content:
   field_uwm_hero:
-    type: paragraph_summary
+    type: entity_reference_revisions_entity_view
     weight: 0
     region: content
     label: hidden
-    settings: {  }
+    settings:
+      view_mode: preview
+      link: ''
     third_party_settings: {  }
-  field_uwm_sections:
+  field_uwm_parent_page:
     weight: 1
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_uwm_sections:
+    weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: paragraph_summary
     region: content
-  links:
-    weight: 2
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   content_moderation_control: true
   field_meta_tags: true
   field_uwm_page_path_name: true
-  field_uwm_parent_page: true
+  links: true

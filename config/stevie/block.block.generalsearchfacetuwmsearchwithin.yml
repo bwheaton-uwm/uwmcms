@@ -1,0 +1,29 @@
+uuid: 48b75924-3e03-4269-a609-6c433d53a3c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.general_search_facet_uwmsearchwithin
+  module:
+    - facets
+    - system
+  theme:
+    - uwmbase
+id: generalsearchfacetuwmsearchwithin
+theme: uwmbase
+region: content_top
+weight: 0
+provider: null
+plugin: 'facet_block:general_search_facet_uwmsearchwithin'
+settings:
+  id: 'facet_block:general_search_facet_uwmsearchwithin'
+  label: 'General Search Facet UwmSearchWithin'
+  provider: facets
+  label_display: '0'
+  block_id: generalsearchfacetuwmsearchwithin
+visibility:
+  request_path:
+    id: request_path
+    pages: /search
+    negate: false
+    context_mapping: {  }

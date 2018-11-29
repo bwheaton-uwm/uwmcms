@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Adds values for search indexing.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\node\NodeInterface;
+use Drupal\uwmcs_searchfields\Controller\UwmSearchInfoMgrHelper;
+use Drupal\views\ViewExecutable;
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_entity_load().
+ */
+function uwmcs_searchfields_entity_load(array $entities, $entity_type_id) {
+  $i = 0;
+}

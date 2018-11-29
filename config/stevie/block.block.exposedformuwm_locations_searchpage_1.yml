@@ -1,22 +1,22 @@
-uuid: ae69a7fe-ae8b-424b-811e-7c4268f2beff
+uuid: d41c48aa-c769-421d-a9fd-4100d28956e8
 langcode: en
 status: true
 dependencies:
   config:
-    - views.view.uwm_search_providers
+    - views.view.uwm_locations_search
   module:
     - system
     - views
   theme:
     - uwmbase
-id: exposedformuwm_search_providerspage_1
+id: exposedformuwm_locations_searchpage_1
 theme: uwmbase
 region: content_top
 weight: 0
 provider: null
-plugin: 'views_exposed_filter_block:uwm_search_providers-page_1'
+plugin: 'views_exposed_filter_block:uwm_locations_search-page_1'
 settings:
-  id: 'views_exposed_filter_block:uwm_search_providers-page_1'
+  id: 'views_exposed_filter_block:uwm_locations_search-page_1'
   label: ''
   provider: views
   label_display: '0'
@@ -24,6 +24,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: '/search/providers*'
+    pages: '/search/locations*'
     negate: false
     context_mapping: {  }
