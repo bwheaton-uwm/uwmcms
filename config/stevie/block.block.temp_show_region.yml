@@ -1,0 +1,25 @@
+uuid: 5eee6b47-538a-4d42-8c56-3923cb87d3df
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - uwmbase
+id: temp_show_region
+theme: uwmbase
+region: content_top
+weight: 0
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: show-region-placeholder
+  provider: core
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '/search*'
+    negate: false
+    context_mapping: {  }

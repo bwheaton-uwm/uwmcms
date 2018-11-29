@@ -29,6 +29,8 @@ class TwigExtension extends \Twig_Extension {
       new \Twig_SimpleFunction(
         'uwm_get_path_nid', [$this, 'getPathNid']),
       new \Twig_SimpleFunction(
+        'uwm_plugin_block', [$this, 'getBlock']),
+      new \Twig_SimpleFunction(
         'uwm_get_api_nid', [$this, 'getApiPathNid']),
       new \Twig_SimpleFunction(
         'uwm_extract_parts', [$this, 'extractArrayValues']),
@@ -135,6 +137,35 @@ class TwigExtension extends \Twig_Extension {
    * @param string $string
    *   Description text.
    *
+   * @return array
+   *   Description here.
+   */
+  public static function getBlock(string $string = NULL) {
+
+    if ($string) {
+
+      $blockManager = \Drupal::service('plugin.manager.block');
+
+      $pluginBlock = $blockManager->createInstance($string, []);
+
+      $accessResult = $pluginBlock->access(\Drupal::currentUser());
+
+      if (is_object($accessResult) && $accessResult->isForbidden() || is_bool($accessResult) && !$accessResult) {
+        return [];
+      }
+      $render = $pluginBlock->build();
+
+      return $render;
+    }
+
+  }
+
+  /**
+   * Description text.
+   *
+   * @param string $string
+   *   Description text.
+   *
    * @return string
    *   Description text.
    */
@@ -155,7 +186,7 @@ class TwigExtension extends \Twig_Extension {
    * @return string
    *   Description text.
    */
-  public static function convertInlineStyles(string $string = '') {
+  public static function convertInlineStyles(string $string = NULL) {
 
     $patterns = [
       '/(style="[^"]?italic[^>]+>)([^<]+)/',

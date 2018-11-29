@@ -9,7 +9,7 @@ _core:
 id: uwmbase_page_title
 theme: uwmbase
 region: title
-weight: -50
+weight: -10
 provider: null
 plugin: page_title_block
 settings:

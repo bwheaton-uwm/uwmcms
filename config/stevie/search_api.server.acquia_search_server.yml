@@ -1,6 +1,6 @@
 uuid: 933f49fa-5210-49c3-b820-5e67f4ffbf83
 langcode: en
-status: false
+status: true
 dependencies:
   module:
     - acquia_search
