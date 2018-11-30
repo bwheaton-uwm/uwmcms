@@ -14,6 +14,7 @@ module:
   components: 0
   config: 0
   config_filter: 0
+  config_ignore: 0
   config_split: 0
   consumers: 0
   contact: 0
@@ -71,6 +72,8 @@ module:
   media_entity_actions: 0
   media_entity_instagram: 0
   media_entity_twitter: 0
+  media_library: 0
+  menu_export: 0
   menu_ui: 0
   metatag: 0
   metatag_open_graph: 0

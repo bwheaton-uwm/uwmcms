@@ -29,5 +29,6 @@ permissions:
   - 'view paragraph content uwm_link_with_icon'
   - 'view paragraph content uwm_media'
   - 'view paragraph content uwm_modal'
+  - 'view paragraph content uwm_quiz_question'
   - 'view paragraph content uwm_section'
   - 'view paragraph content uwm_view'
