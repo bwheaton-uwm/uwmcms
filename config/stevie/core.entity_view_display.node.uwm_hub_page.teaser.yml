@@ -11,13 +11,7 @@ dependencies:
     - field.field.node.uwm_hub_page.field_uwm_sections
     - node.type.uwm_hub_page
   module:
-    - field_layout
-    - layout_discovery
     - user
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: node.uwm_hub_page.teaser
 targetEntityType: node
 bundle: uwm_hub_page

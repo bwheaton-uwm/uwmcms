@@ -9,13 +9,7 @@ dependencies:
     - field.field.media.document.field_uwm_parent_page
     - media.type.document
   module:
-    - field_layout
     - file
-    - layout_discovery
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 _core:
   default_config_hash: qwXr3yVUHU3LwMQ1n9mTyDj2s7sUqpNtasS-nSu86rE
 id: media.document.embedded

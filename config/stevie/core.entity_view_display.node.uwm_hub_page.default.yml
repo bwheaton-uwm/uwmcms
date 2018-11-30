@@ -11,20 +11,8 @@ dependencies:
     - node.type.uwm_hub_page
   module:
     - entity_reference_revisions
-    - field_layout
-    - layout_discovery
     - metatag
-    - panelizer
     - user
-third_party_settings:
-  panelizer:
-    enable: false
-    custom: false
-    allow: false
-    default: default
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: node.uwm_hub_page.default
 targetEntityType: node
 bundle: uwm_hub_page

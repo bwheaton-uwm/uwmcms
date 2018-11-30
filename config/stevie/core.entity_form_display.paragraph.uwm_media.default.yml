@@ -8,12 +8,6 @@ dependencies:
     - paragraphs.paragraphs_type.uwm_media
   module:
     - entity_browser
-    - field_layout
-    - layout_discovery
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: paragraph.uwm_media.default
 targetEntityType: paragraph
 bundle: uwm_media

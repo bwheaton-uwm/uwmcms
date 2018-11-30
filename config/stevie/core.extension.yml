@@ -53,7 +53,6 @@ module:
   fallback_formatter: 0
   field: 0
   field_group: 0
-  field_layout: 0
   field_ui: 0
   file: 0
   filter: 0
@@ -69,12 +68,9 @@ module:
   inline_entity_form: 0
   jsonapi: 0
   key_value: 0
-  layout_discovery: 0
   lightning_api: 0
   lightning_contact_form: 0
   lightning_core: 0
-  lightning_landing_page: 0
-  lightning_layout: 0
   lightning_media: 0
   lightning_media_audio: 0
   lightning_media_bulk_upload: 0
@@ -116,10 +112,6 @@ module:
   openapi_ui_swagger: 0
   options: 0
   page_cache: 0
-  panelizer: 0
-  panelizer_quickedit: 0
-  panels: 0
-  panels_ipe: 0
   paragraphs_admin: 0
   paragraphs_type_permissions: 0
   path: 0
@@ -157,7 +149,6 @@ module:
   uwm_res_import: 0
   uwmcs_extension: 0
   uwmcs_utils: 0
-  uwmed_features_res_fields: 0
   vbo_export: 0
   video_embed_field: 0
   video_embed_media: 0

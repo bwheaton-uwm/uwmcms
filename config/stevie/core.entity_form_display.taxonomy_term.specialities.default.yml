@@ -6,14 +6,8 @@ dependencies:
     - field.field.taxonomy_term.specialities.uwm_unique_id
     - taxonomy.vocabulary.specialities
   module:
-    - field_layout
-    - layout_discovery
     - path
     - text
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 _core:
   default_config_hash: 12McWN3DxynZnpmJDtDMyNzNOsPw5K5tp-L-L4kz_lI
 id: taxonomy_term.specialities.default

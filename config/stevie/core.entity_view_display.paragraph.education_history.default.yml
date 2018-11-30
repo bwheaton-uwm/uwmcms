@@ -8,13 +8,6 @@ dependencies:
     - field.field.paragraph.education_history.field_res_education_type
     - field.field.paragraph.education_history.field_res_year
     - paragraphs.paragraphs_type.education_history
-  module:
-    - field_layout
-    - layout_discovery
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 _core:
   default_config_hash: khD8pvzr2UAtfplciNPlBmCxGcBOCv5D3TjlXFPhyOU
 id: paragraph.education_history.default
