@@ -11,14 +11,8 @@ dependencies:
     - taxonomy.vocabulary.buildings
   module:
     - address
-    - field_layout
     - geolocation
-    - layout_discovery
     - text
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 _core:
   default_config_hash: RHZ3GhhQuQNk3ZMNthdEkSfHUEglxQDVBRuWKtjxYxs
 id: taxonomy_term.buildings.default

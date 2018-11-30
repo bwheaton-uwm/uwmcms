@@ -6,13 +6,7 @@ dependencies:
     - field.field.taxonomy_term.education_institutions.uwm_unique_id
     - taxonomy.vocabulary.education_institutions
   module:
-    - field_layout
-    - layout_discovery
     - text
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 _core:
   default_config_hash: 17CuUdkiSRRZmcABWGJUuJ9fIc2dVG_CaGdthrXNaO4
 id: taxonomy_term.education_institutions.default

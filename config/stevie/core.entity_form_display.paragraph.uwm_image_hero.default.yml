@@ -10,13 +10,7 @@ dependencies:
     - paragraphs.paragraphs_type.uwm_image_hero
   module:
     - entity_browser
-    - field_layout
-    - layout_discovery
     - paragraphs
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: paragraph.uwm_image_hero.default
 targetEntityType: paragraph
 bundle: uwm_image_hero

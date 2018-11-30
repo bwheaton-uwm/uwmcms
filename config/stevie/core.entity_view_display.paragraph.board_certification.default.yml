@@ -7,13 +7,6 @@ dependencies:
     - field.field.paragraph.board_certification.field_res_is_primary
     - field.field.paragraph.board_certification.field_res_year
     - paragraphs.paragraphs_type.board_certification
-  module:
-    - field_layout
-    - layout_discovery
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 _core:
   default_config_hash: wWG7T6gDedjpx0AV8DMOr3aI71BN8c0A86GVsinKo5A
 id: paragraph.board_certification.default

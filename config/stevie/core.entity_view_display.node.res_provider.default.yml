@@ -27,17 +27,11 @@ dependencies:
     - node.type.res_provider
   module:
     - entity_reference_revisions
-    - field_layout
     - image
-    - layout_discovery
     - metatag
     - options
     - text
     - user
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 _core:
   default_config_hash: VprWwN3mbiPcSLh-Gc3vJcE50N6ggx16rsVBCVFsZNE
 id: node.res_provider.default

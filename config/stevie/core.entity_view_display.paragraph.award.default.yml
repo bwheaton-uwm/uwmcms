@@ -6,13 +6,6 @@ dependencies:
     - field.field.paragraph.award.field_res_description
     - field.field.paragraph.award.field_res_year
     - paragraphs.paragraphs_type.award
-  module:
-    - field_layout
-    - layout_discovery
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 _core:
   default_config_hash: zSRncY72_5N-DjuwjWSD_NPyCmk9UmyHSU4VEqs4wyc
 id: paragraph.award.default

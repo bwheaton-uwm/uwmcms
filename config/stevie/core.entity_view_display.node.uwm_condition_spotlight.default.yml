@@ -1,0 +1,39 @@
+uuid: 892941bc-10f5-45bd-9e47-ef9097f432fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.uwm_condition_spotlight.field_uwm_cards
+    - field.field.node.uwm_condition_spotlight.field_uwm_taxonomy_term
+    - node.type.uwm_condition_spotlight
+  module:
+    - entity_reference_revisions
+    - user
+id: node.uwm_condition_spotlight.default
+targetEntityType: node
+bundle: uwm_condition_spotlight
+mode: default
+content:
+  field_uwm_cards:
+    type: entity_reference_revisions_entity_view
+    weight: 104
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_uwm_taxonomy_term:
+    weight: 103
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

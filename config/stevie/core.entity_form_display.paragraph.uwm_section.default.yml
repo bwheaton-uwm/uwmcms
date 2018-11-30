@@ -9,14 +9,9 @@ dependencies:
     - paragraphs.paragraphs_type.uwm_section
   module:
     - allowed_formats
-    - field_layout
-    - layout_discovery
+    - content_moderation
     - paragraphs
     - text
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: paragraph.uwm_section.default
 targetEntityType: paragraph
 bundle: uwm_section

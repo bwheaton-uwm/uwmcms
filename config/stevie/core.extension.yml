@@ -43,7 +43,6 @@ module:
   editor: 0
   editor_advanced_link: 0
   embed: 0
-  entity: 0
   entity_block: 0
   entity_browser: 0
   entity_embed: 0
@@ -53,7 +52,6 @@ module:
   fallback_formatter: 0
   field: 0
   field_group: 0
-  field_layout: 0
   field_ui: 0
   file: 0
   filter: 0
@@ -93,11 +91,10 @@ module:
   media: 0
   media_acquiadam: 0
   media_acquiadam_example: 0
-  media_entity: 0
-  media_entity_image: 0
   media_entity_instagram: 0
   media_entity_twitter: 0
   media_library: 0
+  menu_export: 0
   menu_ui: 0
   metatag: 0
   metatag_open_graph: 0
@@ -126,6 +123,7 @@ module:
   quickedit: 0
   rabbit_hole: 0
   rdf: 0
+  redirect: 0
   responsive_favicons: 0
   rest: 0
   rh_media: 0
@@ -157,10 +155,10 @@ module:
   uwm_res_import: 0
   uwmcs_extension: 0
   uwmcs_utils: 0
-  uwmed_features_res_fields: 0
   vbo_export: 0
   video_embed_field: 0
   video_embed_media: 0
+  views_bulk_edit: 0
   views_bulk_operations: 0
   views_infinite_scroll: 0
   views_ui: 0
@@ -168,6 +166,7 @@ module:
   workflows: 0
   menu_link_content: 1
   pathauto: 1
+  views_url_alias_node: 2
   views: 10
   paragraphs: 11
   lightning: 1000

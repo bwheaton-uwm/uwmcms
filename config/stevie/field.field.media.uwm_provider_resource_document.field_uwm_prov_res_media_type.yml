@@ -1,0 +1,29 @@
+uuid: 51afbae5-e232-49f1-b36a-c2efc6481648
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_uwm_prov_res_media_type
+    - media.type.uwm_provider_resource_document
+    - taxonomy.vocabulary.uwm_provider_resource_media_type
+id: media.uwm_provider_resource_document.field_uwm_prov_res_media_type
+field_name: field_uwm_prov_res_media_type
+entity_type: media
+bundle: uwm_provider_resource_document
+label: 'Provider Resource Media Type'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      uwm_provider_resource_media_type: uwm_provider_resource_media_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

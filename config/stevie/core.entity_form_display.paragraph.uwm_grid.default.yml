@@ -8,13 +8,7 @@ dependencies:
     - field.field.paragraph.uwm_grid.field_uwm_columns_per_row
     - paragraphs.paragraphs_type.uwm_grid
   module:
-    - field_layout
-    - layout_discovery
     - paragraphs
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: paragraph.uwm_grid.default
 targetEntityType: paragraph
 bundle: uwm_grid

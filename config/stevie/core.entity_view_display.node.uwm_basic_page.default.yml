@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.uwm_basic_page.field_meta_tags
+    - field.field.node.uwm_basic_page.field_uwm_accent_color
     - field.field.node.uwm_basic_page.field_uwm_hero
     - field.field.node.uwm_basic_page.field_uwm_page_path_name
     - field.field.node.uwm_basic_page.field_uwm_parent_page
@@ -11,8 +12,6 @@ dependencies:
     - node.type.uwm_basic_page
   module:
     - entity_reference_revisions
-    - field_layout
-    - layout_discovery
     - metatag
     - panelizer
     - user
@@ -22,24 +21,29 @@ third_party_settings:
     custom: false
     allow: false
     default: default
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: node.uwm_basic_page.default
 targetEntityType: node
 bundle: uwm_basic_page
 mode: default
 content:
   field_meta_tags:
-    weight: 101
+    weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
     region: content
+  field_uwm_accent_color:
+    weight: 5
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
   field_uwm_hero:
     type: entity_reference_revisions_entity_view
-    weight: 106
+    weight: 0
     label: hidden
     settings:
       view_mode: default
@@ -47,7 +51,7 @@ content:
     third_party_settings: {  }
     region: content
   field_uwm_page_path_name:
-    weight: 104
+    weight: 3
     label: hidden
     settings:
       link_to_entity: false
@@ -55,7 +59,7 @@ content:
     type: string
     region: content
   field_uwm_parent_page:
-    weight: 105
+    weight: 4
     label: hidden
     settings:
       link: true
@@ -63,7 +67,7 @@ content:
     type: entity_reference_label
     region: content
   field_uwm_sections:
-    weight: 102
+    weight: 1
     label: hidden
     settings:
       view_mode: default
@@ -71,10 +75,6 @@ content:
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
     region: content
-  links:
-    weight: 100
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   content_moderation_control: true
+  links: true

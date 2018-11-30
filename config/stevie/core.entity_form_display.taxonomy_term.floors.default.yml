@@ -6,14 +6,8 @@ dependencies:
     - field.field.taxonomy_term.floors.uwm_unique_id
     - taxonomy.vocabulary.floors
   module:
-    - field_layout
-    - layout_discovery
     - path
     - text
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 _core:
   default_config_hash: _P5-MH5CuaeZT4_qYht6XLDROWbfBbowXTaMt1h_KuA
 id: taxonomy_term.floors.default

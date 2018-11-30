@@ -7,13 +7,7 @@ dependencies:
     - field.field.paragraph.uwm_modal.uwm_text
     - paragraphs.paragraphs_type.uwm_modal
   module:
-    - field_layout
-    - layout_discovery
     - text
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: paragraph.uwm_modal.default
 targetEntityType: paragraph
 bundle: uwm_modal
@@ -23,9 +17,10 @@ content:
     weight: 0
     label: hidden
     settings:
-      link: true
+      view_mode: uwm_modal
+      link: false
     third_party_settings: {  }
-    type: entity_reference_label
+    type: entity_reference_entity_view
     region: content
   uwm_text:
     weight: 1

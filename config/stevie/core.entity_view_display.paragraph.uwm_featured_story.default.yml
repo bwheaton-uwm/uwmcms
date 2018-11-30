@@ -10,13 +10,7 @@ dependencies:
     - paragraphs.paragraphs_type.uwm_featured_story
   module:
     - entity_reference_revisions
-    - field_layout
     - image
-    - layout_discovery
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: paragraph.uwm_featured_story.default
 targetEntityType: paragraph
 bundle: uwm_featured_story
@@ -26,12 +20,12 @@ content:
     weight: 3
     label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
   field_uwm_card_content:
-    weight: 0
+    weight: 1
     label: hidden
     settings:
       view_mode: default
@@ -40,7 +34,7 @@ content:
     type: entity_reference_revisions_entity_view
     region: content
   field_uwm_image:
-    weight: 1
+    weight: 0
     label: hidden
     settings:
       image_style: ''
@@ -53,7 +47,7 @@ content:
     weight: 2
     label: hidden
     settings:
-      view_mode: default
+      view_mode: uwm_featured_story
       link: ''
     third_party_settings: {  }
     region: content
