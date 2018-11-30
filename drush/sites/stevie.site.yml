@@ -20,3 +20,10 @@ test:
   root: /var/www/html/uwmed.test/docroot
   uri: stevie.cmsstage.uwmedicine.org
   user: uwmed.test
+prod:
+  host: uwmed.ssh.prod.acquia-sites.com
+  options: { ac-env: prod, ac-realm: prod, ac-site: stevie }
+  paths: { drush-script: drush9 }
+  root: /var/www/html/uwmed.prod/docroot
+  uri: stevie.cms.uwmedicine.org
+  user: uwmed.prod
