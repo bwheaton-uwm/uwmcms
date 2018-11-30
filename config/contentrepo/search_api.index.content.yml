@@ -39,10 +39,8 @@ field_settings:
       view_mode:
         'entity:node':
           uwm_basic_page: default
-          uwm_condition_spotlight: default
           uwm_homepage: default
           uwm_hub_page: default
-          uwm_quiz: default
   status:
     label: null
     datasource_id: 'entity:node'

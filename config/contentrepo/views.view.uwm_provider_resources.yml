@@ -3,11 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.media.field_uwm_external_url
     - field.storage.media.field_uwm_prov_res_media_type
     - field.storage.media.field_uwm_teaser
     - field.storage.media.image
-    - image.style.uwm_provider_resource_thumbnail
+    - image.style.large
     - media.type.uwm_provider_resource_document
     - media.type.uwm_provider_resource_video
     - taxonomy.vocabulary.uwm_provider_resource_doc_type
@@ -21,7 +20,6 @@ dependencies:
   module:
     - better_exposed_filters
     - image
-    - link
     - media
     - taxonomy
     - text
@@ -76,7 +74,7 @@ display:
               autosubmit_exclude_textfield: false
               autosubmit_hide: true
             field_uwm_prov_res_specialty_target_id:
-              bef_format: bef
+              bef_format: bef_links
               more_options:
                 bef_select_all_none: false
                 bef_collapsible: false
@@ -84,7 +82,7 @@ display:
                 rewrite:
                   filter_rewrite_values: '- Any -|All'
             field_uwm_prov_res_media_type_target_id:
-              bef_format: bef
+              bef_format: bef_links
               more_options:
                 bef_select_all_none: false
                 bef_collapsible: false
@@ -92,7 +90,7 @@ display:
                 rewrite:
                   filter_rewrite_values: '- Any -|All'
             field_uwm_prov_res_sub_specialty_target_id:
-              bef_format: bef
+              bef_format: bef_links
               more_options:
                 bef_select_all_none: false
                 bef_collapsible: false
@@ -221,10 +219,10 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: true
+          exclude: false
           alter:
             alter_text: false
-            text: '{{ field_uwm_prov_res_specialty }} {{ field_uwm_prov_res_media_type }}'
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -250,7 +248,7 @@ display:
             preserve_tags: ''
             html: false
           element_type: ''
-          element_class: ''
+          element_class: 'h5 uwm-accent-heading'
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
@@ -280,11 +278,58 @@ display:
           id: name
           table: media_field_data
           field: name
+          entity_type: media
+          entity_field: media
+          label: ''
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            trim: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          settings:
+            link_to_entity: true
+          plugin_id: field
+          relationship: none
+          group_type: group
+          admin_label: ''
+          exclude: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_uwm_teaser:
+          id: field_uwm_teaser
+          table: media__field_uwm_teaser
+          field: field_uwm_teaser
           relationship: none
           group_type: group
           admin_label: ''
           label: ''
-          exclude: true
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -303,78 +348,13 @@ display:
             target: ''
             nl2br: false
             max_length: 0
-            word_boundary: false
-            ellipsis: false
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          entity_type: media
-          entity_field: media
-          plugin_id: field
-        field_uwm_teaser:
-          id: field_uwm_teaser
-          table: media__field_uwm_teaser
-          field: field_uwm_teaser
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 140
             word_boundary: true
             ellipsis: true
             more_link: false
             more_link_text: ''
             more_link_path: ''
             strip_tags: false
-            trim: true
+            trim: false
             preserve_tags: ''
             html: false
           element_type: ''
@@ -413,8 +393,8 @@ display:
           label: ''
           exclude: true
           alter:
-            alter_text: true
-            text: "{% if image %}{{ image }}{% else %}{{ thumbnail__target_id }}{% endif %}\r\n{% if field_uwm_prov_res_media_type == \"Videos\" %}<i class=\"far fa-play-circle fa-5x play-button\"></i>{% endif %}"
+            alter_text: false
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -445,7 +425,7 @@ display:
           element_label_class: ''
           element_label_colon: false
           element_wrapper_type: ''
-          element_wrapper_class: m-0
+          element_wrapper_class: ''
           element_default_classes: true
           empty: ''
           hide_empty: false
@@ -454,7 +434,7 @@ display:
           click_sort_column: target_id
           type: image
           settings:
-            image_style: uwm_provider_resource_thumbnail
+            image_style: large
             image_link: ''
           group_column: ''
           group_columns: {  }
@@ -475,9 +455,9 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: true
+          exclude: false
           alter:
-            alter_text: false
+            alter_text: true
             text: '{% if image %}{{ image }}{% else %}{{ thumbnail__target_id }}{% endif %}'
             make_link: false
             path: ''
@@ -518,7 +498,7 @@ display:
           click_sort_column: target_id
           type: image
           settings:
-            image_style: uwm_provider_resource_thumbnail
+            image_style: large
             image_link: content
           group_column: ''
           group_columns: {  }
@@ -533,175 +513,6 @@ display:
           entity_type: media
           entity_field: thumbnail
           plugin_id: field
-        view_media:
-          id: view_media
-          table: media
-          field: view_media
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: view
-          output_url_as_text: true
-          absolute: false
-          entity_type: media
-          plugin_id: entity_link
-        field_uwm_external_url:
-          id: field_uwm_external_url
-          table: media__field_uwm_external_url
-          field: field_uwm_external_url
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: uri
-          type: link
-          settings:
-            trim_length: null
-            url_only: true
-            url_plain: true
-            rel: '0'
-            target: '0'
-          group_column: ''
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        nothing:
-          id: nothing
-          table: views
-          field: nothing
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: true
-            text: "{% set link = field_uwm_external_url ? field_uwm_external_url : view_media %}\r\n<div class=\"row\">\r\n<div class=\"col-12\"><p class=\"h6 uwm-accent-heading card-title\">{% if field_uwm_prov_res_media_type|render is not sameas('News') %}{{ field_uwm_prov_res_media_type|trim('s', 'right') }}{% else %}{{ field_uwm_prov_res_media_type }}{% endif %}</p></div>\r\n<div class=\"col-lg-6\"><a class=\"image-wrapper\" href=\"{{ link }}\">{{ image }}</a></div>\r\n<div class=\"col-lg-6 pl-lg-0\"><p><strong><a href=\"{{ link }}\">{{ name }}</a></strong></p><p>{{ field_uwm_teaser }}</p></div>\r\n</div>\r\n<div class=\"row\"><div class=\"col-lg-6 pl-lg-0 offset-lg-6\"><p class=\"mb-0\"><a class=\"d-block btn btn-outline-dark text-center text-uppercase\" href=\"{{ link }}\">See resource</a></p></div></div>"
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: '0'
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: false
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: false
-          plugin_id: custom
       filters:
         status:
           value: '1'
@@ -961,20 +772,7 @@ display:
           entity_field: created
           plugin_id: date
       title: 'Provider Resources'
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: false
-          tokenize: false
-          content:
-            value: '<p class="m-0 p-3 font-weight-bold">Save Your Search <br /><a tabindex="0" class="js-link-copy btn btn-outline-teal mt-3">Copy link</a></p>'
-            format: unrestricted
-          plugin_id: text
+      header: {  }
       footer: {  }
       empty: {  }
       relationships: {  }
@@ -994,7 +792,6 @@ display:
         - user
         - user.permissions
       tags:
-        - 'config:field.storage.media.field_uwm_external_url'
         - 'config:field.storage.media.field_uwm_prov_res_media_type'
         - 'config:field.storage.media.field_uwm_teaser'
         - 'config:field.storage.media.image'
@@ -1077,7 +874,7 @@ display:
             description: ''
             use_operator: false
             operator: field_uwm_prov_res_specialty_target_id_op
-            identifier: specialty
+            identifier: field_uwm_prov_res_specialty_target_id
             required: false
             remember: false
             multiple: false
@@ -1124,7 +921,7 @@ display:
             description: ''
             use_operator: false
             operator: field_uwm_prov_res_media_type_target_id_op
-            identifier: type
+            identifier: field_uwm_prov_res_media_type_target_id
             required: false
             remember: false
             multiple: false
@@ -1171,7 +968,7 @@ display:
             description: ''
             use_operator: false
             operator: field_uwm_prov_res_sub_specialty_target_id_op
-            identifier: subspecialty
+            identifier: field_uwm_prov_res_sub_specialty_target_id
             required: false
             remember: false
             multiple: false
@@ -1223,25 +1020,94 @@ display:
           grouping:
             -
               field: field_uwm_prov_res_media_type
-              rendered: false
+              rendered: true
               rendered_strip: false
           columns: 2
           automatic_width: false
           alignment: horizontal
-          col_class_default: false
-          col_class_custom: 'card justify-content-between'
-          row_class_default: false
-          row_class_custom: card-deck
+          col_class_default: true
+          col_class_custom: col-sm-6
+          row_class_default: true
+          row_class_custom: row
       row:
         type: fields
         options:
-          default_field_elements: false
+          default_field_elements: true
           inline: {  }
           separator: ''
           hide_empty: false
       use_ajax: true
-      arguments: {  }
-      block_description: Filter
+      arguments:
+        field_uwm_prov_res_media_type_target_id:
+          id: field_uwm_prov_res_media_type_target_id
+          table: media__field_uwm_prov_res_media_type
+          field: field_uwm_prov_res_media_type_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+          plugin_id: numeric
+        field_uwm_prov_res_specialty_target_id:
+          id: field_uwm_prov_res_specialty_target_id
+          table: media__field_uwm_prov_res_specialty
+          field: field_uwm_prov_res_specialty_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+          plugin_id: numeric
     cache_metadata:
       max-age: -1
       contexts:
@@ -1251,7 +1117,6 @@ display:
         - user
         - user.permissions
       tags:
-        - 'config:field.storage.media.field_uwm_external_url'
         - 'config:field.storage.media.field_uwm_prov_res_media_type'
         - 'config:field.storage.media.field_uwm_teaser'
         - 'config:field.storage.media.image'

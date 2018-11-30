@@ -13,8 +13,6 @@ dependencies:
     - field.field.node.uwm_clinic.field_clockwise_id
     - field.field.node.uwm_clinic.field_content_blocks
     - field.field.node.uwm_clinic.field_content_blocks_heading
-    - field.field.node.uwm_clinic.field_custom_appointment_link
-    - field.field.node.uwm_clinic.field_hide_providers_tab
     - field.field.node.uwm_clinic.field_information_manager_url
     - field.field.node.uwm_clinic.field_meta_tags
     - field.field.node.uwm_clinic.field_node_media
@@ -23,7 +21,6 @@ dependencies:
     - responsive_image.styles.default_responsive_image
   module:
     - entity_reference_revisions
-    - link
     - metatag
     - panelizer
     - responsive_image
@@ -47,11 +44,6 @@ content:
     third_party_settings: {  }
     type: text_default
     region: content
-  content_moderation_control:
-    weight: -20
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_body_summary:
     weight: 5
     label: above
@@ -126,28 +118,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-    region: content
-  field_custom_appointment_link:
-    weight: 17
-    label: hidden
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    type: link_separate
-    region: content
-  field_hide_providers_tab:
-    weight: 18
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    type: boolean
     region: content
   field_information_manager_url:
     type: string

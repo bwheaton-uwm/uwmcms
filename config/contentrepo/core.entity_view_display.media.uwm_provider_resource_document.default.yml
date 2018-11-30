@@ -23,36 +23,51 @@ bundle: uwm_provider_resource_document
 mode: default
 content:
   field_media_file:
-    weight: 2
+    weight: 1
     label: hidden
-    settings: {  }
+    settings:
+      use_description_as_link_text: true
     third_party_settings: {  }
-    type: file_url_plain
+    type: file_default
     region: content
   field_uwm_description:
-    weight: 1
+    weight: 0
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
-  name:
-    type: string
-    weight: 0
-    region: content
-    label: hidden
+  field_uwm_prov_res_media_type:
+    weight: 4
+    label: above
     settings:
-      link_to_entity: false
+      link: true
     third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_uwm_prov_res_specialty:
+    weight: 2
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_uwm_prov_res_sub_specialty:
+    weight: 3
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
 hidden:
   created: true
   field_media_in_library: true
   field_uwm_external_url: true
   field_uwm_prov_res_doc_type: true
-  field_uwm_prov_res_media_type: true
-  field_uwm_prov_res_specialty: true
-  field_uwm_prov_res_sub_specialty: true
   field_uwm_teaser: true
   image: true
+  name: true
   thumbnail: true
   uid: true

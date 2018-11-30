@@ -7,7 +7,6 @@ dependencies:
     - field.field.media.uwm_provider_resource_document.field_media_file
     - field.field.media.uwm_provider_resource_document.field_media_in_library
     - field.field.media.uwm_provider_resource_document.field_uwm_description
-    - field.field.media.uwm_provider_resource_document.field_uwm_external_url
     - field.field.media.uwm_provider_resource_document.field_uwm_prov_res_doc_type
     - field.field.media.uwm_provider_resource_document.field_uwm_prov_res_media_type
     - field.field.media.uwm_provider_resource_document.field_uwm_prov_res_specialty
@@ -19,7 +18,6 @@ dependencies:
     - content_moderation
     - entity_browser
     - file
-    - link
     - path
     - text
 id: media.uwm_provider_resource_document.default
@@ -49,28 +47,26 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
-  field_uwm_external_url:
-    type: link_default
-    weight: 5
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-  field_uwm_prov_res_media_type:
+  field_uwm_prov_res_doc_type:
     weight: 2
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
-  field_uwm_prov_res_specialty:
+  field_uwm_prov_res_media_type:
     weight: 3
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
-  field_uwm_prov_res_sub_specialty:
+  field_uwm_prov_res_specialty:
     weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_uwm_prov_res_sub_specialty:
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -118,6 +114,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
-  field_uwm_prov_res_doc_type: true
+  field_uwm_external_url: true
   status: true
   uid: true
