@@ -17,9 +17,10 @@ content:
     weight: 0
     label: hidden
     settings:
-      link: true
+      view_mode: uwm_modal
+      link: false
     third_party_settings: {  }
-    type: entity_reference_label
+    type: entity_reference_entity_view
     region: content
   uwm_text:
     weight: 1

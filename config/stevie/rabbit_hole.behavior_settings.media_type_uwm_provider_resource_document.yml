@@ -1,0 +1,11 @@
+uuid: 1fd432d9-629e-4234-a304-83273bad57c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.uwm_provider_resource_document
+id: media_type_uwm_provider_resource_document
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301

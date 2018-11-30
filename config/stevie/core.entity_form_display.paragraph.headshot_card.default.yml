@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.headshot_card.uwm_text
     - paragraphs.paragraphs_type.headshot_card
   module:
+    - content_moderation
     - entity_browser
     - text
 id: paragraph.headshot_card.default

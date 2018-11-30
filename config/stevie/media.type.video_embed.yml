@@ -1,0 +1,15 @@
+uuid: f1383856-dee4-4294-af66-8f0ab77b1f3c
+langcode: en
+status: true
+dependencies:
+  module:
+    - video_embed_media
+id: video_embed
+label: 'Video Embed'
+description: 'A video hosted by YouTube, Vimeo, or some other provider.'
+source: video_embed_field
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_video_embed_field
+field_map: {  }

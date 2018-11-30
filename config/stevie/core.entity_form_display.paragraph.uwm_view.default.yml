@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.uwm_view.uwm_view
     - paragraphs.paragraphs_type.uwm_view
   module:
+    - content_moderation
     - viewsreference
 _core:
   default_config_hash: zPOlypFifYfDi3xlHZH8YtDzd5NNQ_YWq4zbOEkFqNM

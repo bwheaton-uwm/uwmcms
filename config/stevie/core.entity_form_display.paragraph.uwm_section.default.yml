@@ -9,6 +9,7 @@ dependencies:
     - paragraphs.paragraphs_type.uwm_section
   module:
     - allowed_formats
+    - content_moderation
     - paragraphs
     - text
 id: paragraph.uwm_section.default

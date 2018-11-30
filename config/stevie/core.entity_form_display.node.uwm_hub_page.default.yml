@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.uwm_hub_page.field_meta_tags
+    - field.field.node.uwm_hub_page.field_uwm_accent_color
     - field.field.node.uwm_hub_page.field_uwm_hero
     - field.field.node.uwm_hub_page.field_uwm_page_path_name
     - field.field.node.uwm_hub_page.field_uwm_parent_page
@@ -21,6 +22,7 @@ third_party_settings:
       children:
         - field_uwm_parent_page
         - field_uwm_page_path_name
+        - field_uwm_accent_color
       parent_name: ''
       weight: 1
       format_type: details
@@ -65,6 +67,12 @@ content:
     third_party_settings: {  }
     type: metatag_firehose
     region: content
+  field_uwm_accent_color:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_uwm_hero:
     weight: 26
     settings:
@@ -76,6 +84,10 @@ content:
       add_mode: button
       form_display_mode: default
       default_paragraph_type: uwm_image_hero
+      closed_mode_threshold: 0
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
     third_party_settings: {  }
     type: paragraphs
     region: content
@@ -107,6 +119,10 @@ content:
       add_mode: button
       form_display_mode: default
       default_paragraph_type: _none
+      closed_mode_threshold: 0
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
     third_party_settings: {  }
     type: paragraphs
     region: content
@@ -129,6 +145,11 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   created: true

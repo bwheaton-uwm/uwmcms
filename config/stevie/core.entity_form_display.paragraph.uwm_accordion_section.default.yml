@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.uwm_accordion_section.uwm_show_button
     - paragraphs.paragraphs_type.uwm_accordion_section
   module:
+    - content_moderation
     - paragraphs
 _core:
   default_config_hash: 22tMIPQI4ii_qffbi8T09Gf7Etenh3meTMi8MZuFU-Y

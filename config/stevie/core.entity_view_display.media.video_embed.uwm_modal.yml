@@ -1,0 +1,33 @@
+uuid: 7a37e2f7-1a51-41cb-a8cb-6dc0536672b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.uwm_modal
+    - field.field.media.video_embed.field_media_in_library
+    - field.field.media.video_embed.field_media_video_embed_field
+    - media.type.video_embed
+  module:
+    - video_embed_field
+id: media.video_embed.uwm_modal
+targetEntityType: media
+bundle: video_embed
+mode: uwm_modal
+content:
+  field_media_video_embed_field:
+    weight: 0
+    label: hidden
+    settings:
+      responsive: true
+      width: 854
+      height: 480
+      autoplay: false
+    third_party_settings: {  }
+    type: video_embed_field_video
+    region: content
+hidden:
+  created: true
+  field_media_in_library: true
+  name: true
+  thumbnail: true
+  uid: true

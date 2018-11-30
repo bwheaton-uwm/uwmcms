@@ -1,0 +1,28 @@
+uuid: dc70f11b-f4c0-42dc-b669-6ca8ec386e25
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.uwm_quiz
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    rich_text: rich_text
+    unrestricted: '0'
+    plain_text: '0'
+id: node.uwm_quiz.body
+field_name: body
+entity_type: node
+bundle: uwm_quiz
+label: Introduction
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

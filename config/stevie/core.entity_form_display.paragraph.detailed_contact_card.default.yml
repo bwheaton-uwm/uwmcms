@@ -13,6 +13,7 @@ dependencies:
     - field.field.paragraph.detailed_contact_card.field_uwm_phone_number
     - paragraphs.paragraphs_type.detailed_contact_card
   module:
+    - content_moderation
     - entity_browser
     - telephone
     - text

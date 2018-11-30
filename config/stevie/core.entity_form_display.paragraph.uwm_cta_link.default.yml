@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.uwm_cta_link.field_uwm_accent_color
     - field.field.paragraph.uwm_cta_link.field_uwm_link
     - paragraphs.paragraphs_type.uwm_cta_link
   module:
@@ -13,12 +12,6 @@ targetEntityType: paragraph
 bundle: uwm_cta_link
 mode: default
 content:
-  field_uwm_accent_color:
-    weight: 102
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
   field_uwm_link:
     weight: 101
     settings:
@@ -35,5 +28,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_uwm_accent_color: true
   status: true
   uid: true

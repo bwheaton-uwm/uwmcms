@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.uwm_full_html.uwm_unrestricted
     - paragraphs.paragraphs_type.uwm_full_html
   module:
+    - content_moderation
     - text
 id: paragraph.uwm_full_html.default
 targetEntityType: paragraph

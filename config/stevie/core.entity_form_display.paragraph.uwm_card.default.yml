@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.uwm_card.field_uwm_card_header
     - paragraphs.paragraphs_type.uwm_card
   module:
+    - content_moderation
     - paragraphs
 id: paragraph.uwm_card.default
 targetEntityType: paragraph

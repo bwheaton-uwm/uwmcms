@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.paragraph.uwm_block.uwm_block
     - paragraphs.paragraphs_type.uwm_block
+  module:
+    - content_moderation
 _core:
   default_config_hash: CdyphaTV3WPT2hHBI_iubZhaaT5P3ChUuQDBE-hRQSg
 id: paragraph.uwm_block.default

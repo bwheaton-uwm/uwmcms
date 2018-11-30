@@ -7,7 +7,7 @@ dependencies:
     - media.type.image
     - media.type.instagram
     - media.type.tweet
-    - media.type.video
+    - media.type.video_embed
     - paragraphs.paragraphs_type.uwm_media
 id: paragraph.uwm_media.field_uwm_media
 field_name: field_uwm_media
@@ -26,7 +26,7 @@ settings:
       image: image
       instagram: instagram
       tweet: tweet
-      video: video
+      video_embed: video_embed
     sort:
       field: _none
     auto_create: false
