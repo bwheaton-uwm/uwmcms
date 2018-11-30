@@ -1,0 +1,29 @@
+uuid: ed884551-9053-4452-96d7-36397fc61d4f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_building
+    - node.type.res_clinic
+    - taxonomy.vocabulary.buildings
+id: node.res_clinic.field_res_building
+field_name: field_res_building
+entity_type: node
+bundle: res_clinic
+label: Building
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      buildings: buildings
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

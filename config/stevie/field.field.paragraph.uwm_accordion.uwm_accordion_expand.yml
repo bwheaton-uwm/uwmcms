@@ -1,0 +1,23 @@
+uuid: 62d013d5-cafb-4892-af4d-8754a0e74c62
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.uwm_accordion_expand
+    - paragraphs.paragraphs_type.uwm_accordion
+_core:
+  default_config_hash: sUnw24kx62CY5WRjnkMlywEluaLGJl6VZw4VX4U4p5s
+id: paragraph.uwm_accordion.uwm_accordion_expand
+field_name: uwm_accordion_expand
+entity_type: paragraph
+bundle: uwm_accordion
+label: 'Show Expand/Collapse All button'
+description: 'Have an Expand/Collapse All button appear for this accordion container.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

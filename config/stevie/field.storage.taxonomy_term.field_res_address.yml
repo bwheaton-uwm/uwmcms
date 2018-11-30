@@ -1,0 +1,21 @@
+uuid: ac20d0ac-6e17-4ae0-9a56-a5156efb1fd1
+langcode: en
+status: true
+dependencies:
+  module:
+    - address
+    - taxonomy
+_core:
+  default_config_hash: DMY3INKTf6_jOuB5CXCFBi7icxyyHZ2bjueDw8XuNWY
+id: taxonomy_term.field_res_address
+field_name: field_res_address
+entity_type: taxonomy_term
+type: address
+settings: {  }
+module: address
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

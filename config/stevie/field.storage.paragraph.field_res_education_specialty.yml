@@ -1,0 +1,22 @@
+uuid: 121c936b-ce9f-4a62-8e62-bca86c298c29
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - taxonomy
+_core:
+  default_config_hash: 7tg9K4bvM2s0n5plybnyS16q2AzP5XUhr7EPnUG00HU
+id: paragraph.field_res_education_specialty
+field_name: field_res_education_specialty
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

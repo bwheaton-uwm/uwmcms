@@ -1,0 +1,25 @@
+uuid: a09791c4-87e1-458d-a13e-1cd8f038282f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_pubmed_ids
+    - node.type.res_provider
+_core:
+  default_config_hash: JOeC2i56svxOQRN-SjVElbspadk94GLYIYHewJniCTE
+id: node.res_provider.field_res_pubmed_ids
+field_name: field_res_pubmed_ids
+entity_type: node
+bundle: res_provider
+label: 'PubMed IDs'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

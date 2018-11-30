@@ -1,0 +1,23 @@
+uuid: ad130d11-2d66-405e-aac5-7ea1fe31ebf9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_gender
+    - node.type.res_provider
+  module:
+    - options
+_core:
+  default_config_hash: a1wDS0gXjFXmwqZPNBdcU1OJj6UXDa1k7PUr_vIGsw4
+id: node.res_provider.field_res_gender
+field_name: field_res_gender
+entity_type: node
+bundle: res_provider
+label: Gender
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,24 @@
+uuid: b37cac85-0878-4f87-b844-0c24ac3cb0e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_biography
+    - node.type.res_provider
+  module:
+    - text
+_core:
+  default_config_hash: C34Xc7_rHbtKINkf6Vwry0QBbZA6G2Wifc7MdCYmWRs
+id: node.res_provider.field_res_biography
+field_name: field_res_biography
+entity_type: node
+bundle: res_provider
+label: Biography
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

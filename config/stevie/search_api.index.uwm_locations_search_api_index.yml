@@ -1,0 +1,47 @@
+uuid: 073f373e-5463-49c9-be3d-49531a2825a5
+langcode: en
+status: false
+dependencies:
+  config:
+    - search_api.server.uwmed_local_solr
+  module:
+    - search_api
+    - node
+    - taxonomy
+id: uwm_locations_search_api_index
+name: 'UWM Locations - Search API Index'
+description: ''
+read_only: false
+field_settings: {  }
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: false
+      selected:
+        - res_clinic
+    languages:
+      default: true
+      selected: {  }
+  'entity:taxonomy_term':
+    bundles:
+      default: false
+      selected:
+        - buildings
+        - campuses
+        - expertise
+        - medical_services
+        - specialities
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  rendered_item: {  }
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  index_directly: true
+  cron_limit: 50
+server: uwmed_local_solr

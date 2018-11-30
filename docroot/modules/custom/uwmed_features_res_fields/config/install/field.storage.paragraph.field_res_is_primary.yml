@@ -1,0 +1,18 @@
+uuid: 633da294-aaba-40bd-a523-864093ce0e46
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_res_is_primary
+field_name: field_res_is_primary
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

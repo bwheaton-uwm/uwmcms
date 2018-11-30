@@ -1,0 +1,23 @@
+uuid: 16caa2b8-6a8e-403b-b264-618f002ebc05
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_iscallcenterserviced
+    - node.type.res_clinic
+id: node.res_clinic.field_res_iscallcenterserviced
+field_name: field_res_iscallcenterserviced
+entity_type: node
+bundle: res_clinic
+label: 'Serviced by call center?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

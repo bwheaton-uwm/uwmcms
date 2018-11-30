@@ -1,0 +1,11 @@
+uuid: 874dacea-390b-46ad-a1a2-83e473a2ebc9
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: I_iSSJdlaPjFGaejR3iWU_iwCxi_L11a5sgMcxXBkrI
+name: 'Education Types'
+vid: education_types
+description: ''
+hierarchy: 0
+weight: 0

@@ -1,0 +1,11 @@
+uuid: 1c9cf67d-273b-47f2-87ad-896200823494
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: uXctiEqM6WQUnG_cntkJoU6BUR1GUx6TDiBbVpW7pyM
+name: 'Medical Services'
+vid: medical_services
+description: ''
+hierarchy: 0
+weight: 0

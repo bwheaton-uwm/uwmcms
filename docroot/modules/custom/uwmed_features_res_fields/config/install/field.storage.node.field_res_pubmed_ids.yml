@@ -1,0 +1,20 @@
+uuid: f28fdd13-7ff6-4c32-9adf-352f686eb771
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_res_pubmed_ids
+field_name: field_res_pubmed_ids
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

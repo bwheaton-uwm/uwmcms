@@ -1,0 +1,22 @@
+local:
+  host: uwmed.local
+  options: {  }
+  root: /var/www/uwmed/docroot
+  uri: stevie.uwmed.local
+  user: vagrant
+  ssh:
+    options: '-o PasswordAuthentication=no -i $HOME/.vagrant.d/insecure_private_key'
+dev:
+  host: uwmeddev.ssh.prod.acquia-sites.com
+  options: { ac-env: dev, ac-realm: prod, ac-site: stevie }
+  paths: { drush-script: drush9 }
+  root: /var/www/html/uwmed.dev/docroot
+  uri: stevie.cmsdev.uwmedicine.org
+  user: uwmed.dev
+test:
+  host: uwmedstg.ssh.prod.acquia-sites.com
+  options: { ac-env: test, ac-realm: prod, ac-site: stevie }
+  paths: { drush-script: drush9 }
+  root: /var/www/html/uwmed.test/docroot
+  uri: stevie.cmsstage.uwmedicine.org
+  user: uwmed.test

@@ -1,0 +1,21 @@
+uuid: 51ca2717-cd1e-455b-94a7-ec905aa92b20
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_res_degree_code
+    - taxonomy.vocabulary.degrees
+_core:
+  default_config_hash: euVITbR19x_cE0ebQUNcb0fj4FxzvIaS8dSic1U8Bqk
+id: taxonomy_term.degrees.field_res_degree_code
+field_name: field_res_degree_code
+entity_type: taxonomy_term
+bundle: degrees
+label: 'Degree Code'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,29 @@
+uuid: a721feaf-76f4-466d-8c94-3e59d40aa2d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_background_color
+    - paragraphs.paragraphs_type.uwm_section
+    - taxonomy.vocabulary.uwm_background_colors
+id: paragraph.uwm_section.field_uwm_background_color
+field_name: field_uwm_background_color
+entity_type: paragraph
+bundle: uwm_section
+label: 'Background Color'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      uwm_background_colors: uwm_background_colors
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

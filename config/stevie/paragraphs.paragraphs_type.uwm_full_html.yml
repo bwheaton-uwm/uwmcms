@@ -1,0 +1,9 @@
+uuid: 2162cb6c-1ba1-4d5d-b196-96e4f8c8a5ea
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_full_html
+label: 'Full HTML'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

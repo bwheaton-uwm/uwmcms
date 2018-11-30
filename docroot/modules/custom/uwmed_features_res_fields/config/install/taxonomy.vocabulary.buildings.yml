@@ -1,0 +1,9 @@
+uuid: 26a8713f-6833-4afa-a23b-734afa470ac9
+langcode: en
+status: true
+dependencies: {  }
+name: Buildings
+vid: buildings
+description: ''
+hierarchy: 0
+weight: 0

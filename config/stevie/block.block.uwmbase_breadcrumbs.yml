@@ -1,0 +1,30 @@
+uuid: 0539817c-f572-474a-a9d0-a3a0a76ae36a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - system
+  theme:
+    - uwmbase
+_core:
+  default_config_hash: BijGxc3p8EAmCsbdsuojX6Anwj0NUebCysYE5x_Wchk
+id: uwmbase_breadcrumbs
+theme: uwmbase
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      uwm_basic_page: uwm_basic_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

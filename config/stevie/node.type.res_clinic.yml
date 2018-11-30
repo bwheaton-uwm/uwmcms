@@ -1,0 +1,19 @@
+uuid: a74884f7-fe28-4fae-ad46-1a20d5a72f2b
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: tHcl7lWuXvx5e9YwiM1XOboUyAvVEcHDrxzL8MSNsnI
+name: 'Res Clinic'
+type: res_clinic
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

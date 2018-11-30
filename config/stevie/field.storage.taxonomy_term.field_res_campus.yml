@@ -1,0 +1,21 @@
+uuid: a71bf797-74b9-45a7-bed3-fd6c87e8ba5a
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+_core:
+  default_config_hash: jEIjgY7o0oSkgSKSmSzQ3CMnchYWk_d7Pxr9bpDIrTc
+id: taxonomy_term.field_res_campus
+field_name: field_res_campus
+entity_type: taxonomy_term
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

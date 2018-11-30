@@ -1,0 +1,11 @@
+uuid: c71a1eaa-10c1-451f-934a-36efd04e0904
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: w5PK0D-SurGjpqMhszfepPYpDhqNvJEITnaQ0II7nm0
+name: Campuses
+vid: campuses
+description: ''
+hierarchy: 0
+weight: 0

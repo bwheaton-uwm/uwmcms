@@ -1,0 +1,61 @@
+uuid: ab4dcb52-3ad9-48dd-bc73-bb10f26e4933
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_links_with_icon
+    - paragraphs.paragraphs_type.uwm_image_hero
+    - paragraphs.paragraphs_type.uwm_link_with_icon
+  module:
+    - entity_reference_revisions
+id: paragraph.uwm_image_hero.field_uwm_links_with_icon
+field_name: field_uwm_links_with_icon
+entity_type: paragraph
+bundle: uwm_image_hero
+label: 'Links with Icon'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      uwm_link_with_icon: uwm_link_with_icon
+    target_bundles_drag_drop:
+      uwm_image_hero:
+        weight: 12
+        enabled: false
+      uwm_accordion:
+        weight: 13
+        enabled: false
+      uwm_accordion_section:
+        weight: 14
+        enabled: false
+      uwm_basic_content:
+        weight: 15
+        enabled: false
+      uwm_block:
+        weight: 16
+        enabled: false
+      uwm_full_html:
+        weight: 17
+        enabled: false
+      uwm_hero:
+        weight: 18
+        enabled: false
+      uwm_link_with_icon:
+        enabled: true
+        weight: 19
+      uwm_media:
+        weight: 20
+        enabled: false
+      uwm_section:
+        weight: 21
+        enabled: false
+      uwm_view:
+        weight: 22
+        enabled: false
+field_type: entity_reference_revisions

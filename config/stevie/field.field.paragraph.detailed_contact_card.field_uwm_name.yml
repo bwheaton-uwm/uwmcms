@@ -1,0 +1,27 @@
+uuid: 1cfe5c52-092c-41b8-8634-37f80c1f590f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_name
+    - paragraphs.paragraphs_type.detailed_contact_card
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    rich_text: rich_text
+    plain_text: plain_text
+    unrestricted: '0'
+id: paragraph.detailed_contact_card.field_uwm_name
+field_name: field_uwm_name
+entity_type: paragraph
+bundle: detailed_contact_card
+label: Name
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

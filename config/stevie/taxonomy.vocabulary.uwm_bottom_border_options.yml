@@ -1,0 +1,9 @@
+uuid: c4ffcbd9-c4cd-4c27-bacd-c844459ac357
+langcode: en
+status: true
+dependencies: {  }
+name: 'UWM Bottom Border Options'
+vid: uwm_bottom_border_options
+description: 'Options for background image display in featured stories.'
+hierarchy: 0
+weight: 0

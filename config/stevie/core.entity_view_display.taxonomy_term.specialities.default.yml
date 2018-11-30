@@ -1,0 +1,38 @@
+uuid: 8adf444c-8594-4840-90a8-1ddf026a4441
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.specialities.uwm_unique_id
+    - taxonomy.vocabulary.specialities
+  module:
+    - field_layout
+    - layout_discovery
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+_core:
+  default_config_hash: o6iFg1ETN9Hq8Jh9WlyuUegBZBHM8xvSID7Hoa6ZYZk
+id: taxonomy_term.specialities.default
+targetEntityType: taxonomy_term
+bundle: specialities
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uwm_unique_id:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

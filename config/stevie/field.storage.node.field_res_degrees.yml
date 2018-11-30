@@ -1,0 +1,23 @@
+uuid: 17994714-271b-4106-9e63-37047f1a1331
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - node
+    - paragraphs
+_core:
+  default_config_hash: UpaZ_soMinhVLtIs7cFW3YBqGpjypI2pz7_qiGU6sU4
+id: node.field_res_degrees
+field_name: field_res_degrees
+entity_type: node
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

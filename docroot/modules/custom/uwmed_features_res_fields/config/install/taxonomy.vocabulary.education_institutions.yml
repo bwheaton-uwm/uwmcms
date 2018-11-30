@@ -1,0 +1,9 @@
+uuid: 371db854-3b4b-4000-bdbf-973b0aa95f2f
+langcode: en
+status: true
+dependencies: {  }
+name: 'Education Institutions'
+vid: education_institutions
+description: ''
+hierarchy: 0
+weight: 0

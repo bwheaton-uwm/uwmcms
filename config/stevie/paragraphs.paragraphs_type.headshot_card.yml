@@ -1,0 +1,9 @@
+uuid: 1a6b16d4-9a57-45ba-b631-de673dad7b12
+langcode: en
+status: true
+dependencies: {  }
+id: headshot_card
+label: 'Headshot Card'
+icon_uuid: null
+description: 'A card with a person''s headshot followed by the person''s name and title.'
+behavior_plugins: {  }
