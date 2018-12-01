@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - entity_browser.browser.image_browser
     - field.field.node.quiz.body
     - field.field.node.quiz.field_body_body_second
     - field.field.node.quiz.field_image
@@ -11,7 +10,6 @@ dependencies:
     - node.type.quiz
   module:
     - content_moderation
-    - entity_browser
     - paragraphs
     - path
     - text
@@ -37,19 +35,6 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
-  field_image:
-    type: entity_browser_file
-    weight: 1
-    settings:
-      entity_browser: image_browser
-      field_widget_edit: true
-      field_widget_remove: true
-      view_mode: default
-      preview_image_style: thumbnail
-      open: true
-      selection_mode: selection_append
-    region: content
-    third_party_settings: {  }
   field_quiz_questions:
     type: entity_reference_paragraphs
     weight: 3
@@ -96,6 +81,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_image: true
   promote: true
   sticky: true
   uid: true

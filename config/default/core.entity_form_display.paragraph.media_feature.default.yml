@@ -3,15 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - entity_browser.browser.media_browser
     - field.field.paragraph.media_feature.field_heading
     - field.field.paragraph.media_feature.field_media
     - field.field.paragraph.media_feature.field_text_snippet
     - paragraphs.paragraphs_type.media_feature
   module:
     - allowed_formats
-    - datetime
-    - entity_browser
     - field_group
     - text
 third_party_settings:
@@ -47,20 +44,6 @@ content:
         hide_guidelines: '1'
     type: text_textfield
     region: content
-  field_media:
-    type: entity_browser_entity_reference
-    weight: 3
-    settings:
-      entity_browser: media_browser
-      field_widget_display: rendered_entity
-      field_widget_edit: true
-      field_widget_remove: true
-      open: true
-      selection_mode: selection_append
-      field_widget_display_settings:
-        view_mode: thumbnail
-    region: content
-    third_party_settings: {  }
   field_text_snippet:
     weight: 2
     settings:
@@ -80,5 +63,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_media: true
   status: true
   uid: true

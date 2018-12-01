@@ -3,8 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - entity_browser.browser.image_browser
-    - entity_browser.browser.media_browser
     - field.field.node.uwm_clinic.body
     - field.field.node.uwm_clinic.field_body_summary
     - field.field.node.uwm_clinic.field_bottom_content_blocks
@@ -25,7 +23,6 @@ dependencies:
   module:
     - allowed_formats
     - content_moderation
-    - entity_browser
     - field_group
     - link
     - metatag
@@ -142,19 +139,6 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_clinic_image:
-    type: entity_browser_file
-    weight: 14
-    settings:
-      entity_browser: image_browser
-      field_widget_edit: true
-      field_widget_remove: true
-      view_mode: default
-      preview_image_style: thumbnail
-      open: true
-      selection_mode: selection_append
-    region: content
-    third_party_settings: {  }
   field_clinic_services_header:
     weight: 31
     settings:
@@ -227,20 +211,6 @@ content:
     third_party_settings: {  }
     type: metatag_firehose
     region: content
-  field_node_media:
-    type: entity_browser_entity_reference
-    weight: 10
-    settings:
-      entity_browser: media_browser
-      field_widget_display: rendered_entity
-      field_widget_edit: true
-      field_widget_remove: true
-      selection_mode: selection_append
-      field_widget_display_settings:
-        view_mode: thumbnail
-      open: true
-    region: content
-    third_party_settings: {  }
   field_sub_title:
     weight: 1
     settings:
@@ -304,4 +274,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_clinic_image: true
+  field_node_media: true

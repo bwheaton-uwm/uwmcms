@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - entity_browser.browser.media_browser
     - field.field.node.uwm_provider.field_content_blocks
     - field.field.node.uwm_provider.field_information_manager_url
     - field.field.node.uwm_provider.field_meta_tags
@@ -11,7 +10,6 @@ dependencies:
     - node.type.uwm_provider
   module:
     - content_moderation
-    - entity_browser
     - field_group
     - metatag
     - paragraphs
@@ -96,20 +94,6 @@ content:
     third_party_settings: {  }
     type: metatag_firehose
     region: content
-  field_node_media:
-    type: entity_browser_entity_reference
-    weight: 8
-    settings:
-      entity_browser: media_browser
-      field_widget_display: rendered_entity
-      field_widget_edit: true
-      field_widget_remove: true
-      selection_mode: selection_append
-      field_widget_display_settings:
-        view_mode: thumbnail
-      open: true
-    region: content
-    third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
     weight: 100
@@ -165,4 +149,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_node_media: true

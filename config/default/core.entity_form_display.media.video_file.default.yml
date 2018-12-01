@@ -1,40 +1,31 @@
-uuid: d5f412d9-e73b-4cfb-9413-904931b39130
+uuid: 72b3ced7-39bd-4c84-8aef-0245491b73d8
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_form_mode.media.media_browser
-    - field.field.media.image.field_content_topics
-    - field.field.media.image.field_digital_properties
-    - field.field.media.image.field_media_in_library
-    - field.field.media.image.image
-    - image.style.medium
-    - media.type.image
+    - field.field.media.video_file.field_media_in_library
+    - field.field.media.video_file.field_media_video_file
+    - media.type.video_file
   module:
-    - content_moderation
-    - image
-    - path
-_core:
-  default_config_hash: XAs-0xJN_RSqL0AwDm_5FnHvxR7U1H1asYTOBUKcnsE
-id: media.image.media_browser
+    - file
+id: media.video_file.default
 targetEntityType: media
-bundle: image
-mode: media_browser
+bundle: video_file
+mode: default
 content:
   field_media_in_library:
     type: boolean_checkbox
-    weight: 3
     settings:
       display_label: true
+    weight: 2
     third_party_settings: {  }
     region: content
-  image:
-    type: image_image
-    weight: 2
+  field_media_video_file:
+    weight: 1
     settings:
-      preview_image_style: medium
       progress_indicator: throbber
     third_party_settings: {  }
+    type: file_generic
     region: content
   moderation_state:
     type: moderation_state_default
@@ -45,11 +36,11 @@ content:
   name:
     type: string_textfield
     weight: 0
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    region: content
   path:
     type: path
     weight: 30
@@ -60,11 +51,9 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 100
+    weight: 3
     region: content
     third_party_settings: {  }
 hidden:
   created: true
-  field_content_topics: true
-  field_digital_properties: true
   uid: true

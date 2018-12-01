@@ -1,14 +1,14 @@
-uuid: dd128555-6349-446e-9d86-f99f4ee6e055
+uuid: 16cbc4b3-fc64-431a-8309-78d672db97b9
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.media.field_media_in_library
-    - media.type.video
-id: media.video.field_media_in_library
+    - media.type.video_file
+id: media.video_file.field_media_in_library
 field_name: field_media_in_library
 entity_type: media
-bundle: video
+bundle: video_file
 label: 'Show in media library'
 description: ''
 required: false
