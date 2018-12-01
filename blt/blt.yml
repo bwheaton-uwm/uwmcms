@@ -25,18 +25,18 @@ drush:
 modules:
   local:
     enable: [acquia_connector, dblog, devel, views_ui]
-    uninstall: [ shield, simplesamlphp_auth]
+    uninstall: [shield, simplesamlphp_auth]
   ci:
     enable: {  }
-    uninstall: []
+    uninstall: {  }
   dev:
-    enable: [acquia_connector]
+    enable: [acquia_connector, shield]
     uninstall: {  }
   test:
-    enable: [acquia_connector]
+    enable: [acquia_connector, shield]
     uninstall: [devel, views_ui]
   prod:
-    enable: [acquia_connector]
+    enable: [acquia_connector, shield]
     uninstall: [devel, views_ui]
 disable-targets:
   validate:
