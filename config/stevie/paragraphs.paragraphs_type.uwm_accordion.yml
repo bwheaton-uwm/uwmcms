@@ -1,0 +1,11 @@
+uuid: 80c860e1-900d-43de-a5d8-ed246791050f
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: eXbAajSvam960uM9_xmBvUKORBRsQLO2dcj-h_c6v1Q
+id: uwm_accordion
+label: Accordion
+icon_uuid: null
+description: null
+behavior_plugins: {  }

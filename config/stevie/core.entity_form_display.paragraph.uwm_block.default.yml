@@ -1,0 +1,35 @@
+uuid: 6061af2a-5119-44d2-9ee9-3b9d6a0c7245
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_block.uwm_block
+    - paragraphs.paragraphs_type.uwm_block
+  module:
+    - content_moderation
+_core:
+  default_config_hash: CdyphaTV3WPT2hHBI_iubZhaaT5P3ChUuQDBE-hRQSg
+id: paragraph.uwm_block.default
+targetEntityType: paragraph
+bundle: uwm_block
+mode: default
+content:
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+  uwm_block:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

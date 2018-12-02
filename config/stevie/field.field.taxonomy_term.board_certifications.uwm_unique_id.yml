@@ -1,0 +1,21 @@
+uuid: 9e115928-046e-4a98-900e-20a4b3bc259e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.uwm_unique_id
+    - taxonomy.vocabulary.board_certifications
+_core:
+  default_config_hash: KMFZ_1xKmK3HYz7y1s1-hDCAvSy6AghrTBVHIsIodCs
+id: taxonomy_term.board_certifications.uwm_unique_id
+field_name: uwm_unique_id
+entity_type: taxonomy_term
+bundle: board_certifications
+label: 'Universal Id or Source URL'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

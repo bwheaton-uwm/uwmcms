@@ -1,0 +1,93 @@
+uuid: f36ea68e-3ed6-451b-b8b4-f573de82ce9c
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.image_browser
+    - field.field.paragraph.detailed_contact_card.field_uwm_address
+    - field.field.paragraph.detailed_contact_card.field_uwm_assistant
+    - field.field.paragraph.detailed_contact_card.field_uwm_email_address
+    - field.field.paragraph.detailed_contact_card.field_uwm_fax_number
+    - field.field.paragraph.detailed_contact_card.field_uwm_image
+    - field.field.paragraph.detailed_contact_card.field_uwm_name
+    - field.field.paragraph.detailed_contact_card.field_uwm_phone_number
+    - paragraphs.paragraphs_type.detailed_contact_card
+  module:
+    - content_moderation
+    - entity_browser
+    - telephone
+    - text
+id: paragraph.detailed_contact_card.default
+targetEntityType: paragraph
+bundle: detailed_contact_card
+mode: default
+content:
+  field_uwm_address:
+    weight: 107
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_uwm_assistant:
+    weight: 106
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+  field_uwm_email_address:
+    weight: 105
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_uwm_fax_number:
+    weight: 104
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
+    region: content
+  field_uwm_image:
+    weight: 101
+    settings:
+      entity_browser: image_browser
+      field_widget_remove: true
+      selection_mode: selection_append
+      preview_image_style: uwm_headshot
+      field_widget_edit: true
+      open: false
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_browser_file
+    region: content
+  field_uwm_name:
+    weight: 102
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+  field_uwm_phone_number:
+    weight: 103
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

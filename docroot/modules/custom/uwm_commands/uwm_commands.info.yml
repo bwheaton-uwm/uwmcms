@@ -1,0 +1,5 @@
+name: uwm_commands
+description: UWM Drush 9 Commands 
+core: 8.x
+type: module
+package: uwm

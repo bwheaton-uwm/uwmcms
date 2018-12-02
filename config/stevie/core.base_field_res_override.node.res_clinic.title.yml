@@ -1,0 +1,20 @@
+uuid: bbef5f95-53b9-45f7-93e8-8900ecce77f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.res_clinic
+id: node.res_clinic.title
+field_name: title
+entity_type: node
+bundle: res_clinic
+label: Name
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
+_core:
+  default_config_hash: sAs7v0h8k_2R56uoOBtCZ1Sks-yOLHmsywY4OxDyjbA

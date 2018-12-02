@@ -1,0 +1,9 @@
+uuid: 39a9dcf5-224c-492a-8291-562148be8b25
+langcode: en
+status: true
+dependencies: {  }
+name: 'UWM Accent Colors'
+vid: uwm_accent_colors
+description: ''
+hierarchy: 0
+weight: 0

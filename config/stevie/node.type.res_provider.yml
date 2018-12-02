@@ -1,0 +1,20 @@
+uuid: 1a0d7688-e0e0-43b4-a9ed-4b0c079f2bb4
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+_core:
+  default_config_hash: kzT8GkXn0w_pqPgR239rZOe9YByfVbe5kHSvPeavUhU
+name: 'Res Provider'
+type: res_provider
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

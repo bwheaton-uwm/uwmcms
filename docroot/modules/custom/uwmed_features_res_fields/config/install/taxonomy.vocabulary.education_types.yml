@@ -1,0 +1,9 @@
+uuid: 874dacea-390b-46ad-a1a2-83e473a2ebc9
+langcode: en
+status: true
+dependencies: {  }
+name: 'Education Types'
+vid: education_types
+description: ''
+hierarchy: 0
+weight: 0

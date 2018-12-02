@@ -1,0 +1,21 @@
+uuid: f1332317-d62d-4818-bda1-f4ceab1d335d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.uwm_unique_id
+    - taxonomy.vocabulary.buildings
+_core:
+  default_config_hash: 06fzHI-pAGk3aRQKfCLNCqhojIqGH6Nnc2eNU91S3IE
+id: taxonomy_term.buildings.uwm_unique_id
+field_name: uwm_unique_id
+entity_type: taxonomy_term
+bundle: buildings
+label: 'Universal Id or Source URL'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

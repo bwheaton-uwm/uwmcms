@@ -3,86 +3,22 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.media.video.field_content_topics
-    - field.field.media.video.field_digital_properties
-    - field.field.media.video.field_media_caption
     - field.field.media.video.field_media_in_library
-    - field.field.media.video.field_media_video_caption_url
-    - field.field.media.video.field_media_video_data_url
     - field.field.media.video.field_media_video_embed_field
     - media.type.video
   module:
-    - allowed_formats
-    - content_moderation
-    - field_group
-    - link
-    - path
-    - text
     - video_embed_field
-third_party_settings:
-  field_group:
-    group_source_files:
-      children:
-        - field_media_video_data_url
-        - field_media_video_caption_url
-      parent_name: ''
-      weight: 2
-      format_type: tab
-      format_settings:
-        id: ''
-        classes: ''
-        formatter: closed
-        description: ''
-        required_fields: true
-      label: 'Source Files'
-_core:
-  default_config_hash: HCTWpOqXTYYpuBfqfQIjmSqcpM7jmFEFxQj_RMQWRAU
 id: media.video.default
 targetEntityType: media
 bundle: video
 mode: default
 content:
-  field_content_topics:
-    weight: 7
+  field_media_in_library:
+    type: boolean_checkbox
+    weight: 1
     settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+      display_label: true
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
-  field_digital_properties:
-    weight: 8
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  field_media_caption:
-    type: text_textarea
-    weight: 5
-    region: content
-    settings:
-      rows: 3
-      placeholder: ''
-    third_party_settings:
-      allowed_formats:
-        hide_help: '1'
-        hide_guidelines: '1'
-  field_media_video_caption_url:
-    weight: 5
-    settings:
-      placeholder_url: 'http://.....media.srt file'
-      placeholder_title: ''
-    third_party_settings: {  }
-    type: link_default
-    region: content
-  field_media_video_data_url:
-    weight: 4
-    settings:
-      placeholder_url: 'http://.....media.mp4 source file'
-      placeholder_title: ''
-    third_party_settings: {  }
-    type: link_default
     region: content
   field_media_video_embed_field:
     type: video_embed_field_textfield
@@ -110,11 +46,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  preview:
-    weight: 6
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
@@ -124,5 +55,9 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
-  field_media_in_library: true
+  field_content_topics: true
+  field_digital_properties: true
+  field_media_caption: true
+  field_media_video_caption_url: true
+  field_media_video_data_url: true
   uid: true

@@ -1,0 +1,32 @@
+uuid: 2663ef49-9ad1-4cef-8a7d-cffa085dbcfd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_modal.field_uwm_media
+    - field.field.paragraph.uwm_modal.uwm_text
+    - paragraphs.paragraphs_type.uwm_modal
+  module:
+    - text
+id: paragraph.uwm_modal.default
+targetEntityType: paragraph
+bundle: uwm_modal
+mode: default
+content:
+  field_uwm_media:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: uwm_modal
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  uwm_text:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

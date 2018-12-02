@@ -1,0 +1,21 @@
+uuid: 48c07bf1-57bb-4544-887f-1ac42b21aa38
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_res_description
+    - paragraphs.paragraphs_type.award
+_core:
+  default_config_hash: hsWEwEzcfPy6Domz8j3tazc1La9pG0dyS5Ve3YFIluc
+id: paragraph.award.field_res_description
+field_name: field_res_description
+entity_type: paragraph
+bundle: award
+label: Name
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

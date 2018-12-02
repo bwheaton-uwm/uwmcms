@@ -1,0 +1,60 @@
+uuid: caa25f55-c38c-4bca-bdb8-3207b49e9841
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.degree.field_res_degree
+    - field.field.paragraph.degree.field_res_description
+    - field.field.paragraph.degree.field_res_education_institution
+    - field.field.paragraph.degree.field_res_is_primary
+    - field.field.paragraph.degree.field_res_year
+    - paragraphs.paragraphs_type.degree
+_core:
+  default_config_hash: '-C0wI5EhYB4pAypepUZYkm0T3fLvzNlLRnd2wkojDEs'
+id: paragraph.degree.default
+targetEntityType: paragraph
+bundle: degree
+mode: default
+content:
+  field_res_degree:
+    weight: 2
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_res_description:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_res_education_institution:
+    weight: 0
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_res_is_primary:
+    weight: 4
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_res_year:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

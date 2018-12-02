@@ -1,0 +1,28 @@
+uuid: 122cb2fe-5e34-4efc-bbe4-7bac49239dfa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_res_providers
+    - node.type.res_provider
+    - taxonomy.vocabulary.languages
+id: taxonomy_term.languages.field_res_providers
+field_name: field_res_providers
+entity_type: taxonomy_term
+bundle: languages
+label: Providers
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      res_provider: res_provider
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - entity_browser.browser.image_browser
     - field.field.node.uwm_medical_specialty.field_accordion
     - field.field.node.uwm_medical_specialty.field_body_summary
     - field.field.node.uwm_medical_specialty.field_common_services
@@ -23,8 +22,7 @@ dependencies:
     - field.field.node.uwm_medical_specialty.field_weight
     - node.type.uwm_medical_specialty
   module:
-    - datetime
-    - entity_browser
+    - content_moderation
     - field_group
     - metatag
     - paragraphs
@@ -154,19 +152,6 @@ content:
     third_party_settings: {  }
     type: paragraphs
     region: content
-  field_image:
-    type: entity_browser_file
-    weight: 35
-    settings:
-      entity_browser: image_browser
-      field_widget_edit: true
-      field_widget_remove: true
-      view_mode: default
-      preview_image_style: thumbnail
-      open: true
-      selection_mode: selection_append
-    region: content
-    third_party_settings: {  }
   field_information_manager_url:
     weight: 11
     settings:
@@ -306,3 +291,4 @@ content:
 hidden:
   field_feature_story: true
   field_featured_specialties: true
+  field_image: true

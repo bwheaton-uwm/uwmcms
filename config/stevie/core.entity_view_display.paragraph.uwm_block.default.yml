@@ -1,0 +1,26 @@
+uuid: cbf8b897-6a37-4965-9736-bff416a71546
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_block.uwm_block
+    - paragraphs.paragraphs_type.uwm_block
+_core:
+  default_config_hash: uIbtTv-W7JtxEYuiOteCXEqY03YtqwIE8sHVl6QCHHU
+id: paragraph.uwm_block.default
+targetEntityType: paragraph
+bundle: uwm_block
+mode: default
+content:
+  uwm_block:
+    weight: 2
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden:
+  created: true
+  uid: true

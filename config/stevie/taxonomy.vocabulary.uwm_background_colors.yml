@@ -1,0 +1,9 @@
+uuid: a20cc6a7-248a-46e7-bcf6-012645a72614
+langcode: en
+status: true
+dependencies: {  }
+name: 'UWM Background Colors'
+vid: uwm_background_colors
+description: ''
+hierarchy: 0
+weight: 0

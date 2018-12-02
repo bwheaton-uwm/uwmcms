@@ -1,0 +1,20 @@
+uuid: f1090a4c-c041-413a-97c2-303595672095
+langcode: en
+status: true
+dependencies:
+  theme:
+    - uwmedicineorg
+_core:
+  default_config_hash: 7rR9chwXvdM2H8OYMAYx9Zj3GGlPMrZp_M3ZA4thYTk
+id: uwmedicineorg_page_title
+theme: uwmedicineorg
+region: content
+weight: -50
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

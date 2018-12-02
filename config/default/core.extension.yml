@@ -14,6 +14,7 @@ module:
   components: 0
   config: 0
   config_filter: 0
+  config_ignore: 0
   config_split: 0
   consumers: 0
   contact: 0
@@ -54,12 +55,6 @@ module:
   lightning_core: 0
   lightning_landing_page: 0
   lightning_layout: 0
-  lightning_media: 0
-  lightning_media_document: 0
-  lightning_media_image: 0
-  lightning_media_instagram: 0
-  lightning_media_twitter: 0
-  lightning_media_video: 0
   lightning_page: 0
   lightning_roles: 0
   lightning_scheduler: 0
@@ -71,6 +66,8 @@ module:
   media_entity_actions: 0
   media_entity_instagram: 0
   media_entity_twitter: 0
+  media_library: 0
+  menu_export: 0
   menu_ui: 0
   metatag: 0
   metatag_open_graph: 0
@@ -101,8 +98,8 @@ module:
   responsive_image: 0
   search_api: 0
   search_api_db: 0
+  seckit: 0
   serialization: 0
-  shield: 0
   shortcut: 0
   simple_oauth: 0
   simple_sitemap: 0
@@ -121,7 +118,6 @@ module:
   video_embed_field: 0
   video_embed_media: 0
   views_infinite_scroll: 0
-  views_ui: 0
   webform: 0
   webform_ui: 0
   workflows: 0

@@ -4,14 +4,10 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.thumbnail
-    - field.field.media.video.field_media_in_library
-    - field.field.media.video.field_media_video_embed_field
     - image.style.medium
     - media.type.video
   module:
     - image
-_core:
-  default_config_hash: YYjXdbJlDPstaM_01u9gtRl0omj7CthRWDIbcDTMq4s
 id: media.video.thumbnail
 targetEntityType: media
 bundle: video
@@ -28,7 +24,12 @@ content:
     region: content
 hidden:
   created: true
+  field_content_topics: true
+  field_digital_properties: true
+  field_media_caption: true
   field_media_in_library: true
+  field_media_video_caption_url: true
+  field_media_video_data_url: true
   field_media_video_embed_field: true
   name: true
   uid: true

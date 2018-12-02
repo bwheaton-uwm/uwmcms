@@ -1,0 +1,85 @@
+uuid: 35a2ac4b-7a8c-4942-ae8c-16e26409439b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.buildings.field_res_address
+    - field.field.taxonomy_term.buildings.field_res_campus
+    - field.field.taxonomy_term.buildings.field_res_clinics
+    - field.field.taxonomy_term.buildings.field_res_coordinates
+    - field.field.taxonomy_term.buildings.uwm_unique_id
+    - taxonomy.vocabulary.buildings
+  module:
+    - address
+    - geolocation
+    - path
+    - text
+_core:
+  default_config_hash: '-sIHdJ5ScYlitUqYXml_n7h1y5sYbruA2LsjgwUYRGY'
+id: taxonomy_term.buildings.default
+targetEntityType: taxonomy_term
+bundle: buildings
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  field_res_address:
+    weight: 4
+    settings:
+      default_country: null
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_res_campus:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_res_clinics:
+    weight: 6
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_res_coordinates:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: geolocation_latlng
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uwm_unique_id:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden: {  }

@@ -1,0 +1,23 @@
+uuid: 23a15b17-9bc6-4d8a-a365-5b2c69f28fb3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_column_spacing
+    - paragraphs.paragraphs_type.uwm_grid
+  module:
+    - options
+id: paragraph.uwm_grid.field_uwm_column_spacing
+field_name: field_uwm_column_spacing
+entity_type: paragraph
+bundle: uwm_grid
+label: 'Column Spacing'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

@@ -1,0 +1,28 @@
+uuid: 6c5c95aa-5666-4772-8736-8673048a40bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_cta_link.field_uwm_link
+    - paragraphs.paragraphs_type.uwm_cta_link
+  module:
+    - link
+id: paragraph.uwm_cta_link.default
+targetEntityType: paragraph
+bundle: uwm_cta_link
+mode: default
+content:
+  field_uwm_link:
+    weight: 0
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+hidden:
+  field_uwm_accent_color: true

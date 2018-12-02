@@ -1,0 +1,30 @@
+uuid: 04385ecf-002d-4f3d-a024-320b32841a9e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_clinics
+    - node.type.res_clinic
+    - node.type.res_provider
+_core:
+  default_config_hash: TOemRMmgijnDgwM_TmhIZFPdul8KDvWTtuZKATHjQ7c
+id: node.res_provider.field_res_clinics
+field_name: field_res_clinics
+entity_type: node
+bundle: res_provider
+label: Clinics
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      res_clinic: res_clinic
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

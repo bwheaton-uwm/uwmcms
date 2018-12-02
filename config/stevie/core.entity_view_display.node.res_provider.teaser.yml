@@ -1,0 +1,61 @@
+uuid: 1f8ea4af-ced7-4b30-af81-e0a96894ed05
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.res_provider.field_res_affiliates
+    - field.field.node.res_provider.field_res_biography
+    - field.field.node.res_provider.field_res_board_certifications
+    - field.field.node.res_provider.field_res_clinics
+    - field.field.node.res_provider.field_res_degrees
+    - field.field.node.res_provider.field_res_education_history
+    - field.field.node.res_provider.field_res_expertises
+    - field.field.node.res_provider.field_res_gender
+    - field.field.node.res_provider.field_res_image
+    - field.field.node.res_provider.field_res_internal_url
+    - field.field.node.res_provider.field_res_isacceptingnewpts
+    - field.field.node.res_provider.field_res_languages
+    - field.field.node.res_provider.field_res_medical_services
+    - field.field.node.res_provider.field_res_meta_tags
+    - field.field.node.res_provider.field_res_name
+    - field.field.node.res_provider.field_res_npi
+    - field.field.node.res_provider.field_res_personal_interests
+    - field.field.node.res_provider.field_res_pubmed_ids
+    - field.field.node.res_provider.field_res_puma_id
+    - field.field.node.res_provider.uwm_unique_id
+    - node.type.res_provider
+  module:
+    - user
+_core:
+  default_config_hash: s59CnIfOw8Mryz8qANrKrNq11JusH2zF243H1YHppSE
+id: node.res_provider.teaser
+targetEntityType: node
+bundle: res_provider
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_name: true
+  field_res_affiliates: true
+  field_res_biography: true
+  field_res_board_certifications: true
+  field_res_clinics: true
+  field_res_degrees: true
+  field_res_education_history: true
+  field_res_expertises: true
+  field_res_gender: true
+  field_res_image: true
+  field_res_internal_url: true
+  field_res_isacceptingnewpts: true
+  field_res_languages: true
+  field_res_medical_services: true
+  field_res_meta_tags: true
+  field_res_name: true
+  field_res_npi: true
+  field_res_personal_interests: true
+  field_res_pubmed_ids: true
+  field_res_puma_id: true
+  uwm_unique_id: true

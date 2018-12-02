@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - entity_browser.browser.media_browser
     - field.field.node.page.body
     - field.field.node.page.field_content_topics
     - field.field.node.page.field_meta_tags
@@ -13,7 +12,6 @@ dependencies:
     - node.type.page
   module:
     - content_moderation
-    - entity_browser
     - metatag
     - path
     - text
@@ -54,20 +52,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
-  field_node_media:
-    type: entity_browser_entity_reference
-    weight: 2
-    settings:
-      entity_browser: media_browser
-      field_widget_display: rendered_entity
-      field_widget_edit: true
-      field_widget_remove: true
-      selection_mode: selection_append
-      field_widget_display_settings:
-        view_mode: thumbnail
-      open: false
-    region: content
-    third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
     weight: 100
@@ -117,6 +101,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_node_media: true
   field_ttest_field: true
   panelizer: true
   status: true

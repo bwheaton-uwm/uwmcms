@@ -1,0 +1,14 @@
+uuid: 995c6cfb-5e7d-4d4a-8103-b483e0047297
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - paragraphs
+third_party_settings:
+  lightning_core:
+    description: ''
+id: paragraph.uwm_card
+label: Card
+targetEntityType: paragraph
+cache: true

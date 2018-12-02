@@ -1,0 +1,22 @@
+uuid: 53a2a447-e388-4294-95fe-147adf3040e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.uwm_homepage
+id: node.uwm_homepage.promote
+field_name: promote
+entity_type: node
+bundle: uwm_homepage
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

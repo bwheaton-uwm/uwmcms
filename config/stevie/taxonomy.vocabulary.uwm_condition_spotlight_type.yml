@@ -1,0 +1,9 @@
+uuid: 2a9418a9-333c-464d-852a-be805a2e2988
+langcode: en
+status: true
+dependencies: {  }
+name: 'UWM Condition Spotlight Type'
+vid: uwm_condition_spotlight_type
+description: ''
+hierarchy: 0
+weight: 0

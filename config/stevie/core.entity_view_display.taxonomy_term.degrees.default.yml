@@ -1,0 +1,50 @@
+uuid: d2fa2e34-e9a0-49c3-9c18-6a4218c40c1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.degrees.field_res_degree_code
+    - field.field.taxonomy_term.degrees.field_res_degree_name
+    - field.field.taxonomy_term.degrees.uwm_unique_id
+    - taxonomy.vocabulary.degrees
+  module:
+    - text
+_core:
+  default_config_hash: 4Lzt1vr3eAU2g27KjceyqO0qxcdT8oHNFmQPkaHK-JQ
+id: taxonomy_term.degrees.default
+targetEntityType: taxonomy_term
+bundle: degrees
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_res_degree_code:
+    weight: 0
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_res_degree_name:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  uwm_unique_id:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

@@ -1,0 +1,22 @@
+uuid: 69ec8728-b081-4b64-a670-240559ff57f2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+_core:
+  default_config_hash: qdfbDY3GRVIhjS_NV7UyeQDymsD61Z0J2HghOvF9qRE
+id: node.field_res_expertises
+field_name: field_res_expertises
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,28 @@
+uuid: 44ff590a-2474-437b-a8ed-9db62465ddc9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_media
+    - media.type.video_embed
+    - paragraphs.paragraphs_type.uwm_modal
+id: paragraph.uwm_modal.field_uwm_media
+field_name: field_uwm_media
+entity_type: paragraph
+bundle: uwm_modal
+label: Media
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      video_embed: video_embed
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: video
+field_type: entity_reference

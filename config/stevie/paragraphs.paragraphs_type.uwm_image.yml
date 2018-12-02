@@ -1,0 +1,9 @@
+uuid: 04e75dde-5c9f-4149-9117-78f84a9c1afd
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_image
+label: Image
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

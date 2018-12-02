@@ -1,0 +1,68 @@
+uuid: f6c776c5-0ab1-46fa-afe5-e0e6a1b9a061
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.buildings.field_res_address
+    - field.field.taxonomy_term.buildings.field_res_campus
+    - field.field.taxonomy_term.buildings.field_res_clinics
+    - field.field.taxonomy_term.buildings.field_res_coordinates
+    - field.field.taxonomy_term.buildings.uwm_unique_id
+    - taxonomy.vocabulary.buildings
+  module:
+    - address
+    - geolocation
+    - text
+_core:
+  default_config_hash: RHZ3GhhQuQNk3ZMNthdEkSfHUEglxQDVBRuWKtjxYxs
+id: taxonomy_term.buildings.default
+targetEntityType: taxonomy_term
+bundle: buildings
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_res_address:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_res_campus:
+    weight: 1
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_res_clinics:
+    weight: 5
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_res_coordinates:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: geolocation_latlng
+    region: content
+  uwm_unique_id:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

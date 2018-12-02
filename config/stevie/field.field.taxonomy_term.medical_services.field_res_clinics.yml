@@ -1,0 +1,30 @@
+uuid: c3449d68-0660-45f4-9c5f-4441ee75d6b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_res_clinics
+    - node.type.res_clinic
+    - taxonomy.vocabulary.medical_services
+_core:
+  default_config_hash: m_EunuNvA7JKTs9E4BkwE6OIefa2Ov3TE3trFEVvx04
+id: taxonomy_term.medical_services.field_res_clinics
+field_name: field_res_clinics
+entity_type: taxonomy_term
+bundle: medical_services
+label: Clinics
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      res_clinic: res_clinic
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,21 @@
+uuid: 77b3e229-c53f-482f-a7f0-475647141a34
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+_core:
+  default_config_hash: SeIVTp2mNgPPUhVNxe_Dv9VCq7s-dbJTupuVaeeLrDI
+id: paragraph.uwm_unrestricted
+field_name: uwm_unrestricted
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

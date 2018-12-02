@@ -1,0 +1,34 @@
+uuid: f9f90798-4dc8-4a47-860c-6b340319fa64
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_image.field_uwm_image
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.uwm_image
+  module:
+    - content_moderation
+    - image
+id: paragraph.uwm_image.default
+targetEntityType: paragraph
+bundle: uwm_image
+mode: default
+content:
+  field_uwm_image:
+    weight: 101
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,9 @@
+uuid: ca1cd4df-b9b3-4c6e-928b-131c1a998cad
+langcode: en
+status: true
+dependencies: {  }
+name: 'UWM Provider Resource Media Type'
+vid: uwm_provider_resource_media_type
+description: ''
+hierarchy: 0
+weight: 0

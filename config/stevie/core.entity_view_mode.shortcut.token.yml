@@ -1,0 +1,14 @@
+uuid: 14e4b5ba-207f-4e69-aac8-a8175af5ade1
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - shortcut
+third_party_settings:
+  lightning_core:
+    internal: true
+id: shortcut.token
+label: Token
+targetEntityType: shortcut
+cache: true

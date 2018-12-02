@@ -1,0 +1,48 @@
+uuid: 380d4582-3bec-496b-b399-1f668d8f1fcc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.board_certifications.uwm_unique_id
+    - taxonomy.vocabulary.board_certifications
+  module:
+    - path
+    - text
+_core:
+  default_config_hash: GjI15njr-365AvyMNoa6GnI_2F5YdsXnLT-0-vGxfec
+id: taxonomy_term.board_certifications.default
+targetEntityType: taxonomy_term
+bundle: board_certifications
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uwm_unique_id:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden: {  }

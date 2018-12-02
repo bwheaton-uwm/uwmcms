@@ -1,0 +1,221 @@
+uuid: abbf6082-2203-4893-aada-a7b4d5adc9c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.res_provider.field_res_affiliates
+    - field.field.node.res_provider.field_res_biography
+    - field.field.node.res_provider.field_res_board_certifications
+    - field.field.node.res_provider.field_res_clinics
+    - field.field.node.res_provider.field_res_degrees
+    - field.field.node.res_provider.field_res_education_history
+    - field.field.node.res_provider.field_res_expertises
+    - field.field.node.res_provider.field_res_gender
+    - field.field.node.res_provider.field_res_image
+    - field.field.node.res_provider.field_res_internal_url
+    - field.field.node.res_provider.field_res_isacceptingnewpts
+    - field.field.node.res_provider.field_res_languages
+    - field.field.node.res_provider.field_res_medical_services
+    - field.field.node.res_provider.field_res_meta_tags
+    - field.field.node.res_provider.field_res_name
+    - field.field.node.res_provider.field_res_npi
+    - field.field.node.res_provider.field_res_personal_interests
+    - field.field.node.res_provider.field_res_pubmed_ids
+    - field.field.node.res_provider.field_res_puma_id
+    - field.field.node.res_provider.uwm_unique_id
+    - image.style.large
+    - node.type.res_provider
+  module:
+    - entity_reference_revisions
+    - image
+    - metatag
+    - options
+    - text
+    - user
+_core:
+  default_config_hash: VprWwN3mbiPcSLh-Gc3vJcE50N6ggx16rsVBCVFsZNE
+id: node.res_provider.default
+targetEntityType: node
+bundle: res_provider
+mode: default
+content:
+  field_name:
+    weight: 0
+    label: above
+    settings:
+      format: full
+      output: default
+      multiple: default
+      multiple_delimiter: ', '
+      multiple_and: text
+      multiple_delimiter_precedes_last: never
+      multiple_el_al_min: '3'
+      multiple_el_al_first: '1'
+      markup: false
+    third_party_settings: {  }
+    type: name_default
+    region: content
+  field_res_affiliates:
+    weight: 9
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_res_biography:
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_res_board_certifications:
+    type: entity_reference_revisions_entity_view
+    weight: 12
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_res_clinics:
+    weight: 7
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_res_degrees:
+    type: entity_reference_revisions_entity_view
+    weight: 13
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_res_education_history:
+    type: entity_reference_revisions_entity_view
+    weight: 14
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_res_expertises:
+    weight: 15
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_res_gender:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_res_image:
+    weight: 16
+    label: above
+    settings:
+      image_style: large
+      image_link: file
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_res_internal_url:
+    weight: 19
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_res_isacceptingnewpts:
+    weight: 10
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_res_languages:
+    weight: 3
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_res_medical_services:
+    weight: 11
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_res_meta_tags:
+    weight: 18
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
+  field_res_npi:
+    weight: 1
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_res_personal_interests:
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_res_pubmed_ids:
+    weight: 8
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_res_puma_id:
+    weight: 2
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  links:
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uwm_unique_id:
+    weight: 20
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  field_res_name: true

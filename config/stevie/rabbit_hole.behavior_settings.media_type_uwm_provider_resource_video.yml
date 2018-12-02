@@ -1,0 +1,11 @@
+uuid: ea3d3093-b597-465a-8b21-6502740ff27c
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.uwm_provider_resource_video
+id: media_type_uwm_provider_resource_video
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301

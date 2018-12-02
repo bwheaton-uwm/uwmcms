@@ -1,0 +1,21 @@
+uuid: ae3a7283-a8e6-4bcc-9cd4-f08ce867b1da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_res_year
+    - paragraphs.paragraphs_type.degree
+_core:
+  default_config_hash: QDbiI2-xfKtwdqO2KIz9D2BuzV51HmLaWPKfEJydA_8
+id: paragraph.degree.field_res_year
+field_name: field_res_year
+entity_type: paragraph
+bundle: degree
+label: Year
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

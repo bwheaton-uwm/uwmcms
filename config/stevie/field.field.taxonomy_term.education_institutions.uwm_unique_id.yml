@@ -1,0 +1,21 @@
+uuid: 8189f8c8-e9d8-451d-b3a2-69bb6ad9360d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.uwm_unique_id
+    - taxonomy.vocabulary.education_institutions
+_core:
+  default_config_hash: AqeihW9h3a50wuo6G7EcxQwWOpnFMu1KZ9oKhMXu1yo
+id: taxonomy_term.education_institutions.uwm_unique_id
+field_name: uwm_unique_id
+entity_type: taxonomy_term
+bundle: education_institutions
+label: 'Universal Id or Source URL'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

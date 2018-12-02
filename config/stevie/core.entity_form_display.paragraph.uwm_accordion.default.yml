@@ -1,0 +1,54 @@
+uuid: 26eb56e0-00da-4f60-a945-ebb94737970b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_accordion.uwm_accordion_expand
+    - field.field.paragraph.uwm_accordion.uwm_accordion_section
+    - field.field.paragraph.uwm_accordion.uwm_show_indicators
+    - paragraphs.paragraphs_type.uwm_accordion
+  module:
+    - content_moderation
+    - paragraphs
+_core:
+  default_config_hash: scev7vW3d6K_yTrDLDKxO48-pfXEbImr_1xEp_VW0qM
+id: paragraph.uwm_accordion.default
+targetEntityType: paragraph
+bundle: uwm_accordion
+mode: default
+content:
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+  uwm_accordion_expand:
+    weight: 2
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  uwm_accordion_section:
+    type: entity_reference_paragraphs
+    weight: 4
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    region: content
+  uwm_show_indicators:
+    weight: 3
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

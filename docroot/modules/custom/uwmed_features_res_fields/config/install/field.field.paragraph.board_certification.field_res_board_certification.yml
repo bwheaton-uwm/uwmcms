@@ -1,0 +1,29 @@
+uuid: adbf9080-eadc-4ffc-b9ea-910a0fecaf00
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_res_board_certification
+    - paragraphs.paragraphs_type.board_certification
+    - taxonomy.vocabulary.board_certifications
+id: paragraph.board_certification.field_res_board_certification
+field_name: field_res_board_certification
+entity_type: paragraph
+bundle: board_certification
+label: 'Board Certification'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      board_certifications: board_certifications
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

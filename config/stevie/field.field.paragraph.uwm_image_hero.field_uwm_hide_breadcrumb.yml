@@ -1,0 +1,23 @@
+uuid: 8e9a091a-db93-4787-951f-2fc713bf186d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_hide_breadcrumb
+    - paragraphs.paragraphs_type.uwm_image_hero
+id: paragraph.uwm_image_hero.field_uwm_hide_breadcrumb
+field_name: field_uwm_hide_breadcrumb
+entity_type: paragraph
+bundle: uwm_image_hero
+label: 'Hide ''back to...'' breadcrumb buttons'
+description: 'Check this box to hide the "Back to..." breadcrumb buttons in the hero area.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Hide
+  off_label: Show
+field_type: boolean

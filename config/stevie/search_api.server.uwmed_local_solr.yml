@@ -1,0 +1,32 @@
+uuid: e5270c21-72c7-4a45-9899-b3b16deb5c72
+langcode: en
+status: false
+dependencies:
+  module:
+    - search_api_solr
+id: uwmed_local_solr
+name: 'uwmed.local solr'
+description: ''
+backend: search_api_solr
+backend_config:
+  connector: standard
+  connector_config:
+    scheme: http
+    host: uwmed.local
+    port: '8983'
+    path: /solr
+    core: uwmcms
+    timeout: 5
+    index_timeout: 5
+    optimize_timeout: 10
+    commit_within: 1000
+    solr_version: ''
+    http_method: AUTO
+  retrieve_data: true
+  highlight_data: false
+  excerpt: false
+  skip_schema_check: false
+  site_hash: false
+  suggest_suffix: true
+  suggest_corrections: true
+  suggest_words: false

@@ -1,0 +1,14 @@
+uuid: 90d789b4-ef05-46e2-acf3-3a15dc859724
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.replicator
+  module:
+    - user
+id: user_remove_role_action.replicator
+label: 'Remove the Replicator role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: replicator

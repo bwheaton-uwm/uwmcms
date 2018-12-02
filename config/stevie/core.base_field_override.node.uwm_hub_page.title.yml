@@ -1,0 +1,18 @@
+uuid: 0d0d1dff-d6bd-459b-a794-39b5708db367
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.uwm_hub_page
+id: node.uwm_hub_page.title
+field_name: title
+entity_type: node
+bundle: uwm_hub_page
+label: 'Title (H1)'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

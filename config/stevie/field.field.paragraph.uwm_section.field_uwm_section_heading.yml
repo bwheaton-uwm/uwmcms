@@ -1,0 +1,26 @@
+uuid: 4ad43e73-d561-487d-a281-659db0180eb6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_section_heading
+    - paragraphs.paragraphs_type.uwm_section
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    rich_text: rich_text
+    plain_text: '0'
+id: paragraph.uwm_section.field_uwm_section_heading
+field_name: field_uwm_section_heading
+entity_type: paragraph
+bundle: uwm_section
+label: 'Section Heading (H2)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text
