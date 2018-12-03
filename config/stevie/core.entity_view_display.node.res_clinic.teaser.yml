@@ -102,6 +102,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  body: true
   field_res_box_number: true
   field_res_displayaptslink: true
   field_res_external_url: true

@@ -4,12 +4,16 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_res_affiliates
+    - field.storage.node.field_res_fax_number
     - field.storage.node.field_res_medical_services
-    - search_api.server.acquia_search_server
+    - field.storage.node.field_res_phone_number
+    - field.storage.node.field_res_building
+    - search_api.server.database
   module:
+    - taxonomy
+    - node
     - search_api
     - uwmcs_searchfields
-    - node
 id: uwm_locations_search_api_index
 name: 'UWM Locations - Search API Index'
 description: ''
@@ -19,18 +23,80 @@ field_settings:
     label: Affiliates
     datasource_id: 'entity:node'
     property_path: field_res_affiliates
-    type: integer
+    type: text
     dependencies:
       config:
         - field.storage.node.field_res_affiliates
+  field_res_fax_number:
+    label: 'Fax Number'
+    datasource_id: 'entity:node'
+    property_path: field_res_fax_number
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_fax_number
   field_res_medical_services:
     label: 'Medical Services'
     datasource_id: 'entity:node'
     property_path: field_res_medical_services
-    type: integer
+    type: text
+    boost: !!float 13
     dependencies:
       config:
         - field.storage.node.field_res_medical_services
+  field_res_phone_number:
+    label: 'Phone Number'
+    datasource_id: 'entity:node'
+    property_path: field_res_phone_number
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_phone_number
+  name:
+    label: 'Building » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_building:entity:name'
+    type: text
+    boost: !!float 5
+    dependencies:
+      config:
+        - field.storage.node.field_res_building
+      module:
+        - taxonomy
+        - taxonomy
+  name_1:
+    label: 'Medical Services » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_medical_services:entity:name'
+    type: text
+    boost: !!float 13
+    dependencies:
+      config:
+        - field.storage.node.field_res_medical_services
+      module:
+        - taxonomy
+        - taxonomy
+  name_2:
+    label: 'Affiliates » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_affiliates:entity:name'
+    type: text
+    boost: !!float 3
+    dependencies:
+      config:
+        - field.storage.node.field_res_affiliates
+      module:
+        - taxonomy
+        - taxonomy
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    boost: !!float 21
+    dependencies:
+      module:
+        - node
   uwmsearchwithin:
     label: UwmSearchWithin
     property_path: uwmsearchwithin
@@ -55,4 +121,5 @@ tracker_settings:
 options:
   index_directly: true
   cron_limit: 50
-server: acquia_search_server
+  overridden_by_acquia_search: 2
+server: database

@@ -91,15 +91,6 @@ field_settings:
       module:
         - taxonomy
         - taxonomy
-  name_4:
-    label: Name
-    datasource_id: 'entity:taxonomy_term'
-    property_path: name
-    type: text
-    boost: !!float 8
-    dependencies:
-      module:
-        - taxonomy
   title:
     label: Title
     datasource_id: 'entity:node'
@@ -118,18 +109,6 @@ datasource_settings:
     bundles:
       default: true
       selected: {  }
-    languages:
-      default: true
-      selected: {  }
-  'entity:taxonomy_term':
-    bundles:
-      default: false
-      selected:
-        - affiliates
-        - buildings
-        - expertise
-        - medical_services
-        - specialities
     languages:
       default: true
       selected: {  }
