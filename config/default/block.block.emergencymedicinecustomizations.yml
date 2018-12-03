@@ -1,0 +1,31 @@
+uuid: aabc975b-2783-4ae7-a3dc-19c8b1326a5f
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:2f069912-597a-4074-9c0d-7e5927c28845'
+  module:
+    - block_content
+    - system
+  theme:
+    - uwmed
+id: emergencymedicinecustomizations
+theme: uwmed
+region: content
+weight: 0
+provider: null
+plugin: 'block_content:2f069912-597a-4074-9c0d-7e5927c28845'
+settings:
+  id: 'block_content:2f069912-597a-4074-9c0d-7e5927c28845'
+  label: 'Emergency Medicine Customizations'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /services/emergency-medicine
+    negate: false
+    context_mapping: {  }

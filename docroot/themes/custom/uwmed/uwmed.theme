@@ -198,10 +198,9 @@ function uwmed_preprocess_node(&$variables) {
       }
     }
 
-    if ($node->nid->value === "21036") {
+    if ($node->nid->value === "21036" || $node->nid->value === "37241") {
       $variables["#attached"]['drupalSettings']['uwmcms_reader_medical_service_clinics'] = $variables["node"]->uwmcms_reader_medical_service_clinics;
     }
-
   }
 
   if ($node->getType() === 'fact_page') {
