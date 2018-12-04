@@ -1,0 +1,363 @@
+{{ attach_library('uwmed/clinic-nodes') }}
+{{ attach_library('uwmed/uwm-toggle') }}
+{{ attach_library('uwmed/clinic-hours') }}
+{{ attach_library('uwmed/bootstrap-tab-history') }}
+{% import directory ~'/templates/node/node--uwm-clinic.hours.html.twig' as _hoursMacro %}
+
+
+
+{% set classes = [
+node.bundle|clean_class,
+node.isPromoted() ? 'is-promoted',
+node.isSticky() ? 'is-sticky',
+not node.isPublished() ? 'is-unpublished',
+view_mode ? view_mode|clean_class,
+'clearfix',
+] %}
+
+{% set _cli = node.uwmcs_reader_api_values %}
+
+{# Check if this clinic displays urgent care hours #}
+{% set hasUrgentCare = _cli.clinicTimeUseMasters[1].hoursOfOperation %}
+
+<article{{ attributes.addClass(classes) }} data-node-id="{{ node.id }}">
+    {#<pre>#}
+
+    {#{{ 'abc DEF 123'|uwm_test_filter }}#}
+    {#{{ classes|join|uwm_test_filter('<br/>') }}#}
+    {#{{ 'abc DEF 123'|check_markup }}#}
+    {#{{ uwm_test_func(true) }}#}
+
+    {#</pre>#}
+
+    <section class="clinic-header">
+
+        <div class="container-lg">
+
+            <div class="row">
+
+                <div class="visible-xs-block m-head">
+
+                    <div class="col-xs-12 remove-padding m-image">
+                        {{ content.field_clinic_image }}
+                        <h1{{ title_attributes }}>{{ label }}</h1>
+                    </div>
+
+                    <div class="col-xs-12 m-hours">
+                        {{ _hoursMacro.uwOpenHoursTable(_cli) }}
+                    </div>
+
+                    <div class="col-xs-12 m-address">
+                        <address>Convenient care&mdash;anytime, anywhere
+                            <br><a href="https://uwmedicinevirtualclinic.anytime.org/#/emergencyCheck">Get Care Now</a>
+                            <small class="tel">
+                                <a href="tel:{{ _cli.seoPhone|uwm_format_phone }}">
+                                    <span class="uwmed-icon uwmed-icon__phone-solid"></span>
+                                    {{ _cli.seoPhone|uwm_format_phone('.') }}
+                                </a>
+
+                                {% if _cli.seoFax|uwm_format_phone %}
+                                    <i class="uw-s"></i>
+                                    {{ _cli.seoFax|uwm_format_phone('.') }}
+                                    <span>fax</span>
+                                {% endif %}
+                            </small>
+                        </address>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-5 col-md-4 left">
+
+                    <div class="col-xs-12 hidden-xs clinic-image remove-padding">
+                        {{ content.field_clinic_image }}
+                    </div>
+
+                    <div class="col-xs-12 l">
+
+                        {% set customApptLink = content.field_custom_appointment_link[0]['#url'] %}
+
+                        <a href="https://uwmedicinevirtualclinic.anytime.org/#/emergencyCheck">{{ "Get Care Now"|t }}
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+
+                    </div>
+
+                    <div class="col-xs-12 l">
+
+                        <a href="#clinic-overview-jump">{{ "Clinic Overview"|t }}
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+
+                    </div>
+
+                    {% set classes = [
+                    content.field_clinic_wait_time_snippet|render is not empty ? 'fade-in' : '',
+                    ] %}
+                    <div class="col-xs-12 get-in-line fade-out {{ classes|uwm_join_parts(' ') }}"
+                         data-uwm-clockwise-wait-time="{{ content.field_clockwise_id[0]['#markup'] }}">
+                        {% set node_path =  path('entity.node.canonical', {'node': node.nid.value}) %}
+                        <h4><span class="uc-landing"><a
+                                        href="{{ node_path|replace({'locations': "services", 'primary': "urgent", 'care-': "care/"}) }}">{{ "Urgent Care"|t }}</a></span>
+                            <span class="wait-link"><a
+                                        href="/patient-care/making-an-appointment">
+                                Get in line<i
+                                            class="fa fa-angle-right"
+                                            aria-hidden="true"></i></a>
+                            </span></h4>
+                        <p class="wait-text wait">
+                            <span class="m">{{ content.field_clinic_wait_time_snippet }}</span>
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-7 col-md-8 hidden-xs right">
+
+                    <div class="col-sm-12 title">
+                        {{ title_prefix }}
+                        <h1{{ title_attributes }}>{{ label }}</h1>
+                        {{ title_suffix }}
+
+                        <address>Convenient care&mdash;anytime, anywhere
+
+                        <br><p class="btn-ghost-purple"><a class="btn btn-default" href="https://uwmedicinevirtualclinic.anytime.org/#/emergencyCheck"><i class="hidden u-ips">&nbsp;</i>Get Care Now </a>
+                                <small class="tel">
+                                    <a href="tel:{{ _cli.seoPhone|uwm_format_phone }}">
+                                        <span class="uwmed-icon uwmed-icon__phone-solid"></span>
+                                        {{ _cli.seoPhone|uwm_format_phone('.') }}
+                                    </a>
+
+                                    {% if _cli.seoFax|uwm_format_phone %}
+                                        <i class="uw-s"></i>
+                                        {{ _cli.seoFax|uwm_format_phone('.') }}
+                                        <span>fax</span>
+                                    {% endif %}
+                                </small>
+                            </p>
+
+
+                        </address>
+                    </div>
+
+                    <div class="col-xs-12 col-md-9 remove-padding clinic-hours-container">
+
+                        {{ _hoursMacro.uwOpenHoursTable(_cli, node.id) }}
+
+                    </div>
+                    <div class="col-sm-12 foot">
+                        {% if hasUrgentCare %}{{ drupal_entity('block_content', 81) }}{% endif %}
+                    </div>
+                    <div class="col-sm-12 foot">
+                        <div class="u-911">
+                            <i class="fa u-911i"></i>
+                            {{ drupal_entity('block_content', 6) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="clinic-tabs">
+
+        <div class="row container-lg">
+            <ul class="nav nav-tabs uwm-nav-tabs col-xs-12" id="myTabs"
+                role="tablist">
+                <li role="presentation" class="active"><a href="#main-tab"
+                                                          role="tab"
+                                                          data-toggle="tab"
+                                                          aria-controls="main-tab"
+                                                          aria-expanded="true"
+                                                          data-tab-history="true"
+                                                          data-tab-history-changer="push"
+                                                          data-tab-history-update-url="true">
+                        <i class="uw-ico heart" aria-hidden="true"></i>
+                        {{ 'Services/ Resources'|t }}
+
+                    </a>
+                </li>
+
+                {% if "Hide" in content.field_hide_providers_tab[0] %}
+                    {% set hideProvidersTab = true %}
+                {% else %}
+                    {% set hideProvidersTab = false %}
+                {% endif %}
+                {% if not hideProvidersTab %}
+                  <li role="presentation"><a href="#providers-tab"
+                                           role="tab"
+                                           data-toggle="tab"
+                                           aria-controls="providers-tab"
+                                           aria-expanded="false"
+                                           data-tab-history="true"
+                                           data-tab-history-changer="push"
+                                           data-tab-history-update-url="true">
+                        <i class="uw-ico heart" aria-hidden="true"
+                        ></i>
+                        {{ 'Care Providers'|t }}
+
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+
+        </div>
+
+
+        <div class="tab-content uwm-tab-content">
+
+            <div class="row tab-pane main-tab active in" role="tabpanel"
+                 id="main-tab" aria-labelledby="main-tab">
+                <a name="main" id="main"></a>
+
+                <section class="services uwm-toggle">
+                    <div class="container-lg">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h3 class="accent">Services</h3>
+
+                                <h2 class="leader">
+                                    {% if content.field_clinic_services_header|render is not empty %}
+                                        {{ content.field_clinic_services_header }}
+                                    {% elseif _cli.clinicTimeUseMasters[1].hoursOfOperation %}
+                                        {{ "This clinic offers primary and urgent care, including:"|t }}
+                                    {% else %}
+                                        {{ "This clinic offers primary care, including:"|t }}
+                                    {% endif %}
+                                </h2>
+
+
+                                <ul class="expt">
+
+                                    {% for s in _cli.expertises %}
+                                        <li><i class="uw-ico checkmark"
+                                               aria-hidden="true"></i>
+                                            {{ s.expertiseName|t }}</li>
+                                    {% endfor %}
+
+                                </ul>
+
+
+                                {% if _cli.expertises|length > 6 %}
+                                    <div class="uw-more visible-xs-block">
+                                        <a href="#" data-uwm-toggle
+                                           data-on-text="{{ 'View less'|t }}"
+                                           data-off-text="{{ 'View more'|t }}"
+                                           data-toggle-selector=".services li"
+                                           data-toggle-style="on"
+                                           data-parent-style="on">{{ 'View more'|t }}
+                                            <i
+                                                    class="fa fa-angle-down"
+                                                    aria-hidden="true"></i></a>
+                                    </div>
+
+
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {% if content.field_content_blocks |render is not empty %}
+                    <section class="clinic-paragraphs">
+                        <div class="bg"></div>
+                        <div class="container-lg">
+
+                            {% if content.field_content_blocks_heading|render is not empty %}
+                                <h2 class="bi-line"> {{ content.field_content_blocks_heading }}</h2>
+                            {% endif %}
+
+                            {{ content.field_content_blocks }}
+                        </div>
+
+                    </section>
+                {% endif %}
+
+                {% if content.body |render is not empty %}
+
+                    <section class="clinic-body">
+                        <div class="container-lg">
+
+                            <h3 id="clinic-overview-jump"
+                                class="accent">{{ "Clinic Overview"|t }}</h3>
+
+                            <div{{ content_attributes.addClass('content') }}>
+                                {{ content.body }}
+                                {#{{ content }}#}
+                            </div>
+
+                        </div>
+                    </section>
+                {% endif %}
+
+
+            </div>
+
+            <div class="row tab-pane directions-tab" role="tabpanel"
+                 id="directions-tab" aria-labelledby="directions-tab">
+                <a name="directions" id="directions"></a>
+
+                <div class="container-lg">
+
+                    <div class="col-xs-12">
+                        <h3 class="accent">Directions & Parking</h3>
+
+                        {% include directory ~'/templates/node/node--uwm-clinic.directions.html.twig' %}
+                    </div>
+
+                </div>
+
+            </div>
+
+          {% if not hideProvidersTab %}
+            <div class="row tab-pane providers-tab" role="tabpanel"
+                 id="providers-tab" aria-labelledby="providers-tab">
+                <a name="providers" id="providers"></a>
+
+                <div class="container-lg">
+
+                    <div class="col-xs-12">
+                        <h3 class="accent">Care Providers</h3>
+
+                        {{ drupal_entity('block_content', 232)  }}
+                    </div>
+
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+
+        {% if content.field_bottom_content_blocks |render is not empty %}
+            <section class="clinic-foot-paragraphs">
+
+                <div class="container-lg">
+
+                    <div class="col-xs-12">
+                        {% if content.field_bottom_content_blocks_head|render is not empty %}
+                            <h2 class="bi-line"> {{ content.field_bottom_content_blocks_head }}</h2>
+                        {% endif %}
+
+                        <div class="col-xs-12">
+                            {{ content.field_bottom_content_blocks }}
+                        </div>
+                    </div>
+
+                </div>
+
+                {#<div class="view-more hidden"><a href="#">View More <i#}
+                {#class="fa fa-angle-down"#}
+                {#aria-hidden="true"></i></a>#}
+                {#</div>#}
+
+            </section>
+        {% endif %}
+
+    </section>
+
+
+    {#<pre>{{ dump(_cli) }}</pre>#}
+
+</article>

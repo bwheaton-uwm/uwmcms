@@ -359,13 +359,17 @@ body.page-node-type-uwm-clinic {
 
             .provider-wrapper {
               border-bottom: 1px solid #dcdcdc;
-              border-right: 1px solid #dcdcdc;
-              &.odd {
-                border-right-color: transparent;
+
+              @media(min-width: $screen-sm-min) {
+                border-right: 1px solid #dcdcdc;
+                &.odd {
+                  border-right-color: transparent;
+                }
+                &.loop-last, &.even.loop-last-1 {
+                  border-bottom-color: transparent;
+                }
               }
-              &.loop-last, &.even.loop-last-1 {
-                border-bottom-color: transparent;
-              }
+
               article.card-display {
 
                 padding-top: 20px;
@@ -550,4 +554,53 @@ body.page-node-type-uwm-clinic {
 
     }
   }
+
+  article[about="/locations/virtual-clinic"] {
+    .btn-ghost-purple {
+      @include uw-ghost-button('a.btn', 'i.u-ips', $uwmed-light-purple);
+    }
+
+    .btn-ghost-purple a.btn {
+      margin: 1em .75em 1em 0 !important;
+      font-size: 16px !important;
+      padding: .25em .75em !important;
+      color: #474747 !important;
+      background: white !important;
+    }
+
+    .btn-ghost-purple a.btn:hover,
+    .btn-ghost-purple a.btn:focus {
+      color: white !important;
+    }
+
+    .vc-body-cols {
+      @media(min-width: $screen-sm-min) {
+        .col-sm-4:not(:last-child) {
+          border-right: 1px solid #474747;
+        }
+      }
+    }
+
+    .providers-tab {
+      .vc-providers {
+        clear: both;
+      }
+
+      .vc-providers .row {
+        @media(min-width: $screen-sm-min) {
+          display: flex;
+        }
+      }
+
+      .provider-wrapper {
+        padding: 0 15px;
+
+        @media(min-width: $screen-sm-min) {
+          max-width: 50%;
+        }
+      }
+    }
+  }
+
+
 }
