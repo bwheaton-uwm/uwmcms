@@ -1,0 +1,22 @@
+uuid: 328ec77e-377d-415b-8585-fd3e74c77b00
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.default2
+    - taxonomy.vocabulary.uwm_column_widths
+  module:
+    - text
+id: taxonomy_term.uwm_column_widths.default2
+targetEntityType: taxonomy_term
+bundle: uwm_column_widths
+mode: default2
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

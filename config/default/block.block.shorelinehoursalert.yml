@@ -1,0 +1,31 @@
+uuid: d607ccbb-0e4a-4a46-b116-6a0814675a73
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:4251608c-fbd9-47be-87e7-39935e1bebec'
+  module:
+    - block_content
+    - system
+  theme:
+    - uwmed
+id: shorelinehoursalert
+theme: uwmed
+region: content_header
+weight: 0
+provider: null
+plugin: 'block_content:4251608c-fbd9-47be-87e7-39935e1bebec'
+settings:
+  id: 'block_content:4251608c-fbd9-47be-87e7-39935e1bebec'
+  label: 'Shoreline Hours Alert'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /locations/primary-care-shoreline
+    negate: false
+    context_mapping: {  }

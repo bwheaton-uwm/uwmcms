@@ -1,0 +1,28 @@
+uuid: e8dbbe7d-3844-4937-bdab-a17ce2216bca
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.uwm_background_colors
+  module:
+    - panelizer
+    - text
+third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
+id: taxonomy_term.uwm_background_colors.default
+targetEntityType: taxonomy_term
+bundle: uwm_background_colors
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

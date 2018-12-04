@@ -1,0 +1,22 @@
+uuid: 93512811-859b-4f37-b0b7-44f3cf7e9866
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.default2
+    - taxonomy.vocabulary.uwm_background_colors
+  module:
+    - text
+id: taxonomy_term.uwm_background_colors.default2
+targetEntityType: taxonomy_term
+bundle: uwm_background_colors
+mode: default2
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
