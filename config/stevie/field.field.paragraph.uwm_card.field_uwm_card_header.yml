@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_uwm_card_header
-    - paragraphs.paragraphs_type.uwm_accent_heading
     - paragraphs.paragraphs_type.uwm_card
     - paragraphs.paragraphs_type.uwm_cta_link
     - paragraphs.paragraphs_type.uwm_image
@@ -25,65 +24,61 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
-      uwm_accent_heading: uwm_accent_heading
       uwm_image: uwm_image
       uwm_cta_link: uwm_cta_link
     target_bundles_drag_drop:
-      uwm_accent_heading:
-        enabled: true
-        weight: -39
       uwm_card:
-        weight: -38
-        enabled: false
-      detailed_contact_card:
         weight: -37
         enabled: false
-      headshot_card:
+      detailed_contact_card:
         weight: -36
         enabled: false
-      uwm_accordion:
+      headshot_card:
         weight: -35
         enabled: false
-      uwm_accordion_section:
+      uwm_accordion:
         weight: -34
         enabled: false
-      uwm_basic_content:
+      uwm_accordion_section:
         weight: -33
         enabled: false
-      uwm_block:
+      uwm_basic_content:
         weight: -32
         enabled: false
-      uwm_full_html:
+      uwm_block:
         weight: -31
         enabled: false
-      uwm_grid:
+      uwm_full_html:
         weight: -30
+        enabled: false
+      uwm_grid:
+        weight: -29
         enabled: false
       uwm_image:
         enabled: true
-        weight: -29
+        weight: -28
       uwm_cta_link:
         enabled: true
-        weight: -28
-      uwm_image_hero:
         weight: -27
-        enabled: false
-      uwm_link_with_icon:
+      uwm_image_hero:
         weight: -26
         enabled: false
-      uwm_media:
+      uwm_link_with_icon:
         weight: -25
         enabled: false
-      uwm_featured_story:
+      uwm_media:
         weight: -24
         enabled: false
-      uwm_section:
+      uwm_featured_story:
         weight: -23
         enabled: false
-      uwm_view:
+      uwm_section:
         weight: -22
         enabled: false
-      uwm_modal:
+      uwm_view:
         weight: -21
+        enabled: false
+      uwm_modal:
+        weight: -20
         enabled: false
 field_type: entity_reference_revisions

@@ -9,7 +9,13 @@ dependencies:
     - paragraphs.paragraphs_type.uwm_grid
   module:
     - entity_reference_revisions
+    - field_layout
+    - layout_discovery
     - options
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.uwm_grid.default
 targetEntityType: paragraph
 bundle: uwm_grid

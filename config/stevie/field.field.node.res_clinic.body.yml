@@ -1,0 +1,29 @@
+uuid: dad9c092-b1b1-40ee-b815-4bdde48c2cdd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.res_clinic
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: '0'
+    unrestricted: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: node.res_clinic.body
+field_name: body
+entity_type: node
+bundle: res_clinic
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

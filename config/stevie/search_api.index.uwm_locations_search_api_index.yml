@@ -1,18 +1,106 @@
 uuid: 073f373e-5463-49c9-be3d-49531a2825a5
 langcode: en
-status: false
+status: true
 dependencies:
   config:
-    - search_api.server.uwmed_local_solr
+    - field.storage.node.field_res_affiliates
+    - field.storage.node.field_res_fax_number
+    - field.storage.node.field_res_medical_services
+    - field.storage.node.field_res_phone_number
+    - field.storage.node.field_res_building
+    - search_api.server.database
   module:
-    - search_api
-    - node
     - taxonomy
+    - node
+    - search_api
+    - uwmcs_searchfields
 id: uwm_locations_search_api_index
 name: 'UWM Locations - Search API Index'
 description: ''
 read_only: false
-field_settings: {  }
+field_settings:
+  field_res_affiliates:
+    label: Affiliates
+    datasource_id: 'entity:node'
+    property_path: field_res_affiliates
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_affiliates
+  field_res_fax_number:
+    label: 'Fax Number'
+    datasource_id: 'entity:node'
+    property_path: field_res_fax_number
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_fax_number
+  field_res_medical_services:
+    label: 'Medical Services'
+    datasource_id: 'entity:node'
+    property_path: field_res_medical_services
+    type: text
+    boost: !!float 13
+    dependencies:
+      config:
+        - field.storage.node.field_res_medical_services
+  field_res_phone_number:
+    label: 'Phone Number'
+    datasource_id: 'entity:node'
+    property_path: field_res_phone_number
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_phone_number
+  name:
+    label: 'Building » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_building:entity:name'
+    type: text
+    boost: !!float 5
+    dependencies:
+      config:
+        - field.storage.node.field_res_building
+      module:
+        - taxonomy
+        - taxonomy
+  name_1:
+    label: 'Medical Services » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_medical_services:entity:name'
+    type: text
+    boost: !!float 13
+    dependencies:
+      config:
+        - field.storage.node.field_res_medical_services
+      module:
+        - taxonomy
+        - taxonomy
+  name_2:
+    label: 'Affiliates » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_affiliates:entity:name'
+    type: text
+    boost: !!float 3
+    dependencies:
+      config:
+        - field.storage.node.field_res_affiliates
+      module:
+        - taxonomy
+        - taxonomy
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    boost: !!float 21
+    dependencies:
+      module:
+        - node
+  uwmsearchwithin:
+    label: UwmSearchWithin
+    property_path: uwmsearchwithin
+    type: string
 datasource_settings:
   'entity:node':
     bundles:
@@ -22,19 +110,8 @@ datasource_settings:
     languages:
       default: true
       selected: {  }
-  'entity:taxonomy_term':
-    bundles:
-      default: false
-      selected:
-        - buildings
-        - campuses
-        - expertise
-        - medical_services
-        - specialities
-    languages:
-      default: true
-      selected: {  }
 processor_settings:
+  UwmSearchWithin: {  }
   add_url: {  }
   aggregated_field: {  }
   rendered_item: {  }
@@ -44,4 +121,5 @@ tracker_settings:
 options:
   index_directly: true
   cron_limit: 50
-server: uwmed_local_solr
+  overridden_by_acquia_search: 2
+server: database

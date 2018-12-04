@@ -7,22 +7,28 @@ dependencies:
     - field.field.paragraph.uwm_link_with_icon.field_uwm_link
     - paragraphs.paragraphs_type.uwm_link_with_icon
   module:
+    - field_layout
+    - layout_discovery
     - link
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.uwm_link_with_icon.default
 targetEntityType: paragraph
 bundle: uwm_link_with_icon
 mode: default
 content:
   field_uwm_icon:
-    weight: 0
+    weight: 1
     label: hidden
     settings:
-      link: false
+      link: true
     third_party_settings: {  }
     type: entity_reference_label
     region: content
   field_uwm_link:
-    weight: 1
+    weight: 0
     label: hidden
     settings:
       trim_length: 80

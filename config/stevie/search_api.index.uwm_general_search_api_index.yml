@@ -3,27 +3,108 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.body
+    - field.storage.node.field_res_biography
+    - field.storage.node.field_res_phone_number
+    - field.storage.node.field_res_languages
+    - field.storage.node.field_res_affiliates
+    - field.storage.node.field_res_expertises
+    - field.storage.node.field_res_building
     - search_api.server.database
   module:
-    - search_api
-    - node
-    - file
-    - media
     - taxonomy
+    - node
+    - search_api
+    - uwmcs_searchfields
 id: uwm_general_search_api_index
 name: 'UWM General - Search API Index'
 description: ''
 read_only: false
-field_settings: {  }
+field_settings:
+  body:
+    label: Body
+    datasource_id: 'entity:node'
+    property_path: body
+    type: text
+    boost: !!float 8
+    dependencies:
+      config:
+        - field.storage.node.body
+  field_res_biography:
+    label: Biography
+    datasource_id: 'entity:node'
+    property_path: field_res_biography
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_biography
+  field_res_phone_number:
+    label: 'Phone Number'
+    datasource_id: 'entity:node'
+    property_path: field_res_phone_number
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_phone_number
+  name:
+    label: 'Languages » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_languages:entity:name'
+    type: text
+    boost: !!float 8
+    dependencies:
+      config:
+        - field.storage.node.field_res_languages
+      module:
+        - taxonomy
+        - taxonomy
+  name_1:
+    label: 'Affiliates » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_affiliates:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_affiliates
+      module:
+        - taxonomy
+        - taxonomy
+  name_2:
+    label: 'Areas of Expertise » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_expertises:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_expertises
+      module:
+        - taxonomy
+        - taxonomy
+  name_3:
+    label: 'Building » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_building:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_building
+      module:
+        - taxonomy
+        - taxonomy
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    boost: !!float 21
+    dependencies:
+      module:
+        - node
+  uwmsearchwithin:
+    label: UwmSearchWithin
+    property_path: uwmsearchwithin
+    type: string
 datasource_settings:
-  'entity:file': {  }
-  'entity:media':
-    bundles:
-      default: true
-      selected: {  }
-    languages:
-      default: true
-      selected: {  }
   'entity:node':
     bundles:
       default: true
@@ -31,19 +112,31 @@ datasource_settings:
     languages:
       default: true
       selected: {  }
-  'entity:taxonomy_term':
-    bundles:
-      default: false
-      selected:
-        - medical_services
-        - specialities
-    languages:
-      default: true
-      selected: {  }
 processor_settings:
+  UwmSearchWithin: {  }
   add_url: {  }
   aggregated_field: {  }
   rendered_item: {  }
+  type_boost:
+    boosts:
+      'entity:node':
+        datasource_boost: !!float 1
+        bundle_boosts:
+          res_clinic: 0.5
+          res_provider: 0.5
+          uwm_basic_page: !!float 0
+          uwm_homepage: !!float 5
+          uwm_hub_page: !!float 3
+      'entity:taxonomy_term':
+        datasource_boost: !!float 1
+        bundle_boosts:
+          affiliates: !!float 0
+          buildings: !!float 0
+          expertise: !!float 0
+          medical_services: !!float 5
+          specialities: !!float 0
+    weights:
+      preprocess_index: 0
 tracker_settings:
   default:
     indexing_order: fifo

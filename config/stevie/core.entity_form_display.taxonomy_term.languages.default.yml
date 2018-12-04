@@ -8,8 +8,14 @@ dependencies:
     - field.field.taxonomy_term.languages.uwm_unique_id
     - taxonomy.vocabulary.languages
   module:
+    - field_layout
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: H3IFVnVdEeWCnWtg4nHgDM2mVXRFUxDJyNWFJTDD5kg
 id: taxonomy_term.languages.default

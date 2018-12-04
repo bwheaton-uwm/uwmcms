@@ -1,0 +1,28 @@
+uuid: d0ef7800-b18a-447b-8867-213d9efa2345
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.uwm_provider_resource_video_type
+  module:
+    - panelizer
+    - text
+third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
+id: taxonomy_term.uwm_provider_resource_video_type.default
+targetEntityType: taxonomy_term
+bundle: uwm_provider_resource_video_type
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

@@ -6,7 +6,12 @@ dependencies:
     - field.field.paragraph.uwm_block.uwm_block
     - paragraphs.paragraphs_type.uwm_block
   module:
-    - content_moderation
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: CdyphaTV3WPT2hHBI_iubZhaaT5P3ChUuQDBE-hRQSg
 id: paragraph.uwm_block.default

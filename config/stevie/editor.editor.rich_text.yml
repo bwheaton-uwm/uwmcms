@@ -58,10 +58,10 @@ settings:
             - Source
             - Maximize
   plugins:
-    stylescombo:
-      styles: "a.btn.btn-cta|CTA Button\r\np.subheading|Subheading"
     language:
       language_list: un
+    stylescombo:
+      styles: "a.btn.btn-cta.btn-purple|Purple CTA Button\r\na.btn.btn-cta.btn-green|Green CTA Button\r\np.subheading|Subheading"
     templates:
       template_path: ''
       replace_content: 0

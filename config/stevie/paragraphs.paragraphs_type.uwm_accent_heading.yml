@@ -1,9 +1,0 @@
-uuid: 977fd118-3c03-485c-bd9f-61c68ac6eb32
-langcode: en
-status: true
-dependencies: {  }
-id: uwm_accent_heading
-label: 'Accent Heading'
-icon_uuid: null
-description: 'A card heading with a bottom border in the page''s accent color.'
-behavior_plugins: {  }

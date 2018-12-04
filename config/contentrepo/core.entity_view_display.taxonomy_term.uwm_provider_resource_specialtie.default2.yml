@@ -1,0 +1,22 @@
+uuid: d1241395-dc31-4ac6-8616-81a15c417d9b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.default2
+    - taxonomy.vocabulary.uwm_provider_resource_specialtie
+  module:
+    - text
+id: taxonomy_term.uwm_provider_resource_specialtie.default2
+targetEntityType: taxonomy_term
+bundle: uwm_provider_resource_specialtie
+mode: default2
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

@@ -1,5 +1,11 @@
-admin-pages-css:
+uwm-admin-css:
   version: 1.x
   css:
     theme:
-      assets/uwmcs_utils.css: { preprocess: false }
+      assets/uwm_admin.css: { preprocess: false }
+
+uwm-page-css:
+  version: 1.x
+  css:
+    theme:
+      assets/uwm_page.css: { preprocess: false }

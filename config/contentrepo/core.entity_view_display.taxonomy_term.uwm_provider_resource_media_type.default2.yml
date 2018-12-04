@@ -1,0 +1,22 @@
+uuid: 65531fc9-eaf6-40aa-93c3-13026cfaa7f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.default2
+    - taxonomy.vocabulary.uwm_provider_resource_media_type
+  module:
+    - text
+id: taxonomy_term.uwm_provider_resource_media_type.default2
+targetEntityType: taxonomy_term
+bundle: uwm_provider_resource_media_type
+mode: default2
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

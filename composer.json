@@ -195,7 +195,10 @@
     },
   "patches": {
       "drupal/media_entity": {
-          "Undefined function media_entity_copy_icons() fix": "./patches/2934599-11.patch"
+          "Undefined function media_entity_copy_icons() fix": "https://www.drupal.org/files/issues/2934599-11.patch"
+      },
+      "drupal/media_entity_image": {
+          "Undefined function media_entity_copy_icons() fix": "https://www.drupal.org/files/issues/2936985-2.patch"
       }
   }
   },

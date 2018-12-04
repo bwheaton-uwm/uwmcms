@@ -9,6 +9,12 @@ dependencies:
     - paragraphs.paragraphs_type.uwm_image_hero
   module:
     - entity_reference_revisions
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.uwm_image_hero.default
 targetEntityType: paragraph
 bundle: uwm_image_hero
@@ -37,9 +43,8 @@ content:
     weight: 0
     label: hidden
     settings:
-      view_mode: default
-      link: false
+      link: true
     third_party_settings: {  }
-    type: entity_reference_entity_view
+    type: entity_reference_label
     region: content
 hidden: {  }

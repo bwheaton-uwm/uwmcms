@@ -6,8 +6,14 @@ dependencies:
     - field.field.taxonomy_term.campuses.uwm_unique_id
     - taxonomy.vocabulary.campuses
   module:
+    - field_layout
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: aIIVNXXe6gu1mj-oni5sObpASijmo6qpsRHw02jze7k
 id: taxonomy_term.campuses.default

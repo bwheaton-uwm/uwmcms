@@ -26,11 +26,17 @@ dependencies:
     - image.style.thumbnail
     - node.type.res_provider
   module:
+    - field_layout
     - image
+    - layout_discovery
     - metatag
     - name
     - paragraphs
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: 77XBUKV_0wuxEBya-hjylVX81oL60ENv19S2yPQ0xUw
 id: node.res_provider.default

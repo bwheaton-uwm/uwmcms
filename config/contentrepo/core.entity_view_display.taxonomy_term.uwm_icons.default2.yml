@@ -1,0 +1,22 @@
+uuid: c52e2da4-f95b-4d36-b1ce-7c3f7f472c75
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.default2
+    - taxonomy.vocabulary.uwm_icons
+  module:
+    - text
+id: taxonomy_term.uwm_icons.default2
+targetEntityType: taxonomy_term
+bundle: uwm_icons
+mode: default2
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

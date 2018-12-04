@@ -5,6 +5,13 @@ dependencies:
   config:
     - field.field.paragraph.uwm_block.uwm_block
     - paragraphs.paragraphs_type.uwm_block
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: uIbtTv-W7JtxEYuiOteCXEqY03YtqwIE8sHVl6QCHHU
 id: paragraph.uwm_block.default

@@ -1,0 +1,28 @@
+uuid: 615861b4-1115-4661-9fe6-109ebce8b3f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.uwm_icons
+  module:
+    - panelizer
+    - text
+third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
+id: taxonomy_term.uwm_icons.default
+targetEntityType: taxonomy_term
+bundle: uwm_icons
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

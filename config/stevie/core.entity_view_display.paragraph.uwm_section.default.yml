@@ -9,7 +9,13 @@ dependencies:
     - paragraphs.paragraphs_type.uwm_section
   module:
     - entity_reference_revisions
+    - field_layout
+    - layout_discovery
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.uwm_section.default
 targetEntityType: paragraph
 bundle: uwm_section

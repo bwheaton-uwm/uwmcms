@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_uwm_media
-    - media.type.video_embed
+    - media.type.video
     - paragraphs.paragraphs_type.uwm_modal
 id: paragraph.uwm_modal.field_uwm_media
 field_name: field_uwm_media
@@ -20,9 +20,9 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
-      video_embed: video_embed
+      video: video
     sort:
       field: _none
     auto_create: false
-    auto_create_bundle: video
+    auto_create_bundle: ''
 field_type: entity_reference

@@ -1,0 +1,14 @@
+uuid: d50249c1-2675-45bb-9709-b41ea4148381
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - taxonomy
+third_party_settings:
+  lightning_core:
+    description: ''
+id: taxonomy_term.search_result
+label: 'Search Result'
+targetEntityType: taxonomy_term
+cache: true

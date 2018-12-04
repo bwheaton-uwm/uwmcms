@@ -9,7 +9,13 @@ dependencies:
     - field.field.media.acquia_dam_asset.field_media_in_library
     - media.type.acquia_dam_asset
   module:
+    - field_layout
     - image
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: k5lZ3lHM-qNzqve3tSnwarxtRh585IhXKnCS_G4AblI
 id: media.acquia_dam_asset.default

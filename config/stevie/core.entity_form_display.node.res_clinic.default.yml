@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.res_clinic.body
     - field.field.node.res_clinic.field_res_affiliates
     - field.field.node.res_clinic.field_res_box_number
     - field.field.node.res_clinic.field_res_building
@@ -27,11 +28,17 @@ dependencies:
     - image.style.thumbnail
     - node.type.res_clinic
   module:
+    - field_layout
     - image
+    - layout_discovery
     - metatag
     - paragraphs
     - telephone
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: 2kAi-wYe7ZuIze154ZwVwwhYSRqonPwtA675m4-PbdU
 id: node.res_clinic.default
@@ -39,6 +46,15 @@ targetEntityType: node
 bundle: res_clinic
 mode: default
 content:
+  body:
+    weight: 31
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea_with_summary
+    region: content
   created:
     type: datetime_timestamp
     weight: 8

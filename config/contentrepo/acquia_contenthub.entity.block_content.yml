@@ -1,0 +1,17 @@
+uuid: cffc6016-e887-4b90-ac66-be93ccf9a168
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.basic
+    - field.field.block_content.basic.body
+  module:
+    - block_content
+    - text
+id: block_content
+bundles:
+  basic:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default

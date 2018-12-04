@@ -5,6 +5,13 @@ dependencies:
   config:
     - field.field.paragraph.uwm_media.field_uwm_media
     - paragraphs.paragraphs_type.uwm_media
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.uwm_media.default
 targetEntityType: paragraph
 bundle: uwm_media

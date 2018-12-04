@@ -13,10 +13,15 @@ dependencies:
     - field.field.paragraph.detailed_contact_card.field_uwm_phone_number
     - paragraphs.paragraphs_type.detailed_contact_card
   module:
-    - content_moderation
     - entity_browser
+    - field_layout
+    - layout_discovery
     - telephone
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.detailed_contact_card.default
 targetEntityType: paragraph
 bundle: detailed_contact_card

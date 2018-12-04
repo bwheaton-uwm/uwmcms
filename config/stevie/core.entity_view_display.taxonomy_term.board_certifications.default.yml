@@ -6,7 +6,13 @@ dependencies:
     - field.field.taxonomy_term.board_certifications.uwm_unique_id
     - taxonomy.vocabulary.board_certifications
   module:
+    - field_layout
+    - layout_discovery
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: 2MWmbbnJ4jDjond3S7l_UvLt-KIRsDaLeK9WRNfZfps
 id: taxonomy_term.board_certifications.default

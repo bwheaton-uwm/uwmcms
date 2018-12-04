@@ -8,7 +8,6 @@ dependencies:
     - content_moderation
     - node
     - user
-    - views_bulk_operations
     - views_url_alias_node
 _core:
   default_config_hash: tS8PbpJX90aRFC3-UTgXzdqkq7_2frk2pz4TMijEebM
@@ -45,11 +44,23 @@ display:
         type: full
         options:
           items_per_page: 50
+          offset: 0
+          id: 0
+          total_pages: null
           tags:
             previous: '‹ Previous'
             next: 'Next ›'
             first: '« First'
             last: 'Last »'
+          expose:
+            items_per_page: true
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 25, 50, 100, 500'
+            items_per_page_options_all: true
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
       style:
         type: table
         options:
@@ -128,14 +139,14 @@ display:
       row:
         type: fields
       fields:
-        views_bulk_operations_bulk_form:
-          id: views_bulk_operations_bulk_form
-          table: views
-          field: views_bulk_operations_bulk_form
+        node_bulk_form:
+          id: node_bulk_form
+          table: node
+          field: node_bulk_form
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Views bulk operations'
+          label: 'Node operations bulk form'
           exclude: false
           alter:
             alter_text: false
@@ -176,61 +187,16 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          batch: true
-          batch_size: 10
-          form_step: true
-          buttons: false
-          clear_on_exposed: 0
           action_title: Action
+          include_exclude: exclude
           selected_actions:
-            node_unpromote_action: 0
-            node_unpublish_action: node_unpublish_action
-            node_publish_action: node_publish_action
-            node_unpublish_by_keyword_action: 0
-            node_assign_owner_action: 0
-            node_promote_action: 0
-            node_save_action: node_save_action
-            node_make_sticky_action: 0
-            node_make_unsticky_action: 0
-            vbo_export_generate_xlsx_action: vbo_export_generate_xlsx_action
-            vbo_export_generate_csv_action: vbo_export_generate_csv_action
-            views_bulk_edit: views_bulk_edit
-            views_bulk_operations_delete_entity: views_bulk_operations_delete_entity
-            pathauto_update_alias: pathauto_update_alias
-            'entity:save_action:node': 'entity:save_action:node'
-            'entity:unpublish_action:node': 'entity:unpublish_action:node'
-            'entity:publish_action:node': 'entity:publish_action:node'
-            'entity:delete_action:node': 'entity:delete_action:node'
-          preconfiguration:
-            node_unpublish_action:
-              label_override: ''
-            node_publish_action:
-              label_override: ''
-            node_save_action:
-              label_override: ''
-            vbo_export_generate_xlsx_action:
-              label_override: ''
-              strip_tags: 0
-            vbo_export_generate_csv_action:
-              label_override: ''
-              strip_tags: 0
-              separator: ;
-            views_bulk_edit:
-              label_override: ''
-              get_bundles_from_results: 1
-            views_bulk_operations_delete_entity:
-              label_override: ''
-            pathauto_update_alias:
-              label_override: ''
-            'entity:save_action:node':
-              label_override: ''
-            'entity:unpublish_action:node':
-              label_override: ''
-            'entity:publish_action:node':
-              label_override: ''
-            'entity:delete_action:node':
-              label_override: ''
-          plugin_id: views_bulk_operations_bulk_form
+            - node_delete_action
+            - node_make_sticky_action
+            - node_make_unsticky_action
+            - pathauto_update_alias_node
+            - vbo_export_generate_xlsx_action
+          entity_type: node
+          plugin_id: node_bulk_form
         title:
           id: title
           table: node_field_data
