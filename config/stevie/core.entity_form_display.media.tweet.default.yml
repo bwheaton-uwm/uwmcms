@@ -8,7 +8,13 @@ dependencies:
     - media.type.tweet
   module:
     - content_moderation
+    - field_layout
+    - layout_discovery
     - path
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: j91gO-2d6metCelrtxdsMs2gxv9soQTwAVTN20S31Z8
 id: media.tweet.default

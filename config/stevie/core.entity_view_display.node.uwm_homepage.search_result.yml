@@ -1,0 +1,33 @@
+uuid: b120b359-fb30-4cd6-93cb-84cb3e0c979b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - node.type.uwm_homepage
+  module:
+    - field_layout
+    - layout_discovery
+    - panelizer
+    - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
+id: node.uwm_homepage.search_result
+targetEntityType: node
+bundle: uwm_homepage
+mode: search_result
+content:
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  content_moderation_control: true

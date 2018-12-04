@@ -1,9 +1,0 @@
-uuid: c76bcf66-74bc-4248-9d48-84434b211d58
-langcode: en
-status: true
-dependencies: {  }
-name: 'UWM Provider Resource Video Type'
-vid: uwm_provider_resource_video_type
-description: ''
-hierarchy: 0
-weight: 0

@@ -1,9 +1,0 @@
-uuid: 1870a153-9424-45ac-aa86-d81bc9bd2e94
-langcode: en
-status: true
-dependencies: {  }
-name: 'UWM Provider Resource Specialties'
-vid: uwm_provider_resource_specialtie
-description: ''
-hierarchy: 0
-weight: 0

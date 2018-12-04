@@ -10,7 +10,13 @@ dependencies:
     - media.type.acquia_dam_asset
   module:
     - content_moderation
+    - field_layout
+    - layout_discovery
     - path
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: su6g01xW3bH-O0y8JYub_IpSicOvu_IZYewk72JzlHM
 id: media.acquia_dam_asset.default

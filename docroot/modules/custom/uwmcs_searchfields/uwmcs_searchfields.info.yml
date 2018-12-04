@@ -1,0 +1,5 @@
+name: uwmcs_searchfields
+description: 'Provides field customizations to Drupal''s Search API'
+package: UWMed
+type: module
+core: 8.x

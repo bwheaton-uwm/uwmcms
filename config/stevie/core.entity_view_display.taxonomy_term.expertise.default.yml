@@ -7,7 +7,13 @@ dependencies:
     - field.field.taxonomy_term.expertise.uwm_unique_id
     - taxonomy.vocabulary.expertise
   module:
+    - field_layout
+    - layout_discovery
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: K1bELAx1q5GuWl5pGZA56UyyvUXmWrcMCuhdZ2l__Cc
 id: taxonomy_term.expertise.default

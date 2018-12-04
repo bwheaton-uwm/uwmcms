@@ -9,8 +9,14 @@ dependencies:
     - media.type.video_file
   module:
     - content_moderation
+    - field_layout
     - file
+    - layout_discovery
     - path
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: SaX8ADXzleFFE1voCBwLSjilfmMe2-cLmaf6E3LP6tE
 id: media.video_file.media_browser

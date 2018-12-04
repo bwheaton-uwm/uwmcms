@@ -8,9 +8,14 @@ dependencies:
     - field.field.paragraph.headshot_card.uwm_text
     - paragraphs.paragraphs_type.headshot_card
   module:
-    - content_moderation
     - entity_browser
+    - field_layout
+    - layout_discovery
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.headshot_card.default
 targetEntityType: paragraph
 bundle: headshot_card

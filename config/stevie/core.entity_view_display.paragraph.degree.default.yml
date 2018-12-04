@@ -9,6 +9,13 @@ dependencies:
     - field.field.paragraph.degree.field_res_is_primary
     - field.field.paragraph.degree.field_res_year
     - paragraphs.paragraphs_type.degree
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: '-C0wI5EhYB4pAypepUZYkm0T3fLvzNlLRnd2wkojDEs'
 id: paragraph.degree.default

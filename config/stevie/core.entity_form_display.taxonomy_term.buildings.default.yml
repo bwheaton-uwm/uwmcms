@@ -11,9 +11,15 @@ dependencies:
     - taxonomy.vocabulary.buildings
   module:
     - address
+    - field_layout
     - geolocation
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: '-sIHdJ5ScYlitUqYXml_n7h1y5sYbruA2LsjgwUYRGY'
 id: taxonomy_term.buildings.default

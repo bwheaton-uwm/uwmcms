@@ -177,8 +177,4 @@ uwmcs_utils: 0.0.0
 uwm_res_import: 0.0.0
 uwm_drush_commands: 0.0.0
 uwm_commands: 0.0.0
-path_redirect_import: 1.0.0-beta1
-menu_export: 1.2.0
-uwm_class_cleanup_filter: 0.0.0
-views_bulk_edit: 2.2.0
-views_url_alias_node: 1.0.0
+uwmcs_searchfields: 0.0.0

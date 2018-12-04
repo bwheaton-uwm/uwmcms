@@ -1,8 +1,0 @@
-uuid: db43e219-68b7-49ec-8635-c306115239c3
-langcode: en
-status: true
-dependencies: {  }
-id: uw-main-navigation
-label: 'UWM Header - Main Navigation'
-description: ''
-locked: false

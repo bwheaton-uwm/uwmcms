@@ -5,7 +5,19 @@ dependencies:
   config:
     - node.type.uwm_homepage
   module:
+    - field_layout
+    - layout_discovery
+    - panelizer
     - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
 id: node.uwm_homepage.default
 targetEntityType: node
 bundle: uwm_homepage
@@ -13,8 +25,8 @@ mode: default
 content:
   links:
     weight: 100
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   content_moderation_control: true
