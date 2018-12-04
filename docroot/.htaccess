@@ -960,7 +960,6 @@
   RewriteCond %{REQUEST_URI} !^/locations/diagnostic-imaging-northwest(/)?(?(1).*|$)
   RewriteCond %{REQUEST_URI} !^/locations/northwest-outpatient-imaging(/)?(?(1).*|$)
   RewriteCond %{REQUEST_URI} !^/locations/radiology-services-uwmc-roosevelt(/)?(?(1).*|$)
-
   # End Radiolology #
   # Start Cancer Care #
   RewriteCond %{REQUEST_URI} !^/services/cancer-care(/)?(?(1).*|$)
@@ -1141,6 +1140,13 @@
   RewriteCond %{REQUEST_URI} !^/locations/northwest-hospital(/)?(?(1).*|$)
   RewriteCond %{REQUEST_URI} !^/locations/valley-medical-center(/)?(?(1).*|$)
   # End Entities #
+  # Start Emergency Medicine #
+  RewriteCond %{REQUEST_URI} !^/services/trauma-emergency-services(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/services/emergency-medicine(/)?(?(1).*|$)
+  # End Emergency Medicine #
+  # Start Virtual Clinic #
+  RewriteCond %{REQUEST_URI} !^/locations/virtual-clinic(/)?(?(1).*|$)
+  # End Virtual Clinic #
   RewriteRule ^(.*)$ - [CO=uwm-proxied-page-visit:true:%{HTTP_HOST}:0:/,C]
   RewriteRule ^(.*)$ https://www2.uwmedicine.org%{REQUEST_URI} [L,P]
 
