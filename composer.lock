@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0f5dcbf6400f06a4341db9373d56f3c",
+    "content-hash": "90fb3a1b0cc8eb1ec334064c775f66fc",
     "packages": [
         {
             "name": "acquia/blt",
@@ -8797,7 +8797,7 @@
                     }
                 },
                 "patches_applied": {
-                    "Undefined function media_entity_copy_icons() fix": "./patches/2934599-11.patch"
+                    "Undefined function media_entity_copy_icons() fix": "https://www.drupal.org/files/issues/2934599-11.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -8960,6 +8960,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "Undefined function media_entity_copy_icons() fix": "https://www.drupal.org/files/issues/2936985-2.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -20209,7 +20212,7 @@
                 "type": "tar",
                 "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/ckeditor_bs_grid/uwmweb-ckeditor_bs_grid-e2bd7a01273019212bcce473fa62e7c655d65b3a-zip-b9915b.tar",
                 "reference": "e2bd7a01273019212bcce473fa62e7c655d65b3a",
-                "shasum": "e6e920d26d0b2970eea99a16a2acc662845c0dbf"
+                "shasum": "a23631b73c8dfed2277cb815d1cb92a98c2103f5"
             },
             "require": {
                 "drupal/core": "~8"
@@ -20237,7 +20240,7 @@
                 "type": "tar",
                 "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwm_paragraphs/uwmweb-uwm_paragraphs-ab60ae51a6dc710b62576d01356d8b8446709fca-zip-7b9ee9.tar",
                 "reference": "ab60ae51a6dc710b62576d01356d8b8446709fca",
-                "shasum": "9e8c8b28b7db9864766811e22638f9ad296928dd"
+                "shasum": "b0f1201202403c860d5bdb480ab0929c8993947b"
             },
             "require": {
                 "drupal/core": "~8",
@@ -20269,7 +20272,7 @@
                 "type": "tar",
                 "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-604dd895a566e44e510b6f3bde28e9ee31bacca2-zip-c90cfe.tar",
                 "reference": "604dd895a566e44e510b6f3bde28e9ee31bacca2",
-                "shasum": "5f1514387da30d9512e8f616d2601271971660c7"
+                "shasum": "65e4532fe4eac1f4f41d98250bd0d97c874f89e1"
             },
             "type": "drupal-theme",
             "license": [
@@ -20294,7 +20297,7 @@
                 "type": "tar",
                 "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmedicineorg_theme/uwmweb-uwmedicineorg_theme-7073e3e440a3dc75812056d30259459f6f49ac52-zip-0a228d.tar",
                 "reference": "7073e3e440a3dc75812056d30259459f6f49ac52",
-                "shasum": "1fc5ca79746c3ead49fdac498b50b45eada91c48"
+                "shasum": "65724af52634e622ee41bdf7fb7741299ad3bbda"
             },
             "type": "drupal-theme",
             "license": [
