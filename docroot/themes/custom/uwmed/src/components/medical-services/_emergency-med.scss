@@ -1,0 +1,525 @@
+.node-37241 {
+  .medical-service-hero__background {
+    background-position: left;
+
+    @media(max-width: $screen-md-max) {
+      left: -150px;
+    }
+  }
+
+  .medical-specialty__back-button {
+
+    margin-top: -45px;
+
+    a {
+      background-color: #e5e5e6;
+      padding: 12px;
+      height: 45px;
+      text-transform: uppercase;
+      color: $uwmed-pop-blue;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+
+      @media(max-width: $screen-xs-max) {
+        width: 100%;
+      }
+
+      @media(min-width: $screen-sm-min) {
+        padding: 12px 19px 12px 30px;
+      }
+
+      @media(min-width: $screen-lg-min) {
+        padding: 12px 19px 12px 55px;
+      }
+    }
+
+    i.right-border-angle {
+      transform: skew(18deg);
+      position: absolute;
+      width: 20px;
+      bottom: 0;
+      top: 0;
+      right: -13px;
+      border-right: 5px solid #cfcfcf;
+      background: #e5e5e6;
+    }
+    a:hover {
+      color: $uwmed-body-text-color;
+
+      @media(min-width: $screen-sm-min) {
+        background: lighten(#e5e5e6, 5%);
+        transition-timing-function: ease-in;
+        transition: 0.2s;
+        // Chrome jagged line fix
+        -webkit-backface-visibility: hidden;
+        -webkit-transform-style: preserve-3d;
+        @include uwmed-bezier-transition-transition-timing();
+
+        i.right-border-angle {
+          border-right: 5px solid darken(#cfcfcf, 5%);
+          background: lighten(#e5e5e6, 5%);
+          transition: 0.2s;
+          @include uwmed-bezier-transition-transition-timing();
+        }
+      }
+    }
+
+
+  }
+
+  .medical-specialty__back-button {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    padding: 0;
+  }
+
+  .hours-wrapper {
+
+    // Desktop container:
+    &.hidden-xs {
+
+      width: 30%;
+      float: left;
+      position: absolute;
+      right: 0;
+      height: 100%;
+      z-index: 1;
+      &::before {
+        content: "";
+        width: 1000px;
+        position: absolute;
+        left: -70px;
+        bottom: -1px;
+        top: 0px;
+        //background-color: #f5f5f5;
+        z-index: -1;
+        transform: skewX(-10deg);
+        //opacity: .7;
+
+        background: rgba(245, 245, 245, 1);
+        //background: url("#{$uw-images-folder}/UrgentCareWait_Clock.png") bottom right -80px no-repeat rgba(245, 245, 245, 1);
+        background: linear-gradient(to bottom, rgba(245, 245, 245, 1) 0%,
+                rgba(245, 245, 245, 1) 65%,
+                rgba(245, 245, 245, .8) 85%,
+                rgba(245, 245, 255, .6) 100%);
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        background: url("#{$uw-images-folder}/UrgentCareWait_Clock.png") bottom right -80px no-repeat transparent;
+      }
+
+      .clinic-hours-table {
+        .opens-at {
+          display: none;
+        }
+      }
+
+      h4 {
+        @extend .h5;
+        color: $uwmed-purple;
+      }
+
+      .opens-at {
+        @extend .h4;
+        padding-top: 20px;
+        padding-bottom: 4px;
+        color: $uwmed-dark-purple;
+        strong {
+          font-weight: normal;
+        }
+        .uw-ico {
+          display: none;
+        }
+      }
+
+    }
+
+    // Mobile container:
+    &.hidden-lg {
+      @extend .col-xs-12;
+      background-color: #f5f5f5;
+
+
+      // The jiggieness -
+      // show small on medium screens:
+      @media (min-width: 1px) {
+        .visible-xs-block.intro {
+          display: block !important;
+        }
+        .hidden-xs.intro {
+          display: none !important;
+        }
+        .collapse-mobile {
+          display: none !important;
+        }
+        .collapse-mobile.in {
+          display: block !important;
+        }
+      }
+
+      .hours-column, .block-81, p.opens-at {
+        max-width: 500px;
+        clear: both;
+      }
+
+
+    }
+
+    h4 a, .h4 a {
+      color: $uwmed-dark-purple;
+      text-decoration: none;
+
+      @media(max-width: $screen-md-max) {
+        font-size: $font-size-h4-mobile;
+        line-height: $line-height-h4-mobile;
+      }
+    }
+    ul {
+      color: $uwmed-body-text-color;
+      padding: 0;
+
+      li {
+        list-style-type: none;
+        padding-bottom: 6px;
+        float: left;
+        width: 100%;
+      }
+    }
+
+    strong {
+      font-weight: 400;
+    }
+
+    span.day {
+      float: left;
+    }
+
+    span.hours {
+      float: right;
+    }
+
+    ul li:last-child {
+      padding-bottom: 21px;
+    }
+
+    .clinic-hours-table, .block-81, p.opens-at {
+      @extend .col-md-11;
+    }
+
+    //.opens-at, .hours-header {
+    //  color: $uwmed-light-purple;
+    //}
+
+    //.clinic-hours-container {
+    //  min-height: 300px;
+    //  padding-top: 15px;
+    //  .hours-header {
+    //    margin-top: 30px;
+    //    margin-bottom: 20px;
+    //  }
+    //  .clinic-hours-table {
+    //    //margin-bottom: 40px;
+    //
+    //    h2 {
+    //      color: $uwmed-light-purple;
+    //    }
+    //
+    //    ul {
+    //      color: $uwmed-body-text-color;
+    //      padding: 0;
+    //
+    //      li {
+    //        list-style-type: none;
+    //        padding-bottom: 6px;
+    //        float: left;
+    //        width: 100%;
+    //      }
+    //    }
+    //
+    //    strong {
+    //      font-weight: 400;
+    //    }
+    //
+    //    span.day {
+    //      float: left;
+    //    }
+    //
+    //    span.hours {
+    //      float: right;
+    //    }
+    //
+    //    .opens-at {
+    //      @extend .hidden;
+    //    }
+    //  }
+    //}
+
+  }
+
+  .medical-service__common-services.uwm-toggle {
+    li {
+      display: block;
+    }
+  }
+
+  .special-hours {
+    color: $uwmed-body-text-color;
+    margin-bottom: 10px;
+
+    @media(min-width: $screen-lg-min) {
+      padding-top: 10px;
+    }
+
+    float: left;
+  }
+
+  ul.boxy-ordered-list.list-check-marks {
+
+    @extend .col-xs-12;
+    padding: 0;
+    margin-bottom: 15px;
+
+    li {
+      @extend .col-xs-12, .col-sm-6;
+      list-style-type: none;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      border-top: 1px solid #b5b5b5;
+
+      &:before {
+        content: "\e902";
+        font-family: "uwmico";
+        float: left;
+        margin-left: -16px;
+        color: #4B2E83;
+      }
+    }
+
+    @media(min-width: $screen-xs-max) {
+
+      margin-right: 45px;
+      li {
+        width: 50%;
+        position: relative;
+        &:nth-child(even) {
+          right: -45px;
+        }
+        &:nth-child(odd) {
+          clear: left;
+        }
+      }
+
+    }
+
+  }
+
+  // Specialties for Medical Service View
+  .view-uwm-medical-specialties-for-service {
+    //display: inline-block;
+    //width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    > .views-row {
+      flex: none;
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
+      padding: 0 15px;
+      position: relative;
+
+      margin-bottom: 19px;
+
+      @media(min-width: $screen-sm-min) {
+        flex: 1;
+        min-width: 49%;
+      }
+
+      @media(min-width: $screen-md-min) {
+        min-width: 25%;
+        border-right: 1px solid #bababa;
+        padding: 10px 15px;
+      }
+
+      //.paragraph {
+      //  padding: 0 15px;
+      //
+      //  @media(min-width: $screen-md-min) {
+      //    padding: 10px 15px;
+      //  }
+      //}
+    }
+
+    > .views-row:last-child, > .views-row:nth-child(4) {
+      border-right: none;
+    }
+
+    //.views-row-last-row-column-3 {
+    //  margin-right: 25%;
+    //}
+
+    .views-field-title {
+      @extend .h5, %heart-icon-title-field;
+    }
+
+    .views-field-path {
+      @include uw-ghost-button('.btn', '.btn:after', $uwmed-accent-orange);
+
+      padding-top: 12px;
+      margin-top: auto;
+
+      .btn:after {
+        content: "";
+      }
+    }
+  }
+
+  section.clinic-paragraphs {
+
+    position: relative;
+    //padding: 0 25px;
+    background-color: #f8f8f8;
+    min-height: 450px;
+
+    .bg {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+
+      background-image: url(/themes/custom/uwmed/dist/assets/angled-bg-light.png);
+      background-color: #F8F8F8;
+    }
+
+    div.paragraph > .wrapper {
+      @extend .col-xs-12;
+      margin: 30px 0;
+      padding: 20px 28px;
+      background: $uwmed-white;
+      opacity: .8;
+      box-shadow: 0 0 4px 0 #dcdcdc;
+      min-height: 340px;
+    }
+  }
+
+  .clinic-paragraphs {
+    div.field.field--name-field-content-blocks,
+    div.field.field--name-field-bottom-content-blocks {
+
+      @extend .row;
+
+      div.paragraph {
+        @extend .col-sm-6;
+        @extend .col-md-4;
+
+        p.h1.hero__heading {
+          display: none;
+        }
+
+        .field--name-field-link {
+          padding: 0;
+        }
+        div.field.field--name-field-links-paragraph > .item ul li {
+          padding: 0 0 1em 0;
+        }
+      }
+    }
+  }
+
+  #block-virtualclinic {
+    .virtual-clinic {
+      position: relative;
+      width: 100%;
+      padding: 0;
+      background-size: cover;
+
+      .block-title {
+        text-transform: uppercase;
+        letter-spacing: .05em;
+        margin-bottom: 6px;
+        padding-top: 30px;
+        margin-top: 0;
+      }
+
+      @media(max-width: $screen-md-max) {
+        background-color: #f5f5f5;
+        background-image: none;
+        padding: 20px;
+      }
+
+      .container-lg {
+        @media(min-width: $screen-md-min) {
+          margin-top: 50px;
+          margin-bottom: 50px;
+        }
+      }
+
+      @media (max-width: $screen-lg-min) {
+        .row {
+          margin: 0;
+        }
+
+        .virtual-clinic__title {
+          margin-bottom: -1px;
+        }
+      }
+
+
+      .virtual-clinic__title {
+        background-color: white;
+        display: inline-block;
+        float: left;
+
+        .h3 {
+          text-transform: uppercase;
+          letter-spacing: .05em;
+          margin-bottom: 6px;
+          margin-top: 38px;
+        }
+
+        padding-left: 38px;
+        padding-right: 38px;
+
+        @media(max-width: $screen-sm-max) {
+          width: 100%;
+        }
+        @media(min-width: $screen-lg-min) {
+          background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .uwmed-slant span {
+          background-color: $uwmed-accent-blue;
+        }
+      }
+
+      .virtual-clinic__content {
+        background-color: white;
+        padding-bottom: 38px;
+        padding-left: 38px;
+        padding-right: 38px;
+        float: left;
+
+        @media(min-width: $screen-lg-min) {
+          background-color: rgba(255, 255, 255, .9);
+        }
+
+        .h2 {
+          color: $uwmed-accent-blue;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}

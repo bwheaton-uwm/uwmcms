@@ -1,0 +1,22 @@
+uuid: 2a862d1f-425c-44ed-965c-37a904a0c7b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.default2
+    - taxonomy.vocabulary.uwm_bottom_border_options
+  module:
+    - text
+id: taxonomy_term.uwm_bottom_border_options.default2
+targetEntityType: taxonomy_term
+bundle: uwm_bottom_border_options
+mode: default2
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

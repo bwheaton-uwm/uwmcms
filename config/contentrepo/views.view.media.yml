@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.media.thumbnail
     - media.type.image
+    - system.menu.admin
   module:
     - entity_browser
     - file
@@ -60,19 +61,19 @@ display:
           offset: 0
           id: 0
           total_pages: null
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
           tags:
             previous: '‹ Previous'
             next: 'Next ›'
             first: '« First'
             last: 'Last »'
+          expose:
+            items_per_page: true
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 25, 50, 100, 500'
+            items_per_page_options_all: true
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
           quantity: 9
       style:
         type: table
@@ -818,20 +819,11 @@ display:
         - url.query_args
         - user.permissions
       tags:
-        - 'config:core.entity_view_display.media.acquia_dam_asset.default'
-        - 'config:core.entity_view_display.media.acquia_dam_asset.embedded'
-        - 'config:core.entity_view_display.media.acquia_dam_asset.thumbnail'
         - 'config:core.entity_view_display.media.audio_file.default'
         - 'config:core.entity_view_display.media.audio_file.embedded'
         - 'config:core.entity_view_display.media.audio_file.media_library'
         - 'config:core.entity_view_display.media.audio_file.thumbnail'
-        - 'config:core.entity_view_display.media.document.default'
         - 'config:core.entity_view_display.media.document.embedded'
-        - 'config:core.entity_view_display.media.document.media_library'
-        - 'config:core.entity_view_display.media.document.thumbnail'
-        - 'config:core.entity_view_display.media.image.default'
-        - 'config:core.entity_view_display.media.image.embedded'
-        - 'config:core.entity_view_display.media.image.thumbnail'
         - 'config:core.entity_view_display.media.instagram.default'
         - 'config:core.entity_view_display.media.instagram.embedded'
         - 'config:core.entity_view_display.media.instagram.media_library'
@@ -840,13 +832,28 @@ display:
         - 'config:core.entity_view_display.media.tweet.embedded'
         - 'config:core.entity_view_display.media.tweet.media_library'
         - 'config:core.entity_view_display.media.tweet.thumbnail'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_document.embedded'
         - 'config:core.entity_view_display.media.video.default'
         - 'config:core.entity_view_display.media.video.embedded'
         - 'config:core.entity_view_display.media.video.thumbnail'
+        - 'config:core.entity_view_display.media.video_embed.default'
+        - 'config:core.entity_view_display.media.video_embed.embedded'
         - 'config:core.entity_view_display.media.video_file.default'
         - 'config:core.entity_view_display.media.video_file.embedded'
         - 'config:core.entity_view_display.media.video_file.media_library'
         - 'config:core.entity_view_display.media.video_file.thumbnail'
+        - 'config:core.entity_view_display.media.acquia_dam_asset.default'
+        - 'config:core.entity_view_display.media.acquia_dam_asset.embedded'
+        - 'config:core.entity_view_display.media.acquia_dam_asset.thumbnail'
+        - 'config:core.entity_view_display.media.document.default'
+        - 'config:core.entity_view_display.media.document.media_library'
+        - 'config:core.entity_view_display.media.document.thumbnail'
+        - 'config:core.entity_view_display.media.image.default'
+        - 'config:core.entity_view_display.media.image.embedded'
+        - 'config:core.entity_view_display.media.image.thumbnail'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_document.default'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_video.default'
+        - 'config:core.entity_view_display.media.video_embed.uwm_modal'
   entity_browser_1:
     display_plugin: entity_browser
     id: entity_browser_1
@@ -1276,9 +1283,15 @@ display:
         - 'config:core.entity_view_display.media.tweet.embedded'
         - 'config:core.entity_view_display.media.tweet.media_library'
         - 'config:core.entity_view_display.media.tweet.thumbnail'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_document.default'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_document.embedded'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_video.default'
         - 'config:core.entity_view_display.media.video.default'
         - 'config:core.entity_view_display.media.video.embedded'
         - 'config:core.entity_view_display.media.video.thumbnail'
+        - 'config:core.entity_view_display.media.video_embed.default'
+        - 'config:core.entity_view_display.media.video_embed.embedded'
+        - 'config:core.entity_view_display.media.video_embed.uwm_modal'
         - 'config:core.entity_view_display.media.video_file.default'
         - 'config:core.entity_view_display.media.video_file.embedded'
         - 'config:core.entity_view_display.media.video_file.media_library'
@@ -1674,9 +1687,15 @@ display:
         - 'config:core.entity_view_display.media.tweet.embedded'
         - 'config:core.entity_view_display.media.tweet.media_library'
         - 'config:core.entity_view_display.media.tweet.thumbnail'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_document.default'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_document.embedded'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_video.default'
         - 'config:core.entity_view_display.media.video.default'
         - 'config:core.entity_view_display.media.video.embedded'
         - 'config:core.entity_view_display.media.video.thumbnail'
+        - 'config:core.entity_view_display.media.video_embed.default'
+        - 'config:core.entity_view_display.media.video_embed.embedded'
+        - 'config:core.entity_view_display.media.video_embed.uwm_modal'
         - 'config:core.entity_view_display.media.video_file.default'
         - 'config:core.entity_view_display.media.video_file.embedded'
         - 'config:core.entity_view_display.media.video_file.media_library'
@@ -1692,6 +1711,15 @@ display:
       display_description: ''
       defaults:
         fields: true
+      menu:
+        type: normal
+        title: 'Media Table'
+        description: ''
+        expanded: true
+        parent: system.admin_content
+        weight: 0
+        context: '0'
+        menu_name: admin
     cache_metadata:
       max-age: 0
       contexts:
@@ -1723,9 +1751,15 @@ display:
         - 'config:core.entity_view_display.media.tweet.embedded'
         - 'config:core.entity_view_display.media.tweet.media_library'
         - 'config:core.entity_view_display.media.tweet.thumbnail'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_document.default'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_document.embedded'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_video.default'
         - 'config:core.entity_view_display.media.video.default'
         - 'config:core.entity_view_display.media.video.embedded'
         - 'config:core.entity_view_display.media.video.thumbnail'
+        - 'config:core.entity_view_display.media.video_embed.default'
+        - 'config:core.entity_view_display.media.video_embed.embedded'
+        - 'config:core.entity_view_display.media.video_embed.uwm_modal'
         - 'config:core.entity_view_display.media.video_file.default'
         - 'config:core.entity_view_display.media.video_file.embedded'
         - 'config:core.entity_view_display.media.video_file.media_library'

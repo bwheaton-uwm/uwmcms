@@ -1,0 +1,19 @@
+uuid: 4bf934dc-2e92-43cd-bb99-fe8eaa6257dc
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+id: paragraph.field_uwm_correct_ans_prompt
+field_name: field_uwm_correct_ans_prompt
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

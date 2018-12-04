@@ -1,0 +1,14 @@
+uuid: cd115c2f-1934-4977-9967-1768d0ce0e00
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - taxonomy
+third_party_settings:
+  lightning_core:
+    description: ''
+id: taxonomy_term.default2
+label: Default2
+targetEntityType: taxonomy_term
+cache: true

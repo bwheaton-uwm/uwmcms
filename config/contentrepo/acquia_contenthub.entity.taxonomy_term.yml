@@ -1,0 +1,77 @@
+uuid: 0f3cc23f-ca45-4bd9-b767-eb11445a435a
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.uwm_accent_colors
+    - taxonomy.vocabulary.uwm_background_colors
+    - taxonomy.vocabulary.uwm_bottom_border_options
+    - taxonomy.vocabulary.uwm_column_widths
+    - taxonomy.vocabulary.uwm_condition_spotlight_type
+    - taxonomy.vocabulary.uwm_icons
+    - taxonomy.vocabulary.uwm_provider_resource_doc_type
+    - taxonomy.vocabulary.uwm_provider_resource_media_type
+    - taxonomy.vocabulary.uwm_provider_resource_specialtie
+    - taxonomy.vocabulary.uwm_provider_resource_sub_specia
+    - taxonomy.vocabulary.uwm_provider_resource_video_type
+  module:
+    - panelizer
+    - taxonomy
+    - text
+id: taxonomy_term
+bundles:
+  uwm_accent_colors:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+  uwm_background_colors:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+  uwm_bottom_border_options:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+  uwm_column_widths:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+  uwm_condition_spotlight_type:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+  uwm_icons:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+  uwm_provider_resource_doc_type:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+  uwm_provider_resource_media_type:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+  uwm_provider_resource_specialtie:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+  uwm_provider_resource_sub_specia:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+  uwm_provider_resource_video_type:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default

@@ -145,17 +145,17 @@
     "drupal/trash": "^1.0@alpha",
     "drupal/twig_tweak": "^1.9",
     "drupal/vbo_export": "^2.0",
-        "drupal/views_bulk_edit": "^2.2",
+    "drupal/views_bulk_edit": "^2.2",
     "drupal/views_bulk_operations": "^2.4",
     "drupal/views_taxonomy_term_name_depth": "^1.2",
-        "drupal/views_url_alias": "^1.0",
+    "drupal/views_url_alias": "^1.0",
     "drupal/webform": "5.0-rc3",
     "drupal/xmlsitemap": "^1.0@alpha",
     "drupal/zen": "^7.0@alpha",
     "nategood/httpful": "^0.2.20",
     "uwmweb/ckeditor_bs_grid": "dev-uwm-develop",
     "uwmweb/uwm_paragraphs": "dev-master",
-    "uwmweb/uwmbase": "dev-features/search",
+    "uwmweb/uwmbase": "dev-dev-search",
     "uwmweb/uwmedicineorg_theme": "dev-master"
   },
   "require-dev":
@@ -195,7 +195,10 @@
     },
   "patches": {
       "drupal/media_entity": {
-          "Undefined function media_entity_copy_icons() fix": "./patches/2934599-11.patch"
+          "Undefined function media_entity_copy_icons() fix": "https://www.drupal.org/files/issues/2934599-11.patch"
+      },
+      "drupal/media_entity_image": {
+          "Undefined function media_entity_copy_icons() fix": "https://www.drupal.org/files/issues/2936985-2.patch"
       }
   }
   },

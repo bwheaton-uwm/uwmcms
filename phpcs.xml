@@ -26,6 +26,8 @@
   <exclude-pattern>*/behat</exclude-pattern>
   <exclude-pattern>*/node_modules</exclude-pattern>
   <exclude-pattern>*/vendor</exclude-pattern>
+  <exclude-pattern>*.jpg</exclude-pattern>
+  <exclude-pattern>*.png</exclude-pattern>
   <exclude-pattern>gulpfile.js</exclude-pattern>
 
 </ruleset>

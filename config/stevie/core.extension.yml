@@ -25,6 +25,7 @@ module:
   config: 0
   config_filter: 0
   config_ignore: 0
+  config_split: 0
   config_update: 0
   conflict: 0
   consumers: 0
@@ -98,6 +99,7 @@ module:
   media_entity_instagram: 0
   media_entity_twitter: 0
   media_library: 0
+  menu_export: 0
   menu_ui: 0
   metatag: 0
   metatag_open_graph: 0
@@ -126,6 +128,7 @@ module:
   quickedit: 0
   rabbit_hole: 0
   rdf: 0
+  redirect: 0
   responsive_favicons: 0
   rest: 0
   rh_media: 0
@@ -162,6 +165,7 @@ module:
   vbo_export: 0
   video_embed_field: 0
   video_embed_media: 0
+  views_bulk_edit: 0
   views_bulk_operations: 0
   views_infinite_scroll: 0
   views_ui: 0

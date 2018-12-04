@@ -1,0 +1,28 @@
+
+<div class="container care-now-container">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>{{ "Need emergency care now? Know when and where to go."|t }}</h2>
+
+            <p class="care-now__intro">{{ "Four E.R. locations across the Puget Sound region for emergency care you can rely on, day or night, 24/7."|t }}</p>
+        </div>
+    </div>
+
+    <div class="row flex-row">
+        {#{{ devel_breakpoint() }}#}
+
+        {% for clinic in map_clinics %}
+
+            {% set clinicNid = uwm_get_api_nid(clinic.url) %}
+            {% if clinicNid %}
+                {{ drupal_entity('node', clinicNid, 'card_display') }}
+            {% endif %}
+
+        {% endfor %}
+
+    </div>
+</div>
+
+
+{{ content.field_bottom_content_blocks }}

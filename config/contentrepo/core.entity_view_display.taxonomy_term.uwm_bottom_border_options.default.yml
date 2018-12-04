@@ -1,0 +1,28 @@
+uuid: 9bf48229-77b0-4b2b-a3bb-e7437803d51a
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.uwm_bottom_border_options
+  module:
+    - panelizer
+    - text
+third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
+id: taxonomy_term.uwm_bottom_border_options.default
+targetEntityType: taxonomy_term
+bundle: uwm_bottom_border_options
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

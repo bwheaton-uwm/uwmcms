@@ -1,0 +1,88 @@
+uuid: 5770d3ad-31a3-4f7a-9259-16b16dda3dc7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_sections
+    - node.type.uwm_quiz
+    - paragraphs.paragraphs_type.uwm_quiz_question
+  module:
+    - entity_reference_revisions
+id: node.uwm_quiz.field_uwm_sections
+field_name: field_uwm_sections
+entity_type: node
+bundle: uwm_quiz
+label: Questions
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      uwm_quiz_question: uwm_quiz_question
+    target_bundles_drag_drop:
+      detailed_contact_card:
+        weight: 21
+        enabled: false
+      headshot_card:
+        weight: 22
+        enabled: false
+      uwm_accent_heading:
+        weight: 23
+        enabled: false
+      uwm_accordion:
+        weight: 24
+        enabled: false
+      uwm_accordion_section:
+        weight: 25
+        enabled: false
+      uwm_basic_content:
+        weight: 26
+        enabled: false
+      uwm_block:
+        weight: 27
+        enabled: false
+      uwm_card:
+        weight: 28
+        enabled: false
+      uwm_cta_link:
+        weight: 29
+        enabled: false
+      uwm_featured_story:
+        weight: 30
+        enabled: false
+      uwm_full_html:
+        weight: 31
+        enabled: false
+      uwm_grid:
+        weight: 32
+        enabled: false
+      uwm_image:
+        weight: 33
+        enabled: false
+      uwm_image_hero:
+        weight: 34
+        enabled: false
+      uwm_link_with_icon:
+        weight: 35
+        enabled: false
+      uwm_media:
+        weight: 36
+        enabled: false
+      uwm_modal:
+        weight: 37
+        enabled: false
+      uwm_quiz_question:
+        enabled: true
+        weight: 38
+      uwm_section:
+        weight: 39
+        enabled: false
+      uwm_view:
+        weight: 40
+        enabled: false
+field_type: entity_reference_revisions

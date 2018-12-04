@@ -1,0 +1,152 @@
+uuid: 286cdd17-393b-40dd-ab21-b3535443f9a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.embedded
+    - core.entity_view_mode.media.media_library
+    - core.entity_view_mode.media.thumbnail
+    - core.entity_view_mode.media.uwm_modal
+    - field.field.media.acquia_dam_asset.field_acquiadam_asset_descrip
+    - field.field.media.acquia_dam_asset.field_acquiadam_asset_file
+    - field.field.media.acquia_dam_asset.field_acquiadam_asset_id
+    - field.field.media.acquia_dam_asset.field_media_in_library
+    - field.field.media.audio_file.field_media_audio_file
+    - field.field.media.audio_file.field_media_in_library
+    - field.field.media.document.field_document
+    - field.field.media.document.field_media_in_library
+    - field.field.media.document.field_uwm_parent_page
+    - field.field.media.image.field_media_in_library
+    - field.field.media.image.image
+    - field.field.media.instagram.embed_code
+    - field.field.media.instagram.field_media_in_library
+    - field.field.media.tweet.embed_code
+    - field.field.media.tweet.field_media_in_library
+    - field.field.media.uwm_provider_resource_document.field_media_file
+    - field.field.media.uwm_provider_resource_document.field_media_in_library
+    - field.field.media.uwm_provider_resource_document.field_uwm_description
+    - field.field.media.uwm_provider_resource_document.field_uwm_external_url
+    - field.field.media.uwm_provider_resource_document.field_uwm_prov_res_doc_type
+    - field.field.media.uwm_provider_resource_document.field_uwm_prov_res_media_type
+    - field.field.media.uwm_provider_resource_document.field_uwm_prov_res_specialty
+    - field.field.media.uwm_provider_resource_document.field_uwm_prov_res_sub_specialty
+    - field.field.media.uwm_provider_resource_document.field_uwm_teaser
+    - field.field.media.uwm_provider_resource_document.image
+    - field.field.media.uwm_provider_resource_video.field_media_in_library
+    - field.field.media.uwm_provider_resource_video.field_media_video_embed_field
+    - field.field.media.uwm_provider_resource_video.field_uwm_description
+    - field.field.media.uwm_provider_resource_video.field_uwm_prov_res_media_type
+    - field.field.media.uwm_provider_resource_video.field_uwm_prov_res_specialty
+    - field.field.media.uwm_provider_resource_video.field_uwm_prov_res_sub_specialty
+    - field.field.media.uwm_provider_resource_video.field_uwm_prov_res_video_type
+    - field.field.media.uwm_provider_resource_video.field_uwm_teaser
+    - field.field.media.uwm_provider_resource_video.image
+    - field.field.media.video.field_media_in_library
+    - field.field.media.video.field_media_video_embed_field
+    - field.field.media.video_embed.field_media_in_library
+    - field.field.media.video_embed.field_media_video_embed_field
+    - field.field.media.video_file.field_media_in_library
+    - field.field.media.video_file.field_media_video_file
+    - image.style.medium
+    - image.style.thumbnail
+    - media.type.acquia_dam_asset
+    - media.type.audio_file
+    - media.type.document
+    - media.type.image
+    - media.type.instagram
+    - media.type.tweet
+    - media.type.uwm_provider_resource_document
+    - media.type.uwm_provider_resource_video
+    - media.type.video
+    - media.type.video_embed
+    - media.type.video_file
+  module:
+    - fallback_formatter
+    - file
+    - image
+    - media
+    - media_entity_instagram
+    - media_entity_twitter
+    - text
+    - user
+    - video_embed_field
+id: media
+bundles:
+  acquia_dam_asset:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+      embedded: embedded
+      thumbnail: thumbnail
+  audio_file:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+      embedded: embedded
+      media_library: media_library
+      thumbnail: thumbnail
+  document:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+      embedded: embedded
+      media_library: media_library
+      thumbnail: thumbnail
+  image:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+      embedded: embedded
+      thumbnail: thumbnail
+  instagram:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+      embedded: embedded
+      media_library: media_library
+      thumbnail: thumbnail
+  tweet:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+      embedded: embedded
+      media_library: media_library
+      thumbnail: thumbnail
+  uwm_provider_resource_document:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+  uwm_provider_resource_video:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+  video:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+      embedded: embedded
+      thumbnail: thumbnail
+  video_embed:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+      embedded: embedded
+      uwm_modal: uwm_modal
+  video_file:
+    enable_index: true
+    enable_viewmodes: true
+    rendering:
+      default: default
+      embedded: embedded
+      media_library: media_library
+      thumbnail: thumbnail

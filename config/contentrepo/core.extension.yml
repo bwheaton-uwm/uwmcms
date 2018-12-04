@@ -1,10 +1,11 @@
 module:
+  acquia_connector: 0
+  acquia_contenthub: 0
   admin_toolbar: 0
   admin_toolbar_links_access_filter: 0
   admin_toolbar_tools: 0
   adminimal_admin_toolbar: 0
   allowed_formats: 0
-  acquia_connector: 0
   basic_auth: 0
   better_exposed_filters: 0
   block: 0

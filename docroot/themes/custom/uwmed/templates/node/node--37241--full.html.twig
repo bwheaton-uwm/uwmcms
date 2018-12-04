@@ -1,0 +1,93 @@
+{% extends 'node--uwm-medical-specialty.html.twig' %}
+{% set map_clinics = node.uwmcms_reader_medical_service_clinics %}
+
+{% block libraries %}
+    {{ attach_library('uwmed/googlemaps') }}
+    {{ attach_library('uwmed/uwm-toggle') }}
+    {{ attach_library('uwmed/clinic-hours') }}
+{% endblock libraries %}
+
+{% block hero %}
+    <section>
+        <div class="medical-service-hero">
+            <div class="medical-service-hero__background full-width-image"
+                 style="background-image: url({{ node.field_image.entity.uri.value | image_style('hero') }})"></div>
+            <div class="container container-lg">
+                <div class="row">
+                    <div class="medical-service-hero__content col-lg-7">
+                        <h1 class="medical-service-hero__heading">{{ label }}</h1>
+                        <img class="hero__angle-divider hidden-lg"
+                             src="{{ file_url('themes/custom/uwmed/dist/assets/hero-angle-lines.png') }}"
+                             alt=""/>
+                        {{ content.field_subheading }}
+                    </div>
+                    <div class="hours-wrapper hidden-xs hidden-sm hidden-md">
+                        <p class="opens-at" style="display: block;">
+                            <i class="uw-ico uw-ico-md uwmed-icon__appointment"></i>
+                            <em><strong>Always open</strong></em></p>
+                        <div>
+                            <div class="col-xs-12 col-md-6 clinic-hours-table">
+                                <div class="hidden-xs intro">
+                                    <h4>These locations are open 24 hours a day, 7 days a week.</h4>
+                                    <p><em>If at any point your symptoms worsen or you feel like you are experiencing a medical emergency, call <a href="tel:911">911</a> or proceed to the nearest emergency room.</em></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="medical-specialty__back-button col-xs-12">
+                <a href="/services"><i
+                        class="fa fa-angle-left"></i> Back
+                to Medical Services
+                    <i class="right-border-angle hidden-xs"
+                   aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock hero %}
+
+{% block custom_content %}
+
+    <div class="hours-wrapper hidden-lg">
+        <div class="col-xs-12 col-md-6 clinic-hours-table always-open">
+            <div class="visible-xs-block intro">
+                <h4>
+                    <a role="button" data-toggle="collapse" href="#primaryCareTimes" aria-expanded="false" aria-controls="primaryCareTimes" class="collapsed">
+                        Hours:
+                        <em><strong>Always Open</strong></em>
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    </a>
+                </h4>
+            </div>
+            <div class="hidden-xs intro">
+                <h4>Hours</h4>
+                <p class="opens-at">
+                    <em><strong>Always Open</strong></em>
+                </p>
+            </div>
+
+            <div class="wrapper collapse-mobile collapse" id="primaryCareTimes" aria-expanded="false" style="height: 0px;">
+                <p>These locations are open 24 hours a day, 7 days a week.</p>
+                <p><em>If at any point your symptoms worsen or you feel like you are experiencing a medical emergency, call <a href="tel:911">911</a> or proceed to the nearest emergency room.</em></p>
+            </div>
+        </div>
+    </div>
+    {% include 'node--uwm-medical-service.care-now--emergency-med.html.twig' %}
+    {% include 'node--uwm-medical-service.location-map.html.twig' %}
+{% endblock custom_content %}
+
+{% block common_services %}
+    <section id="block-emergencymedicine"
+             class="block block-block-content clearfix">
+        {{ drupal_entity('block_content', 71) }}
+    </section>
+
+    {{ drupal_entity('block_content', 231) }}
+
+    <section id="block-virtualclinic"
+             class="block block-block-content clearfix">
+        {{ drupal_entity('block_content', 76) }}
+    </section>
+{% endblock common_services %}

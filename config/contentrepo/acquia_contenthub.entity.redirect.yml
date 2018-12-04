@@ -1,0 +1,12 @@
+uuid: d0033455-5a80-43e5-8947-a3b7a8bb13f6
+langcode: en
+status: true
+dependencies:
+  module:
+    - redirect
+id: redirect
+bundles:
+  redirect:
+    enable_index: true
+    enable_viewmodes: false
+    rendering: {  }

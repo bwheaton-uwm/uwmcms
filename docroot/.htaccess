@@ -334,6 +334,7 @@
   RewriteCond %{REQUEST_URI} !^/locations/physical-occupational-therapy-northwest(/)?(?(1).*|$)
   RewriteCond %{REQUEST_URI} !^/locations/neuro-rehabilitation-northwest(/)?(?(1).*|$)
   RewriteCond %{REQUEST_URI} !^/locations/occupational-and-environmental-harborview(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/prosthetics-and-orthotics-eastlake(/)?(?(1).*|$)
   # End Rehab Medicine #
   # Start Radiology #
   RewriteCond %{REQUEST_URI} !^/services/radiology(/)?(?(1)(providers|locations|videos|appointments|radiation-safety)|$)?(?(2).*|$)
@@ -405,6 +406,115 @@
   RewriteCond %{REQUEST_URI} !^/locations/hansens-disease-harborview(/)?(?(1).*|$)
   RewriteCond %{REQUEST_URI} !^/patient-care/ebola(/)?(?(1).*|$)
   # End Infectious Diseases #
+  # Start Surgery #
+  RewriteCond %{REQUEST_URI} !^/services/surgery(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/surgical-specialties-harborview(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/general-surgery-harborview(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/general-surgery-uwmc(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/general-surgery-eastside-specialty-center(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/oral-maxillofacial-surgery-harborview(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/plastic-and-aesthetic-surgery-clinic(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/plastic-and-reconstructive-surgery-uwmc(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/burn-and-plastic-surgery-harborview(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/intestinal-transplant-uwmc(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/plastic-aesthetic-surgery-northwest(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/hepatology-eastside(/)?(?(1).*|$)
+  # End Surgery #
+  # Start Transplant #
+  RewriteCond %{REQUEST_URI} !^/services/transplant(/)?(?(1).*|$)
+  # End Transplant #
+  # Start Reconstructive & Plastic Surgery #
+  RewriteCond %{REQUEST_URI} !^/services/reconstructive-surgery(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/services/surgery/reconstructive-and-plastic-surgery(/)?(?(1).*|$)
+  # End Reconstructive & Plastic Surgery #
+  # Start Medical Genetics #
+  RewriteCond %{REQUEST_URI} !^/services/medical-genetics(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/genetic-medicine-uwmc(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/kidney-genetics-clinic(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/kidney-genetics-clinic-harborview(/)?(?(1).*|$)
+  # End Medical Genetics #
+  # Start Heart Institute #
+  RewriteCond %{REQUEST_URI} !^/locations/cardiology-eastside-specialty-center(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/cardiology-edmonds(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/cardiology-harborview(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/cardiology-uwmc(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/cardiology-imaging-echocardiography-ecg-nuclear-medicine-uwmc(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/summit-cardiology-ballard(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/summit-cardiology-nwhmc(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/cardiac-fitness-northwest(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/transplant-services-uwmc(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/services/heart-institute(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/services/cardiology(/)?(?(1)(providers|locations|referrals-general-cardiology|cardiac-surgery|cardiac-electrophysiology|atrial-fibrillation|interventional-cardiology|adult-congenital-heart-disease|advanced-heart-failure|structural-heart-services|hypertrophic-cardiomyopathy|prosthetic-heart-valve-consult-clinic|cardio-oncology|cardiovascular-genetics)|$)?(?(2).*|$)
+  RewriteCond %{REQUEST_URI} !^/services/transplant/heart-transplant(/)?(?(1).*|$)
+  # End Heart Institute #
+  # Start Kidney Care #
+  RewriteCond %{REQUEST_URI} !^/services/kidney-care(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/services/transplant/kidney-transplant(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/services/kidney(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/glomerular-disease(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/kidney-care-transplantation-services-uwmc(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/kidney-harborview(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/hypertension-harborview(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/services/kidney/kidney-genetics(/)?(?(1).*|$)
+  # End Kidney Care #
+  # Start Diabetes and Endocrinology #
+  RewriteCond %{REQUEST_URI} !^/services/diabetes-endocrinology(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/services/diabetes(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/services/pituitary(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/endocrinology-uwmc(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/endocrinology-diabetes-harborview(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/lipid-northwest-harborview(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/northwest-endocrinology(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/metabolic-bone-disease-uwmc-roosevelt(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/pituitary-uwmc(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/endocrine-tumor-uwmc-roosevelt(/)?(?(1).*|$)
+  # End Diabetes and Endocrinology #
+  # Start Orthopedic Surgery and Sports Medicine #
+  RewriteCond %{REQUEST_URI} !^/services/ssoh(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/services/orthopedic-surgery-sports-medicine(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/services/foot-ankle(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/services/hip-knee(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/services/hes(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/services/sports-medicine(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/advanced-manual-therapy-nwhmc(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/exercise-training-center-uwmc-roosevelt(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/foot-and-ankle-center-hmc(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/foot-and-ankle-center-uwmc-roosevelt(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/hand-elbow-shoulder-center-eastside(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/hand-elbow-shoulder-harborview(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/hand-elbow-shoulder-uwmc-roosevelt(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/hip-and-knee-center-eastside(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/hip-knee-center-northwest(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/hip-knee-center-ballard(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/hip-and-knee-center-uwmc-roosevelt(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/neurological-surgery-uwmc(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/northwest-hospital-foot-and-ankle-clinic(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/orthopaedic-trauma-surgery-harborview(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/orthopedic-oncology-center-uwmc-roosevelt(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/prosthetics-and-orthotics-eastlake(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/spine-center-eastside(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/spine-center-harborview(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/sports-concussion-program-harborview(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/sports-medicine-center-eastside(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/sports-medicine-harborview(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/sports-medicine-center(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/the-sports-medicine-clinic-ballard(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/the-sports-medicine-clinic-nwhmc(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/hand-elbow-nw(/)?(?(1).*|$)
+  # End Orthopedic Surgery and Sports Medicine #
+  # Start Spine Care #
+  RewriteCond %{REQUEST_URI} !^/services/spine(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/services/spine-care(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/neurological-surgery-uwmc(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/northwest-neurosurgery(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/spine-center-eastside(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/spine-center-harborview(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/sports-medicine-center-eastside(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/sports-medicine-harborview(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/sports-medicine-center(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/the-sports-medicine-clinic-ballard(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/the-sports-medicine-clinic-nwhmc(/)?(?(1).*|$)
+  # End Spine Care #
   RewriteRule ^(.*)$ - [CO=uwm-proxied-page-visit:true:%{HTTP_HOST}:0:/,C]
   RewriteRule ^(.*)$ https://www2.uwmedicine.org%{REQUEST_URI} [L,P]
 
@@ -839,6 +949,7 @@
   RewriteCond %{REQUEST_URI} !^/locations/physical-occupational-therapy-northwest(/)?(?(1).*|$)
   RewriteCond %{REQUEST_URI} !^/locations/neuro-rehabilitation-northwest(/)?(?(1).*|$)
   RewriteCond %{REQUEST_URI} !^/locations/occupational-and-environmental-harborview(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/prosthetics-and-orthotics-eastlake(/)?(?(1).*|$)
   # End Rehab Medicine #
   # Start Radiology #
   RewriteCond %{REQUEST_URI} !^/services/radiology(/)?(?(1)(providers|locations|videos|appointments|radiation-safety)|$)?(?(2).*|$)
@@ -961,6 +1072,7 @@
   RewriteCond %{REQUEST_URI} !^/locations/burn-and-plastic-surgery-harborview(/)?(?(1).*|$)
   RewriteCond %{REQUEST_URI} !^/locations/intestinal-transplant-uwmc(/)?(?(1).*|$)
   RewriteCond %{REQUEST_URI} !^/locations/plastic-aesthetic-surgery-northwest(/)?(?(1).*|$)
+  RewriteCond %{REQUEST_URI} !^/locations/hepatology-eastside(/)?(?(1).*|$)
   # End Surgery #
   # Start Rheumatology #
   RewriteCond %{REQUEST_URI} !^/services/rheumatology(/)?(?(1).*|$)

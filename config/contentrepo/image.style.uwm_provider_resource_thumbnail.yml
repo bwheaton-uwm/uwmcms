@@ -1,0 +1,17 @@
+uuid: 93faadb5-2183-4d1b-9104-cea3c285e07f
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: uwm_provider_resource_thumbnail
+label: 'Provider Resource Thumbnail'
+effects:
+  bda76683-2932-4052-b882-bfc951631120:
+    uuid: bda76683-2932-4052-b882-bfc951631120
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 360
+      height: 240
+      crop_type: focal_point
