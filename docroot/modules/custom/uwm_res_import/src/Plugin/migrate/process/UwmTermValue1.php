@@ -28,7 +28,7 @@ class UwmTermValue1 extends ProcessPluginBase {
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
 
-    if($value) {
+    if ($value) {
       $term = \Drupal::service('entity.repository')
         ->loadEntityByUuid('taxonomy_term', $value);
 
