@@ -82,3 +82,9 @@ deploy:
      on:
        tags: true
        php: 7.1
+   - provider: script
+     script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_branch"
+     skip_cleanup: true
+     on:
+       branch: features/search2
+       php: 7.1
