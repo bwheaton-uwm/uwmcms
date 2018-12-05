@@ -6,11 +6,15 @@ dependencies:
     - search_api.index.uwm_providers_search_api_index
     - views.view.uwm_search_providers
   module:
+    - facets_pretty_paths
     - search_api
+third_party_settings:
+  facets_pretty_paths:
+    coder: default_coder
 id: provider_facet_uwmsearchwithin
 name: 'Provider Facet UwmSearchWithin'
-url_alias: provider_facet_uwmsearchwithin
-weight: 0
+url_alias: within
+weight: 1
 min_count: 0
 show_only_one_result: false
 field_identifier: uwmsearchwithin

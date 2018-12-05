@@ -178,3 +178,5 @@ uwm_res_import: 0.0.0
 uwm_drush_commands: 0.0.0
 uwm_commands: 0.0.0
 uwmcs_searchfields: 0.0.0
+facets_pretty_paths: 1.0.0-beta2
+search_api_synonym: 1.2.0

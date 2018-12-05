@@ -166,7 +166,7 @@ $settings['trusted_host_patterns'] = array(
 
 // Set search cores to local instance:
 // config-get search_api.server |grep search;
-$config['search_api.index.uwm_locations_search_api_index']['server'] = 'uwmed_local_solr';
+//$config['search_api.index.uwm_locations_search_api_index']['server'] = 'uwmed_local_solr';
 
 $config['search_api.server.acquia_search_server']['status'] = FALSE;
 $config['search_api.server.uwmed_local_solr']['status'] = TRUE;

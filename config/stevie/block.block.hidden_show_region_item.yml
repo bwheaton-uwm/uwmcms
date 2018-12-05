@@ -1,0 +1,25 @@
+uuid: 497b677f-6f0a-4a6c-af04-634b26f8ceea
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - uwmbase
+id: hidden_show_region_item
+theme: uwmbase
+region: content_top
+weight: 0
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: hidden_show_region_item
+  provider: core
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '/search*'
+    negate: false
+    context_mapping: {  }

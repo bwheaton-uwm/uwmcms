@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fcde4334ebd18f8e6157e529aa3711d7",
+    "content-hash": "8aa5d804b16606975feae3a5d79ba0eb",
     "packages": [
         {
             "name": "acquia/blt",
@@ -6889,6 +6889,63 @@
             }
         },
         {
+            "name": "drupal/facets_pretty_paths",
+            "version": "1.0.0-beta2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/facets_pretty_paths",
+                "reference": "8.x-1.0-beta2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/facets_pretty_paths-8.x-1.0-beta2.zip",
+                "reference": "8.x-1.0-beta2",
+                "shasum": "bba4c51b18e4f2eb83b67f50224530b0f88be540"
+            },
+            "require": {
+                "drupal/core": "~8.0",
+                "drupal/facets": "*",
+                "drupal/pathauto": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-beta2",
+                    "datestamp": "1526299084",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "StryKaizer",
+                    "homepage": "https://www.drupal.org/user/462700"
+                },
+                {
+                    "name": "Upchuk",
+                    "homepage": "https://www.drupal.org/user/1885838"
+                },
+                {
+                    "name": "dasjo",
+                    "homepage": "https://www.drupal.org/user/228295"
+                }
+            ],
+            "description": "Pretty paths for Facets.",
+            "homepage": "https://www.drupal.org/project/facets_pretty_paths",
+            "support": {
+                "source": "http://cgit.drupalcode.org/facets_pretty_paths"
+            }
+        },
+        {
             "name": "drupal/fallback_formatter",
             "version": "1.0.0",
             "source": {
@@ -11928,6 +11985,57 @@
                 "source": "http://git.drupal.org/project/search_api_solr.git",
                 "issues": "https://www.drupal.org/project/issues/search_api_solr",
                 "irc": "irc://irc.freenode.org/drupal-search-api"
+            }
+        },
+        {
+            "name": "drupal/search_api_synonym",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/search_api_synonym",
+                "reference": "8.x-1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/search_api_synonym-8.x-1.2.zip",
+                "reference": "8.x-1.2",
+                "shasum": "2f59562bf268eb5cceba84fbef070753aaf68b52"
+            },
+            "require": {
+                "drupal/core": "^8.2.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.2",
+                    "datestamp": "1500888242",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "beltofte",
+                    "homepage": "https://www.drupal.org/user/151799"
+                }
+            ],
+            "description": "Managing of search synonyms in Drupal.",
+            "homepage": "https://www.drupal.org/project/search_api_synonym",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/search_api_synonym",
+                "issues": "http://drupal.org/project/issues/search_api_synonym"
             }
         },
         {
@@ -21970,6 +22078,7 @@
         "drupal/deploy": 10,
         "drupal/disqus": 5,
         "drupal/entityqueue": 15,
+        "drupal/facets_pretty_paths": 10,
         "drupal/fb_instant_articles": 20,
         "drupal/field_group": 5,
         "drupal/focal_point": 10,
