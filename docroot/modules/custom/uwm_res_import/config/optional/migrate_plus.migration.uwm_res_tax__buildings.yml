@@ -44,6 +44,7 @@ source:
 
 
 process:
+
   uuid: uuid
   tid: term_id
   name: name
@@ -51,42 +52,42 @@ process:
 
   field_res_address/country_code:
     plugin: extract
-      source: field_res_address
-      index:
-          - country_code
+    source: field_res_address
+    index:
+       - country_code
   field_res_address/administrative_area:
     plugin: extract
-      source: field_res_address
-      index:
-        - administrative_area
+    source: field_res_address
+    index:
+      - administrative_area
   field_res_address/locality:
     plugin: extract
-      source: field_res_address
-      index:
-        - locality
+    source: field_res_address
+    index:
+      - locality
   field_res_address/postal_code:
     plugin: extract
-      source: field_res_address
-      index:
-        - postal_code
+    source: field_res_address
+    index:
+      - postal_code
   field_res_address/address_line1:
     plugin: extract
-      source: field_res_address
-      index:
-        - address_line1
+    source: field_res_address
+    index:
+      - address_line1
   field_res_address/address_line2:
     plugin: extract
-      source: field_res_address
-      index:
-        - address_line2
+    source: field_res_address
+    index:
+      - address_line2
 
   field_res_coordinates/lat:
     plugin: extract
-      source: field_res_coordinates
-      index:
-        - lat
+    source: field_res_coordinates
+    index:
+      - lat
   field_res_coordinates/lng:
     plugin: extract
-      source: field_res_coordinates
-      index:
-        - lng
+    source: field_res_coordinates
+    index:
+      - lng

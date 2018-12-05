@@ -67,6 +67,19 @@ function uwm_res_import_clinics3_source_urls() {
 
 }
 
+
+/**
+ * Provides array of URLs for migration source.
+ *
+ * @return array
+ *   Description here.
+ */
+function uwm_res_import_clinics5_source_urls() {
+
+ return uwm_res_import_clinics3_source_urls();
+
+}
+
 /**
  * Provides array of URLs for migration source.
  *
