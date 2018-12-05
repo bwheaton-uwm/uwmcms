@@ -176,14 +176,9 @@ source:
       selector: /relationships/field_res_medical_services/data
 
     -
-      name: field_res_medical_services1
-      label: field_res_medical_services1
-      selector: /relationships/field_res_medical_services/data
-
-    -
       name: field_res_providers
       label: field_res_providers
-      selector: /relationships/field_res_providers
+      selector: /relationships/field_res_providers/data
 
 
 process:
@@ -247,17 +242,22 @@ process:
     -
       plugin: entity_generate
 
-  field_test_m_services1:
-    plugin: sub_process
-    source: field_res_medical_services1
-    process:
-      target_id:
-      -
-        plugin: uwm_term_value1
-        source: id
-      -
-        plugin: skip_on_empty
-        method: process
+  field_res_building:
+    -
+      plugin: uwm_term_uuid_to_tid
+      source: field_res_building
+    -
+      plugin: skip_on_empty
+      method: process
+
+  field_res_providers:
+  -
+    plugin: uwm_node_uuid_to_nid
+    source: field_res_providers
+  -
+    plugin: skip_on_empty
+    method: process
+
 
 #  field_test_m_services2:
 #    plugin: entity_generate
