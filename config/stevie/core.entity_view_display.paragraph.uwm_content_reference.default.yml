@@ -1,0 +1,28 @@
+uuid: 3ffd590e-3164-4b13-8f2e-285f20d41a79
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_content_reference.field_uwm_content_reference
+    - paragraphs.paragraphs_type.uwm_content_reference
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: paragraph.uwm_content_reference.default
+targetEntityType: paragraph
+bundle: uwm_content_reference
+mode: default
+content:
+  field_uwm_content_reference:
+    weight: 0
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden: {  }

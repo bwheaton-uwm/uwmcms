@@ -8,12 +8,14 @@ dependencies:
     - field.field.paragraph.uwm_featured_story.field_uwm_card_content
     - field.field.paragraph.uwm_featured_story.field_uwm_image
     - field.field.paragraph.uwm_featured_story.field_uwm_modal
+    - field.field.paragraph.uwm_featured_story.uwm_text
     - paragraphs.paragraphs_type.uwm_featured_story
   module:
     - entity_browser
     - field_layout
     - layout_discovery
     - paragraphs
+    - text
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -24,13 +26,13 @@ bundle: uwm_featured_story
 mode: default
 content:
   field_uwm_bottom_border_options:
-    weight: 1
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_uwm_card_content:
-    weight: 2
+    weight: 3
     settings:
       title: Component
       title_plural: Components
@@ -40,12 +42,16 @@ content:
       add_mode: button
       form_display_mode: default
       default_paragraph_type: uwm_basic_content
+      closed_mode_threshold: 0
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
     third_party_settings: {  }
     type: paragraphs
     region: content
   field_uwm_image:
     type: entity_browser_file
-    weight: 0
+    weight: 1
     settings:
       entity_browser: image_browser
       field_widget_remove: true
@@ -58,7 +64,7 @@ content:
     third_party_settings: {  }
   field_uwm_modal:
     type: paragraphs
-    weight: 3
+    weight: 4
     settings:
       title: Modal
       title_plural: Modals
@@ -68,7 +74,19 @@ content:
       add_mode: button
       form_display_mode: default
       default_paragraph_type: _none
+      closed_mode_threshold: 0
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
     third_party_settings: {  }
+    region: content
+  uwm_text:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
     region: content
 hidden:
   created: true

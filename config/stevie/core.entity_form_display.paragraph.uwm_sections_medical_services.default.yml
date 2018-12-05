@@ -1,0 +1,63 @@
+uuid: e645eabf-be1e-49d8-b080-cbe5c88b1d9f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_sections_medical_services.field_uwm_background_color
+    - field.field.paragraph.uwm_sections_medical_services.field_uwm_component
+    - field.field.paragraph.uwm_sections_medical_services.field_uwm_section_heading
+    - paragraphs.paragraphs_type.uwm_sections_medical_services
+  module:
+    - field_layout
+    - layout_discovery
+    - paragraphs
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: paragraph.uwm_sections_medical_services.default
+targetEntityType: paragraph
+bundle: uwm_sections_medical_services
+mode: default
+content:
+  field_uwm_background_color:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_uwm_component:
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+        add_above: '0'
+    third_party_settings: {  }
+    type: paragraphs
+    region: content
+  field_uwm_section_heading:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

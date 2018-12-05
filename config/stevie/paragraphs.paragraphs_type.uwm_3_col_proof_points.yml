@@ -1,0 +1,9 @@
+uuid: 918445bd-4c59-451b-80cc-566757b86082
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_3_col_proof_points
+label: '3-Column Proof Points'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

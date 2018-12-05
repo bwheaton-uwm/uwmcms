@@ -1,0 +1,32 @@
+uuid: c34baa5b-69c5-4393-b589-d5baf0d09b0a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_content_reference.field_uwm_content_reference
+    - paragraphs.paragraphs_type.uwm_content_reference
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: paragraph.uwm_content_reference.default
+targetEntityType: paragraph
+bundle: uwm_content_reference
+mode: default
+content:
+  field_uwm_content_reference:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

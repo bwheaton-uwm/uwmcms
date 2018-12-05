@@ -1,0 +1,28 @@
+uuid: ea08b9cb-c3b3-4c25-afb0-81a777416241
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_parent_page
+    - node.type.uwm_medical_service
+    - node.type.uwm_medical_specialty
+id: node.uwm_medical_specialty.field_uwm_parent_page
+field_name: field_uwm_parent_page
+entity_type: node
+bundle: uwm_medical_specialty
+label: 'Parent Medical Service'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      uwm_medical_service: uwm_medical_service
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

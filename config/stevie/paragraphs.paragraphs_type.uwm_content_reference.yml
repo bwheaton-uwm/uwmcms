@@ -1,0 +1,9 @@
+uuid: 64756279-51dd-4e4c-a0b5-a2533ab407a8
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_content_reference
+label: 'Content Reference'
+icon_uuid: null
+description: 'Embed another piece of content on this page (quiz, condition spotlight).'
+behavior_plugins: {  }

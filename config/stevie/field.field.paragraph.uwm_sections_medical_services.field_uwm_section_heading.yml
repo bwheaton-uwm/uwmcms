@@ -1,0 +1,28 @@
+uuid: c1a26ff7-860a-4bde-b983-2fdad275c5e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_section_heading
+    - paragraphs.paragraphs_type.uwm_sections_medical_services
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: '0'
+    unrestricted: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: paragraph.uwm_sections_medical_services.field_uwm_section_heading
+field_name: field_uwm_section_heading
+entity_type: paragraph
+bundle: uwm_sections_medical_services
+label: 'Section Heading (H2)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

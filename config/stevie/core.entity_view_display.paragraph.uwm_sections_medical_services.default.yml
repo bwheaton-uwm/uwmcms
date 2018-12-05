@@ -1,0 +1,48 @@
+uuid: ac5816e8-89bc-4792-942b-01b9ca6a7b04
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_sections_medical_services.field_uwm_background_color
+    - field.field.paragraph.uwm_sections_medical_services.field_uwm_component
+    - field.field.paragraph.uwm_sections_medical_services.field_uwm_section_heading
+    - paragraphs.paragraphs_type.uwm_sections_medical_services
+  module:
+    - entity_reference_revisions
+    - field_layout
+    - layout_discovery
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: paragraph.uwm_sections_medical_services.default
+targetEntityType: paragraph
+bundle: uwm_sections_medical_services
+mode: default
+content:
+  field_uwm_background_color:
+    weight: 2
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_uwm_component:
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_uwm_section_heading:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

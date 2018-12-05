@@ -1,0 +1,111 @@
+uuid: 01eeeae8-f006-4a6b-9547-3b36041163bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_sections
+    - node.type.uwm_medical_service
+    - paragraphs.paragraphs_type.uwm_featured_story
+    - paragraphs.paragraphs_type.uwm_sections_medical_services
+  module:
+    - entity_reference_revisions
+id: node.uwm_medical_service.field_uwm_sections
+field_name: field_uwm_sections
+entity_type: node
+bundle: uwm_medical_service
+label: Sections
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      uwm_featured_story: uwm_featured_story
+      uwm_sections_medical_services: uwm_sections_medical_services
+    target_bundles_drag_drop:
+      award:
+        weight: 27
+        enabled: false
+      board_certification:
+        weight: 28
+        enabled: false
+      degree:
+        weight: 29
+        enabled: false
+      detailed_contact_card:
+        weight: 30
+        enabled: false
+      education_history:
+        weight: 31
+        enabled: false
+      headshot_card:
+        weight: 32
+        enabled: false
+      hours_for_day:
+        weight: 33
+        enabled: false
+      hours_of_operation:
+        weight: 34
+        enabled: false
+      uwm_3_col_proof_points:
+        weight: 35
+        enabled: false
+      uwm_accordion:
+        weight: 36
+        enabled: false
+      uwm_accordion_section:
+        weight: 37
+        enabled: false
+      uwm_accordion_sub_section:
+        weight: 38
+        enabled: false
+      uwm_basic_content:
+        weight: 39
+        enabled: false
+      uwm_block:
+        weight: 40
+        enabled: false
+      uwm_card:
+        weight: 41
+        enabled: false
+      uwm_cta_link:
+        weight: 42
+        enabled: false
+      uwm_featured_story:
+        enabled: true
+        weight: 43
+      uwm_full_html:
+        weight: 44
+        enabled: false
+      uwm_grid:
+        weight: 45
+        enabled: false
+      uwm_image:
+        weight: 46
+        enabled: false
+      uwm_image_hero:
+        weight: 47
+        enabled: false
+      uwm_link_with_icon:
+        weight: 48
+        enabled: false
+      uwm_media:
+        weight: 49
+        enabled: false
+      uwm_modal:
+        weight: 50
+        enabled: false
+      uwm_section:
+        weight: 51
+        enabled: false
+      uwm_view:
+        weight: 52
+        enabled: false
+      uwm_sections_medical_services:
+        enabled: true
+        weight: 53
+field_type: entity_reference_revisions

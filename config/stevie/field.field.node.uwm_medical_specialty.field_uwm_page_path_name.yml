@@ -1,0 +1,19 @@
+uuid: 11048746-d813-43f8-bde0-579c4fbfc0f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_page_path_name
+    - node.type.uwm_medical_specialty
+id: node.uwm_medical_specialty.field_uwm_page_path_name
+field_name: field_uwm_page_path_name
+entity_type: node
+bundle: uwm_medical_specialty
+label: 'Page URL Name'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,103 @@
+uuid: 6825ea27-4ee7-4993-9279-dfa6c7d6d334
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_columns
+    - paragraphs.paragraphs_type.uwm_3_col_proof_points
+    - paragraphs.paragraphs_type.uwm_card
+  module:
+    - entity_reference_revisions
+id: paragraph.uwm_3_col_proof_points.field_uwm_columns
+field_name: field_uwm_columns
+entity_type: paragraph
+bundle: uwm_3_col_proof_points
+label: Columns
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      uwm_card: uwm_card
+    target_bundles_drag_drop:
+      award:
+        weight: 26
+        enabled: false
+      board_certification:
+        weight: 27
+        enabled: false
+      degree:
+        weight: 28
+        enabled: false
+      detailed_contact_card:
+        weight: 29
+        enabled: false
+      education_history:
+        weight: 30
+        enabled: false
+      headshot_card:
+        weight: 31
+        enabled: false
+      hours_for_day:
+        weight: 32
+        enabled: false
+      hours_of_operation:
+        weight: 33
+        enabled: false
+      uwm_3_col_proof_points:
+        weight: 34
+        enabled: false
+      uwm_accordion:
+        weight: 35
+        enabled: false
+      uwm_accordion_section:
+        weight: 36
+        enabled: false
+      uwm_basic_content:
+        weight: 37
+        enabled: false
+      uwm_block:
+        weight: 38
+        enabled: false
+      uwm_card:
+        enabled: true
+        weight: 39
+      uwm_cta_link:
+        weight: 40
+        enabled: false
+      uwm_featured_story:
+        weight: 41
+        enabled: false
+      uwm_full_html:
+        weight: 42
+        enabled: false
+      uwm_grid:
+        weight: 43
+        enabled: false
+      uwm_image:
+        weight: 44
+        enabled: false
+      uwm_image_hero:
+        weight: 45
+        enabled: false
+      uwm_link_with_icon:
+        weight: 46
+        enabled: false
+      uwm_media:
+        weight: 47
+        enabled: false
+      uwm_modal:
+        weight: 48
+        enabled: false
+      uwm_section:
+        weight: 49
+        enabled: false
+      uwm_view:
+        weight: 50
+        enabled: false
+field_type: entity_reference_revisions

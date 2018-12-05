@@ -1,0 +1,30 @@
+uuid: d0da8767-92c2-429a-ad13-a4c696a3778e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_3_col_proof_points.field_uwm_columns
+    - paragraphs.paragraphs_type.uwm_3_col_proof_points
+  module:
+    - entity_reference_revisions
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: paragraph.uwm_3_col_proof_points.default
+targetEntityType: paragraph
+bundle: uwm_3_col_proof_points
+mode: default
+content:
+  field_uwm_columns:
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden: {  }

@@ -1,0 +1,21 @@
+uuid: b7982f8a-e3cc-49de-9080-91233d5210c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_content_reference
+    - paragraphs.paragraphs_type.uwm_content_reference
+id: paragraph.uwm_content_reference.field_uwm_content_reference
+field_name: field_uwm_content_reference
+entity_type: paragraph
+bundle: uwm_content_reference
+label: 'Content Reference'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings: {  }
+field_type: entity_reference

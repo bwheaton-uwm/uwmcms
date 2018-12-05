@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.paragraph.uwm_accordion_section_body
     - paragraphs.paragraphs_type.uwm_accordion_section
+    - paragraphs.paragraphs_type.uwm_accordion_sub_section
     - paragraphs.paragraphs_type.uwm_basic_content
     - paragraphs.paragraphs_type.uwm_full_html
     - paragraphs.paragraphs_type.uwm_grid
@@ -32,6 +33,7 @@ settings:
       uwm_media: uwm_media
       uwm_full_html: uwm_full_html
       uwm_grid: uwm_grid
+      uwm_accordion_sub_section: uwm_accordion_sub_section
     target_bundles_drag_drop:
       uwm_basic_content:
         enabled: true
@@ -72,4 +74,43 @@ settings:
       uwm_grid:
         enabled: true
         weight: 21
+      award:
+        weight: 27
+        enabled: false
+      board_certification:
+        weight: 28
+        enabled: false
+      degree:
+        weight: 29
+        enabled: false
+      education_history:
+        weight: 31
+        enabled: false
+      hours_for_day:
+        weight: 33
+        enabled: false
+      hours_of_operation:
+        weight: 34
+        enabled: false
+      uwm_3_col_proof_points:
+        weight: 35
+        enabled: false
+      uwm_accordion_sub_section:
+        enabled: true
+        weight: 38
+      uwm_card:
+        weight: 41
+        enabled: false
+      uwm_cta_link:
+        weight: 42
+        enabled: false
+      uwm_featured_story:
+        weight: 43
+        enabled: false
+      uwm_image:
+        weight: 46
+        enabled: false
+      uwm_modal:
+        weight: 50
+        enabled: false
 field_type: entity_reference_revisions

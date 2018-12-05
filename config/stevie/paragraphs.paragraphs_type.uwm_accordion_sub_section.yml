@@ -1,0 +1,9 @@
+uuid: ca391aaf-03fb-4ff3-ae7b-a198849b987c
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_accordion_sub_section
+label: 'Accordion Sub-section'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

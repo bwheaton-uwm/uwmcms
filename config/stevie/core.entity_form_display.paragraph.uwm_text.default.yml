@@ -1,0 +1,32 @@
+uuid: 45f0b22f-3851-44d3-b9ea-a58166c25393
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_text.uwm_text
+    - paragraphs.paragraphs_type.uwm_text
+  module:
+    - field_layout
+    - layout_discovery
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: paragraph.uwm_text.default
+targetEntityType: paragraph
+bundle: uwm_text
+mode: default
+content:
+  uwm_text:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

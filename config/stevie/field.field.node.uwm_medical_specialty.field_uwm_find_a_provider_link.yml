@@ -1,0 +1,19 @@
+uuid: 3d9f7ca5-d9b5-49ed-b3c4-5c52a331e531
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_find_a_provider_link
+    - node.type.uwm_medical_specialty
+id: node.uwm_medical_specialty.field_uwm_find_a_provider_link
+field_name: field_uwm_find_a_provider_link
+entity_type: node
+bundle: uwm_medical_specialty
+label: 'Find a Provider Link'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,26 @@
+uuid: 54281fca-8777-4d0f-885d-7c586e75015a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.uwm_medical_service
+  module:
+    - field_layout
+    - layout_discovery
+    - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: node.uwm_medical_service.teaser
+targetEntityType: node
+bundle: uwm_medical_service
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

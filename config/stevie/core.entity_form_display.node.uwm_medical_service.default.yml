@@ -1,0 +1,139 @@
+uuid: 38b34127-0631-4e16-b152-3768741626d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.image_browser
+    - field.field.node.uwm_medical_service.field_meta_tags
+    - field.field.node.uwm_medical_service.field_uwm_find_a_location_link
+    - field.field.node.uwm_medical_service.field_uwm_find_a_provider_link
+    - field.field.node.uwm_medical_service.field_uwm_image
+    - field.field.node.uwm_medical_service.field_uwm_medical_service
+    - field.field.node.uwm_medical_service.field_uwm_page_path_name
+    - field.field.node.uwm_medical_service.field_uwm_sections
+    - node.type.uwm_medical_service
+  module:
+    - content_moderation
+    - entity_browser
+    - field_layout
+    - layout_discovery
+    - metatag
+    - paragraphs
+    - path
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: node.uwm_medical_service.default
+targetEntityType: node
+bundle: uwm_medical_service
+mode: default
+content:
+  field_meta_tags:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
+    region: content
+  field_uwm_find_a_location_link:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_uwm_find_a_provider_link:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_uwm_image:
+    type: entity_browser_file
+    weight: 1
+    settings:
+      entity_browser: image_browser
+      field_widget_edit: true
+      field_widget_remove: true
+      view_mode: default
+      preview_image_style: thumbnail
+      open: true
+      selection_mode: selection_append
+    region: content
+    third_party_settings: {  }
+  field_uwm_medical_service:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_uwm_page_path_name:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_uwm_sections:
+    weight: 6
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+        add_above: '0'
+    third_party_settings: {  }
+    type: paragraphs
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 8
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 9
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  promote: true
+  sticky: true
+  uid: true

@@ -7,12 +7,14 @@ dependencies:
     - field.field.paragraph.uwm_featured_story.field_uwm_card_content
     - field.field.paragraph.uwm_featured_story.field_uwm_image
     - field.field.paragraph.uwm_featured_story.field_uwm_modal
+    - field.field.paragraph.uwm_featured_story.uwm_text
     - paragraphs.paragraphs_type.uwm_featured_story
   module:
     - entity_reference_revisions
     - field_layout
     - image
     - layout_discovery
+    - text
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -56,5 +58,12 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
+  uwm_text:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
     region: content
 hidden: {  }

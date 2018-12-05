@@ -1,0 +1,9 @@
+uuid: 6912c8e1-acb2-42d7-8bf8-dfb42b74fb7a
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_sections_medical_services
+label: 'Sections for Medical Services'
+icon_uuid: null
+description: 'Components that can be added to a section for Medical Service and Medical Specialty pages.'
+behavior_plugins: {  }

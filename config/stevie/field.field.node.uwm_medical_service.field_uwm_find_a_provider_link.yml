@@ -1,0 +1,19 @@
+uuid: 7e73587f-69e9-41e8-a92c-22524712f7ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_find_a_provider_link
+    - node.type.uwm_medical_service
+id: node.uwm_medical_service.field_uwm_find_a_provider_link
+field_name: field_uwm_find_a_provider_link
+entity_type: node
+bundle: uwm_medical_service
+label: 'Find a Provider Link'
+description: 'When a user clicks "Find a Provider" on this page, where should they go?'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
