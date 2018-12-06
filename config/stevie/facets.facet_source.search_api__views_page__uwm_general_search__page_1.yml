@@ -1,0 +1,9 @@
+uuid: 24a86dd6-c9b8-4bb7-b1c1-ecd9c97fd454
+langcode: en
+status: true
+dependencies: {  }
+id: search_api__views_page__uwm_general_search__page_1
+name: 'search_api:views_page__uwm_general_search__page_1'
+filter_key: null
+url_processor: query_string
+breadcrumb: {  }

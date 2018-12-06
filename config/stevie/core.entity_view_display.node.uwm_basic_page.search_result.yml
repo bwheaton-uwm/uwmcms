@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.search_result
     - field.field.node.uwm_basic_page.field_meta_tags
+    - field.field.node.uwm_basic_page.field_res_medical_services
     - field.field.node.uwm_basic_page.field_uwm_hero
     - field.field.node.uwm_basic_page.field_uwm_page_path_name
     - field.field.node.uwm_basic_page.field_uwm_parent_page
@@ -31,6 +32,14 @@ targetEntityType: node
 bundle: uwm_basic_page
 mode: search_result
 content:
+  field_res_medical_services:
+    type: entity_reference_label
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
   field_uwm_hero:
     type: entity_reference_revisions_entity_view
     weight: 0

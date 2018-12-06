@@ -4,11 +4,14 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_res_affiliates
+    - field.storage.node.body
+    - field.storage.node.field_res_building
     - field.storage.node.field_res_fax_number
     - field.storage.node.field_res_medical_services
+    - field.storage.taxonomy_term.field_term_keywords
     - field.storage.node.field_res_phone_number
-    - field.storage.node.field_res_building
     - search_api.server.database
+    - core.entity_view_mode.node.search_result
   module:
     - taxonomy
     - node
@@ -19,6 +22,14 @@ name: 'UWM Locations - Search API Index'
 description: ''
 read_only: false
 field_settings:
+  body:
+    label: Body
+    datasource_id: 'entity:node'
+    property_path: body
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.body
   field_res_affiliates:
     label: Affiliates
     datasource_id: 'entity:node'
@@ -27,6 +38,30 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_affiliates
+  field_res_affiliates_entity_name:
+    label: 'Affiliates » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_affiliates:entity:name'
+    type: text
+    boost: !!float 3
+    dependencies:
+      config:
+        - field.storage.node.field_res_affiliates
+      module:
+        - taxonomy
+        - taxonomy
+  field_res_building_entity_name:
+    label: 'Building » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_building:entity:name'
+    type: text
+    boost: !!float 5
+    dependencies:
+      config:
+        - field.storage.node.field_res_building
+      module:
+        - taxonomy
+        - taxonomy
   field_res_fax_number:
     label: 'Fax Number'
     datasource_id: 'entity:node'
@@ -44,27 +79,7 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_medical_services
-  field_res_phone_number:
-    label: 'Phone Number'
-    datasource_id: 'entity:node'
-    property_path: field_res_phone_number
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_res_phone_number
-  name:
-    label: 'Building » Taxonomy term » Name'
-    datasource_id: 'entity:node'
-    property_path: 'field_res_building:entity:name'
-    type: text
-    boost: !!float 5
-    dependencies:
-      config:
-        - field.storage.node.field_res_building
-      module:
-        - taxonomy
-        - taxonomy
-  name_1:
+  field_res_medical_services_entity_name:
     label: 'Medical Services » Taxonomy term » Name'
     datasource_id: 'entity:node'
     property_path: 'field_res_medical_services:entity:name'
@@ -76,18 +91,46 @@ field_settings:
       module:
         - taxonomy
         - taxonomy
-  name_2:
-    label: 'Affiliates » Taxonomy term » Name'
+  field_res_phone_number:
+    label: 'Phone Number'
     datasource_id: 'entity:node'
-    property_path: 'field_res_affiliates:entity:name'
+    property_path: field_res_phone_number
     type: text
-    boost: !!float 3
     dependencies:
       config:
-        - field.storage.node.field_res_affiliates
+        - field.storage.node.field_res_phone_number
+  field_term_keywords:
+    label: 'Medical Services » Taxonomy term » Term Keywords'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_medical_services:entity:field_term_keywords'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_medical_services
+        - field.storage.taxonomy_term.field_term_keywords
+      module:
+        - taxonomy
+  parent:
+    label: 'Medical Services » Taxonomy term » Term Parents'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_medical_services:entity:parent'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_res_medical_services
       module:
         - taxonomy
         - taxonomy
+  rendered_item:
+    label: 'Rendered HTML output'
+    property_path: rendered_item
+    type: text
+    configuration:
+      roles:
+        anonymous: anonymous
+      view_mode:
+        'entity:node':
+          res_clinic: search_result
   title:
     label: Title
     datasource_id: 'entity:node'
@@ -114,7 +157,87 @@ processor_settings:
   UwmSearchWithin: {  }
   add_url: {  }
   aggregated_field: {  }
+  ignore_character:
+    all_fields: false
+    fields:
+      - body
+      - field_res_affiliates
+      - field_res_affiliates_entity_name
+      - field_res_building_entity_name
+      - field_res_fax_number
+      - field_res_medical_services
+      - field_res_medical_services_entity_name
+      - field_res_phone_number
+      - field_term_keywords
+      - rendered_item
+      - title
+      - uwmsearchwithin
+    ignorable: '[''¿¡!?,.:;]'
+    strip:
+      character_sets:
+        Cc: 0
+        Cf: 0
+        Co: 0
+        Mc: 0
+        Me: 0
+        Mn: 0
+        Pc: Pc
+        Pd: Pd
+        Pe: Pe
+        Pf: Pf
+        Pi: Pi
+        Po: Po
+        Ps: Ps
+        Sc: 0
+        Sk: 0
+        Sm: 0
+        So: 0
+        Zl: 0
+        Zp: 0
+        Zs: 0
+    weights:
+      preprocess_index: -10
+      preprocess_query: -10
+  ignorecase:
+    all_fields: false
+    fields:
+      - body
+      - field_res_affiliates
+      - field_res_affiliates_entity_name
+      - field_res_building_entity_name
+      - field_res_fax_number
+      - field_res_medical_services
+      - field_res_medical_services_entity_name
+      - field_res_phone_number
+      - field_term_keywords
+      - rendered_item
+      - title
+      - uwmsearchwithin
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
   rendered_item: {  }
+  reverse_entity_references: {  }
+  tokenizer:
+    all_fields: false
+    fields:
+      - body
+      - field_res_affiliates
+      - field_res_affiliates_entity_name
+      - field_res_building_entity_name
+      - field_res_fax_number
+      - field_res_medical_services
+      - field_res_medical_services_entity_name
+      - field_res_phone_number
+      - field_term_keywords
+      - rendered_item
+      - title
+    spaces: ''
+    overlap_cjk: 1
+    minimum_word_size: '3'
+    weights:
+      preprocess_index: -6
+      preprocess_query: -6
 tracker_settings:
   default:
     indexing_order: fifo

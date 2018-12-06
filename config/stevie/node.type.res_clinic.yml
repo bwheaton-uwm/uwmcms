@@ -1,13 +1,7 @@
 uuid: a74884f7-fe28-4fae-ad46-1a20d5a72f2b
 langcode: en
 status: true
-dependencies:
-  module:
-    - menu_ui
-third_party_settings:
-  menu_ui:
-    available_menus: {  }
-    parent: ''
+dependencies: {  }
 _core:
   default_config_hash: tHcl7lWuXvx5e9YwiM1XOboUyAvVEcHDrxzL8MSNsnI
 name: 'Res Clinic'

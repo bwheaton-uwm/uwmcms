@@ -191,7 +191,7 @@ display:
           fields: {  }
           plugin_id: search_api_fulltext
       sorts: {  }
-      title: 'UWM Search Providers'
+      title: 'Find a doctor'
       header:
         result:
           id: result

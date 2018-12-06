@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.res_clinic.body
     - field.field.node.res_clinic.field_res_affiliates
     - field.field.node.res_clinic.field_res_box_number
     - field.field.node.res_clinic.field_res_building
@@ -20,10 +21,6 @@ dependencies:
     - field.field.node.res_clinic.field_res_phone_number
     - field.field.node.res_clinic.field_res_providers
     - field.field.node.res_clinic.field_res_room_number
-    - field.field.node.res_clinic.field_test_m_services1
-    - field.field.node.res_clinic.field_test_m_services2
-    - field.field.node.res_clinic.field_test_m_services3
-    - field.field.node.res_clinic.field_testing_top_content
     - field.field.node.res_clinic.uwm_unique_id
     - node.type.res_clinic
   module:
@@ -113,8 +110,5 @@ hidden:
   field_res_iscallcenterserviced: true
   field_res_meta_tags: true
   field_res_providers: true
-  field_test_m_services1: true
-  field_test_m_services2: true
   field_test_m_services3: true
-  field_testing_top_content: true
   uwm_unique_id: true

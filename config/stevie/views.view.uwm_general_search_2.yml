@@ -1,17 +1,19 @@
-uuid: a0be4e2a-e0a3-4d58-a851-2910f96d05ca
+uuid: 5c802702-801d-409b-ab29-248ea500c631
 langcode: en
 status: true
 dependencies:
   config:
-    - search_api.index.uwm_locations_search_api_index
+    - field.storage.node.body
+    - search_api.index.uwm_general_search_api_index_2
   module:
     - search_api
-id: uwm_locations_search
-label: 'UWM Locations Search'
+    - text
+id: uwm_general_search_2
+label: 'UWM General Search 2'
 module: views
 description: ''
 tag: ''
-base_table: search_api_index_uwm_locations_search_api_index
+base_table: search_api_index_uwm_general_search_api_index_2
 base_field: search_api_id
 core: 8.x
 display:
@@ -39,13 +41,13 @@ display:
           reset_button: true
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
-          expose_sort_order: false
+          expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
       pager:
         type: full
         options:
-          items_per_page: 8
+          items_per_page: 15
           offset: 0
           id: 0
           total_pages: null
@@ -70,15 +72,21 @@ display:
         options:
           view_modes:
             'entity:node':
+              landing_page: search_result
+              page: search_result
               res_clinic: search_result
+              res_provider: search_result
+              uwm_basic_page: search_result
+              uwm_homepage: search_result
+              uwm_hub_page: search_result
       fields:
-        search_api_id:
-          table: search_api_index_uwm_locations_search_api_index
-          field: search_api_id
-          id: search_api_id
+        body:
+          table: search_api_index_uwm_general_search_api_index_2
+          field: body
+          id: body
           entity_type: null
           entity_field: null
-          plugin_id: standard
+          plugin_id: search_api_field
           relationship: none
           group_type: group
           admin_label: ''
@@ -123,15 +131,35 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          field_rendering: true
+          fallback_handler: search_api
+          fallback_options:
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
       filters:
         search_api_fulltext:
           id: search_api_fulltext
-          table: search_api_index_uwm_locations_search_api_index
+          table: search_api_index_uwm_general_search_api_index_2
           field: search_api_fulltext
           relationship: none
           group_type: group
           admin_label: ''
-          operator: or
+          operator: and
           value: ''
           group: 1
           exposed: true
@@ -169,18 +197,8 @@ display:
           fields: {  }
           plugin_id: search_api_fulltext
       sorts: {  }
-      title: 'Find a location'
-      header:
-        result:
-          id: result
-          table: views
-          field: result
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          content: 'Displaying @start - @end of @total'
-          plugin_id: result
+      title: 'What can we help you find?'
+      header: {  }
       footer: {  }
       empty: {  }
       relationships: {  }
@@ -189,10 +207,12 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
+        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
-      tags: {  }
+      tags:
+        - 'config:field.storage.node.body'
   page_1:
     display_plugin: page
     id: page_1
@@ -200,7 +220,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: search/locations
+      path: search/general
       exposed_block: true
       cache:
         type: none
@@ -209,7 +229,9 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
+        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
-      tags: {  }
+      tags:
+        - 'config:field.storage.node.body'

@@ -7,5 +7,5 @@ _core:
 name: 'Medical Services'
 vid: medical_services
 description: ''
-hierarchy: 0
+hierarchy: 1
 weight: 0

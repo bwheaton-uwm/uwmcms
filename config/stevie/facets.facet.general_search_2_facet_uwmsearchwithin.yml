@@ -1,20 +1,20 @@
-uuid: 65e2f8ea-986b-45d8-962c-c0908d0b26ce
+uuid: fde5f661-ca35-4ff3-92ba-7841cf99418f
 langcode: en
 status: true
 dependencies:
   config:
-    - search_api.index.uwm_general_search_api_index
-    - views.view.uwm_general_search
+    - search_api.index.uwm_general_search_api_index_2
+    - views.view.uwm_general_search_2
   module:
     - search_api
-id: general_search_facet_uwmsearchwithin
-name: 'General Search - Facet UwmSearchWithin'
+id: general_search_2_facet_uwmsearchwithin
+name: 'General Search 2 -- Facet UwmSearchWithin'
 url_alias: within
 weight: 0
 min_count: 0
 show_only_one_result: false
 field_identifier: uwmsearchwithin
-facet_source_id: 'search_api:views_page__uwm_general_search__page_1'
+facet_source_id: 'search_api:views_page__uwm_general_search_2__page_1'
 widget:
   type: dropdown
   config:
@@ -59,4 +59,4 @@ processor_configs:
     settings: {  }
 empty_behavior:
   behavior: none
-show_title: false
+show_title: true
