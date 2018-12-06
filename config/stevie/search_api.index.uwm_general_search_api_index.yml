@@ -3,9 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
-    - field.storage.node.field_res_biography
     - field.storage.node.field_res_expertises
+    - field.storage.node.field_res_biography
+    - field.storage.node.body
     - field.storage.node.field_res_medical_services
     - field.storage.taxonomy_term.field_term_keywords
     - field.storage.node.field_uwm_sections
