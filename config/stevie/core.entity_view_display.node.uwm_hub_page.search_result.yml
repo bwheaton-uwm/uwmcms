@@ -11,10 +11,10 @@ dependencies:
     - field.field.node.uwm_hub_page.field_uwm_sections
     - node.type.uwm_hub_page
   module:
-    - entity_reference_revisions
     - field_layout
     - layout_discovery
     - panelizer
+    - paragraphs
     - user
 third_party_settings:
   panelizer:
@@ -32,16 +32,14 @@ mode: search_result
 content:
   field_uwm_hero:
     weight: 1
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
+    label: above
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
+    type: paragraph_summary
     region: content
   field_uwm_parent_page:
     weight: 2
-    label: hidden
+    label: above
     settings:
       link: false
     third_party_settings: {  }
@@ -49,12 +47,10 @@ content:
     region: content
   field_uwm_sections:
     weight: 0
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
+    label: above
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
+    type: paragraph_summary
     region: content
   links:
     weight: 3

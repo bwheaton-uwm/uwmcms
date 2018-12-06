@@ -6,14 +6,21 @@ dependencies:
     - field.storage.node.body
     - node.type.landing_page
   module:
+    - allowed_formats
     - text
+third_party_settings:
+  allowed_formats:
+    basic_html: '0'
+    unrestricted: '0'
+    rich_text: '0'
+    plain_text: '0'
 _core:
   default_config_hash: rucUkoeuSWIppIt6Yc0z6lvSs21vZoskeQohzXD_FTo
 id: node.landing_page.body
 field_name: body
 entity_type: node
 bundle: landing_page
-label: Description
+label: Body
 description: 'A description of this page, for use in teasers and lists of content.'
 required: false
 translatable: true

@@ -1,0 +1,35 @@
+uuid: 89bcf152-f065-4caf-a2c9-c15d1b241552
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.landing_page.body
+    - field.field.node.landing_page.field_meta_tags
+    - node.type.landing_page
+  module:
+    - field_layout
+    - layout_discovery
+    - panelizer
+    - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
+id: node.landing_page.default
+targetEntityType: node
+bundle: landing_page
+mode: default
+content:
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_meta_tags: true
