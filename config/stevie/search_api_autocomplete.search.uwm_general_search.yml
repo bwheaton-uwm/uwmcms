@@ -1,0 +1,24 @@
+uuid: fbff804f-7d62-4fff-873d-575fc096d009
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.uwm_general_search_api_index
+    - views.view.uwm_general_search
+  module:
+    - views
+    - search_api_autocomplete
+id: uwm_general_search
+label: 'UWM General Search'
+index_id: uwm_general_search_api_index
+suggester_settings:
+  server:
+    fields: {  }
+suggester_weights: {  }
+suggester_limits: {  }
+search_settings:
+  'views:uwm_general_search':
+    displays:
+      default: true
+      selected: {  }
+options: {  }

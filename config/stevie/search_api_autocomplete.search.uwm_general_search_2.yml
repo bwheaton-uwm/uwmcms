@@ -1,0 +1,31 @@
+uuid: 1507ec8d-f436-41e0-aee7-b00d0e446330
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.uwm_general_search_api_index_2
+    - views.view.uwm_general_search_2
+  module:
+    - views
+    - search_api_autocomplete
+id: uwm_general_search_2
+label: 'UWM General Search 2'
+index_id: uwm_general_search_api_index_2
+suggester_settings:
+  server:
+    fields: {  }
+suggester_weights:
+  server: 0
+suggester_limits: {  }
+search_settings:
+  'views:uwm_general_search_2':
+    displays:
+      default: true
+      selected: {  }
+options:
+  limit: 10
+  min_length: 1
+  show_count: true
+  autosubmit: true
+  submit_button_selector: ':submit'
+  delay: null
