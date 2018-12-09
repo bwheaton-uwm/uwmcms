@@ -1,0 +1,11 @@
+uuid: b738979c-53d6-4eb4-a894-31720ca24c7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.video_embed
+id: media_type_video_embed
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301

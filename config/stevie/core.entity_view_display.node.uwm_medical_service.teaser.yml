@@ -23,4 +23,11 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
-hidden: {  }
+hidden:
+  field_meta_tags: true
+  field_uwm_find_a_location_link: true
+  field_uwm_find_a_provider_link: true
+  field_uwm_image: true
+  field_uwm_medical_service: true
+  field_uwm_page_path_name: true
+  field_uwm_sections: true

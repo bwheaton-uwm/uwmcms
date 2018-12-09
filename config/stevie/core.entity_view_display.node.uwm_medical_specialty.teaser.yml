@@ -23,4 +23,10 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
-hidden: {  }
+hidden:
+  field_uwm_find_a_location_link: true
+  field_uwm_find_a_provider_link: true
+  field_uwm_image: true
+  field_uwm_page_path_name: true
+  field_uwm_parent_page: true
+  field_uwm_sections: true
