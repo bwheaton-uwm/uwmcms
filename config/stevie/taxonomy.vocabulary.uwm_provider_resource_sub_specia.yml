@@ -1,0 +1,9 @@
+uuid: e0e28fb5-ba4f-4d74-8264-36aefd7cc4cc
+langcode: en
+status: true
+dependencies: {  }
+name: 'UWM Provider Resource Sub-specialties'
+vid: uwm_provider_resource_sub_specia
+description: ''
+hierarchy: 0
+weight: 0

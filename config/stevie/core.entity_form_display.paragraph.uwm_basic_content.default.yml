@@ -7,8 +7,7 @@ dependencies:
     - paragraphs.paragraphs_type.uwm_basic_content
   module:
     - allowed_formats
-    - field_layout
-    - layout_discovery
+    - content_moderation
     - text
 third_party_settings:
   field_layout:

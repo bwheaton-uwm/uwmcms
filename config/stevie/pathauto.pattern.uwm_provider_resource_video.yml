@@ -1,0 +1,23 @@
+uuid: d897b9d0-edb4-4be8-baed-a4b9c41e56c5
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - media
+id: uwm_provider_resource_video
+label: 'Provider Resource Video'
+type: 'canonical_entities:media'
+pattern: '/provider-resource/[media:field_uwm_prov_res_video_type]/[media:name]'
+selection_criteria:
+  5405193b-1b96-4d72-a64a-8752b9d5e36f:
+    id: 'entity_bundle:media'
+    bundles:
+      uwm_provider_resource_video: uwm_provider_resource_video
+    negate: false
+    context_mapping:
+      media: media
+    uuid: 5405193b-1b96-4d72-a64a-8752b9d5e36f
+selection_logic: and
+weight: -7
+relationships: {  }

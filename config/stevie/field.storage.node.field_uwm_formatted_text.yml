@@ -1,0 +1,19 @@
+uuid: 2eac7d34-ebe9-4b0f-a0ef-ee43b4b5e043
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_uwm_formatted_text
+field_name: field_uwm_formatted_text
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

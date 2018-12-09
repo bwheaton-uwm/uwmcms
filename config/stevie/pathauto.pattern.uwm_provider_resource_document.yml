@@ -1,0 +1,23 @@
+uuid: ed1edfaf-6727-4c79-94b5-fc5033f19419
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - media
+id: uwm_provider_resource_document
+label: 'Provider Resource Document'
+type: 'canonical_entities:media'
+pattern: '/provider-resource/[media:field_uwm_prov_res_doc_type]/[media:name]'
+selection_criteria:
+  4cdc7461-c107-4541-94b6-53cd5a31a58d:
+    id: 'entity_bundle:media'
+    bundles:
+      uwm_provider_resource_document: uwm_provider_resource_document
+    negate: false
+    context_mapping:
+      media: media
+    uuid: 4cdc7461-c107-4541-94b6-53cd5a31a58d
+selection_logic: and
+weight: -6
+relationships: {  }

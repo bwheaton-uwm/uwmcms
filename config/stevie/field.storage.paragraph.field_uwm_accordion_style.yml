@@ -1,0 +1,27 @@
+uuid: 0128cf4a-ea0e-4e3f-a4f0-7209e09c5796
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_uwm_accordion_style
+field_name: field_uwm_accordion_style
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: panel
+      label: 'Panels (Default)'
+    -
+      value: column
+      label: 'Headings in columns with content below'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

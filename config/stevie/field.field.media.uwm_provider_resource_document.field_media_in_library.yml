@@ -1,0 +1,23 @@
+uuid: 10cbb2ec-f586-4c18-a1ff-43fd04c836e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_in_library
+    - media.type.uwm_provider_resource_document
+id: media.uwm_provider_resource_document.field_media_in_library
+field_name: field_media_in_library
+entity_type: media
+bundle: uwm_provider_resource_document
+label: 'Show in media library'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'Shown in media library'
+  off_label: 'Hidden in media library'
+field_type: boolean

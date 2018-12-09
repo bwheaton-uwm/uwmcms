@@ -1,0 +1,26 @@
+uuid: b5f14edf-47c3-40d3-ae82-6005d6f5a84d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.default2
+    - taxonomy.vocabulary.uwm_condition_spotlight_type
+  module:
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: taxonomy_term.uwm_condition_spotlight_type.default2
+targetEntityType: taxonomy_term
+bundle: uwm_condition_spotlight_type
+mode: default2
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,29 @@
+uuid: 502a04db-23d4-40d9-ad52-6777437a8fd6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_uwm_prov_res_specialty
+    - media.type.uwm_provider_resource_document
+    - taxonomy.vocabulary.uwm_provider_resource_specialtie
+id: media.uwm_provider_resource_document.field_uwm_prov_res_specialty
+field_name: field_uwm_prov_res_specialty
+entity_type: media
+bundle: uwm_provider_resource_document
+label: 'Provider Resource Specialties'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      uwm_provider_resource_specialtie: uwm_provider_resource_specialtie
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,23 @@
+uuid: c634af78-8d73-4848-98fe-04747b9917f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_integer
+    - paragraphs.paragraphs_type.uwm_quiz_question
+id: paragraph.uwm_quiz_question.field_uwm_integer
+field_name: field_uwm_integer
+entity_type: paragraph
+bundle: uwm_quiz_question
+label: 'Correct Answer'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

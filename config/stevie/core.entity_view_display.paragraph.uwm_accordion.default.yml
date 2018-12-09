@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.uwm_accordion.field_uwm_accordion_style
     - field.field.paragraph.uwm_accordion.uwm_accordion_expand
     - field.field.paragraph.uwm_accordion.uwm_accordion_section
     - field.field.paragraph.uwm_accordion.uwm_show_indicators
@@ -11,6 +12,7 @@ dependencies:
     - entity_reference_revisions
     - field_layout
     - layout_discovery
+    - options
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -22,10 +24,20 @@ targetEntityType: paragraph
 bundle: uwm_accordion
 mode: default
 content:
+  field_uwm_accordion_style:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
   uwm_accordion_expand:
     weight: 3
     label: hidden
-    settings: {  }
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
     third_party_settings: {  }
     type: boolean
     region: content
@@ -41,7 +53,10 @@ content:
   uwm_show_indicators:
     weight: 4
     label: hidden
-    settings: {  }
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
     third_party_settings: {  }
     type: boolean
     region: content

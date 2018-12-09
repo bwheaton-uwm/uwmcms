@@ -1,0 +1,20 @@
+uuid: 8619d9a3-ac4f-4ad7-8d50-048bc660d94d
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - taxonomy
+id: media.field_uwm_prov_res_specialty
+field_name: field_uwm_prov_res_specialty
+entity_type: media
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

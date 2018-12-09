@@ -1,0 +1,31 @@
+uuid: 87544e52-2fd0-4c38-bfe6-96f5113177d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.uwm_provider_resource_doc_type
+  module:
+    - panelizer
+    - text
+third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: taxonomy_term.uwm_provider_resource_doc_type.default
+targetEntityType: taxonomy_term
+bundle: uwm_provider_resource_doc_type
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

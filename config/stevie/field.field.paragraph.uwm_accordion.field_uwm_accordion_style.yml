@@ -1,0 +1,23 @@
+uuid: f931a26d-b0d6-4f43-8d15-2ab9b36e3ea7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_accordion_style
+    - paragraphs.paragraphs_type.uwm_accordion
+  module:
+    - options
+id: paragraph.uwm_accordion.field_uwm_accordion_style
+field_name: field_uwm_accordion_style
+entity_type: paragraph
+bundle: uwm_accordion
+label: 'Accordion Style'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: panel
+default_value_callback: ''
+settings: {  }
+field_type: list_string

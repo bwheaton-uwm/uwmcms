@@ -6,8 +6,6 @@ dependencies:
     - field.field.paragraph.uwm_full_html.uwm_unrestricted
     - paragraphs.paragraphs_type.uwm_full_html
   module:
-    - field_layout
-    - layout_discovery
     - text
 third_party_settings:
   field_layout:

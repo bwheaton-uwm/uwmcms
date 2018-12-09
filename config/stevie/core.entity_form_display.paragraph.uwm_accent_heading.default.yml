@@ -1,0 +1,30 @@
+uuid: 04cf9728-e20c-4586-b4b4-de0c4ba1c530
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_accent_heading.field_uwm_short_formatted_text
+    - paragraphs.paragraphs_type.uwm_accent_heading
+  module:
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: paragraph.uwm_accent_heading.default
+targetEntityType: paragraph
+bundle: uwm_accent_heading
+mode: default
+content:
+  field_uwm_short_formatted_text:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,9 @@
+uuid: 365300fd-b275-4f08-af4e-567fb60faad2
+langcode: en
+status: true
+dependencies: {  }
+name: 'UWM Provider Resource Specialties'
+vid: uwm_provider_resource_specialtie
+description: ''
+hierarchy: 0
+weight: 0

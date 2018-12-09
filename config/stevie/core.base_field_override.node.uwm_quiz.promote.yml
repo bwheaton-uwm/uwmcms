@@ -1,0 +1,22 @@
+uuid: 7f64123b-e8a7-4803-8ce3-70cb7f258efd
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.uwm_quiz
+id: node.uwm_quiz.promote
+field_name: promote
+entity_type: node
+bundle: uwm_quiz
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

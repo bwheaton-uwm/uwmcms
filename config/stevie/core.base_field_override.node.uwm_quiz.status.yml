@@ -1,0 +1,22 @@
+uuid: 65904faa-82fd-4680-aa6e-ae86efc011c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.uwm_quiz
+id: node.uwm_quiz.status
+field_name: status
+entity_type: node
+bundle: uwm_quiz
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

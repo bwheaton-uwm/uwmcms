@@ -1,0 +1,88 @@
+uuid: e256b596-09ba-463f-b8ef-56b37230c2b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_cards
+    - node.type.uwm_condition_spotlight
+    - paragraphs.paragraphs_type.uwm_card
+  module:
+    - entity_reference_revisions
+id: node.uwm_condition_spotlight.field_uwm_cards
+field_name: field_uwm_cards
+entity_type: node
+bundle: uwm_condition_spotlight
+label: Cards
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      uwm_card: uwm_card
+    target_bundles_drag_drop:
+      detailed_contact_card:
+        weight: 21
+        enabled: false
+      headshot_card:
+        weight: 22
+        enabled: false
+      uwm_accent_heading:
+        weight: 23
+        enabled: false
+      uwm_accordion:
+        weight: 24
+        enabled: false
+      uwm_accordion_section:
+        weight: 25
+        enabled: false
+      uwm_basic_content:
+        weight: 26
+        enabled: false
+      uwm_block:
+        weight: 27
+        enabled: false
+      uwm_card:
+        enabled: true
+        weight: 28
+      uwm_cta_link:
+        weight: 29
+        enabled: false
+      uwm_featured_story:
+        weight: 30
+        enabled: false
+      uwm_full_html:
+        weight: 31
+        enabled: false
+      uwm_grid:
+        weight: 32
+        enabled: false
+      uwm_image:
+        weight: 33
+        enabled: false
+      uwm_image_hero:
+        weight: 34
+        enabled: false
+      uwm_link_with_icon:
+        weight: 35
+        enabled: false
+      uwm_media:
+        weight: 36
+        enabled: false
+      uwm_modal:
+        weight: 37
+        enabled: false
+      uwm_quiz_question:
+        weight: 38
+        enabled: false
+      uwm_section:
+        weight: 39
+        enabled: false
+      uwm_view:
+        weight: 40
+        enabled: false
+field_type: entity_reference_revisions

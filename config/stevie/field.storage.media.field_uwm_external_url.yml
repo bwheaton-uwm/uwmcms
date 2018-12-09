@@ -1,0 +1,19 @@
+uuid: 347f2def-83ba-47eb-a100-6df4bed4781a
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - media
+id: media.field_uwm_external_url
+field_name: field_uwm_external_url
+entity_type: media
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

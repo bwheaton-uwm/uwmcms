@@ -1,0 +1,27 @@
+uuid: 0509fba0-4585-4bea-9421-adb7331ced73
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_formatted_text
+    - node.type.uwm_quiz
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    rich_text: rich_text
+    unrestricted: '0'
+    plain_text: '0'
+id: node.uwm_quiz.field_uwm_formatted_text
+field_name: field_uwm_formatted_text
+entity_type: node
+bundle: uwm_quiz
+label: 'Results Message'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

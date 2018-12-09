@@ -1,0 +1,26 @@
+uuid: da87718f-dd9c-4b01-bb09-7368b87b0153
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.default2
+    - taxonomy.vocabulary.uwm_provider_resource_specialtie
+  module:
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: taxonomy_term.uwm_provider_resource_specialtie.default2
+targetEntityType: taxonomy_term
+bundle: uwm_provider_resource_specialtie
+mode: default2
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

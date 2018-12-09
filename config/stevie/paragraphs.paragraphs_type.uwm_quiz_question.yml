@@ -1,0 +1,9 @@
+uuid: ed23cb2f-bd83-41a2-82a5-1eff084269a0
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_quiz_question
+label: 'Quiz Question'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

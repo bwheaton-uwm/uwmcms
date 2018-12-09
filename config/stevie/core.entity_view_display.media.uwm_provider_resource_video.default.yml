@@ -1,0 +1,57 @@
+uuid: 2cac12e7-eb98-43d9-8e39-50c102ffabd0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.uwm_provider_resource_video.field_media_in_library
+    - field.field.media.uwm_provider_resource_video.field_media_video_embed_field
+    - field.field.media.uwm_provider_resource_video.field_uwm_description
+    - field.field.media.uwm_provider_resource_video.field_uwm_prov_res_media_type
+    - field.field.media.uwm_provider_resource_video.field_uwm_prov_res_specialty
+    - field.field.media.uwm_provider_resource_video.field_uwm_prov_res_sub_specialty
+    - field.field.media.uwm_provider_resource_video.field_uwm_prov_res_video_type
+    - field.field.media.uwm_provider_resource_video.field_uwm_teaser
+    - field.field.media.uwm_provider_resource_video.image
+    - media.type.uwm_provider_resource_video
+  module:
+    - text
+    - video_embed_field
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: media.uwm_provider_resource_video.default
+targetEntityType: media
+bundle: uwm_provider_resource_video
+mode: default
+content:
+  field_media_video_embed_field:
+    weight: 1
+    label: hidden
+    settings:
+      autoplay: true
+      responsive: true
+      width: 854
+      height: 480
+    third_party_settings: {  }
+    type: video_embed_field_video
+    region: content
+  field_uwm_description:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  created: true
+  field_media_in_library: true
+  field_uwm_prov_res_media_type: true
+  field_uwm_prov_res_specialty: true
+  field_uwm_prov_res_sub_specialty: true
+  field_uwm_prov_res_video_type: true
+  field_uwm_teaser: true
+  image: true
+  name: true
+  thumbnail: true
+  uid: true

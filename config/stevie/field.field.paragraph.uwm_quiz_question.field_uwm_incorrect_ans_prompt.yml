@@ -1,0 +1,27 @@
+uuid: 8432e433-effb-408a-9977-e2affc60bebc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_incorrect_ans_prompt
+    - paragraphs.paragraphs_type.uwm_quiz_question
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    unrestricted: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: paragraph.uwm_quiz_question.field_uwm_incorrect_ans_prompt
+field_name: field_uwm_incorrect_ans_prompt
+entity_type: paragraph
+bundle: uwm_quiz_question
+label: 'Incorrect Answer Prompt'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,21 @@
+uuid: 00566d79-4afd-453e-ad57-d9efb82c462e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_correct_ans_prompt
+    - paragraphs.paragraphs_type.uwm_quiz_question
+  module:
+    - text
+id: paragraph.uwm_quiz_question.field_uwm_correct_ans_prompt
+field_name: field_uwm_correct_ans_prompt
+entity_type: paragraph
+bundle: uwm_quiz_question
+label: 'Correct Answer Prompt'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

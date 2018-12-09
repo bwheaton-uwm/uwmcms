@@ -1,0 +1,29 @@
+uuid: 6b7eb2a9-e969-41c5-9568-859e304ee9b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_uwm_prov_res_doc_type
+    - media.type.uwm_provider_resource_document
+    - taxonomy.vocabulary.uwm_provider_resource_doc_type
+id: media.uwm_provider_resource_document.field_uwm_prov_res_doc_type
+field_name: field_uwm_prov_res_doc_type
+entity_type: media
+bundle: uwm_provider_resource_document
+label: 'Document Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      uwm_provider_resource_doc_type: uwm_provider_resource_doc_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,11 @@
+uuid: 79964aac-57bf-4b1a-acc7-67057f97a871
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.uwm_provider_resource_document
+id: media_type_uwm_provider_resource_document
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301

@@ -1,0 +1,65 @@
+uuid: 5a2c4f83-530a-4855-9c11-28a54adfab6c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_quiz_question.field_uwm_answer_list
+    - field.field.paragraph.uwm_quiz_question.field_uwm_correct_ans_prompt
+    - field.field.paragraph.uwm_quiz_question.field_uwm_incorrect_ans_prompt
+    - field.field.paragraph.uwm_quiz_question.field_uwm_integer
+    - field.field.paragraph.uwm_quiz_question.uwm_text
+    - paragraphs.paragraphs_type.uwm_quiz_question
+  module:
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: paragraph.uwm_quiz_question.default
+targetEntityType: paragraph
+bundle: uwm_quiz_question
+mode: default
+content:
+  field_uwm_answer_list:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+  field_uwm_correct_ans_prompt:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_uwm_incorrect_ans_prompt:
+    weight: 4
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_uwm_integer:
+    weight: 2
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  uwm_text:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

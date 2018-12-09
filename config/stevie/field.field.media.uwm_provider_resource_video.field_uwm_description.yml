@@ -1,0 +1,27 @@
+uuid: 381fae0d-ddd6-446f-8849-a52c45e0ef3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_uwm_description
+    - media.type.uwm_provider_resource_video
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    unrestricted: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: media.uwm_provider_resource_video.field_uwm_description
+field_name: field_uwm_description
+entity_type: media
+bundle: uwm_provider_resource_video
+label: Description
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

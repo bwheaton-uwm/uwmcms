@@ -1,0 +1,27 @@
+uuid: b75d57b1-574a-487d-8a9f-b2f248a5d17e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.uwm_condition_spotlight
+  module:
+    - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: node.uwm_condition_spotlight.teaser
+targetEntityType: node
+bundle: uwm_condition_spotlight
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_uwm_cards: true
+  field_uwm_sections: true
+  field_uwm_taxonomy_term: true
