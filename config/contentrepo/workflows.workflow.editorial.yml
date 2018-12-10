@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - node.type.uwm_basic_page
+    - node.type.uwm_condition_spotlight
     - node.type.uwm_homepage
     - node.type.uwm_hub_page
+    - node.type.uwm_quiz
   module:
     - content_moderation
 _core:
@@ -75,5 +77,7 @@ type_settings:
   entity_types:
     node:
       - uwm_basic_page
+      - uwm_condition_spotlight
       - uwm_homepage
       - uwm_hub_page
+      - uwm_quiz
