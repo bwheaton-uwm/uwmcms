@@ -9,12 +9,6 @@ dependencies:
     - paragraphs.paragraphs_type.uwm_accordion_section
   module:
     - entity_reference_revisions
-    - field_layout
-    - layout_discovery
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 _core:
   default_config_hash: iJMp67pIJei-dAElKkdALpp3q8q73bh_hkDNEc8ni0E
 id: paragraph.uwm_accordion_section.default

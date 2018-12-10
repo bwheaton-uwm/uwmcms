@@ -8,12 +8,6 @@ dependencies:
     - paragraphs.paragraphs_type.uwm_accordion_sub_section
   module:
     - entity_reference_revisions
-    - field_layout
-    - layout_discovery
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: paragraph.uwm_accordion_sub_section.default
 targetEntityType: paragraph
 bundle: uwm_accordion_sub_section

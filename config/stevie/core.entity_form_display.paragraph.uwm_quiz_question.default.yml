@@ -11,10 +11,6 @@ dependencies:
     - paragraphs.paragraphs_type.uwm_quiz_question
   module:
     - text
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: paragraph.uwm_quiz_question.default
 targetEntityType: paragraph
 bundle: uwm_quiz_question

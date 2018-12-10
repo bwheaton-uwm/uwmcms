@@ -26,20 +26,8 @@ dependencies:
     - field.field.node.res_provider.uwm_unique_id
     - node.type.res_provider
   module:
-    - field_layout
-    - layout_discovery
     - name
-    - panelizer
     - user
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
-  panelizer:
-    enable: false
-    custom: false
-    allow: false
-    default: default
 _core:
   default_config_hash: s59CnIfOw8Mryz8qANrKrNq11JusH2zF243H1YHppSE
 id: node.res_provider.teaser

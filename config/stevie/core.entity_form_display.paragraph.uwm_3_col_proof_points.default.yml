@@ -6,13 +6,7 @@ dependencies:
     - field.field.paragraph.uwm_3_col_proof_points.field_uwm_columns
     - paragraphs.paragraphs_type.uwm_3_col_proof_points
   module:
-    - field_layout
-    - layout_discovery
     - paragraphs
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: paragraph.uwm_3_col_proof_points.default
 targetEntityType: paragraph
 bundle: uwm_3_col_proof_points

@@ -28,17 +28,11 @@ dependencies:
     - image.style.thumbnail
     - node.type.res_clinic
   module:
-    - field_layout
     - image
-    - layout_discovery
     - metatag
     - paragraphs
     - telephone
     - text
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 _core:
   default_config_hash: 2kAi-wYe7ZuIze154ZwVwwhYSRqonPwtA675m4-PbdU
 id: node.res_clinic.default
@@ -273,6 +267,11 @@ content:
       placeholder: ''
     region: content
     third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   uwm_unique_id:
     weight: 4
     settings:

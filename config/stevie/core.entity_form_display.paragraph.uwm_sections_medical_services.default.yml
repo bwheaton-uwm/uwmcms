@@ -8,14 +8,8 @@ dependencies:
     - field.field.paragraph.uwm_sections_medical_services.field_uwm_section_heading
     - paragraphs.paragraphs_type.uwm_sections_medical_services
   module:
-    - field_layout
-    - layout_discovery
     - paragraphs
     - text
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: paragraph.uwm_sections_medical_services.default
 targetEntityType: paragraph
 bundle: uwm_sections_medical_services

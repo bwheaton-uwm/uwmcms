@@ -8,14 +8,8 @@ dependencies:
     - field.field.taxonomy_term.affiliates.uwm_unique_id
     - taxonomy.vocabulary.affiliates
   module:
-    - field_layout
-    - layout_discovery
     - path
     - text
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 _core:
   default_config_hash: qK-UNM6IyyZjT3X4-VLg-zDPm-ToxOGv7HiOl6iPf1o
 id: taxonomy_term.affiliates.default

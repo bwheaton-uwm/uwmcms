@@ -18,10 +18,6 @@ dependencies:
   module:
     - file
     - text
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: media.uwm_provider_resource_document.embedded
 targetEntityType: media
 bundle: uwm_provider_resource_document

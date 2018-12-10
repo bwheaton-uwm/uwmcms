@@ -14,14 +14,8 @@ dependencies:
   module:
     - content_moderation
     - entity_browser
-    - field_layout
-    - layout_discovery
     - paragraphs
     - path
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: node.uwm_medical_specialty.default
 targetEntityType: node
 bundle: uwm_medical_specialty

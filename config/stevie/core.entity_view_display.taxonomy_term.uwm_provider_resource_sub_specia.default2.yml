@@ -7,10 +7,6 @@ dependencies:
     - taxonomy.vocabulary.uwm_provider_resource_sub_specia
   module:
     - text
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: taxonomy_term.uwm_provider_resource_sub_specia.default2
 targetEntityType: taxonomy_term
 bundle: uwm_provider_resource_sub_specia

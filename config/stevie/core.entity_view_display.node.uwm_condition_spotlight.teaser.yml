@@ -4,13 +4,11 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.uwm_condition_spotlight.field_uwm_cards
+    - field.field.node.uwm_condition_spotlight.field_uwm_taxonomy_term
     - node.type.uwm_condition_spotlight
   module:
     - user
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: node.uwm_condition_spotlight.teaser
 targetEntityType: node
 bundle: uwm_condition_spotlight

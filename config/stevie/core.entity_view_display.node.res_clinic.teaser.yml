@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.res_clinic.body
     - field.field.node.res_clinic.field_res_affiliates
     - field.field.node.res_clinic.field_res_box_number
     - field.field.node.res_clinic.field_res_building
@@ -27,20 +28,8 @@ dependencies:
     - field.field.node.res_clinic.uwm_unique_id
     - node.type.res_clinic
   module:
-    - field_layout
-    - layout_discovery
-    - panelizer
     - telephone
     - user
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
-  panelizer:
-    enable: false
-    custom: false
-    allow: false
-    default: default
 _core:
   default_config_hash: xA8OtVFaRhFYxAqqqA3HH5PwOIhZtgudEwSSvYUMpFU
 id: node.res_clinic.teaser

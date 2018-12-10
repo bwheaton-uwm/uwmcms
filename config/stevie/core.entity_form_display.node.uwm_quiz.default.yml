@@ -15,10 +15,6 @@ dependencies:
     - paragraphs
     - path
     - text
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: node.uwm_quiz.default
 targetEntityType: node
 bundle: uwm_quiz

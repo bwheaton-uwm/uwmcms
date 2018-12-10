@@ -6,13 +6,7 @@ dependencies:
     - node.type.uwm_homepage
   module:
     - content_moderation
-    - field_layout
-    - layout_discovery
     - path
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: node.uwm_homepage.default
 targetEntityType: node
 bundle: uwm_homepage

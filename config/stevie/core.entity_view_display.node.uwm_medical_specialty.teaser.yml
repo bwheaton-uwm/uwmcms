@@ -4,15 +4,15 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.uwm_medical_specialty.field_uwm_find_a_location_link
+    - field.field.node.uwm_medical_specialty.field_uwm_find_a_provider_link
+    - field.field.node.uwm_medical_specialty.field_uwm_image
+    - field.field.node.uwm_medical_specialty.field_uwm_page_path_name
+    - field.field.node.uwm_medical_specialty.field_uwm_parent_page
+    - field.field.node.uwm_medical_specialty.field_uwm_sections
     - node.type.uwm_medical_specialty
   module:
-    - field_layout
-    - layout_discovery
     - user
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: node.uwm_medical_specialty.teaser
 targetEntityType: node
 bundle: uwm_medical_specialty

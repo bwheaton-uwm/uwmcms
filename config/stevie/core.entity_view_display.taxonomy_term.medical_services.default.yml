@@ -7,13 +7,7 @@ dependencies:
     - field.field.taxonomy_term.medical_services.uwm_unique_id
     - taxonomy.vocabulary.medical_services
   module:
-    - field_layout
-    - layout_discovery
     - text
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 _core:
   default_config_hash: dyDe7LACiFcUf-rnlsIW9OnqqHJfAg7BsYM-N5EWcEs
 id: taxonomy_term.medical_services.default

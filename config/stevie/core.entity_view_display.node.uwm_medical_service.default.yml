@@ -13,15 +13,9 @@ dependencies:
     - node.type.uwm_medical_service
   module:
     - entity_reference_revisions
-    - field_layout
     - image
-    - layout_discovery
     - metatag
     - user
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: node.uwm_medical_service.default
 targetEntityType: node
 bundle: uwm_medical_service

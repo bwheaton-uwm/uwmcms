@@ -7,10 +7,6 @@ dependencies:
     - paragraphs.paragraphs_type.uwm_accent_heading
   module:
     - text
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: paragraph.uwm_accent_heading.default
 targetEntityType: paragraph
 bundle: uwm_accent_heading

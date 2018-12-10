@@ -7,10 +7,6 @@ dependencies:
     - paragraphs.paragraphs_type.uwm_full_html
   module:
     - text
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: paragraph.uwm_full_html.default
 targetEntityType: paragraph
 bundle: uwm_full_html

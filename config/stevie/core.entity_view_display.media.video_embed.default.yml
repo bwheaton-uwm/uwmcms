@@ -9,10 +9,6 @@ dependencies:
   module:
     - image
     - video_embed_field
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: media.video_embed.default
 targetEntityType: media
 bundle: video_embed

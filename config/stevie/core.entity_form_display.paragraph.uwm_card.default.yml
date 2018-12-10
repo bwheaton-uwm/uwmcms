@@ -8,13 +8,7 @@ dependencies:
     - field.field.paragraph.uwm_card.field_uwm_card_header
     - paragraphs.paragraphs_type.uwm_card
   module:
-    - field_layout
-    - layout_discovery
     - paragraphs
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: paragraph.uwm_card.default
 targetEntityType: paragraph
 bundle: uwm_card

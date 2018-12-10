@@ -8,13 +8,7 @@ dependencies:
     - field.field.taxonomy_term.degrees.uwm_unique_id
     - taxonomy.vocabulary.degrees
   module:
-    - field_layout
-    - layout_discovery
     - text
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 _core:
   default_config_hash: 4Lzt1vr3eAU2g27KjceyqO0qxcdT8oHNFmQPkaHK-JQ
 id: taxonomy_term.degrees.default

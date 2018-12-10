@@ -27,21 +27,9 @@ dependencies:
     - image.style.large
     - node.type.res_provider
   module:
-    - field_layout
     - image
-    - layout_discovery
     - options
-    - panelizer
     - user
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
-  panelizer:
-    enable: false
-    custom: false
-    allow: false
-    default: default
 _core:
   default_config_hash: VprWwN3mbiPcSLh-Gc3vJcE50N6ggx16rsVBCVFsZNE
 id: node.res_provider.search_result

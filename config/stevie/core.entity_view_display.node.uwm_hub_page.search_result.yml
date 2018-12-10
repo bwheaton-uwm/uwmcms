@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.search_result
     - field.field.node.uwm_hub_page.field_meta_tags
+    - field.field.node.uwm_hub_page.field_uwm_accent_color
     - field.field.node.uwm_hub_page.field_uwm_hero
     - field.field.node.uwm_hub_page.field_uwm_page_path_name
     - field.field.node.uwm_hub_page.field_uwm_parent_page
@@ -12,19 +13,7 @@ dependencies:
     - node.type.uwm_hub_page
   module:
     - entity_reference_revisions
-    - field_layout
-    - layout_discovery
-    - panelizer
     - user
-third_party_settings:
-  panelizer:
-    enable: false
-    custom: false
-    allow: false
-    default: default
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: node.uwm_hub_page.search_result
 targetEntityType: node
 bundle: uwm_hub_page
@@ -64,4 +53,5 @@ content:
 hidden:
   content_moderation_control: true
   field_meta_tags: true
+  field_uwm_accent_color: true
   field_uwm_page_path_name: true

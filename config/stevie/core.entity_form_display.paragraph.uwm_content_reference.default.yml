@@ -5,13 +5,6 @@ dependencies:
   config:
     - field.field.paragraph.uwm_content_reference.field_uwm_content_reference
     - paragraphs.paragraphs_type.uwm_content_reference
-  module:
-    - field_layout
-    - layout_discovery
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: paragraph.uwm_content_reference.default
 targetEntityType: paragraph
 bundle: uwm_content_reference

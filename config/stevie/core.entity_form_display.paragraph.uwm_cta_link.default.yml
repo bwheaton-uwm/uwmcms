@@ -7,13 +7,7 @@ dependencies:
     - field.field.paragraph.uwm_cta_link.field_uwm_link
     - paragraphs.paragraphs_type.uwm_cta_link
   module:
-    - field_layout
-    - layout_discovery
     - link
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings: {  }
 id: paragraph.uwm_cta_link.default
 targetEntityType: paragraph
 bundle: uwm_cta_link
