@@ -1,0 +1,5 @@
+name: Publish imported Content Hub Entities
+type: module
+description: 'A module to update the moderation state of imported entities to "published"'
+package: uwmed
+core: 8.x
