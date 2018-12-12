@@ -11,6 +11,8 @@ dependencies:
     - field.storage.node.field_res_medical_services
     - field.storage.taxonomy_term.field_term_keywords
     - field.storage.node.field_res_phone_number
+    - field.storage.node.field_res_providers
+    - field.storage.node.field_res_name
     - search_api.server.database
     - core.entity_view_mode.node.search_result
   module:
@@ -68,6 +70,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: field_res_building
     type: text
+    boost: !!float 5
     dependencies:
       config:
         - field.storage.node.field_res_building
@@ -76,7 +79,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: 'field_res_building:entity:name'
     type: text
-    boost: !!float 3
+    boost: !!float 5
     dependencies:
       config:
         - field.storage.node.field_res_building
@@ -92,6 +95,15 @@ field_settings:
       config:
         - field.storage.node.field_res_fax_number
   field_res_medical_services:
+    label: 'Medical Services'
+    datasource_id: 'entity:node'
+    property_path: field_res_medical_services
+    type: string
+    boost: !!float 13
+    dependencies:
+      config:
+        - field.storage.node.field_res_medical_services
+  field_res_medical_services_1:
     label: 'Medical Services'
     datasource_id: 'entity:node'
     property_path: field_res_medical_services
@@ -120,6 +132,30 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_phone_number
+  field_res_providers_family_name:
+    label: 'Providers » Content » Name » Family'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_providers:entity:field_res_name:family'
+    type: text
+    boost: !!float 3
+    dependencies:
+      config:
+        - field.storage.node.field_res_providers
+        - field.storage.node.field_res_name
+      module:
+        - node
+  field_res_providers_title:
+    label: 'Providers » Content » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_providers:entity:title'
+    type: text
+    boost: !!float 3
+    dependencies:
+      config:
+        - field.storage.node.field_res_providers
+      module:
+        - node
+        - node
   field_term_keywords:
     label: 'Medical Services » Taxonomy term » Term Keywords'
     datasource_id: 'entity:node'
@@ -271,7 +307,6 @@ processor_settings:
       - field_res_affiliates_entity_name
       - field_res_building_entity_name
       - field_res_fax_number
-      - field_res_medical_services
       - field_res_medical_services_entity_name
       - field_res_phone_number
       - field_term_keywords

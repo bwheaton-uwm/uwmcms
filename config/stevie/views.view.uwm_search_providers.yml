@@ -52,10 +52,10 @@ display:
           id: 0
           total_pages: null
           tags:
-            previous: ‹‹
-            next: ››
-            first: '« First'
-            last: 'Last »'
+            previous: '‹‹ Previous'
+            next: 'Next ››'
+            first: '‹‹ First'
+            last: 'Last ››'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -293,7 +293,7 @@ display:
               replicator: '0'
               administrator: '0'
               content_manager: '0'
-            placeholder: ''
+            placeholder: 'Search by name'
           is_grouped: false
           group_info:
             label: ''
@@ -321,10 +321,21 @@ display:
           group_type: group
           admin_label: ''
           empty: false
-          content: 'Displaying @start - @end of @total'
+          content: '<div class="results-summary">Displaying @start - @end of @total</div>'
           plugin_id: result
       footer: {  }
-      empty: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: "<h3>We’re sorry.</h3>\r\n\r\n\r\n<p>We couldn’t find any results for your search. Try a different search term or\r\n  explore additional search options.</p>\r\n\r\n<p><a href=\"/search/providers\">Search for a provider</a>\r\n  | <a href=\"/search/locations\">Search for a location</a>\r\n</p>\r\n\r\n<h3>TAKE ME TO</h3>\r\n\r\n<p><a href=\"/patient-resources/make-an-appointment\">Appointments</a>\r\n  | Urgent care | Virtual care | <a href=\"/services/primary-care\">Primary\r\n    care</a></p>\r\n\r\n\r\n<p><a href=\"/services\">Specialty care</a>\r\n  | <a href=\"http://healthlibrary.uwmedicine.org\">Condition library</a>\r\n  | <a href=\"/patient-resources/ecare\">eCare patient portal</a>\r\n  | <a href=\"/patient-resources/billing-and-insurance\">Billing</a></p>\r\n\r\n<h3>INFORMATION FOR</h3>\r\n\r\n<p><a href=\"/provider-resource\">Providers</a>\r\n  | <a href=\"/school-of-medicine\">School of Medicine</a>\r\n  | <a href=\"/research\">Researchers</a></p>\r\n\r\n\r\n<h3>CONNECT WITH US</h3>\r\n\r\n<p>If you continue to experience difficulty​, please contact us via our website\r\n  feedback form.</p>\r\n\r\n<p><a href=\"/node/feedback\">Submit feedback</a></p>"
+          plugin_id: text_custom
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
