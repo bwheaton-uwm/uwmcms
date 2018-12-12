@@ -22,7 +22,7 @@ content:
     weight: 3
     label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
@@ -49,7 +49,7 @@ content:
     weight: 2
     label: hidden
     settings:
-      view_mode: default
+      view_mode: uwm_featured_story
       link: ''
     third_party_settings: {  }
     region: content

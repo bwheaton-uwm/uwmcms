@@ -1,22 +1,22 @@
-uuid: 90a41991-b9dc-4061-878a-cd43072c9038
+uuid: 74a26a71-9293-4f9d-bfff-660f364db3ec
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: locations_title
-label: 'locations internal url'
+id: provider_internal_urls
+label: 'provider internal urls'
 type: 'canonical_entities:node'
 pattern: '[node:field_res_internal_url:value]'
 selection_criteria:
-  0eb22aaf-e3ff-48f0-a0c9-189586e5ca82:
+  cdfa181e-c8a9-4181-a2d7-c829c5463375:
     id: node_type
     bundles:
-      res_clinic: res_clinic
+      res_provider: res_provider
     negate: false
     context_mapping:
       node: node
-    uuid: 0eb22aaf-e3ff-48f0-a0c9-189586e5ca82
+    uuid: cdfa181e-c8a9-4181-a2d7-c829c5463375
 selection_logic: and
-weight: -10
+weight: -9
 relationships: {  }

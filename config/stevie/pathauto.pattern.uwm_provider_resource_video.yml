@@ -19,5 +19,5 @@ selection_criteria:
       media: media
     uuid: 5405193b-1b96-4d72-a64a-8752b9d5e36f
 selection_logic: and
-weight: -7
+weight: -5
 relationships: {  }

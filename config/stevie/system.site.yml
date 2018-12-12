@@ -1,11 +1,11 @@
 uuid: 86b376c5-ohhh-eeee-ahhh-oooo443540e3
-name: 'Stevie W.'
+name: 'UW Medicine'
 mail: uwmdev@uw.edu
 slogan: ''
 page:
   403: ''
-  404: ''
-  front: /node
+  404: /node/21751
+  front: /user/login
 admin_compact_mode: false
 weight_select_max: 100
 langcode: en

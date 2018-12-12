@@ -1,0 +1,8 @@
+uuid: 8f6df478-bd77-402c-9fcc-d15e0b999815
+langcode: en
+status: true
+dependencies: {  }
+id: uw-footer---enterprise-enti
+label: 'UWM Footer - Enterprise Entities'
+description: ''
+locked: false

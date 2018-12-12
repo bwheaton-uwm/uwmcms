@@ -117,6 +117,7 @@ module:
   paragraphs_admin: 0
   paragraphs_type_permissions: 0
   path: 0
+  path_redirect_import: 0
   quickedit: 0
   rabbit_hole: 0
   rdf: 0
@@ -154,7 +155,6 @@ module:
   uwmcs_extension: 0
   uwmcs_searchfields: 0
   uwmcs_utils: 0
-  uwmed_content_hub_publisher: 0
   vbo_export: 0
   video_embed_field: 0
   video_embed_media: 0
@@ -166,6 +166,7 @@ module:
   workflows: 0
   menu_link_content: 1
   pathauto: 1
+  views_url_alias_node: 2
   views: 10
   paragraphs: 11
   lightning: 1000

@@ -41,7 +41,7 @@ bundle: res_clinic
 mode: default
 content:
   body:
-    weight: 31
+    weight: 28
     settings:
       rows: 9
       summary_rows: 3
@@ -56,7 +56,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_res_affiliates:
-    weight: 7
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 60
@@ -65,7 +65,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_box_number:
-    weight: 18
+    weight: 22
     settings:
       size: 60
       placeholder: ''
@@ -73,7 +73,7 @@ content:
     type: string_textfield
     region: content
   field_res_building:
-    weight: 12
+    weight: 14
     settings:
       match_operator: CONTAINS
       size: 60
@@ -82,14 +82,14 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_displayaptslink:
-    weight: 11
+    weight: 13
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_res_external_url:
-    weight: 3
+    weight: 1
     settings:
       size: 60
       placeholder: ''
@@ -97,14 +97,14 @@ content:
     type: string_textfield
     region: content
   field_res_fax_number:
-    weight: 17
+    weight: 21
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: telephone_default
     region: content
   field_res_floor:
-    weight: 13
+    weight: 16
     settings:
       match_operator: CONTAINS
       size: 60
@@ -114,7 +114,7 @@ content:
     region: content
   field_res_hours_of_operation:
     type: entity_reference_paragraphs
-    weight: 14
+    weight: 18
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -125,7 +125,7 @@ content:
     third_party_settings: {  }
     region: content
   field_res_image:
-    weight: 6
+    weight: 4
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -133,7 +133,7 @@ content:
     type: image_image
     region: content
   field_res_internal_url:
-    weight: 5
+    weight: 3
     settings:
       size: 60
       placeholder: ''
@@ -141,14 +141,14 @@ content:
     type: string_textfield
     region: content
   field_res_iscallcenterserviced:
-    weight: 15
+    weight: 19
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_res_medical_services:
-    weight: 6
+    weight: 5
     settings:
       match_operator: CONTAINS
       size: 60
@@ -157,20 +157,20 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_meta_tags:
-    weight: 12
+    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
     region: content
   field_res_phone_number:
-    weight: 16
+    weight: 20
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: telephone_default
     region: content
   field_res_providers:
-    weight: 8
+    weight: 9
     settings:
       match_operator: CONTAINS
       size: 60
@@ -179,7 +179,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_room_number:
-    weight: 14
+    weight: 17
     settings:
       size: 60
       placeholder: ''
@@ -187,7 +187,7 @@ content:
     type: string_textfield
     region: content
   field_test_m_services1:
-    weight: 28
+    weight: 25
     settings:
       match_operator: CONTAINS
       size: 60
@@ -196,7 +196,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_test_m_services2:
-    weight: 29
+    weight: 26
     settings:
       match_operator: CONTAINS
       size: 60
@@ -205,7 +205,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_test_m_services3:
-    weight: 30
+    weight: 27
     settings:
       match_operator: CONTAINS
       size: 60
@@ -214,7 +214,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_testing_top_content:
-    weight: 27
+    weight: 24
     settings:
       rows: 5
       placeholder: ''
@@ -222,7 +222,7 @@ content:
     type: text_textarea
     region: content
   moderation_state:
-    weight: 26
+    weight: 23
     settings:
       size: 60
       placeholder: ''
@@ -233,7 +233,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 10
+    weight: 11
     region: content
     third_party_settings: {  }
   status:
@@ -247,7 +247,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 11
+    weight: 12
     region: content
     third_party_settings: {  }
   title:
@@ -260,7 +260,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 9
+    weight: 10
     settings:
       match_operator: CONTAINS
       size: 60
@@ -268,12 +268,12 @@ content:
     region: content
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 29
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   uwm_unique_id:
-    weight: 4
+    weight: 2
     settings:
       size: 60
       placeholder: ''

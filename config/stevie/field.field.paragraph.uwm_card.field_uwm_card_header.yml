@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.uwm_card
     - paragraphs.paragraphs_type.uwm_cta_link
     - paragraphs.paragraphs_type.uwm_image
+    - paragraphs.paragraphs_type.uwm_text
   module:
     - entity_reference_revisions
 id: paragraph.uwm_card.field_uwm_card_header
@@ -28,6 +29,7 @@ settings:
       uwm_accent_heading: uwm_accent_heading
       uwm_image: uwm_image
       uwm_cta_link: uwm_cta_link
+      uwm_text: uwm_text
     target_bundles_drag_drop:
       uwm_accent_heading:
         enabled: true
@@ -86,4 +88,40 @@ settings:
       uwm_modal:
         weight: -21
         enabled: false
+      award:
+        weight: 32
+        enabled: false
+      board_certification:
+        weight: 33
+        enabled: false
+      degree:
+        weight: 34
+        enabled: false
+      education_history:
+        weight: 36
+        enabled: false
+      hours_for_day:
+        weight: 38
+        enabled: false
+      hours_of_operation:
+        weight: 39
+        enabled: false
+      uwm_3_col_proof_points:
+        weight: 40
+        enabled: false
+      uwm_accordion_sub_section:
+        weight: 44
+        enabled: false
+      uwm_content_reference:
+        weight: 48
+        enabled: false
+      uwm_quiz_question:
+        weight: 58
+        enabled: false
+      uwm_sections_medical_services:
+        weight: 60
+        enabled: false
+      uwm_text:
+        enabled: true
+        weight: 61
 field_type: entity_reference_revisions

@@ -178,4 +178,5 @@ uwm_res_import: 0.0.0
 uwm_drush_commands: 0.0.0
 uwm_commands: 0.0.0
 uwmcs_searchfields: 0.0.0
-uwmed_content_hub_publisher: 0.0.0
+path_redirect_import: 1.0.0-beta1
+views_url_alias_node: 1.0.0

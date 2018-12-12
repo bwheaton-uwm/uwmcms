@@ -1,0 +1,8 @@
+uuid: 9f525c45-1ca6-4156-8f3d-67c8469a9acf
+langcode: en
+status: true
+dependencies: {  }
+id: uw-footer---common-resource
+label: 'UWM Footer - Common Resources'
+description: ''
+locked: false

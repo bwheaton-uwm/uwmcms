@@ -5,7 +5,7 @@ dependencies: {  }
 id: contentrepo_prod_import
 name: contentrepo-prod-import
 publish_setting: publish
-search_term: null
+search_term: ''
 from_date: ''
 to_date: ''
 source: 998ee3fc-4b07-4815-70f6-c5c93b294d0b
