@@ -1,6 +1,6 @@
 uuid: a09c37a8-8577-440e-933d-35ce18d5f231
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - search_api.index.uwm_providers_search_api_index

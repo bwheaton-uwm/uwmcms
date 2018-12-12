@@ -1,6 +1,6 @@
 uuid: ec1904bd-ee2c-4fa1-9d26-426ebbc897d1
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - search_api.index.uwm_general_search_api_index
