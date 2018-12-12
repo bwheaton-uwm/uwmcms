@@ -1,0 +1,31 @@
+uuid: ec1904bd-ee2c-4fa1-9d26-426ebbc897d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.uwm_general_search_api_index
+    - views.view.uwm_general_search
+  module:
+    - views
+    - search_api_autocomplete
+id: uwm_general_search
+label: 'UWM General Search'
+index_id: uwm_general_search_api_index
+suggester_settings:
+  server:
+    fields: {  }
+suggester_weights:
+  server: 0
+suggester_limits: {  }
+search_settings:
+  'views:uwm_general_search':
+    displays:
+      default: true
+      selected: {  }
+options:
+  limit: 10
+  min_length: 1
+  show_count: false
+  autosubmit: true
+  submit_button_selector: ':submit'
+  delay: null

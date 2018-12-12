@@ -1,0 +1,19 @@
+uuid: 629829af-55c3-471c-b75b-7b6f71d98f1c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_term_keywords
+    - taxonomy.vocabulary.medical_services
+id: taxonomy_term.medical_services.field_term_keywords
+field_name: field_term_keywords
+entity_type: taxonomy_term
+bundle: medical_services
+label: 'Term Keywords'
+description: 'Internal field for additional search keyword matching. You may enter a comma separated list of spelling suggestions or alternative names here.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -82,4 +82,5 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-hidden: {  }
+hidden:
+  field_geo_coordinates: true

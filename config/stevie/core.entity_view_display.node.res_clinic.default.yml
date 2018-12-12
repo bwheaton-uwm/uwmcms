@@ -30,7 +30,6 @@ dependencies:
   module:
     - entity_reference_revisions
     - image
-    - metatag
     - telephone
     - text
     - user
@@ -42,14 +41,14 @@ bundle: res_clinic
 mode: default
 content:
   body:
-    weight: 27
+    weight: 0
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_res_affiliates:
-    weight: 19
+    weight: 8
     label: above
     settings:
       link: true
@@ -57,167 +56,6 @@ content:
     type: entity_reference_label
     region: content
   field_res_box_number:
-    weight: 17
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_res_building:
-    weight: 12
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_res_displayaptslink:
-    weight: 8
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    type: boolean
-    region: content
-  field_res_external_url:
-    weight: 11
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_res_fax_number:
-    weight: 10
-    label: above
-    settings:
-      title: ''
-    third_party_settings: {  }
-    type: telephone_link
-    region: content
-  field_res_floor:
-    weight: 20
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_res_hours_of_operation:
-    type: entity_reference_revisions_entity_view
-    weight: 21
-    label: above
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    region: content
-  field_res_image:
-    weight: 22
-    label: above
-    settings:
-      image_style: large
-      image_link: file
-    third_party_settings: {  }
-    type: image
-    region: content
-  field_res_internal_url:
-    weight: 18
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_res_iscallcenterserviced:
-    weight: 15
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    type: boolean
-    region: content
-  field_res_medical_services:
-    weight: 7
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_res_meta_tags:
-    weight: 16
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: metatag_empty_formatter
-    region: content
-  field_res_phone_number:
-    weight: 9
-    label: above
-    settings:
-      title: ''
-    third_party_settings: {  }
-    type: telephone_link
-    region: content
-  field_res_providers:
-    weight: 4
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_res_room_number:
-    weight: 14
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_test_m_services1:
-    weight: 24
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_test_m_services2:
-    weight: 25
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_test_m_services3:
-    weight: 26
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_testing_top_content:
-    weight: 23
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: text_default
-    region: content
-  links:
-    weight: 5
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  uwm_unique_id:
     weight: 6
     label: above
     settings:
@@ -225,4 +63,75 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-hidden: {  }
+  field_res_building:
+    weight: 5
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_res_fax_number:
+    weight: 4
+    label: above
+    settings:
+      title: ''
+    third_party_settings: {  }
+    type: telephone_link
+    region: content
+  field_res_hours_of_operation:
+    type: entity_reference_revisions_entity_view
+    weight: 7
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_res_image:
+    weight: 1
+    label: above
+    settings:
+      image_style: large
+      image_link: file
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_res_medical_services:
+    weight: 2
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_res_phone_number:
+    weight: 3
+    label: above
+    settings:
+      title: ''
+    third_party_settings: {  }
+    type: telephone_link
+    region: content
+  field_res_providers:
+    weight: 9
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  field_res_displayaptslink: true
+  field_res_external_url: true
+  field_res_floor: true
+  field_res_internal_url: true
+  field_res_iscallcenterserviced: true
+  field_res_meta_tags: true
+  field_res_room_number: true
+  field_test_m_services1: true
+  field_test_m_services2: true
+  field_test_m_services3: true
+  field_testing_top_content: true
+  links: true
+  uwm_unique_id: true

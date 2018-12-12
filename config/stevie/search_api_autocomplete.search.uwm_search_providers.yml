@@ -1,0 +1,31 @@
+uuid: a09c37a8-8577-440e-933d-35ce18d5f231
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.uwm_providers_search_api_index
+    - views.view.uwm_search_providers
+  module:
+    - views
+    - search_api_autocomplete
+id: uwm_search_providers
+label: 'UWM Search Providers'
+index_id: uwm_providers_search_api_index
+suggester_settings:
+  server:
+    fields: {  }
+suggester_weights:
+  server: 0
+suggester_limits: {  }
+search_settings:
+  'views:uwm_search_providers':
+    displays:
+      default: true
+      selected: {  }
+options:
+  limit: 10
+  min_length: 1
+  show_count: false
+  autosubmit: true
+  submit_button_selector: ':submit'
+  delay: null

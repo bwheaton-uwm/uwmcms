@@ -1,0 +1,148 @@
+uuid: fa109944-580e-4fb0-a09e-6cbe0ccebfcc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_building
+    - field.storage.taxonomy_term.field_geo_coordinates
+    - field.storage.node.body
+    - field.storage.node.field_res_medical_services
+    - field.storage.taxonomy_term.field_term_keywords
+    - field.storage.node.field_res_phone_number
+    - search_api.server.uwmed_local_solr
+  module:
+    - taxonomy
+    - search_api_location
+    - node
+    - search_api
+    - uwmcs_searchfields
+id: uwm_locations_geo_search_api_index
+name: 'UWM Locations Geo - Search API Index'
+description: ''
+read_only: false
+field_settings:
+  body:
+    label: Description
+    datasource_id: 'entity:node'
+    property_path: body
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.body
+  field_geo_coordinates:
+    label: 'Building » Taxonomy term » Geo Coordinates'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_building:entity:field_geo_coordinates'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_res_building
+        - field.storage.taxonomy_term.field_geo_coordinates
+      module:
+        - taxonomy
+  field_res_building_latlon:
+    label: 'Building  Geo Coordinates LatLong Pair'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_building:entity:field_geo_coordinates:latlon'
+    type: location
+    dependencies:
+      config:
+        - field.storage.node.field_res_building
+        - field.storage.taxonomy_term.field_geo_coordinates
+      module:
+        - taxonomy
+  field_res_building_latlon_1:
+    label: 'Building Geo Coordinates LatLong Spatial RP'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_building:entity:field_geo_coordinates:latlon'
+    type: rpt
+    dependencies:
+      config:
+        - field.storage.node.field_res_building
+        - field.storage.taxonomy_term.field_geo_coordinates
+      module:
+        - taxonomy
+  field_res_building_name:
+    label: 'Building » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_building:entity:name'
+    type: text
+    boost: !!float 3
+    dependencies:
+      config:
+        - field.storage.node.field_res_building
+      module:
+        - taxonomy
+        - taxonomy
+  field_res_phone_number:
+    label: 'Phone Number'
+    datasource_id: 'entity:node'
+    property_path: field_res_phone_number
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_res_phone_number
+  field_term_keywords:
+    label: 'Medical Services » Taxonomy term » Term Keywords'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_medical_services:entity:field_term_keywords'
+    type: text
+    boost: !!float 13
+    dependencies:
+      config:
+        - field.storage.node.field_res_medical_services
+        - field.storage.taxonomy_term.field_term_keywords
+      module:
+        - taxonomy
+  name:
+    label: 'Medical Services » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_medical_services:entity:name'
+    type: text
+    boost: !!float 13
+    dependencies:
+      config:
+        - field.storage.node.field_res_medical_services
+      module:
+        - taxonomy
+        - taxonomy
+  rendered_item:
+    label: 'Rendered HTML output'
+    property_path: rendered_item
+    type: text
+    configuration:
+      roles:
+        anonymous: anonymous
+      view_mode:
+        'entity:node':
+          res_clinic: default
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    boost: !!float 21
+    dependencies:
+      module:
+        - node
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: false
+      selected:
+        - res_clinic
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  UwmSearchWithin: {  }
+  add_url: {  }
+  aggregated_field: {  }
+  rendered_item: {  }
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  index_directly: true
+  cron_limit: 50
+server: uwmed_local_solr
