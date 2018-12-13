@@ -29,5 +29,8 @@ backend_config:
   suggest_suffix: true
   suggest_corrections: true
   suggest_words: false
-  acquia_search_possible_cores: {  }
+  acquia_search_possible_cores:
+    - BEXY-148616.prod.uwmeddb254269
+    - BEXY-148616.prod.stevie
+    - BEXY-148616
   overridden_by_acquia_search: 2
