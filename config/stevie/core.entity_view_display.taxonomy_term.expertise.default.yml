@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.taxonomy_term.expertise.field_res_providers
+    - field.field.taxonomy_term.expertise.field_term_keywords
     - field.field.taxonomy_term.expertise.uwm_unique_id
     - taxonomy.vocabulary.expertise
   module:
@@ -23,19 +24,13 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_res_providers:
-    weight: 2
+    weight: 1
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  uwm_unique_id:
-    weight: 1
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-hidden: {  }
+hidden:
+  field_term_keywords: true
+  uwm_unique_id: true

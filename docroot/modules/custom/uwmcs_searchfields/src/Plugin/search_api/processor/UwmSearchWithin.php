@@ -139,29 +139,6 @@ class UwmSearchWithin extends ProcessorPluginBase {
    *   Description here.
    */
   private function setValueForContentTerms(Node $node, array &$matches) {
-
-    if ($node->getType() === 'res_clinic' || $node->getType() === 'res_provider') {
-
-      if ($node->hasField('field_res_medical_services')) {
-
-        $medicalServices = $node->get('field_res_medical_services')->getValue();
-        if (!empty($medicalServices)) {
-          $matches[] = self::VALUE_MEDICAL_SERVICE;
-        }
-
-      }
-
-      if ($node->hasField('field_res_expertises')) {
-
-        $expertises = $node->get('field_res_expertises')->getValue();
-        if (!empty($expertise)) {
-          $matches[] = self::VALUE_MEDICAL_SERVICE;
-        }
-
-      }
-
-    }
-
   }
 
   /**
@@ -185,6 +162,10 @@ class UwmSearchWithin extends ProcessorPluginBase {
 
       if (stripos($alias, 'research') !== FALSE) {
         $matches[] = self::VALUE_RESEARCH;
+      }
+
+      if (stripos($alias, 'provider-resource') !== FALSE) {
+        $matches[] = self::VALUE_REFERRALS;
       }
 
       if (stripos($alias, 'about') !== FALSE ||

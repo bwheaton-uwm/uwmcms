@@ -3,16 +3,18 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_res_isacceptingnewpts
     - field.storage.node.field_res_expertises
+    - field.storage.taxonomy_term.field_term_keywords
     - field.storage.node.field_res_biography
     - field.storage.node.field_res_gender
-    - field.storage.node.field_res_isacceptingnewpts
     - field.storage.node.field_res_languages
     - field.storage.node.field_res_medical_services
     - field.storage.node.field_res_name
     - field.storage.node.field_res_personal_interests
     - search_api.server.database
   module:
+    - taxonomy
     - node
     - search_api
     - uwmcs_searchfields
@@ -21,15 +23,6 @@ name: 'UWM Providers - Search API Index'
 description: ''
 read_only: false
 field_settings:
-  family:
-    label: 'Name » Family'
-    datasource_id: 'entity:node'
-    property_path: 'field_res_name:family'
-    type: text
-    boost: !!float 8
-    dependencies:
-      config:
-        - field.storage.node.field_res_name
   field_res_biography:
     label: Biography
     datasource_id: 'entity:node'
@@ -48,6 +41,18 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_expertises
+  field_res_expertises_name:
+    label: 'Areas of Expertise » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_expertises:entity:name'
+    type: text
+    boost: !!float 8
+    dependencies:
+      config:
+        - field.storage.node.field_res_expertises
+      module:
+        - taxonomy
+        - taxonomy
   field_res_gender:
     label: Gender
     datasource_id: 'entity:node'
@@ -81,6 +86,32 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_medical_services
+  field_res_name_family:
+    label: 'Name » Family'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_name:family'
+    type: text
+    boost: !!float 13
+    dependencies:
+      config:
+        - field.storage.node.field_res_name
+  field_res_name_given:
+    label: 'Name » Given'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_name:given'
+    type: text
+    boost: !!float 13
+    dependencies:
+      config:
+        - field.storage.node.field_res_name
+  field_res_name_title:
+    label: 'Name » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_name:title'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_name
   field_res_personal_interests:
     label: 'Personal Interests'
     datasource_id: 'entity:node'
@@ -90,15 +121,28 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_personal_interests
-  given:
-    label: 'Name » Given'
+  field_term_keywords:
+    label: 'Areas of Expertise » Taxonomy term » Term Keywords'
     datasource_id: 'entity:node'
-    property_path: 'field_res_name:given'
+    property_path: 'field_res_expertises:entity:field_term_keywords'
     type: text
-    boost: !!float 8
     dependencies:
       config:
-        - field.storage.node.field_res_name
+        - field.storage.node.field_res_expertises
+        - field.storage.taxonomy_term.field_term_keywords
+      module:
+        - taxonomy
+  name:
+    label: 'Areas of Expertise » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_expertises:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_res_expertises
+      module:
+        - taxonomy
+        - taxonomy
   title:
     label: Title
     datasource_id: 'entity:node'
@@ -108,14 +152,6 @@ field_settings:
     dependencies:
       module:
         - node
-  title_1:
-    label: 'Name » Title'
-    datasource_id: 'entity:node'
-    property_path: 'field_res_name:title'
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_res_name
   uwmsearchwithin:
     label: UwmSearchWithin
     property_path: uwmsearchwithin

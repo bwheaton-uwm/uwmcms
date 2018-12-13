@@ -27,7 +27,6 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: body
     type: text
-    boost: !!float 3
     dependencies:
       config:
         - field.storage.node.body
@@ -86,6 +85,14 @@ field_settings:
         - field.storage.paragraph.field_uwm_section_heading
       module:
         - paragraphs
+  field_uwm_sections:
+    label: Sections
+    datasource_id: 'entity:node'
+    property_path: field_uwm_sections
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_uwm_sections
   rendered_item:
     label: 'Rendered HTML output'
     property_path: rendered_item

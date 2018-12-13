@@ -1,8 +1,9 @@
-uuid: 2669e01e-c6f4-447e-84b9-a4a03b82c05c
+uuid: 16a1f3b6-1838-4aca-8390-20430e793f55
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.taxonomy_term.search_result
     - field.field.taxonomy_term.medical_services.field_res_clinics
     - field.field.taxonomy_term.medical_services.field_term_keywords
     - field.field.taxonomy_term.medical_services.uwm_unique_id
@@ -11,10 +12,10 @@ dependencies:
     - text
 _core:
   default_config_hash: dyDe7LACiFcUf-rnlsIW9OnqqHJfAg7BsYM-N5EWcEs
-id: taxonomy_term.medical_services.default
+id: taxonomy_term.medical_services.search_result
 targetEntityType: taxonomy_term
 bundle: medical_services
-mode: default
+mode: search_result
 content:
   description:
     label: hidden

@@ -9,7 +9,7 @@ dependencies:
     - search_api
 id: locations_facet_medical_services
 name: 'Locations Facet Medical Services'
-url_alias: medical_services
+url_alias: medical-service
 weight: 0
 min_count: 1
 show_only_one_result: false
