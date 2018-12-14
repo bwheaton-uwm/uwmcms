@@ -1,5 +1,5 @@
 diff --git a/docroot/.htaccess b/docroot/.htaccess
-index efce1877..46264298 100755
+index efce1877..9a661c16 100755
 --- a/docroot/.htaccess
 +++ b/docroot/.htaccess
 @@ -1,3 +1,718 @@
@@ -63,7 +63,7 @@ index efce1877..46264298 100755
 +  ### UWMEDICINE LAUNCH ###
 +  #########################
 +  ### SERVE ALL /education except the itemized URLS below from www2.uwmedicine.org ###
-+  RewriteCond %{HTTP_HOST} ^www.uwmedicine(test)?.org
++  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
 +  RewriteCond %{REQUEST_URI} ^/education/.*
 +  RewriteCond %{REQUEST_URI} !^/education$
 +  RewriteCond %{REQUEST_URI} !^/education/Pages/default.aspx$
@@ -195,7 +195,7 @@ index efce1877..46264298 100755
 +  RewriteRule ^(.*)$ https://www2.uwmedicine.org%{REQUEST_URI} [L,P]
 +
 +  ### SERVE THESE PAGES FROM www2.uwmedicine.org ###
-+  RewriteCond %{HTTP_HOST} ^www.uwmedicine(test)?.org
++  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
 +  RewriteCond %{REQUEST_URI} ^/services/obstetrics/uw-baby-pregnancy-app$ [OR]
 +  RewriteCond %{REQUEST_URI} ^/services/obstetrics/birth-facility$ [OR]
 +  RewriteCond %{REQUEST_URI} ^/flu$ [OR]
@@ -220,7 +220,7 @@ index efce1877..46264298 100755
 +  RewriteRule ^(.*)$ https://www2.uwmedicine.org%{REQUEST_URI} [L,P]
 +
 +  ### SERVE THESE PAGES FROM cms.uwmedicine.org ###
-+  RewriteCond %{HTTP_HOST} ^www.uwmedicine(test)?.org
++  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
 +  #RewriteCond %{REQUEST_URI} ^/index.php$ [OR]
 +  #RewriteCond %{REQUEST_URI} ^/(user|admin|themes|core|simplesaml|sites|libraries|profiles|modules|node|sitemaps|lp)(/)?(?(1).*|$) [OR]
 +  #RewriteCond %{REQUEST_URI} ^/(views|editor|media_browser|toolbar|filter|contextual|history)/.+ [OR]
@@ -698,7 +698,7 @@ index efce1877..46264298 100755
 +  RewriteRule ^(.*)$ https://cms.uwmedicine.org%{REQUEST_URI} [L,P]
 +
 +  # Redirects for launched pages. These pages are served from Drupal.
-+  RewriteCond %{HTTP_HOST} ^www.uwmedicine(test)?.org
++  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
 +  RewriteRule ^locations/(.*)/directions(/)?(?(2).*|$) "https://www.uwmedicine.org/locations/$1#directions-tab" [NE,L,R=301]
 +  RewriteRule ^locations/(.*)/care-providers(/)?(?(2).*|$) "https://www.uwmedicine.org/locations/$1#providers-tab" [NE,L,R=301]
 +  RewriteRule ^services/urgent-care/(providers|locations)$ "https://www.uwmedicine.org/services/urgent-care" [L,R=301]
@@ -706,7 +706,7 @@ index efce1877..46264298 100755
 +  RewriteRule ^services/urgent-care/(.+)$ "https://www.uwmedicine.org/locations/primary-care-$1" [L,R=301]
 +  RewriteRule "^/search/providers#k=(.*)$" "https://www.uwmedicine.org/search/providers?s=$1" [L,R=301]
 +  ### SERVE EVERYTHING ELSE FROM stevie.cms.uwmedicine.org ###
-+  RewriteCond %{HTTP_HOST} ^www.uwmedicine(test)?.org
++  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
 +  RewriteRule ^(.*)$ https://stevie.cms.uwmedicine.org%{REQUEST_URI} [L,P]
 +</IfModule>
 +##
