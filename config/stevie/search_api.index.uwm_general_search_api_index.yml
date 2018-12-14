@@ -3,9 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_res_expertises
-    - field.storage.node.field_res_biography
     - field.storage.node.body
+    - field.storage.node.field_res_biography
+    - field.storage.node.field_res_expertises
     - field.storage.node.field_res_medical_services
     - field.storage.taxonomy_term.field_term_keywords
     - field.storage.node.field_uwm_sections
@@ -140,8 +140,7 @@ processor_settings:
     highlight_partial: true
     excerpt: true
     excerpt_length: 350
-    exclude_fields:
-      - title
+    exclude_fields: {  }
     prefix: '<em class="match">'
     suffix: '</em>'
     weights:
@@ -156,7 +155,6 @@ processor_settings:
       - field_term_keywords
       - field_uwm_section_heading
       - title
-      - uwmsearchwithin
     ignorable: '[''¿¡!?,.:;]'
     strip:
       character_sets:

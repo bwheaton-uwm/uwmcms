@@ -360,21 +360,10 @@ display:
           group_type: group
           admin_label: ''
           empty: true
-          content: '<div class="results-summary">Displaying @start - @end of @total</div>'
+          content: '<div class="results-count-summary">Displaying @start - @end of @total</div>'
           plugin_id: result
       footer: {  }
-      empty:
-        area_text_custom:
-          id: area_text_custom
-          table: views
-          field: area_text_custom
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          tokenize: false
-          content: "<h3>We’re sorry.</h3>\r\n\r\n\r\n<p>We couldn’t find any results for your search. Try a different search term or\r\n  explore additional search options.</p>\r\n\r\n<p><a href=\"/search/providers\">Search for a provider</a>\r\n  | <a href=\"/search/locations\">Search for a location</a>\r\n</p>\r\n\r\n<h3>TAKE ME TO</h3>\r\n\r\n<p><a href=\"/patient-resources/make-an-appointment\">Appointments</a>\r\n  | Urgent care | Virtual clinic | <a href=\"/services/primary-care\">Primary\r\n    care</a></p>\r\n\r\n\r\n<p><a href=\"/services\">Specialty care</a>\r\n  | <a href=\"http://healthlibrary.uwmedicine.org\">Condition library</a>\r\n  | <a href=\"/patient-resources/ecare\">eCare patient portal</a>\r\n  | <a href=\"/patient-resources/billing-and-insurance\">Billing</a></p>\r\n\r\n<h3>INFORMATION FOR</h3>\r\n\r\n<p><a href=\"/provider-resource\">Providers</a>\r\n  | <a href=\"/school-of-medicine\">School of Medicine</a>\r\n  | <a href=\"/research\">Researchers</a></p>\r\n\r\n\r\n<h3>CONNECT WITH US</h3>\r\n\r\n<p>If you continue to experience difficulty​, please contact us via our website\r\n  feedback form.</p>\r\n\r\n<p><a href=\"/node/feedback\">Submit feedback</a></p>"
-          plugin_id: text_custom
+      empty: {  }
       relationships: {  }
       arguments: {  }
       display_extenders: {  }

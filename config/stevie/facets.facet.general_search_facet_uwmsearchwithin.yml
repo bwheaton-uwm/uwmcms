@@ -11,7 +11,7 @@ id: general_search_facet_uwmsearchwithin
 name: 'General Search - Facet UwmSearchWithin'
 url_alias: within
 weight: 0
-min_count: 1
+min_count: 0
 show_only_one_result: false
 field_identifier: uwmsearchwithin
 facet_source_id: 'search_api:views_page__uwm_general_search__page_1'

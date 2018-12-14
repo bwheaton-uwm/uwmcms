@@ -1,6 +1,6 @@
 uuid: fa109944-580e-4fb0-a09e-6cbe0ccebfcc
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - field.storage.node.field_res_building
