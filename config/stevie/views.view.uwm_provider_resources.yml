@@ -16,7 +16,7 @@ dependencies:
     - taxonomy.vocabulary.uwm_provider_resource_sub_specia
     - taxonomy.vocabulary.uwm_provider_resource_video_type
   content:
-    - 'taxonomy_term:uwm_provider_resource_specialtie:295f3430-1a4b-4c79-b813-5144f3556b51'
+    - 'taxonomy_term:expertise:c01c9f22-8c4c-415e-8595-34b01611ef47'
     - 'taxonomy_term:uwm_provider_resource_specialtie:2f9b9b41-b246-45c3-8ee9-c3d1709f67db'
   module:
     - better_exposed_filters
@@ -986,11 +986,24 @@ display:
           empty: false
           tokenize: false
           content:
-            value: '<p class="m-0 p-3 font-weight-bold">Save Your Search <br /><a tabindex="0" class="js-link-copy btn btn-outline-teal mt-3">Copy link</a></p>'
+            value: "<div class=\"js-filter-heading\"><h2 class=\"field field--name-field-uwm-section-heading field--type-text field--label-hidden field__item\">Search our catalog of educational tools, information and resources:</h2></div>\r\n<div class=\"js-share-search d-flex\"\"><p class=\"d-inline-block mr-auto mb-0  pl-0 py-3 pr-3 font-weight-bold\">[view:total-rows] results found</p>\r\n    <p class=\"mb-0 ml-auto d-inline-block  pr-0 py-3 pl-3 font-weight-bold\"><span class=\"mr-2\">Share your search</span> <a tabindex=\"0\" class=\"js-link-copy btn btn-outline-teal mt-0 py-1 px-3 small\">Copy link</a></p></div>"
             format: unrestricted
           plugin_id: text
       footer: {  }
-      empty: {  }
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content:
+            value: "<h2>We're sorry.</h2>\r\n\r\n<p>We couldn't find any results for your search. We're working hard to add resources every day. Try a new search in the meantime.</p>"
+            format: basic_html
+          plugin_id: text
       relationships:
         field_uwm_prov_res_media_type:
           id: field_uwm_prov_res_media_type
@@ -1091,7 +1104,7 @@ display:
           admin_label: ''
           operator: or
           value:
-            306: 306
+            38476: 38476
           group: 1
           exposed: true
           expose:

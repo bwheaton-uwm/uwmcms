@@ -45,13 +45,14 @@ view_mode ? view_mode|clean_class,
 
                     <div class="col-xs-12 m-hours">
                         {{ _hoursMacro.uwOpenHoursTable(_cli) }}
+
                     </div>
 
                     <div class="col-xs-12 m-address">
-                        <address>Convenient care&mdash;anytime, anywhere
-                            <br><a href="https://uwmedicinevirtualclinic.anytime.org/#/emergencyCheck">Get Care Now</a>
-                            <small class="tel">
-                                <a href="tel:{{ _cli.seoPhone|uwm_format_phone }}">
+                        <address>On-demand care for the whole family&mdash;24/7, 365 days a year.
+
+                            <br><br><span class="tel">
+                                <a style="color #474747;" href="tel:{{ _cli.seoPhone|uwm_format_phone }}">
                                     <span class="uwmed-icon uwmed-icon__phone-solid"></span>
                                     {{ _cli.seoPhone|uwm_format_phone('.') }}
                                 </a>
@@ -61,7 +62,7 @@ view_mode ? view_mode|clean_class,
                                     {{ _cli.seoFax|uwm_format_phone('.') }}
                                     <span>fax</span>
                                 {% endif %}
-                            </small>
+                            </span>
                         </address>
                     </div>
 
@@ -77,7 +78,7 @@ view_mode ? view_mode|clean_class,
 
                         {% set customApptLink = content.field_custom_appointment_link[0]['#url'] %}
 
-                        <a href="https://uwmedicinevirtualclinic.anytime.org/#/emergencyCheck">{{ "Get Care Now"|t }}
+                        <a href="/services/virtual-clinic/faq">{{ "Frequently asked questions"|t }}
                             <i class="fa fa-angle-right" aria-hidden="true"></i>
                         </a>
 
@@ -94,20 +95,8 @@ view_mode ? view_mode|clean_class,
                     {% set classes = [
                     content.field_clinic_wait_time_snippet|render is not empty ? 'fade-in' : '',
                     ] %}
-                    <div class="col-xs-12 get-in-line fade-out {{ classes|uwm_join_parts(' ') }}"
-                         data-uwm-clockwise-wait-time="{{ content.field_clockwise_id[0]['#markup'] }}">
-                        {% set node_path =  path('entity.node.canonical', {'node': node.nid.value}) %}
-                        <h4><span class="uc-landing"><a
-                                        href="{{ node_path|replace({'locations': "services", 'primary': "urgent", 'care-': "care/"}) }}">{{ "Urgent Care"|t }}</a></span>
-                            <span class="wait-link"><a
-                                        href="/patient-care/making-an-appointment">
-                                Get in line<i
-                                            class="fa fa-angle-right"
-                                            aria-hidden="true"></i></a>
-                            </span></h4>
-                        <p class="wait-text wait">
-                            <span class="m">{{ content.field_clinic_wait_time_snippet }}</span>
-                        </p>
+                    <div class="col-xs-12 hidden-md hidden-sm hidden-lg" style="padding: 0;">
+                        <h4>$35 per visit, no appointment needed.</h4>
                     </div>
 
                 </div>
@@ -119,9 +108,9 @@ view_mode ? view_mode|clean_class,
                         <h1{{ title_attributes }}>{{ label }}</h1>
                         {{ title_suffix }}
 
-                        <address>Convenient care&mdash;anytime, anywhere
+                        <address>On-demand care for the whole family&mdash;24/7, 365 days a year.
 
-                        <br><p class="btn-ghost-purple"><a class="btn btn-default" href="https://uwmedicinevirtualclinic.anytime.org/#/emergencyCheck"><i class="hidden u-ips">&nbsp;</i>Get Care Now </a>
+                        <br><p class="btn-ghost-purple"><a class="btn btn-default" href="https://uwmedicinevirtualclinic.anytime.org/#/emergencyCheck"><i class="hidden u-ips">&nbsp;</i>Start my visit </a>
                                 <small class="tel">
                                     <a href="tel:{{ _cli.seoPhone|uwm_format_phone }}">
                                         <span class="uwmed-icon uwmed-icon__phone-solid"></span>
@@ -144,9 +133,13 @@ view_mode ? view_mode|clean_class,
 
                         {{ _hoursMacro.uwOpenHoursTable(_cli, node.id) }}
 
+
                     </div>
+
                     <div class="col-sm-12 foot">
+                        <h4 style="margin-bottom: 30px; margin-top: -20px;">$35 per visit, no appointment needed.</h4>
                         {% if hasUrgentCare %}{{ drupal_entity('block_content', 81) }}{% endif %}
+
                     </div>
                     <div class="col-sm-12 foot">
                         <div class="u-911">

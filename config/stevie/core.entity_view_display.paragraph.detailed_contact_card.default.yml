@@ -23,35 +23,35 @@ mode: default
 content:
   field_uwm_address:
     weight: 6
-    label: hidden
+    label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_uwm_assistant:
     weight: 5
-    label: hidden
+    label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_uwm_email_address:
     weight: 4
-    label: hidden
+    label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    type: email_mailto
     region: content
   field_uwm_fax_number:
     weight: 3
-    label: hidden
+    label: above
     settings:
-      title: ''
+      title: Fax
     third_party_settings: {  }
     type: telephone_link
     region: content
   field_uwm_image:
-    weight: 0
+    weight: 1
     label: hidden
     settings:
       image_style: uwm_headshot
@@ -60,7 +60,7 @@ content:
     type: image
     region: content
   field_uwm_name:
-    weight: 1
+    weight: 0
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -68,9 +68,9 @@ content:
     region: content
   field_uwm_phone_number:
     weight: 2
-    label: hidden
+    label: above
     settings:
-      title: ''
+      title: Phone
     third_party_settings: {  }
     type: telephone_link
     region: content

@@ -12,12 +12,13 @@ third_party_settings:
   allowed_formats:
     rich_text: rich_text
     plain_text: plain_text
+    basic_html: '0'
     unrestricted: '0'
 id: paragraph.detailed_contact_card.field_uwm_assistant
 field_name: field_uwm_assistant
 entity_type: paragraph
 bundle: detailed_contact_card
-label: 'Assistant Name and Email'
+label: Assistant
 description: ''
 required: false
 translatable: false
