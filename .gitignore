@@ -148,3 +148,4 @@ drush/sites/.checksums
 # Deprecation detector rules
 .rules
 .htaccess
+test-foo-bar
