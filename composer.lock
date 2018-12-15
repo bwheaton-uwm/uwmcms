@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a94ba42e6fb1f26d02458b77891f3464",
+    "content-hash": "5501074205e8151f20a8c4eeac79985b",
     "packages": [
         {
             "name": "acquia/blt",
@@ -1336,16 +1336,16 @@
         },
         {
             "name": "consolidation/annotated-command",
-            "version": "2.10.0",
+            "version": "2.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/annotated-command.git",
-                "reference": "8e7d1a05230dc1159c751809e98b74f2b7f71873"
+                "reference": "288593672a8ca9ead2c73a8bfbfa4737862bfd6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/8e7d1a05230dc1159c751809e98b74f2b7f71873",
-                "reference": "8e7d1a05230dc1159c751809e98b74f2b7f71873",
+                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/288593672a8ca9ead2c73a8bfbfa4737862bfd6a",
+                "reference": "288593672a8ca9ead2c73a8bfbfa4737862bfd6a",
                 "shasum": ""
             },
             "require": {
@@ -1357,13 +1357,57 @@
                 "symfony/finder": "^2.5|^3|^4"
             },
             "require-dev": {
-                "g1a/composer-test-scenarios": "^2",
+                "g1a/composer-test-scenarios": "^3",
+                "php-coveralls/php-coveralls": "^1",
                 "phpunit/phpunit": "^6",
-                "satooshi/php-coveralls": "^2",
                 "squizlabs/php_codesniffer": "^2.7"
             },
             "type": "library",
             "extra": {
+                "scenarios": {
+                    "symfony4": {
+                        "require": {
+                            "symfony/console": "^4.0"
+                        },
+                        "config": {
+                            "platform": {
+                                "php": "7.1.3"
+                            }
+                        }
+                    },
+                    "symfony2": {
+                        "require": {
+                            "symfony/console": "^2.8"
+                        },
+                        "require-dev": {
+                            "phpunit/phpunit": "^4.8.36"
+                        },
+                        "remove": [
+                            "php-coveralls/php-coveralls"
+                        ],
+                        "config": {
+                            "platform": {
+                                "php": "5.4.8"
+                            }
+                        },
+                        "scenario-options": {
+                            "create-lockfile": "false"
+                        }
+                    },
+                    "phpunit4": {
+                        "require-dev": {
+                            "phpunit/phpunit": "^4.8.36"
+                        },
+                        "remove": [
+                            "php-coveralls/php-coveralls"
+                        ],
+                        "config": {
+                            "platform": {
+                                "php": "5.4.8"
+                            }
+                        }
+                    }
+                },
                 "branch-alias": {
                     "dev-master": "2.x-dev"
                 }
@@ -1384,7 +1428,7 @@
                 }
             ],
             "description": "Initialize Symfony Console commands from annotated command class methods.",
-            "time": "2018-11-15T01:46:18+00:00"
+            "time": "2018-12-14T01:52:35+00:00"
         },
         {
             "name": "consolidation/config",
@@ -6487,17 +6531,17 @@
         },
         {
             "name": "drupal/entity_browser",
-            "version": "2.0.0-alpha2",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/entity_browser",
-                "reference": "8.x-2.0-alpha2"
+                "reference": "8.x-2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/entity_browser-8.x-2.0-alpha2.zip",
-                "reference": "8.x-2.0-alpha2",
-                "shasum": "f31ad069e5c5e95db9b9410a4d71038ac0c5b370"
+                "url": "https://ftp.drupal.org/files/projects/entity_browser-8.x-2.0.zip",
+                "reference": "8.x-2.0",
+                "shasum": "683a7a252c947433c7b78bb838d6d8973c13cf77"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -6515,11 +6559,11 @@
                     "dev-8.x-1.x": "8.1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.0-alpha2",
-                    "datestamp": "1528141081",
+                    "version": "8.x-2.0",
+                    "datestamp": "1536328684",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Alpha releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 },
                 "patches_applied": {
@@ -6628,8 +6672,16 @@
                     "homepage": "https://www.drupal.org/user/3260690"
                 },
                 {
+                    "name": "Wim Leers",
+                    "homepage": "https://www.drupal.org/user/99777"
+                },
+                {
                     "name": "cs_shadow",
                     "homepage": "https://www.drupal.org/user/2828287"
+                },
+                {
+                    "name": "phenaproxima",
+                    "homepage": "https://www.drupal.org/user/205645"
                 },
                 {
                     "name": "slashrsm",
@@ -7860,7 +7912,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.23",
-                    "datestamp": "1532084496",
+                    "datestamp": "1542081972",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -8389,17 +8441,17 @@
         },
         {
             "name": "drupal/lightning_media",
-            "version": "3.1.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/lightning_media",
-                "reference": "8.x-3.1"
+                "reference": "8.x-3.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/lightning_media-8.x-3.1.zip",
-                "reference": "8.x-3.1",
-                "shasum": "d9287269afdfda9bef71297c0183cdad771c9ba5"
+                "url": "https://ftp.drupal.org/files/projects/lightning_media-8.x-3.2.zip",
+                "reference": "8.x-3.2",
+                "shasum": "71ccaca7e477622872ee8e646069f013cfc65b47"
             },
             "require": {
                 "bower-asset/cropper": "^2.3",
@@ -8411,13 +8463,13 @@
                 "drupal/crop": "^2.0.0-rc1",
                 "drupal/dropzonejs": "2.0.0-alpha3",
                 "drupal/embed": "^1.0",
-                "drupal/entity_browser": "2.0.0-alpha2",
+                "drupal/entity_browser": "2.0.0",
                 "drupal/entity_embed": "1.0.0-beta2",
                 "drupal/image_widget_crop": "^2.1",
                 "drupal/inline_entity_form": "^1.0",
                 "drupal/libraries": "3.0-alpha1",
-                "drupal/lightning_core": "^3.1",
-                "drupal/media_entity_instagram": "2.0.0-alpha1",
+                "drupal/lightning_core": "^3.4",
+                "drupal/media_entity_instagram": "2.0.0-alpha2",
                 "drupal/media_entity_twitter": "2.0.0-alpha2",
                 "drupal/slick_entityreference": "^1.1",
                 "drupal/video_embed_field": "^2.0",
@@ -8433,7 +8485,7 @@
                 "drupal/media_entity_twitter": "*",
                 "drupal/schema_metatag": "^1.3",
                 "drupal/slick_entityreference": "*",
-                "drupal/video_embed_media": "*",
+                "drupal/video_embed_media-video_embed_media": "*",
                 "enm1989/chromedriver": "^2.41"
             },
             "type": "drupal-module",
@@ -8442,8 +8494,8 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.1",
-                    "datestamp": "1538573880",
+                    "version": "8.x-3.2",
+                    "datestamp": "1544729280",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -8462,6 +8514,10 @@
                         "type:bower-asset",
                         "type:npm-asset"
                     ],
+                    "docroot/modules/contrib/acquia/{$name}": [
+                        "drupal/lightning_core",
+                        "drupal/lightning_media"
+                    ],
                     "docroot/modules/contrib/{$name}": [
                         "type:drupal-module"
                     ],
@@ -8479,12 +8535,14 @@
                     "drupal/entity_browser": {
                         "2865928 - The View widget should filter based on field settings": "https://www.drupal.org/files/issues/entity-browser-view-context-2865928-14.patch",
                         "2877751 - Inform users how many items they can add to a field that uses an entity browser": "https://www.drupal.org/files/issues/2877751-27-8.x-2.x.patch"
-                    },
-                    "drupal/media_entity_instagram": {
-                        "2917454 - Field formatter test is broken": "https://www.drupal.org/files/issues/2917454-2.patch"
                     }
                 },
                 "enable-patching": true
+            },
+            "autoload": {
+                "psr-4": {
+                    "Drupal\\Tests\\lightning_media\\": "tests/src"
+                }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "scripts": {
@@ -8510,7 +8568,7 @@
                 ]
             },
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -9057,17 +9115,17 @@
         },
         {
             "name": "drupal/media_entity_instagram",
-            "version": "2.0.0-alpha1",
+            "version": "2.0.0-alpha2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/media_entity_instagram",
-                "reference": "8.x-2.0-alpha1"
+                "reference": "8.x-2.0-alpha2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/media_entity_instagram-8.x-2.0-alpha1.zip",
-                "reference": "8.x-2.0-alpha1",
-                "shasum": "602d84d2e385ce2f3b0562f7cf50d1e084f92658"
+                "url": "https://ftp.drupal.org/files/projects/media_entity_instagram-8.x-2.0-alpha2.zip",
+                "reference": "8.x-2.0-alpha2",
+                "shasum": "3a61feafacf7003bf27ec8d4271a07896788b5e3"
             },
             "require": {
                 "drupal/core": "^8.4.0"
@@ -9078,15 +9136,12 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.0-alpha1",
+                    "version": "8.x-2.0-alpha2",
                     "datestamp": "1537264380",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Alpha releases are not covered by Drupal security advisories."
                     }
-                },
-                "patches_applied": {
-                    "2917454 - Field formatter test is broken": "https://www.drupal.org/files/issues/2917454-2.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -9616,17 +9671,17 @@
         },
         {
             "name": "drupal/minifyhtml",
-            "version": "1.3.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/minifyhtml",
-                "reference": "8.x-1.3"
+                "reference": "8.x-1.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/minifyhtml-8.x-1.3.zip",
-                "reference": "8.x-1.3",
-                "shasum": "bcae3d04083d5b5c9bd977042cf633c36e797b6e"
+                "url": "https://ftp.drupal.org/files/projects/minifyhtml-8.x-1.5.zip",
+                "reference": "8.x-1.5",
+                "shasum": "8438c151acd6b2c2354df837c82eb0dc36c2471b"
             },
             "require": {
                 "drupal/core": "*"
@@ -9637,8 +9692,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.3",
-                    "datestamp": "1541182080",
+                    "version": "8.x-1.5",
+                    "datestamp": "1544799180",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -9687,7 +9742,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.0-alpha1",
-                    "datestamp": "1537899180",
+                    "datestamp": "1541456281",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Alpha releases are not covered by Drupal security advisories."
@@ -9785,8 +9840,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta26+0-dev",
-                    "datestamp": "1538053680",
+                    "version": "8.x-1.0-beta26+1-dev",
+                    "datestamp": "1543324080",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -10752,14 +10807,6 @@
                 {
                     "name": "SaschaHannes",
                     "homepage": "https://www.drupal.org/user/3536189"
-                },
-                {
-                    "name": "dakku",
-                    "homepage": "https://www.drupal.org/user/97634"
-                },
-                {
-                    "name": "rackberg",
-                    "homepage": "https://www.drupal.org/user/2806873"
                 }
             ],
             "description": "Restricts access to nodes by taxonomy terms in relation to users and their roles.",
@@ -12439,7 +12486,7 @@
                 },
                 "drupal": {
                     "version": "8.x-2.12",
-                    "datestamp": "1523203180",
+                    "datestamp": "1542505221",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -13512,17 +13559,17 @@
         },
         {
             "name": "drupal/viewsreference",
-            "version": "1.2.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/viewsreference",
-                "reference": "8.x-1.2"
+                "reference": "8.x-1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/viewsreference-8.x-1.2.zip",
-                "reference": "8.x-1.2",
-                "shasum": "5ccceed4ebb1b55c6a459431829e7c72477171b5"
+                "url": "https://ftp.drupal.org/files/projects/viewsreference-8.x-1.4.zip",
+                "reference": "8.x-1.4",
+                "shasum": "973509be252d9a2f9a0a12bbfb83ec41311ef41c"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -13536,8 +13583,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.2",
-                    "datestamp": "1515538984",
+                    "version": "8.x-1.4",
+                    "datestamp": "1544740080",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -14370,16 +14417,16 @@
         },
         {
             "name": "facebook/graph-sdk",
-            "version": "5.6.3",
+            "version": "5.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/php-graph-sdk.git",
-                "reference": "90e92bd1816fe718e55184ab85910dfcf488432c"
+                "reference": "2d8250638b33d73e7a87add65f47fabf91f8ad9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-graph-sdk/zipball/90e92bd1816fe718e55184ab85910dfcf488432c",
-                "reference": "90e92bd1816fe718e55184ab85910dfcf488432c",
+                "url": "https://api.github.com/repos/facebook/php-graph-sdk/zipball/2d8250638b33d73e7a87add65f47fabf91f8ad9b",
+                "reference": "2d8250638b33d73e7a87add65f47fabf91f8ad9b",
                 "shasum": ""
             },
             "require": {
@@ -14424,7 +14471,7 @@
                 "facebook",
                 "sdk"
             ],
-            "time": "2018-07-03T02:25:00+00:00"
+            "time": "2018-12-11T22:56:31+00:00"
         },
         {
             "name": "gettext/gettext",
@@ -20323,7 +20370,7 @@
                 "type": "tar",
                 "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/ckeditor_bs_grid/uwmweb-ckeditor_bs_grid-e2bd7a01273019212bcce473fa62e7c655d65b3a-zip-b9915b.tar",
                 "reference": "e2bd7a01273019212bcce473fa62e7c655d65b3a",
-                "shasum": "507cfbd5c446bb4c2705b65a760388c3144e25fa"
+                "shasum": "22ec66a5ce96e84242f6173024fcda4faf708ed5"
             },
             "require": {
                 "drupal/core": "~8"
@@ -20351,7 +20398,7 @@
                 "type": "tar",
                 "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwm_paragraphs/uwmweb-uwm_paragraphs-ab60ae51a6dc710b62576d01356d8b8446709fca-zip-7b9ee9.tar",
                 "reference": "ab60ae51a6dc710b62576d01356d8b8446709fca",
-                "shasum": "455a76e29a7eaca06a20b590ff9df69833d73b3a"
+                "shasum": "c71faf063b7c6962248ffd134f0fc1cccbf69227"
             },
             "require": {
                 "drupal/core": "~8",
@@ -20373,17 +20420,17 @@
         },
         {
             "name": "uwmweb/uwmbase",
-            "version": "dev-develop",
+            "version": "dev-release-cellated-turkey",
             "source": {
                 "type": "git",
                 "url": "https://github.com/uwmweb/uwmbase.git",
-                "reference": "5d5d28fb77302405e5543b812ce343eb77931dda"
+                "reference": "1700d8377e340e8cad97e216509703d709a588a9"
             },
             "dist": {
                 "type": "tar",
-                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-5d5d28fb77302405e5543b812ce343eb77931dda-zip-5f3fcc.tar",
-                "reference": "5d5d28fb77302405e5543b812ce343eb77931dda",
-                "shasum": "14a80789589900f3423907fc1ffc0e9fe9de4ab2"
+                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-1700d8377e340e8cad97e216509703d709a588a9-zip-5e9a57.tar",
+                "reference": "1700d8377e340e8cad97e216509703d709a588a9",
+                "shasum": "b744f4fc35dd4392c19f8965644aa18277f6d56e"
             },
             "type": "drupal-theme",
             "license": [
@@ -20394,7 +20441,7 @@
                 "source": "https://github.com/uwmweb/uwmbase/tree/develop",
                 "issues": "https://github.com/uwmweb/uwmbase/issues"
             },
-            "time": "2018-12-15T01:21:33+00:00"
+            "time": "2018-12-15T08:31:55+00:00"
         },
         {
             "name": "uwmweb/uwmedicineorg_theme",
@@ -20408,7 +20455,7 @@
                 "type": "tar",
                 "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmedicineorg_theme/uwmweb-uwmedicineorg_theme-7073e3e440a3dc75812056d30259459f6f49ac52-zip-0a228d.tar",
                 "reference": "7073e3e440a3dc75812056d30259459f6f49ac52",
-                "shasum": "70e7db52bab4b117c91f99b9b1b8d3ecc213c502"
+                "shasum": "6ad634b290cd9b559fe3295c9b404fdf2e9130fe"
             },
             "type": "drupal-theme",
             "license": [

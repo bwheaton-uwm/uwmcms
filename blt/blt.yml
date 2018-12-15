@@ -41,6 +41,10 @@ modules:
 disable-targets:
   validate:
     twig: true
+  tests:
+    behat:
+      all: true
+      run: true
 validate:
   twig:
     filesets: {  }
