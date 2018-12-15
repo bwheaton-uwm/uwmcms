@@ -521,7 +521,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          operator: and
+          operator: or
           value: ''
           group: 1
           exposed: true
@@ -529,12 +529,12 @@ display:
             operator_id: search_api_fulltext_op
             label: 'Fulltext search'
             description: ''
-            use_operator: false
+            use_operator: true
             operator: search_api_fulltext_op
             identifier: s
             required: false
             remember: false
-            multiple: false
+            multiple: true
             remember_roles:
               authenticated: authenticated
               anonymous: '0'

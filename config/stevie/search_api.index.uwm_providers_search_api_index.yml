@@ -11,7 +11,6 @@ dependencies:
     - field.storage.node.field_res_languages
     - field.storage.node.field_res_medical_services
     - field.storage.node.field_res_name
-    - field.storage.node.field_res_personal_interests
     - search_api.server.database
   module:
     - taxonomy
@@ -47,6 +46,17 @@ field_settings:
     property_path: 'field_res_expertises:entity:name'
     type: text
     boost: !!float 8
+    dependencies:
+      config:
+        - field.storage.node.field_res_expertises
+      module:
+        - taxonomy
+        - taxonomy
+  field_res_expertises_name_string:
+    label: 'Areas of Expertise » Taxonomy term » Name String'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_expertises:entity:name'
+    type: string
     dependencies:
       config:
         - field.storage.node.field_res_expertises
@@ -113,15 +123,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_name
-  field_res_personal_interests:
-    label: 'Personal Interests'
-    datasource_id: 'entity:node'
-    property_path: field_res_personal_interests
-    type: text
-    boost: !!float 3
-    dependencies:
-      config:
-        - field.storage.node.field_res_personal_interests
   field_term_keywords:
     label: 'Areas of Expertise » Taxonomy term » Term Keywords'
     datasource_id: 'entity:node'
@@ -132,17 +133,6 @@ field_settings:
         - field.storage.node.field_res_expertises
         - field.storage.taxonomy_term.field_term_keywords
       module:
-        - taxonomy
-  name:
-    label: 'Areas of Expertise » Taxonomy term » Name'
-    datasource_id: 'entity:node'
-    property_path: 'field_res_expertises:entity:name'
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_res_expertises
-      module:
-        - taxonomy
         - taxonomy
   title:
     label: Title
@@ -186,15 +176,14 @@ processor_settings:
       - field_res_biography
       - field_res_expertises
       - field_res_expertises_name
+      - field_res_expertises_name_string
       - field_res_gender
       - field_res_languages
       - field_res_medical_services
       - field_res_name_family
       - field_res_name_given
       - field_res_name_title
-      - field_res_personal_interests
       - field_term_keywords
-      - name
       - title
       - uwmsearchwithin
     ignorable: '[''¿¡!?,.:;]'
@@ -229,15 +218,14 @@ processor_settings:
       - field_res_biography
       - field_res_expertises
       - field_res_expertises_name
+      - field_res_expertises_name_string
       - field_res_gender
       - field_res_languages
       - field_res_medical_services
       - field_res_name_family
       - field_res_name_given
       - field_res_name_title
-      - field_res_personal_interests
       - field_term_keywords
-      - name
       - title
       - uwmsearchwithin
     weights:
@@ -252,7 +240,6 @@ processor_settings:
       - field_res_name_family
       - field_res_name_given
       - field_res_name_title
-      - field_res_personal_interests
       - field_term_keywords
       - title
     exceptions:
@@ -269,7 +256,6 @@ processor_settings:
       - field_res_name_family
       - field_res_name_given
       - field_res_name_title
-      - field_res_personal_interests
       - field_term_keywords
       - title
     spaces: ''
@@ -284,15 +270,14 @@ processor_settings:
       - field_res_biography
       - field_res_expertises
       - field_res_expertises_name
+      - field_res_expertises_name_string
       - field_res_gender
       - field_res_languages
       - field_res_medical_services
       - field_res_name_family
       - field_res_name_given
       - field_res_name_title
-      - field_res_personal_interests
       - field_term_keywords
-      - name
       - title
       - uwmsearchwithin
     weights:

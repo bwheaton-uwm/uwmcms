@@ -1,4 +1,4 @@
-uuid: d294e9cc-fddf-481a-8759-327462ca1bfe
+uuid: 4432343e-690f-42b9-a12a-d145018821db
 langcode: en
 status: true
 dependencies:
@@ -7,13 +7,13 @@ dependencies:
     - views.view.uwm_search_providers
   module:
     - search_api
-id: provider_facet_medical_services
-name: 'Provider Facet Medical Services'
-url_alias: medical-service
-weight: -2
+id: provider_facet_expertise
+name: provider_facet_expertise
+url_alias: expertise
+weight: -1
 min_count: 1
 show_only_one_result: false
-field_identifier: field_res_medical_services
+field_identifier: field_res_expertises_name_string
 facet_source_id: 'search_api:views_page__uwm_search_providers__page_1'
 widget:
   type: links
@@ -43,8 +43,8 @@ processor_configs:
       sort: 40
     settings:
       sort: ASC
-  translate_entity:
-    processor_id: translate_entity
+  list_item:
+    processor_id: list_item
     weights:
       build: 5
     settings: {  }

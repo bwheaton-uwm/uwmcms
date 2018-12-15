@@ -10,7 +10,7 @@ dependencies:
 id: provider_facet_uwmsearchwithin
 name: 'Provider Facet UwmSearchWithin'
 url_alias: within
-weight: 1
+weight: -3
 min_count: 0
 show_only_one_result: false
 field_identifier: uwmsearchwithin

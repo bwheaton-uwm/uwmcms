@@ -14,7 +14,7 @@ third_party_settings:
 id: provider_facet_gender
 name: 'Provider Facet Gender'
 url_alias: gender
-weight: -2
+weight: 1
 min_count: 1
 show_only_one_result: false
 field_identifier: field_res_gender

@@ -10,7 +10,7 @@ dependencies:
 id: provider_facet_accepting_patients
 name: 'Provider Facet - Accepting patients'
 url_alias: accepting-patients
-weight: 0
+weight: 2
 min_count: 1
 show_only_one_result: false
 field_identifier: field_res_isacceptingnewpts
