@@ -180,3 +180,11 @@ uwm_commands: 0.0.0
 uwmcs_searchfields: 0.0.0
 path_redirect_import: 1.0.0-beta1
 views_url_alias_node: 1.0.0
+purge: 3.0.0-beta8
+purge_ui: 3.0.0-beta8
+dynamic_page_cache: 8.6.4
+purge_drush: 3.0.0-beta8
+purge_queuer_coretags: 3.0.0-beta8
+purge_processor_cron: 3.0.0-beta8
+purge_processor_lateruntime: 3.0.0-beta8
+acquia_purge: 1.0.0-beta3

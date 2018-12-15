@@ -4,6 +4,7 @@ module:
   acquia_contenthub_diagnostic: 0
   acquia_contenthub_status: 0
   acquia_contenthub_subscriber: 0
+  acquia_purge: 0
   acquia_search: 0
   address: 0
   admin_toolbar: 0
@@ -38,10 +39,10 @@ module:
   ctools_block: 0
   datetime: 0
   dblog: 0
-  devel: 0
   devel_generate: 0
   diff: 0
   dropzonejs: 0
+  dynamic_page_cache: 0
   editor: 0
   editor_advanced_link: 0
   embed: 0
@@ -118,6 +119,12 @@ module:
   paragraphs_type_permissions: 0
   path: 0
   path_redirect_import: 0
+  purge: 0
+  purge_drush: 0
+  purge_processor_cron: 0
+  purge_processor_lateruntime: 0
+  purge_queuer_coretags: 0
+  purge_ui: 0
   quickedit: 0
   rabbit_hole: 0
   rdf: 0
@@ -161,7 +168,6 @@ module:
   views_bulk_edit: 0
   views_bulk_operations: 0
   views_infinite_scroll: 0
-  views_ui: 0
   viewsreference: 0
   workflows: 0
   menu_link_content: 1

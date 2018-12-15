@@ -1,0 +1,31 @@
+uuid: 1bae1289-068f-44ad-a975-a5aa9429af1b
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:871cac23-22d0-4dc6-9ee3-1c93f313149d'
+  module:
+    - block_content
+    - system
+  theme:
+    - uwmed
+id: virtualclinicfeaturedvideostripe
+theme: uwmed
+region: content
+weight: 0
+provider: null
+plugin: 'block_content:871cac23-22d0-4dc6-9ee3-1c93f313149d'
+settings:
+  id: 'block_content:871cac23-22d0-4dc6-9ee3-1c93f313149d'
+  label: 'Virtual Clinic featured video stripe'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /services/virtual-clinic
+    negate: false
+    context_mapping: {  }
