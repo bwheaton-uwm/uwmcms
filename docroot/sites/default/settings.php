@@ -782,6 +782,9 @@ if (file_exists('/var/www/site-php')) {
   require '/var/www/site-php/uwmed/uwmed-settings.inc';
 }
 
+if (file_exists(DRUPAL_ROOT . '/sites/default/settings/cloud-memcache-d8.php')) {
+  require DRUPAL_ROOT . '/sites/default/settings/cloud-memcache-d8.php';
+}
 
 
 if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {

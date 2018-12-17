@@ -785,6 +785,10 @@ if (file_exists($file)) {
   require $file;
 }
 
+if (file_exists(DRUPAL_ROOT . '/sites/stevie/settings/cloud-memcache-d8.php')) {
+  require DRUPAL_ROOT . '/sites/stevie/settings/cloud-memcache-d8.php';
+}
+
 if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
 
   $secrets_file = sprintf(

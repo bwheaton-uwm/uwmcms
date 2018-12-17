@@ -134,3 +134,4 @@ devel: 1.2.0
 config_ignore: 2.1.0
 media_library: 8.6.2
 menu_export: 1.2.0
+memcache: 2.0.0-alpha7
