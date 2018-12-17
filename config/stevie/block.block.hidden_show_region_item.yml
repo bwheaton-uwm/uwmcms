@@ -9,7 +9,7 @@ dependencies:
 id: hidden_show_region_item
 theme: uwmbase
 region: content_top
-weight: -6
+weight: -7
 provider: null
 plugin: page_title_block
 settings:

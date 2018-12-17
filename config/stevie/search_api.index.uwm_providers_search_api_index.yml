@@ -3,14 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_res_isacceptingnewpts
-    - field.storage.node.field_res_expertises
-    - field.storage.taxonomy_term.field_term_keywords
     - field.storage.node.field_res_biography
+    - field.storage.node.field_res_expertises
     - field.storage.node.field_res_gender
+    - field.storage.node.field_res_isacceptingnewpts
     - field.storage.node.field_res_languages
     - field.storage.node.field_res_medical_services
     - field.storage.node.field_res_name
+    - field.storage.taxonomy_term.field_term_keywords
     - search_api.server.database
   module:
     - taxonomy
@@ -160,6 +160,12 @@ processor_settings:
   UwmSearchWithin: {  }
   add_url: {  }
   aggregated_field: {  }
+  hierarchy:
+    fields:
+      field_res_expertises: taxonomy_term-parent
+      field_res_medical_services: taxonomy_term-parent
+    weights:
+      preprocess_index: -45
   highlight:
     highlight: always
     highlight_partial: false

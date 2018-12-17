@@ -68,6 +68,8 @@ class TwigExtension extends \Twig_Extension {
       new \Twig_SimpleFilter(
         'uwm_format_phone', [$this, 'formatPhone']),
       new \Twig_SimpleFilter(
+        'uwm_url_decode', [$this, 'decodeUrl']),
+      new \Twig_SimpleFilter(
         'uwm_arraycount_styles', [$this, 'collectionCssClasses']),
       new \Twig_SimpleFilter(
         'uwm_format_accent_class', [$this, 'formatAccentClass']),
@@ -394,6 +396,20 @@ class TwigExtension extends \Twig_Extension {
     }
 
     return NULL;
+  }
+
+  /**
+   * Description text.
+   *
+   * @param string $url
+   *   Description text.
+   *
+   * @return string
+   *   Description text.
+   */
+  public static function decodeUrl(string $url = '') {
+
+    return urldecode($url);
   }
 
   /**

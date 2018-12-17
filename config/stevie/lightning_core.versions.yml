@@ -188,5 +188,4 @@ purge_queuer_coretags: 3.0.0-beta8
 purge_processor_cron: 3.0.0-beta8
 purge_processor_lateruntime: 3.0.0-beta8
 acquia_purge: 1.0.0-beta3
-memcache: 2.0.0-alpha7
-memcache_admin: 2.0.0-alpha7
+search_api_sorts: 1.0.0-beta1

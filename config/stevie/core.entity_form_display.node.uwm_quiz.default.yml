@@ -48,6 +48,7 @@ content:
       preview_image_style: thumbnail
       open: true
       selection_mode: selection_append
+      field_widget_replace: false
     region: content
     third_party_settings: {  }
   field_uwm_sections:
@@ -78,8 +79,15 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
+    weight: 9
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
     weight: 8
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -97,5 +105,4 @@ content:
 hidden:
   created: true
   promote: true
-  sticky: true
   uid: true

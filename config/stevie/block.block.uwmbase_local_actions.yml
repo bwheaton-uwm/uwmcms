@@ -9,7 +9,7 @@ _core:
 id: uwmbase_local_actions
 theme: uwmbase
 region: content
-weight: -20
+weight: -6
 provider: null
 plugin: local_actions_block
 settings:
