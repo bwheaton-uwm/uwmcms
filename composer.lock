@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "baceb3cbcbed6828a8fac554aac477fe",
+    "content-hash": "a94ba42e6fb1f26d02458b77891f3464",
     "packages": [
         {
             "name": "acquia/blt",
@@ -12038,66 +12038,6 @@
             }
         },
         {
-            "name": "drupal/search_api_sorts",
-            "version": "1.0.0-beta1",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/search_api_sorts",
-                "reference": "8.x-1.0-beta1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/search_api_sorts-8.x-1.0-beta1.zip",
-                "reference": "8.x-1.0-beta1",
-                "shasum": "38faddafaaaa4f80ada772c9d58df819a80bacac"
-            },
-            "require": {
-                "drupal/core": "~8.0",
-                "drupal/search_api": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.0-beta1",
-                    "datestamp": "1492501743",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Anonymous",
-                    "homepage": "https://www.drupal.org/user/0"
-                },
-                {
-                    "name": "JeroenT",
-                    "homepage": "https://www.drupal.org/user/2228934"
-                },
-                {
-                    "name": "StryKaizer",
-                    "homepage": "https://www.drupal.org/user/462700"
-                },
-                {
-                    "name": "borisson_",
-                    "homepage": "https://www.drupal.org/user/2393360"
-                }
-            ],
-            "description": "Create sort options for search queries executed via the Search API.",
-            "homepage": "https://www.drupal.org/project/search_api_sorts",
-            "support": {
-                "source": "http://cgit.drupalcode.org/search_api_sorts"
-            }
-        },
-        {
             "name": "drupal/search_api_synonym",
             "version": "1.2.0",
             "source": {
@@ -20480,7 +20420,7 @@
         },
         {
             "name": "uwmweb/uwmbase",
-            "version": "dev-release-cellated-turkey",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/uwmweb/uwmbase.git",
@@ -20490,7 +20430,7 @@
                 "type": "tar",
                 "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-1700d8377e340e8cad97e216509703d709a588a9-zip-5e9a57.tar",
                 "reference": "1700d8377e340e8cad97e216509703d709a588a9",
-                "shasum": "b744f4fc35dd4392c19f8965644aa18277f6d56e"
+                "shasum": "1e3d2bac1ebbaa826b8bbdd534043218fb65d966"
             },
             "type": "drupal-theme",
             "license": [
@@ -22205,7 +22145,6 @@
         "drupal/rabbit_hole": 20,
         "drupal/relaxed": 10,
         "drupal/search_api_location": 15,
-        "drupal/search_api_sorts": 10,
         "drupal/sharethis": 20,
         "drupal/simplesamlphp_auth": 5,
         "drupal/term_csv_export_import": 15,
