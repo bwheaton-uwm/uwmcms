@@ -810,6 +810,49 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] === 'pro
 }
 
 /**
+ * Override domain detection in Acquia Purge.
+ */
+if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+  switch ($_ENV['AH_SITE_ENVIRONMENT']) {
+    case 'prod':
+      // Production environment.
+      $conf['acquia_purge_domains'] = array(
+        'www.uwmedicine.org',
+      );
+      break;
+    case 'test':
+      // Staging environment.
+      $conf['acquia_purge_domains'] = array(
+        'cmsstage.uwmedicine.org',
+      );
+      break;
+    case 'dev':
+      // Staging environment.
+      $conf['acquia_purge_domains'] = array(
+        'cmsdev.uwmedicine.org',
+      );
+      break;
+    case 'ra':
+      // RA environment.
+      $conf['acquia_purge_domains'] = array(
+        'cmsra.uwmedicine.org',
+      );
+      break;
+    default:
+      // Default purge domains if no specific environment detected.
+      $conf['acquia_purge_domains'] = array(
+        'www.uwmedicine.org',
+      );
+  }
+}
+
+// Do not purge in other environments (such as local development)
+else  {
+  $conf['acquia_purge_passivemode'] = TRUE;
+
+}
+
+/**
  * BLT makes the assumption that, if using multisite, the default configuration
  * directory should be shared between all multi-sites, and each multisite will
  * override this selectively using configuration splits. However, some
