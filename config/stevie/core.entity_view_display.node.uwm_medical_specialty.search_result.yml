@@ -1,8 +1,9 @@
-uuid: 58330678-ac35-415c-a37b-acfea8de7b34
+uuid: f34abdbe-04a9-40c5-9c60-d3307dc8c8e6
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.search_result
     - field.field.node.uwm_medical_specialty.field_uwm_find_a_location_link
     - field.field.node.uwm_medical_specialty.field_uwm_find_a_provider_link
     - field.field.node.uwm_medical_specialty.field_uwm_image
@@ -14,13 +15,13 @@ dependencies:
     - entity_reference_revisions
     - image
     - user
-id: node.uwm_medical_specialty.default
+id: node.uwm_medical_specialty.search_result
 targetEntityType: node
 bundle: uwm_medical_specialty
-mode: default
+mode: search_result
 content:
   field_uwm_find_a_location_link:
-    weight: 101
+    weight: 2
     label: above
     settings:
       link_to_entity: false
@@ -28,7 +29,7 @@ content:
     type: string
     region: content
   field_uwm_find_a_provider_link:
-    weight: 102
+    weight: 3
     label: above
     settings:
       link_to_entity: false
@@ -36,7 +37,7 @@ content:
     type: string
     region: content
   field_uwm_image:
-    weight: 106
+    weight: 6
     label: above
     settings:
       image_style: ''
@@ -45,7 +46,7 @@ content:
     type: image
     region: content
   field_uwm_page_path_name:
-    weight: 103
+    weight: 4
     label: above
     settings:
       link_to_entity: false
@@ -53,7 +54,7 @@ content:
     type: string
     region: content
   field_uwm_parent_page:
-    weight: 104
+    weight: 5
     label: above
     settings:
       link: true
@@ -61,8 +62,8 @@ content:
     type: entity_reference_label
     region: content
   field_uwm_sections:
-    weight: 105
-    label: above
+    weight: 0
+    label: hidden
     settings:
       view_mode: default
       link: ''
@@ -70,7 +71,7 @@ content:
     type: entity_reference_revisions_entity_view
     region: content
   links:
-    weight: 100
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }

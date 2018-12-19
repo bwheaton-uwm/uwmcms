@@ -1,8 +1,9 @@
-uuid: a3b52645-28a2-4ae6-80f1-52647f2d00c0
+uuid: ad3ce5a5-d2e3-4971-af8c-f3818925d0d0
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.search_result
     - field.field.node.uwm_medical_service.field_meta_tags
     - field.field.node.uwm_medical_service.field_uwm_find_a_location_link
     - field.field.node.uwm_medical_service.field_uwm_find_a_provider_link
@@ -16,20 +17,20 @@ dependencies:
     - image
     - metatag
     - user
-id: node.uwm_medical_service.default
+id: node.uwm_medical_service.search_result
 targetEntityType: node
 bundle: uwm_medical_service
-mode: default
+mode: search_result
 content:
   field_meta_tags:
-    weight: 101
+    weight: 2
     label: above
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
     region: content
   field_uwm_find_a_location_link:
-    weight: 104
+    weight: 4
     label: above
     settings:
       link_to_entity: false
@@ -37,7 +38,7 @@ content:
     type: string
     region: content
   field_uwm_find_a_provider_link:
-    weight: 105
+    weight: 5
     label: above
     settings:
       link_to_entity: false
@@ -45,7 +46,7 @@ content:
     type: string
     region: content
   field_uwm_image:
-    weight: 108
+    weight: 7
     label: above
     settings:
       image_style: ''
@@ -54,7 +55,7 @@ content:
     type: image
     region: content
   field_uwm_medical_service:
-    weight: 107
+    weight: 6
     label: above
     settings:
       link: true
@@ -62,7 +63,7 @@ content:
     type: entity_reference_label
     region: content
   field_uwm_page_path_name:
-    weight: 102
+    weight: 3
     label: above
     settings:
       link_to_entity: false
@@ -70,8 +71,8 @@ content:
     type: string
     region: content
   field_uwm_sections:
-    weight: 106
-    label: above
+    weight: 0
+    label: hidden
     settings:
       view_mode: default
       link: ''
@@ -79,7 +80,7 @@ content:
     type: entity_reference_revisions_entity_view
     region: content
   links:
-    weight: 100
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }

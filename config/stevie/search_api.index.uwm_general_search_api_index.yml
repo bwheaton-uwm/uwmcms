@@ -3,9 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_res_expertises
-    - field.storage.node.field_res_biography
     - field.storage.node.body
+    - field.storage.node.field_res_biography
+    - field.storage.node.field_res_expertises
     - field.storage.node.field_res_medical_services
     - field.storage.taxonomy_term.field_term_keywords
     - field.storage.node.field_uwm_sections
@@ -135,7 +135,9 @@ datasource_settings:
   'entity:node':
     bundles:
       default: true
-      selected: {  }
+      selected:
+        - uwm_condition_spotlight
+        - uwm_quiz
     languages:
       default: true
       selected: {  }
@@ -143,6 +145,7 @@ processor_settings:
   UwmSearchWithin: {  }
   add_url: {  }
   aggregated_field: {  }
+  entity_status: {  }
   highlight:
     highlight: always
     highlight_partial: true
@@ -187,8 +190,8 @@ processor_settings:
         Zp: 0
         Zs: 0
     weights:
-      preprocess_index: -10
-      preprocess_query: -10
+      preprocess_index: -49
+      preprocess_query: -49
   ignorecase:
     all_fields: false
     fields:
@@ -201,25 +204,19 @@ processor_settings:
       - title
       - uwmsearchwithin
     weights:
-      preprocess_index: -20
-      preprocess_query: -20
+      preprocess_index: -50
+      preprocess_query: -50
   rendered_item: {  }
   stemmer:
     all_fields: false
     fields:
-      - body
-      - field_res_biography
-      - field_res_expertises_name
-      - field_res_medical_services_entity_name
-      - field_term_keywords
-      - field_uwm_section_heading
       - title
     exceptions:
       mexican: mexic
       texan: texa
     weights:
-      preprocess_index: 0
-      preprocess_query: 0
+      preprocess_index: -47
+      preprocess_query: -47
   tokenizer:
     all_fields: false
     fields:
@@ -229,13 +226,29 @@ processor_settings:
       - field_res_medical_services_entity_name
       - field_term_keywords
       - field_uwm_section_heading
+      - field_uwm_sections
+      - rendered_item
       - title
     spaces: ''
     overlap_cjk: 1
     minimum_word_size: '3'
     weights:
-      preprocess_index: -6
-      preprocess_query: -6
+      preprocess_index: -48
+      preprocess_query: -48
+  type_boost:
+    boosts:
+      'entity:node':
+        datasource_boost: !!float 1
+        bundle_boosts:
+          res_clinic: !!float 0
+          res_provider: !!float 0
+          uwm_basic_page: !!float 5
+          uwm_homepage: !!float 0
+          uwm_hub_page: !!float 5
+          uwm_medical_service: !!float 8
+          uwm_medical_specialty: !!float 8
+    weights:
+      preprocess_index: -45
 tracker_settings:
   default:
     indexing_order: fifo

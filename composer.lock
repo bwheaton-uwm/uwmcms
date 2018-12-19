@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a94ba42e6fb1f26d02458b77891f3464",
+    "content-hash": "4480530403e5b2489b63948ddceee01c",
     "packages": [
         {
             "name": "acquia/blt",
@@ -6672,16 +6672,8 @@
                     "homepage": "https://www.drupal.org/user/3260690"
                 },
                 {
-                    "name": "Wim Leers",
-                    "homepage": "https://www.drupal.org/user/99777"
-                },
-                {
                     "name": "cs_shadow",
                     "homepage": "https://www.drupal.org/user/2828287"
-                },
-                {
-                    "name": "phenaproxima",
-                    "homepage": "https://www.drupal.org/user/205645"
                 },
                 {
                     "name": "slashrsm",
@@ -7912,7 +7904,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.23",
-                    "datestamp": "1542081972",
+                    "datestamp": "1532084496",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -8495,7 +8487,7 @@
                 },
                 "drupal": {
                     "version": "8.x-3.2",
-                    "datestamp": "1544729280",
+                    "datestamp": "1545142381",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -9693,7 +9685,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.5",
-                    "datestamp": "1544799180",
+                    "datestamp": "1545060780",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -9742,7 +9734,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.0-alpha1",
-                    "datestamp": "1541456281",
+                    "datestamp": "1537899180",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Alpha releases are not covered by Drupal security advisories."
@@ -9840,8 +9832,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta26+1-dev",
-                    "datestamp": "1543324080",
+                    "version": "8.x-1.0-beta26+0-dev",
+                    "datestamp": "1538053680",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -10807,6 +10799,14 @@
                 {
                     "name": "SaschaHannes",
                     "homepage": "https://www.drupal.org/user/3536189"
+                },
+                {
+                    "name": "dakku",
+                    "homepage": "https://www.drupal.org/user/97634"
+                },
+                {
+                    "name": "rackberg",
+                    "homepage": "https://www.drupal.org/user/2806873"
                 }
             ],
             "description": "Restricts access to nodes by taxonomy terms in relation to users and their roles.",
@@ -12038,6 +12038,66 @@
             }
         },
         {
+            "name": "drupal/search_api_sorts",
+            "version": "1.0.0-beta1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/search_api_sorts",
+                "reference": "8.x-1.0-beta1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/search_api_sorts-8.x-1.0-beta1.zip",
+                "reference": "8.x-1.0-beta1",
+                "shasum": "38faddafaaaa4f80ada772c9d58df819a80bacac"
+            },
+            "require": {
+                "drupal/core": "~8.0",
+                "drupal/search_api": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-beta1",
+                    "datestamp": "1492501743",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Anonymous",
+                    "homepage": "https://www.drupal.org/user/0"
+                },
+                {
+                    "name": "JeroenT",
+                    "homepage": "https://www.drupal.org/user/2228934"
+                },
+                {
+                    "name": "StryKaizer",
+                    "homepage": "https://www.drupal.org/user/462700"
+                },
+                {
+                    "name": "borisson_",
+                    "homepage": "https://www.drupal.org/user/2393360"
+                }
+            ],
+            "description": "Create sort options for search queries executed via the Search API.",
+            "homepage": "https://www.drupal.org/project/search_api_sorts",
+            "support": {
+                "source": "http://cgit.drupalcode.org/search_api_sorts"
+            }
+        },
+        {
             "name": "drupal/search_api_synonym",
             "version": "1.2.0",
             "source": {
@@ -12486,7 +12546,7 @@
                 },
                 "drupal": {
                     "version": "8.x-2.12",
-                    "datestamp": "1542505221",
+                    "datestamp": "1523203180",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -20370,7 +20430,7 @@
                 "type": "tar",
                 "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/ckeditor_bs_grid/uwmweb-ckeditor_bs_grid-e2bd7a01273019212bcce473fa62e7c655d65b3a-zip-b9915b.tar",
                 "reference": "e2bd7a01273019212bcce473fa62e7c655d65b3a",
-                "shasum": "22ec66a5ce96e84242f6173024fcda4faf708ed5"
+                "shasum": "507cfbd5c446bb4c2705b65a760388c3144e25fa"
             },
             "require": {
                 "drupal/core": "~8"
@@ -20398,7 +20458,7 @@
                 "type": "tar",
                 "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwm_paragraphs/uwmweb-uwm_paragraphs-ab60ae51a6dc710b62576d01356d8b8446709fca-zip-7b9ee9.tar",
                 "reference": "ab60ae51a6dc710b62576d01356d8b8446709fca",
-                "shasum": "c71faf063b7c6962248ffd134f0fc1cccbf69227"
+                "shasum": "455a76e29a7eaca06a20b590ff9df69833d73b3a"
             },
             "require": {
                 "drupal/core": "~8",
@@ -20424,13 +20484,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/uwmweb/uwmbase.git",
-                "reference": "1700d8377e340e8cad97e216509703d709a588a9"
+                "reference": "1b7b0e4460396e6368055183ed52450edb4ec255"
             },
             "dist": {
                 "type": "tar",
-                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-1700d8377e340e8cad97e216509703d709a588a9-zip-5e9a57.tar",
-                "reference": "1700d8377e340e8cad97e216509703d709a588a9",
-                "shasum": "1e3d2bac1ebbaa826b8bbdd534043218fb65d966"
+                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-1b7b0e4460396e6368055183ed52450edb4ec255-zip-f04fa5.tar",
+                "reference": "1b7b0e4460396e6368055183ed52450edb4ec255",
+                "shasum": "582fd5f82ae2289cdcde4ae3071e268ad500da36"
             },
             "type": "drupal-theme",
             "license": [
@@ -20441,7 +20501,7 @@
                 "source": "https://github.com/uwmweb/uwmbase/tree/develop",
                 "issues": "https://github.com/uwmweb/uwmbase/issues"
             },
-            "time": "2018-12-15T08:31:55+00:00"
+            "time": "2018-12-19T07:44:24+00:00"
         },
         {
             "name": "uwmweb/uwmedicineorg_theme",
@@ -20455,7 +20515,7 @@
                 "type": "tar",
                 "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmedicineorg_theme/uwmweb-uwmedicineorg_theme-7073e3e440a3dc75812056d30259459f6f49ac52-zip-0a228d.tar",
                 "reference": "7073e3e440a3dc75812056d30259459f6f49ac52",
-                "shasum": "6ad634b290cd9b559fe3295c9b404fdf2e9130fe"
+                "shasum": "70e7db52bab4b117c91f99b9b1b8d3ecc213c502"
             },
             "type": "drupal-theme",
             "license": [
@@ -22145,6 +22205,7 @@
         "drupal/rabbit_hole": 20,
         "drupal/relaxed": 10,
         "drupal/search_api_location": 15,
+        "drupal/search_api_sorts": 10,
         "drupal/sharethis": 20,
         "drupal/simplesamlphp_auth": 5,
         "drupal/term_csv_export_import": 15,

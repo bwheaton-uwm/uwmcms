@@ -3,16 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_res_affiliates
-    - field.storage.node.body
     - field.storage.node.field_res_building
     - field.storage.taxonomy_term.field_res_address
+    - field.storage.node.body
+    - field.storage.node.field_res_affiliates
     - field.storage.node.field_res_fax_number
     - field.storage.node.field_res_medical_services
-    - field.storage.taxonomy_term.field_term_keywords
     - field.storage.node.field_res_phone_number
     - field.storage.node.field_res_providers
     - field.storage.node.field_res_name
+    - field.storage.taxonomy_term.field_term_keywords
     - search_api.server.database
     - core.entity_view_mode.node.search_result
   module:
@@ -237,7 +237,7 @@ processor_settings:
   highlight:
     highlight: always
     highlight_partial: false
-    excerpt: true
+    excerpt: false
     excerpt_length: 256
     exclude_fields: {  }
     prefix: '<em class="match">'

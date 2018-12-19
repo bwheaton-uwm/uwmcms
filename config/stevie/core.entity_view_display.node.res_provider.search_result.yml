@@ -24,11 +24,9 @@ dependencies:
     - field.field.node.res_provider.field_res_pubmed_ids
     - field.field.node.res_provider.field_res_puma_id
     - field.field.node.res_provider.uwm_unique_id
-    - image.style.large
     - node.type.res_provider
   module:
-    - image
-    - options
+    - text
     - user
 _core:
   default_config_hash: VprWwN3mbiPcSLh-Gc3vJcE50N6ggx16rsVBCVFsZNE
@@ -53,64 +51,31 @@ content:
     third_party_settings: {  }
     type: name_default
     region: content
-  field_res_expertises:
-    weight: 3
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_res_gender:
-    weight: 2
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
-  field_res_image:
+  field_res_biography:
+    type: text_default
     weight: 0
-    label: above
-    settings:
-      image_style: large
-      image_link: file
-    third_party_settings: {  }
-    type: image
     region: content
-  field_res_languages:
-    weight: 1
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_res_medical_services:
-    weight: 4
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  links:
-    weight: 5
-    region: content
+    label: hidden
     settings: {  }
     third_party_settings: {  }
 hidden:
   field_res_affiliates: true
-  field_res_biography: true
   field_res_board_certifications: true
   field_res_clinics: true
   field_res_degrees: true
   field_res_education_history: true
+  field_res_expertises: true
+  field_res_gender: true
+  field_res_image: true
   field_res_internal_url: true
   field_res_isacceptingnewpts: true
+  field_res_languages: true
+  field_res_medical_services: true
   field_res_meta_tags: true
   field_res_name: true
   field_res_npi: true
   field_res_personal_interests: true
   field_res_pubmed_ids: true
   field_res_puma_id: true
+  links: true
   uwm_unique_id: true
