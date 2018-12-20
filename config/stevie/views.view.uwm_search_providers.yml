@@ -421,18 +421,6 @@ display:
           fields: {  }
           plugin_id: search_api_fulltext
       sorts:
-        search_api_relevance:
-          id: search_api_relevance
-          table: search_api_index_uwm_providers_search_api_index
-          field: search_api_relevance
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: DESC
-          exposed: false
-          expose:
-            label: ''
-          plugin_id: search_api
         field_res_name_family:
           id: field_res_name_family
           table: search_api_index_uwm_providers_search_api_index

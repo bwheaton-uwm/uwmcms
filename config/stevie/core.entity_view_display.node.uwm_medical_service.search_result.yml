@@ -13,76 +13,19 @@ dependencies:
     - field.field.node.uwm_medical_service.field_uwm_sections
     - node.type.uwm_medical_service
   module:
-    - entity_reference_revisions
-    - image
-    - metatag
     - user
 id: node.uwm_medical_service.search_result
 targetEntityType: node
 bundle: uwm_medical_service
 mode: search_result
-content:
-  field_meta_tags:
-    weight: 2
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: metatag_empty_formatter
-    region: content
-  field_uwm_find_a_location_link:
-    weight: 4
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_uwm_find_a_provider_link:
-    weight: 5
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_uwm_image:
-    weight: 7
-    label: above
-    settings:
-      image_style: ''
-      image_link: ''
-    third_party_settings: {  }
-    type: image
-    region: content
-  field_uwm_medical_service:
-    weight: 6
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_uwm_page_path_name:
-    weight: 3
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_uwm_sections:
-    weight: 0
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
-    region: content
-  links:
-    weight: 1
-    region: content
-    settings: {  }
-    third_party_settings: {  }
+content: {  }
 hidden:
   content_moderation_control: true
+  field_meta_tags: true
+  field_uwm_find_a_location_link: true
+  field_uwm_find_a_provider_link: true
+  field_uwm_image: true
+  field_uwm_medical_service: true
+  field_uwm_page_path_name: true
+  field_uwm_sections: true
+  links: true
