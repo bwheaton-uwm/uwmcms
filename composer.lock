@@ -7877,17 +7877,17 @@
         },
         {
             "name": "drupal/jsonapi",
-            "version": "1.23.0",
+            "version": "1.24.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/jsonapi",
-                "reference": "8.x-1.23"
+                "reference": "8.x-1.24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/jsonapi-8.x-1.23.zip",
-                "reference": "8.x-1.23",
-                "shasum": "4fb88736a9ad90a995bdc9c3ab90e7731b6d89e5"
+                "url": "https://ftp.drupal.org/files/projects/jsonapi-8.x-1.24.zip",
+                "reference": "8.x-1.24",
+                "shasum": "61ff3254b228d41c6a37d3b6e37f30120c0729b7"
             },
             "require": {
                 "drupal/core": "^8.4.3"
@@ -7903,8 +7903,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.23",
-                    "datestamp": "1532084496",
+                    "version": "8.x-1.24",
+                    "datestamp": "1545243863",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -20484,13 +20484,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/uwmweb/uwmbase.git",
-                "reference": "8d915d4573b6f3e10ff45bb7582638760512be39"
+                "reference": "09f9956d4c047b0fca4016a084980755e2245005"
             },
             "dist": {
                 "type": "tar",
-                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-8d915d4573b6f3e10ff45bb7582638760512be39-zip-2ca02a.tar",
-                "reference": "8d915d4573b6f3e10ff45bb7582638760512be39",
-                "shasum": "4d79e7c2e71e7501cf9a97aa2e62761bdc772a5b"
+                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-09f9956d4c047b0fca4016a084980755e2245005-zip-5c1ee6.tar",
+                "reference": "09f9956d4c047b0fca4016a084980755e2245005",
+                "shasum": "4fa891cef81d20192d69f03a368860c22da97d96"
             },
             "type": "drupal-theme",
             "license": [
@@ -20501,7 +20501,7 @@
                 "source": "https://github.com/uwmweb/uwmbase/tree/develop",
                 "issues": "https://github.com/uwmweb/uwmbase/issues"
             },
-            "time": "2018-12-19T17:07:04+00:00"
+            "time": "2018-12-20T17:39:59+00:00"
         },
         {
             "name": "uwmweb/uwmedicineorg_theme",

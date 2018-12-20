@@ -45,6 +45,9 @@ disable-targets:
     behat:
       all: true
       run: true
+    security:
+      check:
+        updates: true
 validate:
   twig:
     filesets: {  }
