@@ -1,8 +1,8 @@
 diff --git a/docroot/.htaccess b/docroot/.htaccess
-index efce1877..e78340f4 100755
+index efce1877..3e01e23f 100755
 --- a/docroot/.htaccess
 +++ b/docroot/.htaccess
-@@ -1,3 +1,425 @@
+@@ -1,3 +1,426 @@
 +##
 +#
 +# Begin UW Medicine special .htaccess rules
@@ -209,6 +209,7 @@ index efce1877..e78340f4 100755
 +  RewriteCond %{REQUEST_URI} ^/we_care(/)?(?(1).*|$) [OR]
 +  RewriteCond %{REQUEST_URI} ^/services/obstetrics/uw-baby-pregnancy-app$ [OR]
 +  RewriteCond %{REQUEST_URI} ^/services/obstetrics/birth-facility$ [OR]
++  RewriteCond %{REQUEST_URI} ^/services/obstetrics/PublishingImages(/)?(?(1).*|$) [OR]
 +  RewriteCond %{REQUEST_URI} ^/flu(/)?(?(1).*|$) [OR]
 +  RewriteCond %{REQUEST_URI} ^/breakthroughs(/)?(?(1).*|$) [OR]
 +  RewriteCond %{REQUEST_URI} ^/aco(/)?(?(1).*|$) [OR]
@@ -428,7 +429,7 @@ index efce1877..e78340f4 100755
  #
  # Apache/PHP/Drupal settings:
  #
-@@ -34,7 +456,7 @@ AddEncoding gzip svgz
+@@ -34,7 +457,7 @@ AddEncoding gzip svgz
    php_value mbstring.http_input             pass
    php_value mbstring.http_output            pass
    php_flag mbstring.encoding_translation    off
@@ -437,7 +438,7 @@ index efce1877..e78340f4 100755
    # not set.
    php_value always_populate_raw_post_data   -1
  </IfModule>
-@@ -149,7 +571,11 @@ AddEncoding gzip svgz
+@@ -149,7 +572,11 @@ AddEncoding gzip svgz
    # Allow access to Statistics module's custom front controller.
    # Copy and adapt this rule to directly execute PHP files in contributed or
    # custom modules or to run another PHP application in the same directory.
@@ -450,7 +451,7 @@ index efce1877..e78340f4 100755
    # Deny access to any other PHP files that do not match the rules above.
    # Specifically, disallow autoload.php from being served directly.
    RewriteRule "^(.+/.*|autoload)\.php($|/)" - [F]
-@@ -160,12 +586,12 @@ AddEncoding gzip svgz
+@@ -160,12 +587,12 @@ AddEncoding gzip svgz
      # Serve gzip compressed CSS files if they exist and the client accepts gzip.
      RewriteCond %{HTTP:Accept-encoding} gzip
      RewriteCond %{REQUEST_FILENAME}\.gz -s
