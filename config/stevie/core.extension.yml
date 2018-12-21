@@ -17,6 +17,7 @@ module:
   block: 0
   block_content: 0
   breakpoint: 0
+  bulk_edit_terms: 0
   ckeditor: 0
   ckeditor_bs_grid: 0
   ckeditor_templates: 0
@@ -39,7 +40,6 @@ module:
   ctools_block: 0
   datetime: 0
   dblog: 0
-  devel: 0
   devel_generate: 0
   diff: 0
   dropzonejs: 0

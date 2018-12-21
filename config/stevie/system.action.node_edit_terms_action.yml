@@ -1,0 +1,13 @@
+uuid: 59c8cde4-0f22-4b08-9b8a-cd9eb93f391b
+langcode: en
+status: true
+dependencies:
+  module:
+    - bulk_edit_terms
+_core:
+  default_config_hash: VoYIgStei1GsPjziYcXv7Fk2TTo6TPcNPLG2_TDBksU
+id: node_edit_terms_action
+label: 'Update terms'
+type: node
+plugin: node_edit_terms_action
+configuration: {  }
