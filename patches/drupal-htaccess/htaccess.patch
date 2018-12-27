@@ -1,5 +1,5 @@
 diff --git a/docroot/.htaccess b/docroot/.htaccess
-index efce1877..a8356c26 100755
+index efce1877..5e002fe7 100755
 --- a/docroot/.htaccess
 +++ b/docroot/.htaccess
 @@ -1,3 +1,794 @@
@@ -424,9 +424,9 @@ index efce1877..a8356c26 100755
 +  ### Before we do any proxying, handle these redirects ###
 +  # Redirect non-logged in users visiting stevie.cmsdev.uwmedicine.org or cmsdev.uwmedicine.org to wwww #
 +  # Determine logged-in status by presence of SESS* cookie #
-+  RewriteCond %{HTTP_HOST} ^(stevie.)?cmsdev.uwmedicine.org$
-+  RewriteCond %{HTTP_COOKIE} !SSESS.*=([^;]+) [NC]
-+  RewriteRule ^(.*)$ https://www.uwmedicine.org%{REQUEST_URI} [L,P]
++  #  RewriteCond %{HTTP_HOST} ^(stevie.)?cmsdev.uwmedicine.org$
++  #  RewriteCond %{HTTP_COOKIE} !SSESS.*=([^;]+) [NC]
++  #  RewriteRule ^(.*)$ https://www.uwmedicine.org%{REQUEST_URI} [L,P]
 +
 +  # Redirects for launched pages. These pages are served from Drupal.
 +  RewriteCond %{HTTP_HOST} ^www.uwmedicinetest.org
