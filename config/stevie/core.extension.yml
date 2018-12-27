@@ -40,6 +40,7 @@ module:
   ctools_block: 0
   datetime: 0
   dblog: 0
+  devel: 0
   devel_generate: 0
   diff: 0
   dropzonejs: 0
@@ -163,6 +164,7 @@ module:
   uwm_commands: 0
   uwm_res_import: 0
   uwmcs_extension: 0
+  uwmcs_search_teaser: 0
   uwmcs_searchfields: 0
   uwmcs_utils: 0
   vbo_export: 0

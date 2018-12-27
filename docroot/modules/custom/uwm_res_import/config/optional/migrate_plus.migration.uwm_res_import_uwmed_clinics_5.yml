@@ -1,0 +1,121 @@
+# Migration configuration for imported articles.
+id: uwm_res_import_uwmed_clinics5
+label: uwm_res_import_uwmed_clinics5
+migration_group: uwm
+migration_dependencies: {}
+#migration_dependencies:
+#  required:
+#  - uwm_res_import_medical_services
+
+dependencies:
+  enforced:
+    module:
+    - uwm_res_import
+
+destination:
+  plugin: entity:node
+
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+
+#  urls: https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic
+  urls:
+    - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?filter[field_information_manager_url]=https://webservices.uwmedicine.org/api/clinic/6053
+    - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?fields[node--uwm_clinic]=nid,title,created,body,field_information_manager_url&page[offset]=0&page[limit]=50
+    - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?fields[node--uwm_clinic]=nid,title,created,body,field_information_manager_url&page[offset]=50&page[limit]=50
+    - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?fields[node--uwm_clinic]=nid,title,created,body,field_information_manager_url&page[offset]=100&page[limit]=50
+    - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?fields[node--uwm_clinic]=nid,title,created,body,field_information_manager_url&page[offset]=150&page[limit]=50
+    - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?fields[node--uwm_clinic]=nid,title,created,body,field_information_manager_url&page[offset]=200&page[limit]=50
+    - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?fields[node--uwm_clinic]=nid,title,created,body,field_information_manager_url&page[offset]=250&page[limit]=50
+    - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?fields[node--uwm_clinic]=nid,title,created,body,field_information_manager_url&page[offset]=300&page[limit]=50
+    - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?fields[node--uwm_clinic]=nid,title,created,body,field_information_manager_url&page[offset]=350&page[limit]=50
+    - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?fields[node--uwm_clinic]=nid,title,created,body,field_information_manager_url&page[offset]=400&page[limit]=50
+    - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?fields[node--uwm_clinic]=nid,title,created,body,field_information_manager_url&page[offset]=450&page[limit]=50
+
+  ids:
+    nid:
+      type: integer
+
+  item_selector: data/
+
+  fields:
+    -
+      name: nid
+      label: 'Nid'
+      selector: /attributes/nid
+    -
+      name: vid
+      label: 'Vid'
+      selector: /attributes/vid
+    -
+      name: uuid
+      label: 'Uuid'
+      selector: /attributes/uuid
+    -
+      name: title
+      label: 'Title'
+      selector: /attributes/title
+
+    -
+      name: body
+      label: 'Body'
+      selector: /attributes/body
+
+    -
+      name: field_information_manager_url
+      label: field_information_manager_url
+      selector: /attributes/field_information_manager_url
+
+
+
+process:
+
+  #uuid: uuid
+  nid:
+    -
+      plugin: uwm_nid_for_uwm_unique_id
+      source: field_information_manager_url
+    -
+      plugin: skip_on_empty
+      method: process
+
+  type:
+    plugin: default_value
+    default_value: res_clinic
+
+#  title: title
+#  created: created
+#  changed: changed
+#  status: status
+#  sticky: sticky
+#  promote: promote
+#  default_language: default_language
+
+
+#  body/value:
+#    plugin: extract
+#    source: body
+#    index:
+#      - value
+#  body/format:
+#    plugin: extract
+#    source: body
+#    index:
+#      - format
+
+  body/format:
+    plugin: default_value
+    default_value: unrestricted
+  body/value: body/value
+  body/summary: body/summary
+
+#  field_image:
+#    plugin: migration
+#    migration: uwm_reservoir_import_images
+#    source: field_image/data/id
+
+#  uid:
+#    plugin: default_value
+#    default_value: 1

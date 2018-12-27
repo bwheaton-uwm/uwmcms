@@ -156,7 +156,8 @@ class UwmSearchWithin extends ProcessorPluginBase {
 
     if (!empty($alias)) {
 
-      if (stripos($alias, 'education') !== FALSE) {
+      if (stripos($alias, 'education') !== FALSE ||
+          stripos($alias, 'school') !== FALSE) {
         $matches[] = self::VALUE_EDUCATION;
       }
 

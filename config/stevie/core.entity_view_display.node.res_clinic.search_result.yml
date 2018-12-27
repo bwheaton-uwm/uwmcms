@@ -28,6 +28,7 @@ dependencies:
     - field.field.node.res_clinic.uwm_unique_id
     - node.type.res_clinic
   module:
+    - text
     - user
 _core:
   default_config_hash: 1SGb0YDsKR80HQyo48oPFTenmwtFji0r4-kcyZ_uYeE
@@ -35,9 +36,15 @@ id: node.res_clinic.search_result
 targetEntityType: node
 bundle: res_clinic
 mode: search_result
-content: {  }
+content:
+  body:
+    type: text_default
+    weight: 0
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
 hidden:
-  body: true
   field_res_affiliates: true
   field_res_box_number: true
   field_res_building: true

@@ -190,3 +190,4 @@ purge_processor_lateruntime: 3.0.0-beta8
 acquia_purge: 1.0.0-beta3
 search_api_sorts: 1.0.0-beta1
 bulk_edit_terms: 1.1.0
+uwmcs_search_teaser: 0.0.0

@@ -93,6 +93,13 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_uwm_sections
+  node_grants:
+    label: 'Node access information'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
   rendered_item:
     label: 'Rendered HTML output'
     property_path: rendered_item
@@ -103,13 +110,25 @@ field_settings:
         anonymous: anonymous
       view_mode:
         'entity:node':
-          landing_page: default
-          page: default
           res_clinic: default
           res_provider: default
           uwm_basic_page: default
+          uwm_condition_spotlight: ''
           uwm_homepage: default
           uwm_hub_page: default
+          uwm_medical_service: default
+          uwm_medical_specialty: default
+          uwm_quiz: default
+  status:
+    label: status
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
   sticky:
     label: 'Sticky at top of lists'
     datasource_id: 'entity:node'
@@ -124,6 +143,16 @@ field_settings:
     property_path: title
     type: text
     boost: !!float 21
+    dependencies:
+      module:
+        - node
+  uid:
+    label: uid
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
     dependencies:
       module:
         - node
@@ -145,19 +174,16 @@ processor_settings:
   UwmSearchWithin: {  }
   add_url: {  }
   aggregated_field: {  }
+  content_access:
+    weights:
+      preprocess_query: -30
   entity_status: {  }
   highlight:
     highlight: always
     highlight_partial: true
     excerpt: true
     excerpt_length: 350
-    exclude_fields:
-      - field_res_expertises_name
-      - field_res_medical_services_entity_name
-      - field_term_keywords
-      - field_uwm_section_heading
-      - field_uwm_sections
-      - title
+    exclude_fields: {  }
     prefix: '<em class="match">'
     suffix: '</em>'
     weights:
@@ -171,7 +197,10 @@ processor_settings:
       - field_res_medical_services_entity_name
       - field_term_keywords
       - field_uwm_section_heading
+      - field_uwm_sections
+      - rendered_item
       - title
+      - uwmsearchwithin
     ignorable: '[''¿¡!?,.:;]'
     strip:
       character_sets:
@@ -196,8 +225,8 @@ processor_settings:
         Zp: 0
         Zs: 0
     weights:
-      preprocess_index: -49
-      preprocess_query: -49
+      preprocess_index: -10
+      preprocess_query: -10
   ignorecase:
     all_fields: false
     fields:
@@ -207,22 +236,32 @@ processor_settings:
       - field_res_medical_services_entity_name
       - field_term_keywords
       - field_uwm_section_heading
+      - field_uwm_sections
+      - rendered_item
       - title
       - uwmsearchwithin
     weights:
-      preprocess_index: -50
-      preprocess_query: -50
+      preprocess_index: -20
+      preprocess_query: -20
   rendered_item: {  }
   stemmer:
     all_fields: false
     fields:
+      - body
+      - field_res_biography
+      - field_res_expertises_name
+      - field_res_medical_services_entity_name
+      - field_term_keywords
+      - field_uwm_section_heading
+      - field_uwm_sections
+      - rendered_item
       - title
     exceptions:
       mexican: mexic
       texan: texa
     weights:
-      preprocess_index: -47
-      preprocess_query: -47
+      preprocess_index: 0
+      preprocess_query: 0
   tokenizer:
     all_fields: false
     fields:
@@ -239,8 +278,24 @@ processor_settings:
     overlap_cjk: 1
     minimum_word_size: '2'
     weights:
-      preprocess_index: -48
-      preprocess_query: -48
+      preprocess_index: -6
+      preprocess_query: -6
+  transliteration:
+    all_fields: false
+    fields:
+      - body
+      - field_res_biography
+      - field_res_expertises_name
+      - field_res_medical_services_entity_name
+      - field_term_keywords
+      - field_uwm_section_heading
+      - field_uwm_sections
+      - rendered_item
+      - title
+      - uwmsearchwithin
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
   type_boost:
     boosts:
       'entity:node':
@@ -250,11 +305,11 @@ processor_settings:
           res_provider: !!float 0
           uwm_basic_page: !!float 5
           uwm_homepage: !!float 0
-          uwm_hub_page: !!float 5
+          uwm_hub_page: !!float 0
           uwm_medical_service: !!float 8
           uwm_medical_specialty: !!float 8
     weights:
-      preprocess_index: -45
+      preprocess_index: 0
 tracker_settings:
   default:
     indexing_order: fifo

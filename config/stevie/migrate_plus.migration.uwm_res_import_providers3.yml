@@ -5,8 +5,6 @@ dependencies:
   enforced:
     module:
       - uwm_res_import
-_core:
-  default_config_hash: wUjkYqn9HHt6fr9UEotlTFdI1HeBASQvp7DGnLG4hdw
 id: uwm_res_import_providers3
 class: null
 field_plugin_method: null

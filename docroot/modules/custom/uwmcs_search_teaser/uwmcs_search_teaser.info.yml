@@ -1,0 +1,5 @@
+name: uwmcs_search_teaser
+description: 'Provide teaser snippet for search results'
+package: UWMed
+type: module
+core: 8.x

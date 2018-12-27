@@ -1,4 +1,4 @@
-uuid: f34abdbe-04a9-40c5-9c60-d3307dc8c8e6
+uuid: 6bdc34d7-566c-4579-9437-ab8332394a04
 langcode: en
 status: true
 dependencies:
@@ -12,18 +12,34 @@ dependencies:
     - field.field.node.uwm_medical_specialty.field_uwm_sections
     - node.type.uwm_medical_specialty
   module:
+    - entity_reference_revisions
     - user
 id: node.uwm_medical_specialty.search_result
 targetEntityType: node
 bundle: uwm_medical_specialty
 mode: search_result
-content: {  }
+content:
+  field_uwm_parent_page:
+    type: entity_reference_label
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_uwm_sections:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
 hidden:
   content_moderation_control: true
   field_uwm_find_a_location_link: true
   field_uwm_find_a_provider_link: true
   field_uwm_image: true
   field_uwm_page_path_name: true
-  field_uwm_parent_page: true
-  field_uwm_sections: true
   links: true

@@ -24,6 +24,7 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
+  content_moderation_control: true
   field_uwm_find_a_location_link: true
   field_uwm_find_a_provider_link: true
   field_uwm_image: true

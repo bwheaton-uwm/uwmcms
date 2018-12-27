@@ -1,24 +1,23 @@
-uuid: d0da8767-92c2-429a-ad13-a4c696a3778e
+uuid: f2cc3419-f801-478d-9810-908781f59711
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.paragraph.preview
     - field.field.paragraph.uwm_3_col_proof_points.field_uwm_columns
     - paragraphs.paragraphs_type.uwm_3_col_proof_points
   module:
-    - entity_reference_revisions
-id: paragraph.uwm_3_col_proof_points.default
+    - paragraphs
+id: paragraph.uwm_3_col_proof_points.preview
 targetEntityType: paragraph
 bundle: uwm_3_col_proof_points
-mode: default
+mode: preview
 content:
   field_uwm_columns:
     weight: 0
     label: hidden
-    settings:
-      view_mode: default
-      link: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
+    type: paragraph_summary
     region: content
 hidden: {  }

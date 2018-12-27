@@ -1,4 +1,4 @@
-uuid: ad3ce5a5-d2e3-4971-af8c-f3818925d0d0
+uuid: 4cf0922a-19e1-40ec-b184-d3b373923702
 langcode: en
 status: true
 dependencies:
@@ -13,19 +13,35 @@ dependencies:
     - field.field.node.uwm_medical_service.field_uwm_sections
     - node.type.uwm_medical_service
   module:
+    - entity_reference_revisions
     - user
 id: node.uwm_medical_service.search_result
 targetEntityType: node
 bundle: uwm_medical_service
 mode: search_result
-content: {  }
+content:
+  field_uwm_medical_service:
+    type: entity_reference_label
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_uwm_sections:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
 hidden:
   content_moderation_control: true
   field_meta_tags: true
   field_uwm_find_a_location_link: true
   field_uwm_find_a_provider_link: true
   field_uwm_image: true
-  field_uwm_medical_service: true
   field_uwm_page_path_name: true
-  field_uwm_sections: true
   links: true

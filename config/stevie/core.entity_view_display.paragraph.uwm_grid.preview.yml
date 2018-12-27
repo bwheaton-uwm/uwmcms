@@ -1,0 +1,27 @@
+uuid: 103ee2e7-9ac2-4de8-8a72-eaa7b1655b35
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.uwm_grid.field_uwm_column_spacing
+    - field.field.paragraph.uwm_grid.field_uwm_columns
+    - field.field.paragraph.uwm_grid.field_uwm_columns_per_row
+    - paragraphs.paragraphs_type.uwm_grid
+  module:
+    - paragraphs
+id: paragraph.uwm_grid.preview
+targetEntityType: paragraph
+bundle: uwm_grid
+mode: preview
+content:
+  field_uwm_columns:
+    type: paragraph_summary
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_uwm_column_spacing: true
+  field_uwm_columns_per_row: true

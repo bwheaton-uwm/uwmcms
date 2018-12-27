@@ -23,7 +23,7 @@ search_settings:
       default: true
       selected: {  }
 options:
-  limit: 10
+  limit: 8
   min_length: 1
   show_count: false
   autosubmit: true

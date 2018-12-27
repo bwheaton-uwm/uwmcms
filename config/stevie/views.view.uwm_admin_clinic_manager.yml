@@ -1,22 +1,29 @@
-uuid: 6f5d737b-f336-4b30-88a7-966766426d5e
+uuid: 5f78b9e4-7650-45de-85a3-f76f7c8a838f
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.search_result
-    - field.storage.node.field_uwm_page_path_name
+    - field.storage.node.body
+    - field.storage.node.field_res_image
+    - field.storage.node.field_res_medical_services
+    - field.storage.node.field_res_providers
+    - image.style.thumbnail
+    - node.type.res_clinic
     - system.menu.admin
-    - workflows.workflow.editorial
+    - taxonomy.vocabulary.affiliates
+    - taxonomy.vocabulary.medical_services
   module:
     - content_moderation
+    - image
     - node
+    - taxonomy
+    - text
     - user
     - views_bulk_operations
-    - views_url_alias_node
 _core:
   default_config_hash: tS8PbpJX90aRFC3-UTgXzdqkq7_2frk2pz4TMijEebM
-id: uwm_admin_content_manager
-label: 'UWM Admin Content Manager'
+id: uwm_admin_clinic_manager
+label: 'UWM Admin Clinic Manager'
 module: node
 description: 'Find and manage content.'
 tag: default
@@ -47,7 +54,7 @@ display:
       pager:
         type: full
         options:
-          items_per_page: 6
+          items_per_page: 25
           offset: 0
           id: 0
           total_pages: null
@@ -57,10 +64,10 @@ display:
             first: '« First'
             last: 'Last »'
           expose:
-            items_per_page: false
+            items_per_page: true
             items_per_page_label: 'Items per page'
             items_per_page_options: '5, 25, 50, 100, 500'
-            items_per_page_options_all: false
+            items_per_page_options_all: true
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
@@ -286,202 +293,6 @@ display:
           settings:
             link_to_entity: true
           plugin_id: field
-        alias:
-          id: alias
-          table: views_url_alias_node
-          field: alias
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'URL alias'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          plugin_id: standard
-        field_uwm_page_path_name:
-          id: field_uwm_page_path_name
-          table: node__field_uwm_page_path_name
-          field: field_uwm_page_path_name
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Page URL Name'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        type:
-          id: type
-          table: node_field_data
-          field: type
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Content type'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: false
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          entity_type: node
-          entity_field: type
-          plugin_id: field
-        name:
-          id: name
-          table: users_field_data
-          field: name
-          relationship: uid
-          label: Author
-          exclude: false
-          alter:
-            alter_text: false
-          element_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          plugin_id: field
-          type: user_name
-          entity_type: user
-          entity_field: name
         changed:
           id: changed
           table: node_field_data
@@ -569,6 +380,258 @@ display:
           entity_type: content_moderation_state
           entity_field: moderation_state
           plugin_id: field
+        field_res_medical_services:
+          id: field_res_medical_services
+          table: node__field_res_medical_services
+          field: field_res_medical_services
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Medical Services'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_res_providers:
+          id: field_res_providers
+          table: node__field_res_providers
+          field: field_res_providers
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Providers
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        body:
+          id: body
+          table: node__body
+          field: body
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Body
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 200
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: true
+            trim: true
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_res_image:
+          id: field_res_image
+          table: node__field_res_image
+          field: field_res_image
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Clinic Image'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: image
+          settings:
+            image_style: thumbnail
+            image_link: ''
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
         operations:
           id: operations
           table: node
@@ -633,7 +696,7 @@ display:
           exposed: true
           expose:
             operator_id: title_op
-            label: ''
+            label: Title
             description: ''
             use_operator: false
             operator: title_op
@@ -644,10 +707,7 @@ display:
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
-              replicator: '0'
               administrator: '0'
-              content_manager: '0'
-            placeholder: Title
           is_grouped: false
           group_info:
             label: ''
@@ -663,6 +723,100 @@ display:
           plugin_id: string
           entity_type: node
           entity_field: title
+        field_res_affiliates_target_id:
+          id: field_res_affiliates_target_id
+          table: node__field_res_affiliates
+          field: field_res_affiliates_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_res_affiliates_target_id_op
+            label: Affiliates
+            description: ''
+            use_operator: false
+            operator: field_res_affiliates_target_id_op
+            identifier: field_res_affiliates_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              replicator: '0'
+              administrator: '0'
+              content_manager: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: textfield
+          limit: true
+          vid: affiliates
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_res_medical_services_target_id:
+          id: field_res_medical_services_target_id
+          table: node__field_res_medical_services
+          field: field_res_medical_services_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_res_medical_services_target_id_op
+            label: 'Medical Services'
+            description: ''
+            use_operator: false
+            operator: field_res_medical_services_target_id_op
+            identifier: field_res_medical_services_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              replicator: '0'
+              administrator: '0'
+              content_manager: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: textfield
+          limit: true
+          vid: medical_services
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
         type:
           id: type
           table: node_field_data
@@ -671,27 +825,24 @@ display:
           group_type: group
           admin_label: ''
           operator: in
-          value: {  }
+          value:
+            res_clinic: res_clinic
           group: 1
-          exposed: true
+          exposed: false
           expose:
-            operator_id: type_op
+            operator_id: ''
             label: ''
             description: ''
             use_operator: false
-            operator: type_op
-            identifier: type
+            operator: ''
+            identifier: ''
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              replicator: '0'
-              administrator: '0'
-              content_manager: '0'
             reduce: false
-            argument: ''
+            argument: null
           is_grouped: false
           group_info:
             label: ''
@@ -704,140 +855,9 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: bundle
           entity_type: node
           entity_field: type
-        moderation_state:
-          id: moderation_state
-          table: node_field_data
-          field: moderation_state
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: in
-          value:
-            all: all
-            editorial-draft: editorial-draft
-            editorial-review: editorial-review
-            editorial-published: editorial-published
-            editorial-archived: editorial-archived
-          group: 1
-          exposed: true
-          expose:
-            operator_id: moderation_state_op
-            label: ''
-            description: ''
-            use_operator: false
-            operator: moderation_state_op
-            identifier: moderation_state
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              replicator: '0'
-              administrator: '0'
-              content_manager: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: node
-          plugin_id: moderation_state_filter
-        uwm_unique_id_value:
-          id: uwm_unique_id_value
-          table: node__uwm_unique_id
-          field: uwm_unique_id_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: contains
-          value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: uwm_unique_id_value_op
-            label: ''
-            description: ''
-            use_operator: false
-            operator: uwm_unique_id_value_op
-            identifier: uwm_unique_id_value
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              replicator: '0'
-              administrator: '0'
-              content_manager: '0'
-            placeholder: 'Universal Id or Source URL (uwm_unique_id)'
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: string
-        uuid:
-          id: uuid
-          table: node
-          field: uuid
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: contains
-          value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: uuid_op
-            label: ''
-            description: ''
-            use_operator: false
-            operator: uuid_op
-            identifier: uuid
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              replicator: '0'
-              administrator: '0'
-              content_manager: '0'
-            placeholder: UUID
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: node
-          entity_field: uuid
-          plugin_id: string
+          plugin_id: bundle
       sorts: {  }
       title: Content
       empty:
@@ -874,7 +894,7 @@ display:
           empty: true
           content: 'Displaying @start - @end of @total'
           plugin_id: result
-      use_ajax: false
+      use_ajax: true
     display_plugin: default
     display_title: Master
     id: default
@@ -885,22 +905,25 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user
         - 'user.node_grants:view'
         - user.permissions
       max-age: 0
       tags:
-        - 'config:field.storage.node.field_uwm_page_path_name'
-        - 'config:workflow_list'
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_res_image'
+        - 'config:field.storage.node.field_res_medical_services'
+        - 'config:field.storage.node.field_res_providers'
   page_1:
     display_options:
-      path: admin/content
+      path: admin/content/clinics
       menu:
         type: normal
-        title: Content
+        title: 'Search Clinics'
         description: ''
         expanded: true
-        parent: ''
-        weight: -100
+        parent: system.admin_content
+        weight: 100
         context: '0'
         menu_name: admin
       tab_options:
@@ -920,58 +943,12 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user
         - 'user.node_grants:view'
         - user.permissions
       max-age: 0
       tags:
-        - 'config:field.storage.node.field_uwm_page_path_name'
-        - 'config:workflow_list'
-  page_2:
-    display_options:
-      path: node/find
-      menu:
-        type: normal
-        title: Content
-        description: ''
-        expanded: true
-        parent: ''
-        weight: -100
-        context: '0'
-        menu_name: admin
-      tab_options:
-        type: normal
-        title: Content
-        description: 'Find and manage content'
-        menu_name: admin
-        weight: -10
-      display_extenders: {  }
-      style:
-        type: default
-        options:
-          grouping: {  }
-          row_class: ''
-          default_row_class: true
-      defaults:
-        style: false
-        row: false
-      row:
-        type: 'entity:node'
-        options:
-          relationship: none
-          view_mode: search_result
-    display_plugin: page
-    display_title: Page
-    id: page_2
-    position: 1
-    cache_metadata:
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url
-        - url.query_args
-        - 'user.node_grants:view'
-        - user.permissions
-      max-age: 0
-      tags:
-        - 'config:field.storage.node.field_uwm_page_path_name'
-        - 'config:workflow_list'
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_res_image'
+        - 'config:field.storage.node.field_res_medical_services'
+        - 'config:field.storage.node.field_res_providers'

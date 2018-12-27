@@ -179,6 +179,13 @@ field_settings:
         - field.storage.taxonomy_term.field_res_address
       module:
         - taxonomy
+  node_grants:
+    label: 'Node access information'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
   postal_code:
     label: 'Building » Taxonomy term » Address » The postal code.'
     datasource_id: 'entity:node'
@@ -201,12 +208,40 @@ field_settings:
       view_mode:
         'entity:node':
           res_clinic: search_result
+  status:
+    label: null
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+  summary:
+    label: 'Body » Summary'
+    datasource_id: 'entity:node'
+    property_path: 'body:summary'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.body
   title:
     label: Title
     datasource_id: 'entity:node'
     property_path: title
     type: text
     boost: !!float 21
+    dependencies:
+      module:
+        - node
+  uid:
+    label: null
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
     dependencies:
       module:
         - node
@@ -227,11 +262,13 @@ processor_settings:
   UwmSearchWithin: {  }
   add_url: {  }
   aggregated_field: {  }
+  content_access:
+    weights:
+      preprocess_query: -30
+  entity_status: {  }
   hierarchy:
     fields:
-      field_res_building: taxonomy_term-parent
       field_res_medical_services: taxonomy_term-parent
-      field_res_medical_services_1: taxonomy_term-parent
     weights:
       preprocess_index: -45
   highlight:
@@ -247,16 +284,24 @@ processor_settings:
   ignore_character:
     all_fields: false
     fields:
+      - address_line1
       - body
       - field_res_affiliates
       - field_res_affiliates_entity_name
+      - field_res_building
       - field_res_building_entity_name
       - field_res_fax_number
       - field_res_medical_services
+      - field_res_medical_services_1
       - field_res_medical_services_entity_name
       - field_res_phone_number
+      - field_res_providers_family_name
+      - field_res_providers_title
       - field_term_keywords
+      - locality
+      - postal_code
       - rendered_item
+      - summary
       - title
       - uwmsearchwithin
     ignorable: '[''¿¡!?,.:;]'
@@ -292,9 +337,11 @@ processor_settings:
       - body
       - field_res_affiliates
       - field_res_affiliates_entity_name
+      - field_res_building
       - field_res_building_entity_name
       - field_res_fax_number
       - field_res_medical_services
+      - field_res_medical_services_1
       - field_res_medical_services_entity_name
       - field_res_phone_number
       - field_res_providers_family_name
@@ -303,28 +350,60 @@ processor_settings:
       - locality
       - postal_code
       - rendered_item
+      - summary
       - title
       - uwmsearchwithin
     weights:
       preprocess_index: -20
       preprocess_query: -20
   rendered_item: {  }
-  reverse_entity_references: {  }
-  tokenizer:
+  stemmer:
     all_fields: false
     fields:
+      - address_line1
       - body
       - field_res_affiliates
       - field_res_affiliates_entity_name
+      - field_res_building
       - field_res_building_entity_name
       - field_res_fax_number
+      - field_res_medical_services_1
       - field_res_medical_services_entity_name
       - field_res_phone_number
       - field_res_providers_family_name
       - field_res_providers_title
       - field_term_keywords
       - locality
+      - postal_code
       - rendered_item
+      - summary
+      - title
+    exceptions:
+      mexican: mexic
+      texan: texa
+    weights:
+      preprocess_index: 0
+      preprocess_query: 0
+  tokenizer:
+    all_fields: false
+    fields:
+      - address_line1
+      - body
+      - field_res_affiliates
+      - field_res_affiliates_entity_name
+      - field_res_building
+      - field_res_building_entity_name
+      - field_res_fax_number
+      - field_res_medical_services_1
+      - field_res_medical_services_entity_name
+      - field_res_phone_number
+      - field_res_providers_family_name
+      - field_res_providers_title
+      - field_term_keywords
+      - locality
+      - postal_code
+      - rendered_item
+      - summary
       - title
     spaces: ''
     overlap_cjk: 1
@@ -332,6 +411,32 @@ processor_settings:
     weights:
       preprocess_index: -6
       preprocess_query: -6
+  transliteration:
+    all_fields: false
+    fields:
+      - address_line1
+      - body
+      - field_res_affiliates
+      - field_res_affiliates_entity_name
+      - field_res_building
+      - field_res_building_entity_name
+      - field_res_fax_number
+      - field_res_medical_services
+      - field_res_medical_services_1
+      - field_res_medical_services_entity_name
+      - field_res_phone_number
+      - field_res_providers_family_name
+      - field_res_providers_title
+      - field_term_keywords
+      - locality
+      - postal_code
+      - rendered_item
+      - summary
+      - title
+      - uwmsearchwithin
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
 tracker_settings:
   default:
     indexing_order: fifo

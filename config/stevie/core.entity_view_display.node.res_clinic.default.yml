@@ -41,7 +41,7 @@ bundle: res_clinic
 mode: default
 content:
   body:
-    weight: 0
+    weight: 5
     label: above
     settings: {  }
     third_party_settings: {  }
@@ -56,7 +56,7 @@ content:
     type: entity_reference_label
     region: content
   field_res_box_number:
-    weight: 6
+    weight: 4
     label: above
     settings:
       link_to_entity: false
@@ -64,7 +64,7 @@ content:
     type: string
     region: content
   field_res_building:
-    weight: 5
+    weight: 3
     label: above
     settings:
       link: true
@@ -72,7 +72,7 @@ content:
     type: entity_reference_label
     region: content
   field_res_fax_number:
-    weight: 4
+    weight: 2
     label: above
     settings:
       title: ''
@@ -89,7 +89,7 @@ content:
     third_party_settings: {  }
     region: content
   field_res_image:
-    weight: 1
+    weight: 0
     label: above
     settings:
       image_style: large
@@ -98,7 +98,7 @@ content:
     type: image
     region: content
   field_res_medical_services:
-    weight: 2
+    weight: 6
     label: above
     settings:
       link: true
@@ -106,7 +106,7 @@ content:
     type: entity_reference_label
     region: content
   field_res_phone_number:
-    weight: 3
+    weight: 1
     label: above
     settings:
       title: ''
