@@ -107,7 +107,7 @@ process:
 
   body/format:
     plugin: default_value
-    default_value: unrestricted
+    default_value: rich_text
   body/value: body/value
   body/summary: body/summary
 
