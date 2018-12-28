@@ -122,7 +122,7 @@ function uwmcs_reader_node_access(NodeInterface $node, $op, AccountInterface $ac
 
         if (empty($data->id)) {
 
-          return AccessResult::forbidden();
+          // Return AccessResult::forbidden();
         }
 
       }
