@@ -1,8 +1,8 @@
 diff --git a/docroot/.htaccess b/docroot/.htaccess
-index efce1877..5e002fe7 100755
+index efce1877..7cdb25b1 100755
 --- a/docroot/.htaccess
 +++ b/docroot/.htaccess
-@@ -1,3 +1,794 @@
+@@ -1,3 +1,804 @@
 +##
 +#
 +# Begin UW Medicine special .htaccess rules
@@ -239,9 +239,17 @@ index efce1877..5e002fe7 100755
 +  RewriteCond %{REQUEST_URI} ^/locations/orcas-island-clinic/welcome/? [OR]
 +  RewriteCond %{REQUEST_URI} ^/locations/lopez-island-clinic/welcome/? [OR]
 +  RewriteCond %{REQUEST_URI} ^/locations/lopez-island-clinic/faqs/? [OR]
-+  RewriteCond %{REQUEST_URI} ^/services/urgent-care/tips/?
++  RewriteCond %{REQUEST_URI} ^/services/urgent-care/tips/? [OR]
++  RewriteCond %{REQUEST_URI} ^/services/patient-resources/email-patient(/)?(?(1).*|$)
 +  RewriteRule ^(.*)$ - [CO=uwm-proxied-page-visit:true:%{HTTP_HOST}:0:/,C]
 +  RewriteRule ^(.*)$ https://www2.uwmedicine.org%{REQUEST_URI} [L,P]
++
++  ### SERVE THESE PAGES FROM stevie.cms.uwmedicine.org ###
++  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
++  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/maternity-care/labor-delivery-tours$ [OR]
++  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/maternity-care/labor-delivery-tours/obstetrics-tour-registration [OR]
++  RewriteCond %{REQUEST_URI} ^/locations/harborview-medical-center/centers-of-emphasis$
++  RewriteRule ^(.*)$ https://stevie.cms.uwmedicine.org%{REQUEST_URI} [L,P]
 +
 +  ### SERVE THESE PAGES FROM cms.uwmedicine.org ###
 +  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
@@ -603,13 +611,15 @@ index efce1877..5e002fe7 100755
 +  RewriteCond %{REQUEST_URI} ^/locations/orcas-island-clinic/welcome/? [OR]
 +  RewriteCond %{REQUEST_URI} ^/locations/lopez-island-clinic/welcome/? [OR]
 +  RewriteCond %{REQUEST_URI} ^/locations/lopez-island-clinic/faqs/? [OR]
-+  RewriteCond %{REQUEST_URI} ^/services/urgent-care/tips/?
++  RewriteCond %{REQUEST_URI} ^/services/urgent-care/tips/? [OR]
++  RewriteCond %{REQUEST_URI} ^/services/patient-resources/email-patient(/)?(?(1).*|$)
 +  RewriteRule ^(.*)$ - [CO=uwm-proxied-page-visit:true:%{HTTP_HOST}:0:/,C]
 +  RewriteRule ^(.*)$ https://www2.uwmedicine.org%{REQUEST_URI} [L,P]
 +
 +  ### SERVE THESE PAGES FROM stevie.cms.uwmedicine.org ###
 +  RewriteCond %{HTTP_HOST} ^www.uwmedicinetest.org
-+  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/maternity-care/labor-delivery-tours$
++  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/maternity-care/labor-delivery-tours$ [OR]
++  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/maternity-care/labor-delivery-tours/obstetrics-tour-registration [OR]
 +  RewriteCond %{REQUEST_URI} ^/locations/harborview-medical-center/centers-of-emphasis$
 +  RewriteRule ^(.*)$ https://stevie.cmsdev.uwmedicine.org%{REQUEST_URI} [L,P]
 +
@@ -797,7 +807,7 @@ index efce1877..5e002fe7 100755
  #
  # Apache/PHP/Drupal settings:
  #
-@@ -34,7 +825,7 @@ AddEncoding gzip svgz
+@@ -34,7 +835,7 @@ AddEncoding gzip svgz
    php_value mbstring.http_input             pass
    php_value mbstring.http_output            pass
    php_flag mbstring.encoding_translation    off
@@ -806,7 +816,7 @@ index efce1877..5e002fe7 100755
    # not set.
    php_value always_populate_raw_post_data   -1
  </IfModule>
-@@ -149,7 +940,11 @@ AddEncoding gzip svgz
+@@ -149,7 +950,11 @@ AddEncoding gzip svgz
    # Allow access to Statistics module's custom front controller.
    # Copy and adapt this rule to directly execute PHP files in contributed or
    # custom modules or to run another PHP application in the same directory.
@@ -819,7 +829,7 @@ index efce1877..5e002fe7 100755
    # Deny access to any other PHP files that do not match the rules above.
    # Specifically, disallow autoload.php from being served directly.
    RewriteRule "^(.+/.*|autoload)\.php($|/)" - [F]
-@@ -160,12 +955,12 @@ AddEncoding gzip svgz
+@@ -160,12 +965,12 @@ AddEncoding gzip svgz
      # Serve gzip compressed CSS files if they exist and the client accepts gzip.
      RewriteCond %{HTTP:Accept-encoding} gzip
      RewriteCond %{REQUEST_FILENAME}\.gz -s
