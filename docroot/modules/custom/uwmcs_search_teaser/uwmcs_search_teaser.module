@@ -62,6 +62,23 @@ function uwmcs_search_teaser_preprocess_views_view_fields(&$variables) {
       $variables['row']->uwmcs_search_teaser_rendered = render($renderArray);
       $variables['row']->uwmcs_search_teaser_raw = _uwmcs_search_teaser_string_trim(NULL, $renderArray);
 
+      if ($node->getType() === "res_clinic" && !empty($node->body->value)) {
+
+        /***
+         * Add a trailing "." to the body's first '<h2>':
+         */
+        $body = $node->body->value;
+
+        $pos = strpos($body, '</h2>');
+        if ($pos !== FALSE) {
+          $newstring = substr_replace($body, '. </h2>', $pos, strlen('</h2>'));
+          if (!empty($newstring)) {
+            $variables['row']->uwmcs_search_teaser_raw = _uwmcs_search_teaser_string_trim($newstring);
+          }
+        }
+
+      }
+
     }
 
   }
