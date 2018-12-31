@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /lp
+
+RewriteCond %{HTTP_HOST} !^www.uwmedicine.org$ [NC]
+RewriteRule ^ - [F]
