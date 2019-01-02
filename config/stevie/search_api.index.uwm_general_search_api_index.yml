@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
-    - field.storage.node.field_res_biography
     - field.storage.node.field_res_expertises
-    - field.storage.node.field_res_medical_services
     - field.storage.taxonomy_term.field_term_keywords
+    - field.storage.node.field_res_biography
+    - field.storage.node.body
+    - field.storage.node.field_res_medical_services
     - field.storage.node.field_uwm_sections
     - field.storage.paragraph.field_uwm_section_heading
     - search_api.server.database
@@ -38,11 +38,24 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_biography
+  field_res_expertises_keywords:
+    label: 'Areas of Expertise » Taxonomy term » Term Keywords'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_expertises:entity:field_term_keywords'
+    type: text
+    boost: !!float 5
+    dependencies:
+      config:
+        - field.storage.node.field_res_expertises
+        - field.storage.taxonomy_term.field_term_keywords
+      module:
+        - taxonomy
   field_res_expertises_name:
     label: 'Areas of Expertise » Taxonomy term » Name'
     datasource_id: 'entity:node'
     property_path: 'field_res_expertises:entity:name'
     type: text
+    boost: !!float 5
     dependencies:
       config:
         - field.storage.node.field_res_expertises
@@ -85,14 +98,6 @@ field_settings:
         - field.storage.paragraph.field_uwm_section_heading
       module:
         - paragraphs
-  field_uwm_sections:
-    label: Sections
-    datasource_id: 'entity:node'
-    property_path: field_uwm_sections
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_uwm_sections
   node_grants:
     label: 'Node access information'
     property_path: search_api_node_grants
@@ -178,16 +183,6 @@ processor_settings:
     weights:
       preprocess_query: -30
   entity_status: {  }
-  highlight:
-    highlight: always
-    highlight_partial: true
-    excerpt: true
-    excerpt_length: 350
-    exclude_fields: {  }
-    prefix: '<em class="match">'
-    suffix: '</em>'
-    weights:
-      postprocess_query: 0
   ignore_character:
     all_fields: false
     fields:
@@ -197,7 +192,6 @@ processor_settings:
       - field_res_medical_services_entity_name
       - field_term_keywords
       - field_uwm_section_heading
-      - field_uwm_sections
       - rendered_item
       - title
       - uwmsearchwithin
@@ -236,7 +230,6 @@ processor_settings:
       - field_res_medical_services_entity_name
       - field_term_keywords
       - field_uwm_section_heading
-      - field_uwm_sections
       - rendered_item
       - title
       - uwmsearchwithin
@@ -244,24 +237,6 @@ processor_settings:
       preprocess_index: -20
       preprocess_query: -20
   rendered_item: {  }
-  stemmer:
-    all_fields: false
-    fields:
-      - body
-      - field_res_biography
-      - field_res_expertises_name
-      - field_res_medical_services_entity_name
-      - field_term_keywords
-      - field_uwm_section_heading
-      - field_uwm_sections
-      - rendered_item
-      - title
-    exceptions:
-      mexican: mexic
-      texan: texa
-    weights:
-      preprocess_index: 0
-      preprocess_query: 0
   tokenizer:
     all_fields: false
     fields:
@@ -271,7 +246,6 @@ processor_settings:
       - field_res_medical_services_entity_name
       - field_term_keywords
       - field_uwm_section_heading
-      - field_uwm_sections
       - rendered_item
       - title
     spaces: ''
@@ -289,7 +263,6 @@ processor_settings:
       - field_res_medical_services_entity_name
       - field_term_keywords
       - field_uwm_section_heading
-      - field_uwm_sections
       - rendered_item
       - title
       - uwmsearchwithin

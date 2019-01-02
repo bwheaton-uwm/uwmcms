@@ -1,6 +1,6 @@
 uuid: 933f49fa-5210-49c3-b820-5e67f4ffbf83
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - acquia_search
@@ -29,8 +29,5 @@ backend_config:
   suggest_suffix: true
   suggest_corrections: true
   suggest_words: false
-  acquia_search_possible_cores:
-    - BEXY-148616.prod.uwmeddb254269
-    - BEXY-148616.prod.stevie
-    - BEXY-148616
+  acquia_search_possible_cores: {  }
   overridden_by_acquia_search: 2
