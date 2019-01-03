@@ -12,13 +12,40 @@ id: uwm_general_search
 label: 'UWM General Search'
 index_id: uwm_general_search_api_index
 suggester_settings:
+  live_results:
+    fields:
+      - title
+    view_modes:
+      'entity:node':
+        res_clinic: ''
+        res_provider: ''
+        uwm_basic_page: ''
+        uwm_homepage: ''
+        uwm_hub_page: ''
+        uwm_medical_service: ''
+        uwm_medical_specialty: ''
   server:
-    fields: {  }
-suggester_weights: {  }
-suggester_limits: {  }
+    fields:
+      - field_res_expertises_keywords
+      - field_res_expertises_name
+      - field_res_medical_services_entity_name
+      - field_term_keywords
+      - title
+suggester_weights:
+  live_results: 0
+  server: 0
+suggester_limits:
+  live_results: 10
+  server: 10
 search_settings:
   'views:uwm_general_search':
     displays:
       default: true
       selected: {  }
-options: {  }
+options:
+  limit: 30
+  min_length: 1
+  show_count: false
+  autosubmit: true
+  submit_button_selector: ':submit'
+  delay: 125

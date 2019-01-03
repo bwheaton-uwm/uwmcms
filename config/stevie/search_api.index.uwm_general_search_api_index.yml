@@ -3,10 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.body
+    - field.storage.node.field_res_biography
     - field.storage.node.field_res_expertises
     - field.storage.taxonomy_term.field_term_keywords
-    - field.storage.node.field_res_biography
-    - field.storage.node.body
     - field.storage.node.field_res_medical_services
     - field.storage.node.field_uwm_sections
     - field.storage.paragraph.field_uwm_section_heading
@@ -188,6 +188,7 @@ processor_settings:
     fields:
       - body
       - field_res_biography
+      - field_res_expertises_keywords
       - field_res_expertises_name
       - field_res_medical_services_entity_name
       - field_term_keywords
@@ -226,6 +227,7 @@ processor_settings:
     fields:
       - body
       - field_res_biography
+      - field_res_expertises_keywords
       - field_res_expertises_name
       - field_res_medical_services_entity_name
       - field_term_keywords
@@ -237,18 +239,70 @@ processor_settings:
       preprocess_index: -20
       preprocess_query: -20
   rendered_item: {  }
-  tokenizer:
+  stopwords:
     all_fields: false
     fields:
       - body
       - field_res_biography
+      - field_res_expertises_keywords
       - field_res_expertises_name
       - field_res_medical_services_entity_name
       - field_term_keywords
       - field_uwm_section_heading
       - rendered_item
       - title
-    spaces: ''
+    stopwords:
+      - a
+      - an
+      - and
+      - are
+      - as
+      - at
+      - be
+      - but
+      - by
+      - for
+      - if
+      - in
+      - into
+      - is
+      - it
+      - 'no'
+      - not
+      - of
+      - 'on'
+      - or
+      - s
+      - such
+      - t
+      - that
+      - the
+      - their
+      - then
+      - there
+      - these
+      - they
+      - this
+      - to
+      - was
+      - will
+      - with
+    weights:
+      preprocess_index: -5
+      preprocess_query: -2
+  tokenizer:
+    all_fields: false
+    fields:
+      - body
+      - field_res_biography
+      - field_res_expertises_keywords
+      - field_res_expertises_name
+      - field_res_medical_services_entity_name
+      - field_term_keywords
+      - field_uwm_section_heading
+      - rendered_item
+      - title
+    spaces: '-'
     overlap_cjk: 1
     minimum_word_size: '2'
     weights:
@@ -259,6 +313,7 @@ processor_settings:
     fields:
       - body
       - field_res_biography
+      - field_res_expertises_keywords
       - field_res_expertises_name
       - field_res_medical_services_entity_name
       - field_term_keywords
