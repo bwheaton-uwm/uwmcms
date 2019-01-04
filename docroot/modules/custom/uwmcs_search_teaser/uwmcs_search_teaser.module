@@ -3,19 +3,16 @@
 /**
  * @file
  * Custom module for small, utility-type routines.
+ *
+ * Creates a snippet for use in search results. Allows creating a consistent
+ * snippet that's available to our search-page views, based on the node type
+ * or a node's fields.
  */
 
+use Drupal\node\NodeInterface;
 use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
-
-/**
- * Implements hook_entity_view().
- *
- * Adds brief snippet of content for use in search results. This colud be moved
- * to a twig file for each node-type or view-mode. This module allows other
- * theming work and keeps a snippet, based on preferred fields, available.
- */
 
 /**
  * Implements hook_ENTITY_TYPE_load().
@@ -87,56 +84,64 @@ function uwmcs_search_teaser_preprocess_views_view_fields(&$variables) {
 
 }
 
+/**
+ * Description here.
+ *
+ * @param object|null $node
+ *   Description here.
+ *
+ * @return string
+ *   Description here.
+ */
+function _uwm_get_search_teaser_string(object $node = NULL) {
 
-function _uwm_get_search_teaser_string($node) {
+  // Make sure it's a node.
+  if ($node instanceof NodeInterface) {
 
-  If ($node->getType() === "res_clinic") {
+    if ($node->getType() === "res_clinic") {
 
-    $str = $node->body->value;
-    return _uwmcs_search_teaser_string_trim($str);
+      $str = $node->body->value;
+      return _uwmcs_search_teaser_string_trim($str);
 
-  }
-
-  if ($node->getType() === "‌res_provider") {
-
-    //$renderArray = $node->field_res_biography->view('full');
-    $str = $node->field_res_biography->value;
-    return _uwmcs_search_teaser_string_trim($str);
-
-  }
-
-  if ($node->getType() === "uwm_medical_specialty" ||
-      $node->getType() === "uwm_medical_service") {
-
-    $str = '';
-    $paragraphs = $node->field_uwm_sections->referencedEntities();
-    foreach ($paragraphs as $ppg) {
-      if (!empty($ppg->field_uwm_component) &&
-          method_exists($ppg->field_uwm_component, 'view')) {
-        //$fields[] = $ppg->field_uwm_component->value;
-        $renderArray = $ppg->field_uwm_component->view('full');
-        $str .= render($renderArray);
-      }
     }
 
-//    $paragraph = \Drupal::entityTypeManager()
-//      ->getStorage('paragraph')->load($id2[0]['target_id']);
-//    $renderArray = \Drupal::entityTypeManager()
-//      ->getViewBuilder('paragraph')->view($paragraph);
+    if ($node->getType() === "‌res_provider") {
 
-    return _uwmcs_search_teaser_string_trim($str);
+      // $renderArray = $node->field_res_biography->view('full');.
+      $str = $node->field_res_biography->value;
+      return _uwmcs_search_teaser_string_trim($str);
 
+    }
+
+    if ($node->getType() === "uwm_medical_specialty" ||
+        $node->getType() === "uwm_medical_service") {
+
+      $str = '';
+      $paragraphs = $node->field_uwm_sections->referencedEntities();
+      foreach ($paragraphs as $ppg) {
+        if (!empty($ppg->field_uwm_component) &&
+            method_exists($ppg->field_uwm_component, 'view')) {
+          // $fields[] = $ppg->field_uwm_component->value;.
+          $renderArray = $ppg->field_uwm_component->view('full');
+          $str .= render($renderArray);
+        }
+      }
+
+      // $paragraph = \Drupal::entityTypeManager()
+      // ->getStorage('paragraph')->load($id2[0]['target_id']);
+      // $renderArray = \Drupal::entityTypeManager()
+      // ->getViewBuilder('paragraph')->view($paragraph);
+      return _uwmcs_search_teaser_string_trim($str);
+
+    }
+
+    if ($node->getType() === "uwm_medical_service") {
+
+      // $renderArray = $node->field_uwm_sections->view('full');
+      // return _uwmcs_search_teaser_string_trim(NULL, $renderArray);.
+    }
   }
-
-  if ($node->getType() === "uwm_medical_service") {
-
-    // $renderArray = $node->field_uwm_sections->view('full');
-    //return _uwmcs_search_teaser_string_trim(NULL, $renderArray);
-
-  }
-
 }
-
 
 /**
  * Description here.
