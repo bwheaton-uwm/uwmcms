@@ -1,0 +1,122 @@
+# Migration configuration for imported articles.
+id: uwm_res_import_clinic_references
+label: uwm_res_import_clinic_references
+migration_group: uwm
+migration_dependencies: {}
+
+dependencies:
+  enforced:
+    module:
+    - uwm_res_import
+
+destination:
+  plugin: entity:node
+
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+
+  urls:
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?filter%5Btitle%5D%5Boperator%5D=%3D&filter%5Btitle%5D%5Bpath%5D=title&filter%5Btitle%5D%5Bvalue%5D=UW%20Neighborhood%20Belltown%20Clinic&sort=nid
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=0&sort=nid
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=0&sort=nid
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=50&sort=nid
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=100&sort=nid
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=150&sort=nid
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=200&sort=nid
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=250&sort=nid
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=300&sort=nid
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=350&sort=nid
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=400&sort=nid
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=450&sort=nid
+
+
+  ids:
+    nid:
+      type: integer
+
+  item_selector: data/
+
+  fields:
+    -
+      name: nid
+      label: 'Nid'
+      selector: /attributes/nid
+    -
+      name: vid
+      label: 'Vid'
+      selector: /attributes/vid
+    -
+      name: uuid
+      label: 'Uuid'
+      selector: /attributes/uuid
+    -
+      name: title
+      label: 'Title'
+      selector: /attributes/title
+    -
+      name: created
+      label: 'Created'
+      selector: /attributes/created
+    -
+      name: changed
+      label: 'Changed'
+      selector: /attributes/changed
+    -
+      name: status
+      label: 'Status'
+      selector: /attributes/status
+
+
+    -
+      name: uwm_unique_id
+      label: uwm_unique_id
+      selector: /attributes/uwm_unique_id
+
+
+    -
+      name: field_res_phone_number
+      label: field_res_phone_number
+      selector: /attributes/field_res_phone_number
+
+
+    -
+      name: field_res_providers
+      label: field_res_providers
+      selector: /relationships/field_res_providers/data
+
+
+process:
+
+  #uuid: uuid
+
+  nid:
+  -
+    plugin: uwm_nid_for_uwm_unique_id
+    source: uwm_unique_id
+  -
+    plugin: skip_on_empty
+    method: process
+
+#  type:
+#    plugin: default_value
+#    default_value: res_clinic
+#
+#  title: title
+#
+#  created: created
+#  changed: changed
+#  status: status
+#  sticky: sticky
+#  promote: promote
+#  default_language: default_language
+
+
+  field_res_providers:
+    -
+      plugin: uwm_nid_for_uuid
+      source: field_res_providers
+    -
+      plugin: skip_on_empty
+      method: process

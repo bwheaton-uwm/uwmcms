@@ -2,6 +2,9 @@ uuid: 4833ceeb-a0e1-4b70-9d22-f2df0251bf14
 langcode: en
 status: true
 dependencies:
+  config:
+    - field.storage.taxonomy_term.field_term_keywords
+    - system.menu.admin
   module:
     - entity_browser
     - taxonomy
@@ -69,6 +72,67 @@ display:
           quantity: 9
       style:
         type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          override: true
+          sticky: false
+          caption: ''
+          summary: ''
+          description: ''
+          columns:
+            entity_browser_select: entity_browser_select
+            tid: tid
+            name: name
+            field_term_keywords: field_term_keywords
+            parent_target_id: parent_target_id
+            vid: vid
+            operations: operations
+          info:
+            entity_browser_select:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            tid:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            name:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_term_keywords:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            parent_target_id:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            vid:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            operations:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          default: '-1'
+          empty_table: false
       row:
         type: fields
       fields:
@@ -236,14 +300,14 @@ display:
           separator: ', '
           field_api_classes: false
           convert_spaces: false
-        parent_target_id:
-          id: parent_target_id
-          table: taxonomy_term__parent
-          field: parent_target_id
+        field_term_keywords:
+          id: field_term_keywords
+          table: taxonomy_term__field_term_keywords
+          field: field_term_keywords
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Term Parents'
+          label: Keywords
           exclude: false
           alter:
             alter_text: false
@@ -284,11 +348,10 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
+          click_sort_column: value
+          type: basic_string
+          settings: {  }
+          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -298,8 +361,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: taxonomy_term
-          entity_field: parent
           plugin_id: field
         vid:
           id: vid
@@ -365,6 +426,71 @@ display:
           field_api_classes: false
           entity_type: taxonomy_term
           entity_field: vid
+          plugin_id: field
+        parent_target_id:
+          id: parent_target_id
+          table: taxonomy_term__parent
+          field: parent_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Term Parents'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: taxonomy_term
+          entity_field: parent
           plugin_id: field
         operations:
           id: operations
@@ -616,7 +742,8 @@ display:
         - url
         - url.query_args
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:field.storage.taxonomy_term.field_term_keywords'
   page_1:
     display_plugin: page
     id: page_1
@@ -626,12 +753,12 @@ display:
       display_extenders: {  }
       path: admin/content/terms
       menu:
-        type: tab
-        title: 'Term Search'
+        type: normal
+        title: 'Search Terms'
         description: ''
         expanded: true
         parent: system.admin_content
-        weight: 0
+        weight: 99
         context: '0'
         menu_name: admin
     cache_metadata:
@@ -642,4 +769,5 @@ display:
         - url
         - url.query_args
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:field.storage.taxonomy_term.field_term_keywords'

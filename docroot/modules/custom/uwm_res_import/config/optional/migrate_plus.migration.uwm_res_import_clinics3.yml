@@ -3,9 +3,7 @@ id: uwm_res_import_clinics3
 label: uwm_res_import_clinics3
 migration_group: uwm
 migration_dependencies: {}
-#migration_dependencies:
-#  required:
-#  - uwm_res_import_medical_services
+
 
 dependencies:
   enforced:
@@ -20,7 +18,6 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
 
-#  urls: https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic
   urls:
     - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?filter%5Btitle%5D%5Boperator%5D=%3D&filter%5Btitle%5D%5Bpath%5D=title&filter%5Btitle%5D%5Bvalue%5D=UW%20Neighborhood%20Belltown%20Clinic&sort=nid
     - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=0&sort=nid
@@ -176,22 +173,21 @@ source:
       selector: /relationships/field_res_medical_services/data
 
     -
-      name: field_res_medical_services1
-      label: field_res_medical_services1
-      selector: /relationships/field_res_medical_services/data
-
-    -
       name: field_res_providers
       label: field_res_providers
-      selector: /relationships/field_res_providers
+      selector: /relationships/field_res_providers/data
 
 
 process:
+
   uuid: uuid
+
   type:
     plugin: default_value
     default_value: res_clinic
+
   title: title
+
   created: created
   changed: changed
   status: status
@@ -219,6 +215,12 @@ process:
   uid:
     plugin: default_value
     default_value: 1
+
+
+#  field_res_image:
+#    plugin: migration
+#    migration: uwm_res_import_clinic_images
+#    source: field_res_image/data/id
 
   field_res_box_number: field_res_box_number
   field_res_displayaptslink: field_res_displayaptslink

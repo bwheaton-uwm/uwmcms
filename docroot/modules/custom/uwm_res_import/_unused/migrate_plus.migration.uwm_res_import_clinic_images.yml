@@ -1,0 +1,100 @@
+# Migration configuration for imported articles.
+id: uwm_res_import_clinic_images
+label: uwm_res_import_clinic_images
+migration_group: uwm
+migration_dependencies: {}
+#migration_dependencies:
+#  required:
+#  - uwm_res_import_medical_services
+
+#dependencies:
+#  enforced:
+#    module:
+#    - uwm_res_import
+
+destination:
+  plugin: entity:file
+
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+
+  constants:
+    source_base_path: 'https://bios-reservoir.mktgweb.uwmedicine.org/'
+
+#  urls: https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic
+  urls:
+    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?fields%5Bnode--res_clinic%5D=nid%2Ctitle%2Cfield_res_image&include=field_res_image&page%5Boffset%5D=0&page%5Blimit%5D=50
+    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?fields%5Bnode--res_clinic%5D=nid%2Ctitle%2Cfield_res_image&include=field_res_image&page%5Boffset%5D=50&page%5Blimit%5D=50
+    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?fields%5Bnode--res_clinic%5D=nid%2Ctitle%2Cfield_res_image&include=field_res_image&page%5Boffset%5D=100&page%5Blimit%5D=50
+    - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?fields%5Bnode--res_clinic%5D=nid%2Ctitle%2Cfield_res_image&include=field_res_image&page%5Boffset%5D=150&page%5Blimit%5D=50
+
+  ids:
+    id:
+      type: string
+
+  item_selector: included/
+
+  fields:
+    -
+      name: id
+      label: 'id'
+      selector: /data/id
+    -
+      name: fid
+      label: 'fid'
+      selector: /data/attributes/fid
+    -
+      name: uuid
+      label: 'uuid'
+      selector: /data/attributes/uuid
+    -
+      name: filename
+      label: 'filename'
+      selector: /data/attributes/filename
+    -
+      name: status
+      label: 'status'
+      selector: /data/attributes/status
+    -
+      name: timestamp
+      label: 'timestamp'
+      selector: /data/attributes/timestamp
+    -
+      name: uid
+      label: 'uid'
+      selector: /data/attributes/uid
+    -
+      name: uri
+      label: 'Uri'
+      selector: /data/attributes/uri
+    -
+      name: url
+      label: 'Url'
+      selector: /data/attributes/url
+
+
+process:
+
+  filename: filename
+  filemime: filemime
+  status: status
+  created: timestamp
+  changed: timestamp
+  uid: uid
+  uuid: id
+
+  source_full_path:
+    plugin: concat
+    delimiter: /
+    source:
+      - 'constants/source_base_path'
+      - url
+  uri:
+    plugin: download
+    source:
+      - '@source_full_path'
+      - uri
+    guzzle_options:
+      base_uri: 'constants/source_base_path'

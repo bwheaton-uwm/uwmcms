@@ -149,13 +149,9 @@ source:
       label: field_res_medical_services
       selector: /relationships/field_res_medical_services/data
     -
-      name: field_res_medical_services1
-      label: field_res_medical_services1
-      selector: /relationships/field_res_medical_services/data
-    -
       name: field_res_providers
       label: field_res_providers
-      selector: /relationships/field_res_providers
+      selector: /relationships/field_res_providers/data
 process:
   uuid: uuid
   type:

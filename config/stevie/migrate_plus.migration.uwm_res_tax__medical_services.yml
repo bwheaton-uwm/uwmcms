@@ -34,11 +34,16 @@ source:
       name: name
       label: name
       selector: /attributes/name
+    -
+      name: res_term_keywords
+      label: res_term_keywords
+      selector: /attributes/res_term_keywords
 process:
   uuid: uuid
   tid: term_id
   name: name
   uwm_unique_id: uwm_unique_id
+  field_term_keywords: res_term_keywords
 destination:
   plugin: 'entity:taxonomy_term'
   default_bundle: medical_services
