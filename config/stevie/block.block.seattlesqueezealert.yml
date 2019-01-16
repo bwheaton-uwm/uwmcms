@@ -1,0 +1,31 @@
+uuid: 9eb4c580-01b6-4193-bc55-7ab9e9025e31
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:e070a58c-adb3-4b69-91d8-d22abaded1a7'
+  module:
+    - block_content
+    - system
+  theme:
+    - uwmbase
+id: seattlesqueezealert
+theme: uwmbase
+region: content
+weight: -6
+provider: null
+plugin: 'block_content:e070a58c-adb3-4b69-91d8-d22abaded1a7'
+settings:
+  id: 'block_content:e070a58c-adb3-4b69-91d8-d22abaded1a7'
+  label: 'Seattle Squeeze Alert'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "<front>\r\n/patient-resources/make-an-appointment\r\n/services\r\n/about/contact-us\r\n/search/providers\r\n/search/locations\r\n/patient-resources/ecare"
+    negate: false
+    context_mapping: {  }
