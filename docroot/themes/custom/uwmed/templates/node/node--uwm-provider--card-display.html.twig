@@ -45,7 +45,7 @@
 
             {% set specialities = uwm_extract_parts(bio.expertise, 'expertiseName') %}
             {% if specialities %}
-                <p><strong>{{ "Specialities"| t }}: </strong><br>
+                <p><strong>{{ "Specialties"| t }}: </strong><br>
                     {% for i in specialities %}
 
                         {% if loop.index > 4 %}
