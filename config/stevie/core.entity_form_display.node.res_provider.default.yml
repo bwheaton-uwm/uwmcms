@@ -22,6 +22,7 @@ dependencies:
     - field.field.node.res_provider.field_res_personal_interests
     - field.field.node.res_provider.field_res_pubmed_ids
     - field.field.node.res_provider.field_res_puma_id
+    - field.field.node.res_provider.field_search_best_bets
     - field.field.node.res_provider.uwm_unique_id
     - image.style.thumbnail
     - node.type.res_provider
@@ -209,6 +210,15 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: number
+    region: content
+  field_search_best_bets:
+    weight: 51
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   moderation_state:
     weight: 26

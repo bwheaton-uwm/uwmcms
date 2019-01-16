@@ -1,0 +1,19 @@
+uuid: fe5b919d-8e0a-4ecd-97ab-cb605e486ba0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_term_keywords
+    - taxonomy.vocabulary.search_best_bets
+id: taxonomy_term.search_best_bets.field_term_keywords
+field_name: field_term_keywords
+entity_type: taxonomy_term
+bundle: search_best_bets
+label: 'Term Keywords'
+description: 'Additional keywords for search matching. You may enter a comma separated list of spelling suggestions or alternative names here.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

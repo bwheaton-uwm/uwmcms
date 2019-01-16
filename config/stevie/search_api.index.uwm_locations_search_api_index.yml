@@ -2,11 +2,6 @@ uuid: 073f373e-5463-49c9-be3d-49531a2825a5
 langcode: en
 status: true
 dependencies:
-  module:
-    - node
-    - taxonomy
-    - search_api
-    - uwmcs_searchfields
   config:
     - field.storage.node.field_res_affiliates
     - field.storage.node.body
@@ -18,8 +13,14 @@ dependencies:
     - field.storage.node.field_res_phone_number
     - field.storage.node.field_res_providers
     - field.storage.node.field_res_name
+    - field.storage.node.field_search_best_bets
     - search_api.server.database
     - core.entity_view_mode.node.search_result
+  module:
+    - taxonomy
+    - node
+    - search_api
+    - uwmcs_searchfields
 id: uwm_locations_search_api_index
 name: 'UWM Locations - Search API Index'
 description: ''
@@ -191,6 +192,39 @@ field_settings:
       module:
         - node
         - node
+  field_search_best_bets:
+    label: 'Search Best Bets'
+    datasource_id: 'entity:node'
+    property_path: field_search_best_bets
+    type: text
+    boost: !!float 21
+    dependencies:
+      config:
+        - field.storage.node.field_search_best_bets
+  field_search_best_bets_keywords:
+    label: 'Search Best Bets » Taxonomy term » Term Keywords'
+    datasource_id: 'entity:node'
+    property_path: 'field_search_best_bets:entity:field_term_keywords'
+    type: text
+    boost: !!float 21
+    dependencies:
+      config:
+        - field.storage.node.field_search_best_bets
+        - field.storage.taxonomy_term.field_term_keywords
+      module:
+        - taxonomy
+  field_search_best_bets_name:
+    label: 'Search Best Bets » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_search_best_bets:entity:name'
+    type: text
+    boost: !!float 21
+    dependencies:
+      config:
+        - field.storage.node.field_search_best_bets
+      module:
+        - taxonomy
+        - taxonomy
   node_grants:
     label: 'Node access information'
     property_path: search_api_node_grants
@@ -300,6 +334,9 @@ processor_settings:
       - field_res_phone_number
       - field_res_providers_family_name
       - field_res_providers_title
+      - field_search_best_bets
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
       - rendered_item
       - summary
       - title
@@ -349,6 +386,9 @@ processor_settings:
       - field_res_phone_number
       - field_res_providers_family_name
       - field_res_providers_title
+      - field_search_best_bets
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
       - rendered_item
       - summary
       - title
@@ -375,6 +415,9 @@ processor_settings:
       - field_res_phone_number
       - field_res_providers_family_name
       - field_res_providers_title
+      - field_search_best_bets
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
       - rendered_item
       - summary
       - title
@@ -402,6 +445,9 @@ processor_settings:
       - field_res_phone_number
       - field_res_providers_family_name
       - field_res_providers_title
+      - field_search_best_bets
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
       - rendered_item
       - summary
       - title
@@ -430,6 +476,9 @@ processor_settings:
       - field_res_phone_number
       - field_res_providers_family_name
       - field_res_providers_title
+      - field_search_best_bets
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
       - rendered_item
       - summary
       - title

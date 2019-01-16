@@ -21,10 +21,7 @@ dependencies:
     - field.field.node.res_clinic.field_res_phone_number
     - field.field.node.res_clinic.field_res_providers
     - field.field.node.res_clinic.field_res_room_number
-    - field.field.node.res_clinic.field_test_m_services1
-    - field.field.node.res_clinic.field_test_m_services2
-    - field.field.node.res_clinic.field_test_m_services3
-    - field.field.node.res_clinic.field_testing_top_content
+    - field.field.node.res_clinic.field_search_best_bets
     - field.field.node.res_clinic.uwm_unique_id
     - node.type.res_clinic
   module:
@@ -61,9 +58,8 @@ hidden:
   field_res_phone_number: true
   field_res_providers: true
   field_res_room_number: true
-  field_test_m_services1: true
+  field_search_best_bets: true
   field_test_m_services2: true
   field_test_m_services3: true
-  field_testing_top_content: true
   links: true
   uwm_unique_id: true

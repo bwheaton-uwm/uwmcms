@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - entity_browser.browser.image_browser
+    - field.field.node.uwm_medical_specialty.field_search_best_bets
     - field.field.node.uwm_medical_specialty.field_uwm_find_a_location_link
     - field.field.node.uwm_medical_specialty.field_uwm_find_a_provider_link
     - field.field.node.uwm_medical_specialty.field_uwm_image
@@ -21,6 +22,15 @@ targetEntityType: node
 bundle: uwm_medical_specialty
 mode: default
 content:
+  field_search_best_bets:
+    weight: 26
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   field_uwm_find_a_location_link:
     weight: 5
     settings:

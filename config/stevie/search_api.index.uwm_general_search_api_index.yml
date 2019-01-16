@@ -3,11 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.body
+    - field.storage.node.field_res_biography
     - field.storage.node.field_res_expertises
     - field.storage.taxonomy_term.field_term_keywords
-    - field.storage.node.field_res_biography
-    - field.storage.node.body
     - field.storage.node.field_res_medical_services
+    - field.storage.node.field_search_best_bets
     - field.storage.node.field_uwm_sections
     - field.storage.paragraph.field_uwm_section_heading
     - search_api.server.database
@@ -83,6 +84,30 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_medical_services
+      module:
+        - taxonomy
+        - taxonomy
+  field_search_best_bets_keywords:
+    label: 'Search Best Bets » Taxonomy term » Term Keywords'
+    datasource_id: 'entity:node'
+    property_path: 'field_search_best_bets:entity:field_term_keywords'
+    type: text
+    boost: !!float 21
+    dependencies:
+      config:
+        - field.storage.node.field_search_best_bets
+        - field.storage.taxonomy_term.field_term_keywords
+      module:
+        - taxonomy
+  field_search_best_bets_name:
+    label: 'Search Best Bets » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_search_best_bets:entity:name'
+    type: text
+    boost: !!float 21
+    dependencies:
+      config:
+        - field.storage.node.field_search_best_bets
       module:
         - taxonomy
         - taxonomy
@@ -206,9 +231,12 @@ processor_settings:
     fields:
       - body
       - field_res_biography
+      - field_res_expertises_keywords
       - field_res_expertises_name
       - field_res_medical_services_keywords
       - field_res_medical_services_name
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
       - field_uwm_section_heading
       - field_uwm_sections
       - rendered_item
@@ -245,9 +273,12 @@ processor_settings:
     fields:
       - body
       - field_res_biography
+      - field_res_expertises_keywords
       - field_res_expertises_name
       - field_res_medical_services_keywords
       - field_res_medical_services_name
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
       - field_uwm_section_heading
       - field_uwm_sections
       - rendered_item
@@ -262,9 +293,12 @@ processor_settings:
     fields:
       - body
       - field_res_biography
+      - field_res_expertises_keywords
       - field_res_expertises_name
       - field_res_medical_services_keywords
       - field_res_medical_services_name
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
       - field_uwm_section_heading
       - field_uwm_sections
       - rendered_item
@@ -280,9 +314,12 @@ processor_settings:
     fields:
       - body
       - field_res_biography
+      - field_res_expertises_keywords
       - field_res_expertises_name
       - field_res_medical_services_keywords
       - field_res_medical_services_name
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
       - field_uwm_section_heading
       - field_uwm_sections
       - rendered_item
@@ -298,9 +335,12 @@ processor_settings:
     fields:
       - body
       - field_res_biography
+      - field_res_expertises_keywords
       - field_res_expertises_name
       - field_res_medical_services_keywords
       - field_res_medical_services_name
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
       - field_uwm_section_heading
       - field_uwm_sections
       - rendered_item
@@ -316,11 +356,11 @@ processor_settings:
         bundle_boosts:
           res_clinic: !!float 0
           res_provider: !!float 0
-          uwm_basic_page: !!float 5
+          uwm_basic_page: !!float 1
           uwm_homepage: !!float 0
           uwm_hub_page: !!float 0
-          uwm_medical_service: !!float 8
-          uwm_medical_specialty: !!float 8
+          uwm_medical_service: !!float 5
+          uwm_medical_specialty: !!float 5
     weights:
       preprocess_index: 0
 tracker_settings:

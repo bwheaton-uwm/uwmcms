@@ -1,0 +1,23 @@
+uuid: af7a025f-4f61-4693-af3a-be8e129b4abb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.search_best_bets.field_term_keywords
+    - taxonomy.vocabulary.search_best_bets
+  module:
+    - text
+id: taxonomy_term.search_best_bets.default
+targetEntityType: taxonomy_term
+bundle: search_best_bets
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_term_keywords: true

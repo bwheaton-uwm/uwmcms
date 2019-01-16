@@ -11,6 +11,7 @@ dependencies:
     - field.storage.node.field_res_languages
     - field.storage.node.field_res_medical_services
     - field.storage.node.field_res_name
+    - field.storage.node.field_search_best_bets
     - search_api.server.database
   module:
     - taxonomy
@@ -158,6 +159,30 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_name
+  field_search_best_bets_keywords:
+    label: 'Search Best Bets » Taxonomy term » Term Keywords'
+    datasource_id: 'entity:node'
+    property_path: 'field_search_best_bets:entity:field_term_keywords'
+    type: text
+    boost: !!float 21
+    dependencies:
+      config:
+        - field.storage.node.field_search_best_bets
+        - field.storage.taxonomy_term.field_term_keywords
+      module:
+        - taxonomy
+  field_search_best_bets_name:
+    label: 'Search Best Bets » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_search_best_bets:entity:name'
+    type: text
+    boost: !!float 21
+    dependencies:
+      config:
+        - field.storage.node.field_search_best_bets
+      module:
+        - taxonomy
+        - taxonomy
   node_grants:
     label: 'Node access information'
     property_path: search_api_node_grants

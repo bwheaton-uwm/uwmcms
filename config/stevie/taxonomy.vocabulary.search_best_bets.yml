@@ -1,0 +1,9 @@
+uuid: 270eeac6-256b-4efe-8c81-2c64e94be0e6
+langcode: en
+status: true
+dependencies: {  }
+name: 'Search Best Bets'
+vid: search_best_bets
+description: 'Hidden, internal keywords used for boosting in search results.'
+hierarchy: 0
+weight: 0

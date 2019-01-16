@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.taxonomy_term.medical_services.field_res_clinics
+    - field.field.taxonomy_term.medical_services.field_term_keywords
     - field.field.taxonomy_term.medical_services.uwm_unique_id
     - taxonomy.vocabulary.medical_services
   module:
@@ -25,7 +26,7 @@ content:
       rows: 5
     third_party_settings: {  }
   field_res_clinics:
-    weight: 3
+    weight: 4
     settings:
       match_operator: CONTAINS
       size: 60
@@ -33,6 +34,14 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  field_term_keywords:
+    type: string_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
   name:
     type: string_textfield
     weight: 0
@@ -43,17 +52,16 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 2
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
   uwm_unique_id:
-    weight: 4
+    weight: 5
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
     region: content
-hidden:
-  field_term_keywords: true
+hidden: {  }

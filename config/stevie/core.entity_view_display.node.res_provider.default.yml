@@ -22,6 +22,7 @@ dependencies:
     - field.field.node.res_provider.field_res_personal_interests
     - field.field.node.res_provider.field_res_pubmed_ids
     - field.field.node.res_provider.field_res_puma_id
+    - field.field.node.res_provider.field_search_best_bets
     - field.field.node.res_provider.uwm_unique_id
     - image.style.large
     - node.type.res_provider
@@ -172,4 +173,5 @@ hidden:
   field_res_npi: true
   field_res_pubmed_ids: true
   field_res_puma_id: true
+  field_search_best_bets: true
   uwm_unique_id: true

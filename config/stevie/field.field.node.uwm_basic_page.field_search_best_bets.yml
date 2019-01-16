@@ -1,0 +1,29 @@
+uuid: 02d43b65-1a81-4314-a571-eee29019c69f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_search_best_bets
+    - node.type.uwm_basic_page
+    - taxonomy.vocabulary.search_best_bets
+id: node.uwm_basic_page.field_search_best_bets
+field_name: field_search_best_bets
+entity_type: node
+bundle: uwm_basic_page
+label: 'Search Best Bets'
+description: 'Additional, hidden keywords used to boost page in search results.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      search_best_bets: search_best_bets
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

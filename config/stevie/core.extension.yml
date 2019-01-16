@@ -144,7 +144,6 @@ module:
   search_api_location: 0
   search_api_location_views: 0
   search_api_solr: 0
-  search_api_sorts: 0
   serialization: 0
   shortcut: 0
   simple_oauth: 0
