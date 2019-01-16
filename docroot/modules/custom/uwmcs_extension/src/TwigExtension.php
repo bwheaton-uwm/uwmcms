@@ -35,10 +35,8 @@ class TwigExtension extends \Twig_Extension {
       new \Twig_SimpleFunction(
         'uwm_extract_parts', [$this, 'extractArrayValues']),
       new \Twig_SimpleFunction(
-        'uwm_get_sharepoint_location_image', [
-          $this,
-          'getSharepointLocationImage',
-        ]),
+        'uwm_sort_by_list', [$this, 'sortArrayByList']),
+      new \Twig_SimpleFunction('uwm_get_sharepoint_location_image', [$this, 'getSharepointLocationImage']),
     ];
   }
 
@@ -460,6 +458,47 @@ class TwigExtension extends \Twig_Extension {
     $spaceReplacement = '-';
     $accentClass = preg_replace($spacePattern, $spaceReplacement, $accentClass);
     return strtolower($accentClass);
+
+  }
+
+  /**
+   * Sort an array using a different array of values.
+   *
+   * @param array $originalList
+   *   The array to sort.
+   * @param array $preferredSort
+   *   An array with the preferred order.
+   * @param string|null $sortKey
+   *   Array key having the sorting value.
+   *
+   * @return array
+   *   The sorted array or, original array if sort failed.
+   */
+  public static function sortArrayByList(array $originalList = [], array $preferredSort = [], string $sortKey = NULL) {
+
+    $newList = [];
+    $tmpArray = $originalList;
+
+    foreach ($preferredSort as $preferred) {
+      foreach ($originalList as $key => $item) {
+        $a = strtolower($preferred);
+        $b = strtolower($item[$sortKey]);
+
+        if (stripos($b, $a) !== FALSE) {
+          $newList[] = $item;
+          unset($tmpArray[$key]);
+
+        }
+      }
+    }
+    foreach ($tmpArray as $item) {
+      $newList[] = $item;
+    }
+    if (count($newList) === count($originalList)) {
+      return $newList;
+    }
+
+    return $originalList;
 
   }
 

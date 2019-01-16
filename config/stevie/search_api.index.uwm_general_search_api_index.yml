@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
-    - field.storage.node.field_res_biography
     - field.storage.node.field_res_expertises
-    - field.storage.node.field_res_medical_services
     - field.storage.taxonomy_term.field_term_keywords
+    - field.storage.node.field_res_biography
+    - field.storage.node.body
+    - field.storage.node.field_res_medical_services
     - field.storage.node.field_uwm_sections
     - field.storage.paragraph.field_uwm_section_heading
     - search_api.server.database
@@ -38,30 +38,31 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_biography
+  field_res_expertises_keywords:
+    label: 'Areas of Expertise » Taxonomy term » Term Keywords'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_expertises:entity:field_term_keywords'
+    type: text
+    boost: !!float 5
+    dependencies:
+      config:
+        - field.storage.node.field_res_expertises
+        - field.storage.taxonomy_term.field_term_keywords
+      module:
+        - taxonomy
   field_res_expertises_name:
     label: 'Areas of Expertise » Taxonomy term » Name'
     datasource_id: 'entity:node'
     property_path: 'field_res_expertises:entity:name'
     type: text
+    boost: !!float 5
     dependencies:
       config:
         - field.storage.node.field_res_expertises
       module:
         - taxonomy
         - taxonomy
-  field_res_medical_services_entity_name:
-    label: 'Medical Services » Taxonomy term » Name'
-    datasource_id: 'entity:node'
-    property_path: 'field_res_medical_services:entity:name'
-    type: text
-    boost: !!float 13
-    dependencies:
-      config:
-        - field.storage.node.field_res_medical_services
-      module:
-        - taxonomy
-        - taxonomy
-  field_term_keywords:
+  field_res_medical_services_keywords:
     label: 'Medical Services » Taxonomy term » Term Keywords'
     datasource_id: 'entity:node'
     property_path: 'field_res_medical_services:entity:field_term_keywords'
@@ -72,6 +73,18 @@ field_settings:
         - field.storage.node.field_res_medical_services
         - field.storage.taxonomy_term.field_term_keywords
       module:
+        - taxonomy
+  field_res_medical_services_name:
+    label: 'Medical Services » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_medical_services:entity:name'
+    type: text
+    boost: !!float 13
+    dependencies:
+      config:
+        - field.storage.node.field_res_medical_services
+      module:
+        - taxonomy
         - taxonomy
   field_uwm_section_heading:
     label: 'Sections » Paragraph » Section Heading (H2)'
@@ -194,8 +207,8 @@ processor_settings:
       - body
       - field_res_biography
       - field_res_expertises_name
-      - field_res_medical_services_entity_name
-      - field_term_keywords
+      - field_res_medical_services_keywords
+      - field_res_medical_services_name
       - field_uwm_section_heading
       - field_uwm_sections
       - rendered_item
@@ -233,8 +246,8 @@ processor_settings:
       - body
       - field_res_biography
       - field_res_expertises_name
-      - field_res_medical_services_entity_name
-      - field_term_keywords
+      - field_res_medical_services_keywords
+      - field_res_medical_services_name
       - field_uwm_section_heading
       - field_uwm_sections
       - rendered_item
@@ -250,8 +263,8 @@ processor_settings:
       - body
       - field_res_biography
       - field_res_expertises_name
-      - field_res_medical_services_entity_name
-      - field_term_keywords
+      - field_res_medical_services_keywords
+      - field_res_medical_services_name
       - field_uwm_section_heading
       - field_uwm_sections
       - rendered_item
@@ -268,8 +281,8 @@ processor_settings:
       - body
       - field_res_biography
       - field_res_expertises_name
-      - field_res_medical_services_entity_name
-      - field_term_keywords
+      - field_res_medical_services_keywords
+      - field_res_medical_services_name
       - field_uwm_section_heading
       - field_uwm_sections
       - rendered_item
@@ -286,8 +299,8 @@ processor_settings:
       - body
       - field_res_biography
       - field_res_expertises_name
-      - field_res_medical_services_entity_name
-      - field_term_keywords
+      - field_res_medical_services_keywords
+      - field_res_medical_services_name
       - field_uwm_section_heading
       - field_uwm_sections
       - rendered_item

@@ -3,14 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_res_biography
-    - field.storage.node.field_res_expertises
-    - field.storage.node.field_res_gender
     - field.storage.node.field_res_isacceptingnewpts
+    - field.storage.node.field_res_expertises
+    - field.storage.taxonomy_term.field_term_keywords
+    - field.storage.node.field_res_biography
+    - field.storage.node.field_res_gender
     - field.storage.node.field_res_languages
     - field.storage.node.field_res_medical_services
     - field.storage.node.field_res_name
-    - field.storage.taxonomy_term.field_term_keywords
     - search_api.server.database
   module:
     - taxonomy
@@ -40,6 +40,18 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_expertises
+  field_res_expertises_keywords:
+    label: 'Areas of Expertise » Taxonomy term » Term Keywords'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_expertises:entity:field_term_keywords'
+    type: text
+    boost: !!float 8
+    dependencies:
+      config:
+        - field.storage.node.field_res_expertises
+        - field.storage.taxonomy_term.field_term_keywords
+      module:
+        - taxonomy
   field_res_expertises_name:
     label: 'Areas of Expertise » Taxonomy term » Name'
     datasource_id: 'entity:node'
@@ -92,10 +104,33 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: field_res_medical_services
     type: string
+    dependencies:
+      config:
+        - field.storage.node.field_res_medical_services
+  field_res_medical_services_keywords:
+    label: 'Medical Services » Taxonomy term » Term Keywords'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_medical_services:entity:field_term_keywords'
+    type: text
     boost: !!float 8
     dependencies:
       config:
         - field.storage.node.field_res_medical_services
+        - field.storage.taxonomy_term.field_term_keywords
+      module:
+        - taxonomy
+  field_res_medical_services_name:
+    label: 'Medical Services » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_medical_services:entity:name'
+    type: text
+    boost: !!float 8
+    dependencies:
+      config:
+        - field.storage.node.field_res_medical_services
+      module:
+        - taxonomy
+        - taxonomy
   field_res_name_family:
     label: 'Name » Family'
     datasource_id: 'entity:node'
@@ -123,17 +158,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_name
-  field_term_keywords:
-    label: 'Areas of Expertise » Taxonomy term » Term Keywords'
-    datasource_id: 'entity:node'
-    property_path: 'field_res_expertises:entity:field_term_keywords'
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_res_expertises
-        - field.storage.taxonomy_term.field_term_keywords
-      module:
-        - taxonomy
   node_grants:
     label: 'Node access information'
     property_path: search_api_node_grants
@@ -142,7 +166,7 @@ field_settings:
     type_locked: true
     hidden: true
   status:
-    label: null
+    label: status
     datasource_id: 'entity:node'
     property_path: status
     type: boolean
@@ -161,7 +185,7 @@ field_settings:
       module:
         - node
   uid:
-    label: null
+    label: uid
     datasource_id: 'entity:node'
     property_path: uid
     type: integer
@@ -213,15 +237,14 @@ processor_settings:
     fields:
       - field_res_biography
       - field_res_expertises
+      - field_res_expertises_keywords
       - field_res_expertises_name
       - field_res_expertises_name_string
       - field_res_gender
       - field_res_languages
-      - field_res_medical_services
       - field_res_name_family
       - field_res_name_given
       - field_res_name_title
-      - field_term_keywords
       - title
       - uwmsearchwithin
     ignorable: '[''¿¡!?,.:;]'
@@ -255,15 +278,14 @@ processor_settings:
     fields:
       - field_res_biography
       - field_res_expertises
+      - field_res_expertises_keywords
       - field_res_expertises_name
       - field_res_expertises_name_string
       - field_res_gender
       - field_res_languages
-      - field_res_medical_services
       - field_res_name_family
       - field_res_name_given
       - field_res_name_title
-      - field_term_keywords
       - title
       - uwmsearchwithin
     weights:
@@ -274,11 +296,11 @@ processor_settings:
     all_fields: false
     fields:
       - field_res_biography
+      - field_res_expertises_keywords
       - field_res_expertises_name
       - field_res_name_family
       - field_res_name_given
       - field_res_name_title
-      - field_term_keywords
       - title
     exceptions:
       mexican: mexic
@@ -290,11 +312,11 @@ processor_settings:
     all_fields: false
     fields:
       - field_res_biography
+      - field_res_expertises_keywords
       - field_res_expertises_name
       - field_res_name_family
       - field_res_name_given
       - field_res_name_title
-      - field_term_keywords
       - title
     spaces: ''
     overlap_cjk: 1
@@ -307,15 +329,14 @@ processor_settings:
     fields:
       - field_res_biography
       - field_res_expertises
+      - field_res_expertises_keywords
       - field_res_expertises_name
       - field_res_expertises_name_string
       - field_res_gender
       - field_res_languages
-      - field_res_medical_services
       - field_res_name_family
       - field_res_name_given
       - field_res_name_title
-      - field_term_keywords
       - title
       - uwmsearchwithin
     weights:

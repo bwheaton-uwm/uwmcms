@@ -8,7 +8,7 @@ dependencies:
   module:
     - search_api
 id: provider_facet_expertise
-name: provider_facet_expertise
+name: 'Provider Facet Expertise'
 url_alias: expertise
 weight: -1
 min_count: 1

@@ -504,7 +504,7 @@ display:
               replicator: '0'
               administrator: '0'
               content_manager: '0'
-            placeholder: 'Search by city, specialty, provider...'
+            placeholder: 'Contains all.. parse mode multiple words'
           is_grouped: false
           group_info:
             label: ''
@@ -518,6 +518,50 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           parse_mode: terms
+          min_length: null
+          fields: {  }
+          plugin_id: search_api_fulltext
+        search_api_fulltext_1:
+          id: search_api_fulltext_1
+          table: search_api_index_uwm_general_search_api_index
+          field: search_api_fulltext
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: search_api_fulltext_1_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: search_api_fulltext_1_op
+            identifier: s2
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              replicator: '0'
+              administrator: '0'
+              content_manager: '0'
+            placeholder: 'Contains any.. parse mode direct query'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          parse_mode: direct
           min_length: null
           fields: {  }
           plugin_id: search_api_fulltext

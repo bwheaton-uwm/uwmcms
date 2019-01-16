@@ -2,41 +2,29 @@ uuid: 073f373e-5463-49c9-be3d-49531a2825a5
 langcode: en
 status: true
 dependencies:
+  module:
+    - node
+    - taxonomy
+    - search_api
+    - uwmcs_searchfields
   config:
+    - field.storage.node.field_res_affiliates
+    - field.storage.node.body
     - field.storage.node.field_res_building
     - field.storage.taxonomy_term.field_res_address
-    - field.storage.node.body
-    - field.storage.node.field_res_affiliates
     - field.storage.node.field_res_fax_number
     - field.storage.node.field_res_medical_services
+    - field.storage.taxonomy_term.field_term_keywords
     - field.storage.node.field_res_phone_number
     - field.storage.node.field_res_providers
     - field.storage.node.field_res_name
-    - field.storage.taxonomy_term.field_term_keywords
     - search_api.server.database
     - core.entity_view_mode.node.search_result
-  module:
-    - taxonomy
-    - node
-    - search_api
-    - uwmcs_searchfields
 id: uwm_locations_search_api_index
 name: 'UWM Locations - Search API Index'
 description: ''
 read_only: false
 field_settings:
-  address_line1:
-    label: 'Building » Taxonomy term » Address » The first line of the address block.'
-    datasource_id: 'entity:node'
-    property_path: 'field_res_building:entity:field_res_address:address_line1'
-    type: text
-    boost: !!float 2
-    dependencies:
-      config:
-        - field.storage.node.field_res_building
-        - field.storage.taxonomy_term.field_res_address
-      module:
-        - taxonomy
   body:
     label: Body
     datasource_id: 'entity:node'
@@ -53,7 +41,7 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_affiliates
-  field_res_affiliates_entity_name:
+  field_res_affiliates_name:
     label: 'Affiliates » Taxonomy term » Name'
     datasource_id: 'entity:node'
     property_path: 'field_res_affiliates:entity:name'
@@ -74,7 +62,31 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_building
-  field_res_building_entity_name:
+  field_res_building_address_line1:
+    label: 'Building » Taxonomy term » Address » The first line of the address block.'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_building:entity:field_res_address:address_line1'
+    type: text
+    boost: !!float 2
+    dependencies:
+      config:
+        - field.storage.node.field_res_building
+        - field.storage.taxonomy_term.field_res_address
+      module:
+        - taxonomy
+  field_res_building_locality:
+    label: 'Building » Taxonomy term » Address » The locality (i.e. city).'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_building:entity:field_res_address:locality'
+    type: text
+    boost: !!float 2
+    dependencies:
+      config:
+        - field.storage.node.field_res_building
+        - field.storage.taxonomy_term.field_res_address
+      module:
+        - taxonomy
+  field_res_building_name:
     label: 'Building » Taxonomy term » Name'
     datasource_id: 'entity:node'
     property_path: 'field_res_building:entity:name'
@@ -85,6 +97,18 @@ field_settings:
         - field.storage.node.field_res_building
       module:
         - taxonomy
+        - taxonomy
+  field_res_building_postal_code:
+    label: 'Building » Taxonomy term » Address » The postal code.'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_building:entity:field_res_address:postal_code'
+    type: text
+    boost: !!float 2
+    dependencies:
+      config:
+        - field.storage.node.field_res_building
+        - field.storage.taxonomy_term.field_res_address
+      module:
         - taxonomy
   field_res_fax_number:
     label: 'Fax Number'
@@ -98,21 +122,23 @@ field_settings:
     label: 'Medical Services'
     datasource_id: 'entity:node'
     property_path: field_res_medical_services
-    type: string
-    boost: !!float 13
-    dependencies:
-      config:
-        - field.storage.node.field_res_medical_services
-  field_res_medical_services_1:
-    label: 'Medical Services'
-    datasource_id: 'entity:node'
-    property_path: field_res_medical_services
     type: text
     boost: !!float 13
     dependencies:
       config:
         - field.storage.node.field_res_medical_services
-  field_res_medical_services_entity_name:
+  field_res_medical_services_keywords:
+    label: 'Medical Services » Taxonomy term » Term Keywords'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_medical_services:entity:field_term_keywords'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_medical_services
+        - field.storage.taxonomy_term.field_term_keywords
+      module:
+        - taxonomy
+  field_res_medical_services_name:
     label: 'Medical Services » Taxonomy term » Name'
     datasource_id: 'entity:node'
     property_path: 'field_res_medical_services:entity:name'
@@ -124,6 +150,15 @@ field_settings:
       module:
         - taxonomy
         - taxonomy
+  field_res_medical_services_string:
+    label: 'Medical Services'
+    datasource_id: 'entity:node'
+    property_path: field_res_medical_services
+    type: string
+    boost: !!float 13
+    dependencies:
+      config:
+        - field.storage.node.field_res_medical_services
   field_res_phone_number:
     label: 'Phone Number'
     datasource_id: 'entity:node'
@@ -156,29 +191,6 @@ field_settings:
       module:
         - node
         - node
-  field_term_keywords:
-    label: 'Medical Services » Taxonomy term » Term Keywords'
-    datasource_id: 'entity:node'
-    property_path: 'field_res_medical_services:entity:field_term_keywords'
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_res_medical_services
-        - field.storage.taxonomy_term.field_term_keywords
-      module:
-        - taxonomy
-  locality:
-    label: 'Building » Taxonomy term » Address » The locality (i.e. city).'
-    datasource_id: 'entity:node'
-    property_path: 'field_res_building:entity:field_res_address:locality'
-    type: text
-    boost: !!float 2
-    dependencies:
-      config:
-        - field.storage.node.field_res_building
-        - field.storage.taxonomy_term.field_res_address
-      module:
-        - taxonomy
   node_grants:
     label: 'Node access information'
     property_path: search_api_node_grants
@@ -186,18 +198,6 @@ field_settings:
     indexed_locked: true
     type_locked: true
     hidden: true
-  postal_code:
-    label: 'Building » Taxonomy term » Address » The postal code.'
-    datasource_id: 'entity:node'
-    property_path: 'field_res_building:entity:field_res_address:postal_code'
-    type: text
-    boost: !!float 2
-    dependencies:
-      config:
-        - field.storage.node.field_res_building
-        - field.storage.taxonomy_term.field_res_address
-      module:
-        - taxonomy
   rendered_item:
     label: 'Rendered HTML output'
     property_path: rendered_item
@@ -209,7 +209,7 @@ field_settings:
         'entity:node':
           res_clinic: search_result
   status:
-    label: null
+    label: status
     datasource_id: 'entity:node'
     property_path: status
     type: boolean
@@ -236,7 +236,7 @@ field_settings:
       module:
         - node
   uid:
-    label: null
+    label: uid
     datasource_id: 'entity:node'
     property_path: uid
     type: integer
@@ -284,22 +284,22 @@ processor_settings:
   ignore_character:
     all_fields: false
     fields:
-      - address_line1
       - body
       - field_res_affiliates
-      - field_res_affiliates_entity_name
+      - field_res_affiliates_name
       - field_res_building
-      - field_res_building_entity_name
+      - field_res_building_address_line1
+      - field_res_building_locality
+      - field_res_building_name
+      - field_res_building_postal_code
       - field_res_fax_number
       - field_res_medical_services
-      - field_res_medical_services_1
-      - field_res_medical_services_entity_name
+      - field_res_medical_services_keywords
+      - field_res_medical_services_name
+      - field_res_medical_services_string
       - field_res_phone_number
       - field_res_providers_family_name
       - field_res_providers_title
-      - field_term_keywords
-      - locality
-      - postal_code
       - rendered_item
       - summary
       - title
@@ -333,22 +333,22 @@ processor_settings:
   ignorecase:
     all_fields: false
     fields:
-      - address_line1
       - body
       - field_res_affiliates
-      - field_res_affiliates_entity_name
+      - field_res_affiliates_name
       - field_res_building
-      - field_res_building_entity_name
+      - field_res_building_address_line1
+      - field_res_building_locality
+      - field_res_building_name
+      - field_res_building_postal_code
       - field_res_fax_number
       - field_res_medical_services
-      - field_res_medical_services_1
-      - field_res_medical_services_entity_name
+      - field_res_medical_services_keywords
+      - field_res_medical_services_name
+      - field_res_medical_services_string
       - field_res_phone_number
       - field_res_providers_family_name
       - field_res_providers_title
-      - field_term_keywords
-      - locality
-      - postal_code
       - rendered_item
       - summary
       - title
@@ -360,21 +360,21 @@ processor_settings:
   stemmer:
     all_fields: false
     fields:
-      - address_line1
       - body
       - field_res_affiliates
-      - field_res_affiliates_entity_name
+      - field_res_affiliates_name
       - field_res_building
-      - field_res_building_entity_name
+      - field_res_building_address_line1
+      - field_res_building_locality
+      - field_res_building_name
+      - field_res_building_postal_code
       - field_res_fax_number
-      - field_res_medical_services_1
-      - field_res_medical_services_entity_name
+      - field_res_medical_services
+      - field_res_medical_services_keywords
+      - field_res_medical_services_name
       - field_res_phone_number
       - field_res_providers_family_name
       - field_res_providers_title
-      - field_term_keywords
-      - locality
-      - postal_code
       - rendered_item
       - summary
       - title
@@ -387,21 +387,21 @@ processor_settings:
   tokenizer:
     all_fields: false
     fields:
-      - address_line1
       - body
       - field_res_affiliates
-      - field_res_affiliates_entity_name
+      - field_res_affiliates_name
       - field_res_building
-      - field_res_building_entity_name
+      - field_res_building_address_line1
+      - field_res_building_locality
+      - field_res_building_name
+      - field_res_building_postal_code
       - field_res_fax_number
-      - field_res_medical_services_1
-      - field_res_medical_services_entity_name
+      - field_res_medical_services
+      - field_res_medical_services_keywords
+      - field_res_medical_services_name
       - field_res_phone_number
       - field_res_providers_family_name
       - field_res_providers_title
-      - field_term_keywords
-      - locality
-      - postal_code
       - rendered_item
       - summary
       - title
@@ -414,22 +414,22 @@ processor_settings:
   transliteration:
     all_fields: false
     fields:
-      - address_line1
       - body
       - field_res_affiliates
-      - field_res_affiliates_entity_name
+      - field_res_affiliates_name
       - field_res_building
-      - field_res_building_entity_name
+      - field_res_building_address_line1
+      - field_res_building_locality
+      - field_res_building_name
+      - field_res_building_postal_code
       - field_res_fax_number
       - field_res_medical_services
-      - field_res_medical_services_1
-      - field_res_medical_services_entity_name
+      - field_res_medical_services_keywords
+      - field_res_medical_services_name
+      - field_res_medical_services_string
       - field_res_phone_number
       - field_res_providers_family_name
       - field_res_providers_title
-      - field_term_keywords
-      - locality
-      - postal_code
       - rendered_item
       - summary
       - title

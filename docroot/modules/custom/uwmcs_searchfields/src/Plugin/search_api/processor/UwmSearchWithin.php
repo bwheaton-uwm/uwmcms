@@ -9,7 +9,6 @@ use Drupal\search_api\Item\ItemInterface;
 use Drupal\search_api\Processor\ProcessorPluginBase;
 use Drupal\search_api\Processor\ProcessorProperty;
 
-// Use Drupal\uwmcs_searchfields\Controller\UwmSearchInfoMgrHelper;.
 /**
  * Provides a value to the Search API for the "Search within" drop-down.
  *
@@ -128,6 +127,10 @@ class UwmSearchWithin extends ProcessorPluginBase {
       $matches[] = self::VALUE_PATIENT_RESOURCES;
     }
 
+    if ($nodeType === 'uwm_medical_service' ||
+        $nodeType === 'uwm_medical_specialty') {
+      $matches[] = self::VALUE_MEDICAL_SERVICE;
+    }
   }
 
   /**
@@ -176,7 +179,7 @@ class UwmSearchWithin extends ProcessorPluginBase {
         $matches[] = self::VALUE_PATIENT_RESOURCES;
       }
 
-      if (stripos($alias, 'services') !== FALSE) {
+      if (stripos($alias, 'services/') !== FALSE) {
         $matches[] = self::VALUE_MEDICAL_SERVICE;
       }
 
