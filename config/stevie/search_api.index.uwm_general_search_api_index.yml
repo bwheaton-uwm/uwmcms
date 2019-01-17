@@ -3,10 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.body
+    - field.storage.node.field_res_biography
     - field.storage.node.field_res_expertises
     - field.storage.taxonomy_term.field_term_keywords
-    - field.storage.node.field_res_biography
-    - field.storage.node.body
     - field.storage.node.field_res_medical_services
     - field.storage.node.field_search_best_bets
     - field.storage.node.field_uwm_sections
@@ -349,6 +349,20 @@ processor_settings:
     weights:
       preprocess_index: -20
       preprocess_query: -20
+  type_boost:
+    boosts:
+      'entity:node':
+        datasource_boost: !!float 1
+        bundle_boosts:
+          res_clinic: !!float 0
+          res_provider: !!float 0
+          uwm_basic_page: !!float 1
+          uwm_homepage: !!float 0
+          uwm_hub_page: !!float 0
+          uwm_medical_service: !!float 2
+          uwm_medical_specialty: !!float 2
+    weights:
+      preprocess_index: 0
 tracker_settings:
   default:
     indexing_order: fifo
