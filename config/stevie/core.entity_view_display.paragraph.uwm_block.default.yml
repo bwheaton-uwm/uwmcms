@@ -3,8 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.uwm_block.field_webform
     - field.field.paragraph.uwm_block.uwm_block
     - paragraphs.paragraphs_type.uwm_block
+  module:
+    - webform
 _core:
   default_config_hash: uIbtTv-W7JtxEYuiOteCXEqY03YtqwIE8sHVl6QCHHU
 id: paragraph.uwm_block.default
@@ -12,6 +15,14 @@ targetEntityType: paragraph
 bundle: uwm_block
 mode: default
 content:
+  field_webform:
+    weight: 3
+    label: hidden
+    settings:
+      source_entity: true
+    third_party_settings: {  }
+    type: webform_entity_reference_entity_view
+    region: content
   uwm_block:
     weight: 2
     label: hidden

@@ -1,0 +1,9 @@
+uuid: 2e114dbb-a274-4226-92da-b2d1476c58c4
+langcode: en
+status: true
+dependencies: {  }
+id: reusable_content
+label: 'Reusable Content'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

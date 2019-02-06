@@ -916,7 +916,7 @@
             "version": "v1.8.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/kenwheeler/slick.git",
+                "url": "git@github.com:kenwheeler/slick.git",
                 "reference": "0f40c9d6a02a5c08b5f4dd80fdada3a854a59bee"
             },
             "dist": {
@@ -20583,13 +20583,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/uwmweb/uwmbase.git",
-                "reference": "2965e4c2565829a6920808636bf8f0ec14c73d74"
+                "reference": "1dbdadb553169d8992b8c38bc17bacee87a3c2eb"
             },
             "dist": {
                 "type": "tar",
-                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-2965e4c2565829a6920808636bf8f0ec14c73d74-zip-dd3431.tar",
-                "reference": "2965e4c2565829a6920808636bf8f0ec14c73d74",
-                "shasum": "0300cd700279fa107c64ce4a30ecfc08d337a987"
+                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-1dbdadb553169d8992b8c38bc17bacee87a3c2eb-zip-913a80.tar",
+                "reference": "1dbdadb553169d8992b8c38bc17bacee87a3c2eb",
+                "shasum": "80be562668dc7c07452548fe4ef5a9341735b2f2"
             },
             "type": "drupal-theme",
             "license": [
@@ -20600,7 +20600,7 @@
                 "source": "https://github.com/uwmweb/uwmbase/tree/develop",
                 "issues": "https://github.com/uwmweb/uwmbase/issues"
             },
-            "time": "2019-01-17T11:18:07+00:00"
+            "time": "2019-02-06T17:15:32+00:00"
         },
         {
             "name": "uwmweb/uwmedicineorg_theme",

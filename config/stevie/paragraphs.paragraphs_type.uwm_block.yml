@@ -5,7 +5,7 @@ dependencies: {  }
 _core:
   default_config_hash: 1VvHK6oLh28OJd4DQD4AwYPaqtEeN-mPTRuW3qUcAH4
 id: uwm_block
-label: 'Drupal Block'
+label: 'Reusable Content'
 icon_uuid: null
-description: null
+description: ''
 behavior_plugins: {  }
