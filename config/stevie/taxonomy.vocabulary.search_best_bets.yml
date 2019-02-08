@@ -5,5 +5,5 @@ dependencies: {  }
 name: 'Search Best Bets'
 vid: search_best_bets
 description: 'Hidden, internal keywords used for boosting in search results.'
-hierarchy: 0
+hierarchy: 1
 weight: 0
