@@ -605,7 +605,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'access site reports'
+          perm: 'access content overview'
       defaults:
         access: false
         filters: false

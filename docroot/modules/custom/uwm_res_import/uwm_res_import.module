@@ -8,6 +8,19 @@
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Plugin\MigrateSourceInterface;
 use Drupal\migrate\Row;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_entity_presave().
+ */
+function uwm_res_import_entity_presave(EntityInterface $entity) {
+
+  if ($entity->bundle() === "res_provider") {
+    $v2 = $entity->field_res_isacceptingnewpts->value;
+    $entity->field_res_isacceptingnewpts->value = (int) $v2;
+  }
+
+}
 
 /**
  * Implements hook_migration_plugins_alter().

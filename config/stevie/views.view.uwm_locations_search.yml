@@ -7,6 +7,7 @@ dependencies:
     - search_api.index.uwm_locations_search_api_index
   module:
     - search_api
+    - user
 id: uwm_locations_search
 label: 'UWM Locations Search'
 module: views
@@ -497,8 +498,8 @@ display:
   page_2:
     display_plugin: page
     id: page_2
-    display_title: Page
-    position: 1
+    display_title: 'Page 2'
+    position: 2
     display_options:
       display_extenders: {  }
       path: search/locations/dx
@@ -507,6 +508,11 @@ display:
         type: none
       defaults:
         cache: false
+        access: false
+      access:
+        type: perm
+        options:
+          perm: 'access content overview'
     cache_metadata:
       max-age: -1
       contexts:
@@ -514,5 +520,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user.permissions
       tags:
         - 'config:field.storage.node.field_res_external_url'
