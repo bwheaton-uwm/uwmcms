@@ -1,7 +1,9 @@
-uuid: 77ffb15a-50d9-4051-8b68-55450b0a009f
+uuid: 1b077ef9-e649-49f1-945d-57687fae7945
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: P6E3ygpcuIPJipT7lHo6CcmHPewpD4lkHKdS4M8bD2s
 id: uwm_res_tax__board_certifications
 class: null
 field_plugin_method: null
@@ -14,16 +16,8 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
   urls:
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=0'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=50'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=100'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=150'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=200'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=250'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=300'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=350'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=400'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=450'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Boffset%5D=0&page%5Blimit%5D=50&sort=name'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Boffset%5D=50&page%5Blimit%5D=50&sort=name'
   ids:
     tid:
       type: integer

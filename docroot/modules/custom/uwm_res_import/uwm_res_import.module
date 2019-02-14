@@ -5,9 +5,6 @@
  * Custom module for small, utility-type routines.
  */
 
-use Drupal\migrate\Plugin\MigrationInterface;
-use Drupal\migrate\Plugin\MigrateSourceInterface;
-use Drupal\migrate\Row;
 use Drupal\Core\Entity\EntityInterface;
 
 /**
@@ -41,20 +38,12 @@ function uwm_res_import_migration_plugins_alter(&$migrations) {
       $config->set('source.urls', $urls);
       $config->save();
 
+      // $migrations[$id]['source']['urls'] = $urls;.
       \Drupal::logger(__FUNCTION__)
         ->info('Added URLs to migration: ' . json_encode($urls));
     }
 
   }
-
-}
-
-/**
- * Implements hook_migrate_prepare_row().
- */
-function uwm_res_import_migrate_prepare_row(Row $row, MigrateSourceInterface $source, MigrationInterface $migration) {
-
-  $i = 0;
 
 }
 

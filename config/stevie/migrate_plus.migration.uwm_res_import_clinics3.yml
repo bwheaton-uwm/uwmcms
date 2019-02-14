@@ -1,10 +1,12 @@
-uuid: 8f76b79f-5f3a-4341-8c5f-93d1de43dd50
+uuid: 432d2842-84c4-49ea-8e33-e34e53986a30
 langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - uwm_res_import
+_core:
+  default_config_hash: DcVdkUQ8ZX3IEZOTK39-GdmDqrg1OB3uZ_AfswWNGQE
 id: uwm_res_import_clinics3
 class: null
 field_plugin_method: null
@@ -17,16 +19,8 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
   urls:
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=0&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=50&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=100&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=150&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=200&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=250&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=300&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=350&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=400&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=450&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?filter%5Btitle%5D%5Boperator%5D=%3D&filter%5Btitle%5D%5Bpath%5D=title&filter%5Btitle%5D%5Bvalue%5D=UW%20Neighborhood%20Belltown%20Clinic&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=5&page%5Boffset%5D=0&sort=nid'
   ids:
     nid:
       type: integer

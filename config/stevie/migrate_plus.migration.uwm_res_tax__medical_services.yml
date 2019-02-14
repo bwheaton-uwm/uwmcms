@@ -1,7 +1,9 @@
-uuid: a578d038-5219-4174-bd89-53777d4b8a65
+uuid: 25169a46-4864-4408-a24e-fc6d7793d536
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: AZsTXv0LE43mPbYxE64wJ2aP7yJIrmQAfNkVE3mEkuo
 id: uwm_res_tax__medical_services
 class: null
 field_plugin_method: null

@@ -1,10 +1,12 @@
-uuid: 11b678b0-9c37-4a4f-bd1e-cf6f040d46b2
+uuid: c0618b8a-a7e2-4fde-940c-f48745eee627
 langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - uwm_res_import
+_core:
+  default_config_hash: 0uXP_53zu6kz-fUfQNTjWMLx7yNcgITOXrVT5SFqhCE
 id: uwm_migration_single_item_test
 class: null
 field_plugin_method: null

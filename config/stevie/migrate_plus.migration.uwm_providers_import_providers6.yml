@@ -1,4 +1,4 @@
-uuid: ee47336f-abc8-4464-87b0-567d8a8e1dc0
+uuid: bb18c26c-8786-4368-943c-4e2cb351c227
 langcode: en
 status: true
 dependencies:
@@ -6,21 +6,23 @@ dependencies:
     module:
       - uwm_res_import
 _core:
-  default_config_hash: wUjkYqn9HHt6fr9UEotlTFdI1HeBASQvp7DGnLG4hdw
-id: uwm_res_import_providers3
+  default_config_hash: cBfKy7A2mEMv9eXYlpsYvyZpadmeNAIScNjVhHlnxJY
+id: uwm_providers_import_providers6
 class: null
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags: null
-migration_group: uwm
-label: uwm_res_import_providers3
+migration_group: uwm_providers
+label: uwm_providers_import_providers6
 source:
   plugin: url
   data_fetcher_plugin: http
   data_parser_plugin: json
   urls:
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?filter[field_res_npi]=1952486755'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Boffset%5D=50&page%5Blimit%5D=5'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=3850&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=3900&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=3950&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=4000&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC'
   ids:
     nid:
       type: integer

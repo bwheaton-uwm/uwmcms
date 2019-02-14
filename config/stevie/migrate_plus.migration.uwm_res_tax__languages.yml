@@ -1,7 +1,9 @@
-uuid: 33e59733-c993-4331-8296-7a14ab1576e1
+uuid: e2ec8b8f-d72b-442b-93cf-8a1d9bcb1020
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: YaRziC2Uf-xMDoaMHXIcidhaTMjQAGvwgBNMnWfkxKg
 id: uwm_res_tax__languages
 class: null
 field_plugin_method: null
@@ -14,18 +16,9 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
   urls:
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page%5Blimit%5D=50&page%5Boffset%5D=0'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page%5Blimit%5D=50&page%5Boffset%5D=50'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page%5Blimit%5D=50&page%5Boffset%5D=100'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page%5Blimit%5D=50&page%5Boffset%5D=150'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page%5Blimit%5D=50&page%5Boffset%5D=200'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page%5Blimit%5D=50&page%5Boffset%5D=250'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page%5Blimit%5D=50&page%5Boffset%5D=300'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page%5Blimit%5D=50&page%5Boffset%5D=350'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page%5Blimit%5D=50&page%5Boffset%5D=400'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page%5Blimit%5D=50&page%5Boffset%5D=450'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page%5Blimit%5D=50&page%5Boffset%5D=500'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page%5Blimit%5D=50&page%5Boffset%5D=550'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page%5Blimit%5D=25&page%5Boffset%5D=0&sort=name'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page%5Boffset%5D=25&page%5Blimit%5D=25&sort=name'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page%5Boffset%5D=50&page%5Blimit%5D=25&sort=name'
   ids:
     tid:
       type: integer
