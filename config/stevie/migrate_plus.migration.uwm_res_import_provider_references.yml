@@ -1,4 +1,4 @@
-uuid: ff16f31e-ac6e-4cba-ac1f-8d7d33d63d91
+uuid: 1e9e1399-a1cd-404a-8e2b-0254b22ca8b5
 langcode: en
 status: true
 dependencies:
@@ -6,7 +6,7 @@ dependencies:
     module:
       - uwm_res_import
 _core:
-  default_config_hash: Ox6TYNu_5ygg1XC1EmiPMah7YsDHUuWzQhXoCKGEdiY
+  default_config_hash: 9qi_hyR6WZzO_3PBBq0w3L3IRy3o_5J3z7VBN_RlQ1I
 id: uwm_res_import_provider_references
 class: null
 field_plugin_method: null
@@ -101,6 +101,7 @@ source:
     - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3850&sort=nid'
     - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3900&sort=nid'
     - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=3950&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page%5Blimit%5D=50&page%5Boffset%5D=4000&sort=nid'
   ids:
     nid:
       type: integer
