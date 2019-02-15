@@ -1,8 +1,12 @@
+uuid: b2488db9-7f89-4b58-9095-0028ecca9ba4
 langcode: en
 status: open
 dependencies:
   module:
     - honeypot
+third_party_settings:
+  honeypot:
+    honeypot: true
 open: null
 close: null
 uid: 1
@@ -135,7 +139,3 @@ access:
     users: {  }
     permissions: {  }
 handlers: {  }
-uuid: b2488db9-7f89-4b58-9095-0028ecca9ba4
-third_party_settings:
-  honeypot:
-    honeypot: true
