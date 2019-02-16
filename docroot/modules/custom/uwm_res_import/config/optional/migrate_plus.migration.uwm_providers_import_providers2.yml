@@ -166,11 +166,13 @@ source:
 
 
 process:
+
+  uuid: uuid
+
   type:
     plugin: default_value
     default_value: res_provider
 
-  uuid: uuid
   title: title
   created: created
   changed: changed
@@ -249,7 +251,7 @@ process:
     source: field_res_affiliates
     process:
       target_id:
-      - plugin: uwm_term_value1
+      - plugin: uwm_tid_for_uuid
         source: id
       - plugin: skip_on_empty
         method: process
@@ -260,7 +262,7 @@ process:
     source: field_res_board_certifications
     process:
       target_id:
-      - plugin: uwm_term_value1
+      - plugin: uwm_tid_for_uuid
         source: id
       - plugin: skip_on_empty
         method: process
@@ -272,7 +274,7 @@ process:
   #    process:
   #      target_id:
   #      -
-  #        plugin: uwm_term_value1
+  #        plugin: uwm_tid_for_uuid
   #        source: id
   #      -
   #        plugin: skip_on_empty
@@ -284,7 +286,7 @@ process:
     source: field_res_degrees
     process:
       target_id:
-      - plugin: uwm_term_value1
+      - plugin: uwm_tid_for_uuid
         source: id
       - plugin: skip_on_empty
         method: process
@@ -295,7 +297,7 @@ process:
     source: field_res_education_history
     process:
       target_id:
-      - plugin: uwm_term_value1
+      - plugin: uwm_tid_for_uuid
         source: id
       - plugin: skip_on_empty
         method: process
@@ -306,7 +308,7 @@ process:
     source: field_res_expertises
     process:
       target_id:
-      - plugin: uwm_term_value1
+      - plugin: uwm_tid_for_uuid
         source: id
       - plugin: skip_on_empty
         method: process
@@ -319,7 +321,7 @@ process:
     source: field_res_languages
     process:
       target_id:
-      - plugin: uwm_term_value1
+      - plugin: uwm_tid_for_uuid
         source: id
       - plugin: skip_on_empty
         method: process
@@ -330,7 +332,13 @@ process:
     source: field_res_medical_services
     process:
       target_id:
-      - plugin: uwm_term_value1
+      - plugin: uwm_tid_for_uuid
         source: id
       - plugin: skip_on_empty
         method: process
+
+  field_res_clinics:
+  - plugin: uwm_nid_for_uuid
+    source: field_res_clinics
+  - plugin: skip_on_empty
+    method: process

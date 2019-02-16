@@ -1,4 +1,4 @@
-uuid: df7a14f4-f6ad-4510-b053-723f91fb3754
+uuid: 36ee3c36-8d81-4120-a6d5-2db83638ddd3
 langcode: en
 status: true
 dependencies:
@@ -6,29 +6,21 @@ dependencies:
     module:
       - uwm_res_import
 _core:
-  default_config_hash: DcVdkUQ8ZX3IEZOTK39-GdmDqrg1OB3uZ_AfswWNGQE
-id: uwm_res_import_clinics3
+  default_config_hash: 0j2MjSae0dDtCmkjPfxqa6yjr9J3KU6f8JLuI8COtag
+id: uwm_res_clinics_import_clinics
 class: null
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags: null
-migration_group: uwm
-label: uwm_res_import_clinics3
+migration_group: uwm_clinics
+label: uwm_res_clinics_import_clinics
 source:
   plugin: url
   data_fetcher_plugin: http
   data_parser_plugin: json
   urls:
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=0&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=50&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=100&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=150&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=200&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=250&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=300&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=350&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=400&sort=nid'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page%5Blimit%5D=50&page%5Boffset%5D=450&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?filter%5Btitle%5D%5Boperator%5D=%3D&filter%5Btitle%5D%5Bpath%5D=title&filter%5Btitle%5D%5Bvalue%5D=UW%20Neighborhood%20Belltown%20Clinic&sort=nid'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=0&page[limit]=5&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=0&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=50&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=100&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=150&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=200&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=250&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=300&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=350&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=400&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC'
   ids:
     nid:
       type: integer
@@ -123,37 +115,25 @@ source:
       label: uwm_unique_id
       selector: /attributes/uwm_unique_id
     -
-      name: menu_link
-      label: menu_link
-      selector: /relationships/menu_link
-    -
-      name: field_res_affiliates
-      label: field_res_affiliates
-      selector: /relationships/field_res_affiliates
+      name: field_res_providers
+      label: field_res_providers
+      selector: /relationships/field_res_providers/data
     -
       name: field_res_building
       label: field_res_building
-      selector: /relationships/field_res_building
+      selector: /relationships/field_res_building/data
     -
       name: field_res_floor
       label: field_res_floor
-      selector: /relationships/field_res_floor
+      selector: /relationships/field_res_floor/data
     -
-      name: field_res_hours_of_operation
-      label: field_res_hours_of_operation
-      selector: /relationships/field_res_hours_of_operation
-    -
-      name: field_res_image
-      label: field_res_image
-      selector: /relationships/field_res_image
+      name: field_res_affiliates
+      label: field_res_affiliates
+      selector: /relationships/field_res_affiliates/data
     -
       name: field_res_medical_services
       label: field_res_medical_services
       selector: /relationships/field_res_medical_services/data
-    -
-      name: field_res_providers
-      label: field_res_providers
-      selector: /relationships/field_res_providers/data
 process:
   uuid: uuid
   type:
@@ -178,26 +158,41 @@ process:
   field_res_phone_number: field_res_phone_number
   field_res_room_number: field_res_room_number
   uwm_unique_id: uwm_unique_id
+  field_res_providers:
+    -
+      plugin: uwm_nid_for_uuid
+      source: uwm_unique_id
+    -
+      plugin: skip_on_empty
+      method: process
+  field_res_building:
+    -
+      plugin: uwm_tid_for_uuid
+      source: field_res_building
+    -
+      plugin: skip_on_empty
+      method: process
+  field_res_floor:
+    -
+      plugin: uwm_tid_for_uuid
+      source: field_res_floor
+    -
+      plugin: skip_on_empty
+      method: process
+  field_res_affiliates:
+    -
+      plugin: uwm_tid_for_uuid
+      source: field_res_affiliates
+    -
+      plugin: skip_on_empty
+      method: process
   field_res_medical_services:
     -
-      plugin: uwm_term_value
+      plugin: uwm_tid_for_uuid
       source: field_res_medical_services
     -
       plugin: skip_on_empty
       method: process
-    -
-      plugin: entity_generate
-  field_test_m_services1:
-    plugin: sub_process
-    source: field_res_medical_services1
-    process:
-      target_id:
-        -
-          plugin: uwm_term_value1
-          source: id
-        -
-          plugin: skip_on_empty
-          method: process
 destination:
   plugin: 'entity:node'
 migration_dependencies: {  }

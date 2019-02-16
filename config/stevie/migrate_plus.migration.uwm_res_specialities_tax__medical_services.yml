@@ -1,16 +1,16 @@
-uuid: 8e432add-8a3a-461f-9c1f-c8ec3bb2f031
+uuid: 08339a98-b7a9-472c-a31a-090f6a4ca68e
 langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: AZsTXv0LE43mPbYxE64wJ2aP7yJIrmQAfNkVE3mEkuo
-id: uwm_res_tax__medical_services
+  default_config_hash: dXv1C9OadThbSF7VFVC9D7g_G659bLChn_v1y_zrNnk
+id: uwm_res_specialities_tax__medical_services
 class: null
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags: null
-migration_group: uwm
-label: uwm_res_tax__medical_services
+migration_group: uwm_res_specialities
+label: uwm_res_specialities_tax__medical_services
 source:
   plugin: url
   data_fetcher_plugin: http

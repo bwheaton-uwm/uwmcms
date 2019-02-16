@@ -31,7 +31,6 @@ class UwmNidForUUID extends ProcessPluginBase {
     if ($value) {
 
       $value = !empty($value['id']) ? $value['id'] : $value;
-
       $nodes = \Drupal::entityTypeManager()
         ->getStorage('node')
         ->loadByProperties(['uuid' => $value]);

@@ -1,4 +1,4 @@
-uuid: eb69ce29-25be-4562-bee6-2f6040373042
+uuid: 4db8ef5d-a4b0-40a5-a8f4-3e80ed851170
 langcode: en
 status: true
 dependencies:
@@ -6,7 +6,7 @@ dependencies:
     module:
       - uwm_res_import
 _core:
-  default_config_hash: BhEQw8AMpk46cIJLxsNckS9AA4k8W7YNAGYI4eieAks
+  default_config_hash: bWzKPghzZZ6t1trS_kryIRmT9U6wiNmg8J8HQtbRAM0
 id: uwm_providers_import_providers2
 class: null
 field_plugin_method: null
@@ -173,10 +173,10 @@ source:
       label: field_res_medical_services
       selector: /relationships/field_res_medical_services/data
 process:
+  uuid: uuid
   type:
     plugin: default_value
     default_value: res_provider
-  uuid: uuid
   title: title
   created: created
   changed: changed
@@ -222,7 +222,7 @@ process:
     process:
       target_id:
         -
-          plugin: uwm_term_value1
+          plugin: uwm_tid_for_uuid
           source: id
         -
           plugin: skip_on_empty
@@ -233,7 +233,7 @@ process:
     process:
       target_id:
         -
-          plugin: uwm_term_value1
+          plugin: uwm_tid_for_uuid
           source: id
         -
           plugin: skip_on_empty
@@ -244,7 +244,7 @@ process:
     process:
       target_id:
         -
-          plugin: uwm_term_value1
+          plugin: uwm_tid_for_uuid
           source: id
         -
           plugin: skip_on_empty
@@ -255,7 +255,7 @@ process:
     process:
       target_id:
         -
-          plugin: uwm_term_value1
+          plugin: uwm_tid_for_uuid
           source: id
         -
           plugin: skip_on_empty
@@ -266,7 +266,7 @@ process:
     process:
       target_id:
         -
-          plugin: uwm_term_value1
+          plugin: uwm_tid_for_uuid
           source: id
         -
           plugin: skip_on_empty
@@ -277,7 +277,7 @@ process:
     process:
       target_id:
         -
-          plugin: uwm_term_value1
+          plugin: uwm_tid_for_uuid
           source: id
         -
           plugin: skip_on_empty
@@ -288,11 +288,18 @@ process:
     process:
       target_id:
         -
-          plugin: uwm_term_value1
+          plugin: uwm_tid_for_uuid
           source: id
         -
           plugin: skip_on_empty
           method: process
+  field_res_clinics:
+    -
+      plugin: uwm_nid_for_uuid
+      source: field_res_clinics
+    -
+      plugin: skip_on_empty
+      method: process
 destination:
   plugin: 'entity:node'
 migration_dependencies: null

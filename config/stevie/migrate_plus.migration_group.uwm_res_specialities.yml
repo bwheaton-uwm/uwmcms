@@ -1,9 +1,9 @@
-uuid: 98c5c7f1-81ec-4f1a-ab59-40d5e0516754
+uuid: 3810f3d6-ac3d-41cb-9642-2e84cd6dd8ad
 langcode: en
 status: true
 dependencies: {  }
-id: uwm_providers
-label: uwm_providers
+id: uwm_res_specialities
+label: uwm_res_specialities
 description: ''
 source_type: null
 module: null

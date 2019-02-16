@@ -30,6 +30,7 @@ class UwmNidForUwmUniqueId extends ProcessPluginBase {
 
     if ($value) {
 
+      $value = !empty($value['id']) ? $value['id'] : $value;
       $nodes = \Drupal::entityTypeManager()
         ->getStorage('node')
         ->loadByProperties(['type' => 'res_clinic', 'uwm_unique_id' => $value]);

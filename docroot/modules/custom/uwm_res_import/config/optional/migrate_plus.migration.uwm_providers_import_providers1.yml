@@ -199,11 +199,13 @@ source:
 
 
 process:
+
+  uuid: uuid
+
   type:
     plugin: default_value
     default_value: res_provider
 
-  uuid: uuid
   title: title
   created: created
   changed: changed
@@ -283,7 +285,7 @@ process:
     process:
       target_id:
       -
-        plugin: uwm_term_value1
+        plugin: uwm_tid_for_uuid
         source: id
       -
         plugin: skip_on_empty
@@ -296,7 +298,7 @@ process:
     process:
       target_id:
       -
-        plugin: uwm_term_value1
+        plugin: uwm_tid_for_uuid
         source: id
       -
         plugin: skip_on_empty
@@ -309,7 +311,7 @@ process:
 #    process:
 #      target_id:
 #      -
-#        plugin: uwm_term_value1
+#        plugin: uwm_tid_for_uuid
 #        source: id
 #      -
 #        plugin: skip_on_empty
@@ -322,7 +324,7 @@ process:
     process:
       target_id:
       -
-        plugin: uwm_term_value1
+        plugin: uwm_tid_for_uuid
         source: id
       -
         plugin: skip_on_empty
@@ -335,7 +337,7 @@ process:
     process:
       target_id:
       -
-        plugin: uwm_term_value1
+        plugin: uwm_tid_for_uuid
         source: id
       -
         plugin: skip_on_empty
@@ -348,7 +350,7 @@ process:
     process:
       target_id:
       -
-        plugin: uwm_term_value1
+        plugin: uwm_tid_for_uuid
         source: id
       -
         plugin: skip_on_empty
@@ -363,7 +365,7 @@ process:
     process:
       target_id:
       -
-        plugin: uwm_term_value1
+        plugin: uwm_tid_for_uuid
         source: id
       -
         plugin: skip_on_empty
@@ -376,8 +378,14 @@ process:
     process:
       target_id:
       -
-        plugin: uwm_term_value1
+        plugin: uwm_tid_for_uuid
         source: id
       -
         plugin: skip_on_empty
         method: process
+
+  field_res_clinics:
+    - plugin: uwm_nid_for_uuid
+      source: field_res_clinics
+    - plugin: skip_on_empty
+      method: process

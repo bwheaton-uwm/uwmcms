@@ -1,7 +1,7 @@
 #res taxonomy: medical_services
-id: uwm_res_tax__medical_services
-label: uwm_res_tax__medical_services
-migration_group: uwm
+id: uwm_res_specialities_tax__medical_services
+label: uwm_res_specialities_tax__medical_services
+migration_group: uwm_res_specialities
 migration_dependencies: {}
 
 destination:
@@ -41,7 +41,9 @@ source:
     selector: /attributes/res_term_keywords
 
 process:
+
   uuid: uuid
+
   tid: term_id
   name: name
   uwm_unique_id: uwm_unique_id

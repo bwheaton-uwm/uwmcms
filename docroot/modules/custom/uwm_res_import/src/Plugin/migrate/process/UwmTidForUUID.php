@@ -10,7 +10,7 @@ use Drupal\migrate\Row;
  * Perform custom value transformations.
  *
  * @MigrateProcessPlugin(
- *   id = "uwm_term_value1"
+ *   id = "uwm_tid_for_uuid"
  * )
  *
  * To do custom value transformations use the following:
@@ -21,21 +21,31 @@ use Drupal\migrate\Row;
  *   source: text
  * @endcode
  */
-class UwmTermValue1 extends ProcessPluginBase {
+class UwmTidForUUID extends ProcessPluginBase {
 
   /**
    * {@inheritdoc}
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
 
-    $term = \Drupal::service('entity.repository')
-      ->loadEntityByUuid('taxonomy_term', $value);
+    if ($value) {
 
-    if ($term && $term->id()) {
-      return $term->id();
+      $value = !empty($value['id']) ? $value['id'] : $value;
+      $term = \Drupal::service('entity.repository')
+        ->loadEntityByUuid('taxonomy_term', $value);
+
+      if ($term && $term->id()) {
+        return $term->id();
+      }
     }
     return NULL;
+  }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function prepareRow(Row $row) {
+    // $tid = $row->getSourceProperty('tid');.
   }
 
 }

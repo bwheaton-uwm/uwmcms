@@ -37,7 +37,9 @@ source:
     selector: /attributes/name
 
 process:
+
   uuid: uuid
+
   tid: term_id
   name: name
   uwm_unique_id: uwm_unique_id

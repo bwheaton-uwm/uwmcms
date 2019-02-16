@@ -10,7 +10,7 @@ use Drupal\migrate\Row;
  * Perform custom value transformations.
  *
  * @MigrateProcessPlugin(
- *   id = "uwm_term_value"
+ *   id = "uwm_term_name_for_uuid"
  * )
  *
  * To do custom value transformations use the following:
@@ -21,7 +21,7 @@ use Drupal\migrate\Row;
  *   source: text
  * @endcode
  */
-class UwmTermValue extends ProcessPluginBase {
+class UwmTermNameForUUID extends ProcessPluginBase {
 
   /**
    * {@inheritdoc}
