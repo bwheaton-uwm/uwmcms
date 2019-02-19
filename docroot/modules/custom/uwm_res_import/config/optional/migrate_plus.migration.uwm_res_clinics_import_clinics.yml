@@ -209,7 +209,7 @@ process:
 
   field_res_providers:
   - plugin: uwm_nid_for_uuid
-    source: uwm_unique_id
+    source: field_res_providers
   - plugin: skip_on_empty
     method: process
 
