@@ -2,8 +2,8 @@ uuid: 8bd739b3-ef4e-4ea4-882e-44e26e45cae0
 langcode: en
 status: true
 dependencies: {  }
-id: search_api__views_page__uwm_search_providers__page_1
-name: 'search_api:views_page__uwm_search_providers__page_1'
+id: search_api__views_page__uwm_providers_search__page_1
+name: 'search_api:views_page__uwm_providers_search__page_1'
 filter_key: fs_p
 url_processor: query_string
 breadcrumb:

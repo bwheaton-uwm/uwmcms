@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - search_api.index.uwm_providers_search_api_index
-    - views.view.uwm_search_providers
+    - views.view.uwm_providers_search
   module:
     - search_api
 id: provider_facet_accepting_patients
@@ -14,7 +14,7 @@ weight: 2
 min_count: 1
 show_only_one_result: false
 field_identifier: field_res_isacceptingnewpts
-facet_source_id: 'search_api:views_page__uwm_search_providers__page_1'
+facet_source_id: 'search_api:views_page__uwm_providers_search__page_1'
 widget:
   type: links
   config:

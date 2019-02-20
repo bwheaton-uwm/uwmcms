@@ -2,8 +2,6 @@ uuid: ec7d37ec-537b-4108-90ea-e16600e34888
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: oIx5R2_ZHagwR3iyiqpT18QbAxUErexA6KxEPQHqMK4
 id: uwm_res_tax__education_institutions
 class: null
 field_plugin_method: null
