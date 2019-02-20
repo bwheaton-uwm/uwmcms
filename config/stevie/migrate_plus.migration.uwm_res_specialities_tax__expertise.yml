@@ -2,8 +2,6 @@ uuid: 9cbceae3-8d5f-4cbd-b9c1-85f74a1781cf
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: wlU6s9-6GV6ZJSr4b5r3jViG2wh1SYMKEpRtjeBk3Yg
 id: uwm_res_specialities_tax__expertise
 class: null
 field_plugin_method: null
