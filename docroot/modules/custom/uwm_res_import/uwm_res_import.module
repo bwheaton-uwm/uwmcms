@@ -20,6 +20,20 @@ function uwm_res_import_entity_presave(EntityInterface $entity) {
     $entity->field_res_isacceptingnewpts->value = (int) $v2;
   }
 
+  if ($entity->getEntityTypeId() == '‌taxonomy_term') {
+    if ($entity->bundle() == '‌buildings') {
+
+      /***
+       * Lat/lon values are currently stored in a "geolocation" field.
+       * Copy them over to a "geofield", for search-api-location filtering,
+       * if the field is empty:
+       */
+      // $latLon = $entity->field_res_coordinates->value;
+      // $point = \Drupal::service('geofield.wkt_generator')
+      // ->WktBuildPoint();
+    }
+  }
+
 }
 
 /**

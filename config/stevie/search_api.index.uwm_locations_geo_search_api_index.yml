@@ -3,10 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
     - field.storage.node.field_res_affiliates
+    - field.storage.node.body
     - field.storage.node.field_res_building
     - field.storage.taxonomy_term.field_res_address
+    - field.storage.taxonomy_term.field_coordinates_geofield
     - field.storage.node.field_res_fax_number
     - field.storage.node.field_res_medical_services
     - field.storage.taxonomy_term.field_term_keywords
@@ -18,6 +19,7 @@ dependencies:
     - core.entity_view_mode.node.search_result
   module:
     - taxonomy
+    - search_api_location
     - node
     - search_api
     - uwmcs_searchfields
@@ -34,6 +36,28 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.body
+  field_coordinates_geofield_latlong:
+    label: 'Building » Coordinates Geofield LatLon'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_building:entity:field_coordinates_geofield'
+    type: location
+    dependencies:
+      config:
+        - field.storage.node.field_res_building
+        - field.storage.taxonomy_term.field_coordinates_geofield
+      module:
+        - taxonomy
+  field_coordinates_geofield_spaprefix:
+    label: 'Building » Coordinates Geofield Spatial'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_building:entity:field_coordinates_geofield'
+    type: rpt
+    dependencies:
+      config:
+        - field.storage.node.field_res_building
+        - field.storage.taxonomy_term.field_coordinates_geofield
+      module:
+        - taxonomy
   field_res_affiliates:
     label: Affiliates
     datasource_id: 'entity:node'
