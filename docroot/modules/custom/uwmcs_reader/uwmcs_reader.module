@@ -5,6 +5,7 @@
  * Module for reading an API and providing API data to themes.
  */
 
+use Drupal\Core\Url;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Access\AccessResult;
@@ -123,6 +124,27 @@ function uwmcs_reader_node_access(NodeInterface $node, $op, AccountInterface $ac
         if (empty($data->id)) {
 
           // Return AccessResult::forbidden();
+          try {
+
+            $node->setPublished(FALSE);
+            $node->save();
+
+            $url = Url::fromRoute('entity.node.canonical', ['node' => $node->id()], ['absolute' => TRUE])
+              ->toString();
+            $msg = 'Missing API information for this node. Unpublishing local item: ' .
+                   $node->title->value . ' | ' .
+                   $url . ' | ' .
+                   $node->field_information_manager_url->value;
+
+            \Drupal::logger(__FUNCTION__)->error($msg);
+
+          }
+          catch (\Exception $e) {
+
+            $t = 0;
+
+          }
+
         }
 
       }

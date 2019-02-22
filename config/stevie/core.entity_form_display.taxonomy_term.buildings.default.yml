@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.taxonomy_term.buildings.field_geo_coordinates
     - field.field.taxonomy_term.buildings.field_res_address
     - field.field.taxonomy_term.buildings.field_res_campus
     - field.field.taxonomy_term.buildings.field_res_clinics
@@ -11,6 +12,7 @@ dependencies:
     - taxonomy.vocabulary.buildings
   module:
     - address
+    - geofield
     - geolocation
     - path
     - text
@@ -29,6 +31,13 @@ content:
       placeholder: ''
       rows: 5
     third_party_settings: {  }
+  field_geo_coordinates:
+    type: geofield_latlon
+    weight: 7
+    region: content
+    settings:
+      html5_geolocation: false
+    third_party_settings: {  }
   field_res_address:
     weight: 4
     settings:
@@ -46,7 +55,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_clinics:
-    weight: 6
+    weight: 8
     settings:
       match_operator: CONTAINS
       size: 60
@@ -55,7 +64,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_coordinates:
-    weight: 5
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     type: geolocation_latlng
@@ -75,12 +84,11 @@ content:
     settings: {  }
     third_party_settings: {  }
   uwm_unique_id:
-    weight: 7
+    weight: 9
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
     region: content
-hidden:
-  field_geo_coordinates: true
+hidden: {  }

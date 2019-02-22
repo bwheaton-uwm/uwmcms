@@ -14,9 +14,7 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
   urls:
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/buildings?page%5Boffset%5D=0&page%5Blimit%5D=50'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/buildings?page%5Boffset%5D=50&page%5Blimit%5D=50'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/buildings?page%5Boffset%5D=100&page%5Blimit%5D=50'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/buildings?page%5Boffset%5D=0&page%5Blimit%5D=10'
   ids:
     tid:
       type: integer
@@ -34,11 +32,27 @@ source:
       name: name
       label: name
       selector: /attributes/name
+    -
+      name: field_res_address
+      label: field_res_address
+      selector: /attributes/field_res_address
+    -
+      name: field_res_coordinates
+      label: field_res_coordinates
+      selector: /attributes/field_res_coordinates
 process:
   uuid: uuid
-  tid: term_id
   name: name
   uwm_unique_id: uwm_unique_id
+  field_plain_coordinates:
+    -
+      plugin: concat
+      source:
+        - field_res_coordinates/lng
+        - field_res_coordinates/lat
+      delimiter: ','
+  field_res_coordinates: field_res_coordinates
+  field_res_address: field_res_address
 destination:
   plugin: 'entity:taxonomy_term'
   default_bundle: buildings
