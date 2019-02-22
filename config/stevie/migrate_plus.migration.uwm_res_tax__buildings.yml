@@ -14,7 +14,9 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
   urls:
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/buildings?page%5Boffset%5D=0&page%5Blimit%5D=10'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/buildings?page%5Boffset%5D=0&page%5Blimit%5D=50'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/buildings?page%5Boffset%5D=50&page%5Blimit%5D=50'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/buildings?page%5Boffset%5D=100&page%5Blimit%5D=50'
   ids:
     tid:
       type: integer
