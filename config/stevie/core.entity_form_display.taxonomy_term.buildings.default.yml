@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.taxonomy_term.buildings.field_geo_coordinates
     - field.field.taxonomy_term.buildings.field_res_address
     - field.field.taxonomy_term.buildings.field_res_campus
     - field.field.taxonomy_term.buildings.field_res_clinics
@@ -12,7 +11,6 @@ dependencies:
     - taxonomy.vocabulary.buildings
   module:
     - address
-    - geofield
     - geolocation
     - path
     - text
@@ -30,13 +28,6 @@ content:
     settings:
       placeholder: ''
       rows: 5
-    third_party_settings: {  }
-  field_geo_coordinates:
-    type: geofield_latlon
-    weight: 7
-    region: content
-    settings:
-      html5_geolocation: false
     third_party_settings: {  }
   field_res_address:
     weight: 4

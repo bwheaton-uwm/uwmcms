@@ -14,8 +14,16 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
   urls:
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Boffset%5D=0&page%5Blimit%5D=50&sort=name'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Boffset%5D=50&page%5Blimit%5D=50&sort=name'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=0'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=50'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=100'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=150'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=200'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=250'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=300'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=350'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=400'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D=50&page%5Boffset%5D=450'
   ids:
     tid:
       type: integer
