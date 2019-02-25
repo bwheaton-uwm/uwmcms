@@ -208,7 +208,7 @@ display:
           batch_size: 25
           form_step: true
           buttons: false
-          clear_on_exposed: 0
+          clear_on_exposed: false
           action_title: Action
           selected_actions:
             vbo_export_generate_xlsx_action: vbo_export_generate_xlsx_action
