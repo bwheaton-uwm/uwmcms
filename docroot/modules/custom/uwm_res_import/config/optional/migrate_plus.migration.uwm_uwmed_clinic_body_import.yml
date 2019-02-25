@@ -1,0 +1,120 @@
+# Migration configuration for imported articles.
+id: uwm_uwmed_clinic_body_import
+label: uwm_uwmed_clinic_body_import
+migration_group: uwm_clinics
+migration_dependencies: {}
+
+
+dependencies:
+  enforced:
+    module:
+    - uwm_res_import
+
+destination:
+  plugin: entity:node
+
+source:
+
+  #  plugin: url
+  #  data_fetcher_plugin: file
+  #  data_parser_plugin: json
+  #  include_raw_data: true
+  #  track_changes: true
+  #  urls:
+  #  - 'public://temp/clinics.json'
+
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+
+  urls:
+  - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?page[offset]=0&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC&fields[node--uwm_clinic]=nid,uuid,title,changed,body,field_information_manager_url
+  - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?page[offset]=50&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC&fields[node--uwm_clinic]=nid,uuid,title,changed,body,field_information_manager_url
+  - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?page[offset]=100&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC&fields[node--uwm_clinic]=nid,uuid,title,changed,body,field_information_manager_url
+  - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?page[offset]=150&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC&fields[node--uwm_clinic]=nid,uuid,title,changed,body,field_information_manager_url
+  - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?page[offset]=200&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC&fields[node--uwm_clinic]=nid,uuid,title,changed,body,field_information_manager_url
+  - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?page[offset]=250&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC&fields[node--uwm_clinic]=nid,uuid,title,changed,body,field_information_manager_url
+  - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?page[offset]=300&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC&fields[node--uwm_clinic]=nid,uuid,title,changed,body,field_information_manager_url
+  - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?page[offset]=350&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC&fields[node--uwm_clinic]=nid,uuid,title,changed,body,field_information_manager_url
+  - https://cmsstage.uwmedicine.org/jsonapi/node/uwm_clinic?page[offset]=400&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC&fields[node--uwm_clinic]=nid,uuid,title,changed,body,field_information_manager_url
+
+
+  ids:
+    nid:
+      type: integer
+
+  item_selector: data/
+
+  fields:
+  - name: nid
+    label: 'Nid'
+    selector: /attributes/nid
+  - name: uuid
+    label: 'Uuid'
+    selector: /attributes/uuid
+  - name: title
+    label: 'Title'
+    selector: /attributes/title
+  - name: changed
+    label: 'Changed'
+    selector: /attributes/changed
+  - name: body
+    label: 'Body'
+    selector: /attributes/body
+  - name: field_information_manager_url
+    label: field_information_manager_url
+    selector: /attributes/field_information_manager_url
+  #  - name: field_res_image
+  #    label: field_res_image
+  #    selector: /relationships/field_res_image
+  #
+
+
+process:
+
+  #uuid: uuid
+
+  nid:
+  - plugin: uwm_nid_for_uwm_unique_id
+    source: field_information_manager_url
+  - plugin: skip_on_empty
+    method: row
+    message: 'Body import could n0t match nid.'
+  - plugin: skip_on_empty
+    method: process
+    message: 'Body import could not find nid.'
+
+  type:
+    plugin: default_value
+    default_value: res_clinic
+
+  #title: title
+
+  #  created: created
+  changed: changed
+  #  status: status
+  #  sticky: sticky
+  #  promote: promote
+  #  default_language: default_language
+  uid:
+    plugin: default_value
+    default_value: 1
+
+
+  body/value:
+    plugin: extract
+    source: body
+    index:
+    - value
+  body/format:
+    plugin: default_value
+    default_value: unrestricted
+  #    plugin: extract
+  #    source: body
+  #    index:
+  #      - format
+
+  #  field_image:
+  #    plugin: migration
+  #    migration: uwm_reservoir_import_images
+  #    source: field_image/data/id
