@@ -3,6 +3,7 @@
 set -ev
 
 blt frontend --site=default
+blt frontend --site=stevie
 blt frontend --site=chew
 
 blt artifact:deploy --commit-msg "Automated commit by Travis CI for Build ${TRAVIS_BUILD_ID}" --branch "${TRAVIS_BRANCH}-build" --ignore-dirty --no-interaction --verbose
