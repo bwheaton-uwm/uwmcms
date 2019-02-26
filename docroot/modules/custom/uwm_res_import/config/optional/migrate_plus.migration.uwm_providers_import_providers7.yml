@@ -1,6 +1,6 @@
 # Migration configuration for imported articles.
-id: uwm_providers_import_providers4
-label: uwm_providers_import_providers4
+id: uwm_providers_import_providers7
+label: uwm_providers_import_providers7
 migration_group: uwm_providers
 #migration_dependencies:
 #  require:
@@ -22,24 +22,19 @@ source:
   #  urls: https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider
 
   urls:
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=1850&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=1900&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=1950&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
   - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2000&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
 
-
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2050&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2100&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2150&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2200&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2250&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2300&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2350&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2400&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2450&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
 
   - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2500&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2550&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2600&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2650&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2700&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2750&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2800&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2850&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2900&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=2950&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-
 
 
   ids:

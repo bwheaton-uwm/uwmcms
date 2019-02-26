@@ -17,10 +17,10 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
   urls:
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=100&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=150&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=0&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=50&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=100&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=150&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC'
     - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=200&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC'
     - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=250&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC'
     - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=300&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC'

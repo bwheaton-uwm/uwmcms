@@ -1,0 +1,71 @@
+#res taxonomy: education_types
+id: uwm_res_tax__education_types1
+label: uwm_res_tax__education_types1
+migration_group: uwm_educations
+migration_dependencies: {}
+
+destination:
+  plugin: entity:taxonomy_term
+  default_bundle: education_types
+
+
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+
+  urls:
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=0&page[limit]=50&sort=name
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=50&page[limit]=50&sort=name
+
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=100&page[limit]=50&sort=name
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=150&page[limit]=50&sort=name
+
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=200&page[limit]=50&sort=name
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=250&page[limit]=50&sort=name
+
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=300&page[limit]=50&sort=name
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=350&page[limit]=50&sort=name
+
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=400&page[limit]=50&sort=name
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=450&page[limit]=50&sort=name
+
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=500&page[limit]=50&sort=name
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=550&page[limit]=50&sort=name
+
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=600&page[limit]=50&sort=name
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=650&page[limit]=50&sort=name
+
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=700&page[limit]=50&sort=name
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=750&page[limit]=50&sort=name
+
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=800&page[limit]=50&sort=name
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=850&page[limit]=50&sort=name
+
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=900&page[limit]=50&sort=name
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page[offset]=950&page[limit]=50&sort=name
+
+
+
+  ids:
+    tid:
+      type: integer
+
+  item_selector: data/
+
+  fields:
+  - name: tid
+    label: tid
+    selector: /attributes/tid
+  - name: uuid
+    label: 'Uuid'
+    selector: /attributes/uuid
+  - name: name
+    label: name
+    selector: /attributes/name
+
+process:
+
+  uuid: uuid
+  name: name
+  uwm_unique_id: uwm_unique_id

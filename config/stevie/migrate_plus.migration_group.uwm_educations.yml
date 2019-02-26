@@ -1,0 +1,10 @@
+uuid: 86ac463f-78ca-4bc4-969f-0dc5c369b917
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_educations
+label: uwm_educations
+description: ''
+source_type: null
+module: null
+shared_configuration: null
