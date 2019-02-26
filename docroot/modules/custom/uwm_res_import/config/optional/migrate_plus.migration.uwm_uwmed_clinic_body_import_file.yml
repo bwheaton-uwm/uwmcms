@@ -1,7 +1,7 @@
 # Migration configuration for imported articles.
 id: uwm_uwmed_clinic_body_import_file
 label: uwm_uwmed_clinic_body_import_file
-migration_group: uwm_clinics
+migration_group: uwm_clinics_body
 migration_dependencies: {}
 
 
