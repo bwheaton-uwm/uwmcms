@@ -1,0 +1,35 @@
+header-search-form:
+  js:
+    js/header-search-form.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupalSettings
+
+site-search-page:
+  js:
+    js/site-search-page.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupalSettings
+
+location-search-page:
+  js:
+    js/location-search-page.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupalSettings
+
+provider-search-page:
+  js:
+    js/provider-search-page.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupalSettings

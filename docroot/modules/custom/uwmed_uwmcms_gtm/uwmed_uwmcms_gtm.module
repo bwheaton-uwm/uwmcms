@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations and basic functionality for uwmed_uwmcms_gtm.
+ */
+
+/**
+ * Implements hook_page_attachments_alter().
+ *
+ * Add libraries for event tracking on certain pages.
+ */
+function uwmed_uwmcms_gtm_page_attachments_alter(&$variables) {
+  // Don't add any libraries, if the GTM snippet is not being inserted.
+  if (!google_tag_insert_snippet()) {
+    return;
+  }
+
+  // Add the header search form library to all pages.
+  $variables['#attached']['library'][] = 'uwmed_uwmcms_gtm/header-search-form';
+
+  // Get the current path.
+  $currentPath = \Drupal::service('path.current')->getPath();
+
+  // Add the site search page library to the site search page.
+  if ($currentPath == '/search' || stripos($currentPath, '/search?') !== FALSE) {
+    $variables['#attached']['library'][] = 'uwmed_uwmcms_gtm/site-search-page';
+  }
+
+  // Add the location search page library to the location search page.
+  if (stripos($currentPath, '/search/locations') !== FALSE) {
+    $variables['#attached']['library'][] = 'uwmed_uwmcms_gtm/location-search-page';
+  }
+
+  // Add the provider search page library to the provider search page.
+  if (stripos($currentPath, '/search/providers') !== FALSE) {
+    $variables['#attached']['library'][] = 'uwmed_uwmcms_gtm/provider-search-page';
+  }
+}

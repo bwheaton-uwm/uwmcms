@@ -1,0 +1,7 @@
+name: UW Medicine CMS GTM
+type: module
+description: Provides Google Tag Manager event tracking for the UW Medicine website.
+package: UWMed
+core: 8.x
+dependencies:
+  - google_tag:google_tag
