@@ -18,18 +18,7 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
 
-  urls:
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?filter%5Btitle%5D%5Boperator%5D=%3D&filter%5Btitle%5D%5Bpath%5D=title&filter%5Btitle%5D%5Bvalue%5D=UW%20Neighborhood%20Belltown%20Clinic&sort=nid
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=0&page[limit]=5&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=0&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=50&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=100&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=150&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=200&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=250&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=300&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=350&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[offset]=400&page[limit]=50&sort[sort-changed][path]=changed&sort[sort-changed][direction]=DESC
+  urls: 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[limit]=50&page[offset]=0&sort=-changed'
 
 
   ids:

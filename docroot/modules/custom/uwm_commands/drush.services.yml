@@ -1,5 +1,10 @@
 services:
   uwm_drush_commands.commands:
     class: \Drupal\uwm_commands\Commands\UwmCommands
+    arguments:
+      - '@plugin.manager.migration'
+      - '@entity_type.manager'
+      - '@keyvalue'
+      - '@database'
     tags:
       - { name: drush.command }

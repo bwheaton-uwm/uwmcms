@@ -5,10 +5,12 @@
  * Custom module for small, utility-type routines.
  */
 
+use Drupal\Component\Serialization\Json;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Plugin\MigrateSourceInterface;
 use Drupal\migrate\Row;
+use GuzzleHttp\Exception\RequestException;
 
 /**
  * Implements hook_entity_presave().
@@ -35,27 +37,120 @@ function uwm_res_import_prepare_row(Row $row, MigrateSourceInterface $source, Mi
  * This routine is cached with the migration. Drush cr for debugging.
  */
 function uwm_res_import_migration_plugins_alter(&$migrations) {
+  foreach ($migrations as $id => &$migration) {
+    if (in_array($migration['id'], ['uwm_res_clinics_import_clinics', 'uwm_providers_import_providers'])) {
+      _uwm_res_import_migration_plugins_alter($migration);
+    }
+    else {
+      $urlsFunction = $migration['id'] . '_source_urls';
+      if (function_exists($urlsFunction)) {
 
-  foreach ($migrations as $id => $migration) {
+        $config = \Drupal::service('config.factory')
+          ->getEditable('migrate_plus.migration.' . $migration['id']);
 
-    $urlsFunction = $migration['id'] . '_source_urls';
-    if (function_exists($urlsFunction)) {
+        $urls = call_user_func($urlsFunction);
+        $config->set('source.urls', $urls);
+        $config->save();
 
-      $config = \Drupal::service('config.factory')
-        ->getEditable('migrate_plus.migration.' . $migration['id']);
+        \Drupal::logger(__FUNCTION__)
+          ->info('Added URLs to migration: ' . json_encode($urls));
+      }
+    }
+  }
+}
 
-      $urls = call_user_func($urlsFunction);
-      $config->set('source.urls', $urls);
-      $config->save();
+/**
+ * Helper function to handle clinics and providers.
+ *
+ * TODO: Merge this function into the hook implementation above, once all
+ * of the migrations can use the functionality that this one provides.
+ *
+ * @param array $migration
+ *   The migration to alter.
+ */
+function _uwm_res_import_migration_plugins_alter(array &$migration) {
+  if (isset($migration['source']['urls'])) {
+    $base_urls = $migration['source']['urls'];
 
-      $migrations[$id]['source']['urls'] = $urls;
-
-      \Drupal::logger(__FUNCTION__)
-        ->info('Added URLs to migration: ' . json_encode($urls));
+    // Make sure $base_urls is an array.
+    if (!is_array($base_urls)) {
+      $base_urls = [$base_urls];
     }
 
+    $source_urls = _uwm_res_import_get_migration_source_urls($base_urls);
+    $migration['source']['urls'] = $source_urls;
+  }
+}
+
+/**
+ * Get migration source URLs.
+ *
+ * @param array $base_urls
+ *   The base URLs.
+ *
+ * @return array
+ *   The source URLs.
+ */
+function _uwm_res_import_get_migration_source_urls(array $base_urls) {
+  $source_urls = [];
+
+  // Derive all of the source URLs from the base URLs.
+  foreach ($base_urls as $base_url) {
+    // Make sure the base URL has a trailing slash before any query.
+    $base_url_parts = explode('?', $base_url);
+    $base_url = $base_url_parts[0];
+    if (substr($base_url_parts[0], -1) != '/') {
+      $base_url .= '/';
+    }
+    $base_url .= !empty($base_url_parts[1]) ? '?' . $base_url_parts[1] : '';
+
+    // Get the data from the base URL.
+    $data = _uwm_res_import_get_migration_data($base_url);
+
+    // Set the first source URL.
+    if (isset($data['links']['self'])) {
+      $source_urls[] = $data['links']['self'];
+
+      // Set the remaining source URLs.
+      while (isset($data['links']['next'])) {
+        $source_urls[] = $data['links']['next'];
+        $data = _uwm_res_import_get_migration_data($data['links']['next']);
+      }
+    }
   }
 
+  return array_unique($source_urls);
+}
+
+/**
+ * Get migration data from a URL.
+ *
+ * @param string $url
+ *   The URL from which to retrieve the data.
+ *
+ * @return array
+ *   The data.
+ */
+function _uwm_res_import_get_migration_data($url) {
+  $data = [];
+
+  // Retrieve the JSON data from the URL.
+  try {
+    $response = \Drupal::service('http_client')->get($url);
+  }
+  catch (RequestException $e) {
+    watchdog_exception('uwm_res_import', $e, $e->getMessage());
+    return $data;
+  }
+
+  /** @var \Psr\Http\Message\StreamInterface $body */
+  $body = $response->getBody();
+  if ($body) {
+    $json = $body->getContents();
+    $data = Json::decode($json);
+  }
+
+  return $data;
 }
 
 /**
