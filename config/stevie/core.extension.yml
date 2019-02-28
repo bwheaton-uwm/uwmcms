@@ -165,6 +165,7 @@ module:
   uwmcs_search_teaser: 0
   uwmcs_searchfields: 0
   uwmcs_utils: 0
+  uwmed_uwmcms_gtm: 0
   vbo_export: 0
   video_embed_field: 0
   video_embed_media: 0
