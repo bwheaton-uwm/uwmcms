@@ -29,7 +29,7 @@
         var searchTerm = searchForm.find('input[name=s]').val();
         $(this).one('click', function (event) {
           dataLayer.push({
-            'event': 'result click',
+            'event': 'search result click',
             'searchType': 'site',
             'searchTerm': searchTerm,
             'linkURL': $(this).attr('href')
