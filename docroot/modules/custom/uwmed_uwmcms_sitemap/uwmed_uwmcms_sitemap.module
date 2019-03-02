@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations and basic functionality for uwmed_uwmcms_sitemap.
+ */
+
+/**
+ * Implements hook_simple_sitemap_links_alter().
+ */
+function uwmed_uwmcms_sitemap_simple_sitemap_links_alter(array &$links, $sitemap_variant) {
+
+  // Remove pages which only have a /node/ URL from the sitemap.
+  foreach ($links as $key => $link) {
+    if ($link['url']) {
+      $is_node_url = strpos($link['url'], '/node/');
+      if ($is_node_url) {
+        unset($links[$key]);
+      }
+    }
+  }
+}
