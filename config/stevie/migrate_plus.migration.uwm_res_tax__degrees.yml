@@ -15,8 +15,6 @@ source:
   data_parser_plugin: json
   urls:
     - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/degrees?page%5Boffset%5D=0&page%5Blimit%5D=25&sort=name'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/degrees?page%5Boffset%5D=25&page%5Blimit%5D=25&sort=name'
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/degrees?page%5Boffset%5D=50&page%5Blimit%5D=25&sort=name'
   ids:
     tid:
       type: integer
@@ -36,7 +34,6 @@ source:
       selector: /attributes/name
 process:
   uuid: uuid
-  tid: term_id
   name: name
   uwm_unique_id: uwm_unique_id
 destination:

@@ -16,8 +16,7 @@ source:
   plugin: url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  urls:
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed'
+  urls: 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed'
   ids:
     nid:
       type: integer
