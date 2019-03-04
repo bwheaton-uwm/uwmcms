@@ -33,42 +33,32 @@ function uwm_res_import_prepare_row(Row $row, MigrateSourceInterface $source, Mi
 
 /**
  * Implements hook_migration_plugins_alter().
- *
- * This routine is cached with the migration. Drush cr for debugging.
  */
 function uwm_res_import_migration_plugins_alter(&$migrations) {
+
   foreach ($migrations as $id => &$migration) {
-    if (in_array($migration['id'], ['uwm_res_clinics_import_clinics', 'uwm_providers_import_providers'])) {
+
+    /***
+     * If finding one of our @Reservoir to @Stevie migrations, for example, the
+     * clinics import or expertise terms import, update the source URLs to
+     * include the long list from @Reservoir:
+     */
+    if (stripos($migration['id'], 'uwm_res_') !== FALSE) {
       _uwm_res_import_migration_plugins_alter($migration);
     }
-    else {
-      $urlsFunction = $migration['id'] . '_source_urls';
-      if (function_exists($urlsFunction)) {
 
-        $config = \Drupal::service('config.factory')
-          ->getEditable('migrate_plus.migration.' . $migration['id']);
-
-        $urls = call_user_func($urlsFunction);
-        $config->set('source.urls', $urls);
-        $config->save();
-
-        \Drupal::logger(__FUNCTION__)
-          ->info('Added URLs to migration: ' . json_encode($urls));
-      }
-    }
   }
+
 }
 
 /**
  * Helper function to handle clinics and providers.
  *
- * TODO: Merge this function into the hook implementation above, once all
- * of the migrations can use the functionality that this one provides.
- *
  * @param array $migration
  *   The migration to alter.
  */
 function _uwm_res_import_migration_plugins_alter(array &$migration) {
+
   if (isset($migration['source']['urls'])) {
     $base_urls = $migration['source']['urls'];
 
@@ -79,6 +69,10 @@ function _uwm_res_import_migration_plugins_alter(array &$migration) {
 
     $source_urls = _uwm_res_import_get_migration_source_urls($base_urls);
     $migration['source']['urls'] = $source_urls;
+
+    \Drupal::logger(__FUNCTION__)
+      ->info('Added URLs:' . __FUNCTION__ . ':' . $migration['id'] . ':' . json_encode($source_urls));
+
   }
 }
 
@@ -151,92 +145,4 @@ function _uwm_res_import_get_migration_data($url) {
   }
 
   return $data;
-}
-
-/**
- * Provides array of URLs for migration source.
- *
- * @return array
- *   Description here.
- */
-function uwm_res_tax__board_certifications_source_urls() {
-
-  $urls = [];
-  $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/board_certifications?page%5Blimit%5D={{limit}}&page%5Boffset%5D={{offset}}';
-  $offset = 0;
-  $limit = 50;
-  do {
-
-    $urls[] = str_replace('{{offset}}', $offset, str_replace('{{limit}}', $limit, $url));
-
-  } while (($offset = $offset + $limit) && $offset < 500);
-
-  return $urls;
-
-}
-
-/**
- * Provides array of URLs for migration source.
- *
- * @return array
- *   Description here.
- */
-function uwm_res_tax__expertise_source_urls() {
-
-  $urls = [];
-  $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/expertise?page%5Blimit%5D={{limit}}&page%5Boffset%5D={{offset}}';
-  $offset = 0;
-  $limit = 50;
-  do {
-
-    $urls[] = str_replace('{{offset}}', $offset, str_replace('{{limit}}', $limit, $url));
-
-  } while (($offset = $offset + $limit) && $offset < 1000);
-
-  return $urls;
-
-}
-
-/**
- * Provides array of URLs for migration source.
- *
- * @return array
- *   Description here.
- */
-function uwm_res_tax__education_institutions_source_urls() {
-
-  $urls = [];
-  $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/education_institutions?page%5Blimit%5D={{limit}}&page%5Boffset%5D={{offset}}';
-  $offset = 0;
-  $limit = 50;
-  do {
-
-    $urls[] = str_replace('{{offset}}', $offset, str_replace('{{limit}}', $limit, $url));
-
-  } while (($offset = $offset + $limit) && $offset < 4000);
-
-  return $urls;
-
-}
-
-/**
- * Provides array of URLs for migration source.
- *
- * @return array
- *   Description here.
- */
-function uwm_res_tax__languages_source_urls() {
-
-  $urls = [];
-  $url = 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page%5Blimit%5D={{limit}}&page%5Boffset%5D={{offset}}';
-  $offset = 0;
-  $limit = 50;
-  do {
-
-    $urls[] = str_replace('{{offset}}', $offset, str_replace('{{limit}}', $limit, $url));
-
-  } while (($offset = $offset + $limit) && $offset < 600);
-
-  return $urls;
-
 }
