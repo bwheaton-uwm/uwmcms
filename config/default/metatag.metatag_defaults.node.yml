@@ -8,5 +8,7 @@ id: node
 label: Content
 tags:
   title: '[node:title] | [site:name]'
+  canonical_url: 'https://www.uwmedicine.org/[current-page:url:path]'
   description: '[node:summary]'
+  og_url: 'https://www.uwmedicine.org/[current-page:url:path]'
   og_title: '[node:title]'

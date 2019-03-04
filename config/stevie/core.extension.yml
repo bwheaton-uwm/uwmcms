@@ -166,6 +166,7 @@ module:
   uwmcs_searchfields: 0
   uwmcs_utils: 0
   uwmed_uwmcms_gtm: 0
+  uwmed_uwmcms_robots_header: 0
   uwmed_uwmcms_sitemap: 0
   vbo_export: 0
   video_embed_field: 0

@@ -7,5 +7,7 @@ _core:
 id: front
 label: 'Front page'
 tags:
-  canonical_url: '[site:url]'
   shortlink: '[site:url]'
+  canonical_url: 'https://www.uwmedicine.org/[current-page:url:path]'
+  og_url: 'https://www.uwmedicine.org/[current-page:url:path]'
+  twitter_cards_page_url: 'https://www.uwmedicine.org/[current-page:url:path]'
