@@ -1,0 +1,5 @@
+services:
+  uwmed_uwmcms_robots_header:
+    class: '\Drupal\uwmed_uwmcms_robots_header\EventSubscriber\RobotsHeader'
+    tags:
+      - { name: 'event_subscriber' }

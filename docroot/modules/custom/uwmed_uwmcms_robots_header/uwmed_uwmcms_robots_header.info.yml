@@ -1,0 +1,5 @@
+name: UW Medicine X-Robots-Tag Header
+type: module
+description: Adds an x-robots-tag header to requests on domains other than www.uwmedicine.org
+package: UWMed
+core: 8.x

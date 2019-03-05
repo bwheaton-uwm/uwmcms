@@ -124,7 +124,6 @@ module:
   uwmcs_utils: 0
   uwmed_uwmcms_blocks: 0
   uwmed_uwmcms_gtm: 0
-  uwmed_uwmcms_robots_header: 0
   video_embed_field: 0
   video_embed_media: 0
   views_infinite_scroll: 0
