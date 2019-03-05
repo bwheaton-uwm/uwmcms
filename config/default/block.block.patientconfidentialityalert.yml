@@ -1,0 +1,31 @@
+uuid: 66209779-71d0-4664-9f82-b11564b5b795
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:b6a9c053-ba6a-4ab5-95a5-4ff8ef9943d6'
+  module:
+    - block_content
+    - system
+  theme:
+    - uwmed
+id: patientconfidentialityalert
+theme: uwmed
+region: content_header
+weight: 0
+provider: null
+plugin: 'block_content:b6a9c053-ba6a-4ab5-95a5-4ff8ef9943d6'
+settings:
+  id: 'block_content:b6a9c053-ba6a-4ab5-95a5-4ff8ef9943d6'
+  label: 'Patient Confidentiality Alert'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_uwm_parent_page
     - node.type.uwm_basic_page
     - node.type.uwm_hub_page
+    - node.type.uwm_medical_service
 id: node.uwm_basic_page.field_uwm_parent_page
 field_name: field_uwm_parent_page
 entity_type: node
@@ -22,6 +23,7 @@ settings:
     target_bundles:
       uwm_basic_page: uwm_basic_page
       uwm_hub_page: uwm_hub_page
+      uwm_medical_service: uwm_medical_service
     sort:
       field: _none
     auto_create: false
