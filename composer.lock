@@ -20844,13 +20844,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/uwmweb/uwmbase.git",
-                "reference": "dabb238c2f9aa907095506c2ddf0570f8c4d3c00"
+                "reference": "c13df91c5c8ac6edd2d5a8fb2e2a2d7c5ab0c55b"
             },
             "dist": {
                 "type": "tar",
-                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-dabb238c2f9aa907095506c2ddf0570f8c4d3c00-zip-cb0e9d.tar",
-                "reference": "dabb238c2f9aa907095506c2ddf0570f8c4d3c00",
-                "shasum": "f738d76d9c41ac96a464d04055d7c7b79993ed12"
+                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-c13df91c5c8ac6edd2d5a8fb2e2a2d7c5ab0c55b-zip-ee3658.tar",
+                "reference": "c13df91c5c8ac6edd2d5a8fb2e2a2d7c5ab0c55b",
+                "shasum": "062eeccd6fc8c791ccd6a397b64e06a9ec2813cf"
             },
             "type": "drupal-theme",
             "license": [
@@ -20861,7 +20861,7 @@
                 "source": "https://github.com/uwmweb/uwmbase/tree/develop",
                 "issues": "https://github.com/uwmweb/uwmbase/issues"
             },
-            "time": "2019-03-01T22:29:47+00:00"
+            "time": "2019-03-06T22:21:55+00:00"
         },
         {
             "name": "uwmweb/uwmedicineorg_theme",
