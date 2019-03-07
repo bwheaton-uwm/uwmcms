@@ -1,7 +1,8 @@
+
 # Migration configuration for imported articles.
-id: uwm_res_providers_import_providers
-label: uwm_res_providers_import_providers
-migration_group: uwm_providers
+id: uwm_providers_import_providers
+label: uwm_providers_import_providers
+migration_group: uwm_providers_old
 #migration_dependencies:
 #  require:
 #    - uwm_reservoir_import_provider_images
@@ -22,8 +23,6 @@ source:
   urls: 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed'
 
   ids:
-    uuid:
-      type: string
     nid:
       type: integer
 
@@ -154,11 +153,7 @@ source:
 
 process:
 
-#  uuid: uuid
-
-  nid:
-  - plugin: uwm_nid_for_uuid
-    source: uuid
+  uuid: uuid
 
   type:
     plugin: default_value
@@ -333,19 +328,3 @@ process:
     source: field_res_clinics
   - plugin: skip_on_empty
     method: process
-
-# destination:
-#   plugin: 'entity:node'
-#   overwrite_properties:
-#     - 'field_address/address_line1'
-#     - 'field_address/address_line2'
-#     - 'field_address/locality'
-#     - 'field_address/administrative_area'
-#     - 'field_address/postal_code'
-#     - field_start_date
-#     - field_end_date
-#     - field_instructor
-#     - field_location_name
-#     - field_registration_price
-#     - field_remaining_spots
-#     - field_synchronized_title

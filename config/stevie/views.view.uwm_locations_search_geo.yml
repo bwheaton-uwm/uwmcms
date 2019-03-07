@@ -9,6 +9,7 @@ dependencies:
     - search_api
     - search_api_location_views
     - text
+    - user
 id: uwm_locations_search_geo
 label: 'UWM Locations Search Geo'
 module: views
@@ -25,8 +26,9 @@ display:
     position: 0
     display_options:
       access:
-        type: none
-        options: {  }
+        type: perm
+        options:
+          perm: 'access site reports'
       cache:
         type: tag
         options: {  }
@@ -295,6 +297,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user.permissions
       tags:
         - 'config:field.storage.node.body'
   page_1:
@@ -312,5 +315,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user.permissions
       tags:
         - 'config:field.storage.node.body'

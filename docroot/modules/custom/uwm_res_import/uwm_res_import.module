@@ -126,22 +126,45 @@ function _uwm_res_import_get_migration_source_urls(array $base_urls) {
  *   The data.
  */
 function _uwm_res_import_get_migration_data($url) {
+
   $data = [];
 
+  $useCache = TRUE;
+  $caheKey = preg_replace("/[^A-Za-z0-9]/", '_', $url);
+  $cacheItemExpires = time() + 24 * 60 * 60;
+
+  // If (stripos(str_replace('_', '', $caheKey), 'offset0') !== FALSE) {
+  // $useCache = FALSE;
+  // }.
   // Retrieve the JSON data from the URL.
   try {
-    $response = \Drupal::service('http_client')->get($url);
+
+    if ($useCache) {
+
+      $data = \Drupal::cache()->get($caheKey, FALSE);
+
+    }
+
+    if (empty($data['links']['self'])) {
+
+      $response = \Drupal::service('http_client')->get($url);
+
+      /** @var \Psr\Http\Message\StreamInterface $body */
+      $body = $response->getBody();
+      $json = $body->getContents();
+
+      $data = Json::decode($json);
+
+      \Drupal::cache()->set(
+        $caheKey, $data, $cacheItemExpires);
+    }
+
   }
   catch (RequestException $e) {
+
     watchdog_exception('uwm_res_import', $e, $e->getMessage());
     return $data;
-  }
 
-  /** @var \Psr\Http\Message\StreamInterface $body */
-  $body = $response->getBody();
-  if ($body) {
-    $json = $body->getContents();
-    $data = Json::decode($json);
   }
 
   return $data;

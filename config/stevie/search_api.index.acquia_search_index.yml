@@ -6,8 +6,9 @@ dependencies:
     - field.storage.node.body
     - search_api.server.acquia_search_server
   module:
-    - search_api
     - node
+    - search_api
+    - uwmcs_searchfields
 _core:
   default_config_hash: '-ggwZpvT2-Ey1fqPkREitA6TGI_m5dTHD9vZm9FrlSQ'
 id: acquia_search_index
@@ -23,16 +24,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.body
-  search_api_language:
-    label: 'Item language'
-    datasource_id: null
-    property_path: search_api_language
-    type: string
   title:
     label: Title
     datasource_id: 'entity:node'
     property_path: title
     type: text
+    dependencies:
+      module:
+        - node
 datasource_settings:
   'entity:node':
     plugin_id: 'entity:node'
@@ -43,17 +42,24 @@ datasource_settings:
       languages:
         default: true
         selected: {  }
+    bundles:
+      default: true
+      selected: {  }
+    languages:
+      default: true
+      selected: {  }
 processor_settings:
+  UwmSearchWithin: {  }
   add_url:
     plugin_id: add_url
     settings: {  }
-  language:
-    plugin_id: language
-    settings: {  }
+  aggregated_field: {  }
+  rendered_item: {  }
 tracker_settings:
   default:
     plugin_id: default
     settings: {  }
+    indexing_order: fifo
 options:
   index_directly: false
   cron_limit: 50

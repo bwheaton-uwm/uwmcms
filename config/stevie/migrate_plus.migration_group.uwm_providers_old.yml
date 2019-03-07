@@ -1,0 +1,10 @@
+uuid: 6bff93eb-87d9-41bd-914a-9b689ee10565
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_providers_old
+label: uwm_providers_old
+description: ''
+source_type: null
+module: null
+shared_configuration: null
