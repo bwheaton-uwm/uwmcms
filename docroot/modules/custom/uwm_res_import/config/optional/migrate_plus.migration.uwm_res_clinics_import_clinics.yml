@@ -142,6 +142,7 @@ source:
 process:
 
   uuid: uuid
+
   type:
     plugin: default_value
     default_value: res_clinic

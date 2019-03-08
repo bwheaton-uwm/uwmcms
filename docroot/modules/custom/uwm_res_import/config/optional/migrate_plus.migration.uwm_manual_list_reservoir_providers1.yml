@@ -1,7 +1,7 @@
 # Migration configuration for imported articles.
-id: uwm_res_providers_import_providers
-label: uwm_res_providers_import_providers
-migration_group: uwm_providers
+id: uwm_manual_list_reservoir_providers1
+label: uwm_manual_list_reservoir_providers1
+migration_group: uwm_reservoir_providers
 #migration_dependencies:
 #  require:
 #    - uwm_reservoir_import_provider_images
@@ -19,7 +19,22 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
 
-  urls: 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed'
+  urls:
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=0&page[limit]=50&sort=-changed
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=50&page[limit]=50&sort=-changed
+
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=100&page[limit]=50&sort=-changed
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=150&page[limit]=50&sort=-changed
+
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=200&page[limit]=50&sort=-changed
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=250&page[limit]=50&sort=-changed
+
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=300&page[limit]=50&sort=-changed
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=350&page[limit]=50&sort=-changed
+
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=400&page[limit]=50&sort=-changed
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=450&page[limit]=50&sort=-changed
+
 
   ids:
     uuid:
@@ -154,11 +169,7 @@ source:
 
 process:
 
-#  uuid: uuid
-
-  nid:
-  - plugin: uwm_nid_for_uuid
-    source: uuid
+  uuid: uuid
 
 #  nid:
 #  - plugin: uwm_nid_for_uuid

@@ -130,18 +130,20 @@ function _uwm_res_import_get_migration_data($url) {
   $data = [];
 
   $useCache = TRUE;
-  $caheKey = preg_replace("/[^A-Za-z0-9]/", '_', $url);
-  $cacheItemExpires = time() + 24 * 60 * 60;
+  $cacheKey = preg_replace("/[^A-Za-z0-9]/", '', $url);
+  $cacheItemExpires = time() + 23 * 60 * 60;
 
-  // If (stripos(str_replace('_', '', $caheKey), 'offset0') !== FALSE) {
-  // $useCache = FALSE;
-  // }.
+  if (stripos($cacheKey, 'offset0') !== FALSE) {
+    $useCache = FALSE;
+  }
+
   // Retrieve the JSON data from the URL.
   try {
 
     if ($useCache) {
 
-      $data = \Drupal::cache()->get($caheKey, FALSE);
+      $cacheResult = \Drupal::cache()->get($cacheKey, FALSE);
+      $data = $cacheResult->data ?? [];
 
     }
 
@@ -155,8 +157,8 @@ function _uwm_res_import_get_migration_data($url) {
 
       $data = Json::decode($json);
 
-      \Drupal::cache()->set(
-        $caheKey, $data, $cacheItemExpires);
+      \Drupal::cache()->set($cacheKey, $data, $cacheItemExpires);
+
     }
 
   }
