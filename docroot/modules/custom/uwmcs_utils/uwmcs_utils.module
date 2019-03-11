@@ -50,6 +50,23 @@ function uwmcs_utils_page_attachments(array &$attachments) {
 }
 
 /**
+ * Implements hook_preprocess_page().
+ */
+function uwmcs_utils_preprocess_page(&$vars) {
+
+  $qp = \Drupal::request()->query->all();
+  if (!empty($qp['temp-import-clinic-images'])) {
+
+    // module_load_include('php', 'uwm_commands',
+    // 'src/Classes/UwmTempImportClinicImage');
+    // require_once ('/var/www/uwmed/docroot/modules/custom/uwm_commands/src/Classes/UwmTempImportClinicImage.php');
+    // $importer = new UwmTempImportClinicImage();
+    // $importer->saveClinicImagesLocally('sites/stevie/files/images.json');
+  }
+
+}
+
+/**
  * Implements hook_entity_field_access().
  */
 function uwmcs_utils_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {

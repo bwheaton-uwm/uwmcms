@@ -91,8 +91,8 @@ class UwmCommands extends DrushCommands {
    *
    * @usage uwm:migration:update-missing-content uwm_res_import_providers
    *   Unpublish content missing in the Import Providers migration.
-   * @usage uwm:migration:update-missing-content uwm_res_import_providers --delete
-   *   Delete content missing in the Import Providers migration.
+   * @usage uwm:migration:update-missing-content uwm_res_import_providers
+   *   --delete Delete content missing in the Import Providers migration.
    */
   public function migrationUpdateMissingContent($migration, array $options = []) {
     $options += [
@@ -244,6 +244,25 @@ class UwmCommands extends DrushCommands {
         ->condition('destid1', $entity_id);
       $query->execute();
     }
+  }
+
+  /**
+   * One-time import of clinic images.
+   *
+   * @param string $mappingFile
+   *   Json file describing source and destination ids.
+   *
+   * @command uwm:import-uwmed-clinic-images-to-stevie
+   *
+   * @usage uwm:import-uwmed-clinic-images-to-stevie
+   *   Imports images from @stevie to @uwmed bason on json file mapping.
+   */
+  public function importUwmedClinicImagesToStevie($mappingFile) {
+
+    // @TODO: Move this to a hook_update_N().
+    $importer = new UwmTempImportClinicImage();
+    $importer->saveClinicImagesLocally($mappingFile);
+
   }
 
 }

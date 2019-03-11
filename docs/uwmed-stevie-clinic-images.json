@@ -1,0 +1,2630 @@
+[
+  {
+    "fid": 101,
+    "uwmed_nid": 66,
+    "uwmed_title": "UW Neighborhood Belltown Clinic",
+    "stevie_nid": 22216,
+    "stevie_title": "UW Neighborhood Belltown Clinic",
+    "image_filename": "UW-Neighborhood-Belltown-Clinic-Urgent-Care.jpg",
+    "image_uri": "public://UW-Neighborhood-Belltown-Clinic-Urgent-Care.jpg"
+  },
+  {
+    "fid": 601,
+    "uwmed_nid": 176,
+    "uwmed_title": "UW Neighborhood Shoreline Clinic",
+    "stevie_nid": 22221,
+    "stevie_title": "UW Neighborhood Shoreline Clinic - Primary Care and Urgent Care Services",
+    "image_filename": "UW-Neighborhood-Shoreline-Clinic-Urgent-Care-New.jpg",
+    "image_uri": "public://UW-Neighborhood-Shoreline-Clinic-Urgent-Care-New.jpg"
+  },
+  {
+    "fid": 411,
+    "uwmed_nid": 121,
+    "uwmed_title": "UW Neighborhood Olympia Clinic",
+    "stevie_nid": 22231,
+    "stevie_title": "UW Neighborhood Olympia Clinic - Primary Care and Urgent Care Services",
+    "image_filename": "UW-Neighborhood-Olympia-Clinic-Urgent-Care_0.jpg",
+    "image_uri": "public://UW-Neighborhood-Olympia-Clinic-Urgent-Care_0.jpg"
+  },
+  {
+    "fid": 111,
+    "uwmed_nid": 156,
+    "uwmed_title": "UW Neighborhood Federal Way Clinic",
+    "stevie_nid": 22241,
+    "stevie_title": "UW Neighborhood Federal Way Clinic - Primary Care and Urgent Care Services",
+    "image_filename": "UW-Neighborhood-Federal-Way-Clinic-Urgent-Care.jpg",
+    "image_uri": "public://UW-Neighborhood-Federal-Way-Clinic-Urgent-Care.jpg"
+  },
+  {
+    "fid": 136,
+    "uwmed_nid": 21,
+    "uwmed_title": "UW Neighborhood Issaquah Clinic",
+    "stevie_nid": 22251,
+    "stevie_title": "UW Neighborhood Issaquah Clinic - Primary Care and Urgent Care Services",
+    "image_filename": "UW-Neighborhood-Issaquah-Clinic-Urgent-Care.jpg",
+    "image_uri": "public://UW-Neighborhood-Issaquah-Clinic-Urgent-Care.jpg"
+  },
+  {
+    "fid": 141,
+    "uwmed_nid": 126,
+    "uwmed_title": "UW Neighborhood Ravenna Clinic",
+    "stevie_nid": 22266,
+    "stevie_title": "UW Neighborhood Ravenna Clinic - Primary Care and Urgent Care Services",
+    "image_filename": "UW-Neighborhood-Ravenna-Clinic-Urgent-Care.jpg",
+    "image_uri": "public://UW-Neighborhood-Ravenna-Clinic-Urgent-Care.jpg"
+  },
+  {
+    "fid": 596,
+    "uwmed_nid": 136,
+    "uwmed_title": "UW Neighborhood Ballard Clinic",
+    "stevie_nid": 22271,
+    "stevie_title": "UW Neighborhood Ballard Clinic - Primary Care and Urgent Care Services",
+    "image_filename": "UW-Neighborhood-Ballard-Clinic-Urgent-Care-New.jpg",
+    "image_uri": "public://UW-Neighborhood-Ballard-Clinic-Urgent-Care-New.jpg"
+  },
+  {
+    "fid": 3456,
+    "uwmed_nid": 35541,
+    "uwmed_title": "Neuro-Rehabilitation Program at Northwest Hospital",
+    "stevie_nid": 22276,
+    "stevie_title": "Neuro-Rehabilitation Program at Northwest Hospital",
+    "image_filename": "NWH_Entrance.jpg",
+    "image_uri": "public://NWH_Entrance.jpg"
+  },
+  {
+    "fid": 176,
+    "uwmed_nid": 35641,
+    "uwmed_title": "Physical, Occupational and Speech Therapy Services at Northwest Hospital",
+    "stevie_nid": 22281,
+    "stevie_title": "Physical, Occupational and Speech Therapy Services at Northwest Hospital",
+    "image_filename": "Northwest-Primary-Care-Main-Campus-Clinic.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Main-Campus-Clinic.jpg"
+  },
+  {
+    "fid": 171,
+    "uwmed_nid": 35846,
+    "uwmed_title": "The Sports Medicine Clinic at Northwest Outpatient Medical Center",
+    "stevie_nid": 22286,
+    "stevie_title": "The Sports Medicine Clinic at Northwest Outpatient Medical Center",
+    "image_filename": "Northwest-Primary-Care-Outpatient-Medical-Center.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Outpatient-Medical-Center.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 35881,
+    "uwmed_title": "Anesthesiology Clinical Services at UW Medical Center",
+    "stevie_nid": 22291,
+    "stevie_title": "Anesthesiology Clinical Services at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 3746,
+    "uwmed_nid": 26921,
+    "uwmed_title": "Seattle Cancer Care Alliance at South Lake Union",
+    "stevie_nid": 22301,
+    "stevie_title": "Seattle Cancer Care Alliance at South Lake Union",
+    "image_filename": "scca-south-lake-union.jpg",
+    "image_uri": "public://scca-south-lake-union_0.jpg"
+  },
+  {
+    "fid": 96,
+    "uwmed_nid": 61,
+    "uwmed_title": "Third Avenue Center",
+    "stevie_nid": 22306,
+    "stevie_title": "Third Avenue Center",
+    "image_filename": "Third-Avenue-Center.jpg",
+    "image_uri": "public://Third-Avenue-Center.jpg"
+  },
+  {
+    "fid": 61,
+    "uwmed_nid": 91,
+    "uwmed_title": "UW Neighborhood Northgate Clinic",
+    "stevie_nid": 22311,
+    "stevie_title": "UW Neighborhood Northgate Clinic",
+    "image_filename": "UW-Neighborhood-Northgate-Clinic.jpg",
+    "image_uri": "public://UW-Neighborhood-Northgate-Clinic.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 20636,
+    "uwmed_title": "Virology Clinic at UWMC-Roosevelt",
+    "stevie_nid": 22316,
+    "stevie_title": "Virology Clinic at UWMC-Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 1806,
+    "uwmed_nid": 21676,
+    "uwmed_title": "Neurological Surgery Clinic at Harborview",
+    "stevie_nid": 22321,
+    "stevie_title": "Neurological Surgery Clinic at Harborview",
+    "image_filename": "Sleep-Medicine-Center-at-Harborview.jpeg",
+    "image_uri": "public://Sleep-Medicine-Center-at-Harborview.jpeg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 31,
+    "uwmed_title": "Adult Medicine Clinic at Harborview",
+    "stevie_nid": 22331,
+    "stevie_title": "Adult Medicine Clinic at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 1821,
+    "uwmed_nid": 20686,
+    "uwmed_title": "STD Clinic/Public Health-Seattle & King County at Harborview",
+    "stevie_nid": 22336,
+    "stevie_title": "STD Clinic/Public Health-Seattle & King County at Harborview",
+    "image_filename": "Harborview Medical Center_NJB.jpeg",
+    "image_uri": "public://Harborview Medical Center_NJB.jpeg"
+  },
+  {
+    "fid": 866,
+    "uwmed_nid": 35156,
+    "uwmed_title": "Allergy Clinic at Eastside Specialty Center",
+    "stevie_nid": 22341,
+    "stevie_title": "Allergy Clinic at Eastside Specialty Center",
+    "image_filename": "Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg",
+    "image_uri": "public://Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg"
+  },
+  {
+    "fid": 3586,
+    "uwmed_nid": 36191,
+    "uwmed_title": "Emergency Department at Northwest",
+    "stevie_nid": 22346,
+    "stevie_title": "Emergency Department at Northwest Hospital",
+    "image_filename": "Emergency-Department-(NWH).jpg",
+    "image_uri": "public://Emergency-Department-(NWH).jpg"
+  },
+  {
+    "fid": 3841,
+    "uwmed_nid": 24071,
+    "uwmed_title": "Genetic Medicine Clinic at UW Medical Center",
+    "stevie_nid": 22351,
+    "stevie_title": "Genetic Medicine Clinic at UWMC",
+    "image_filename": "02_CHDD UWMC exterior.jpg",
+    "image_uri": "public://02_CHDD UWMC exterior.jpg"
+  },
+  {
+    "fid": 86,
+    "uwmed_nid": 51,
+    "uwmed_title": "Pioneer Square Clinic",
+    "stevie_nid": 22356,
+    "stevie_title": "Pioneer Square Clinic",
+    "image_filename": "Pioneer-Square-Clinic.jpg",
+    "image_uri": "public://Pioneer-Square-Clinic.jpg"
+  },
+  {
+    "fid": 841,
+    "uwmed_nid": 20626,
+    "uwmed_title": "Neurology Clinic at UWMC",
+    "stevie_nid": 22361,
+    "stevie_title": "Neurology Clinic at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University_0.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University_0.jpg"
+  },
+  {
+    "fid": 1761,
+    "uwmed_nid": 21476,
+    "uwmed_title": "Comprehensive Outpatient Rehabilitation Program at Harborview",
+    "stevie_nid": 22366,
+    "stevie_title": "Comprehensive Outpatient Rehabilitation Program at Harborview",
+    "image_filename": "Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg",
+    "image_uri": "public://Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 24556,
+    "uwmed_title": "Otolaryngology-Head and Neck Surgery Center at UW Medical Center",
+    "stevie_nid": 22371,
+    "stevie_title": "Otolaryngology-Head and Neck Surgery Center at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 23591,
+    "uwmed_title": "Heart Institute at UW Medical Center",
+    "stevie_nid": 22381,
+    "stevie_title": "Heart Institute at UW Medical Center",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 2066,
+    "uwmed_nid": 20666,
+    "uwmed_title": "Mental Health and Addiction Services at Harborview",
+    "stevie_nid": 22391,
+    "stevie_title": "Mental Health and Addiction Services at Harborview",
+    "image_filename": "Mental-Health-and-Addiction-Services-at-Harborview.jpeg",
+    "image_uri": "public://Mental-Health-and-Addiction-Services-at-Harborview.jpeg"
+  },
+  {
+    "fid": 146,
+    "uwmed_nid": 186,
+    "uwmed_title": "UW Neighborhood Factoria Clinic",
+    "stevie_nid": 22401,
+    "stevie_title": "UW Neighborhood Factoria Clinic",
+    "image_filename": "UW-Neighborhood-Factoria-Clinic.jpg",
+    "image_uri": "public://UW-Neighborhood-Factoria-Clinic.jpg"
+  },
+  {
+    "fid": 106,
+    "uwmed_nid": 151,
+    "uwmed_title": "UW Neighborhood Kent/Des Moines Clinic",
+    "stevie_nid": 22406,
+    "stevie_title": "UW Neighborhood Kent-Des Moines Clinic",
+    "image_filename": "UW-Neighborhood-Kent-DesMoines-Clinic-Urgent-Care.jpg",
+    "image_uri": "public://UW-Neighborhood-Kent-DesMoines-Clinic-Urgent-Care.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 24416,
+    "uwmed_title": "Nutrition Services at Harborview",
+    "stevie_nid": 22411,
+    "stevie_title": "Nutrition Services at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 1711,
+    "uwmed_nid": 21146,
+    "uwmed_title": "Women's Health Clinic at Mill Creek",
+    "stevie_nid": 22416,
+    "stevie_title": "Women's Health Clinic at Mill Creek",
+    "image_filename": "Mill-Creek-Family-Practice-exterior.jpg",
+    "image_uri": "public://Mill-Creek-Family-Practice-exterior.jpg"
+  },
+  {
+    "fid": 176,
+    "uwmed_nid": 36516,
+    "uwmed_title": "Wound Care & Hyperbaric Center at Northwest",
+    "stevie_nid": 22421,
+    "stevie_title": "Wound Care & Hyperbaric Center at Northwest",
+    "image_filename": "Northwest-Primary-Care-Main-Campus-Clinic.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Main-Campus-Clinic.jpg"
+  },
+  {
+    "fid": 1761,
+    "uwmed_nid": 21806,
+    "uwmed_title": "Vascular Laboratory at Harborview",
+    "stevie_nid": 22431,
+    "stevie_title": "Vascular Laboratory at Harborview",
+    "image_filename": "Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg",
+    "image_uri": "public://Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 21821,
+    "uwmed_title": "Vascular Laboratory at UWMC",
+    "stevie_nid": 22436,
+    "stevie_title": "Vascular Laboratory at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 566,
+    "uwmed_nid": 6016,
+    "uwmed_title": "Virtual Clinic",
+    "stevie_nid": 22446,
+    "stevie_title": "Virtual Clinic",
+    "image_filename": "virtual-clinic-woman-laptop-card.jpg",
+    "image_uri": "public://virtual-clinic-woman-laptop-card.jpg"
+  },
+  {
+    "fid": 1831,
+    "uwmed_nid": 24421,
+    "uwmed_title": "Weight Loss Management Center at UWMC-Roosevelt",
+    "stevie_nid": 22451,
+    "stevie_title": "Weight Loss Management Center at UWMC-Roosevelt",
+    "image_filename": "Psychiatry-Clinic-(Outpatient)-at-UWMC-Roosevelt_cropped.jpg",
+    "image_uri": "public://Psychiatry-Clinic-(Outpatient)-at-UWMC-Roosevelt_cropped.jpg"
+  },
+  {
+    "fid": 1756,
+    "uwmed_nid": 24436,
+    "uwmed_title": "Weight Regulation Diagnostic and Evaluation Center at Harborview",
+    "stevie_nid": 22456,
+    "stevie_title": "Weight Regulation Diagnostic and Evaluation Center at Harborview",
+    "image_filename": "Cerebrovascular-Lab-at-Harborview.jpeg",
+    "image_uri": "public://Cerebrovascular-Lab-at-Harborview.jpeg"
+  },
+  {
+    "fid": 801,
+    "uwmed_nid": 13026,
+    "uwmed_title": "Women's Cancer Care of Seattle at Northwest Hospital",
+    "stevie_nid": 22461,
+    "stevie_title": "Women's Cancer Care of Seattle",
+    "image_filename": "Women's-Cancer-Clinic-at-UWMC-Northwest.jpg",
+    "image_uri": "public://Women's-Cancer-Clinic-at-UWMC-Northwest.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 12996,
+    "uwmed_title": "Women's Clinic at Harborview",
+    "stevie_nid": 22466,
+    "stevie_title": "Women's Clinic at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 151,
+    "uwmed_nid": 181,
+    "uwmed_title": "UW Neighborhood Smokey Point Clinic",
+    "stevie_nid": 22471,
+    "stevie_title": "UW Neighborhood Smokey Point Clinic",
+    "image_filename": "UW-Neighborhood-Smokey-Point-Clinic.jpg",
+    "image_uri": "public://UW-Neighborhood-Smokey-Point-Clinic.jpg"
+  },
+  {
+    "fid": 131,
+    "uwmed_nid": 171,
+    "uwmed_title": "UW Neighborhood Woodinville Clinic",
+    "stevie_nid": 22476,
+    "stevie_title": "UW Neighborhood Woodinville Clinic - Primary Care Services",
+    "image_filename": "UW-Neighborhood-Woodinville-Clinic-Urgent-Care.jpg",
+    "image_uri": "public://UW-Neighborhood-Woodinville-Clinic-Urgent-Care.jpg"
+  },
+  {
+    "fid": 206,
+    "uwmed_nid": 196,
+    "uwmed_title": "UW Medicine Lopez Island Clinic",
+    "stevie_nid": 22486,
+    "stevie_title": "UW Medicine Lopez Island Clinic",
+    "image_filename": "Lopez-Island-Clinic.jpg",
+    "image_uri": "public://Lopez-Island-Clinic.jpg"
+  },
+  {
+    "fid": 201,
+    "uwmed_nid": 191,
+    "uwmed_title": "UW Medicine Orcas Island Clinic",
+    "stevie_nid": 22491,
+    "stevie_title": "UW Medicine Orcas Island Clinic",
+    "image_filename": "Orcas-Island-Clinic.jpg",
+    "image_uri": "public://Orcas-Island-Clinic.jpg"
+  },
+  {
+    "fid": 826,
+    "uwmed_nid": 37036,
+    "uwmed_title": "Valley Medical Center",
+    "stevie_nid": 22496,
+    "stevie_title": "Valley Medical Center",
+    "image_filename": "Maternal-Fetal-Medicine-at-Valley.jpg",
+    "image_uri": "public://Maternal-Fetal-Medicine-at-Valley.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 35876,
+    "uwmed_title": "Tuberculosis Control Clinic/Public Health-Seattle & King County at Harborview",
+    "stevie_nid": 22506,
+    "stevie_title": "Tuberculosis Control Clinic/Public Health-Seattle & King County at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 866,
+    "uwmed_nid": 21451,
+    "uwmed_title": "Urology Clinic at Eastside Specialty Center",
+    "stevie_nid": 22516,
+    "stevie_title": "Urology Clinic at Eastside Specialty Center",
+    "image_filename": "Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg",
+    "image_uri": "public://Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg"
+  },
+  {
+    "fid": 1761,
+    "uwmed_nid": 22211,
+    "uwmed_title": "Urology Clinic at Harborview",
+    "stevie_nid": 22521,
+    "stevie_title": "Urology Clinic at Harborview",
+    "image_filename": "Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg",
+    "image_uri": "public://Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 22286,
+    "uwmed_title": "Urology Clinic at UWMC",
+    "stevie_nid": 22526,
+    "stevie_title": "Urology Clinic at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 1836,
+    "uwmed_nid": 22261,
+    "uwmed_title": "Urology Northwest",
+    "stevie_nid": 22531,
+    "stevie_title": "Urology Northwest",
+    "image_filename": "Urology-Northwest.jpg",
+    "image_uri": "public://Urology-Northwest.jpg"
+  },
+  {
+    "fid": 91,
+    "uwmed_nid": 35921,
+    "uwmed_title": "Thoracic Surgery Clinic at Harborview",
+    "stevie_nid": 22536,
+    "stevie_title": "Thoracic Surgery Clinic at Harborview",
+    "image_filename": "Senior-Care-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Senior-Care-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 841,
+    "uwmed_nid": 26976,
+    "uwmed_title": "Thoracic Surgery Clinic at UW Medical Center",
+    "stevie_nid": 22546,
+    "stevie_title": "Thoracic Surgery Clinic at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University_0.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University_0.jpg"
+  },
+  {
+    "fid": 6381,
+    "uwmed_nid": 36046,
+    "uwmed_title": "Transition Care Program at UWMC",
+    "stevie_nid": 22551,
+    "stevie_title": "Transition Care Program at UWMC",
+    "image_filename": "transition-care.jpg",
+    "image_uri": "public://transition-care.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 37026,
+    "uwmed_title": "UW Medical Center",
+    "stevie_nid": 22556,
+    "stevie_title": "UW Medical Center",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 851,
+    "uwmed_nid": 26956,
+    "uwmed_title": "Transplant Services at UW Medical Center",
+    "stevie_nid": 22561,
+    "stevie_title": "Transplant Services at UW Medical Center",
+    "image_filename": "Women's-Cancer-Clinic-at-UWMC-University.jpg",
+    "image_uri": "public://Women's-Cancer-Clinic-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 1806,
+    "uwmed_nid": 21791,
+    "uwmed_title": "Stroke Clinic at Harborview",
+    "stevie_nid": 22566,
+    "stevie_title": "Stroke Clinic at Harborview",
+    "image_filename": "Sleep-Medicine-Center-at-Harborview.jpeg",
+    "image_uri": "public://Sleep-Medicine-Center-at-Harborview.jpeg"
+  },
+  {
+    "fid": 186,
+    "uwmed_nid": 23581,
+    "uwmed_title": "Summit Cardiology at Ballard",
+    "stevie_nid": 22581,
+    "stevie_title": "Summit Cardiology at Ballard",
+    "image_filename": "UW-Neighborhood-Ballard-Clinic-Urgent-Care.jpg",
+    "image_uri": "public://UW-Neighborhood-Ballard-Clinic-Urgent-Care.jpg"
+  },
+  {
+    "fid": 1826,
+    "uwmed_nid": 23586,
+    "uwmed_title": "Summit Cardiology at Northwest Hospital",
+    "stevie_nid": 22586,
+    "stevie_title": "Summit Cardiology at Northwest Hospital",
+    "image_filename": "McMurray Medical Building NWH.jpg",
+    "image_uri": "public://McMurray Medical Building NWH.jpg"
+  },
+  {
+    "fid": 176,
+    "uwmed_nid": 26886,
+    "uwmed_title": "Surgical Services & Hernia Center",
+    "stevie_nid": 22591,
+    "stevie_title": "Surgical Services & Hernia Center",
+    "image_filename": "Northwest-Primary-Care-Main-Campus-Clinic.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Main-Campus-Clinic.jpg"
+  },
+  {
+    "fid": 171,
+    "uwmed_nid": 36056,
+    "uwmed_title": "The Seattle Arthritis Clinic at Northwest",
+    "stevie_nid": 22596,
+    "stevie_title": "The Seattle Arthritis Clinic at NWHMC",
+    "image_filename": "Northwest-Primary-Care-Outpatient-Medical-Center.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Outpatient-Medical-Center.jpg"
+  },
+  {
+    "fid": 866,
+    "uwmed_nid": 35866,
+    "uwmed_title": "Spine Center at Eastside Specialty Center",
+    "stevie_nid": 22601,
+    "stevie_title": "Spine Center at Eastside Specialty Center",
+    "image_filename": "Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg",
+    "image_uri": "public://Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg"
+  },
+  {
+    "fid": 186,
+    "uwmed_nid": 36041,
+    "uwmed_title": "The Sports Medicine Clinic at Ballard",
+    "stevie_nid": 22606,
+    "stevie_title": "The Sports Medicine Clinic at Ballard",
+    "image_filename": "UW-Neighborhood-Ballard-Clinic-Urgent-Care.jpg",
+    "image_uri": "public://UW-Neighborhood-Ballard-Clinic-Urgent-Care.jpg"
+  },
+  {
+    "fid": 1806,
+    "uwmed_nid": 24361,
+    "uwmed_title": "Spine Center at Harborview",
+    "stevie_nid": 22611,
+    "stevie_title": "Spine Center at Harborview",
+    "image_filename": "Sleep-Medicine-Center-at-Harborview.jpeg",
+    "image_uri": "public://Sleep-Medicine-Center-at-Harborview.jpeg"
+  },
+  {
+    "fid": 1806,
+    "uwmed_nid": 35906,
+    "uwmed_title": "Sports Concussion Program at Harborview",
+    "stevie_nid": 22616,
+    "stevie_title": "Sports Concussion Program at Harborview",
+    "image_filename": "Sleep-Medicine-Center-at-Harborview.jpeg",
+    "image_uri": "public://Sleep-Medicine-Center-at-Harborview.jpeg"
+  },
+  {
+    "fid": 866,
+    "uwmed_nid": 36021,
+    "uwmed_title": "Sports Medicine Center at Eastside Specialty Center",
+    "stevie_nid": 22621,
+    "stevie_title": "Sports Medicine Center at Eastside Specialty Center",
+    "image_filename": "Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg",
+    "image_uri": "public://Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg"
+  },
+  {
+    "fid": 1806,
+    "uwmed_nid": 36031,
+    "uwmed_title": "Sports Medicine Center at Harborview",
+    "stevie_nid": 22626,
+    "stevie_title": "Sports Medicine Center at Harborview",
+    "image_filename": "Sleep-Medicine-Center-at-Harborview.jpeg",
+    "image_uri": "public://Sleep-Medicine-Center-at-Harborview.jpeg"
+  },
+  {
+    "fid": 3301,
+    "uwmed_nid": 20536,
+    "uwmed_title": "Sports Medicine Center at Husky Stadium",
+    "stevie_nid": 22631,
+    "stevie_title": "Sports Medicine Center at Husky Stadium",
+    "image_filename": "Sports-Medicine-Center-at-Husky-Stadium.jpg",
+    "image_uri": "public://Sports-Medicine-Center-at-Husky-Stadium.jpg"
+  },
+  {
+    "fid": 91,
+    "uwmed_nid": 56,
+    "uwmed_title": "Senior Care Clinic at Harborview",
+    "stevie_nid": 22636,
+    "stevie_title": "Senior Care Clinic at Harborview",
+    "image_filename": "Senior-Care-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Senior-Care-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 36016,
+    "uwmed_title": "Rheumatology Clinic at UWMC-Roosevelt",
+    "stevie_nid": 22641,
+    "stevie_title": "Rheumatology Clinic at UWMC-Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 1806,
+    "uwmed_nid": 21771,
+    "uwmed_title": "Sleep Medicine Center at Harborview",
+    "stevie_nid": 22651,
+    "stevie_title": "Sleep Medicine Center at Harborview",
+    "image_filename": "Sleep-Medicine-Center-at-Harborview.jpeg",
+    "image_uri": "public://Sleep-Medicine-Center-at-Harborview.jpeg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 21786,
+    "uwmed_title": "Sleep Medicine Clinic at UWMC",
+    "stevie_nid": 22656,
+    "stevie_title": "Sleep Medicine Clinic at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 176,
+    "uwmed_nid": 13051,
+    "uwmed_title": "Seattle Breast Center",
+    "stevie_nid": 22661,
+    "stevie_title": "Seattle Breast Center",
+    "image_filename": "Northwest-Primary-Care-Main-Campus-Clinic.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Main-Campus-Clinic.jpg"
+  },
+  {
+    "fid": 1831,
+    "uwmed_nid": 20531,
+    "uwmed_title": "Psychiatry Clinic (Outpatient) at UWMC-Roosevelt",
+    "stevie_nid": 22666,
+    "stevie_title": "Psychiatry Clinic (Outpatient) at UWMC-Roosevelt",
+    "image_filename": "Psychiatry-Clinic-(Outpatient)-at-UWMC-Roosevelt_cropped.jpg",
+    "image_uri": "public://Psychiatry-Clinic-(Outpatient)-at-UWMC-Roosevelt_cropped.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 27061,
+    "uwmed_title": "Rheumatology Clinic at Harborview",
+    "stevie_nid": 22671,
+    "stevie_title": "Rheumatology Clinic at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 21801,
+    "uwmed_title": "Pulmonary Vascular Disease Clinic at UWMC",
+    "stevie_nid": 22676,
+    "stevie_title": "Pulmonary Vascular Disease Clinic at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 841,
+    "uwmed_nid": 24181,
+    "uwmed_title": "Radiation Oncology Services at UW Medical Center",
+    "stevie_nid": 22681,
+    "stevie_title": "Radiation Oncology Services at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University_0.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University_0.jpg"
+  },
+  {
+    "fid": 1761,
+    "uwmed_nid": 35416,
+    "uwmed_title": "Rehabilitation Medicine Clinic at Harborview",
+    "stevie_nid": 22686,
+    "stevie_title": "Rehabilitation Medicine Clinic at Harborview",
+    "image_filename": "Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg",
+    "image_uri": "public://Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 24396,
+    "uwmed_title": "Psychiatric Emergency Services at Harborview",
+    "stevie_nid": 22691,
+    "stevie_title": "Psychiatric Emergency Services at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 24076,
+    "uwmed_title": "Rehabilitation Medicine Clinic at UWMC",
+    "stevie_nid": 22696,
+    "stevie_title": "Rehabilitation Medicine Clinic at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 876,
+    "uwmed_nid": 12906,
+    "uwmed_title": "Reproductive Care at UWMC-Roosevelt",
+    "stevie_nid": 22701,
+    "stevie_title": "Reproductive Care at UWMC-Roosevelt",
+    "image_filename": "Fertility-Clinic-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://Fertility-Clinic-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 866,
+    "uwmed_nid": 35576,
+    "uwmed_title": "Radiology Services at Eastside Specialty Center",
+    "stevie_nid": 22706,
+    "stevie_title": "Radiology Services at Eastside Specialty Center",
+    "image_filename": "Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg",
+    "image_uri": "public://Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 20586,
+    "uwmed_title": "Radiology Services at Harborview",
+    "stevie_nid": 22711,
+    "stevie_title": "Radiology Services at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 3456,
+    "uwmed_nid": 36131,
+    "uwmed_title": "Radiology Services at Northwest Hospital",
+    "stevie_nid": 22716,
+    "stevie_title": "Radiology Services at Northwest Hospital",
+    "image_filename": "NWH_Entrance.jpg",
+    "image_uri": "public://NWH_Entrance.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 20591,
+    "uwmed_title": "Radiology Services at UW Medical Center",
+    "stevie_nid": 22721,
+    "stevie_title": "Radiology Services at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 1761,
+    "uwmed_nid": 36596,
+    "uwmed_title": "Pre-Anesthesia Clinic at Harborview",
+    "stevie_nid": 22726,
+    "stevie_title": "Pre-Anesthesia Clinic at Harborview",
+    "image_filename": "Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg",
+    "image_uri": "public://Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 18456,
+    "uwmed_title": "Pediatric Trauma and Burn Services at Harborview",
+    "stevie_nid": 22731,
+    "stevie_title": "Pediatric Trauma and Burn Services at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 36611,
+    "uwmed_title": "Pre-Anesthesia Clinic at UW Medical Center",
+    "stevie_nid": 22736,
+    "stevie_title": "Pre-Anesthesia Clinic at UW Medical Center",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 866,
+    "uwmed_nid": 13101,
+    "uwmed_title": "Pelvic Health Clinic at Eastside Specialty Center",
+    "stevie_nid": 22741,
+    "stevie_title": "Pelvic Health Center at Eastside Specialty Center",
+    "image_filename": "Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg",
+    "image_uri": "public://Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg"
+  },
+  {
+    "fid": 821,
+    "uwmed_nid": 13066,
+    "uwmed_title": "Pelvic Health Center at UWMC",
+    "stevie_nid": 22751,
+    "stevie_title": "Pelvic Health Center at UWMC",
+    "image_filename": "Urology-Clinic-at-UWMC.jpg",
+    "image_uri": "public://Urology-Clinic-at-UWMC.jpg"
+  },
+  {
+    "fid": 3291,
+    "uwmed_nid": 35411,
+    "uwmed_title": "Prosthetics and Orthotics Clinic at Eastlake",
+    "stevie_nid": 22756,
+    "stevie_title": "Prosthetics and Orthotics Clinic at Eastlake",
+    "image_filename": "Prosthetics-and-Orthotics-eastlake-cropped.jpg",
+    "image_uri": "public://Prosthetics-and-Orthotics-eastlake-cropped.jpg"
+  },
+  {
+    "fid": 866,
+    "uwmed_nid": 35396,
+    "uwmed_title": "Physical and Occupational/Hand Therapy Services at Eastside Specialty Center",
+    "stevie_nid": 22761,
+    "stevie_title": "Physical and Occupational/Hand Therapy Services at Eastside Specialty Center",
+    "image_filename": "Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg",
+    "image_uri": "public://Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg"
+  },
+  {
+    "fid": 1761,
+    "uwmed_nid": 35406,
+    "uwmed_title": "Physical Therapy and Hand Therapy Clinic at Harborview",
+    "stevie_nid": 22766,
+    "stevie_title": "Physical Therapy and Hand Therapy Clinic at Harborview",
+    "image_filename": "Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg",
+    "image_uri": "public://Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg"
+  },
+  {
+    "fid": 171,
+    "uwmed_nid": 35571,
+    "uwmed_title": "Physical Therapy Clinic at Northwest Outpatient Medical Center",
+    "stevie_nid": 22771,
+    "stevie_title": "Physical Therapy Clinic at Northwest Outpatient Medical Center",
+    "image_filename": "Northwest-Primary-Care-Outpatient-Medical-Center.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Outpatient-Medical-Center.jpg"
+  },
+  {
+    "fid": 3301,
+    "uwmed_nid": 35561,
+    "uwmed_title": "Physical Therapy Clinic at the Sports Medicine Center at Husky Stadium",
+    "stevie_nid": 22776,
+    "stevie_title": "Physical Therapy Clinic at the Sports Medicine Center at Husky Stadium",
+    "image_filename": "Sports-Medicine-Center-at-Husky-Stadium.jpg",
+    "image_uri": "public://Sports-Medicine-Center-at-Husky-Stadium.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 36706,
+    "uwmed_title": "Pituitary Program at UW Medical Center",
+    "stevie_nid": 22781,
+    "stevie_title": "Pituitary Program at UW Medical Center",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 176,
+    "uwmed_nid": 36011,
+    "uwmed_title": "Plastic and Aesthetic Surgery Clinic at Northwest",
+    "stevie_nid": 22786,
+    "stevie_title": "Plastic and Aesthetic Surgery Clinic at Northwest",
+    "image_filename": "Northwest-Primary-Care-Main-Campus-Clinic.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Main-Campus-Clinic.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 24561,
+    "uwmed_title": "Otolaryngology-Head and Neck Surgery Clinic at Harborview",
+    "stevie_nid": 22791,
+    "stevie_title": "Otolaryngology-Head and Neck Surgery Clinic at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 821,
+    "uwmed_nid": 35556,
+    "uwmed_title": "Outpatient Rehabilitation Therapy Clinic at UWMC",
+    "stevie_nid": 22796,
+    "stevie_title": "Outpatient Rehabilitation Therapy Clinic at UWMC",
+    "image_filename": "Urology-Clinic-at-UWMC.jpg",
+    "image_uri": "public://Urology-Clinic-at-UWMC.jpg"
+  },
+  {
+    "fid": 1771,
+    "uwmed_nid": 35361,
+    "uwmed_title": "Palliative and Supportive Care at Northwest",
+    "stevie_nid": 22806,
+    "stevie_title": "Palliative and Supportive Care at Northwest",
+    "image_filename": "Multiple-Sclerosis-Center-at-Northwest-Hospital.jpeg",
+    "image_uri": "public://Multiple-Sclerosis-Center-at-Northwest-Hospital.jpeg"
+  },
+  {
+    "fid": 1761,
+    "uwmed_nid": 35356,
+    "uwmed_title": "Palliative Care Outpatient Clinic at Harborview",
+    "stevie_nid": 22811,
+    "stevie_title": "Palliative Care Outpatient Clinic at Harborview",
+    "image_filename": "Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg",
+    "image_uri": "public://Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg"
+  },
+  {
+    "fid": 866,
+    "uwmed_nid": 24646,
+    "uwmed_title": "Otolaryngology-ENT at Eastside Specialty Center",
+    "stevie_nid": 22846,
+    "stevie_title": "Otolaryngology-ENT at Eastside Specialty Center",
+    "image_filename": "Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg",
+    "image_uri": "public://Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 20461,
+    "uwmed_title": "Pediatric Care Center at UWMC-Roosevelt",
+    "stevie_nid": 22851,
+    "stevie_title": "Pediatric Care Center at UWMC-Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 20436,
+    "uwmed_title": "Children's Clinic at Harborview",
+    "stevie_nid": 22856,
+    "stevie_title": "Pediatric Clinic at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 20466,
+    "uwmed_title": "Pediatric Clinic at Harborview",
+    "stevie_nid": 22856,
+    "stevie_title": "Pediatric Clinic at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 71,
+    "uwmed_nid": 24161,
+    "uwmed_title": "Ophthalmology (Eye) Clinic at Harborview",
+    "stevie_nid": 22861,
+    "stevie_title": "Ophthalmology (Eye) Clinic at Harborview",
+    "image_filename": "International-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://International-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 176,
+    "uwmed_nid": 141,
+    "uwmed_title": "Northwest Primary Care Main Campus Clinic",
+    "stevie_nid": 22866,
+    "stevie_title": "Northwest Primary Care Main Campus Clinic",
+    "image_filename": "Northwest-Primary-Care-Main-Campus-Clinic.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Main-Campus-Clinic.jpg"
+  },
+  {
+    "fid": 91,
+    "uwmed_nid": 35856,
+    "uwmed_title": "Oral and Maxillofacial Surgery Clinic at Harborview",
+    "stevie_nid": 22871,
+    "stevie_title": "Oral and Maxillofacial Surgery Clinic at Harborview",
+    "image_filename": "Senior-Care-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Senior-Care-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 91,
+    "uwmed_nid": 36001,
+    "uwmed_title": "Orthopaedic Trauma Surgery Clinic at Harborview",
+    "stevie_nid": 22876,
+    "stevie_title": "Orthopaedic Trauma Surgery Clinic at Harborview",
+    "image_filename": "Senior-Care-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Senior-Care-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 171,
+    "uwmed_nid": 146,
+    "uwmed_title": "Northwest Primary Care Outpatient Medical Center",
+    "stevie_nid": 22881,
+    "stevie_title": "Northwest Primary Care Outpatient Medical Center",
+    "image_filename": "Northwest-Primary-Care-Outpatient-Medical-Center.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Outpatient-Medical-Center.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 36156,
+    "uwmed_title": "Orthopedic Oncology Center at UWMC-Roosevelt",
+    "stevie_nid": 22886,
+    "stevie_title": "Orthopedic Oncology Center at UWMC-Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 176,
+    "uwmed_nid": 36086,
+    "uwmed_title": "Northwest Respiratory Associates",
+    "stevie_nid": 22891,
+    "stevie_title": "Northwest Respiratory Associates at Northwest Hospital",
+    "image_filename": "Northwest-Primary-Care-Main-Campus-Clinic.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Main-Campus-Clinic.jpg"
+  },
+  {
+    "fid": 866,
+    "uwmed_nid": 36931,
+    "uwmed_title": "Orthopedics at Eastside Specialty Center",
+    "stevie_nid": 22896,
+    "stevie_title": "Orthopedics at Eastside Specialty Center",
+    "image_filename": "Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg",
+    "image_uri": "public://Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg"
+  },
+  {
+    "fid": 176,
+    "uwmed_nid": 36626,
+    "uwmed_title": "Northwest Travel Medicine Clinic",
+    "stevie_nid": 22901,
+    "stevie_title": "Northwest Travel Medicine Clinic",
+    "image_filename": "Northwest-Primary-Care-Main-Campus-Clinic.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Main-Campus-Clinic.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 24406,
+    "uwmed_title": "Nutrition Clinic at UWMC",
+    "stevie_nid": 22911,
+    "stevie_title": "Nutrition Clinic at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 24411,
+    "uwmed_title": "Nutrition Clinic at UWMC-Roosevelt",
+    "stevie_nid": 22916,
+    "stevie_title": "Nutrition Clinic at UWMC-Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 20556,
+    "uwmed_title": "Occupational and Environmental Medicine Clinic at Harborview",
+    "stevie_nid": 22921,
+    "stevie_title": "Occupational and Environmental Clinic at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 321,
+    "uwmed_nid": 24186,
+    "uwmed_title": "Northwest Endocrinology",
+    "stevie_nid": 22926,
+    "stevie_title": "Northwest Endocrinology",
+    "image_filename": "Northwest-Primary-Care-North-Seattle-_Clinic.jpg",
+    "image_uri": "public://Northwest-Primary-Care-North-Seattle-_Clinic.jpg"
+  },
+  {
+    "fid": 171,
+    "uwmed_nid": 35551,
+    "uwmed_title": "Northwest Hand Therapy",
+    "stevie_nid": 22931,
+    "stevie_title": "Northwest Hand Therapy",
+    "image_filename": "Northwest-Primary-Care-Outpatient-Medical-Center.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Outpatient-Medical-Center.jpg"
+  },
+  {
+    "fid": 171,
+    "uwmed_nid": 13056,
+    "uwmed_title": "Northwest Hospital Midwives Clinic",
+    "stevie_nid": 22936,
+    "stevie_title": "Northwest Hospital Midwives Clinic",
+    "image_filename": "Northwest-Primary-Care-Outpatient-Medical-Center.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Outpatient-Medical-Center.jpg"
+  },
+  {
+    "fid": 3456,
+    "uwmed_nid": 26961,
+    "uwmed_title": "Northwest Medical Specialties",
+    "stevie_nid": 22941,
+    "stevie_title": "Northwest Medical Specialties",
+    "image_filename": "NWH_Entrance.jpg",
+    "image_uri": "public://NWH_Entrance.jpg"
+  },
+  {
+    "fid": 1811,
+    "uwmed_nid": 22226,
+    "uwmed_title": "Northwest Neurosurgery",
+    "stevie_nid": 22946,
+    "stevie_title": "Northwest Neurosurgery",
+    "image_filename": "Northwest-Neurosurgery.jpeg",
+    "image_uri": "public://Northwest-Neurosurgery.jpeg"
+  },
+  {
+    "fid": 171,
+    "uwmed_nid": 24651,
+    "uwmed_title": "Northwest Otolaryngology",
+    "stevie_nid": 22951,
+    "stevie_title": "Northwest Otolaryngology",
+    "image_filename": "Northwest-Primary-Care-Outpatient-Medical-Center.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Outpatient-Medical-Center.jpg"
+  },
+  {
+    "fid": 3456,
+    "uwmed_nid": 37016,
+    "uwmed_title": "Northwest Hospital & Medical Center",
+    "stevie_nid": 22956,
+    "stevie_title": "Northwest Hospital & Medical Center",
+    "image_filename": "NWH_Entrance.jpg",
+    "image_uri": "public://NWH_Entrance.jpg"
+  },
+  {
+    "fid": 856,
+    "uwmed_nid": 13091,
+    "uwmed_title": "NICU at UWMC",
+    "stevie_nid": 22961,
+    "stevie_title": "NICU at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University_1.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University_1.jpg"
+  },
+  {
+    "fid": 181,
+    "uwmed_nid": 106,
+    "uwmed_title": "Northwest Primary Care Fremont Clinic",
+    "stevie_nid": 22966,
+    "stevie_title": "Northwest Primary Care Fremont Clinic",
+    "image_filename": "Northwest-Primary-Care-Freemont-Clinic.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Freemont-Clinic.jpg"
+  },
+  {
+    "fid": 166,
+    "uwmed_nid": 166,
+    "uwmed_title": "Northwest Primary Care Lake Forest Park Clinic",
+    "stevie_nid": 22971,
+    "stevie_title": "Northwest Primary Care Lake Forest Park Clinic",
+    "image_filename": "Northwest-Primary-Care-Lake-Forest-Park.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Lake-Forest-Park.jpg"
+  },
+  {
+    "fid": 1826,
+    "uwmed_nid": 22241,
+    "uwmed_title": "Northwest Neurology",
+    "stevie_nid": 22981,
+    "stevie_title": "Northwest Neurology at NWHMC",
+    "image_filename": "McMurray Medical Building NWH.jpg",
+    "image_uri": "public://McMurray Medical Building NWH.jpg"
+  },
+  {
+    "fid": 1781,
+    "uwmed_nid": 21701,
+    "uwmed_title": "Neurology Clinic at Eastside Specialty Center",
+    "stevie_nid": 22991,
+    "stevie_title": "Neurology Clinic at Eastside Specialty Center",
+    "image_filename": "Neurology-Clinic-at-Eastside-Specialty-Center.jpeg",
+    "image_uri": "public://Neurology-Clinic-at-Eastside-Specialty-Center.jpeg"
+  },
+  {
+    "fid": 1761,
+    "uwmed_nid": 20631,
+    "uwmed_title": "Neurology Clinic at Harborview",
+    "stevie_nid": 22996,
+    "stevie_title": "Neurology Clinic at Harborview",
+    "image_filename": "Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg",
+    "image_uri": "public://Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg"
+  },
+  {
+    "fid": 806,
+    "uwmed_nid": 13041,
+    "uwmed_title": "Meridian Women's Health at Northwest Outpatient Medical Center",
+    "stevie_nid": 23001,
+    "stevie_title": "Meridian Women’s Health at OPMC",
+    "image_filename": "Women's-Health-Clinic-at-UWMC North Seattle.jpg",
+    "image_uri": "public://Women's-Health-Clinic-at-UWMC North Seattle.jpg"
+  },
+  {
+    "fid": 821,
+    "uwmed_nid": 21746,
+    "uwmed_title": "Neuromuscular Respiratory Failure Clinic at UWMC",
+    "stevie_nid": 23006,
+    "stevie_title": "Neuromuscular Respiratory Failure Clinic at UWMC",
+    "image_filename": "Urology-Clinic-at-UWMC.jpg",
+    "image_uri": "public://Urology-Clinic-at-UWMC.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 36701,
+    "uwmed_title": "Metabolic Bone Disease Clinic at UWMC-Roosevelt",
+    "stevie_nid": 23011,
+    "stevie_title": "Metabolic Bone Disease Clinic at UWMC-Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 21756,
+    "uwmed_title": "Neuropsychological Assessment Services at Harborview",
+    "stevie_nid": 23016,
+    "stevie_title": "Neuropsychological Assessment Services at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 1771,
+    "uwmed_nid": 21661,
+    "uwmed_title": "Multiple Sclerosis Center at Northwest Hospital",
+    "stevie_nid": 23026,
+    "stevie_title": "Multiple Sclerosis Center at Northwest Hospital",
+    "image_filename": "Multiple-Sclerosis-Center-at-Northwest-Hospital.jpeg",
+    "image_uri": "public://Multiple-Sclerosis-Center-at-Northwest-Hospital.jpeg"
+  },
+  {
+    "fid": 821,
+    "uwmed_nid": 21691,
+    "uwmed_title": "Neurological Surgery Clinic at UWMC",
+    "stevie_nid": 23031,
+    "stevie_title": "Neurological Surgery Clinic at UWMC",
+    "image_filename": "Urology-Clinic-at-UWMC.jpg",
+    "image_uri": "public://Urology-Clinic-at-UWMC.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 21651,
+    "uwmed_title": "Memory and Brain Wellness Center at Harborview",
+    "stevie_nid": 23041,
+    "stevie_title": "Memory and Brain Wellness Center at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 841,
+    "uwmed_nid": 24356,
+    "uwmed_title": "Liver Tumor Clinic at UW Medical Center",
+    "stevie_nid": 23046,
+    "stevie_title": "Liver Tumor Clinic at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University_0.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University_0.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 22216,
+    "uwmed_title": "Men's Health Center at UWMC-Roosevelt",
+    "stevie_nid": 23051,
+    "stevie_title": "Men's Health Center at UWMC-Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 35916,
+    "uwmed_title": "Lung Function Testing Clinic at UW Medical Center",
+    "stevie_nid": 23056,
+    "stevie_title": "Lung Function Testing Clinic at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 811,
+    "uwmed_nid": 13046,
+    "uwmed_title": "Meridian Women's Health at Ballard",
+    "stevie_nid": 23061,
+    "stevie_title": "Meridian Women's Health at Ballard",
+    "image_filename": "Women's-Health-Clinic-at-Ballard.jpg",
+    "image_uri": "public://Women's-Health-Clinic-at-Ballard.jpg"
+  },
+  {
+    "fid": 821,
+    "uwmed_nid": 26981,
+    "uwmed_title": "Lung Transplantation Services at UWMC",
+    "stevie_nid": 23066,
+    "stevie_title": "Lung Transplantation Services at UWMC",
+    "image_filename": "Urology-Clinic-at-UWMC.jpg",
+    "image_uri": "public://Urology-Clinic-at-UWMC.jpg"
+  },
+  {
+    "fid": 176,
+    "uwmed_nid": 13036,
+    "uwmed_title": "Meridian Women's Health at Northwest Hospital & Medical Center",
+    "stevie_nid": 23071,
+    "stevie_title": "Meridian Women’s Health at NWHMC",
+    "image_filename": "Northwest-Primary-Care-Main-Campus-Clinic.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Main-Campus-Clinic.jpg"
+  },
+  {
+    "fid": 76,
+    "uwmed_nid": 46,
+    "uwmed_title": "Madison Clinic at Harborview",
+    "stevie_nid": 23076,
+    "stevie_title": "Madison Clinic at Harborview",
+    "image_filename": "Madison-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Madison-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 22311,
+    "uwmed_title": "Male Fertility Lab",
+    "stevie_nid": 23081,
+    "stevie_title": "Male Fertility Lab",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 20581,
+    "uwmed_title": "The Maternal and Infant Care Clinic at UW Medical Center",
+    "stevie_nid": 23086,
+    "stevie_title": "Maternal and Infant Care Clinic at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 926,
+    "uwmed_nid": 18446,
+    "uwmed_title": "Maternal Fetal Medicine Clinic at UWMC",
+    "stevie_nid": 23086,
+    "stevie_title": "Maternal and Infant Care Clinic at UWMC",
+    "image_filename": "Maternity-Clinic-at-UWMC-University_3.jpg",
+    "image_uri": "public://Maternity-Clinic-at-UWMC-University_3.jpg"
+  },
+  {
+    "fid": 826,
+    "uwmed_nid": 13071,
+    "uwmed_title": "Maternal Fetal Medicine Clinic at Valley",
+    "stevie_nid": 23091,
+    "stevie_title": "Maternal Fetal Medicine and Prenatal Diagnosis Clinic at Valley",
+    "image_filename": "Maternal-Fetal-Medicine-at-Valley.jpg",
+    "image_uri": "public://Maternal-Fetal-Medicine-at-Valley.jpg"
+  },
+  {
+    "fid": 846,
+    "uwmed_nid": 13086,
+    "uwmed_title": "Maternal Fetal Medicine Clinic at Arlington",
+    "stevie_nid": 23096,
+    "stevie_title": "Maternal Fetal Medicine Clinic at Arlington",
+    "image_filename": "Maternal-Fetal-Medicine-at-Arlington.jpg",
+    "image_uri": "public://Maternal-Fetal-Medicine-at-Arlington.jpg"
+  },
+  {
+    "fid": 836,
+    "uwmed_nid": 13076,
+    "uwmed_title": "Maternal Fetal Medicine Clinic at Yakima",
+    "stevie_nid": 23101,
+    "stevie_title": "Maternal Fetal Medicine Clinic at Yakima",
+    "image_filename": "Maternal-Fetal-Medicine-at-Yakima.jpg",
+    "image_uri": "public://Maternal-Fetal-Medicine-at-Yakima.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 13061,
+    "uwmed_title": "Maternal Infant Center at UW Medical Center",
+    "stevie_nid": 23106,
+    "stevie_title": "Maternal Infant Center at UW Medical Center",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 20646,
+    "uwmed_title": "Infectious Diseases & Tropical Medicine Clinic at UWMC",
+    "stevie_nid": 23111,
+    "stevie_title": "Infectious Diseases & Tropical Medicine Clinic at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 24611,
+    "uwmed_title": "Lipid Clinic Northwest at Harborview",
+    "stevie_nid": 23116,
+    "stevie_title": "Lipid Clinic Northwest at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 856,
+    "uwmed_nid": 35671,
+    "uwmed_title": "Inpatient Palliative Care Services at UW Medical Center",
+    "stevie_nid": 23121,
+    "stevie_title": "Inpatient Palliative Care Services at UW Medical Center",
+    "image_filename": "Childbirth-Center-at-UWMC-University_1.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University_1.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 24571,
+    "uwmed_title": "Liver Transplant Clinic at UW Medical Center",
+    "stevie_nid": 23126,
+    "stevie_title": "Liver Transplant Clinic at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 24386,
+    "uwmed_title": "Inpatient Psychiatry at Harborview",
+    "stevie_nid": 23131,
+    "stevie_title": "Inpatient Psychiatry at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 24381,
+    "uwmed_title": "Inpatient Psychiatry at UWMC",
+    "stevie_nid": 23136,
+    "stevie_title": "Inpatient Psychiatry at UW Medical Center",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 76,
+    "uwmed_nid": 35506,
+    "uwmed_title": "Inpatient Rehabilitation Unit at Harborview",
+    "stevie_nid": 23141,
+    "stevie_title": "Inpatient Rehabilitation Unit at Harborview",
+    "image_filename": "Madison-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Madison-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 821,
+    "uwmed_nid": 35511,
+    "uwmed_title": "Inpatient Rehabilitation Unit at UW Medical Center",
+    "stevie_nid": 23146,
+    "stevie_title": "Inpatient Rehabilitation Unit at UWMC",
+    "image_filename": "Urology-Clinic-at-UWMC.jpg",
+    "image_uri": "public://Urology-Clinic-at-UWMC.jpg"
+  },
+  {
+    "fid": 71,
+    "uwmed_nid": 41,
+    "uwmed_title": "International Medicine Clinic at Harborview",
+    "stevie_nid": 23151,
+    "stevie_title": "International Medicine Clinic at Harborview",
+    "image_filename": "International-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://International-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 821,
+    "uwmed_nid": 26941,
+    "uwmed_title": "Intestinal Care and Transplantation Clinic at UW Medical Center",
+    "stevie_nid": 23156,
+    "stevie_title": "Intestinal Care and Transplantation Clinic at UWMC",
+    "image_filename": "Urology-Clinic-at-UWMC.jpg",
+    "image_uri": "public://Urology-Clinic-at-UWMC.jpg"
+  },
+  {
+    "fid": 186,
+    "uwmed_nid": 35976,
+    "uwmed_title": "Hip & Knee Center at UW Medicine in Ballard",
+    "stevie_nid": 23161,
+    "stevie_title": "Hip & Knee Center at UW Medicine in Ballard",
+    "image_filename": "UW-Neighborhood-Ballard-Clinic-Urgent-Care.jpg",
+    "image_uri": "public://UW-Neighborhood-Ballard-Clinic-Urgent-Care.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 35981,
+    "uwmed_title": "Hip & Knee Center at UWMC-Roosevelt",
+    "stevie_nid": 23166,
+    "stevie_title": "Hip & Knee Center at UWMC-Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 1681,
+    "uwmed_nid": 13116,
+    "uwmed_title": "Infant Development Follow-up Clinic at UW Medical Center",
+    "stevie_nid": 23171,
+    "stevie_title": "Infant Development Follow-up Clinic at UW Medical Center",
+    "image_filename": "infant-development-follow-up-clinic.jpg",
+    "image_uri": "public://infant-development-follow-up-clinic.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 20671,
+    "uwmed_title": "Infectious Disease & Travel Medicine Clinic at Harborview",
+    "stevie_nid": 23176,
+    "stevie_title": "Infectious Disease & Travel Medicine Clinic at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 1761,
+    "uwmed_nid": 27056,
+    "uwmed_title": "Hematology/Oncology Clinic at Harborview",
+    "stevie_nid": 23186,
+    "stevie_title": "Hematology/Oncology Clinic at Harborview",
+    "image_filename": "Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg",
+    "image_uri": "public://Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg"
+  },
+  {
+    "fid": 1761,
+    "uwmed_nid": 20606,
+    "uwmed_title": "Hepatitis and Liver Clinic at Harborview",
+    "stevie_nid": 23191,
+    "stevie_title": "Hepatitis and Liver Clinic at Harborview",
+    "image_filename": "Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg",
+    "image_uri": "public://Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg"
+  },
+  {
+    "fid": 866,
+    "uwmed_nid": 36166,
+    "uwmed_title": "Hepatology Clinic at Eastside Specialty Center",
+    "stevie_nid": 23196,
+    "stevie_title": "Hepatology Clinic at Eastside Specialty Center",
+    "image_filename": "Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg",
+    "image_uri": "public://Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 24566,
+    "uwmed_title": "Hepatology Clinic at UWMC",
+    "stevie_nid": 23201,
+    "stevie_title": "Hepatology Clinic at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 321,
+    "uwmed_nid": 36351,
+    "uwmed_title": "Hip & Knee Center at Northwest Primary and Specialty Care North Seattle",
+    "stevie_nid": 23206,
+    "stevie_title": "Hip & Knee Center at Northwest Primary and Specialty Care North Seattle",
+    "image_filename": "Northwest-Primary-Care-North-Seattle-_Clinic.jpg",
+    "image_uri": "public://Northwest-Primary-Care-North-Seattle-_Clinic.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 23571,
+    "uwmed_title": "Heart Institute at Harborview",
+    "stevie_nid": 23211,
+    "stevie_title": "Heart Institute at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 1761,
+    "uwmed_nid": 21131,
+    "uwmed_title": "Hypertension Clinic at Harborview",
+    "stevie_nid": 23216,
+    "stevie_title": "Hypertension Clinic at Harborview",
+    "image_filename": "Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg",
+    "image_uri": "public://Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg"
+  },
+  {
+    "fid": 176,
+    "uwmed_nid": 20676,
+    "uwmed_title": "Infectious Disease at Northwest Hospital",
+    "stevie_nid": 23221,
+    "stevie_title": "Infectious Disease at Northwest Hospital",
+    "image_filename": "Northwest-Primary-Care-Main-Campus-Clinic.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Main-Campus-Clinic.jpg"
+  },
+  {
+    "fid": 866,
+    "uwmed_nid": 35851,
+    "uwmed_title": "Hip & Knee Center at Eastside Specialty Center",
+    "stevie_nid": 23231,
+    "stevie_title": "Hip & Knee Center at Eastside Specialty Center",
+    "image_filename": "Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg",
+    "image_uri": "public://Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 35896,
+    "uwmed_title": "Hand, Elbow & Shoulder Center at UWMC-Roosevelt",
+    "stevie_nid": 23236,
+    "stevie_title": "Hand, Elbow & Shoulder Center at UWMC-Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 35971,
+    "uwmed_title": "Hansen's Disease Clinic at Harborview",
+    "stevie_nid": 23241,
+    "stevie_title": "Hansen's Disease Clinic at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 37021,
+    "uwmed_title": "Harborview Medical Center",
+    "stevie_nid": 23246,
+    "stevie_title": "Harborview Medical Center",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 56,
+    "uwmed_nid": 13001,
+    "uwmed_title": "Sexual Assault and Traumatic Stress Clinic at Harborview",
+    "stevie_nid": 23251,
+    "stevie_title": "Harborview Center for Sexual Assault and Traumatic Stress",
+    "image_filename": "Family-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Family-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 1831,
+    "uwmed_nid": 22246,
+    "uwmed_title": "Headache Clinic at UWMC-Roosevelt",
+    "stevie_nid": 23256,
+    "stevie_title": "Headache Clinic at UWMC-Roosevelt",
+    "image_filename": "Psychiatry-Clinic-(Outpatient)-at-UWMC-Roosevelt_cropped.jpg",
+    "image_uri": "public://Psychiatry-Clinic-(Outpatient)-at-UWMC-Roosevelt_cropped.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 35961,
+    "uwmed_title": "General Surgery Clinic at Harborview",
+    "stevie_nid": 23266,
+    "stevie_title": "General Surgery Clinic at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 26946,
+    "uwmed_title": "General Surgery Clinic at UW Medical Center",
+    "stevie_nid": 23271,
+    "stevie_title": "General Surgery Clinic at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 1771,
+    "uwmed_nid": 24391,
+    "uwmed_title": "Geropsychiatric Center at Northwest Hospital",
+    "stevie_nid": 23276,
+    "stevie_title": "Geropsychiatric Center at Northwest Hospital",
+    "image_filename": "Multiple-Sclerosis-Center-at-Northwest-Hospital.jpeg",
+    "image_uri": "public://Multiple-Sclerosis-Center-at-Northwest-Hospital.jpeg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 35816,
+    "uwmed_title": "Glomerular Disease Kidney Clinic at UWMC",
+    "stevie_nid": 23281,
+    "stevie_title": "Glomerular Disease Kidney Clinic at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 851,
+    "uwmed_nid": 13096,
+    "uwmed_title": "Gynecology Oncology Clinic at UW Medical Center",
+    "stevie_nid": 23286,
+    "stevie_title": "Gynecology Oncology at UWMC",
+    "image_filename": "Women's-Cancer-Clinic-at-UWMC-University.jpg",
+    "image_uri": "public://Women's-Cancer-Clinic-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 121,
+    "uwmed_nid": 161,
+    "uwmed_title": "Hall Health Center",
+    "stevie_nid": 23291,
+    "stevie_title": "Hall Health Center",
+    "image_filename": "Hall-Health-Center-at-UW-Campus.jpg",
+    "image_uri": "public://Hall-Health-Center-at-UW-Campus.jpg"
+  },
+  {
+    "fid": 321,
+    "uwmed_nid": 36071,
+    "uwmed_title": "Hand & Elbow Center at Northwest Primary and Specialty Care North Seattle",
+    "stevie_nid": 23296,
+    "stevie_title": "Hand & Elbow Center at Northwest Primary and Specialty Care North Seattle",
+    "image_filename": "Northwest-Primary-Care-North-Seattle-_Clinic.jpg",
+    "image_uri": "public://Northwest-Primary-Care-North-Seattle-_Clinic.jpg"
+  },
+  {
+    "fid": 866,
+    "uwmed_nid": 23561,
+    "uwmed_title": "Heart Institute at Eastside Specialty Center",
+    "stevie_nid": 23301,
+    "stevie_title": "Heart Institute at Eastside Specialty Center",
+    "image_filename": "Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg",
+    "image_uri": "public://Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg"
+  },
+  {
+    "fid": 866,
+    "uwmed_nid": 35871,
+    "uwmed_title": "Hand, Elbow & Shoulder Center at Eastside Specialty Center",
+    "stevie_nid": 23306,
+    "stevie_title": "Hand, Elbow & Shoulder Center at Eastside Specialty Center",
+    "image_filename": "Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg",
+    "image_uri": "public://Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg"
+  },
+  {
+    "fid": 1991,
+    "uwmed_nid": 23566,
+    "uwmed_title": "Heart Institute at Edmonds",
+    "stevie_nid": 23311,
+    "stevie_title": "Heart Institute at Edmonds",
+    "image_filename": "Cardiology-Clinic-at-Edmonds.jpg",
+    "image_uri": "public://Cardiology-Clinic-at-Edmonds.jpg"
+  },
+  {
+    "fid": 1806,
+    "uwmed_nid": 35966,
+    "uwmed_title": "Hand, Elbow & Shoulder Center at Harborview",
+    "stevie_nid": 23316,
+    "stevie_title": "Hand, Elbow & Shoulder Center at Harborview",
+    "image_filename": "Sleep-Medicine-Center-at-Harborview.jpeg",
+    "image_uri": "public://Sleep-Medicine-Center-at-Harborview.jpeg"
+  },
+  {
+    "fid": 1761,
+    "uwmed_nid": 24351,
+    "uwmed_title": "Gastroenterology Clinic at Harborview",
+    "stevie_nid": 23321,
+    "stevie_title": "Gastroenterology Clinic at Harborview",
+    "image_filename": "Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg",
+    "image_uri": "public://Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 71,
+    "uwmed_title": "General Internal Medicine Center at UWMC-Roosevelt",
+    "stevie_nid": 23326,
+    "stevie_title": "General Internal Medicine Center at UWMC-Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 2036,
+    "uwmed_nid": 24156,
+    "uwmed_title": "Eye Institute at Harborview",
+    "stevie_nid": 23331,
+    "stevie_title": "Eye Institute at Harborview",
+    "image_filename": "Eye-Institute-at-Harborview.jpeg",
+    "image_uri": "public://Eye-Institute-at-Harborview.jpeg"
+  },
+  {
+    "fid": 841,
+    "uwmed_nid": 24366,
+    "uwmed_title": "General Pulmonary Clinic at UWMC",
+    "stevie_nid": 23336,
+    "stevie_title": "General Pulmonary Clinic at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University_0.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University_0.jpg"
+  },
+  {
+    "fid": 2041,
+    "uwmed_nid": 20601,
+    "uwmed_title": "Eyes On James Optical Shop",
+    "stevie_nid": 23341,
+    "stevie_title": "Eyes on James Optical Shop",
+    "image_filename": "Eyes-on-James-Clinic.jpeg",
+    "image_uri": "public://Eyes-on-James-Clinic.jpeg"
+  },
+  {
+    "fid": 866,
+    "uwmed_nid": 35886,
+    "uwmed_title": "General Surgery at Eastside Specialty Center",
+    "stevie_nid": 23346,
+    "stevie_title": "General Surgery at Eastside Specialty Center",
+    "image_filename": "Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg",
+    "image_uri": "public://Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg"
+  },
+  {
+    "fid": 91,
+    "uwmed_nid": 35951,
+    "uwmed_title": "Fall Prevention Clinic at Harborview",
+    "stevie_nid": 23351,
+    "stevie_title": "Fall Prevention Clinic at Harborview",
+    "image_filename": "Senior-Care-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Senior-Care-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 56,
+    "uwmed_nid": 36,
+    "uwmed_title": "Family Medicine Clinic at Harborview",
+    "stevie_nid": 23356,
+    "stevie_title": "Family Medicine Clinic at Harborview",
+    "image_filename": "Family-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Family-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 13111,
+    "uwmed_title": "Family Planning Clinic at UW Medical Center-Roosevelt",
+    "stevie_nid": 23361,
+    "stevie_title": "Family Planning Clinic at Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 1806,
+    "uwmed_nid": 20596,
+    "uwmed_title": "Foot & Ankle Center at Harborview",
+    "stevie_nid": 23366,
+    "stevie_title": "Foot & Ankle Center at Harborview",
+    "image_filename": "Sleep-Medicine-Center-at-Harborview.jpeg",
+    "image_uri": "public://Sleep-Medicine-Center-at-Harborview.jpeg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 35956,
+    "uwmed_title": "Foot & Ankle Center at UWMC-Roosevelt",
+    "stevie_nid": 23371,
+    "stevie_title": "Foot & Ankle Center at UWMC-Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 20526,
+    "uwmed_title": "Foster Care Clinic at Harborview",
+    "stevie_nid": 23376,
+    "stevie_title": "Foster Care Clinic at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 181,
+    "uwmed_nid": 35861,
+    "uwmed_title": "Foot and Ankle Clinic at Northwest Hospital",
+    "stevie_nid": 23381,
+    "stevie_title": "Foot and Ankle Clinic at Northwest Hospital",
+    "image_filename": "Northwest-Primary-Care-Freemont-Clinic.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Freemont-Clinic.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 21486,
+    "uwmed_title": "Gamma Knife Center at Harborview",
+    "stevie_nid": 23386,
+    "stevie_title": "Gamma Knife Center at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 36161,
+    "uwmed_title": "Endocrine Tumor Center at UWMC – Roosevelt",
+    "stevie_nid": 23391,
+    "stevie_title": "Endocrine Tumor Center at UWMC – Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 36696,
+    "uwmed_title": "Endocrinology/Diabetes Clinic at Harborview",
+    "stevie_nid": 23396,
+    "stevie_title": "Endocrinology/Diabetes Clinic at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 1761,
+    "uwmed_nid": 24341,
+    "uwmed_title": "Endoscopy Suite at Harborview",
+    "stevie_nid": 23401,
+    "stevie_title": "Endoscopy Suite at Harborview",
+    "image_filename": "Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg",
+    "image_uri": "public://Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg"
+  },
+  {
+    "fid": 841,
+    "uwmed_nid": 24336,
+    "uwmed_title": "Digestive Health Center at UWMC",
+    "stevie_nid": 23406,
+    "stevie_title": "Digestive Health Center at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University_0.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University_0.jpg"
+  },
+  {
+    "fid": 841,
+    "uwmed_nid": 24346,
+    "uwmed_title": "Esophageal and Gastric Diseases Clinic at UW Medical Center",
+    "stevie_nid": 23411,
+    "stevie_title": "Esophageal and Gastric Diseases Clinic at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University_0.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University_0.jpg"
+  },
+  {
+    "fid": 866,
+    "uwmed_nid": 24401,
+    "uwmed_title": "Digestive Health Center at the Eastside Specialty Center",
+    "stevie_nid": 23416,
+    "stevie_title": "Digestive Health Clinic at Eastside Specialty Center",
+    "image_filename": "Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg",
+    "image_uri": "public://Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 35391,
+    "uwmed_title": "Exercise Training Center at UWMC-Roosevelt",
+    "stevie_nid": 23421,
+    "stevie_title": "Exercise Training Center at UWMC-Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 841,
+    "uwmed_nid": 24166,
+    "uwmed_title": "Eye Center at UWMC",
+    "stevie_nid": 23426,
+    "stevie_title": "Eye Center at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University_0.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University_0.jpg"
+  },
+  {
+    "fid": 1766,
+    "uwmed_nid": 21481,
+    "uwmed_title": "EEG & Neurophysiology Lab at Harborview",
+    "stevie_nid": 23431,
+    "stevie_title": "EEG & Neurophysiology Lab at Harborview",
+    "image_filename": "EEG-&-Neurophysiology-Lab-at-Harborview.jpeg",
+    "image_uri": "public://EEG-&-Neurophysiology-Lab-at-Harborview.jpeg"
+  },
+  {
+    "fid": 3591,
+    "uwmed_nid": 35116,
+    "uwmed_title": "Emergency & Trauma Center at Harborview",
+    "stevie_nid": 23436,
+    "stevie_title": "Emergency Department at Harborview",
+    "image_filename": "Emergency-Department-at-Harborview.jpg",
+    "image_uri": "public://Emergency-Department-at-Harborview.jpg"
+  },
+  {
+    "fid": 3596,
+    "uwmed_nid": 35891,
+    "uwmed_title": "Emergency Department at UWMC",
+    "stevie_nid": 23446,
+    "stevie_title": "Emergency Department at UWMC",
+    "image_filename": "Emergency-Department-at-UWMC.jpg",
+    "image_uri": "public://Emergency-Department-at-UWMC.jpg"
+  },
+  {
+    "fid": 5866,
+    "uwmed_nid": 20566,
+    "uwmed_title": "Emergency Department at Valley Medical Center",
+    "stevie_nid": 23451,
+    "stevie_title": "Emergency Department at Valley Medical Center",
+    "image_filename": "Valley-Medical-Center-ED-new.jpg",
+    "image_uri": "public://Valley-Medical-Center-ED-new.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 20656,
+    "uwmed_title": "Endocrine and Diabetes Care Center at UWMC-Roosevelt",
+    "stevie_nid": 23461,
+    "stevie_title": "Endocrine and Diabetes Care Center at UWMC Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 35266,
+    "uwmed_title": "Clinical Lab and Blood Draw at Harborview",
+    "stevie_nid": 23471,
+    "stevie_title": "Clinical Lab and Blood Draw at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 1831,
+    "uwmed_nid": 24116,
+    "uwmed_title": "Dermatology Clinic at UWMC-Roosevelt",
+    "stevie_nid": 23476,
+    "stevie_title": "Dermatology Clinic at UWMC-Roosevelt",
+    "image_filename": "Psychiatry-Clinic-(Outpatient)-at-UWMC-Roosevelt_cropped.jpg",
+    "image_uri": "public://Psychiatry-Clinic-(Outpatient)-at-UWMC-Roosevelt_cropped.jpg"
+  },
+  {
+    "fid": 866,
+    "uwmed_nid": 35271,
+    "uwmed_title": "Clinical Lab and Blood Draw at Eastside Specialty Center",
+    "stevie_nid": 23481,
+    "stevie_title": "Clinical Lab and Blood Draw at Eastside Specialty Center",
+    "image_filename": "Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg",
+    "image_uri": "public://Pelvic-Health-Clinic-at-Eastside-Specialty-Center.jpg"
+  },
+  {
+    "fid": 1771,
+    "uwmed_nid": 35281,
+    "uwmed_title": "Clinical Lab and Blood Draw at Northwest Hospital",
+    "stevie_nid": 23486,
+    "stevie_title": "Clinical Lab and Blood Draw at Northwest Hospital",
+    "image_filename": "Multiple-Sclerosis-Center-at-Northwest-Hospital.jpeg",
+    "image_uri": "public://Multiple-Sclerosis-Center-at-Northwest-Hospital.jpeg"
+  },
+  {
+    "fid": 171,
+    "uwmed_nid": 35276,
+    "uwmed_title": "Clinical Lab and Blood Draw at Outpatient Medical Center",
+    "stevie_nid": 23491,
+    "stevie_title": "Clinical Lab and Blood Draw at Northwest Hospital Outpatient Medical Center",
+    "image_filename": "Northwest-Primary-Care-Outpatient-Medical-Center.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Outpatient-Medical-Center.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 35256,
+    "uwmed_title": "Clinical Lab and Blood Draw at UWMC",
+    "stevie_nid": 23496,
+    "stevie_title": "Clinical Lab and Blood Draw at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 35261,
+    "uwmed_title": "Clinical Lab and Blood Draw at UWMC-Roosevelt",
+    "stevie_nid": 23501,
+    "stevie_title": "Clinical Lab and Blood Draw at UWMC-Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 851,
+    "uwmed_nid": 24331,
+    "uwmed_title": "Colorectal Services at UWMC",
+    "stevie_nid": 23506,
+    "stevie_title": "Colorectal Services at UWMC",
+    "image_filename": "Women's-Cancer-Clinic-at-UWMC-University.jpg",
+    "image_uri": "public://Women's-Cancer-Clinic-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 1831,
+    "uwmed_nid": 24321,
+    "uwmed_title": "Dermatologic Surgery Center at UWMC-Roosevelt",
+    "stevie_nid": 23511,
+    "stevie_title": "Dermatologic Surgery Center at UWMC-Roosevelt",
+    "image_filename": "Psychiatry-Clinic-(Outpatient)-at-UWMC-Roosevelt_cropped.jpg",
+    "image_uri": "public://Psychiatry-Clinic-(Outpatient)-at-UWMC-Roosevelt_cropped.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 24111,
+    "uwmed_title": "Dermatology Clinic at Harborview",
+    "stevie_nid": 23521,
+    "stevie_title": "Dermatology Clinic at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 35986,
+    "uwmed_title": "Center for Interstitial Lung Diseases at UW Medical Center",
+    "stevie_nid": 23531,
+    "stevie_title": "Center for Interstitial Lung Diseases at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 1831,
+    "uwmed_nid": 35386,
+    "uwmed_title": "Center for Pain Relief at UWMC-Roosevelt",
+    "stevie_nid": 23536,
+    "stevie_title": "Center for Pain Relief at UWMC-Roosevelt",
+    "image_filename": "Psychiatry-Clinic-(Outpatient)-at-UWMC-Roosevelt_cropped.jpg",
+    "image_uri": "public://Psychiatry-Clinic-(Outpatient)-at-UWMC-Roosevelt_cropped.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 37511,
+    "uwmed_title": "Center for Advanced Minimally Invasive Liver Oncologic Therapy (CAMILOT)",
+    "stevie_nid": 23541,
+    "stevie_title": "Center for Advanced Minimally Invasive Liver Oncologic Therapy (CAMILOT)",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 176,
+    "uwmed_nid": 36176,
+    "uwmed_title": "Breast Clinic at Northwest",
+    "stevie_nid": 23546,
+    "stevie_title": "Breast Clinic, Northwest Campus",
+    "image_filename": "Northwest-Primary-Care-Main-Campus-Clinic.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Main-Campus-Clinic.jpg"
+  },
+  {
+    "fid": 841,
+    "uwmed_nid": 35926,
+    "uwmed_title": "Center for Reconstructive Surgery at UW Medical Center",
+    "stevie_nid": 23551,
+    "stevie_title": "Center for Reconstructive Surgery at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University_0.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University_0.jpg"
+  },
+  {
+    "fid": 851,
+    "uwmed_nid": 36196,
+    "uwmed_title": "Bronchoscopy Suite at UW Medical Center",
+    "stevie_nid": 23561,
+    "stevie_title": "Bronchoscopy Suite at UWMC",
+    "image_filename": "Women's-Cancer-Clinic-at-UWMC-University.jpg",
+    "image_uri": "public://Women's-Cancer-Clinic-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 1756,
+    "uwmed_nid": 21471,
+    "uwmed_title": "Cerebrovascular Lab at Harborview",
+    "stevie_nid": 23566,
+    "stevie_title": "Cerebrovascular Lab at Harborview",
+    "image_filename": "Cerebrovascular-Lab-at-Harborview.jpeg",
+    "image_uri": "public://Cerebrovascular-Lab-at-Harborview.jpeg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 35941,
+    "uwmed_title": "Burn and Plastic Surgery Clinic at Harborview",
+    "stevie_nid": 23571,
+    "stevie_title": "Burn and Plastic Surgery Clinics at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 35946,
+    "uwmed_title": "Chest Clinic at Harborview",
+    "stevie_nid": 23576,
+    "stevie_title": "Chest Clinic at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 796,
+    "uwmed_nid": 13031,
+    "uwmed_title": "Childbirth Center at Northwest Hospital",
+    "stevie_nid": 23581,
+    "stevie_title": "Childbirth Center at Northwest",
+    "image_filename": "Childbirth-Center-at-UWMC-Northwest_0.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-Northwest_0.jpg"
+  },
+  {
+    "fid": 1771,
+    "uwmed_nid": 24326,
+    "uwmed_title": "Cardiac Fitness Center",
+    "stevie_nid": 23586,
+    "stevie_title": "Cardiac Fitness Center",
+    "image_filename": "Multiple-Sclerosis-Center-at-Northwest-Hospital.jpeg",
+    "image_uri": "public://Multiple-Sclerosis-Center-at-Northwest-Hospital.jpeg"
+  },
+  {
+    "fid": 1751,
+    "uwmed_nid": 21466,
+    "uwmed_title": "Alvord Brain Tumor Center at UW Medical Center",
+    "stevie_nid": 23591,
+    "stevie_title": "Alvord Brain Tumor Center at UWMC",
+    "image_filename": "Alvord-Brain-Tumor-Center-at-UWMC.jpeg",
+    "image_uri": "public://Alvord-Brain-Tumor-Center-at-UWMC.jpeg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 36721,
+    "uwmed_title": "Anesthesiology Clinical Services at Harborview",
+    "stevie_nid": 23596,
+    "stevie_title": "Anesthesiology Clinical Services at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 12641,
+    "uwmed_title": "Adolescent Medicine Clinic at Harborview",
+    "stevie_nid": 23611,
+    "stevie_title": "Adolescent Medicine Clinic at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 24636,
+    "uwmed_title": "Audiology Services - Otolaryngology/Head and Neck Surgery Center at UW Medical Center",
+    "stevie_nid": 23616,
+    "stevie_title": "Audiology Services - Otolaryngology/Head and Neck Surgery Center at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 35136,
+    "uwmed_title": "Adult Autism Clinic at UWMC-Roosevelt",
+    "stevie_nid": 23621,
+    "stevie_title": "Adult Autism Clinic at UWMC-Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 24641,
+    "uwmed_title": "Audiology Services at Harborview Medical Center",
+    "stevie_nid": 23626,
+    "stevie_title": "Audiology Services at Harborview Medical Center",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 36061,
+    "uwmed_title": "Adult Cystic Fibrosis Clinic at UW Medical Center",
+    "stevie_nid": 23631,
+    "stevie_title": "Adult Cystic Fibrosis Clinic at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 821,
+    "uwmed_nid": 35546,
+    "uwmed_title": "Brain Injury Rehabilitation at UWMC",
+    "stevie_nid": 23636,
+    "stevie_title": "Brain Injury Rehabilitation at UWMC",
+    "image_filename": "Urology-Clinic-at-UWMC.jpg",
+    "image_uri": "public://Urology-Clinic-at-UWMC.jpg"
+  },
+  {
+    "fid": 596,
+    "uwmed_nid": 35376,
+    "uwmed_title": "Advanced Manual Therapy and Sports Rehabilitation at Ballard",
+    "stevie_nid": 23641,
+    "stevie_title": "Advanced Manual Therapy and Sports Rehabilitation at Ballard",
+    "image_filename": "UW-Neighborhood-Ballard-Clinic-Urgent-Care-New.jpg",
+    "image_uri": "public://UW-Neighborhood-Ballard-Clinic-Urgent-Care-New.jpg"
+  },
+  {
+    "fid": 1771,
+    "uwmed_nid": 26856,
+    "uwmed_title": "Cardiac Rehabilitation at Northwest Hospital",
+    "stevie_nid": 23726,
+    "stevie_title": "Cardiac Rehabilitation at Northwest Hospital",
+    "image_filename": "Multiple-Sclerosis-Center-at-Northwest-Hospital.jpeg",
+    "image_uri": "public://Multiple-Sclerosis-Center-at-Northwest-Hospital.jpeg"
+  },
+  {
+    "fid": 826,
+    "uwmed_nid": 36891,
+    "uwmed_title": "General & Surgical Specialists Clinic at Valley",
+    "stevie_nid": 23741,
+    "stevie_title": "General & Surgical Specialists Clinic at Valley",
+    "image_filename": "Maternal-Fetal-Medicine-at-Valley.jpg",
+    "image_uri": "public://Maternal-Fetal-Medicine-at-Valley.jpg"
+  },
+  {
+    "fid": 181,
+    "uwmed_nid": 20501,
+    "uwmed_title": "Northwest Primary and Specialty Clinic",
+    "stevie_nid": 23761,
+    "stevie_title": "Northwest Primary and Specialty Clinic",
+    "image_filename": "Northwest-Primary-Care-Freemont-Clinic.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Freemont-Clinic.jpg"
+  },
+  {
+    "fid": 236,
+    "uwmed_nid": 221,
+    "uwmed_title": "Covington Clinic South at Valley Medical Center",
+    "stevie_nid": 23806,
+    "stevie_title": "VMC Covington Clinic",
+    "image_filename": "Covington-Clinic-South-Valley-Medical-Center.jpg",
+    "image_uri": "public://Covington-Clinic-South-Valley-Medical-Center.jpg"
+  },
+  {
+    "fid": 3746,
+    "uwmed_nid": 36506,
+    "uwmed_title": "SCCA at Seattle Children's Hospital",
+    "stevie_nid": 23896,
+    "stevie_title": "SCCA at Seattle Children's Hospital",
+    "image_filename": "scca-south-lake-union.jpg",
+    "image_uri": "public://scca-south-lake-union_0.jpg"
+  },
+  {
+    "fid": 826,
+    "uwmed_nid": 22296,
+    "uwmed_title": "Neurosciences at Valley Medical Center",
+    "stevie_nid": 23986,
+    "stevie_title": "Neuroscience Institute - Valley Medical Center",
+    "image_filename": "Maternal-Fetal-Medicine-at-Valley.jpg",
+    "image_uri": "public://Maternal-Fetal-Medicine-at-Valley.jpg"
+  },
+  {
+    "fid": 241,
+    "uwmed_nid": 206,
+    "uwmed_title": "Highlands Clinic at Valley Medical Center Renton",
+    "stevie_nid": 24061,
+    "stevie_title": "Highlands Clinic - Valley Medical Center",
+    "image_filename": "Highlands-Clinic-Valley-Medical-Center.jpg",
+    "image_uri": "public://Highlands-Clinic-Valley-Medical-Center.jpg"
+  },
+  {
+    "fid": 231,
+    "uwmed_nid": 216,
+    "uwmed_title": "Fairwood Clinic at Valley Medical Center Renton",
+    "stevie_nid": 24081,
+    "stevie_title": "Fairwood Clinic - Valley Medical Center",
+    "image_filename": "Fairwood-Clinic-Valley-Medical-Center.jpg",
+    "image_uri": "public://Fairwood-Clinic-Valley-Medical-Center.jpg"
+  },
+  {
+    "fid": 226,
+    "uwmed_nid": 211,
+    "uwmed_title": "Cascade Clinic at Valley Medical Center",
+    "stevie_nid": 24116,
+    "stevie_title": "Cascade Clinic - Valley Medical Center",
+    "image_filename": "Cascade-Clinic-Valley-Medical-Center.jpg",
+    "image_uri": "public://Cascade-Clinic-Valley-Medical-Center.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 18451,
+    "uwmed_title": "Specialty Gynecology Clinic at Roosevelt",
+    "stevie_nid": 24146,
+    "stevie_title": "Women's Health Care Center at UWMC-Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 20451,
+    "uwmed_title": "Women's Health Care Center at UWMC-Roosevelt",
+    "stevie_nid": 24146,
+    "stevie_title": "Women's Health Care Center at UWMC-Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 20476,
+    "uwmed_title": "Women's Health Clinic at Roosevelt",
+    "stevie_nid": 24146,
+    "stevie_title": "Women's Health Care Center at UWMC-Roosevelt",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 156,
+    "uwmed_nid": 131,
+    "uwmed_title": "Women's Health Clinic at Roosevelt",
+    "stevie_nid": 24146,
+    "stevie_title": "Women's Health Care Center at UWMC-Roosevelt",
+    "image_filename": "Women's-Health-Clinic-at-UWMC Roosevelt.jpg",
+    "image_uri": "public://Women's-Health-Clinic-at-UWMC Roosevelt.jpg"
+  },
+  {
+    "fid": 1761,
+    "uwmed_nid": 21836,
+    "uwmed_title": "Vascular and Endovascular Surgery Clinic at Harborview",
+    "stevie_nid": 24151,
+    "stevie_title": "Vascular and Endovascular Surgery Clinic at Harborview",
+    "image_filename": "Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg",
+    "image_uri": "public://Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg"
+  },
+  {
+    "fid": 821,
+    "uwmed_nid": 21846,
+    "uwmed_title": "Vascular and Endovascular Surgery Clinic at UWMC",
+    "stevie_nid": 24156,
+    "stevie_title": "Vascular and Endovascular Surgery Clinic at UWMC",
+    "image_filename": "Urology-Clinic-at-UWMC.jpg",
+    "image_uri": "public://Urology-Clinic-at-UWMC.jpg"
+  },
+  {
+    "fid": 1781,
+    "uwmed_nid": 21831,
+    "uwmed_title": "Vascular Laboratory at Eastside Specialty Center",
+    "stevie_nid": 24161,
+    "stevie_title": "Vascular Laboratory at Eastside Specialty Center",
+    "image_filename": "Neurology-Clinic-at-Eastside-Specialty-Center.jpeg",
+    "image_uri": "public://Neurology-Clinic-at-Eastside-Specialty-Center.jpeg"
+  },
+  {
+    "fid": 1831,
+    "uwmed_nid": 35581,
+    "uwmed_title": "Radiology Services at UWMC-Roosevelt",
+    "stevie_nid": 24166,
+    "stevie_title": "Radiology Services at UWMC-Roosevelt",
+    "image_filename": "Psychiatry-Clinic-(Outpatient)-at-UWMC-Roosevelt_cropped.jpg",
+    "image_uri": "public://Psychiatry-Clinic-(Outpatient)-at-UWMC-Roosevelt_cropped.jpg"
+  },
+  {
+    "fid": 3576,
+    "uwmed_nid": 36511,
+    "uwmed_title": "Regional Burn Center at Harborview",
+    "stevie_nid": 24171,
+    "stevie_title": "Regional Burn Center at Harborview",
+    "image_filename": "Emergency Department street entrance.jpeg",
+    "image_uri": "public://Emergency Department street entrance.jpeg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 20621,
+    "uwmed_title": "Regional Epilepsy Center at Harborview",
+    "stevie_nid": 24176,
+    "stevie_title": "Regional Epilepsy Center at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 2011,
+    "uwmed_nid": 24106,
+    "uwmed_title": "Regional Vascular Center at Northwest",
+    "stevie_nid": 24181,
+    "stevie_title": "Regional Vascular Center at Northwest",
+    "image_filename": "Regional-vascular-center-at-northwest.jpg",
+    "image_uri": "public://Regional-vascular-center-at-northwest.jpg"
+  },
+  {
+    "fid": 321,
+    "uwmed_nid": 256,
+    "uwmed_title": "Northwest Primary Care North Seattle Clinic",
+    "stevie_nid": 24186,
+    "stevie_title": "Northwest Primary Care North Seattle Clinic",
+    "image_filename": "Northwest-Primary-Care-North-Seattle-_Clinic.jpg",
+    "image_uri": "public://Northwest-Primary-Care-North-Seattle-_Clinic.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 26966,
+    "uwmed_title": "Kidney Care & Transplantation Services at UWMC",
+    "stevie_nid": 24191,
+    "stevie_title": "Kidney Care & Transplantation Services at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 1761,
+    "uwmed_nid": 21136,
+    "uwmed_title": "Kidney Clinic at Harborview",
+    "stevie_nid": 24196,
+    "stevie_title": "Kidney Clinic at Harborview",
+    "image_filename": "Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg",
+    "image_uri": "public://Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg"
+  },
+  {
+    "fid": 1761,
+    "uwmed_nid": 35991,
+    "uwmed_title": "Kidney Genetics Clinic at Harborview",
+    "stevie_nid": 24201,
+    "stevie_title": "Kidney Genetics Clinic at Harborview",
+    "image_filename": "Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg",
+    "image_uri": "public://Comprehensive-Outpatient-Rehabilitation-Program-at-Harborview.jpeg"
+  },
+  {
+    "fid": 1826,
+    "uwmed_nid": 22256,
+    "uwmed_title": "Kidney Stone Center at Northwest",
+    "stevie_nid": 24206,
+    "stevie_title": "Kidney Stone Center at Northwest",
+    "image_filename": "McMurray Medical Building NWH.jpg",
+    "image_uri": "public://McMurray Medical Building NWH.jpg"
+  },
+  {
+    "fid": 6261,
+    "uwmed_nid": 37516,
+    "uwmed_title": "Karalis Johnson Retina Center at South Lake Union",
+    "stevie_nid": 24211,
+    "stevie_title": "Karalis Johnson Retina Center at South Lake Union",
+    "image_filename": "750-Republican.png",
+    "image_uri": "public://750-Republican.png"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 20641,
+    "uwmed_title": "After-Care Clinic at Harborview",
+    "stevie_nid": 24221,
+    "stevie_title": "After Care Clinic at Harborview",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 71,
+    "uwmed_nid": 35531,
+    "uwmed_title": "Allergy and Inflammation at Harborview",
+    "stevie_nid": 24226,
+    "stevie_title": "Allergy and Inflammation at Harborview",
+    "image_filename": "International-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://International-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 35161,
+    "uwmed_title": "Allergy, Asthma and Immunology Clinic at UWMC",
+    "stevie_nid": 24231,
+    "stevie_title": "Allergy, Asthma and Immunology Clinic at UWMC",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 171,
+    "uwmed_nid": 35381,
+    "uwmed_title": "Advanced Manual Therapy and Sports Rehabilitation at Northwest Outpatient Medical Center",
+    "stevie_nid": 24241,
+    "stevie_title": "Advanced Manual Therapy and Sports Rehabilitation at Northwest Outpatient Medical Center",
+    "image_filename": "Northwest-Primary-Care-Outpatient-Medical-Center.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Outpatient-Medical-Center.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 20541,
+    "uwmed_title": "Psychiatry Consultation Service at Harborview",
+    "stevie_nid": "NULL",
+    "stevie_title": "NULL",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 24306,
+    "uwmed_title": "Psychiatry Resident Clinic at Harborview",
+    "stevie_nid": "NULL",
+    "stevie_title": "NULL",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 36716,
+    "uwmed_title": "Anesthesiology Clinical Services at Harborview",
+    "stevie_nid": "NULL",
+    "stevie_title": "NULL",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 51,
+    "uwmed_nid": 37826,
+    "uwmed_title": "Rheumatology GCA Fast Track Clinic - Harborview Medical Center",
+    "stevie_nid": "NULL",
+    "stevie_title": "NULL",
+    "image_filename": "Adult-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Adult-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 56,
+    "uwmed_nid": 24291,
+    "uwmed_title": "Behavioral Health Recovery Case Management Programs at Harborview",
+    "stevie_nid": "NULL",
+    "stevie_title": "NULL",
+    "image_filename": "Family-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Family-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 56,
+    "uwmed_nid": 24296,
+    "uwmed_title": "Geropsychiatry Clinic at Harborview",
+    "stevie_nid": "NULL",
+    "stevie_title": "NULL",
+    "image_filename": "Family-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Family-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 56,
+    "uwmed_nid": 24301,
+    "uwmed_title": "Mental Health Intake and Brief Intervention Services Clinic at Harborview",
+    "stevie_nid": "NULL",
+    "stevie_title": "NULL",
+    "image_filename": "Family-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Family-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 56,
+    "uwmed_nid": 24311,
+    "uwmed_title": "Psychotherapy Clinic at Harborview",
+    "stevie_nid": "NULL",
+    "stevie_title": "NULL",
+    "image_filename": "Family-Medicine-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Family-Medicine-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 91,
+    "uwmed_nid": 20551,
+    "uwmed_title": "Psychiatry Consultation Service for Outpatient Clinics at Harborview",
+    "stevie_nid": "NULL",
+    "stevie_title": "NULL",
+    "image_filename": "Senior-Care-Clinic-at-Harborview.jpg",
+    "image_uri": "public://Senior-Care-Clinic-at-Harborview.jpg"
+  },
+  {
+    "fid": 116,
+    "uwmed_nid": 37821,
+    "uwmed_title": "Rheumatology GCA Fast Track Clinic - UW Medical Center",
+    "stevie_nid": "NULL",
+    "stevie_title": "NULL",
+    "image_filename": "General-Internal-Medicine-at-UWMC-Roosevelt.jpg",
+    "image_uri": "public://General-Internal-Medicine-at-UWMC-Roosevelt.jpg"
+  },
+  {
+    "fid": 176,
+    "uwmed_nid": 35566,
+    "uwmed_title": "Center for Medical Rehabilitation at Northwest",
+    "stevie_nid": "NULL",
+    "stevie_title": "NULL",
+    "image_filename": "Northwest-Primary-Care-Main-Campus-Clinic.jpg",
+    "image_uri": "public://Northwest-Primary-Care-Main-Campus-Clinic.jpg"
+  },
+  {
+    "fid": 226,
+    "uwmed_nid": 22291,
+    "uwmed_title": "Neurosciences at Valley Medical Center",
+    "stevie_nid": "NULL",
+    "stevie_title": "NULL",
+    "image_filename": "Cascade-Clinic-Valley-Medical-Center.jpg",
+    "image_uri": "public://Cascade-Clinic-Valley-Medical-Center.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 23576,
+    "uwmed_title": "Cardiology Imaging (Echocardiography, ECG, Nuclear Medicine) at UWMC",
+    "stevie_nid": "NULL",
+    "stevie_title": "NULL",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 816,
+    "uwmed_nid": 26251,
+    "uwmed_title": "Liver Care & Transplantation Services at UWMC",
+    "stevie_nid": "NULL",
+    "stevie_title": "NULL",
+    "image_filename": "Childbirth-Center-at-UWMC-University.jpg",
+    "image_uri": "public://Childbirth-Center-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 896,
+    "uwmed_nid": 13126,
+    "uwmed_title": "Fetal Care & Treatment Clinic at UWMC",
+    "stevie_nid": "NULL",
+    "stevie_title": "NULL",
+    "image_filename": "Maternity-Clinic-at-UWMC-University_0.jpg",
+    "image_uri": "public://Maternity-Clinic-at-UWMC-University_0.jpg"
+  },
+  {
+    "fid": 901,
+    "uwmed_nid": 13131,
+    "uwmed_title": "Prenatal Genetics Clinic at UWMC",
+    "stevie_nid": "NULL",
+    "stevie_title": "NULL",
+    "image_filename": "prenatal-genetics-at-UWMC-University.jpg",
+    "image_uri": "public://prenatal-genetics-at-UWMC-University.jpg"
+  },
+  {
+    "fid": 911,
+    "uwmed_nid": 13121,
+    "uwmed_title": "Women's Health Clinic at UWMC",
+    "stevie_nid": "NULL",
+    "stevie_title": "NULL",
+    "image_filename": "Maternity-Clinic-at-UWMC-University_2.jpg",
+    "image_uri": "public://Maternity-Clinic-at-UWMC-University_2.jpg"
+  }
+]
