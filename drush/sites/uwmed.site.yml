@@ -6,6 +6,13 @@ local:
   user: vagrant
   ssh:
     options: '-o PasswordAuthentication=no -i $HOME/.vagrant.d/insecure_private_key'
+sandbox:
+  host: uwmeddev.ssh.prod.acquia-sites.com
+  options: { ac-env: dev, ac-realm: prod, ac-site: uwmed }
+  paths: { drush-script: drush9 }
+  root: /var/www/html/uwmed.sandbox/docroot
+  uri: sandbox.uwmedicinetest.org
+  user: uwmed.dev
 dev:
   host: uwmeddev.ssh.prod.acquia-sites.com
   options: { ac-env: dev, ac-realm: prod, ac-site: uwmed }

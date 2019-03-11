@@ -84,6 +84,7 @@ $sites['stevie.cms.uwmedicine.org'] = 'stevie';
 $sites['stevie.cmsdev.uwmedicine.org'] = 'stevie';
 $sites['stevie.cmsstage.uwmedicine.org'] = 'stevie';
 $sites['stevie.cmsra.uwmedicine.org'] = 'stevie';
+$sites['stevie.sandbox.uwmedicinetest.org'] = 'stevie';
 
 $sites['beta.uwmed.local'] = 'uwmedicineorg';
 $sites['beta.cms.uwmedicine.org'] = 'uwmedicineorg';
