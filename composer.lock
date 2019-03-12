@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b79051b571dcf7cac190c82524b65d45",
+    "content-hash": "f71fe1cfd04d5a8f688d0825e9bb8fe5",
     "packages": [
         {
             "name": "acquia/blt",
@@ -2931,17 +2931,17 @@
         },
         {
             "name": "drupal/acquia_connector",
-            "version": "1.15.0",
+            "version": "1.16.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/acquia_connector",
-                "reference": "8.x-1.15"
+                "reference": "8.x-1.16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/acquia_connector-8.x-1.15.zip",
-                "reference": "8.x-1.15",
-                "shasum": "e9f070ff1f09683ac8fa7337cf18c0ed69fcbc24"
+                "url": "https://ftp.drupal.org/files/projects/acquia_connector-8.x-1.16.zip",
+                "reference": "8.x-1.16",
+                "shasum": "a428b1b2ce429bdbb3010a7176916823fd4eb4db"
             },
             "require": {
                 "drupal/core": "~8.0",
@@ -2957,8 +2957,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.15",
-                    "datestamp": "1547038684",
+                    "version": "8.x-1.16",
+                    "datestamp": "1549478497",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3234,7 +3234,7 @@
         },
         {
             "name": "drupal/acquia_search",
-            "version": "1.15.0",
+            "version": "1.16.0",
             "require": {
                 "drupal/acquia_connector": "self.version",
                 "drupal/core": "*",
@@ -3246,8 +3246,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.15",
-                    "datestamp": "1547038684",
+                    "version": "8.x-1.16",
+                    "datestamp": "1549478497",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5787,35 +5787,38 @@
         },
         {
             "name": "drupal/devel",
-            "version": "1.2.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/devel",
-                "reference": "8.x-1.2"
+                "reference": "8.x-2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/devel-8.x-1.2.zip",
-                "reference": "8.x-1.2",
-                "shasum": "01f3349ef75f6e21fceef24be9d3d6506ca29647"
+                "url": "https://ftp.drupal.org/files/projects/devel-8.x-2.0.zip",
+                "reference": "8.x-2.0",
+                "shasum": "cf5fb816f767f3cac4f2e170ab39e982d5e0698b"
             },
             "require": {
-                "drupal/core": "~8.0"
-            },
-            "suggest": {
-                "symfony/var-dumper": "Pretty print complex values better with var-dumper available"
+                "drupal/core": "~8.0",
+                "symfony/var-dumper": "~2.7|^3"
             },
             "type": "drupal-module",
             "extra": {
                 "branch-alias": {
-                    "dev-1.x": "1.x-dev"
+                    "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.2",
-                    "datestamp": "1507197844",
+                    "version": "8.x-2.0",
+                    "datestamp": "1548799380",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9"
                     }
                 }
             },
@@ -20850,7 +20853,7 @@
                 "type": "tar",
                 "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-9614541fc58d450240d6ce29684a385ce3df676f-zip-2b6117.tar",
                 "reference": "9614541fc58d450240d6ce29684a385ce3df676f",
-                "shasum": "1e81c845efb06aa92b697dd7b123bcb1092b1c90"
+                "shasum": "b59832266163c065b7f4ebc5ede8aaebc5780407"
             },
             "type": "drupal-theme",
             "license": [
@@ -20910,17 +20913,6 @@
         {
             "name": "webflo/drupal-core-require-dev",
             "version": "8.6.10",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/webflo/drupal-core-require-dev.git",
-                "reference": "a3ec86723a2d753c020bfa995281c3cefa0cbb89"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/webflo/drupal-core-require-dev/zipball/a3ec86723a2d753c020bfa995281c3cefa0cbb89",
-                "reference": "a3ec86723a2d753c020bfa995281c3cefa0cbb89",
-                "shasum": ""
-            },
             "require": {
                 "behat/mink": "1.7.x-dev",
                 "behat/mink-goutte-driver": "^1.2",

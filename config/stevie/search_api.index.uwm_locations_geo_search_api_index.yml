@@ -1,6 +1,6 @@
 uuid: fa109944-580e-4fb0-a09e-6cbe0ccebfcc
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - field.storage.node.body
@@ -9,7 +9,6 @@ dependencies:
     - field.storage.node.field_res_phone_number
     - field.storage.node.field_res_medical_services
     - field.storage.taxonomy_term.field_term_keywords
-    - search_api.server.acquia_search_server
   module:
     - taxonomy
     - search_api_location
@@ -19,7 +18,7 @@ dependencies:
 id: uwm_locations_geo_search_api_index
 name: 'UWM Locations Geo - Search API Index'
 description: ''
-read_only: false
+read_only: true
 field_settings:
   body:
     label: Description
@@ -145,4 +144,5 @@ tracker_settings:
 options:
   index_directly: true
   cron_limit: 50
-server: acquia_search_server
+  overridden_by_acquia_search: 2
+server: null

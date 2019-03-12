@@ -1,4 +1,4 @@
-uuid: a31b8cbc-bc99-4411-97f8-0654293d55ae
+uuid: d2712b6b-0ee5-48a7-9c36-c7e8848f52d9
 langcode: en
 status: false
 dependencies:
@@ -7,7 +7,6 @@ dependencies:
     - search_api.server.acquia_search_server
   module:
     - search_api
-    - uwmcs_searchfields
     - node
 _core:
   default_config_hash: '-ggwZpvT2-Ey1fqPkREitA6TGI_m5dTHD9vZm9FrlSQ'

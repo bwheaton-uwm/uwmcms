@@ -1,4 +1,4 @@
-acquia_connector: 1.14.0
+acquia_connector: 1.16.0
 acquia_lift: 3.8.0
 acquia_lift_inspector: 3.8.0
 acquia_purge: 1.0.0-beta3
@@ -137,3 +137,5 @@ menu_export: 1.2.0
 memcache: 2.0.0-alpha7
 uwmed_uwmcms_gtm: 0.0.0
 uwmed_uwmcms_robots_header: 0.0.0
+search_api_solr: 1.2.0
+acquia_search: 1.16.0

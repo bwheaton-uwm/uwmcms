@@ -3,6 +3,7 @@ module:
   acquia_lift: 0
   acquia_lift_inspector: 0
   acquia_purge: 0
+  acquia_search: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0
   allowed_formats: 0
@@ -106,6 +107,7 @@ module:
   responsive_image: 0
   search_api: 0
   search_api_db: 0
+  search_api_solr: 0
   seckit: 0
   serialization: 0
   shortcut: 0
