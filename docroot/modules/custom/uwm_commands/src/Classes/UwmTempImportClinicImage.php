@@ -28,16 +28,21 @@ class UwmTempImportClinicImage {
   /**
    * Description here.
    */
-  public function saveClinicImagesLocally(string $mappingFile = NULL) {
+  public static function saveClinicImagesLocally(string $mappingFile = NULL) {
 
-    $data = $this->readJson($mappingFile);
+    $data = self::readJson($mappingFile);
 
     foreach ($data as $item) {
+
+      drush_print("\nTrying item: " . $item['image_uri']);
 
       $node = Node::load($item['stevie_nid']);
       $newImage = self::saveImage($item['image_uri']);
 
-      $this->saveNode($newImage, $node);
+      drush_print("Created image: " . $newImage->id());
+      drush_print("Saving node: " . $node->getTitle());
+
+      self::saveNode($newImage, $node);
 
     }
 
@@ -46,7 +51,7 @@ class UwmTempImportClinicImage {
   /**
    * Description here.
    */
-  private function saveNode($file, $node) {
+  private static function saveNode($file, $node) {
 
     if ($file && $node) {
 
@@ -66,7 +71,7 @@ class UwmTempImportClinicImage {
   /**
    * Description here.
    */
-  private function saveImage(string $imagePath = NULL) {
+  private static function saveImage(string $imagePath = NULL) {
 
     $drupalPath = $imagePath;
     $sourceUrl = 'https://cms.uwmedicine.org/sites/default/files/' .
@@ -94,7 +99,10 @@ class UwmTempImportClinicImage {
   /**
    * Description here.
    */
-  private function readJson(string $filePath = NULL) {
+  private static function readJson(string $filePath = NULL) {
+
+    echo "\n\npwd: " . `pwd`;
+    echo "\n\nfilePath: $filePath";
 
     $string = file_get_contents($filePath);
     $data = json_decode($string, TRUE);

@@ -8,6 +8,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\KeyValueStore\KeyValueFactoryInterface;
 use Drush\Commands\DrushCommands;
 
+// Use Drupal\uwm_commands\Commands\UwmTempImportClinicImage;.
 /**
  * Define Drush commands for UW Medicine.
  */
@@ -260,8 +261,11 @@ class UwmCommands extends DrushCommands {
   public function importUwmedClinicImagesToStevie($mappingFile) {
 
     // @TODO: Move this to a hook_update_N().
+    module_load_include('php', 'uwm_commands',
+      'src/Classes/UwmTempImportClinicImage');
+
     $importer = new UwmTempImportClinicImage();
-    $importer->saveClinicImagesLocally($mappingFile);
+    $importer::saveClinicImagesLocally($mappingFile);
 
   }
 
