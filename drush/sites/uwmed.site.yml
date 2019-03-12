@@ -25,5 +25,5 @@ prod:
   options: { ac-env: prod, ac-realm: prod, ac-site: uwmed }
   paths: { drush-script: drush9 }
   root: /var/www/html/uwmed.prod/docroot
-  uri: uwmedicine.org
+  uri: cms.uwmedicine.org
   user: uwmed.prod
