@@ -1,6 +1,6 @@
-uuid: 847eac66-dac2-4f66-b982-02b7274910f9
+uuid: 933f49fa-5210-49c3-b820-5e67f4ffbf83
 langcode: en
-status: false
+status: true
 dependencies:
   module:
     - acquia_search
@@ -12,19 +12,23 @@ name: 'Acquia Search API Solr server'
 description: ''
 backend: search_api_solr
 backend_config:
-  site_hash: true
-  excerpt: false
-  retrieve_data: true
-  highlight_data: true
-  skip_schema_check: false
   connector: solr_acquia_connector
   connector_config:
     scheme: http
-    timeout: 5
-    index_timeout: 10
-    optimize_timeout: 15
+    timeout: '5'
+    index_timeout: '10'
+    optimize_timeout: '15'
+    commit_within: '1000'
     solr_version: ''
     http_method: AUTO
+  retrieve_data: true
+  highlight_data: true
+  excerpt: false
+  skip_schema_check: false
+  site_hash: true
   suggest_suffix: true
   suggest_corrections: true
   suggest_words: false
+  acquia_search_possible_cores:
+    - BEXY-148616.dev.uwmeddevdb254268
+    - BEXY-148616.dev.stevie

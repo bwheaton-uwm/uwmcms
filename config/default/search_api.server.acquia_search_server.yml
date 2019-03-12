@@ -1,6 +1,6 @@
 uuid: 2b89e1a9-6126-4a8c-b6b9-f4c5da45d56c
 langcode: en
-status: false
+status: true
 dependencies:
   module:
     - acquia_search
@@ -28,3 +28,7 @@ backend_config:
   suggest_suffix: true
   suggest_corrections: true
   suggest_words: false
+  acquia_search_possible_cores:
+    - BEXY-148616.dev.uwmeddev
+    - BEXY-148616.dev.default
+  overridden_by_acquia_search: 2

@@ -1,4 +1,4 @@
-uuid: a31b8cbc-bc99-4411-97f8-0654293d55ae
+uuid: f59e03fd-057d-4720-8f47-fdc93613804f
 langcode: en
 status: false
 dependencies:
@@ -6,9 +6,9 @@ dependencies:
     - field.storage.node.body
     - search_api.server.acquia_search_server
   module:
+    - node
     - search_api
     - uwmcs_searchfields
-    - node
 _core:
   default_config_hash: '-ggwZpvT2-Ey1fqPkREitA6TGI_m5dTHD9vZm9FrlSQ'
 id: acquia_search_index
@@ -16,11 +16,6 @@ name: 'Acquia Search Solr Index'
 description: ''
 read_only: false
 field_settings:
-  search_api_language:
-    label: 'Item language'
-    datasource_id: null
-    property_path: search_api_language
-    type: string
   body:
     label: Body
     datasource_id: 'entity:node'
@@ -34,6 +29,9 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: title
     type: text
+    dependencies:
+      module:
+        - node
 datasource_settings:
   'entity:node':
     plugin_id: 'entity:node'
@@ -44,17 +42,24 @@ datasource_settings:
       languages:
         default: true
         selected: {  }
+    bundles:
+      default: true
+      selected: {  }
+    languages:
+      default: true
+      selected: {  }
 processor_settings:
+  UwmSearchWithin: {  }
   add_url:
     plugin_id: add_url
     settings: {  }
-  language:
-    plugin_id: language
-    settings: {  }
+  aggregated_field: {  }
+  rendered_item: {  }
 tracker_settings:
   default:
     plugin_id: default
     settings: {  }
+    indexing_order: fifo
 options:
   index_directly: false
   cron_limit: 50
