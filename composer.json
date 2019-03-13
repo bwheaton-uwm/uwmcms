@@ -14,8 +14,20 @@
     "url": "https://asset-packagist.org"
   },
   {
-    "type": "composer",
-    "url": "https://uwmcms-packages.netlify.com"
+    "type": "vcs",
+    "url": "https://github.com/uwmweb/uwmbase"
+  },
+  {
+    "type": "vcs",
+    "url": "https://github.com/uwmweb/ckeditor_bs_grid"
+  },
+  {
+    "type": "vcs",
+    "url": "https://github.com/uwmweb/uwmedicineorg_theme"
+  },
+  {
+    "type": "vcs",
+    "url": "https://github.com/uwmweb/uwm_paragraphs"
   },
   {
     "type": "package",

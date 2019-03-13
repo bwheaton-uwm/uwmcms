@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f71fe1cfd04d5a8f688d0825e9bb8fe5",
+    "content-hash": "aefda1d85940bf03b848bff7846880ac",
     "packages": [
         {
             "name": "acquia/blt",
@@ -20791,7 +20791,7 @@
             },
             "dist": {
                 "type": "tar",
-                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/ckeditor_bs_grid/uwmweb-ckeditor_bs_grid-e2bd7a01273019212bcce473fa62e7c655d65b3a-zip-b9915b.tar",
+                "url": "https://api.github.com/repos/uwmweb/ckeditor_bs_grid/zipball/e2bd7a01273019212bcce473fa62e7c655d65b3a",
                 "reference": "e2bd7a01273019212bcce473fa62e7c655d65b3a",
                 "shasum": "507cfbd5c446bb4c2705b65a760388c3144e25fa"
             },
@@ -20819,7 +20819,7 @@
             },
             "dist": {
                 "type": "tar",
-                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwm_paragraphs/uwmweb-uwm_paragraphs-ab60ae51a6dc710b62576d01356d8b8446709fca-zip-7b9ee9.tar",
+                "url": "https://api.github.com/repos/uwmweb/uwm_paragraphs/zipball/ab60ae51a6dc710b62576d01356d8b8446709fca",
                 "reference": "ab60ae51a6dc710b62576d01356d8b8446709fca",
                 "shasum": "455a76e29a7eaca06a20b590ff9df69833d73b3a"
             },
@@ -20851,7 +20851,7 @@
             },
             "dist": {
                 "type": "tar",
-                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmbase/uwmweb-uwmbase-9614541fc58d450240d6ce29684a385ce3df676f-zip-2b6117.tar",
+                "url": "https://api.github.com/repos/uwmweb/uwmbase/zipball/9614541fc58d450240d6ce29684a385ce3df676f",
                 "reference": "9614541fc58d450240d6ce29684a385ce3df676f",
                 "shasum": "b59832266163c065b7f4ebc5ede8aaebc5780407"
             },
@@ -20876,7 +20876,7 @@
             },
             "dist": {
                 "type": "tar",
-                "url": "https://uwmcms-packages.netlify.com/dist/uwmweb/uwmedicineorg_theme/uwmweb-uwmedicineorg_theme-7073e3e440a3dc75812056d30259459f6f49ac52-zip-0a228d.tar",
+                "url": "https://api.github.com/repos/uwmweb/uwmedicineorg_theme/zipball/7073e3e440a3dc75812056d30259459f6f49ac52",
                 "reference": "7073e3e440a3dc75812056d30259459f6f49ac52",
                 "shasum": "70e7db52bab4b117c91f99b9b1b8d3ecc213c502"
             },
