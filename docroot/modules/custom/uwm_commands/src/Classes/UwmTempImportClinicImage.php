@@ -34,15 +34,21 @@ class UwmTempImportClinicImage {
 
     foreach ($data as $item) {
 
-      drush_print("\nTrying item: " . $item['image_uri']);
+      self::setMessage("\nSaving image and adding to  node: " . $item['image_uri']);
 
-      $node = Node::load($item['stevie_nid']);
-      $newImage = self::saveImage($item['image_uri']);
+      try {
 
-      drush_print("Created image: " . $newImage->id());
-      drush_print("Saving node: " . $node->getTitle());
+        $node = Node::load($item['stevie_nid']);
+        $newImage = self::saveImage($item['image_uri']);
 
-      self::saveNode($newImage, $node);
+        self::setMessage("Updated node " . $node->id() . " (" . $node->getTitle() . ") ");
+        self::saveNode($newImage, $node);
+
+      }
+      catch (\Exception $e) {
+        self::setMessage("\nFailed saving image or node: \n" . json_encode($item) . "\n\n");
+
+      }
 
     }
 
@@ -85,6 +91,7 @@ class UwmTempImportClinicImage {
     }
 
     if ($file->id()) {
+      self::setMessage("Found image: " . $file->id());
       return $file;
     }
 
@@ -93,6 +100,7 @@ class UwmTempImportClinicImage {
       $file = file_save_data($fileData, $drupalPath, FILE_EXISTS_RENAME);
     }
 
+    self::setMessage("Created image: " . $file->id());
     return $file;
   }
 
@@ -108,6 +116,15 @@ class UwmTempImportClinicImage {
     $data = json_decode($string, TRUE);
 
     return $data;
+  }
+
+  /**
+   * Description here.
+   */
+  private static function setMessage(string $message = NULL) {
+
+    drush_print($message);
+
   }
 
 }

@@ -258,7 +258,7 @@ class UwmCommands extends DrushCommands {
    * @usage uwm:import-uwmed-clinic-images-to-stevie
    *   Imports images from @stevie to @uwmed bason on json file mapping.
    */
-  public function importUwmedClinicImagesToStevie($mappingFile) {
+  public function importUwmedClinicImagesToStevie($mappingFile = NULL) {
 
     // @TODO: Move this to a hook_update_N().
     module_load_include('php', 'uwm_commands',
