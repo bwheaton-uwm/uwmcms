@@ -1,0 +1,19 @@
+uuid: f00439e6-b48d-4746-bc99-3307d744dc21
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_json_packet
+    - node.type.res_clinic
+id: node.res_clinic.field_uwm_json_packet
+field_name: field_uwm_json_packet
+entity_type: node
+bundle: res_clinic
+label: uwm_json_packet
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

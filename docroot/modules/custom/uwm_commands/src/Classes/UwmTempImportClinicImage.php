@@ -30,23 +30,33 @@ class UwmTempImportClinicImage {
    */
   public static function saveClinicImagesLocally(string $mappingFile = NULL) {
 
+    self::setMessage("Loading mapping file: " . $mappingFile);
     $data = self::readJson($mappingFile);
 
     foreach ($data as $item) {
 
-      self::setMessage("\nSaving image and adding to  node: " . $item['image_uri']);
+      self::setMessage("\nAdding image to node: " . $item['image_uri']);
 
       try {
 
         $node = Node::load($item['stevie_nid']);
-        $newImage = self::saveImage($item['image_uri']);
+        $image = self::saveImage($item['image_uri']);
 
-        self::setMessage("Updated node " . $node->id() . " (" . $node->getTitle() . ") ");
-        self::saveNode($newImage, $node);
+        if ($node && $node->id() && $image && $image->id()) {
 
+          self::setMessage("Updated node " . $node->id() . " (" . $node->getTitle() . ") ");
+          self::saveNode($image, $node);
+
+        }
+        else {
+
+          throw new \Exception("Failed finding node or saving image.");
+
+        }
       }
       catch (\Exception $e) {
-        self::setMessage("\nFailed saving image or node: \n" . json_encode($item) . "\n\n");
+
+        self::setMessage("\nFailed saving image or node: \n" . json_encode($item) . "\n\n" . $e->getMessage());
 
       }
 
@@ -90,7 +100,7 @@ class UwmTempImportClinicImage {
       $file = array_shift($existingFile);
     }
 
-    if ($file->id()) {
+    if ($file && $file->id()) {
       self::setMessage("Found image: " . $file->id());
       return $file;
     }
@@ -109,9 +119,6 @@ class UwmTempImportClinicImage {
    */
   private static function readJson(string $filePath = NULL) {
 
-    echo "\n\npwd: " . `pwd`;
-    echo "\n\nfilePath: $filePath";
-
     $string = file_get_contents($filePath);
     $data = json_decode($string, TRUE);
 
@@ -123,7 +130,14 @@ class UwmTempImportClinicImage {
    */
   private static function setMessage(string $message = NULL) {
 
-    drush_print($message);
+    if (function_exists('drush_print')) {
+      drush_print($message);
+    }
+    else {
+      print "<pre>\nMESSAGE:\n" . $message . "\n\n</pre>";
+    }
+
+    \Drupal::messenger()->addMessage($message);
 
   }
 

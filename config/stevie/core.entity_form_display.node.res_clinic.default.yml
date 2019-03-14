@@ -21,6 +21,7 @@ dependencies:
     - field.field.node.res_clinic.field_res_providers
     - field.field.node.res_clinic.field_res_room_number
     - field.field.node.res_clinic.field_search_best_bets
+    - field.field.node.res_clinic.field_uwm_json_packet
     - field.field.node.res_clinic.uwm_unique_id
     - image.style.thumbnail
     - node.type.res_clinic
@@ -38,7 +39,7 @@ bundle: res_clinic
 mode: default
 content:
   body:
-    weight: 28
+    weight: 24
     settings:
       rows: 9
       summary_rows: 3
@@ -184,7 +185,7 @@ content:
     type: string_textfield
     region: content
   field_search_best_bets:
-    weight: 30
+    weight: 26
     settings:
       match_operator: CONTAINS
       size: 60
@@ -248,7 +249,7 @@ content:
     region: content
     third_party_settings: {  }
   url_redirects:
-    weight: 29
+    weight: 25
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -262,4 +263,5 @@ content:
     region: content
 hidden:
   field_test_m_services2: true
+  field_uwm_json_packet: true
   path: true

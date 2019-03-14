@@ -1,0 +1,19 @@
+uuid: d9c3e638-81ac-48aa-8552-8c729727633f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_json_packet
+    - node.type.res_provider
+id: node.res_provider.field_uwm_json_packet
+field_name: field_uwm_json_packet
+entity_type: node
+bundle: res_provider
+label: uwm_json_packet
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

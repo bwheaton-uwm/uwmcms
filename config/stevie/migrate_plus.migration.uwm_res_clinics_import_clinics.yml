@@ -111,6 +111,10 @@ source:
       label: uwm_unique_id
       selector: /attributes/uwm_unique_id
     -
+      name: uwm_json_packet
+      label: uwm_json_packet
+      selector: /attributes/uwm_json_packet
+    -
       name: field_res_providers
       label: field_res_providers
       selector: /relationships/field_res_providers/data
@@ -154,6 +158,7 @@ process:
   field_res_phone_number: field_res_phone_number
   field_res_room_number: field_res_room_number
   uwm_unique_id: uwm_unique_id
+  uwm_json_packet: uwm_json_packet
   field_res_providers:
     -
       plugin: uwm_nid_for_uuid

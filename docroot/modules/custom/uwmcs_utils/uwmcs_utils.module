@@ -5,6 +5,7 @@
  * Custom module for small, utility-type routines.
  */
 
+use Drupal\uwm_commands\Commands\UwmTempImportClinicImage;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
@@ -54,14 +55,20 @@ function uwmcs_utils_page_attachments(array &$attachments) {
  */
 function uwmcs_utils_preprocess_page(&$vars) {
 
+  // @TODO: Remove after one-time import:
   $qp = \Drupal::request()->query->all();
-  if (!empty($qp['temp-import-clinic-images'])) {
+  if (!empty($qp['temp-import-clinic-images-mapping-file'])) {
 
     // module_load_include('php', 'uwm_commands',
-    // 'src/Classes/UwmTempImportClinicImage');
-    // require_once ('/var/www/uwmed/docroot/modules/custom/uwm_commands/src/Classes/UwmTempImportClinicImage.php');
-    // $importer = new UwmTempImportClinicImage();
-    // $importer->saveClinicImagesLocally('sites/stevie/files/images.json');
+    // 'src/Classes/UwmTempImportClinicImage.php');.
+    $f = trim(`pwd`) . '/modules/custom/uwm_commands/src/Classes/UwmTempImportClinicImage.php';
+    if (is_file($f)) {
+
+      require_once $f;
+      $importer = new UwmTempImportClinicImage();
+      $importer::saveClinicImagesLocally($qp['temp-import-clinic-images-mapping-file']);
+
+    }
   }
 
 }

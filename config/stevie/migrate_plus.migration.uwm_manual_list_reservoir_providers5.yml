@@ -135,6 +135,10 @@ source:
       label: uwm_unique_id
       selector: /attributes/uwm_unique_id
     -
+      name: uwm_json_packet
+      label: uwm_json_packet
+      selector: /attributes/uwm_json_packet
+    -
       name: field_res_affiliates
       label: field_res_affiliates
       selector: /relationships/field_res_affiliates/data
@@ -214,6 +218,7 @@ process:
   field_res_pubmed_ids: field_res_pubmed_ids
   field_res_puma_id: field_res_puma_id
   uwm_unique_id: uwm_unique_id
+  uwm_json_packet: uwm_json_packet
   field_res_affiliates:
     plugin: sub_process
     source: field_res_affiliates

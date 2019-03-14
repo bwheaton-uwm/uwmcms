@@ -111,6 +111,10 @@ source:
   - name: uwm_unique_id
     label: uwm_unique_id
     selector: /attributes/uwm_unique_id
+    
+  - name: uwm_json_packet
+    label: uwm_json_packet
+    selector: /attributes/uwm_json_packet
 
   #  - name: field_res_image
   #    label: field_res_image
@@ -194,7 +198,7 @@ process:
   #    source: field_res_hours_of_operation
 
   uwm_unique_id: uwm_unique_id
-
+  uwm_json_packet: uwm_json_packet
 
 
   field_res_providers:

@@ -23,6 +23,7 @@ dependencies:
     - field.field.node.res_provider.field_res_pubmed_ids
     - field.field.node.res_provider.field_res_puma_id
     - field.field.node.res_provider.field_search_best_bets
+    - field.field.node.res_provider.field_uwm_json_packet
     - field.field.node.res_provider.uwm_unique_id
     - image.style.thumbnail
     - node.type.res_provider
@@ -212,7 +213,7 @@ content:
     type: number
     region: content
   field_search_best_bets:
-    weight: 51
+    weight: 28
     settings:
       match_operator: CONTAINS
       size: 60
@@ -267,10 +268,10 @@ content:
     region: content
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 27
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   uwm_unique_id:
     weight: 12
     settings:
@@ -280,4 +281,5 @@ content:
     type: string_textfield
     region: content
 hidden:
+  field_uwm_json_packet: true
   path: true
