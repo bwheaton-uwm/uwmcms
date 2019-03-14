@@ -16,6 +16,7 @@ regions:
   content_innner_sidebar: 'Content Inner Sidebar'
   page_bottom: 'Page bottom'
   footer: 'Page Footer'
+  twig_blocks: 'Blocks rendered via Twig templates'
 
 libraries:
   - 'uwmed/styles'
