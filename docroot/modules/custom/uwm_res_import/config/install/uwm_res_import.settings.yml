@@ -1,0 +1,2 @@
+use_cache: TRUE
+use_highwatermark: TRUE
