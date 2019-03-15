@@ -19,12 +19,6 @@ class UwmResImportSubscriber implements EventSubscriberInterface {
    *   The event triggered when preparing a row in a migration.
    */
   public function prepareRow(MigratePrepareRowEvent $event) {
-
-    $checkFromLastImportOnly = self::isHighwatermarkTrue();
-    if ($checkFromLastImportOnly === FALSE) {
-      return;
-    }
-
     /** @var \Drupal\migrate\Row $row */
     $row = $event->getRow();
 
@@ -52,25 +46,6 @@ class UwmResImportSubscriber implements EventSubscriberInterface {
   public static function getSubscribedEvents() {
     $events[MigrateEvents::PREPARE_ROW] = ['prepareRow'];
     return $events;
-  }
-
-  /**
-   * Determine if to cache or highwatermark should be disabled.
-   *
-   * @return bool
-   *   Whether to preserve the highwater mark.
-   */
-  private static function isHighwatermarkTrue() {
-
-    $config = \Drupal::config('uwm_res_import');
-    $setting = $config->get('use_highwatermark');
-
-    if (isset($setting)) {
-      return (bool) $setting;
-    }
-
-    return FALSE;
-
   }
 
 }
