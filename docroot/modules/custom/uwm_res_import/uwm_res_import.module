@@ -17,6 +17,9 @@ use GuzzleHttp\Exception\RequestException;
  */
 function uwm_res_import_entity_presave(EntityInterface $entity) {
 
+  /***
+   * Set value to an int, so it's preserved forcheckbox:
+   */
   if ($entity->bundle() === "res_provider") {
     $v2 = $entity->field_res_isacceptingnewpts->value;
     $entity->field_res_isacceptingnewpts->value = (int) $v2;
@@ -86,31 +89,33 @@ function _uwm_res_import_migration_plugins_alter(array &$migration) {
  *   The source URLs.
  */
 function _uwm_res_import_get_migration_source_urls(array $base_urls) {
+
   $source_urls = [];
 
   // Derive all of the source URLs from the base URLs.
-  foreach ($base_urls as $base_url) {
+  foreach ($base_urls as $current_url) {
+
     // Make sure the base URL has a trailing slash before any query.
-    $base_url_parts = explode('?', $base_url);
-    $base_url = $base_url_parts[0];
-    if (substr($base_url_parts[0], -1) != '/') {
-      $base_url .= '/';
-    }
-    $base_url .= !empty($base_url_parts[1]) ? '?' . $base_url_parts[1] : '';
+    $current_url = str_replace('?', '/?', $current_url);
+    $current_url = str_replace('//?', '/?', $current_url);
 
     // Get the data from the base URL.
-    $data = _uwm_res_import_get_migration_data($base_url);
+    $data = _uwm_res_import_get_migration_data($current_url);
 
     // Set the first source URL.
-    if (isset($data['links']['self'])) {
-      $source_urls[] = $data['links']['self'];
-
-      // Set the remaining source URLs.
-      while (isset($data['links']['next'])) {
-        $source_urls[] = $data['links']['next'];
-        $data = _uwm_res_import_get_migration_data($data['links']['next']);
-      }
+    $self = $data['links']['self']['href'] ?? NULL;
+    if ($self) {
+      $source_urls[] = $self;
     }
+
+    // Set the remaining source URLs.
+    $next = $data['links']['next']['href'] ?? NULL;
+    while ($next) {
+      $source_urls[] = $next;
+      $data = _uwm_res_import_get_migration_data($next);
+      $next = $data['links']['next']['href'] ?? NULL;
+    }
+
   }
 
   return array_unique($source_urls);
@@ -129,25 +134,20 @@ function _uwm_res_import_get_migration_data($url) {
 
   $data = [];
 
-  $useCache = TRUE;
-  $cacheKey = preg_replace("/[^A-Za-z0-9]/", '', $url);
-  $cacheItemExpires = time() + 23 * 60 * 60;
-
-  if (stripos($cacheKey, 'offset0') !== FALSE) {
-    $useCache = FALSE;
-  }
-
   // Retrieve the JSON data from the URL.
   try {
 
-    if ($useCache) {
+    if (_use_cache()) {
+
+      $cacheKey = preg_replace("/[^A-Za-z0-9]/", '', $url);
+      $cacheItemExpires = time() + 23 * 60 * 60;
 
       $cacheResult = \Drupal::cache()->get($cacheKey, FALSE);
       $data = $cacheResult->data ?? [];
 
     }
 
-    if (empty($data['links']['self'])) {
+    if (empty($data)) {
 
       $response = \Drupal::service('http_client')->get($url);
 
@@ -170,4 +170,23 @@ function _uwm_res_import_get_migration_data($url) {
   }
 
   return $data;
+}
+
+/**
+ * Determine if to cache url requests.
+ *
+ * @return bool
+ *   TRUE if value should be cached.
+ */
+function _use_cache() {
+
+  $config = \Drupal::config('uwm_res_import.settings');
+  $setting = $config->get('use_cache');
+
+  if (isset($setting)) {
+    return (bool) $setting;
+  }
+
+  return TRUE;
+
 }

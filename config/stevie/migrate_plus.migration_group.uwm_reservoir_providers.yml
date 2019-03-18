@@ -1,0 +1,10 @@
+uuid: 09820050-74b0-4402-81ad-357758fb5977
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_reservoir_providers
+label: uwm_reservoir_providers
+description: ''
+source_type: null
+module: null
+shared_configuration: null

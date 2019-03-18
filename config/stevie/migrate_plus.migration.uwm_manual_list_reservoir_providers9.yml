@@ -1,23 +1,35 @@
-uuid: 656583dd-a73d-4e6f-9933-4f8de64433cc
+uuid: 843d053d-f761-414d-ae6d-785c056616bf
 langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - uwm_res_import
-id: uwm_providers_import_providers
+id: uwm_manual_list_reservoir_providers9
 class: null
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags: null
-migration_group: uwm_providers_old
-label: uwm_providers_import_providers
+migration_group: uwm_reservoir_providers
+label: uwm_manual_list_reservoir_providers9
 source:
   plugin: url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  urls: 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed'
+  urls:
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=4000&page[limit]=50&sort=-changed'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=4050&page[limit]=50&sort=-changed'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=4100&page[limit]=50&sort=-changed'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=4150&page[limit]=50&sort=-changed'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=4200&page[limit]=50&sort=-changed'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=4250&page[limit]=50&sort=-changed'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=4300&page[limit]=50&sort=-changed'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=4350&page[limit]=50&sort=-changed'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=4400&page[limit]=50&sort=-changed'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[offset]=4450&page[limit]=50&sort=-changed'
   ids:
+    uuid:
+      type: string
     nid:
       type: integer
   item_selector: data/

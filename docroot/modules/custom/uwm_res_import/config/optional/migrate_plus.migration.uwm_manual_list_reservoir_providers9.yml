@@ -1,6 +1,6 @@
 # Migration configuration for imported articles.
-id: uwm_manual_list_reservoir_providers3
-label: uwm_manual_list_reservoir_providers3
+id: uwm_manual_list_reservoir_providers9
+label: uwm_manual_list_reservoir_providers9
 migration_group: uwm_reservoir_providers
 #migration_dependencies:
 #  require:

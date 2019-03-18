@@ -752,6 +752,34 @@ $settings['file_scan_ignore_directories'] = [
   'bower_components',
 ];
 
+
+
+/**
+ * Our various overrides begin below. They are settings that are pulled in
+ * with the host, Acquia settings file below, or the development settings.php
+ * file, the no-backup settings include, and this block, with overrides per
+ * environment. 
+ */
+if (!isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+
+	$config['uwm_res_import.settings']['use_cache'] = TRUE;
+	$config['uwm_res_import.settings']['use_highwatermark'] = FALSE;
+
+}
+
+if(isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+
+  if ($_ENV['AH_SITE_ENVIRONMENT'] === 'dev') {
+
+	$config['uwm_res_import.settings']['use_cache'] = TRUE;
+	$config['uwm_res_import.settings']['use_highwatermark'] = FALSE;
+
+  }
+
+}
+
+
+
 /**
  * Load local development override configuration, if available.
  *
@@ -862,4 +890,11 @@ require DRUPAL_ROOT . "/../vendor/acquia/blt/settings/blt.settings.php";
 $settings['install_profile'] = 'lightning';
 $config_directories['sync'] = '../config/stevie';
 $config_directories['vcs'] = '../config/stevie';
+
+
+
+
+
+
+
 
