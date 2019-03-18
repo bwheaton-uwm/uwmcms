@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "42b6620b098097d7d04020ccdc754065",
+    "content-hash": "aefda1d85940bf03b848bff7846880ac",
     "packages": [
         {
             "name": "acquia/blt",
@@ -20837,16 +20837,16 @@
         },
         {
             "name": "uwmweb/uwmbase",
-            "version": "dev-features-search",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/uwmweb/uwmbase.git",
-                "reference": "81f8c868de185f39a61da08b36aa870d5ab940b3"
+                "reference": "0f4f2bb017caa453fb1e9ab320d5f3672eaa85a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/uwmweb/uwmbase/zipball/81f8c868de185f39a61da08b36aa870d5ab940b3",
-                "reference": "81f8c868de185f39a61da08b36aa870d5ab940b3",
+                "url": "https://api.github.com/repos/uwmweb/uwmbase/zipball/0f4f2bb017caa453fb1e9ab320d5f3672eaa85a9",
+                "reference": "0f4f2bb017caa453fb1e9ab320d5f3672eaa85a9",
                 "shasum": ""
             },
             "type": "drupal-theme",
@@ -20855,10 +20855,10 @@
             ],
             "description": "UW Medicine base theme and component library, a Zen sub-theme using Bootstrap 4.",
             "support": {
-                "source": "https://github.com/uwmweb/uwmbase/tree/features-search",
+                "source": "https://github.com/uwmweb/uwmbase/tree/develop",
                 "issues": "https://github.com/uwmweb/uwmbase/issues"
             },
-            "time": "2019-03-18T19:31:37+00:00"
+            "time": "2019-03-18T20:03:21+00:00"
         },
         {
             "name": "uwmweb/uwmedicineorg_theme",
@@ -20907,6 +20907,17 @@
         {
             "name": "webflo/drupal-core-require-dev",
             "version": "8.6.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webflo/drupal-core-require-dev.git",
+                "reference": "a3ec86723a2d753c020bfa995281c3cefa0cbb89"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webflo/drupal-core-require-dev/zipball/a3ec86723a2d753c020bfa995281c3cefa0cbb89",
+                "reference": "a3ec86723a2d753c020bfa995281c3cefa0cbb89",
+                "shasum": ""
+            },
             "require": {
                 "behat/mink": "1.7.x-dev",
                 "behat/mink-goutte-driver": "^1.2",
