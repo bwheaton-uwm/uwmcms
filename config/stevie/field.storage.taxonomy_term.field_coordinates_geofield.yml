@@ -1,12 +1,12 @@
-uuid: 38a68cf8-600f-427f-83c6-eac8e1ceaa60
+uuid: 353f03b2-0d98-43a4-b672-857431da1a93
 langcode: en
 status: true
 dependencies:
   module:
     - geofield
     - taxonomy
-id: taxonomy_term.field_geo_coordinates
-field_name: field_geo_coordinates
+id: taxonomy_term.field_coordinates_geofield
+field_name: field_coordinates_geofield
 entity_type: taxonomy_term
 type: geofield
 settings:

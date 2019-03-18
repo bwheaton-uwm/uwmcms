@@ -47,7 +47,7 @@ display:
       pager:
         type: full
         options:
-          items_per_page: 8
+          items_per_page: 12
           offset: 0
           id: 0
           total_pages: null
@@ -486,6 +486,17 @@ display:
         type: none
       defaults:
         cache: false
+        style: false
+        row: false
+      style:
+        type: default
+        options: {  }
+      row:
+        type: search_api
+        options:
+          view_modes:
+            'entity:node':
+              res_clinic: card
     cache_metadata:
       max-age: -1
       contexts:

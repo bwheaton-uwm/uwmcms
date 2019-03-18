@@ -1,15 +1,22 @@
-uuid: fa109944-580e-4fb0-a09e-6cbe0ccebfcc
+uuid: 8e5b5665-7816-47ee-a99b-b64a37a1e986
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.body
     - field.storage.node.field_res_building
-    - field.storage.taxonomy_term.field_geo_coordinates
-    - field.storage.node.field_res_phone_number
+    - field.storage.taxonomy_term.field_coordinates_geofield
+    - field.storage.node.field_res_affiliates
+    - field.storage.taxonomy_term.field_res_address
+    - field.storage.node.field_res_fax_number
     - field.storage.node.field_res_medical_services
     - field.storage.taxonomy_term.field_term_keywords
+    - field.storage.node.field_res_phone_number
+    - field.storage.node.field_res_providers
+    - field.storage.node.field_res_name
+    - field.storage.node.field_search_best_bets
     - search_api.server.acquia_search_server
+    - core.entity_view_mode.node.search_result
   module:
     - taxonomy
     - search_api_location
@@ -22,44 +29,86 @@ description: ''
 read_only: false
 field_settings:
   body:
-    label: Description
+    label: Body
     datasource_id: 'entity:node'
     property_path: body
     type: text
     dependencies:
       config:
         - field.storage.node.body
-  field_geo_coordinates:
-    label: 'Building » Taxonomy term » Geo Coordinates'
+  field_coordinates_geofield_latlong:
+    label: 'Building » Coordinates Geofield LatLon'
     datasource_id: 'entity:node'
-    property_path: 'field_res_building:entity:field_geo_coordinates'
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_res_building
-        - field.storage.taxonomy_term.field_geo_coordinates
-      module:
-        - taxonomy
-  field_res_building_latlon:
-    label: 'Building  Geo Coordinates LatLong Pair'
-    datasource_id: 'entity:node'
-    property_path: 'field_res_building:entity:field_geo_coordinates:latlon'
+    property_path: 'field_res_building:entity:field_coordinates_geofield'
     type: location
     dependencies:
       config:
         - field.storage.node.field_res_building
-        - field.storage.taxonomy_term.field_geo_coordinates
+        - field.storage.taxonomy_term.field_coordinates_geofield
       module:
         - taxonomy
-  field_res_building_latlon_1:
-    label: 'Building Geo Coordinates LatLong Spatial RP'
+  field_coordinates_geofield_spaprefix:
+    label: 'Building » Coordinates Geofield Spatial'
     datasource_id: 'entity:node'
-    property_path: 'field_res_building:entity:field_geo_coordinates:latlon'
+    property_path: 'field_res_building:entity:field_coordinates_geofield'
     type: rpt
     dependencies:
       config:
         - field.storage.node.field_res_building
-        - field.storage.taxonomy_term.field_geo_coordinates
+        - field.storage.taxonomy_term.field_coordinates_geofield
+      module:
+        - taxonomy
+  field_res_affiliates:
+    label: Affiliates
+    datasource_id: 'entity:node'
+    property_path: field_res_affiliates
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_affiliates
+  field_res_affiliates_name:
+    label: 'Affiliates » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_affiliates:entity:name'
+    type: text
+    boost: !!float 3
+    dependencies:
+      config:
+        - field.storage.node.field_res_affiliates
+      module:
+        - taxonomy
+        - taxonomy
+  field_res_building:
+    label: Building
+    datasource_id: 'entity:node'
+    property_path: field_res_building
+    type: text
+    boost: !!float 5
+    dependencies:
+      config:
+        - field.storage.node.field_res_building
+  field_res_building_address_line1:
+    label: 'Building » Taxonomy term » Address » The first line of the address block.'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_building:entity:field_res_address:address_line1'
+    type: text
+    boost: !!float 2
+    dependencies:
+      config:
+        - field.storage.node.field_res_building
+        - field.storage.taxonomy_term.field_res_address
+      module:
+        - taxonomy
+  field_res_building_locality:
+    label: 'Building » Taxonomy term » Address » The locality (i.e. city).'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_building:entity:field_res_address:locality'
+    type: text
+    boost: !!float 2
+    dependencies:
+      config:
+        - field.storage.node.field_res_building
+        - field.storage.taxonomy_term.field_res_address
       module:
         - taxonomy
   field_res_building_name:
@@ -67,34 +116,54 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: 'field_res_building:entity:name'
     type: text
-    boost: !!float 3
+    boost: !!float 5
     dependencies:
       config:
         - field.storage.node.field_res_building
       module:
         - taxonomy
         - taxonomy
-  field_res_phone_number:
-    label: 'Phone Number'
+  field_res_building_postal_code:
+    label: 'Building » Taxonomy term » Address » The postal code.'
     datasource_id: 'entity:node'
-    property_path: field_res_phone_number
-    type: string
+    property_path: 'field_res_building:entity:field_res_address:postal_code'
+    type: text
+    boost: !!float 2
     dependencies:
       config:
-        - field.storage.node.field_res_phone_number
-  field_term_keywords:
+        - field.storage.node.field_res_building
+        - field.storage.taxonomy_term.field_res_address
+      module:
+        - taxonomy
+  field_res_fax_number:
+    label: 'Fax Number'
+    datasource_id: 'entity:node'
+    property_path: field_res_fax_number
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_fax_number
+  field_res_medical_services:
+    label: 'Medical Services'
+    datasource_id: 'entity:node'
+    property_path: field_res_medical_services
+    type: text
+    boost: !!float 13
+    dependencies:
+      config:
+        - field.storage.node.field_res_medical_services
+  field_res_medical_services_keywords:
     label: 'Medical Services » Taxonomy term » Term Keywords'
     datasource_id: 'entity:node'
     property_path: 'field_res_medical_services:entity:field_term_keywords'
     type: text
-    boost: !!float 13
     dependencies:
       config:
         - field.storage.node.field_res_medical_services
         - field.storage.taxonomy_term.field_term_keywords
       module:
         - taxonomy
-  name:
+  field_res_medical_services_name:
     label: 'Medical Services » Taxonomy term » Name'
     datasource_id: 'entity:node'
     property_path: 'field_res_medical_services:entity:name'
@@ -106,6 +175,87 @@ field_settings:
       module:
         - taxonomy
         - taxonomy
+  field_res_medical_services_string:
+    label: 'Medical Services'
+    datasource_id: 'entity:node'
+    property_path: field_res_medical_services
+    type: string
+    boost: !!float 13
+    dependencies:
+      config:
+        - field.storage.node.field_res_medical_services
+  field_res_phone_number:
+    label: 'Phone Number'
+    datasource_id: 'entity:node'
+    property_path: field_res_phone_number
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_phone_number
+  field_res_providers_family_name:
+    label: 'Providers » Content » Name » Family'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_providers:entity:field_res_name:family'
+    type: text
+    boost: !!float 3
+    dependencies:
+      config:
+        - field.storage.node.field_res_providers
+        - field.storage.node.field_res_name
+      module:
+        - node
+  field_res_providers_title:
+    label: 'Providers » Content » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_providers:entity:title'
+    type: text
+    boost: !!float 3
+    dependencies:
+      config:
+        - field.storage.node.field_res_providers
+      module:
+        - node
+        - node
+  field_search_best_bets:
+    label: 'Search Best Bets'
+    datasource_id: 'entity:node'
+    property_path: field_search_best_bets
+    type: text
+    boost: !!float 21
+    dependencies:
+      config:
+        - field.storage.node.field_search_best_bets
+  field_search_best_bets_keywords:
+    label: 'Search Best Bets » Taxonomy term » Term Keywords'
+    datasource_id: 'entity:node'
+    property_path: 'field_search_best_bets:entity:field_term_keywords'
+    type: text
+    boost: !!float 21
+    dependencies:
+      config:
+        - field.storage.node.field_search_best_bets
+        - field.storage.taxonomy_term.field_term_keywords
+      module:
+        - taxonomy
+  field_search_best_bets_name:
+    label: 'Search Best Bets » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_search_best_bets:entity:name'
+    type: text
+    boost: !!float 21
+    dependencies:
+      config:
+        - field.storage.node.field_search_best_bets
+      module:
+        - taxonomy
+        - taxonomy
+  node_grants:
+    label: 'Node access information'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
   rendered_item:
     label: 'Rendered HTML output'
     property_path: rendered_item
@@ -115,7 +265,25 @@ field_settings:
         anonymous: anonymous
       view_mode:
         'entity:node':
-          res_clinic: default
+          res_clinic: search_result
+  status:
+    label: status
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+  summary:
+    label: 'Body » Summary'
+    datasource_id: 'entity:node'
+    property_path: 'body:summary'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.body
   title:
     label: Title
     datasource_id: 'entity:node'
@@ -125,6 +293,20 @@ field_settings:
     dependencies:
       module:
         - node
+  uid:
+    label: uid
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+  uwmsearchwithin:
+    label: UwmSearchWithin
+    property_path: uwmsearchwithin
+    type: string
 datasource_settings:
   'entity:node':
     bundles:
@@ -138,11 +320,201 @@ processor_settings:
   UwmSearchWithin: {  }
   add_url: {  }
   aggregated_field: {  }
+  content_access:
+    weights:
+      preprocess_query: -30
+  entity_status: {  }
+  hierarchy:
+    fields:
+      field_res_medical_services: taxonomy_term-parent
+    weights:
+      preprocess_index: -45
+  highlight:
+    highlight: always
+    highlight_partial: false
+    excerpt: false
+    excerpt_length: 256
+    exclude_fields: {  }
+    prefix: '<em class="match">'
+    suffix: '</em>'
+    weights:
+      postprocess_query: 0
+  ignore_character:
+    all_fields: false
+    fields:
+      - body
+      - field_res_affiliates
+      - field_res_affiliates_name
+      - field_res_building
+      - field_res_building_address_line1
+      - field_res_building_locality
+      - field_res_building_name
+      - field_res_building_postal_code
+      - field_res_fax_number
+      - field_res_medical_services
+      - field_res_medical_services_keywords
+      - field_res_medical_services_name
+      - field_res_medical_services_string
+      - field_res_phone_number
+      - field_res_providers_family_name
+      - field_res_providers_title
+      - field_search_best_bets
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
+      - rendered_item
+      - summary
+      - title
+      - uwmsearchwithin
+    ignorable: '[''¿¡!?,.:;]'
+    strip:
+      character_sets:
+        Cc: 0
+        Cf: 0
+        Co: 0
+        Mc: 0
+        Me: 0
+        Mn: 0
+        Pc: Pc
+        Pd: Pd
+        Pe: Pe
+        Pf: Pf
+        Pi: Pi
+        Po: Po
+        Ps: Ps
+        Sc: 0
+        Sk: 0
+        Sm: 0
+        So: 0
+        Zl: 0
+        Zp: 0
+        Zs: 0
+    weights:
+      preprocess_index: -10
+      preprocess_query: -10
+  ignorecase:
+    all_fields: false
+    fields:
+      - body
+      - field_res_affiliates
+      - field_res_affiliates_name
+      - field_res_building
+      - field_res_building_address_line1
+      - field_res_building_locality
+      - field_res_building_name
+      - field_res_building_postal_code
+      - field_res_fax_number
+      - field_res_medical_services
+      - field_res_medical_services_keywords
+      - field_res_medical_services_name
+      - field_res_medical_services_string
+      - field_res_phone_number
+      - field_res_providers_family_name
+      - field_res_providers_title
+      - field_search_best_bets
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
+      - rendered_item
+      - summary
+      - title
+      - uwmsearchwithin
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
   rendered_item: {  }
+  stemmer:
+    all_fields: false
+    fields:
+      - body
+      - field_res_affiliates
+      - field_res_affiliates_name
+      - field_res_building
+      - field_res_building_address_line1
+      - field_res_building_locality
+      - field_res_building_name
+      - field_res_building_postal_code
+      - field_res_fax_number
+      - field_res_medical_services
+      - field_res_medical_services_keywords
+      - field_res_medical_services_name
+      - field_res_phone_number
+      - field_res_providers_family_name
+      - field_res_providers_title
+      - field_search_best_bets
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
+      - rendered_item
+      - summary
+      - title
+    exceptions:
+      mexican: mexic
+      texan: texa
+    weights:
+      preprocess_index: 0
+      preprocess_query: 0
+  tokenizer:
+    all_fields: false
+    fields:
+      - body
+      - field_res_affiliates
+      - field_res_affiliates_name
+      - field_res_building
+      - field_res_building_address_line1
+      - field_res_building_locality
+      - field_res_building_name
+      - field_res_building_postal_code
+      - field_res_fax_number
+      - field_res_medical_services
+      - field_res_medical_services_keywords
+      - field_res_medical_services_name
+      - field_res_phone_number
+      - field_res_providers_family_name
+      - field_res_providers_title
+      - field_search_best_bets
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
+      - rendered_item
+      - summary
+      - title
+    spaces: ''
+    overlap_cjk: 1
+    minimum_word_size: '2'
+    weights:
+      preprocess_index: -6
+      preprocess_query: -6
+  transliteration:
+    all_fields: false
+    fields:
+      - body
+      - field_res_affiliates
+      - field_res_affiliates_name
+      - field_res_building
+      - field_res_building_address_line1
+      - field_res_building_locality
+      - field_res_building_name
+      - field_res_building_postal_code
+      - field_res_fax_number
+      - field_res_medical_services
+      - field_res_medical_services_keywords
+      - field_res_medical_services_name
+      - field_res_medical_services_string
+      - field_res_phone_number
+      - field_res_providers_family_name
+      - field_res_providers_title
+      - field_search_best_bets
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
+      - rendered_item
+      - summary
+      - title
+      - uwmsearchwithin
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
 tracker_settings:
   default:
     indexing_order: fifo
 options:
   index_directly: true
   cron_limit: 50
+  overridden_by_acquia_search: 2
 server: acquia_search_server

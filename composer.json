@@ -175,7 +175,7 @@
     "nategood/httpful": "^0.2.20",
     "uwmweb/ckeditor_bs_grid": "dev-uwm-develop",
     "uwmweb/uwm_paragraphs": "dev-master",
-    "uwmweb/uwmbase": "dev-develop",
+    "uwmweb/uwmbase": "dev-features-search",
     "uwmweb/uwmedicineorg_theme": "dev-master",
     "webflo/drupal-core-require-dev": "^8.6.10"
   },

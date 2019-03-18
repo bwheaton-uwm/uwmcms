@@ -1,4 +1,4 @@
-uuid: 07b6924c-1718-4070-9b36-f50fe1bdbc19
+uuid: 69ec155e-fa63-4738-8d49-2c7a2878c0aa
 langcode: en
 status: true
 dependencies:
@@ -9,8 +9,8 @@ dependencies:
     - search_api
     - text
     - user
-id: uwm_search_providers
-label: 'UWM Search Providers'
+id: uwm_providers_search
+label: 'UWM Providers Search'
 module: views
 description: ''
 tag: ''

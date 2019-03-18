@@ -1,0 +1,14 @@
+uuid: f69ae0bb-2d8e-4cd1-9bba-f3eb2a856d99
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - taxonomy
+third_party_settings:
+  lightning_core:
+    description: 'For Buildings, render only the Address field.'
+id: taxonomy_term.building_address
+label: 'Building: Address only'
+targetEntityType: taxonomy_term
+cache: true

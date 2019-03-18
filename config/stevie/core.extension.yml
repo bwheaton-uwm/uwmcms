@@ -61,6 +61,9 @@ module:
   filter: 0
   focal_point: 0
   geocoder: 0
+  geocoder_address: 0
+  geocoder_field: 0
+  geocoder_geofield: 0
   geofield: 0
   geolocation: 0
   google_tag: 0
@@ -131,6 +134,7 @@ module:
   rdf: 0
   redirect: 0
   responsive_favicons: 0
+  responsive_image: 0
   rest: 0
   rh_media: 0
   robotstxt: 0
@@ -139,6 +143,7 @@ module:
   search_api: 0
   search_api_db: 0
   search_api_location: 0
+  search_api_location_geocoder: 0
   search_api_location_views: 0
   search_api_solr: 0
   serialization: 0
@@ -163,6 +168,7 @@ module:
   uwmcs_searchfields: 0
   uwmcs_utils: 0
   uwmed_uwmcms_gtm: 0
+  uwmed_uwmcms_search: 0
   uwmed_uwmcms_sitemap: 0
   vbo_export: 0
   video_embed_field: 0

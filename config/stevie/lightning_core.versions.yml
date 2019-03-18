@@ -195,3 +195,9 @@ webform_ui: 5.0.0-rc3
 uwmed_uwmcms_gtm: 0.0.0
 uwmed_uwmcms_sitemap: 0.0.0
 uwmed_uwmcms_robots_header: 0.0.0
+search_api_location_geocoder: 1.0.0-alpha1
+geocoder_field: 2.0.0-beta10
+geocoder_address: 2.0.0-beta10
+geocoder_geofield: 2.0.0-beta10
+uwmed_uwmcms_search: 0.0.0
+responsive_image: 8.6.10

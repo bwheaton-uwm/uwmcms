@@ -1,0 +1,40 @@
+uuid: c8a23b46-1fcc-49fc-8b79-7db2bdc3ce86
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_coordinates_geofield
+    - taxonomy.vocabulary.buildings
+  module:
+    - geocoder_field
+    - geofield
+third_party_settings:
+  geocoder_field:
+    method: source
+    weight: 0
+    geocode_field: field_res_address
+    reverse_geocode_field: ''
+    hidden: false
+    disabled: false
+    plugins:
+      - googlemaps
+      - openstreetmap
+    dumper: wkt
+    delta_handling: default
+    failure:
+      handling: preserve
+      status_message: true
+      log: true
+id: taxonomy_term.buildings.field_coordinates_geofield
+field_name: field_coordinates_geofield
+entity_type: taxonomy_term
+bundle: buildings
+label: 'Coordinates Geofield'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  backend: geofield_backend_default
+field_type: geofield

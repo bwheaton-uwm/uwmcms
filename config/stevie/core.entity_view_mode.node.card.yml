@@ -1,0 +1,14 @@
+uuid: d1100fe6-0f41-4027-97b0-75747f744824
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - node
+third_party_settings:
+  lightning_core:
+    description: 'Display a content item as a single card, showing key fields or summary information. This is good for a listing like search results.'
+id: node.card
+label: Card
+targetEntityType: node
+cache: true

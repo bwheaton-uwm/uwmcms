@@ -1,0 +1,42 @@
+uuid: 25378ecb-c3c6-46ee-b642-c6eb4f148bac
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.card_348_174
+    - image.style.card_352_176
+    - image.style.card_368_184
+    - image.style.card_464_232
+    - image.style.card_544_272
+  theme:
+    - uwmbase
+id: clinic_card
+label: 'Clinic Card Image'
+image_style_mappings:
+  -
+    breakpoint_id: uwmbase.bootstrap.xl
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: card_348_174
+  -
+    breakpoint_id: uwmbase.bootstrap.lg
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: card_368_184
+  -
+    breakpoint_id: uwmbase.bootstrap.md
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: card_464_232
+  -
+    breakpoint_id: uwmbase.bootstrap.sm
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: card_352_176
+  -
+    breakpoint_id: uwmbase.bootstrap.xs
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: card_544_272
+breakpoint_group: uwmbase.bootstrap
+fallback_image_style: card_348_174

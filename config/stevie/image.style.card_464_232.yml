@@ -1,0 +1,15 @@
+uuid: c3357fad-3622-4214-a20f-25bf5ded2d84
+langcode: en
+status: true
+dependencies: {  }
+name: card_464_232
+label: 'Card 464x232'
+effects:
+  e6639a30-0acd-4116-9be9-b78153f7800a:
+    uuid: e6639a30-0acd-4116-9be9-b78153f7800a
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 464
+      height: 232
+      anchor: center-center

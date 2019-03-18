@@ -1,0 +1,15 @@
+uuid: 3e5e152f-f50a-4b51-a203-67169db42111
+langcode: en
+status: true
+dependencies: {  }
+name: card_368_184
+label: 'Card 368x184'
+effects:
+  a55b80de-830f-4ccc-8d30-0a725aa51174:
+    uuid: a55b80de-830f-4ccc-8d30-0a725aa51174
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 368
+      height: 184
+      anchor: center-center

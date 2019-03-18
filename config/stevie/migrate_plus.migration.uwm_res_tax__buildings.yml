@@ -32,10 +32,27 @@ source:
       name: name
       label: name
       selector: /attributes/name
+    -
+      name: field_res_address
+      label: field_res_address
+      selector: /attributes/field_res_address
+    -
+      name: field_res_coordinates
+      label: field_res_coordinates
+      selector: /attributes/field_res_coordinates
 process:
   uuid: uuid
   name: name
   uwm_unique_id: uwm_unique_id
+  field_plain_coordinates:
+    -
+      plugin: concat
+      source:
+        - field_res_coordinates/lng
+        - field_res_coordinates/lat
+      delimiter: ','
+  field_res_coordinates: field_res_coordinates
+  field_res_address: field_res_address
 destination:
   plugin: 'entity:taxonomy_term'
   default_bundle: buildings

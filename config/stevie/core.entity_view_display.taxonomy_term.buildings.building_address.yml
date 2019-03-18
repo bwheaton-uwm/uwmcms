@@ -1,0 +1,36 @@
+uuid: 12ab2c5a-25f2-4859-a989-e96dc9cfcb63
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.building_address
+    - field.field.taxonomy_term.buildings.field_coordinates_geofield
+    - field.field.taxonomy_term.buildings.field_res_address
+    - field.field.taxonomy_term.buildings.field_res_campus
+    - field.field.taxonomy_term.buildings.field_res_clinics
+    - field.field.taxonomy_term.buildings.field_res_coordinates
+    - field.field.taxonomy_term.buildings.uwm_unique_id
+    - taxonomy.vocabulary.buildings
+  module:
+    - address
+_core:
+  default_config_hash: RHZ3GhhQuQNk3ZMNthdEkSfHUEglxQDVBRuWKtjxYxs
+id: taxonomy_term.buildings.building_address
+targetEntityType: taxonomy_term
+bundle: buildings
+mode: building_address
+content:
+  field_res_address:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: address_plain
+    region: content
+hidden:
+  description: true
+  field_coordinates_geofield: true
+  field_res_campus: true
+  field_res_clinics: true
+  field_res_coordinates: true
+  uwm_unique_id: true

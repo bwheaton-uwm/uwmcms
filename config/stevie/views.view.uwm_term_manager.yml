@@ -6,10 +6,9 @@ dependencies:
     - field.storage.taxonomy_term.field_term_keywords
     - system.menu.admin
   module:
-    - entity_browser
-    - node
     - taxonomy
     - user
+    - views_bulk_operations
 id: uwm_term_manager
 label: 'UWM Term Manager'
 module: views
@@ -157,14 +156,14 @@ display:
       row:
         type: fields
       fields:
-        entity_browser_select:
-          id: entity_browser_select
-          table: taxonomy_term_data
-          field: entity_browser_select
+        views_bulk_operations_bulk_form:
+          id: views_bulk_operations_bulk_form
+          table: views
+          field: views_bulk_operations_bulk_form
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Entity browser bulk select form'
+          label: 'Views bulk operations'
           exclude: false
           alter:
             alter_text: false
@@ -205,8 +204,43 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          entity_type: taxonomy_term
-          plugin_id: entity_browser_select
+          batch: true
+          batch_size: 25
+          form_step: true
+          buttons: false
+          clear_on_exposed: false
+          action_title: Action
+          selected_actions:
+            vbo_export_generate_xlsx_action: vbo_export_generate_xlsx_action
+            vbo_export_generate_csv_action: vbo_export_generate_csv_action
+            views_bulk_edit: views_bulk_edit
+            views_bulk_operations_delete_entity: views_bulk_operations_delete_entity
+            pathauto_update_alias: pathauto_update_alias
+            'entity:save_action:taxonomy_term': 'entity:save_action:taxonomy_term'
+            'entity:unpublish_action:taxonomy_term': 'entity:unpublish_action:taxonomy_term'
+            'entity:publish_action:taxonomy_term': 'entity:publish_action:taxonomy_term'
+          preconfiguration:
+            vbo_export_generate_xlsx_action:
+              label_override: ''
+              strip_tags: 0
+            vbo_export_generate_csv_action:
+              label_override: ''
+              strip_tags: 0
+              separator: ;
+            views_bulk_edit:
+              label_override: ''
+              get_bundles_from_results: 1
+            views_bulk_operations_delete_entity:
+              label_override: ''
+            pathauto_update_alias:
+              label_override: ''
+            'entity:save_action:taxonomy_term':
+              label_override: ''
+            'entity:unpublish_action:taxonomy_term':
+              label_override: ''
+            'entity:publish_action:taxonomy_term':
+              label_override: ''
+          plugin_id: views_bulk_operations_bulk_form
         tid:
           id: tid
           table: taxonomy_term_field_data
@@ -752,20 +786,11 @@ display:
           plugin_id: result
       footer: {  }
       empty: {  }
-      relationships:
-        nid:
-          id: nid
-          table: taxonomy_index
-          field: nid
-          relationship: none
-          group_type: group
-          admin_label: node
-          required: false
-          plugin_id: standard
+      relationships: {  }
       arguments: {  }
       display_extenders: {  }
     cache_metadata:
-      max-age: -1
+      max-age: 0
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
@@ -792,7 +817,7 @@ display:
         context: '0'
         menu_name: admin
     cache_metadata:
-      max-age: -1
+      max-age: 0
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'

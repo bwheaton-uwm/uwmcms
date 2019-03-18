@@ -1,0 +1,7 @@
+name: UW Medicine CMS Search
+type: module
+description: Provides customizations for location, provider, and general search forms.
+package: UWMed
+core: 8.x
+dependencies:
+  - views:views

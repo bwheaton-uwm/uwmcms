@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations and basic functionality for uwmed_uwmcms_search.
+ */
+
+use Drupal\Core\Form\FormState;
+
+/**
+ * Implements hook_page_attachments_alter().
+ *
+ * Add libraries for search pages.
+ */
+function uwmed_uwmcms_search_page_attachments_alter(&$variables) {
+  // Get the current path.
+  $currentPath = \Drupal::service('path.current')->getPath();
+
+  // Add the location search form library to the location search page.
+  if (stripos($currentPath, '/search/locations') !== FALSE) {
+    $variables['#attached']['library'][] = 'uwmed_uwmcms_search/location-search-form';
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Customizes exposed forms for views.
+ */
+function uwmed_uwmcms_search_form_views_exposed_form_alter(&$form, $form_state, $form_id) {
+  $storage = $form_state->getStorage();
+
+  if (!isset($storage['view'])) {
+    return;
+  }
+
+  $view = $storage['view'];
+
+  switch ($view->id()) {
+    case 'uwm_locations_geo_search':
+      _uwmed_uwmcms_search_alter_locations_search_form($form, $form_state);
+      break;
+  }
+}
+
+/**
+ * Customize the locations search form.
+ *
+ * @param array $form
+ *   The form.
+ * @param \Drupal\Core\Form\FormState $form_state
+ *   The form state.
+ */
+function _uwmed_uwmcms_search_alter_locations_search_form(array &$form, FormState $form_state) {
+  $form['use_my_location'] = [
+    '#type' => 'container',
+    '#attributes' => ['class' => ['use-my-location']],
+  ];
+  // Add a button to calculate user coordinates.
+  $form['use_my_location']['uml_button'] = [
+    '#prefix' => '<div class="use-my-location__prefix">' . t('or') . '</div>',
+    '#markup' => '<button class="use-my-location__button btn btn-cta btn-cta-link" type="button">' . t('Use my location') . '</button>',
+    '#allowed_tags' => ['button'],
+  ];
+
+  // Add a hidden field to hold calculated user coordinates.
+  $form['use_my_location']['uml'] = [
+    '#type' => 'hidden',
+    '#default_value' => \Drupal::request()->query->get('uml'),
+    '#attributes' => ['class' => ['use-my-location__coordinates']],
+  ];
+
+  // Add a container for a status message.
+  $form['use_my_location']['uml_status'] = [
+    '#markup' => '<div class="use-my-location__status"></div>',
+    '#allowed_tags' => ['div'],
+  ];
+}
