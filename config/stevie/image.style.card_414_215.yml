@@ -1,0 +1,15 @@
+uuid: aace283e-470c-4f27-9a31-db75317da29f
+langcode: en
+status: true
+dependencies: {  }
+name: card_414_215
+label: 'Card 414x215'
+effects:
+  5d1bec00-e75a-4a63-ac3b-e580993bdc60:
+    uuid: 5d1bec00-e75a-4a63-ac3b-e580993bdc60
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 414
+      height: 215
+      anchor: center-center

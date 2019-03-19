@@ -2,8 +2,8 @@ uuid: a5626f33-a81c-4870-8ac1-4335cc858323
 langcode: en
 status: true
 dependencies: {  }
-name: card_544_272
-label: 'Card 544x272'
+name: card_544_282
+label: 'Card 544x282'
 effects:
   b065f7df-d0d0-4483-bdef-09f360a43d94:
     uuid: b065f7df-d0d0-4483-bdef-09f360a43d94
@@ -11,5 +11,5 @@ effects:
     weight: 1
     data:
       width: 544
-      height: 272
+      height: 282
       anchor: center-center

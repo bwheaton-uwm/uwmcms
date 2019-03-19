@@ -2,8 +2,8 @@ uuid: 93632beb-b4c2-46cb-8cb4-7f8337b931aa
 langcode: en
 status: true
 dependencies: {  }
-name: card_348_174
-label: 'Card 348x174'
+name: card_348_180
+label: 'Card 348x180'
 effects:
   b7914dfb-53de-41c3-9280-f2bc6f768b32:
     uuid: b7914dfb-53de-41c3-9280-f2bc6f768b32
@@ -11,5 +11,5 @@ effects:
     weight: 1
     data:
       width: 348
-      height: 174
+      height: 180
       anchor: center-center
