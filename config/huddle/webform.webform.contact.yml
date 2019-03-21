@@ -1,3 +1,4 @@
+uuid: 0cda92db-bd61-49b4-8115-a652555ddb31
 langcode: en
 status: open
 dependencies:
@@ -6,10 +7,17 @@ dependencies:
       - webform
   module:
     - honeypot
+third_party_settings:
+  honeypot:
+    time_restriction: false
+_core:
+  default_config_hash: x5pA3LqsRgiCvF-uWCpGNGNstk7IQaOAuSETkzGeWZM
 open: null
 close: null
+weight: 0
 uid: null
 template: false
+archive: false
 id: contact
 title: Contact
 description: 'Basic email contact webform.'
@@ -156,9 +164,9 @@ handlers:
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: default
+      from_mail: _default
       from_options: {  }
-      from_name: default
+      from_name: _default
       subject: '[webform_submission:values:subject:raw]'
       body: '[webform_submission:values:message:value]'
       excluded_elements: {  }
@@ -172,6 +180,8 @@ handlers:
       return_path: ''
       sender_mail: ''
       sender_name: ''
+      exclude_empty_checkbox: false
+      theme_name: ''
   email_notification:
     id: email
     label: 'Email notification'
@@ -204,9 +214,5 @@ handlers:
       return_path: ''
       sender_mail: ''
       sender_name: ''
-uuid: 0cda92db-bd61-49b4-8115-a652555ddb31
-third_party_settings:
-  honeypot:
-    time_restriction: false
-_core:
-  default_config_hash: x5pA3LqsRgiCvF-uWCpGNGNstk7IQaOAuSETkzGeWZM
+      exclude_empty_checkbox: false
+      theme_name: ''

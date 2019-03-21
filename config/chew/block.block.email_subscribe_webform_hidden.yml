@@ -1,0 +1,25 @@
+uuid: 3a246111-90c3-4f2d-afba-16c589b4f8f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - webform.webform.email_subscriptions
+  module:
+    - webform
+  theme:
+    - chew
+id: email_subscribe_webform_hidden
+theme: chew
+region: footer_second
+weight: 0
+provider: null
+plugin: webform_block
+settings:
+  id: webform_block
+  label: 'Email Subscribe Webform (Hidden)'
+  provider: webform
+  label_display: '0'
+  webform_id: email_subscriptions
+  default_data: ''
+  redirect: false
+visibility: {  }

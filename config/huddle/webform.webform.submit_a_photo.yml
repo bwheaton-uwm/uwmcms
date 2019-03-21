@@ -1,10 +1,15 @@
+uuid: 2fa15dc7-c033-41fc-9049-8cb070190192
 langcode: en
 status: open
 dependencies: {  }
+_core:
+  default_config_hash: 4UKsLbDST9eOHM9Y09S_z78WkoMYeoZ6d9lSwtWE9-0
 open: null
 close: null
+weight: 0
 uid: 1
 template: false
+archive: false
 id: submit_a_photo
 title: 'Submit a Photo or Video (legacy)'
 description: ''
@@ -149,10 +154,10 @@ handlers:
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: default
+      from_mail: _default
       from_options: {  }
-      from_name: default
-      subject: default
+      from_name: _default
+      subject: _default
       body: "Submitted on [webform_submission:created]<br />\nSubmitted by: [webform_submission:user]<br />\n<br />\nSubmitted values are:<br />\n[webform_submission:values]<br />\n<br />\nView the submission<br />\n[webform_submission:node]<br />\n<br />\nSubmisstion form used<br />\n[webform_submission:source-url]"
       excluded_elements: {  }
       ignore_access: false
@@ -165,6 +170,5 @@ handlers:
       return_path: ''
       sender_mail: ''
       sender_name: ''
-uuid: 2fa15dc7-c033-41fc-9049-8cb070190192
-_core:
-  default_config_hash: 4UKsLbDST9eOHM9Y09S_z78WkoMYeoZ6d9lSwtWE9-0
+      exclude_empty_checkbox: false
+      theme_name: ''

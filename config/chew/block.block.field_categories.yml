@@ -23,8 +23,8 @@ settings:
     type: hierarchical_term_formatter
     settings:
       display: all
-      link: 1
-      reverse: 0
+      link: true
+      reverse: false
       wrap: span
       separator: ' '
     third_party_settings: {  }

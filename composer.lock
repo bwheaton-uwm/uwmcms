@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aefda1d85940bf03b848bff7846880ac",
+    "content-hash": "964d96daffe466c0752c419ab28ad9e8",
     "packages": [
         {
             "name": "acquia/blt",
@@ -5098,63 +5098,6 @@
             "homepage": "https://www.drupal.org/project/contact_storage",
             "support": {
                 "source": "http://cgit.drupalcode.org/contact_storage"
-            }
-        },
-        {
-            "name": "drupal/contribute",
-            "version": "1.0.0-beta7",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/contribute",
-                "reference": "8.x-1.0-beta7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/contribute-8.x-1.0-beta7.zip",
-                "reference": "8.x-1.0-beta7",
-                "shasum": "f31aaf1294b9504b0057f59ef131d5936f413ede"
-            },
-            "require": {
-                "drupal/core": "~8.0"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.0-beta7",
-                    "datestamp": "1518634080",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Adrian Cid Almaguer (adriancid)",
-                    "homepage": "https://www.drupal.org/u/adriancid",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Jacob Rockowitz (jrockowitz)",
-                    "homepage": "https://www.drupal.org/u/jrockowitz",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "Provides status report message which encourage users or organizations to join the Drupal community, become a member of Drupal Association, and contribute back to Drupal.",
-            "homepage": "https://www.drupal.org/project/contribute",
-            "keywords": [
-                "Drupal"
-            ],
-            "support": {
-                "source": "http://cgit.drupalcode.org/contribute",
-                "issues": "https://www.drupal.org/project/issues/contribute"
             }
         },
         {
@@ -13778,27 +13721,32 @@
         },
         {
             "name": "drupal/webform",
-            "version": "5.0.0-rc3",
+            "version": "5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/webform",
-                "reference": "8.x-5.0-rc3"
+                "reference": "8.x-5.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/webform-8.x-5.0-rc3.zip",
-                "reference": "8.x-5.0-rc3",
-                "shasum": "1d232ccc9004d14369f59fbc1acd80a2f94428c7"
+                "url": "https://ftp.drupal.org/files/projects/webform-8.x-5.1.zip",
+                "reference": "8.x-5.1",
+                "shasum": "d04743f078dc154685f9532253e6b5ea8dda1a56"
             },
             "require": {
-                "drupal/contribute": "^1.0",
                 "drupal/core": "*"
             },
             "require-dev": {
+                "drupal/address": "~1.4",
+                "drupal/chosen": "~2.6",
                 "drupal/devel": "*",
-                "drupal/token": "*",
+                "drupal/jsonapi": "~2.0",
+                "drupal/select2": "~1.1",
+                "drupal/token": "~1.3",
+                "drupal/webform_access": "*",
                 "drupal/webform_node": "*",
-                "drupal/webform_scheduled_email": "*"
+                "drupal/webform_scheduled_email": "*",
+                "drupal/webform_ui": "*"
             },
             "type": "drupal-module",
             "extra": {
@@ -13806,11 +13754,11 @@
                     "dev-5.x": "5.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-5.0-rc3",
-                    "datestamp": "1520964784",
+                    "version": "8.x-5.1",
+                    "datestamp": "1549473699",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 },
                 "drush": {
@@ -13830,8 +13778,9 @@
                     "role": "Maintainer"
                 },
                 {
-                    "name": "Liam Morland",
-                    "homepage": "https://www.drupal.org/user/493050"
+                    "name": "Alexander Trotsenko (bucefal91)",
+                    "homepage": "https://www.drupal.org/u/bucefal91",
+                    "role": "Co-maintainer"
                 },
                 {
                     "name": "bucefal91",
@@ -21662,6 +21611,113 @@
             ],
             "description": "Mink driver for controlling chrome without selenium",
             "time": "2018-08-08T12:10:47+00:00"
+        },
+        {
+            "name": "drupal/restui",
+            "version": "1.16.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/restui",
+                "reference": "8.x-1.16"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/restui-8.x-1.16.zip",
+                "reference": "8.x-1.16",
+                "shasum": "60d2c7ecf6bb439e528c367753df9c94684b8894"
+            },
+            "require": {
+                "drupal/core": "^8.2.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.16",
+                    "datestamp": "1541330284",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "-enzo-",
+                    "homepage": "https://www.drupal.org/user/294937"
+                },
+                {
+                    "name": "clemens.tolboom",
+                    "homepage": "https://www.drupal.org/user/125814"
+                },
+                {
+                    "name": "juampynr",
+                    "homepage": "https://www.drupal.org/user/682736"
+                },
+                {
+                    "name": "klausi",
+                    "homepage": "https://www.drupal.org/user/262198"
+                }
+            ],
+            "description": "Provides a user interface to manage REST resources",
+            "homepage": "https://www.drupal.org/project/restui",
+            "support": {
+                "source": "http://cgit.drupalcode.org/restui"
+            }
+        },
+        {
+            "name": "drupal/webform_rest",
+            "version": "2.0.0-beta2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/webform_rest",
+                "reference": "8.x-2.0-beta2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/webform_rest-8.x-2.0-beta2.zip",
+                "reference": "8.x-2.0-beta2",
+                "shasum": "1d24a4b64c427972b402d4a4851789e93a2f109f"
+            },
+            "require": {
+                "drupal/core": "*",
+                "drupal/webform": "^5.0.0-rc12"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-2.0-beta2",
+                    "datestamp": "1543288980",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "imclean",
+                    "homepage": "https://www.drupal.org/user/112588"
+                }
+            ],
+            "description": "Allows retrieving webform elements and submitting webforms via REST",
+            "homepage": "https://www.drupal.org/project/webform_rest",
+            "support": {
+                "source": "http://cgit.drupalcode.org/webform_rest"
+            }
         },
         {
             "name": "geerlingguy/drupal-vm",

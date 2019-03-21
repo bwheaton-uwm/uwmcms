@@ -12,7 +12,7 @@ dependencies:
 id: views_block__featured_content_block_1
 theme: chew
 region: sidebar_second
-weight: -16
+weight: -18
 provider: null
 plugin: 'views_block:featured_content-block_1'
 settings:

@@ -19,4 +19,5 @@ settings:
   label_display: '0'
   webform_id: subscribe
   default_data: ''
+  redirect: false
 visibility: {  }

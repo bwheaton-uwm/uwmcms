@@ -11,8 +11,10 @@ _core:
   default_config_hash: vhO5VU-JLcpTbh2-sWCs9Zj-h0c_4pjx-_8-koPrJE8
 open: null
 close: null
+weight: 0
 uid: 1
 template: false
+archive: false
 id: submit_an_event
 title: 'Submit an Event'
 description: ''
@@ -151,17 +153,17 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: default
+      to_mail: _default
       to_options: {  }
       cc_mail: uwmtalk@uw.edu
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: default
+      from_mail: _default
       from_options: {  }
-      from_name: default
+      from_name: _default
       subject: 'Event Submission from [webform_submission:values:your_name]'
-      body: default
+      body: _default
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -173,3 +175,5 @@ handlers:
       return_path: ''
       sender_mail: ''
       sender_name: ''
+      exclude_empty_checkbox: false
+      theme_name: ''

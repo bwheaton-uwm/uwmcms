@@ -11,8 +11,10 @@ _core:
   default_config_hash: '-ucMywuAqsjpsKqKeuSiW0d15c7qrvjyWQkkzlYZ2DQ'
 open: null
 close: null
+weight: 0
 uid: 1
 template: false
+archive: false
 id: submit_an_award
 title: 'Submit an Award'
 description: ''
@@ -157,11 +159,11 @@ handlers:
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: default
+      from_mail: _default
       from_options: {  }
-      from_name: default
+      from_name: _default
       subject: 'Award Submission from [webform_submission:values:your_name]'
-      body: default
+      body: _default
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -173,3 +175,5 @@ handlers:
       return_path: ''
       sender_mail: ''
       sender_name: ''
+      exclude_empty_checkbox: false
+      theme_name: ''
