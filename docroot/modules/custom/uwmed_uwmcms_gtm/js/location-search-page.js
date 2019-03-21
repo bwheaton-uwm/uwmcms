@@ -12,12 +12,10 @@
         return;
       }
 
-      var $context = $(context);
-
-      var searchForm = $('#views-exposed-form-uwm-locations-search-page-1', $context);
+      var searchForm = $('#views-exposed-form-uwm-locations-search-page-1', context);
 
       // Add event tracking to the location search submit link.
-      searchForm.siblings('.submit-wrapper').find('a.btn-cta.submit').on('click', function (event) {
+      searchForm.siblings('.submit-wrapper').find('a.btn-cta.submit').one('click', function (event) {
         dataLayer.push({
           'event': 'search initiation',
           'searchType': 'location',
@@ -29,7 +27,7 @@
       // Add event tracking to the location search results links.
       // There are several links within clinic cards to their full page;
       // all should have rel="bookmark" to easily track them here.
-      $('.view-uwm-locations-search .clinic-card a[rel="bookmark"]', $context).each(function (index) {
+      $('.view-uwm-locations-search .clinic-card a[rel="bookmark"]', context).each(function (index) {
         var searchTerm = searchForm.find('input[name=s]').val();
 
         $(this).on('click', function (event) {

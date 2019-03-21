@@ -12,7 +12,7 @@
         return;
       }
 
-      var searchForm = $('#views-exposed-form-uwm-general-search-page-1');
+      var searchForm = $('#views-exposed-form-uwm-general-search-page-1', context);
 
       // Add event tracking to the site search submit link.
       searchForm.siblings('.submit-wrapper').find('a.btn-cta.submit').one('click', function (event) {
@@ -25,7 +25,7 @@
       });
 
       // Add event tracking to the site search results links.
-      $('.view-uwm-general-search').find('.reader-url, .view-more').each(function (index) {
+      $('.view-uwm-general-search').find('.reader-url, .view-more', context).each(function (index) {
         var searchTerm = searchForm.find('input[name=s]').val();
         $(this).one('click', function (event) {
           dataLayer.push({

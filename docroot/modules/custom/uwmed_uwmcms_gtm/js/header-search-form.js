@@ -13,7 +13,7 @@
       }
 
       // Add event tracking to the header search form.
-      $('.header-search-form').one('submit', function (event) {
+      $('.header-search-form', context).one('submit', function (event) {
         var searchTerm = $(this).find('input[name=s]').val();
         dataLayer.push({
           'event': 'search initiation',
