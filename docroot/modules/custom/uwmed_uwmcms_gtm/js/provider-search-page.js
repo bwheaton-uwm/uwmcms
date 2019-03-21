@@ -17,8 +17,7 @@
       var searchInitiationEvent = {
         'event': 'search initiation',
         'searchType': 'provider',
-        'searchLocation': 'provider search page',
-        'searchTerm': searchForm.find('input[name=s]').val()
+        'searchLocation': 'provider search page'
       };
 
       var acceptNewPatientsFilterEvent = {
@@ -31,6 +30,8 @@
       searchForm.siblings('.submit-wrapper').find('a.btn-cta.submit:visible').one('click', function (event) {
         var acceptingPatientsChecked = searchForm.siblings(".dm-facet-id-provider_facet_accepting_patients")
         .find("input[value='accepting-patients:1']:checked");
+
+        searchInitiationEvent.searchTerm = searchForm.find('input[name=s]').val();
 
         if (acceptingPatientsChecked.length > 0) {
           dataLayer.push(searchInitiationEvent);
