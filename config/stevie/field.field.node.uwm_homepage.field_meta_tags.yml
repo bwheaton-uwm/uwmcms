@@ -1,0 +1,21 @@
+uuid: 66014972-f4db-402f-a396-f6d295eb2938
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_meta_tags
+    - node.type.uwm_homepage
+  module:
+    - metatag
+id: node.uwm_homepage.field_meta_tags
+field_name: field_meta_tags
+entity_type: node
+bundle: uwm_homepage
+label: 'Meta tags'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

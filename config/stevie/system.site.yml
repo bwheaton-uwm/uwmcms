@@ -5,7 +5,7 @@ slogan: ''
 page:
   403: ''
   404: /node/21751
-  front: /user/login
+  front: /node/48106
 admin_compact_mode: false
 weight_select_max: 100
 langcode: en

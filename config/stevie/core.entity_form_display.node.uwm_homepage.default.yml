@@ -3,9 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.uwm_homepage.field_meta_tags
     - node.type.uwm_homepage
   module:
     - content_moderation
+    - metatag
     - path
 id: node.uwm_homepage.default
 targetEntityType: node
@@ -18,6 +20,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_meta_tags:
+    weight: 121
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
+    region: content
   moderation_state:
     type: moderation_state_default
     weight: 100
