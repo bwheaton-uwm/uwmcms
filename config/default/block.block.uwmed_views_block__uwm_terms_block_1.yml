@@ -12,7 +12,7 @@ dependencies:
 id: uwmed_views_block__uwm_terms_block_1
 theme: uwmed
 region: content_header
-weight: -6
+weight: -10
 provider: null
 plugin: 'views_block:uwm_terms-block_1'
 settings:

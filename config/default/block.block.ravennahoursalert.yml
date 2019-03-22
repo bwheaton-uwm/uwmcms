@@ -12,7 +12,7 @@ dependencies:
 id: ravennahoursalert
 theme: uwmed
 region: content_header
-weight: -1
+weight: -5
 provider: null
 plugin: 'block_content:095edb60-38c4-4a44-8210-226ca63ddb63'
 settings:

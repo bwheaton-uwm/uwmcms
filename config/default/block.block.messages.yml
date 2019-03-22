@@ -9,7 +9,7 @@ dependencies:
 id: messages
 theme: uwmed
 region: content_header
-weight: -2
+weight: -6
 provider: null
 plugin: system_messages_block
 settings:

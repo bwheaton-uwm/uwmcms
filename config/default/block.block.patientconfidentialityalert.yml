@@ -11,8 +11,8 @@ dependencies:
     - uwmed
 id: patientconfidentialityalert
 theme: uwmed
-region: content_header
-weight: 0
+region: twig_blocks
+weight: -10
 provider: null
 plugin: 'block_content:b6a9c053-ba6a-4ab5-95a5-4ff8ef9943d6'
 settings:

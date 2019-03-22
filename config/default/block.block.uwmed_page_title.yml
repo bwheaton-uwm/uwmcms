@@ -11,7 +11,7 @@ _core:
 id: uwmed_page_title
 theme: uwmed
 region: content_header
-weight: -7
+weight: -11
 provider: null
 plugin: page_title_block
 settings:

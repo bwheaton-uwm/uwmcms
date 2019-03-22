@@ -9,7 +9,7 @@ _core:
 id: uwmed_local_actions
 theme: uwmed
 region: content_header
-weight: -5
+weight: -9
 provider: null
 plugin: local_actions_block
 settings:
