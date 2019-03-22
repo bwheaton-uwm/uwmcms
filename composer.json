@@ -99,6 +99,7 @@
     "drupal/config_ignore": "^2.0",
     "drupal/config_installer": "^1.8",
     "drupal/config_split": "^1.4",
+    "drupal/contribute": "^5.0@beta",
     "drupal/core": "^8.6.10",
     "drupal/date": "1.x-dev",
     "drupal/deploy": "^1.0@beta",
