@@ -1,4 +1,4 @@
-uuid: bdc19431-d5fd-4ea7-9725-fdd78cd5d899
+uuid: 2305d682-aa36-499b-9d54-4f705feaa517
 langcode: en
 status: true
 dependencies: {  }
@@ -10,32 +10,33 @@ migration_tags: null
 migration_group: uwm
 label: uwm_res_tax__affiliates
 source:
+  ids:
+    uuid:
+      type: string
   plugin: url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  urls:
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/affiliates?page%5Blimit%5D=25&page%5Boffset%5D=0&sort=name'
-  ids:
-    tid:
-      type: integer
   item_selector: data/
+  urls:
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/affiliates?page[limit]=50&page[offset]=0&sort=name'
   fields:
-    -
-      name: tid
-      label: tid
-      selector: /attributes/tid
     -
       name: uuid
       label: uuid
-      selector: /attributes/uuid
+      selector: /id
     -
       name: name
       label: name
       selector: /attributes/name
+    -
+      name: uwm_unique_id
+      label: uwm_unique_id
+      selector: /attributes/uwm_unique_id
 process:
   uuid: uuid
   name: name
   uwm_unique_id: uwm_unique_id
+  description: uuid
 destination:
   plugin: 'entity:taxonomy_term'
   default_bundle: affiliates

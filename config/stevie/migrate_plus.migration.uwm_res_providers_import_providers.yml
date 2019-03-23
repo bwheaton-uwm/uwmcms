@@ -1,4 +1,4 @@
-uuid: 4cf78258-1d72-47e7-abfd-203b24f6c8bb
+uuid: 725bb30d-b258-4679-bfe2-b9d926693243
 langcode: en
 status: true
 dependencies:
@@ -35,7 +35,7 @@ source:
     -
       name: uuid
       label: Uuid
-      selector: /attributes/uuid
+      selector: /id
     -
       name: title
       label: Title

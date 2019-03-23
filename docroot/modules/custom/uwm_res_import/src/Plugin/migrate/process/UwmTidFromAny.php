@@ -10,7 +10,7 @@ use Drupal\migrate\Row;
  * Perform custom value transformations.
  *
  * @MigrateProcessPlugin(
- *   id = "uwm_uuid_for_uwm_unique_id"
+ *   id = "uwm_tid_from_any"
  * )
  *
  * To do custom value transformations use the following:
@@ -21,7 +21,7 @@ use Drupal\migrate\Row;
  *   source: text
  * @endcode
  */
-class UwmUuidForUwmUniqueId extends ProcessPluginBase {
+class UwmTidFromAny extends ProcessPluginBase {
 
   /**
    * {@inheritdoc}
@@ -30,28 +30,31 @@ class UwmUuidForUwmUniqueId extends ProcessPluginBase {
 
     if ($value) {
 
-      $nodes = \Drupal::entityTypeManager()
-        ->getStorage('node')
-        ->loadByProperties(['uwm_unique_id' => $value]);
+      $value = !empty($value['id']) ? $value['id'] : $value;
 
-      if ($node = reset($nodes)) {
-        $uuid = $node->get('uuid')->value;
+      $term = \Drupal::service('entity.repository')
+        ->loadEntityByUuid('taxonomy_term', $value);
+
+      if (!$term) {
+
+        $term = \Drupal::entityTypeManager()
+          ->getStorage('taxonomy_term')
+          ->loadByProperties(['uwm_unique_id' => $value]);
       }
 
-      if ($uuid) {
-        return $uuid;
+      if ($term && $term->id()) {
+        return $term->id();
       }
 
-      return NULL;
     }
-
+    return NULL;
   }
 
   /**
    * {@inheritdoc}
    */
   public function prepareRow(Row $row) {
-    $nid = $row->getSourceProperty('nid');
+    // $tid = $row->getSourceProperty('tid');.
   }
 
 }

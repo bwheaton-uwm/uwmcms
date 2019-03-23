@@ -1,4 +1,4 @@
-uuid: c06ee12f-ec21-4da5-aac4-65780e7ed117
+uuid: ea2c536b-60f2-4e3e-8a89-c53783a073e6
 langcode: en
 status: true
 dependencies: {  }
@@ -10,30 +10,36 @@ migration_tags: null
 migration_group: uwm
 label: uwm_res_tax__languages
 source:
+  ids:
+    uuid:
+      type: string
+    uwm_unique_id:
+      type: string
   plugin: url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  urls:
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page%5Blimit%5D=25&page%5Boffset%5D=0&sort=name'
-  ids:
-    tid:
-      type: integer
   item_selector: data/
+  urls:
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/languages?page[limit]=50&page[offset]=0&sort=name'
   fields:
     -
-      name: tid
-      label: tid
-      selector: /attributes/tid
-    -
       name: uuid
-      label: Uuid
-      selector: /attributes/uuid
+      label: uuid
+      selector: /id
     -
       name: name
       label: name
       selector: /attributes/name
+    -
+      name: uwm_unique_id
+      label: uwm_unique_id
+      selector: /attributes/uwm_unique_id
 process:
   uuid: uuid
+  tid:
+    -
+      plugin: uwm_tid_from_any
+      source: uuid
   name: name
   uwm_unique_id: uwm_unique_id
 destination:

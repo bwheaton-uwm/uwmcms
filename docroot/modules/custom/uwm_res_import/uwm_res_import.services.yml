@@ -2,4 +2,4 @@ services:
   uwm_res_import.import:
     class: Drupal\uwm_res_import\EventSubscriber\UwmResImportSubscriber
     tags:
-      - { name: event_subscriber }
+    - { name: event_subscriber }

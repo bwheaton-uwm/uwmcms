@@ -2,9 +2,11 @@
 
 namespace Drupal\uwm_res_import\EventSubscriber;
 
+use Drupal\migrate\Event\MigrateEvents;
+use Drupal\migrate_plus\Event\MigrateEvents as MigratePlusEvents;
 use Drupal\migrate\MigrateSkipRowException;
-use Drupal\migrate_plus\Event\MigrateEvents;
 use Drupal\migrate_plus\Event\MigratePrepareRowEvent;
+use Drupal\migrate\Event\MigratePreRowSaveEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -20,15 +22,15 @@ class UwmResImportSubscriber implements EventSubscriberInterface {
    */
   public function prepareRow(MigratePrepareRowEvent $event) {
 
-    if (!self::useHighwatermark()) {
-      return;
-    }
-
     /** @var \Drupal\migrate\Row $row */
     $row = $event->getRow();
 
     /** @var \Drupal\migrate\Plugin\MigrationInterface $migration */
     $migration = $event->getMigration();
+
+    if (self::useHighwatermark() !== TRUE) {
+      return;
+    }
 
     // Get the timestamp for when the import was last run.
     $migrate_last_imported_store = \Drupal::keyValue('migrate_last_imported');
@@ -43,13 +45,36 @@ class UwmResImportSubscriber implements EventSubscriberInterface {
         throw new MigrateSkipRowException();
       }
     }
+
+  }
+
+  /**
+   * React to an item about to be imported.
+   *
+   * @param \Drupal\migrate\Event\MigratePreRowSaveEvent $event
+   *   The pre-save event.
+   */
+  public function preRowSave(MigratePreRowSaveEvent $event) {
+
+    /** @var \Drupal\migrate\Row $row */
+    // $row = $event->getRow();
+    /** @var \Drupal\migrate\Plugin\MigrationInterface $migration */
+    // $migration = $event->getMigration();
+    // $id_map = $event->getRow()->getIdMap();
+    // if (!empty($id_map['destid1'])) {
+    // $this->preExistingItem = TRUE;
+    // }
+    // else {
+    // $this->preExistingItem = FALSE;
+    // }.
   }
 
   /**
    * {@inheritdoc}
    */
   public static function getSubscribedEvents() {
-    $events[MigrateEvents::PREPARE_ROW] = ['prepareRow'];
+    $events[MigratePlusEvents::PREPARE_ROW] = ['prepareRow'];
+    $events[MigrateEvents::PRE_ROW_SAVE] = ['preRowSave'];
     return $events;
   }
 

@@ -25,20 +25,6 @@ function uwm_res_import_entity_presave(EntityInterface $entity) {
     $entity->field_res_isacceptingnewpts->value = (int) $v2;
   }
 
-  if ($entity->getEntityTypeId() == '‌taxonomy_term') {
-    if ($entity->bundle() == '‌buildings') {
-
-      /***
-       * Lat/lon values are currently stored in a "geolocation" field.
-       * Copy them over to a "geofield", for search-api-location filtering,
-       * if the field is empty:
-       */
-      // $latLon = $entity->field_res_coordinates->value;
-      // $point = \Drupal::service('geofield.wkt_generator')
-      // ->WktBuildPoint();
-    }
-  }
-
 }
 
 /**
@@ -77,6 +63,7 @@ function uwm_res_import_migration_plugins_alter(&$migrations) {
 function _uwm_res_import_migration_plugins_alter(array &$migration) {
 
   if (isset($migration['source']['urls'])) {
+
     $base_urls = $migration['source']['urls'];
 
     // Make sure $base_urls is an array.
@@ -84,11 +71,19 @@ function _uwm_res_import_migration_plugins_alter(array &$migration) {
       $base_urls = [$base_urls];
     }
 
-    $source_urls = _uwm_res_import_get_migration_source_urls($base_urls);
-    $migration['source']['urls'] = $source_urls;
+    $cacheKey = __FUNCTION__ . $migration['id'];
+    $source_urls = _get_cached_data($cacheKey);
 
-    \Drupal::logger(__FUNCTION__)
-      ->info('Added URLs:' . __FUNCTION__ . ':' . $migration['id'] . ':' . json_encode($source_urls));
+    if (!$source_urls) {
+      $source_urls = _uwm_res_import_get_migration_source_urls($base_urls);
+      _set_cached_data($cacheKey, $source_urls);
+    }
+
+    if ($source_urls) {
+      $migration['source']['urls'] = $source_urls;
+      \Drupal::logger(__FUNCTION__)
+        ->info('Added URLs:' . __FUNCTION__ . ':' . $migration['id'] . ':' . json_encode($source_urls));
+    }
 
   }
 }
@@ -118,12 +113,13 @@ function _uwm_res_import_get_migration_source_urls(array $base_urls) {
 
     // Set the first source URL.
     $self = $data['links']['self']['href'] ?? NULL;
+    $next = $data['links']['next']['href'] ?? NULL;
+
     if ($self) {
       $source_urls[] = $self;
     }
 
     // Set the remaining source URLs.
-    $next = $data['links']['next']['href'] ?? NULL;
     while ($next) {
       $source_urls[] = $next;
       $data = _uwm_res_import_get_migration_data($next);
@@ -151,15 +147,8 @@ function _uwm_res_import_get_migration_data($url) {
   // Retrieve the JSON data from the URL.
   try {
 
-    if (_use_cache()) {
-
-      $cacheKey = preg_replace("/[^A-Za-z0-9]/", '', $url);
-      $cacheItemExpires = time() + 23 * 60 * 60;
-
-      $cacheResult = \Drupal::cache()->get($cacheKey, FALSE);
-      $data = $cacheResult->data ?? [];
-
-    }
+    $cacheKey = preg_replace("/[^A-Za-z0-9]/", '', $url);
+    $data = _get_cached_data($cacheKey);
 
     if (empty($data)) {
 
@@ -170,8 +159,7 @@ function _uwm_res_import_get_migration_data($url) {
       $json = $body->getContents();
 
       $data = Json::decode($json);
-
-      \Drupal::cache()->set($cacheKey, $data, $cacheItemExpires);
+      _set_cached_data($cacheKey, $data);
 
     }
 
@@ -202,5 +190,40 @@ function _use_cache() {
   }
 
   return TRUE;
+
+}
+
+/**
+ * Small Drupal cache wrapper.
+ *
+ * @param string $cacheKey
+ *   The item to get.
+ *
+ * @return array
+ *   The cache data member.
+ */
+function _get_cached_data(string $cacheKey) {
+
+  if (_use_cache() !== TRUE) {
+    return [];
+  }
+
+  $cacheResult = \Drupal::cache()->get($cacheKey, FALSE);
+  return $cacheResult->data ?? [];
+
+}
+
+/**
+ * Small Drupal cache wrapper.
+ *
+ * @param string $cacheKey
+ *   The item to get.
+ * @param mixed $data
+ *   The data to store.
+ */
+function _set_cached_data(string $cacheKey, $data) {
+
+  $cacheItemExpires = time() + 23 * 60 * 60;
+  $cacheResult = \Drupal::cache()->set($cacheKey, $data, $cacheItemExpires);
 
 }

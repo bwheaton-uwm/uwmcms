@@ -1,4 +1,4 @@
-uuid: ea07ef74-988c-40d0-8017-09bc9b74b245
+uuid: 71a848d3-9efc-4d0e-9129-004452fee8ba
 langcode: en
 status: true
 dependencies:
@@ -18,6 +18,8 @@ source:
   data_parser_plugin: json
   urls: 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[limit]=50&page[offset]=0&sort=-changed'
   ids:
+    uuid:
+      type: string
     nid:
       type: integer
   item_selector: data/
@@ -33,7 +35,7 @@ source:
     -
       name: uuid
       label: Uuid
-      selector: /attributes/uuid
+      selector: /id
     -
       name: title
       label: Title

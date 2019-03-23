@@ -18,10 +18,12 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
 
-  urls: 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[limit]=50&page[offset]=0&sort=-changed'
+  urls: https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[limit]=50&page[offset]=0&sort=-changed
 
 
   ids:
+    uuid:
+      type: string
     nid:
       type: integer
 
@@ -36,7 +38,7 @@ source:
     selector: /attributes/vid
   - name: uuid
     label: 'Uuid'
-    selector: /attributes/uuid
+    selector: /id
   - name: title
     label: 'Title'
     selector: /attributes/title
