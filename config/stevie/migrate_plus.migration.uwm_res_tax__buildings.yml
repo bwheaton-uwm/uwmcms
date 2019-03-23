@@ -34,6 +34,10 @@ source:
       name: uwm_unique_id
       label: uwm_unique_id
       selector: /attributes/uwm_unique_id
+    -
+      name: address
+      label: Address
+      selector: /attributes/field_res_address
 process:
   uuid: uuid
   tid:
@@ -42,6 +46,7 @@ process:
       source: uuid
   name: name
   uwm_unique_id: uwm_unique_id
+  field_res_address: address
 destination:
   plugin: 'entity:taxonomy_term'
   default_bundle: buildings
