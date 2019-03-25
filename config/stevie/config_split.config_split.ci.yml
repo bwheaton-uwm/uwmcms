@@ -1,0 +1,15 @@
+uuid: fe96b689-3c97-4cd3-aea6-7478d5bf919b
+langcode: en
+status: true
+dependencies: {  }
+id: ci
+label: CI
+description: ''
+folder: ../config/envs/ci/stevie
+module: {  }
+theme: {  }
+blacklist: {  }
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 1

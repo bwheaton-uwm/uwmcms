@@ -1,0 +1,16 @@
+uuid: bc5a7fa7-b7ee-4c9e-8ed0-2afcee5c4a2e
+langcode: en
+status: true
+dependencies: {  }
+id: prod
+label: Prod
+description: ''
+folder: ../config/envs/prod/default
+module: {  }
+theme: {  }
+blacklist: {  }
+graylist:
+  - search_api.server.acquia_search_server
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 1

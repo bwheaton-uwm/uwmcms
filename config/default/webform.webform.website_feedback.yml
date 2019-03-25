@@ -1,8 +1,12 @@
+uuid: 417ee1d4-17c0-4139-838b-bce2a62b352f
 langcode: en
 status: open
 dependencies:
   module:
     - honeypot
+third_party_settings:
+  honeypot:
+    time_restriction: true
 open: null
 close: null
 weight: 0
@@ -238,7 +242,3 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
-uuid: 417ee1d4-17c0-4139-838b-bce2a62b352f
-third_party_settings:
-  honeypot:
-    time_restriction: true

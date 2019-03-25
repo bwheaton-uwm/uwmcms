@@ -28,4 +28,7 @@ backend_config:
   suggest_suffix: true
   suggest_corrections: true
   suggest_words: false
-  acquia_search_possible_cores: {  }
+  acquia_search_possible_cores:
+    - BEXY-148616.test.uwmedstg
+    - BEXY-148616.test.default
+    - BEXY-148616

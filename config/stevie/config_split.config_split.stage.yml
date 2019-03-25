@@ -1,0 +1,16 @@
+uuid: a88bf54b-4031-433f-9e49-ccc6fc887f22
+langcode: en
+status: true
+dependencies: {  }
+id: stage
+label: Stage
+description: ''
+folder: ../config/envs/stage/stevie
+module: {  }
+theme: {  }
+blacklist: {  }
+graylist:
+  - search_api.server.acquia_search_server
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 1

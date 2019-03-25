@@ -1,0 +1,16 @@
+uuid: d19cf25d-3f35-4ec3-bf4a-2b1ccffd6bfe
+langcode: en
+status: true
+dependencies: {  }
+id: prod
+label: Prod
+description: ''
+folder: ../config/envs/prod/stevie
+module: {  }
+theme: {  }
+blacklist: {  }
+graylist:
+  - search_api.server.acquia_search_server
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 1

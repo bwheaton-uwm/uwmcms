@@ -1,0 +1,16 @@
+uuid: 80c5a751-f2b3-4240-b471-aa611277550f
+langcode: en
+status: true
+dependencies: {  }
+id: dev
+label: Dev
+description: ''
+folder: ../config/envs/dev/stevie
+module: {  }
+theme: {  }
+blacklist: {  }
+graylist:
+  - search_api.server.acquia_search_server
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 1

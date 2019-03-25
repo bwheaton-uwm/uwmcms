@@ -1,0 +1,16 @@
+uuid: cdb53de9-7c36-44e8-877d-b3a795575e60
+langcode: en
+status: true
+dependencies: {  }
+id: local
+label: Local
+description: ''
+folder: ../config/envs/local/stevie
+module: {  }
+theme: {  }
+blacklist: {  }
+graylist:
+  - search_api.server.acquia_search_server
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 1
