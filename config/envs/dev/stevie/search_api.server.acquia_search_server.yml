@@ -32,4 +32,3 @@ backend_config:
   acquia_search_possible_cores:
     - BEXY-148616.dev.uwmeddevdb254268
     - BEXY-148616.dev.stevie
-    - BEXY-148616
