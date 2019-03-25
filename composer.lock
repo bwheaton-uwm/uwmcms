@@ -868,8 +868,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/fengyuanchen/cropper/zipball/30c58b29ee21010e17e58ebab165fbd84285c685",
-                "reference": "30c58b29ee21010e17e58ebab165fbd84285c685",
-                "shasum": null
+                "reference": "30c58b29ee21010e17e58ebab165fbd84285c685"
             },
             "type": "bower-asset",
             "license": [
@@ -887,8 +886,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/enyo/dropzone/zipball/08b9e0a763b54a685404dea523a9c54242fbe1b9",
-                "reference": "08b9e0a763b54a685404dea523a9c54242fbe1b9",
-                "shasum": null
+                "reference": "08b9e0a763b54a685404dea523a9c54242fbe1b9"
             },
             "type": "bower-asset"
         },
@@ -903,8 +901,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/9e8ec3d10fad04748176144f108d7355662ae75e",
-                "reference": "9e8ec3d10fad04748176144f108d7355662ae75e",
-                "shasum": null
+                "reference": "9e8ec3d10fad04748176144f108d7355662ae75e"
             },
             "type": "bower-asset",
             "license": [
@@ -922,8 +919,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/kenwheeler/slick/zipball/0f40c9d6a02a5c08b5f4dd80fdada3a854a59bee",
-                "reference": "0f40c9d6a02a5c08b5f4dd80fdada3a854a59bee",
-                "shasum": null
+                "reference": "0f40c9d6a02a5c08b5f4dd80fdada3a854a59bee"
             },
             "require": {
                 "bower-asset/jquery": ">=1.7"
@@ -1039,9 +1035,7 @@
             "version": "4.10.1",
             "dist": {
                 "type": "zip",
-                "url": "https://download.ckeditor.com/templates/releases/templates_4.10.1.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://download.ckeditor.com/templates/releases/templates_4.10.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -20851,12 +20845,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/uwmweb/uwmbase.git",
-                "reference": "8fe64c490c0f72242fc70f6b23892e5609db9c0a"
+                "reference": "6dc92c3c213d87a9375cb15ca99f9328488afd5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/uwmweb/uwmbase/zipball/8fe64c490c0f72242fc70f6b23892e5609db9c0a",
-                "reference": "8fe64c490c0f72242fc70f6b23892e5609db9c0a",
+                "url": "https://api.github.com/repos/uwmweb/uwmbase/zipball/6dc92c3c213d87a9375cb15ca99f9328488afd5c",
+                "reference": "6dc92c3c213d87a9375cb15ca99f9328488afd5c",
                 "shasum": ""
             },
             "type": "drupal-theme",
@@ -20868,7 +20862,7 @@
                 "source": "https://github.com/uwmweb/uwmbase/tree/develop",
                 "issues": "https://github.com/uwmweb/uwmbase/issues"
             },
-            "time": "2019-03-19T23:43:59+00:00"
+            "time": "2019-03-25T19:32:30+00:00"
         },
         {
             "name": "uwmweb/uwmedicineorg_theme",
