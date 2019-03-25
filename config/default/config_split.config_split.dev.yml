@@ -9,7 +9,7 @@ folder: ../config/envs/dev/default
 module: {  }
 theme: {  }
 blacklist: {  }
-graylist: 
+graylist:
   - search_api.server.acquia_search_server
 graylist_dependents: true
 graylist_skip_equal: true

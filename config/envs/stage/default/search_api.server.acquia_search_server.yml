@@ -31,4 +31,4 @@ backend_config:
   acquia_search_possible_cores:
     - BEXY-148616.test.uwmedstg
     - BEXY-148616.test.default
-    - BEXY-148616
+  overridden_by_acquia_search: 2
