@@ -490,7 +490,7 @@ tracker_settings:
   default:
     indexing_order: fifo
 options:
-  index_directly: true
+  index_directly: false
   cron_limit: 50
   overridden_by_acquia_search: 2
 server: database

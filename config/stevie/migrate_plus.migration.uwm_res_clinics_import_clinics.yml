@@ -16,22 +16,13 @@ source:
   plugin: url
   data_fetcher_plugin: http
   data_parser_plugin: json
+  track_changes: true
   urls: 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_clinic?page[limit]=50&page[offset]=0&sort=-changed'
   ids:
     uuid:
       type: string
-    nid:
-      type: integer
   item_selector: data/
   fields:
-    -
-      name: nid
-      label: Nid
-      selector: /attributes/nid
-    -
-      name: vid
-      label: Vid
-      selector: /attributes/vid
     -
       name: uuid
       label: Uuid
@@ -40,14 +31,6 @@ source:
       name: title
       label: Title
       selector: /attributes/title
-    -
-      name: created
-      label: Created
-      selector: /attributes/created
-    -
-      name: changed
-      label: Changed
-      selector: /attributes/changed
     -
       name: status
       label: Status
@@ -72,10 +55,6 @@ source:
       name: body
       label: Body
       selector: /attributes/body
-    -
-      name: uid
-      label: Uid
-      selector: /relationships/uid
     -
       name: field_res_box_number
       label: field_res_box_number
@@ -141,9 +120,10 @@ process:
   type:
     plugin: default_value
     default_value: res_clinic
+  nid:
+    plugin: uwm_nid_for_uuid
+    source: uuid
   title: title
-  created: created
-  changed: changed
   status: status
   sticky: sticky
   promote: promote
