@@ -3,7 +3,6 @@ module:
   acquia_lift: 0
   acquia_lift_inspector: 0
   acquia_purge: 0
-  acquia_search: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0
   allowed_formats: 0
