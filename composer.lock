@@ -20845,12 +20845,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/uwmweb/uwmbase.git",
-                "reference": "1992932cc6dfc5f7cc94e7e24def8cde9d9c0bed"
+                "reference": "94fdae1e4a67fc306c21820b13611d4959eb5033"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/uwmweb/uwmbase/zipball/1992932cc6dfc5f7cc94e7e24def8cde9d9c0bed",
-                "reference": "1992932cc6dfc5f7cc94e7e24def8cde9d9c0bed",
+                "url": "https://api.github.com/repos/uwmweb/uwmbase/zipball/94fdae1e4a67fc306c21820b13611d4959eb5033",
+                "reference": "94fdae1e4a67fc306c21820b13611d4959eb5033",
                 "shasum": ""
             },
             "type": "drupal-theme",
@@ -20862,7 +20862,7 @@
                 "source": "https://github.com/uwmweb/uwmbase/tree/develop",
                 "issues": "https://github.com/uwmweb/uwmbase/issues"
             },
-            "time": "2019-03-26T20:02:02+00:00"
+            "time": "2019-03-27T01:06:55+00:00"
         },
         {
             "name": "uwmweb/uwmedicineorg_theme",
