@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   module:
-    - acquia_search
-    - search_api_solr
+  - acquia_search
+  - search_api_solr
 _core:
   default_config_hash: tv2n9Pdm-aIIVzg6puM4sqDShEWXgfbQnAf7p-zls2Q
 id: acquia_search_server
@@ -30,5 +30,6 @@ backend_config:
   suggest_corrections: true
   suggest_words: false
   acquia_search_possible_cores:
-    - BEXY-148616.prod.uwmeddb254269
-    - BEXY-148616.prod.stevie
+  - BEXY-148616.prod.uwmeddb254269
+  - BEXY-148616.prod.stevie
+  - BEXY-148616
