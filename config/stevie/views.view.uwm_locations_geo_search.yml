@@ -557,8 +557,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          empty: true
-          content: "<div class=\"results-count-summary\">Displaying @start - @end of @total</div>\r\n\r\n<div class=\"results-alphabetical-disclaimer\">The results below display in alphabetical order.</div>"
+          empty: false
+          content: '<div class="results-count-summary">@total locations found</div>'
           plugin_id: result
       footer: {  }
       empty: {  }
