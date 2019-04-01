@@ -9,6 +9,7 @@ dependencies:
     - field.storage.node.field_res_affiliates
     - field.storage.taxonomy_term.field_res_address
     - field.storage.node.field_res_fax_number
+    - field.storage.node.field_featured
     - field.storage.node.field_res_medical_services
     - field.storage.taxonomy_term.field_term_keywords
     - field.storage.node.field_res_phone_number
@@ -58,6 +59,14 @@ field_settings:
         - field.storage.taxonomy_term.field_coordinates_geofield
       module:
         - taxonomy
+  field_featured:
+    label: Featured
+    datasource_id: 'entity:node'
+    property_path: field_featured
+    type: boolean
+    dependencies:
+      config:
+        - field.storage.node.field_featured
   field_res_affiliates:
     label: Affiliates
     datasource_id: 'entity:node'
@@ -290,6 +299,14 @@ field_settings:
     property_path: title
     type: text
     boost: !!float 21
+    dependencies:
+      module:
+        - node
+  title_string:
+    label: 'Title (String)'
+    datasource_id: 'entity:node'
+    property_path: title
+    type: string
     dependencies:
       module:
         - node

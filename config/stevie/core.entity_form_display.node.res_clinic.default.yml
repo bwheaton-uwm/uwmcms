@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.res_clinic.body
+    - field.field.node.res_clinic.field_featured
     - field.field.node.res_clinic.field_res_affiliates
     - field.field.node.res_clinic.field_res_box_number
     - field.field.node.res_clinic.field_res_building
@@ -53,6 +54,13 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_featured:
+    weight: 28
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_res_affiliates:
     weight: 6
     settings:

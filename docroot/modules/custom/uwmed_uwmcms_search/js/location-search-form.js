@@ -8,7 +8,6 @@
 
   Drupal.behaviors.locationSearchForm = {
     attach: function (context, settings) {
-      $("body.is-path-search .views-exposed-form").css("visibility", "visible");
 
       var locationButton = $('.use-my-location__button');
       var locationStatus = locationButton.nextAll('.use-my-location__status');

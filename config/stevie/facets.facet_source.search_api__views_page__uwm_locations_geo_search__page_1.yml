@@ -1,0 +1,9 @@
+uuid: a21ecf77-c882-41dd-b430-c389352292a9
+langcode: en
+status: true
+dependencies: {  }
+id: search_api__views_page__uwm_locations_geo_search__page_1
+name: 'search_api:views_page__uwm_locations_geo_search__page_1'
+filter_key: null
+url_processor: query_string
+breadcrumb: {  }

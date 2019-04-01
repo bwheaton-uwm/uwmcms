@@ -1,0 +1,12 @@
+uuid: ddda6a40-98b2-435e-bec8-7f859db1d9da
+langcode: en
+status: true
+dependencies: {  }
+id: search_api__views_page__uwm_locations_geo_search__page_2
+name: 'search_api:views_page__uwm_locations_geo_search__page_2'
+filter_key: ''
+url_processor: query_string
+breadcrumb:
+  active: false
+  before: true
+  group: false

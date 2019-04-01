@@ -55,6 +55,20 @@ function uwmed_uwmcms_search_views_pre_view($view, $display_id, &$args) {
 }
 
 /**
+ * Implements hook_preprocess_views_view().
+ */
+function uwmed_uwmcms_search_preprocess_views_view(&$variables) {
+  /** @var \Drupal\views\ViewExecutable $view_ex */
+  $view_ex = $variables['view'];
+
+  switch ($view_ex->id()) {
+    case 'uwm_locations_geo_search':
+      _uwmed_uwmcms_search_preprocess_views_view_uwm_locations_geo_search($variables);
+      break;
+  }
+}
+
+/**
  * Customize the locations search form.
  *
  * @param array $form
@@ -107,7 +121,7 @@ function _uwmed_uwmcms_search_alter_locations_search_form(array &$form, FormStat
 
       ],
       '#field_suffix' => '<a href="#" class="toggle" role="button" id="lakDd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-location-arrow"></i></a>
-<div class="dropdown"><div class="dropdown-menu" aria-labelledby="lakDd"><a href="#">Use my location</a></div></div>
+<div class="dropdown"><div class="dropdown-menu" aria-labelledby="lakDd"><a id="umlDropdownLink" href="#">Use my location</a></div></div>
 <div class="status-message"></div>',
     ],
 
@@ -140,4 +154,46 @@ function _uwmed_uwmcms_search_views_pre_view_uwm_locations_geo_search($view, $di
       $view->setHandler($display_id, 'filter', 'field_coordinates_geofield_latlong', $distance_filter);
     }
   }
+}
+
+/**
+ * Preprocess the uwm_locations_geo_search view.
+ *
+ * - If searched by location coordinates, retrieve the distance away for each
+ *   result row and store it on the node object for use in theming.
+ */
+function _uwmed_uwmcms_search_preprocess_views_view_uwm_locations_geo_search(&$variables) {
+  /** @var \Drupal\views\ViewExecutable $view_ex */
+  $view_ex = $variables['view'];
+
+  $result_row_key = 'entity:node/field_res_building:entity:field_coordinates_geofield__distance';
+
+  /** @var \Drupal\views\ResultRow $result_row */
+  foreach ($view_ex->result as $i => $result_row) {
+
+    if (!empty($result_row->{$result_row_key})) {
+
+      // Distance is computed/returned in Search API Location module in
+      // kilometers.
+      $result_distance_km = $result_row->{$result_row_key}[0];
+      $result_distance_miles = $result_distance_km / 1.60935;
+
+      $node = &$variables['rows'][0]['#rows'][$i]['#node'];
+
+      // Store on the node object for display in the theme.
+      // @see uwmbase/templates/node/node--res-clinic--card.html.twig
+      $node->view_field__distance_away_miles = round($result_distance_miles, 1);
+
+      // Set rendered node caching to vary by the 'uml' query arg, because the
+      // distance will change per the coordinates parameter. (The same form
+      // input and query parameter are used for both use-my-location and
+      // geocoded location name coordinates.)
+      // @see _uwmed_uwmcms_search_views_pre_view_uwm_locations_geo_search()
+      // @see _uwmed_uwmcms_search_alter_locations_search_form()
+      $variables['rows'][0]['#rows'][$i]['#cache']['contexts'][] = 'url.query_args:uml';
+
+    }
+
+  }
+
 }

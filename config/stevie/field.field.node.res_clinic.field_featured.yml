@@ -1,0 +1,23 @@
+uuid: 3371efa9-d5e6-48f8-afe0-7429430ff86b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_featured
+    - node.type.res_clinic
+id: node.res_clinic.field_featured
+field_name: field_featured
+entity_type: node
+bundle: res_clinic
+label: Featured
+description: 'Check if this is a featured location.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

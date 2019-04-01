@@ -1,0 +1,59 @@
+uuid: 9a4fe6fc-aa40-4d3d-9ff2-28d5d3e8bed5
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.uwm_locations_geo_search_api_index
+    - views.view.uwm_locations_geo_search
+  module:
+    - search_api
+id: locations_geo_facet_medical_services_2
+name: 'Locations Geo Facet Medical Services 2'
+url_alias: medical-service
+weight: 0
+min_count: 1
+show_only_one_result: false
+field_identifier: field_res_medical_services
+facet_source_id: 'search_api:views_page__uwm_locations_geo_search__page_2'
+widget:
+  type: links
+  config:
+    show_numbers: true
+    soft_limit: 0
+    soft_limit_settings:
+      show_less_label: 'Show less'
+      show_more_label: 'Show more'
+query_operator: or
+use_hierarchy: false
+expand_hierarchy: false
+enable_parent_when_child_gets_disabled: true
+hard_limit: 0
+exclude: false
+only_visible_when_facet_source_is_visible: true
+processor_configs:
+  active_widget_order:
+    processor_id: active_widget_order
+    weights:
+      sort: 20
+    settings:
+      sort: ASC
+  display_value_widget_order:
+    processor_id: display_value_widget_order
+    weights:
+      sort: 40
+    settings:
+      sort: ASC
+  translate_entity:
+    processor_id: translate_entity
+    weights:
+      build: 5
+    settings: {  }
+  url_processor_handler:
+    processor_id: url_processor_handler
+    weights:
+      pre_query: 50
+      build: 15
+    settings: {  }
+empty_behavior:
+  behavior: none
+show_title: false
