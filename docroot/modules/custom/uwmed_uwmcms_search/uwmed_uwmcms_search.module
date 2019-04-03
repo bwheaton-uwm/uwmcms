@@ -91,9 +91,9 @@ function _uwmed_uwmcms_search_alter_locations_search_form(array &$form, FormStat
     ],
 
     // Add a hidden field to hold calculated user coordinates.
-    'uml' => [
+    'latlng' => [
       '#type' => 'hidden',
-      '#default_value' => \Drupal::request()->query->get('uml'),
+      '#default_value' => \Drupal::request()->query->get('latlng'),
       '#attributes' => ['class' => ['use-my-location__coordinates']],
     ],
 
@@ -120,8 +120,9 @@ function _uwmed_uwmcms_search_alter_locations_search_form(array &$form, FormStat
         'autocomplete' => 'off',
 
       ],
-      '#field_suffix' => '<a href="#" class="toggle" role="button" id="lakDd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-location-arrow"></i></a>
-<div class="dropdown"><div class="dropdown-menu" aria-labelledby="lakDd"><a id="umlDropdownLink" href="#">Use my location</a></div></div>
+
+      '#field_suffix' => '<a href="#" class="toggle-uml-dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+<div class="dropdown"><div class="dropdown-menu"><a id="umlDropdownLink" href="#">Use my location</a></div></div>
 <div class="status-message"></div>',
     ],
 
@@ -147,10 +148,10 @@ function _uwmed_uwmcms_search_views_pre_view_uwm_locations_geo_search($view, $di
 
   // If the Use My Location coordinates are available, use them for
   // the distance filter.
-  if (!empty($exposed_input['uml'])) {
+  if (!empty($exposed_input['latlng'])) {
     $distance_filter = $view->getHandler($display_id, 'filter', 'field_coordinates_geofield_latlong');
     if ($distance_filter) {
-      $distance_filter['value']['value'] = $exposed_input['uml'];
+      $distance_filter['value']['value'] = $exposed_input['latlng'];
       $view->setHandler($display_id, 'filter', 'field_coordinates_geofield_latlong', $distance_filter);
     }
   }
@@ -184,13 +185,13 @@ function _uwmed_uwmcms_search_preprocess_views_view_uwm_locations_geo_search(&$v
       // @see uwmbase/templates/node/node--res-clinic--card.html.twig
       $node->view_field__distance_away_miles = round($result_distance_miles, 1);
 
-      // Set rendered node caching to vary by the 'uml' query arg, because the
-      // distance will change per the coordinates parameter. (The same form
+      // Set rendered node caching to vary by the 'latlng' query arg, because
+      // the distance will change per the coordinates parameter. (The same form
       // input and query parameter are used for both use-my-location and
       // geocoded location name coordinates.)
       // @see _uwmed_uwmcms_search_views_pre_view_uwm_locations_geo_search()
       // @see _uwmed_uwmcms_search_alter_locations_search_form()
-      $variables['rows'][0]['#rows'][$i]['#cache']['contexts'][] = 'url.query_args:uml';
+      $variables['rows'][0]['#rows'][$i]['#cache']['contexts'][] = 'url.query_args:latlng';
 
     }
 
