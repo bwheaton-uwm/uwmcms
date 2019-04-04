@@ -77,7 +77,6 @@ multisites:
   - chew
   - huddle
   - calendar
-  - contentrepo
   - stevie
 behat:
   paths: {  }
