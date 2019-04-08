@@ -1,0 +1,285 @@
+@import 'init';
+/* stylelint-disable */
+$transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+
+.uwm-header-mobile {
+  display: none;
+}
+
+@include media-breakpoint-down('md') { 
+  .uwm-header {
+    // .nav-link {
+    //   padding: 0;
+    // }
+    // position: static;
+
+    // #mainNavigationMobile {
+    //   display: block;
+    //   color: #fff;
+    //   padding: 0;
+
+    //   div.uw-bb {
+    //     margin: 4px 0;
+    //     border-bottom: 3px solid $uwmed-menu-gray;
+    //   }
+
+    //   .header-logo {
+
+    //     margin-top: -1px;
+    //     background: $gradient-purple-horizontal;
+
+    //     a.logo {
+    //       margin: 9px 0 0 0;
+    //       display: inline-block;
+    //     }
+
+    //     button.navbar-toggle {
+    //       margin: 0;
+    //     }
+
+    //   }
+
+      
+    
+
+      #mainNavigationMobile {
+
+        i.uw-b {
+          display: none;
+        }
+
+        //position: absolute;
+        position: static;
+        min-height: 1000px;
+        top: 0;
+        bottom: 0;
+        left: 101%;
+        right: 0;
+        background: #474747;
+        opacity: .95;
+        color: #fff !important;
+        z-index: 100;
+
+        &.collapse-horizontal {
+          height: auto !important;
+          transition: left 350ms $transition-timing-function;
+          &.in {
+            left: 0;
+            height: auto !important;
+          }
+        }
+
+        a {
+          color: #fff;
+          &:hover, &:focus {
+            color: color('yellow');
+            text-decoration: underline;
+            background-color: transparent;
+          }
+        }
+
+        .header-logo {
+
+          a.logo {
+            margin: 0;
+            padding: 4px 0 0 0;
+            display: inline-block;
+          }
+          button.navbar-toggle {
+            margin: 0;
+          }
+
+        }
+
+        > .row {
+
+          padding: 12px;
+
+        }
+
+        ul.navbar-nav {
+
+          margin: 0;
+
+          > li > a:hover, > li > a:focus,
+          .open > a, .open > a:hover, .open > a:focus {
+            background: transparent;
+          }
+
+          li {
+            border-bottom: 1px solid $uwmed-menu-gray;
+            padding: 10px 15px;
+            background: transparent;
+
+            i.fa {
+              float: right;
+            }
+            i.fa.fa-angle-down:before {
+              // Right: "\f105"; Down: "\f107";
+              content: "\f105";
+            }
+            &.open i.fa.fa-angle-down:before {
+              content: "\f107";
+            }
+
+            .dropdown-menu {
+              margin: 0 0 0 10px;
+              background: transparent;
+              border: none;
+
+              li {
+                padding: 4px 0;
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+      .make-a-gift-navigation {
+
+        position: relative;
+        margin: 80px 0 30px 0;
+
+        .wrapper {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 100%;
+
+          .gift-btn {
+            border: 1px solid color('yellow');
+            display: block !important;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            font-size: 16px;
+            text-transform: uppercase;
+            display: inline-block;
+            letter-spacing: 1.2px;
+            padding: 12px 32px;
+            z-index: 1;
+            cursor: pointer;
+            border-radius: 0;
+
+            &:focus {
+              outline: none;
+            }
+            .uw-ac {
+              @include uw-skew(-45deg);
+              position: absolute;
+              top: -5px;
+              left: -10px;
+              height: 20px;
+              width: 20px;
+              background: color('yellow');
+
+            }
+            a, a:hover, a:focus {
+              color: #fff;
+              text-decoration: none;
+            }
+
+          }
+
+          .btn--primary {
+            //color: lightslategray;
+          }
+
+          .btn--border {
+            border-width: 1px;
+            border-style: solid;
+            border-radius: 10px;
+            box-sizing: border-box;
+          }
+
+          .btn--animated {
+            transition-property: color;
+            transition-duration: 0.5s;
+
+            &.btn--border.btn--primary {
+              border: 1px solid color('yellow');
+              //width: 100%;
+              border-radius: 0;
+              margin: 0 30px;
+            }
+
+            &:before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: color('yellow');
+              transform: scaleX(0);
+              transform-origin: 0 50%;
+              transition-property: transform;
+              transition-duration: 0.7s;
+              transition-timing-function: ease-out;
+              z-index: -1;
+
+              @media(hover: none) {
+                transition-duration: 0s;
+              }
+            }
+
+            &:hover {
+              color: #000;
+
+              &:before {
+                transform: scaleX(1);
+                transition-timing-function: $transition-timing-function;
+              }
+            }
+          }
+
+        }
+
+      }
+
+      .uwm-quick-links {
+
+        
+        margin-top: 170px;
+
+        @include media-breakpoint-up('md') {
+          margin-top: 0;
+        }
+        
+
+        li.uw-bb {
+          display: none;
+        }
+
+        ul {
+          margin: 0 30px;
+        }
+        ul.nav {
+          
+          > li {
+            border-bottom: 1px solid $uwmed-menu-gray;
+            padding: 4px 0;
+            a {
+              padding: 10px 15px;
+            }
+          }
+
+        }
+
+      }
+
+    }
+
+  // }
+
+}
+
+
+
+
+

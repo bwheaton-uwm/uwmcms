@@ -1,0 +1,99 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *
+ * @ingroup templates
+ */
+#}
+{# All menu and submenu items #}
+
+{# Include Mobile Nav #}
+
+{# Main Nav Menu #}
+    <div id="mainNavigation" class="collapse navbar-collapse uwm-main-navigation">
+        <ul class="navbar-nav mr-auto">
+        {% for item in items %}
+        {% if item.below %} {# create a dropdown menu #}
+            <li class="nav-item dropdown">
+                <a href="#"
+                    id="{{ menu_name }}-{{ item.title }}"
+                    class="nav-link dropdown-toggle"
+                    data-toggle="dropdown">{{ item.title }}
+                    <i class="fa fa-angle-down"
+                        aria-hidden="true"></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="{{ menu_name }}-{{ item.title }}">
+                {% for below in item.below %}
+                    <a class="dropdown-item" href="{{ below.url }}">{{ below.title }} <i class="fa fa-angle-right float-right"
+                        aria-hidden="true"></i></a>
+                {% endfor %}
+                </div>  
+            </li>
+        {% else %}
+            <li class="nav-item"><a class="nav-link" href="{{ item.url }}">{{ item.title }} <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+        {% endif %}
+
+        {% if not loop.last %}
+            <i class="uw-b"></i>
+        {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
+
+    <div id="mainNavigationMobile" class="collapse navbar-collapse uwm-main-navigation-mobile d-md-none">
+        <ul class="navbar-nav mr-auto">
+        {% for item in items %}
+        {% if item.below %} {# create a dropdown menu #}
+            <li class="nav-item dropdown">
+                <a href="#"
+                    id="{{ menu_name }}-{{ item.title }}"
+                    class="nav-link dropdown-toggle"
+                    data-toggle="dropdown">{{ item.title }}
+                    <i class="fa fa-angle-down"
+                        aria-hidden="true"></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="{{ menu_name }}-{{ item.title }}">
+                {% for below in item.below %}
+                    <a class="dropdown-item" href="{{ below.url }}">{{ below.title }} <i class="fa fa-angle-right float-right"
+                        aria-hidden="true"></i></a>
+                {% endfor %}
+                </div>  
+            </li>
+        {% else %}
+            <li class="nav-item"><a class="nav-link" href="{{ item.url }}">{{ item.title }} <i class="fa fa-angle-right"
+                        aria-hidden="true"></i></a></li>
+        {% endif %}
+        {% endfor %}
+        </ul>
+
+        
+
+        <div class="make-a-gift-navigation">
+                    <div class="wrapper">
+
+                        <div class="gift-btn btn btn--border btn--primary btn--animated">
+                            <div class="uw-ac"></div>
+                            <a href="http://www.acceleratemed.org/give/?source=MEDXCL,MDNOVT,UWMEDS,HCMISS,ADISUN,NWMEDI,VALLEY,MEDNEI,AIRFUN">Make a Gift
+                                &nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+        
+
+        <div class="uwm-quick-links">
+        {{ drupal_menu('uw-header---quick-links', 1, 1) }}
+        </div>
+    </div>

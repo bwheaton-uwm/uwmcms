@@ -1,0 +1,150 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a facets item list.
+ *
+ * Available variables:
+ * - items: A list of items. Each item contains:
+ *   - attributes: HTML attributes to be applied to each list item.
+ *   - value: The content of the list element.
+ * - title: The title of the list.
+ * - list_type: The tag for list element ("ul" or "ol").
+ * - wrapper_attributes: HTML attributes to be applied to the list wrapper.
+ * - attributes: HTML attributes to be applied to the list.
+ * - empty: A message to display when there are no items. Allowed value is a
+ *   string or render array.
+ * - context: A list of contextual data associated with the list. May contain:
+ *   - list_style: The ID of the widget plugin this facet uses.
+ * - facet: The facet for this result item.
+ *   - id: the machine name for the facet.
+ *   - label: The facet label.
+ *
+ * @see facets_preprocess_facets_item_list()
+ *
+ * @ingroup themeable
+ */
+#}
+
+
+{#
+  # Set friendly sorting for Search Within drop-down:
+  #
+  #}
+{% if 'searchwithin' in facet.id %}
+  {% set items_copy = [] %}
+  {% set items_sort_order = [
+    'All',
+    'Medical',
+    'Providers',
+    'Locations',
+    'Patient Info',
+    'School of',
+    'Research',
+    'Referrals'
+  ] %}
+  {% for key, item in items %}
+    {% set obj = item|merge({'sort_title': item.value['#title']['#value']}) %}
+    {% set items_copy = items_copy|merge([obj]) %}
+  {% endfor %}
+  {% set items = uwm_sort_by_list(items_copy, items_sort_order, 'sort_title') %}
+{% endif %}
+
+
+{#
+  # Set friendly title for drop-downs:
+  #
+  #}
+{% set heading = heading ? heading :
+  'expertise' in facet.id|lower ? 'Expertise' :
+  'service' in facet.id|lower ? 'Medical service' :
+  facet.id == 'general_search_facet_uwmsearchwithin' ? 'Show me' :
+  facet.id == 'locations_facet_uwmsearchwithin' ? 'Show me' :
+  facet.id == 'locations_facet_medical_services' ? 'Medical service' :
+  facet.id == 'provider_facet_uwmsearchwithin' ? 'Show me' :
+  facet.id == 'provider_facet_gender' ? 'Gender' :
+  facet.id == 'provider_facet_languages' ? 'Language' :
+  facet.id == 'provider_facet_medical_services' ? 'Medical service' :
+  facet.id == 'provider_facet_accepting_patients' ? 'Accepting patients' : '' %}
+
+{% set live_search = items|length > 6 ? 'true' : 'false' %}
+
+
+<div class="dm-facets-selector dm-facets-widget-{{ facet.widget.type }} dm-facet-id-{{ facet.id }}">
+
+
+  <select class="selectpicker show-tick form-control" title="{{ heading }}"
+          data-live-search="{{ live_search }}" data-width="100%"
+          data-max-options="1" multiple>
+
+    {% if items %}
+
+      {% for item in items %}
+
+        {#
+          # Extract needed <option> values from Facets <a> link:
+          #
+          #}
+
+        {% set title = item.value['#title']['#value']|title %}
+        {% set title = title|replace({"'S": "'s"}) %}
+        {% set title = title|replace({"Education": "School of Medicine"}) %}
+        {% set title = "Patient Info" in title ? "Health & Patient Resources" : title %}
+        {% set title = title == "F" ? "Female" : title %}
+        {% set title = title == "M" ? "Male" : title %}
+
+        {% set facet_item_value = item.value['#attributes']['data-drupal-facet-item-value'] %}
+
+        {% set query = item.value['#url'].options['query'] %}
+        {% set query_key = query['f'] is defined ? 'f' : query['fs_p'] is defined ? 'fs_p' : '' %}
+        {% set result_count = item.value['#title']['#count'] %}
+        {% set result_count = result_count is not empty ? '(' ~ result_count ~ ')' : '' %}
+
+
+        {# Transform the Facets link to a select-option value #}
+        {% set value = '' %}
+        {% for f in query[query_key] %}
+          {% if ':' ~ facet_item_value in f %}
+            {% set value = f %}
+          {% endif %}
+        {% endfor %}
+
+
+        {% if value is empty %}
+          {# Facets unsets the active item value; try to find it #}
+          {% set last_item = items|last %}
+          {% set last_query = last_item.value['#url'].options['query'][query_key] %}
+          {% for s in last_query %}
+            {#{{ devel_breakpoint() }}#}
+            {% if ':' ~ facet_item_value in s %}
+              {% set value = s %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+
+        {#{{ devel_breakpoint() }}#}
+
+
+        {% set selected = item.value['#title']['#is_active'] ? 'selected="selected"' : '' %}
+
+        {% if 'searchwithin' in facet.id and loop.first %}
+          <option class="show-all" value="" data-subtext="(default)">All Results</option>
+        {% endif %}
+
+        <option data-url="{{ data_url }}"
+                data-facet-value="{{ facet_item_value }}"
+                value="{{ value }}"
+                data-subtext="{{ result_count }}"
+
+          {{ selected }}>
+          {{ title }}</option>
+        {#<li {{ item.attributes }}#}
+
+      {% endfor %}
+    {% endif %}
+
+
+  </select>
+
+
+</div>

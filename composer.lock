@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "31f6c52dd0c3e21c41c83e05f728c481",
+    "content-hash": "0caad98aa2ef8aff032ab3ba52b5d86f",
     "packages": [
         {
             "name": "acquia/blt",
@@ -868,7 +868,8 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/fengyuanchen/cropper/zipball/30c58b29ee21010e17e58ebab165fbd84285c685",
-                "reference": "30c58b29ee21010e17e58ebab165fbd84285c685"
+                "reference": "30c58b29ee21010e17e58ebab165fbd84285c685",
+                "shasum": null
             },
             "type": "bower-asset",
             "license": [
@@ -886,7 +887,8 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/enyo/dropzone/zipball/08b9e0a763b54a685404dea523a9c54242fbe1b9",
-                "reference": "08b9e0a763b54a685404dea523a9c54242fbe1b9"
+                "reference": "08b9e0a763b54a685404dea523a9c54242fbe1b9",
+                "shasum": null
             },
             "type": "bower-asset"
         },
@@ -901,7 +903,8 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/9e8ec3d10fad04748176144f108d7355662ae75e",
-                "reference": "9e8ec3d10fad04748176144f108d7355662ae75e"
+                "reference": "9e8ec3d10fad04748176144f108d7355662ae75e",
+                "shasum": null
             },
             "type": "bower-asset",
             "license": [
@@ -919,7 +922,8 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/kenwheeler/slick/zipball/0f40c9d6a02a5c08b5f4dd80fdada3a854a59bee",
-                "reference": "0f40c9d6a02a5c08b5f4dd80fdada3a854a59bee"
+                "reference": "0f40c9d6a02a5c08b5f4dd80fdada3a854a59bee",
+                "shasum": null
             },
             "require": {
                 "bower-asset/jquery": ">=1.7"
@@ -1035,7 +1039,9 @@
             "version": "4.10.1",
             "dist": {
                 "type": "zip",
-                "url": "https://download.ckeditor.com/templates/releases/templates_4.10.1.zip"
+                "url": "https://download.ckeditor.com/templates/releases/templates_4.10.1.zip",
+                "reference": null,
+                "shasum": null
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -20840,31 +20846,6 @@
             "time": "2018-10-16T18:22:34+00:00"
         },
         {
-            "name": "uwmweb/uwmbase",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/uwmweb/uwmbase.git",
-                "reference": "0e2f9985987e4bcc278579ee226916f1628ba83c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/uwmweb/uwmbase/zipball/0e2f9985987e4bcc278579ee226916f1628ba83c",
-                "reference": "0e2f9985987e4bcc278579ee226916f1628ba83c",
-                "shasum": ""
-            },
-            "type": "drupal-theme",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "description": "UW Medicine base theme and component library, a Zen sub-theme using Bootstrap 4.",
-            "support": {
-                "source": "https://github.com/uwmweb/uwmbase/tree/develop",
-                "issues": "https://github.com/uwmweb/uwmbase/issues"
-            },
-            "time": "2019-04-03T22:29:15+00:00"
-        },
-        {
             "name": "uwmweb/uwmedicineorg_theme",
             "version": "dev-master",
             "source": {
@@ -22468,7 +22449,6 @@
         "drupal/zen": 15,
         "uwmweb/ckeditor_bs_grid": 20,
         "uwmweb/uwm_paragraphs": 20,
-        "uwmweb/uwmbase": 20,
         "uwmweb/uwmedicineorg_theme": 20,
         "sensiolabs-de/deprecation-detector": 20
     },

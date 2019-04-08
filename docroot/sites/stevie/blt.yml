@@ -11,8 +11,8 @@ project:
     hostname: stevie.uwmed.local
 command-hooks:
   frontend-reqs:
-    dir: '${docroot}/themes/contrib/uwmbase'
+    dir: '${docroot}/themes/custom/uwmbase'
     command: 'npm install'
   frontend-assets:
-    dir: '${docroot}/themes/contrib/uwmbase'
+    dir: '${docroot}/themes/custom/uwmbase'
     command: 'gulp'
