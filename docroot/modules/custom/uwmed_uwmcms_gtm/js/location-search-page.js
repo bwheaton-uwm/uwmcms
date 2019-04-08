@@ -57,7 +57,7 @@
             'event': 'phone number click',
             'searchType': 'location',
             'searchTerm': searchTerm,
-            'linkUrl': clinicLink,
+            'linkURL': clinicLink,
             'locationTerm': searchLocationTerm
           });
         });
@@ -68,8 +68,10 @@
       // all should have rel="bookmark" to easily track them here.
       $('.view-uwm-locations-geo-search .clinic-card a[rel="bookmark"]', context).each(function (index) {
         $(this).on('click', function (event) {
+          var featuredClinic = $(this).parents('.view-display-id-featured_block').length > 0;
+          var eventType = featuredClinic ? 'featured list click' : 'search result click';
           dataLayer.push({
-            'event': 'search result click',
+            'event': eventType,
             'searchType': 'location',
             'searchTerm': searchTerm,
             'linkURL': $(this).attr('href'),
@@ -81,8 +83,10 @@
 
       $('.clinic-card__street-address-link', context).each(function (index) {
         $(this).on('click', function (event) {
+          var featuredClinic = $(this).parents('.view-display-id-featured_block').length > 0;
+          var eventType = featuredClinic ? 'featured list click' : 'search result click';
           dataLayer.push({
-            'event': 'search result click',
+            'event': eventType,
             'searchType': 'location',
             'searchTerm': searchTerm,
             'linkURL': $(this).attr('href').replace('#directions-tab', ''),
