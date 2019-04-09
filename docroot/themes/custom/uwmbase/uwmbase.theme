@@ -193,6 +193,14 @@ function uwmbase_preprocess_node(&$variables, $hook) {
         unset($variables['content']['field_res_room_number']);
       }
 
+      // Do not cache the rendered Building taxonomy term. It's only the
+      // address field, which needs per-node caching in any case that has a
+      // different floor or room. It can just be part of the rendered node
+      // cache item.
+      if (!empty($variables['content']['field_res_building'][0]['#cache'])) {
+        unset($variables['content']['field_res_building'][0]['#cache']);
+      }
+
     }
 
     // When displaying Res Clinic cards, ensure we only render one image.
