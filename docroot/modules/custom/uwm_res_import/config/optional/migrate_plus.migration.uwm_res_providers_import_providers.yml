@@ -4,7 +4,7 @@ label: uwm_res_providers_import_providers
 migration_group: uwm_providers
 #migration_dependencies:
 #  require:
-#    - uwm_reservoir_import_provider_images
+#  - uwm_res_providers_import_provider_images
 
 dependencies:
   enforced:
@@ -53,10 +53,6 @@ source:
   - name: body
     label: 'Body'
     selector: /attributes/body
-
-  - name: field_image
-    label: 'Field image'
-    selector: /relationships/field_image
 
   - name: field_res_biography
     label: field_res_biography
@@ -108,6 +104,7 @@ source:
   #      name: menu_link
   #      label: menu_link
   #      selector: /relationships/menu_link/data
+
   - name: field_res_affiliates
     label: field_res_affiliates
     selector: /relationships/field_res_affiliates/data
@@ -126,9 +123,13 @@ source:
   - name: field_res_expertises
     label: field_res_expertises
     selector: /relationships/field_res_expertises/data
+
   - name: field_res_image
     label: field_res_image
-    selector: /relationships/field_res_image/data
+    plugin: migration
+    migration: uwm_res_providers_import_provider_images
+    selector: /relationships/field_res_image/data/id
+
   - name: field_res_languages
     label: field_res_languages
     selector: /relationships/field_res_languages/data
@@ -145,9 +146,9 @@ process:
   - plugin: uwm_nid_for_uuid
     source: uuid
 
-#  nid:
-#  - plugin: uwm_nid_for_uuid
-#    source: uuid
+  #  nid:
+  #  - plugin: uwm_nid_for_uuid
+  #    source: uuid
 
   type:
     plugin: default_value
@@ -291,8 +292,15 @@ process:
       - plugin: skip_on_empty
         method: process
 
+#
+#  field_res_image: field_res_image
+#    plugin: image_import
+#    source: file
+#    destination: 'constants/file_destination'
+#    title: file_title
+#    alt: file_title
 
-  #  field_res_image: field_res_image
+
 
   field_res_languages:
     plugin: sub_process

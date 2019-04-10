@@ -7,7 +7,7 @@ dependencies:
     - field.storage.node.field_res_expertises
     - field.storage.node.field_res_image
     - field.storage.node.field_res_isacceptingnewpts
-    - image.style.thumbnail
+    - image.style.medium
     - node.type.res_provider
     - system.menu.admin
     - taxonomy.vocabulary.affiliates
@@ -550,7 +550,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Image
+          label: 'Provider Image'
           exclude: false
           alter:
             alter_text: false
@@ -594,7 +594,7 @@ display:
           click_sort_column: target_id
           type: image
           settings:
-            image_style: thumbnail
+            image_style: medium
             image_link: ''
           group_column: ''
           group_columns: {  }
@@ -857,6 +857,102 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
+        field_res_image_target_id:
+          id: field_res_image_target_id
+          table: node__field_res_image
+          field: field_res_image_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_res_image_target_id_op
+            label: 'Clinic Image (field_res_image:target_id)'
+            description: null
+            use_operator: false
+            operator: field_res_image_target_id_op
+            identifier: field_res_image_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+            min_placeholder: null
+            max_placeholder: null
+          is_grouped: true
+          group_info:
+            label: 'Provider Image'
+            description: ''
+            identifier: field_res_image_target_id
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: 'Has Image'
+                operator: 'not empty'
+                value:
+                  value: ''
+                  min: ''
+                  max: ''
+              2:
+                title: 'No Image'
+                operator: empty
+                value:
+                  value: ''
+                  min: ''
+                  max: ''
+          plugin_id: numeric
+        field_res_isacceptingnewpts_value:
+          id: field_res_isacceptingnewpts_value
+          table: node__field_res_isacceptingnewpts
+          field: field_res_isacceptingnewpts_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: All
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Accepting patients?'
+            description: ''
+            use_operator: false
+            operator: field_res_isacceptingnewpts_value_op
+            identifier: field_res_isacceptingnewpts_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              replicator: '0'
+              administrator: '0'
+              content_manager: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: boolean
         moderation_state:
           id: moderation_state
           table: node_field_data
@@ -909,46 +1005,6 @@ display:
             group_items: {  }
           entity_type: node
           plugin_id: moderation_state_filter
-        field_res_isacceptingnewpts_value:
-          id: field_res_isacceptingnewpts_value
-          table: node__field_res_isacceptingnewpts
-          field: field_res_isacceptingnewpts_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '='
-          value: All
-          group: 1
-          exposed: true
-          expose:
-            operator_id: ''
-            label: 'Accepting new patients?'
-            description: ''
-            use_operator: false
-            operator: field_res_isacceptingnewpts_value_op
-            identifier: field_res_isacceptingnewpts_value
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              replicator: '0'
-              administrator: '0'
-              content_manager: '0'
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: boolean
       sorts: {  }
       title: Content
       empty:

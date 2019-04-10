@@ -735,47 +735,6 @@ display:
           plugin_id: boolean
           entity_type: media
           entity_field: status
-        langcode:
-          id: langcode
-          table: media_field_data
-          field: langcode
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: in
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: langcode_op
-            label: Language
-            description: ''
-            use_operator: false
-            operator: langcode_op
-            identifier: langcode
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: media
-          entity_field: langcode
-          plugin_id: language
       sorts:
         created:
           id: created
@@ -819,11 +778,23 @@ display:
         - url.query_args
         - user.permissions
       tags:
+        - 'config:core.entity_view_display.media.document.default'
+        - 'config:core.entity_view_display.media.document.thumbnail'
+        - 'config:core.entity_view_display.media.image.default'
+        - 'config:core.entity_view_display.media.image.thumbnail'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_video.default'
+        - 'config:core.entity_view_display.media.video.default'
+        - 'config:core.entity_view_display.media.video.thumbnail'
+        - 'config:core.entity_view_display.media.acquia_dam_asset.default'
+        - 'config:core.entity_view_display.media.acquia_dam_asset.embedded'
+        - 'config:core.entity_view_display.media.acquia_dam_asset.thumbnail'
         - 'config:core.entity_view_display.media.audio_file.default'
         - 'config:core.entity_view_display.media.audio_file.embedded'
         - 'config:core.entity_view_display.media.audio_file.media_library'
         - 'config:core.entity_view_display.media.audio_file.thumbnail'
         - 'config:core.entity_view_display.media.document.embedded'
+        - 'config:core.entity_view_display.media.document.media_library'
+        - 'config:core.entity_view_display.media.image.embedded'
         - 'config:core.entity_view_display.media.instagram.default'
         - 'config:core.entity_view_display.media.instagram.embedded'
         - 'config:core.entity_view_display.media.instagram.media_library'
@@ -832,28 +803,16 @@ display:
         - 'config:core.entity_view_display.media.tweet.embedded'
         - 'config:core.entity_view_display.media.tweet.media_library'
         - 'config:core.entity_view_display.media.tweet.thumbnail'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_document.default'
         - 'config:core.entity_view_display.media.uwm_provider_resource_document.embedded'
-        - 'config:core.entity_view_display.media.video.default'
         - 'config:core.entity_view_display.media.video.embedded'
-        - 'config:core.entity_view_display.media.video.thumbnail'
         - 'config:core.entity_view_display.media.video_embed.default'
         - 'config:core.entity_view_display.media.video_embed.embedded'
+        - 'config:core.entity_view_display.media.video_embed.uwm_modal'
         - 'config:core.entity_view_display.media.video_file.default'
         - 'config:core.entity_view_display.media.video_file.embedded'
         - 'config:core.entity_view_display.media.video_file.media_library'
         - 'config:core.entity_view_display.media.video_file.thumbnail'
-        - 'config:core.entity_view_display.media.acquia_dam_asset.default'
-        - 'config:core.entity_view_display.media.acquia_dam_asset.embedded'
-        - 'config:core.entity_view_display.media.acquia_dam_asset.thumbnail'
-        - 'config:core.entity_view_display.media.document.default'
-        - 'config:core.entity_view_display.media.document.media_library'
-        - 'config:core.entity_view_display.media.document.thumbnail'
-        - 'config:core.entity_view_display.media.image.default'
-        - 'config:core.entity_view_display.media.image.embedded'
-        - 'config:core.entity_view_display.media.image.thumbnail'
-        - 'config:core.entity_view_display.media.uwm_provider_resource_document.default'
-        - 'config:core.entity_view_display.media.uwm_provider_resource_video.default'
-        - 'config:core.entity_view_display.media.video_embed.uwm_modal'
   entity_browser_1:
     display_plugin: entity_browser
     id: entity_browser_1
