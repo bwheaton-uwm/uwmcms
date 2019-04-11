@@ -57,16 +57,19 @@ class UwmResImportSubscriber implements EventSubscriberInterface {
   public function preRowSave(MigratePreRowSaveEvent $event) {
 
     $migration = $event->getMigration();
+    $row = $event->getRow();
     $source = $row->getSource();
 
     // @TODO: Move this to provider import yml.
     // The migration_lookup plugin was
     // not returning destination file id's so,
     // populate the image field here.
-    if (!empty($source['field_res_image']['data'][0]['id'])) {
+    $migrationId = $migration->id();
+    if ($migrationId === 'uwm_res_providers_import_providers' &&
+        !empty($source['field_res_image']['data'][0]['id'])) {
 
       $source_uuid = $source['field_res_image']['data'][0]['id'];
-      $fid = self::getMigrationDestinationId($source_uuid, $migration->id());
+      $fid = self::getMigrationDestinationId($source_uuid, $migrationId);
 
       $image = [
         'target_id' => $fid,

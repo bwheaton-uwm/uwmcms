@@ -17,16 +17,16 @@ destination:
 source:
 
   plugin: url
-  data_fetcher_plugin: file
-  #  data_fetcher_plugin: http
+  data_fetcher_plugin: http
+  #  data_fetcher_plugin: file
   data_parser_plugin: json
   include_raw_data: true
   track_changes: true
 
 
   urls:
-  - 'public://temp/providers.json'
-  # - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed
+  #  - 'public://temp/providers.json'
 
   ids:
     uuid:
@@ -309,15 +309,6 @@ process:
   #    migration: uwm_res_providers_import_provider_images
   #    source: field_res_image/data/id
 
-  temporary_image_fid:
-    plugin: sub_process
-    source: field_res_expertises
-    process:
-      target_id:
-      - plugin: uwm_tid_for_uuid
-        source: id
-      - plugin: skip_on_empty
-        method: process
 
   field_res_image:
     plugin: sub_process

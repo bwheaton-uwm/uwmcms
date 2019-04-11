@@ -18,8 +18,8 @@ source:
   data_parser_plugin: json
   track_changes: true
   constants:
-    source_base_path: 'https://bios-reservoir.mktgweb.uwmedicine.org'
-    destinatiomn_drupal_path: 'public://images/'
+    source_base_url: 'https://bios-reservoir.mktgweb.uwmedicine.org'
+    destination_drupal_path: 'public://provider-images'
   urls: 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider/?page[offset]=0&page[limit]=50&sort=-changed&fields[node--res_provider]=nid,title,field_res_image&include=field_res_image&filter[field_res_image.id][operator]=<>&filter[field_res_image.id][value]='
   ids:
     uuid:
@@ -71,21 +71,22 @@ process:
     plugin: concat
     delimiter: /
     source:
-      - constants/source_base_path
+      - constants/source_base_url
       - uri/url
-  destination_file_name:
+  destination_full_path:
     plugin: concat
     delimiter: /
     source:
-      - uri/value
+      - constants/destination_drupal_path
+      - filename
   uri:
     plugin: download
     source:
       - '@source_full_url'
-      - '@destination_file_name'
+      - '@destination_full_path'
     file_exists: replace
     guzzle_options:
-      base_uri: constants/source_base_path
+      base_uri: constants/source_base_url
     reuse:
       - 'TRUE'
 destination:
