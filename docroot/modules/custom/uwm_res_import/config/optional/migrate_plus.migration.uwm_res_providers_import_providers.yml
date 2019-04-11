@@ -15,12 +15,18 @@ destination:
   plugin: entity:node
 
 source:
+
   plugin: url
-  data_fetcher_plugin: http
+  data_fetcher_plugin: file
+  #  data_fetcher_plugin: http
   data_parser_plugin: json
+  include_raw_data: true
   track_changes: true
 
-  urls: https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed
+
+  urls:
+  - 'public://temp/providers.json'
+  # - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed
 
   ids:
     uuid:
@@ -87,24 +93,18 @@ source:
   - name: uwm_unique_id
     label: uwm_unique_id
     selector: /attributes/uwm_unique_id
-
-  #    -
-  #      name: type
-  #      label: type
-  #      selector: /relationships/type/data
-  #    -
-  #      name: revision_uid
-  #      label: revision_uid
-  #      selector: /relationships/revision_uid/data
-  #    -
-  #      name: uid
-  #      label: uid
-  #      selector: /relationships/uid/data
-  #    -
-  #      name: menu_link
-  #      label: menu_link
-  #      selector: /relationships/menu_link/data
-
+  # - name: type
+  #   label: type
+  #   selector: /relationships/type/data
+  # - name: revision_uid
+  #   label: revision_uid
+  #   selector: /relationships/revision_uid/data
+  # - name: uid
+  #   label: uid
+  #   selector: /relationships/uid/data
+  # - name: menu_link
+  #   label: menu_link
+  #   selector: /relationships/menu_link/data
   - name: field_res_affiliates
     label: field_res_affiliates
     selector: /relationships/field_res_affiliates/data
@@ -123,19 +123,18 @@ source:
   - name: field_res_expertises
     label: field_res_expertises
     selector: /relationships/field_res_expertises/data
-
-  - name: field_res_image
-    label: field_res_image
-    plugin: migration
-    migration: uwm_res_providers_import_provider_images
-    selector: /relationships/field_res_image/data/id
-
   - name: field_res_languages
     label: field_res_languages
     selector: /relationships/field_res_languages/data
   - name: field_res_medical_services
     label: field_res_medical_services
     selector: /relationships/field_res_medical_services/data
+
+  - name: field_res_image
+    label: field_res_image
+    plugin: migration
+    migration: uwm_res_providers_import_provider_images
+    selector: /relationships/field_res_image
 
 
 process:
@@ -219,8 +218,8 @@ process:
     default_value: unrestricted
   field_res_personal_interests/processed: field_res_personal_interests/processed
 
-  field_res_pubmed_ids: field_res_pubmed_ids
 
+  field_res_pubmed_ids: field_res_pubmed_ids
   field_res_puma_id: field_res_puma_id
   uwm_unique_id: uwm_unique_id
 
@@ -292,15 +291,60 @@ process:
       - plugin: skip_on_empty
         method: process
 
-#
-#  field_res_image: field_res_image
-#    plugin: image_import
-#    source: file
-#    destination: 'constants/file_destination'
-#    title: file_title
-#    alt: file_title
+  #
+  #  field_res_image:
+  #    plugin: image_import
+  #    source: file
+  #    destination: 'constants/file_destination'
+  #    title: file_title
+  #    alt: file_title
+
+  #  field_res_image:
+  #    plugin: migration
+  #    migration: uwm_res_providers_import_provider_images
+  #    source: field_res_image/data/id
+
+  # temporary_image_fid:
+  #    plugin: migration_lookup
+  #    migration: uwm_res_providers_import_provider_images
+  #    source: field_res_image/data/id
+
+  temporary_image_fid:
+    plugin: sub_process
+    source: field_res_expertises
+    process:
+      target_id:
+      - plugin: uwm_tid_for_uuid
+        source: id
+      - plugin: skip_on_empty
+        method: process
+
+  field_res_image:
+    plugin: sub_process
+    source: field_image
+    process:
+      target_id:
+        plugin: migration_lookup
+        migration: uwm_res_providers_import_provider_images
+        source: field_res_image/data/id
+      alt: title
+      title: title
+      height: field_res_image/data/id/meta/height
+      width: field_res_image/data/id/meta/width
+  #
+  #  field_res_image/alt: title
+  #  field_res_image/title: title
+  #  field_res_image/height: field_res_image/data/id/meta/height
+  #  field_res_image/width: field_res_image/data/id/meta/width
 
 
+  #  field_res_image:
+  #    process:
+  #      target_id:
+  #        - plugin: migration
+  #          source: id
+  #        - plugin: skip_on_empty
+  #          method: process
 
   field_res_languages:
     plugin: sub_process

@@ -627,7 +627,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          operator: contains
+          operator: word
           value: ''
           group: 1
           exposed: true
@@ -663,6 +663,47 @@ display:
           plugin_id: string
           entity_type: node
           entity_field: title
+        alias:
+          id: alias
+          table: views_url_alias_node
+          field: alias
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: alias_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: alias_op
+            identifier: alias
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              replicator: '0'
+              administrator: '0'
+              content_manager: '0'
+            placeholder: 'URL alias'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: string
         type:
           id: type
           table: node_field_data

@@ -14,10 +14,12 @@ migration_group: uwm_providers
 label: uwm_res_providers_import_providers
 source:
   plugin: url
-  data_fetcher_plugin: http
+  data_fetcher_plugin: file
   data_parser_plugin: json
+  include_raw_data: true
   track_changes: true
-  urls: 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed'
+  urls:
+    - 'public://temp/providers.json'
   ids:
     uuid:
       type: string
@@ -124,12 +126,6 @@ source:
       label: field_res_expertises
       selector: /relationships/field_res_expertises/data
     -
-      name: field_res_image
-      label: field_res_image
-      plugin: migration
-      migration: uwm_res_providers_import_provider_images
-      selector: /relationships/field_res_image/data/id
-    -
       name: field_res_languages
       label: field_res_languages
       selector: /relationships/field_res_languages/data
@@ -137,6 +133,12 @@ source:
       name: field_res_medical_services
       label: field_res_medical_services
       selector: /relationships/field_res_medical_services/data
+    -
+      name: field_res_image
+      label: field_res_image
+      plugin: migration
+      migration: uwm_res_providers_import_provider_images
+      selector: /relationships/field_res_image
 process:
   uuid: uuid
   nid:
@@ -238,6 +240,29 @@ process:
         -
           plugin: skip_on_empty
           method: process
+  temporary_image_fid:
+    plugin: sub_process
+    source: field_res_expertises
+    process:
+      target_id:
+        -
+          plugin: uwm_tid_for_uuid
+          source: id
+        -
+          plugin: skip_on_empty
+          method: process
+  field_res_image:
+    plugin: sub_process
+    source: field_image
+    process:
+      target_id:
+        plugin: migration_lookup
+        migration: uwm_res_providers_import_provider_images
+        source: field_res_image/data/id
+      alt: title
+      title: title
+      height: field_res_image/data/id/meta/height
+      width: field_res_image/data/id/meta/width
   field_res_languages:
     plugin: sub_process
     source: field_res_languages

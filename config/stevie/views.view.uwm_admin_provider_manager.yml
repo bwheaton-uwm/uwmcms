@@ -1041,7 +1041,7 @@ display:
           empty: true
           content: 'Displaying @start - @end of @total'
           plugin_id: result
-      use_ajax: true
+      use_ajax: false
     display_plugin: default
     display_title: Master
     id: default
