@@ -492,6 +492,18 @@ function uwmbase_preprocess_views_view(&$variables) {
     }
   }
 
+  // In results summary, change plural to singular if there's 1 result.
+  if ($variables['total_rows'] == 1 && !empty($variables['header']['result']['#markup'])) {
+
+    // Apply to Locations, Providers, General searches.
+    $variables['header']['result']['#markup'] = str_replace(
+      ['locations', 'providers', 'results'],
+      ['location', 'provider', 'result'],
+      $variables['header']['result']['#markup']
+    );
+
+  }
+
 }
 
 /**

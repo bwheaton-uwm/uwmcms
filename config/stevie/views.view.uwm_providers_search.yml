@@ -468,7 +468,7 @@ display:
           group_type: group
           admin_label: ''
           empty: false
-          content: "<div class=\"results-count-summary\">Displaying @start - @end of @total</div>\r\n\r\n<div class=\"results-alphabetical-disclaimer\">The results below display in alphabetical order.</div>"
+          content: '<div class="results-count-summary">@total providers found</div>'
           plugin_id: result
       footer: {  }
       empty: {  }
