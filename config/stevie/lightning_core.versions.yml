@@ -110,8 +110,8 @@ deploy: 1.0.0-beta11
 relaxed: 1.0.0-beta14
 trash: 1.0.0-alpha1
 admin_toolbar: 1.25.0
-admin_toolbar_links_access_filter: 1.24.0
-admin_toolbar_tools: 1.24.0
+admin_toolbar_links_access_filter: 1.26.0
+admin_toolbar_tools: 1.26.0
 adminimal_admin_toolbar: 1.8.0
 responsive_favicons: 1.4.0
 components: 1.0.0
