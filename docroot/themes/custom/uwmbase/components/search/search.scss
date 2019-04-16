@@ -165,48 +165,6 @@ body.is-path-search {
 
     .views-element-container {
 
-      //@include make-row();
-
-      article:not(.clinic-card) {
-        @include make-col(12);
-        @include media-breakpoint-up('lg') {
-          @include make-col(7);
-        }
-        padding-bottom: 15px;
-        border-bottom: 1px solid #dcdcdc;
-
-        h2 {
-          color: theme-color('primary');
-          text-decoration: none;
-          padding-bottom: 0;
-          padding-top: .75rem;
-          a {
-            &, &:link, &:visited, &:active, &:focus {
-              font-size: 1.5rem;
-              font-weight: 400;
-              color: theme-color('primary');
-              text-decoration: none;
-
-            }
-            &:hover {
-              //color: $uwmed-pop-blue;
-              text-decoration: none;
-            }
-          }
-        }
-
-        a.view-more {
-          display: block;
-          margin: 14px 0;
-          word-break: break-all;
-        }
-
-        em.match {
-          font-weight: bold;
-        }
-
-      }
-
       // No-results behavior:
       .view.view-id-uwm_general_search.view-without-query {
         visibility: hidden;
@@ -363,7 +321,8 @@ body.is-path-search.user-role-authenticated {
 body.path-search-locations,
 body.path-search-locations-geo,
 body.path-search-locations-db,
-body.path-search-providers {
+body.path-search-providers,
+body.path-search {
   section.content-columns {
     background-color: $gray-100;
 

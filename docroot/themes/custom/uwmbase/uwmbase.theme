@@ -520,7 +520,7 @@ function uwmbase_preprocess_views_view_fields(&$variables) {
     if (!empty($row->_object) && method_exists($row->_object, 'get')) {
 
       $nid = $row->_object->get('nid')->value;
-      $node = \Drupal::entityManager()->getStorage('node')->load($nid);
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
       $variables['row']->nid = $nid;
       $variables['row']->node = $node;

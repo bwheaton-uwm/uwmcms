@@ -1,0 +1,83 @@
+/*
+ * General search result cards
+ *
+ * Theme library: uwmbase/search-result-card
+ * Main template: views-view-fields--uwm-general-search--page-1.html.twig
+ */
+
+@import 'init';
+.search-result-card {
+  // These cards are the Bootstrap grid cells (flex items); apply margin
+  // between rows.
+  margin-bottom: 1.25rem; // 20px
+  padding-left: 10px;
+  padding-right: 10px;
+
+  @include media-breakpoint-up('lg') {
+    // reset padding-left to 15px on the first and every 4th card (first column) to correctly align with grid
+
+    &:nth-child(3n-2) {
+      padding-left: 15px;
+    }
+    // reset padding-right to 15px on every 3rd card (last column) to correctly align with grid
+    &:nth-child(3n+0) {
+      padding-right: 15px;
+    }
+  }
+
+  // Inner flex container (column)
+  .search-result-card__inner {
+    // Set inner wrapper to fill the grid cell height.
+    height: 100%;
+    padding: 1rem;
+    border: 1px solid $gray-300;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    min-height: 231px;
+  }
+
+  .search-result-card__header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search-result-card__title {
+    order: 2;
+    font-size: 1.25rem; // 20px
+    padding-top: .625rem !important; // 10px
+    padding-bottom: .75rem; // 12px
+    margin: 0;
+  }
+
+  .search-result-card__link {
+    color: theme-color('link-blue');
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-family: $font-family-sans-serif;
+
+    &:hover, &:active, &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  .uwm-accent-heading__title {
+    margin: 0;
+    font-size: 0.8125rem;
+  }
+
+  .search-result-card__type {
+    order: 1;
+    margin: 0;
+  }
+
+  .search-result-card__teaser {
+    font-size: .875rem;
+  }
+
+  .uwm-accent-heading__transparent {
+    &:after {
+      border-top-color: transparent;
+    }
+  }
+}

@@ -556,7 +556,7 @@ display:
           group_type: group
           admin_label: ''
           empty: true
-          content: '<div class="results-count-summary">Displaying @start - @end of @total</div>'
+          content: '<div class="results-count-summary">@total results found</div>'
           plugin_id: result
       footer: {  }
       empty: {  }

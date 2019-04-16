@@ -25,7 +25,7 @@
       });
 
       // Add event tracking to the site search results links.
-      $('.view-uwm-general-search').find('.reader-url, .view-more', context).each(function (index) {
+      $('.view-uwm-general-search').find('.search-result-card__link', context).each(function (index) {
         var searchTerm = searchForm.find('input[name=s]').val();
         $(this).one('click', function (event) {
           dataLayer.push({

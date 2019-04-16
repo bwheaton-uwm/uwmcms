@@ -302,6 +302,11 @@ search:
   - uwmbase/form-styles
   - uwmbase/base
 
+search-general:
+  css:
+    component:
+      dist/css/search-general.css: { }
+
 search-locations:
   js:
     dist/js/search-locations.js: { }

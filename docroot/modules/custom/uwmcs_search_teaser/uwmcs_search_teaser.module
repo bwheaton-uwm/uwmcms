@@ -49,7 +49,7 @@ function uwmcs_search_teaser_preprocess_views_view_fields(&$variables) {
     if (!empty($row->_object) && method_exists($row->_object, 'get')) {
 
       $nid = $row->_object->get('nid')->value;
-      $node = \Drupal::entityManager()->getStorage('node')->load($nid);
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
       if ($node instanceof Node) {
 
@@ -78,6 +78,17 @@ function uwmcs_search_teaser_preprocess_views_view_fields(&$variables) {
             }
           }
 
+        }
+        elseif ($node->getType() === "uwm_medical_service" || $node->getType() === "uwm_medical_specialty") {
+          if ($node->hasField('field_meta_tags')) {
+            if ($node->field_meta_tags->value) {
+              $meta_tags = unserialize($node->field_meta_tags->value);
+              if ($meta_tags['description']) {
+                $meta_description = $meta_tags['description'];
+                $variables['row']->uwmcs_search_teaser_raw = _uwmcs_search_teaser_trim($meta_description);
+              }
+            }
+          }
         }
       }
     }
