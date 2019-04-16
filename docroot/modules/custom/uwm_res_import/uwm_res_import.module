@@ -18,7 +18,7 @@ use GuzzleHttp\Exception\RequestException;
 function uwm_res_import_entity_presave(EntityInterface $entity) {
 
   /***
-   * Set value to an int, so it's preserved forcheckbox:
+   * Set value to int, so it's preserved for checkbox:
    */
   if ($entity->bundle() === "res_provider") {
     $v2 = $entity->field_res_isacceptingnewpts->value;
@@ -39,6 +39,7 @@ function uwm_res_import_prepare_row(Row $row, MigrateSourceInterface $source, Mi
  */
 function uwm_res_import_migration_plugins_alter(&$migrations) {
 
+  $a = 1;
   foreach ($migrations as $id => &$migration) {
 
     /***

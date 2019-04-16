@@ -56,17 +56,31 @@ class UwmResImportSubscriber implements EventSubscriberInterface {
    */
   public function preRowSave(MigratePreRowSaveEvent $event) {
 
-    /** @var \Drupal\migrate\Row $row */
-    // $row = $event->getRow();
-    /** @var \Drupal\migrate\Plugin\MigrationInterface $migration */
-    // $migration = $event->getMigration();
-    // $id_map = $event->getRow()->getIdMap();
-    // if (!empty($id_map['destid1'])) {
-    // $this->preExistingItem = TRUE;
-    // }
-    // else {
-    // $this->preExistingItem = FALSE;
-    // }.
+    $migration = $event->getMigration();
+    $row = $event->getRow();
+    $source = $row->getSource();
+
+    // @TODO: Move this to provider import yml.
+    // The migration_lookup plugin was
+    // not returning destination file id's so,
+    // populate the image field here.
+    $migrationId = $migration->id();
+    if ($migrationId === 'uwm_res_providers_import_providers' &&
+        !empty($source['field_res_image']['data'][0]['id'])) {
+
+      $source_uuid = $source['field_res_image']['data'][0]['id'];
+      $fid = self::getMigrationDestinationId($source_uuid, $migrationId);
+
+      $image = [
+        'target_id' => $fid,
+        'alt' => 'Alt text',
+        'title' => 'Title',
+      ];
+
+      $row->setDestinationProperty('field_res_image', $image);
+
+    }
+
   }
 
   /**
@@ -95,6 +109,35 @@ class UwmResImportSubscriber implements EventSubscriberInterface {
 
     return TRUE;
 
+  }
+
+  /**
+   * Lookup the local id for item imported earlier, based on it's unique id.
+   *
+   * @param \Drupal\uwm_res_import\EventSubscriber\string $sourceId
+   *   Description here.
+   * @param \Drupal\uwm_res_import\EventSubscriber\string $migrationName
+   *   Description here.
+   *
+   * @return null
+   *   Description here.
+   */
+  private static function getMigrationDestinationId(string $sourceId, string $migrationName) {
+
+    $table = 'migrate_map_' . $migrationName;
+    $table = 'migrate_map_uwm_res_providers_import_provider_images';
+
+    $connection = \Drupal::database();
+    $query = $connection->query("SELECT * FROM {$table} WHERE sourceid1 = :id", [
+      ':id' => $sourceId,
+    ]);
+    $result = $query->fetchAll();
+
+    if ($result && !empty($result[0]->destid1)) {
+      return $result[0]->destid1;
+    }
+
+    return NULL;
   }
 
 }
