@@ -1,0 +1,146 @@
+uuid: 45909acc-75f6-4030-b5d6-d880f5ca1717
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - search_api
+    - uwmcs_searchfields
+    - taxonomy
+  config:
+    - search_api.server.database
+    - core.entity_view_mode.node.autocomplete
+    - core.entity_view_mode.taxonomy_term.autocomplete
+id: uwm_providers_autocomplete_index
+name: 'UWM Providers - Autocomplete Index'
+description: ''
+read_only: false
+field_settings:
+  node_grants:
+    label: 'Node access information'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
+  rendered_item:
+    label: 'Rendered HTML output'
+    property_path: rendered_item
+    type: text
+    configuration:
+      roles:
+        anonymous: anonymous
+      view_mode:
+        'entity:node':
+          res_provider: autocomplete
+        'entity:taxonomy_term':
+          expertise: autocomplete
+          medical_services: autocomplete
+  status:
+    label: null
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+  uid:
+    label: null
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: false
+      selected:
+        - res_provider
+    languages:
+      default: true
+      selected: {  }
+  'entity:taxonomy_term':
+    bundles:
+      default: false
+      selected:
+        - expertise
+        - medical_services
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  UwmSearchWithin: {  }
+  add_url: {  }
+  aggregated_field: {  }
+  content_access:
+    weights:
+      preprocess_query: -30
+  entity_status: {  }
+  html_filter:
+    all_fields: true
+    fields:
+      - rendered_item
+    title: false
+    alt: false
+    tags:
+      b: 2
+      h1: 5
+      h2: 3
+      h3: 2
+      strong: 2
+    weights:
+      preprocess_index: -15
+      preprocess_query: -15
+  ignore_character:
+    ignorable: '[''¿¡!?,.:;]'
+    ignorable_classes:
+      - Pc
+      - Pd
+      - Pe
+      - Pf
+      - Pi
+      - Po
+      - Ps
+    all_fields: false
+    weights:
+      preprocess_index: -10
+      preprocess_query: -10
+  ignorecase:
+    all_fields: true
+    fields:
+      - rendered_item
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
+  rendered_item: {  }
+  transliteration:
+    all_fields: true
+    fields:
+      - rendered_item
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
+  type_boost:
+    boosts:
+      'entity:node':
+        datasource_boost: !!float 21
+      'entity:taxonomy_term':
+        datasource_boost: !!float 1
+        bundle_boosts:
+          expertise: !!float 0
+          medical_services: !!float 0
+    weights:
+      preprocess_index: 0
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  index_directly: true
+  cron_limit: 50
+server: database

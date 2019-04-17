@@ -1,0 +1,14 @@
+uuid: fa51243b-93bd-465f-8e4b-1d170ebebf8a
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - taxonomy
+third_party_settings:
+  lightning_core:
+    description: ''
+id: taxonomy_term.autocomplete
+label: Autocomplete
+targetEntityType: taxonomy_term
+cache: true

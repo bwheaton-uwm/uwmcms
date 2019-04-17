@@ -1,0 +1,22 @@
+uuid: 6a9601d6-5e71-4c9d-b0ec-dbb51c0360aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.autocomplete
+    - field.field.taxonomy_term.expertise.field_res_providers
+    - field.field.taxonomy_term.expertise.field_term_keywords
+    - field.field.taxonomy_term.expertise.uwm_unique_id
+    - taxonomy.vocabulary.expertise
+_core:
+  default_config_hash: K1bELAx1q5GuWl5pGZA56UyyvUXmWrcMCuhdZ2l__Cc
+id: taxonomy_term.expertise.autocomplete
+targetEntityType: taxonomy_term
+bundle: expertise
+mode: autocomplete
+content: {  }
+hidden:
+  description: true
+  field_res_providers: true
+  field_term_keywords: true
+  uwm_unique_id: true

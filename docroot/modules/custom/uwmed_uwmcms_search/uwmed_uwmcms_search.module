@@ -40,6 +40,10 @@ function uwmed_uwmcms_search_form_views_exposed_form_alter(&$form, $form_state, 
     case 'uwm_locations_geo_search':
       _uwmed_uwmcms_search_alter_locations_search_form($form, $form_state);
       break;
+
+    case 'uwm_providers_search':
+      _uwmed_uwmcms_search_alter_providers_search_form($form, $form_state);
+      break;
   }
 }
 
@@ -65,6 +69,137 @@ function uwmed_uwmcms_search_preprocess_views_view(&$variables) {
     case 'uwm_locations_geo_search':
       _uwmed_uwmcms_search_preprocess_views_view_uwm_locations_geo_search($variables);
       break;
+  }
+}
+
+/**
+ * Implements hook_search_api_autocomplete_suggestions_alter().
+ */
+function uwmed_uwmcms_search_search_api_autocomplete_suggestions_alter(array &$suggestions, array $alter_params) {
+  $search = $alter_params['search'];
+  $suggester_ids = $search->getSuggesterIds();
+
+  // Only alter "Live Results" suggestions.
+  if (!in_array('live_results', $suggester_ids)) {
+    return;
+  }
+
+  // For the Providers Autocomplete search index.
+  if ($search->getIndexId() == 'uwm_providers_autocomplete_index') {
+    foreach ($suggestions as $suggestion) {
+      // Remove the URL.
+      $suggestion->setUrl(NULL);
+
+      // If user input exists.
+      if (isset($alter_params['user_input'])) {
+        $user_input = $alter_params['user_input'];
+        $label = trim($suggestion->getLabel());
+
+        // If the label was not set, use the render element.
+        if (empty($label)) {
+          $render = $suggestion->getRender();
+          $label = \Drupal::service('renderer')->render($render);
+          $label = trim(strip_tags($label));
+        }
+
+        $label = str_replace('  ', ' ', $label);
+
+        // Get the position of the user input in the label.
+        $position = stripos($label, $user_input);
+
+        // Determine the new prefix, user input, and suffix.
+        if ($position !== FALSE) {
+          $user_input_length = strlen($user_input);
+          $suggestion_prefix = substr($label, 0, $position);
+          $new_user_input = substr($label, $position, $user_input_length);
+          $suggestion_suffix = substr($label, $position + $user_input_length);
+        }
+        else {
+          $suggestion_prefix = $label;
+          $new_user_input = NULL;
+          $suggestion_suffix = NULL;
+        }
+
+        // Update the suggestion.
+        $suggestion->setLabel(NULL);
+        $suggestion->setRender(NULL);
+        $suggestion->setUserInput($new_user_input);
+        $suggestion->setSuggestionPrefix($suggestion_prefix);
+        $suggestion->setSuggestionSuffix($suggestion_suffix);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_search_api_autocomplete_suggestion().
+ */
+function uwmed_uwmcms_search_preprocess_search_api_autocomplete_suggestion(&$variables) {
+  $suggestion = $variables['suggestion_prefix'];
+
+  // If the user input did not match exactly, try to match and
+  // highlight the individual parts.
+  if (empty($variables['user_input'])) {
+    $user_input = $_GET['q'];
+
+    // Create a proxy to keep track of characters matched.
+    $proxy = $suggestion;
+
+    foreach (explode(' ', $user_input) as $part) {
+      $position = stripos($suggestion, $part);
+      if ($position !== FALSE) {
+        $part_length = strlen($part);
+
+        // Replace the matched characters with asterisks.
+        $asterisks = str_repeat('*', $part_length);
+        $proxy = substr_replace($proxy, $asterisks, $position, $part_length);
+      }
+    }
+
+    // If no characters matched, bail.
+    if (strpos($proxy, '*') === FALSE) {
+      return;
+    }
+
+    // Assemble the tagged suggestion.
+    $tagged_suggestion = '';
+    $in_tag = FALSE;
+    $proxy_length = strlen($proxy);
+
+    for ($i = 0; $i <= $proxy_length; $i++) {
+      $char = substr($proxy, $i, 1);
+      if ($char == '*') {
+        if ($in_tag) {
+          $tagged_suggestion .= substr($suggestion, $i, 1);
+        }
+        else {
+          $tagged_suggestion .= '<strong>' . substr($suggestion, $i, 1);
+          $in_tag = TRUE;
+        }
+      }
+      else {
+        if ($in_tag) {
+          $tagged_suggestion .= '</strong>' . substr($suggestion, $i, 1);
+          $in_tag = FALSE;
+        }
+        else {
+          $tagged_suggestion .= substr($suggestion, $i, 1);
+        }
+      }
+    }
+
+    // Add a closing tag, if necessary.
+    if ($in_tag) {
+      $tagged_suggestion .= '</strong>';
+    }
+
+    // Ensure spaces after tags are preserved.
+    $tagged_suggestion = str_replace('</strong> ', ' </strong>', $tagged_suggestion);
+
+    $variables['suggestion_prefix'] = [
+      '#markup' => $tagged_suggestion,
+      '#allowed_tags' => ['strong'],
+    ];
   }
 }
 
@@ -138,6 +273,19 @@ function _uwmed_uwmcms_search_alter_locations_search_form(array &$form, FormStat
 
   }
 
+}
+
+/**
+ * Customize the providers search form.
+ *
+ * @param array $form
+ *   The form.
+ * @param \Drupal\Core\Form\FormState $form_state
+ *   The form state.
+ */
+function _uwmed_uwmcms_search_alter_providers_search_form(array &$form, FormState $form_state) {
+  // Use the autocomplete functionality from UWM Providers Autocomplete.
+  $form['s']['#search_id'] = 'uwm_providers_autocomplete';
 }
 
 /**

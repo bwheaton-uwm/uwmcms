@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0caad98aa2ef8aff032ab3ba52b5d86f",
+    "content-hash": "5601ca0700a66f5fb5f9ff553843d623",
     "packages": [
         {
             "name": "acquia/blt",
@@ -868,8 +868,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/fengyuanchen/cropper/zipball/30c58b29ee21010e17e58ebab165fbd84285c685",
-                "reference": "30c58b29ee21010e17e58ebab165fbd84285c685",
-                "shasum": null
+                "reference": "30c58b29ee21010e17e58ebab165fbd84285c685"
             },
             "type": "bower-asset",
             "license": [
@@ -887,8 +886,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/enyo/dropzone/zipball/08b9e0a763b54a685404dea523a9c54242fbe1b9",
-                "reference": "08b9e0a763b54a685404dea523a9c54242fbe1b9",
-                "shasum": null
+                "reference": "08b9e0a763b54a685404dea523a9c54242fbe1b9"
             },
             "type": "bower-asset"
         },
@@ -903,8 +901,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/9e8ec3d10fad04748176144f108d7355662ae75e",
-                "reference": "9e8ec3d10fad04748176144f108d7355662ae75e",
-                "shasum": null
+                "reference": "9e8ec3d10fad04748176144f108d7355662ae75e"
             },
             "type": "bower-asset",
             "license": [
@@ -922,8 +919,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/kenwheeler/slick/zipball/0f40c9d6a02a5c08b5f4dd80fdada3a854a59bee",
-                "reference": "0f40c9d6a02a5c08b5f4dd80fdada3a854a59bee",
-                "shasum": null
+                "reference": "0f40c9d6a02a5c08b5f4dd80fdada3a854a59bee"
             },
             "require": {
                 "bower-asset/jquery": ">=1.7"
@@ -1039,9 +1035,7 @@
             "version": "4.10.1",
             "dist": {
                 "type": "zip",
-                "url": "https://download.ckeditor.com/templates/releases/templates_4.10.1.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://download.ckeditor.com/templates/releases/templates_4.10.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -6744,8 +6738,16 @@
                     "homepage": "https://www.drupal.org/user/3260690"
                 },
                 {
+                    "name": "Wim Leers",
+                    "homepage": "https://www.drupal.org/user/99777"
+                },
+                {
                     "name": "cs_shadow",
                     "homepage": "https://www.drupal.org/user/2828287"
+                },
+                {
+                    "name": "phenaproxima",
+                    "homepage": "https://www.drupal.org/user/205645"
                 },
                 {
                     "name": "slashrsm",
@@ -9892,6 +9894,10 @@
             ],
             "authors": [
                 {
+                    "name": "joelpittet",
+                    "homepage": "https://www.drupal.org/user/160302"
+                },
+                {
                     "name": "samuel.mortenson",
                     "homepage": "https://www.drupal.org/user/2582268"
                 }
@@ -10894,14 +10900,6 @@
                 {
                     "name": "SaschaHannes",
                     "homepage": "https://www.drupal.org/user/3536189"
-                },
-                {
-                    "name": "dakku",
-                    "homepage": "https://www.drupal.org/user/97634"
-                },
-                {
-                    "name": "rackberg",
-                    "homepage": "https://www.drupal.org/user/2806873"
                 }
             ],
             "description": "Restricts access to nodes by taxonomy terms in relation to users and their roles.",
@@ -11852,17 +11850,17 @@
         },
         {
             "name": "drupal/search_api",
-            "version": "1.11.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/search_api.git",
-                "reference": "8.x-1.11"
+                "reference": "8.x-1.12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/search_api-8.x-1.11.zip",
-                "reference": "8.x-1.11",
-                "shasum": "d2bf92afa2ee760977dde1fadcb5bb64a4c2d7c1"
+                "url": "https://ftp.drupal.org/files/projects/search_api-8.x-1.12.zip",
+                "reference": "8.x-1.12",
+                "shasum": "db203e2fdd669d6e9ff2c99688c0816d248a1fff"
             },
             "require": {
                 "drupal/core": "^8.5"
@@ -11882,8 +11880,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.11",
-                    "datestamp": "1542564480",
+                    "version": "8.x-1.12",
+                    "datestamp": "1552334285",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -11923,17 +11921,17 @@
         },
         {
             "name": "drupal/search_api_autocomplete",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/search_api_autocomplete.git",
-                "reference": "8.x-1.1"
+                "reference": "8.x-1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/search_api_autocomplete-8.x-1.1.zip",
-                "reference": "8.x-1.1",
-                "shasum": "103975c45644a36fb708094f100be5d17f2c262a"
+                "url": "https://ftp.drupal.org/files/projects/search_api_autocomplete-8.x-1.2.zip",
+                "reference": "8.x-1.2",
+                "shasum": "606908583c1e0aff57a4215355d1d3e07a1d50d2"
             },
             "require": {
                 "drupal/core": "~8.0",
@@ -11948,12 +11946,15 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.1",
-                    "datestamp": "1537174980",
+                    "version": "8.x-1.2",
+                    "datestamp": "1552333980",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "Results with uppercase letters fix": "https://www.drupal.org/files/issues/2019-02-20/2947273-25--fix-live-results-query-preprocessing.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -12087,7 +12088,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.2",
-                    "datestamp": "1529312013",
+                    "datestamp": "1545483044",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -12641,7 +12642,7 @@
                 },
                 "drupal": {
                     "version": "8.x-2.12",
-                    "datestamp": "1523203180",
+                    "datestamp": "1542505221",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -12905,6 +12906,10 @@
                 {
                     "name": "gausarts",
                     "homepage": "https://www.drupal.org/user/159062"
+                },
+                {
+                    "name": "thalles",
+                    "homepage": "https://www.drupal.org/user/3589086"
                 }
             ],
             "description": "Slick carousel, the last carousel you'll ever need.",
@@ -15677,7 +15682,7 @@
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
                     "email": "lcobucci@gmail.com",
-                    "role": "Developer"
+                    "role": "developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -16050,12 +16055,12 @@
             "version": "v1.6.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mikey179/vfsStream.git",
+                "url": "https://github.com/bovigo/vfsStream.git",
                 "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikey179/vfsStream/zipball/d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
+                "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
                 "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
                 "shasum": ""
             },
@@ -20797,7 +20802,7 @@
                 "type": "tar",
                 "url": "https://api.github.com/repos/uwmweb/ckeditor_bs_grid/zipball/e2bd7a01273019212bcce473fa62e7c655d65b3a",
                 "reference": "e2bd7a01273019212bcce473fa62e7c655d65b3a",
-                "shasum": "507cfbd5c446bb4c2705b65a760388c3144e25fa"
+                "shasum": "9585446f6d02f72814f29f0c3d88ad16ef412e88"
             },
             "require": {
                 "drupal/core": "~8"
@@ -20825,7 +20830,7 @@
                 "type": "tar",
                 "url": "https://api.github.com/repos/uwmweb/uwm_paragraphs/zipball/ab60ae51a6dc710b62576d01356d8b8446709fca",
                 "reference": "ab60ae51a6dc710b62576d01356d8b8446709fca",
-                "shasum": "455a76e29a7eaca06a20b590ff9df69833d73b3a"
+                "shasum": "7c14441ec34f7a2b4bbdefc927bf698f089390a4"
             },
             "require": {
                 "drupal/core": "~8",
@@ -20857,7 +20862,7 @@
                 "type": "tar",
                 "url": "https://api.github.com/repos/uwmweb/uwmedicineorg_theme/zipball/7073e3e440a3dc75812056d30259459f6f49ac52",
                 "reference": "7073e3e440a3dc75812056d30259459f6f49ac52",
-                "shasum": "70e7db52bab4b117c91f99b9b1b8d3ecc213c502"
+                "shasum": "4c11c52f6fb4de38dbe52b03b3f179b8b7409417"
             },
             "type": "drupal-theme",
             "license": [

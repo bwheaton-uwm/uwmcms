@@ -1,0 +1,8 @@
+uuid: 49aa9690-3ad9-4844-a2c9-6c3ff8c04d77
+langcode: en
+status: true
+dependencies: {  }
+id: given_middle_family
+label: 'Given Middle Family'
+locked: false
+pattern: g+imif

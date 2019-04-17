@@ -14,7 +14,7 @@ base:
 
 font-awesome:
   js:
-    //use.fontawesome.com/releases/v5.4.1/js/all.js: { type: external, attributes: { defer: true, crossorigin: anonymous,integrity: sha384-L469/ELG4Bg9sDQbl0hvjMq8pOcqFgkSpwhwnslzvVVGpDjYJ6wJJyYjvG3u8XW7, data-search-pseudo-elements: true }}
+    //use.fontawesome.com/releases/v5.8.1/js/all.js: { type: external, attributes: { defer: true, crossorigin: anonymous, integrity: 'sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ' }}
 
 form-styles:
   js:

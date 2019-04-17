@@ -1,0 +1,39 @@
+uuid: af7d1580-7796-41ae-b4b5-b03233615528
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.uwm_providers_autocomplete_index
+    - views.view.uwm_providers_autocomplete
+    - core.entity_view_mode.node.autocomplete
+  module:
+    - views
+    - search_api_autocomplete
+id: uwm_providers_autocomplete
+label: 'UWM Providers Autocomplete'
+index_id: uwm_providers_autocomplete_index
+suggester_settings:
+  live_results:
+    fields: {  }
+    view_modes:
+      'entity:node':
+        res_provider: autocomplete
+      'entity:taxonomy_term':
+        expertise: ''
+        medical_services: ''
+suggester_weights:
+  live_results: 0
+suggester_limits:
+  live_results: 6
+search_settings:
+  'views:uwm_providers_autocomplete':
+    displays:
+      default: true
+      selected: {  }
+options:
+  limit: 6
+  min_length: 3
+  show_count: false
+  autosubmit: false
+  submit_button_selector: ':submit'
+  delay: null

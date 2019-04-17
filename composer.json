@@ -220,8 +220,11 @@
       },
       "drupal/media_entity_image": {
           "Undefined function media_entity_copy_icons() fix": "https://www.drupal.org/files/issues/2936985-2.patch"
+      },
+      "drupal/search_api_autocomplete": {
+        "Results with uppercase letters fix": "https://www.drupal.org/files/issues/2019-02-20/2947273-25--fix-live-results-query-preprocessing.patch"
       }
-  }
+    }
   },
   "config":
   {
