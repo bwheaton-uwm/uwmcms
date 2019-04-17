@@ -38,10 +38,15 @@ body.is-path-search {
           @include make-col(6);
           padding-right: 0;
         }
+
         .form-item {
-          margin-bottom: 1.5rem;
+          margin-bottom: 0.75rem; // 12px
           @include make-col-ready();
           @include make-col(12);
+
+          @include media-breakpoint-up('lg') {
+            margin-bottom: 0;
+          }
         }
 
         .form-item-s {
@@ -126,13 +131,6 @@ body.is-path-search {
   .dm-facets-selector {
     @include media-breakpoint-up('lg') {
       @include make-col(3);
-    }
-  }
-
-  @include media-breakpoint-down('lg') {
-    .dm-facet-id-provider_facet_accepting_patients {
-      flex: none;
-      max-width: none;
     }
   }
 

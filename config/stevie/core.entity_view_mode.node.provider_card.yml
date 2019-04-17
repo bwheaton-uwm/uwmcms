@@ -1,0 +1,14 @@
+uuid: 232f10f6-f8db-4fce-b8fb-fe4b9d2866d2
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - node
+third_party_settings:
+  lightning_core:
+    description: ''
+id: node.provider_card
+label: 'Provider Card'
+targetEntityType: node
+cache: true

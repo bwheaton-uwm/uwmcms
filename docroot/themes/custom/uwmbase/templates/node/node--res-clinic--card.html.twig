@@ -77,7 +77,7 @@
   @see views-view--unformatted--uwm-locations-geo-search--page-1.html.twig
   @see views-view-unformatted--uwm-locations-search--page-1.html.twig
 #}
-<article {{ attributes.addClass(['clinic-card', 'col-sm-6', 'col-lg-4']) }}>
+<article {{ attributes.addClass(['clinic-card', 'col-sm-6', 'col-lg-4', 'col-xxl-3']) }}>
   <div class="clinic-card__inner">
 
     {#
@@ -100,7 +100,7 @@
       #}
       {% if content.field_res_image|render|trim is empty %}
         <a href="{{ url }}" rel="bookmark">
-          <img src="/{{ directory }}/dist/images/uwmed_location_card_placeholder.svg" alt="" class="img-fluid" />
+          <img src="/{{ directory }}/src/assets/uwmed_location_card_placeholder.svg" alt="" class="img-fluid" />
         </a>
       {% else %}
         {{ content.field_res_image }}

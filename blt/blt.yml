@@ -52,7 +52,7 @@ validate:
   twig:
     filesets: {  }
     functions: [drupal_block, drupal_field, drupal_view, drupal_view_result, drupal_block, drupal_region, drupal_entity, drupal_entity_form, drupal_field, drupal_menu, drupal_form, drupal_image, drupal_token, drupal_config, drupal_title, drupal_url, drupal_link, drupal_messages, drupal_breadcrumb, drupal_dump, drupal_breakpoint, uwm_get_path_nid, uwm_get_api_nid, uwm_extract_parts, uwm_get_sharepoint_location_image, uwm_test_func, uwm_sort_by_list, uwm_plugin_block]
-    filters: [token_replace, preg_replace, image_style, transliterate, check_markup, truncate, view, with, uwm_replace_markup, uwm_join_parts, uwm_sort_parts, uwm_format_phone, uwm_arraycount_styles, uwm_test_filter, uwm_format_accent_class]
+    filters: [token_replace, preg_replace, image_style, transliterate, check_markup, truncate, view, with, uwm_replace_markup, uwm_join_parts, uwm_sort_parts, uwm_format_phone, uwm_arraycount_styles, uwm_test_filter, uwm_format_accent_class, uwm_filter_non_numeric_keys, uwm_replace_links_with_text]
 target-hooks:
   frontend-setup:
     dir: '${docroot}'
@@ -73,11 +73,11 @@ target-hooks:
     dir: '${docroot}'
     command: 'echo ''No post-deploy build configured.'''
 multisites:
-  - default
-  - chew
-  - huddle
-  - calendar
-  - stevie
+- default
+- chew
+- huddle
+- calendar
+- stevie
 behat:
   paths: {  }
   web-driver: selenium

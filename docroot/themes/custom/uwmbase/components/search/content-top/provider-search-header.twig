@@ -13,14 +13,10 @@
 
 {{ uwm_plugin_block('facet_block:provider_facet_gender') }}
 
-<div class="submit-wrapper uwm-accent-color__purple d-none d-xl-inline-block">
-  <a class="btn btn-cta btn-cta-link submit" href="#">SEARCH</a>
-  <a class="btn btn-cta btn-cta-link reset" href="/search/providers">RESET</a>
-</div>
+{{ include('@uwmbase/search/content-top/search-submit.twig',
+  { reset_path: '/search/providers', classes: 'd-none d-xl-inline-block' }) }}
 
 {{ uwm_plugin_block('facet_block:provider_facet_accepting_patients') }}
 
-<div class="submit-wrapper uwm-accent-color__purple d-xl-none">
-  <a class="btn btn-cta btn-cta-link submit" href="#">SEARCH</a>
-  <a class="btn btn-cta btn-cta-link reset" href="/search/providers">RESET</a>
-</div>
+{{ include('@uwmbase/search/content-top/search-submit.twig',
+  { reset_path: '/search/providers', classes: 'd-xl-none' }) }}

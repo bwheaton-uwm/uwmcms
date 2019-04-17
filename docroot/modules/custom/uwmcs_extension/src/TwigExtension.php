@@ -3,6 +3,7 @@
 namespace Drupal\uwmcs_extension;
 
 use Drupal\uwmcs_reader\Controller\UwmMapper;
+use Drupal\Core\Render\Markup;
 
 /**
  * A Twig extension that adds custom functions/filters.
@@ -36,7 +37,14 @@ class TwigExtension extends \Twig_Extension {
         'uwm_extract_parts', [$this, 'extractArrayValues']),
       new \Twig_SimpleFunction(
         'uwm_sort_by_list', [$this, 'sortArrayByList']),
-      new \Twig_SimpleFunction('uwm_get_sharepoint_location_image', [$this, 'getSharepointLocationImage']),
+      new \Twig_SimpleFunction(
+        'uwm_referenced_titles_array', [
+          $this, 'getEntityReferenceTitlesArray',
+        ]),
+      new \Twig_SimpleFunction(
+        'uwm_get_sharepoint_location_image', [
+          $this, 'getSharepointLocationImage',
+        ]),
     ];
   }
 
@@ -71,6 +79,10 @@ class TwigExtension extends \Twig_Extension {
         'uwm_arraycount_styles', [$this, 'collectionCssClasses']),
       new \Twig_SimpleFilter(
         'uwm_format_accent_class', [$this, 'formatAccentClass']),
+      new \Twig_SimpleFilter(
+        'uwm_filter_non_numeric_keys', [$this, 'filterNonNumericKeys']),
+      new \Twig_SimpleFilter(
+        'uwm_replace_links_with_text', [$this, 'replaceLinkWithText']),
 
     ];
   }
@@ -348,6 +360,67 @@ class TwigExtension extends \Twig_Extension {
     });
 
     return $data;
+
+  }
+
+  /**
+   * Description here.
+   *
+   * @param array $data
+   *   Description here.
+   *
+   * @return array
+   *   Description here.
+   */
+  public static function filterNonNumericKeys(array $data = []) {
+
+    $returnArray = [];
+
+    if (!is_array($data)) {
+      return $data;
+    }
+
+    foreach ($data as $key => $value) {
+
+      if (is_numeric($key)) {
+        $returnArray[] = $value;
+      }
+
+    }
+
+    return $returnArray;
+
+  }
+
+  /**
+   * Description here.
+   *
+   * @param array $data
+   *   Description here.
+   *
+   * @return array
+   *   Description here.
+   */
+  public static function replaceLinkWithText(array $data = []) {
+
+    $returnArray = $data;
+
+    if (isset($data['#type'])) {
+      $returnArray = [$data];
+    }
+
+    foreach ($returnArray as $key => $value) {
+
+      if (isset($value['#type']) && $value['#type'] === 'link') {
+
+        $title = $value['#title'];
+        $returnArray[$key] = Markup::create($title);
+
+      }
+
+    }
+
+    return $returnArray;
 
   }
 

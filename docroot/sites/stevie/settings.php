@@ -760,10 +760,22 @@ $settings['file_scan_ignore_directories'] = [
  * file, the no-backup settings include, and this block, with overrides per
  * environment. 
  */
-if (!isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+if (!isset($_ENV['AH_SITE_ENVIRONMENT']) && !file_exists('/var/www/site-php')) {
 
+  /**
+   * Localhost settings:
+   */
+
+  // Enabling caching migrations:
 	$config['uwm_res_import.settings']['use_cache'] = TRUE;
 	$config['uwm_res_import.settings']['use_highwatermark'] = FALSE;
+
+  // Enable local Solr service on localhost:
+  $config['search_api.server.uwmed_local_solr']['status'] = TRUE;
+
+  // Use local Solr service on localhost:
+  $config['search_api.index.uwm_locations_geo_search_api_index']['server'] = 'uwmed_local_solr';
+  $config['search_api.index.uwm_locations_geo_search_api_index']['read_only'] = FALSE;
 
 }
 

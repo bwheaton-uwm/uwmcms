@@ -77,6 +77,13 @@
 // Toggle search visibility:
 body.is-path-search {
 
+  .block-page-title-block h1 {
+
+    @include media-breakpoint-down('md') {
+      font-size: 2.1875rem; // 35px
+    }
+
+  }
 
   section.content-topper {
 
@@ -85,28 +92,43 @@ body.is-path-search {
 
     .filters-wrap {
       @include make-row();
-      margin-top: 2.25rem;
+
+      margin-top: 1.5rem; // 24px
+      @include media-breakpoint-up('lg') {
+        margin-top: 2.25rem;
+      }
 
       // Standard widths:
       .views-exposed-form, .dm-facets-selector {
 
-        margin-bottom: 1.5rem;
-
         @include make-col-ready();
         @include make-col(12);
+        margin-bottom: 0.75rem; // 12px
 
-        // @include media-breakpoint-up('md') {
-        //   @include make-col(4);
-        // }
         @include media-breakpoint-up('lg') {
           @include make-col(3);
+          margin-bottom: 0;
+
+          // Reduce the gutter between form elements to half of the grid
+          // default, by leaving only the left padding to create the gutter.
           padding-right: 0;
         }
 
       }
 
       .submit-wrapper {
-        padding: 0 15px;
+        @include make-col-ready();
+        @include make-col(12);
+        margin-top: 0.75rem; // 12px
+
+        @include media-breakpoint-up('lg') {
+          @include make-col(3);
+          margin-top: 0;
+        }
+
+        .btn-cta {
+          margin-bottom: 0;
+        }
       }
 
       //.dm-facets-widget-links {
@@ -118,11 +140,6 @@ body.is-path-search {
         @include media-breakpoint-up('lg') {
           @include make-col(6);
           padding-right: 0;
-        }
-      }
-      .dm-facets-selector {
-        @include media-breakpoint-up('lg') {
-          @include make-col(3);
         }
       }
 
@@ -140,6 +157,8 @@ body.is-path-search {
     }
 
     .other-search-pages {
+      margin-top: 1.5rem; // 24px
+
       .caps {
         text-transform: uppercase;
       }
@@ -224,6 +243,10 @@ body.is-path-search {
     line-height: 14px;
     padding: 9px 15px;
     margin-right: 15px;
+
+    &.reset {
+      margin-right: 0;
+    }
   }
 }
 

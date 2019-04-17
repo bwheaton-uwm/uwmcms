@@ -13,6 +13,7 @@
       }
 
       var searchForm = $('#views-exposed-form-uwm-providers-search-page-1', context);
+      var searchTerm = searchForm.find('input[name=s]').val();
 
       var searchInitiationEvent = {
         'event': 'search initiation',
@@ -42,15 +43,42 @@
         }
       });
 
-      // Add event tracking to the provider search results links.
-      $('.view-uwm-providers-search').find('.reader-url, .view-more', context).each(function (index) {
-        var searchTerm = searchForm.find('input[name=s]').val();
+      // Add event tracking to the provider search results links (image, title, cta).
+      $('.view-uwm-providers-search', context).find('.view-mode-provider_card a[rel="bookmark"], .view-mode-provider_card .provider-card__image a').each(function (index) {
         $(this).one('click', function (event) {
           dataLayer.push({
             'event': 'search result click',
             'searchType': 'provider',
             'searchTerm': searchTerm,
-            'linkURL': $(this).attr('href')
+            'linkURL': $(this).attr('href'),
+            'uxElement': 'linktodetail'
+          });
+        });
+      });
+
+      // Add event tracking to the provider search locations links.
+      $('.view-uwm-providers-search .provider-card__locations a', context).each(function (index) {
+        $(this).one('click', function (event) {
+          var providerLink = $(this).parents('.view-mode-provider_card').find('a[rel="bookmark"]').first().attr('href');
+          dataLayer.push({
+            'event': 'search result click',
+            'searchType': 'provider',
+            'searchTerm': searchTerm,
+            'linkURL': providerLink,
+            'uxElement': 'linktodetail'
+          });
+        });
+      });
+
+      // Add phone number click tracking to provider card phone numbers.
+      $('.view-uwm-providers-search .view-mode-provider_card a[href^="tel:"]', context).each(function (index) {
+        $(this).one('click', function (event) {
+          var providerLink = $(this).parents('.view-mode-provider_card').find('a[rel="bookmark"]').first().attr('href');
+          dataLayer.push({
+            'event': 'phone number click',
+            'searchType': 'provider',
+            'searchTerm': searchTerm,
+            'linkURL': providerLink
           });
         });
       });

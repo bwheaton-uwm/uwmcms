@@ -1,1 +1,45 @@
 @import 'libraries';
+@import 'init';
+
+// Styling tweaks for Bootstrap select/dropdown
+.bootstrap-select {
+
+  // The currently-selected option, excluding the placeholder (no option
+  // selected)
+  .dropdown-toggle:not(.bs-placeholder) .filter-option {
+    color: $dropdown-link-color;
+  }
+
+  .dropdown-menu {
+    // Make the dropdown width match the select width
+    width: 100%;
+
+    // Apply same left/right padding on searchbox as on options
+    .bs-searchbox {
+      padding-left: $dropdown-item-padding-x;
+      padding-right: $dropdown-item-padding-x;
+    }
+
+    .dropdown-item.selected {
+      // On selected item, add right spacing for checkmark
+      padding-right: 2.125rem; // 34px
+    }
+
+    .text {
+      // Allow option text to wrap
+      white-space: normal;
+      font-size: 0.875rem; // 14px
+      line-height: 1.125rem; // 18px
+      margin-right: 0;
+
+      small {
+        font-size: inherit;
+
+        &.text-muted {
+          // Use !important to override Bootstrap's !important
+          color: inherit !important;
+        }
+      }
+    }
+  }
+}

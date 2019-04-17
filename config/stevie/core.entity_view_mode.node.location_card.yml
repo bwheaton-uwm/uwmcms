@@ -1,0 +1,14 @@
+uuid: 2a9618a0-8d82-45ae-be7e-46d19cba8c09
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - node
+third_party_settings:
+  lightning_core:
+    description: ''
+id: node.location_card
+label: 'Location Card'
+targetEntityType: node
+cache: true

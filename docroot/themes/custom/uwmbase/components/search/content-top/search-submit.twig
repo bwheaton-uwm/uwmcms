@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Template for the Search and Reset buttons within search forms.
+ * This is included into search header templates.
+ *
+ * Custom variables (passed in by parent templates):
+ * - classes - additional css classes for the wrapper
+ * - reset_path - the relative path to the search page, for the Reset button
+ */
+#}
+<div class="submit-wrapper{{ classes ? ' ' ~ classes : '' }}">
+  <span class="uwm-accent-color__purple">
+    <a class="btn btn-cta btn-cta-link submit" href="#">SEARCH</a>
+  </span>
+
+  {% if reset_path %}
+    <span class="uwm-accent-color__blue">
+      <a class="btn btn-cta btn-cta-link reset" href="{{ reset_path }}">RESET</a>
+    </span>
+  {% endif %}
+</div>

@@ -144,8 +144,8 @@
         }
 
         .fa-angle-right {
-          vertical-align: middle;
-          margin-left: 0.5rem;
+          margin-left: 0.25rem; // 4px
+          color: theme-color('link-blue');
         }
       }
     }

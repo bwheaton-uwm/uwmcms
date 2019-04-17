@@ -6,19 +6,98 @@ body.is-path-search {
   section.content-topper {
 
     .filters-wrap {
-      @include make-row();
 
       // Provider search filter widths:
-      .views-exposed-form, .dm-facets-selector {
-        
-        @include media-breakpoint-up('lg') {
-          @include make-col(3);
+      @include make-row();
+
+      @include media-breakpoint-up('lg') {
+
+        .views-exposed-form {
+          @include make-col(4);
         }
 
-        @include media-breakpoint-up('xl') {
-          flex-basis: 20%;
-          max-width: 20%;
+        .dm-facet-id-provider_facet_medical_services {
+          @include make-col(4);
         }
+
+        .dm-facet-id-provider_facet_languages {
+          @include make-col(2);
+        }
+
+        .dm-facet-id-provider_facet_gender {
+          @include make-col(2);
+
+          // Common search styling removes right padding to reduce gutter
+          // between form elements.
+          // Between lg and xl, this is the right-most element in the row, so
+          // it does need the padding to align with right gutter on page.
+          padding-right: ($grid-gutter-width / 2);
+        }
+
+        .dm-facet-id-provider_facet_accepting_patients {
+          margin-top: 1.5rem; // 24px
+        }
+
+        .submit-wrapper {
+          margin-top: 1.5rem; // 24px
+        }
+
+      }
+
+      @include media-breakpoint-up('xl') {
+
+        .views-exposed-form {
+          flex-basis: 278px;
+          max-width: 278px;
+        }
+
+        .dm-facet-id-provider_facet_medical_services {
+          flex-basis: 312px;
+          max-width: 312px;
+        }
+
+        .dm-facet-id-provider_facet_languages {
+          flex-basis: 170px;
+          max-width: 170px;
+        }
+
+        .dm-facet-id-provider_facet_gender {
+          flex-basis: 144px;
+          max-width: 144px;
+
+          // Remove right padding again, as this is no longer right-most in the
+          // row.
+          padding-right: 0;
+        }
+
+        .submit-wrapper {
+          margin-top: 0;
+          flex-basis: 204px;
+          max-width: 204px;
+        }
+
+        .dm-facet-id-provider_facet_accepting_patients {
+          margin-bottom: 0;
+        }
+      }
+
+      @include media-breakpoint-up('xxl') {
+
+        .views-exposed-form {
+          flex-basis: 320px;
+          max-width: 320px;
+        }
+
+        .dm-facet-id-provider_facet_medical_services {
+          flex-basis: 320px;
+          max-width: 320px;
+        }
+
+        .dm-facet-id-provider_facet_languages {
+          flex-basis: 250px;
+          max-width: 250px;
+        }
+
       }
 
       @include media-breakpoint-down('lg') {
@@ -27,7 +106,7 @@ body.is-path-search {
           max-width: none;
         }
       }
-      
+
     }
   }
 

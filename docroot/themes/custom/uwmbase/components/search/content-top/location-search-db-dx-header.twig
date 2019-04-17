@@ -4,7 +4,5 @@
 
 {{ uwm_plugin_block('facet_block:locations2_facet_medical_services') }}
 
-<div class="submit-wrapper uwm-accent-color__light-purple">
-  <a class="btn btn-cta btn-cta-link submit" href="#">SEARCH</a>
-  <a class="btn btn-cta btn-cta-link reset" href="/search/locations/db/dx">RESET</a>
-</div>
+{{ include('@uwmbase/search/content-top/search-submit.twig',
+  { reset_path: '/search/locations/db/dx' }) }}

@@ -2,10 +2,8 @@
 
 {{ uwm_plugin_block('facet_block:general_search_2_facet_uwmsearchwithin') }}
 
-<div class="submit-wrapper uwm-accent-color__purple">
-  <a class="btn btn-cta btn-cta-link submit" href="#">SEARCH</a>
-  <a class="btn btn-cta btn-cta-link reset" href="/search/dx">RESET</a>
-</div>
+{{ include('@uwmbase/search/content-top/search-submit.twig',
+  { reset_path: '/search/dx' }) }}
 
 <div class="col-12 other-search-pages">
 

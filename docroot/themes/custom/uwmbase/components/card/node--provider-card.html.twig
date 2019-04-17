@@ -1,0 +1,130 @@
+
+{% extends "@uwmbase/containers/article/article.twig" %}
+
+{#
+/**
+ * @file
+ * Theme override to display Res Provider node in Provider Card view mode.
+ *
+ * Note:
+ * Via preprocess, the 'url' variable is overridden to link to corresponding
+ * UWMed node as appropriate.
+ *
+ * Custom variables:
+ * - url_not_uwmedicine_org: boolean, true if the 'url' links to a site other
+ *   than uwmedicine.org
+ */
+#}
+
+{% set modifier_class = attributes.class ~ ' card col-sm-6 col-lg-4 col-xxl-3' %}
+
+
+ {% block content %}
+
+   {{ attach_library('uwmbase/provider-card') }}
+
+   {#{{ content }}#}
+
+   <div class="inner">
+
+     <div class="provider-card__image">
+
+       {% if content.field_res_image|render|trim is empty %}
+         <a href="{{ url }}" rel="bookmark">
+           <img src="/{{ directory }}/src/assets/provider-silhouette-brand.png" alt="" class="img-fluid" />
+         </a>
+       {% else %}
+         {{ content.field_res_image }}
+       {% endif %}
+
+     </div>
+
+     <h2 class="provider-card__title">
+       <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+       {% if node.field_res_isacceptingnewpts.0.value == 1 %}
+         <span class="accepting-patients small"><span
+             class="uwm-icon uwm-icon--accepting-patients"
+             aria-hidden="true"></span>
+           {{ "Accepting new patients"|t }}</span>
+       {% endif %}
+     </h2>
+
+     {{ title_suffix }}
+
+     <div class="fields-container">
+
+
+       <div class="provider-card__specialties full-wide">
+
+         {% if content.field_res_expertises.0 %}
+
+           {% set specialties = content.field_res_expertises|uwm_filter_non_numeric_keys %}
+           {% set elipses = specialties|length > 3 %}
+
+           <h3>{{ (specialties|length > 1 ? 'Specialties' : 'Specialty')|t }}</h3>
+
+           <div class="items">
+             {{ specialties|uwm_replace_links_with_text|slice(0, 3)|join(' | ') }}{{ elipses ? '...' : '' }}
+           </div>
+
+           {% if elipses %}
+             <div class="see-all">
+               <a href="{{ url }}" rel="bookmark">{{ 'See all specialties'|t }}<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+             </div>
+           {% endif %}
+
+         {% endif %}
+
+       </div>
+
+
+       <div class="provider-card__appointments full-wide">
+         {#{{ content.field_res_clinics }}#}
+       </div>
+
+
+       <div class="provider-card__locations full-wide">
+
+         {% if content.field_res_clinics.0 %}
+
+           <span class="uwm-icon uwm-icon--locations-pin"
+                 aria-hidden="true"></span>
+
+           {% set locations = content.field_res_clinics|uwm_filter_non_numeric_keys %}
+           {% set elipses = locations|length > 3 %}
+           {% set locations = locations|slice(0, 3) %}
+
+           <h3>{{ (locations|length > 1 ? 'Locations' : 'Location')|t }}</h3>
+
+           <div class="items">
+             {% for loc in locations %}
+               {{ loc }}
+               {% if not loop.last %} | {% endif %}
+             {% endfor %}
+             {{ elipses ? '...' : '' }}
+           </div>
+
+           {% if elipses %}
+             <div class="see-all">
+               <a href="{{ url }}" rel="bookmark">{{ 'See all locations'|t }}<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+             </div>
+           {% endif %}
+
+         {% endif %}
+
+       </div>
+
+     </div>
+
+
+     <div class="provider-card__see-more uwm-accent-color__purple full-wide">
+       <a class="btn btn-cta btn-cta-link"
+          href="{{ url }}" rel="bookmark">{{ 'See full bio'|t }}</a>
+     </div>
+
+
+   </div>
+
+{#{{ devel_breakpoint() }}#}
+
+ {% endblock %}

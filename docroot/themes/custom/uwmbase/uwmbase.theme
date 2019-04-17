@@ -10,18 +10,19 @@
 
 use Drupal\uwmcs_extension\TwigExtension;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\node\Entity\Node;
 use Drupal\Core\Database\Database;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
+use Drupal\Core\Render\Element;
 
 /**
- * Prepare the correct URL for a Res Clinic Node.
+ * Prepare the correct URL for a node's full page.
  *
- * Helper to set the desired URL for a Res Clinic node, likely back to the
- * corresponding node on UWMed while porting to Stevie.
+ * This is primarily for clinic and provider full pages while they still live
+ * on uwmed (cms), before porting to stevie.
+ * - Checks for "cms." and replaces hostname with "www.uwmedicine.org"
+ * - If node has `field_res_external_url`, use this value (clinics)
  *
- * This primarily pulls from field_res_external_url and applies some cleanup.
  * Nothing is returned; the final absolute URL is stored in the custom property
  * $node->uwm_url for caching within the request.
  *
@@ -141,12 +142,25 @@ function uwmbase_preprocess_block(&$variables, $hook) {
  * Implements hook_preprocess_node().
  */
 function uwmbase_preprocess_node(&$variables, $hook) {
+
   $currentPath = \Drupal::service('path.current')->getPath();
   $currentPath = \Drupal::service('path.alias_manager')
     ->getAliasByPath($currentPath);
 
   /** @var \Drupal\node\NodeInterface $node */
   $node = $variables['node'];
+
+  // Restore simple node container classes:
+  // @TODO: Where did these go?
+  $variables['attributes'] = $variables['attributes'] ?? [];
+  $classes = $variables['attributes']['class'] ?? [];
+  $variables['attributes']['class'] = array_merge($classes,
+    [
+      'node',
+      'node-' . $node->getType(),
+      'view-mode-' . $variables['elements']['#view_mode'],
+
+    ]);
 
   // Override the url variable for this node to link back to UWMed while porting
   // to Stevie.
@@ -155,6 +169,31 @@ function uwmbase_preprocess_node(&$variables, $hook) {
 
   // Check if the URL is external to uwmedicine.org.
   $variables['url_not_uwmedicine_org'] = (strpos($node->uwm_url, 'uwmedicine.org') === FALSE);
+
+  // For entity reference fields displaying as linked entity label, update to
+  // use prepared node URL.
+  foreach (Element::children($variables['content']) as $field) {
+    if (!empty($variables['content'][$field][0]['#type'])
+      && $variables['content'][$field][0]['#type'] === 'link'
+      && !empty($variables['content'][$field][0]['#options']['entity_type'])
+      && $variables['content'][$field][0]['#options']['entity_type'] === 'node') {
+
+      foreach (Element::children($variables['content'][$field]) as $delta) {
+
+        $item = &$variables['content'][$field][$delta];
+
+        $node_ref = $item['#options']['entity'];
+        _uwmbase_node_prepare_uwm_url($node_ref);
+
+        // The prepared URL string is always absolute (because it may link to
+        // a different domain). Regenerate the URL object for link render
+        // array, using fromUri() which handles external URLs.
+        $item['#url'] = Url::fromUri($node_ref->uwm_url);
+
+      }
+
+    }
+  }
 
   if (stripos($currentPath, '/provider-resource') !== FALSE) {
     $specialties = \Drupal::entityTypeManager()
@@ -374,7 +413,7 @@ function uwmbase_theme_suggestions_node_alter(array &$suggestions, array $variab
 
   /*
    * Several node-types have their own template but, no view-mode template. This
-   * adds them and ranks the above them above the node__node_type option.
+   * adds any generic view-mode template above the node-type template.
    */
   if (!empty($variables['elements']['#node']) && method_exists($variables['elements']['#node'], 'getType')) {
 
