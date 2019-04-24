@@ -139,3 +139,4 @@ uwmed_uwmcms_gtm: 0.0.0
 uwmed_uwmcms_robots_header: 0.0.0
 search_api_solr: 1.2.0
 acquia_search: 1.16.0
+d8_google_optimize_hide_page: 1.2.0

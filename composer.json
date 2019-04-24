@@ -101,6 +101,7 @@
     "drupal/config_split": "^1.4",
     "drupal/contribute": "^5.0@beta",
     "drupal/core": "^8.6.10",
+    "drupal/d8_google_optimize_hide_page": "^1.0",
     "drupal/date": "1.x-dev",
     "drupal/deploy": "^1.0@beta",
     "drupal/devel": "^2.0",

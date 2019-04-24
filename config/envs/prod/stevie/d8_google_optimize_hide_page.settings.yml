@@ -1,0 +1,11 @@
+google_optimize_hide_page_enable: 0
+google_optimize_hide_page_container_ids: GTM-WC4XL7W
+google_optimize_hide_page_timeout: '4000'
+google_optimize_hide_page_class_name: async-hide
+google_optimize_hide_page_pages: ''
+google_optimize_hide_page_roles:
+  anonymous: 0
+  replicator: 0
+  authenticated: 0
+  administrator: 0
+  content_manager: 0

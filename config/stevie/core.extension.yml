@@ -38,6 +38,7 @@ module:
   crop: 0
   ctools: 0
   ctools_block: 0
+  d8_google_optimize_hide_page: 0
   datetime: 0
   dblog: 0
   devel: 0

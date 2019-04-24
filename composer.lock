@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5601ca0700a66f5fb5f9ff553843d623",
+    "content-hash": "edeed80f5153b66698c13a6ef4297861",
     "packages": [
         {
             "name": "acquia/blt",
@@ -5623,6 +5623,53 @@
             }
         },
         {
+            "name": "drupal/d8_google_optimize_hide_page",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/d8_google_optimize_hide_page.git",
+                "reference": "8.x-1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/d8_google_optimize_hide_page-8.x-1.2.zip",
+                "reference": "8.x-1.2",
+                "shasum": "840e5aedf791625410897b8252b003522ff3a07f"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.2",
+                    "datestamp": "1555419186",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "webfaqtory",
+                    "homepage": "https://www.drupal.org/user/241985"
+                }
+            ],
+            "description": "Adds the Google Optimize page-hiding snippet",
+            "homepage": "https://www.drupal.org/project/d8_google_optimize_hide_page",
+            "support": {
+                "source": "https://git.drupalcode.org/project/d8_google_optimize_hide_page"
+            }
+        },
+        {
             "name": "drupal/date",
             "version": "dev-1.x",
             "source": {
@@ -6738,16 +6785,8 @@
                     "homepage": "https://www.drupal.org/user/3260690"
                 },
                 {
-                    "name": "Wim Leers",
-                    "homepage": "https://www.drupal.org/user/99777"
-                },
-                {
                     "name": "cs_shadow",
                     "homepage": "https://www.drupal.org/user/2828287"
-                },
-                {
-                    "name": "phenaproxima",
-                    "homepage": "https://www.drupal.org/user/205645"
                 },
                 {
                     "name": "slashrsm",
@@ -9894,10 +9933,6 @@
             ],
             "authors": [
                 {
-                    "name": "joelpittet",
-                    "homepage": "https://www.drupal.org/user/160302"
-                },
-                {
                     "name": "samuel.mortenson",
                     "homepage": "https://www.drupal.org/user/2582268"
                 }
@@ -10900,6 +10935,14 @@
                 {
                     "name": "SaschaHannes",
                     "homepage": "https://www.drupal.org/user/3536189"
+                },
+                {
+                    "name": "dakku",
+                    "homepage": "https://www.drupal.org/user/97634"
+                },
+                {
+                    "name": "rackberg",
+                    "homepage": "https://www.drupal.org/user/2806873"
                 }
             ],
             "description": "Restricts access to nodes by taxonomy terms in relation to users and their roles.",
@@ -12088,7 +12131,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.2",
-                    "datestamp": "1545483044",
+                    "datestamp": "1529312013",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -12642,7 +12685,7 @@
                 },
                 "drupal": {
                     "version": "8.x-2.12",
-                    "datestamp": "1542505221",
+                    "datestamp": "1523203180",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -12906,10 +12949,6 @@
                 {
                     "name": "gausarts",
                     "homepage": "https://www.drupal.org/user/159062"
-                },
-                {
-                    "name": "thalles",
-                    "homepage": "https://www.drupal.org/user/3589086"
                 }
             ],
             "description": "Slick carousel, the last carousel you'll ever need.",
@@ -15682,7 +15721,7 @@
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
                     "email": "lcobucci@gmail.com",
-                    "role": "developer"
+                    "role": "Developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -20802,7 +20841,7 @@
                 "type": "tar",
                 "url": "https://api.github.com/repos/uwmweb/ckeditor_bs_grid/zipball/e2bd7a01273019212bcce473fa62e7c655d65b3a",
                 "reference": "e2bd7a01273019212bcce473fa62e7c655d65b3a",
-                "shasum": "9585446f6d02f72814f29f0c3d88ad16ef412e88"
+                "shasum": "507cfbd5c446bb4c2705b65a760388c3144e25fa"
             },
             "require": {
                 "drupal/core": "~8"
@@ -20830,7 +20869,7 @@
                 "type": "tar",
                 "url": "https://api.github.com/repos/uwmweb/uwm_paragraphs/zipball/ab60ae51a6dc710b62576d01356d8b8446709fca",
                 "reference": "ab60ae51a6dc710b62576d01356d8b8446709fca",
-                "shasum": "7c14441ec34f7a2b4bbdefc927bf698f089390a4"
+                "shasum": "455a76e29a7eaca06a20b590ff9df69833d73b3a"
             },
             "require": {
                 "drupal/core": "~8",
@@ -20862,7 +20901,7 @@
                 "type": "tar",
                 "url": "https://api.github.com/repos/uwmweb/uwmedicineorg_theme/zipball/7073e3e440a3dc75812056d30259459f6f49ac52",
                 "reference": "7073e3e440a3dc75812056d30259459f6f49ac52",
-                "shasum": "4c11c52f6fb4de38dbe52b03b3f179b8b7409417"
+                "shasum": "70e7db52bab4b117c91f99b9b1b8d3ecc213c502"
             },
             "type": "drupal-theme",
             "license": [

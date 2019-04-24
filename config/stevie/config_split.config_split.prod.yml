@@ -10,6 +10,7 @@ module: {  }
 theme: {  }
 blacklist: {  }
 graylist:
+  - d8_google_optimize_hide_page.settings
   - search_api.server.acquia_search_server
 graylist_dependents: false
 graylist_skip_equal: true
