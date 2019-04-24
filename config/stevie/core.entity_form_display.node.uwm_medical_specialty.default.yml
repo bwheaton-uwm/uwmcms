@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - entity_browser.browser.image_browser
+    - field.field.node.uwm_medical_specialty.field_meta_tags
     - field.field.node.uwm_medical_specialty.field_search_best_bets
     - field.field.node.uwm_medical_specialty.field_uwm_find_a_location_link
     - field.field.node.uwm_medical_specialty.field_uwm_find_a_provider_link
@@ -15,6 +16,7 @@ dependencies:
   module:
     - content_moderation
     - entity_browser
+    - metatag
     - paragraphs
     - path
 id: node.uwm_medical_specialty.default
@@ -22,6 +24,12 @@ targetEntityType: node
 bundle: uwm_medical_specialty
 mode: default
 content:
+  field_meta_tags:
+    weight: 27
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
+    region: content
   field_search_best_bets:
     weight: 26
     settings:

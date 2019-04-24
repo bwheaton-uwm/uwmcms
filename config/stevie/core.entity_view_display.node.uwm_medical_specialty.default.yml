@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.uwm_medical_specialty.field_meta_tags
     - field.field.node.uwm_medical_specialty.field_search_best_bets
     - field.field.node.uwm_medical_specialty.field_uwm_find_a_location_link
     - field.field.node.uwm_medical_specialty.field_uwm_find_a_provider_link
@@ -14,12 +15,20 @@ dependencies:
   module:
     - entity_reference_revisions
     - image
+    - metatag
     - user
 id: node.uwm_medical_specialty.default
 targetEntityType: node
 bundle: uwm_medical_specialty
 mode: default
 content:
+  field_meta_tags:
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
   field_uwm_find_a_location_link:
     weight: 1
     label: above
