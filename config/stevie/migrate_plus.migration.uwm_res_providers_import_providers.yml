@@ -102,6 +102,14 @@ source:
       label: uwm_unique_id
       selector: /attributes/uwm_unique_id
     -
+      name: field_res_ser_id
+      label: field_res_ser_id
+      selector: /attributes/field_res_ser_id
+    -
+      name: field_res_is_open_scheduling
+      label: field_res_is_open_scheduling
+      selector: /attributes/field_res_is_open_scheduling
+    -
       name: field_res_affiliates
       label: field_res_affiliates
       selector: /relationships/field_res_affiliates/data
@@ -170,6 +178,8 @@ process:
   field_res_internal_url: field_res_internal_url
   field_res_isacceptingnewpts: field_res_isacceptingnewpts
   field_res_meta_tags: field_res_meta_tags
+  field_res_ser_id: field_res_ser_id
+  field_res_is_open_scheduling: field_res_is_open_scheduling
   field_res_name/title: field_res_name/title
   field_res_name/given: field_res_name/given
   field_res_name/middle: field_res_name/middle

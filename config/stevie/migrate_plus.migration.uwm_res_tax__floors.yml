@@ -13,14 +13,13 @@ source:
   ids:
     uuid:
       type: string
-    uwm_unique_id:
-      type: string
   plugin: url
   data_fetcher_plugin: http
   data_parser_plugin: json
   item_selector: data/
+  track_changes: true
   urls:
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/floors?page[limit]=50&page[offset]=0&sort=name'
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/floors?page[limit]=50&page[offset]=0&sort=-changed'
   fields:
     -
       name: uuid

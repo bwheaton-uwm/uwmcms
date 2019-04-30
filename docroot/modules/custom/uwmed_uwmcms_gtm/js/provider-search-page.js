@@ -49,7 +49,6 @@
         'searchType': 'provider',
         'searchTerm': searchTerm
       };
-
       // Add event tracking to the provider search result card linktodetail links to the provider page (image, title, cta).
       $('.view-uwm-providers-search', context).find('.view-mode-provider_card a[rel="bookmark"], .view-mode-provider_card .provider-card__image a').each(function (index) {
         $(this).one('click', function (event) {
