@@ -1,0 +1,23 @@
+uuid: 9029eb3b-b925-4cc1-b250-4c8b0380a3b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_ser_id
+    - node.type.res_provider
+id: node.res_provider.field_res_ser_id
+field_name: field_res_ser_id
+entity_type: node
+bundle: res_provider
+label: 'Epic ID (SER)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

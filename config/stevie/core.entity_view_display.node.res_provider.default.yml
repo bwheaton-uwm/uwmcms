@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.res_provider.field_res_gender
     - field.field.node.res_provider.field_res_image
     - field.field.node.res_provider.field_res_internal_url
+    - field.field.node.res_provider.field_res_is_open_scheduling
     - field.field.node.res_provider.field_res_isacceptingnewpts
     - field.field.node.res_provider.field_res_languages
     - field.field.node.res_provider.field_res_medical_services
@@ -22,6 +23,7 @@ dependencies:
     - field.field.node.res_provider.field_res_personal_interests
     - field.field.node.res_provider.field_res_pubmed_ids
     - field.field.node.res_provider.field_res_puma_id
+    - field.field.node.res_provider.field_res_ser_id
     - field.field.node.res_provider.field_search_best_bets
     - field.field.node.res_provider.field_uwm_json_packet
     - field.field.node.res_provider.uwm_unique_id
@@ -131,6 +133,16 @@ content:
     third_party_settings: {  }
     type: image
     region: content
+  field_res_is_open_scheduling:
+    weight: 19
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
   field_res_isacceptingnewpts:
     type: boolean
     weight: 14
@@ -188,6 +200,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
+  field_res_ser_id:
+    weight: 18
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
     region: content
   field_search_best_bets:
     type: entity_reference_label

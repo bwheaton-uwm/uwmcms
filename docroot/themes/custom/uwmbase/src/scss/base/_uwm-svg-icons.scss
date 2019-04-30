@@ -43,6 +43,8 @@ $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
     background-image: url('#{$icon-path}/icon_bike_selected.svg');
   }
   &.uwm-icon--calendar {
+    width: 18px;
+    height: 16px;
     background-image: url('#{$icon-path}/icon_calendar.svg');
   }
   &.uwm-icon--call-online {

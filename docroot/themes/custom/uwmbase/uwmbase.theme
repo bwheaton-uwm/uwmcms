@@ -252,6 +252,76 @@ function uwmbase_preprocess_node(&$variables, $hook) {
     }
 
   }
+  elseif ($node->bundle() === 'res_provider') {
+    // Pass information about clinics associated with a provider.
+    $clinic_entities = $node->field_res_clinics;
+
+    // Set the call center phone number as the default contact phone number.
+    // We'll keep this number set as the contact phone number if the provider
+    // has 0 clinics or if this provider has multiple clinics and all are
+    // serviced by call center.
+    $contact_phone_number = '2065205000';
+
+    if (count($clinic_entities) === 1) {
+      // If there is one and only one clinic, set the contact phone number to
+      // that clinic's phone number.
+      $contact_phone_number = $clinic_entities[0]->entity->field_res_phone_number->get(0)->value;
+    }
+    elseif (count($clinic_entities) > 1) {
+      // If there are multiple clinics, determine whether they are all serviced
+      // by the call center.
+      $all_serviced_by_call_center = TRUE;
+      foreach ($clinic_entities as $clinic) {
+        // If there are multiple clinics and all clinics are serviced by the
+        // call center, don't change the contact phone number.
+        if ($clinic->entity !== NULL && $clinic->entity->field_res_iscallcenterserviced->value === "1" && $all_serviced_by_call_center === TRUE) {
+          $all_serviced_by_call_center = TRUE;
+        }
+        // If there are multiple clinics and not all clinics are serviced by the
+        // call center, set the contact phone number to null so we can
+        // display the 'view contact information' button.
+        else {
+          $all_serviced_by_call_center = FALSE;
+          $contact_phone_number = NULL;
+        }
+      }
+    }
+    $variables['contact_phone_number'] = $contact_phone_number;
+
+    // Pass information about medical services associated with a provider.
+    $medical_services = $node->field_res_medical_services;
+    $areas_of_expertise = $node->field_res_expertises;
+    if (count($medical_services) > 0 && count($areas_of_expertise) > 0) {
+      // Determine whether this provider is an Urgent Care provider by checking
+      // if their only Medical Service is Urgent Care and their only Area of
+      // Expertise is Urgent Care.
+      $is_urgent_care_provider = TRUE;
+
+      // Check the provider's medical services.
+      foreach ($medical_services as $medical_service) {
+        if ($medical_service->entity !== NULL && strtolower($medical_service->entity->label()) === "urgent care" && $is_urgent_care_provider === TRUE) {
+          $is_urgent_care_provider = TRUE;
+        }
+        else {
+          $is_urgent_care_provider = FALSE;
+        }
+      }
+
+      // If the provider only has the Urgent Care medical service, check their
+      // areas of expertise.
+      if ($is_urgent_care_provider === TRUE) {
+        foreach ($areas_of_expertise as $expertise) {
+          if ($expertise->entity !== NULL && strtolower($expertise->entity->label()) === "urgent care" && $is_urgent_care_provider === TRUE) {
+            $is_urgent_care_provider = TRUE;
+          }
+          else {
+            $is_urgent_care_provider = FALSE;
+          }
+        }
+      }
+      $variables['is_urgent_care_provider'] = $is_urgent_care_provider;
+    }
+  }
 
 }
 

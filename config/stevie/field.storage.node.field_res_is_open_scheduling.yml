@@ -1,0 +1,18 @@
+uuid: 5923fd41-1e47-4035-a37e-7a914ff988d7
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_res_is_open_scheduling
+field_name: field_res_is_open_scheduling
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
