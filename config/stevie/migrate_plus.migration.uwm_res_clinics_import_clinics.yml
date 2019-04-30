@@ -140,7 +140,7 @@ process:
   field_res_phone_number: field_res_phone_number
   field_res_room_number: field_res_room_number
   uwm_unique_id: uwm_unique_id
-  uwm_json_packet: uwm_json_packet
+  field_uwm_json_packet: uwm_json_packet
   field_res_providers:
     -
       plugin: uwm_nid_for_uuid

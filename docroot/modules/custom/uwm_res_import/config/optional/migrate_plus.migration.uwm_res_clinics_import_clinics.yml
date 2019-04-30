@@ -187,7 +187,7 @@ process:
   #    source: field_res_hours_of_operation
 
   uwm_unique_id: uwm_unique_id
-  uwm_json_packet: uwm_json_packet
+  field_uwm_json_packet: uwm_json_packet
 
 
   field_res_providers:
