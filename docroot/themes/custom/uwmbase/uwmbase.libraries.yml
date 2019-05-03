@@ -314,6 +314,7 @@ search-general:
 
 search-locations:
   js:
+    https://maps.googleapis.com/maps/api/js?key=AIzaSyByrxkfuhG5kyhL4Y95EA6wfSQrB45XCZM: { type: external }
     dist/js/search-locations.js: { }
     dist/js/search-geocode-input.js: { }
   css:

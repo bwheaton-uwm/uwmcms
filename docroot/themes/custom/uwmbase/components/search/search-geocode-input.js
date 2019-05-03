@@ -1,77 +1,76 @@
-// Sample JSON for Google Tag Manager and hook to
-// replace a user's search term with the terms we provide:
-//
-// const uwdm_gtm_search_location_keywords_replacements = [
-//   {
-//     "search_keywords": "Ravenna",
-//     "replacement_keywords": "Ravenna, Seattle, WA",
-//     "match_full_text_only": "TRUE"
-//   }, {
-//     "search_keywords": "Ballard",
-//     "replacement_keywords": "Ballard, Seattle, WA",
-//     "match_full_text_only": "TRUE"
-//   }
-// ];
-
-
 /**
+ * @file
+ * Script to geocode text in search form address field.
  *
  * Script to take the address a user has typed in our location search form,
  * and to query Google's Geocode API for the best possible location match. We
  * then use the latitude/ longitude for a Drupal locations search.
  *
+ * We use GTM (Google Tag Manager) to store a JSON array of
+ * search terms and replacement values, for the address form field.
+ *
+ * If the GTM JSON array is available, it should look like:
+ *
+ * @code
+ * const uwdm_gtm_search_location_keywords_replacements = [
+ {
+    "search_keywords": "Ravenna",
+    "replacement_keywords": "Ravenna, Seattle, WA",
+    "match_full_text_only": "TRUE"
+  }, {
+    "search_keywords": "Ballard",
+    "replacement_keywords": "Ballard, Seattle, WA",
+    "match_full_text_only": "TRUE"
+  }
+ ];
+ *
+ * @endcode
  */
+
 (function ($, Drupal) {
 
   /**
-   * Provide API key for requests.
-   * @see https://console.cloud.google.com/home/dashboard?project=uw-medicine
-   * @type {string}
-   */
-  const GOOGLE_API_KEY = 'AIzaSyDyy0tzNE5Pvxx-hWO_SIgb-guPGWOo2vo';
-
-  /**
-   * Provide API key without hostname restrictions.
-   * @see https://console.cloud.google.com/home/dashboard?project=uw-medicine
-   * @type {string}
-   */
-  const GOOGLE_API_KEY_TEMP = 'AIzaSyB6ziIhPThPpqSPKLeJKs1wnblBXQbbxe4';
-  /**
-   * Provide base url for our geocode, Google.
-   * @see https://developers.google.com/maps/documentation/geocoding/start
-   * @type {string}
-   */
-  const GOOGLE_GEOCODER_BASEURL = 'https://maps.googleapis.com/maps/api/geocode/json?';
-
-  /**
    * Preferred bounding box for results.
+   *
    * @see https://developers.google.com/maps/documentation/geocoding/intro#Viewports
-   * @type {string}
+   * @see https://developers.google.com/maps/documentation/javascript/reference/coordinates#LatLngBoundsLiteral
+   *
+   * @type {{lat: number, lng: number}[]}
    */
-  const GOOGLE_FILTER_BOUNDING_BOX = '46.709241,-123.422571|48.254976,-119.381319';
+  const GOOGLE_FILTER_BOUNDING_BOX = [{
+    lat: 46.709241,
+    lng: -123.422571
+  }, {
+    lat: 48.254976,
+    lng: -119.381319
+  }];
 
   /**
    * Limit results to these criteria.
+   *
    * @see https://developers.google.com/maps/documentation/geocoding/intro#ComponentFiltering
    * @type {string}
    */
-    // const GOOGLE_FILTER_COMPONENTS = 'administrative_area_level_1:WA|country:US';
+    // GOOGLE_FILTER_COMPONENTS = 'administrative_area_level_1:WA|country:US'.
   const GOOGLE_FILTER_COMPONENTS = '';
 
   /**
    * Text to set in input when user clicks to use their current location.
+   *
    * @type {string}
    */
   const currentLocationText = 'Current location';
 
   /**
    * Text to set temporarily in input while browser is finding current location.
+   *
    * @type {string}
    */
   const locationLoadingText = 'Retrieving your location...';
 
   /**
    * Attach behaviors once Drupal readies page.
+   *
    * @type {{attach(*, *): void}}
    */
   Drupal.behaviors.uwmGeocodeInputInit = {
@@ -93,13 +92,12 @@
       const $useMyLocationLink = $addressContainer.find('.dropdown a');
       const $latlngHiddenInput = $form.find('input[name=latlng]');
 
-
       // Set CSS classes on load to indicate if geocoded or current-location
       // search is active.
       if ($latlngHiddenInput.length && $latlngHiddenInput.val().length > 0) {
         $("body").addClass("search-with-geocoding");
 
-        if ($addressInput.length && $addressInput.val() === 'Current location') {
+        if ($addressInput.length && $addressInput.val() === currentLocationText) {
           $("body").addClass("search-with-current-location");
         }
       }
@@ -154,9 +152,7 @@
       // browser and close dropdown.
       $useMyLocationLink.on('click', e => {
         e.preventDefault();
-
         closeDropdown();
-
         getNavigatorUserLocation();
       });
 
@@ -174,7 +170,6 @@
         }
 
       });
-
 
       // Geolocation functions:
       /**
@@ -194,42 +189,43 @@
           return;
         }
 
-        let apikey = GOOGLE_API_KEY;
-        if (window.location.host.indexOf('local') > 0) {
-          apikey = GOOGLE_API_KEY_TEMP;
-        }
+        // In ./components/search/search.js we listen for ajax requests before
+        // submitting the search form. We aren't using $.ajax here, but let's
+        // flag an open XHR, to prevent submitting the form before
+        // lat/ long are added to the hidden search field.
+        $.active += 1;
 
-        $.ajax({
-          url: GOOGLE_GEOCODER_BASEURL,
-          dataType: "json",
-          type: "GET",
-          data: {
-            address: getCleanedKeywordSearch(),
-            bounds: GOOGLE_FILTER_BOUNDING_BOX,
-            components: GOOGLE_FILTER_COMPONENTS,
-            key: apikey
-          },
-          success(response) {
-            if (response.status === "OK") {
-              parseGeocodeResponse(response);
+        const geocoder = new google.maps.Geocoder();
+
+        geocoder.geocode({
+          'address': queryString,
+          'bounds': google.maps.LatLngBounds(
+            new google.maps.LatLng(GOOGLE_FILTER_BOUNDING_BOX[0].lat, GOOGLE_FILTER_BOUNDING_BOX[0].lng),
+            new google.maps.LatLng(GOOGLE_FILTER_BOUNDING_BOX[1].lat, GOOGLE_FILTER_BOUNDING_BOX[1].lng)
+          )
+
+        }, (results, status) => {
+
+          if (status == 'OK') {
+
+            const item = results[0];
+            if (item.geometry && item.geometry.location) {
+              handleGeocodeSuccess(null, item.geometry.location.lat(), item.geometry.location.lng());
             }
             else {
               handleGeocodeError();
             }
-          },
-          error(xhr) {
-            handleGeocodeError();
-          },
-          complete(xhr) {
-
-            // If geocoding is happening, user has typed something, not clicked
-            // "Use my location". Regardless of success or error, close the
-            // dropdown to reset and ensure status message is visible.
-            closeDropdown();
 
           }
-        });
+          else {
+            handleGeocodeError();
+          }
 
+          // Flag that the XHR has completed.
+          $.active -= 1;
+          $(document).trigger("ajaxComplete");
+
+        });
 
       };
 
@@ -241,7 +237,6 @@
         if (!navigator.geolocation) {
 
           // TODO? Consider setting a distinct error message here for user.
-
           handleGeocodeError();
 
         }
@@ -252,7 +247,7 @@
           // Per suggestion, set enableHighAccuracy to false, to increase
           // likelihood that IE/Windows will allow it (re: privacy settings).
           // @see https://stackoverflow.com/questions/43206442/geolocation-current-position-api-not-working-in-ie11-5-windows10
-          let options = {};
+          const options = {};
 
           if (navigator.userAgent.indexOf('MSIE ') !== -1 || navigator.userAgent.indexOf('Trident/') !== -1) {
             options.enableHighAccuracy = false;
@@ -267,8 +262,7 @@
 
             // TODO? Consider setting a distinct error message here for user.
             // `err.message` contains a human-readable message, e.g. "This site
-            // does not have permissiont o use the Geolocation API."
-
+            // does not have permissiont o use the Geolocation API.
             handleGeocodeError();
           }, options);
         }
@@ -276,49 +270,12 @@
       };
 
       /**
-       * Extract latitude and longitude from geocode API response.
-       * @param apiResponse
-       * @return {*}
-       */
-      const parseGeocodeResponse = function (apiResponse) {
-
-        const isValid = true;
-
-        for (let i = 0; i < apiResponse.results.length; i++) {
-
-          const item = apiResponse.results[i];
-
-          // Do our match validation...
-          // The geocode API assumes an address was provided. Since we may have any
-          // search string, and parsing Google address component is brittle,
-          // let's just validate the user input is in the formatted result.
-          // const arr = USER_SEARCH_STRING.toLowerCase().split(' ');
-          // arr.forEach((pt) => {
-          //   if (item.formatted_address.toLowerCase().replace(' ', '').indexOf(pt) >= 0) {
-          //     isValid = true;
-          //   }
-          // });
-
-          // Save preferred result...
-          if (isValid && item && item.geometry && item.geometry.location) {
-
-            // handleGeocodeSuccess(item.formatted_address, item.geometry.location.lat, item.geometry.location.lng);
-            handleGeocodeSuccess(null, item.geometry.location.lat, item.geometry.location.lng);
-
-          }
-          else {
-            handleGeocodeError();
-          }
-
-        }
-
-      };
-
-      /**
        * Update UI and form values upon successful lat/lng retrieval.
+       *
        * @param updateInputText
        * @param lat
        * @param lng
+       *
        * @return {*}
        */
       const handleGeocodeSuccess = function (updateInputText, lat, lng) {
@@ -335,10 +292,12 @@
           $latlngHiddenInput.val(`${  lat  },${  lng  }`);
           $("body").addClass("search-with-geocoding");
         }
+
       };
 
       /**
        * Update UI upon geocoding error.
+       *
        * @return {*}
        */
       const handleGeocodeError = function () {
@@ -349,8 +308,7 @@
       };
 
       /**
-       * Clear hidden lat/lng value and status message, and remove geocoding
-       * status CSS classes.
+       * Clear hidden lat/lng value and status message.
        */
       const clearUserLocation = function () {
 
@@ -368,6 +326,7 @@
 
       /**
        * Tweak user input text to be geocoded.
+       *
        * @return {string}
        */
       const getCleanedKeywordSearch = function () {
@@ -377,7 +336,7 @@
         // Get the JSON, UWM list of search and replace terms. These are keywords
         // we can use, repacing what the user typed with something that matches
         // better on the Google geocoding API.
-        const srt = (typeof uwdm_gtm_search_location_keywords_replacements === 'undefined' )
+        const srt = (typeof uwdm_gtm_search_location_keywords_replacements === 'undefined')
           ? {} : uwdm_gtm_search_location_keywords_replacements;
 
         if (srt && srt.length) {
@@ -387,16 +346,9 @@
             if (item.search_keywords && item.replacement_keywords) {
 
               const searchWord = item.search_keywords.toLowerCase();
-              if(returnValue.toLowerCase() === searchWord) {
+              if (returnValue.toLowerCase() === searchWord) {
                 returnValue = item.replacement_keywords;
               }
-
-              // const arr = returnValue.toLowerCase().split(' ');
-              // arr.forEach((pt) => {
-              //
-              //   returnValue = returnValue.replace(search_value, replacement_value);
-              //
-              // });
 
             }
 
@@ -410,6 +362,7 @@
 
       /**
        * Update the status message below address input.
+       *
        * @param message
        */
       const setUserMessage = function (message) {
