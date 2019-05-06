@@ -47,6 +47,13 @@ $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
     height: 16px;
     background-image: url('#{$icon-path}/icon_calendar.svg');
   }
+
+  &.uwm-icon--urgent-care {
+    width: 18px;
+    height: 16.66px;
+    background-image: url('#{$icon-path}/icon_urgent_care.svg');
+  }
+
   &.uwm-icon--call-online {
     background-image: url('#{$icon-path}/icon_call_online.svg');
   }

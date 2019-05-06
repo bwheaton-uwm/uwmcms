@@ -1,0 +1,72 @@
+{#
+/**
+ * @file
+ * Theme override for Clockwise ID field on Res Clinic nodes.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - label_hidden: Whether to show the field label or not.
+ * - title_attributes: HTML attributes for the title.
+ * - label: The label for the field.
+ * - multiple: TRUE if a field can contain multiple items.
+ * - items: List of all the field items. Each item contains:
+ *   - attributes: List of HTML attributes for each item.
+ *   - content: The field item's content.
+ * - entity_type: The entity type to which the field belongs.
+ * - field_name: The name of the field.
+ * - field_type: The type of the field.
+ * - label_display: The display settings for the label.
+ *
+ * Custom variables:
+ * - view_mode: The view mode in which the entity with this field is currently
+ *   being rendered.
+ * - node_url: The URL to the node rendering this field. (This has been altered
+ *   as necessary to link back to clinic node pages on UWMed.)
+ *
+ * @see template_preprocess_field()
+ * @see uwmbase_preprocess_field()
+ */
+#}
+{%
+  set classes = [
+    'field',
+    'field--name-' ~ field_name|clean_class,
+    'field--type-' ~ field_type|clean_class,
+    'field--label-' ~ label_display,
+  ]
+%}
+{%
+  set title_classes = [
+    'field__label',
+    label_display == 'visually_hidden' ? 'visually-hidden',
+    'clinic-card__subheader'
+  ]
+%}
+{#
+  Card view mode -----------------------------------------------------------
+  @see node--res-clinic--card.html.twig
+ #}
+{% if view_mode is same as('card') %}
+
+{% set label = 'Urgent care'|t %}
+
+  <div{{ attributes.addClass(classes) }}>
+
+    <span class="uwm-icon uwm-icon--urgent-care" aria-hidden="true"></span>
+
+    <h3{{ title_attributes.addClass(title_classes) }}>{{ label }}</h3>
+
+    {% for item in items %}
+      {% set value = item.content|render %}
+      <div class="uwm-clockwise__card " data-uwm-clockwise-wait-time="{{ item }}">
+        <p class="js-wait-link">
+            <a class="clinic-card__buttons btn btn-outline-primary" href="/patient-care/making-an-appointment" target="_blank">Get in line</a>
+        </p>
+        <p class="js-wait-text">&nbsp;</p>
+      </div>
+    {% endfor %}
+  </div>
+
+{# Other view modes --------------------------------------------------------- #}
+{% else %}
+{% endif %}

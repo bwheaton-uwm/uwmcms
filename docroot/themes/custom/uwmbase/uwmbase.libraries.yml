@@ -86,6 +86,14 @@ clinic-card:
   css:
     component:
       dist/css/clinic-card.css: {}
+  dependencies:
+  - uwmbase/clockwise-wait-times
+
+clockwise-wait-times:
+  js:
+    dist/js/clinic-clockwise-wait-times.js: {}
+    https://www.clockwisemd.com/hospitals/clockwise_api.js: {type: external, minified: false}
+
 
 provider-card:
   css:
@@ -317,6 +325,7 @@ search-locations:
     https://maps.googleapis.com/maps/api/js?key=AIzaSyByrxkfuhG5kyhL4Y95EA6wfSQrB45XCZM: { type: external }
     dist/js/search-locations.js: { }
     dist/js/search-geocode-input.js: { }
+
   css:
     component:
       dist/css/search-locations.css: { }

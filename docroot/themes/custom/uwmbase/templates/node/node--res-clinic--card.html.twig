@@ -160,8 +160,10 @@
         {{ content.field_res_phone_number }}
       {% endif %}
 
-      {# TODO: add "Urgent care" info here #}
-
+      {# "Urgent care" clockwise snippet #}
+      {% if content.field_res_clockwise_id.0 is not empty %}
+        {{ content.field_res_clockwise_id }}
+      {% endif %}
     </div>
 
     <div class="clinic-card__cta uwm-accent-color__purple">

@@ -5,9 +5,11 @@ dependencies:
   config:
     - core.entity_view_mode.node.card
     - field.field.node.res_clinic.body
+    - field.field.node.res_clinic.field_featured
     - field.field.node.res_clinic.field_res_affiliates
     - field.field.node.res_clinic.field_res_box_number
     - field.field.node.res_clinic.field_res_building
+    - field.field.node.res_clinic.field_res_clockwise_id
     - field.field.node.res_clinic.field_res_displayaptslink
     - field.field.node.res_clinic.field_res_external_url
     - field.field.node.res_clinic.field_res_fax_number
@@ -46,6 +48,14 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
     region: content
+  field_res_clockwise_id:
+    type: string
+    weight: 7
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   field_res_floor:
     type: entity_reference_label
     weight: 2
@@ -98,6 +108,7 @@ content:
     third_party_settings: {  }
 hidden:
   body: true
+  field_featured: true
   field_res_affiliates: true
   field_res_box_number: true
   field_res_displayaptslink: true
