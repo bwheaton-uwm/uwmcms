@@ -142,3 +142,33 @@ body.is-path-search {
 %s-use-my-location-svg-gray {
   background-image: url(/themes/custom/uwmbase/dist/assets/uwm-icons/Use_My_Location_Gray_1.svg);
 }
+
+body.path-search-locations {
+  .ui-widget.ui-widget-content.search-api-autocomplete-search {
+    margin: $dropdown-spacer 0 0;
+    background-color: $dropdown-bg;
+    padding: $dropdown-padding-y 0;
+    border: $dropdown-border-width solid $dropdown-border-color;
+    @include border-radius($dropdown-border-radius);
+    @include box-shadow($dropdown-box-shadow);
+  }
+
+  .search-api-autocomplete-suggestion {
+    padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+    font-size: 0.875rem; // 14px
+    line-height: 1.125rem; // 18px
+  }
+
+  .search-api-autocomplete-search .ui-menu-item-wrapper {
+    color: $dropdown-link-color;
+  }
+
+  .search-api-autocomplete-search .ui-menu-item-wrapper.ui-state-active .search-api-autocomplete-suggestion {
+    background: $dropdown-link-hover-bg;
+    color: $dropdown-link-hover-color;
+  }
+
+  .search-api-autocomplete-search .ui-menu-item:hover {
+    background: transparent;
+  }
+}

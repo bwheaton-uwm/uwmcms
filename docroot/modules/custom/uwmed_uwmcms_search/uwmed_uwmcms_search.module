@@ -107,8 +107,14 @@ function uwmed_uwmcms_search_search_api_autocomplete_suggestions_alter(array &$s
     return;
   }
 
-  // For the Providers Autocomplete search index.
-  if ($search->getIndexId() == 'uwm_providers_autocomplete_index') {
+  // Define the indexes that should be altered.
+  $autocomplete_indexes = [
+    'uwm_providers_autocomplete_index',
+    'uwm_locations_autocomplete_index',
+  ];
+
+  // For autocomplete indexes that should be altered.
+  if (in_array($search->getIndexId(), $autocomplete_indexes)) {
     foreach ($suggestions as $suggestion) {
       // Remove the URL.
       $suggestion->setUrl(NULL);
@@ -287,6 +293,9 @@ function _uwmed_uwmcms_search_alter_locations_search_form(array &$form, FormStat
   ];
 
   if (isset($form['s'])) {
+
+    // Use the autocomplete functionality from UWM Locations Autocomplete.
+    $form['s']['#search_id'] = 'uwm_locations_autocomplete';
 
     $form['s']['#attributes']['class'][] = 'dm-form-item-collection';
     $form['s']['#attributes']['autocomplete'] = 'off';

@@ -1,0 +1,36 @@
+uuid: 8d0de0cc-27a4-4e2c-9eaf-4536a14efebf
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.uwm_locations_geo_search_api_index
+    - views.view.uwm_locations_geo_search
+  module:
+    - views
+    - search_api_autocomplete
+id: uwm_locations_geo_search
+label: 'UWM Locations Geo Search'
+index_id: uwm_locations_geo_search_api_index
+suggester_settings:
+  live_results:
+    fields:
+      - title
+    view_modes:
+      'entity:node':
+        res_clinic: ''
+suggester_weights:
+  live_results: 0
+suggester_limits:
+  live_results: 6
+search_settings:
+  'views:uwm_locations_geo_search':
+    displays:
+      default: true
+      selected: {  }
+options:
+  limit: 6
+  min_length: 3
+  show_count: false
+  autosubmit: false
+  submit_button_selector: ':submit'
+  delay: null

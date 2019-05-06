@@ -1,0 +1,37 @@
+uuid: 7bf09a62-95e5-44f5-962e-29db21c3e047
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.uwm_locations_autocomplete_index
+    - views.view.uwm_locations_autocomplete
+  module:
+    - views
+    - search_api_autocomplete
+id: uwm_locations_autocomplete
+label: 'UWM Locations Autocomplete'
+index_id: uwm_locations_autocomplete_index
+suggester_settings:
+  live_results:
+    fields: {  }
+    view_modes:
+      'entity:node':
+        res_clinic: ''
+      'entity:taxonomy_term':
+        medical_services: ''
+suggester_weights:
+  live_results: 0
+suggester_limits:
+  live_results: 6
+search_settings:
+  'views:uwm_locations_autocomplete':
+    displays:
+      default: true
+      selected: {  }
+options:
+  limit: 6
+  min_length: 3
+  show_count: false
+  autosubmit: false
+  submit_button_selector: ':submit'
+  delay: null
