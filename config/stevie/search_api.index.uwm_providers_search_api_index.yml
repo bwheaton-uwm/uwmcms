@@ -3,16 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_res_isacceptingnewpts
+    - field.storage.node.field_res_biography
     - field.storage.node.field_res_expertises
     - field.storage.taxonomy_term.field_term_keywords
-    - field.storage.node.field_res_biography
     - field.storage.node.field_res_gender
+    - field.storage.node.field_res_isacceptingnewpts
     - field.storage.node.field_res_languages
     - field.storage.node.field_res_medical_services
     - field.storage.node.field_res_name
     - field.storage.node.field_search_best_bets
-    - search_api.server.database
+    - search_api.server.acquia_search_server
   module:
     - taxonomy
     - node
@@ -298,6 +298,14 @@ processor_settings:
     weights:
       preprocess_index: -10
       preprocess_query: -10
+    ignorable_classes:
+      - Pc
+      - Pd
+      - Pe
+      - Pf
+      - Pi
+      - Po
+      - Ps
   ignorecase:
     all_fields: false
     fields:
@@ -373,4 +381,5 @@ tracker_settings:
 options:
   index_directly: false
   cron_limit: 50
-server: database
+  overridden_by_acquia_search: 2
+server: acquia_search_server
