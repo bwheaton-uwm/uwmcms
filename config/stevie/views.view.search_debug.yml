@@ -1,20 +1,19 @@
-uuid: 69ec155e-fa63-4738-8d49-2c7a2878c0aa
+uuid: c9a6b35f-b449-42b5-9ad6-afbbf671a14f
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_res_biography
-    - search_api.index.uwm_providers_search_api_index
+    - field.storage.node.field_res_isacceptingnewpts
+    - field.storage.node.field_res_medical_services
+    - search_api.index.uwm_general_search_api_index
   module:
     - search_api
-    - text
-    - user
-id: uwm_providers_search
-label: 'UWM Providers Search'
+id: search_debug
+label: 'Search Debug'
 module: views
 description: ''
 tag: ''
-base_table: search_api_index_uwm_providers_search_api_index
+base_table: search_api_index_uwm_general_search_api_index
 base_field: search_api_id
 core: 8.x
 display:
@@ -35,28 +34,24 @@ display:
         options:
           bypass_access: false
           skip_access: false
+          preserve_facet_query_args: false
       exposed_form:
         type: basic
         options:
           submit_button: Apply
-          reset_button: true
+          reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
-          expose_sort_order: false
+          expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
       pager:
-        type: full
+        type: mini
         options:
-          items_per_page: 12
+          items_per_page: 100
           offset: 0
           id: 0
           total_pages: null
-          tags:
-            previous: Previous
-            next: Next
-            first: ''
-            last: ''
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -65,20 +60,56 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          quantity: 5
+          tags:
+            previous: ‹‹
+            next: ››
       style:
-        type: default
+        type: table
+        options:
+          grouping: {  }
+          row_class: border-top
+          default_row_class: true
+          override: true
+          sticky: false
+          caption: ''
+          summary: ''
+          description: ''
+          columns:
+            title_1: title_1
+            field_res_medical_services: field_res_medical_services
+            field_res_isacceptingnewpts: field_res_isacceptingnewpts
+            search_api_relevance: search_api_relevance
+          info:
+            title_1:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_res_medical_services:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_res_isacceptingnewpts:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            search_api_relevance:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          default: '-1'
+          empty_table: false
       row:
         type: fields
-        options:
-          default_field_elements: true
-          inline: {  }
-          separator: ''
-          hide_empty: false
       fields:
-        title:
-          id: title
-          table: search_api_index_uwm_providers_search_api_index
+        title_1:
+          id: title_1
+          table: search_api_datasource_uwm_general_search_api_index_entity_node
           field: title
           relationship: none
           group_type: group
@@ -112,7 +143,7 @@ display:
             trim: false
             preserve_tags: ''
             html: false
-          element_type: h2
+          element_type: ''
           element_class: ''
           element_label_type: ''
           element_label_class: ''
@@ -145,15 +176,16 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
+          entity_type: node
           plugin_id: search_api_field
-        search_api_id:
-          id: search_api_id
-          table: search_api_index_uwm_providers_search_api_index
-          field: search_api_id
+        field_res_expertises_name:
+          id: field_res_expertises_name
+          table: search_api_index_uwm_general_search_api_index
+          field: field_res_expertises_name
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Item ID'
+          label: 'Areas of Expertise'
           exclude: false
           alter:
             alter_text: false
@@ -194,63 +226,250 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          plugin_id: standard
-        search_api_excerpt:
-          id: search_api_excerpt
-          table: search_api_index_uwm_providers_search_api_index
-          field: search_api_excerpt
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: Excerpt
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          link_to_item: false
-          use_highlighting: false
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
           multi_type: separator
-          multi_separator: ', '
-          plugin_id: search_api
+          separator: ', '
+          field_api_classes: false
+          field_rendering: true
+          fallback_handler: search_api
+          fallback_options:
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
+          plugin_id: search_api_field
+        field_res_medical_services:
+          id: field_res_medical_services
+          table: search_api_datasource_uwm_general_search_api_index_entity_node
+          field: field_res_medical_services
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Medical Services'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          field_rendering: true
+          fallback_handler: search_api_entity
+          fallback_options:
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
+            display_methods:
+              affiliates:
+                display_method: label
+                view_mode: default
+              board_certifications:
+                display_method: label
+                view_mode: default
+              buildings:
+                display_method: label
+                view_mode: default
+              campuses:
+                display_method: label
+                view_mode: default
+              degrees:
+                display_method: label
+                view_mode: default
+              ed:
+                display_method: label
+                view_mode: default
+              education_institutions:
+                display_method: label
+                view_mode: default
+              education_types:
+                display_method: label
+                view_mode: default
+              expertise:
+                display_method: label
+                view_mode: default
+              floors:
+                display_method: label
+                view_mode: default
+              languages:
+                display_method: label
+                view_mode: default
+              medical_services:
+                display_method: label
+                view_mode: default
+              search_best_bets:
+                display_method: label
+                view_mode: default
+              specialities:
+                display_method: label
+                view_mode: default
+              uwm_accent_colors:
+                display_method: label
+              uwm_background_colors:
+                display_method: label
+              uwm_bottom_border_options:
+                display_method: label
+              uwm_column_widths:
+                display_method: label
+              uwm_condition_spotlight_type:
+                display_method: label
+                view_mode: default
+              uwm_icons:
+                display_method: label
+              uwm_provider_resource_doc_type:
+                display_method: label
+                view_mode: default
+              uwm_provider_resource_media_type:
+                display_method: label
+                view_mode: default
+              uwm_provider_resource_specialtie:
+                display_method: label
+                view_mode: default
+              uwm_provider_resource_sub_specia:
+                display_method: label
+                view_mode: default
+              uwm_provider_resource_video_type:
+                display_method: label
+                view_mode: default
+          entity_type: node
+          plugin_id: search_api_field
+        field_res_isacceptingnewpts:
+          id: field_res_isacceptingnewpts
+          table: search_api_datasource_uwm_general_search_api_index_entity_node
+          field: field_res_isacceptingnewpts
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'New Pt'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: boolean
+          settings:
+            format: yes-no
+            format_custom_true: ''
+            format_custom_false: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          field_rendering: true
+          fallback_handler: search_api_boolean
+          fallback_options:
+            type: yes-no
+            type_custom_true: ''
+            type_custom_false: ''
+            not: false
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
+          entity_type: node
+          plugin_id: search_api_field
         search_api_relevance:
           id: search_api_relevance
-          table: search_api_index_uwm_providers_search_api_index
+          table: search_api_index_uwm_general_search_api_index
           field: search_api_relevance
           relationship: none
           group_type: group
@@ -305,86 +524,15 @@ display:
           prefix: ''
           suffix: ''
           plugin_id: numeric
-        field_res_biography:
-          id: field_res_biography
-          table: search_api_index_uwm_providers_search_api_index
-          field: field_res_biography
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: Biography
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: text_default
-          settings: {  }
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          field_rendering: true
-          fallback_handler: search_api
-          fallback_options:
-            link_to_item: false
-            use_highlighting: false
-            multi_type: separator
-            multi_separator: ', '
-          entity_type: null
-          entity_field: null
-          plugin_id: search_api_field
       filters:
         search_api_fulltext:
           id: search_api_fulltext
-          table: search_api_index_uwm_providers_search_api_index
+          table: search_api_index_uwm_general_search_api_index
           field: search_api_fulltext
           relationship: none
           group_type: group
           admin_label: ''
-          operator: and
+          operator: or
           value: ''
           group: 1
           exposed: true
@@ -404,7 +552,7 @@ display:
               replicator: '0'
               administrator: '0'
               content_manager: '0'
-            placeholder: 'Enter a name, specialty or keyword...'
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -424,7 +572,7 @@ display:
       sorts:
         search_api_relevance:
           id: search_api_relevance
-          table: search_api_index_uwm_providers_search_api_index
+          table: search_api_index_uwm_general_search_api_index
           field: search_api_relevance
           relationship: none
           group_type: group
@@ -434,33 +582,9 @@ display:
           expose:
             label: ''
           plugin_id: search_api
-        field_res_name_family:
-          id: field_res_name_family
-          table: search_api_index_uwm_providers_search_api_index
-          field: field_res_name_family
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          plugin_id: search_api
-        field_res_name_given:
-          id: field_res_name_given
-          table: search_api_index_uwm_providers_search_api_index
-          field: field_res_name_given
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          plugin_id: search_api
         title:
           id: title
-          table: search_api_index_uwm_providers_search_api_index
+          table: search_api_index_uwm_general_search_api_index
           field: title
           relationship: none
           group_type: group
@@ -470,7 +594,7 @@ display:
           expose:
             label: ''
           plugin_id: search_api
-      title: 'Find a provider'
+      title: 'Search Debug'
       header:
         result:
           id: result
@@ -480,7 +604,7 @@ display:
           group_type: group
           admin_label: ''
           empty: false
-          content: '<div class="results-count-summary">@total providers found</div>'
+          content: 'Displaying @start - @end of @total'
           plugin_id: result
       footer: {  }
       empty: {  }
@@ -495,7 +619,8 @@ display:
         - url
         - url.query_args
       tags:
-        - 'config:field.storage.node.field_res_biography'
+        - 'config:field.storage.node.field_res_isacceptingnewpts'
+        - 'config:field.storage.node.field_res_medical_services'
   page_1:
     display_plugin: page
     id: page_1
@@ -503,23 +628,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: search/providers
-      exposed_block: true
-      cache:
-        type: none
-      defaults:
-        cache: false
-        style: false
-        row: false
-      style:
-        type: default
-        options: {  }
-      row:
-        type: search_api
-        options:
-          view_modes:
-            'entity:node':
-              res_provider: provider_card
+      path: general-debug
     cache_metadata:
       max-age: -1
       contexts:
@@ -528,44 +637,5 @@ display:
         - url
         - url.query_args
       tags:
-        - 'config:field.storage.node.field_res_biography'
-  page_2:
-    display_plugin: page
-    id: page_2
-    display_title: Page
-    position: 1
-    display_options:
-      display_extenders: {  }
-      path: search/providers/dx
-      exposed_block: true
-      cache:
-        type: none
-      defaults:
-        cache: false
-        header: false
-        access: false
-      header:
-        result:
-          id: result
-          table: views
-          field: result
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: false
-          content: "Displaying @start - @end of @total\r\n<br>\r\n<br>\r\n<p>\r\n<code>Copying this query string to another page?  Note the query parameter must match, so  \"<b>/search/providers/dx?f</b>%5B0%5D=expertise%3Aamputation%20limb%20loss\"  becomes <br>\r\n<b>/search/providers?fs_p</b>%5B0%5D=expertise%3Aamputation%20limb%20loss\r\n</code></p>\r\n"
-          plugin_id: result
-      access:
-        type: perm
-        options:
-          perm: 'access content overview'
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url
-        - url.query_args
-        - user.permissions
-      tags:
-        - 'config:field.storage.node.field_res_biography'
+        - 'config:field.storage.node.field_res_isacceptingnewpts'
+        - 'config:field.storage.node.field_res_medical_services'

@@ -3,15 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_res_biography
     - field.storage.node.field_res_expertises
-    - field.storage.taxonomy_term.field_term_keywords
     - field.storage.node.field_res_gender
     - field.storage.node.field_res_isacceptingnewpts
     - field.storage.node.field_res_languages
     - field.storage.node.field_res_medical_services
     - field.storage.node.field_res_name
     - field.storage.node.field_search_best_bets
+    - field.storage.taxonomy_term.field_term_keywords
     - search_api.server.acquia_search_server
   module:
     - taxonomy
@@ -23,15 +22,6 @@ name: 'UWM Providers - Search API Index'
 description: ''
 read_only: false
 field_settings:
-  field_res_biography:
-    label: Biography
-    datasource_id: 'entity:node'
-    property_path: field_res_biography
-    type: text
-    boost: !!float 5
-    dependencies:
-      config:
-        - field.storage.node.field_res_biography
   field_res_expertises:
     label: 'Areas of Expertise'
     datasource_id: 'entity:node'
@@ -46,7 +36,6 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: 'field_res_expertises:entity:field_term_keywords'
     type: text
-    boost: !!float 8
     dependencies:
       config:
         - field.storage.node.field_res_expertises
@@ -58,7 +47,6 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: 'field_res_expertises:entity:name'
     type: text
-    boost: !!float 8
     dependencies:
       config:
         - field.storage.node.field_res_expertises
@@ -108,24 +96,20 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_medical_services
-  field_res_medical_services_keywords:
-    label: 'Medical Services » Taxonomy term » Term Keywords'
+  field_res_medical_services_boolean:
+    label: 'Medical Services Boolean'
     datasource_id: 'entity:node'
-    property_path: 'field_res_medical_services:entity:field_term_keywords'
-    type: text
-    boost: !!float 8
+    property_path: field_res_medical_services
+    type: boolean
     dependencies:
       config:
         - field.storage.node.field_res_medical_services
-        - field.storage.taxonomy_term.field_term_keywords
-      module:
-        - taxonomy
   field_res_medical_services_name:
     label: 'Medical Services » Taxonomy term » Name'
     datasource_id: 'entity:node'
     property_path: 'field_res_medical_services:entity:name'
     type: text
-    boost: !!float 8
+    boost: !!float 5
     dependencies:
       config:
         - field.storage.node.field_res_medical_services
@@ -136,8 +120,8 @@ field_settings:
     label: 'Name » Family'
     datasource_id: 'entity:node'
     property_path: 'field_res_name:family'
-    type: text
-    boost: !!float 21
+    type: string
+    boost: !!float 2
     dependencies:
       config:
         - field.storage.node.field_res_name
@@ -145,8 +129,8 @@ field_settings:
     label: 'Name » Given'
     datasource_id: 'entity:node'
     property_path: 'field_res_name:given'
-    type: text
-    boost: !!float 13
+    type: string
+    boost: !!float 2
     dependencies:
       config:
         - field.storage.node.field_res_name
@@ -154,8 +138,8 @@ field_settings:
     label: 'Name » Title'
     datasource_id: 'entity:node'
     property_path: 'field_res_name:title'
-    type: text
-    boost: !!float 5
+    type: string
+    boost: !!float 0
     dependencies:
       config:
         - field.storage.node.field_res_name
@@ -164,7 +148,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: 'field_search_best_bets:entity:field_term_keywords'
     type: text
-    boost: !!float 21
+    boost: !!float 8
     dependencies:
       config:
         - field.storage.node.field_search_best_bets
@@ -176,7 +160,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: 'field_search_best_bets:entity:name'
     type: text
-    boost: !!float 21
+    boost: !!float 8
     dependencies:
       config:
         - field.storage.node.field_search_best_bets
@@ -205,7 +189,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: title
     type: text
-    boost: !!float 21
+    boost: !!float 8
     dependencies:
       module:
         - node
@@ -257,44 +241,45 @@ processor_settings:
     suffix: '</em>'
     weights:
       postprocess_query: 0
-  ignore_character:
+  html_filter:
     all_fields: false
     fields:
-      - field_res_biography
       - field_res_expertises
-      - field_res_expertises_keywords
       - field_res_expertises_name
       - field_res_expertises_name_string
       - field_res_gender
       - field_res_languages
+      - field_res_medical_services
+      - field_res_medical_services_name
       - field_res_name_family
       - field_res_name_given
       - field_res_name_title
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
       - title
       - uwmsearchwithin
+    title: false
+    alt: false
+    tags:
+      b: 2
+      h1: 5
+      h2: 3
+      h3: 2
+      strong: 2
+    weights:
+      preprocess_index: -15
+      preprocess_query: -15
+  ignore_character:
     ignorable: '[''¿¡!?,.:;]'
-    strip:
-      character_sets:
-        Cc: 0
-        Cf: 0
-        Co: 0
-        Mc: 0
-        Me: 0
-        Mn: 0
-        Pc: Pc
-        Pd: Pd
-        Pe: Pe
-        Pf: Pf
-        Pi: Pi
-        Po: Po
-        Ps: Ps
-        Sc: 0
-        Sk: 0
-        Sm: 0
-        So: 0
-        Zl: 0
-        Zp: 0
-        Zs: 0
+    ignorable_classes:
+      - Pc
+      - Pd
+      - Pe
+      - Pf
+      - Pi
+      - Po
+      - Ps
+    all_fields: false
     weights:
       preprocess_index: -10
       preprocess_query: -10
@@ -309,47 +294,32 @@ processor_settings:
   ignorecase:
     all_fields: false
     fields:
-      - field_res_biography
       - field_res_expertises
-      - field_res_expertises_keywords
       - field_res_expertises_name
       - field_res_expertises_name_string
       - field_res_gender
       - field_res_languages
+      - field_res_medical_services
+      - field_res_medical_services_name
       - field_res_name_family
       - field_res_name_given
       - field_res_name_title
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
       - title
       - uwmsearchwithin
     weights:
       preprocess_index: -20
       preprocess_query: -20
   rendered_item: {  }
-  stemmer:
-    all_fields: false
-    fields:
-      - field_res_biography
-      - field_res_expertises_keywords
-      - field_res_expertises_name
-      - field_res_name_family
-      - field_res_name_given
-      - field_res_name_title
-      - title
-    exceptions:
-      mexican: mexic
-      texan: texa
-    weights:
-      preprocess_index: 0
-      preprocess_query: 0
   tokenizer:
     all_fields: false
     fields:
-      - field_res_biography
       - field_res_expertises_keywords
       - field_res_expertises_name
-      - field_res_name_family
-      - field_res_name_given
-      - field_res_name_title
+      - field_res_medical_services_name
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
       - title
     spaces: ''
     overlap_cjk: 1
@@ -360,16 +330,18 @@ processor_settings:
   transliteration:
     all_fields: false
     fields:
-      - field_res_biography
       - field_res_expertises
-      - field_res_expertises_keywords
       - field_res_expertises_name
       - field_res_expertises_name_string
       - field_res_gender
       - field_res_languages
+      - field_res_medical_services
+      - field_res_medical_services_name
       - field_res_name_family
       - field_res_name_given
       - field_res_name_title
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
       - title
       - uwmsearchwithin
     weights:

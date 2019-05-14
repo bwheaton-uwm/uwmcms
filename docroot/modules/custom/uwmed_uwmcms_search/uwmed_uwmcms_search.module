@@ -6,6 +6,8 @@
  */
 
 use Drupal\Core\Form\FormState;
+use Drupal\search_api\Query\QueryInterface;
+use Solarium\Core\Query\QueryInterface as SolariumQueryInterface;
 
 /**
  * Implements hook_page_attachments_alter().
@@ -229,6 +231,41 @@ function uwmed_uwmcms_search_preprocess_search_api_autocomplete_suggestion(&$var
       '#markup' => $tagged_suggestion,
       '#allowed_tags' => ['strong'],
     ];
+  }
+}
+
+/**
+ * Implements hook_search_api_solr_query_alter().
+ */
+function uwmed_uwmcms_search_search_api_solr_query_alter(SolariumQueryInterface $solarium_query, QueryInterface $query) {
+  // Don't alter the query if no search term has been submitted.
+  if (!$query->getKeys()) {
+    return;
+  }
+
+  $boosts = [];
+
+  // Get Solr field names.
+  $index = $query->getIndex();
+  $solr_field_names = $index->getServerInstance()->getBackend()->getSolrFieldNames($index);
+
+  // Add a boost for providers that are accepting new patients.
+  $new_patients_field = $solr_field_names['field_res_isacceptingnewpts'] ?? '';
+  if ($new_patients_field) {
+    $boost_value = 55;
+    $boosts[] = "($new_patients_field:1^$boost_value OR $new_patients_field:0^0)";
+  }
+
+  // Add a boost for providers that belong to at least one medical service.
+  $medical_services_field = $solr_field_names['field_res_medical_services_boolean'] ?? '';
+  if ($medical_services_field) {
+    $boost_value = 21;
+    $boosts[] = "($medical_services_field:1^$boost_value OR $medical_services_field:0^0)";
+  }
+
+  // Add the boosts to the query.
+  if ($boosts) {
+    $solarium_query->addParam('bq', $boosts);
   }
 }
 
