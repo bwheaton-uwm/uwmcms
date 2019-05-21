@@ -137,6 +137,10 @@ processor_settings:
           medical_services: !!float 0
     weights:
       preprocess_index: 0
+  uwm_exclude_unreferenced_terms: {  }
+  uwm_index_term_keywords:
+    weights:
+      preprocess_index: -45
 tracker_settings:
   default:
     indexing_order: fifo
