@@ -1,0 +1,32 @@
+{% extends "@uwmbase/layouts/layout-sections/layout-sections--no-cols.twig" %}
+{#
+/**
+ * @file
+ * Theme override to display a template which uses the sections field to display
+ * components on a page.
+ *
+ * This version does not include Bootstrap grid wrappers (container, rows, cols)
+ * around the content region, so that particular inner templates can define
+ * their own full-page-width layouts.
+ *
+ */
+#}
+{% block content_columns %}
+  <section class="content-columns">
+
+    {#
+      In parent layout-sections--no-cols.twig, Bootstrap grid container wrapper
+      is here.
+      In this version, it's left out so that inner templates may define the
+      full-page-width layout.
+    #}
+
+    {# Content #}
+    <section{{ content_attributes.addClass('content-main') }}>
+      {% block content %}
+        {{ parent() }}
+      {% endblock %}
+    </section>
+
+  </section>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "@uwmbase/layouts/layout-sections/layout-sections.twig" %}
+{#
+/**
+ * @file
+ * Theme override to display a template which uses the sections field to display
+ * components on a page.
+ *
+ * This version does not include Bootstrap grid col-* wrappers around the
+ * content region, so that particular inner templates can define their own
+ * column layouts based on the content.
+ *
+ */
+#}
+{#
+  Note: this `content_topper` block is overridden only to add 'row' wrappers.
+  This is noted for refactor in a TODO -
+  @see components/layouts/layout-sections/layout-sections.twig
+#}
+{% block content_topper %}
+  <section class="content-topper">
+    <div class="wrap container-xl">
+
+      {# Header #}
+      {% if page.header %}
+        {% block header %}
+          <div class="row">
+            <div class="col-sm-12">
+              {{ page.header }}
+            </div>
+          </div>
+        {% endblock %}
+      {% endif %}
+
+      {# Title #}
+      {% if page.title %}
+        {% block title %}
+          <div class="row">
+            <div class="col-sm-12">{{ page.title }}</div>
+          </div>
+        {% endblock %}
+      {% endif %}
+
+      {# Help #}
+      {% if page.help %}
+        {% block help %}
+          <div class="row">
+            <div class="col-sm-12">{{ page.help }}</div>
+          </div>
+        {% endblock %}
+      {% endif %}
+
+      {# content_top #}
+      {% block content_top %}
+        {% if page.content_top %}
+          <div class="row">
+            <div class="col-sm-12">{{ page.content_top }}</div>
+          </div>
+        {% endif %}
+      {% endblock %}
+    </div>
+  </section>
+{% endblock %}
+
+{% block content_columns %}
+  <section class="content-columns">
+    <div class="container-xl">
+
+      {# Content #}
+      {#
+        In default layout-sections.twig, Bootstrap grid column (col-*) classes
+        are on this wrapper.
+        In this version, they are left out so that inner templates may define
+        their own columns as necessary.
+      #}
+      <section{{ content_attributes.addClass('content-main') }}>
+        {% block content %}
+          {{ parent() }}
+        {% endblock %}
+      </section>
+
+    </div>
+  </section>
+{% endblock %}

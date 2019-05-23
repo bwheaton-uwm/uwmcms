@@ -1,0 +1,8 @@
+uuid: 589691a7-730f-400f-965a-b9ae9def12ae
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_card
+label: Card
+revision: 1
+description: 'A card can have a header, content, and footer. In a grid, cards will be equal height and the header, content area, and footers of each card will align.<br/>(This mirrors the <a href="/admin/structure/paragraphs_type/uwm_card/fields" target="_blank">Card paragraph type</a> as reusable blocks.)'

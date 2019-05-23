@@ -5,16 +5,20 @@ dependencies:
   config:
     - core.entity_view_mode.node.search_result
     - field.field.node.res_clinic.body
+    - field.field.node.res_clinic.field_featured
     - field.field.node.res_clinic.field_res_affiliates
     - field.field.node.res_clinic.field_res_box_number
     - field.field.node.res_clinic.field_res_building
+    - field.field.node.res_clinic.field_res_clockwise_id
     - field.field.node.res_clinic.field_res_displayaptslink
+    - field.field.node.res_clinic.field_res_expertises
     - field.field.node.res_clinic.field_res_external_url
     - field.field.node.res_clinic.field_res_fax_number
     - field.field.node.res_clinic.field_res_floor
     - field.field.node.res_clinic.field_res_hours_of_operation
     - field.field.node.res_clinic.field_res_image
     - field.field.node.res_clinic.field_res_internal_url
+    - field.field.node.res_clinic.field_res_is_hospital
     - field.field.node.res_clinic.field_res_iscallcenterserviced
     - field.field.node.res_clinic.field_res_medical_services
     - field.field.node.res_clinic.field_res_meta_tags
@@ -22,6 +26,9 @@ dependencies:
     - field.field.node.res_clinic.field_res_providers
     - field.field.node.res_clinic.field_res_room_number
     - field.field.node.res_clinic.field_search_best_bets
+    - field.field.node.res_clinic.field_uwm_json_packet
+    - field.field.node.res_clinic.field_uwm_sections
+    - field.field.node.res_clinic.field_uwm_sections_2
     - field.field.node.res_clinic.uwm_unique_id
     - node.type.res_clinic
   module:
@@ -42,16 +49,20 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_featured: true
   field_res_affiliates: true
   field_res_box_number: true
   field_res_building: true
+  field_res_clockwise_id: true
   field_res_displayaptslink: true
+  field_res_expertises: true
   field_res_external_url: true
   field_res_fax_number: true
   field_res_floor: true
   field_res_hours_of_operation: true
   field_res_image: true
   field_res_internal_url: true
+  field_res_is_hospital: true
   field_res_iscallcenterserviced: true
   field_res_medical_services: true
   field_res_meta_tags: true
@@ -61,5 +72,8 @@ hidden:
   field_search_best_bets: true
   field_test_m_services2: true
   field_test_m_services3: true
+  field_uwm_json_packet: true
+  field_uwm_sections: true
+  field_uwm_sections_2: true
   links: true
   uwm_unique_id: true

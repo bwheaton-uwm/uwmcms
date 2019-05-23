@@ -37,7 +37,4 @@
  *
  * @see template_preprocess_field()
  */
-#}
-  {% for item in items %}
-    uwm-accent-color__{{item.content|render|uwm_format_accent_class}}
-  {% endfor %}
+#}uwm-accent-color__{{items.0.content|render|uwm_format_accent_class}}

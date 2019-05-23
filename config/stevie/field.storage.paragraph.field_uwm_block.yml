@@ -1,21 +1,19 @@
-uuid: d2dd823b-48a8-4cde-a077-8fea64b218e6
+uuid: 674754c6-7101-4ebe-b39d-233e5d955117
 langcode: en
 status: true
 dependencies:
   module:
-    - block
+    - block_content
     - paragraphs
-_core:
-  default_config_hash: wKqbrxdZC5qZOUbDqxm9tm8HooWBCTzRL3A06auz5TI
-id: paragraph.uwm_block
-field_name: uwm_block
+id: paragraph.field_uwm_block
+field_name: field_uwm_block
 entity_type: paragraph
 type: entity_reference
 settings:
-  target_type: block
+  target_type: block_content
 module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

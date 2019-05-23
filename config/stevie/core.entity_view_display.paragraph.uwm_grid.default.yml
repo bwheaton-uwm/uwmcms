@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.uwm_grid.field_uwm_column_dividers
     - field.field.paragraph.uwm_grid.field_uwm_column_spacing
     - field.field.paragraph.uwm_grid.field_uwm_columns
     - field.field.paragraph.uwm_grid.field_uwm_columns_per_row
@@ -15,6 +16,16 @@ targetEntityType: paragraph
 bundle: uwm_grid
 mode: default
 content:
+  field_uwm_column_dividers:
+    weight: 6
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
   field_uwm_column_spacing:
     weight: 1
     label: hidden

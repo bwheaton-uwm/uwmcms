@@ -1,0 +1,70 @@
+uuid: 2b185c11-ec95-4a34-8398-ad80770ff028
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.building_directions
+    - field.field.taxonomy_term.buildings.field_coordinates_geofield
+    - field.field.taxonomy_term.buildings.field_res_accessibility_info
+    - field.field.taxonomy_term.buildings.field_res_additional_information
+    - field.field.taxonomy_term.buildings.field_res_address
+    - field.field.taxonomy_term.buildings.field_res_bus_directions
+    - field.field.taxonomy_term.buildings.field_res_campus
+    - field.field.taxonomy_term.buildings.field_res_clinics
+    - field.field.taxonomy_term.buildings.field_res_coordinates
+    - field.field.taxonomy_term.buildings.field_res_driving_directions
+    - field.field.taxonomy_term.buildings.field_res_parking_directions
+    - field.field.taxonomy_term.buildings.uwm_unique_id
+    - taxonomy.vocabulary.buildings
+  module:
+    - text
+_core:
+  default_config_hash: RHZ3GhhQuQNk3ZMNthdEkSfHUEglxQDVBRuWKtjxYxs
+id: taxonomy_term.buildings.building_directions
+targetEntityType: taxonomy_term
+bundle: buildings
+mode: building_directions
+content:
+  field_res_accessibility_info:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_res_additional_information:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_res_bus_directions:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_res_driving_directions:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_res_parking_directions:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  description: true
+  field_coordinates_geofield: true
+  field_res_address: true
+  field_res_campus: true
+  field_res_clinics: true
+  field_res_coordinates: true
+  uwm_unique_id: true

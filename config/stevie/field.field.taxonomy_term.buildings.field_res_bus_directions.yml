@@ -1,0 +1,28 @@
+uuid: 9f0648c0-4e9e-420f-8aed-8d41868efdd8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_res_bus_directions
+    - taxonomy.vocabulary.buildings
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: '0'
+    unrestricted: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: taxonomy_term.buildings.field_res_bus_directions
+field_name: field_res_bus_directions
+entity_type: taxonomy_term
+bundle: buildings
+label: 'Bus Directions'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

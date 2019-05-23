@@ -1,0 +1,15 @@
+uuid: 79d795dd-b4ed-4384-bccb-3d9fc217a37d
+langcode: en
+status: true
+dependencies: {  }
+name: clinic_page_350_175
+label: 'Clinic page: xl-xxl (350 x 175)'
+effects:
+  9efe91ef-9b07-4068-90b4-84183a00a3c7:
+    uuid: 9efe91ef-9b07-4068-90b4-84183a00a3c7
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 350
+      height: 175
+      anchor: center-center

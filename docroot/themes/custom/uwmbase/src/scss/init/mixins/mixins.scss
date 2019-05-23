@@ -24,3 +24,10 @@
   border-right: 1px solid transparent;
   display: inline-block;
 }
+
+// Apply just the left/right container padding to align elements with the
+// Bootstrap grid containers.
+@mixin container-padding() {
+  padding-left: $grid-gutter-width / 2;
+  padding-right: $grid-gutter-width / 2;
+}

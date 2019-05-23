@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Theme override for Fax Number field on Res Clinic nodes.
+ *
+ * Custom variables:
+ * - view_mode: The view mode in which the entity with this field is currently
+ *   being rendered.
+ *
+ * @see template_preprocess_field()
+ * @see uwmbase_preprocess_field()
+ */
+#}
+{%
+  set title_classes = [
+    'field__label',
+    label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
+{% spaceless %}
+  {% if not label_hidden %}
+    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+  {% endif %}
+
+  {#
+    Format fax number.
+  #}
+  {% set value = items.0.content|render %}
+  {{ value|uwm_format_phone('.') }} {{ "fax"|t }}
+{% endspaceless %}

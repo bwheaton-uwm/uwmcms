@@ -28,7 +28,9 @@ $uw-images-folder: '/themes/custom/uwmed/dist/assets';
 // Style guide 2.1
 
 $uwmed-purple: #32006e;
-$uwmed-light-purple: #4B2E83;
+// 2019-05-06: updated light purple globally per design request.
+//$uwmed-light-purple: #4B2E83;
+$uwmed-light-purple: #5d348b;
 $uwmed-white: #fff;
 $uwmed-off-white: darken($uwmed-white, 1.5%);
 $uwmed-gray: #b5b5b5;
@@ -123,7 +125,9 @@ $uwmed-accent-blue: #2C6ACE;
 $uwmed-accent-tan: #EFEFEF;
 $uwmed-accent-yellow: #FFCE00;
 
-$uwmed-purple-icon: #4B2E83;
+// 2019-05-06: updated globally per design request.
+// $uwmed-purple-icon: #4B2E83;
+$uwmed-purple-icon: $uwmed-light-purple;
 $uwmed-gray-icon: #716F77;
 
 // Gradient Palette
@@ -153,7 +157,9 @@ $uwmed-solid-dark-purple: #3f3952;
   $uwmed-light-gray: #DFE1E3;
   $uwmed-medium-gray: #9da1a6;
   $uwmed-dark-gray: #485464;
-  $uwmed-pop-blue: #3375d4;
+  // 2019-05-06: updated link blue globally per design request.
+  //$uwmed-pop-blue: #3375d4;
+  $uwmed-pop-blue: #2c6ace;
   $uwmed-menu-gray: #676868;
   $uwmed-menu-yellow: #FFc700;
   $uwmed-tab-purple: #3F3952;
@@ -191,8 +197,11 @@ $uwmed-solid-dark-purple: #3f3952;
   // Style guide: 1
 
   /* Typography Colors */
-  $uwmed-body-text-color: #474747;
-  $uwmed-link-color: #474747;
+  // 2019-05-06: updated body text color globally per design request.
+  //$uwmed-body-text-color: #474747;
+  $uwmed-body-text-color: #333d47;
+  //$uwmed-link-color: #474747;
+  $uwmed-link-color: #333d47;
 
   /* Font Families */
   $font-family-sans-serif:  "Open Sans", Helvetica, Arial, sans-serif;
@@ -258,15 +267,18 @@ $uwmed-solid-dark-purple: #3f3952;
   $headings-font-weight-heavy: 600;
 
   /* Heading Line Heights */
+  // 2019-05-06: Updated h1 line height globally per design request.
   $headings-line-height:    1.1;
-  $line-height-h1:            ceil(($font-size-h1 * 1.15)); // 72px
+  //$line-height-h1:            ceil(($font-size-h1 * 1.15)); // 72px
+  $line-height-h1:            1.1;
   $line-height-h2:            ceil(($font-size-h2 * 1.2)); // 46px
   $line-height-h3:            ceil(($font-size-h3 * 1.2)); // 16px
   $line-height-h4:            ceil(($font-size-h4 * 1.2)); // 30px
   $line-height-h5:            ceil(($font-size-h5 * 1.2)); // 12px
   $line-height-h6:            ceil(($font-size-h6 * 1.2)); // 12px
 
-  $line-height-h1-mobile:     ceil(($font-size-h1-mobile * 1.25)); // 40px
+  //$line-height-h1-mobile:     ceil(($font-size-h1-mobile * 1.25)); // 40px
+  $line-height-h1-mobile:     1.1;
   $line-height-h2-mobile:     ceil(($font-size-h2-mobile * 1.2)); // 32px
   $line-height-h4-mobile:     ceil(($font-size-h4-mobile * 1.2)); // 22px
 
@@ -345,4 +357,3 @@ $uwmed-solid-dark-purple: #3f3952;
   background-repeat: no-repeat;
   background-position: center center;
 }
-

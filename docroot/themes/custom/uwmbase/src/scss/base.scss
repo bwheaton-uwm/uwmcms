@@ -35,6 +35,18 @@ a {
   @include media-breakpoint-up('xxl') {
     width: map-get($container-max-widths, xxl);
   }
+
+  // Make the container full-viewport-width up til a breakpoint, then add back
+  // the gutter padding.
+  // `container-padding` is a custom helper mixin from init/mixins/mixins.scss
+  &.padding-md {
+    padding-left: 0;
+    padding-right: 0;
+
+    @include media-breakpoint-up('md') {
+      @include container-padding;
+    }
+  }
 }
 
 

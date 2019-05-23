@@ -1,0 +1,19 @@
+uuid: 3f0a34f4-02bd-4da0-8136-4b1640cf48a5
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+    - text
+id: taxonomy_term.field_res_parking_directions
+field_name: field_res_parking_directions
+entity_type: taxonomy_term
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

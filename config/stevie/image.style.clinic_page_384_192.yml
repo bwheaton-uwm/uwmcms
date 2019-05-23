@@ -1,0 +1,15 @@
+uuid: 8f58dcfd-4d35-4bbe-9de6-6c6085045433
+langcode: en
+status: true
+dependencies: {  }
+name: clinic_page_384_192
+label: 'Clinic page: md-lg (384 x 192)'
+effects:
+  6ee593ed-9f28-42cf-8a85-a18fdb7e4f11:
+    uuid: 6ee593ed-9f28-42cf-8a85-a18fdb7e4f11
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 384
+      height: 192
+      anchor: center-center

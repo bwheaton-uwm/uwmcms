@@ -1,0 +1,28 @@
+uuid: 0aeefbff-7ba4-49e5-a370-b94e4a662f57
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_res_accessibility_info
+    - taxonomy.vocabulary.buildings
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: '0'
+    unrestricted: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: taxonomy_term.buildings.field_res_accessibility_info
+field_name: field_res_accessibility_info
+entity_type: taxonomy_term
+bundle: buildings
+label: 'Accessibility Information'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

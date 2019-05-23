@@ -1,23 +1,9 @@
 {#
 /**
  * @file
- * Theme override for a field.
- *
- * To override output, copy the "field.html.twig" from the templates directory
- * to your theme's directory and customize it, just like customizing other
- * Drupal templates such as page.html.twig or node.html.twig.
- *
- * Instead of overriding the theming for all fields, you can also just override
- * theming for a subset of fields using
- * @link themeable Theme hook suggestions. @endlink For example,
- * here are some theme hook suggestions that can be used for a field_foo field
- * on an article node type:
- * - field--node--field-foo--article.html.twig
- * - field--node--field-foo.html.twig
- * - field--node--article.html.twig
- * - field--field-foo.html.twig
- * - field--text-with-summary.html.twig
- * - field.html.twig
+ * Theme override for Header field on Card paragraph type and Card content
+ * block type. Using the same field machine name enables common theming between
+ * Cards as paragraphs and as reusable content blocks.
  *
  * Available variables:
  * - attributes: HTML attributes for the containing element.
@@ -44,7 +30,6 @@
     'field--type-' ~ field_type|clean_class,
     'field--label-' ~ label_display,
     'card-header',
-    'border-0',
   ]
 %}
 {%

@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Theme override for a 'submit' type form element.
+ * - Uses the <button> tag instead of <input> by default.
+ * - Adds the standard CTA button classes.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+{%
+  set classes = [
+    'btn',
+    'btn-cta'
+  ]
+%}
+<button{{ attributes.addClass(classes)|without('value') }}>{{ attributes.value }}{{ children }}</button>

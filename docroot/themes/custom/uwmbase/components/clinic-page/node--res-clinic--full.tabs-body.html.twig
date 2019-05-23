@@ -1,0 +1,71 @@
+{% if content.field_res_expertises is not empty %}
+  <section class="services uwm-toggle">
+
+    <div class="container-xl">
+
+      <h3 class="uwm-accent-heading uwm-accent-heading__title">Services</h3>
+
+      <h2 class="leader">
+        {% if content.field_clinic_services_header|render is not empty %}
+          {{ content.field_clinic_services_header }}
+        {#{% elseif _cli.clinicTimeUseMasters[1].hoursOfOperation %}#}
+          {#{{ "This clinic offers primary and urgent care, including:"|t }}#}
+        {% else %}
+          {{ "Services available at this location include:"|t }}
+        {% endif %}
+      </h2>
+
+
+      {% set expertises = content.field_res_expertises|uwm_filter_non_numeric_keys|uwm_replace_links_with_text|sort %}
+
+      <ul class="row">
+        {% for s in expertises %}
+          <li class="col-xs-12 col-sm-6 col-md-3"><i class="uw-ico checkmark"
+                                           aria-hidden="true"></i>
+            {{ s }}</li>
+        {% endfor %}
+      </ul>
+
+      {#{{ content.field_res_expertises }}#}
+
+      {#{% if expertises|length > 6 %}#}
+      {#<div class="uw-more visible-xs-block">#}
+      {#<a href="#" data-uwm-toggle#}
+      {#data-on-text="{{ 'View less'|t }}"#}
+      {#data-off-text="{{ 'View more'|t }}"#}
+      {#data-toggle-selector=".services li"#}
+      {#data-toggle-style="on"#}
+      {#data-parent-style="on">{{ 'View more'|t }}#}
+      {#<i#}
+      {#class="fa fa-angle-down"#}
+      {#aria-hidden="true"></i></a>#}
+      {#</div>#}
+      {#{% endif %}#}
+
+    </div>
+
+  </section>
+{% endif %}
+
+{#
+   "Sections: Resources" paragraph field
+#}
+{% if content.field_uwm_sections.0 is not empty %}
+  {{ content.field_uwm_sections }}
+{% endif %}
+
+{% if content.body.0 is not empty %}
+  <section class="clinic-page__overview">
+    <div class="container-xl">
+
+      <h3 id="clinic-overview-jump"
+          class="clinic-page__overview-header uwm-accent-heading uwm-accent-heading__title">
+        {{ is_hospital ? "Hospital Overview"|t : "Clinic Overview"|t }}
+      </h3>
+
+      {{ content.body }}
+
+    </div>
+
+  </section>
+{% endif %}

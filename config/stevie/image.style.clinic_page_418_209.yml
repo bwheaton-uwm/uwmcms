@@ -1,0 +1,15 @@
+uuid: aedd5fa6-610b-4063-a4a0-f2f6c5385c6d
+langcode: en
+status: true
+dependencies: {  }
+name: clinic_page_418_209
+label: 'Clinic page: xxl+ (418 x 209)'
+effects:
+  eede5f6b-beb0-468d-986e-352ecf941abc:
+    uuid: eede5f6b-beb0-468d-986e-352ecf941abc
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 418
+      height: 209
+      anchor: center-center

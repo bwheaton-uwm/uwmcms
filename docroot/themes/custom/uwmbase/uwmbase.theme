@@ -16,6 +16,22 @@ use Drupal\node\NodeInterface;
 use Drupal\Core\Render\Element;
 
 /**
+ * Get path (alias) of the current page.
+ */
+function _uwmbase_current_path_alias() {
+
+  static $current_path_alias = NULL;
+
+  if (empty($current_path_alias)) {
+    $current_path = \Drupal::service('path.current')->getPath();
+    $current_path_alias = \Drupal::service('path.alias_manager')->getAliasByPath($current_path);
+  }
+
+  return $current_path_alias;
+
+}
+
+/**
  * Prepare the correct URL for a node's full page.
  *
  * This is primarily for clinic and provider full pages while they still live
@@ -45,14 +61,235 @@ function _uwmbase_node_prepare_uwm_url(NodeInterface $node) {
     $url = str_replace($host, 'www.uwmedicine.org', $url);
   }
 
-  if ($node->hasField('field_res_external_url') && !$node->get('field_res_external_url')->isEmpty()) {
+  if ($node->hasField('field_res_external_url') && !$node->get('field_res_external_url')
+    ->isEmpty()) {
+
     $external_url = $node->get('field_res_external_url')->value;
-    if (!empty($external_url) && stripos($external_url, '//') !== FALSE) {
-      $url = $external_url;
+    if (stripos($external_url, '//') !== FALSE) {
+      // Many clinic nodes have this field populated with the production
+      // uwmedicine.org url. Ensure that (steve) uwmedicine.org nodes use their
+      // relative path, and this field overrides for external sites only.
+      if ($node->bundle() !== 'res_clinic' || stripos($external_url, 'uwmedicine.org') === FALSE) {
+        $url = $external_url;
+      }
     }
   }
 
   $node->uwm_url = $url;
+
+}
+
+/**
+ * If a node has field_uwm_json_packet, parse its JSON data into arrays.
+ *
+ * Process some specific data and save result in $node->uwm_json_packet_data.
+ *
+ * @param \Drupal\Node\NodeInterface $node
+ *   A node which may have the field.
+ */
+function _uwmbase_node_parse_json_field(NodeInterface $node) {
+
+  // Process data only once in a request.
+  if (!empty($node->uwm_json_packet_data)) {
+    return;
+  }
+
+  if ($node->hasField('field_uwm_json_packet') && !$node->get('field_uwm_json_packet')
+    ->isEmpty()) {
+
+    $json_str = $node->get('field_uwm_json_packet')
+      ->first()
+      ->getValue()['value'];
+    $json_data = json_decode($json_str, TRUE);
+
+    if (!empty($json_data) && is_array($json_data)) {
+
+      // Process operation hours data.
+      if (!empty($json_data['hours_of_operation'])) {
+
+        // Restructure the data.
+        $data = [];
+
+        // Each value is from an Hours paragraph on Reservoir.
+        foreach ($json_data['hours_of_operation'] as $hours) {
+
+          // Use a friendly type name as the key.
+          $type = $hours['hours_type'];
+          if ($type == 0) {
+            // This may be primary care or general hours - logic in template.
+            $type = 'operation';
+          }
+          elseif ($type == 1) {
+            $type = 'urgent';
+          }
+
+          // Incoming days are keyed as 0-7 = Sunday-Saturday.
+          // If closed on a day, there is no corresponding paragraph for it.
+          // This initial array ensures each day is present; if a paragraph does
+          // not fill in the times for a day, we know it's a closed day.
+          $data[$type]['days'] = [
+            0 => [
+              'day_name' => t("Sunday"),
+            ],
+            1 => [
+              'day_name' => t("Monday"),
+            ],
+            2 => [
+              'day_name' => t("Tuesday"),
+            ],
+            3 => [
+              'day_name' => t("Wednesday"),
+            ],
+            4 => [
+              'day_name' => t("Thursday"),
+            ],
+            5 => [
+              'day_name' => t("Friday"),
+            ],
+            6 => [
+              'day_name' => t("Saturday"),
+            ],
+          ];
+
+          // Determine boolean for always open.
+          $data[$type]['always_open'] = TRUE;
+
+          // Note: while the Reservoir hours paragraph has a boolean field for
+          // "Is always open?", it does not appear to be used. Thus, only use
+          // its value if it's actually true (otherwise, empty would also
+          // convert to false). Check also for every day of the week specified
+          // as 12:00am-11:59pm.
+          if (isset($hours['always_open'])) {
+            if ((boolean) $hours['always_open']) {
+              $data[$type]['always_open'] = TRUE;
+            }
+          }
+
+          // Set empty defaults for the timestamps for open/close today and
+          // next open day.
+          $data[$type]['open_close'] = [
+            'opens_today' => NULL,
+            'closes_today' => NULL,
+            'opens_next' => NULL,
+            'closes_next' => NULL,
+          ];
+
+          // Process each day's hours.
+          if (!empty($hours['hours'])) {
+            foreach ($hours['hours'] as $day) {
+
+              // If no hours, it's closed on this day.
+              if (empty($day['start']) || empty($day['end'])) {
+                continue;
+              }
+
+              $day_i = (int) $day['day'];
+
+              // If hours for any day are not 12:00am-11:59pm, then this is not
+              // always open.
+              if ($day['start'] !== '00:00:00' || $day['end'] !== '23:59:00') {
+                $data[$type]['always_open'] = FALSE;
+              }
+
+              // Save the times in original format for use in open/closed loop
+              // afterward.
+              $data[$type]['days'][$day_i]['start_hms'] = $day['start'];
+              $data[$type]['days'][$day_i]['end_hms'] = $day['end'];
+
+              // Format times.
+              // Incoming: 24-hour with seconds, e.g. "15:30:00".
+              // Display: 12-hour with a/p, e.g. "3:30p".
+              $times = [
+                $day['start'],
+                $day['end'],
+              ];
+
+              foreach ($times as &$time) {
+
+                list($h, $m, $s) = explode(':', $time);
+
+                // Determine am/pm.
+                $h = (int) $h;
+
+                $a = ($h < 12 ? 'am' : 'pm');
+
+                // Convert 24-hour to 12-hour display.
+                if ($h === 0) {
+                  $h = 12;
+                }
+                elseif ($h > 12) {
+                  $h = $h - 12;
+                }
+
+                $time = ($h . ':' . $m . ' ' . $a);
+              }
+
+              // Add this day's times.
+              $data[$type]['days'][$day_i]['start'] = $times[0];
+              $data[$type]['days'][$day_i]['end'] = $times[1];
+
+            }
+
+            // Get the open/close timestamps for today and the next open day,
+            // unless always open.
+            if (!$data[$type]['always_open']) {
+
+              // All locations are in the Pacific time zone.
+              $tz = new \DateTimeZone('America/Los_Angeles');
+
+              $today = new \DateTime('today', $tz);
+              $today_ymd = $today->format('Y-m-d');
+
+              // Get today as numeric day of the week.
+              $today_i = (int) $today->format('w');
+
+              if (!empty($data[$type]['days'][$today_i]['start_hms'])) {
+                $date_opens = new \DateTime($today_ymd . ' ' . $data[$type]['days'][$today_i]['start_hms'], $tz);
+                $date_closes = new \DateTime($today_ymd . ' ' . $data[$type]['days'][$today_i]['end_hms'], $tz);
+
+                $data[$type]['open_close']['opens_today'] = $date_opens->format('U');
+                $data[$type]['open_close']['closes_today'] = $date_closes->format('U');
+              }
+
+              // Now find the next day of the week that has hours.
+              // Track how many days we move forward from today, to find the
+              // actual date of that next open day.
+              $next_i = $today_i;
+              for ($next_add = 1; $next_add < 7; $next_add++) {
+                $next_i = ($next_i + 1) % 7;
+
+                if (!empty($data[$type]['days'][$next_i]['start_hms'])) {
+                  $date_opens = new \DateTime('+' . $next_add . 'days ' . $data[$type]['days'][$next_i]['start_hms'], $tz);
+                  $date_closes = new \DateTime('+' . $next_add . 'days ' . $data[$type]['days'][$next_i]['end_hms'], $tz);
+
+                  $data[$type]['open_close']['opens_next'] = $date_opens->format('U');
+                  $data[$type]['open_close']['closes_next'] = $date_closes->format('U');
+
+                  break;
+                }
+              }
+
+            }
+
+            // Finally, move Sunday from 0 to 7 to match our display order.
+            // Then the template can loop and print each day's hours directly.
+            $data[$type]['days'][7] = $data[$type]['days'][0];
+            unset($data[$type]['days'][0]);
+
+          }
+
+        }
+
+        $json_data['hours_of_operation'] = $data;
+
+      }
+
+      // Save data to node.
+      $node->uwm_json_packet_data = $json_data;
+
+    }
+
+  }
 
 }
 
@@ -118,9 +355,34 @@ function uwmbase_preprocess_page(&$variables, $hook) {
 
   $currentPath = \Drupal::service('path.current')->getPath();
   $variables['current_path'] = $currentPath;
+
+  /** @var \Drupal\Node\NodeInterface $node */
+  $node = !empty($variables['node']) ? $variables['node'] : NULL;
+
   if (stripos($currentPath, '/search/locations/map') !== FALSE) {
     $variables['page']['show_sidebar_second'] = TRUE;
   }
+
+  if (!empty($node)) {
+
+    if ($node->bundle() === 'res_clinic') {
+
+      // On Clinic node pages, remove the page title block. The title is printed
+      // in the node template instead for layout reasons.
+      if (!empty($variables['page']['title']['uwmbase_page_title'])) {
+        unset($variables['page']['title']['uwmbase_page_title']);
+
+        // There should be no other blocks in the 'title' region. Unset the
+        // region render array if so, to avoid empty wrapper markup.
+        if (count(Element::children($variables['page']['title'])) === 0) {
+          unset($variables['page']['title']);
+        }
+      }
+
+    }
+
+  }
+
 }
 
 /**
@@ -149,6 +411,25 @@ function uwmbase_preprocess_node(&$variables, $hook) {
 
   /** @var \Drupal\node\NodeInterface $node */
   $node = $variables['node'];
+  $nodeType = $node->getType();
+
+  /* Inspect the request node type to check if a node is being rendered via
+   * another node's template. For example, as an entity reference item.
+   */
+  $requestNode = \Drupal::request()->attributes->get('node');
+  if ($requestNode) {
+    $requestNodeType = $requestNode->bundle();
+
+    $displayContext = NULL;
+
+    /* If there's more use for this in the future, consider comparing Node IDs
+     * to know when to populate displayContext with 'self'.
+     */
+    if ($nodeType !== $requestNodeType) {
+      $displayContext = $requestNodeType;
+    }
+    $variables['display_context'] = $displayContext;
+  }
 
   // Restore simple node container classes:
   // @TODO: Where did these go?
@@ -157,13 +438,13 @@ function uwmbase_preprocess_node(&$variables, $hook) {
   $variables['attributes']['class'] = array_merge($classes,
     [
       'node',
-      'node-' . $node->getType(),
+      'node-' . $nodeType,
       'view-mode-' . $variables['elements']['#view_mode'],
 
     ]);
 
-  // Override the url variable for this node to link back to UWMed while porting
-  // to Stevie.
+  // Override the url variable for this node to ensure correct prod domain
+  // and use external URL if provided in field.
   _uwmbase_node_prepare_uwm_url($node);
   $variables['url'] = $node->uwm_url;
 
@@ -174,9 +455,9 @@ function uwmbase_preprocess_node(&$variables, $hook) {
   // use prepared node URL.
   foreach (Element::children($variables['content']) as $field) {
     if (!empty($variables['content'][$field][0]['#type'])
-      && $variables['content'][$field][0]['#type'] === 'link'
-      && !empty($variables['content'][$field][0]['#options']['entity_type'])
-      && $variables['content'][$field][0]['#options']['entity_type'] === 'node') {
+        && $variables['content'][$field][0]['#type'] === 'link'
+        && !empty($variables['content'][$field][0]['#options']['entity_type'])
+        && $variables['content'][$field][0]['#options']['entity_type'] === 'node') {
 
       foreach (Element::children($variables['content'][$field]) as $delta) {
 
@@ -192,6 +473,16 @@ function uwmbase_preprocess_node(&$variables, $hook) {
 
       }
 
+    }
+  }
+
+  // Parse custom JSON data field.
+  _uwmbase_node_parse_json_field($node);
+
+  // Pass specific variables from JSON data to the template.
+  if (!empty($node->uwm_json_packet_data)) {
+    if ($node->bundle() === 'res_clinic' && !empty($node->uwm_json_packet_data['hours_of_operation'])) {
+      $variables['hours'] = $node->uwm_json_packet_data['hours_of_operation'];
     }
   }
 
@@ -249,6 +540,49 @@ function uwmbase_preprocess_node(&$variables, $hook) {
         unset($variables['content']['field_res_image'][$delta]);
         $delta++;
       }
+    }
+
+    // Preprocessing for full page.
+    if ($variables['view_mode'] === 'full') {
+      // Retrieve content blocks that hold manageable text.
+      // These blocks are created on prod so we know the IDs.
+      $block_storage = \Drupal::entityTypeManager()
+        ->getStorage('block_content');
+      $block_builder = \Drupal::entityTypeManager()
+        ->getViewBuilder('block_content');
+
+      $block_note_urgent_close = $block_storage->load(6);
+      if ($block_note_urgent_close) {
+        $variables['block_note_urgent_close'] = $block_builder->view($block_note_urgent_close);
+      }
+      $block_note_emergency = $block_storage->load(11);
+      if ($block_note_emergency) {
+        $variables['block_note_emergency'] = $block_builder->view($block_note_emergency);
+      }
+
+      // Render the building taxonomy term in "Building: directions only" view
+      // mode for use on the 'directions/parking' tab.
+      $term_storage = \Drupal::EntityTypeManager()
+        ->getStorage('taxonomy_term');
+      $term_builder = \Drupal::EntityTypeManager()
+        ->getViewBuilder('taxonomy_term');
+
+      $variables['building_directions'] = NULL;
+      if ($node->hasField('field_res_building') && !$node->get('field_res_building')
+        ->isEmpty()) {
+
+        $building = $term_storage->load($node->field_res_building->entity->id());
+        $variables['building_directions'] = $term_builder->view($building, 'building_directions');
+      }
+    }
+
+    // Retrieve whether this is a hospital from boolean field.
+    $variables['is_hospital'] = FALSE;
+    if ($node->hasField('field_res_is_hospital') && !$node->get('field_res_is_hospital')
+      ->isEmpty()) {
+
+      $variables['is_hospital'] = (boolean) $node->get('field_res_is_hospital')
+        ->first()->getValue()['value'];
     }
 
   }
@@ -497,7 +831,25 @@ function uwmbase_theme_suggestions_node_alter(array &$suggestions, array $variab
       $suggestions[$nt] = $viewModeSuggestion;
       $suggestions[$vm] = $nodeTypeSuggestion;
     }
+  }
 
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function uwmbase_preprocess_paragraph(&$variables) {
+
+  $paragraph = $variables['paragraph'];
+
+  // For any paragraph type, check if a parent Grid paragraph specified to
+  // style all children as cards.
+  // @see uwmbase_preprocess_paragraph__uwm_grid()
+  $variables['style_as_card'] = (isset($variables['elements']['#style_as_card']) && $variables['elements']['#style_as_card'] === TRUE);
+
+  // Add the Bootstrap 'card' css class.
+  if ($variables['style_as_card']) {
+    $variables['attributes']['class'][] = 'card';
   }
 
 }
@@ -523,26 +875,143 @@ function uwmbase_preprocess_paragraph__uwm_image_hero(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess_HOOK().
+ */
+function uwmbase_preprocess_paragraph__uwm_section(&$variables) {
+
+  $paragraph = $variables['paragraph'];
+
+  $variables['background_image_url'] = NULL;
+
+  // Retrieve the background image URL.
+  // This should be configured to display with the "URL to image" formatter.
+  // Use the rendered field (instead of extracting the URL from field data)
+  // because:
+  // - using a render array includes cache metadata,
+  // - it's easy to configure to use an image style.
+  if (!empty($variables['content']['field_uwm_image'][0])) {
+    $field_uwm_image_item = $variables['content']['field_uwm_image'][0];
+    $variables['background_image_url'] = trim(render($field_uwm_image_item));
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_paragraph__uwm_grid().
+ */
+function uwmbase_preprocess_paragraph__uwm_grid(&$variables) {
+
+  $grid_paragraph = $variables['paragraph'];
+
+  // If any of the child paragraphs are cards, style all as cards.
+  $variables['style_as_cards'] = FALSE;
+
+  if (!empty($variables['content']['field_uwm_columns']) && !$grid_paragraph->get('field_uwm_columns')->isEmpty()) {
+
+    /** @var \Drupal\paragraphs\ParagraphInterface $col_paragraph */
+    foreach ($grid_paragraph->get('field_uwm_columns')->referencedEntities() as $col_paragraph) {
+
+      // Check for Card paragraph type.
+      if ($col_paragraph->bundle() === 'uwm_card') {
+        $variables['style_as_cards'] = TRUE;
+        break;
+      }
+
+      // Check for Reusable Content paragraph type, wrapping a Card block type.
+      if ($col_paragraph->bundle() === 'uwm_block' && !$col_paragraph->get('field_uwm_block')->isEmpty()) {
+
+        $block_id = $col_paragraph->get('field_uwm_block')->first()->getValue()['target_id'];
+        $block_content = \Drupal::entityTypeManager()->getStorage('block_content')->load($block_id);
+
+        if (!empty($block_content) && $block_content->bundle() === 'uwm_card') {
+          $variables['style_as_cards'] = TRUE;
+          break;
+        }
+
+      }
+
+    }
+
+    // Pass a custom property into child paragraphs' render arrays.
+    // @see uwmbase_preprocess_paragraph()
+    if ($variables['style_as_cards']) {
+
+      foreach (Element::children($variables['content']['field_uwm_columns']) as $delta) {
+        $variables['content']['field_uwm_columns'][$delta]['#style_as_card'] = TRUE;
+      }
+
+    }
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_paragraph__uwm_block().
+ */
+function uwmbase_preprocess_paragraph__uwm_block(&$variables) {
+
+  $paragraph = $variables['paragraph'];
+
+  // Pass referenced block bundle or webform ID to parent paragraph template.
+  // Display webform title as header.
+  $variables['block_bundle'] = NULL;
+  $variables['webform_id'] = NULL;
+  $variables['webform_title'] = NULL;
+
+  if (!$paragraph->get('field_uwm_block')->isEmpty()) {
+
+    $block_id = $paragraph->get('field_uwm_block')->first()->getValue()['target_id'];
+    $block_content = \Drupal::entityTypeManager()->getStorage('block_content')->load($block_id);
+
+    if (!empty($block_content)) {
+      $variables['block_bundle'] = $block_content->bundle();
+    }
+
+  }
+
+  if (!$paragraph->get('field_webform')->isEmpty()) {
+
+    $webform_id = $paragraph->get('field_webform')->first()->getValue()['target_id'];
+    $webform = \Drupal::entityTypeManager()->getStorage('webform')->load($webform_id);
+
+    if (!empty($webform)) {
+      $variables['webform_id'] = $webform_id;
+      $variables['webform_title'] = $webform->label();
+    }
+
+  }
+
+}
+
+/**
  * Implements hook_theme_suggestions_form_alter().
  */
 function uwmbase_theme_suggestions_form_alter(array &$suggestions, array $variables) {
-  $current_path = \Drupal::service('path.current')->getPath();
-  $alias = \Drupal::service('path.alias_manager')
-    ->getAliasByPath($current_path);
 
-  if ($alias == '/provider-resource') {
+  if (_uwmbase_current_path_alias() === '/provider-resource') {
     $suggestions[] = $variables['theme_hook_original'] . '__provider_resource';
   }
+
 }
 
 /**
  * Implements hook_theme_suggestions_form_element_alter().
  */
 function uwmbase_theme_suggestions_form_element_alter(array &$suggestions, array $variables) {
-  if ((!empty($_REQUEST['view_display_id']) && $_REQUEST['view_display_id'] == 'uwm_provider_resources_block') ||
-      strpos($_SERVER['REQUEST_URI'], '/provider-resource') >= 0) {
+
+  if ((!empty($_REQUEST['view_display_id']) && $_REQUEST['view_display_id'] == 'uwm_provider_resources_block') || strpos(_uwmbase_current_path_alias(), '/provider-resource') !== FALSE) {
     $suggestions[] = $variables['theme_hook_original'] . '__provider_resource';
   }
+
+}
+
+/**
+ * Implements hook_preprocess_webform().
+ */
+function uwmbase_preprocess_webform(&$variables) {
+
+  $variables['#attached']['library'][] = 'uwmbase/webforms';
+
 }
 
 /**
@@ -553,11 +1022,7 @@ function uwmbase_theme_suggestions_views_view_alter(array &$suggestions, array $
   $suggestions[] = sprintf('views_view__%s', $variables['view']->id());
   $suggestions[] = sprintf('views_view__%s__%s', $variables['view']->id(), $variables['view']->current_display);
 
-  $current_path = \Drupal::service('path.current')->getPath();
-  $alias = \Drupal::service('path.alias_manager')
-    ->getAliasByPath($current_path);
-
-  if (strpos($alias, '/provider-resource') !== FALSE) {
+  if (strpos(_uwmbase_current_path_alias(), '/provider-resource') !== FALSE) {
     $suggestions[] = $variables['theme_hook_original'] . '__provider_resource';
   }
 }
@@ -672,7 +1137,7 @@ function uwmbase_theme_suggestions_views_view_field_alter(array &$suggestions, a
 function uwmbase_theme_suggestions_bef_radios_alter(array &$suggestions, array $variables) {
   if (array_key_exists('view_display_id', $_REQUEST)) {
     if ($_REQUEST['view_display_id'] == 'uwm_provider_resources_block' ||
-        strpos($_SERVER['REQUEST_URI'], '/provider-resource') >= 0) {
+        strpos(_uwmbase_current_path_alias(), '/provider-resource') !== FALSE) {
       $suggestions[] = $variables['theme_hook_original'] . '__provider_resource';
     }
   }

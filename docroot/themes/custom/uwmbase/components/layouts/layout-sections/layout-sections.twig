@@ -23,9 +23,9 @@
  *
  * Page content (in order of occurrence in the default page.html.twig):
  * - node: Fully loaded node, if there is an automatically-loaded node
- *                 associated with the page and the node ID is the second argument in the
- *                 page's path (e.g. node/12345 and node/12345/revisions, but not
- *                 comment/reply/12345).
+ *   associated with the page and the node ID is the second argument in the
+ *   page's path (e.g. node/12345 and node/12345/revisions, but not
+ *   comment/reply/12345).
  *
  * Regions:
  * - page.header: Items for the header region.
@@ -51,7 +51,7 @@
 {% set classes = ['main-container', accent_color|render] %}
 
 {#
-  TODO:
+  @TODO:
   Rework layout to provide 'row' wrapper divs between 'container' and 'col-*'
   wrappers, to use Bootstrap grid correctly.
   For example, see page--search--locations.html.twig (/search/locations).

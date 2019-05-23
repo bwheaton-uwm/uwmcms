@@ -1,0 +1,126 @@
+uuid: 818910cf-87ae-4333-b268-0a94d014f745
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.uwm_card
+    - field.storage.block_content.field_uwm_card_content
+    - paragraphs.paragraphs_type.uwm_basic_content
+    - paragraphs.paragraphs_type.uwm_link_with_icon
+  module:
+    - entity_reference_revisions
+id: block_content.uwm_card.field_uwm_card_content
+field_name: field_uwm_card_content
+entity_type: block_content
+bundle: uwm_card
+label: Content
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      uwm_basic_content: uwm_basic_content
+      uwm_link_with_icon: uwm_link_with_icon
+    target_bundles_drag_drop:
+      uwm_basic_content:
+        enabled: true
+        weight: -65
+      uwm_link_with_icon:
+        enabled: true
+        weight: -64
+      award:
+        weight: -63
+        enabled: false
+      board_certification:
+        weight: -62
+        enabled: false
+      degree:
+        weight: -61
+        enabled: false
+      detailed_contact_card:
+        weight: -60
+        enabled: false
+      education_history:
+        weight: -59
+        enabled: false
+      headshot_card:
+        weight: -58
+        enabled: false
+      hours_for_day:
+        weight: -57
+        enabled: false
+      hours_of_operation:
+        weight: -56
+        enabled: false
+      reusable_content:
+        weight: -55
+        enabled: false
+      uwm_3_col_proof_points:
+        weight: -54
+        enabled: false
+      uwm_accent_heading:
+        weight: -53
+        enabled: false
+      uwm_accordion:
+        weight: -52
+        enabled: false
+      uwm_accordion_section:
+        weight: -51
+        enabled: false
+      uwm_accordion_sub_section:
+        weight: -50
+        enabled: false
+      uwm_block:
+        weight: -49
+        enabled: false
+      uwm_card:
+        weight: -48
+        enabled: false
+      uwm_content_reference:
+        weight: -47
+        enabled: false
+      uwm_cta_link:
+        weight: -46
+        enabled: false
+      uwm_featured_story:
+        weight: -45
+        enabled: false
+      uwm_full_html:
+        weight: -44
+        enabled: false
+      uwm_grid:
+        weight: -43
+        enabled: false
+      uwm_image:
+        weight: -42
+        enabled: false
+      uwm_image_hero:
+        weight: -41
+        enabled: false
+      uwm_media:
+        weight: -40
+        enabled: false
+      uwm_modal:
+        weight: -39
+        enabled: false
+      uwm_quiz_question:
+        weight: -38
+        enabled: false
+      uwm_section:
+        weight: -37
+        enabled: false
+      uwm_sections_medical_services:
+        weight: -36
+        enabled: false
+      uwm_text:
+        weight: -35
+        enabled: false
+      uwm_view:
+        weight: -34
+        enabled: false
+field_type: entity_reference_revisions

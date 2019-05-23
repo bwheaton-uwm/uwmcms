@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Default theme implementation to display a paragraph in Bootstrap Paragraphs.
+ * Theme implementation to display a Section paragraph.
  *
  * Available variables:
  * - paragraph: Full paragraph entity.
@@ -32,38 +32,41 @@
  *   is an administrator.
  *
  * @see template_preprocess_paragraph()
- *
- * @ingroup themeable
+ * @see uwmbase_preprocess_paragraph__uwm_section()
  */
 #}
 
-{# Renders Background field. #}
-{# Sets class name from values in database. #}
-
-
-{# The template default set classes. #}
-{% set classes = [
-'uwm-section',
-view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-'paragraph--id--' ~ paragraph.id.value,
-
-]
+{%
+  set classes = [
+    'uwm-section',
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    'paragraph--id--' ~ paragraph.id.value,
+    background_image_url ? 'uwm-section--background-image',
+    content.field_uwm_accent_color.0 is not empty ? content.field_uwm_accent_color|render
+  ]
 %}
 
 {% if content.field_uwm_background_color|render %}
-  {% set background_color = ['uwm-section__background-' ~ paragraph.field_uwm_background_color.entity.label|lower] %}
+  {% set background_color = ['uwm-section--background-' ~ paragraph.field_uwm_background_color.entity.label|lower] %}
   {% set classes = classes|merge(background_color) %}
 {% endif %}
 
-{# Prints div with classes, and content without Width and Background. #}
 <section{{ attributes.addClass(classes) }}>
+
+  {# Render background image in separate container so it can be fixed height. #}
+  {% if background_image_url is not empty %}
+    <div class="uwm-section__background-image" style="background-image: url({{ background_image_url }});"></div>
+  {% endif %}
+
   <div class="container-xl">
     {% if content.field_uwm_section_heading|render|striptags %}
       {{ content.field_uwm_section_heading }}
     {% else %}
       <div class="h2-placeholder"></div>
-
     {% endif %}
-    {{ content|without('field_uwm_background_color', 'field_uwm_section_heading') }}
+
+    {# Child components #}
+    {{ content.field_uwm_component }}
+
   </div>
 </section>

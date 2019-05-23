@@ -1,18 +1,57 @@
-.uwm-section__background-gray {
+/**
+ * Sections
+ *
+ * Section paragraphs are the outermost containers for other components
+ * (paragraph types).
+ *
+ * @see paragraph--uwm-section.html.twig
+ */
+
+.uwm-section {
+
+  &.uwm-section--background-gray {
     background-color: $gray-100;
     margin-top: 3.125rem;
+  }
 
+  &.uwm-section--background-image {
+    position: relative;
+    min-height: 450px;
+
+    // If there are cards layered over the background image, set opacity.
+    .card {
+      opacity: 0.8;
+    }
+  }
+
+  // The background image is a field on the section paragraph and applied via
+  // inline style in the template.
+  .uwm-section__background-image {
+    @include angled-edge('inside bottom', 'upper right', theme-color('background-light-gray'));
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 450px;
+    opacity: .9;
+    background-color: theme-color('background-light-gray');
+    background-size: cover;
+
+    &::after {
+      bottom: 0;
+    }
+  }
 }
 
-.uwm-featured-story + .uwm-section__background-gray {
-    margin-top: 0;
+.uwm-featured-story + .uwm-section--background-gray {
+  margin-top: 0;
 }
 
 .h2-placeholder {
-    padding-top: 3.125rem;
+  padding-top: 3.125rem;
 }
 
 .bs_grid.container {
-    padding-left: 0;
-    padding-right: 0;
+  padding-left: 0;
+  padding-right: 0;
 }

@@ -7,5 +7,5 @@ _core:
 id: uwm_block
 label: 'Reusable Content'
 icon_uuid: null
-description: ''
+description: 'Embed a <a href="/admin/structure/block/block-content" target="_blank">custom block</a> or a webform.'
 behavior_plugins: {  }

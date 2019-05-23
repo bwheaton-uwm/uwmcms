@@ -1,0 +1,76 @@
+{#
+/**
+ * @file
+ * Theme override to display a taxonomy term.
+ *
+ * Available variables:
+ * - url: URL of the current term.
+ * - name: Name of the current term.
+ * - content: Items for the content of the term (fields and description).
+ *   Use 'content' to print them all, or print a subset such as
+ *   'content.description'. Use the following code to exclude the
+ *   printing of a given child element:
+ *   @code
+ *   {{ content|without('description') }}
+ *   @endcode
+ * - attributes: HTML attributes for the wrapper.
+ * - page: Flag for the full page state.
+ * - term: The taxonomy term entity, including:
+ *   - id: The ID of the taxonomy term.
+ *   - bundle: Machine name of the current vocabulary.
+ * - view_mode: View mode, e.g. 'full', 'teaser', etc.
+ *
+ * @see template_preprocess_taxonomy_term()
+ */
+#}
+
+
+{# 
+    Create a hash map of short names for each field. We'll use the short name in
+    the ID and icon class for each tab.
+    The map uses the field name for the key, and short name for the value.
+    Ex: { 'field_res_driving_directions': 'auto' }
+#}
+{% set field_short_names = {} %}
+{% for field in content %}
+    {% if field|render|striptags|trim is not empty %}
+        {% set field_name = field['#field_name'] %}
+        
+        {% if field_name is sameas("field_res_additional_information") %}
+            {% set field_short_names = field_short_names|merge({(field_name): 'place'}) %}
+        {% elseif field_name is sameas("field_res_driving_directions") %}
+            {% set field_short_names = field_short_names|merge({(field_name): 'auto'}) %}
+        {% elseif field_name is sameas("field_res_bus_directions") %}
+            {% set field_short_names = field_short_names|merge({(field_name): 'public'}) %}
+        {% elseif field_name is sameas("field_res_parking_directions") %}
+            {% set field_short_names = field_short_names|merge({(field_name): 'parking'}) %}
+        {% elseif field_name is sameas("field_res_accessibility_info") %}
+            {% set field_short_names = field_short_names|merge({(field_name): 'walking'}) %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+<div class="col-xs-12 col-md-5">
+    <ul class="nav nav-tabs" role="tablist">
+    {% for field_name, short_name in field_short_names %}
+        {% set active_class = loop.first ? "active" : "" %}
+        {% set selected = loop.first ? "true" : "false" %}
+        <li class="nav-item">
+            <a class="nav-link {{ active_class }}" id="{{ short_name }}-tab" data-toggle="tab" href="#directions-{{ short_name }}"
+            role="tab" aria-controls="directions-{{short_name}}" aria-selected="{{ selected }}">
+                <i class="uw-ico uw-ico-dir-{{ short_name }}"></i>
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+
+    <div class="tab-content">
+    {% for field_name, short_name in field_short_names %}
+        {% set active_class = loop.first ? "show active" : "" %} 
+        <div role="tabpanel" class="tab-pane fade {{ active_class }}" id="directions-{{ short_name }}"
+        role="tabpanel" aria-labled-by="{{ short_name }}-tab">
+            {{ content[field_name] }}
+        </div>
+    {% endfor %}
+    </div>
+</div>

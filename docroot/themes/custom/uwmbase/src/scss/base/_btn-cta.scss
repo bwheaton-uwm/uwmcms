@@ -19,7 +19,7 @@
     height: 40px;
     line-height: 40px;
     
-    color: #474747;
+    color: theme-color('text');
     font-family: "Open Sans",Helvetica,Arial,sans-serif;
     font-size: 14px;
 
@@ -32,6 +32,7 @@
     }
 
     &:hover {
+        cursor: pointer;
         color: color('white');
 
         .uwmed-icon {
@@ -79,6 +80,17 @@ p .btn-cta {
     margin-bottom: 0;
 }
 
+.btn-cta-link {
+    width: 100%;
+    text-transform: none;
+}
+
+/*
+ * Accent colors
+ *
+ * Include higher-specificity selectors for .uwm-section to allow
+ * Section paragraphs to override page-level color.
+ */
 // no accent color present
 .btn-cta {
     @include angled-edge('inside top', 'lower right', $gray-500, 15, 15);
@@ -92,7 +104,8 @@ p .btn-cta {
     }
 }
 
-.uwm-accent-color__purple .btn-cta {
+.uwm-accent-color__purple .btn-cta,
+.uwm-section.uwm-accent-color__purple .btn-cta {
     @include angled-edge('inside top', 'lower right', color('purple'), 15, 15);
     border-color: color('purple');
 
@@ -104,7 +117,8 @@ p .btn-cta {
     }
 }
 
-.uwm-accent-color__light-purple .btn-cta {
+.uwm-accent-color__light-purple .btn-cta,
+.uwm-section.uwm-accent-color__light-purple .btn-cta {
     @include angled-edge('inside top', 'lower right', color('light-purple'), 15, 15);
     border-color: color('light-purple');
 
@@ -116,7 +130,8 @@ p .btn-cta {
     }
 }
 
-.uwm-accent-color__yellow .btn-cta {
+.uwm-accent-color__yellow .btn-cta,
+.uwm-section.uwm-accent-color__yellow .btn-cta {
     border-color: color('yellow');
     @include angled-edge('inside top', 'lower right', color('yellow'), 15, 15);
 
@@ -138,7 +153,8 @@ p .btn-cta {
     
 }
 
-.uwm-accent-color__blue .btn-cta {
+.uwm-accent-color__blue .btn-cta,
+.uwm-section .uwm-accent-color__blue .btn-cta {
     border-color: color('blue');
     @include angled-edge('inside top', 'lower right', color('blue'), 15, 15);
 
@@ -150,7 +166,8 @@ p .btn-cta {
     }
 }
 
-.uwm-accent-color__orange .btn-cta {
+.uwm-accent-color__orange .btn-cta,
+.uwm-section.uwm-accent-color__orange .btn-cta {
     border-color: color('orange');
     @include angled-edge('inside top', 'lower right', color('orange'), 15, 15);
 
@@ -162,7 +179,8 @@ p .btn-cta {
     }
 }
 
-.uwm-accent-color__teal .btn-cta {
+.uwm-accent-color__teal .btn-cta,
+.uwm-section.uwm-accent-color__teal .btn-cta {
     border-color: color('teal');
     @include angled-edge('inside top', 'lower right', color('teal'), 15, 15);
 
@@ -172,9 +190,4 @@ p .btn-cta {
     &::after {
         background-color: color('teal');
     }
-}
-
-.btn-cta-link {
-    width: 100%;
-    text-transform: none;
 }

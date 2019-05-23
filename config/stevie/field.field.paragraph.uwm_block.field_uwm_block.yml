@@ -1,0 +1,31 @@
+uuid: 83ef0b32-1490-4e4d-bd85-5a00c5b5455f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.basic
+    - block_content.type.uwm_card
+    - field.storage.paragraph.field_uwm_block
+    - paragraphs.paragraphs_type.uwm_block
+id: paragraph.uwm_block.field_uwm_block
+field_name: field_uwm_block
+entity_type: paragraph
+bundle: uwm_block
+label: 'Content Block'
+description: 'Choose a reusable block from the <a href="/admin/structure/block/block-content" target="new">block library</a>.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      basic: basic
+      uwm_card: uwm_card
+    sort:
+      field: info
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: basic
+field_type: entity_reference

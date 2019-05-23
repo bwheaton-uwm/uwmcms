@@ -134,6 +134,12 @@ $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
   &.uwm-icon--pdf {
     background-image: url('#{$icon-path}/icon_pdf.svg');
   }
+  &.uwm-icon--phone-911 {
+    // @TODO: make an svg
+    background-image: url('#{$icon-path}/icon_phone_911.png');
+    width: 41px;
+    height: 41px;
+  }
   &.uwm-icon--pinterest {
     background-image: url('#{$icon-path}/icon_pinterest.svg');
   }

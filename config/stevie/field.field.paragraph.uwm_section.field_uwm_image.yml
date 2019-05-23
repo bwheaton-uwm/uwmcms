@@ -1,0 +1,38 @@
+uuid: 262a5c9a-433a-4bb7-827a-274c467cdb8f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_image
+    - paragraphs.paragraphs_type.uwm_section
+  module:
+    - image
+id: paragraph.uwm_section.field_uwm_image
+field_name: field_uwm_image
+entity_type: paragraph
+bundle: uwm_section
+label: 'Section Background Image'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: 1024x450
+  alt_field: false
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

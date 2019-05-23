@@ -4,10 +4,15 @@ status: true
 dependencies:
   config:
     - field.field.taxonomy_term.buildings.field_coordinates_geofield
+    - field.field.taxonomy_term.buildings.field_res_accessibility_info
+    - field.field.taxonomy_term.buildings.field_res_additional_information
     - field.field.taxonomy_term.buildings.field_res_address
+    - field.field.taxonomy_term.buildings.field_res_bus_directions
     - field.field.taxonomy_term.buildings.field_res_campus
     - field.field.taxonomy_term.buildings.field_res_clinics
     - field.field.taxonomy_term.buildings.field_res_coordinates
+    - field.field.taxonomy_term.buildings.field_res_driving_directions
+    - field.field.taxonomy_term.buildings.field_res_parking_directions
     - field.field.taxonomy_term.buildings.uwm_unique_id
     - taxonomy.vocabulary.buildings
   module:
@@ -38,12 +43,36 @@ content:
     third_party_settings: {  }
     type: geofield_latlon
     region: content
+  field_res_accessibility_info:
+    weight: 9
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_res_additional_information:
+    weight: 10
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
   field_res_address:
     weight: 4
     settings:
       default_country: null
     third_party_settings: {  }
     type: address_default
+    region: content
+  field_res_bus_directions:
+    weight: 11
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
     region: content
   field_res_campus:
     weight: 3
@@ -68,6 +97,22 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: geolocation_latlng
+    region: content
+  field_res_driving_directions:
+    weight: 12
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_res_parking_directions:
+    weight: 13
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
     region: content
   name:
     type: string_textfield
