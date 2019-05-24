@@ -85,8 +85,11 @@ $text:          #474747;
 $link-blue:     #3375d4;
 $link-purple:   #37236a;
 $heading-purple: #4b2e83;
+$uwmed-purple-icon: $heading-purple; // from uwmed theme for home page
 $ui-green: #1DC724;
 $ui-red: #C71D1D;
+$uwmed-gray: #b5b5b5; // from uwmed theme for home page
+$uwmed-gray-icon: #716F77; // from uwmed theme for home page
 
 // stylelint-disable-next-line scss/dollar-variable-default
 $theme-colors: (
@@ -105,6 +108,7 @@ $theme-colors: (
                       "ui-green": $ui-green,
                       "ui-red": $ui-red,
                       "teal": $teal,
+                      "uwmed-gray": $uwmed-gray,
                 );
 
 // Set a specific jump point for requesting color jumps

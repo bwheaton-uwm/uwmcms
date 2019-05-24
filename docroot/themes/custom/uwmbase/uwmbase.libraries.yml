@@ -159,6 +159,10 @@ provider-resource-media:
     component:
       dist/css/provider-resource-media.css: {}
 
+homepage:
+  css:
+    component:
+      dist/css/homepage.css: {}
 
 # ZEN LIBRARIES - Override, remove, or replace these
 

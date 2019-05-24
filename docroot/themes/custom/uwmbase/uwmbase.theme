@@ -118,9 +118,37 @@ function uwmbase_preprocess_page(&$variables, $hook) {
 
   $currentPath = \Drupal::service('path.current')->getPath();
   $variables['current_path'] = $currentPath;
+
+  /** @var \Drupal\Node\NodeInterface $node */
+  $node = !empty($variables['node']) ? $variables['node'] : NULL;
+
   if (stripos($currentPath, '/search/locations/map') !== FALSE) {
     $variables['page']['show_sidebar_second'] = TRUE;
   }
+
+  if (!empty($node)) {
+
+    // On Clinic node pages, remove the page title block. The title is printed
+    // in the node template instead for layout reasons.
+    //
+    // On Homepage node, remove the page title block because the main header
+    // text is within the hero.
+    if ($node->bundle() === 'res_clinic' || $node->bundle() === 'uwm_homepage') {
+
+      if (!empty($variables['page']['title']['uwmbase_page_title'])) {
+        unset($variables['page']['title']['uwmbase_page_title']);
+
+        // There should be no other blocks in the 'title' region. Unset the
+        // region render array if so, to avoid empty wrapper markup.
+        if (count(Element::children($variables['page']['title'])) === 0) {
+          unset($variables['page']['title']);
+        }
+      }
+
+    }
+
+  }
+
 }
 
 /**
@@ -321,6 +349,11 @@ function uwmbase_preprocess_node(&$variables, $hook) {
       }
       $variables['is_urgent_care_provider'] = $is_urgent_care_provider;
     }
+  }
+  elseif ($node->bundle() === 'uwm_homepage') {
+
+    $variables['#attached']['library'][] = 'uwmbase/homepage';
+
   }
 
 }
