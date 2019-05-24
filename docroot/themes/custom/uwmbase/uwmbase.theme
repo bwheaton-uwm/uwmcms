@@ -655,8 +655,11 @@ function uwmbase_preprocess_node(&$variables, $hook) {
       }
       $variables['is_urgent_care_provider'] = $is_urgent_care_provider;
     }
-  }
 
+    if ($variables['view_mode'] == 'provider_card') {
+      $variables['#cache']['contexts'][] = 'url.path';
+    }
+  }
 }
 
 /**
