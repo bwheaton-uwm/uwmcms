@@ -39,6 +39,10 @@ momentjs:
   js:
     dist/js/moment.min.js: { }
 
+scroll-magic:
+  js:
+    //cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js: { type: external, minified: true }
+
 # uwmbase css/js libraries
 
 # Define css/js libraries for components. These are used to include styles and javascript only where needed rather
@@ -186,6 +190,10 @@ homepage:
   css:
     component:
       dist/css/homepage.css: {}
+  js:
+    dist/js/homepage-animation.js: {}
+  dependencies:
+    - uwmbase/scroll-magic
 
 # ZEN LIBRARIES - Override, remove, or replace these
 
