@@ -4,9 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.uwm_homepage.field_meta_tags
+    - field.field.node.uwm_homepage.field_uwm_homepage_markup
     - node.type.uwm_homepage
   module:
     - metatag
+    - text
     - user
 id: node.uwm_homepage.default
 targetEntityType: node
@@ -14,16 +16,19 @@ bundle: uwm_homepage
 mode: default
 content:
   field_meta_tags:
-    weight: 101
-    label: above
+    weight: 1
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
     region: content
-  links:
-    weight: 100
-    region: content
+  field_uwm_homepage_markup:
+    weight: 0
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    type: text_default
+    region: content
 hidden:
   content_moderation_control: true
+  links: true

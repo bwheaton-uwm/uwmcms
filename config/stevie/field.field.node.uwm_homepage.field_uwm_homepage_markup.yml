@@ -1,0 +1,29 @@
+uuid: de63391e-70d1-42d3-8133-89622bc08281
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_homepage_markup
+    - node.type.uwm_homepage
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    unrestricted_no_wysiwyg: unrestricted_no_wysiwyg
+    basic_html: '0'
+    unrestricted: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: node.uwm_homepage.field_uwm_homepage_markup
+field_name: field_uwm_homepage_markup
+entity_type: node
+bundle: uwm_homepage
+label: 'Homepage Markup'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
