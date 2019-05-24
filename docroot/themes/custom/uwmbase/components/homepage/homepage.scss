@@ -26,6 +26,10 @@
     right: 0;
     bottom: 0;
 
+    img {
+      margin: 0;
+    }
+
     .homepage-section-background-lg__item-1 {
       transform: skewY(6deg);
       border-bottom: 5px solid color('white');
