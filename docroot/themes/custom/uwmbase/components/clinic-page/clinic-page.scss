@@ -1,0 +1,584 @@
+/*
+ * Clinic pages
+ *
+ * Theme library: uwmbase/clinic-page
+ * Main template: node--res-clinic--full.html.twig
+ */
+
+@import 'init';
+
+.clinic-page {
+
+  .clinic-page__gradient_background {
+    @extend %uwmed-gradient-angled-dark-background;
+    padding-top: 0.625rem; // 10px
+    padding-bottom: 3rem;
+  }
+
+  .clinic-page__header {
+
+    .clinic-page__right {
+      display: flex;
+
+      .clinic-page__address {
+        margin-bottom: 0.5rem; // 8px
+      }
+
+      .clinic-page__contact {
+        .clinic-page__phone a {
+          text-decoration: none;
+        }
+        
+        i.uw-s {
+          @include uw-separator(-15deg);
+          border-right-color: $gray-300;
+          width: 1px;
+          margin: 0 0.5rem -0.125rem 0.75rem; // 8px -2px 12px
+        }
+      }
+
+      .clinic-page__hours {
+
+        .clinic-page__hours-header {
+          margin: 0 0 0.25rem 0; // 4px
+          padding: 0;
+          font-family: inherit;
+          color: theme-color('heading-purple');
+        }
+
+        .clinic-page__open-current {
+          color: theme-color('heading-purple');
+          font-size: 0.875rem; // 14px
+          font-style: italic;
+          font-weight: 300;
+        }
+
+        .clinic-page__hours-details {
+          padding-top: 0.375rem; // 6px
+        }
+
+        .clinic-page__hours-table {
+          width: 100%;
+          font-size: 0.875rem; // 14px
+
+          td {
+            padding: 0 0 0.375rem 0; // 6px
+          }
+
+          td.day {
+            width: 25%;
+          }
+
+          td.hours {
+            width: 75%;
+          }
+        }
+
+      }
+
+      .clinic-page__note {
+        p {
+          font-size: 0.875rem; // 14px
+          font-weight: 300;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      .clinic-page__note-emergency {
+        display: flex;
+
+        .uwm-icon--phone-911 {
+          flex-basis: 41px;
+          flex-shrink: 0;
+          margin-top: 0.125rem; // 2px
+          margin-right: 1.25rem; // 20px
+        }
+      }
+
+    }
+
+    .clinic-page__left {
+
+      .clinic-page__link {
+        padding: 0.875rem 0.125rem; // 14px 2px
+        border-bottom: 1px solid theme-color('border-gray');
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        a {
+          display: block;
+          padding-right: 0.5rem; // 8px
+          flex-grow: 1;
+          font-size: 0.875rem; // 14px
+
+          // @TODO: global link styling, or mixin for blue version?
+          color: theme-color('link-blue');
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        .fa-angle-right {
+          color: theme-color('link-blue');
+        }
+      }
+
+      .clinic-page__urgent-wait {
+        margin-top: 1.25rem; // 20px
+        padding: 1rem 1rem 1.25rem 1rem; // 20px 16px
+        @extend %uwmed-box-shadow;
+        background: $white url("#{$uwbase-images-folder}/UrgentCareWait_Clock.png") bottom right no-repeat;
+
+        .clinic-page__urgent-wait-top {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding-bottom: 0.5rem; // 8px
+          @extend %uwmed-angled-dark-bottom-border;
+        }
+
+        .clinic-page__urgent-wait-header {
+          color: $heading-purple;
+          font-family: inherit;
+          font-size: 1.5rem; // 24px
+          margin: 0;
+          padding: 0;
+        }
+
+        .clinic-page__urgent-wait-link {
+          a {
+            color: theme-color('link-blue');
+            font-size: 0.875rem; // 14px
+            text-transform: uppercase;
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+
+          .fa-angle-right {
+            color: theme-color('link-blue');
+            margin-left: 0.4rem;
+          }
+        }
+
+        .clinic-page__urgent-wait-text {
+          padding-top: 1.25rem; // 20px
+          font-size: 1.75rem; // 28px
+        }
+      }
+
+    }
+
+    .clinic-page__image {
+      border: 1px solid theme-color('border-gray');
+      background-color: $white;
+      padding: 4px;
+
+      img {
+        margin: 0;
+      }
+    }
+  }
+
+  .clinic-page__tabs {
+
+    nav.clinic-page__gradient_background {
+      padding-bottom: 0;
+      ul.udm-nav-tabs {
+        border-bottom: 0 none;
+      }
+
+    }
+
+    .tab-content {
+
+      h2.leader {
+        padding: 1rem 0;
+      }
+
+      .tab-pane.fade:not(.show) {
+        display: none;
+      }
+
+      .services ul li {
+        list-style: none;
+        padding: 0 0 1em 0;
+        float: left;
+      }
+
+      .field__label {
+        display: none;
+      }
+
+    }
+
+  }
+
+  .field--name-field-uwm-sections {
+    background-color: theme-color('background-light-gray');
+  }
+
+  .clinic-page__overview {
+    background-color: theme-color('background-light-gray');
+
+    .clinic-page__overview-header {
+      margin-top: 0;
+    }
+
+  }
+
+  .clinic-page__directions-tab {
+    
+    .nav-tabs {
+
+      border: 0 none;
+      
+      .nav-link {
+        border: 1px solid transparent;
+        text-decoration: none;
+        padding: 10px 15px;
+        margin-right: 2px;
+      }
+
+      .nav-link.active, .nav-link.active:hover, .nav-link.active:focus {
+        border-bottom: 1px solid #ddd;
+        text-decoration: none;
+        color: green;
+
+        .uw-ico {
+          font-size: 18px;
+        }
+      }
+    }
+
+    .clinic-directions__map {
+      position: relative;
+      margin-bottom: 30px;
+      padding-bottom: 75%; // This is the aspect ratio
+      height: 0;
+      overflow: hidden;
+
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+      }
+    }
+  }
+
+  // Mobile/tablet
+  @include media-breakpoint-down('sm') {
+
+    .clinic-page__header {
+
+      // Set the relative container for absolute-positioned elements: h1 title
+      // and image. The image is further down in markup, so "pull it up" to the
+      // top. The h1 title is overlaid.
+      // The image width:height ratio is 2, so height:width is .5. Thus set the
+      // top padding to create a space that always matches image height - 50% of
+      // container width - responsively, + 5px for border/padding around image.
+      position: relative;
+      padding-top: calc(50% + 5px);
+
+      .clinic-page__image {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+
+      // The h1 title wrapper is its own absolute container, with height
+      // matching image height, with semi-transparent overlay (to make white
+      // text stand out). Add 5px offsets to avoid overlaying border/padding
+      // around image. Then the title is positioned at the bottom of the image.
+      .clinic-page__title {
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        right: 5px;
+        padding-top: calc(50% - 5px);
+        z-index: 5;
+        background-color: rgba(0, 0, 0, 0.40);
+
+        h1 {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          margin: 0;
+          @include container-padding;
+          padding-bottom: 0.5rem;
+
+          color: $white;
+          text-shadow: 2px 2px 2px rgba(0, 0, 0, .47);
+          // @TODO: global mobile header sizes
+          font-size: 2rem; // 32px
+        }
+      }
+
+      .clinic-page__right {
+
+        // Reorder flex children:
+        // 2. Hours
+        // 3. (New design) Appointment CTAs
+        // 4. 911 note
+        // 5. Address
+        // 6. Contact
+        flex-direction: column;
+
+        .clinic-page__hours {
+          order: 2;
+          background-color: $white;
+          @include container-padding;
+          padding-top: 0.625rem; // 10px
+          padding-bottom: 0.625rem; // 10px
+          margin-bottom: 1rem;
+          box-shadow: 4px 2px 4px #dcdcdc;
+
+          .clinic-page__hours-urgent {
+            margin-top: 0.625rem; // 10px
+            border-top: 1px solid theme-color('border-gray');
+            padding-top: 0.625rem; // 10px
+          }
+
+          // On mobile/tablet, the hours header toggles the hours details.
+          // Instead of wrapping the text into a toggle button (which we don't
+          // want on desktop, and is more confusing for accessibility) - make
+          // the button absolute, filling the text container, and layered on top
+          // of it via z-index. Thus the whole header is clickable.
+          .clinic-page__hours-header-wrap {
+            position: relative;
+
+            .clinic-page__hours-header-mobile {
+              padding-right: 1.5rem; // 24px
+              display: flex;
+              align-items: start;
+
+              .clinic-page__hours-header {
+                flex-shrink: 0;
+                margin: 0 0.375rem 0 0; // 6px
+                font-size: 1rem;
+                line-height: inherit;
+                text-transform: uppercase;
+
+                &::after {
+                  content: ':';
+                }
+              }
+
+              .clinic-page__open-current {
+                font-size: 1rem;
+              }
+            }
+
+            .clinic-page__hours-toggle {
+              display: block;
+              position: absolute;
+              left: 0;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              width: 100%;
+              z-index: 5;
+              background-color: transparent;
+              border: none;
+              padding: 0;
+              cursor: pointer;
+              text-align: right;
+
+              .fa-plus-circle,
+              .fa-minus-circle {
+                color: color('purple');
+              }
+
+              // When expanded (no button class)
+              .fa-minus-circle {
+                display: inline-block;
+              }
+              .fa-plus-circle {
+                display: none;
+              }
+
+              // When collapsed
+              &.collapsed {
+                .fa-plus-circle {
+                  display: inline-block;
+                }
+                .fa-minus-circle {
+                  display: none;
+                }
+              }
+            }
+          }
+
+          .clinic-page__note-urgent-close {
+            margin-top: 0.625rem; // 10px
+          }
+        }
+
+        // -- New design --
+        .clinic-page__ctas {
+          order: 3;
+        }
+        // -- /New design --
+
+        .clinic-page__note-emergency {
+          order: 4;
+          @include container-padding;
+        }
+
+        .clinic-page__address {
+          order: 5;
+          @include container-padding;
+          margin-top: 1rem;
+          font-size: 1rem; // 16px
+        }
+
+        .clinic-page__contact {
+          order: 6;
+          @include container-padding;
+          font-size: 0.875rem; // 14px
+        }
+
+      }
+
+      .clinic-page__left {
+        @include container-padding;
+        margin-top: 1rem; // 16px
+
+        .clinic-page__urgent-wait {
+          .clinic-page__urgent-wait-header {
+            font-size: 1rem; // 16px
+          }
+        }
+      }
+
+    }
+
+  }
+
+  @include media-breakpoint-up('md') {
+
+    .clinic-page__header {
+      @include make-row();
+
+      .clinic-page__left {
+        order: 1;
+        @include make-col-ready();
+        @include make-col(5);
+      }
+
+      .clinic-page__right {
+        order: 2;
+        @include make-col-ready();
+        @include make-col(7);
+
+        display: block;
+
+        .clinic-page__title {
+          margin-bottom: 1rem;
+        }
+
+        .clinic-page__address {
+          font-size: 1.5rem; // 24px
+        }
+
+        .clinic-page__contact {
+          font-size: 1.25rem; // 20px
+        }
+
+        // -- New design --
+        .clinic-page__ctas {
+          order: initial;
+          display: flex;
+
+          .clinic_page__cta {
+            flex-basis: 50%;
+          }
+        }
+        // -- /New design --
+
+        .clinic-page__hours {
+          order: initial;
+          background-color: transparent;
+
+          .clinic-page__hours-set {
+            margin-top: 2rem; // 32px
+          }
+
+          .clinic-page__hours-header {
+            font-size: 1.5625rem; // 25px
+          }
+
+          .clinic-page__open-current {
+            padding-bottom: 0.25rem; // 4px
+            border-bottom: 4px solid theme-color('border-gray');
+          }
+
+          // Hide the mobile/tablet hours toggle button.
+          .clinic-page__hours-toggle {
+            display: none;
+          }
+
+          // Ensure the mobile/tablet-collapsible hours always show.
+          .clinic-page__hours-details.collapse {
+            display: block !important;
+          }
+
+          .clinic-page__hours-table {
+            td.hours {
+              text-align: right;
+            }
+          }
+
+        }
+
+        .clinic-page__note {
+          margin-top: 2rem; // 32px
+        }
+
+      }
+    }
+
+  }
+
+  @include media-breakpoint-up('lg') {
+
+    .clinic-page__header {
+
+      .clinic-page__left {
+        @include make-col(4);
+      }
+
+      .clinic-page__right {
+        @include make-col(8);
+
+        .clinic-page__hours {
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+
+          .clinic-page__hours-set {
+            flex-basis: 45%;
+          }
+        }
+
+        .clinic-page__note {
+          flex-basis: 100%;
+        }
+      }
+
+    }
+
+  }
+
+}

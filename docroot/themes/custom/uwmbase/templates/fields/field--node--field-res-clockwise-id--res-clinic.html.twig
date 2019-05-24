@@ -35,13 +35,14 @@
     'field--label-' ~ label_display,
   ]
 %}
-{%
-  set title_classes = [
-    'field__label',
-    label_display == 'visually_hidden' ? 'visually-hidden',
-    'clinic-card__subheader'
-  ]
-%}
+
+{#
+   The field value is the Clockwise ID, passed to JS in the attribute.
+   JS then updates the wait time text and link.
+   @see src/js/clinic-clockwise-wait-times.js
+#}
+{% set value = items.0.content|render|trim %}
+
 {#
   Card view mode -----------------------------------------------------------
   @see node--res-clinic--card.html.twig
@@ -54,17 +55,31 @@
 
     <span class="uwm-icon uwm-icon--urgent-care" aria-hidden="true"></span>
 
-    <h3{{ title_attributes.addClass(title_classes) }}>{{ label }}</h3>
+    <h3 class="clinic-card__subheader">{{ label }}</h3>
 
-    {% for item in items %}
-      {% set value = item.content|render %}
-      <div class="uwm-clockwise__card " data-uwm-clockwise-wait-time="{{ item }}">
-        <p class="js-wait-link">
-            <a class="clinic-card__buttons btn btn-outline-primary" href="/patient-care/making-an-appointment" target="_blank">Get in line</a>
-        </p>
-        <p class="js-wait-text">&nbsp;</p>
-      </div>
-    {% endfor %}
+    <div class="uwm-clockwise__card " data-uwm-clockwise-wait-time="{{ value }}">
+      <p class="js-wait-link">
+        <a class="clinic-card__buttons btn btn-outline-primary" href="/patient-care/making-an-appointment" target="_blank">{{ "Get in line"|t }}</a>
+      </p>
+      <p class="js-wait-text">&nbsp;</p>
+    </div>
+
+  </div>
+
+{#
+  Full view mode -----------------------------------------------------------
+  @see components/clinic-page/node--res-clinic--full.html.twig
+#}
+{% elseif view_mode is same as('full') %}
+
+  <div class="clinic-page__urgent-wait" data-uwm-clockwise-wait-time="{{ value }}">
+    <div class="clinic-page__urgent-wait-top">
+      <h2 class="clinic-page__urgent-wait-header">{{ "Urgent Care"|t }}</h2>
+      <span class="clinic-page__urgent-wait-link js-wait-link">
+        <a href="/patient-care/making-an-appointment" target="_blank">{{ "Get in line"|t }}<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+      </span>
+    </div>
+    <div class="clinic-page__urgent-wait-text js-wait-text">&nbsp;</div>
   </div>
 
 {# Other view modes --------------------------------------------------------- #}

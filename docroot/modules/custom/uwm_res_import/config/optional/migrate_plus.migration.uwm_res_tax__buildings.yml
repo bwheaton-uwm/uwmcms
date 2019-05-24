@@ -30,18 +30,39 @@ source:
   - name: uuid
     label: uuid
     selector: /id
-
   - name: name
     label: name
     selector: /attributes/name
-
   - name: uwm_unique_id
     label: uwm_unique_id
     selector: /attributes/uwm_unique_id
-
   - name: address
     label: Address
     selector: /attributes/field_res_address
+
+
+  - name: res_accessibility_information
+    label: res_accessibility_information
+    selector: /attributes/res_accessibility_information
+
+  - name: res_additional_information
+    label: res_additional_information
+    selector: /attributes/res_additional_information
+
+  - name: res_bus_directions
+    label: res_bus_directions
+    selector: /attributes/res_bus_directions
+
+  - name: res_driving_directions
+    label: res_driving_directions
+    selector: /attributes/res_driving_directions
+
+  - name: res_parking_directions
+    label: res_parking_directions
+    selector: /attributes/res_parking_directions
+
+
+
 
 process:
 
@@ -54,3 +75,33 @@ process:
   name: name
   uwm_unique_id: uwm_unique_id
   field_res_address: address
+
+  field_res_accessibility_info/value: res_accessibility_information/value
+  field_res_accessibility_info/processed: res_accessibility_information/processed
+  field_res_accessibility_info/format:
+    plugin: default_value
+    default_value: unrestricted
+
+  field_res_additional_information/value: res_additional_information/value
+  field_res_additional_information/processed: res_additional_information/processed
+  field_res_additional_information/format:
+    plugin: default_value
+    default_value: unrestricted
+
+  field_res_bus_directions/value: res_bus_directions/value
+  field_res_bus_directions/processed: res_bus_directions/processed
+  field_res_bus_directions/format:
+    plugin: default_value
+    default_value: unrestricted
+
+  field_res_driving_directions/value: res_driving_directions/value
+  field_res_driving_directions/processed: res_driving_directions/processed
+  field_res_driving_directions/format:
+    plugin: default_value
+    default_value: unrestricted
+
+  field_res_parking_directions/value: res_parking_directions/value
+  field_res_parking_directions/processed: res_parking_directions/processed
+  field_res_parking_directions/format:
+    plugin: default_value
+    default_value: unrestricted

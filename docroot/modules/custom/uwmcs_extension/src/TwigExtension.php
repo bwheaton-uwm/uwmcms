@@ -39,11 +39,13 @@ class TwigExtension extends \Twig_Extension {
         'uwm_sort_by_list', [$this, 'sortArrayByList']),
       new \Twig_SimpleFunction(
         'uwm_referenced_titles_array', [
-          $this, 'getEntityReferenceTitlesArray',
+          $this,
+          'getEntityReferenceTitlesArray',
         ]),
       new \Twig_SimpleFunction(
         'uwm_get_sharepoint_location_image', [
-          $this, 'getSharepointLocationImage',
+          $this,
+          'getSharepointLocationImage',
         ]),
     ];
   }
@@ -393,31 +395,37 @@ class TwigExtension extends \Twig_Extension {
   }
 
   /**
-   * Description here.
+   * Replace a link render array with the title string.
    *
    * @param array $data
    *   Description here.
    *
-   * @return array
+   * @return array|string
    *   Description here.
    */
   public static function replaceLinkWithText(array $data = []) {
 
     $returnArray = $data;
 
-    if (isset($data['#type'])) {
-      $returnArray = [$data];
+    if (isset($data['#type']) && $data['#type'] === 'link') {
+
+      $title = $data['#title'];
+      $returnArray = Markup::create($title);
+
     }
 
-    foreach ($returnArray as $key => $value) {
+    elseif (isset($data[0]['#type'])) {
 
-      if (isset($value['#type']) && $value['#type'] === 'link') {
+      foreach ($returnArray as $key => $value) {
 
-        $title = $value['#title'];
-        $returnArray[$key] = Markup::create($title);
+        if (isset($value['#type']) && $value['#type'] === 'link') {
+
+          $title = $value['#title'];
+          $returnArray[$key] = Markup::create($title);
+
+        }
 
       }
-
     }
 
     return $returnArray;

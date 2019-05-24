@@ -1,18 +1,101 @@
+/**
+ * Card content components, based on Bootstrap Cards
+ * - Card paragraph type
+ * - Card content block type (referenced in Reusable Content paragraph type)
+ *
+ * @see paragraph--uwm-card.html.twig
+ * @see paragraph--uwm-block.html.twig
+ * @see field--field-uwm-card-header.html.twig
+ * @see field--field-uwm-card-content.html.twig
+ * @see https://getbootstrap.com/docs/4.0/components/card/
+ */
+
 @import 'init';
 
 .field--name-field-uwm-component .card-deck {
   padding-bottom: 2em;
 }
 
-.paragraph--type--uwm-card {
+.card {
   border: none;
   box-shadow: 0 3px 6px 0 rgba(0,0,0,0.15);
   border-radius: 0;
+
+  .card-header {
+    background: none;
+    border-bottom: 0 none;
+    min-height: 1rem;
+  }
+
+  .card-body {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    .list-group-item {
+      padding: 0;
+      margin: 0;
+      border: none;
+      border-bottom: 1px solid $gray-300;
+
+      &:last-child {
+        margin-bottom: 1.5rem;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      .btn {
+        padding: .75rem 0;
+        width: 100%;
+        text-align: left;
+      }
+
+      a.btn {
+        font-size: 14px;
+      }
+
+      .fa-angle-right {
+        position: absolute;
+        right: 0;
+      }
+    }
+
+  }
+
+  .field--name-field-uwm-card-footer {
+    padding-left: $card-spacer-x;
+    padding-right: $card-spacer-x;
+  }
+
 }
 
-.paragraph--type--uwm-card .card-header {
-  background: none;
-  min-height: 1rem;
+@include media-breakpoint-between('sm', 'md') {
+
+  // Between sm and lg breakpoints, cards are structured at 2 per row via a
+  // divider in the markup. Within a card-deck row, cards evenly fill the row,
+  // so rows of 1 are full-width cards. If there is an odd number of cards,
+  // ensure the last one matches the 50% width of the others.
+  // @see paragraph--uwm-grid.html.twig
+  .card-deck .card {
+    flex-basis: calc(50% - (2 * #{$card-deck-margin}));
+    flex-grow: 0;
+  }
+
+}
+
+// Reusable Content component styled as card, containing a webform
+.card.paragraph--webform {
+
+  // Paragraphs containing a webform will not have a card footer, so set
+  // bottom padding on card body instead.
+  .card-body {
+    padding-bottom: $card-spacer-y;
+  }
+
+  .webform-submission-form {
+    .form-item:first-child {
+      margin-top: 0;
+    }
+  }
 }
 
 // Card Header with Image and CTA Link
@@ -41,37 +124,4 @@
   position: relative;
   margin-top: -60px;
   z-index: 100;
-}
-
-.paragraph--type--uwm-card .field--name-field-uwm-card-content, .paragraph--type--uwm-card .field--name-field-uwm-card-footer {
-  margin-left: 1.25rem;
-  margin-right: 1.25rem;
-}
-
-.paragraph--type--uwm-card .field--name-field-uwm-card-content .list-group-item {
-  padding: 0;
-  margin: 0;
-  border: none;
-  border-bottom: 1px solid $gray-300;
-}
-
-.paragraph--type--uwm-card .field--name-field-uwm-card-content .list-group-item .btn {
-  padding: .75rem 0;
-  width: 100%;
-  text-align: left;
-}
-
-.paragraph--type--uwm-card .field--name-field-uwm-card-content .list-group-item a.btn {
-  font-size: 14px;
-}
-
-.paragraph--type--uwm-card .field--name-field-uwm-card-content .list-group-item:last-child {
-  margin-bottom: 1.5rem;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.paragraph--type--uwm-card .field--name-field-uwm-card-content .list-group-item .fa-angle-right {
-  position: absolute;
-  right: 0;
 }

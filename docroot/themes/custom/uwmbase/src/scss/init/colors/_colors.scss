@@ -25,7 +25,7 @@ $gray-600: #949494;
 $gray-700: #818181;
 $gray-800: #6E6E6E;
 $gray-900: #5A5A5A;
-$black:    #474747;
+$black:    #333d47;
 
 //$grays: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -81,18 +81,30 @@ $warning:       $yellow;
 $danger:        $orange;
 $light:         $gray-100;
 $dark:          $black;
-$text:          #474747;
-$link-blue:     #3375d4;
+$text:          #333d47;
+
+$link-blue:     #2c6ace;
+
 $link-purple:   #37236a;
-$heading-purple: #4b2e83;
+// 2019-05-07: removed this as it was not used anywhere in uwmbase. All usages
+// of it in uwmed theme as $uwmed-light-purple are also updated to the same.
+// $heading-purple: #4b2e83;
+$heading-purple: #5d348b;
 $uwmed-purple-icon: $heading-purple; // from uwmed theme for home page
+$uwmed-light-purple: #4B2E83;
+$uwmed-dark-purple: #3f3952;
+
 $ui-green: #1DC724;
 $ui-red: #C71D1D;
+
+$border-gray: #d9dbdd;
+$background-light-gray: #f8f8f8;
 $uwmed-gray: #b5b5b5; // from uwmed theme for home page
 $uwmed-gray-icon: #716F77; // from uwmed theme for home page
 
 // stylelint-disable-next-line scss/dollar-variable-default
 $theme-colors: (
+                      "white":       $white,
                       "primary":     $primary,
                       "secondary":   $secondary,
                       "success":     $success,
@@ -105,9 +117,12 @@ $theme-colors: (
                       "link-blue":   $link-blue,
                       "link-purple": $link-purple,
                       "heading-purple": $heading-purple,
+                      "uwmed-light-purple":   $uwmed-light-purple,
+                      "uwmed-dark-purple":    $uwmed-dark-purple,
                       "ui-green": $ui-green,
                       "ui-red": $ui-red,
-                      "teal": $teal,
+                      "border-gray":  $border-gray,
+                      "background-light-gray": $background-light-gray,
                       "uwmed-gray": $uwmed-gray,
                 );
 
@@ -137,6 +152,28 @@ $uwmed-menu-gray: #676868;
 %uwmed-gradient-angled-dark-background {
   background-image: url('#{$uwbase-images-folder}/angled-bg-light.png');
   background-color: #F8F8F8;
+}
+
+%uwmed-angled-dark-bottom-border {
+  border: 0 none;
+  // Do not set border color 'transparent' - it overrides border-image in some
+  // browsers. The color is only a fallback for the image, so use a light gray.
+  // - Chrome on iPhone
+  // - Safari (Mac) desktop
+  border-bottom: 5px solid #f8f8f8;
+  border-image: url('#{$uwbase-images-folder}/angled-bg-dark.png') 10 10;
+}
+
+// Define as mixin also because @extend cannot be used conditionally in a
+// media query.
+@mixin uwmed-angled-dark-bottom-border() {
+  border: 0 none;
+  // Do not set border color 'transparent' - it overrides border-image in some
+  // browsers. The color is only a fallback for the image, so use a light gray.
+  // - Chrome on iPhone
+  // - Safari (Mac) desktop
+  border-bottom: 5px solid #f8f8f8;
+  border-image: url('#{$uwbase-images-folder}/angled-bg-dark.png') 10 10;
 }
 
 %uwmed-box-shadow {

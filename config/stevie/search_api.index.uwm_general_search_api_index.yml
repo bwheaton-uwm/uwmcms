@@ -3,19 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
-    - field.storage.node.field_res_biography
     - field.storage.node.field_res_expertises
+    - field.storage.taxonomy_term.field_term_keywords
     - field.storage.node.field_res_isacceptingnewpts
     - field.storage.node.field_res_medical_services
     - field.storage.node.field_search_best_bets
-    - field.storage.taxonomy_term.field_term_keywords
-    - field.storage.node.field_uwm_sections
-    - field.storage.paragraph.field_uwm_section_heading
     - search_api.server.acquia_search_server
   module:
     - taxonomy
-    - paragraphs
     - node
     - search_api
     - uwmcs_searchfields
@@ -110,27 +105,6 @@ field_settings:
       module:
         - taxonomy
         - taxonomy
-  field_uwm_section_heading:
-    label: 'Sections » Paragraph » Section Heading (H2)'
-    datasource_id: 'entity:node'
-    property_path: 'field_uwm_sections:entity:field_uwm_section_heading'
-    type: text
-    boost: !!float 0
-    dependencies:
-      config:
-        - field.storage.node.field_uwm_sections
-        - field.storage.paragraph.field_uwm_section_heading
-      module:
-        - paragraphs
-  field_uwm_sections:
-    label: Sections
-    datasource_id: 'entity:node'
-    property_path: field_uwm_sections
-    type: text
-    boost: !!float 0
-    dependencies:
-      config:
-        - field.storage.node.field_uwm_sections
   node_grants:
     label: 'Node access information'
     property_path: search_api_node_grants
@@ -138,25 +112,6 @@ field_settings:
     indexed_locked: true
     type_locked: true
     hidden: true
-  rendered_item:
-    label: 'Rendered HTML output'
-    property_path: rendered_item
-    type: text
-    boost: !!float 0
-    configuration:
-      roles:
-        anonymous: anonymous
-      view_mode:
-        'entity:node':
-          res_clinic: default
-          res_provider: default
-          uwm_basic_page: default
-          uwm_condition_spotlight: ''
-          uwm_homepage: default
-          uwm_hub_page: default
-          uwm_medical_service: default
-          uwm_medical_specialty: default
-          uwm_quiz: default
   status:
     label: status
     datasource_id: 'entity:node'
@@ -245,12 +200,10 @@ processor_settings:
     fields:
       - field_res_expertises_keywords
       - field_res_expertises_name
+      - field_res_medical_services_keywords
       - field_res_medical_services_name
       - field_search_best_bets_keywords
       - field_search_best_bets_name
-      - field_uwm_section_heading
-      - field_uwm_sections
-      - rendered_item
       - title
       - uwmsearchwithin
     weights:
@@ -262,12 +215,10 @@ processor_settings:
     fields:
       - field_res_expertises_keywords
       - field_res_expertises_name
+      - field_res_medical_services_keywords
       - field_res_medical_services_name
       - field_search_best_bets_keywords
       - field_search_best_bets_name
-      - field_uwm_section_heading
-      - field_uwm_sections
-      - rendered_item
       - title
     exceptions:
       mexican: mexic
@@ -278,13 +229,12 @@ processor_settings:
   tokenizer:
     all_fields: false
     fields:
+      - field_res_expertises_keywords
       - field_res_expertises_name
+      - field_res_medical_services_keywords
       - field_res_medical_services_name
       - field_search_best_bets_keywords
       - field_search_best_bets_name
-      - field_uwm_section_heading
-      - field_uwm_sections
-      - rendered_item
       - title
     spaces: ''
     overlap_cjk: 1
@@ -297,17 +247,23 @@ processor_settings:
     fields:
       - field_res_expertises_keywords
       - field_res_expertises_name
+      - field_res_medical_services_keywords
       - field_res_medical_services_name
       - field_search_best_bets_keywords
       - field_search_best_bets_name
-      - field_uwm_section_heading
-      - field_uwm_sections
-      - rendered_item
       - title
       - uwmsearchwithin
     weights:
       preprocess_index: -20
       preprocess_query: -20
+  type_boost:
+    boosts:
+      'entity:node':
+        datasource_boost: !!float 3
+        bundle_boosts:
+          res_provider: !!float 0
+    weights:
+      preprocess_index: 0
 tracker_settings:
   default:
     indexing_order: fifo

@@ -1,6 +1,11 @@
 @import 'init';
 
-article.card {
+// Note:
+// This originally used the .card class, but that is used for Card paragraphs
+// and inherits Bootstrap card styling. Once Card paragraphs were further
+// generalized, using .card applied undesired styling here.
+// @see card.scss
+article.node-res_provider.view-mode-provider_card {
 
   font-size: 14px;
 

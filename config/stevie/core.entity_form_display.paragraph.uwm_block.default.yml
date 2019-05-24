@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.uwm_block.field_uwm_block
     - field.field.paragraph.uwm_block.field_webform
-    - field.field.paragraph.uwm_block.uwm_block
     - paragraphs.paragraphs_type.uwm_block
   module:
     - webform
@@ -15,8 +15,14 @@ targetEntityType: paragraph
 bundle: uwm_block
 mode: default
 content:
+  field_uwm_block:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_webform:
-    weight: 101
+    weight: 2
     settings:
       default_data: true
     third_party_settings: {  }
@@ -28,12 +34,6 @@ content:
     settings: {  }
     region: content
     third_party_settings: {  }
-  uwm_block:
-    weight: 2
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
 hidden:
   created: true
   status: true

@@ -1,0 +1,23 @@
+uuid: 4c046c29-81c4-4088-9cb1-c36aef4b373d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_column_dividers
+    - paragraphs.paragraphs_type.uwm_grid
+id: paragraph.uwm_grid.field_uwm_column_dividers
+field_name: field_uwm_column_dividers
+entity_type: paragraph
+bundle: uwm_grid
+label: 'Use Column Dividers'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

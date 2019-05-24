@@ -33,7 +33,11 @@ form-styles:
 google-fonts:
   css:
     theme:
-      //fonts.googleapis.com/css?family=Encode+Sans:300,400,500,600,700|Open+Sans:400,400i,600,600i,700,700i: { type: external }
+      //fonts.googleapis.com/css?family=Encode+Sans:300,400,500,600,700|Open+Sans:300,300i,400,400i,600,600i,700,700i: { type: external }
+
+momentjs:
+  js:
+    dist/js/moment.min.js: { }
 
 # uwmbase css/js libraries
 
@@ -52,6 +56,7 @@ accordion:
   dependencies:
   - core/jquery
   - uwmbase/bootstrap
+
 view-more:
   css:
     component:
@@ -99,6 +104,19 @@ provider-card:
   css:
     component:
       dist/css/provider-card.css: {}
+
+clinic-page:
+  css:
+    component:
+      dist/css/clinic-page.css: {}
+  js:
+    dist/js/clinic-page-hours.js: {}
+#    dist/js/clinic-page-tabs.js: {}
+  dependencies:
+    - uwmbase/momentjs
+    - uwmbase/clockwise-wait-times
+    - uwmbase/nav-tabs
+    - uwmbase/anchor-scroll
 
 header:
   css:
@@ -159,12 +177,21 @@ provider-resource-media:
     component:
       dist/css/provider-resource-media.css: {}
 
+webforms:
+  css:
+    component:
+      dist/css/webforms.css: {}
+
 homepage:
   css:
     component:
       dist/css/homepage.css: {}
 
 # ZEN LIBRARIES - Override, remove, or replace these
+
+anchor-scroll:
+  js:
+    dist/js/anchor-scroll.js: {}
 
 autocomplete:
   css:
@@ -242,6 +269,14 @@ nav-menu:
   css:
     component:
       components/asset-builds/css/nav-menu.css: {}
+
+nav-tabs:
+  css:
+    component:
+      dist/css/nav-tabs.css: {}
+  js:
+    dist/vendor/bootstrap/js/tab.js: {}
+    dist/js/bootstrap-tab-history.js: {}
 
 navbar:
   css:

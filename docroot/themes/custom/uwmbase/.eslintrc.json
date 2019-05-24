@@ -3,11 +3,21 @@
     "ecmaVersion": 2018
   },
   "rules": {
+
     "prettier/prettier": "info",
+
     "no-multiple-empty-lines": [
       "warn",
       {
         "max": 3
+      }
+    ],
+
+    "no-use-before-define": [
+      "error",
+      {
+        "variables": false,
+        "functions": false
       }
     ]
   }

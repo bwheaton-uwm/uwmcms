@@ -1,0 +1,75 @@
+{#
+/**
+ * @file
+ * Theme implementation to display a Reusable Content paragraph.
+ *
+ * Custom variables:
+ * - block_bundle: string, bundle of referenced block_content entity if any,
+ *   else NULL
+ * - webform_id: string, entity ID of referenced webform entity if any, else
+ *   NULL
+ * - style_as_card: boolean, whether to style this paragraph as a card. This
+ *   is true when either:
+ *   - the parent Grid paragraph has at least one other Card child
+ *   - the referenced block is a Card (custom block type)
+ *
+ * @see template_preprocess_paragraph()
+ * @see uwmbase_preprocess_paragraph()
+ * @see uwmbase_preprocess_paragraph__uwm_block()
+ */
+#}
+{#
+   Add classes and attach library if this contains a Card content block or
+   or a webform.
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished',
+
+    block_bundle ? 'paragraph--block',
+    block_bundle ? 'paragraph--block--' ~ block_bundle|clean_class,
+    webform_id ? 'paragraph--webform',
+    webform_id ? 'paragraph--webform--' ~ webform_id|clean_class,
+
+    block_bundle is same as('uwm_card') ? 'card'
+  ]
+%}
+
+{% set has_webform = webform_id is not empty %}
+
+{% if block_bundle is same as ('uwm_card') %}
+  {{ attach_library('uwmbase/card') }}
+{% endif %}
+
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {#
+       If this contains a webform and we're styling as card, add the card
+       markup wrappers. (This is unneeded if it contains a Card type of block,
+       because the block type uses the card header, card content, and card
+       footer fields that provide those wrappers.
+    #}
+    {% if has_webform and webform_title is not empty %}
+      {% if style_as_card %}
+        <div class="card-header">
+      {% endif %}
+      <h3 class="uwm-accent-heading h6 p-0 m-0">{{ webform_title }}</h3>
+      {% if style_as_card %}
+        </div>
+      {% endif %}
+    {% endif %}
+
+    {% block content %}
+      {% if has_webform and style_as_card %}
+        <div class="card-body">
+      {% endif %}
+      {{ content }}
+      {% if has_webform and style_as_card %}
+        </div>
+      {% endif %}
+    {% endblock %}
+  </div>
+{% endblock paragraph %}

@@ -1,0 +1,48 @@
+uuid: 80b642c5-5d05-4ba6-b891-b7af46681fdd
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.clinic_page_350_175
+    - image.style.clinic_page_370_185
+    - image.style.clinic_page_384_192
+    - image.style.clinic_page_418_209
+    - image.style.clinic_page_576_288
+    - image.style.clinic_page_768_384
+  theme:
+    - uwmbase
+id: clinic_page
+label: 'Clinic Page Image'
+image_style_mappings:
+  -
+    breakpoint_id: uwmbase.bootstrap.xxl
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: clinic_page_418_209
+  -
+    breakpoint_id: uwmbase.bootstrap.xl
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: clinic_page_350_175
+  -
+    breakpoint_id: uwmbase.bootstrap.lg
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: clinic_page_370_185
+  -
+    breakpoint_id: uwmbase.bootstrap.md
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: clinic_page_384_192
+  -
+    breakpoint_id: uwmbase.bootstrap.sm
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: clinic_page_768_384
+  -
+    breakpoint_id: uwmbase.bootstrap.xs
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: clinic_page_576_288
+breakpoint_group: uwmbase.bootstrap
+fallback_image_style: clinic_page_576_288

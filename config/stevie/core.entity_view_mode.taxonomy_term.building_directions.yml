@@ -1,0 +1,14 @@
+uuid: 6e3bdd12-274b-4a42-aec1-89f8d0be0dcb
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - taxonomy
+third_party_settings:
+  lightning_core:
+    description: ''
+id: taxonomy_term.building_directions
+label: 'Building: Directions only'
+targetEntityType: taxonomy_term
+cache: true

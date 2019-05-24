@@ -13,10 +13,12 @@
  * Custom variables:
  * - url_not_uwmedicine_org: boolean, true if the 'url' links to a site other
  *   than uwmedicine.org
+ * - display_context: string, set to 'self' by default or the name of a content
+     type if the node is being rendered as part of another content type
  */
 #}
 
-{% set modifier_class = attributes.class ~ ' card col-sm-6 col-lg-4 col-xxl-3' %}
+{% set modifier_class = attributes.class ~ ' col-sm-6 col-lg-4 col-xxl-3' %}
 
  {% block content %}
    {{ attach_library('uwmbase/provider-card') }}
@@ -104,7 +106,7 @@
         </div>
       </div>
 
-
+      {% if not display_context == "res_clinic" %}
        <div class="provider-card__locations full-wide">
 
          {% if content.field_res_clinics.0 and not is_urgent_care_provider %}
@@ -137,13 +139,14 @@
        </div>
 
      </div>
+     {% endif %}
 
-
+    {% if not display_context == "res_clinic" %}
      <div class="provider-card__see-more uwm-accent-color__purple full-wide">
        <a class="btn btn-cta btn-cta-link"
           href="{{ url }}" rel="bookmark">{{ 'See full bio'|t }}</a>
      </div>
-
+     {% endif %}
 
    </div>
 

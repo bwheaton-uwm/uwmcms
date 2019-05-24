@@ -6,6 +6,7 @@ dependencies:
     - node
     - search_api
     - uwmcs_searchfields
+    - uwmed_uwmcms_search
     - taxonomy
   config:
     - search_api.server.database
@@ -74,6 +75,7 @@ processor_settings:
     weights:
       preprocess_query: -30
   entity_status: {  }
+  exclude_unreferenced_terms: {  }
   html_filter:
     all_fields: true
     fields:

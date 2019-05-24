@@ -60,7 +60,7 @@
     background-color: $card-cap-bg;
 }
 
-.uwm-section__background-gray .uwm-accordion .card, .uwm-section__background-gray .uwm-accordion .card-header {
+.uwm-section--background-gray .uwm-accordion .card, .uwm-section--background-gray .uwm-accordion .card-header {
     background-color: $white;
 }
 
@@ -75,4 +75,3 @@
 .uwm-accordion .card-body .field--name-uwm-text p:last-child {
     margin-bottom: 0;
 }
-

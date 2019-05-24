@@ -1,0 +1,32 @@
+{% set map_api_key = 'AIzaSyC8H18N4yUJDtUDaR9eMpXiqndLwWfd_hQ' %}
+{% set plain_title = label|render|striptags|trim %}
+{#
+    This is the Building term, rendered in the "Building: Address only"
+    view mode, to print its address field only. The address has been
+    modified in preprocess to inject the Floor and Room Number fields from
+    this node.
+#}
+{% set plain_address = content.field_res_building.0|render|striptags|trim %}
+{% set map_query = (plain_title ~ ',' ~ plain_address)|url_encode %}
+
+<div class="container-xl">
+    <h3 class="uwm-accent-heading uwm-accent-heading__title">{{ "Directions &amp; Parking"|t }}</h3>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-7 order-md-2 clinic-directions__map">
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed/v1/place?key={{ map_api_key }}&q={{ map_query }}"
+                        width="800" height="600" frameborder="0" style="border:0"
+                        allowfullscreen></iframe>
+            </div>
+        </div>
+
+        {#
+            This is the Building term, rendered in the "Building: Directions only"
+            view mode, to print its directions fields only.
+        #}
+        {% if building_directions %}
+            {{ building_directions }}
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,103 @@
+{% if "Hide" in content.field_hide_providers_tab[0] %}
+  {% set hide_providers_css_class = "hidden" %}
+{% endif %}
+
+
+  {#
+
+  // TAB HEADERS:
+
+  #}
+
+<nav class="clinic-page__gradient_background">
+  <div class="container-xl">
+    <ul class="nav nav-tabs udm-nav-tabs" id="nav-tab"
+      role="tablist">
+    <li class="nav-item">
+
+      <a class="nav-item nav-link active" id="main-tab-tab" data-toggle="tab"
+         href="#main-tab" role="tab" aria-controls="main-tab"
+         aria-selected="true"
+         data-tab-history="true"
+         data-tab-history-changer="push"
+         data-tab-history-update-url="true">
+        <i class="uw-ico heart" aria-hidden="true"></i>
+        {{ 'Services/ Resources'|t }}
+
+      </a>
+
+    </li>
+
+
+    <li class="nav-item">
+      <a class="nav-item nav-link" id="directions-tab-tab" data-toggle="tab"
+         href="#directions-tab" role="tab" aria-controls="directions-tab"
+         aria-selected="false"
+         data-tab-history="true"
+         data-tab-history-changer="push"
+         data-tab-history-update-url="true">
+        <i class="uw-ico heart" aria-hidden="true"></i>
+        {{ 'Directions/ Parking'|t }}
+      </a>
+
+    </li>
+
+
+    <li class="nav-item">
+      <a class="nav-item nav-link" id="providers-tab-tab" data-toggle="tab"
+         href="#providers-tab" role="tab" aria-controls="providers-tab"
+         aria-selected="false"
+         data-tab-history="true"
+         data-tab-history-changer="push"
+         data-tab-history-update-url="true">
+        <i class="uw-ico heart" aria-hidden="true"
+        ></i>
+        {{ 'Care Providers'|t }}
+      </a>
+    </li>
+
+
+  </ul>
+  </div>
+</nav>
+
+
+{#
+
+//    OUR TABS CONTENT:
+
+
+
+#}
+
+<div class="tab-content uwm-tab-content tab-content uwm-accent-color__blue"
+     id="nav-tabContent">
+
+  <section class="tab-pane fade show active" id="main-tab" role="tabpanel"
+           aria-labelledby="main-tab-tab">
+
+    {# MAIN TAB CONTENT #}
+    <a name="main" id="main"></a>
+    {% include directory ~ '/components/clinic-page/node--res-clinic--full.tabs-body.html.twig' %}
+  </section>
+
+  <section class="tab-pane fade clinic-page__directions-tab" id="directions-tab" role="tabpanel"
+           aria-labelledby="directions-tab-tab">
+
+    {# DIRECTIONS AND PARKING CONTENT #}
+    <a name="directions" id="directions"></a>
+    {% include directory ~ "/components/clinic-page/node--res-clinic--full.tabs-directions.html.twig" %}
+
+  </section>
+
+  <section class="tab-pane fade {{ hide_providers_css_class }}"
+           id="providers-tab" role="tabpanel"
+           aria-labelledby="providers-tab-tab">
+
+    {# CARE PROVIDERS CONTENT #}
+    <a name="providers" id="providers"></a>
+    {% include directory ~ "/components/clinic-page/node--res-clinic--full.tabs-providers.html.twig" %}
+
+  </section>
+
+</div>

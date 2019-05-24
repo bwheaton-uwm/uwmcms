@@ -1,0 +1,15 @@
+uuid: a4cc3610-33f4-4fcb-8d42-dcd9aac1de99
+langcode: en
+status: true
+dependencies: {  }
+name: clinic_page_576_288
+label: 'Clinic page: xs-sm (576 x 288)'
+effects:
+  de757cca-1952-4dec-8cbf-1feeaa82381c:
+    uuid: de757cca-1952-4dec-8cbf-1feeaa82381c
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 576
+      height: 288
+      anchor: center-center

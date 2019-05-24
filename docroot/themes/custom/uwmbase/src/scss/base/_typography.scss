@@ -25,6 +25,13 @@ a.text-link-blue.no-underline {
   }
 }
 
+h1, .h1 {
+  // Bootstrap uses one variable for line height for all headers
+  // ($headings-line-height) so set our h1-specific value here.
+  // @see _init/typography/_typography.scss
+  line-height: 1.1;
+}
+
 h2, .h2 {
   padding-top: 3.125rem;
   padding-bottom: 1.875rem;
@@ -35,8 +42,11 @@ h3, .h3 {
   padding-bottom: 1rem;
 }
 
+h1.page-title {
+  color: theme-color('heading-purple');
+}
+
 .block-page-title-block h1 {
-  color: theme-color('primary');
   padding-top: 3.125rem;
 }
 
@@ -76,6 +86,10 @@ h3, .h3 {
   @include text-emphasis-variant(".text-#{$color}", $value);
 }
 
+/*
+ * Accent colors - h1
+ */
+
 .uwm-accent-color__purple h1 {
   color: color('purple');
 }
@@ -100,6 +114,12 @@ h3, .h3 {
   color: color('yellow');
 }
 
+/*
+ * Accent colors - heading
+ *
+ * Include higher-specificity selectors for .uwm-section to allow
+ * Section paragraphs to override page-level color.
+ */
 .uwm-accent-heading::after {
   content: '';
   border-top: 4px solid color('primary');
@@ -112,33 +132,38 @@ h3, .h3 {
   margin-top: 6px;
 }
 
-.uwm-accent-color__light-purple .uwm-accent-heading::after {
+.uwm-accent-color__light-purple .uwm-accent-heading::after,
+.uwm-section.uwm-accent-color__light-purple .uwm-accent-heading::after {
   border-top-color: color('light-purple');
   border-left-color: color('light-purple');
 }
 
-.uwm-accent-color__teal .uwm-accent-heading::after {
+.uwm-accent-color__teal .uwm-accent-heading::after,
+.uwm-section.uwm-accent-color__teal .uwm-accent-heading::after {
   border-top-color: color('teal');
   border-left-color: color('teal');
 }
 
-.uwm-accent-color__blue .uwm-accent-heading::after {
+.uwm-accent-color__blue .uwm-accent-heading::after,
+.uwm-section.uwm-accent-color__blue .uwm-accent-heading::after {
   border-top-color: color('blue');
   border-left-color: color('blue');
 }
 
-.uwm-accent-color__orange .uwm-accent-heading::after {
+.uwm-accent-color__orange .uwm-accent-heading::after,
+.uwm-section.uwm-accent-color__orange .uwm-accent-heading::after {
   border-top-color: color('orange');
   border-left-color: color('orange');
 }
 
-.uwm-accent-color__purple .uwm-accent-heading::after {
+.uwm-accent-color__purple .uwm-accent-heading::after,
+.uwm-section.uwm-accent-color__purple .uwm-accent-heading::after {
   border-top-color: color('purple');
-  border-left-color: olor('purple');
+  border-left-color: color('purple');
 }
 
-.uwm-accent-color__yellow .uwm-accent-heading::after {
+.uwm-accent-color__yellow .uwm-accent-heading::after,
+.uwm-section.uwm-section.uwm-accent-color__yellow .uwm-accent-heading::after {
   border-top-color: color('yellow');
   border-left-color: color('yellow');
 }
-

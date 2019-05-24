@@ -1,0 +1,8 @@
+uwmcs_utils.paragraphs_admin:
+  path: '/admin/uwm/paragraphs/{paragraph_type}'
+  defaults:
+    paragraph_type: null
+    _controller: '\Drupal\uwmcs_utils\Controller\UwmParagraphsAdminController::paragraphsListing'
+    _title: 'UWM Paragraphs Listing'
+  requirements:
+    _permission: 'access content overview'

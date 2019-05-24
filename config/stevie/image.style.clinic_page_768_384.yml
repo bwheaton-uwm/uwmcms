@@ -1,0 +1,15 @@
+uuid: 6b79166e-390f-493a-ac90-721f87dfe4df
+langcode: en
+status: true
+dependencies: {  }
+name: clinic_page_768_384
+label: 'Clinic page: sm-md (768 x 384)'
+effects:
+  02ed281d-7d94-4319-8238-dfe745ed19e4:
+    uuid: 02ed281d-7d94-4319-8238-dfe745ed19e4
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 768
+      height: 384
+      anchor: center-center

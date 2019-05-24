@@ -1,0 +1,100 @@
+@import 'init';
+
+
+ul.udm-nav-tabs {
+
+  border-bottom: 1px solid #dcdcdc;
+
+  > li {
+
+    margin: 0 2px -1px 0;
+    padding-bottom: 0;
+
+    &.active {
+      z-index: 3;
+    }
+
+    > a, > a:hover, > a:focus {
+
+      margin: 0;
+      padding: 16px 34px 16px 26px;
+      float: left;
+      color: theme-color('white');
+      background: theme-color('uwmed-dark-purple');
+      border-color: transparent !important;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      @media(max-width: 350px) {
+        font-size: 12.5px;
+      }
+
+      i.uw-ico.heart {
+        font-size: 26px;
+        float: left;
+        margin: -6px 4px 0px 0;
+      }
+
+    }
+
+  }
+
+  > li.active > a, > li.active > a:hover, > li.active > a:focus {
+    color: theme-color('uwmed-light-purple');
+    background: theme-color('white');
+  }
+
+}
+
+div.uwm-tab-content {
+
+  min-height: 200px;
+  border: 0 none;
+
+  // Sub-tabs:
+  div.tab-content, div.uwm-tab-content {
+    margin-top: 15px;
+  }
+
+}
+
+@media(max-width: 767px) {
+
+  ul.udm-nav-tabs {
+
+    @media(max-width: 350px) {
+      overflow: hidden;
+    }
+
+    > li {
+      @media(max-width: 350px) {
+        max-width: 32.5%;
+      }
+
+      max-width: 30%;
+
+      &:first-child > a {
+        margin: 0 !important;
+      }
+
+      > a, > a:hover, > a:focus {
+
+        padding: 16px;
+        text-transform: uppercase;
+        text-align: center;
+        word-spacing: 100vw; // Force each word onto separate line.
+        display: table-cell;
+        vertical-align: bottom;
+        float: none;
+
+        .uw-ico, .fa {
+          display: none;
+        }
+
+      }
+
+    }
+
+  }
+
+}

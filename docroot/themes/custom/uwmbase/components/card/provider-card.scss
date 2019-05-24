@@ -58,7 +58,7 @@ article.node-res_provider.view-mode-provider_card {
 
       .accepting-patients {
         display: block;
-        color: #474747;
+        color: theme-color('text');
         padding: 8px 0 0 25px;
         position: relative;
         .uwm-icon {
@@ -72,6 +72,10 @@ article.node-res_provider.view-mode-provider_card {
     .fields-container {
 
       flex-grow: 1;
+
+      .full-wide:last-of-type {
+        margin-bottom: 0;
+      }
 
       .provider-card__specialties {
         //@extend %s-with-icon;
@@ -110,6 +114,7 @@ article.node-res_provider.view-mode-provider_card {
     }
 
     .provider-card__see-more {
+      margin-top: 1.25rem;
       margin-bottom: 0;
     }
 

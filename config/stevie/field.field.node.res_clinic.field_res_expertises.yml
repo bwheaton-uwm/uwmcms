@@ -1,0 +1,29 @@
+uuid: ae013590-bf3f-49f3-bb7d-487071596f37
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_expertises
+    - node.type.res_clinic
+    - taxonomy.vocabulary.expertise
+id: node.res_clinic.field_res_expertises
+field_name: field_res_expertises
+entity_type: node
+bundle: res_clinic
+label: 'Clinic Expertises'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      expertise: expertise
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

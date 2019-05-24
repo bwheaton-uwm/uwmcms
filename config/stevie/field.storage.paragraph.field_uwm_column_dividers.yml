@@ -1,0 +1,18 @@
+uuid: 537b88cb-2b39-46b4-b75d-f31a8a1c1298
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_uwm_column_dividers
+field_name: field_uwm_column_dividers
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
