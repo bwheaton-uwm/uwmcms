@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Theme override to display the Homepage node.
+ *
+ * @see template_preprocess_node()
+ */
+#}
+{%
+  set classes = [
+    'homepage',
+  ]
+%}
+<article{{ attributes.addClass(classes) }}>
+
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {{ content.field_uwm_homepage_markup }}
+
+</article>
