@@ -13,9 +13,600 @@
 %}
 <article{{ attributes.addClass(classes) }}>
 
-  {{ title_prefix }}
   {{ title_suffix }}
 
-  {{ content.field_uwm_homepage_markup }}
+  {# {{ content.field_uwm_homepage_markup }} #}
+
+  {#
+    TEMP: For development, work with the markup in this template.
+  #}
+
+
+
+  <!-- Hero -->
+  <div class="hero hero--background-image" style="background-image:url(/sites/default/files/styles/hero/public/grandmother-and-granddaughter-pnw.jpg?itok=9osYqAYx)">
+
+    <div class="hero__content container-xl">
+
+      <div class="field field--name-field-heading">
+        <p class="h1 hero__heading">
+          <i class="hidden u-ips"></i>
+          There when you need us,<br>
+          peace of mind when you don't.
+        </p>
+      </div>
+
+      <img class="hero__angle-divider" src="/themes/custom/uwmed/dist/assets/hero-angle-lines.png" alt="">
+
+      <div class="field field--name-field-subheading">
+        <p class="h2 hero__subheading">
+          <i class="hidden u-ips"></i>
+          Your home for expert care, anywhere in the Puget Sound region.
+        </p>
+      </div>
+    </div>
+
+    <div class="hero__filter visible-lg"></div>
+  </div>
+  <!-- /Hero -->
+
+  <!-- CTA button links -->
+  <div class="links-with-icon">
+    <div class="container-xl">
+
+      <ul class="links-with-icon__list list-unstyled">
+
+        <li class="paragraph-with-cta links-with-icon__item">
+          <div class="wrapper">
+            <a class="btn btn-default " href="/search/providers" target="">
+              <span class="uwmed-icon uwmed-icon__find-a-provider"></span>
+              Find a provider
+              <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+            </a>
+          </div>
+        </li>
+
+        <li class="paragraph-with-cta links-with-icon__item">
+          <div class="wrapper">
+            <a class="btn btn-default " href="/search/locations" target="">
+              <span class="uwmed-icon uwmed-icon__find-a-location"></span>
+              Find a location
+              <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+            </a>
+          </div>
+        </li>
+
+        <li class="paragraph-with-cta links-with-icon__item">
+          <div class="wrapper">
+            <a class="btn btn-default " href="/patient-resources/make-an-appointment" target="">
+              <span class="uwmed-icon uwmed-icon__appointment"></span>
+              Make an appointment
+              <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+            </a>
+          </div>
+        </li>
+
+        <li class="paragraph-with-cta links-with-icon__item">
+          <div class="wrapper">
+            <a class="btn btn-default " href="/patient-resources/ecare" target="">
+              <span class="uwmed-icon uwmed-icon__heart-waveform"></span>
+              eCare patient portal
+              <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+            </a>
+          </div>
+        </li>
+
+        <li class="paragraph-with-cta links-with-icon__item">
+          <div class="wrapper">
+            <a class="btn btn-default " href="/provider-resource/refer-patient" target="">
+              <span class="uwmed-icon uwmed-icon__refer-patient"></span>
+              Refer a patient
+              <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+            </a>
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+  <!-- /CTA button links -->
+
+  <div class="row gradient-divider">
+
+    <div class="field field--name-body">
+
+      <i class="hidden u-ips"></i>
+
+      <style type="text/css">
+        /*****************
+          @media (min-width: 768px) {
+            .patient-confidentiality-alert .ghost-button-white {
+              padding-left: 30px;
+            }
+          }
+          @media (max-width: 1199px) {
+            .patient-confidentiality-alert {
+              margin: 0 15px;
+            }
+          }
+        **********************/
+      </style>
+
+      <!------------------------------
+      <div class="container-xl patient-confidentiality-alert">
+        <div class="row" style="padding-top: 30px;">
+          <div class="col-xs-12">
+            <p style="font-weight:600;font-size:16px;padding-bottom: 16px;">A note to our patients:</p>
+          </div>
+        </div>
+
+        <div class="row" style="padding-bottom: 14px;">
+          <div class="col-sm-10" style="padding-bottom:16px;">
+          <p>UW Medicine take patient confidentiality very seriously and we sincerely regret that a data exposure occurred in December 2018. Patients affected by this exposure are being notified by mail.</p>
+        </div>
+
+        <div class="col-sm-2" style="padding-bottom:16px;">
+            <p class="ghost-button-white"><a class="btn btn-default" href="https://ide.myidcare.com/uwmedicine">Learn more</a></p>
+          </div>
+        </div>
+      </div>
+      -->
+
+    </div>
+
+  </div>
+
+  <!-- Sections -->
+  <div class="homepage-sections">
+
+    <!-- Section background images -->
+    <div class="homepage-section-background-lg visible-lg">
+      <div class="homepage-section-background-lg__item-1 full-width-image">
+        <img class="img-fluid" src="/sites/default/files/styles/hero/public/lucy-hwang.jpg?itok=tBiyKPqd" alt="">
+      </div>
+
+      <div class="homepage-section-background-lg__footing"></div>
+
+      <div class="homepage-section-background-lg__item-2 full-width-image">
+        <img class="img-fluid" src="/sites/default/files/styles/hero/public/uwm-research2.jpg?itok=8BwOnwnf" alt="">
+      </div>
+
+      <div class="homepage-section-background-lg__footing"></div>
+
+      <div class="homepage-section-background-lg__item-3 full-width-image">
+        <img class="img-fluid" src="/sites/default/files/styles/hero/public/wwami-alaska-fairbanks-education.jpg?itok=rqvG34ka" alt="">
+      </div>
+
+      <div class="homepage-section-background-lg__footing"></div>
+    </div>
+    <!-- /Section background images -->
+
+    <!-- Sections field -->
+    <div class="field field--name-field-homepage-sections">
+
+      <section class="homepage-section container-xl fade-in-animation item item-1 first">
+        <i class="hidden u-ips"></i>
+
+        <div class="accent-teal">
+
+          <div class="homepage-section__background" style="background-image: url('/sites/default/files/styles/hero/public/lucy-hwang.jpg?itok=tBiyKPqd')"></div>
+
+          <div class="homepage-section__title col-md-6 field field--name-field-title">
+            <h2 class="block-title item item-1 first last">
+              <i class="hidden u-ips"></i>
+              Patient Care
+            </h2>
+            <span class="uwmed-slant">
+            <span></span>
+          </span>
+          </div>
+
+          <div class="homepage-section__story-link">
+            <div class="section-story__play-button cboxElement" id="patientCarePlayButton">
+              <span class="section-story__play-button-text">A day in the life: Lucy Hwang, M.D.</span>
+
+              <span class="fa-stack fa-2x">
+              <i class="fa fa-circle-thin fa-stack-2x faa-burst animated" style="animation-play-state: running;"></i>
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-play fa-stack-1x"></i>
+            </span>
+            </div>
+
+            <div style="display: none;">
+              <div id="patientCareVideo">
+                <video id="patientCareVideoPlayer" style="max-width: 100%;" controls="" preload="metadata" crossorigin="anonymous">
+                  <source src="https://lyeqby-md.storage.googleapis.com/UWMC_-_Marketing_VMS/682/763/Dr._Hwang_final_cut_1080p.mp4" type="video/mp4">
+                  <track label="English" kind="captions" srclang="en" src="https://lyeqby-md.storage.googleapis.com/UWMC_-_Marketing_VMS/682/763/Dr.%20Hwang%20final%20cut.vtt" default="">
+                </video>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="homepage-section__content col-lg-6">
+
+            <div class="field field--name-field-heading">
+              <p class="h2 homepage-section__heading item item-1 first last">
+                <i class="hidden u-ips"></i>
+                300 clinics across 44 zip codes treating every medical condition under the sun? Yes, please.
+              </p>
+            </div>
+
+            <div class="field field--name-field-subheading">
+              <h3 class="block-title homepage-section__subheading h5">
+                <i class="hidden u-ips"></i>
+                Common Resources
+              </h3>
+            </div>
+
+
+            <ul class="links-with-icon__list list-unstyled">
+
+              <li class="paragraph-with-cta links-with-icon__item">
+                <div class="wrapper">
+                  <a class="btn btn-default " href="/patient-resources/billing-and-insurance" target="">
+                    <span class="uwmed-icon uwmed-icon__accepting-patients"></span>
+                    Billing and insurance
+                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+                  </a>
+                </div>
+              </li>
+
+              <li class="paragraph-with-cta links-with-icon__item" id="ppg-6">
+                <div class="wrapper">
+                  <a class="btn btn-default " href="/patient-resources/ecare" target="">
+                    <span class="uwmed-icon uwmed-icon__heart-waveform"></span>
+                    eCare patient portal
+                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+                  </a>
+                </div>
+              </li>
+
+              <li class="paragraph-with-cta links-with-icon__item">
+                <div class="wrapper">
+                  <a class="btn btn-default " href="/patient-resources" target="">
+                    <span class="uwmed-icon uwmed-icon__patient-resource"></span>
+                    Patient and family resources
+                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+                  </a>
+                </div>
+              </li>
+
+              <li class="paragraph-with-cta links-with-icon__item">
+                <div class="wrapper">
+                  <a class="btn btn-default " href="/services" target=""><span class="uwmed-icon uwmed-icon__medical-service"></span>
+                    Available medical services
+                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+                  </a>
+                </div>
+              </li>
+
+            </ul>
+
+            <a class="homepage-section__link btn btn-default" href="/patient-resources">
+              Patient Care Home
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <section class="homepage-section container-xl fade-in-animation item item-2">
+        <i class="hidden u-ips"></i>
+
+        <div class="accent-orange">
+          <div class="homepage-section__background" style="background-image: url('/sites/default/files/styles/hero/public/uwm-research2.jpg?itok=8BwOnwnf')"></div>
+
+          <div class="homepage-section__title col-md-6 field field--name-field-title">
+            <h2 class="block-title item item-1 first last">
+              <i class="hidden u-ips"></i>
+              Medical Research
+            </h2>
+            <span class="uwmed-slant">
+            <span></span>
+          </span>
+          </div>
+
+          <div class="homepage-section__story-link"></div>
+
+          <div class="homepage-section__content col-lg-6">
+
+            <div class="field field--name-field-heading">
+              <p class="h2 homepage-section__heading">
+                <i class="hidden u-ips"></i>
+                Five Nobel laureates strong and No. 2 nationally for research funding. We're fast-tracking cures.
+              </p>
+            </div>
+
+            <div class="field field--name-field-subheading">
+              <h3 class="block-title homepage-section__subheading h5">
+                <i class="hidden u-ips"></i>
+                Common Resources
+              </h3>
+            </div>
+
+            <ul class="links-with-icon__list list-unstyled">
+
+              <li class="paragraph-with-cta links-with-icon__item">
+                <div class="wrapper">
+                  <a class="btn btn-default " href="https://newsroom.uw.edu/" target="">
+                    <span class="uwmed-icon uwmed-icon__media"></span>
+                    Latest research in the news
+                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+                  </a>
+                </div>
+              </li>
+
+              <li class="paragraph-with-cta links-with-icon__item">
+                <div class="wrapper">
+                  <a class="btn btn-default " href="/school-of-medicine/phd-program" target="">
+                    <span class="uwmed-icon uwmed-icon__medical-research"></span>
+                    Departments
+                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+                  </a>
+                </div>
+              </li>
+
+              <li class="paragraph-with-cta links-with-icon__item">
+                <div class="wrapper">
+                  <a class="btn btn-default " href="https://www.iths.org/participate/" target="">
+                    <span class="uwmed-icon uwmed-icon__provider-interests"></span>
+                    Participate in a study
+                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+                  </a>
+                </div>
+              </li>
+
+              <li class="paragraph-with-cta links-with-icon__item" id="ppg-51">
+                <div class="wrapper">
+                  <a class="btn btn-default " href="/about/awards" target=""><span class="uwmed-icon uwmed-icon__5-star-rating"></span>
+                    Accomplishments and awards
+                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+                  </a>
+                </div>
+              </li>
+
+            </ul>
+
+            <a class="homepage-section__link btn btn-default" href="/research">
+              Research Home
+            </a>
+
+          </div>
+        </div>
+
+      </section>
+
+      <section class="homepage-section container-xl fade-in-animation item item-3 last">
+        <i class="hidden u-ips"></i>                  <div class="accent-blue">
+          <div class="homepage-section__background" style="background-image: url('/sites/default/files/styles/hero/public/wwami-alaska-fairbanks-education.jpg?itok=rqvG34ka')"></div>
+
+
+          <div class="homepage-section__title col-md-6 field field--name-field-title">
+
+
+            <h2 class="block-title item item-1 first last">
+              <i class="hidden u-ips"></i>            UW School of Medicine
+            </h2>
+
+            <span class="uwmed-slant">
+            <span></span>
+          </span>
+          </div>
+
+
+
+          <div class="homepage-section__story-link">
+
+          </div>
+
+          <div class="homepage-section__content col-lg-6">
+
+            <div class="field field--name-field-heading">
+
+
+              <p class="h2 homepage-section__heading">
+                <i class="hidden u-ips"></i>            Best in class: For 20-plus years the UW School of Medicine has ranked as one of the top med schools in the U.S.
+              </p>
+
+            </div>
+
+
+
+            <div class="field field--name-field-subheading">
+
+
+              <h3 class="block-title homepage-section__subheading h5">
+                <i class="hidden u-ips"></i>            Common Resources
+              </h3>
+
+            </div>
+
+
+            <ul class="links-with-icon__list list-unstyled">
+
+
+              <li class="paragraph-with-cta links-with-icon__item" id="ppg-61">
+
+
+                <div class="wrapper">
+                  <a class="btn btn-default " href="/school-of-medicine/admissions" target=""><span class="uwmed-icon uwmed-icon__accepting-patients"></span>
+                    Admissions
+                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span></a>    </div>
+
+              </li>
+
+
+
+              <li class="paragraph-with-cta links-with-icon__item" id="ppg-66">
+
+
+                <div class="wrapper">
+                  <a class="btn btn-default " href="/school-of-medicine/about" target=""><span class="uwmed-icon uwmed-icon__medical-specialty"></span>
+                    Departments and programs
+                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span></a>    </div>
+
+              </li>
+
+
+
+              <li class="paragraph-with-cta links-with-icon__item" id="ppg-71">
+
+
+                <div class="wrapper">
+                  <a class="btn btn-default " href="/school-of-medicine/md-program/wwami" target=""><span class="uwmed-icon uwmed-icon__languages"></span>
+                    WWAMI regional education
+                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span></a>    </div>
+
+              </li>
+
+
+
+              <li class="paragraph-with-cta links-with-icon__item" id="ppg-76">
+
+
+                <div class="wrapper">
+                  <a class="btn btn-default " href="/school-of-medicine/about/awards" target=""><span class="uwmed-icon uwmed-icon__5-star-rating"></span>
+                    Award-winning programs
+                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span></a>    </div>
+
+              </li>
+
+            </ul>
+            <a class="homepage-section__link btn btn-default" href="/school-of-medicine">
+              School of Medicine Home
+            </a>
+
+          </div>
+
+
+
+        </div>
+
+      </section>
+
+    </div>
+    <!-- /Sections field -->
+
+  </div>
+  <!-- /Sections -->
+
+
+
+
+  <!-- Content Spotlight -->
+  <section class="views-element-container block block-views block-views-blockcontent-spotlight-homepage-content-spotlight-block clearfix" id="block-views-block-content-spotlight-homepage-content-spotlight-block" data-block-plugin-id="views_block:content_spotlight-homepage_content_spotlight_block">
+
+    <h2 class="block-title">Content Spotlight</h2>
+
+
+    <div class="form-group"><div class="content-spotlight-block view view-content-spotlight view-id-content_spotlight view-display-id-homepage_content_spotlight_block js-view-dom-id-4a88145acad6223f41e66bb082a32603cc1e4b75c052b74867f7cbd894138880">
+
+
+        <div class="view-header">
+          <h3 class="h2">Your daily download from the world of UW Medicine.</h3>
+        </div>
+
+        <div class="view-content">
+          <div class="views-row">
+            <div class="field field--name-items">
+
+
+              <div class="item item-1 first">
+                <i class="hidden u-ips"></i>
+
+                <article role="article" about="/node/38341" class="content-spotlight default clearfix">
+                  <div class="content-spotlight__image" style="background-image:url(/sites/default/files/styles/hero/public/ministroke.jpg?itok=GqaQRkPR)"></div>
+
+                  <div class="content-spotlight__cta">
+                    <a class="btn btn-default" href="https://rightasrain.uwmedicine.org/well/prevention/transient-ischemic-attack-mini-stroke">
+                      <i class="hidden u-ips"></i>
+                      <span>Yes, you can have a mini-stroke. Here's why you need to take it seriously </span>
+
+                    </a>
+                  </div>
+                </article>
+              </div>
+              <div class="item item-2">
+                <i class="hidden u-ips"></i>
+
+                <article role="article" about="/node/38346" class="content-spotlight default clearfix">
+                  <div class="content-spotlight__image" style="background-image:url(/sites/default/files/styles/hero/public/weightlifting.jpg?itok=FQtnBgp5)"></div>
+
+                  <div class="content-spotlight__cta">
+                    <a class="btn btn-default" href="https://rightasrain.uwmedicine.org/body/exercise/how-to-start-weightlifting">
+                      <i class="hidden u-ips"></i>
+                      <span>Curious about weightlifting? Here’s how to get started </span>
+
+                    </a>
+                  </div>
+                </article>
+              </div>
+              <div class="item item-3">
+                <i class="hidden u-ips"></i>
+
+                <article role="article" about="/node/38301" class="content-spotlight default clearfix">
+                  <div class="content-spotlight__image" style="background-image:url(/sites/default/files/styles/hero/public/sorsbys.jpg?itok=zsqlsuHS)"></div>
+
+                  <div class="content-spotlight__cta">
+                    <a class="btn btn-default" href="https://kcts9.org/programs/environment-0/episodes/201904">
+                      <i class="hidden u-ips"></i>
+                      <span>A cure in sight for a family going blind</span>
+
+                    </a>
+                  </div>
+                </article>
+              </div>
+              <div class="item item-4 last">
+                <i class="hidden u-ips"></i>
+
+                <article role="article" about="/node/2456" class="content-spotlight default clearfix">
+                  <div class="content-spotlight__image" style="background-image:url(/sites/default/files/styles/hero/public/newsroom_randy-carnell_camera_0.jpg?itok=OmOGds0Y)"></div>
+
+                  <div class="content-spotlight__cta">
+                    <a class="btn btn-default" href="https://newsroom.uw.edu">
+                      <i class="hidden u-ips"></i>
+                      <span>UW Medicine Newsroom: A news source for journalists</span>
+
+                    </a>
+                  </div>
+                </article>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+  <!-- /Content Spotlight -->
+
+  <!-- Accelerate promo -->
+  <section id="block-acceleratepromotionfullwidth" data-block-plugin-id="accelerate_promotion_full_width_block" class="block block-uwmed-uwmcms-blocks block-accelerate-promotion-full-width-block clearfix container-xl">
+
+
+
+    <div class="accelerate-promotion-block col-xs-12" style="background-image: url('/themes/custom/uwmed/dist/assets/accelerate-background.png');">
+      <div class="container">
+        <div class="row">
+          <div class="accelerate-promotion-block__logo col-lg-3">
+            <img class="img img-responsive" src="/themes/custom/uwmed/dist/assets/accelerate-logo.png" alt="Accelerate: The Campaign for UW Medicine">
+          </div>
+          <div class="accelerate-promotion-block__content visible-lg col-lg-7"><p>Right now, UW researchers, faculty and students are leading efforts to find cures, promote health and wellness around the world, and improve our community. Accelerate: The Campaign for UW Medicine allows you to be a part of this exciting future. See what's happening now and make a gift today.</p></div><div class="accelerate-promotion-block__cta"><a class="btn btn-default" href="http://www.acceleratemed.org">Learn More</a></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <!--/ Accelerate promo -->
+
+
 
 </article>
