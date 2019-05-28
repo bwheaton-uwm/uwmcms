@@ -17,48 +17,88 @@
   position: relative;
   overflow: hidden;
 
-  // Background images container
-  .homepage-section-background-lg {
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    img {
-      margin: 0;
+  // Accent colors (apply to additional section elements)
+  .uwm-accent-color__teal {
+    .homepage-section__heading,
+    .homepage-section__subheading,
+    .fa,
+    svg.svg-inline--fa,
+    svg.uwm-icon-svg {
+      color: color('teal');
     }
+  }
 
-    .homepage-section-background-lg__item-1 {
-      transform: skewY(6deg);
-      border-bottom: 5px solid color('white');
+  .uwm-accent-color__orange {
+    .homepage-section__heading,
+    .homepage-section__subheading,
+    .fa,
+    svg.svg-inline--fa,
+    svg.uwm-icon-svg {
+      color: color('orange');
+    }
+  }
+
+  .uwm-accent-color__blue {
+    .homepage-section__heading,
+    .homepage-section__subheading,
+    .fa,
+    svg.svg-inline--fa,
+    svg.uwm-icon-svg {
+      color: color('blue');
+    }
+  }
+
+  // Background images container (xl+)
+  .homepage-section-background-xl {
+    display: none;
+
+    @include media-breakpoint-up('xl') {
+      display: block;
       overflow: hidden;
-      height: 700px;
-      margin-top: -140px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
 
+      .homepage-section-background-xl__item {
+        max-width: 1920px;
 
-      img {
-        transform: skewY(-6deg);
+        img {
+          margin: 0;
+        }
       }
-    }
 
-    .homepage-section-background-lg__item-2 {
-      height: 900px;
-      margin-top: -105px;
-      z-index: 10;
-    }
-
-    .homepage-section-background-lg__item-3 {
-      transform: skewY(-6deg);
-      border-top: 5px solid color('white');
-      overflow: hidden;
-      margin-top: -150px;
-
-      img {
+      .homepage-section-background-xl__item-1 {
         transform: skewY(6deg);
-        position: relative;
-        top: -105px;
+        border-bottom: 5px solid color('white');
+        overflow: hidden;
+        height: 700px;
+        margin-top: -140px;
+
+
+        img {
+          transform: skewY(-6deg);
+        }
+      }
+
+      .homepage-section-background-xl__item-2 {
+        height: 900px;
+        margin-top: -105px;
+        z-index: 10;
+      }
+
+      .homepage-section-background-xl__item-3 {
+        transform: skewY(-6deg);
+        border-top: 5px solid color('white');
+        overflow: hidden;
+        margin-top: -150px;
+
+        img {
+          transform: skewY(6deg);
+          position: relative;
+          top: -105px;
+        }
       }
     }
   }
@@ -71,6 +111,18 @@
       background-size: cover;
       background-position: center;
       min-height: 346px;
+
+      // At xl+ these are not used; see .homepage-section-background-xl
+      @include media-breakpoint-up('xl') {
+        background-image: none !important;
+        display: none;
+      }
+    }
+
+    .container-xl {
+      @include media-breakpoint-up('xl') {
+        position: relative;
+      }
     }
 
     .homepage-section__title {
@@ -80,17 +132,23 @@
 
       @include media-breakpoint-up('xl') {
         background-color: rgba(255, 255, 255, .9);
-        padding-left: 38px;
-        padding-right: 38px;
-        width: 44%
+        padding-left: 34px;
+        padding-right: 34px;
+        width: 46%;
       }
 
-      .block-title {
-        text-transform: uppercase;
+      .uwm-accent-heading__title {
+        margin-bottom: 12px;
+        padding: 0;
         text-shadow: 0 3px 6px rgba(0,0,0,.53);
         color: color('white');
-        letter-spacing: .05em;
-        margin-bottom: 6px;
+
+        &::after {
+          @include media-breakpoint-down('lg') {
+            border-top-color: color('white');
+            border-left-color: color('white');
+          }
+        }
 
         @include media-breakpoint-up('xl') {
           text-shadow: none;
@@ -206,17 +264,30 @@
       padding-bottom: 38px;
       width: 100%;
 
+      @include media-breakpoint-up('xl') {
+        position: absolute;
+        padding-left: 34px;
+        padding-right: 34px;
+        width: 46%;
+      }
+
       .homepage-section__heading {
         margin-top: 12px;
+        padding: 0;
+
+        @include media-breakpoint-down('sm') {
+          font-size: 1.5rem; // 24px
+        }
       }
 
       .homepage-section__subheading {
-        // TODO
-        //@extend .h5;
         margin-top: 30px;
+        padding: 0;
+        font-weight: 600;
       }
 
       .links-with-icon__list {
+        margin-bottom: 0;
         padding-bottom: 38px;
 
         @include media-breakpoint-up('md'){
@@ -246,21 +317,30 @@
         }
 
         a {
-          font-size: inherit;
+          width: 100%;
+          font-size: 0.875rem; // 14px
           padding: 1.125rem 0; // 18px
           border: none;
+          display: flex;
+          align-items: center;
 
           @include media-breakpoint-up('xl') {
             color: theme-color('text');
           }
         }
 
-        .uwmed-icon {
-          padding: 0;
+        svg.uwm-icon-svg {
+          display: block;
+          width: 18px;
+          height: auto;
+          margin-right: 0.25rem; // 4px
         }
 
         .fa-angle-right {
           line-height: 1.018;
+          position: absolute;
+          right: 0;
+          padding-right: 0.625rem; // 10px
 
           @include media-breakpoint-up('xl') {
             display: none;
@@ -272,28 +352,20 @@
         text-transform: uppercase;
         text-decoration: none;
         font-family: $font-family-heading;
-        // TODO?
         font-size: 0.8125rem; // 13px
+        text-align: center;
         transition-property: color;
         transition-duration: 0.7s;
         transition-timing-function: ease-out;
         z-index: 1;
 
-        // TODO
-        //@media(max-width: $screen-sm-max)
-        @include media-breakpoint-down('lg') {
+        @include media-breakpoint-down('md') {
           width: 100%;
         }
 
         @include media-breakpoint-up('xl') {
           padding-left: 18px;
           padding-right: 18px;
-        }
-
-
-        &.btn-default:hover {
-          text-decoration: none;
-          color: color('white');
         }
 
         &::after {
@@ -319,7 +391,6 @@
             }
           }
         }
-
       }
 
     }
@@ -382,19 +453,6 @@
         }
       }
 
-      .homepage-section__background {
-        background-image: none !important;
-        // ?
-        height: 0;
-        min-height: 700px;
-      }
-
-      .homepage-section__content {
-        position: absolute;
-        width: 44%;
-        padding-left: 38px;
-        padding-right: 38px;
-      }
     }
 
     @media(min-width: 1200px) and (max-width: 1370px) {
@@ -444,9 +502,6 @@
     font-size: 16px;
   }
 
-  .links-with-icon__list {
-    margin-bottom: 0;
-  }
 
   .links-with-icon__item {
     position: relative;
@@ -502,12 +557,8 @@
       }
     }
 
-
-
     .fa-angle-right {
-      position: absolute;
-      right: 0;
-      padding-right: 0.625rem; // 10px
+
       color: $uwmed-gray-icon;
 
       @include media-breakpoint-up('xl') {
@@ -595,67 +646,6 @@
           }
         }
       }
-    }
-  }
-
-
-  .accent-blue {
-    .homepage-section__heading,
-    .homepage-section__subheading,
-    .fa,
-    .uwmed-icon {
-      color: color('blue');
-    }
-  }
-
-  .accent-orange {
-    .homepage-section__heading,
-    .homepage-section__subheading,
-    .fa,
-    .uwmed-icon {
-      color: color('orange');
-    }
-  }
-
-  .accent-teal {
-    .homepage-section__heading,
-    .homepage-section__subheading,
-    .fa,
-    .uwmed-icon {
-      color: color('teal');
-    }
-  }
-
-
-  // TODO: btn?
-  .accent-blue .homepage-section__link  {
-    @include angled-edge('inside top', 'lower right', color('blue'), 15, 15);
-    &::before {
-      background-position: left 0;
-    }
-
-    &::after {
-      background-color: color('blue');
-    }
-  }
-  .accent-orange .homepage-section__link {
-    @include angled-edge('inside top', 'lower right', color('orange'), 15, 15);
-    &::before {
-      background-position: left 0;
-    }
-    &::after {
-      background-color: color('orange');
-    }
-
-  }
-  .accent-teal .homepage-section__link {
-    @include angled-edge('inside top', 'lower right', color('teal'), 15, 15);
-    &::before {
-      background-position: left 0;
-    }
-
-    &::after {
-      background-color: color('teal');
     }
   }
 

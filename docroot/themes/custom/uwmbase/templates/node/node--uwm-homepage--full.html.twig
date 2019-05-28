@@ -21,7 +21,15 @@
     TEMP: For development, work with the markup in this template.
   #}
 
-
+  {#
+    TODO:
+    When svgs are set as css background-image, they cannot have color set via
+    css `color` - they must be embedded in the markup. We may want to rework
+    approach.
+    @see src/scss/base/_uwm-svg-icons.scss
+    @see https://www.wrike.com/open.htm?id=357236939
+  #}
+  {% set uwm_icons_path = '/themes/custom/uwmbase/dist/assets/uwm-icons/' %}
 
   <!-- Hero -->
   <div class="hero hero--background-image" style="background-image:url(/sites/default/files/styles/hero/public/grandmother-and-granddaughter-pnw.jpg?itok=9osYqAYx)">
@@ -161,45 +169,42 @@
   <div class="homepage-sections">
 
     <!-- Section background images -->
-    <div class="homepage-section-background-lg visible-lg">
-      <div class="homepage-section-background-lg__item-1 full-width-image">
-        <img class="img-fluid" src="/sites/default/files/styles/hero/public/lucy-hwang.jpg?itok=tBiyKPqd" alt="">
+    <div class="homepage-section-background-xl">
+      <div class="homepage-section-background-xl__item homepage-section-background-xl__item-1">
+        <img class="img-fluid" src="/sites/default/files/styles/hero/public/lucy-hwang.jpg" alt="">
       </div>
 
-      <div class="homepage-section-background-lg__footing"></div>
+      <div class="homepage-section-background-xl__footing"></div>
 
-      <div class="homepage-section-background-lg__item-2 full-width-image">
-        <img class="img-fluid" src="/sites/default/files/styles/hero/public/uwm-research2.jpg?itok=8BwOnwnf" alt="">
+      <div class="homepage-section-background-xl__item homepage-section-background-xl__item-2">
+        <img class="img-fluid" src="/sites/default/files/styles/hero/public/uwm-research2.jpg" alt="">
       </div>
 
-      <div class="homepage-section-background-lg__footing"></div>
+      <div class="homepage-section-background-xl__footing"></div>
 
-      <div class="homepage-section-background-lg__item-3 full-width-image">
-        <img class="img-fluid" src="/sites/default/files/styles/hero/public/wwami-alaska-fairbanks-education.jpg?itok=rqvG34ka" alt="">
+      <div class="homepage-section-background-xl__item homepage-section-background-xl__item-3">
+        <img class="img-fluid" src="/sites/default/files/styles/hero/public/wwami-alaska-fairbanks-education.jpg" alt="">
       </div>
 
-      <div class="homepage-section-background-lg__footing"></div>
+      <div class="homepage-section-background-xl__footing"></div>
     </div>
     <!-- /Section background images -->
 
     <!-- Sections field -->
     <div class="field field--name-field-homepage-sections">
 
-      <section class="homepage-section container-xl fade-in-animation item item-1 first">
+      <!-- Patient Care -->
+      <section class="homepage-section fade-in-animation">
         <i class="hidden u-ips"></i>
 
-        <div class="accent-teal">
+        <div class="homepage-section__background" style="background-image: url('/sites/default/files/styles/hero/public/lucy-hwang.jpg')"></div>
 
-          <div class="homepage-section__background" style="background-image: url('/sites/default/files/styles/hero/public/lucy-hwang.jpg?itok=tBiyKPqd')"></div>
-
-          <div class="homepage-section__title col-md-6 field field--name-field-title">
-            <h2 class="block-title item item-1 first last">
+        <div class="container-xl uwm-accent-color__teal">
+          <div class="homepage-section__title">
+            <h2 class="uwm-accent-heading uwm-accent-heading__title">
               <i class="hidden u-ips"></i>
               Patient Care
             </h2>
-            <span class="uwmed-slant">
-            <span></span>
-          </span>
           </div>
 
           <div class="homepage-section__story-link">
@@ -224,59 +229,63 @@
 
           </div>
 
-          <div class="homepage-section__content col-lg-6">
+          <div class="homepage-section__content">
 
             <div class="field field--name-field-heading">
-              <p class="h2 homepage-section__heading item item-1 first last">
+              <p class="h2 homepage-section__heading">
                 <i class="hidden u-ips"></i>
                 300 clinics across 44 zip codes treating every medical condition under the sun? Yes, please.
               </p>
             </div>
 
             <div class="field field--name-field-subheading">
-              <h3 class="block-title homepage-section__subheading h5">
+              <h3 class="homepage-section__subheading h5">
                 <i class="hidden u-ips"></i>
                 Common Resources
               </h3>
             </div>
 
-
             <ul class="links-with-icon__list list-unstyled">
 
-              <li class="paragraph-with-cta links-with-icon__item">
+              <li class="links-with-icon__item">
                 <div class="wrapper">
-                  <a class="btn btn-default " href="/patient-resources/billing-and-insurance" target="">
-                    <span class="uwmed-icon uwmed-icon__accepting-patients"></span>
-                    Billing and insurance
+                  <a class="btn" href="/patient-resources/billing-and-insurance" target="">
+                    {# <span class="uwm-icon uwm-icon--accepting-patients"></span> #}
+                    {{ source(uwm_icons_path ~ 'icon_accepting_patients.svg', ignore_missing = true) }}
+                    <span>Billing and insurance</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
                 </div>
               </li>
 
-              <li class="paragraph-with-cta links-with-icon__item" id="ppg-6">
+              <li class="links-with-icon__item">
                 <div class="wrapper">
-                  <a class="btn btn-default " href="/patient-resources/ecare" target="">
-                    <span class="uwmed-icon uwmed-icon__heart-waveform"></span>
-                    eCare patient portal
+                  <a class="btn" href="/patient-resources/ecare" target="">
+                    {# <span class="uwm-icon uwm-icon--heart"></span> #}
+                    {{ source(uwm_icons_path ~ 'icon_heart.svg', ignore_missing = true) }}
+                    <span>eCare patient portal</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
                 </div>
               </li>
 
-              <li class="paragraph-with-cta links-with-icon__item">
+              <li class="links-with-icon__item">
                 <div class="wrapper">
-                  <a class="btn btn-default " href="/patient-resources" target="">
-                    <span class="uwmed-icon uwmed-icon__patient-resource"></span>
-                    Patient and family resources
+                  <a class="btn" href="/patient-resources" target="">
+                    {# <span class="uwm-icon uwm-icon--patient-resources"></span> #}
+                    {{ source(uwm_icons_path ~ 'icon_patient_resources.svg', ignore_missing = true) }}
+                    <span>Patient and family resources</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
                 </div>
               </li>
 
-              <li class="paragraph-with-cta links-with-icon__item">
+              <li class="links-with-icon__item">
                 <div class="wrapper">
-                  <a class="btn btn-default " href="/services" target=""><span class="uwmed-icon uwmed-icon__medical-service"></span>
-                    Available medical services
+                  <a class="btn btn-default " href="/services" target="">
+                    {# <span class="uwm-icon uwm-icon--medical-services"></span> #}
+                    {{ source(uwm_icons_path ~ 'icon_medical_services.svg', ignore_missing = true) }}
+                    <span>Available medical services</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
                 </div>
@@ -284,7 +293,7 @@
 
             </ul>
 
-            <a class="homepage-section__link btn btn-default" href="/patient-resources">
+            <a class="homepage-section__link btn btn-cta" href="/patient-resources">
               Patient Care Home
             </a>
 
@@ -293,26 +302,26 @@
         </div>
 
       </section>
+      <!-- /Patient Care -->
 
-      <section class="homepage-section container-xl fade-in-animation item item-2">
+      <!-- Medical Research -->
+      <section class="homepage-section fade-in-animation">
         <i class="hidden u-ips"></i>
 
-        <div class="accent-orange">
-          <div class="homepage-section__background" style="background-image: url('/sites/default/files/styles/hero/public/uwm-research2.jpg?itok=8BwOnwnf')"></div>
+        <div class="homepage-section__background" style="background-image: url('/sites/default/files/styles/hero/public/uwm-research2.jpg')"></div>
 
-          <div class="homepage-section__title col-md-6 field field--name-field-title">
-            <h2 class="block-title item item-1 first last">
+        <div class="container-xl uwm-accent-color__orange">
+
+          <div class="homepage-section__title">
+            <h2 class="uwm-accent-heading uwm-accent-heading__title">
               <i class="hidden u-ips"></i>
               Medical Research
             </h2>
-            <span class="uwmed-slant">
-            <span></span>
-          </span>
           </div>
 
           <div class="homepage-section__story-link"></div>
 
-          <div class="homepage-section__content col-lg-6">
+          <div class="homepage-section__content">
 
             <div class="field field--name-field-heading">
               <p class="h2 homepage-section__heading">
@@ -322,7 +331,7 @@
             </div>
 
             <div class="field field--name-field-subheading">
-              <h3 class="block-title homepage-section__subheading h5">
+              <h3 class="homepage-section__subheading h5">
                 <i class="hidden u-ips"></i>
                 Common Resources
               </h3>
@@ -330,40 +339,45 @@
 
             <ul class="links-with-icon__list list-unstyled">
 
-              <li class="paragraph-with-cta links-with-icon__item">
+              <li class="links-with-icon__item">
                 <div class="wrapper">
-                  <a class="btn btn-default " href="https://newsroom.uw.edu/" target="">
-                    <span class="uwmed-icon uwmed-icon__media"></span>
-                    Latest research in the news
+                  <a class="btn" href="https://newsroom.uw.edu/" target="">
+                    {#<span class="uwm-icon uwm-icon--media"></span>#}
+                    {{ source(uwm_icons_path ~ 'icon_media.svg', ignore_missing = true) }}
+                    <span>Latest research in the news</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
                 </div>
               </li>
 
-              <li class="paragraph-with-cta links-with-icon__item">
+              <li class="links-with-icon__item">
                 <div class="wrapper">
-                  <a class="btn btn-default " href="/school-of-medicine/phd-program" target="">
-                    <span class="uwmed-icon uwmed-icon__medical-research"></span>
-                    Departments
+                  <a class="btn" href="/school-of-medicine/phd-program" target="">
+                    {#<span class="uwm-icon uwm-icon--medical-research"></span>#}
+                    {{ source(uwm_icons_path ~ 'icon_medical_research.svg', ignore_missing = true) }}
+                    <span>Departments</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
                 </div>
               </li>
 
-              <li class="paragraph-with-cta links-with-icon__item">
+              <li class="links-with-icon__item">
                 <div class="wrapper">
-                  <a class="btn btn-default " href="https://www.iths.org/participate/" target="">
-                    <span class="uwmed-icon uwmed-icon__provider-interests"></span>
-                    Participate in a study
+                  <a class="btn" href="https://www.iths.org/participate/" target="">
+                    {#<span class="uwm-icon uwm-icon--provider-interests"></span>#}
+                    {{ source(uwm_icons_path ~ 'icon_provider_interests.svg', ignore_missing = true) }}
+                    <span>Participate in a study</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
                 </div>
               </li>
 
-              <li class="paragraph-with-cta links-with-icon__item" id="ppg-51">
+              <li class="links-with-icon__item">
                 <div class="wrapper">
-                  <a class="btn btn-default " href="/about/awards" target=""><span class="uwmed-icon uwmed-icon__5-star-rating"></span>
-                    Accomplishments and awards
+                  <a class="btn" href="/about/awards" target="">
+                    {#<span class="uwm-icon uwm-icon--5-star-rating"></span>#}
+                    {{ source(uwm_icons_path ~ 'icon_5_star_rating.svg', ignore_missing = true) }}
+                    <span>Accomplishments and awards</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
                 </div>
@@ -371,122 +385,108 @@
 
             </ul>
 
-            <a class="homepage-section__link btn btn-default" href="/research">
+            <a class="homepage-section__link btn btn-cta" href="/research">
               Research Home
             </a>
 
           </div>
+
         </div>
 
       </section>
+      <!-- /Medical Research -->
 
-      <section class="homepage-section container-xl fade-in-animation item item-3 last">
-        <i class="hidden u-ips"></i>                  <div class="accent-blue">
-          <div class="homepage-section__background" style="background-image: url('/sites/default/files/styles/hero/public/wwami-alaska-fairbanks-education.jpg?itok=rqvG34ka')"></div>
+      <!-- UW School of Medicine -->
+      <section class="homepage-section fade-in-animation">
+        <i class="hidden u-ips"></i>
 
+        <div class="homepage-section__background" style="background-image: url('/sites/default/files/styles/hero/public/wwami-alaska-fairbanks-education.jpg')"></div>
 
-          <div class="homepage-section__title col-md-6 field field--name-field-title">
+        <div class="container-xl uwm-accent-color__blue">
 
-
-            <h2 class="block-title item item-1 first last">
-              <i class="hidden u-ips"></i>            UW School of Medicine
+          <div class="homepage-section__title">
+            <h2 class="uwm-accent-heading uwm-accent-heading__title">
+              <i class="hidden u-ips"></i>
+              UW School of Medicine
             </h2>
-
-            <span class="uwmed-slant">
-            <span></span>
-          </span>
           </div>
 
+          <div class="homepage-section__story-link"></div>
 
-
-          <div class="homepage-section__story-link">
-
-          </div>
-
-          <div class="homepage-section__content col-lg-6">
+          <div class="homepage-section__content">
 
             <div class="field field--name-field-heading">
-
-
               <p class="h2 homepage-section__heading">
-                <i class="hidden u-ips"></i>            Best in class: For 20-plus years the UW School of Medicine has ranked as one of the top med schools in the U.S.
+                <i class="hidden u-ips"></i>
+                Best in class: For 20-plus years the UW School of Medicine has ranked as one of the top med schools in the U.S.
               </p>
-
             </div>
-
-
 
             <div class="field field--name-field-subheading">
-
-
-              <h3 class="block-title homepage-section__subheading h5">
-                <i class="hidden u-ips"></i>            Common Resources
+              <h3 class="homepage-section__subheading h5">
+                <i class="hidden u-ips"></i>
+                Common Resources
               </h3>
-
             </div>
-
 
             <ul class="links-with-icon__list list-unstyled">
 
-
-              <li class="paragraph-with-cta links-with-icon__item" id="ppg-61">
-
-
+              <li class="links-with-icon__item">
                 <div class="wrapper">
-                  <a class="btn btn-default " href="/school-of-medicine/admissions" target=""><span class="uwmed-icon uwmed-icon__accepting-patients"></span>
-                    Admissions
-                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span></a>    </div>
-
+                  <a class="btn" href="/school-of-medicine/admissions" target="">
+                    {#<span class="uwm-icon uwm-icon--accepting-patients"></span>#}
+                    {{ source(uwm_icons_path ~ 'icon_accepting_patients.svg', ignore_missing = true) }}
+                    <span>Admissions</span>
+                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+                  </a>
+                </div>
               </li>
 
-
-
-              <li class="paragraph-with-cta links-with-icon__item" id="ppg-66">
-
-
+              <li class="links-with-icon__item">
                 <div class="wrapper">
-                  <a class="btn btn-default " href="/school-of-medicine/about" target=""><span class="uwmed-icon uwmed-icon__medical-specialty"></span>
-                    Departments and programs
-                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span></a>    </div>
-
+                  <a class="btn" href="/school-of-medicine/about" target="">
+                    {#<span class="uwm-icon uwm-icon--medical-specialists"></span>#}
+                    {{ source(uwm_icons_path ~ 'icon_medical_specialists.svg', ignore_missing = true) }}
+                    <span>Departments and programs</span>
+                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+                  </a>
+                </div>
               </li>
 
-
-
-              <li class="paragraph-with-cta links-with-icon__item" id="ppg-71">
-
-
+              <li class="links-with-icon__item">
                 <div class="wrapper">
-                  <a class="btn btn-default " href="/school-of-medicine/md-program/wwami" target=""><span class="uwmed-icon uwmed-icon__languages"></span>
-                    WWAMI regional education
-                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span></a>    </div>
-
+                  <a class="btn btn-default " href="/school-of-medicine/md-program/wwami" target="">
+                    {#<span class="uwm-icon uwm-icon--languages"></span>#}
+                    {{ source(uwm_icons_path ~ 'icon_languages.svg', ignore_missing = true) }}
+                    <span>WWAMI regional education</span>
+                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+                  </a>
+                </div>
               </li>
 
-
-
-              <li class="paragraph-with-cta links-with-icon__item" id="ppg-76">
-
-
+              <li class="links-with-icon__item">
                 <div class="wrapper">
-                  <a class="btn btn-default " href="/school-of-medicine/about/awards" target=""><span class="uwmed-icon uwmed-icon__5-star-rating"></span>
-                    Award-winning programs
-                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span></a>    </div>
-
+                  <a class="btn" href="/school-of-medicine/about/awards" target="">
+                    {#<span class="uwm-icon uwm-icon--5-star-rating"></span>#}
+                    {{ source(uwm_icons_path ~ 'icon_5_star_rating.svg', ignore_missing = true) }}
+                    <span>Award-winning programs</span>
+                    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+                  </a>
+                </div>
               </li>
 
             </ul>
-            <a class="homepage-section__link btn btn-default" href="/school-of-medicine">
+
+            <a class="homepage-section__link btn btn-cta" href="/school-of-medicine">
               School of Medicine Home
             </a>
 
           </div>
 
-
-
         </div>
 
       </section>
+      <!-- /UW School of Medicine -->
 
     </div>
     <!-- /Sections field -->
