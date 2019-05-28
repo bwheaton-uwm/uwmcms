@@ -38,13 +38,13 @@ $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
 
   &.uwm-icon--5-star-rating {
     background-image: url('#{$icon-path}/icon_5_star_rating.svg');
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
   }
   &.uwm-icon--accepting-patients {
     background-image: url('#{$icon-path}/icon_accepting_patients.svg');
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
   }
   // @TODO: remove this when we solve for svgs with color variation
   &.uwm-icon--accepting-patients-teal {
@@ -121,8 +121,8 @@ $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
   }
   &.uwm-icon--languages {
     background-image: url('#{$icon-path}/icon_languages.svg');
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 16px;
   }
   &.uwm-icon--linkedin {
     background-image: url('#{$icon-path}/icon_linkedin.svg');
@@ -130,7 +130,7 @@ $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
   &.uwm-icon--media {
     background-image: url('#{$icon-path}/icon_media.svg');
     width: 24px;
-    height: 24px;
+    height: 16px;
   }
   &.uwm-icon--medical-research {
     background-image: url('#{$icon-path}/icon_medical_research.svg');
@@ -187,8 +187,8 @@ $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
   }
   &.uwm-icon--provider-interests {
     background-image: url('#{$icon-path}/icon_provider_interests.svg');
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 15px;
   }
   &.uwm-icon--provider-interests-alt {
     background-image: url('#{$icon-path}/icon_provider_interests_alt.svg');
