@@ -230,6 +230,11 @@ form-table:
     component:
       components/asset-builds/css/form-table.css: {}
 
+grid-paragraph:
+  css:
+    component:
+      dist/css/grid-paragraph.css: {}
+
 hidden:
   css:
     component:
@@ -305,6 +310,11 @@ responsive-video:
   css:
     component:
       components/asset-builds/css/responsive-video.css: {}
+
+section-paragraph:
+  css:
+    component:
+      dist/css/section-paragraph.css: {}
 
 skip-link:
   css:

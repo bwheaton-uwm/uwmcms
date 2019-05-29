@@ -1,0 +1,23 @@
+uuid: a7be1183-f89b-4218-be88-2311066b61e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_fluid_width
+    - paragraphs.paragraphs_type.uwm_cta_link
+id: paragraph.uwm_cta_link.field_uwm_fluid_width
+field_name: field_uwm_fluid_width
+entity_type: paragraph
+bundle: uwm_cta_link
+label: 'Fluid width'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

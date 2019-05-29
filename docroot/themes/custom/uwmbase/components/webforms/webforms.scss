@@ -19,10 +19,10 @@ form.webform-submission-form {
   input.form-email {
     width: 100%;
     padding: 4px;
-    background: #dcdcdc;
+    background: #efe7e8;
     color: #000;
     opacity: .7;
-    border: 1px solid darken(#dcdcdc, 15%);
+    border: 1px solid #c3c5c8;
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
     font-size: 0.875rem; // 14px
 
@@ -65,26 +65,6 @@ form.webform-submission-form {
           display: none;
         }
       }
-    }
-
-    @include media-breakpoint-up('lg') {
-
-      .form-item-privacy-confirmation {
-        float: right;
-        width: 60%;
-        margin: 0;
-      }
-
-      .form-actions {
-        float: left;
-        width: 40%;
-        margin: 0;
-
-        .form-submit {
-          width: 95%;
-        }
-      }
-
     }
 
   }

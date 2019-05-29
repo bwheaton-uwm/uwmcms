@@ -11,6 +11,7 @@
  * @see uwmbase_preprocess_paragraph__uwm_grid()
  */
 #}
+{{ attach_library('uwmbase/grid-paragraph') }}
 
 {# The template default set classes. #}
 {# Sets Paragraph ID as class. #}
@@ -21,6 +22,7 @@
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
     'paragraph--id--' ~ paragraph.id.value,
     'uwm-grid',
+    use_column_dividers ? 'uwm-grid-column-dividers',
   ]
 %}
 
@@ -42,16 +44,12 @@
   @see https://www.wrike.com/open.htm?id=354924642
 #}
 {% if style_as_cards %}
-  <div class="card-deck">
-    {% for key, item in content.field_uwm_columns if key|first != '#' %}
-
-      {{ item }}
-
-      {% if loop.index % 2 == 0 %}
-        <div class="w-100 d-lg-none my-3"></div>
-      {% endif %}
-
-    {% endfor %}
+  <div {{ attributes.addClass(classes) }}>
+    <div class="card-deck">
+      {% for key, item in content.field_uwm_columns if key|first != '#' %}
+        {{ item }}
+      {% endfor %}
+    </div>
   </div>
 {% else %}
   <div {{ attributes.addClass(classes) }}>
