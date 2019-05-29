@@ -98,6 +98,7 @@ $ui-green: #1DC724;
 $ui-red: #C71D1D;
 
 $border-gray: #d9dbdd;
+$background-gray: #efefef;
 $background-light-gray: #f8f8f8;
 $uwmed-gray: #b5b5b5; // from uwmed theme for home page
 $uwmed-gray-icon: #716F77; // from uwmed theme for home page
@@ -122,6 +123,7 @@ $theme-colors: (
                       "ui-green": $ui-green,
                       "ui-red": $ui-red,
                       "border-gray":  $border-gray,
+                      "background-gray": $background-gray,
                       "background-light-gray": $background-light-gray,
                       "uwmed-gray": $uwmed-gray,
                 );

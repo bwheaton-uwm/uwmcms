@@ -252,7 +252,7 @@
 
     position: relative;
     opacity: .8;
-    background: #efefef;
+    background: theme-color('background-gray');
     width: 100%;
     padding-left: 15px;
     padding-right: 15px;
@@ -382,6 +382,3 @@
     width: 100%;
     z-index: -1;
   }
-  
-  
-  

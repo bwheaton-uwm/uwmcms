@@ -103,7 +103,6 @@ clockwise-wait-times:
     dist/js/clinic-clockwise-wait-times.js: {}
     https://www.clockwisemd.com/hospitals/clockwise_api.js: {type: external, minified: false}
 
-
 provider-card:
   css:
     component:
@@ -121,6 +120,11 @@ clinic-page:
     - uwmbase/clockwise-wait-times
     - uwmbase/nav-tabs
     - uwmbase/anchor-scroll
+
+content-spotlight:
+  css:
+    component:
+      dist/css/content-spotlight.css: {}
 
 header:
   css:
@@ -194,6 +198,7 @@ homepage:
     dist/js/homepage-animation.js: {}
   dependencies:
     - uwmbase/scroll-magic
+    - uwmbase/content-spotlight
 
 # ZEN LIBRARIES - Override, remove, or replace these
 

@@ -395,8 +395,6 @@
 
     }
 
-
-
     @include media-breakpoint-up('xl') {
       opacity: 0;
 
@@ -461,8 +459,6 @@
       }
     }
 
-    // TODO
-    //@media(max-width: $screen-md-max)
     @include media-breakpoint-down('lg'){
       &:nth-child(even) {
         .homepage-section__background {
@@ -508,7 +504,7 @@
     border-bottom: 2px solid color('white');
     padding: 0;
     font-family: $font-family-heading;
-    background-color: #EFEFEF;
+    background-color: theme-color('background-gray');
 
     @include media-breakpoint-up('xl') {
       background: none;
