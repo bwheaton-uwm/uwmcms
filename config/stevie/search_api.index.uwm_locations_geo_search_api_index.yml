@@ -75,15 +75,6 @@ field_settings:
       module:
         - taxonomy
         - taxonomy
-  field_res_building:
-    label: Building
-    datasource_id: 'entity:node'
-    property_path: field_res_building
-    type: text
-    boost: !!float 5
-    dependencies:
-      config:
-        - field.storage.node.field_res_building
   field_res_building_address_line1:
     label: 'Building » Taxonomy term » Address » The first line of the address block.'
     datasource_id: 'entity:node'
@@ -300,8 +291,62 @@ processor_settings:
       field_res_medical_services: taxonomy_term-parent
     weights:
       preprocess_index: -45
+  highlight:
+    highlight: always
+    highlight_partial: false
+    excerpt: false
+    excerpt_length: 256
+    exclude_fields: {  }
+    prefix: '<em class="match">'
+    suffix: '</em>'
+    weights:
+      postprocess_query: 0
   ignore_character:
+    all_fields: false
+    fields:
+      - field_res_affiliates
+      - field_res_affiliates_name
+      - field_res_building_address_line1
+      - field_res_building_locality
+      - field_res_building_name
+      - field_res_building_postal_code
+      - field_res_medical_services
+      - field_res_medical_services_keywords
+      - field_res_medical_services_name
+      - field_res_medical_services_string
+      - field_res_providers_family_name
+      - field_res_providers_title
+      - field_search_best_bets
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
+      - title
+      - uwmsearchwithin
     ignorable: '[''¿¡!?,.:;]'
+    strip:
+      character_sets:
+        Cc: 0
+        Cf: 0
+        Co: 0
+        Mc: 0
+        Me: 0
+        Mn: 0
+        Pc: Pc
+        Pd: Pd
+        Pe: Pe
+        Pf: Pf
+        Pi: Pi
+        Po: Po
+        Ps: Ps
+        Sc: 0
+        Sk: 0
+        Sm: 0
+        So: 0
+        Zl: 0
+        Zp: 0
+        Zs: 0
+    weights:
+      preprocess_index: -10
+      preprocess_query: -10
     ignorable_classes:
       - Pc
       - Pd
@@ -310,16 +355,11 @@ processor_settings:
       - Pi
       - Po
       - Ps
-    all_fields: false
-    weights:
-      preprocess_index: -10
-      preprocess_query: -10
   ignorecase:
     all_fields: false
     fields:
       - field_res_affiliates
       - field_res_affiliates_name
-      - field_res_building
       - field_res_building_address_line1
       - field_res_building_locality
       - field_res_building_name
@@ -344,7 +384,6 @@ processor_settings:
     fields:
       - field_res_affiliates
       - field_res_affiliates_name
-      - field_res_building
       - field_res_building_address_line1
       - field_res_building_locality
       - field_res_building_name
@@ -369,7 +408,6 @@ processor_settings:
     fields:
       - field_res_affiliates
       - field_res_affiliates_name
-      - field_res_building
       - field_res_building_address_line1
       - field_res_building_locality
       - field_res_building_name
@@ -394,7 +432,6 @@ processor_settings:
     fields:
       - field_res_affiliates
       - field_res_affiliates_name
-      - field_res_building
       - field_res_building_address_line1
       - field_res_building_locality
       - field_res_building_name
