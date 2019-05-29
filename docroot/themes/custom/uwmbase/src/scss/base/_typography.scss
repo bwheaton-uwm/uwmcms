@@ -55,33 +55,6 @@ h1.page-title {
   padding-bottom: .8125rem;
 }
 
-.uwm-accent-heading__title {
-  text-transform: uppercase;
-  color: theme-color('text');
-  letter-spacing: .05em;
-  margin-bottom: 6px;
-  font-size: 14px;
-  font-weight: 500;
-  margin-top: 9.5px;
-  padding-bottom: 3px;
-}
-
-.uwm-accent-heading__slant {
-  display: block;
-  overflow: hidden;
-  height: 4px;
-  margin-bottom: 16px;
-
-  span {
-    transform: skew(-25deg,0);
-    display: block;
-    height: 2.78px;
-    width: 140.75px;
-    background-color: color('light-purple');
-    margin: 0 0 15px -100px;
-  }
-}
-
 @each $color, $value in $colors {
   @include text-emphasis-variant(".text-#{$color}", $value);
 }
@@ -89,7 +62,6 @@ h1.page-title {
 /*
  * Accent colors - h1
  */
-
 .uwm-accent-color__purple h1 {
   color: color('purple');
 }
@@ -115,55 +87,115 @@ h1.page-title {
 }
 
 /*
- * Accent colors - heading
+ * Accent heading
  *
  * Include higher-specificity selectors for .uwm-section to allow
  * Section paragraphs to override page-level color.
  */
-.uwm-accent-heading::after {
-  content: '';
-  border-top: 4px solid color('primary');
-  border-right: 4px solid transparent;
-  border-bottom: 4px solid transparent;
-  border-left: 0px solid color('primary');
-  display: block;
-  position: relative;
-  width: 40px;
-  margin-top: 6px;
+.uwm-accent-heading__title {
+  text-transform: uppercase;
+  color: theme-color('text');
+  letter-spacing: .05em;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 9.5px;
+  padding-bottom: 3px;
+
+  &.uwm-accent-heading--centered {
+    text-align: center;
+  }
 }
 
+// @TODO: is this unused?
+.uwm-accent-heading__slant {
+  display: block;
+  overflow: hidden;
+  height: 4px;
+  margin-bottom: 16px;
+
+  span {
+    transform: skew(-25deg,0);
+    display: block;
+    height: 2.78px;
+    width: 140.75px;
+    background-color: color('light-purple');
+    margin: 0 0 15px -100px;
+  }
+}
+
+// Left-aligned, right edge angled
+.uwm-accent-heading::after {
+  content: '';
+  display: block;
+  width: 40px;
+  margin-top: 6px;
+
+  border-top: 4px solid theme-color('primary');
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 0 solid transparent;
+}
+
+// Center-aligned, both edges angled
+.uwm-accent-heading--centered::after {
+  content: '';
+  display: block;
+  width: 40px;
+  margin-top: 6px;
+  margin-left: auto;
+  margin-right: auto;
+
+  border-top: 4px solid theme-color('primary');
+  border-right: 3px solid transparent;
+  border-bottom: 0 solid transparent;
+  border-left: 3px solid transparent;
+}
+
+/*
+ * Accent heading colors
+ *
+ * Include higher-specificity selectors for .uwm-section to allow
+ * Section paragraphs to override page-level color.
+ */
 .uwm-accent-color__light-purple .uwm-accent-heading::after,
-.uwm-section.uwm-accent-color__light-purple .uwm-accent-heading::after {
+.uwm-accent-color__light-purple .uwm-accent-heading--centered::after,
+.uwm-section.uwm-accent-color__light-purple .uwm-accent-heading::after,
+.uwm-section.uwm-accent-color__light-purple .uwm-accent-heading--centered::after {
   border-top-color: color('light-purple');
-  border-left-color: color('light-purple');
 }
 
 .uwm-accent-color__teal .uwm-accent-heading::after,
-.uwm-section.uwm-accent-color__teal .uwm-accent-heading::after {
+.uwm-accent-color__teal .uwm-accent-heading--centered::after,
+.uwm-section.uwm-accent-color__teal .uwm-accent-heading::after,
+.uwm-section.uwm-accent-color__teal .uwm-accent-heading--centered::after {
   border-top-color: color('teal');
-  border-left-color: color('teal');
 }
 
 .uwm-accent-color__blue .uwm-accent-heading::after,
-.uwm-section.uwm-accent-color__blue .uwm-accent-heading::after {
+.uwm-accent-color__blue .uwm-accent-heading--centered::after,
+.uwm-section.uwm-accent-color__blue .uwm-accent-heading::after,
+.uwm-section.uwm-accent-color__blue .uwm-accent-heading--centered::after {
   border-top-color: color('blue');
-  border-left-color: color('blue');
 }
 
 .uwm-accent-color__orange .uwm-accent-heading::after,
-.uwm-section.uwm-accent-color__orange .uwm-accent-heading::after {
+.uwm-accent-color__orange .uwm-accent-heading--centered::after,
+.uwm-section.uwm-accent-color__orange .uwm-accent-heading::after,
+.uwm-section.uwm-accent-color__orange .uwm-accent-heading--centered::after {
   border-top-color: color('orange');
-  border-left-color: color('orange');
 }
 
 .uwm-accent-color__purple .uwm-accent-heading::after,
-.uwm-section.uwm-accent-color__purple .uwm-accent-heading::after {
+.uwm-accent-color__purple .uwm-accent-heading--centered::after,
+.uwm-section.uwm-accent-color__purple .uwm-accent-heading::after,
+.uwm-section.uwm-accent-color__purple .uwm-accent-heading--centered::after {
   border-top-color: color('purple');
-  border-left-color: color('purple');
 }
 
 .uwm-accent-color__yellow .uwm-accent-heading::after,
-.uwm-section.uwm-section.uwm-accent-color__yellow .uwm-accent-heading::after {
+.uwm-accent-color__yellow .uwm-accent-heading--centered::after,
+.uwm-section.uwm-section.uwm-accent-color__yellow .uwm-accent-heading::after,
+.uwm-section.uwm-section.uwm-accent-color__yellow .uwm-accent-heading--centered::after {
   border-top-color: color('yellow');
-  border-left-color: color('yellow');
 }
