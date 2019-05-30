@@ -301,7 +301,7 @@ processor_settings:
     suffix: '</em>'
     weights:
       postprocess_query: 0
-  html_filter:
+  ignore_character:
     all_fields: false
     fields:
       - field_res_affiliates
@@ -320,30 +320,30 @@ processor_settings:
       - field_search_best_bets_keywords
       - field_search_best_bets_name
       - title
-      - title_string
       - uwmsearchwithin
-    title: false
-    alt: false
-    tags:
-      b: 2
-      h1: 5
-      h2: 3
-      h3: 2
-      strong: 2
-    weights:
-      preprocess_index: -15
-      preprocess_query: -15
-  ignore_character:
     ignorable: '[''¿¡!?,.:;]'
-    ignorable_classes:
-      - Pc
-      - Pd
-      - Pe
-      - Pf
-      - Pi
-      - Po
-      - Ps
-    all_fields: false
+    strip:
+      character_sets:
+        Cc: 0
+        Cf: 0
+        Co: 0
+        Mc: 0
+        Me: 0
+        Mn: 0
+        Pc: Pc
+        Pd: Pd
+        Pe: Pe
+        Pf: Pf
+        Pi: Pi
+        Po: Po
+        Ps: Ps
+        Sc: 0
+        Sk: 0
+        Sm: 0
+        So: 0
+        Zl: 0
+        Zp: 0
+        Zs: 0
     weights:
       preprocess_index: -10
       preprocess_query: -10

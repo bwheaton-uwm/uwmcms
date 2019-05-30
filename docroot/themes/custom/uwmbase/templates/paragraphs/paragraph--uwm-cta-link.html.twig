@@ -1,2 +1,13 @@
-<a class="btn btn-cta btn-cta-link" href="{{ content.field_uwm_link.0['#url'] }}">{{ content.field_uwm_link.0["#title"] }}
-<span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span></a>
+{%
+  set link_classes = [
+    'btn',
+    'btn-cta',
+    fluid_width ? 'btn-cta-fluid' : 'btn-cta-link',
+  ]
+%}
+
+<a {{ link_attributes.addClass(link_classes) }} href="{{ content.field_uwm_link.0['#url'] }}">{{ content.field_uwm_link.0["#title"] }}
+{% if not fluid_width %}
+  <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+{% endif %}
+</a>

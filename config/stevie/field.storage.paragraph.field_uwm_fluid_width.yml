@@ -1,0 +1,18 @@
+uuid: 77f7b9eb-0c8b-454a-829f-3764d41ac494
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_uwm_fluid_width
+field_name: field_uwm_fluid_width
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

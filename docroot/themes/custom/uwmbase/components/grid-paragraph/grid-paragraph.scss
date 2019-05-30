@@ -1,0 +1,39 @@
+@import 'init';
+
+.uwm-grid-column-dividers {
+  // Customize first-level paragraphs in a grid that has column dividers.
+  .card-deck > .paragraph,
+  .row > .paragraph {
+    box-shadow: none;
+    margin: 0 0 2rem 0;
+    padding: 0;
+  }
+}
+
+// Add a divider between columns.
+@include media-breakpoint-up('sm') {
+  .uwm-grid-column-dividers {
+    .card-deck > .paragraph,
+    .row > .paragraph {
+      border-left: 1px solid theme-color('border-gray');
+      padding-left: 15px;
+      padding-right: 15px;
+      &:nth-of-type(2n+1) {
+        border-left: none;
+      }
+    }
+  }
+}
+@include media-breakpoint-up('md') {
+  .uwm-grid-column-dividers {
+    .card-deck > .paragraph,
+    .row > .paragraph {
+      &:nth-of-type(2n+1) {
+        border-left: 1px solid theme-color('border-gray');
+      }
+      &:first-of-type {
+        border-left: none;
+      }
+    }
+  }
+}

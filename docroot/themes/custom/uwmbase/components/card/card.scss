@@ -125,3 +125,28 @@
   margin-top: -60px;
   z-index: 100;
 }
+
+.uwm-grid-column-dividers {
+  // Customize cards in a grid that has column dividers.
+  .field--name-field-uwm-card-header {
+    padding: 0;
+    h3 {
+      font-size: 28px;
+      line-height: 34px;
+      font-weight: 500;
+      color: theme-color('text');
+      margin-top: 0;
+      margin-bottom: 1rem;
+      padding: 0;
+    }
+  }
+  .field--name-field-uwm-card-content {
+    padding: 0;
+  }
+  .field--name-field-uwm-card-footer {
+    padding: 0;
+    .btn-cta {
+      margin-bottom: 0;
+    }
+  }
+}

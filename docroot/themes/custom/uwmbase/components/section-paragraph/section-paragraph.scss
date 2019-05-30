@@ -1,0 +1,15 @@
+@import 'init';
+
+// Customize the styling of H2 headers in the Sections 2 field.
+.field--name-field-uwm-sections-2 {
+  h2 {
+    text-transform: uppercase;
+    color: theme-color('text');
+    letter-spacing: .05em;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 9.5px;
+    padding-bottom: 3px;
+  }
+}
