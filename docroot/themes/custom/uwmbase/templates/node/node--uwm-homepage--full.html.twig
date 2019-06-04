@@ -32,33 +32,45 @@
   {% set uwm_icons_path = '/themes/custom/uwmbase/dist/assets/uwm-icons/' %}
 
   <!-- Hero -->
-  <div class="hero hero--background-image" style="background-image:url(/sites/default/files/styles/hero/public/grandmother-and-granddaughter-pnw.jpg?itok=9osYqAYx)">
+  <section class="hero hero--background-image">
+
+    <div class="hero__background-image" style="background-image:url(/sites/stevie/files/grandmother-and-granddaughter-pnw--right.jpg)">
+
+      <!-- Translucent overlay for mobile -->
+      <div class="hero__overlay-mobile"></div>
+
+      <!-- Gradient overlays for sm+ -->
+      <div class="hero__overlay-gradient-vertical"></div>
+      <div class="hero__overlay-gradient-horizontal"></div>
+
+    </div>
 
     <div class="hero__content container-xl">
 
-      <div class="field field--name-field-heading">
-        <p class="h1 hero__heading">
-          <i class="hidden u-ips"></i>
-          There when you need us,<br>
-          peace of mind when you don't.
-        </p>
+      <h1 class="hero__heading">
+        A Higher Degree<br>
+        of Healthcare
+      </h1>
+
+      <div class="hero__ctas">
+
+        <a class="hero__btn-cta" href="/patient-resources/make-an-appointment">Make an appointment</a>
+
+        <a class="hero__btn-cta" href="/services/urgent-care">Find urgent care</a>
+
+        <a class="hero__btn-cta" href="/search/providers">Find a provider</a>
+
+        <a class="hero__btn-cta" href="/search/locations">Find a location</a>
+
       </div>
 
-      <img class="hero__angle-divider" src="/themes/custom/uwmed/dist/assets/hero-angle-lines.png" alt="">
-
-      <div class="field field--name-field-subheading">
-        <p class="h2 hero__subheading">
-          <i class="hidden u-ips"></i>
-          Your home for expert care, anywhere in the Puget Sound region.
-        </p>
-      </div>
     </div>
 
-    <div class="hero__filter visible-lg"></div>
-  </div>
+  </section>
   <!-- /Hero -->
 
   <!-- CTA button links -->
+  <!--
   <div class="links-with-icon">
     <div class="container-xl">
 
@@ -118,6 +130,7 @@
 
     </div>
   </div>
+  -->
   <!-- /CTA button links -->
 
   <div class="row gradient-divider">

@@ -156,6 +156,13 @@ $uwmed-menu-gray: #676868;
   background-color: #F8F8F8;
 }
 
+// Define corresponding mixins because @extend cannot be used conditionally in a
+// media query.
+@mixin uwmed-gradient-angled-dark-background() {
+  background-image: url('#{$uwbase-images-folder}/angled-bg-light.png');
+  background-color: #F8F8F8;
+}
+
 %uwmed-angled-dark-bottom-border {
   border: 0 none;
   // Do not set border color 'transparent' - it overrides border-image in some
@@ -166,7 +173,7 @@ $uwmed-menu-gray: #676868;
   border-image: url('#{$uwbase-images-folder}/angled-bg-dark.png') 10 10;
 }
 
-// Define as mixin also because @extend cannot be used conditionally in a
+// Define corresponding mixins because @extend cannot be used conditionally in a
 // media query.
 @mixin uwmed-angled-dark-bottom-border() {
   border: 0 none;

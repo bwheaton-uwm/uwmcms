@@ -11,6 +11,205 @@
 @import 'init';
 
 /*
+ * Hero
+ */
+$hero-overlay-color: #333D47;
+
+.hero {
+  position: relative;
+
+  //&.hero--background-image {
+  //  background-size: cover;
+  //  background-position: center;
+  //}
+
+  .hero__background-image {
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .hero__overlay-mobile {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba($hero-overlay-color, 0.4);
+  }
+
+  .hero__overlay-gradient-vertical,
+  .hero__overlay-gradient-horizontal {
+    display: none;
+  }
+
+  .hero__content {
+    // Stack content on top of overlay divs.
+    position: relative;
+    z-index: 5;
+  }
+
+  .hero__heading {
+    margin: 0 0 1.25rem 0; // 20px
+    padding: 0;
+    color: color('white');
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.16);
+    text-align: center;
+
+    // TODO needed?
+    @include media-breakpoint-down('xs') {
+      font-size: 2.25rem; // 36px
+    }
+  }
+
+  .hero__btn-cta {
+    display: block;
+    width: 254px;
+    margin-bottom: 0.625rem; // 10px
+    padding: 0.625rem 0; // 10px
+    background-color: color('purple');
+    color: color('white');
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    font-size: 1.25rem; // 20px
+    font-weight: 300;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #50367b;
+      color: color('white');
+      text-decoration: none;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+}
+
+@include media-breakpoint-down('xs') {
+
+  // Apply percentage top padding on image to keep it proportional.
+  // Apply equal top padding on content container:
+  // - header is absolute so it's out of the way
+  // - padding keeps CTA buttons aligned with bottom edge of image
+  .hero {
+    @include uwmed-gradient-angled-dark-background();
+
+    .hero__background-image {
+      width: 100%;
+      padding-top: 63%;
+    }
+
+    .hero__content {
+      padding-top: 63%;
+      padding-bottom: 1.5rem; // 24px
+    }
+
+    .hero__heading {
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin-top: 18%;
+      width: 100%;
+    }
+
+    .hero__ctas {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      // Shift up so that half the first button height overlaps bottom of image
+      margin-top: -1.5rem; // -24px
+    }
+  }
+
+}
+
+@include media-breakpoint-up('sm') {
+
+  .hero {
+
+    .hero__background-image {
+      right: 0;
+      bottom: 0;
+    }
+
+    .hero__overlay-mobile {
+      display: none;
+    }
+
+    .hero__overlay-gradient-vertical,
+    .hero__overlay-gradient-horizontal {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .hero__overlay-gradient-vertical {
+      // Top to bottom:
+      // Stop at 0: 50% opacity
+      // Stop at 100%: transparent
+      background: linear-gradient(180deg, rgba($hero-overlay-color, 0.5) 0%, rgba($hero-overlay-color, 0) 100%);
+    }
+
+    .hero__overlay-gradient-horizontal {
+      // Left to right:
+      // Stop at 0: 50% opacity
+      // Stop at 100%: transparent
+      background: linear-gradient(90deg, rgba($hero-overlay-color, 0.5) 0%, rgba($hero-overlay-color, 0) 100%);
+    }
+
+    .hero__content {
+      padding-top: 2rem; // 32px
+      padding-bottom: 2rem; // 32px
+    }
+
+    .hero__heading {
+      text-align: left;
+    }
+
+  }
+
+}
+
+@include media-breakpoint-up('md') {
+
+  .hero {
+
+    .hero__btn-cta {
+      width: 318px;
+      margin-bottom: 1rem; // 16px
+      padding: 0.875rem 0; // 14px
+      font-size: 1.5rem; // 24px
+    }
+
+  }
+
+}
+
+@include media-breakpoint-up('xl') {
+
+  .hero {
+
+    .hero__content {
+      padding-top: 4rem; // 64px
+      padding-bottom: 4rem; // 64px
+    }
+
+  }
+
+}
+
+/*
  * Sections with full-width background images
  */
 .homepage-sections {
@@ -48,7 +247,7 @@
     }
   }
 
-  // Background images container (xl+)
+  // Section background images container (xl+)
   .homepage-section-background-xl {
     display: none;
 
