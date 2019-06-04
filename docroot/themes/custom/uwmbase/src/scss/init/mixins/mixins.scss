@@ -31,3 +31,34 @@
   padding-left: $grid-gutter-width / 2;
   padding-right: $grid-gutter-width / 2;
 }
+
+// Display a link or button with icon(s) using flexbox.
+// It does not need to have the .btn-cta class.
+// The text must be a child element with class .btn__text (not directly in <a>).
+// - Left icon aligned to text (top)
+// - Right icon (arrow) vertically centered
+// Example markup:
+//   <a class="btn btn-cta">
+//     <span class="btn__text">Read more</span>
+//     <span class="fa fa-angle-right"></span>
+//   </a>
+@mixin link-with-icons-aligned() {
+  display: flex;
+  align-items: center;
+
+  .uwmed-icon {
+    align-self: flex-start;
+    position: relative;
+    top: 2px;
+    margin-right: 0.375rem; // 6px
+  }
+
+  .btn__text {
+    flex-grow: 1;
+  }
+
+  .fa-angle-right {
+    position: static;
+    margin-left: 0.375rem; // 6px
+  }
+}

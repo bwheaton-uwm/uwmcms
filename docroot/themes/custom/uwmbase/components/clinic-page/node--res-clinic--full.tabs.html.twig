@@ -40,8 +40,8 @@
 
     </li>
 
-
-    <li class="nav-item">
+    {% if content.field_res_providers|render|trim is not empty %}
+    <li class="nav-item {{ hide_providers_css_class }}">
       <a class="nav-item nav-link" id="providers-tab-tab" data-toggle="tab"
          href="#providers-tab" role="tab" aria-controls="providers-tab"
          aria-selected="false"
@@ -51,6 +51,7 @@
         {{ 'Care Providers'|t }}
       </a>
     </li>
+    {% endif %}
 
 
   </ul>
@@ -86,6 +87,7 @@
 
   </section>
 
+  {% if content.field_res_providers|render|trim is not empty %}
   <section class="tab-pane fade {{ hide_providers_css_class }}"
            id="providers-tab" role="tabpanel"
            aria-labelledby="providers-tab-tab">
@@ -95,5 +97,5 @@
     {% include directory ~ "/components/clinic-page/node--res-clinic--full.tabs-providers.html.twig" %}
 
   </section>
-
+  {% endif %}
 </div>

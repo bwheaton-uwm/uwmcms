@@ -1,3 +1,5 @@
+{% if content.field_res_providers|render|trim is not empty %}
+
 <div class="container-xl">
   <h3 class="uwm-accent-heading uwm-accent-heading__title">{{ "Care Providers"|t }}</h3>
 
@@ -5,3 +7,4 @@
     {{ content.field_res_providers }}
   </div>
 </div>
+{% endif %}

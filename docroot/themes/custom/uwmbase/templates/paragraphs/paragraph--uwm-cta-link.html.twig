@@ -1,3 +1,9 @@
+{#
+/**
+ * @file
+ * Theme override for a CTA Link paragraph.
+ */
+#}
 {%
   set link_classes = [
     'btn',
@@ -6,8 +12,9 @@
   ]
 %}
 
-<a {{ link_attributes.addClass(link_classes) }} href="{{ content.field_uwm_link.0['#url'] }}">{{ content.field_uwm_link.0["#title"] }}
-{% if not fluid_width %}
-  <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
-{% endif %}
+<a {{ link_attributes.addClass(link_classes) }} href="{{ content.field_uwm_link.0['#url'] }}">
+  <span class="btn__text">{{ content.field_uwm_link.0["#title"] }}</span>
+  {% if not fluid_width %}
+    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+  {% endif %}
 </a>

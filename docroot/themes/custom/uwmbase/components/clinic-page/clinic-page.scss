@@ -76,7 +76,6 @@
 
       .clinic-page__note {
         p {
-          font-size: 0.875rem; // 14px
           font-weight: 300;
 
           &:last-child {
@@ -232,6 +231,7 @@
 
   .clinic-page__overview {
     background-color: theme-color('background-light-gray');
+    padding-bottom: 2em;
 
     .clinic-page__overview-header {
       margin-top: 0;
@@ -347,7 +347,6 @@
           padding-bottom: 0.625rem; // 10px
           margin-bottom: 1rem;
           box-shadow: 4px 2px 4px #dcdcdc;
-          font-size: 0.875rem; // 14px
 
           .clinic-page__hours-urgent {
             margin-top: 0.625rem; // 10px
@@ -371,7 +370,7 @@
               .clinic-page__hours-header {
                 flex-shrink: 0;
                 margin: 0 0.375rem 0 0; // 6px
-                font-size: 1rem;
+                font-size: 1rem; // 16px
                 line-height: inherit;
                 text-transform: uppercase;
 
@@ -425,6 +424,10 @@
             }
           }
 
+          .clinic-page__hours-details {
+            font-size: 0.875rem; // 14px
+          }
+
           .clinic-page__note-urgent-close {
             margin-top: 0.625rem; // 10px
           }
@@ -451,7 +454,6 @@
         .clinic-page__contact {
           order: 6;
           @include container-padding;
-          font-size: 0.875rem; // 14px
         }
 
       }
