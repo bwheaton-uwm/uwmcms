@@ -79,6 +79,10 @@ $hero-overlay-color: #333D47;
     text-decoration: none;
     transition: background-color 0.3s ease-in-out;
 
+    // Note: :active is known not to apply to iOS Safari and Chrome browsers.
+    // JavaScript workarounds e.g. using touch events are suggested but seem
+    // buggy/unstable.
+    // @see https://stackoverflow.com/questions/3885018/active-pseudo-class-doesnt-work-in-mobile-safari
     &:hover,
     &:active {
       background-color: color('light-purple');
