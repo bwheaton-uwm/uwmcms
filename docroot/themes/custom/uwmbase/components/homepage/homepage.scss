@@ -743,161 +743,161 @@ $hero-overlay-color: #333D47;
 
 ///////////////////////////////////////////////////////////////////////////////
 // uwmed - _homepage.scss
-
-.page-node-type-homepage {
-  .main-container {
-    padding-top: 0;
-  }
-
-  .uwmed-icon:before {
-    font-size: 16px;
-  }
-
-
-  .links-with-icon__item {
-    position: relative;
-    border-bottom: 2px solid color('white');
-    padding: 0;
-    font-family: $font-family-heading;
-    background-color: theme-color('background-gray');
-
-    @include media-breakpoint-up('xl') {
-      background: none;
-    }
-
-    .uwmed-icon {
-      padding-left: 0.75rem;
-      color: $uwmed-purple-icon;
-      background-image: none !important;
-      transition-property: color;
-      transition-duration: 0.7s;
-
-      @include media-breakpoint-up('xl') {
-        padding-left: 0.75rem;
-        padding-right: 0.375rem; // 6px
-        color: color('white');
-      }
-    }
-
-    a {
-      text-decoration: none;
-      font-size: 16px;
-      width: 100%;
-      text-align: left;
-      background: none;
-      border: none;
-      transition-property: color;
-      transition-duration: 0.7s;
-
-      @include media-breakpoint-up('xl') {
-        color: color('white');
-        border: 1px solid rgba(255, 255, 255, .5);
-
-        @include angled-edge('inside top', 'lower right', rgba(255, 255, 255, .23), 15, 15);
-        &::before {
-          transition-property: opacity;
-          transition-duration: 0.7s;
-          background-position: left 0;
-        }
-
-        &:hover {
-          &::before {
-            opacity: 0;
-          }
-        }
-      }
-    }
-
-    .fa-angle-right {
-
-      color: $uwmed-gray-icon;
-
-      @include media-breakpoint-up('xl') {
-        color: color('white');
-        position: static;
-        padding-right: 0;
-        padding-left: 0.625rem; // 10px
-        transition-property: color;
-        transition-duration: 0.7s;
-      }
-    }
-  }
-
-  .links-with-icon {
-    @include media-breakpoint-up('xl') {
-      margin-top: -67px;
-      //display: flex;
-      //justify-content: center;
-      //align-items: flex-end;
-    }
-
-    .links-with-icon__list {
-      @include media-breakpoint-up('xl') {
-        margin-bottom: 1.125rem; // 18px
-
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-      }
-
-    }
-
-    .links-with-icon__item {
-      @include media-breakpoint-up('xl') {
-        padding: 0.625rem 0; // 10px
-        border: none;
-        margin-right: 0.75rem;
-
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-
-      .btn-default {
-
-        @include media-breakpoint-up('xl') {
-          z-index: 1;
-
-          &:hover {
-            color: theme-color('text');
-
-            .uwmed-icon {
-              color: $uwmed-purple-icon;
-            }
-
-            .fa-angle-right {
-              color: theme-color('text');
-            }
-          }
-
-          &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, .7);
-            transform: scaleX(0);
-            transform-origin: 0 50%;
-            transition-property: transform;
-            transition-duration: 0.7s;
-            transition-timing-function: ease-out;
-            z-index: -1;
-          }
-
-          &:hover {
-            &::after {
-              transform: scaleX(1);
-
-              @media(hover: none) {
-                transition-duration: 0s;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-}
+//
+//.page-node-type-homepage {
+//  .main-container {
+//    padding-top: 0;
+//  }
+//
+//  .uwmed-icon:before {
+//    font-size: 16px;
+//  }
+//
+//
+//  .links-with-icon__item {
+//    position: relative;
+//    border-bottom: 2px solid color('white');
+//    padding: 0;
+//    font-family: $font-family-heading;
+//    background-color: theme-color('background-gray');
+//
+//    @include media-breakpoint-up('xl') {
+//      background: none;
+//    }
+//
+//    .uwmed-icon {
+//      padding-left: 0.75rem;
+//      color: $uwmed-purple-icon;
+//      background-image: none !important;
+//      transition-property: color;
+//      transition-duration: 0.7s;
+//
+//      @include media-breakpoint-up('xl') {
+//        padding-left: 0.75rem;
+//        padding-right: 0.375rem; // 6px
+//        color: color('white');
+//      }
+//    }
+//
+//    a {
+//      text-decoration: none;
+//      font-size: 16px;
+//      width: 100%;
+//      text-align: left;
+//      background: none;
+//      border: none;
+//      transition-property: color;
+//      transition-duration: 0.7s;
+//
+//      @include media-breakpoint-up('xl') {
+//        color: color('white');
+//        border: 1px solid rgba(255, 255, 255, .5);
+//
+//        @include angled-edge('inside top', 'lower right', rgba(255, 255, 255, .23), 15, 15);
+//        &::before {
+//          transition-property: opacity;
+//          transition-duration: 0.7s;
+//          background-position: left 0;
+//        }
+//
+//        &:hover {
+//          &::before {
+//            opacity: 0;
+//          }
+//        }
+//      }
+//    }
+//
+//    .fa-angle-right {
+//
+//      color: $uwmed-gray-icon;
+//
+//      @include media-breakpoint-up('xl') {
+//        color: color('white');
+//        position: static;
+//        padding-right: 0;
+//        padding-left: 0.625rem; // 10px
+//        transition-property: color;
+//        transition-duration: 0.7s;
+//      }
+//    }
+//  }
+//
+//  .links-with-icon {
+//    @include media-breakpoint-up('xl') {
+//      margin-top: -67px;
+//      //display: flex;
+//      //justify-content: center;
+//      //align-items: flex-end;
+//    }
+//
+//    .links-with-icon__list {
+//      @include media-breakpoint-up('xl') {
+//        margin-bottom: 1.125rem; // 18px
+//
+//        display: flex;
+//        justify-content: space-between;
+//        width: 100%;
+//      }
+//
+//    }
+//
+//    .links-with-icon__item {
+//      @include media-breakpoint-up('xl') {
+//        padding: 0.625rem 0; // 10px
+//        border: none;
+//        margin-right: 0.75rem;
+//
+//        &:last-child {
+//          margin-right: 0;
+//        }
+//      }
+//
+//      .btn-default {
+//
+//        @include media-breakpoint-up('xl') {
+//          z-index: 1;
+//
+//          &:hover {
+//            color: theme-color('text');
+//
+//            .uwmed-icon {
+//              color: $uwmed-purple-icon;
+//            }
+//
+//            .fa-angle-right {
+//              color: theme-color('text');
+//            }
+//          }
+//
+//          &::after {
+//            content: "";
+//            position: absolute;
+//            top: 0;
+//            left: 0;
+//            right: 0;
+//            bottom: 0;
+//            background: rgba(255, 255, 255, .7);
+//            transform: scaleX(0);
+//            transform-origin: 0 50%;
+//            transition-property: transform;
+//            transition-duration: 0.7s;
+//            transition-timing-function: ease-out;
+//            z-index: -1;
+//          }
+//
+//          &:hover {
+//            &::after {
+//              transform: scaleX(1);
+//
+//              @media(hover: none) {
+//                transition-duration: 0s;
+//              }
+//            }
+//          }
+//        }
+//      }
+//    }
+//  }
+//
+//}
