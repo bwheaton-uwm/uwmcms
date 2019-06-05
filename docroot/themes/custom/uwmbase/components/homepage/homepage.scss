@@ -79,8 +79,9 @@ $hero-overlay-color: #333D47;
     text-decoration: none;
     transition: background-color 0.3s ease-in-out;
 
-    &:hover {
-      background-color: #50367b;
+    &:hover,
+    &:active {
+      background-color: color('light-purple');
       color: color('white');
       text-decoration: none;
     }
