@@ -378,10 +378,12 @@
             <i class="fa fa-angle-right" aria-hidden="true"></i>
           </div>
 
-          <div class="clinic-page__link clinic-page__link-providers">
+          {% if content.field_res_providers|render|trim is not empty %}
+          <div class="clinic-page__link clinic-page__link-providers {{ hide_providers_css_class }}">
             <a href="#providers-tab-tab---">{{ "Care Providers"|t }}</a>
             <i class="fa fa-angle-right" aria-hidden="true"></i>
           </div>
+          {% endif %}
 
           <div class="clinic-page__link clinic-page__link-appointment">
             <a
@@ -391,7 +393,7 @@
 
           <div class="clinic-page__link clinic-page__link-overview">
             <a
-              href="#main-tab-tab---">{{ is_hospital ? "Hospital Overview"|t : "Clinic Overview"|t }}</a>
+              href="#main-tab-tab---clinic-overview-jump">{{ is_hospital ? "Hospital Overview"|t : "Clinic Overview"|t }}</a>
             <i class="fa fa-angle-right" aria-hidden="true"></i>
           </div>
 

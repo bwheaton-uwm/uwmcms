@@ -11,10 +11,6 @@ form.webform-submission-form {
     margin: 1rem 0;
   }
 
-  .form-type-webform-markup {
-    font-size: 0.875rem; // 14px
-  }
-
   input.form-text,
   input.form-email {
     width: 100%;
@@ -54,7 +50,7 @@ form.webform-submission-form {
     .form-item-privacy-confirmation {
       display: block;
       margin: 0;
-      font-size: 0.625rem; // 10px
+      font-size: 0.875rem; // 14px
       font-style: italic;
       font-weight: 300;
 

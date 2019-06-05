@@ -9,7 +9,11 @@
         {% block content %}
             {% spaceless %}
                 <a class="btn btn-default {{ link_classes }}" href="{{ url|render }}" target="{{ link_target }}">
-                {{ content }}
+                    {#
+                      @see field--paragraph--field-uwm-icon.html.twig
+                      @see field--paragraph--field-uwm-link--uwm-link-with-icon.html.twig
+                    #}
+                    {{ content }}
                 </a>
             {% endspaceless %}
         {% endblock content %}

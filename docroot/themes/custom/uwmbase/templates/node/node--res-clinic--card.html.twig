@@ -76,14 +76,15 @@
           @see taxonomy-term--buildings--building-address.html.twig
           @see address-plain--buildings.html.twig
           @TODO: improve this - bypass rendering term
-
-          Since clinic pages are still in UWMed theme, handling for the
-          '#directions-tab' hash is in custom JavaScript there.
-          @see /themes/custom/uwmed/src/js/node--uwm-clinic.js
         #}
         {% if content.field_res_building.0|render|striptags|trim is not empty %}
           {% if not url_not_uwmedicine_org %}
-            <a href="{{ url }}#directions-tab" class="clinic-card__street-address-link">{{ content.field_res_building.0 }}</a>
+            {#
+              Use hash to activate and scroll to the Directions tab.
+              @see components/clinic-page/node--res-clinic--full.tabs.html.twig
+              @see components/anchor-scroll/anchor-scroll.js
+            #}
+            <a href="{{ url }}#directions-tab-tab---" class="clinic-card__street-address-link">{{ content.field_res_building.0 }}</a>
           {% else %}
             {{ content.field_res_building.0 }}
           {% endif %}

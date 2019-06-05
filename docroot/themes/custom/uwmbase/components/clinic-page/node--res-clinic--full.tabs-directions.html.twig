@@ -1,5 +1,5 @@
 {% set map_api_key = 'AIzaSyC8H18N4yUJDtUDaR9eMpXiqndLwWfd_hQ' %}
-{% set plain_title = label|render|striptags|trim %}
+{% set plain_title = node.label() %}
 {#
     This is the Building term, rendered in the "Building: Address only"
     view mode, to print its address field only. The address has been
