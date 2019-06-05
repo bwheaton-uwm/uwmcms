@@ -309,7 +309,7 @@ $hero-overlay-color: #333D47;
 
     .homepage-section__background {
       background-size: cover;
-      background-position: center;
+      background-position: top center;
       min-height: 346px;
 
       // At xl+ these are not used; see .homepage-section-background-xl
