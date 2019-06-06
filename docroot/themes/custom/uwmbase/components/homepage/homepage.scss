@@ -605,7 +605,11 @@ $hero-overlay-color: #333D47;
       }
 
       &.animation-applied {
-        transform: translate3d(0, 0, 0);
+        // Note: previously this was `translate3d(0, 0, 0)` to reset position.
+        // This must use `none` so the element does not create a new stacking
+        // context. If the section has a modal video, it must be able to stack
+        // in same context as .modal-backdrop, which is directly under the body.
+        transform: none;
         opacity: 1;
       }
 

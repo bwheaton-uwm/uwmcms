@@ -198,6 +198,10 @@ homepage:
     dist/js/homepage-animation.js: {}
   dependencies:
     - uwmbase/scroll-magic
+    - uwmbase/modal-video
+    # Temporary - remove when homepage is built with components, which should
+    # pull in this dependency as needed.
+    - video_embed_field/responsive-video
     - uwmbase/content-spotlight
 
 # ZEN LIBRARIES - Override, remove, or replace these

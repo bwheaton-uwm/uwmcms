@@ -221,7 +221,14 @@
           </div>
 
           <div class="homepage-section__story-link">
-            <div class="story-play-button cboxElement" id="patientCarePlayButton">
+
+            <!-- This should probably use the Modal paragraph type. For now -
+                 @see paragraph--uwm-modal--uwm-featured-story.html.twig -->
+
+            <!-- Modal trigger element -->
+            <!-- TODO: consolidate button markup with uwm-modal-video -->
+            <!-- TODO: update the target ID to use paragraph entity ID -->
+            <div class="story-play-button" data-toggle="modal" data-target="#modal-section-1">
               <span class="story-play-button__text">A day in the life: Lucy Hwang, M.D.</span>
 
               <span class="story-play-button__icons fa-stack fa-2x">
@@ -233,12 +240,37 @@
               </span>
             </div>
 
-            <div style="display: none;">
-              <div id="patientCareVideo">
-                <video id="patientCareVideoPlayer" style="max-width: 100%;" controls="" preload="metadata" crossorigin="anonymous">
-                  <source src="https://lyeqby-md.storage.googleapis.com/UWMC_-_Marketing_VMS/682/763/Dr._Hwang_final_cut_1080p.mp4" type="video/mp4">
-                  <track label="English" kind="captions" srclang="en" src="https://lyeqby-md.storage.googleapis.com/UWMC_-_Marketing_VMS/682/763/Dr.%20Hwang%20final%20cut.vtt" default="">
-                </video>
+            <!-- Modal itself -->
+            <div class="uwm-modal-video">
+              <div class="modal" id="modal-section-1" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        {#
+                        <div id="patientCareVideo">
+                          <video id="patientCareVideoPlayer" style="max-width: 100%;" controls="" preload="metadata" crossorigin="anonymous">
+                            <source src="https://lyeqby-md.storage.googleapis.com/UWMC_-_Marketing_VMS/682/763/Dr._Hwang_final_cut_1080p.mp4" type="video/mp4">
+                            <track label="English" kind="captions" srclang="en" src="https://lyeqby-md.storage.googleapis.com/UWMC_-_Marketing_VMS/682/763/Dr.%20Hwang%20final%20cut.vtt" default="">
+                          </video>
+                        </div>
+                        #}
+
+                      <div class="video-embed-field-provider-youtube video-embed-field-responsive-video">
+                        <iframe width="854" height="480" src="https://www.youtube.com/embed/m2dt3yYsafo?autoplay=0&start=0&rel=0&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
               </div>
             </div>
 

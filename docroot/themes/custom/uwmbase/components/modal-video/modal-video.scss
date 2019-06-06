@@ -1,74 +1,26 @@
+/**
+ * Modal video
+ *
+ * Library: uwmbase/modal-video
+ *
+ * @see paragraph--uwm-modal--uwm-featured-story.html.twig
+ */
+
 @import 'init';
 @import '~bootstrap/scss/modal';
 
-@include media-breakpoint-up(lg) {
-  .uwm-modal-video {
-    position: relative;
-    margin-top: -200px;
-    z-index: 1050;
-    float: right;
-  }
-  .uwm-modal-video .fa-play {
-    padding-left: 6px;
-    color: rgba(255, 255, 255, 0.9);
-  }
-  
-  .uwm-modal-video .fa-circle {
-    color: rgba(255, 255, 255, 0.9);
-  }
-}
 
-@include media-breakpoint-only(md) {
-  .uwm-modal-video .uwm-modal-video__display {
-    max-width: 60%;
-  }
-}
-
-@include media-breakpoint-down(md) {
-  .uwm-modal-video .uwm-modal-video__display {
-    display: flex;
-  }
-
-  .uwm-modal-video .field--name-uwm-text {
-    display: flex;
-    padding-left: 1.4rem;
-  }
-
-  .uwm-modal-video .field--name-uwm-text p {
-    align-self: center;
-    margin-bottom: 0;
-  }
-}
-
-.uwm-modal-video .fa-play {
-  padding-left: 6px;
-}
-
-.uwm-modal-video .modal-dialog {
-  max-width: 80%;
-}
-
-.uwm-modal-video .modal-content {
-  background: transparent;
-  border: none;
-}
-
-.uwm-modal-video .modal-header {
-  border: none;
-  padding: 0 1rem;
-}
-
-.uwm-modal-video .close { 
-  cursor: pointer;
-  font-size: 32px;
-  color: white;
-  margin: 0 0 0 auto;
-  padding: 0;
-}
+/*
+ * Modal video play button and text
+ */
 
 .uwm-modal-video .uwm-modal-video__display {
   text-align: center;
   cursor: pointer;
+}
+
+.uwm-modal-video .fa-play {
+  padding-left: 6px;
 }
 
 .uwm-modal-video .faa-burst.animated {
@@ -91,5 +43,77 @@
   100% {
     transform: scale(1.25);
     opacity: 0;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .uwm-modal-video .uwm-modal-video__display {
+    display: flex;
+  }
+
+  .uwm-modal-video .field--name-uwm-text {
+    display: flex;
+    padding-left: 1.4rem;
+  }
+
+  .uwm-modal-video .field--name-uwm-text p {
+    align-self: center;
+    margin-bottom: 0;
+  }
+}
+
+@include media-breakpoint-only(md) {
+  .uwm-modal-video .uwm-modal-video__display {
+    max-width: 60%;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .uwm-modal-video {
+    .fa-play, .fa-circle {
+      color: rgba(255, 255, 255, 0.9);
+    }
+  }
+}
+
+
+/*
+ * Modal itself
+ */
+.uwm-modal-video .modal-dialog {
+  margin: 2rem auto;
+  max-width: 90%;
+
+  @include media-breakpoint-up('sm') {
+    max-width: 80%;
+  }
+}
+
+.uwm-modal-video .modal-content {
+  background: transparent;
+  border: none;
+}
+
+.uwm-modal-video .modal-header {
+  border: none;
+  padding: 0 1rem;
+}
+
+.uwm-modal-video .close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 32px;
+  color: white;
+  margin: 0 0 0 auto;
+  padding: 0;
+}
+
+@include media-breakpoint-up(lg) {
+  .uwm-modal-video {
+    position: relative;
+    margin-top: -200px;
+    z-index: $zindex-modal;
+    float: right;
   }
 }
