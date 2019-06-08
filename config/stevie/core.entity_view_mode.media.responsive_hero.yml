@@ -1,0 +1,14 @@
+uuid: f5d7e678-be58-4b37-9d24-fa873b41768b
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: ''
+id: media.responsive_hero
+label: 'Responsive Image: Hero'
+targetEntityType: media
+cache: true

@@ -34,7 +34,26 @@
   <!-- Hero -->
   <section class="hero hero--background-image">
 
-    <div class="hero__background-image" style="background-image:url(/sites/stevie/files/2019-06/grandmother-and-granddaughter-pnw_6.7.jpg)">
+    {# RESPONSIVE IMAGE VERSION #}
+    <div class="hero__background-image">
+    {# <div class="hero__background-image" style="background-image:url(/sites/stevie/files/2019-06/grandmother-and-granddaughter-pnw_6.7.jpg)"> #}
+
+      {# RESPONSIVE IMAGE VERSION #}
+      <picture>
+        <!--[if IE 9]><video style="display: none;"><![endif]-->
+        <source srcset="/sites/stevie/files/styles/hero_xxl/public/2019-06/grandmother-and-granddaughter-pnw_6.7.jpg?h=58efd9c7&itok= 1x" media="(min-width: 1920px)" type="image/jpeg">
+        <source srcset="/sites/stevie/files/styles/hero_xl_mid/public/2019-06/grandmother-and-granddaughter-pnw_6.7.jpg?h=58efd9c7&itok= 1x" media="(min-width: 1600px)" type="image/jpeg">
+        <source srcset="/sites/stevie/files/styles/hero_xl/public/2019-06/grandmother-and-granddaughter-pnw_6.7.jpg?h=58efd9c7&itok= 1x" media="(min-width: 1200px)" type="image/jpeg">
+        <source srcset="/sites/stevie/files/styles/hero_lg/public/2019-06/grandmother-and-granddaughter-pnw_6.7.jpg?h=58efd9c7&itok= 1x" media="(min-width: 992px)" type="image/jpeg">
+        <source srcset="/sites/stevie/files/styles/hero_md/public/2019-06/grandmother-and-granddaughter-pnw_6.7.jpg?h=58efd9c7&itok= 1x" media="(min-width: 768px)" type="image/jpeg">
+        <source srcset="/sites/stevie/files/styles/hero_sm/public/2019-06/grandmother-and-granddaughter-pnw_6.7.jpg?h=58efd9c7&itok= 1x" media="(min-width: 576px)" type="image/jpeg">
+        <source srcset="/sites/stevie/files/styles/hero_xs/public/2019-06/grandmother-and-granddaughter-pnw_6.7.jpg?h=58efd9c7&itok= 1x" type="image/jpeg">
+        <!--[if IE 9]></video><![endif]-->
+
+        <img src="/sites/stevie/files/styles/hero_xl/public/2019-06/grandmother-and-granddaughter-pnw_6.7.jpg?h=58efd9c7&itok=" alt="" typeof="foaf:Image" class="img-fluid">
+
+      </picture>
+      {# /RESPONSIVE IMAGE VERSION #}
 
       <!-- Translucent overlay for mobile -->
       <div class="hero__overlay-mobile"></div>

@@ -17,17 +17,30 @@
 .hero {
   position: relative;
 
-  //&.hero--background-image {
-  //  background-size: cover;
-  //  background-position: center;
-  //}
-
   .hero__background-image {
-    background-size: cover;
-    background-position: center;
+    // RESPONSIVE IMAGE VERSION (these unneeded) //
+    //background-size: cover;
+    //background-position: center;
+    // /RESPONSIVE IMAGE VERSION //
     position: absolute;
     left: 0;
     top: 0;
+
+    // RESPONSIVE IMAGE VERSION //
+    // Hide any overflow of the centered image.
+    overflow: hidden;
+
+    img {
+      margin: 0;
+
+      // For mobile, the container height matches image proportions, so
+      // scale the image for better crop area.
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    // /RESPONSIVE IMAGE VERSION //
   }
 
   .hero__overlay-mobile {
@@ -42,12 +55,6 @@
 
   .hero__overlay-gradient-horizontal {
     display: none;
-  }
-
-  .hero__content {
-    // Stack content on top of overlay divs.
-    position: relative;
-    z-index: 5;
   }
 
   .hero__heading {
@@ -139,6 +146,19 @@
     .hero__background-image {
       right: 0;
       bottom: 0;
+
+      // RESPONSIVE IMAGE VERSION //
+      img {
+        // Center within the parent container. The container is fixed height,
+        // so sides of the image may be cut off.
+        width: auto;
+        max-width: none;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      // /RESPONSIVE IMAGE VERSION //
+
     }
 
     .hero__overlay-mobile {
@@ -160,6 +180,9 @@
     }
 
     .hero__content {
+      // Stack content on top of overlay divs.
+      position: relative;
+      z-index: 5;
       padding-top: 2rem; // 32px
       padding-bottom: 2rem; // 32px
     }

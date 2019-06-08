@@ -1,0 +1,17 @@
+uuid: 96a6a9da-f1c9-4807-be2b-f41edb75bbac
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: hero_xxl
+label: 'Hero xxl+'
+effects:
+  621bae0c-bc05-48d8-84c3-ed3ee0ff8f98:
+    uuid: 621bae0c-bc05-48d8-84c3-ed3ee0ff8f98
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 2200
+      height: 580
+      crop_type: focal_point

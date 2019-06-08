@@ -1,0 +1,17 @@
+uuid: 4ce44fa1-98d1-4fce-afd7-1186b35e0eb0
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: hero_lg
+label: 'Hero lg-xl'
+effects:
+  d980819f-443b-44d2-8ba8-10bf6980be70:
+    uuid: d980819f-443b-44d2-8ba8-10bf6980be70
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1200
+      height: 520
+      crop_type: focal_point
