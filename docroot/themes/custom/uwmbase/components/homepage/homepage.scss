@@ -325,9 +325,32 @@
     position: relative;
 
     .homepage-section__background {
-      background-size: cover;
-      background-position: top center;
-      min-height: 346px;
+      overflow: hidden;
+
+      img {
+        display: block;
+        margin: 0;
+      }
+
+      @include media-breakpoint-down('xs') {
+        height: 300px;
+
+        img {
+          max-width: none;
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
+      @include media-breakpoint-up('sm') {
+        height: 346px;
+      }
+
+      @include media-breakpoint-up('lg') {
+        height: 380px;
+      }
 
       // At xl+ these are not used; see .homepage-section-background-xl
       @include media-breakpoint-up('xl') {
@@ -379,7 +402,12 @@
     .homepage-section__story-link {
       position: absolute;
       right: 8px;
-      top: 236px;
+      top: 192px;
+      margin-left: 15px;
+
+      @include media-breakpoint-up('sm') {
+        top: 240px;
+      }
 
       @include media-breakpoint-up('md') {
         right: 50px;
@@ -404,18 +432,12 @@
 
       .story-play-button__icons {
         transition: opacity .15s linear;
-        margin-left: 20px;
+        margin-left: 12px;
+        flex: 0 0 60px;
+        height: 60px;
 
         .story-play-button__circle-outline {
           color: rgba(255, 255, 255, .5);
-        }
-
-        .story-play-button__circle-filled {
-          // Hide filled circle - shown on hover only.
-          opacity: 0;
-          color: rgba(255, 255, 255, .5);
-          width: 58px;
-          height: 58px;
         }
 
         .story-play-button__circle-outline.animated {
@@ -438,6 +460,14 @@
           }
         }
 
+        .story-play-button__circle-filled {
+          // Hide filled circle - shown on hover only.
+          opacity: 0;
+          color: rgba(255, 255, 255, .5);
+          width: 58px;
+          height: 58px;
+        }
+
         // Visually center the play triangle within the circles (the exact
         // center appears off due to shape of triangle)
         .story-play-button__play-triangle {
@@ -445,8 +475,8 @@
           width: 24px;
           height: 27px;
           margin: 0;
-          left: 30px;
-          top: 18px;
+          left: 20px;
+          top: 17px;
         }
 
         // On hover: stop animation and show the filled circle
