@@ -1,0 +1,17 @@
+uuid: d7567fc6-5a1c-4d36-aac6-3953839823d8
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: spotlight_585_329
+label: 'Spotlight lg-xxl (585 x 329)'
+effects:
+  1a054c42-f63e-426e-af87-fab66386174e:
+    uuid: 1a054c42-f63e-426e-af87-fab66386174e
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 585
+      height: 329
+      crop_type: focal_point

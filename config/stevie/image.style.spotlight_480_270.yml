@@ -1,0 +1,17 @@
+uuid: d1234532-a929-4a80-898e-a86c9adbc8e0
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: spotlight_480_270
+label: 'Spotlight md-lg (480 x 270)'
+effects:
+  669da358-059e-4d7c-aafd-a6296d88deee:
+    uuid: 669da358-059e-4d7c-aafd-a6296d88deee
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 270
+      crop_type: focal_point

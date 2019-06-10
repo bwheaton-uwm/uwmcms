@@ -1,0 +1,17 @@
+uuid: 071dc4af-a820-4bab-a429-a849e9a98711
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: spotlight_767_431
+label: 'Spotlight sm-md (767 x 431'
+effects:
+  74a57ef5-bc40-4ad7-ba21-3b7b2e2be532:
+    uuid: 74a57ef5-bc40-4ad7-ba21-3b7b2e2be532
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 767
+      height: 431
+      crop_type: focal_point

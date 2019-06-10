@@ -1,0 +1,17 @@
+uuid: 796e6709-938e-42ce-80cc-1e982d27bad3
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: spotlight_685_385
+label: 'Spotlight xxl+ (685 x 385)'
+effects:
+  f9e6f8aa-9b9c-49df-81b5-afa4a1c3dd07:
+    uuid: f9e6f8aa-9b9c-49df-81b5-afa4a1c3dd07
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 685
+      height: 385
+      crop_type: focal_point

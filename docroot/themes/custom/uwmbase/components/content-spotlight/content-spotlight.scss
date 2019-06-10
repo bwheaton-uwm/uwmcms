@@ -55,19 +55,30 @@
       }
 
       .content-spotlight__image {
-        width: 100%;
-        padding-bottom: 56.25%;
-        background-size: cover;
-        box-shadow: inset 0 0 0 2000px rgba(114, 114, 114, .35);
+        position: relative;
 
-        &:hover {
-          box-shadow: none;
+        img {
+          display: block;
+          margin: 0;
         }
       }
 
+      // Image overlay
+      .content-spotlight__image::after {
+        content: '';
+        background-color: rgba(114, 114, 114, .35);
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      // Hide image overlay on hover anywhere on item
       &:hover {
-        .content-spotlight__image {
-          box-shadow: none;
+        .content-spotlight__image::after {
+          display: none;
         }
       }
 

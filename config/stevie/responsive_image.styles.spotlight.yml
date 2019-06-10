@@ -1,0 +1,42 @@
+uuid: 18fabfa8-c83e-4cd3-bed6-16ef595de27e
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.spotlight_480_270
+    - image.style.spotlight_575_323
+    - image.style.spotlight_585_329
+    - image.style.spotlight_685_385
+    - image.style.spotlight_767_431
+  theme:
+    - uwmbase
+id: spotlight
+label: 'Content Spotlight Image'
+image_style_mappings:
+  -
+    breakpoint_id: uwmbase.bootstrap.xxl
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: spotlight_685_385
+  -
+    breakpoint_id: uwmbase.bootstrap.lg
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: spotlight_585_329
+  -
+    breakpoint_id: uwmbase.bootstrap.md
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: spotlight_480_270
+  -
+    breakpoint_id: uwmbase.bootstrap.sm
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: spotlight_767_431
+  -
+    breakpoint_id: uwmbase.bootstrap.xs
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: spotlight_575_323
+breakpoint_group: uwmbase.bootstrap
+fallback_image_style: spotlight_585_329

@@ -1,0 +1,17 @@
+uuid: a8395359-2247-49c8-8904-97ecd54c9069
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: spotlight_575_323
+label: 'Spotlight xs-sm (575 x 323)'
+effects:
+  fd292064-f150-4ad6-88d2-afbe6cb1a5eb:
+    uuid: fd292064-f150-4ad6-88d2-afbe6cb1a5eb
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 575
+      height: 323
+      crop_type: focal_point
