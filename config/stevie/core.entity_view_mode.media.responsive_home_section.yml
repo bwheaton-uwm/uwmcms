@@ -1,0 +1,14 @@
+uuid: 9f2b1a35-6eee-43be-91a5-1061701c7ee0
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: ''
+id: media.responsive_home_section
+label: 'Responsive: Home Section'
+targetEntityType: media
+cache: true
