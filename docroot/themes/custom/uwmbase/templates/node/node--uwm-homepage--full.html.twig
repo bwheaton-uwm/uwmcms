@@ -13,9 +13,11 @@
 %}
 <article{{ attributes.addClass(classes) }}>
 
-  {{ title_suffix }}
+  {% if content.field_uwm_homepage_markup.0 is not empty %}
 
-  {# {{ content.field_uwm_homepage_markup }} #}
+    {{ content.field_uwm_homepage_markup.0 }}
+
+  {% else %}
 
   {#
     TEMP: For development, work with the markup in this template.
@@ -748,5 +750,7 @@
 
   </section>
   <!--/ Accelerate promo -->
+
+  {% endif %}
 
 </article>
