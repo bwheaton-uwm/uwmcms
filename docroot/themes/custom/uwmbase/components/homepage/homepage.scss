@@ -13,7 +13,6 @@
 /*
  * Hero
  */
-
 .hero {
   position: relative;
 
@@ -239,6 +238,29 @@
     }
   }
 
+}
+
+/*
+ * Alert bar
+ */
+.home-alert {
+  padding: 2rem 0; // 32px
+
+  &.gradient-purple-horizontal {
+    background: $gradient-purple-horizontal;
+    color: color('white');
+  }
+
+  p:last-child,
+  .btn-cta:last-child {
+    margin-bottom: 0;
+  }
+
+  @include media-breakpoint-down('xs') {
+    .home-alert__text {
+      margin-bottom: 1rem;
+    }
+  }
 }
 
 /*
