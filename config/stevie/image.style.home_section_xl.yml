@@ -1,0 +1,17 @@
+uuid: 77f07659-33c9-4239-bde7-e1e1d4816a38
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: home_section_xl
+label: 'Home Section xl-xl_mid'
+effects:
+  b9e718e0-db48-493b-a312-e6085eadd3cc:
+    uuid: b9e718e0-db48-493b-a312-e6085eadd3cc
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1600
+      height: 1090
+      crop_type: focal_point

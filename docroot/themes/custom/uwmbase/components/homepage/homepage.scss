@@ -265,66 +265,17 @@
     }
   }
 
-  // Section background images container (xl+)
-  .homepage-section-background-xl {
-    display: none;
-
-    @include media-breakpoint-up('xl') {
-      display: block;
-      overflow: hidden;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-
-      .homepage-section-background-xl__item {
-        max-width: 1920px;
-
-        img {
-          margin: 0;
-        }
-      }
-
-      .homepage-section-background-xl__item-1 {
-        transform: skewY(6deg);
-        border-bottom: 5px solid color('white');
-        overflow: hidden;
-        height: 700px;
-        margin-top: -140px;
-
-
-        img {
-          transform: skewY(-6deg);
-        }
-      }
-
-      .homepage-section-background-xl__item-2 {
-        height: 900px;
-        margin-top: -105px;
-        z-index: 10;
-      }
-
-      .homepage-section-background-xl__item-3 {
-        transform: skewY(-6deg);
-        border-top: 5px solid color('white');
-        overflow: hidden;
-        margin-top: -150px;
-
-        img {
-          transform: skewY(6deg);
-          position: relative;
-          top: -105px;
-        }
-      }
-    }
+  @include media-breakpoint-up('xxl') {
+    width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   // Individual sections
   .homepage-section {
     position: relative;
 
-    .homepage-section__background {
+    .homepage-section__image {
       overflow: hidden;
 
       img {
@@ -352,11 +303,154 @@
         height: 380px;
       }
 
-      // At xl+ these are not used; see .homepage-section-background-xl
       @include media-breakpoint-up('xl') {
-        background-image: none !important;
-        display: none;
+        display: block;
+        width: 100%;
+        height: auto;
+        max-width: 1920px;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
       }
+    }
+
+    // Apply white angled edge on bottom of images for lg-
+    @include media-breakpoint-down('lg') {
+      &:nth-child(even) {
+        .homepage-section__image {
+          @include angled-edge('inside bottom', 'upper right', #fff, 50);
+          &::after {
+            width: 105%;
+            margin-bottom: -1px;
+          }
+        }
+      }
+
+      &:nth-child(odd) {
+        .homepage-section__image {
+          @include angled-edge('inside bottom', 'upper left', #fff, 50);
+          &::after {
+            width: 105%;
+            margin-bottom: -1px;
+          }
+        }
+
+      }
+    }
+
+    // Apply section-specific background image layouts for xl+
+    @include media-breakpoint-up('xl') {
+
+      &:nth-of-type(1) {
+        // Note for modal video:
+        // This container must not have z-index - it must stack in the same
+        // context as .modal-backdrop, which is directly under the body.
+        height: 560px;
+
+        .homepage-section__image {
+          z-index: 1;
+          transform: skewY(6deg);
+          border-bottom: 5px solid color('white');
+          overflow: hidden;
+          height: 700px;
+          margin-top: -140px;
+
+          img {
+            transform: skewY(-6deg);
+          }
+        }
+
+        .homepage-section__inner {
+          z-index: 1;
+        }
+
+        .homepage-section__title {
+          top: 36px;
+        }
+
+        .homepage-section__content {
+          top: 116px;
+        }
+      }
+
+      &:nth-of-type(2) {
+        height: 795px;
+
+        .homepage-section__image {
+          height: 900px;
+          margin-top: -105px;
+        }
+
+        .homepage-section__title {
+          top: 120px;
+          right: 0;
+          z-index: 2;
+        }
+
+        .homepage-section__content {
+          top: 200px;
+          right: 0;
+          z-index: 2;
+        }
+      }
+
+      &:nth-of-type(3) {
+        height: 570px;
+
+        .homepage-section__image {
+          transform: skewY(-6deg);
+          border-top: 5px solid color('white');
+          margin-top: -150px;
+          bottom: -100px;
+
+          img {
+            transform: skewY(6deg);
+            position: relative;
+            top: -100px;
+          }
+        }
+
+        .homepage-section__title {
+          top: -50px;
+        }
+
+        .homepage-section__content {
+          top: 30px;
+        }
+      }
+
+    }
+
+    // Apply animated fade-in of content overlays at xl+
+    @include media-breakpoint-up('xl') {
+      .homepage-section__inner {
+        opacity: 0;
+      }
+
+      &.fade-in-animation .homepage-section__inner {
+        transition: opacity;
+        transition-duration: 400ms;
+        transition-timing-function: cubic-bezier(0.24, 0, 0.64, 1);
+        transition-delay: 0.05s;
+        transform: translate3d(0, 100px, 0);
+        opacity: 0.0001
+      }
+
+      // This class is applied by JS when page is scrolled to the section.
+      // @see homepage-animation.js
+      &.animation-applied .homepage-section__inner {
+        // Note for modal video:
+        // Previously this was `translate3d(0, 0, 0)` to reset position.
+        // This must use `none` so the element does not create a new stacking
+        // context. If the section has a modal video, it must stack in the same
+        // context as .modal-backdrop, which is directly under the body.
+        transform: none;
+        opacity: 1;
+      }
+
     }
 
     .container-xl {
@@ -632,96 +726,6 @@
         }
       }
 
-    }
-
-    @include media-breakpoint-up('xl') {
-      opacity: 0;
-
-      &.fade-in-animation {
-        transition: opacity;
-        transition-duration: 400ms;
-        transition-timing-function: cubic-bezier(0.24, 0, 0.64, 1);
-        transition-delay: 0.05s;
-        transform: translate3d(0, 100px, 0);
-        opacity: 0.0001
-      }
-
-      &.animation-applied {
-        // Note: previously this was `translate3d(0, 0, 0)` to reset position.
-        // This must use `none` so the element does not create a new stacking
-        // context. If the section has a modal video, it must be able to stack
-        // in same context as .modal-backdrop, which is directly under the body.
-        transform: none;
-        opacity: 1;
-      }
-
-      &:nth-of-type(1) {
-        height: 700px;
-
-        .homepage-section__title {
-          top: 36px;
-        }
-
-        .homepage-section__content {
-          top: 116px;
-        }
-      }
-
-      &:nth-of-type(2) {
-        height: 470px;
-        z-index: 10;
-
-        .homepage-section__title {
-          top: 0px;
-          right: 0;
-        }
-
-        .homepage-section__content {
-          top: 80px;
-          right: 0;
-        }
-      }
-
-      &:nth-of-type(3) {
-        height: 760px;
-
-        .homepage-section__title {
-          top: 160px;
-        }
-
-        .homepage-section__content {
-          top: 240px;
-        }
-      }
-
-    }
-
-    @media(min-width: 1200px) and (max-width: 1370px) {
-      &:nth-of-type(3) {
-        height: 61.25vw;
-      }
-    }
-
-    @include media-breakpoint-down('lg'){
-      &:nth-child(even) {
-        .homepage-section__background {
-          @include angled-edge('inside bottom', 'upper right', #fff, 50);
-          &::after {
-            width: 105%;
-            margin-bottom: -1px;
-          }
-        }
-      }
-      &:nth-child(odd) {
-        .homepage-section__background {
-          @include angled-edge('inside bottom', 'upper left', #fff, 50);
-          &::after {
-            width: 105%;
-            margin-bottom: -1px;
-          }
-        }
-
-      }
     }
 
   }

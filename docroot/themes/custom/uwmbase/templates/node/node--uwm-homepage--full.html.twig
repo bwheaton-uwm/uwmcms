@@ -199,38 +199,19 @@
   <!-- Sections -->
   <div class="homepage-sections">
 
-    <!-- Section background images -->
-    <div class="homepage-section-background-xl">
-      <div class="homepage-section-background-xl__item homepage-section-background-xl__item-1">
-        <img class="img-fluid" src="/sites/default/files/styles/hero/public/lucy-hwang.jpg" alt="">
-      </div>
-
-      <div class="homepage-section-background-xl__footing"></div>
-
-      <div class="homepage-section-background-xl__item homepage-section-background-xl__item-2">
-        <img class="img-fluid" src="/sites/default/files/styles/hero/public/uwm-research2.jpg" alt="">
-      </div>
-
-      <div class="homepage-section-background-xl__footing"></div>
-
-      <div class="homepage-section-background-xl__item homepage-section-background-xl__item-3">
-        <img class="img-fluid" src="/sites/default/files/styles/hero/public/wwami-alaska-fairbanks-education.jpg" alt="">
-      </div>
-
-      <div class="homepage-section-background-xl__footing"></div>
-    </div>
-    <!-- /Section background images -->
-
     <!-- Sections field -->
     <div class="field field--name-field-homepage-sections">
 
       <!-- Patient Care -->
-      <section class="homepage-section fade-in-animation">
+      <section class="homepage-section homepage-section--1 fade-in-animation">
 
-        <div class="homepage-section__background">
+        <div class="homepage-section__image">
 
           <picture>
             <!--[if IE 9]><video style="display: none;"><![endif]-->
+
+            <source srcset="/sites/stevie/files/styles/home_section_xl_mid/public/2019-06/lucy-hwang.jpg 1x" media="(min-width: 1600px)" type="image/jpeg">
+            <source srcset="/sites/stevie/files/styles/home_section_xl/public/2019-06/lucy-hwang.jpg 1x" media="(min-width: 1200px)" type="image/jpeg">
             <source srcset="/sites/stevie/files/styles/home_section_lg/public/2019-06/lucy-hwang.jpg 1x" media="(min-width: 992px)" type="image/jpeg">
             <source srcset="/sites/stevie/files/styles/home_section_md/public/2019-06/lucy-hwang.jpg 1x" media="(min-width: 768px)" type="image/jpeg">
             <source srcset="/sites/stevie/files/styles/home_section_sm/public/2019-06/lucy-hwang.jpg 1x" media="(min-width: 576px)" type="image/jpeg">
@@ -243,7 +224,7 @@
 
         </div>
 
-        <div class="container-xl uwm-accent-color__teal">
+        <div class="homepage-section__inner container-xl uwm-accent-color__teal">
           <div class="homepage-section__title">
             <h2 class="uwm-accent-heading uwm-accent-heading__title">
               <i class="hidden u-ips"></i>
@@ -269,40 +250,6 @@
                 <i class="story-play-button__circle-filled fa-circle fas fa-stack-2x"></i>
                 <i class="story-play-button__play-triangle fa-play fas fa-stack-1x"></i>
               </span>
-            </div>
-
-            <!-- Modal itself -->
-            <div class="uwm-modal-video">
-              <div class="modal" id="modal-section-1" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-
-                    <div class="modal-body">
-
-                        {#
-                        <div id="patientCareVideo">
-                          <video id="patientCareVideoPlayer" style="max-width: 100%;" controls="" preload="metadata" crossorigin="anonymous">
-                            <source src="https://lyeqby-md.storage.googleapis.com/UWMC_-_Marketing_VMS/682/763/Dr._Hwang_final_cut_1080p.mp4" type="video/mp4">
-                            <track label="English" kind="captions" srclang="en" src="https://lyeqby-md.storage.googleapis.com/UWMC_-_Marketing_VMS/682/763/Dr.%20Hwang%20final%20cut.vtt" default="">
-                          </video>
-                        </div>
-                        #}
-
-                      <div class="video-embed-field-provider-youtube video-embed-field-responsive-video">
-                        <iframe width="854" height="480" src="https://www.youtube.com/embed/m2dt3yYsafo?autoplay=0&start=0&rel=0&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
-                      </div>
-
-                    </div>
-
-                  </div>
-                </div>
-              </div>
             </div>
 
           </div>
@@ -379,16 +326,56 @@
 
         </div>
 
+        <!-- Modal itself -->
+        <!-- Note: This is placed directly within the section container to
+             ease z-index/stacking issues. It must stack in the same context
+             as .modal-backdrop, which is directly under the body. -->
+        <div class="uwm-modal-video">
+          <div class="modal" id="modal-section-1" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <div class="modal-body">
+
+                  {#
+                  <div id="patientCareVideo">
+                    <video id="patientCareVideoPlayer" style="max-width: 100%;" controls="" preload="metadata" crossorigin="anonymous">
+                      <source src="https://lyeqby-md.storage.googleapis.com/UWMC_-_Marketing_VMS/682/763/Dr._Hwang_final_cut_1080p.mp4" type="video/mp4">
+                      <track label="English" kind="captions" srclang="en" src="https://lyeqby-md.storage.googleapis.com/UWMC_-_Marketing_VMS/682/763/Dr.%20Hwang%20final%20cut.vtt" default="">
+                    </video>
+                  </div>
+                  #}
+
+                  <div class="video-embed-field-provider-youtube video-embed-field-responsive-video">
+                    <iframe width="854" height="480" src="https://www.youtube.com/embed/m2dt3yYsafo?autoplay=0&start=0&rel=0&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
       </section>
       <!-- /Patient Care -->
 
       <!-- Medical Research -->
-      <section class="homepage-section fade-in-animation">
+      <section class="homepage-section homepage-section--2 fade-in-animation">
 
-        <div class="homepage-section__background">
+        <div class="homepage-section__image">
 
           <picture>
             <!--[if IE 9]><video style="display: none;"><![endif]-->
+
+            <source srcset="/sites/stevie/files/styles/home_section_xl_mid/public/2019-06/uwm-research2.jpg 1x" media="(min-width: 1600px)" type="image/jpeg">
+            <source srcset="/sites/stevie/files/styles/home_section_xl/public/2019-06/uwm-research2.jpg 1x" media="(min-width: 1200px)" type="image/jpeg">
             <source srcset="/sites/stevie/files/styles/home_section_lg/public/2019-06/uwm-research2.jpg 1x" media="(min-width: 992px)" type="image/jpeg">
             <source srcset="/sites/stevie/files/styles/home_section_md/public/2019-06/uwm-research2.jpg 1x" media="(min-width: 768px)" type="image/jpeg">
             <source srcset="/sites/stevie/files/styles/home_section_sm/public/2019-06/uwm-research2.jpg 1x" media="(min-width: 576px)" type="image/jpeg">
@@ -401,7 +388,7 @@
 
         </div>
 
-        <div class="container-xl uwm-accent-color__orange">
+        <div class="homepage-section__inner container-xl uwm-accent-color__orange">
 
           <div class="homepage-section__title">
             <h2 class="uwm-accent-heading uwm-accent-heading__title">
@@ -486,12 +473,14 @@
       <!-- /Medical Research -->
 
       <!-- UW School of Medicine -->
-      <section class="homepage-section fade-in-animation">
+      <section class="homepage-section homepage-section--3 fade-in-animation">
 
-        <div class="homepage-section__background">
+        <div class="homepage-section__image">
 
           <picture>
             <!--[if IE 9]><video style="display: none;"><![endif]-->
+            <source srcset="/sites/stevie/files/styles/home_section_xl_mid/public/2019-06/wwami-alaska-fairbanks-education.jpg 1x" media="(min-width: 1600px)" type="image/jpeg">
+            <source srcset="/sites/stevie/files/styles/home_section_xl/public/2019-06/wwami-alaska-fairbanks-education.jpg 1x" media="(min-width: 1200px)" type="image/jpeg">
             <source srcset="/sites/stevie/files/styles/home_section_lg/public/2019-06/wwami-alaska-fairbanks-education.jpg 1x" media="(min-width: 992px)" type="image/jpeg">
             <source srcset="/sites/stevie/files/styles/home_section_md/public/2019-06/wwami-alaska-fairbanks-education.jpg 1x" media="(min-width: 768px)" type="image/jpeg">
             <source srcset="/sites/stevie/files/styles/home_section_sm/public/2019-06/wwami-alaska-fairbanks-education.jpg 1x" media="(min-width: 576px)" type="image/jpeg">
@@ -504,7 +493,7 @@
 
         </div>
 
-        <div class="container-xl uwm-accent-color__blue">
+        <div class="homepage-section__inner container-xl uwm-accent-color__blue">
 
           <div class="homepage-section__title">
             <h2 class="uwm-accent-heading uwm-accent-heading__title">
