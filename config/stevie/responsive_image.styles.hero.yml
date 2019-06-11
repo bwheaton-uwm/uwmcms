@@ -9,17 +9,11 @@ dependencies:
     - image.style.hero_xl
     - image.style.hero_xl_mid
     - image.style.hero_xs
-    - image.style.hero_xxl
   theme:
     - uwmbase
 id: hero
 label: 'Hero - fixed height'
 image_style_mappings:
-  -
-    breakpoint_id: uwmbase.bootstrap.xxl
-    multiplier: 1x
-    image_mapping_type: image_style
-    image_mapping: hero_xxl
   -
     breakpoint_id: uwmbase.bootstrap.xl_mid
     multiplier: 1x

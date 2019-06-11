@@ -5,7 +5,7 @@ dependencies:
   module:
     - focal_point
 name: hero_xl_mid
-label: 'Hero xl_mid-xxl'
+label: 'Hero xl_mid+'
 effects:
   5d13f305-4857-4f0f-bc12-404d86e67474:
     uuid: 5d13f305-4857-4f0f-bc12-404d86e67474
@@ -13,5 +13,5 @@ effects:
     weight: 1
     data:
       width: 1920
-      height: 580
+      height: 620
       crop_type: focal_point
