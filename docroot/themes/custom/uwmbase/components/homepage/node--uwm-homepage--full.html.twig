@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Theme override to display the Homepage node.
+ *
+ * @see template_preprocess_node()
+ */
+#}
+{%
+  set classes = [
+    'homepage',
+  ]
+%}
+<article{{ attributes.addClass(classes) }}>
+
+  {#
+    Temporary version: all markup is stored in this field on the node.
+    For markup structure/example -
+    @see docs/uwmbase-field_uwm_homepage_markup.html
+  #}
+  {% if content.field_uwm_homepage_markup.0 is not empty %}
+
+    <!-- Node field: field_uwm_homepage_markup -->
+    {{ content.field_uwm_homepage_markup.0 }}
+    <!-- /field_uwm_homepage_markup -->
+
+  {% endif %}
+
+</article>
