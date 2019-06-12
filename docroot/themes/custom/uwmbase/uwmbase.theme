@@ -674,6 +674,49 @@ function uwmbase_preprocess_node(&$variables, $hook) {
 }
 
 /**
+ * Implements hook_preprocess_node__uwm_homepage().
+ */
+function uwmbase_preprocess_node__uwm_homepage(&$variables) {
+
+  // For temporary markup field:
+  // Embed svg icons as markup. They must be in the markup (rather than as a
+  // css background image) to enable setting color via css.
+  // Placeholder markup example:
+  // <span class="uwm-icon-svg-replace">icon_media.svg</span>.
+  if (!empty($variables['content']['field_uwm_homepage_markup'][0])) {
+    $markup = $variables['content']['field_uwm_homepage_markup'][0]['#text'];
+
+    preg_match_all('/<span class="uwm-icon-svg-replace">([^<]+\.svg)<\/span>/', $markup, $matches, PREG_SET_ORDER);
+
+    $svgs_replace = [];
+    $icons_dir = './themes/custom/uwmbase/dist/assets/uwm-icons/';
+
+    foreach ($matches as $match) {
+
+      $placeholder = $match[0];
+      $filename = $match[1];
+
+      if (!array_key_exists($placeholder, $svgs_replace)) {
+
+        $svg = file_get_contents($icons_dir . $filename);
+
+        // Replace if file is successfully read.
+        // (Otherwise, CSS hides the placeholder element.)
+        if (!empty($svg)) {
+          $svgs_replace[$placeholder] = $svg;
+        }
+      }
+
+    }
+
+    $markup = str_replace(array_keys($svgs_replace), array_values($svgs_replace), $markup);
+
+    $variables['content']['field_uwm_homepage_markup'][0]['#text'] = $markup;
+  }
+
+}
+
+/**
  * Implements hook_theme_suggestions_HOOK_alter() for 'taxonomy_term'.
  *
  * Add view mode suggestions.

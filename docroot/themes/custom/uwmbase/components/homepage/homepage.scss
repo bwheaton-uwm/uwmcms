@@ -11,6 +11,19 @@
 @import 'init';
 
 /*
+ * For temporary markup field:
+ * Embed svg icons as markup. They must be in the markup (rather than as a
+ * css background image) to enable setting color via css.
+ * Placeholder markup example:
+ *  <span class="uwm-icon-svg-replace">icon_media.svg</span>
+ *
+ * @see uwmbase_preprocess_node__uwm_homepage()
+ */
+.uwm-icon-svg-replace {
+  display: none !important;
+}
+
+/*
  * Hero
  */
 .hero {

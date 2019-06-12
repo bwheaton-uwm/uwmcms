@@ -13,25 +13,16 @@
 %}
 <article{{ attributes.addClass(classes) }}>
 
+  {#
+    Temporary version: all markup is stored in this field on the node.
+    For markup structure/example -
+    @see docs/node--uwm-homepage--full.html
+  #}
   {% if content.field_uwm_homepage_markup.0 is not empty %}
 
     {{ content.field_uwm_homepage_markup.0 }}
 
   {% else %}
-
-  {#
-    TEMP: For development, work with the markup in this template.
-  #}
-
-  {#
-    TODO:
-    When svgs are set as css background-image, they cannot have color set via
-    css `color` - they must be embedded in the markup. We may want to rework
-    approach.
-    @see src/scss/base/_uwm-svg-icons.scss
-    @see https://www.wrike.com/open.htm?id=357236939
-  #}
-  {% set uwm_icons_path = '/themes/custom/uwmbase/dist/assets/uwm-icons/' %}
 
   <!-- Hero -->
   <section class="hero hero--background-image">
@@ -223,8 +214,7 @@
               <li class="links-with-icon__item">
                 <div class="wrapper">
                   <a class="btn" href="/patient-resources/billing-and-insurance" target="">
-                    {# <span class="uwm-icon uwm-icon--accepting-patients"></span> #}
-                    {{ source(uwm_icons_path ~ 'icon_accepting_patients.svg', ignore_missing = true) }}
+                    <span class="uwm-icon-svg-replace">icon_accepting_patients.svg</span>
                     <span>Billing and insurance</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
@@ -234,8 +224,7 @@
               <li class="links-with-icon__item">
                 <div class="wrapper">
                   <a class="btn" href="/patient-resources/ecare" target="">
-                    {# <span class="uwm-icon uwm-icon--heart"></span> #}
-                    {{ source(uwm_icons_path ~ 'icon_heart.svg', ignore_missing = true) }}
+                    <span class="uwm-icon-svg-replace">icon_heart.svg</span>
                     <span>eCare patient portal</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
@@ -245,8 +234,7 @@
               <li class="links-with-icon__item">
                 <div class="wrapper">
                   <a class="btn" href="/patient-resources" target="">
-                    {# <span class="uwm-icon uwm-icon--patient-resources"></span> #}
-                    {{ source(uwm_icons_path ~ 'icon_patient_resources.svg', ignore_missing = true) }}
+                    <span class="uwm-icon-svg-replace">icon_patient_resources.svg</span>
                     <span>Patient and family resources</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
@@ -256,8 +244,7 @@
               <li class="links-with-icon__item">
                 <div class="wrapper">
                   <a class="btn btn-default " href="/services" target="">
-                    {# <span class="uwm-icon uwm-icon--medical-services"></span> #}
-                    {{ source(uwm_icons_path ~ 'icon_medical_services.svg', ignore_missing = true) }}
+                    <span class="uwm-icon-svg-replace">icon_medical_services.svg</span>
                     <span>Available medical services</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
@@ -366,8 +353,7 @@
               <li class="links-with-icon__item">
                 <div class="wrapper">
                   <a class="btn" href="https://newsroom.uw.edu/" target="">
-                    {#<span class="uwm-icon uwm-icon--media"></span>#}
-                    {{ source(uwm_icons_path ~ 'icon_media.svg', ignore_missing = true) }}
+                    <span class="uwm-icon-svg-replace">icon_media.svg</span>
                     <span>Latest research in the news</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
@@ -377,8 +363,7 @@
               <li class="links-with-icon__item">
                 <div class="wrapper">
                   <a class="btn" href="/school-of-medicine/phd-program" target="">
-                    {#<span class="uwm-icon uwm-icon--medical-research"></span>#}
-                    {{ source(uwm_icons_path ~ 'icon_medical_research.svg', ignore_missing = true) }}
+                    <span class="uwm-icon-svg-replace">icon_medical_research.svg</span>
                     <span>Departments</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
@@ -388,8 +373,7 @@
               <li class="links-with-icon__item">
                 <div class="wrapper">
                   <a class="btn" href="https://www.iths.org/participate/" target="">
-                    {#<span class="uwm-icon uwm-icon--provider-interests"></span>#}
-                    {{ source(uwm_icons_path ~ 'icon_provider_interests.svg', ignore_missing = true) }}
+                    <span class="uwm-icon-svg-replace">icon_provider_interests.svg</span>
                     <span>Participate in a study</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
@@ -399,8 +383,7 @@
               <li class="links-with-icon__item">
                 <div class="wrapper">
                   <a class="btn" href="/about/awards" target="">
-                    {#<span class="uwm-icon uwm-icon--5-star-rating"></span>#}
-                    {{ source(uwm_icons_path ~ 'icon_5_star_rating.svg', ignore_missing = true) }}
+                    <span class="uwm-icon-svg-replace">icon_5_star_rating.svg</span>
                     <span>Accomplishments and awards</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
@@ -471,8 +454,7 @@
               <li class="links-with-icon__item">
                 <div class="wrapper">
                   <a class="btn" href="/school-of-medicine/admissions" target="">
-                    {#<span class="uwm-icon uwm-icon--accepting-patients"></span>#}
-                    {{ source(uwm_icons_path ~ 'icon_accepting_patients.svg', ignore_missing = true) }}
+                    <span class="uwm-icon-svg-replace">icon_accepting_patients.svg</span>
                     <span>Admissions</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
@@ -482,8 +464,7 @@
               <li class="links-with-icon__item">
                 <div class="wrapper">
                   <a class="btn" href="/school-of-medicine/about" target="">
-                    {#<span class="uwm-icon uwm-icon--medical-specialists"></span>#}
-                    {{ source(uwm_icons_path ~ 'icon_medical_specialists.svg', ignore_missing = true) }}
+                    <span class="uwm-icon-svg-replace">icon_medical_specialists.svg</span>
                     <span>Departments and programs</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
@@ -493,8 +474,7 @@
               <li class="links-with-icon__item">
                 <div class="wrapper">
                   <a class="btn btn-default " href="/school-of-medicine/md-program/wwami" target="">
-                    {#<span class="uwm-icon uwm-icon--languages"></span>#}
-                    {{ source(uwm_icons_path ~ 'icon_languages.svg', ignore_missing = true) }}
+                    <span class="uwm-icon-svg-replace">icon_languages.svg</span>
                     <span>WWAMI regional education</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
@@ -504,8 +484,7 @@
               <li class="links-with-icon__item">
                 <div class="wrapper">
                   <a class="btn" href="/school-of-medicine/about/awards" target="">
-                    {#<span class="uwm-icon uwm-icon--5-star-rating"></span>#}
-                    {{ source(uwm_icons_path ~ 'icon_5_star_rating.svg', ignore_missing = true) }}
+                    <span class="uwm-icon-svg-replace">icon_5_star_rating.svg</span>
                     <span>Award-winning programs</span>
                     <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
                   </a>
