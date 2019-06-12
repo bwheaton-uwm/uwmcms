@@ -199,10 +199,11 @@ homepage:
   dependencies:
     - uwmbase/scroll-magic
     - uwmbase/modal-video
-    # Temporary - remove when homepage is built with components, which should
-    # pull in this dependency as needed.
-    - video_embed_field/responsive-video
     - uwmbase/content-spotlight
+    # Temporary dependencies for the markup version - remove when built with
+    # components, which should pull in as needed.
+    - core/picturefill
+    - video_embed_field/responsive-video
 
 # ZEN LIBRARIES - Override, remove, or replace these
 
