@@ -1,0 +1,552 @@
+.hero-section {
+  height: 900px;
+  margin-top: 51px;
+  background-image: url('../images/shutterstock_298128629.jpg');
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.brand {
+  padding-top: 14px;
+}
+
+.navbar {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  padding-right: 50px;
+  padding-left: 50px;
+  background-color: transparent;
+  background-image: -webkit-gradient(linear, left top, right top, from(#32006e), to(#76236c));
+  background-image: linear-gradient(90deg, #32006e, #76236c);
+}
+
+.nav-link {
+  padding-top: 20px;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.nav-link.phone {
+  font-size: 24px;
+}
+
+.nav-link.phone:hover {
+  font-weight: 700;
+}
+
+.nav-link.appointment {
+  padding-top: 23px;
+}
+
+.nav-link.appointment:hover {
+  font-weight: 400;
+}
+
+.hero-div {
+  position: relative;
+  left: 50px;
+  top: 220px;
+  width: 620px;
+}
+
+.hero-header {
+  margin-top: 0px;
+  margin-bottom: 17px;
+  padding-right: 30px;
+  font-family: 'Encode Sans', sans-serif;
+  color: #342466;
+  font-size: 57px;
+  line-height: 57px;
+  font-weight: 300;
+}
+
+.button {
+  width: 250px;
+  margin-top: 15px;
+  padding-bottom: 9px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: hsla(0, 0%, 100%, 0.3);
+  background-color: transparent;
+  background-image: url('../images/yellow.png');
+  background-position: 0px 0px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  font-family: 'Encode Sans', sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  background-color: hsla(0, 0%, 100%, 0.7);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffc700), to(#ffc700)), url('../images/yellow.png');
+  background-image: linear-gradient(180deg, #ffc700, #ffc700), url('../images/yellow.png');
+  background-position: 0px 0px, 0px 0px;
+  background-size: auto, contain;
+  background-repeat: repeat, no-repeat;
+  color: #fff;
+  font-weight: 600;
+}
+
+.button._2 {
+  position: static;
+  border-color: rgba(71, 71, 71, 0.75);
+  color: #474747;
+  text-align: center;
+}
+
+.button._2.relative {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 20px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.appointment-eta-section {
+  display: block;
+  width: 100%;
+  height: 250px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 50px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background-image: url('../images/purplebar.jpg');
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+
+.image {
+  width: 200px;
+}
+
+.h2 {
+  margin-bottom: 20px;
+  font-family: 'Encode Sans', sans-serif;
+  color: #fff;
+  font-size: 35px;
+  font-weight: 400;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.h2._2 {
+  color: #474747;
+  font-size: 30px;
+  line-height: 35px;
+  text-align: center;
+}
+
+.h2.cta {
+  text-align: center;
+}
+
+.paragraph {
+  margin-bottom: 11px;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.paragraph._2 {
+  margin-bottom: 3px;
+  color: #474747;
+  text-align: center;
+}
+
+.content-section {
+  display: block;
+  padding: 100px 50px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  background-image: url('../images/shutterstock_264160976.jpg');
+  background-position: 50% 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.content-block-div {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 350px;
+  margin: 29px auto;
+  padding: 5px 20px 20px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(hsla(0, 0%, 100%, 0.8)), to(hsla(0, 0%, 100%, 0.8)));
+  background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0.8));
+  text-align: center;
+}
+
+.copyright-footer {
+  padding: 20px;
+  background-color: #1a1919;
+  background-image: -webkit-gradient(linear, left top, right top, from(#32006e), to(#76236c));
+  background-image: linear-gradient(90deg, #32006e, #76236c);
+}
+
+.footer {
+  margin-bottom: 0px;
+  font-family: 'Open Sans', sans-serif;
+  color: hsla(0, 0%, 100%, 0.65);
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.cta_div {
+  display: block;
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.columns {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.column-4 {
+  position: static;
+}
+
+.column-8 {
+  position: static;
+}
+
+.column-9 {
+  position: static;
+}
+
+.section-2 {
+  padding: 100px 50px;
+  background-image: url('../images/shutterstock_1052880704.jpg');
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+html.w-mod-js *[data-ix="fade-in-bottom-scroll-in"] {
+  opacity: 0;
+  -webkit-transform: translate(0px, 50px);
+  -ms-transform: translate(0px, 50px);
+  transform: translate(0px, 50px);
+}
+
+@media (max-width: 991px) {
+  .hero-section {
+    height: 700px;
+    margin-top: 50px;
+    background-position: 62% 100%;
+  }
+  .navbar {
+    padding-right: 1px;
+    padding-left: 20px;
+  }
+  .nav-link.phone {
+    background-color: transparent;
+  }
+  .nav-link.appointment {
+    padding-right: 0px;
+    background-color: transparent;
+  }
+  .hero-div {
+    left: 20px;
+    top: 99px;
+    width: 350px;
+  }
+  .hero-header {
+    padding-right: 8px;
+    font-size: 45px;
+    line-height: 45px;
+  }
+  .button._2.relative {
+    position: static;
+  }
+  .icon {
+    color: #fff;
+  }
+  .h2 {
+    font-size: 25px;
+    line-height: 30px;
+  }
+  .h2._2 {
+    margin-top: 5px;
+    font-size: 25px;
+    line-height: 30px;
+  }
+  .content-section {
+    width: 100%;
+    padding: 20px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-attachment: scroll;
+    text-align: center;
+  }
+  .content-block-div {
+    display: block;
+    width: 90%;
+    height: auto;
+    min-height: auto;
+    margin-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 20px 30px;
+  }
+  .menu-button {
+    background-color: transparent;
+  }
+  .menu-button.w--open {
+    background-color: transparent;
+  }
+  .cta_div {
+    width: 70%;
+  }
+  .column-8 {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-section {
+    position: relative;
+    height: 300px;
+    background-image: url('../images/shutterstock_298128629.jpg');
+    background-position: 50% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .navbar {
+    padding-top: 0px;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .nav-link.phone {
+    background-color: #342466;
+  }
+  .nav-link.appointment {
+    background-color: #342466;
+  }
+  .hero-div {
+    position: absolute;
+    left: 0%;
+    top: 40px;
+    right: auto;
+    bottom: auto;
+    width: 325px;
+    margin-top: 0px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+  }
+  .hero-header {
+    width: 100%;
+    font-size: 32px;
+    line-height: 35px;
+  }
+  .button {
+    display: inline-block;
+  }
+  .appointment-eta-section {
+    height: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .icon {
+    color: #fff;
+  }
+  .h2 {
+    margin-top: 0px;
+    font-size: 26px;
+    line-height: 32px;
+    text-align: left;
+  }
+  .h2._2 {
+    margin-bottom: 5px;
+    font-size: 26px;
+    line-height: 32px;
+  }
+  .h2.cta {
+    margin-bottom: 0px;
+    font-size: 26px;
+    line-height: 32px;
+    text-align: center;
+  }
+  .paragraph {
+    font-size: 14px;
+  }
+  .content-section {
+    padding-right: 0px;
+    padding-left: 0px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-attachment: scroll;
+  }
+  .content-block-div {
+    width: 90%;
+    min-height: auto;
+    margin-bottom: 1px;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  .menu-button {
+    background-color: transparent;
+  }
+  .cta_div {
+    width: 80%;
+  }
+}
+
+@media (max-width: 479px) {
+  .hero-section {
+    height: 100vh;
+    margin-top: 54px;
+    background-image: url('../images/shutterstock_298128629.jpg');
+    background-position: 75% 0%;
+    background-size: cover;
+  }
+  .hero-div {
+    top: 15px;
+    width: 320px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 0px;
+    padding-right: 15px;
+  }
+  .hero-header {
+    width: 100%;
+    padding-right: 5px;
+    font-size: 32px;
+    line-height: 38px;
+  }
+  .button {
+    display: block;
+    width: 250px;
+    margin-right: auto;
+    margin-bottom: 19px;
+    margin-left: auto;
+    text-align: center;
+  }
+  .button._2 {
+    display: block;
+    width: 250px;
+    margin-left: 0px;
+    text-align: center;
+  }
+  .button._2.relative {
+    position: static;
+    width: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    margin-left: auto;
+  }
+  .appointment-eta-section {
+    height: auto;
+    padding: 50px 10px 30px;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-size: cover;
+  }
+  .h2 {
+    font-size: 26px;
+    text-align: center;
+  }
+  .h2._2 {
+    font-size: 26px;
+  }
+  .h2.cta {
+    font-size: 26px;
+  }
+  .paragraph {
+    text-align: center;
+  }
+  .content-section {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  .content-block-div {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 15px 35px;
+  }
+  .cta_div {
+    width: 100%;
+  }
+  .column-4 {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .column-9 {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .section-2 {
+    padding: 25px;
+  }
+}
+
