@@ -1023,10 +1023,12 @@ function uwmbase_preprocess_field__paragraph__field_uwm_section_heading(&$variab
   if (isset($variables['element']['#object'])) {
     /* \Drupal\paragraphs\ParagraphInterface $paragraph */
     $paragraph = $variables['element']['#object'];
-    $accented_heading_field = $paragraph->get('field_uwm_accented_heading');
+    if ($paragraph->hasField('field_uwm_accented_heading')) {
+      $accented_heading_field = $paragraph->get('field_uwm_accented_heading');
 
-    if ($accented_heading_field->value) {
-      $variables['accented_heading'] = $accented_heading_field->value;
+      if ($accented_heading_field->value) {
+        $variables['accented_heading'] = $accented_heading_field->value;
+      }
     }
   }
 }
