@@ -30,5 +30,6 @@
   <exclude-pattern>*.jpg</exclude-pattern>
   <exclude-pattern>*.png</exclude-pattern>
   <exclude-pattern>gulpfile.js</exclude-pattern>
+  <exclude-pattern>*.svg</exclude-pattern>
 
 </ruleset>

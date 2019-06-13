@@ -1,0 +1,14 @@
+uuid: 0eb480d7-f947-4b1a-8af9-dcdfcfa89f5e
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: ''
+id: media.responsive_spotlight
+label: 'Responsive Image: Content Spotlight'
+targetEntityType: media
+cache: true

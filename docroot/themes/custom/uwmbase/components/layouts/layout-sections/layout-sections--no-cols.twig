@@ -40,8 +40,11 @@
         {% endblock %}
       {% endif %}
 
-      {# Help #}
-      {% if page.help %}
+      {# Help
+         @TODO: is this unneeded, so we can remove it? It renders empty, and
+         the .col-sm-12 div creates an unwanted 1px white strip.
+      #}
+      {% if page.help|render|striptags|trim %}
         {% block help %}
           <div class="row">
             <div class="col-sm-12">{{ page.help }}</div>

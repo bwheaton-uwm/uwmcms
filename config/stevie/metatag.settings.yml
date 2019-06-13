@@ -1,7 +1,1 @@
-entity_type_groups:
-  node:
-    uwm_homepage:
-      basic: basic
-      open_graph: open_graph
-      twitter_cards: twitter_cards
-      site_verification: site_verification
+entity_type_groups: {  }

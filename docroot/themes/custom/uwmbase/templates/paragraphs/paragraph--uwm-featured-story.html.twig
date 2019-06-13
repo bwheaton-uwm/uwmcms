@@ -71,8 +71,11 @@ content.field_uwm_bottom_border_options|render,
         {{ content|without('field_uwm_image', 'field_uwm_bottom_border_options', 'field_uwm_modal') }}
       </div>
     </div>
-    <div class="uwm-modal-video">
-      {{ content.field_uwm_modal }}
-    </div>
+
+    {#
+      @see paragraph--uwm-modal--uwm-featured-story.html.twig
+    #}
+    {{ content.field_uwm_modal }}
+
   </div>
 </section>

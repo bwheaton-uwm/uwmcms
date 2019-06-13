@@ -148,8 +148,6 @@ p .btn-cta {
             color: theme-color('text');
         }
     }
-
-    
 }
 
 .uwm-accent-color__blue .btn-cta,
@@ -188,5 +186,28 @@ p .btn-cta {
     }
     &::after {
         background-color: color('teal');
+    }
+}
+
+.uwm-accent-color__white .btn-cta,
+.uwm-section.uwm-accent-color__white .btn-cta {
+    @include angled-edge('inside top', 'lower right', color('white'), 15, 15);
+    border-color: color('white');
+    color: color('white');
+    background-color: transparent;
+
+    &::before {
+        background-position: left 0;
+    }
+    &::after {
+        background-color: color('white');
+    }
+
+    &:hover {
+        color: theme-color('text');
+
+        .fa-angle-right {
+            color: theme-color('text');
+        }
     }
 }

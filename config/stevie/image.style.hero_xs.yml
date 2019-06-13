@@ -1,0 +1,17 @@
+uuid: 1ea502c5-51dc-4cbb-8813-4dec06770d27
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: hero_xs
+label: 'Hero xs-sm'
+effects:
+  54a0d0be-b41b-4188-bcf7-e4cc3fe7a73e:
+    uuid: 54a0d0be-b41b-4188-bcf7-e4cc3fe7a73e
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 576
+      height: 345
+      crop_type: focal_point

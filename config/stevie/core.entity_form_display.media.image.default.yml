@@ -34,8 +34,8 @@ content:
       offsets: '50,50'
     third_party_settings:
       lightning_media:
-        file_links: false
-        remove_button: false
+        file_links: true
+        remove_button: true
     region: content
   name:
     type: string_textfield

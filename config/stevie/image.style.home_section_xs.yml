@@ -1,0 +1,17 @@
+uuid: d1f0db54-1e88-48b2-aca5-fb1434275f4a
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: home_section_xs
+label: 'Home Section xs-sm'
+effects:
+  caeb32d7-321c-4eb4-94ba-aad4f7363fb0:
+    uuid: caeb32d7-321c-4eb4-94ba-aad4f7363fb0
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 576
+      height: 346
+      crop_type: focal_point

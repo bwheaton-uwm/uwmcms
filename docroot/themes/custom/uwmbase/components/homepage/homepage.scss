@@ -1,0 +1,840 @@
+/**
+ * Homepage styling
+ *
+ * Library: uwmbase/homepage
+ *
+ * TODO: initially this contains styling for the homepage ported to stevie as
+ * markup in the Homepage node type body field. As this page is rebuilt with
+ * components, styling should be split out to those components as appropriate.
+ *
+ * @see node--uwm-homepage--full.html.twig
+ */
+
+@import 'init';
+
+/*
+ * For temporary markup field:
+ * Embed svg icons as markup. They must be in the markup (rather than as a
+ * css background image) to enable setting color via css.
+ * Placeholder markup example:
+ *  <span class="uwm-icon-svg-replace">icon_media.svg</span>
+ *
+ * @see uwmbase_preprocess_node__uwm_homepage()
+ */
+.uwm-icon-svg-replace {
+  display: none !important;
+}
+
+/*
+ * Hero
+ */
+.hero {
+  position: relative;
+
+  .hero__background-image {
+    // Hide any overflow of the image.
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+
+    img {
+      margin: 0;
+
+      // For mobile, the container height matches image proportions, so
+      // scale the image for better crop area.
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  .hero__overlay-mobile {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .hero__overlay-gradient-horizontal {
+    display: none;
+  }
+
+  .hero__heading {
+    margin: 0 0 1.25rem 0; // 20px
+    padding: 0;
+    color: color('white');
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.16);
+    text-align: center;
+
+    // TODO: remove this when mobile font sizes are standardized
+    @include media-breakpoint-down('xs') {
+      font-size: 2rem; // 32px
+      line-height: 1.25;
+    }
+  }
+
+  .hero__btn-cta {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.75rem; // 12px
+    padding: 0.625rem 0; // 10px
+    background-color: color('purple');
+    color: color('white');
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    font-size: 1.25rem; // 20px
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+
+    // Note: :active is known not to apply to iOS Safari and Chrome browsers.
+    // JavaScript workarounds e.g. using touch events are suggested but seem
+    // buggy/unstable.
+    // @see https://stackoverflow.com/questions/3885018/active-pseudo-class-doesnt-work-in-mobile-safari
+    &:hover,
+    &:active {
+      background-color: color('light-purple');
+      color: color('white');
+      text-decoration: none;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+}
+
+@include media-breakpoint-down('xs') {
+
+  // Apply percentage top padding on background image to keep it proportional.
+  // Apply that same top padding on content container:
+  // - header is absolute so it's out of the way
+  // - padding keeps CTA buttons aligned with bottom edge of image
+  .hero {
+    @include uwmed-gradient-angled-dark-background();
+
+    .hero__background-image {
+      width: 100%;
+      padding-top: 60%;
+    }
+
+    .hero__content {
+      padding-top: 60%;
+    }
+
+    .hero__heading {
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin-top: 20%;
+      width: 100%;
+    }
+
+    .hero__ctas {
+      padding: 1rem 0; // 16px
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+}
+
+@include media-breakpoint-up('sm') {
+
+  .hero {
+
+    .hero__background-image {
+      right: 0;
+      bottom: 0;
+
+      img {
+        // Center within the parent container. The container is fixed height,
+        // so sides of the image may be cut off.
+        width: auto;
+        max-width: none;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .hero__overlay-mobile {
+      display: none;
+    }
+
+    .hero__overlay-gradient-horizontal {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+
+      // Left to right:
+      // Stop at 0: 60% opacity
+      // Stop at 70%: transparent
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 70%);
+    }
+
+    .hero__content {
+      // Stack content on top of overlay divs.
+      position: relative;
+      z-index: 5;
+      padding-top: 2rem; // 32px
+      padding-bottom: 2rem; // 32px
+    }
+
+    .hero__heading {
+      text-align: left;
+    }
+
+    .hero__btn-cta {
+      width: 254px;
+      font-weight: 300;
+    }
+
+  }
+
+}
+
+@include media-breakpoint-up('md') {
+
+  .hero {
+
+    .hero__btn-cta {
+      width: 318px;
+      margin-bottom: 1rem; // 16px
+      padding: 0.875rem 0; // 14px
+      font-size: 1.5rem; // 24px
+    }
+
+  }
+
+}
+
+@include media-breakpoint-up('xl') {
+
+  .hero {
+
+    .hero__content {
+      padding-top: 4rem; // 64px
+      padding-bottom: 4rem; // 64px
+    }
+
+  }
+
+}
+
+@include media-breakpoint-up('xxl') {
+
+  .hero {
+    width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .hero__background-image {
+      max-width: 1920px;
+    }
+  }
+
+}
+
+/*
+ * Alert bar
+ */
+.home-alert {
+  padding: 2rem 0; // 32px
+
+  &.gradient-purple-horizontal {
+    background: $gradient-purple-horizontal;
+    color: color('white');
+  }
+
+  p:last-child,
+  .btn-cta:last-child {
+    margin-bottom: 0;
+  }
+
+  @include media-breakpoint-down('xs') {
+    .home-alert__text {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+/*
+ * Sections with full-width background images
+ */
+.homepage-sections {
+  position: relative;
+  overflow: hidden;
+
+  // Accent colors (apply to additional section elements)
+  .uwm-accent-color__teal {
+    .homepage-section__heading,
+    .homepage-section__subheading,
+    .fa,
+    svg.svg-inline--fa,
+    svg.uwm-icon-svg {
+      color: color('teal');
+    }
+  }
+
+  .uwm-accent-color__orange {
+    .homepage-section__heading,
+    .homepage-section__subheading,
+    .fa,
+    svg.svg-inline--fa,
+    svg.uwm-icon-svg {
+      color: color('orange');
+    }
+  }
+
+  .uwm-accent-color__blue {
+    .homepage-section__heading,
+    .homepage-section__subheading,
+    .fa,
+    svg.svg-inline--fa,
+    svg.uwm-icon-svg {
+      color: color('blue');
+    }
+  }
+
+  @include media-breakpoint-up('xxl') {
+    width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  // Individual sections
+  .homepage-section {
+    position: relative;
+
+    .homepage-section__image {
+      overflow: hidden;
+
+      img {
+        display: block;
+        margin: 0;
+      }
+
+      @include media-breakpoint-down('xs') {
+        height: 300px;
+
+        img {
+          max-width: none;
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
+      @include media-breakpoint-up('sm') {
+        height: 346px;
+      }
+
+      @include media-breakpoint-up('lg') {
+        height: 380px;
+      }
+
+      @include media-breakpoint-up('xl') {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-width: 1920px;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+    }
+
+    // Apply white angled edge on bottom of images for lg-
+    @include media-breakpoint-down('lg') {
+      &:nth-child(even) {
+        .homepage-section__image {
+          @include angled-edge('inside bottom', 'upper right', #fff, 50);
+          &::after {
+            width: 105%;
+            margin-bottom: -1px;
+          }
+        }
+      }
+
+      &:nth-child(odd) {
+        .homepage-section__image {
+          @include angled-edge('inside bottom', 'upper left', #fff, 50);
+          &::after {
+            width: 105%;
+            margin-bottom: -1px;
+          }
+        }
+
+      }
+    }
+
+    // Apply section-specific background image layouts for xl+
+    @include media-breakpoint-up('xl') {
+
+      &:nth-of-type(1) {
+        // Note for modal video:
+        // This container must not have z-index - it must stack in the same
+        // context as .modal-backdrop, which is directly under the body.
+        height: 560px;
+
+        .homepage-section__image {
+          z-index: 1;
+          transform: skewY(6deg);
+          border-bottom: 5px solid color('white');
+          overflow: hidden;
+          height: 700px;
+          margin-top: -140px;
+
+          img {
+            transform: skewY(-6deg);
+          }
+        }
+
+        .homepage-section__inner {
+          z-index: 1;
+        }
+
+        .homepage-section__title {
+          top: 36px;
+        }
+
+        .homepage-section__content {
+          top: 116px;
+        }
+      }
+
+      &:nth-of-type(2) {
+        height: 795px;
+
+        .homepage-section__image {
+          height: 900px;
+          margin-top: -105px;
+        }
+
+        .homepage-section__title {
+          top: 120px;
+          right: 0;
+          z-index: 2;
+        }
+
+        .homepage-section__content {
+          top: 200px;
+          right: 0;
+          z-index: 2;
+        }
+      }
+
+      &:nth-of-type(3) {
+        height: 570px;
+
+        .homepage-section__image {
+          transform: skewY(-6deg);
+          border-top: 5px solid color('white');
+          margin-top: -150px;
+          bottom: -100px;
+
+          img {
+            transform: skewY(6deg);
+            position: relative;
+            top: -100px;
+          }
+        }
+
+        .homepage-section__title {
+          top: -50px;
+        }
+
+        .homepage-section__content {
+          top: 30px;
+        }
+      }
+
+    }
+
+    // Apply animated fade-in of content overlays at xl+
+    @include media-breakpoint-up('xl') {
+      .homepage-section__inner {
+        opacity: 0;
+      }
+
+      &.fade-in-animation .homepage-section__inner {
+        transition: opacity;
+        transition-duration: 400ms;
+        transition-timing-function: cubic-bezier(0.24, 0, 0.64, 1);
+        transition-delay: 0.05s;
+        transform: translate3d(0, 100px, 0);
+        opacity: 0.0001
+      }
+
+      // This class is applied by JS when page is scrolled to the section.
+      // @see homepage-animation.js
+      &.animation-applied .homepage-section__inner {
+        // Note for modal video:
+        // Previously this was `translate3d(0, 0, 0)` to reset position.
+        // This must use `none` so the element does not create a new stacking
+        // context. If the section has a modal video, it must stack in the same
+        // context as .modal-backdrop, which is directly under the body.
+        transform: none;
+        opacity: 1;
+      }
+
+    }
+
+    .container-xl {
+      @include media-breakpoint-up('xl') {
+        position: relative;
+      }
+    }
+
+    .homepage-section__title {
+      position: absolute;
+      top: 0;
+      width: 100%;
+
+      @include media-breakpoint-up('xl') {
+        background-color: rgba(255, 255, 255, .9);
+        padding-left: 34px;
+        padding-right: 34px;
+        width: 46%;
+      }
+
+      .uwm-accent-heading__title {
+        margin-bottom: 12px;
+        padding: 0;
+        text-shadow: 0 3px 6px rgba(0,0,0,.53);
+        color: color('white');
+
+        &::after {
+          @include media-breakpoint-down('lg') {
+            border-top-color: color('white');
+            border-left-color: color('white');
+          }
+        }
+
+        @include media-breakpoint-up('xl') {
+          text-shadow: none;
+          color: theme-color('text');
+          margin-top: 38px;
+        }
+
+      }
+    }
+
+    .homepage-section__story-link {
+      position: absolute;
+      right: 8px;
+      top: 192px;
+      margin-left: 15px;
+
+      @include media-breakpoint-up('sm') {
+        top: 240px;
+      }
+
+      @include media-breakpoint-up('md') {
+        right: 50px;
+      }
+
+      @include media-breakpoint-up('xl') {
+        top: 460px;
+      }
+    }
+
+    .story-play-button {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+
+      .story-play-button__text {
+        color: color('white');
+        font-size: 0.875rem; // 14px
+        font-weight: 600;
+        text-shadow: 0px 3px 6px rgba(0,0,0,.53);
+      }
+
+      // @TODO: merge this with the play icons styling in modal video component.
+      // @see components/modal-video/modal-video.scss
+      .story-play-button__icons {
+        transition: opacity .15s linear;
+        margin-left: 12px;
+        flex: 0 0 60px;
+        height: 60px;
+
+        .story-play-button__circle-outline {
+          color: rgba(255, 255, 255, .5);
+        }
+
+        .story-play-button__circle-outline.animated {
+          animation: burst 2.5s infinite;
+          border: 2px solid rgba(255, 255, 255, .9);
+          border-radius: 50%;
+          width: 58px;
+          height: 58px;
+        }
+
+        @keyframes burst {
+          0% {
+            opacity: .5;
+            transform: scale(.9)
+          }
+
+          100% {
+            transform: scale(1.3);
+            opacity: 0;
+          }
+        }
+
+        .story-play-button__circle-filled {
+          // Hide filled circle - shown on hover only.
+          opacity: 0;
+          color: rgba(255, 255, 255, .5);
+          width: 58px;
+          height: 58px;
+        }
+
+        // Visually center the play triangle within the circles (the exact
+        // center appears off due to shape of triangle)
+        .story-play-button__play-triangle {
+          color: color('white');
+          width: 24px;
+          height: 27px;
+          margin: 0;
+          left: 20px;
+          top: 17px;
+        }
+
+        // On hover: stop animation and show the filled circle
+        &:hover {
+          cursor: pointer;
+
+          .animated {
+            animation: none;
+          }
+
+          .story-play-button__circle-outline {
+            opacity: .5;
+          }
+
+          .story-play-button__circle-filled {
+            opacity: 1;
+          }
+        }
+
+      }
+    }
+
+    .homepage-section__content {
+      background-color: rgba(255, 255, 255, .9);
+      padding-bottom: 38px;
+      width: 100%;
+
+      @include media-breakpoint-up('xl') {
+        position: absolute;
+        padding-left: 34px;
+        padding-right: 34px;
+        width: 46%;
+      }
+
+      .homepage-section__heading {
+        margin-top: 12px;
+        padding: 0;
+
+        @include media-breakpoint-down('sm') {
+          font-size: 1.5rem; // 24px
+        }
+      }
+
+      .homepage-section__subheading {
+        margin-top: 30px;
+        padding: 0;
+        font-weight: 600;
+      }
+
+      .links-with-icon__list {
+        margin-bottom: 0;
+        padding-bottom: 38px;
+
+        @include media-breakpoint-up('md'){
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        }
+      }
+
+      .links-with-icon__item {
+        position: relative;
+        border-bottom: 1px solid theme-color('uwmed-gray');
+        background-color: inherit;
+        color: theme-color('text');
+
+        &:nth-of-type(1) {
+          border-top: 1px solid theme-color('uwmed-gray');
+        }
+
+        @include media-breakpoint-up('md'){
+          flex: 0 0 48%;
+
+          &:nth-of-type(2) {
+            border-top: 1px solid theme-color('uwmed-gray');
+          }
+        }
+
+        a {
+          width: 100%;
+          font-size: 0.875rem; // 14px
+          padding: 1.125rem 0; // 18px
+          border: none;
+          display: flex;
+          align-items: center;
+
+          @include media-breakpoint-up('xl') {
+            color: theme-color('text');
+          }
+        }
+
+        svg.uwm-icon-svg {
+          display: block;
+          width: 18px;
+          margin-right: 0.25rem; // 4px
+        }
+
+        .fa-angle-right {
+          line-height: 1.018;
+          position: absolute;
+          right: 0;
+          padding-right: 0.625rem; // 10px
+
+          @include media-breakpoint-up('xl') {
+            display: none;
+          }
+        }
+      }
+
+      .homepage-section__link {
+        text-transform: uppercase;
+        text-decoration: none;
+        font-family: $font-family-heading;
+        font-size: 0.8125rem; // 13px
+        text-align: center;
+        transition-property: color;
+        transition-duration: 0.7s;
+        transition-timing-function: ease-out;
+        z-index: 1;
+
+        @include media-breakpoint-down('md') {
+          width: 100%;
+        }
+
+        @include media-breakpoint-up('xl') {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          transform: scaleX(0);
+          transform-origin: 0 50%;
+          transition-property: transform;
+          transition-duration: 0.7s;
+          transition-timing-function: ease-out;
+          z-index: -1;
+        }
+
+        &:hover {
+          &::after {
+            transform: scaleX(1);
+            @media(hover: none) {
+              transition-duration: 0s;
+            }
+          }
+        }
+      }
+
+    }
+
+  }
+
+}
+
+/*
+ * Accelerate promo block
+ */
+.accelerate-promotion-block {
+  background-image: url('/themes/custom/uwmbase/dist/assets/accelerate-background.png');
+  background-size: cover;
+  padding: 2.5rem 0; // 40px
+
+  .accelerate-promotion-block__logo {
+    width: 250px;
+    margin: 0 auto 2rem auto; // 32px
+
+    img {
+      margin: 0;
+    }
+  }
+
+  .accelerate-promotion-block__content {
+    display: none;
+  }
+
+  .accelerate-promotion-block__cta {
+    display: flex;
+    justify-content: center;
+
+    .btn-cta {
+      margin: 0;
+    }
+  }
+
+  @include media-breakpoint-up('xl') {
+    background-image: none;
+    padding: 2rem 0 0 0; // 32px
+
+    .accelerate-promotion-block__inner {
+      background-image: url('/themes/custom/uwmbase/dist/assets/accelerate-background.png');
+      background-size: cover;
+      padding: 2.5rem 2.5rem 2.5rem 3.5rem; // 40px 40px 40px 56px
+
+      > .row {
+        align-items: center;
+      }
+
+    }
+
+    .accelerate-promotion-block__logo {
+      margin: 0;
+    }
+
+    .accelerate-promotion-block__content {
+      display: block;
+      color: white;
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .accelerate-promotion-block__cta {
+      margin-bottom: 0;
+    }
+  }
+}

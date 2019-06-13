@@ -15,6 +15,17 @@
  *   New: .uwm-icon .uwm-icon--name
  *   Existing (font): .uw-ico | .uwmed-icon .uwmed-icon__name
  * @see src/scss/base/_uwm-icons.scss
+ *
+ * TODO? Some icons are 24x24 px and have extra whitespace around the icon;
+ * others are smaller, with no space around the icon stroke.
+ *
+ * TODO (major):
+ * As a CSS background image, the svg stroke color cannot be set with css.
+ * As a temporary workaround for a colored version, you can use Twig to embed
+ * the svg markup. Ensure the svg's path element has `fill="currentColor"` then
+ * set the `color` in css.
+ * {{ source('/themes/custom/uwmbase/dist/assets/uwm-icons/icon_heart.svg', ignore_missing = true) }}
+ * Backlog task: https://www.wrike.com/open.htm?id=357236939
  */
 
 $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
@@ -27,11 +38,19 @@ $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
 
   &.uwm-icon--5-star-rating {
     background-image: url('#{$icon-path}/icon_5_star_rating.svg');
-  }
-  &.uwm-icon--accepting-patients {
     width: 18px;
     height: 18px;
-    background-image: url('#{$icon-path}/accepting-patients.svg');
+  }
+  &.uwm-icon--accepting-patients {
+    background-image: url('#{$icon-path}/icon_accepting_patients.svg');
+    width: 18px;
+    height: 18px;
+  }
+  // @TODO: remove this when we solve for svgs with color variation
+  &.uwm-icon--accepting-patients-teal {
+    background-image: url('#{$icon-path}/icon_accepting_patients_teal.svg');
+    width: 16px;
+    height: 16px;
   }
   &.uwm-icon--appointment {
     background-image: url('#{$icon-path}/icon_appointment.svg');
@@ -94,27 +113,39 @@ $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
   }
   &.uwm-icon--heart {
     background-image: url('#{$icon-path}/icon_heart.svg');
+    width: 18px;
+    height: 18px;
   }
   &.uwm-icon--instagram {
     background-image: url('#{$icon-path}/icon_instagram.svg');
   }
   &.uwm-icon--languages {
     background-image: url('#{$icon-path}/icon_languages.svg');
+    width: 18px;
+    height: 16px;
   }
   &.uwm-icon--linkedin {
     background-image: url('#{$icon-path}/icon_linkedin.svg');
   }
   &.uwm-icon--media {
     background-image: url('#{$icon-path}/icon_media.svg');
+    width: 24px;
+    height: 16px;
   }
   &.uwm-icon--medical-research {
     background-image: url('#{$icon-path}/icon_medical_research.svg');
+    width: 24px;
+    height: 24px;
   }
   &.uwm-icon--medical-services {
     background-image: url('#{$icon-path}/icon_medical_services.svg');
+    width: 18px;
+    height: 17px;
   }
   &.uwm-icon--medical-specialists {
     background-image: url('#{$icon-path}/icon_medical_specialists.svg');
+    width: 24px;
+    height: 24px;
   }
   &.uwm-icon--my-location {
     background-image: url('#{$icon-path}/icon_my_location.svg');
@@ -130,6 +161,8 @@ $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
   }
   &.uwm-icon--patient-resources {
     background-image: url('#{$icon-path}/icon_patient_resources.svg');
+    width: 15px;
+    height: 18px;
   }
   &.uwm-icon--pdf {
     background-image: url('#{$icon-path}/icon_pdf.svg');
@@ -153,7 +186,9 @@ $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
     background-image: url('#{$icon-path}/icon_provider_bio.svg');
   }
   &.uwm-icon--provider-interests {
-    background-image: url('#{$icon-path}/icon_provider_intersets.svg');
+    background-image: url('#{$icon-path}/icon_provider_interests.svg');
+    width: 18px;
+    height: 15px;
   }
   &.uwm-icon--provider-interests-alt {
     background-image: url('#{$icon-path}/icon_provider_interests_alt.svg');
