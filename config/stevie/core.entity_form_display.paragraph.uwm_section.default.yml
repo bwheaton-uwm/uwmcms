@@ -5,6 +5,7 @@ dependencies:
   config:
     - entity_browser.browser.image_browser
     - field.field.paragraph.uwm_section.field_uwm_accent_color
+    - field.field.paragraph.uwm_section.field_uwm_accented_heading
     - field.field.paragraph.uwm_section.field_uwm_background_color
     - field.field.paragraph.uwm_section.field_uwm_component
     - field.field.paragraph.uwm_section.field_uwm_image
@@ -21,20 +22,27 @@ bundle: uwm_section
 mode: default
 content:
   field_uwm_accent_color:
-    weight: 1
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
+  field_uwm_accented_heading:
+    weight: 1
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_uwm_background_color:
-    weight: 2
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_uwm_component:
     type: paragraphs
-    weight: 4
+    weight: 5
     settings:
       title: component
       title_plural: components
@@ -52,7 +60,7 @@ content:
     region: content
   field_uwm_image:
     type: entity_browser_file
-    weight: 3
+    weight: 4
     settings:
       entity_browser: image_browser
       field_widget_edit: true

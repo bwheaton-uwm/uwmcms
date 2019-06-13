@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.uwm_section.field_uwm_accent_color
+    - field.field.paragraph.uwm_section.field_uwm_accented_heading
     - field.field.paragraph.uwm_section.field_uwm_background_color
     - field.field.paragraph.uwm_section.field_uwm_component
     - field.field.paragraph.uwm_section.field_uwm_image
@@ -19,16 +20,26 @@ bundle: uwm_section
 mode: default
 content:
   field_uwm_accent_color:
-    weight: 3
+    weight: 4
     label: hidden
     settings:
       link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
+  field_uwm_accented_heading:
+    weight: 1
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
   field_uwm_background_color:
     type: entity_reference_label
-    weight: 2
+    weight: 3
     region: content
     label: hidden
     settings:
@@ -36,7 +47,7 @@ content:
     third_party_settings: {  }
   field_uwm_component:
     type: entity_reference_revisions_entity_view
-    weight: 1
+    weight: 2
     label: hidden
     settings:
       view_mode: default
@@ -44,7 +55,7 @@ content:
     third_party_settings: {  }
     region: content
   field_uwm_image:
-    weight: 4
+    weight: 5
     label: hidden
     settings:
       image_style: ''

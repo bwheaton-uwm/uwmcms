@@ -311,11 +311,6 @@ responsive-video:
     component:
       components/asset-builds/css/responsive-video.css: {}
 
-section-paragraph:
-  css:
-    component:
-      dist/css/section-paragraph.css: {}
-
 skip-link:
   css:
     component:

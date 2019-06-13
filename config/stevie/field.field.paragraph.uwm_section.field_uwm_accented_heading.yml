@@ -1,0 +1,23 @@
+uuid: a09e0ef6-c83e-485e-a604-f1d3ea79652a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_accented_heading
+    - paragraphs.paragraphs_type.uwm_section
+id: paragraph.uwm_section.field_uwm_accented_heading
+field_name: field_uwm_accented_heading
+entity_type: paragraph
+bundle: uwm_section
+label: 'Accented section heading'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

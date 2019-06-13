@@ -961,6 +961,24 @@ function uwmbase_preprocess_paragraph__uwm_grid(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess_HOOK().
+ */
+function uwmbase_preprocess_field__paragraph__field_uwm_section_heading(&$variables) {
+  // Define a variable that indicates if the heading should be accented.
+  $variables['accented_heading'] = 0;
+
+  if (isset($variables['element']['#object'])) {
+    /* \Drupal\paragraphs\ParagraphInterface $paragraph */
+    $paragraph = $variables['element']['#object'];
+    $accented_heading_field = $paragraph->get('field_uwm_accented_heading');
+
+    if ($accented_heading_field->value) {
+      $variables['accented_heading'] = $accented_heading_field->value;
+    }
+  }
+}
+
+/**
  * Implements hook_preprocess_paragraph__uwm_block().
  */
 function uwmbase_preprocess_paragraph__uwm_block(&$variables) {

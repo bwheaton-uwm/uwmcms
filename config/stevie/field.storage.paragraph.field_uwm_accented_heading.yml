@@ -1,0 +1,18 @@
+uuid: e28f14c3-c5d1-409a-b261-04ee4f0d88c3
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_uwm_accented_heading
+field_name: field_uwm_accented_heading
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
