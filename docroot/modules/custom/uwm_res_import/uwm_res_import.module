@@ -73,11 +73,11 @@ function _uwm_res_import_migration_plugins_alter(array &$migration) {
     }
 
     $cacheKey = __FUNCTION__ . $migration['id'];
-    $source_urls = _get_cached_data($cacheKey);
+    $source_urls = _uwm_res_import_get_cached_data($cacheKey);
 
     if (!$source_urls) {
       $source_urls = _uwm_res_import_get_migration_source_urls($base_urls);
-      _set_cached_data($cacheKey, $source_urls);
+      _uwm_res_import_set_cached_data($cacheKey, $source_urls);
     }
 
     if ($source_urls) {
@@ -149,7 +149,7 @@ function _uwm_res_import_get_migration_data($url) {
   try {
 
     $cacheKey = preg_replace("/[^A-Za-z0-9]/", '', $url);
-    $data = _get_cached_data($cacheKey);
+    $data = _uwm_res_import_get_cached_data($cacheKey);
 
     if (empty($data)) {
 
@@ -160,7 +160,10 @@ function _uwm_res_import_get_migration_data($url) {
       $json = $body->getContents();
 
       $data = Json::decode($json);
-      _set_cached_data($cacheKey, $data);
+      _uwm_res_import_set_cached_data($cacheKey, $data);
+
+      // Unpublish any content that has been unpublished on Reservoir.
+      _uwm_res_import_update_unpublished_content($data);
 
     }
 
@@ -181,7 +184,7 @@ function _uwm_res_import_get_migration_data($url) {
  * @return bool
  *   TRUE if value should be cached.
  */
-function _use_cache() {
+function _uwm_res_import_use_cache() {
 
   $config = \Drupal::config('uwm_res_import.settings');
   $setting = $config->get('use_cache');
@@ -203,9 +206,9 @@ function _use_cache() {
  * @return array
  *   The cache data member.
  */
-function _get_cached_data(string $cacheKey) {
+function _uwm_res_import_get_cached_data(string $cacheKey) {
 
-  if (_use_cache() !== TRUE) {
+  if (_uwm_res_import_use_cache() !== TRUE) {
     return [];
   }
 
@@ -222,9 +225,56 @@ function _get_cached_data(string $cacheKey) {
  * @param mixed $data
  *   The data to store.
  */
-function _set_cached_data(string $cacheKey, $data) {
+function _uwm_res_import_set_cached_data(string $cacheKey, $data) {
 
   $cacheItemExpires = time() + 23 * 60 * 60;
   $cacheResult = \Drupal::cache()->set($cacheKey, $data, $cacheItemExpires);
+
+}
+
+/**
+ * Unpublish any content that has been unpublished on Reservoir.
+ *
+ * @param array $data
+ *   The data to parse.
+ */
+function _uwm_res_import_update_unpublished_content(array $data) {
+
+  if (isset($data['meta']['omitted']['links'])) {
+    foreach ($data['meta']['omitted']['links'] as $index => $item) {
+      if (strpos($index, 'item:') !== 0 || !isset($item['href'])) {
+        continue;
+      }
+      $url_parts = explode('/', $item['href']);
+
+      // The entity type is the fourth part of the URL.
+      if (!isset($url_parts[4])) {
+        return;
+      }
+      $entity_type = $url_parts[4];
+
+      // The UUID is the sixth part of the URL.
+      if (!isset($url_parts[6])) {
+        return;
+      }
+      $uuid = $url_parts[6];
+
+      // Currently, unpublishing is only supported for nodes.
+      if ($entity_type != 'node') {
+        return;
+      }
+
+      // Load the node.
+      /** @var \Drupal\node\NodeInterface $node */
+      $node = \Drupal::service('entity.repository')->loadEntityByUuid('node', $uuid);
+      if (!$node || !$node->isPublished()) {
+        continue;
+      }
+
+      // Set the node as unpublished and save it.
+      $node->setUnpublished();
+      $node->save();
+    }
+  }
 
 }
