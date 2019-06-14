@@ -118,21 +118,9 @@ source:
       label: field_res_affiliates
       selector: /relationships/field_res_affiliates/data
     -
-      name: field_res_board_certifications
-      label: field_res_board_certifications
-      selector: /relationships/field_res_board_certifications/data
-    -
       name: field_res_clinics
       label: field_res_clinics
       selector: /relationships/field_res_clinics/data
-    -
-      name: field_res_degrees
-      label: field_res_degrees
-      selector: /relationships/field_res_degrees/data
-    -
-      name: field_res_education_history
-      label: field_res_education_history
-      selector: /relationships/field_res_education_history/data
     -
       name: field_res_expertises
       label: field_res_expertises
@@ -184,7 +172,7 @@ process:
   field_res_meta_tags: field_res_meta_tags
   field_res_ser_id: field_res_ser_id
   field_res_is_open_scheduling: field_res_is_open_scheduling
-  uwm_json_packet: uwm_json_packet
+  field_uwm_json_packet: uwm_json_packet
   field_res_name/title: field_res_name/title
   field_res_name/given: field_res_name/given
   field_res_name/middle: field_res_name/middle
@@ -203,39 +191,6 @@ process:
   field_res_affiliates:
     plugin: sub_process
     source: field_res_affiliates
-    process:
-      target_id:
-        -
-          plugin: uwm_tid_for_uuid
-          source: id
-        -
-          plugin: skip_on_empty
-          method: process
-  field_res_board_certifications:
-    plugin: sub_process
-    source: field_res_board_certifications
-    process:
-      target_id:
-        -
-          plugin: uwm_tid_for_uuid
-          source: id
-        -
-          plugin: skip_on_empty
-          method: process
-  field_res_degrees:
-    plugin: sub_process
-    source: field_res_degrees
-    process:
-      target_id:
-        -
-          plugin: uwm_tid_for_uuid
-          source: id
-        -
-          plugin: skip_on_empty
-          method: process
-  field_res_education_history:
-    plugin: sub_process
-    source: field_res_education_history
     process:
       target_id:
         -
