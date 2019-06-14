@@ -1,0 +1,7 @@
+@import 'init';
+
+.main-container {
+  &--diagonal-gray-bg {
+    @include uwmed-gradient-angled-dark-background();
+  }
+}

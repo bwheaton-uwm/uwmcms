@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.uwm_basic_page.field_meta_tags
     - field.field.node.uwm_basic_page.field_search_best_bets
     - field.field.node.uwm_basic_page.field_uwm_accent_color
+    - field.field.node.uwm_basic_page.field_uwm_diagonal_gray_bg
     - field.field.node.uwm_basic_page.field_uwm_hero
     - field.field.node.uwm_basic_page.field_uwm_page_path_name
     - field.field.node.uwm_basic_page.field_uwm_parent_page
@@ -24,6 +25,7 @@ third_party_settings:
         - field_uwm_parent_page
         - field_uwm_page_path_name
         - field_uwm_accent_color
+        - field_uwm_diagonal_gray_bg
       parent_name: ''
       weight: 1
       format_type: details
@@ -84,6 +86,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
+  field_uwm_diagonal_gray_bg:
+    weight: 5
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
     region: content
   field_uwm_hero:
     type: paragraphs

@@ -1034,6 +1034,29 @@ function uwmbase_preprocess_field__paragraph__field_uwm_section_heading(&$variab
 }
 
 /**
+ * Implements hook_preprocess_HOOK().
+ */
+function uwmbase_preprocess_page__node(&$variables) {
+  if (!isset($variables['node'])) {
+    return;
+  }
+
+  /* \Drupal\node\NodeInterface $node */
+  $node = $variables['node'];
+
+  // Determine if the page should have a diagonal gray background.
+  $variables['diagonal_gray_bg'] = 0;
+
+  if ($node->hasField('field_uwm_diagonal_gray_bg')) {
+    $diagonal_gray_bg_field = $variables['node']->get('field_uwm_diagonal_gray_bg');
+
+    if ($diagonal_gray_bg_field->value) {
+      $variables['diagonal_gray_bg'] = $diagonal_gray_bg_field->value;
+    }
+  }
+}
+
+/**
  * Implements hook_preprocess_paragraph__uwm_block().
  */
 function uwmbase_preprocess_paragraph__uwm_block(&$variables) {

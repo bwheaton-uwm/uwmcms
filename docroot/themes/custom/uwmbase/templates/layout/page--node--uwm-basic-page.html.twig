@@ -46,11 +46,13 @@
  * @see html.html.twig
  */
 #}
+{{ attach_library('uwmbase/main-container') }}
 
 {% set accent_color = drupal_field('field_uwm_accent_color', 'node', node.id) %}
 {% set classes = [
     'main-container',
-    accent_color|render
+    accent_color|render,
+    diagonal_gray_bg ? 'main-container--diagonal-gray-bg',
 ]%}
 
 {% set has_hero = drupal_field('field_uwm_hero', 'node', node.id).0 %}
@@ -75,7 +77,7 @@
             {% endblock %}
         {% endif %}
         {% endblock pagetop %}
-        
+
         {# Content #}
         {% block content %}
             <a id="main-content"></a>

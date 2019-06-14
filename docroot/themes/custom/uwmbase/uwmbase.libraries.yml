@@ -81,6 +81,11 @@ bootstrap:
   js:
     dist/vendor/bootstrap/js/util.js: {}
 
+main-container:
+  css:
+    component:
+      dist/css/main-container.css: {}
+
 card:
   css:
     component:
