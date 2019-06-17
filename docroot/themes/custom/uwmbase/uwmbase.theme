@@ -417,23 +417,22 @@ function uwmbase_preprocess_node(&$variables, $hook) {
   $node = $variables['node'];
   $nodeType = $node->getType();
 
-  /* Inspect the request node type to check if a node is being rendered via
-   * another node's template. For example, as an entity reference item.
+  /* Inspect the request node to check if a node is being rendered via another
+   * node's template. For example, as an entity reference item.
    */
+  $displayContext = NULL;
+
   $requestNode = \Drupal::request()->attributes->get('node');
   if ($requestNode) {
-    $requestNodeType = $requestNode->bundle();
-
-    $displayContext = NULL;
-
-    /* If there's more use for this in the future, consider comparing Node IDs
-     * to know when to populate displayContext with 'self'.
-     */
-    if ($nodeType !== $requestNodeType) {
-      $displayContext = $requestNodeType;
+    if ($requestNode->id() === $node->id()) {
+      $displayContext = 'self';
     }
-    $variables['display_context'] = $displayContext;
+    else {
+      $displayContext = $requestNode->bundle();
+    }
   }
+
+  $variables['display_context'] = $displayContext;
 
   // Restore simple node container classes:
   // @TODO: Where did these go?

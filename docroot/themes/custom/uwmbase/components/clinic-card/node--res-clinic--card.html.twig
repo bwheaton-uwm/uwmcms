@@ -10,6 +10,11 @@
  * Custom variables:
  * - url_not_uwmedicine_org: boolean, true if the 'url' links to a site other
  *   than uwmedicine.org
+ * - display_context: string, type of node being rendered as the current page
+ *   if applicable, else NULL
+ *   Uses:
+ *   - 'res_clinic' - for Featured Clinics displayed as cards on another clinic
+ *      (campus) full page
  *
  * @see template_preprocess_node()
  * @see uwmbase_preprocess_node()
@@ -38,66 +43,75 @@
 <article {{ attributes.addClass(['clinic-card', 'col-sm-6', 'col-lg-4', 'col-xxl-3']) }}>
   <div class="clinic-card__inner">
 
-    {#
-      Distance away (if searched by location coordinates)
-      This is a custom property added to the node in views preprocessing.
-      @see _uwmed_uwmcms_search_preprocess_views_view_uwm_locations_geo_search()
-    #}
-    {% if node.view_field__distance_away_miles is not empty %}
-      <div class="clinic-card__distance-miles">
-        {{ node.view_field__distance_away_miles }} mi
+    {% if display_context != 'res_clinic' %}
+      {#
+        Distance away (if searched by location coordinates)
+        This is a custom property added to the node in views preprocessing.
+        @see _uwmed_uwmcms_search_preprocess_views_view_uwm_locations_geo_search()
+      #}
+      {% if node.view_field__distance_away_miles is not empty %}
+        <div class="clinic-card__distance-miles">
+          {{ node.view_field__distance_away_miles }} mi
+        </div>
+      {% endif %}
+    {% endif %}
+
+    {% if display_context != 'res_clinic' %}
+      <div class="clinic-card__image">
+        {#
+          Clinic Image
+          The placeholder image is rendered here if the field is empty.
+          Link is applied in field template.
+          @see field--node--field-res-image--res-clinic.html.twig
+        #}
+        {% if content.field_res_image|render|trim is empty %}
+          <a href="{{ url }}" rel="bookmark">
+            <img src="/{{ directory }}/src/assets/uwmed_location_card_placeholder.svg" alt="" class="img-fluid" />
+          </a>
+        {% else %}
+          {{ content.field_res_image }}
+        {% endif %}
       </div>
     {% endif %}
 
-    <div class="clinic-card__image">
-      {#
-        Clinic Image
-        The placeholder image is rendered here if the field is empty.
-        Link is applied in field template.
-        @see field--node--field-res-image--res-clinic.html.twig
-      #}
-      {% if content.field_res_image|render|trim is empty %}
-        <a href="{{ url }}" rel="bookmark">
-          <img src="/{{ directory }}/src/assets/uwmed_location_card_placeholder.svg" alt="" class="img-fluid" />
-        </a>
-      {% else %}
-        {{ content.field_res_image }}
-      {% endif %}
-    </div>
-
     <div class="clinic-card__details">
+
       {#
         The <address> element should contain the name for which the address is
         relevant - thus wrapping the name and Building fields.
       #}
       <address class="clinic-card__address">
+
         <h2 class="clinic-card__name"><a href="{{ url }}" rel="bookmark">{{ label }}</a></h2>
         {{ title_suffix }}
 
-        {#
-          Address
-          This is the Building term, rendered in the "Building: Address only"
-          view mode, to print its address field only. The address has been
-          modified in preprocess to inject the Floor and Room Number fields from
-          this node.
-          @see uwmbase_preprocess_node()
-          @see uwmbase_preprocess_taxonomy_term()
-          @see taxonomy-term--buildings--building-address.html.twig
-          @see address-plain--buildings.html.twig
-          @TODO: improve this - bypass rendering term
-        #}
-        {% if content.field_res_building.0|render|striptags|trim is not empty %}
-          {% if not url_not_uwmedicine_org %}
-            {#
-              Use hash to activate and scroll to the Directions tab.
-              @see components/clinic-page/node--res-clinic--full.tabs.html.twig
-              @see components/anchor-scroll/anchor-scroll.js
-            #}
-            <a href="{{ url }}#directions-tab-tab---" class="clinic-card__street-address-link">{{ content.field_res_building.0 }}</a>
-          {% else %}
-            {{ content.field_res_building.0 }}
+        {% if display_context != 'res_clinic' %}
+          {#
+            Address
+            This is the Building term, rendered in the "Building: Address only"
+            view mode, to print its address field only. The address has been
+            modified in preprocess to inject the Floor and Room Number fields from
+            this node.
+            @see uwmbase_preprocess_node()
+            @see uwmbase_preprocess_taxonomy_term()
+            @see taxonomy-term--buildings--building-address.html.twig
+            @see address-plain--buildings.html.twig
+            @TODO: improve this - bypass rendering term
+          #}
+          {% if content.field_res_building.0|render|striptags|trim is not empty %}
+            {% if not url_not_uwmedicine_org %}
+              {#
+                Use hash to activate and scroll to the Directions tab.
+                @see components/clinic-page/node--res-clinic--full.tabs.html.twig
+                @see components/anchor-scroll/anchor-scroll.js
+              #}
+              <a href="{{ url }}#directions-tab-tab---" class="clinic-card__street-address-link">{{ content.field_res_building.0 }}</a>
+            {% else %}
+              {{ content.field_res_building.0 }}
+            {% endif %}
           {% endif %}
         {% endif %}
+
       </address>
 
       {#
@@ -129,15 +143,20 @@
         </div>
       {% endif %}
 
-      {# "Urgent care" clockwise snippet #}
+      {#
+        "Urgent care" clockwise snippet
+        @see field--node--field-res-clockwise-id--res-clinic.html.twig
+      #}
       {% if content.field_res_clockwise_id.0 is not empty %}
         {{ content.field_res_clockwise_id }}
       {% endif %}
     </div>
 
-    <div class="clinic-card__cta uwm-accent-color__purple">
-      <a class="btn btn-cta btn-cta-link" href="{{ url }}" rel="bookmark">{{ 'See location details'|t }}</a>
-    </div>
+    {% if display_context != 'res_clinic' %}
+      <div class="clinic-card__cta uwm-accent-color__purple">
+        <a class="btn btn-cta btn-cta-link" href="{{ url }}" rel="bookmark">{{ 'See location details'|t }}</a>
+      </div>
+    {% endif %}
 
   </div>
 </article>

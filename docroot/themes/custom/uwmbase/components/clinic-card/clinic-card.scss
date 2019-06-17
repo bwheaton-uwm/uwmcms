@@ -24,13 +24,13 @@
     // Make this the relative parent for the distance-miles element.
     position: relative;
 
-    &:hover {
-      // 2018-03-14:
-      // Per Emily/Tory conversation, remove hover effect for now, because
-      // it implies whole card is a link - which it is not currently.
-      //box-shadow: 0 0 0 8px $purple-opacity-25;
-      //border-radius: 2px;
-    }
+    // 2019-03-14:
+    // Per Emily/Tory conversation, remove hover effect for now, because
+    // it implies whole card is a link - which it is not currently.
+    // &:hover {
+    //   box-shadow: 0 0 0 8px $purple-opacity-25;
+    //   border-radius: 2px;
+    // }
   }
 
   // (Absolute-positioned)
@@ -60,7 +60,7 @@
 
   // Flex item 2
   .clinic-card__details {
-    padding: 1.5rem 1.5rem 0 1.5rem;
+    padding: 1.5rem;
     // Allow only this flex item to grow, so it fills remaining vertical space,
     // pushing the CTA button to the bottom.
     flex-grow: 1;
@@ -223,7 +223,6 @@
 
   // Flex item 3
   .clinic-card__cta {
-    margin: 1.5rem 0 0 0;
     padding: 0 1.5rem 1.5rem 1.5rem;
 
     a.btn-cta {
