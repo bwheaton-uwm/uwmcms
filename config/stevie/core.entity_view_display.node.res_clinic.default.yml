@@ -13,6 +13,8 @@ dependencies:
     - field.field.node.res_clinic.field_res_expertises
     - field.field.node.res_clinic.field_res_external_url
     - field.field.node.res_clinic.field_res_fax_number
+    - field.field.node.res_clinic.field_res_feat_clinics_header
+    - field.field.node.res_clinic.field_res_featured_clinics
     - field.field.node.res_clinic.field_res_floor
     - field.field.node.res_clinic.field_res_hours_of_operation
     - field.field.node.res_clinic.field_res_image
@@ -59,7 +61,7 @@ content:
     type: entity_reference_label
     region: content
   field_res_clockwise_id:
-    weight: 9
+    weight: 11
     label: hidden
     settings:
       link_to_entity: false
@@ -67,7 +69,7 @@ content:
     type: string
     region: content
   field_res_expertises:
-    weight: 7
+    weight: 9
     label: hidden
     type: entity_reference_label
     settings:
@@ -81,6 +83,22 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  field_res_feat_clinics_header:
+    weight: 7
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_res_featured_clinics:
+    weight: 8
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
     region: content
   field_res_floor:
     type: entity_reference_label
@@ -108,7 +126,7 @@ content:
     type: string
     region: content
   field_res_providers:
-    weight: 8
+    weight: 10
     label: hidden
     settings:
       link: true
@@ -124,7 +142,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
   field_uwm_sections:
-    weight: 10
+    weight: 12
     label: hidden
     settings:
       view_mode: default
@@ -134,7 +152,7 @@ content:
     region: content
   field_uwm_sections_2:
     type: entity_reference_revisions_entity_view
-    weight: 11
+    weight: 13
     label: hidden
     settings:
       view_mode: default

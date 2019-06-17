@@ -1,0 +1,28 @@
+uuid: 7a63f99f-723c-49b1-9cf3-e87655a13f13
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_featured_clinics
+    - node.type.res_clinic
+id: node.res_clinic.field_res_featured_clinics
+field_name: field_res_featured_clinics
+entity_type: node
+bundle: res_clinic
+label: 'Featured Clinics on Campus'
+description: 'This displays featured clinics within a campus location'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      res_clinic: res_clinic
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
