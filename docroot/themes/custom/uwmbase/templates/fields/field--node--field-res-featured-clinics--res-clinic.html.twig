@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Theme override for Providers field on Res Clinic nodes.
+ * Theme override for Featured Clinics on Campus field on Res Clinic nodes.
  *
  * Available variables:
  * - attributes: HTML attributes for the containing element.
@@ -28,8 +28,10 @@
 {#
   For Bootstrap grid: remove item-level wrappers so nodes are direct children of
   the .row wrapper.
-  @see node--provider-card.html.twig
+  @see node--res-clinic--card.html.twig
 #}
-{% for item in items %}
-  {{ item.content }}
-{% endfor %}
+<div class="row">
+  {% for item in items %}
+    {{ item.content }}
+  {% endfor %}
+</div>

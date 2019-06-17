@@ -19,12 +19,21 @@
 
 {#
   Bootstrap grid:
+
+  For locations search:
   - `container` is in page template
   - `row` is in view rows template
   - `col-*` classes are here - these must be children of `row` for flexbox
   @see page--search--locations.html.twig
   @see views-view--unformatted--uwm-locations-geo-search--page-1.html.twig
   @see views-view-unformatted--uwm-locations-search--page-1.html.twig
+
+  For featured clinics on clinic page:
+  - `container` is in clinic node template include
+  - `row` is in entity reference field template
+  - `col-*` classes are here - these must be children of `row` for flexbox
+  @see node--res-clinic--full.tabs.body.html.twig
+  @see field--node--field-res-featured-clinics--res-clinic.html.twig
 #}
 <article {{ attributes.addClass(['clinic-card', 'col-sm-6', 'col-lg-4', 'col-xxl-3']) }}>
   <div class="clinic-card__inner">
