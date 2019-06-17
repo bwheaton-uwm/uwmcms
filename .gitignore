@@ -139,6 +139,9 @@ nbproject/*
 # PHPStorm
 atlassian-ide-plugin.xml
 
+# VS Code
+*.code-workspace
+
 #NPM
 npm-debug.log
 
