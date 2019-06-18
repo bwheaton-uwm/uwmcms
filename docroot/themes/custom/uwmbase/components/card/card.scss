@@ -97,9 +97,13 @@
   }
 }
 
+// Card Header with Image.
+.card .uwm-card-header--image {
+  padding: 0;
+}
+
 // Card Header with Image and CTA Link
 .card .uwm-card-header--cta {
-  padding: 0;
   position: relative;
 
   // Overlay the CTA button on the image in card header.
@@ -122,7 +126,7 @@
   }
 }
 
-.uwm-card-header .img-fluid, .uwm-card-header--cta .img-fluid {
+.uwm-card-header .img-fluid, .uwm-card-header--image .img-fluid {
   margin: 0;
   width: 100%;
 }

@@ -6,6 +6,7 @@ dependencies:
     - field.storage.paragraph.field_uwm_columns
     - paragraphs.paragraphs_type.detailed_contact_card
     - paragraphs.paragraphs_type.headshot_card
+    - paragraphs.paragraphs_type.uwm_basic_content
     - paragraphs.paragraphs_type.uwm_block
     - paragraphs.paragraphs_type.uwm_card
     - paragraphs.paragraphs_type.uwm_cta_link
@@ -32,6 +33,7 @@ settings:
       headshot_card: headshot_card
       detailed_contact_card: detailed_contact_card
       uwm_block: uwm_block
+      uwm_basic_content: uwm_basic_content
     target_bundles_drag_drop:
       uwm_cta_link:
         enabled: true
@@ -55,8 +57,8 @@ settings:
         weight: -59
         enabled: false
       uwm_basic_content:
+        enabled: true
         weight: -58
-        enabled: false
       uwm_full_html:
         weight: -57
         enabled: false
@@ -104,9 +106,6 @@ settings:
         enabled: false
       hours_of_operation:
         weight: -42
-        enabled: false
-      reusable_content:
-        weight: -41
         enabled: false
       uwm_3_col_proof_points:
         weight: -40
