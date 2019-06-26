@@ -88,6 +88,10 @@ source:
       label: field_res_room_number
       selector: /attributes/field_res_room_number
     -
+      name: field_res_feat_clinics_header
+      label: field_res_feat_clinics_header
+      selector: /attributes/field_res_feat_clinics_header
+    -
       name: uwm_unique_id
       label: uwm_unique_id
       selector: /attributes/uwm_unique_id
@@ -143,6 +147,7 @@ process:
   field_res_iscallcenterserviced: field_res_iscallcenterserviced
   field_res_phone_number: field_res_phone_number
   field_res_room_number: field_res_room_number
+  field_res_feat_clinics_header: field_res_feat_clinics_header
   uwm_unique_id: uwm_unique_id
   field_uwm_json_packet: uwm_json_packet
   field_res_providers:
