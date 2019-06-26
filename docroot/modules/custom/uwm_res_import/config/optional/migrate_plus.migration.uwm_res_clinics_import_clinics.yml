@@ -63,9 +63,9 @@ source:
     label: field_res_box_number
     selector: /attributes/field_res_box_number
 
-  - name: field_res_displayaptslink
-    label: field_res_displayaptslink
-    selector: /attributes/field_res_displayaptslink
+  - name: field_res_epic_department_ids
+    label: field_res_epic_department_ids
+    selector: /attributes/field_res_epic_department_ids
 
   - name: field_res_external_url
     label: field_res_external_url
@@ -78,6 +78,18 @@ source:
   - name: field_res_internal_url
     label: field_res_internal_url
     selector: /attributes/field_res_internal_url
+
+  - name: field_res_hide_appt_ctas
+    label: field_res_hide_appt_ctas
+    selector: /attributes/field_res_hide_appt_ctas
+
+  - name: field_res_hide_open_scheduling
+    label: field_res_hide_open_scheduling
+    selector: /attributes/field_res_hide_open_scheduling
+
+  - name: field_res_hide_returning_cta
+    label: field_res_hide_returning_cta
+    selector: /attributes/field_res_hide_returning_cta
 
   - name: field_res_iscallcenterserviced
     label: field_res_iscallcenterserviced
@@ -177,10 +189,13 @@ process:
   #    source: field_res_image/data/id
 
   field_res_box_number: field_res_box_number
-  field_res_displayaptslink: field_res_displayaptslink
+  field_res_epic_department_ids: field_res_epic_department_ids
   field_res_external_url: field_res_external_url
   field_res_fax_number: field_res_fax_number
   field_res_internal_url: field_res_internal_url
+  field_res_hide_appt_ctas: field_res_hide_appt_ctas
+  field_res_hide_open_scheduling: field_res_hide_open_scheduling
+  field_res_hide_returning_cta: field_res_hide_returning_cta
   field_res_iscallcenterserviced: field_res_iscallcenterserviced
   #  field_res_meta_tags: field_res_meta_tags
   field_res_phone_number: field_res_phone_number

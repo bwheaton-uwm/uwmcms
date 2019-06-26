@@ -10,11 +10,14 @@ dependencies:
     - field.field.node.res_clinic.field_res_box_number
     - field.field.node.res_clinic.field_res_building
     - field.field.node.res_clinic.field_res_clockwise_id
-    - field.field.node.res_clinic.field_res_displayaptslink
+    - field.field.node.res_clinic.field_res_epic_department_ids
     - field.field.node.res_clinic.field_res_expertises
     - field.field.node.res_clinic.field_res_external_url
     - field.field.node.res_clinic.field_res_fax_number
     - field.field.node.res_clinic.field_res_floor
+    - field.field.node.res_clinic.field_res_hide_appt_ctas
+    - field.field.node.res_clinic.field_res_hide_open_scheduling
+    - field.field.node.res_clinic.field_res_hide_returning_cta
     - field.field.node.res_clinic.field_res_hours_of_operation
     - field.field.node.res_clinic.field_res_image
     - field.field.node.res_clinic.field_res_internal_url
@@ -68,6 +71,14 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+  field_res_epic_department_ids:
+    type: string
+    weight: 13
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   field_res_expertises:
     type: entity_reference_label
     weight: 7
@@ -91,6 +102,36 @@ content:
     label: hidden
     settings:
       link: false
+    third_party_settings: {  }
+  field_res_hide_appt_ctas:
+    type: boolean
+    weight: 12
+    region: content
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+  field_res_hide_open_scheduling:
+    type: boolean
+    weight: 14
+    region: content
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+  field_res_hide_returning_cta:
+    type: boolean
+    weight: 15
+    region: content
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
     third_party_settings: {  }
   field_res_image:
     weight: 0
@@ -148,8 +189,6 @@ hidden:
   field_featured: true
   field_res_affiliates: true
   field_res_box_number: true
-  field_res_displayaptslink: true
-  field_res_expertises: true
   field_res_external_url: true
   field_res_hours_of_operation: true
   field_res_internal_url: true

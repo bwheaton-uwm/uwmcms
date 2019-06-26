@@ -9,11 +9,14 @@ dependencies:
     - field.field.node.res_clinic.field_res_box_number
     - field.field.node.res_clinic.field_res_building
     - field.field.node.res_clinic.field_res_clockwise_id
-    - field.field.node.res_clinic.field_res_displayaptslink
+    - field.field.node.res_clinic.field_res_epic_department_ids
     - field.field.node.res_clinic.field_res_expertises
     - field.field.node.res_clinic.field_res_external_url
     - field.field.node.res_clinic.field_res_fax_number
     - field.field.node.res_clinic.field_res_floor
+    - field.field.node.res_clinic.field_res_hide_appt_ctas
+    - field.field.node.res_clinic.field_res_hide_open_scheduling
+    - field.field.node.res_clinic.field_res_hide_returning_cta
     - field.field.node.res_clinic.field_res_hours_of_operation
     - field.field.node.res_clinic.field_res_image
     - field.field.node.res_clinic.field_res_internal_url
@@ -75,8 +78,11 @@ third_party_settings:
         - field_featured
         - field_res_is_hospital
         - field_res_iscallcenterserviced
-        - field_res_displayaptslink
         - field_res_clockwise_id
+        - field_res_epic_department_ids
+        - field_res_hide_appt_ctas
+        - field_res_hide_open_scheduling
+        - field_res_hide_returning_cta
         - field_res_internal_url
         - field_res_external_url
         - uwm_unique_id
@@ -173,19 +179,20 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_clockwise_id:
-    weight: 24
+    weight: 23
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_res_displayaptslink:
-    weight: 23
+  field_res_epic_department_ids:
+    weight: 24
     settings:
-      display_label: true
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: boolean_checkbox
+    type: string_textfield
     region: content
   field_res_expertises:
     type: entity_reference_autocomplete
@@ -197,7 +204,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_res_external_url:
-    weight: 26
+    weight: 29
     settings:
       size: 60
       placeholder: ''
@@ -220,6 +227,27 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  field_res_hide_appt_ctas:
+    weight: 25
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_res_hide_open_scheduling:
+    weight: 26
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_res_hide_returning_cta:
+    weight: 27
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_res_image:
     weight: 35
     settings:
@@ -229,7 +257,7 @@ content:
     type: image_image
     region: content
   field_res_internal_url:
-    weight: 25
+    weight: 28
     settings:
       size: 60
       placeholder: ''
@@ -290,7 +318,7 @@ content:
     type: string_textfield
     region: content
   field_search_best_bets:
-    weight: 28
+    weight: 31
     settings:
       match_operator: CONTAINS
       size: 60
@@ -397,7 +425,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   uwm_unique_id:
-    weight: 27
+    weight: 30
     settings:
       size: 60
       placeholder: ''

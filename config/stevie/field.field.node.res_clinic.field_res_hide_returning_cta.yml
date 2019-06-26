@@ -1,0 +1,23 @@
+uuid: 336ecec0-4ee5-401f-a98f-be07ba759f76
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_hide_returning_cta
+    - node.type.res_clinic
+id: node.res_clinic.field_res_hide_returning_cta
+field_name: field_res_hide_returning_cta
+entity_type: node
+bundle: res_clinic
+label: 'Hide returning patients link?'
+description: 'If a clinic is not enabled for Direct Scheduling or does not want to display the "Returning Patients?" CTA module, change this setting to ''yes''.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

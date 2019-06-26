@@ -1,0 +1,21 @@
+uuid: 66cd4375-54c0-4dd5-b8e8-480728f50f69
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_res_epic_department_ids
+field_name: field_res_epic_department_ids
+entity_type: node
+type: string
+settings:
+  max_length: 25
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

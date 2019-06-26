@@ -1,0 +1,23 @@
+uuid: 7ed7724b-b942-41b0-be27-1949104e1f57
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_hide_open_scheduling
+    - node.type.res_clinic
+id: node.res_clinic.field_res_hide_open_scheduling
+field_name: field_res_hide_open_scheduling
+entity_type: node
+bundle: res_clinic
+label: 'Hide open scheduling link?'
+description: 'If clinic has Epic Department IDs but does not want to show the ''book online'' button for open scheduling, change this setting to ''yes''.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

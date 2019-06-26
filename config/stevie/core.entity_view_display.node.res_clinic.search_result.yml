@@ -10,7 +10,6 @@ dependencies:
     - field.field.node.res_clinic.field_res_box_number
     - field.field.node.res_clinic.field_res_building
     - field.field.node.res_clinic.field_res_clockwise_id
-    - field.field.node.res_clinic.field_res_displayaptslink
     - field.field.node.res_clinic.field_res_expertises
     - field.field.node.res_clinic.field_res_external_url
     - field.field.node.res_clinic.field_res_fax_number
@@ -54,7 +53,6 @@ hidden:
   field_res_box_number: true
   field_res_building: true
   field_res_clockwise_id: true
-  field_res_displayaptslink: true
   field_res_expertises: true
   field_res_external_url: true
   field_res_fax_number: true
