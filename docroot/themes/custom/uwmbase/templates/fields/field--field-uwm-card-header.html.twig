@@ -51,7 +51,10 @@
         {% set has_cta = item.content["#paragraph"].bundle == "uwm_cta_link" %}
     {% endif %}
 {% endfor %}
-{% if has_image and has_cta %} 
+{% if has_image %}
+    {% set classes = classes|merge(['uwm-card-header--image']) %}
+{% endif %}
+{% if has_image and has_cta %}
     {% set is_cta_header = true %}
     {% set classes = classes|merge(['uwm-card-header--cta']) %}
 {% endif %}

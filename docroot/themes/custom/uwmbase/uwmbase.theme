@@ -318,10 +318,11 @@ function uwmbase_theme_registry_alter(&$theme_registry) {
  */
 function uwmbase_page_attachments_alter(&$variables) {
 
+  $currentPath = \Drupal::service('path.current')->getPath();
+
   /***
    * Add libraries for search pages
    */
-  $currentPath = \Drupal::service('path.current')->getPath();
   if (stripos($currentPath, '/search') !== FALSE) {
     $variables['#attached']['library'][] = 'uwmbase/search';
   }
@@ -330,6 +331,11 @@ function uwmbase_page_attachments_alter(&$variables) {
   }
   if (stripos($currentPath, '/search/providers') !== FALSE) {
     $variables['#attached']['library'][] = 'uwmbase/search-providers';
+  }
+
+  // Add library for eCare page.
+  if ($currentPath == '/node/20841') {
+    $variables['#attached']['library'][] = 'uwmbase/ecare-page';
   }
 
 }
@@ -345,6 +351,11 @@ function uwmbase_preprocess_html(&$variables, $hook) {
   $roles = \Drupal::currentUser()->getRoles();
   foreach ($roles as $role) {
     $variables['attributes']['class'][] = 'user-role-' . $role;
+  }
+
+  // Add a class to the eCare page.
+  if ($currentPath == '/node/20841') {
+    $variables['attributes']['class'][] = 'ecare-page';
   }
 
 }
