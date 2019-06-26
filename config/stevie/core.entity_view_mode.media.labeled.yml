@@ -1,0 +1,14 @@
+uuid: 948e79d8-dc1c-45dc-b394-a65e7518df17
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: ''
+id: media.labeled
+label: Labeled
+targetEntityType: media
+cache: true

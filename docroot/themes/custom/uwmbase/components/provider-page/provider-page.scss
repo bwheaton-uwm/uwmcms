@@ -1,0 +1,157 @@
+@import 'init';
+@import 'base/images';
+@import 'base/typography';
+
+body.is-page-node-type-res-provider {
+
+  h1.page-title {
+    margin-bottom: 40px;
+  }
+
+  h4 {
+    font-family: $font-family-sans-serif;
+    font-weight: $font-weight-normal;
+  }
+  h5 {
+    font-family: $font-family-sans-serif;
+    font-weight: $font-weight-semi-bold;
+  }
+  h6 {
+    font-weight: $font-weight-semi-bold;
+  }
+
+  #main-container {
+    @extend %uwmed-gradient-angled-dark-background;
+  }
+
+  article.node-res_provider {
+
+    .field__label {
+      display: none;
+    }
+
+    .uwm-icon {
+      width: 19px;
+      height: 19px;
+      margin-bottom: -3px;
+    }
+
+    section.left {
+
+      h5 {
+        color: theme-color('heading-purple');
+      }
+
+      a {
+        @extend %uwdm-no-underline-link;
+      }
+
+      ul {
+        margin-top: 0;
+        margin-bottom: 9.5px;
+        padding-left: 1.5em;
+        li {
+          padding-bottom: 9.5px;
+          &:last-child {
+            padding-bottom: 0;
+          }
+        }
+      }
+
+      .uwm-icon--accepting-patients {
+        margin-bottom: -2px;
+        margin-right: 3px;
+      }
+
+      div.spl {
+        margin-bottom: 1em;
+        padding-bottom: 1em;
+        border-bottom: 1px solid #dcdcdc;
+        &:last-child {
+          border-bottom-color: transparent;
+        }
+      }
+
+      .headshot {
+        @extend %uwdm-fluid-image;
+        img {
+          margin-bottom: 18px;
+        }
+
+      }
+
+    }
+
+    section.right {
+
+      .field {
+        margin-bottom: 2em;
+      }
+
+      .uwm-tab-content {
+
+        @extend %uwmed-box-shadow;
+        background: #fff;
+        margin-bottom: 40px;
+        padding: 30px;
+        min-height: 80%;
+
+        line-height: 1.4rem;
+
+        h3 {
+          padding: 0;
+          font-weight: 400;
+        }
+        li {
+          margin-bottom: 1rem;
+        }
+
+        article.node.node-res_clinic {
+          margin-bottom: 20px;
+          border-bottom: 1px solid #dcdcdc;
+
+          &:last-child {
+            border-bottom-color: transparent;
+          }
+
+          .k {
+            margin-left: 25px;
+            .uwm-icon {
+              margin-left: -25px;
+            }
+          }
+
+          .location-phone a {
+            text-decoration: underline;
+          }
+
+        }
+
+      }
+
+    }
+
+    //aside.inner-sidebar {
+    //}
+
+  }
+
+  .fa-check-circle {
+    color: green;
+  }
+  .fa-ban {
+    color: red;
+  }
+
+  h1.page-header span.accepting-apts {
+    font-size: 14px;
+    color: #000;
+  }
+
+  @include media-breakpoint-up('md') {
+    h1.page-header span.accepting-apts {
+      display: none;
+    }
+  }
+
+}

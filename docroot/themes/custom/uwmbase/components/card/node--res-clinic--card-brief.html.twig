@@ -1,0 +1,101 @@
+{#
+/**
+ * @file
+ * Provides template for display of clinic cards.
+ *
+ * This file is automatically called because of the "Card Brief" display mode
+ * and Drupal's template suggestions naming. Here we provide a few fields and
+ * a wrapper for diplay of clinics on the Provider pages.
+ *
+ * @see https://www.drupal.org/docs/8/theming/twig/twig-template-naming-conventions
+ * @see https://api.drupal.org/api/drupal/core%21modules%21node%21templates%21node.html.twig/8.4.x
+ */
+#}
+
+{% extends "@uwmbase/containers/article/article.twig" %}
+
+{% set modifier_class = attributes.class ~ ' row' %}
+
+
+{% block content %}
+  {{ attach_library('uwmbase/node-display-card-brief') }}
+
+  {#
+
+  LEFT COLUMN
+  #}
+  <div class="left image col-xs-12 col-sm-5 ">
+
+    <a href="{{ url }}">
+      {% if content.field_res_image|render|trim is empty %}
+        <img
+          src="/{{ directory }}/src/assets/uwmed_location_card_placeholder.svg"
+          alt="" class="img-fluid"/>
+      {% else %}
+        {{ content.field_res_image }}
+      {% endif %}
+    </a>
+
+  </div>
+
+
+  {#
+
+  RIGHT COLUMN
+  #}
+  <div class="right col-xs-12 col-sm-7">
+
+    <h4 class="page-title">
+      <a href="{{ url }}">{{ label }}</a>
+    </h4>
+
+
+    <address class="k">
+      {% if node.field_res_building.target_id %}
+        <i class="uwm-icon uwm-icon--clinic-locations"></i>
+        {{ drupal_entity('taxonomy_term', node.field_res_building.target_id, 'building_address')|render|striptags('<span>')|raw }}
+      {% endif %}
+    </address>
+
+    <p class="location-phone k">
+      {% if node.field_res_phone_number.value %}
+        {% set phone = node.field_res_phone_number.value|uwm_format_phone('-') %}
+        <i class="uwm-icon uwm-icon--call-online"></i>
+
+        <a href="tel:{{ phone }}">{{ phone|replace({'-': '.'}) }}</a>
+      {% endif %}
+    </p>
+
+    <p class="services k">
+      {#{{ devel_breakpoint() }}#}
+      {% if content.field_res_expertises %}
+        {% set expertises = content.field_res_expertises|uwm_filter_non_numeric_keys %}
+        <i class="uwm-icon uwm-icon--accepting-patients" aria-hidden="true"></i>
+        {{ expertises|slice(0, 4)|uwm_replace_links_with_text|sort|join(', ') }}{{ expertises|length > 4 ? '...' : '' }}
+        {#{{ node.field_res_medical_services|uwm_filter_non_numeric_keys|uwm_replace_links_with_text|sort|slice(5)|join(', ') }}#}
+      {% endif %}
+    </p>
+
+    <p class="opens k">
+      {% if hours.operation.always_open or hours.operation.open_close %}
+        <i class="uwm-icon uwm-icon--appointment"></i>
+        {#{% if hours.urgent.always_open %}#}
+        {#{{- "Urgent Care: Always open"|t -}}#}
+        {#{% else %}#}
+        {#<span data-uwm-opens-at="{{ hours.urgent.open_close|json_encode() }}"></span>#}
+        {#{% endif %}#}
+        {#{% endif %}#}
+        {% if hours.operation.always_open %}
+          {{- "Always Open"|t -}}
+        {% else %}
+          <span
+            data-uwm-opens-at="{{ hours.operation.open_close|json_encode() }}"></span>
+        {% endif %}
+      {% endif %}
+    </p>
+  </div>
+
+
+
+
+{% endblock content %}

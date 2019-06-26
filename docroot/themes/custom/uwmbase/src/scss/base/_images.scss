@@ -1,3 +1,27 @@
 .img-fluid {
     margin: 2em 0;
 }
+
+
+// Image thumbnails
+.uwm-img-thumbnail {
+  padding: $thumbnail-padding;
+  background-color: $thumbnail-bg;
+  border: $thumbnail-border-width solid $thumbnail-border-color;
+  @include border-radius($thumbnail-border-radius);
+  @include box-shadow($thumbnail-box-shadow);
+
+  // Keep them at most 100% wide
+  @include img-fluid;
+}
+
+
+%uwdm-fluid-image {
+  padding-left: 0;
+  padding-right: 0;
+  img {
+    @extend %uwmed-box-shadow, .uwm-img-thumbnail;
+    width: 100%;
+    margin-top: 0;
+  }
+}

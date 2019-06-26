@@ -1,0 +1,54 @@
+uuid: 62054675-9dc6-449d-8a6e-5f481cc817c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.degree.field_res_degree
+    - field.field.paragraph.degree.field_res_description
+    - field.field.paragraph.degree.field_res_education_institution
+    - field.field.paragraph.degree.field_res_is_primary
+    - field.field.paragraph.degree.field_res_year
+    - paragraphs.paragraphs_type.degree
+id: paragraph.degree.default
+targetEntityType: paragraph
+bundle: degree
+mode: default
+content:
+  field_res_degree:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_res_education_institution:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_res_is_primary:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_res_year:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_res_description: true
+  status: true
+  uid: true

@@ -1,0 +1,46 @@
+uuid: 1e71626a-c034-4608-a198-1e02b63cf211
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.education_specialties.uwm_unique_id
+    - taxonomy.vocabulary.education_specialties
+  module:
+    - path
+    - text
+id: taxonomy_term.education_specialties.default
+targetEntityType: taxonomy_term
+bundle: education_specialties
+mode: default
+content:
+  description:
+    type: text_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uwm_unique_id:
+    weight: 31
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden: {  }

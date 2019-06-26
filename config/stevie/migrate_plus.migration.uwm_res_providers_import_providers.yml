@@ -1,4 +1,4 @@
-uuid: 725bb30d-b258-4679-bfe2-b9d926693243
+uuid: 706554fc-8804-48fb-a1da-8d9ab6c423d7
 langcode: en
 status: true
 dependencies:
@@ -139,6 +139,12 @@ source:
       plugin: migration
       migration: uwm_res_providers_import_provider_images
       selector: /relationships/field_res_image
+    -
+      name: node_videos
+      label: node_videos
+      plugin: migration
+      migration: uwm_res_media_remote_videos
+      selector: /relationships/node_videos/data
 process:
   uuid: uuid
   nid:
@@ -222,6 +228,18 @@ process:
       title: title
       height: field_res_image/data/id/meta/height
       width: field_res_image/data/id/meta/width
+  field_res_node_videos:
+    plugin: sub_process
+    source: node_videos
+    process:
+      target_id:
+        -
+          plugin: migration_lookup
+          migration: uwm_res_media_remote_videos
+          source: id
+        -
+          plugin: skip_on_empty
+          method: process
   field_res_languages:
     plugin: sub_process
     source: field_res_languages
