@@ -6,7 +6,8 @@
  * @TODO: this purple version will be phased out. When there are no more usages,
  * remove this, and make the blue accent version the defaults.
  */
-ul.uwm-nav-tabs {
+ul.uwm-nav-tabs,
+ul.udm-nav-tabs {
   border-bottom: 0 none;
 
   > li.nav-item {
@@ -19,6 +20,8 @@ ul.uwm-nav-tabs {
       color: color('white');
       background: theme-color('uwmed-dark-purple');
       border: 0 none;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
       text-decoration: none;
       text-transform: uppercase;
       font-size: 0.875rem; // 14px
@@ -31,6 +34,10 @@ ul.uwm-nav-tabs {
       &.active {
         background-color: color('white');
         color: inherit;
+      }
+
+      &.disabled {
+        visibility: hidden;
       }
     }
 
@@ -90,7 +97,8 @@ ul.uwm-nav-tabs--blue-accent {
 
 @include media-breakpoint-down('sm') {
 
-  ul.uwm-nav-tabs {
+  ul.uwm-nav-tabs,
+  ul.udm-nav-tabs  {
 
     > li.nav-item {
       max-width: 30%;
@@ -126,7 +134,8 @@ ul.uwm-nav-tabs--blue-accent {
 
 @include media-breakpoint-down('xs') {
 
-  ul.uwm-nav-tabs {
+  ul.uwm-nav-tabs,
+  ul.udm-nav-tabs  {
     overflow: hidden;
 
     > li.nav-item {
