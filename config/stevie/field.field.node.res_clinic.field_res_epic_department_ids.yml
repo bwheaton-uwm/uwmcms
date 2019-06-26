@@ -1,0 +1,19 @@
+uuid: 4a41df97-43f6-4781-ac9d-9e4aa9897d32
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_epic_department_ids
+    - node.type.res_clinic
+id: node.res_clinic.field_res_epic_department_ids
+field_name: field_res_epic_department_ids
+entity_type: node
+bundle: res_clinic
+label: 'Epic Department IDs'
+description: 'If a clinic has Epic Department IDs, the ''book online'' button for open scheduling will be displayed in the Make an Appointment CTA module.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

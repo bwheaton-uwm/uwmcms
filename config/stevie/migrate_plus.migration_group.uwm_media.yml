@@ -1,0 +1,10 @@
+uuid: 0244a951-5c14-47e6-83fc-39f3a3e4b462
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_media
+label: uwm_media
+description: ''
+source_type: null
+module: null
+shared_configuration: null

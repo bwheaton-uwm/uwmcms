@@ -1,0 +1,14 @@
+uuid: a646a33e-f87d-4a78-857f-6f49999f1749
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - node
+third_party_settings:
+  lightning_core:
+    description: ''
+id: node.card_brief
+label: 'Card - Brief Display'
+targetEntityType: node
+cache: true

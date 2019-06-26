@@ -752,7 +752,17 @@ display:
             label: ''
           granularity: second
       title: Media
-      header: {  }
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          content: 'Displaying @start - @end of @total'
+          plugin_id: result
       footer: {  }
       empty:
         area_text_custom:
@@ -780,11 +790,8 @@ display:
       tags:
         - 'config:core.entity_view_display.media.document.default'
         - 'config:core.entity_view_display.media.document.thumbnail'
-        - 'config:core.entity_view_display.media.image.default'
-        - 'config:core.entity_view_display.media.image.thumbnail'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_document.default'
         - 'config:core.entity_view_display.media.uwm_provider_resource_video.default'
-        - 'config:core.entity_view_display.media.video.default'
-        - 'config:core.entity_view_display.media.video.thumbnail'
         - 'config:core.entity_view_display.media.acquia_dam_asset.default'
         - 'config:core.entity_view_display.media.acquia_dam_asset.embedded'
         - 'config:core.entity_view_display.media.acquia_dam_asset.thumbnail'
@@ -794,7 +801,9 @@ display:
         - 'config:core.entity_view_display.media.audio_file.thumbnail'
         - 'config:core.entity_view_display.media.document.embedded'
         - 'config:core.entity_view_display.media.document.media_library'
+        - 'config:core.entity_view_display.media.image.default'
         - 'config:core.entity_view_display.media.image.embedded'
+        - 'config:core.entity_view_display.media.image.thumbnail'
         - 'config:core.entity_view_display.media.instagram.default'
         - 'config:core.entity_view_display.media.instagram.embedded'
         - 'config:core.entity_view_display.media.instagram.media_library'
@@ -803,9 +812,10 @@ display:
         - 'config:core.entity_view_display.media.tweet.embedded'
         - 'config:core.entity_view_display.media.tweet.media_library'
         - 'config:core.entity_view_display.media.tweet.thumbnail'
-        - 'config:core.entity_view_display.media.uwm_provider_resource_document.default'
         - 'config:core.entity_view_display.media.uwm_provider_resource_document.embedded'
+        - 'config:core.entity_view_display.media.video.default'
         - 'config:core.entity_view_display.media.video.embedded'
+        - 'config:core.entity_view_display.media.video.thumbnail'
         - 'config:core.entity_view_display.media.video_embed.default'
         - 'config:core.entity_view_display.media.video_embed.embedded'
         - 'config:core.entity_view_display.media.video_embed.uwm_modal'

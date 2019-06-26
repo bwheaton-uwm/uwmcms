@@ -1,0 +1,103 @@
+{#
+  # Displays the Education tab on provider type nodes.
+  #
+  # We have a request to display the education, degrees and certification
+  # paragraphs for this tab sorted by a field on the respective paragraphs.
+  # Year is one of the paragraph fields and perhaps "Is primary?" will be a
+  # requested sort or first item to show, later. It's possible recreating the
+  # array in a node_load() or module.  Since we are accessing and formatting
+  # the fields here already, it looked quicker sorting the paragraph
+  # collections here.
+  #
+  # Each of the three sections loops the paragraph collections (education,
+  # credentials or degress), adds a non-render "#sort_order_flag" to the item,
+  # then loops and prints the new array.
+  #
+  # @file node--res-provider--tabs-education.html.twig
+  #
+  #}
+
+
+{#{{ devel_breakpoint() }}#}
+
+{#
+ #
+ #
+ #
+ #
+ # EDUCATION
+ #
+ #
+#}
+
+{% if node.uwm_json_packet_data.educationHistories is not empty %}
+
+  {% for e in node.uwm_json_packet_data.educationHistories|uwm_sort_parts('gradYear')|reverse %}
+
+    <h5>{{ e.institutionName }}</h5>
+    {% set ed = [] %}
+    {% if e.educationType %}
+      {% set ed = ed|merge([e.educationType]) %}
+    {% endif %}
+    {% if e.gradYear %}
+      {% set ed = ed|merge([e.gradYear]) %}
+    {% endif %}
+    {% if e.specialty %}
+      {% set ed = ed|merge([e.specialty]) %}
+    {% endif %}
+
+    <p>{{ ed|join(', ') }}</p>
+
+  {% endfor %}
+{% endif %}
+
+
+{#
+ #
+ #
+ #
+ #
+ # DEGREES
+ #
+ #
+ #}
+{#{% if content.field_res_degrees is not empty %}#}
+  {#{{ content.field_res_degrees }}#}
+{#{% endif %}#}
+
+
+{#
+ #
+ #
+ #
+ #
+ # CERTIFICATIONS
+ #
+ #
+ #}
+{% if node.uwm_json_packet_data.boardCertifications is not empty %}
+
+  <p>&nbsp;</p>
+  <h5>{{ "Board Certifications"| t }}</h5>
+
+  <ul>
+    {% for e in node.uwm_json_packet_data.boardCertifications|uwm_sort_parts('certifiedYear')|reverse %}
+
+      {#<h5>{{ e.institutionName }}</h5>#}
+      {% set ed = [] %}
+      {% if e.specialtyName %}
+        {% set ed = ed|merge([e.specialtyName]) %}
+      {% endif %}
+      {% if e.certifiedYear %}
+        {% set ed = ed|merge([e.certifiedYear]) %}
+      {% endif %}
+      {% if e.boardName %}
+        {% set ed = ed|merge([e.boardName]) %}
+      {% endif %}
+
+      <li>{{ ed|join(', ') }}</li>
+
+    {% endfor %}
+  </ul>
+
+{% endif %}

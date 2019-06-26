@@ -1,0 +1,42 @@
+uuid: 665c0cf2-2550-4ea5-9a31-e0bf6279314a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.board_certification.field_res_board_certification
+    - field.field.paragraph.board_certification.field_res_is_primary
+    - field.field.paragraph.board_certification.field_res_year
+    - paragraphs.paragraphs_type.board_certification
+id: paragraph.board_certification.default
+targetEntityType: paragraph
+bundle: board_certification
+mode: default
+content:
+  field_res_board_certification:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_res_is_primary:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_res_year:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

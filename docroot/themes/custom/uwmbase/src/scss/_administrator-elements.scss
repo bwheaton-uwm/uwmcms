@@ -1,0 +1,33 @@
+//
+// _administrator-elements.scss
+//
+// Special styling and rules for editors. Includes some special formatting
+// to make the page more usable for logged-in users. Note this file loads
+// on all pages.
+//
+
+body.adminimal-admin-toolbar.user-role-authenticated {
+
+
+  div#block-uwmbase-local-tasks {
+    margin: 1rem;
+  }
+
+
+  pre {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 3px solid #f36d33;
+    color: #666;
+    font-family: monospace;
+    font-size: 11px;
+    line-height: 1.4em;
+    margin: 1em 1em 2em 2em;
+    padding: 1em 1.5em;
+    word-wrap: break-word;
+    max-height: 300px;
+    max-width: 100%;
+    overflow: auto;
+  }
+
+}

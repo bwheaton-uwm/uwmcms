@@ -1,0 +1,54 @@
+uuid: c4f214aa-1a73-40e0-90df-456f02032b40
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.education_history.field_res_education_institution
+    - field.field.paragraph.education_history.field_res_education_specialty
+    - field.field.paragraph.education_history.field_res_education_type
+    - field.field.paragraph.education_history.field_res_year
+    - paragraphs.paragraphs_type.education_history
+id: paragraph.education_history.default
+targetEntityType: paragraph
+bundle: education_history
+mode: default
+content:
+  field_res_education_institution:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_res_education_specialty:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_res_education_type:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_res_year:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

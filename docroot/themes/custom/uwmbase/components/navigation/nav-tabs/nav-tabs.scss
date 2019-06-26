@@ -8,6 +8,18 @@
  */
 nav.uw-navtabs {
 
+  &.nowrap {
+    ul {
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+      &.flex {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+      }
+    }
+  }
+
   ul.nav-tabs {
     border-bottom: 0 none;
 

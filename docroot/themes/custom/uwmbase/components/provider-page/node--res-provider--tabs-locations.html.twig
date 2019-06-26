@@ -1,0 +1,10 @@
+{#
+
+//    LOCATIONS
+
+#}
+
+
+{% for i in node.field_res_clinics %}
+  {{ drupal_entity('node', i.target_id, 'card_brief') }}
+{% endfor %}

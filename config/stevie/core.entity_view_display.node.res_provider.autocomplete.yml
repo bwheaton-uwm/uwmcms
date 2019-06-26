@@ -70,6 +70,7 @@ content:
       markup: false
     third_party_settings: {  }
 hidden:
+  field_node_videos: true
   field_res_affiliates: true
   field_res_biography: true
   field_res_board_certifications: true
@@ -80,14 +81,17 @@ hidden:
   field_res_gender: true
   field_res_image: true
   field_res_internal_url: true
+  field_res_is_open_scheduling: true
   field_res_isacceptingnewpts: true
   field_res_languages: true
   field_res_medical_services: true
   field_res_meta_tags: true
+  field_res_node_videos: true
   field_res_npi: true
   field_res_personal_interests: true
   field_res_pubmed_ids: true
   field_res_puma_id: true
+  field_res_ser_id: true
   field_search_best_bets: true
   field_uwm_json_packet: true
   links: true

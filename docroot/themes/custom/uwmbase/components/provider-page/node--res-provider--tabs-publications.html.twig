@@ -1,0 +1,17 @@
+{#
+
+//    PUBLICATIONS
+
+    #}
+
+{% set pubMedIds = '' %}
+{% for j,k in node.field_res_pubmed_ids %}
+  {% set pubMedIds = pubMedIds ~ k.value ~',' %}
+{% endfor %}
+
+
+{#{% set pubMedIds = '10993853,18316842,19628184,20406239,21041160,21304092,22419555,22457158,24446326,' %}#}
+
+<div id="pubmed-journal-results"
+     data-pubmed-journal-ids="{{ pubMedIds|trim(',') }}">
+</div>

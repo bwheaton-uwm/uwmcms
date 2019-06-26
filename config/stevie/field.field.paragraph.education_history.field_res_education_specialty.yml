@@ -5,7 +5,7 @@ dependencies:
   config:
     - field.storage.paragraph.field_res_education_specialty
     - paragraphs.paragraphs_type.education_history
-    - taxonomy.vocabulary.ed
+    - taxonomy.vocabulary.education_specialties
 _core:
   default_config_hash: o-emWLYz6hIRsmx640LhgiJasmmyJ0Y4_gOFYGm5m6g
 id: paragraph.education_history.field_res_education_specialty
@@ -22,7 +22,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      ed: ed
+      education_specialties: education_specialties
     sort:
       field: name
       direction: asc
