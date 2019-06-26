@@ -3,16 +3,16 @@
 {% endif %}
 
 
-  {#
+{#
 
-  // TAB HEADERS:
+// TAB HEADERS:
 
-  #}
+#}
 
-<nav class="clinic-page__gradient_background">
+<nav class="clinic-page__tabs-nav">
   <div class="container-xl">
 
-    <ul class="nav nav-tabs udm-nav-tabs" id="nav-tab"
+    <ul class="nav nav-tabs uwm-nav-tabs uwm-nav-tabs--blue-accent" id="nav-tab"
       role="tablist">
       <li class="nav-item">
 
@@ -22,8 +22,8 @@
           data-tab-history="true"
           data-tab-history-changer="push"
           data-tab-history-update-url="true">
-          {{ 'Overview/Resources'|t }}
-
+          {# Use spans to designate line breaks for smaller screens. #}
+          {{ '<span>Overview/</span><span>Resources</span>' }}
         </a>
 
       </li>
@@ -37,7 +37,7 @@
           data-tab-history="true"
           data-tab-history-changer="push"
           data-tab-history-update-url="true">
-          {{ 'Care Providers'|t }}
+          {{ '<span>Care</span> <span>Providers</span>' }}
         </a>
       </li>
       {% endif %}
@@ -50,16 +50,14 @@
           data-tab-history="true"
           data-tab-history-changer="push"
           data-tab-history-update-url="true">
-          {{ 'Directions/Parking'|t }}
+          {{ '<span>Directions/</span><span>Parking</span>' }}
         </a>
 
       </li>
 
-
     </ul>
   </div>
 </nav>
-
 
 {#
 

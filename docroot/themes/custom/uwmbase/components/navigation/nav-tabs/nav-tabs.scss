@@ -1,53 +1,165 @@
 @import 'init';
 
+/*
+ * Tabs, default: purple tabs, white text
+ *
+ * @TODO: this purple version will be phased out. When there are no more usages,
+ * remove this, and make the blue accent version the defaults.
+ */
+ul.uwm-nav-tabs {
+  border-bottom: 0 none;
 
-ul.udm-nav-tabs {
+  > li.nav-item {
+    margin: 0 2px 0 0;
+    padding: 0;
 
-  border-bottom: 1px solid #dcdcdc;
-
-  > li {
-
-    margin: 0 2px -1px 0;
-    padding-bottom: 0;
-
-    &.active {
-      z-index: 3;
-    }
-
-    > a, > a:hover, > a:focus {
-
+    a.nav-link {
       margin: 0;
-      padding: 16px 34px 16px 26px;
-      float: left;
-      color: theme-color('white');
+      padding: 1rem 2rem; // 16px 32px
+      color: color('white');
       background: theme-color('uwmed-dark-purple');
-      border-color: transparent !important;
+      border: 0 none;
       text-decoration: none;
       text-transform: uppercase;
-      font-size: .875rem;
+      font-size: 0.875rem; // 14px
 
-      @media(max-width: 350px) {
-        font-size: 12.5px;
+      &:hover {
+        color: color('white');
+        text-decoration: none;
       }
 
-      i.uw-ico.heart {
-        font-size: 26px;
-        float: left;
-        margin: -6px 4px 0px 0;
+      &.active {
+        background-color: color('white');
+        color: inherit;
       }
-
     }
 
-  }
-
-  > li.active > a, > li.active > a:hover, > li.active > a:focus {
-    color: theme-color('uwmed-light-purple');
-    background: theme-color('white');
   }
 
 }
 
-div.uwm-tab-content {
+/*
+ * Tabs: blue accent, no background color
+ */
+ul.uwm-nav-tabs--blue-accent {
+  padding: 1.5rem 0 calc(1.5rem + 14px) 0; // 24px, 24px + height of blue underline on active
+
+  > li.nav-item {
+    background-color: transparent;
+    margin: 0;
+    padding: 0 2.25rem; // 36px
+    border-left: 1px solid theme-color('border-gray');
+
+    &:first-child {
+      padding-left: 0;
+      border-left: 0;
+    }
+
+    a.nav-link {
+      padding: 0;
+      background-color: transparent;
+      color: inherit;
+      font-weight: $font-weight-semi-bold;
+
+      &:hover, &:active {
+        color: color('blue');
+      }
+
+      &.active {
+        color: color('blue');
+        position: relative;
+
+        // Add underline with absolute-positioned pseudo-element, so it does
+        // not expand the parent li's left border.
+        &::after {
+          content: '';
+          display: block;
+          width: 100%;
+          height: 4px;
+          background-color: color('blue');
+          position: absolute;
+          left: 0;
+          bottom: -10px;
+        }
+      }
+    }
+
+  }
+
+}
+
+@include media-breakpoint-down('sm') {
+
+  ul.uwm-nav-tabs {
+
+    > li.nav-item {
+      max-width: 30%;
+
+      a.nav-link {
+        text-align: center;
+        padding: 1rem; // 16px
+
+        // Use spans to create line breaks at desired points in tab label.
+        span {
+          display: block;
+          text-align: center;
+        }
+      }
+
+    }
+
+  }
+
+  ul.uwm-nav-tabs--blue-accent {
+
+    > li.nav-item {
+
+      a.nav-link {
+        padding: 0;
+      }
+
+    }
+
+  }
+
+}
+
+@include media-breakpoint-down('xs') {
+
+  ul.uwm-nav-tabs {
+    overflow: hidden;
+
+    > li.nav-item {
+      max-width: 33%;
+
+      a.nav-link {
+        padding: 1rem 0.5rem; // 16px 8px
+        font-size: 0.75rem; // 12px
+      }
+
+    }
+
+  }
+
+  ul.uwm-nav-tabs--blue-accent {
+
+    > li.nav-item {
+      padding: 0 1rem; // 16px
+
+      a.nav-link {
+        padding: 0;
+      }
+
+    }
+
+  }
+
+}
+
+/*
+ * Tab content
+ */
+ div.uwm-tab-content {
 
   min-height: 200px;
   border: 0 none;
@@ -55,47 +167,6 @@ div.uwm-tab-content {
   // Sub-tabs:
   div.tab-content, div.uwm-tab-content {
     margin-top: 15px;
-  }
-
-}
-
-@media(max-width: 767px) {
-
-  ul.udm-nav-tabs {
-
-    @media(max-width: 350px) {
-      overflow: hidden;
-    }
-
-    > li {
-      @media(max-width: 350px) {
-        max-width: 32.5%;
-      }
-
-      max-width: 30%;
-
-      &:first-child > a {
-        margin: 0 !important;
-      }
-
-      > a, > a:hover, > a:focus {
-
-        padding: 16px;
-        text-transform: uppercase;
-        text-align: center;
-        word-spacing: 100vw; // Force each word onto separate line.
-        display: table-cell;
-        vertical-align: bottom;
-        float: none;
-
-        .uw-ico, .fa {
-          display: none;
-        }
-
-      }
-
-    }
-
   }
 
 }
