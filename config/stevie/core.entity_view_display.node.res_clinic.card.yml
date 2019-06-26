@@ -104,9 +104,13 @@ hidden:
   field_featured: true
   field_res_affiliates: true
   field_res_box_number: true
+  field_res_epic_department_ids: true
   field_res_expertises: true
   field_res_external_url: true
   field_res_fax_number: true
+  field_res_hide_appt_ctas: true
+  field_res_hide_open_scheduling: true
+  field_res_hide_returning_cta: true
   field_res_hours_of_operation: true
   field_res_internal_url: true
   field_res_is_hospital: true
