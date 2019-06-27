@@ -122,11 +122,10 @@ class UwmResImportSubscriber implements EventSubscriberInterface {
    * @return null
    *   Description here.
    */
-  private static function getMigrationDestinationId(string $sourceId, string $migrationName) {
+  public static function getMigrationDestinationId(string $sourceId, string $migrationName) {
 
     $table = 'migrate_map_' . $migrationName;
-    $table = 'migrate_map_uwm_res_providers_import_provider_images';
-
+    // $table = 'migrate_map_uwm_res_providers_import_provider_images';.
     $connection = \Drupal::database();
     $query = $connection->query("SELECT * FROM {$table} WHERE sourceid1 = :id", [
       ':id' => $sourceId,

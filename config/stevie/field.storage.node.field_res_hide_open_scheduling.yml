@@ -1,13 +1,11 @@
-uuid: e44a381f-3724-403a-b76f-a5d71d1b2979
+uuid: feb81fab-539e-4052-89c3-b7c7d9c8dcfd
 langcode: en
 status: true
 dependencies:
   module:
     - node
-_core:
-  default_config_hash: YlaifkbGXtciy93R8wRDllGne0eY9qPt5VXfORBz__k
-id: node.field_res_displayaptslink
-field_name: field_res_displayaptslink
+id: node.field_res_hide_open_scheduling
+field_name: field_res_hide_open_scheduling
 entity_type: node
 type: boolean
 settings: {  }

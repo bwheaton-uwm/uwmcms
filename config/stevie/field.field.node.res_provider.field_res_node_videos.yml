@@ -1,0 +1,34 @@
+uuid: bafd99b8-f3cc-4e5f-8728-ac91f188f7b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_node_videos
+    - media.type.uwm_provider_resource_video
+    - media.type.video
+    - media.type.video_embed
+    - media.type.video_file
+    - node.type.res_provider
+id: node.res_provider.field_res_node_videos
+field_name: field_res_node_videos
+entity_type: node
+bundle: res_provider
+label: 'Res Node Videos'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      uwm_provider_resource_video: uwm_provider_resource_video
+      video: video
+      video_embed: video_embed
+      video_file: video_file
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: uwm_provider_resource_video
+field_type: entity_reference

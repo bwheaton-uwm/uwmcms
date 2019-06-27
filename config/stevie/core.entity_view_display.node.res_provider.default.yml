@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.res_provider.field_res_medical_services
     - field.field.node.res_provider.field_res_meta_tags
     - field.field.node.res_provider.field_res_name
+    - field.field.node.res_provider.field_res_node_videos
     - field.field.node.res_provider.field_res_npi
     - field.field.node.res_provider.field_res_personal_interests
     - field.field.node.res_provider.field_res_pubmed_ids
@@ -185,6 +186,15 @@ content:
       multiple_el_al_min: '3'
       multiple_el_al_first: '1'
     third_party_settings: {  }
+  field_res_node_videos:
+    type: entity_reference_entity_view
+    weight: 21
+    label: above
+    settings:
+      view_mode: labeled
+      link: false
+    third_party_settings: {  }
+    region: content
   field_res_npi:
     type: number_integer
     weight: 1

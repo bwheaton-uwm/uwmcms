@@ -118,18 +118,31 @@ provider-card:
     component:
       dist/css/provider-card.css: {}
 
+node-display-card-brief:
+  css:
+    component:
+      dist/css/card-brief.css: {}
+  dependencies:
+  - uwmbase/clinic-hours
+
 clinic-page:
   css:
     component:
       dist/css/clinic-page.css: {}
   js:
-    dist/js/clinic-page-hours.js: {}
 #    dist/js/clinic-page-tabs.js: {}
   dependencies:
-    - uwmbase/momentjs
-    - uwmbase/clockwise-wait-times
+    - uwmbase/clinic-hours
     - uwmbase/nav-tabs
     - uwmbase/anchor-scroll
+
+clinic-hours:
+  js:
+    dist/js/clinic-page-hours.js: {}
+  #    dist/js/clinic-page-tabs.js: {}
+  dependencies:
+  - uwmbase/momentjs
+  - uwmbase/clockwise-wait-times
 
 content-spotlight:
   css:
@@ -333,6 +346,17 @@ progress-throbber:
   css:
     component:
       components/asset-builds/css/progress-throbber.css: {}
+
+provider-page:
+  css:
+    component:
+      dist/css/provider-page.css: {}
+  js:
+    dist/js/provider-page.js: {}
+  dependencies:
+  - uwmbase/nav-tabs
+  - uwmbase/anchor-scroll
+  - uwmed/modal-play-video
 
 resizable-textarea:
   css:

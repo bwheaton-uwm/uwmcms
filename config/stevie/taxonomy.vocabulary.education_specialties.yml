@@ -1,0 +1,9 @@
+uuid: e62503dd-063f-4c1c-8766-f11e4b06370c
+langcode: en
+status: true
+dependencies: {  }
+name: 'Education Specialties'
+vid: education_specialties
+description: ''
+hierarchy: 0
+weight: 0

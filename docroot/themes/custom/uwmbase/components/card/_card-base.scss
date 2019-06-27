@@ -1,0 +1,68 @@
+@import 'init';
+@import 'base/typography';
+@import 'base/images';
+
+
+article.card {
+
+  font-size: 14px;
+
+  h2 {
+    font-size: 1.25rem; // 20px
+    font-family: $font-family-sans-serif;
+    //font-weight: $font-weight-semi-bold;
+
+    a {
+      font-size: inherit !important;
+      color: $link-blue;
+      &:hover {
+        color: $link-blue;
+        text-decoration: underline;
+      }
+    }
+
+    span.small {
+      font-size: 14px;
+    }
+
+  }
+
+  h3 {
+    margin: 0 0 0.5rem 0;
+    padding: 0;
+    font-size: 1rem; // 16px
+    line-height: 1.125rem; // 18px
+    font-family: $font-family-sans-serif;
+    font-weight: $font-weight-semi-bold;
+  }
+
+  a {
+    color: $link-blue;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  a.btn-cta {
+    margin: 0;
+    box-shadow: 0 1px 6px $gray-200;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: $font-weight-semi-bold;
+    font-size: 0.8125rem; // 13px
+    color: #000;
+
+    @include media-breakpoint-up('md') {
+      font-size: 0.875rem; // 14px
+    }
+
+    text-decoration: none;
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+}

@@ -1,0 +1,80 @@
+# Migration configuration for importing Media Entity, Youtube Videos
+id: uwm_res_media_remote_videos
+label: uwm_res_media_remote_videos
+migration_group: uwm_media
+
+
+dependencies:
+  enforced:
+    module:
+    - uwm_res_import
+
+
+destination:
+  plugin: entity:media
+
+
+
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  track_changes: true
+
+
+  urls: https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/media/remote_video?page[offset]=0&page[limit]=50&sort=-changed
+
+  ids:
+    id:
+      type: string
+
+
+  item_selector: data/
+
+
+  fields:
+
+  - name: id
+    label: 'id'
+    selector: id
+
+  - name: mid
+    label: 'mid'
+    selector: /attributes/drupal_internal__mid
+
+  - name: name
+    label: 'name'
+    selector: /attributes/name
+
+  - name: status
+    label: 'status'
+    selector: /attributes/status
+
+  - name: created
+    label: 'created'
+    selector: /attributes/created
+
+  - name: changed
+    label: 'changed'
+    selector: /attributes/changed
+
+  - name: video_url
+    label: 'video_url'
+    selector: /attributes/field_media_oembed_video
+
+
+process:
+  bundle:
+    plugin: default_value
+    default_value: video
+
+  name: name
+  status: status
+  created: created
+  changed: changed
+
+  uid:
+    plugin: default_value
+    default_value: 1
+
+  field_media_video_embed_field: video_url

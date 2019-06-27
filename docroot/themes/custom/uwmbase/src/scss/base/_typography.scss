@@ -46,6 +46,29 @@ h1.page-title {
   color: theme-color('heading-purple');
 }
 
+%uwdm-no-underline-link {
+  color: $link-hover-color;
+  text-decoration: none;
+  &:hover, &:focus {
+    text-decoration: underline;
+  }
+
+  svg {
+    float: right;
+    margin-top: 4px;
+    margin-right: -4px;
+  }
+}
+
+%uwdm-no-underline-link-dark {
+  color: $body-color;
+  text-decoration: none;
+  &:hover, &:focus {
+    color: $link-hover-color;
+    text-decoration: underline;
+  }
+}
+
 .block-page-title-block h1 {
   padding-top: 3.125rem;
 }

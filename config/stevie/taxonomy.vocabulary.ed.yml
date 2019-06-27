@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 _core:
   default_config_hash: ax1teOkncWeVDjYq8kCGUJ0LQp_keyd9sOhXoifhAz8
-name: 'Education Specialties'
+name: 'Deprecated - Ed vocabulary (Was ed Education Specialites)'
 vid: ed
 description: ''
 hierarchy: 0
