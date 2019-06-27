@@ -186,43 +186,60 @@
 
   .clinic-page__tabs {
 
-    nav.clinic-page__gradient_background {
-      padding-bottom: 0;
-      ul {
-        border-bottom: 0 none;
-      }
-
+    .clinic-page__tabs-nav {
+      background-color: color('white');
     }
 
     .tab-content {
-
-      h2.leader {
-        padding: 1rem 0;
-      }
 
       .tab-pane.fade:not(.show) {
         display: none;
       }
 
-      .clinic_page__services ul {
-        padding-left: 1.5rem;
-        list-style-type: none;
-
-        li {
-          padding: 0 0 1rem 1.5rem;
-          background-image: url("/themes/custom/uwmbase/dist/assets/uwm-icons/icon_checkmark_in_circle.svg");
-          background-position: 0 0;
-          background-repeat: no-repeat;
-          background-size: 1.35rem 1.35rem;
-        }
-      }
-    
-      .field__label {
-        display: none;
+      .leader,
+      .uwm-accent-heading__title  {
+        margin: 0;
+        padding: 1rem 0;
       }
 
     }
 
+  }
+
+  .clinic-page__featured-clinics {
+    // We want the first section in each tab to be white, matching the tab
+    // headers. If Featured Clinics is present, it is first.
+    background-color: color('white');
+  }
+
+  .clinic-page__services {
+    // We want the first section in each tab to be white, matching the tab
+    // headers. Services is first by default.
+    background-color: color('white');
+    padding-bottom: 1rem;
+
+     ul {
+      margin-bottom: 0;
+      padding-left: 1.5rem;
+      list-style-type: none;
+
+      li {
+        padding: 0 0 1rem 1.5rem;
+        background-image: url("/themes/custom/uwmbase/dist/assets/uwm-icons/icon_checkmark_in_circle.svg");
+        background-position: 0 3px;
+        background-repeat: no-repeat;
+        background-size: 1rem 1rem; // 16px 16px
+      }
+    }
+  }
+
+  // Match Services section only if it's after Featured Clinics.
+  .clinic-page__featured-clinics + .clinic-page__services {
+    // We want the first section in each tab to be white, matching the tab
+    // headers. If Featured Clinics is present, it is first and thus white, and
+    // Services is second and thus gray to distinguish.
+    background-color: theme-color('background-light-gray');
+    padding-top: 1rem;
   }
 
   .field--name-field-uwm-sections {
@@ -231,7 +248,7 @@
 
   .clinic-page__overview {
     background-color: theme-color('background-light-gray');
-    padding-bottom: 2em;
+    padding: 1rem 0 2rem 0;
 
     .clinic-page__overview-header {
       margin-top: 0;
@@ -242,7 +259,6 @@
   .clinic-page__directions-tab {
     
     .nav-tabs {
-
       border: 0 none;
       
       .nav-link {

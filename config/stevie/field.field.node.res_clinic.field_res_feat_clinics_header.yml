@@ -1,0 +1,19 @@
+uuid: d7385505-5206-42fc-b3ba-65ae6b3240d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_feat_clinics_header
+    - node.type.res_clinic
+id: node.res_clinic.field_res_feat_clinics_header
+field_name: field_res_feat_clinics_header
+entity_type: node
+bundle: res_clinic
+label: 'Featured Clinics header'
+description: 'Custom header text for the featured clinics section, e.g. "Popular clinics located at UW Medical Center"'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

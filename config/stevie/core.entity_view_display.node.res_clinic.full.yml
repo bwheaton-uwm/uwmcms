@@ -14,6 +14,8 @@ dependencies:
     - field.field.node.res_clinic.field_res_expertises
     - field.field.node.res_clinic.field_res_external_url
     - field.field.node.res_clinic.field_res_fax_number
+    - field.field.node.res_clinic.field_res_feat_clinics_header
+    - field.field.node.res_clinic.field_res_featured_clinics
     - field.field.node.res_clinic.field_res_floor
     - field.field.node.res_clinic.field_res_hide_appt_ctas
     - field.field.node.res_clinic.field_res_hide_open_scheduling
@@ -48,7 +50,7 @@ bundle: res_clinic
 mode: full
 content:
   body:
-    weight: 9
+    weight: 11
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -81,7 +83,7 @@ content:
     third_party_settings: {  }
   field_res_expertises:
     type: entity_reference_label
-    weight: 7
+    weight: 9
     region: content
     label: hidden
     settings:
@@ -95,6 +97,23 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  field_res_feat_clinics_header:
+    type: string
+    weight: 7
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_res_featured_clinics:
+    type: entity_reference_entity_view
+    weight: 8
+    region: content
+    label: hidden
+    settings:
+      view_mode: card
+      link: false
+    third_party_settings: {  }
   field_res_floor:
     type: entity_reference_label
     weight: 2
@@ -151,7 +170,7 @@ content:
     type: string
     region: content
   field_res_providers:
-    weight: 10
+    weight: 12
     label: hidden
     settings:
       view_mode: provider_card
@@ -169,7 +188,7 @@ content:
     third_party_settings: {  }
   field_uwm_sections:
     type: entity_reference_revisions_entity_view
-    weight: 8
+    weight: 10
     region: content
     label: hidden
     settings:
@@ -178,7 +197,7 @@ content:
     third_party_settings: {  }
   field_uwm_sections_2:
     type: entity_reference_revisions_entity_view
-    weight: 11
+    weight: 13
     region: content
     label: hidden
     settings:

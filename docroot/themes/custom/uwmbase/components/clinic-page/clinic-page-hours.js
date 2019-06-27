@@ -25,7 +25,7 @@
         var $this = $(b);
         var data = $this.data('uwm-opens-at');
 
-        if(!!data.opens_next) {
+        if (!!data.opens_next) {
           var markup = hoursMarkup(data);
           $this.html(markup);
         }

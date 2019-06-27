@@ -1,4 +1,5 @@
 /**
+ * @file
  * Custom JavaScript for Provider templates.
  *
  * Include custom JavaScript that should be included

@@ -1,5 +1,28 @@
+{#
+   Featured Clinics for campus locations
+#}
+{% if content.field_res_featured_clinics.0 is not empty %}
+  <section class="clinic-page__featured-clinics">
+
+    <div class="container-xl">
+
+      {% if content.field_res_feat_clinics_header.0 is not empty %}
+        <h2 class="leader">{{ content.field_res_feat_clinics_header }}</h2>
+      {% endif %}
+
+      {# @see field--node--field-res-featured-clinics--res-clinic.html.twig #}
+      {{ content.field_res_featured_clinics }}
+
+    </div>
+
+  </section>
+{% endif %}
+
+{#
+   Services section (Clinic Expertises field)
+#}
 {% if content.field_res_expertises is not empty %}
-  <section class="clinic_page__services uwm-toggle">
+  <section class="clinic-page__services uwm-toggle">
 
     <div class="container-xl">
 

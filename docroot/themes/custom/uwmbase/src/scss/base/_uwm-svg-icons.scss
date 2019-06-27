@@ -82,6 +82,11 @@ $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
   &.uwm-icon--careers {
     background-image: url('#{$icon-path}/icon_careers.svg');
   }
+  &.uwm-icon--checkmark-in-circle {
+    background-image: url('#{$icon-path}/icon_checkmark_in_circle.svg');
+    width: 18px;
+    height: 18px;
+  }
   &.uwm-icon--clinic-locations {
     background-image: url('#{$icon-path}/icon_clinic_locations.svg');
   }
