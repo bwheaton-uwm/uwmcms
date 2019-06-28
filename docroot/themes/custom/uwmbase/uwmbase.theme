@@ -262,6 +262,18 @@ function uwmbase_preprocess_node(&$variables, $hook) {
 
   $variables['display_context'] = $displayContext;
 
+  // Clinic and provider cards have some elements conditionally displayed based
+  // on the context in which they're rendered. Ensure cards are not cached
+  // across different usages.
+  if (in_array($variables['view_mode'], [
+    'card',
+    'card_brief',
+    'provider_card',
+    'location_card',
+  ])) {
+    $variables['#cache']['contexts'][] = 'url.path';
+  }
+
   // Restore simple node container classes:
   // @TODO: Where did these go?
   $variables['attributes'] = $variables['attributes'] ?? [];
@@ -502,10 +514,6 @@ function uwmbase_preprocess_node(&$variables, $hook) {
 
     $variables['#attached']['library'][] = 'uwmbase/homepage';
 
-  }
-
-  if ($variables['view_mode'] == 'provider_card') {
-    $variables['#cache']['contexts'][] = 'url.path';
   }
 
 }
