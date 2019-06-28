@@ -122,12 +122,20 @@ body.is-page-node-type-res-provider {
           }
 
           .location-phone a {
-            text-decoration: underline;
+            @extend %uwdm-no-underline-link;
           }
 
         }
 
       }
+
+      article.media.media--type-video {
+        h3.uwm-accent-heading {
+          font-weight: 500;
+        }
+      }
+
+
 
     }
 

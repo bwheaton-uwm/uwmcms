@@ -138,7 +138,7 @@ source:
       label: field_res_image
       plugin: migration
       migration: uwm_res_providers_import_provider_images
-      selector: /relationships/field_res_image
+      selector: /relationships/field_res_image/data
     -
       name: node_videos
       label: node_videos
@@ -218,16 +218,16 @@ process:
           method: process
   field_res_image:
     plugin: sub_process
-    source: field_image
+    source: field_res_image
     process:
       target_id:
         plugin: migration_lookup
         migration: uwm_res_providers_import_provider_images
-        source: field_res_image/data/id
+        source: id
       alt: title
       title: title
-      height: field_res_image/data/id/meta/height
-      width: field_res_image/data/id/meta/width
+      height: meta/height
+      width: meta/width
   field_res_node_videos:
     plugin: sub_process
     source: node_videos
