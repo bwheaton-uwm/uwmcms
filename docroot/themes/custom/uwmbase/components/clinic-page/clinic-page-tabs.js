@@ -1,6 +1,8 @@
 /**
  * @file
  * Additional functionality for Bootstrap nav tabs on Clinic pages.
+ *
+ * @TODO not currently in use. See uwmbase/nav-tabs library.
  */
 
 (function ($, Drupal, drupalSettings) {
