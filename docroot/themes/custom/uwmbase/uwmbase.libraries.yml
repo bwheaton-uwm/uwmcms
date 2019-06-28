@@ -129,7 +129,7 @@ clinic-page:
   css:
     component:
       dist/css/clinic-page.css: {}
-  js:
+#  js:
 #    dist/js/clinic-page-tabs.js: {}
   dependencies:
     - uwmbase/clinic-hours
@@ -139,7 +139,6 @@ clinic-page:
 clinic-hours:
   js:
     dist/js/clinic-page-hours.js: {}
-  #    dist/js/clinic-page-tabs.js: {}
   dependencies:
   - uwmbase/momentjs
   - uwmbase/clockwise-wait-times
