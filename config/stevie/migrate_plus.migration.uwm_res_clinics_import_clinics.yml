@@ -116,6 +116,10 @@ source:
       label: field_res_providers
       selector: /relationships/field_res_providers/data
     -
+      name: field_res_featured_clinics
+      label: field_res_featured_clinics
+      selector: /relationships/field_res_featured_clinics/data
+    -
       name: field_res_building
       label: field_res_building
       selector: /relationships/field_res_building/data
@@ -172,6 +176,14 @@ process:
     -
       plugin: skip_on_empty
       method: process
+  field_res_featured_clinics:
+    plugin: sub_process
+    source: field_res_featured_clinics
+    process:
+      target_id:
+        plugin: migration_lookup
+        migration: uwm_res_clinics_import_clinics
+        source: id
   field_res_building:
     -
       plugin: uwm_tid_for_uuid
