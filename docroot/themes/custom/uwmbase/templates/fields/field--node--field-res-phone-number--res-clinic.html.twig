@@ -34,5 +34,5 @@
     filter here.
   #}
   {% set value = items.0.content|render|trim %}
-  <a href="tel:{{ value|uwm_format_phone }}">{{ value|uwm_format_phone('.') }}</a>
+  <a class="clinic-page__cta-btn btn" href="tel:{{ value|uwm_format_phone }}">{{ value|uwm_format_phone('.') }}</a>
 {% endspaceless %}

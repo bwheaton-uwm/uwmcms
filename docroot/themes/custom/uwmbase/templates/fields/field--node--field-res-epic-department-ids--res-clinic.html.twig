@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Theme override for Epic Department IDs field on Res Clinic nodes.
+ *
+ * Custom variables:
+ * - view_mode: The view mode in which the entity with this field is currently
+ *   being rendered.
+ *
+ * @see template_preprocess_field()
+ * @see uwmbase_preprocess_field()
+ */
+#}
+{% set depts = [] %}
+{% for item in items %}
+    {% set depts = depts|merge([item.content|render]) %}
+{% endfor %}
+
+{% spaceless %}
+  <a class="clinic-page__cta-btn btn" href={{"https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?vt=9000&view=plain&dept=#{depts|join(',')}"}}>{{ "Book online"|t }}</a>
+{% endspaceless %}

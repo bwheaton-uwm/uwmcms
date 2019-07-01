@@ -20,10 +20,95 @@
     .clinic-page__right {
       display: flex;
 
-      .clinic-page__address {
-        margin-bottom: 0.5rem; // 8px
-      }
+      .clinic-page__hours-ctas {
+        display: flex;
+        flex-wrap: wrap;
+        
+        .clinic-page__ctas, .clinic-page__hours {
+          flex-basis: 100%;
+          justify-content: space-between;
+        }
 
+        .clinic-page__ctas:not(.clinic-page__cta-hidden) {
+
+          background-color: $white;
+          box-shadow: 0px 2px 3px #dcdcdc;  
+          
+          .clinic-page__cta-header {
+            padding: .625rem  1.5rem;
+            background-color: #f2f2f2;
+
+            h2 {
+              font-size: 1.5rem; // 24px
+              font-family: $font-family-base;
+              padding: 0;
+              margin: 0;
+            }
+            
+          }
+
+          .clinic-page__cta-content {
+            padding-top: 1.25rem;
+            padding-bottom: 1.25rem;
+
+            .clinic-page__cta-btn {
+              background-color: theme-color('link-blue');
+              color: white;
+              text-align: center;
+              padding: .5rem 1.5rem;
+              transition: ease-in 0.3s;
+              box-shadow: 0 3px 6px rgba(0,0,0,.15);
+            
+              &:hover {
+                background-color: #21509C;
+              }
+            }
+          }
+        }
+
+        .clinic-page__cta-content {
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+          display: flex;
+          justify-content: space-between;
+
+          .clinic-page__cta-icon {
+            flex-basis: 50%;
+            margin-top: -1.25rem; // cancel out parent padding
+            margin-bottom: -1.25rem; // cancel out parent padding
+          }
+          
+          .clinic-page__cta-icon-calendar {
+            background: $white url("#{$uwbase-images-folder}/calendar_thin_border.png") bottom center no-repeat;
+          }
+
+          .clinic-page__cta-icon-heart {
+            background: $white url("#{$uwbase-images-folder}/half_heart.png") bottom center no-repeat;
+          }
+
+          .clinic-page__cta-icon-clock {
+            background: $white url("#{$uwbase-images-folder}/UrgentCareWait_Clock.png") bottom right no-repeat;
+          }
+        }
+
+        .clinic-page__cta-urgent-wait {
+          .clinic-page__cta-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+          }
+        }
+
+        .clinic-page__cta-returning {
+          .clinic-page__cta-content {
+
+            .clinic-page__cta-btn {
+              flex-basis: 100%;
+            }
+          }
+        }
+      }
+      
       .clinic-page__contact {
         .clinic-page__phone a {
           text-decoration: none;
@@ -49,7 +134,6 @@
         .clinic-page__open-current {
           color: theme-color('heading-purple');
           font-style: italic;
-          font-weight: 300;
         }
 
         .clinic-page__hours-details {
@@ -76,7 +160,7 @@
 
       .clinic-page__note {
         p {
-          font-weight: 300;
+          font-weight: 400;
 
           &:last-child {
             margin-bottom: 0;
@@ -84,20 +168,29 @@
         }
       }
 
-      .clinic-page__note-emergency {
-        display: flex;
-
-        .uwm-icon--phone-911 {
-          flex-basis: 41px;
-          flex-shrink: 0;
-          margin-top: 0.125rem; // 2px
-          margin-right: 1.25rem; // 20px
-        }
-      }
-
     }
 
     .clinic-page__left {
+
+      .clinic-page__address {
+        margin-top: 1.25rem; // 20px
+        margin-bottom: 0.625rem; // 10px
+        font-size: 1.25rem; // 20px
+         
+        a {
+          text-decoration: none;
+          color: theme-color('link-blue');
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .clinic-page__fax {
+        margin-bottom: 1rem;
+        font-size: 1.125rem; // 18px
+      }
 
       .clinic-page__link {
         padding: 0.875rem 0.125rem; // 14px 2px
@@ -105,6 +198,10 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        &.clinic-page__link-directions {
+          border-top: 1px solid theme-color('border-gray');
+        }
 
         a {
           display: block;
@@ -124,53 +221,18 @@
           color: theme-color('link-blue');
         }
       }
+    }
 
-      .clinic-page__urgent-wait {
-        margin-top: 1.25rem; // 20px
-        padding: 1rem 1rem 1.25rem 1rem; // 20px 16px
-        @extend %uwmed-box-shadow;
-        background: $white url("#{$uwbase-images-folder}/UrgentCareWait_Clock.png") bottom right no-repeat;
+    .clinic-page__note-emergency {
+      display: flex;
+      margin-top: 1.5rem; // 24px
 
-        .clinic-page__urgent-wait-top {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding-bottom: 0.5rem; // 8px
-          @extend %uwmed-angled-dark-bottom-border;
-        }
-
-        .clinic-page__urgent-wait-header {
-          color: $heading-purple;
-          font-family: inherit;
-          font-size: 1.5rem; // 24px
-          margin: 0;
-          padding: 0;
-        }
-
-        .clinic-page__urgent-wait-link {
-          a {
-            color: theme-color('link-blue');
-            font-size: 0.875rem; // 14px
-            text-transform: uppercase;
-            text-decoration: none;
-
-            &:hover {
-              text-decoration: underline;
-            }
-          }
-
-          .fa-angle-right {
-            color: theme-color('link-blue');
-            margin-left: 0.4rem;
-          }
-        }
-
-        .clinic-page__urgent-wait-text {
-          padding-top: 1.25rem; // 20px
-          font-size: 1.75rem; // 28px
-        }
+      .uwm-icon--phone-911 {
+        flex-basis: 41px;
+        flex-shrink: 0;
+        margin-top: 0.125rem; // 2px
+        margin-right: 1.25rem; // 20px
       }
-
     }
 
     .clinic-page__image {
@@ -297,6 +359,14 @@
   }
 
   // Mobile/tablet
+
+  @include media-breakpoint-down('md') {
+    h1 {
+      // @TODO: global mobile header sizes
+      font-size: 2rem; // 32px
+    }
+  }
+
   @include media-breakpoint-down('sm') {
 
     .clinic-page__header {
@@ -328,7 +398,7 @@
         right: 5px;
         padding-top: calc(50% - 5px);
         z-index: 5;
-        background-color: rgba(0, 0, 0, 0.40);
+        background-color: rgba(0, 0, 0, 0.3);
 
         h1 {
           position: absolute;
@@ -340,34 +410,80 @@
 
           color: $white;
           text-shadow: 2px 2px 2px rgba(0, 0, 0, .47);
-          // @TODO: global mobile header sizes
-          font-size: 2rem; // 32px
         }
       }
 
       .clinic-page__right {
 
         // Reorder flex children:
-        // 2. Hours
-        // 3. (New design) Appointment CTAs
-        // 4. 911 note
-        // 5. Address
-        // 6. Contact
+        // 2. Primary CTA
+        // 3. Primary Hours
+        // 4. Secondary CTA
+        // 5. Secondary Hours
+        // 6. 911 note
+        // 7. Address
+        // 8. Contact
         flex-direction: column;
 
-        .clinic-page__hours {
-          order: 2;
-          background-color: $white;
-          @include container-padding;
-          padding-top: 0.625rem; // 10px
-          padding-bottom: 0.625rem; // 10px
-          margin-bottom: 1rem;
-          box-shadow: 4px 2px 4px #dcdcdc;
+        .clinic-page__hours-ctas {
+          order: 2;          
 
-          .clinic-page__hours-urgent {
-            margin-top: 0.625rem; // 10px
-            border-top: 1px solid theme-color('border-gray');
+          .clinic-page__hours, .clinic-page__note {
+            @include container-padding;
+            margin-bottom: 1.25rem;
+            background-color: $white;
             padding-top: 0.625rem; // 10px
+            padding-bottom: 0.625rem; // 10px
+            box-shadow: 0px 2px 3px #dcdcdc;  
+          }
+
+          .clinic-page__note {
+            margin-bottom: 0;
+          }
+
+          .clinic-page__ctas-primary {
+            order: 4;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+          }
+
+          .clinic-page__hours-primary {
+            order: 1;
+            z-index: 2;
+            margin-bottom: 0;
+          }
+
+          .clinic-page__ctas-secondary {
+            &.clinic-page__ctas {
+              order: 5;
+              margin-bottom: 1rem;
+            }
+          }
+
+          .clinic-page__hours-secondary {
+            order: 2;
+          }
+
+          .clinic-page__cta-appointment {
+            .clinic-page__cta-content {
+              flex-wrap: wrap;
+
+              .clinic-page__cta-btn {
+                flex-basis: 100%;
+                margin-bottom: 1rem;
+
+                &:last-of-type {
+                  margin-bottom: 0;
+                }
+              }
+            }
+          }
+
+          .clinic-page__note-urgent-close {
+            order: 3;
+            z-index: 2;
+            margin-top: -1.625em;
+            box-shadow: 0px 2px 2px #dcdcdc;
           }
 
           // On mobile/tablet, the hours header toggles the hours details.
@@ -443,28 +559,6 @@
           .clinic-page__hours-details {
             font-size: 0.875rem; // 14px
           }
-
-          .clinic-page__note-urgent-close {
-            margin-top: 0.625rem; // 10px
-          }
-        }
-
-        // -- New design --
-        .clinic-page__ctas {
-          order: 3;
-        }
-        // -- /New design --
-
-        .clinic-page__note-emergency {
-          order: 4;
-          @include container-padding;
-        }
-
-        .clinic-page__address {
-          order: 5;
-          @include container-padding;
-          margin-top: 1rem;
-          font-size: 1rem; // 16px
         }
 
         .clinic-page__contact {
@@ -476,7 +570,6 @@
 
       .clinic-page__left {
         @include container-padding;
-        margin-top: 1rem; // 16px
 
         .clinic-page__link {
           display: none;
@@ -486,6 +579,17 @@
           .clinic-page__urgent-wait-header {
             font-size: 1rem; // 16px
           }
+        }
+
+        .clinic-page__address {
+          order: 5;
+          margin-top: 0;
+        }
+      }
+
+      .clinic-page__right-two {
+        .clinic-page__note-emergency {
+          @include container-padding;
         }
       }
 
@@ -524,13 +628,21 @@
         }
 
         // -- New design --
-        .clinic-page__ctas {
+        .clinic-page__hours-ctas {
           order: initial;
           display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          margin-top: 1.25rem;
 
-          .clinic_page__cta {
-            flex-basis: 50%;
+          .clinic-page__ctas, .clinic-page__hours {
+            flex-basis: 100%;
           }
+        }
+
+        .clinic-page__note-urgent-close {
+          order: 5;
+          margin-top: 0;
         }
         // -- /New design --
 
@@ -539,11 +651,12 @@
           background-color: transparent;
 
           .clinic-page__hours-set {
-            margin-top: 2rem; // 32px
+            margin-top: 1.25rem; // 20px
+            margin-bottom: 1.25rem; // 20px
           }
 
           .clinic-page__hours-header {
-            font-size: 1.5625rem; // 25px
+            font-size: 1.5rem; // 24px
           }
 
           .clinic-page__open-current {
@@ -570,24 +683,58 @@
         }
 
         .clinic-page__note {
-          margin-top: 2rem; // 32px
+          margin-top: 1rem; // 16px
         }
 
       }
     }
 
+    .clinic-page__left-two {
+      order: 3;
+      @include make-col-ready();
+      @include make-col(5);
+    }
+
+    .clinic-page__right-two {
+      order: 4;
+      @include make-col-ready();
+      @include make-col(7);
+    }
+
   }
 
-  @include media-breakpoint-up('lg') {
+  @include media-breakpoint-up('xl') {
 
     .clinic-page__header {
 
-      .clinic-page__left {
+      .clinic-page__left, .clinic-page__left-two {
         @include make-col(4);
       }
 
-      .clinic-page__right {
+      .clinic-page__right, .clinic-page__right-two {
         @include make-col(8);
+
+        .clinic-page__hours-ctas {
+          .clinic-page__ctas, .clinic-page__hours {
+            flex-basis: 48%;
+          }
+
+          .clinic-page__ctas-primary {
+            order: 1;
+          }
+
+          .clinic-page__hours-primary {
+            order: 3;
+          }
+
+          .clinic-page__ctas-secondary {
+            order: 2;
+          }
+
+          .clinic-page__hours-secondary {
+            order: 4;
+          }
+        }
 
         .clinic-page__hours {
           display: flex;
@@ -595,7 +742,8 @@
           flex-wrap: wrap;
 
           .clinic-page__hours-set {
-            flex-basis: 45%;
+            margin-top: 2rem;
+            flex-basis: 75%;
           }
         }
 

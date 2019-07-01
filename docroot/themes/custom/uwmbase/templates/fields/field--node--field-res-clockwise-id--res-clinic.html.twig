@@ -72,14 +72,17 @@
 #}
 {% elseif view_mode is same as('full') %}
 
-  <div class="clinic-page__urgent-wait" data-uwm-clockwise-wait-time="{{ value }}">
-    <div class="clinic-page__urgent-wait-top">
-      <h2 class="clinic-page__urgent-wait-header">{{ "Urgent Care"|t }}</h2>
-      <span class="clinic-page__urgent-wait-link js-wait-link">
-        <a href="/patient-care/making-an-appointment" target="_blank">{{ "Get in line"|t }}<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-      </span>
+  <div class="clinic-page__cta-urgent-wait" data-uwm-clockwise-wait-time="{{ value }}">
+    <div class="clinic-page__cta-header">
+      <h2>{{ "Walk-in Visit"|t }}</h2>
+      <div class="clinic-page__urgent-wait-text js-wait-text">&nbsp;</div>
     </div>
-    <div class="clinic-page__urgent-wait-text js-wait-text">&nbsp;</div>
+    <div class="clinic-page__cta-content">
+      <span class="clinic-page__urgent-wait-link js-wait-link">
+        <a class="clinic-page__cta-btn btn" href="/patient-care/making-an-appointment" target="_blank">{{ "Get in line"|t }}</a>
+      </span>
+      <div class="clinic-page__cta-icon clinic-page__cta-icon-clock"></div>
+    </div>
   </div>
 
 {# Other view modes --------------------------------------------------------- #}
