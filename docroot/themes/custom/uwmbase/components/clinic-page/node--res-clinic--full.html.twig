@@ -26,7 +26,10 @@
 {% set modifier_class = attributes.class ~ ' clinic-page' %}
 
 {% set has_urgent_care = hours.urgent is not empty %}
-
+{% set hide_appointment_ctas = node.field_res_hide_appt_ctas.value %}
+{% set hide_returning_patient_cta = node.field_res_hide_returning_cta.value %}
+{% set hide_open_scheduling_cta = node.field_res_hide_open_scheduling.value %}
+{% set has_open_scheduling = content.field_res_epic_department_ids.0 %}
 {% block content %}
 
   {{ attach_library('uwmbase/clinic-page') }}
@@ -44,90 +47,46 @@
           <div class="clinic-page__title">
             <h1 class="page-title">{{ label }}</h1>
           </div>
+          
+          <div class="clinic-page__hours-ctas">          
+            
+            {# Primary CTA (make an appointment or contact information) #}
+            <div class="clinic-page__ctas clinic-page__ctas-primary">
+            {% if not hide_appointment_ctas %}
+              <div class="clinic-page__cta clinic-page__cta-appointment">
+                <div class="clinic-page__cta-header">
+                  <h2>{{ "Make an Appointment"|t }}</h2>
+                </div>
+                <div class="clinic-page__cta-content">
+                  {% if content.field_res_phone_number.0 is not empty %}
+                    {{ content.field_res_phone_number }}
+                  {% endif %}
 
-          {#
-            Address
-            This is the Building term, rendered in the "Building: Address only"
-            view mode, to print its address field only. The address has been
-            modified in preprocess to inject the Floor and Room Number fields from
-            this node.
-            @see uwmbase_preprocess_node()
-            @see uwmbase_preprocess_taxonomy_term()
-            @see taxonomy-term--buildings--building-address.html.twig
-            @see address-plain--buildings.html.twig
-            @TODO: improve this - bypass rendering term
-
-            Handling for the '#directions-tab' hash is in custom JavaScript.
-            @see /themes/custom/uwmed/src/js/node--uwm-clinic.js
-          #}
-          <address class="clinic-page__address">
-            {% if content.field_res_building.0|render|striptags|trim is not empty %}
-              {{ content.field_res_building.0 }}
-            {% endif %}
-          </address>
-
-          {% if content.field_res_phone_number.0 is not empty or content.field_res_fax_number.0 is not empty %}
-            <div class="clinic-page__contact">
-              {#
-                 Field template applies common formatting.
-                 @see field--node--field-res-phone-number--res-clinic.html.twig
-              #}
-              {% if content.field_res_phone_number.0 is not empty %}
-                <span class="clinic-page__phone">
-                  <span class="uwmed-icon uwmed-icon__phone-solid"></span>
-                  {{- content.field_res_phone_number -}}
-                </span>
-              {% endif %}
-
-              {#
-                 Field template applies common formatting.
-                 @see field--node--field-res-fax-number--res-clinic.html.twig
-              #}
-              {% if content.field_res_fax_number.0 is not empty %}
-                <i class="uw-s"></i>
-                <span class="clinic-page__fax">
-                  {{- content.field_res_fax_number -}}
-                </span>
-              {% endif %}
-            </div>
-          {% endif %}
-
-          {# -- New design - wait on testing -- #}
-          {#
-          <div class="clinic-page__ctas">
-
-            <div class="clinic-page__cta clinic-page__cta-appointment">
-              <h2>{{ "Make an Appointment"|t }}</h2>
-
-              {% if content.field_res_phone_number.0 is not empty %}
-                {{ content.field_res_phone_number }}
-              {% endif %}
-
-              {% if true %}
-                <a href="#">{{ "Book Online"|t }}</a>
-              {% endif %}
-            </div>
-
-            {% if has_urgent_care %}
-              <div class="clinic_page__cta clinic_page__cta-urgent-care">
-                <h2>{{ 'Urgent Care'|t }}</h2>
-
-                <span>20 minute wait</span>
-
-                {% if true %}
-                  <a href="#">{{ "Get in line"|t }}</a>
-                {% endif %}
+                  {% if has_open_scheduling and not hide_open_scheduling_cta %}
+                    {{ content.field_res_epic_department_ids }}
+                  {% else %}
+                    <div class="clinic-page__cta-icon clinic-page__cta-icon-calendar d-none d-md-block"></div>
+                  {% endif %}
+                </div>
+              </div>
+            {% else %}
+              <div class="clinic-page__cta clinic-page__cta-contact">
+                <div class="clinic-page__cta-header">
+                  <h2>{{ "Contact Information"|t }}</h2>
+                </div>
+                <div class="clinic-page__cta-content">
+                  {% if content.field_res_phone_number.0 is not empty %}
+                    {{ content.field_res_phone_number }}
+                  {% endif %}
+                    <div class="clinic-page__cta-icon clinic-page__cta-icon-heart"></div>
+                </div>
               </div>
             {% endif %}
+            </div>
 
-          </div>
-          #}
-          {# -- /New design -- #}
-
-          {% if hours is not empty %}
-            <div class="clinic-page__hours">
-
-              {% if hours.operation is not empty %}
+            {# Primary hours of operation #}
+            {% if hours is not empty and hours.operation is not empty %}
+              <div class="clinic-page__hours clinic-page__hours-primary">
                 <div
                   class="clinic-page__hours-set clinic-page__hours-operation">
 
@@ -153,8 +112,8 @@
                           {{- "Always Open"|t -}}
                         {% else %}
                           {#
-                             Currently-open/closed text is displayed via JS.
-                             @see clinic-page-hours.js
+                              Currently-open/closed text is displayed via JS.
+                              @see clinic-page-hours.js
                           #}
                           <span
                             data-uwm-opens-at="{{ hours.operation.open_close|json_encode() }}"></span>
@@ -164,8 +123,8 @@
                     </div>
 
                     {#
-                       Use Bootstrap Collapse to toggle hours on mobile/tablet.
-                       @see https://getbootstrap.com/docs/4.0/components/collapse/
+                        Use Bootstrap Collapse to toggle hours on mobile/tablet.
+                        @see https://getbootstrap.com/docs/4.0/components/collapse/
                     #}
                     <button
                       class="clinic-page__hours-toggle collapsed"
@@ -203,7 +162,7 @@
 
                         <tbody>
                         {#
-                           Days are ordered as Monday-Sunday in preprocessing.
+                            Days are ordered as Monday-Sunday in preprocessing.
                         #}
                         {% for day in hours.operation.days %}
                           <tr>
@@ -218,11 +177,40 @@
                     {% endif %}
 
                   </div>
+                </div>
+              </div>
+            {% endif %}
 
+            {# Secondary CTA (returning patients or book online)#}
+            {#
+              Urgent care Clockwise wait time and link
+              @see field--node--field-res-clockwise-id--res-clinic.html.twig
+            #}
+            {% if hide_returning_patient_cta or hide_appointment_ctas %}
+              <div class="clinic-page__ctas clinic-page__ctas-secondary clinic-page__cta-hidden">
+              </div>
+            {% else %}
+            <div class="clinic-page__ctas clinic-page__ctas-secondary">
+
+              {% if content.field_res_clockwise_id.0 is not empty %}
+                {{ content.field_res_clockwise_id }}
+              {% else %}
+                <div class="clinic-page__cta clinic-page__cta-returning">
+                  <div class="clinic-page__cta-header">
+                    <h2>{{ "Returning Patients"|t }}</h2>
+                  </div>
+                  <div class="clinic-page__cta-content">
+                    <a class="clinic-page__cta-btn btn" href="https://ecare.uwmedicine.org/prod01/inside.asp?mode=apptsched">{{ "Sign in &amp; book online"|t }}</a>
+                  </div>
                 </div>
               {% endif %}
+            </div>
+            {% endif %}
 
-              {% if has_urgent_care %}
+
+            {# Secondary hours (urgent care) #}
+            {% if hours.operation is not empty and has_urgent_care %}
+              <div class="clinic-page__hours clinic-page__hours-secondary">
                 <div class="clinic-page__hours-set clinic-page__hours-urgent">
 
                   <div class="clinic-page__hours-header-wrap">
@@ -236,8 +224,8 @@
                           {{- "Always Open"|t -}}
                         {% else %}
                           {#
-                             Currently-open/closed text is displayed via JS.
-                             @see clinic-page-hours.js
+                              Currently-open/closed text is displayed via JS.
+                              @see clinic-page-hours.js
                           #}
                           <span
                             data-uwm-opens-at="{{ hours.urgent.open_close|json_encode() }}"></span>
@@ -247,8 +235,8 @@
                     </div>
 
                     {#
-                       Use Bootstrap Collapse to toggle hours on mobile/tablet.
-                       @see https://getbootstrap.com/docs/4.0/components/collapse/
+                        Use Bootstrap Collapse to toggle hours on mobile/tablet.
+                        @see https://getbootstrap.com/docs/4.0/components/collapse/
                     #}
                     <button
                       class="clinic-page__hours-toggle collapsed"
@@ -287,7 +275,7 @@
 
                         <tbody>
                         {#
-                           Days are ordered as Monday-Sunday in preprocessing.
+                            Days are ordered as Monday-Sunday in preprocessing.
                         #}
                         {% for day in hours.urgent.days %}
                           <tr>
@@ -302,25 +290,67 @@
                     {% endif %}
 
                   </div>
-
                 </div>
+            </div>
 
-                {#
-                   This text is stored in a custom content block so it's
-                   manageable in the admin UI.
-                   @see uwmbase_preprocess_node()
-                #}
-                {% if block_note_urgent_close is not empty %}
-                  <div class="clinic-page__note clinic-page__note-urgent-close">
-                    {{ block_note_urgent_close }}
-                  </div>
-                {% endif %}
-
+              {#
+                  This text is stored in a custom content block so it's
+                  manageable in the admin UI.
+                  @see uwmbase_preprocess_node()
+              #}
+              {% if block_note_urgent_close is not empty %}
+                <div class="clinic-page__note clinic-page__note-urgent-close">
+                  {{ block_note_urgent_close }}
+                </div>
               {% endif %}
+            {% endif %}
+          </div>
+        </div>
 
+        <div class="clinic-page__left">
+
+          <div class="clinic-page__image">
+            {% if content.field_res_image|render|trim is empty %}
+              <img
+                src="/{{ directory }}/src/assets/uwmed_location_card_placeholder.svg"
+                alt="" class="img-fluid"/>
+            {% else %}
+              {{ content.field_res_image }}
+            {% endif %}
+          </div>
+          
+          <address class="clinic-page__address">
+            {% if content.field_res_building.0|render|striptags|trim is not empty %}
+              <a href="#directions-tab-tab---">{{ content.field_res_building.0 }}</a>
+            {% endif %}
+          </address>
+                   
+          {% if content.field_res_fax_number.0 is not empty %}
+            <div class="clinic-page__fax">
+              {{ content.field_res_fax_number }}
+            </div>
+          {% endif %}
+         
+          <div class="clinic-page__link clinic-page__link-overview">
+            <a href="#main-tab-tab---clinic-overview-jump">{{ is_hospital ? "Hospital Overview"|t : "Overview"|t }}</a>
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+          </div>
+
+          {% if content.field_res_providers|render|trim is not empty %}
+            <div class="clinic-page__link clinic-page__link-providers {{ hide_providers_css_class }}">
+              <a href="#providers-tab-tab---">{{ "Care Providers"|t }}</a>
+              <i class="fa fa-angle-right" aria-hidden="true"></i>
             </div>
           {% endif %}
 
+          <div class="clinic-page__link clinic-page__link-directions">
+            <a href="#directions-tab-tab---">{{ "Directions"|t }}</a>
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+          </div>
+
+        </div>
+        {# Adding a second row of columns to accomodate 911 text at the very bottom in mobile and tablet #}
+        <div class="clinic-page__right-two">
           {#
              This text is stored in a custom content block so it's manageable
              in the admin UI.
@@ -333,80 +363,9 @@
               {{ block_note_emergency }}
             </div>
           {% endif %}
-
         </div>
-
-        <div class="clinic-page__left">
-
-          <div class="clinic-page__image">
-            {#
-              Clinic Image
-              TODO: remove link
-              @see field--node--field-res-image--res-clinic.html.twig
-            #}
-            {% if content.field_res_image|render|trim is empty %}
-              <img
-                src="/{{ directory }}/src/assets/uwmed_location_card_placeholder.svg"
-                alt="" class="img-fluid"/>
-            {% else %}
-              {{ content.field_res_image }}
-            {% endif %}
-          </div>
-
-          {# -- New design - wait on testing -- #}
-          {#
-          <address class="clinic-page__address">
-            {% if content.field_res_building.0|render|striptags|trim is not empty %}
-              {{ content.field_res_building.0 }}
-            {% endif %}
-          </address>
-          #}
-          {# -- /New design -- #}
-
-          {# -- New design - wait on testing -- #}
-          {#
-          {% if content.field_res_fax_number.0 is not empty %}
-            <div class="clinic-page__fax">
-              {{ content.field_res_fax_number }}
-            </div>
-          {% endif %}
-          #}
-          {# -- /New design -- #}
-
-          <div class="clinic-page__link clinic-page__link-directions">
-            <a href="#directions-tab-tab---">{{ "Driving Directions"|t }}</a>
-            <i class="fa fa-angle-right" aria-hidden="true"></i>
-          </div>
-
-          {% if content.field_res_providers|render|trim is not empty %}
-          <div class="clinic-page__link clinic-page__link-providers {{ hide_providers_css_class }}">
-            <a href="#providers-tab-tab---">{{ "Care Providers"|t }}</a>
-            <i class="fa fa-angle-right" aria-hidden="true"></i>
-          </div>
-          {% endif %}
-
-          <div class="clinic-page__link clinic-page__link-appointment">
-            <a
-              href="/patient-care/making-an-appointment">{{ "Make an Appointment"|t }}{% if has_urgent_care %}{{ " for Primary Care"|t }}{% endif %}</a>
-            <i class="fa fa-angle-right" aria-hidden="true"></i>
-          </div>
-
-          <div class="clinic-page__link clinic-page__link-overview">
-            <a
-              href="#main-tab-tab---clinic-overview-jump">{{ is_hospital ? "Hospital Overview"|t : "Clinic Overview"|t }}</a>
-            <i class="fa fa-angle-right" aria-hidden="true"></i>
-          </div>
-
-          {#
-             Urgent care Clockwise wait time and link
-             @see field--node--field-res-clockwise-id--res-clinic.html.twig
-          #}
-          {% if content.field_res_clockwise_id.0 is not empty %}
-            {{ content.field_res_clockwise_id }}
-          {% endif %}
-
-        </div>
-
+        <div class="clinic-page__left-two"></div>
+        
       </section>
 
     </div>

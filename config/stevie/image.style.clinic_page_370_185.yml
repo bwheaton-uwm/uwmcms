@@ -3,13 +3,13 @@ langcode: en
 status: true
 dependencies: {  }
 name: clinic_page_370_185
-label: 'Clinic page: lg-xl (370 x 185)'
+label: 'Clinic page: lg-xl (459 x 230)'
 effects:
   50d88a00-1046-4040-8517-9fd8c138c580:
     uuid: 50d88a00-1046-4040-8517-9fd8c138c580
     id: image_scale_and_crop
     weight: 1
     data:
-      width: 370
-      height: 185
+      width: 459
+      height: 230
       anchor: center-center
