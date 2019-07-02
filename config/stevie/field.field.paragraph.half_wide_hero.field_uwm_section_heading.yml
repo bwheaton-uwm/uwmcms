@@ -1,0 +1,29 @@
+uuid: cf629e23-1f26-4cc8-a6cb-197ab4157d29
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_section_heading
+    - paragraphs.paragraphs_type.half_wide_hero
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: '0'
+    unrestricted: '0'
+    unrestricted_no_wysiwyg: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: paragraph.half_wide_hero.field_uwm_section_heading
+field_name: field_uwm_section_heading
+entity_type: paragraph
+bundle: half_wide_hero
+label: 'Section heading (H1)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

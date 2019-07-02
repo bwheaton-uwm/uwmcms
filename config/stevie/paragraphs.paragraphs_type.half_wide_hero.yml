@@ -1,0 +1,9 @@
+uuid: 944c1810-20f5-4686-814b-ad327e43e041
+langcode: en
+status: true
+dependencies: {  }
+id: half_wide_hero
+label: 'Half Wide Title and Hero Image'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }
