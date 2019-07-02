@@ -11,7 +11,7 @@ id: paragraph.half_wide_hero.field_uwm_image
 field_name: field_uwm_image
 entity_type: paragraph
 bundle: half_wide_hero
-label: 'Half-wide hero image'
+label: 'Featured image'
 description: ''
 required: false
 translatable: true
