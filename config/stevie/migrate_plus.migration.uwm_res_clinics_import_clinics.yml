@@ -100,6 +100,10 @@ source:
       label: field_res_room_number
       selector: /attributes/field_res_room_number
     -
+      name: field_res_feat_clinics_header
+      label: field_res_feat_clinics_header
+      selector: /attributes/field_res_feat_clinics_header
+    -
       name: uwm_unique_id
       label: uwm_unique_id
       selector: /attributes/uwm_unique_id
@@ -111,6 +115,10 @@ source:
       name: field_res_providers
       label: field_res_providers
       selector: /relationships/field_res_providers/data
+    -
+      name: field_res_featured_clinics
+      label: field_res_featured_clinics
+      selector: /relationships/field_res_featured_clinics/data
     -
       name: field_res_building
       label: field_res_building
@@ -158,6 +166,7 @@ process:
   field_res_iscallcenterserviced: field_res_iscallcenterserviced
   field_res_phone_number: field_res_phone_number
   field_res_room_number: field_res_room_number
+  field_res_feat_clinics_header: field_res_feat_clinics_header
   uwm_unique_id: uwm_unique_id
   field_uwm_json_packet: uwm_json_packet
   field_res_providers:
@@ -167,6 +176,14 @@ process:
     -
       plugin: skip_on_empty
       method: process
+  field_res_featured_clinics:
+    plugin: sub_process
+    source: field_res_featured_clinics
+    process:
+      target_id:
+        plugin: migration_lookup
+        migration: uwm_res_clinics_import_clinics
+        source: id
   field_res_building:
     -
       plugin: uwm_tid_for_uuid
