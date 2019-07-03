@@ -3,9 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
-    - entity_browser.browser.image_browser
+    - entity_browser.browser.media_browser
     - field.field.paragraph.half_wide_hero.field_bottom_content_blocks
-    - field.field.paragraph.half_wide_hero.field_uwm_image
+    - field.field.paragraph.half_wide_hero.field_uwm_media
     - field.field.paragraph.half_wide_hero.field_uwm_section_heading
     - field.field.paragraph.half_wide_hero.uwm_text
     - paragraphs.paragraphs_type.half_wide_hero
@@ -21,7 +21,7 @@ mode: default
 content:
   field_bottom_content_blocks:
     type: entity_reference_paragraphs
-    weight: 3
+    weight: 2
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -31,18 +31,19 @@ content:
       default_paragraph_type: uwm_cta_link
     third_party_settings: {  }
     region: content
-  field_uwm_image:
-    type: entity_browser_file
-    weight: 2
+  field_uwm_media:
+    type: entity_browser_entity_reference
+    weight: 3
     settings:
-      entity_browser: image_browser
+      entity_browser: media_browser
+      field_widget_display: rendered_entity
       field_widget_edit: true
       field_widget_remove: true
-      view_mode: default
-      preview_image_style: thumbnail
       open: true
-      field_widget_replace: false
       selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: thumbnail
+      field_widget_replace: false
     region: content
     third_party_settings: {  }
   field_uwm_section_heading:
