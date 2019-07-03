@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.res_clinic.field_res_external_url
     - field.field.node.res_clinic.field_res_fax_number
     - field.field.node.res_clinic.field_res_feat_clinics_header
+    - field.field.node.res_clinic.field_res_feat_clinics_view_all
     - field.field.node.res_clinic.field_res_featured_clinics
     - field.field.node.res_clinic.field_res_floor
     - field.field.node.res_clinic.field_res_hide_appt_ctas
@@ -50,7 +51,7 @@ bundle: res_clinic
 mode: full
 content:
   body:
-    weight: 11
+    weight: 12
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -75,7 +76,7 @@ content:
     third_party_settings: {  }
   field_res_epic_department_ids:
     type: string
-    weight: 13
+    weight: 15
     region: content
     label: above
     settings:
@@ -83,7 +84,7 @@ content:
     third_party_settings: {  }
   field_res_expertises:
     type: entity_reference_label
-    weight: 9
+    weight: 10
     region: content
     label: hidden
     settings:
@@ -102,6 +103,14 @@ content:
     weight: 7
     region: content
     label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_res_feat_clinics_view_all:
+    type: string
+    weight: 9
+    region: content
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
@@ -124,7 +133,7 @@ content:
     third_party_settings: {  }
   field_res_hide_appt_ctas:
     type: boolean
-    weight: 12
+    weight: 14
     region: content
     label: above
     settings:
@@ -134,7 +143,7 @@ content:
     third_party_settings: {  }
   field_res_hide_open_scheduling:
     type: boolean
-    weight: 14
+    weight: 17
     region: content
     label: above
     settings:
@@ -144,7 +153,7 @@ content:
     third_party_settings: {  }
   field_res_hide_returning_cta:
     type: boolean
-    weight: 15
+    weight: 18
     region: content
     label: above
     settings:
@@ -170,7 +179,7 @@ content:
     type: string
     region: content
   field_res_providers:
-    weight: 12
+    weight: 13
     label: hidden
     settings:
       view_mode: provider_card
@@ -188,7 +197,7 @@ content:
     third_party_settings: {  }
   field_uwm_sections:
     type: entity_reference_revisions_entity_view
-    weight: 10
+    weight: 11
     region: content
     label: hidden
     settings:
@@ -197,7 +206,7 @@ content:
     third_party_settings: {  }
   field_uwm_sections_2:
     type: entity_reference_revisions_entity_view
-    weight: 13
+    weight: 16
     region: content
     label: hidden
     settings:

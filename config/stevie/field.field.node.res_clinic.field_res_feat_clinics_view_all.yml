@@ -1,0 +1,19 @@
+uuid: 03c74589-8102-4a99-9324-82398ddf016b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_feat_clinics_view_all
+    - node.type.res_clinic
+id: node.res_clinic.field_res_feat_clinics_view_all
+field_name: field_res_feat_clinics_view_all
+entity_type: node
+bundle: res_clinic
+label: 'Featured Clinics: View All'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
