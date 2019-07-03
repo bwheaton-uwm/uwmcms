@@ -29,7 +29,7 @@ accordionSections = content.uwm_accordion_section #}
 {% set paragraph_id = 'accordion-' ~ paragraph.id.value %}
 
 {% block component %}
-<div class="uwm-accordion" id="{{ paragraph_id }}" role="tablist">
+<div class="uwm-accordion uwm-acc-t-both" id="{{ paragraph_id }}" role="tablist">
 
   {% if showIndicators %}
     {% set indicator_class = 'show-indicators' %}
@@ -50,8 +50,15 @@ accordionSections = content.uwm_accordion_section #}
   <div class="card border-0 mb-3">
     <div class="card-header p-0 border-0" id="heading-{{ paragraph_id }}-{{ key + 1 }}">
       <h3 class="mb-0">
-        <button class="uwm-accordion__header-link btn btn-link {{ indicator_class }} {{ show_accordion_heading }} w-100 text-left text-blue" data-toggle="collapse" data-target="#collapse-{{ paragraph_id }}-{{ key + 1 }}" aria-expanded="{{ aria }}" aria-controls="collapse-{{ paragraph_id }}-{{ key + 1 }}">
-          {{- item['#paragraph'].uwm_accordion_section_title.value }}
+        <button class="uwm-accordion__header-link btn btn-link {{ indicator_class }} {{ show_accordion_heading }}
+            w-100 text-left text-blue"
+                data-toggle="collapse"
+                data-target="#collapse-{{ paragraph_id }}-{{ key + 1 }}"
+                aria-expanded="{{ aria }}"
+                aria-controls="collapse-{{ paragraph_id }}-{{ key + 1 }}"
+        >
+          <i class="fas fa-plus"></i>
+          <i class="fas fa-minus"></i> {{- item['#paragraph'].uwm_accordion_section_title.value }}
         </button>
       </h3>
     </div>

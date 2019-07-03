@@ -13,65 +13,89 @@
 // Style guide: components.accordion
 
 .uwm-accordion {
-    padding-bottom: 3.125rem;
+  padding-bottom: 3.125rem;
+}
+
+.uwm-accordion.uwm-acc-t-both {
+  .fa-plus {
+    display: none;
+    margin-right: .5em;
+  }
+  .fa-minus {
+    display: inline-block;
+    margin-right: .5em;
+  }
+
+  .collapsed {
+    .fa-plus {
+      display: inline-block;
+    }
+    .fa-minus {
+      display: none;
+    }
+  }
+
 }
 
 .uwm-accordion .card-header h3 {
-    padding: 0;
+  padding: 0;
 }
 
 .uwm-accordion .uwm-accordion__header-link {
-    padding: 1em 1.25em;
+  padding: 1em 1.25em;
 }
 
 .uwm-accordion .uwm-accordion__header-link.show-indicators:before {
-    display: none;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
+  display: none;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
 }
+
 .uwm-accordion .uwm-accordion__header-link.show-indicators svg[data-fa-pseudo-element=":before"] {
-    margin-left: 4px;
-    margin-right: 10px;
-    color: color('blue');
+  margin-left: 4px;
+  margin-right: 10px;
+  color: color('blue');
 }
+
 .uwm-accordion .uwm-accordion__header-link[aria-expanded="false"].show-indicators:before {
-    font-family: "Font Awesome 5 Free", sans-serif;
-    font-weight: 900;
-    content: "\f067";
+  font-family: "Font Awesome 5 Free", sans-serif;
+  font-weight: 900;
+  content: "\f067";
 }
+
 .uwm-accordion .uwm-accordion__header-link[aria-expanded="true"].show-indicators:before {
-    font-family: "Font Awesome 5 Free", sans-serif;
-    font-weight: 900;
-    content: "\f068";
+  font-family: "Font Awesome 5 Free", sans-serif;
+  font-weight: 900;
+  content: "\f068";
 }
 
 .uwm-accordion .uwm-accordion__body-separator {
-    border-color: #c3c5c8;
-    margin: 0 1em;
+  border-color: #c3c5c8;
+  margin: 0 1em;
 }
 
 .uwm-accordion .collapsed .uwm-accordion__body-separator {
-    display: none;
+  display: none;
 }
 
 .uwm-accordion .card {
-    background-color: $card-cap-bg;
+  background-color: $card-cap-bg;
 }
 
 .uwm-section--background-gray .uwm-accordion .card, .uwm-section--background-gray .uwm-accordion .card-header {
-    background-color: $white;
+  background-color: $white;
 }
 
 .uwm-accordion .card-body {
-    padding: 0 2.8125em 2.125em ;
+  padding: 0 2.8125em 2.125em;
 }
 
 .uwm-accordion .card-body .field__item:first-child {
-    padding-top: 1.875em;
+  padding-top: 1.875em;
 }
 
 .uwm-accordion .card-body .field--name-uwm-text p:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
