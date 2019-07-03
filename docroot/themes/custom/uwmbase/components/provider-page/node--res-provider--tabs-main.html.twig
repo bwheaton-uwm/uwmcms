@@ -6,36 +6,47 @@
     #}
 
 {% set has_video = content.field_res_node_videos|render|striptags|trim is not empty ? true : false %}
-
 {% set col_1_attributes = create_attribute() %}
+{#{% set biography = content.field_res_biography|render|uwm_replace_markup|striptags('<p><br><a>') %}#}
+{% set biography = content.field_res_biography|render|uwm_replace_markup|check_markup('rich_text') %}
 
 {% set col_1_classes =
-  [
-    'col-xs-12',
-    has_video ? 'col-md-7',
-  ]
-%}
+    [
+        'col-xs-12',
+        has_video ? 'col-md-7',
+    ] %}
 
-{% if content.field_res_biography|render|striptags|trim is not empty %}
+{#{{ devel_breakpoint() }}#}
 
-  <div class="row">
+
+<div class="row">
+
     <div{{ col_1_attributes.addClass(col_1_classes) }}>
-      <h3>{{ 'Biography'|t }}</h3>
-      {{ content.field_res_biography }}
 
-      {% if content.field_res_personal_interests|render|striptags|trim is not empty %}
+        {% if biography is not empty %}
 
-        <h3>{{ 'Personal Interests'|t }}</h3>
-        {{ content.field_res_personal_interests }}
+            <h3>{{ 'Biography'|t }}</h3>
+            {{ content.field_res_biography }}
 
-      {% endif %}
+            {% if content.field_res_personal_interests|render|striptags|trim is not empty %}
+
+                <h3>{{ 'Personal Interests'|t }}</h3>
+                {{ content.field_res_personal_interests }}
+
+            {% endif %}
+
+        {% else %}
+            We’ll have {{ content.field_res_name|render|striptags|trim }}’s bio available soon.
+
+        {% endif %}
+
+
     </div>
 
     {% if has_video %}
-      <div class="provider-video col-xs-12 col-md-5">
-          {{ content.field_res_node_videos }}
-      </div>
+        <div class="provider-video col-xs-12 col-md-5">
+            {{ content.field_res_node_videos }}
+        </div>
     {% endif %}
-  </div>
 
-{% endif %}
+</div>
