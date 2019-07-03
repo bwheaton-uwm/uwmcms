@@ -6,12 +6,15 @@ id: local
 label: Local
 description: ''
 folder: ../config/envs/local/stevie
-module: {  }
+module:
+  devel: 0
+  devel_generate: 0
+  views_ui: 0
 theme: {  }
 blacklist: {  }
 graylist:
-  - search_api.server.acquia_search_server
   - d8_google_optimize_hide_page.settings
+  - search_api.server.acquia_search_server
 graylist_dependents: false
 graylist_skip_equal: true
 weight: 1
