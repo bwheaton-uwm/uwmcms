@@ -17,20 +17,22 @@
 }
 
 .uwm-accordion.uwm-acc-t-both {
-  .fa-plus {
-    display: none;
+  svg {
     margin-right: .5em;
+    color: #3375D4;
   }
-  .fa-minus {
+  .fa-plus-circle {
+    display: none;
+  }
+  .fa-minus-circle {
     display: inline-block;
-    margin-right: .5em;
   }
 
   .collapsed {
-    .fa-plus {
+    .fa-plus-circle {
       display: inline-block;
     }
-    .fa-minus {
+    .fa-minus-circle {
       display: none;
     }
   }
