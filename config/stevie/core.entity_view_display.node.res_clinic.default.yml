@@ -154,7 +154,7 @@ content:
     label: hidden
     settings:
       image_style: large
-      image_link: file
+      image_link: content
     third_party_settings: {  }
     type: image
     region: content
