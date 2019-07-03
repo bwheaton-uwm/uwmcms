@@ -1,8 +1,8 @@
 diff --git a/docroot/.htaccess b/docroot/.htaccess
-index efce1877..2c7a2b28 100755
+index efce1877..8834e485 100755
 --- a/docroot/.htaccess
 +++ b/docroot/.htaccess
-@@ -1,3 +1,810 @@
+@@ -1,3 +1,811 @@
 +##
 +#
 +# Begin UW Medicine special .htaccess rules
@@ -254,6 +254,7 @@ index efce1877..2c7a2b28 100755
 +  RewriteCond %{REQUEST_URI} ^/services/primary-care/flu$ [OR]
 +  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/maternity-care/labor-delivery-tours$ [OR]
 +  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/maternity-care/labor-delivery-tours/obstetrics-tour-registration [OR]
++  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/preparing-for-you [OR]
 +  RewriteCond %{REQUEST_URI} ^/services/primary-care/behavioral-health-integration-program [OR]
 +  RewriteCond %{REQUEST_URI} ^/locations/harborview-medical-center/centers-of-emphasis$
 +  RewriteRule ^(.*)$ https://stevie.cms.uwmedicine.org%{REQUEST_URI} [L,P]
@@ -813,7 +814,7 @@ index efce1877..2c7a2b28 100755
  #
  # Apache/PHP/Drupal settings:
  #
-@@ -34,7 +841,7 @@ AddEncoding gzip svgz
+@@ -34,7 +842,7 @@ AddEncoding gzip svgz
    php_value mbstring.http_input             pass
    php_value mbstring.http_output            pass
    php_flag mbstring.encoding_translation    off
@@ -822,7 +823,7 @@ index efce1877..2c7a2b28 100755
    # not set.
    php_value always_populate_raw_post_data   -1
  </IfModule>
-@@ -150,6 +957,10 @@ AddEncoding gzip svgz
+@@ -150,6 +958,10 @@ AddEncoding gzip svgz
    # Copy and adapt this rule to directly execute PHP files in contributed or
    # custom modules or to run another PHP application in the same directory.
    RewriteCond %{REQUEST_URI} !/core/modules/statistics/statistics.php$
@@ -833,7 +834,7 @@ index efce1877..2c7a2b28 100755
    # Deny access to any other PHP files that do not match the rules above.
    # Specifically, disallow autoload.php from being served directly.
    RewriteRule "^(.+/.*|autoload)\.php($|/)" - [F]
-@@ -160,12 +971,12 @@ AddEncoding gzip svgz
+@@ -160,12 +972,12 @@ AddEncoding gzip svgz
      # Serve gzip compressed CSS files if they exist and the client accepts gzip.
      RewriteCond %{HTTP:Accept-encoding} gzip
      RewriteCond %{REQUEST_FILENAME}\.gz -s

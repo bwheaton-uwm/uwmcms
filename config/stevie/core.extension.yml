@@ -41,7 +41,6 @@ module:
   d8_google_optimize_hide_page: 0
   datetime: 0
   dblog: 0
-  devel: 0
   devel_generate: 0
   diff: 0
   dropzonejs: 0
@@ -98,8 +97,6 @@ module:
   link_attributes: 0
   linkit: 0
   media: 0
-  media_acquiadam: 0
-  media_acquiadam_example: 0
   media_entity_instagram: 0
   media_entity_twitter: 0
   media_library: 0
@@ -182,7 +179,6 @@ module:
   views_bulk_edit: 0
   views_bulk_operations: 0
   views_infinite_scroll: 0
-  views_ui: 0
   viewsreference: 0
   webform: 0
   webform_ui: 0

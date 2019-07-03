@@ -11,6 +11,7 @@ theme: {  }
 blacklist: {  }
 graylist:
   - search_api.server.acquia_search_server
+  - d8_google_optimize_hide_page.settings
 graylist_dependents: false
 graylist_skip_equal: true
 weight: 1
