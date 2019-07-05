@@ -37,7 +37,7 @@ class UwmSearchWithin extends ProcessorPluginBase {
 
   const VALUE_LOCATION = 'Locations';
 
-  const VALUE_MEDICAL_SERVICE = 'Medical Services';
+  const VALUE_MEDICAL_SERVICE = 'Medical Specialties';
 
   const VALUE_PATIENT_RESOURCES = 'Patient Info and Resources';
 
