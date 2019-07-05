@@ -1,0 +1,30 @@
+uuid: 7dca18b4-6849-45e7-99d3-49a31622b9d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.portrait_l
+    - image.style.portrait_m
+    - image.style.portrait_s
+  theme:
+    - uwmbase
+id: provider_page_image
+label: 'Provider Page - Bio Image'
+image_style_mappings:
+  -
+    breakpoint_id: uwmbase.bootstrap.md
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: portrait_l
+  -
+    breakpoint_id: uwmbase.bootstrap.sm
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: portrait_m
+  -
+    breakpoint_id: uwmbase.bootstrap.xs
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: portrait_s
+breakpoint_group: uwmbase.bootstrap
+fallback_image_style: portrait_m

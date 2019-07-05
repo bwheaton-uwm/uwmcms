@@ -1,0 +1,23 @@
+uuid: 7cd9ba05-fb3a-42dc-a486-159733c1165c
+langcode: en
+status: true
+dependencies:
+  module:
+    - image_style_quality
+name: portrait_m
+label: 'Portrait M'
+effects:
+  577a9a66-385f-4269-94a4-56c05e2072d2:
+    uuid: 577a9a66-385f-4269-94a4-56c05e2072d2
+    id: image_scale
+    weight: 2
+    data:
+      width: 324
+      height: 576
+      upscale: false
+  fab4a5b4-e3a8-4b1e-b628-878edfed6dc4:
+    uuid: fab4a5b4-e3a8-4b1e-b628-878edfed6dc4
+    id: image_style_quality
+    weight: 2
+    data:
+      quality: 65
