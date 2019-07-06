@@ -3,19 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
-    - image.style.portrait_l
     - image.style.portrait_m
     - image.style.portrait_s
   theme:
     - uwmbase
 id: provider_page_image
-label: 'Provider Page - Bio Image'
+label: 'Provider Page Headshot'
 image_style_mappings:
-  -
-    breakpoint_id: uwmbase.bootstrap.md
-    multiplier: 1x
-    image_mapping_type: image_style
-    image_mapping: portrait_l
   -
     breakpoint_id: uwmbase.bootstrap.sm
     multiplier: 1x
