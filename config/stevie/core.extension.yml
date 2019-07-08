@@ -139,6 +139,7 @@ module:
   rest: 0
   rh_media: 0
   robotstxt: 0
+  schema_metatag: 0
   schemata: 0
   schemata_json_schema: 0
   search_api: 0
