@@ -6,7 +6,6 @@ dependencies:
     - entity_browser.browser.media_browser
     - field.field.paragraph.half_wide_hero.field_bottom_content_blocks
     - field.field.paragraph.half_wide_hero.field_uwm_media
-    - field.field.paragraph.half_wide_hero.field_uwm_section_heading
     - field.field.paragraph.half_wide_hero.uwm_text
     - paragraphs.paragraphs_type.half_wide_hero
   module:
@@ -66,6 +65,5 @@ content:
     region: content
 hidden:
   created: true
-  field_uwm_section_heading: true
   status: true
   uid: true
