@@ -23,10 +23,10 @@
 
     <div{{ col_1_attributes.addClass(col_1_classes) }}>
 
-        {% if biography is not empty %}
+        <h3>{{ 'Biography'|t }}</h3>
 
-            <h3>{{ 'Biography'|t }}</h3>
-            {{ content.field_res_biography }}
+        {% if biography is not empty %}
+            {{ biography }}
 
             {% if content.field_res_personal_interests|render|striptags|trim is not empty %}
 
@@ -36,6 +36,7 @@
             {% endif %}
 
         {% else %}
+
             We’ll have {{ content.field_res_name|render|striptags|trim }}’s bio available soon.
 
         {% endif %}
