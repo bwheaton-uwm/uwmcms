@@ -5,5 +5,5 @@ dependencies: {  }
 id: half_wide_hero
 label: 'Half Wide Title and Hero Image'
 icon_uuid: null
-description: ''
+description: "This top section component displays:<br/>\r\n- desktop: the title and text on the left half, image on the right half<br/>\r\n- tablet: text stacked above image on tablet<br/>\r\n- mobile: image as background to the text"
 behavior_plugins: {  }
