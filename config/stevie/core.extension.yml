@@ -41,7 +41,6 @@ module:
   d8_google_optimize_hide_page: 0
   datetime: 0
   dblog: 0
-  devel_generate: 0
   diff: 0
   dropzonejs: 0
   dynamic_page_cache: 0
