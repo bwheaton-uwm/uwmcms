@@ -27,8 +27,11 @@
     margin: 0;
     padding: 0;
 
-    a.breadcrumb__link {
+    .breadcrumb__text {
       font-size: 1rem; // 16px
+    }
+
+    a.breadcrumb__text--link {
       @include link-blue-hover-underline;
     }
 

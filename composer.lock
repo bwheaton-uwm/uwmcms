@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "edeed80f5153b66698c13a6ef4297861",
+    "content-hash": "d3941f344a7cccd2c6228c1684c08aed",
     "packages": [
         {
             "name": "acquia/blt",
@@ -5620,6 +5620,60 @@
             "homepage": "https://www.drupal.org/project/ctools",
             "support": {
                 "source": "http://cgit.drupalcode.org/ctools"
+            }
+        },
+        {
+            "name": "drupal/current_page_crumb",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/current_page_crumb.git",
+                "reference": "8.x-1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/current_page_crumb-8.x-1.2.zip",
+                "reference": "8.x-1.2",
+                "shasum": "1a20b49f9165e36776e9ba665737c8166348cad4"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.2",
+                    "datestamp": "1503937145",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "patches_applied": {
+                    "Cached breadcrumb not updating on node change": "https://www.drupal.org/files/issues/current_page_crumb-cache-fix-2871340-3.patch"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Boggs",
+                    "homepage": "https://www.drupal.org/user/153069"
+                },
+                {
+                    "name": "rakesh.gectcr",
+                    "homepage": "https://www.drupal.org/user/1177822"
+                }
+            ],
+            "description": "Adds the current page title to the breadcrumb.",
+            "homepage": "https://www.drupal.org/project/current_page_crumb",
+            "support": {
+                "source": "https://git.drupalcode.org/project/current_page_crumb"
             }
         },
         {
