@@ -9,6 +9,7 @@
 {% set col_1_attributes = create_attribute() %}
 {#{% set biography = content.field_res_biography|render|uwm_replace_markup|striptags('<p><br><a>') %}#}
 {% set biography = content.field_res_biography|render|uwm_replace_markup|check_markup('rich_text') %}
+{% set personal_interests = content.field_res_personal_interests|render|uwm_replace_markup|check_markup('rich_text') %}
 
 {% set col_1_classes =
     [
@@ -28,10 +29,10 @@
         {% if biography is not empty %}
             {{ biography }}
 
-            {% if content.field_res_personal_interests|render|striptags|trim is not empty %}
+            {% if personal_interests is not empty %}
 
                 <h3>{{ 'Personal Interests'|t }}</h3>
-                {{ content.field_res_personal_interests }}
+                {{ personal_interests }}
 
             {% endif %}
 
