@@ -138,6 +138,19 @@ function uwmbase_page_attachments_alter(&$variables) {
   $currentPath = \Drupal::service('path.current')->getPath();
 
   /***
+   * Replace double slashes in start of canonical_url:
+   */
+  if (!empty($variables['#attached']['html_head'])) {
+    foreach ($variables['#attached']['html_head'] as &$value) {
+
+      if ($value[1] === 'canonical_url' && isset($value[0]['#attributes']['href'])) {
+        $value[0]['#attributes']['href'] = str_replace('.org//', '.org/',
+            $value[0]['#attributes']['href']);
+      }
+    }
+  }
+
+  /***
    * Add libraries for search pages
    */
   if (stripos($currentPath, '/search') !== FALSE) {
