@@ -77,7 +77,7 @@ content:
     label: hidden
     settings:
       responsive_image_style: clinic_card
-      image_link: content
+      image_link: ''
     third_party_settings: {  }
     type: responsive_image
     region: content
