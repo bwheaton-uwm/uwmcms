@@ -10,6 +10,8 @@
  * @see template_preprocess_paragraph()
  */
 #}
+{{ attach_library('uwmbase/half-wide-hero') }}
+
 {%
   set classes = [
     'half-wide-hero',
@@ -26,20 +28,24 @@
 
   <div class="{{ 'half-wide-hero__content' ~ (has_image ? ' col-lg-6' : '') }}">
 
-    {#
-      The node title is passed as a custom variable, to render the page title
-      within hero layout.
-    #}
-    {% if page_title is not empty %}
-      <h1 class="page-title half-wide-hero__title">{{ page_title }}</h1>
-    {% endif %}
+    {% if page_title is not empty or content.uwm_text.0 is not empty %}
+      <div class="half-wide-hero__headings">
+        {#
+          The node title is passed as a custom variable, to render the page title
+          within hero layout.
+        #}
+        {% if page_title is not empty %}
+          <h1 class="page-title half-wide-hero__title">{{ page_title }}</h1>
+        {% endif %}
 
-    {# Sub-heading #}
-    <div class="half-wide-hero__subheading">
-      {% if content.uwm_text.0 is not empty %}
-        {{ content.uwm_text }}
-      {% endif %}
-    </div>
+        {# Sub-heading #}
+        <div class="half-wide-hero__subheading">
+          {% if content.uwm_text.0 is not empty %}
+            {{ content.uwm_text }}
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
 
     {# Bottom Content Links #}
     <div class="half-wide-hero__ctas">

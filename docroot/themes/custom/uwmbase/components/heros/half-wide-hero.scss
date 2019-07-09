@@ -1,0 +1,164 @@
+/**
+ * Hero Content and Half-Wide Image paragraph type
+ *
+ * @see paragraph--half-wide-hero.html.twig
+ */
+
+@import 'init';
+
+.half-wide-hero {
+  @include uwmed-gradient-angled-dark-background();
+
+  .half-wide-hero__content {
+    padding-top: 0.75rem; // 12px
+
+    .half-wide-hero__title {
+      margin-top: 0;
+      margin-bottom: 0.75rem; // 12px
+      padding: 0;
+    }
+
+    .half-wide-hero__subheading {
+      margin-bottom: 1rem;
+      font-size: 1.25rem; // 20px
+      line-height: 1.625rem; // 26px
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .half-wide-hero__ctas {
+
+      a.btn-cta {
+        margin-bottom: 0.75rem; // 12px
+      }
+
+    }
+  }
+
+  .half-wide-hero__image {
+    // Override grid col padding so image can be full width of container/page.
+    padding-left: 0;
+    padding-right: 0;
+
+    img.img-fluid {
+      margin: 0;
+    }
+
+  }
+
+}
+
+// 992px-
+@include media-breakpoint-down('md') {
+  .half-wide-hero {
+
+    .half-wide-hero__content {
+  
+      .half-wide-hero__title {
+        font-size: 2.5rem; // 40px
+        line-height: 2.875rem; // 46px
+      }
+
+    }
+
+  }
+}
+
+// 576px+
+@include media-breakpoint-up('sm') {
+
+  .half-wide-hero {
+
+    .half-wide-hero__content {
+
+      .half-wide-hero__ctas {
+        // (Buttons each have 12px)
+        margin-bottom: 1.125rem; // 18px (+ 12px each button = 30px)
+
+        .field__items {
+          display: flex;
+          flex-wrap: wrap;
+
+          .field__item {
+            margin-right: 0.75rem; // 12px
+
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+
+    }
+
+  }
+
+}
+
+// 576px-
+@include media-breakpoint-down('xs') {
+  .half-wide-hero {
+    position: relative;
+
+    .half-wide-hero__content {
+      position: relative;
+      z-index: 1;
+      // Create top section matching image height, for absolute-positioned
+      // headings.
+      padding-top: 60%;
+
+      .half-wide-hero__headings {
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding-top: 1rem; // 16px
+        @include container-padding();
+      }
+  
+      .half-wide-hero__title {
+        color: color('white');
+        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.16);
+        font-size: 2rem; // 32px
+        line-height: 2.375rem; // 38px
+        margin-bottom: 0.375rem; // 6px
+      }
+  
+      .half-wide-hero__subheading {
+        color: color('white');
+        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.16);
+        font-size: 1rem; // 16px
+        line-height: 1.3125rem; // 21px
+      }
+  
+      .half-wide-hero__ctas {
+        padding: 1rem 0; // 16px
+
+        .field__item {
+
+          &:last-child a.btn-cta {
+            margin-bottom: 0;
+          }
+
+        }
+      }
+    }
+  
+    .half-wide-hero__image {
+      position: absolute;
+      left: 0;
+      top: 0;
+      // Set proportional height for absolute-positioned image.
+      padding-top: 60%;
+
+      .media--type-image {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+    }
+  
+  }
+}
