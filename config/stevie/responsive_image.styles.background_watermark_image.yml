@@ -1,0 +1,24 @@
+uuid: ee870df6-3ad6-40ce-a3f3-75607f2035ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.background_watermark_m
+    - image.style.background_watermark_xl
+  theme:
+    - uwmbase
+id: background_watermark_image
+label: 'Background Watermark Image'
+image_style_mappings:
+  -
+    breakpoint_id: uwmbase.bootstrap.lg
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: background_watermark_xl
+  -
+    breakpoint_id: uwmbase.bootstrap.xs
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: background_watermark_m
+breakpoint_group: uwmbase.bootstrap
+fallback_image_style: '_original image_'

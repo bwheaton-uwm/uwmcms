@@ -1,7 +1,9 @@
 uuid: 8f58dcfd-4d35-4bbe-9de6-6c6085045433
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - image_style_quality
 name: clinic_page_384_192
 label: 'Clinic page: md-lg (384 x 192)'
 effects:
@@ -13,3 +15,9 @@ effects:
       width: 384
       height: 192
       anchor: center-center
+  c1cf0c3b-274d-4bda-a4b2-1e5be8d2139c:
+    uuid: c1cf0c3b-274d-4bda-a4b2-1e5be8d2139c
+    id: image_style_quality
+    weight: 2
+    data:
+      quality: 75

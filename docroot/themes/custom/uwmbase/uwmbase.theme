@@ -15,6 +15,8 @@ use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Template\Attribute;
+use Drupal\image\Entity\ImageStyle;
+use Drupal\file\Entity\File;
 
 /*
  * Include helper functions used elsewhere below. This allows separating out
@@ -793,7 +795,6 @@ function uwmbase_preprocess_paragraph__uwm_image_hero(&$variables) {
  * Implements hook_preprocess_HOOK().
  */
 function uwmbase_preprocess_paragraph__uwm_section(&$variables) {
-
   $paragraph = $variables['paragraph'];
 
   $variables['background_image_url'] = NULL;
@@ -805,8 +806,14 @@ function uwmbase_preprocess_paragraph__uwm_section(&$variables) {
   // - using a render array includes cache metadata,
   // - it's easy to configure to use an image style.
   if (!empty($variables['content']['field_uwm_image'][0])) {
-    $field_uwm_image_item = $variables['content']['field_uwm_image'][0];
-    $variables['background_image_url'] = trim(render($field_uwm_image_item));
+    $fid = $paragraph->get('field_uwm_image')->getValue()[0]['target_id'];
+    $file = File::load($fid);
+    $uri = $file->getFileUri();
+
+    // $xl = ImageStyle::load('background_watermark_xl')->buildUrl($uri);.
+    // $variables['background_image_xl_url'] = $xl;.
+    $style_url = ImageStyle::load('background_watermark_m')->buildUrl($uri);
+    $variables['background_image_url'] = $style_url;
   }
 
 }

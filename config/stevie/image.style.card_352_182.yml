@@ -1,7 +1,9 @@
 uuid: 9301d50e-22f4-49bd-a7e9-d4db62547dd5
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - image_style_quality
 name: card_352_182
 label: 'Card 352x182'
 effects:
@@ -13,3 +15,9 @@ effects:
       width: 352
       height: 182
       anchor: center-center
+  6ecd1d7c-e5bb-4c76-a874-f73152f88661:
+    uuid: 6ecd1d7c-e5bb-4c76-a874-f73152f88661
+    id: image_style_quality
+    weight: 2
+    data:
+      quality: 75

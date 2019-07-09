@@ -34,11 +34,11 @@ dependencies:
     - field.field.node.res_clinic.field_uwm_sections
     - field.field.node.res_clinic.field_uwm_sections_2
     - field.field.node.res_clinic.uwm_unique_id
-    - image.style.large
     - node.type.res_clinic
+    - responsive_image.styles.clinic_page
   module:
     - entity_reference_revisions
-    - image
+    - responsive_image
     - text
     - user
 _core:
@@ -153,10 +153,10 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: large
-      image_link: content
+      responsive_image_style: clinic_page
+      image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
     region: content
   field_res_phone_number:
     weight: 1

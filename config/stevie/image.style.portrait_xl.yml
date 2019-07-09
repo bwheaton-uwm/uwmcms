@@ -1,0 +1,15 @@
+uuid: 39f5bca4-edf5-437e-b558-85f4f22f2bf9
+langcode: en
+status: true
+dependencies: {  }
+name: portrait_xl
+label: 'Portrait XL'
+effects:
+  ab9ffbd5-8b21-4973-af1a-4040610d08d6:
+    uuid: ab9ffbd5-8b21-4973-af1a-4040610d08d6
+    id: image_scale
+    weight: 2
+    data:
+      width: 1080
+      height: 1920
+      upscale: false
