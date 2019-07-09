@@ -1,0 +1,59 @@
+{#
+/**
+ * @file
+ * Theme implementation to display a Hero Content and Half-Wide Image paragraph.
+ *
+ * Custom variables:
+ * - page_title: the parent node's title, to be rendered as the page title (h1)
+ *
+ * @see uwmbase_preprocess_paragraph__half_wide_hero()
+ * @see template_preprocess_paragraph()
+ */
+#}
+{%
+  set classes = [
+    'half-wide-hero',
+    'row',
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished'
+  ]
+%}
+{% set has_image = content.field_uwm_media is not empty %}
+
+<div{{ attributes.addClass(classes) }}>
+
+  <div class="{{ 'half-wide-hero__content' ~ (has_image ? ' col-lg-6' : '') }}">
+
+    {#
+      The node title is passed as a custom variable, to render the page title
+      within hero layout.
+    #}
+    {% if page_title is not empty %}
+      <h1 class="page-title half-wide-hero__title">{{ page_title }}</h1>
+    {% endif %}
+
+    {# Sub-heading #}
+    <div class="half-wide-hero__subheading">
+      {% if content.uwm_text.0 is not empty %}
+        {{ content.uwm_text }}
+      {% endif %}
+    </div>
+
+    {# Bottom Content Links #}
+    <div class="half-wide-hero__ctas">
+      {% if content.field_bottom_content_blocks.0 is not empty %}
+        {{ content.field_bottom_content_blocks }}
+      {% endif %}
+    </div>
+
+  </div>
+
+  {% if has_image %}
+    <div class="half-wide-hero__image col-lg-6">
+      {{ content.field_uwm_media }}
+    </div>
+  {% endif %}
+  
+</div>
