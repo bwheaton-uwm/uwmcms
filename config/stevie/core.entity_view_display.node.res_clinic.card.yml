@@ -115,6 +115,7 @@ hidden:
   field_res_external_url: true
   field_res_fax_number: true
   field_res_feat_clinics_header: true
+  field_res_feat_clinics_view_all: true
   field_res_featured_clinics: true
   field_res_hide_appt_ctas: true
   field_res_hide_open_scheduling: true
