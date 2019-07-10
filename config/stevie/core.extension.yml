@@ -38,6 +38,7 @@ module:
   crop: 0
   ctools: 0
   ctools_block: 0
+  current_page_crumb: 0
   d8_google_optimize_hide_page: 0
   datetime: 0
   dblog: 0
@@ -73,6 +74,7 @@ module:
   history: 0
   honeypot: 0
   image: 0
+  image_style_quality: 0
   image_widget_crop: 0
   inline_entity_form: 0
   jsonapi: 0

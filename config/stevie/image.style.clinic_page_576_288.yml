@@ -1,7 +1,9 @@
 uuid: a4cc3610-33f4-4fcb-8d42-dcd9aac1de99
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - image_style_quality
 name: clinic_page_576_288
 label: 'Clinic page: xs-sm (576 x 288)'
 effects:
@@ -13,3 +15,9 @@ effects:
       width: 576
       height: 288
       anchor: center-center
+  56ae477b-40e3-4263-855a-091af3aa1b26:
+    uuid: 56ae477b-40e3-4263-855a-091af3aa1b26
+    id: image_style_quality
+    weight: 2
+    data:
+      quality: 75

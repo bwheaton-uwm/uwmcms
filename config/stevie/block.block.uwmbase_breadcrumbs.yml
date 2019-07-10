@@ -25,6 +25,7 @@ visibility:
     id: node_type
     bundles:
       uwm_basic_page: uwm_basic_page
+      uwm_medical_service: uwm_medical_service
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'

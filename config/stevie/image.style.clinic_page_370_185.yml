@@ -1,7 +1,9 @@
 uuid: f634557b-c4ec-46b9-b649-6eb7fd29d232
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - image_style_quality
 name: clinic_page_370_185
 label: 'Clinic page: lg-xl (459 x 230)'
 effects:
@@ -13,3 +15,9 @@ effects:
       width: 459
       height: 230
       anchor: center-center
+  a222211e-53c1-4a35-8b11-66ff9158d6e4:
+    uuid: a222211e-53c1-4a35-8b11-66ff9158d6e4
+    id: image_style_quality
+    weight: 2
+    data:
+      quality: 75
