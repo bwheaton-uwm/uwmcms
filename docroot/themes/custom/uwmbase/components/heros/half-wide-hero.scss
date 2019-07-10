@@ -50,6 +50,59 @@
 
 }
 
+// 1200px+
+// @include media-breakpoint-up('xl') {
+
+//   .half-wide-hero {
+
+//     .half-wide-hero__image {
+//       min-height: 375px;
+//     }
+
+//   }
+
+// }
+
+// 992px+
+@include media-breakpoint-up('lg') {
+
+  .half-wide-hero {
+
+    .half-wide-hero__image {
+      position: relative;
+      // As the container gets wider, the text may wrap to fewer lines and
+      // reduce the hero container height. Set a min height so that less of the
+      // top and bottom of the image are cut off.
+      min-height: 310px;
+
+      // Pass container height down through media entity image wrappers.
+      .field--name-field-uwm-media,
+      .media--type-image,
+      .field--name-image {
+        height: 100%;
+      }
+
+      // Center image in its container and hide overflow.
+      // Ensure image fills height if text content makes container taller.
+      .media--type-image {
+        overflow: hidden;
+
+        img {
+          min-height: 100%;
+          max-width: none;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+    }
+
+  }
+
+}
+
 // 992px-
 @include media-breakpoint-down('md') {
   .half-wide-hero {
