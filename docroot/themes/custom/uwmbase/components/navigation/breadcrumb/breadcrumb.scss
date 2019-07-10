@@ -1,4 +1,5 @@
 @import 'init';
+@import 'base/typography';
 
 // Breadcrumb navigation
 //
@@ -8,21 +9,37 @@
 //
 // Style guide: navigation.breadcrumb
 
-.breadcrumb,
-%breadcrumb {
+.breadcrumb {
+  padding: 1rem 0;
+
   @media print {
     display: none;
   }
 
-  &__list {
+  .breadcrumb__list {
     margin: 0;
     padding: 0;
   }
 
-  &__item {
+  .breadcrumb__item {
     display: inline;
     list-style-type: none;
     margin: 0;
     padding: 0;
+
+    .breadcrumb__text {
+      font-size: 1rem; // 16px
+    }
+
+    a.breadcrumb__text--link {
+      @include link-blue-hover-underline;
+    }
+
+    .breadcrumb__arrow {
+      // Match size of arrow in header main menu.
+      width: 0.4375rem; // 7px
+      margin: 0 0.25rem; // 4px
+    }
+
   }
 }

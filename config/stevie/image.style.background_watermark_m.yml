@@ -1,0 +1,23 @@
+uuid: 12cc5a07-c58f-4269-a324-fb50c2fbf268
+langcode: en
+status: true
+dependencies:
+  module:
+    - image_style_quality
+name: background_watermark_m
+label: 'Background Watermark M'
+effects:
+  3ee1b9f0-3f70-4e48-b4a0-a562a18e700d:
+    uuid: 3ee1b9f0-3f70-4e48-b4a0-a562a18e700d
+    id: image_scale
+    weight: 1
+    data:
+      width: 1080
+      height: null
+      upscale: false
+  580608fb-5562-4675-8d52-4fced86e7661:
+    uuid: 580608fb-5562-4675-8d52-4fced86e7661
+    id: image_style_quality
+    weight: 2
+    data:
+      quality: 65

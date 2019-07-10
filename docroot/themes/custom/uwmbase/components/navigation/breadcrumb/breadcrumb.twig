@@ -19,12 +19,12 @@
     {% for item in breadcrumb %}
       <li class="breadcrumb__item">
         {% if item.url %}
-          <a href="{{ item.url }}">{{ item.text }}</a>
+          <a class="breadcrumb__text breadcrumb__text--link" href="{{ item.url }}">{{ item.text }}</a>
         {% else %}
-          {{ item.text }}
+          <span class="breadcrumb__text">{{ item.text }}</span>
         {% endif %}
         {% if not loop.last %}
-          ›
+          <i class="breadcrumb__arrow fa fa-angle-right" aria-hidden="true"></i>
         {% endif %}
       </li>
     {% endfor %}

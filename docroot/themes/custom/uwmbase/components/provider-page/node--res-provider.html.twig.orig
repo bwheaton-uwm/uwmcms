@@ -1,0 +1,117 @@
+{% extends "@uwmbase/containers/article/article.twig" %}
+{#{% extends directory ~ "/templates/content/node.html.twig" %}#}
+
+{#
+/**
+ * @file
+ * Theme override to display a Res Provider in full-page view mode.
+ *
+ * @see template_preprocess_node()
+ * @see uwmbase_preprocess_node()
+ *
+ */
+#}
+
+{% set modifier_class = attributes.class ~ ' container-xl zzzzzzzz' %}
+
+{% set acceptingAppointments = 'Yes'
+    in content.field_res_isacceptingnewpts.0 ? TRUE : FALSE %}
+
+
+
+{% block content %}
+
+    {{ attach_library('uwmbase/provider-page') }}
+
+    {{ title_suffix }}
+
+
+    <div class="bg">
+
+        <div class="row">
+
+            <section class="left col-xs-12 col-sm-3">
+
+                <div class="col-xs-6 col-sm-12 headshot">
+                    {{ content.field_res_image }}
+                </div>
+
+                <div class="col-sm-12 spl">
+                    {% if acceptingAppointments %}
+                        <i class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></i>
+                        {{ "Accepting new patients"| t }}
+                    {% else %}
+                        <i class="uwm-icon uwm-icon--not-accepting-patients" aria-hidden="true"></i>
+                        {{ "Not accepting new patients"| t }}
+                    {% endif %}
+                </div>
+
+                <div class="col-sm-12 spl">
+                    {% if acceptingAppointments %}
+                        <a href="{{ provider_appointments_uri }}">{{ "Make an Appointment"|t }}
+                            <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                    {% else %}
+                        <a href="/search/providers">{{ "Find a Provider"|t }}
+                            <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                    {% endif %}
+                </div>
+
+<<<<<<< HEAD
+        <div class="col-sm-12 spl">
+          {% if content.field_res_expertises %}
+            {% set Specialties = content.field_res_expertises|uwm_filter_non_numeric_keys|uwm_replace_links_with_text|sort %}
+            <h5>{{ "Medical Specialties"| t }}</h5>
+            <ul>
+              {% for i in Specialties %}
+                <li>{{ i }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+=======
+                <div class="col-sm-12 spl">
+                    {% if content.field_res_expertises %}
+                        {% set Specialties = content.field_res_expertises|uwm_filter_non_numeric_keys|uwm_replace_links_with_text|sort %}
+                        <h5>{{ "Specialties"| t }}</h5>
+                        <ul>
+                            {% for i in Specialties %}
+                                <li>{{ i }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+>>>>>>> master
+
+                <div class="col-sm-12 spl">
+                    {% if content.field_res_languages %}
+                        {% set Languages = content.field_res_languages|uwm_filter_non_numeric_keys|uwm_replace_links_with_text|sort %}
+                        <h5>{{ "Languages"| t }}</h5>
+                        <ul>
+                            {% for i in Languages %}
+                                <li>{{ i }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+
+            </section>
+
+
+            <section class="right col-xs-12 col-sm-9">
+
+                {% include directory ~ '/components/provider-page/node--res-provider--tabs.html.twig' %}
+
+                {#{{ content }}#}
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+
+    {#{{ content }}#}
+
+
+{% endblock %}

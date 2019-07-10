@@ -1,0 +1,131 @@
+uuid: aee4b0e1-fefa-4052-8e65-5f54965e045b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.card
+    - field.field.node.res_provider.field_res_affiliates
+    - field.field.node.res_provider.field_res_biography
+    - field.field.node.res_provider.field_res_board_certifications
+    - field.field.node.res_provider.field_res_clinics
+    - field.field.node.res_provider.field_res_degrees
+    - field.field.node.res_provider.field_res_education_history
+    - field.field.node.res_provider.field_res_expertises
+    - field.field.node.res_provider.field_res_gender
+    - field.field.node.res_provider.field_res_image
+    - field.field.node.res_provider.field_res_internal_url
+    - field.field.node.res_provider.field_res_is_open_scheduling
+    - field.field.node.res_provider.field_res_isacceptingnewpts
+    - field.field.node.res_provider.field_res_languages
+    - field.field.node.res_provider.field_res_medical_services
+    - field.field.node.res_provider.field_res_meta_tags
+    - field.field.node.res_provider.field_res_name
+    - field.field.node.res_provider.field_res_node_videos
+    - field.field.node.res_provider.field_res_npi
+    - field.field.node.res_provider.field_res_personal_interests
+    - field.field.node.res_provider.field_res_pubmed_ids
+    - field.field.node.res_provider.field_res_puma_id
+    - field.field.node.res_provider.field_res_ser_id
+    - field.field.node.res_provider.field_search_best_bets
+    - field.field.node.res_provider.field_uwm_json_packet
+    - field.field.node.res_provider.uwm_unique_id
+    - node.type.res_provider
+    - responsive_image.styles.provider_card_headshot
+  module:
+    - name
+    - responsive_image
+    - user
+_core:
+  default_config_hash: VprWwN3mbiPcSLh-Gc3vJcE50N6ggx16rsVBCVFsZNE
+id: node.res_provider.card
+targetEntityType: node
+bundle: res_provider
+mode: card
+content:
+  field_name:
+    weight: 0
+    label: above
+    settings:
+      format: full
+      output: default
+      multiple: default
+      multiple_delimiter: ', '
+      multiple_and: text
+      multiple_delimiter_precedes_last: never
+      multiple_el_al_min: '3'
+      multiple_el_al_first: '1'
+      markup: false
+    third_party_settings: {  }
+    type: name_default
+    region: content
+  field_res_expertises:
+    weight: 4
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_res_image:
+    weight: 0
+    label: hidden
+    settings:
+      responsive_image_style: provider_card_headshot
+      image_link: content
+    third_party_settings: {  }
+    type: responsive_image
+    region: content
+  field_res_languages:
+    weight: 2
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_res_medical_services:
+    weight: 3
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_res_name:
+    type: name_default
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      format: default
+      markup: false
+      output: default
+      multiple: default
+      multiple_delimiter: ', '
+      multiple_and: text
+      multiple_delimiter_precedes_last: never
+      multiple_el_al_min: '3'
+      multiple_el_al_first: '1'
+    third_party_settings: {  }
+hidden:
+  field_res_affiliates: true
+  field_res_biography: true
+  field_res_board_certifications: true
+  field_res_clinics: true
+  field_res_degrees: true
+  field_res_education_history: true
+  field_res_gender: true
+  field_res_internal_url: true
+  field_res_is_open_scheduling: true
+  field_res_isacceptingnewpts: true
+  field_res_meta_tags: true
+  field_res_node_videos: true
+  field_res_npi: true
+  field_res_personal_interests: true
+  field_res_pubmed_ids: true
+  field_res_puma_id: true
+  field_res_ser_id: true
+  field_search_best_bets: true
+  field_uwm_json_packet: true
+  links: true
+  uwm_unique_id: true

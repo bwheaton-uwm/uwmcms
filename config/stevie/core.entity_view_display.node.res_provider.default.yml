@@ -28,13 +28,13 @@ dependencies:
     - field.field.node.res_provider.field_search_best_bets
     - field.field.node.res_provider.field_uwm_json_packet
     - field.field.node.res_provider.uwm_unique_id
-    - image.style.large
     - node.type.res_provider
+    - responsive_image.styles.provider_page_image
   module:
     - entity_reference_revisions
-    - image
     - name
     - options
+    - responsive_image
     - text
     - user
 _core:
@@ -126,13 +126,13 @@ content:
     type: list_default
     region: content
   field_res_image:
-    weight: 2
+    weight: 0
     label: hidden
     settings:
-      image_style: large
-      image_link: content
+      responsive_image_style: provider_page_image
+      image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
     region: content
   field_res_is_open_scheduling:
     weight: 19
@@ -172,7 +172,7 @@ content:
     region: content
   field_res_name:
     type: name_default
-    weight: 0
+    weight: 1
     region: content
     label: hidden
     settings:
@@ -188,7 +188,7 @@ content:
     third_party_settings: {  }
   field_res_node_videos:
     type: entity_reference_entity_view
-    weight: 21
+    weight: 20
     label: above
     settings:
       view_mode: labeled
@@ -197,7 +197,7 @@ content:
     region: content
   field_res_npi:
     type: number_integer
-    weight: 1
+    weight: 2
     region: content
     label: above
     settings:
