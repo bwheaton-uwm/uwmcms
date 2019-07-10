@@ -8,7 +8,7 @@
 
 {% set locations_tab = node.field_res_clinics is not empty %}
 {% set publications_tab = node.field_res_pubmed_ids is not empty %}
-{% set education_tab = TRUE %}
+{% set education_tab = node.uwm_json_packet_data.educationHistories is not empty %}
 
 
 <nav class="uw-navtabs nowrap">

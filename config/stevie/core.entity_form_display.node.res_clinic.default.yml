@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.res_clinic.field_res_external_url
     - field.field.node.res_clinic.field_res_fax_number
     - field.field.node.res_clinic.field_res_feat_clinics_header
+    - field.field.node.res_clinic.field_res_feat_clinics_view_all
     - field.field.node.res_clinic.field_res_featured_clinics
     - field.field.node.res_clinic.field_res_floor
     - field.field.node.res_clinic.field_res_hide_appt_ctas
@@ -102,6 +103,7 @@ third_party_settings:
       children:
         - field_res_feat_clinics_header
         - field_res_featured_clinics
+        - field_res_feat_clinics_view_all
         - field_res_expertises
         - field_uwm_sections
         - body
@@ -135,7 +137,7 @@ bundle: res_clinic
 mode: default
 content:
   body:
-    weight: 14
+    weight: 15
     settings:
       rows: 9
       summary_rows: 3
@@ -200,7 +202,7 @@ content:
     region: content
   field_res_expertises:
     type: entity_reference_autocomplete
-    weight: 12
+    weight: 13
     region: content
     settings:
       match_operator: CONTAINS
@@ -224,6 +226,14 @@ content:
     region: content
   field_res_feat_clinics_header:
     weight: 10
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_res_feat_clinics_view_all:
+    weight: 12
     settings:
       size: 60
       placeholder: ''
@@ -357,7 +367,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_uwm_sections:
-    weight: 13
+    weight: 14
     settings:
       title: section
       title_plural: sections

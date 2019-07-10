@@ -25,6 +25,15 @@ a.text-link-blue.no-underline {
   }
 }
 
+@mixin link-blue-hover-underline {
+  color: theme-color('link-blue');
+  text-decoration: none;
+
+  &:hover, &:focus {
+    text-decoration: underline;
+  }
+}
+
 h1, .h1 {
   // Bootstrap uses one variable for line height for all headers
   // ($headings-line-height) so set our h1-specific value here.
@@ -71,11 +80,6 @@ h1.page-title {
 
 .block-page-title-block h1 {
   padding-top: 3.125rem;
-}
-
-.breadcrumb {
-  padding-top: 1.125rem;
-  padding-bottom: .8125rem;
 }
 
 @each $color, $value in $colors {
