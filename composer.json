@@ -101,6 +101,7 @@
     "drupal/config_split": "^1.4",
     "drupal/contribute": "^5.0@beta",
     "drupal/core": "^8.6.10",
+    "drupal/current_page_crumb": "^1.0",
     "drupal/d8_google_optimize_hide_page": "^1.0",
     "drupal/date": "1.x-dev",
     "drupal/deploy": "^1.0@beta",
@@ -226,6 +227,9 @@
       },
       "drupal/search_api_autocomplete": {
         "Results with uppercase letters fix": "https://www.drupal.org/files/issues/2019-02-20/2947273-25--fix-live-results-query-preprocessing.patch"
+      },
+      "drupal/current_page_crumb": {
+        "Cached breadcrumb not updating on node change": "https://www.drupal.org/files/issues/current_page_crumb-cache-fix-2871340-3.patch"
       }
     }
   },
