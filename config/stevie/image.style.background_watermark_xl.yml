@@ -1,0 +1,15 @@
+uuid: 36721d14-d371-4154-a319-e38017254c8c
+langcode: en
+status: true
+dependencies:
+  module:
+    - image_style_quality
+name: background_watermark_xl
+label: 'Background Watermark XL'
+effects:
+  2b2bb2f7-f01d-4031-980a-9797b8e04875:
+    uuid: 2b2bb2f7-f01d-4031-980a-9797b8e04875
+    id: image_style_quality
+    weight: 1
+    data:
+      quality: 65

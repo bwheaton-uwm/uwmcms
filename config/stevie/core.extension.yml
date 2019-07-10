@@ -73,6 +73,7 @@ module:
   history: 0
   honeypot: 0
   image: 0
+  image_style_quality: 0
   image_widget_crop: 0
   inline_entity_form: 0
   jsonapi: 0
@@ -139,6 +140,7 @@ module:
   rest: 0
   rh_media: 0
   robotstxt: 0
+  schema_metatag: 0
   schemata: 0
   schemata_json_schema: 0
   search_api: 0
