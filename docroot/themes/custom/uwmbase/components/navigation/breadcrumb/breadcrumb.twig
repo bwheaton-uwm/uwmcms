@@ -24,7 +24,7 @@
           <span class="breadcrumb__text">{{ item.text }}</span>
         {% endif %}
         {% if not loop.last %}
-          ›
+          <i class="breadcrumb__arrow fa fa-angle-right" aria-hidden="true"></i>
         {% endif %}
       </li>
     {% endfor %}
