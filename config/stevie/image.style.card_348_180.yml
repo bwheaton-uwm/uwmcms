@@ -1,7 +1,9 @@
 uuid: 93632beb-b4c2-46cb-8cb4-7f8337b931aa
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - image_style_quality
 name: card_348_180
 label: 'Card 348x180'
 effects:
@@ -13,3 +15,9 @@ effects:
       width: 348
       height: 180
       anchor: center-center
+  c37a17fb-db45-4d95-af9b-a76530ce66c6:
+    uuid: c37a17fb-db45-4d95-af9b-a76530ce66c6
+    id: image_style_quality
+    weight: 2
+    data:
+      quality: 75

@@ -1,0 +1,19 @@
+uuid: 18907bd9-c285-4ecb-a12c-1947967e12a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.portrait_m
+    - image.style.portrait_s
+  theme:
+    - uwmbase
+id: provider_card_headshot
+label: 'Provider Card Headshot'
+image_style_mappings:
+  -
+    breakpoint_id: uwmbase.bootstrap.md
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: portrait_m
+breakpoint_group: uwmbase.bootstrap
+fallback_image_style: portrait_s

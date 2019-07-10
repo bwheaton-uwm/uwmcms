@@ -1,0 +1,15 @@
+uuid: 84647400-35d7-4d22-9f1e-5b2584485f9f
+langcode: en
+status: true
+dependencies: {  }
+name: portrait_l
+label: 'Portrait L'
+effects:
+  5aff4d0c-ae90-4e1f-8fae-1709ad6c4d63:
+    uuid: 5aff4d0c-ae90-4e1f-8fae-1709ad6c4d63
+    id: image_scale
+    weight: 2
+    data:
+      width: 540
+      height: 960
+      upscale: false

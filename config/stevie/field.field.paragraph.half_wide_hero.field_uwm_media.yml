@@ -1,0 +1,28 @@
+uuid: 9c5d53d9-a2d5-4b6f-ba18-65b6e782760d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_media
+    - media.type.image
+    - paragraphs.paragraphs_type.half_wide_hero
+id: paragraph.half_wide_hero.field_uwm_media
+field_name: field_uwm_media
+entity_type: paragraph
+bundle: half_wide_hero
+label: 'Featured Image'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

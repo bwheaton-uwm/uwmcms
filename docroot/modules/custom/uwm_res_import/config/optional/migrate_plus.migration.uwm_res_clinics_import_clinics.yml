@@ -95,6 +95,10 @@ source:
     label: field_res_iscallcenterserviced
     selector: /attributes/field_res_iscallcenterserviced
 
+  - name: is_hospital
+    label: is_hospital
+    selector: /attributes/is_hospital
+
   #  - name: field_res_meta_tags
   #    label: field_res_meta_tags
   #    selector: /attributes/field_res_meta_tags
@@ -205,6 +209,7 @@ process:
   field_res_hide_open_scheduling: field_res_hide_open_scheduling
   field_res_hide_returning_cta: field_res_hide_returning_cta
   field_res_iscallcenterserviced: field_res_iscallcenterserviced
+  field_res_is_hospital: is_hospital
   #  field_res_meta_tags: field_res_meta_tags
   field_res_phone_number: field_res_phone_number
   field_res_room_number: field_res_room_number

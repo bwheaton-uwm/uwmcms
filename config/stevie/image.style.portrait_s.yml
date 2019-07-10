@@ -1,0 +1,23 @@
+uuid: 71d8943c-43e1-4afa-87e3-09f329dbcf33
+langcode: en
+status: true
+dependencies:
+  module:
+    - image_style_quality
+name: portrait_s
+label: 'Portrait S'
+effects:
+  e680e964-a0c5-4172-95a4-43199223ad02:
+    uuid: e680e964-a0c5-4172-95a4-43199223ad02
+    id: image_scale
+    weight: 2
+    data:
+      width: 270
+      height: 480
+      upscale: false
+  61dc6e71-4dd5-41bb-aa8e-7b10af12aa0f:
+    uuid: 61dc6e71-4dd5-41bb-aa8e-7b10af12aa0f
+    id: image_style_quality
+    weight: 2
+    data:
+      quality: 70

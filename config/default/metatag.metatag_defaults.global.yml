@@ -8,8 +8,8 @@ id: global
 label: Global
 tags:
   title: '[current-page:title] | [site:name]'
-  canonical_url: 'https://www.uwmedicine.org/[current-page:url:path]'
+  canonical_url: 'https://www.uwmedicine.org[current-page:url:path]'
   og_type: website
-  og_url: 'https://www.uwmedicine.org/[current-page:url:path]'
+  og_url: 'https://www.uwmedicine.org[current-page:url:path]'
   og_site_name: '[site:name]'
   og_title: '[current-page:title] | [site:name]'
