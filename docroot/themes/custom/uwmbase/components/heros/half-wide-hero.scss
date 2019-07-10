@@ -38,7 +38,7 @@
   }
 
   .half-wide-hero__image {
-    // Override grid col padding so image can be full width of container/page.
+    // Override grid col padding so image can be full page width.
     padding-left: 0;
     padding-right: 0;
 
@@ -50,18 +50,20 @@
 
 }
 
-// 1200px+
-// @include media-breakpoint-up('xl') {
+//1200px+
+@include media-breakpoint-up('xl') {
 
-//   .half-wide-hero {
+  .half-wide-hero {
 
-//     .half-wide-hero__image {
-//       min-height: 375px;
-//     }
+    .half-wide-hero__image {
+      // At xl+, container-xl is no longer full page width. Re-apply
+      // grid gutters to the image with container content.
+      @include container-padding();
+    }
 
-//   }
+  }
 
-// }
+}
 
 // 992px+
 @include media-breakpoint-up('lg') {
