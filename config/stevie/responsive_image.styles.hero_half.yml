@@ -1,0 +1,30 @@
+uuid: c571db40-c287-4110-b20e-de6880aadaae
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.hero_half_lg
+    - image.style.hero_half_sm
+    - image.style.hero_half_xs
+  theme:
+    - uwmbase
+id: hero_half
+label: 'Half-Wide Hero Image'
+image_style_mappings:
+  -
+    breakpoint_id: uwmbase.bootstrap.lg
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: hero_half_lg
+  -
+    breakpoint_id: uwmbase.bootstrap.sm
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: hero_half_sm
+  -
+    breakpoint_id: uwmbase.bootstrap.xs
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: hero_half_xs
+breakpoint_group: uwmbase.bootstrap
+fallback_image_style: hero_half_sm

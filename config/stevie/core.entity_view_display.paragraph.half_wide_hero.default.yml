@@ -28,8 +28,8 @@ content:
     weight: 4
     label: hidden
     settings:
-      link: true
-      view_mode: default
+      view_mode: responsive_hero_half
+      link: false
     third_party_settings: {  }
     type: entity_reference_entity_view
     region: content
