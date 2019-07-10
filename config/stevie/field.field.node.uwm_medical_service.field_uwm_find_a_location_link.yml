@@ -9,7 +9,7 @@ id: node.uwm_medical_service.field_uwm_find_a_location_link
 field_name: field_uwm_find_a_location_link
 entity_type: node
 bundle: uwm_medical_service
-label: 'Find a Location Link'
+label: '(old) Find a Location Link'
 description: 'When a user clicks "Find a Location" on this page, where should they go?'
 required: false
 translatable: false

@@ -11,7 +11,7 @@ id: node.uwm_medical_service.field_uwm_image
 field_name: field_uwm_image
 entity_type: node
 bundle: uwm_medical_service
-label: 'Hero Image'
+label: '(old) Full-Width Hero Image'
 description: ''
 required: false
 translatable: true
