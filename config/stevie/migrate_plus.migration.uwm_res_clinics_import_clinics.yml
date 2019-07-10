@@ -108,6 +108,10 @@ source:
       label: field_res_feat_clinics_header
       selector: /attributes/field_res_feat_clinics_header
     -
+      name: field_res_feat_clinics_view_all
+      label: field_res_feat_clinics_view_all
+      selector: /attributes/field_res_feat_clinics_view_all
+    -
       name: uwm_unique_id
       label: uwm_unique_id
       selector: /attributes/uwm_unique_id
@@ -172,6 +176,7 @@ process:
   field_res_phone_number: field_res_phone_number
   field_res_room_number: field_res_room_number
   field_res_feat_clinics_header: field_res_feat_clinics_header
+  field_res_feat_clinics_view_all: field_res_feat_clinics_view_all
   uwm_unique_id: uwm_unique_id
   field_uwm_json_packet: uwm_json_packet
   field_res_providers:
