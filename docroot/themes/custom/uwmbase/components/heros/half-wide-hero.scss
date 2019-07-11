@@ -30,8 +30,12 @@
 
     .half-wide-hero__ctas {
 
-      a.btn-cta {
+      a.btn-cta-solid {
         margin-bottom: 0.75rem; // 12px
+        // Reduce side padding a bit so standard 3 buttons fit on single line
+        // at xl+
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
       }
 
     }
@@ -88,6 +92,8 @@
       // Ensure image fills height if text content makes container taller.
       .media--type-image {
         overflow: hidden;
+        // (Relative position required for overflow hidden?)
+        position: relative;
 
         img {
           min-height: 100%;
@@ -129,7 +135,6 @@
     .half-wide-hero__content {
 
       .half-wide-hero__ctas {
-        // (Buttons each have 12px)
         margin-bottom: 1.125rem; // 18px (+ 12px each button = 30px)
 
         .field__items {
@@ -190,9 +195,13 @@
       .half-wide-hero__ctas {
         padding: 1rem 0; // 16px
 
+        a.btn-cta-solid {
+          font-size: 1.25rem; // 20px
+        }
+
         .field__item {
 
-          &:last-child a.btn-cta {
+          &:last-child a.btn-cta-solid {
             margin-bottom: 0;
           }
 

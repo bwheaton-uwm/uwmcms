@@ -1020,6 +1020,8 @@ function uwmbase_preprocess_paragraph__uwm_block(&$variables) {
  * Implements hook_preprocess_paragraph__uwm_cta_link().
  */
 function uwmbase_preprocess_paragraph__uwm_cta_link(&$variables) {
+
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
   $paragraph = $variables['paragraph'];
 
   // Create link attributes.
@@ -1036,6 +1038,20 @@ function uwmbase_preprocess_paragraph__uwm_cta_link(&$variables) {
       }
     }
   }
+
+  // Determine whether to use solid CTA styling variant.
+  // @see src/scss/base/_btn-cta-solid.scss
+  // @TODO: might be nice to make this a boolean field on the paragraph too.
+  $variables['btn_cta_solid'] = FALSE;
+
+  // Enforce the case of parent Hero Content and Half-Wide Image paragraph.
+  $parent = $paragraph->getParentEntity();
+  if (!empty($parent)) {
+    if ($parent->getEntityTypeId() === 'paragraph' && $parent->bundle() === 'half_wide_hero') {
+      $variables['btn_cta_solid'] = TRUE;
+    }
+  }
+
 }
 
 /**
