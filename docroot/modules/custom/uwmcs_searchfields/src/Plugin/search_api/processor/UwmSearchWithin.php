@@ -179,7 +179,9 @@ class UwmSearchWithin extends ProcessorPluginBase {
         $matches[] = self::VALUE_PATIENT_RESOURCES;
       }
 
-      if (stripos($alias, 'services/') !== FALSE) {
+      if (stripos($alias, 'services/') !== FALSE ||
+          stripos($alias, 'specialties/') !== FALSE ||
+          stripos($alias, 'specialty/') !== FALSE) {
         $matches[] = self::VALUE_MEDICAL_SPECIALTIES;
       }
 
