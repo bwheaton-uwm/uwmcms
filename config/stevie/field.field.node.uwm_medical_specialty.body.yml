@@ -1,0 +1,30 @@
+uuid: 9959f035-5aba-4a1b-8bd4-13b66e3a7e06
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.uwm_medical_specialty
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: '0'
+    unrestricted: '0'
+    unrestricted_no_wysiwyg: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: node.uwm_medical_specialty.body
+field_name: body
+entity_type: node
+bundle: uwm_medical_specialty
+label: 'Specialty Summary'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary
