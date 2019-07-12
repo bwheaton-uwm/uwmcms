@@ -14,7 +14,8 @@ body.adminimal-admin-toolbar.user-role-authenticated {
   }
 
 
-  pre {
+  // Style <pre> if not Symfony var-dumper (which has its own coloring)
+  pre:not(.sf-dump) {
     background: #f4f4f4;
     border: 1px solid #ddd;
     border-left: 3px solid #f36d33;
