@@ -12,7 +12,7 @@
  */
 function uwmed_uwmcms_gtm_page_attachments_alter(&$variables) {
   // Don't add any libraries, if the GTM snippet is not being inserted.
-  if (!google_tag_insert_snippet()) {
+  if (!function_exists('google_tag_insert_snippet') || !google_tag_insert_snippet()) {
     return;
   }
 
