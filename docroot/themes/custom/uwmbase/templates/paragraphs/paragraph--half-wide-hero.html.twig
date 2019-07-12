@@ -23,6 +23,19 @@
 %}
 {% set has_image = content.field_uwm_media.0 is not empty %}
 
+{#
+  Breadcrumb (mobile)
+  The breadcrumb block is loaded and built in preprocess to render
+  within hero layout. It is removed from its page region.
+  To ease layout styling, it's rendered above the hero for mobile and
+  within the hero content for tablet/desktop.
+#}
+{% if block_breadcrumb is not empty %}
+  <div class="half-wide-hero__breadcrumb-mobile">
+    {{ block_breadcrumb }}
+  </div>
+{% endif %}
+
 <div{{ attributes.addClass(classes) }}>
 
   <div class="container-xl">
@@ -30,11 +43,25 @@
 
       <div class="{{ 'half-wide-hero__content' ~ (has_image ? ' col-lg-6' : '') }}">
 
+        {#
+          Breadcrumb (non-mobile)
+          The breadcrumb block is loaded and built in preprocess to render
+          within hero layout. It is removed from its page region.
+          To ease layout styling, it's rendered above the hero for mobile and
+          within the hero content for tablet/desktop.
+        #}
+        {% if block_breadcrumb is not empty %}
+          <div class="half-wide-hero__breadcrumb-nonmobile">
+            {{ block_breadcrumb }}
+          </div>
+        {% endif %}
+
         {% if page_title is not empty or content.uwm_text.0 is not empty %}
           <div class="half-wide-hero__headings">
             {#
-              The node title is passed as a custom variable, to render the page title
-              within hero layout.
+              Page title
+              The node title is passed as a variable, to render the page title
+              within hero layout. The block is removed from its page region.
             #}
             {% if page_title is not empty %}
               <h1 class="page-title half-wide-hero__title">{{ page_title }}</h1>

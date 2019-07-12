@@ -10,7 +10,6 @@
   @include uwmed-gradient-angled-dark-background();
 
   .half-wide-hero__content {
-    padding-top: 0.75rem; // 12px
 
     .half-wide-hero__title {
       margin-top: 0;
@@ -74,6 +73,14 @@
 
   .half-wide-hero {
 
+    .half-wide-hero__breadcrumb-nonmobile {
+      display: block;
+
+      .breadcrumb {
+        padding: 0.5rem 0 0.75rem 0; // 8px 12px
+      }
+    }
+
     .half-wide-hero__image {
       position: relative;
       // As the container gets wider, the text may wrap to fewer lines and
@@ -130,9 +137,21 @@
 // 576px+
 @include media-breakpoint-up('sm') {
 
+  .half-wide-hero__breadcrumb-mobile {
+    display: none;
+  }
+
   .half-wide-hero {
 
     .half-wide-hero__content {
+
+      .half-wide-hero__breadcrumb-nonmobile {
+        display: block;
+
+        .breadcrumb {
+          padding: 0.5rem 0 0.75rem 0; // 8px 12px
+        }
+      }
 
       .half-wide-hero__ctas {
         margin-bottom: 1.125rem; // 18px (+ 12px each button = 30px)
@@ -159,6 +178,25 @@
 
 // 576px-
 @include media-breakpoint-down('xs') {
+
+  .half-wide-hero__breadcrumb-mobile {
+    @include container-padding();
+
+    .breadcrumb {
+      padding: 0.5rem 0; // 8px
+
+      .breadcrumb__text {
+        font-size: 0.875rem; // 14px
+      }
+
+      .breadcrumb__arrow {
+        width: 0.375rem; // 6px
+        margin: 0 0.125rem; // 2px
+      }
+    }
+
+  }
+
   .half-wide-hero {
     position: relative;
 
@@ -168,6 +206,10 @@
       // Create top section matching image height, for absolute-positioned
       // headings.
       padding-top: 60%;
+
+      .half-wide-hero__breadcrumb-nonmobile {
+        display: none;
+      }
 
       .half-wide-hero__headings {
         position: absolute;

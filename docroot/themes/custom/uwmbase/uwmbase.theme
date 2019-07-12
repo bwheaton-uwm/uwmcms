@@ -209,6 +209,33 @@ function uwmbase_preprocess_page(&$variables, $hook) {
 
   if (!empty($node)) {
 
+    // Check if a Medical Service node has a 'Hero Content and Half-Wide Image'
+    // paragraph at the top. If so, render the page title and breadcrumb in that
+    // template for layout reasons, and remove those blocks from page regions.
+    // @see uwmbase_preprocess_paragraph__half_wide_hero()
+    $medical_service_hero = FALSE;
+
+    if ($node->bundle() === 'uwm_medical_service' && $node->hasField('field_top_content_blocks') && !$node->get('field_top_content_blocks')->isEmpty()) {
+
+      /** @var \Drupal\Core\Entity\EntityInterface[] $ref_entities */
+      $ref_entities = $node->get('field_top_content_blocks')->referencedEntities();
+      $paragraph = $ref_entities[0];
+      if ($paragraph->getEntityTypeId() === 'paragraph' && $paragraph->bundle() === 'half_wide_hero') {
+        $medical_service_hero = TRUE;
+      }
+
+    }
+
+    if ($medical_service_hero && !empty($variables['page']['breadcrumb']['uwmbase_breadcrumbs'])) {
+      unset($variables['page']['breadcrumb']['uwmbase_breadcrumbs']);
+
+      // There should be no other blocks in the 'breadcrumb' region. Unset the
+      // region render array if so, to avoid empty wrapper markup.
+      if (count(Element::children($variables['page']['breadcrumb'])) === 0) {
+        unset($variables['page']['breadcrumb']);
+      }
+    }
+
     // Remove the page title block on certain types of pages:
     // - On Clinic node pages, the title is printed in the node template instead
     //   for layout reasons.
@@ -216,35 +243,7 @@ function uwmbase_preprocess_page(&$variables, $hook) {
     // - On Medical Services nodes, there may be a hero paragraph that prints
     //   the title.
     if (!empty($variables['page']['title']['uwmbase_page_title'])) {
-      $remove_title = FALSE;
-
-      if ($node->bundle() === 'res_clinic' || $node->bundle() === 'uwm_homepage') {
-        $remove_title = TRUE;
-      }
-      elseif ($node->bundle() === 'uwm_medical_service') {
-
-        // Check if there is a 'Hero Content and Half-Wide Image' paragraph
-        // present at the top of the page, which renders the page title for
-        // layout reasons.
-        // @see uwmbase_preprocess_paragraph__half_wide_hero()
-        if ($node->hasField('field_top_content_blocks') && !$node->get('field_top_content_blocks')->isEmpty()) {
-
-          /** @var \Drupal\Core\Entity\EntityInterface[] $ref_entities */
-          $ref_entities = $node->get('field_top_content_blocks')->referencedEntities();
-          $paragraph = $ref_entities[0];
-          if ($paragraph->getEntityTypeId() === 'paragraph' && $paragraph->bundle() === 'half_wide_hero') {
-            // If this hero component is present, that's all we need to know,
-            // because the title is retrieved in preprocessing and rendered in
-            // the paragraph template (not dependent on whether user enters
-            // anything in a field).
-            $remove_title = TRUE;
-          }
-
-        }
-
-      }
-
-      if ($remove_title) {
+      if ($node->bundle() === 'res_clinic' || $node->bundle() === 'uwm_homepage' || $medical_service_hero) {
         unset($variables['page']['title']['uwmbase_page_title']);
 
         // There should be no other blocks in the 'title' region. Unset the
@@ -827,11 +826,29 @@ function uwmbase_preprocess_paragraph__half_wide_hero(&$variables) {
   $paragraph = $variables['paragraph'];
 
   $variables['page_title'] = NULL;
+  $variables['block_breadcrumb'] = NULL;
 
-  // Get parent node title, to render page title within paragraph layout.
   $parent = $paragraph->getParentEntity();
-  if (!empty($parent)) {
+  if (!empty($parent) && $parent->getEntityTypeId() === 'node') {
+
+    // Get parent node title, to render page title in paragraph template for
+    // layout.
     $variables['page_title'] = $parent->label();
+
+    // On Medical Service node, render the breadcrumb block in paragraph
+    // template for layout.
+    if ($parent->bundle() === 'uwm_medical_service') {
+
+      $block_storage = \Drupal::entityTypeManager()->getStorage('block');
+      $block_builder = \Drupal::entityTypeManager()->getViewBuilder('block');
+
+      $block_breadcrumb = $block_storage->load('uwmbase_breadcrumbs');
+      if (!empty($block_breadcrumb)) {
+        $variables['block_breadcrumb'] = $block_builder->view($block_breadcrumb);
+      }
+
+    }
+
   }
 
 }
