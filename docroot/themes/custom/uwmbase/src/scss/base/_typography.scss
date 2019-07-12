@@ -60,6 +60,14 @@ h1.page-title {
   }
 }
 
+.font-family-heading {
+  font-family: $font-family-heading;
+}
+
+.font-family-base {
+  font-family: $font-family-base;
+}
+
 %uwdm-no-underline-link-dark {
   color: $body-color;
   text-decoration: none;
