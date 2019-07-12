@@ -1,9 +1,7 @@
-
-        {#
+{#
 /**
  * @file
- * Theme override to display a template which uses the sections field to display
- * components on a page.
+ * Theme override to display a Provider Resource Document media entity page.
  *
  * The doctype, html, head and body tags are not in this template. Instead they
  * can be found in the html.html.twig template in this directory.
@@ -32,6 +30,7 @@
  * - page.header: Items for the header region.
  * - page.primary_menu: Items for the primary menu region.
  * - page.secondary_menu: Items for the secondary menu region.
+ * - page.admin: Items for the admin region.
  * - page.highlighted: Items for the highlighted content region.
  * - page.breadcrumb: Items for the breadcrumb region.
  * - page.title: Items for the title region.
@@ -49,10 +48,20 @@
 
 {{ attach_library('uwmbase/provider-resource-media') }}
 
-
-  {# Main #}
+{# Main #}
 {% block main %}
     <div id="main-container" role="main" {{ attributes.addClass(classes).addClass('uwm-accent-color__teal') }}>
+
+        {# Admin (local tasks and actions) #}
+        {% set page_admin = page.admin|render %}
+        {% if page_admin|striptags|trim %}
+            {% block admin %}
+                <div class="container-xl">
+                    {{ page_admin }}
+                </div>
+            {% endblock %}
+        {% endif %}
+
         {# Help #}
         {% if page.help %}
             {% block help %}
@@ -77,8 +86,7 @@
             </nav>
             {{ page.title }}
         </section>
-       
-        
+
         {# Content #}
         {% block content %}
         <section class="container-xl">

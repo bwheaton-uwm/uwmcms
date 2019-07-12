@@ -31,6 +31,18 @@
         {% endblock %}
       {% endif %}
 
+      {# Admin (local tasks and actions) #}
+      {% set page_admin = page.admin|render %}
+      {% if page_admin|striptags|trim %}
+        {% block admin %}
+          <div class="row">
+            <div class="col-sm-12">
+              {{ page_admin }}
+            </div>
+          </div>
+        {% endblock %}
+      {% endif %}
+
       {# Breadcrumb #}
       {% if page.breadcrumb %}
         {% block breadcrumb %}
