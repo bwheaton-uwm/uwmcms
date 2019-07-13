@@ -8,8 +8,8 @@ _core:
   default_config_hash: SoECx-tfiCrMPw4wg7drv8aGNsG82qei8xV0vepi8NI
 id: uwmbase_local_actions
 theme: uwmbase
-region: content
-weight: -4
+region: admin
+weight: -5
 provider: null
 plugin: local_actions_block
 settings:

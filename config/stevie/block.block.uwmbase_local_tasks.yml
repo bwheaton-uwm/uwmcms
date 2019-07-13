@@ -8,8 +8,8 @@ _core:
   default_config_hash: H0SmmLbfr6Gr0PaWIFiLq_sC6ZDVsB6Wd59fX5WUEII
 id: uwmbase_local_tasks
 theme: uwmbase
-region: content
-weight: -5
+region: admin
+weight: -6
 provider: null
 plugin: local_tasks_block
 settings:
