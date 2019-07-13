@@ -76,12 +76,20 @@
           </div>
         {% endif %}
 
+        {# Additional Text #}
+        {% if content.uwm_text_2.0 is not empty %}
+          <div class="half-wide-hero__additional-text">
+            {{ content.uwm_text_2 }}
+          </div>
+        {% endif %}
+
+
         {# Bottom Content Links #}
-        <div class="half-wide-hero__ctas">
-          {% if content.field_bottom_content_blocks.0 is not empty %}
+        {% if content.field_bottom_content_blocks.0 is not empty %}
+          <div class="half-wide-hero__ctas">
             {{ content.field_bottom_content_blocks }}
-          {% endif %}
-        </div>
+          </div>
+        {% endif %}
 
       </div>
 

@@ -27,6 +27,14 @@
       }
     }
 
+    .half-wide-hero__additional-text {
+      margin: 1.5rem 0 1.875rem 0; // 24px 30px
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+
     .half-wide-hero__ctas {
 
       a.btn-cta-solid {
@@ -240,6 +248,11 @@
         text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.16);
         font-size: 1rem; // 16px
         line-height: 1.3125rem; // 21px
+      }
+
+      .half-wide-hero__additional-text {
+        margin: 0;
+        padding: 1rem 2.5rem; // 16px 40px
       }
   
       .half-wide-hero__ctas {
