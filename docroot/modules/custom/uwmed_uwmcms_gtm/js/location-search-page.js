@@ -49,20 +49,6 @@
         searchLocationTerm = searchLocationTerm === "" ? "null" : searchLocationTerm.toLowerCase();
       }
 
-      // Add phone number click tracking to location card phone numbers.
-      $('.view-uwm-locations-geo-search .clinic-card a[href^="tel:"]', context).each(function (index) {
-        $(this).one('click', function (event) {
-          var clinicLink = $(this).parents('.clinic-card').find('a[rel="bookmark"]').first().attr('href');
-          dataLayer.push({
-            'event': 'phone number click',
-            'searchType': 'location',
-            'searchTerm': searchTerm,
-            'linkURL': clinicLink,
-            'locationTerm': searchLocationTerm
-          });
-        });
-      });
-
       // Add event tracking to the location search results links.
       // There are several links within clinic cards to their full page;
       // all should have rel="bookmark" to easily track them here.
