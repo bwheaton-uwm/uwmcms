@@ -1,0 +1,51 @@
+@import 'init';
+
+.medical-specialty-view {
+    .col {
+        flex-basis: 100%;
+        flex-grow: 0;
+    }
+}
+
+@include media-breakpoint-between('sm', 'md'){
+    .medical-specialty-view {
+        .col {
+            flex-basis: 48%;
+        }
+
+        .col:nth-child(odd) {
+            border-right: 1px solid #D9DBDD;
+        }
+
+        .col:last-child {
+            border-right: none;
+        }
+    }
+}
+
+@include media-breakpoint-up('md') {
+    .medical-specialty-view__2-cols {
+        .col {
+            flex-basis: 48%;
+        }
+
+        .col:nth-child(odd) {
+            border-right: 1px solid #D9DBDD;
+        }
+
+        .col:last-child {
+            border-right: none;
+        }
+    }
+    
+    .medical-specialty-view__3-cols {
+        .col {
+            flex-basis: 33%;
+            border-right: 1px solid #D9DBDD;
+        }
+    
+        .col:nth-child(3n), .col:last-child {
+            border-right: none;
+        }
+    }
+}

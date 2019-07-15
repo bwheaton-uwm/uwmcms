@@ -1,0 +1,11 @@
+{% extends '/' ~ directory ~ '/templates/views/views-view.html.twig' %}
+
+  {% block main %}
+    {{ attach_library('uwmbase/view-medical-specialties-for-services')}}
+    {# if there are more than 2 children, set number of cols to 3 #}
+    {% set cols_class = total_rows > 2 ? "row medical-specialty-view__3-cols" : "row medical-specialty-view__2-cols" %}
+
+    <div class="{{cols_class}}">
+        {{ rows }}
+    </div>
+  {% endblock %}

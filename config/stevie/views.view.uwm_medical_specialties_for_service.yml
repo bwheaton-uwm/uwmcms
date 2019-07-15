@@ -58,7 +58,7 @@ display:
         type: default
         options:
           grouping: {  }
-          row_class: 'col-sm-6 col-md-4 d-flex flex-column justify-content-between'
+          row_class: 'col mb-4 d-flex flex-column justify-content-between'
           default_row_class: false
       row:
         type: fields
@@ -100,7 +100,7 @@ display:
             preserve_tags: ''
             html: false
           element_type: h3
-          element_class: 'medical-specialty-view__title h5 font-family-base mb-0'
+          element_class: 'medical-specialty-view__title h5 font-family-base mb-0 pt-0 mt-sm-3'
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
@@ -165,7 +165,7 @@ display:
             preserve_tags: ''
             html: false
           element_type: ''
-          element_class: mr-5
+          element_class: ''
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
@@ -342,7 +342,7 @@ display:
           not: false
           plugin_id: numeric
       display_extenders: {  }
-      css_class: 'medical-specialty-view row'
+      css_class: medical-specialty-view
     cache_metadata:
       max-age: -1
       contexts:
