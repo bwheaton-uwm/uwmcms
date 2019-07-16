@@ -49,7 +49,7 @@
   }
 
   .half-wide-hero__image {
-    // Override grid col padding so image can be full page width.
+    // Override grid col padding so image can be full page/container width.
     padding-left: 0;
     padding-right: 0;
 
@@ -59,87 +59,6 @@
 
   }
 
-}
-
-//1200px+
-@include media-breakpoint-up('xl') {
-
-  .half-wide-hero {
-
-    .half-wide-hero__image {
-      // At xl+, container-xl is no longer full page width. Re-apply
-      // grid gutters to the image with container content.
-      @include container-padding();
-    }
-
-  }
-
-}
-
-// 992px+
-@include media-breakpoint-up('lg') {
-
-  .half-wide-hero {
-
-    .half-wide-hero__breadcrumb-nonmobile {
-      display: block;
-
-      .breadcrumb {
-        padding: 0.5rem 0 0.75rem 0; // 8px 12px
-      }
-    }
-
-    .half-wide-hero__image {
-      position: relative;
-      // As the container gets wider, the text may wrap to fewer lines and
-      // reduce the hero container height. Set a min height so that less of the
-      // top and bottom of the image are cut off.
-      min-height: 310px;
-
-      // Pass container height down through media entity image wrappers.
-      .field--name-field-uwm-media,
-      .media--type-image,
-      .field--name-image {
-        height: 100%;
-      }
-
-      // Center image in its container and hide overflow.
-      // Ensure image fills height if text content makes container taller.
-      .media--type-image {
-        overflow: hidden;
-        // (Relative position required for overflow hidden?)
-        position: relative;
-
-        img {
-          min-height: 100%;
-          max-width: none;
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-        }
-      }
-
-    }
-
-  }
-
-}
-
-// 992px-
-@include media-breakpoint-down('md') {
-  .half-wide-hero {
-
-    .half-wide-hero__content {
-  
-      .half-wide-hero__title {
-        font-size: 2.5rem; // 40px
-        line-height: 2.875rem; // 46px
-      }
-
-    }
-
-  }
 }
 
 // 576px+
@@ -190,6 +109,136 @@
 
   }
 
+}
+
+// 768 - 991px
+@include media-breakpoint-only('md') {
+
+  .half-wide-hero {
+
+    .half-wide-hero__content {
+      padding-left: 2.75rem; // 44px
+      padding-right: 2.75rem; // 44px
+    }
+
+  }
+
+}
+
+// 992px+
+@include media-breakpoint-up('lg') {
+
+  .half-wide-hero {
+
+    .half-wide-hero__breadcrumb-nonmobile {
+      display: block;
+
+      .breadcrumb {
+        padding: 0.5rem 0 0.75rem 0; // 8px 12px
+      }
+    }
+
+    .half-wide-hero__image {
+      // At lg+ the image moves to the right side of the hero. Apply the left
+      // side padding to create standard gutter space between text on left and
+      // image on right.
+      @include container-padding-left();
+
+      // As the container gets wider, the text may wrap to fewer lines and
+      // reduce the hero container height. Set a min height so that less of the
+      // top and bottom of the image are cut off.
+      min-height: 310px;
+
+      position: relative;
+
+      // Pass container height down through media entity image wrappers.
+      .field--name-field-uwm-media,
+      .media--type-image,
+      .field--name-image {
+        height: 100%;
+      }
+
+      // Center image in its container and hide overflow.
+      // Ensure image fills height if text content makes container taller.
+      .media--type-image {
+        overflow: hidden;
+        // (Relative position required for overflow hidden?)
+        position: relative;
+
+        img {
+          min-height: 100%;
+          max-width: none;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+    }
+
+  }
+
+}
+
+// 1200px+
+@include media-breakpoint-up('xl') {
+
+  .half-wide-hero {
+
+    .half-wide-hero__image {
+      // Increase the min-height so less of the top and bottom of the image
+      // is cut off.
+      min-height: 330px;
+    }
+
+  }
+
+}
+
+// 1200 - 1599px
+@include media-breakpoint-only('xl') {
+
+  .half-wide-hero {
+
+    .half-wide-hero__content {
+      // Add extra left padding on text content.
+      padding-left: 2.75rem; // 44px
+    }
+
+  }
+
+}
+
+// 1600px+
+@include media-breakpoint-up('xl_mid') {
+
+  .half-wide-hero {
+
+    .half-wide-hero__image {
+      // At xl_mid+, container is no longer full page width. Add the right side
+      // padding to align image with container edge.
+      @include container-padding-right();
+    }
+
+  }
+
+}
+
+// 1200px-
+@include media-breakpoint-down('lg') {
+  .half-wide-hero {
+
+    .half-wide-hero__content {
+  
+      .half-wide-hero__title {
+        font-size: 2.5rem; // 40px
+        line-height: 2.875rem; // 46px
+      }
+
+    }
+
+  }
 }
 
 // 576px-

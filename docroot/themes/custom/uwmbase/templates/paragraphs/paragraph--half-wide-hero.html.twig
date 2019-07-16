@@ -38,7 +38,11 @@
 
 <div{{ attributes.addClass(classes) }}>
 
-  <div class="container-xl">
+  {#
+    Use custom container that is full width until custom 1600px breakpoint, to
+    allow hero content to stretch wider on common desktop screen sizes.
+  #}
+  <div class="container-xl-mid-full">
     <div class="row">
 
       <div class="{{ 'half-wide-hero__content' ~ (has_image ? ' col-lg-6' : '') }}">

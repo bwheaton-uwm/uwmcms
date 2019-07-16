@@ -5,7 +5,7 @@ dependencies:
   module:
     - focal_point
 name: hero_half_lg
-label: 'Half-Wide Hero lg+'
+label: 'Half-Wide Hero lg-xl'
 effects:
   6414214a-11bf-47e2-a3b8-c7fbfb88986d:
     uuid: 6414214a-11bf-47e2-a3b8-c7fbfb88986d
