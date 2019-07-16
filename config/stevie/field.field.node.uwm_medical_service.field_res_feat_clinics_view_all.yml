@@ -1,0 +1,19 @@
+uuid: e099a80c-e4b1-4703-927a-7cf959c865f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_feat_clinics_view_all
+    - node.type.uwm_medical_service
+id: node.uwm_medical_service.field_res_feat_clinics_view_all
+field_name: field_res_feat_clinics_view_all
+entity_type: node
+bundle: uwm_medical_service
+label: 'Featured Clinics: View All Link HREF'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.node.uwm_medical_service.field_meta_tags
+    - field.field.node.uwm_medical_service.field_res_feat_clinics_view_all
+    - field.field.node.uwm_medical_service.field_res_featured_clinics
     - field.field.node.uwm_medical_service.field_search_best_bets
     - field.field.node.uwm_medical_service.field_top_content_blocks
     - field.field.node.uwm_medical_service.field_uwm_find_a_location_link
@@ -24,11 +26,27 @@ bundle: uwm_medical_service
 mode: default
 content:
   field_meta_tags:
-    weight: 8
+    weight: 4
     label: above
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
+    region: content
+  field_res_feat_clinics_view_all:
+    weight: 6
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_res_featured_clinics:
+    weight: 5
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
     region: content
   field_top_content_blocks:
     type: entity_reference_revisions_entity_view
@@ -39,49 +57,25 @@ content:
       link: ''
     third_party_settings: {  }
     region: content
-  field_uwm_find_a_location_link:
-    weight: 3
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_uwm_find_a_provider_link:
-    weight: 4
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
   field_uwm_image:
-    weight: 1
+    type: image
+    weight: 9
+    region: content
     label: above
     settings:
       image_style: ''
       image_link: ''
     third_party_settings: {  }
-    type: image
-    region: content
   field_uwm_medical_service:
-    weight: 2
+    weight: 1
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  field_uwm_page_path_name:
-    weight: 6
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
   field_uwm_sections:
-    weight: 5
+    weight: 2
     label: above
     settings:
       view_mode: default
@@ -90,10 +84,14 @@ content:
     type: entity_reference_revisions_entity_view
     region: content
   links:
-    weight: 7
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   content_moderation_control: true
   field_search_best_bets: true
+  field_uwm_find_a_location_link: true
+  field_uwm_find_a_provider_link: true
+  field_uwm_page_path_name: true
+  search_api_excerpt: true
