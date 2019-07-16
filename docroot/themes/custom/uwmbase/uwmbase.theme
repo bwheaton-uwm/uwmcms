@@ -880,6 +880,15 @@ function uwmbase_preprocess_paragraph__uwm_grid(&$variables) {
       }
     }
   }
+
+  // Determine whether to add a container class.
+  $variables['add_container'] = 0;
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+  $paragraph = $variables['paragraph'];
+  $parent = $paragraph->getParentEntity();
+  if (!empty($parent) && $parent->bundle() === 'uwm_sections_medical_services') {
+    $variables['add_container'] = 1;
+  }
 }
 
 /**
