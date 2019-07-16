@@ -342,7 +342,7 @@ display:
           not: false
           plugin_id: numeric
       display_extenders: {  }
-      css_class: medical-specialty-view
+      css_class: 'medical-specialty-view container-xl'
     cache_metadata:
       max-age: -1
       contexts:
