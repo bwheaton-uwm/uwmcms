@@ -17,5 +17,5 @@
 {% endfor %}
 
 {% spaceless %}
-  <a class="clinic-page__cta-btn btn" href={{"https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?vt=9000&view=plain&dept=#{depts|join(',')}"}}>{{ "Book online"|t }}</a>
+  <a class="btn{{ view_mode == 'full' ? ' btn-cta-solid clinic-page__cta-btn' }}" href={{"https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?vt=9000&view=plain&dept=#{depts|join(',')}"}}>{{ "Book online"|t }}</a>
 {% endspaceless %}

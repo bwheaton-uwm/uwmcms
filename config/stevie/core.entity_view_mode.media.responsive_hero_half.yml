@@ -1,0 +1,14 @@
+uuid: dc6c75e3-1f6b-4f2c-9a5a-d870f1abc341
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: ''
+id: media.responsive_hero_half
+label: 'Responsive Image: Half-Wide Hero'
+targetEntityType: media
+cache: true
