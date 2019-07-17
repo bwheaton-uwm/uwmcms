@@ -11,7 +11,7 @@ id: general_search_facet_uwmsearchwithin
 name: 'General Search - Facet UwmSearchWithin'
 url_alias: within
 weight: 0
-min_count: 0
+min_count: 1
 show_only_one_result: false
 field_identifier: uwmsearchwithin
 facet_source_id: 'search_api:views_page__uwm_general_search__page_1'
@@ -23,6 +23,9 @@ widget:
     soft_limit_settings:
       show_less_label: 'Show less'
       show_more_label: 'Show more'
+    show_reset_link: false
+    reset_text: 'Show all'
+    hide_reset_when_no_selection: false
 query_operator: or
 use_hierarchy: false
 expand_hierarchy: false
