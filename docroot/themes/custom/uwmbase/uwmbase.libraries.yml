@@ -136,12 +136,17 @@ clinic-page:
   css:
     component:
       dist/css/clinic-page.css: {}
-#  js:
-#    dist/js/clinic-page-tabs.js: {}
   dependencies:
     - uwmbase/clinic-hours
     - uwmbase/nav-tabs
     - uwmbase/anchor-scroll
+
+medical-service-page:
+  css:
+    component:
+      dist/css/medical-services.css: {}
+  js:
+    dist/js/medical-services.js: {}
 
 clinic-hours:
   js:
