@@ -11,21 +11,6 @@
  * @see uwmbase_preprocess_field()
  */
 #}
-{%
-  set classes = [
-    'field',
-    'field--name-' ~ field_name|clean_class,
-    'field--type-' ~ field_type|clean_class,
-    'field--label-' ~ label_display,
-  ]
-%}
-{%
-  set title_classes = [
-    'field__label',
-    label_display == 'visually_hidden' ? 'visually-hidden',
-    'clinic-card__subheader'
-  ]
-%}
 {% spaceless %}
   {#
     Format phone number and wrap in 'tel' link.
@@ -34,5 +19,5 @@
     filter here.
   #}
   {% set value = items.0.content|render|trim %}
-  <a class="clinic-page__cta-btn btn" href="tel:{{ value|uwm_format_phone }}">{{ value|uwm_format_phone('.') }}</a>
+  <a class="btn{{ view_mode == 'full' ? ' btn-cta-solid clinic-page__cta-btn' }}" href="tel:{{ value|uwm_format_phone }}">{{ value|uwm_format_phone('.') }}</a>
 {% endspaceless %}
