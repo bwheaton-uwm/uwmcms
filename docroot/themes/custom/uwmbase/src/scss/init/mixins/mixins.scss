@@ -1,3 +1,4 @@
+
 @mixin uw-skew($angle) {
 
   transform: skew($angle);
@@ -61,4 +62,75 @@
     position: static;
     margin-left: 0.375rem; // 6px
   }
+}
+
+
+@mixin button-cta() {
+
+  padding: 0 1em;
+  text-transform: uppercase;
+
+  background: white;
+  transition: all 0.45s ease-in;
+  height: 40px;
+  line-height: 40px;
+
+  color: theme-color('text');
+  font-family: "Open Sans",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+
+  margin-bottom: 1rem;
+
+  border: 1px solid $gray-500;
+
+  &::before {
+    background-position: left 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: color('white');
+
+    .uwmed-icon {
+      color: theme-color('secondary');
+    }
+
+    .fa-angle-right {
+      color: color('white');
+    }
+
+    &::before {
+      background: none;
+    }
+  }
+
+  z-index: 1;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition-property: transform;
+    transition-duration: 0.7s;
+    transition-timing-function: ease-out;
+    z-index: -1;
+  }
+
+  &:hover {
+    &::after {
+      transform: scaleX(1);
+
+      @media(hover: none) {
+        transition-duration: 0s;
+      }
+    }
+  }
+
+
+  
 }

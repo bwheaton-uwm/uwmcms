@@ -3,8 +3,35 @@
 /// Provides styles specific to our medical-service pages.
 ///
 
+@import 'init';
+.field.field--name-field-link {
+  @include button-cta();
+}
+
 article.node-uwm_medical_service.view-mode-full {
 
   background: lightcyan;
+
+
+  .featured-clinics {
+
+    background: lightyellow;
+
+
+    .field.field--name-field-res-featured-clinics {
+      // @include make-row();
+
+      article {
+        background: pink;
+      }
+
+    }
+
+    .field.field--name-field-link {
+      @include button-cta();
+    }
+
+
+  }
 
 }

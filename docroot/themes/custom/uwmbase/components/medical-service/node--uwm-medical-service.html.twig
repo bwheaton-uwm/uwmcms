@@ -72,14 +72,18 @@
      Featured Clinics for medical service
     #}
     {% if content.field_res_featured_clinics.0 is not empty %}
-        <section class="medical-service-page__featured-clinics">
+        <section class="featured-clinics">
 
             <div class="container-xl">
 
 
-                <h2 class="leader">{{ content.field_res_feat_clinics_header.0 ?? 'Explore our features clinics'|t }}</h2>
+                <h2 class="leader">{{ content.field_res_feat_clinics_header.0 ?? 'Explore our featured clinics'|t }}</h2>
 
                 {{ content.field_res_featured_clinics }}
+
+                //field_link//<br>
+                {{ content.field_link }}
+                //field_link//
 
                 {% if content.field_res_feat_clinics_view_all.0 is not empty %}
                     <div class="medical-service-page__featured-view-all">
