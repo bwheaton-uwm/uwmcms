@@ -773,7 +773,11 @@ if (!isset($_ENV['AH_SITE_ENVIRONMENT']) && !file_exists('/var/www/site-php')) {
   // Enable local Solr service on localhost:
   $config['search_api.server.uwmed_local_solr']['status'] = TRUE;
 
-  // Use local Solr service on localhost:
+  // Use Vagrant's local Solr when developing on localhost:
+  $config['search_api.index.uwm_general_search_api_index']['server'] = 'uwmed_local_solr';
+  $config['search_api.index.uwm_general_search_api_index']['read_only'] = FALSE;
+  $config['search_api.index.uwm_providers_search_api_index']['server'] = 'uwmed_local_solr';
+  $config['search_api.index.uwm_providers_search_api_index']['read_only'] = FALSE;
   $config['search_api.index.uwm_locations_geo_search_api_index']['server'] = 'uwmed_local_solr';
   $config['search_api.index.uwm_locations_geo_search_api_index']['read_only'] = FALSE;
 

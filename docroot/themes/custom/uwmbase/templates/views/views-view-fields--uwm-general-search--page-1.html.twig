@@ -45,12 +45,20 @@
       <h2 class="search-result-card__title">
         <a class="search-result-card__link" href="{{ href }}">{{ row.node.title.value }}</a>
       </h2>
+      {% set heading = content_type|replace({'uwm_': '',
+        'res_': '',
+        '_': ' ',
+        '-': '',
+        'clinic': 'location',
+        'service': 'Specialty',
+        'Service Line': '',
+
+      }) %}
       {% if content_type is not same as("uwm_hub_page") and content_type is not same as("uwm_basic_page") %}
-        <p class="search-result-card__type uwm-accent-heading uwm-accent-heading__title">
-              {{- content_type|replace({'uwm_': '', 'res_': '', '_': ' ', 'clinic': 'location'}) -}}
-        </p>
+        <p class="search-result-card__type uwm-accent-heading uwm-accent-heading__title">{{- heading -}}</p>
       {% else %}
-        <p class="search-result-card__type uwm-accent-heading uwm-accent-heading__transparent uwm-accent-heading__title">&nbsp;</p>
+        <p class="search-result-card__type uwm-accent-heading uwm-accent-heading__transparent uwm-accent-heading__title">
+          &nbsp;</p>
       {% endif %}
     </div>
     <div class="search-result-card__teaser">

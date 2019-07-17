@@ -37,7 +37,7 @@ class UwmSearchWithin extends ProcessorPluginBase {
 
   const VALUE_LOCATION = 'Locations';
 
-  const VALUE_MEDICAL_SERVICE = 'Medical Services';
+  const VALUE_MEDICAL_SPECIALTIES = 'Medical Specialties';
 
   const VALUE_PATIENT_RESOURCES = 'Patient Info and Resources';
 
@@ -129,7 +129,7 @@ class UwmSearchWithin extends ProcessorPluginBase {
 
     if ($nodeType === 'uwm_medical_service' ||
         $nodeType === 'uwm_medical_specialty') {
-      $matches[] = self::VALUE_MEDICAL_SERVICE;
+      $matches[] = self::VALUE_MEDICAL_SPECIALTIES;
     }
   }
 
@@ -179,8 +179,10 @@ class UwmSearchWithin extends ProcessorPluginBase {
         $matches[] = self::VALUE_PATIENT_RESOURCES;
       }
 
-      if (stripos($alias, 'services/') !== FALSE) {
-        $matches[] = self::VALUE_MEDICAL_SERVICE;
+      if (stripos($alias, 'services/') !== FALSE ||
+          stripos($alias, 'specialties/') !== FALSE ||
+          stripos($alias, 'specialty/') !== FALSE) {
+        $matches[] = self::VALUE_MEDICAL_SPECIALTIES;
       }
 
     }
