@@ -1,11 +1,8 @@
 {% if content.field_res_providers|render|trim is not empty %}
-
-<div class="container-xl">
-  <h3 class="uwm-accent-heading uwm-accent-heading__title">{{ "Care Providers"|t }}</h3>
-
-  <div class="row">
-    {# @see field--node--field-res-providers--res-clinic.html.twig #}
-    {{ content.field_res_providers }}
+  <div class="container-xl">
+    <div class="row">
+      {# @see field--node--field-res-providers--res-clinic.html.twig #}
+      {{ content.field_res_providers }}
+    </div>
   </div>
-</div>
 {% endif %}

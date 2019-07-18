@@ -192,10 +192,6 @@
         justify-content: space-between;
         align-items: center;
 
-        &.clinic-page__link-directions {
-          border-top: 1px solid theme-color('border-gray');
-        }
-
         a {
           display: block;
           padding-right: 0.5rem; // 8px
@@ -318,11 +314,6 @@
   .clinic-page__overview {
     background-color: theme-color('background-light-gray');
     padding: 1rem 0 2rem 0;
-
-    .clinic-page__overview-header {
-      margin-top: 0;
-    }
-
   }
 
   .clinic-page__directions-tab {
