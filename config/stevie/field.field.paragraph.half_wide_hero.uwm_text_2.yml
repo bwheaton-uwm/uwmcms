@@ -1,0 +1,29 @@
+uuid: c1262eda-839c-4548-9a43-24bf0f771c33
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.uwm_text_2
+    - paragraphs.paragraphs_type.half_wide_hero
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    rich_text: rich_text
+    basic_html: '0'
+    unrestricted: '0'
+    unrestricted_no_wysiwyg: '0'
+    plain_text: '0'
+id: paragraph.half_wide_hero.uwm_text_2
+field_name: uwm_text_2
+entity_type: paragraph
+bundle: half_wide_hero
+label: 'Additional Text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

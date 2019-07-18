@@ -7,9 +7,9 @@ dependencies:
     - field.field.paragraph.half_wide_hero.field_bottom_content_blocks
     - field.field.paragraph.half_wide_hero.field_uwm_media
     - field.field.paragraph.half_wide_hero.uwm_text
+    - field.field.paragraph.half_wide_hero.uwm_text_2
     - paragraphs.paragraphs_type.half_wide_hero
   module:
-    - allowed_formats
     - entity_browser
     - paragraphs
     - text
@@ -20,7 +20,7 @@ mode: default
 content:
   field_bottom_content_blocks:
     type: paragraphs
-    weight: 1
+    weight: 2
     settings:
       title: component
       title_plural: components
@@ -39,7 +39,7 @@ content:
     region: content
   field_uwm_media:
     type: entity_browser_entity_reference
-    weight: 2
+    weight: 3
     settings:
       entity_browser: media_browser
       field_widget_display: rendered_entity
@@ -63,6 +63,14 @@ content:
         hide_guidelines: '1'
     type: text_textarea
     region: content
+  uwm_text_2:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
 hidden:
   created: true
   status: true
