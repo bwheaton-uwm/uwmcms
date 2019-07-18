@@ -56,7 +56,7 @@ content:
       multiple_delimiter_precedes_last: never
       multiple_el_al_min: '3'
       multiple_el_al_first: '1'
-      markup: false
+      markup: ''
     third_party_settings: {  }
     type: name_default
     region: content
@@ -177,7 +177,7 @@ content:
     label: hidden
     settings:
       format: default
-      markup: false
+      markup: ''
       output: default
       multiple: default
       multiple_delimiter: ', '
@@ -247,3 +247,4 @@ hidden:
   field_res_pubmed_ids: true
   field_res_puma_id: true
   field_uwm_json_packet: true
+  search_api_excerpt: true

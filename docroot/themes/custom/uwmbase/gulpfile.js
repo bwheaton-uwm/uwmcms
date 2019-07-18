@@ -322,7 +322,7 @@ gulp.task('assets', ['clean:assets'], function () {
 // ##############################
 // Watch for changes and rebuild.
 // ##############################
-gulp.task('watch', ['browser-sync', 'watch:lint-and-styleguide', 'watch:js']);
+gulp.task('watch', ['watch:lint-and-styleguide', 'watch:js', 'watch:css']);
 
 gulp.task('browser-sync', ['watch:css'], function () {
   if (!options.drupalURL) {
@@ -335,7 +335,10 @@ gulp.task('browser-sync', ['watch:css'], function () {
 });
 
 gulp.task('watch:css', ['styles'], function () {
-  return gulp.watch(options.theme.source.components + '**/*.scss', options.gulpWatchOptions, ['styles']);
+  return gulp.watch([
+    options.theme.source.components + '**/*.scss',
+    options.theme.source.components + '**/**/*.scss'
+  ], options.gulpWatchOptions, ['styles']);
 });
 
 gulp.task('watch:lint-and-styleguide', ['styleguide', 'lint:sass'], function () {

@@ -66,7 +66,9 @@
 
     {{ attach_library('uwmbase/medical-service-page') }}
 
-    {{ content }}
+    {#    {{ content }}#}
+
+    {{ content.field_top_content_blocks }}
 
     {#
      Featured Clinics for medical service
@@ -76,26 +78,21 @@
 
             <div class="container-xl">
 
-
                 <h2 class="leader">{{ content.field_res_feat_clinics_header.0 ?? 'Explore our featured clinics'|t }}</h2>
 
                 {{ content.field_res_featured_clinics }}
 
-                //field_link//<br>
-                {{ content.field_link }}
-                //field_link//
-
-                {% if content.field_res_feat_clinics_view_all.0 is not empty %}
-                    <div class="medical-service-page__featured-view-all">
-                        <a class="medical-service-page__cta-btn btn" href={{ "#{content.field_res_feat_clinics_view_all.0}" }}>SEE
-                            ALL CLINICS</a>
-                    </div>
+                {% if content.field_link.0 is not empty %}
+                    {{ content.field_link }}
                 {% endif %}
+
             </div>
 
         </section>
     {% endif %}
 
+
+    {{ content.field_uwm_sections }}
 
 
 {% endblock %}

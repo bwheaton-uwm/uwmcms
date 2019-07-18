@@ -4,8 +4,9 @@ status: true
 dependencies:
   config:
     - entity_browser.browser.image_browser
+    - field.field.node.uwm_medical_service.field_link
     - field.field.node.uwm_medical_service.field_meta_tags
-    - field.field.node.uwm_medical_service.field_res_feat_clinics_view_all
+    - field.field.node.uwm_medical_service.field_res_feat_clinics_header
     - field.field.node.uwm_medical_service.field_res_featured_clinics
     - field.field.node.uwm_medical_service.field_search_best_bets
     - field.field.node.uwm_medical_service.field_top_content_blocks
@@ -20,6 +21,7 @@ dependencies:
     - content_moderation
     - entity_browser
     - field_group
+    - link
     - metatag
     - paragraphs
     - path
@@ -27,8 +29,10 @@ third_party_settings:
   field_group:
     group_featured_clinics:
       children:
+        - field_res_feat_clinics_header
         - field_res_featured_clinics
         - field_res_feat_clinics_view_all
+        - field_link
       parent_name: ''
       weight: 3
       format_type: tab
@@ -106,13 +110,21 @@ targetEntityType: node
 bundle: uwm_medical_service
 mode: default
 content:
+  field_link:
+    weight: 9
+    settings:
+      placeholder_url: '/search/locations?s=&medical-services-filter=__xyz__'
+      placeholder_title: 'See All __xyz__ Clinics'
+    third_party_settings: {  }
+    type: link_default
+    region: content
   field_meta_tags:
-    weight: 15
+    weight: 16
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
     region: content
-  field_res_feat_clinics_view_all:
+  field_res_feat_clinics_header:
     weight: 6
     settings:
       size: 60
@@ -121,7 +133,7 @@ content:
     type: string_textfield
     region: content
   field_res_featured_clinics:
-    weight: 5
+    weight: 7
     settings:
       match_operator: CONTAINS
       size: 60
@@ -197,7 +209,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_uwm_page_path_name:
-    weight: 12
+    weight: 13
     settings:
       size: 60
       placeholder: ''
@@ -225,13 +237,13 @@ content:
     region: content
   moderation_state:
     type: moderation_state_default
-    weight: 17
+    weight: 18
     settings: {  }
     region: content
     third_party_settings: {  }
   path:
     type: path
-    weight: 13
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -239,12 +251,12 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 18
+    weight: 19
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 16
+    weight: 17
     region: content
     settings:
       display_label: true
@@ -258,7 +270,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 14
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }

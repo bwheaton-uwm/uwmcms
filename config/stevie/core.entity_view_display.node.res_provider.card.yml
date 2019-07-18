@@ -54,7 +54,7 @@ content:
       multiple_delimiter_precedes_last: never
       multiple_el_al_min: '3'
       multiple_el_al_first: '1'
-      markup: false
+      markup: ''
     third_party_settings: {  }
     type: name_default
     region: content
@@ -98,7 +98,7 @@ content:
     label: hidden
     settings:
       format: default
-      markup: false
+      markup: ''
       output: default
       multiple: default
       multiple_delimiter: ', '
@@ -128,4 +128,5 @@ hidden:
   field_search_best_bets: true
   field_uwm_json_packet: true
   links: true
+  search_api_excerpt: true
   uwm_unique_id: true
