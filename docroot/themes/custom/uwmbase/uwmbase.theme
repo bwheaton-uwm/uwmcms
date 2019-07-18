@@ -209,14 +209,41 @@ function uwmbase_preprocess_page(&$variables, $hook) {
 
   if (!empty($node)) {
 
-    // On Clinic node pages, remove the page title block. The title is printed
-    // in the node template instead for layout reasons.
-    //
-    // On Homepage node, remove the page title block because the main header
-    // text is within the hero.
-    if ($node->bundle() === 'res_clinic' || $node->bundle() === 'uwm_homepage') {
+    // Check if a Medical Service node has a 'Hero Content and Half-Wide Image'
+    // paragraph at the top. If so, render the page title and breadcrumb in that
+    // template for layout reasons, and remove those blocks from page regions.
+    // @see uwmbase_preprocess_paragraph__half_wide_hero()
+    $medical_service_hero = FALSE;
 
-      if (!empty($variables['page']['title']['uwmbase_page_title'])) {
+    if ($node->bundle() === 'uwm_medical_service' && $node->hasField('field_top_content_blocks') && !$node->get('field_top_content_blocks')->isEmpty()) {
+
+      /** @var \Drupal\Core\Entity\EntityInterface[] $ref_entities */
+      $ref_entities = $node->get('field_top_content_blocks')->referencedEntities();
+      $paragraph = $ref_entities[0];
+      if ($paragraph->getEntityTypeId() === 'paragraph' && $paragraph->bundle() === 'half_wide_hero') {
+        $medical_service_hero = TRUE;
+      }
+
+    }
+
+    if ($medical_service_hero && !empty($variables['page']['breadcrumb']['uwmbase_breadcrumbs'])) {
+      unset($variables['page']['breadcrumb']['uwmbase_breadcrumbs']);
+
+      // There should be no other blocks in the 'breadcrumb' region. Unset the
+      // region render array if so, to avoid empty wrapper markup.
+      if (count(Element::children($variables['page']['breadcrumb'])) === 0) {
+        unset($variables['page']['breadcrumb']);
+      }
+    }
+
+    // Remove the page title block on certain types of pages:
+    // - On Clinic node pages, the title is printed in the node template instead
+    //   for layout reasons.
+    // - On Homepage node, the main header text is within the hero.
+    // - On Medical Services nodes, there may be a hero paragraph that prints
+    //   the title.
+    if (!empty($variables['page']['title']['uwmbase_page_title'])) {
+      if ($node->bundle() === 'res_clinic' || $node->bundle() === 'uwm_homepage' || $medical_service_hero) {
         unset($variables['page']['title']['uwmbase_page_title']);
 
         // There should be no other blocks in the 'title' region. Unset the
@@ -225,7 +252,6 @@ function uwmbase_preprocess_page(&$variables, $hook) {
           unset($variables['page']['title']);
         }
       }
-
     }
 
   }
@@ -792,6 +818,42 @@ function uwmbase_preprocess_paragraph__uwm_image_hero(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess_paragraph__half_wide_hero().
+ */
+function uwmbase_preprocess_paragraph__half_wide_hero(&$variables) {
+
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  $variables['page_title'] = NULL;
+  $variables['block_breadcrumb'] = NULL;
+
+  $parent = $paragraph->getParentEntity();
+  if (!empty($parent) && $parent->getEntityTypeId() === 'node') {
+
+    // Get parent node title, to render page title in paragraph template for
+    // layout.
+    $variables['page_title'] = $parent->label();
+
+    // On Medical Service node, render the breadcrumb block in paragraph
+    // template for layout.
+    if ($parent->bundle() === 'uwm_medical_service') {
+
+      $block_storage = \Drupal::entityTypeManager()->getStorage('block');
+      $block_builder = \Drupal::entityTypeManager()->getViewBuilder('block');
+
+      $block_breadcrumb = $block_storage->load('uwmbase_breadcrumbs');
+      if (!empty($block_breadcrumb)) {
+        $variables['block_breadcrumb'] = $block_builder->view($block_breadcrumb);
+      }
+
+    }
+
+  }
+
+}
+
+/**
  * Implements hook_preprocess_HOOK().
  */
 function uwmbase_preprocess_paragraph__uwm_section(&$variables) {
@@ -984,6 +1046,8 @@ function uwmbase_preprocess_paragraph__uwm_block(&$variables) {
  * Implements hook_preprocess_paragraph__uwm_cta_link().
  */
 function uwmbase_preprocess_paragraph__uwm_cta_link(&$variables) {
+
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
   $paragraph = $variables['paragraph'];
 
   // Create link attributes.
@@ -1000,6 +1064,20 @@ function uwmbase_preprocess_paragraph__uwm_cta_link(&$variables) {
       }
     }
   }
+
+  // Determine whether to use solid CTA styling variant.
+  // @see src/scss/base/_btn-cta-solid.scss
+  // @TODO: might be nice to make this a boolean field on the paragraph too.
+  $variables['btn_cta_solid'] = FALSE;
+
+  // Enforce the case of parent Hero Content and Half-Wide Image paragraph.
+  $parent = $paragraph->getParentEntity();
+  if (!empty($parent)) {
+    if ($parent->getEntityTypeId() === 'paragraph' && $parent->bundle() === 'half_wide_hero') {
+      $variables['btn_cta_solid'] = TRUE;
+    }
+  }
+
 }
 
 /**

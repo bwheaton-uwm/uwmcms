@@ -22,8 +22,8 @@ a {
   }
 }
 
+// Use when a container is only desired at xl breakpoint (1200px) and up.
 .container-xl {
-  // use when a container is only desired on x-large screens and up (1200px)
   padding-left: 15px;
   padding-right: 15px;
   @include media-breakpoint-up('xl') {
@@ -46,6 +46,21 @@ a {
     @include media-breakpoint-up('md') {
       @include container-padding;
     }
+  }
+}
+
+// Use when a container is only desired at "xl mid" breakpoint (1600px) and up.
+// This is a custom breakpoint, between Bootstrap's xl (1200) and xxl (1920).
+// Note the "full" designation means the container is nearly full-window-width,
+// whereas Bootstrap xxl (1920) breakpoint has a much smaller container (1340).
+// @see scss/init/grid/_grid.scss
+.container-xl-mid-full {
+  @include container-padding;
+
+  @include media-breakpoint-up('xl_mid') {
+    width: map-get($container-max-widths, xl_mid_full);
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -77,6 +92,7 @@ a {
 // Type
 @import 'base/typography';
 @import 'base/btn-cta';
+@import 'base/btn-cta-solid';
 @import 'base/uwm-icons';
 @import 'base/uwm-svg-icons';
 @import 'base/sections';

@@ -58,10 +58,12 @@
                   <h2>{{ "Make an Appointment"|t }}</h2>
                 </div>
                 <div class="clinic-page__cta-content">
+                  {# @see field--node--field-res-phone-number--res-clinic.html.twig #}
                   {% if content.field_res_phone_number.0 is not empty %}
                     {{ content.field_res_phone_number }}
                   {% endif %}
 
+                  {# @see field--node--field-res-epic-department-ids--res-clinic.html.twig #}
                   {% if has_open_scheduling and not hide_open_scheduling_cta %}
                     {{ content.field_res_epic_department_ids }}
                   {% else %}
@@ -184,7 +186,6 @@
             {# Secondary CTA (returning patients or book online)#}
             {#
               Urgent care Clockwise wait time and link
-              @see field--node--field-res-clockwise-id--res-clinic.html.twig
             #}
             {% if hide_returning_patient_cta or hide_appointment_ctas %}
               <div class="clinic-page__ctas clinic-page__ctas-secondary clinic-page__cta-hidden">
@@ -192,6 +193,7 @@
             {% else %}
             <div class="clinic-page__ctas clinic-page__ctas-secondary">
 
+              {# @see field--node--field-res-clockwise-id--res-clinic.html.twig #}
               {% if content.field_res_clockwise_id.0 is not empty %}
                 {{ content.field_res_clockwise_id }}
               {% else %}
@@ -200,7 +202,7 @@
                     <h2>{{ "Returning Patients"|t }}</h2>
                   </div>
                   <div class="clinic-page__cta-content">
-                    <a class="clinic-page__cta-btn btn" href="https://ecare.uwmedicine.org/prod01/inside.asp?mode=apptsched">{{ "Sign in &amp; book online"|t }}</a>
+                    <a class="btn btn-cta-solid clinic-page__cta-btn" href="https://ecare.uwmedicine.org/prod01/inside.asp?mode=apptsched">{{ "Sign in &amp; book online"|t }}</a>
                   </div>
                 </div>
               {% endif %}

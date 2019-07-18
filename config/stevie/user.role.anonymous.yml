@@ -25,6 +25,7 @@ permissions:
   - 'view paragraph content degree'
   - 'view paragraph content detailed_contact_card'
   - 'view paragraph content education_history'
+  - 'view paragraph content half_wide_hero'
   - 'view paragraph content headshot_card'
   - 'view paragraph content hours_for_day'
   - 'view paragraph content hours_of_operation'
