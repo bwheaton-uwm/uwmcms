@@ -1,0 +1,37 @@
+/*
+ * Styling for solid-background-color CTA buttons.
+ */
+
+ // NOTE: mixin cannot be used globally because this file is included into
+ // base.scss, but not _init.scss...
+@mixin btn-cta-solid($background-color: color('blue'), $background-color-hover: $hover-blue) {
+  background-color: $background-color;
+  color: color('white');
+  padding: 0.5rem 1.5rem; // 8px 24x
+  font-size: 1rem; // 16px
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  transition: 0.3s ease-in-out;
+
+  &:focus {
+    color: color('white');
+  }
+
+  &:hover, &:active {
+    background-color: $background-color-hover;
+    color: color('white');
+    text-decoration: none;
+  }
+}
+
+/*
+ * Color variants - default to blue
+ */
+.btn-cta-solid {
+  @include btn-cta-solid();
+}
+
+.btn-cta-solid--purple {
+  @include btn-cta-solid(color('purple'), $hover-purple);
+}

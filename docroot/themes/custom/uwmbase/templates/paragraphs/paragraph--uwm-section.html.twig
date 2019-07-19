@@ -54,7 +54,9 @@
 
   {# Render background image in separate container so it can be fixed height. #}
   {% if background_image_url is not empty %}
-    <div class="uwm-section__background-image" style="background-image: url({{ background_image_url }});"></div>
+    <div class="uwm-section__background-image" style="background-image: url({{ background_image_url }});"
+{#    data-background-image-xl="url({{ background_image_xl_url }})"#}
+    ></div>
   {% endif %}
 
   <div class="container-xl">

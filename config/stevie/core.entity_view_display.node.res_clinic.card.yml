@@ -10,12 +10,16 @@ dependencies:
     - field.field.node.res_clinic.field_res_box_number
     - field.field.node.res_clinic.field_res_building
     - field.field.node.res_clinic.field_res_clockwise_id
+    - field.field.node.res_clinic.field_res_epic_department_ids
     - field.field.node.res_clinic.field_res_expertises
     - field.field.node.res_clinic.field_res_external_url
     - field.field.node.res_clinic.field_res_fax_number
     - field.field.node.res_clinic.field_res_feat_clinics_header
     - field.field.node.res_clinic.field_res_featured_clinics
     - field.field.node.res_clinic.field_res_floor
+    - field.field.node.res_clinic.field_res_hide_appt_ctas
+    - field.field.node.res_clinic.field_res_hide_open_scheduling
+    - field.field.node.res_clinic.field_res_hide_returning_cta
     - field.field.node.res_clinic.field_res_hours_of_operation
     - field.field.node.res_clinic.field_res_image
     - field.field.node.res_clinic.field_res_internal_url
@@ -111,6 +115,7 @@ hidden:
   field_res_external_url: true
   field_res_fax_number: true
   field_res_feat_clinics_header: true
+  field_res_feat_clinics_view_all: true
   field_res_featured_clinics: true
   field_res_hide_appt_ctas: true
   field_res_hide_open_scheduling: true

@@ -13,6 +13,11 @@
       {# @see field--node--field-res-featured-clinics--res-clinic.html.twig #}
       {{ content.field_res_featured_clinics }}
 
+      {% if content.field_res_feat_clinics_view_all.0 is not empty %}
+      <div class="clinic-page__featured-view-all">
+        <a class="btn btn-cta-solid clinic-page__cta-btn" href={{"#{content.field_res_feat_clinics_view_all.0}"}}>See all clinics</a>
+      </div>
+      {% endif %}
     </div>
 
   </section>

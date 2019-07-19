@@ -15,6 +15,12 @@
     padding-bottom: 3rem;
   }
 
+  .clinic-page__hours-ctas, .clinic-page__featured-view-all {
+    .clinic-page__cta-btn {
+      padding: .5rem 1.5rem;
+    }
+  }
+
   .clinic-page__header {
 
     .clinic-page__right {
@@ -50,19 +56,6 @@
           .clinic-page__cta-content {
             padding-top: 1.25rem;
             padding-bottom: 1.25rem;
-
-            .clinic-page__cta-btn {
-              background-color: theme-color('link-blue');
-              color: white;
-              text-align: center;
-              padding: .5rem 1.5rem;
-              transition: ease-in 0.3s;
-              box-shadow: 0 3px 6px rgba(0,0,0,.15);
-            
-              &:hover {
-                background-color: #21509C;
-              }
-            }
           }
         }
 
@@ -264,6 +257,10 @@
         padding: 1rem 0;
       }
 
+      .field--name-field-uwm-sections .card .card-header {
+        padding: 1.25rem;
+      }
+
     }
 
   }
@@ -272,6 +269,16 @@
     // We want the first section in each tab to be white, matching the tab
     // headers. If Featured Clinics is present, it is first.
     background-color: color('white');
+
+    .clinic-page__featured-view-all {
+      text-align: right;
+      margin-top: .5rem;
+      margin-bottom: 2rem;
+
+      .clinic-page__cta-btn {
+        text-transform: uppercase;
+      }
+    }
   }
 
   .clinic-page__services {
@@ -593,6 +600,12 @@
         }
       }
 
+    }
+
+    .clinic-page__featured-view-all {
+      .clinic-page__cta-btn {
+        width: 100%;
+      }
     }
 
   }

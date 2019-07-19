@@ -56,14 +56,14 @@
   #}
 {% set heading = heading ? heading :
   'expertise' in facet.id|lower ? 'Expertise' :
-  'service' in facet.id|lower ? 'Medical service' :
+  'service' in facet.id|lower ? 'Medical Specialties' :
   facet.id == 'general_search_facet_uwmsearchwithin' ? 'Show me' :
   facet.id == 'locations_facet_uwmsearchwithin' ? 'Show me' :
-  facet.id == 'locations_facet_medical_services' ? 'Medical service' :
+  facet.id == 'locations_facet_medical_services' ? 'Medical Specialties' :
   facet.id == 'provider_facet_uwmsearchwithin' ? 'Show me' :
   facet.id == 'provider_facet_gender' ? 'Gender' :
   facet.id == 'provider_facet_languages' ? 'Language' :
-  facet.id == 'provider_facet_medical_services' ? 'Medical service' :
+  facet.id == 'provider_facet_medical_services' ? 'Medical Specialties' :
   facet.id == 'provider_facet_accepting_patients' ? 'Accepting patients' : '' %}
 
 {% set live_search = items|length > 6 ? 'true' : 'false' %}

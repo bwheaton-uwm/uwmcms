@@ -86,6 +86,13 @@ main-container:
     component:
       dist/css/main-container.css: {}
 
+breadcrumb:
+  css:
+    component:
+      dist/css/breadcrumb.css: {}
+  dependencies:
+  - uwmbase/visually-hidden
+
 ecare-page:
   css:
     component:
@@ -168,6 +175,11 @@ footer:
       dist/css/footer.css: {}
       dist/css/footer-mobile.css: {}
 
+half-wide-hero:
+  css:
+    component:
+      dist/css/half-wide-hero.css: {}
+
 image-hero:
   css:
     component:
@@ -242,13 +254,6 @@ autocomplete:
   css:
     component:
       components/asset-builds/css/autocomplete.css: {}
-
-breadcrumb:
-  css:
-    component:
-      components/asset-builds/css/breadcrumb.css: {}
-  dependencies:
-  - uwmbase/visually-hidden
 
 box:
   css:

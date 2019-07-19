@@ -1,0 +1,59 @@
+uuid: 285ed83b-f534-4837-9a5b-3b39a56cc1c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.uwm_medical_service.field_meta_tags
+    - field.field.node.uwm_medical_service.field_search_best_bets
+    - field.field.node.uwm_medical_service.field_top_content_blocks
+    - field.field.node.uwm_medical_service.field_uwm_find_a_location_link
+    - field.field.node.uwm_medical_service.field_uwm_find_a_provider_link
+    - field.field.node.uwm_medical_service.field_uwm_image
+    - field.field.node.uwm_medical_service.field_uwm_medical_service
+    - field.field.node.uwm_medical_service.field_uwm_page_path_name
+    - field.field.node.uwm_medical_service.field_uwm_sections
+    - node.type.uwm_medical_service
+  module:
+    - entity_reference_revisions
+    - metatag
+    - user
+id: node.uwm_medical_service.full
+targetEntityType: node
+bundle: uwm_medical_service
+mode: full
+content:
+  field_meta_tags:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
+  field_top_content_blocks:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_uwm_sections:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden:
+  content_moderation_control: true
+  field_search_best_bets: true
+  field_uwm_find_a_location_link: true
+  field_uwm_find_a_provider_link: true
+  field_uwm_image: true
+  field_uwm_medical_service: true
+  field_uwm_page_path_name: true
+  links: true

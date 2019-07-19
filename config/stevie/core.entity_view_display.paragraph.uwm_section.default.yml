@@ -10,9 +10,10 @@ dependencies:
     - field.field.paragraph.uwm_section.field_uwm_image
     - field.field.paragraph.uwm_section.field_uwm_section_heading
     - paragraphs.paragraphs_type.uwm_section
+    - responsive_image.styles.background_watermark_image
   module:
     - entity_reference_revisions
-    - image
+    - responsive_image
     - text
 id: paragraph.uwm_section.default
 targetEntityType: paragraph
@@ -58,9 +59,10 @@ content:
     weight: 5
     label: hidden
     settings:
-      image_style: ''
+      responsive_image_style: background_watermark_image
+      image_link: ''
     third_party_settings: {  }
-    type: image_url
+    type: responsive_image
     region: content
   field_uwm_section_heading:
     weight: 0

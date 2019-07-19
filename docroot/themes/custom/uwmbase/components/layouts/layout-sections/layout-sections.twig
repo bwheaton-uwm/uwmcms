@@ -76,6 +76,14 @@
             {% endblock %}
           {% endif %}
 
+          {# Breadcrumb #}
+          {% if page.breadcrumb %}
+            {% block breadcrumb %}
+              <div class="col-sm-12">
+                {{ page.breadcrumb }}
+              </div>
+            {% endblock %}
+          {% endif %}
 
           {# Title #}
           {% if page.title %}
