@@ -1,8 +1,9 @@
-uuid: a3b52645-28a2-4ae6-80f1-52647f2d00c0
+uuid: aa952985-a8e9-466a-9774-4d5358a11949
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.full
     - field.field.node.uwm_medical_service.field_link
     - field.field.node.uwm_medical_service.field_meta_tags
     - field.field.node.uwm_medical_service.field_res_feat_clinics_header
@@ -22,10 +23,10 @@ dependencies:
     - link
     - metatag
     - user
-id: node.uwm_medical_service.default
+id: node.uwm_medical_service.full
 targetEntityType: node
 bundle: uwm_medical_service
-mode: default
+mode: full
 content:
   field_link:
     weight: 4
