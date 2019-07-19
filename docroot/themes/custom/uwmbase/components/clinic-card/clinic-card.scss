@@ -9,6 +9,13 @@
 @import 'init';
 
 .clinic-card {
+
+  // We trim and format the Drupal label
+  // for display in the twig.
+  h3.field__label.clinic-card__subheader {
+    display: block !important;
+  }
+
   // These cards are the Bootstrap grid cells (flex items); apply margin
   // between rows.
   margin-bottom: 1.5rem; // 24px
