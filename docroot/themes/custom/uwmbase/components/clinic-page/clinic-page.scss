@@ -247,10 +247,9 @@
         display: none;
       }
 
-      .leader,
-      .uwm-accent-heading__title  {
+      .leader {
         margin: 0;
-        padding: 1rem 0;
+        padding: 1rem 0 1.75rem 0; // 16px 28px
       }
 
       .field--name-field-uwm-sections .card .card-header {
@@ -313,7 +312,15 @@
 
   .clinic-page__overview {
     background-color: theme-color('background-light-gray');
-    padding: 1rem 0 2rem 0;
+    padding: 0.875rem 0 2rem 0;
+
+    .field--name-body {
+
+      h2 {
+        padding: 1rem 0 1.875rem 0;
+      }
+
+    }
   }
 
   .clinic-page__directions-tab {

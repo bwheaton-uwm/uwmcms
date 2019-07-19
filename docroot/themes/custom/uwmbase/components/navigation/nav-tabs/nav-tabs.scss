@@ -66,7 +66,7 @@ nav.uw-navtabs {
 nav.uw-navtabs--blue-accent {
 
   ul.nav-tabs {
-    padding: 1.5rem 0 calc(1.5rem + 14px) 0; // 24px, 24px + height of blue underline on active
+    padding: 1.5rem 0; // 24px
 
     > li.nav-item {
       background-color: transparent;
