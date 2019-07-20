@@ -77,19 +77,6 @@
           dataLayer.push(searchResultClick);
         });
       });
-
-      // Add phone number event tracking to provider search result card phone numbers.
-      $('.view-uwm-providers-search .view-mode-provider_card a[href^="tel:"]', context).each(function (index) {
-        $(this).one('click', function (event) {
-          var providerLink = $(this).parents('.view-mode-provider_card').find('a[rel="bookmark"]').first().attr('href');
-          dataLayer.push({
-            'event': 'phone number click',
-            'searchType': 'provider',
-            'searchTerm': searchTerm,
-            'linkURL': providerLink
-          });
-        });
-      });
     }
   };
 

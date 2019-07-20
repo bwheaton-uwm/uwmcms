@@ -18,7 +18,6 @@ dependencies:
     - node.type.uwm_medical_service
   module:
     - entity_reference_revisions
-    - image
     - link
     - metatag
     - user
@@ -28,8 +27,8 @@ bundle: uwm_medical_service
 mode: default
 content:
   field_link:
-    weight: 4
-    label: above
+    weight: 3
+    label: hidden
     settings:
       trim_length: 80
       url_only: false
@@ -40,23 +39,23 @@ content:
     type: link
     region: content
   field_meta_tags:
-    weight: 7
-    label: above
+    weight: 5
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
     region: content
   field_res_feat_clinics_header:
-    weight: 2
-    label: above
+    type: string
+    weight: 1
+    region: content
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
-    region: content
   field_res_featured_clinics:
-    weight: 3
-    label: above
+    weight: 2
+    label: hidden
     settings:
       view_mode: card
       link: false
@@ -66,47 +65,28 @@ content:
   field_top_content_blocks:
     type: entity_reference_revisions_entity_view
     weight: 0
-    label: above
+    label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
     region: content
-  field_uwm_image:
-    type: image
-    weight: 5
-    region: content
-    label: above
-    settings:
-      image_style: ''
-      image_link: ''
-    third_party_settings: {  }
-  field_uwm_medical_service:
-    weight: 6
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   field_uwm_sections:
-    weight: 1
-    label: above
+    weight: 4
+    label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
     region: content
-  links:
-    weight: 8
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   content_moderation_control: true
   field_search_best_bets: true
   field_uwm_find_a_location_link: true
   field_uwm_find_a_provider_link: true
+  field_uwm_image: true
+  field_uwm_medical_service: true
   field_uwm_page_path_name: true
+  links: true
   search_api_excerpt: true

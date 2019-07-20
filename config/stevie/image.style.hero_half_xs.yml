@@ -1,0 +1,17 @@
+uuid: 3bf81995-9247-417d-a5c7-7072da06c5d7
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: hero_half_xs
+label: 'Half-Wide Hero xs-sm'
+effects:
+  b7a9a637-6ebf-4ea5-8f85-87869e35edf5:
+    uuid: b7a9a637-6ebf-4ea5-8f85-87869e35edf5
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 576
+      height: 345
+      crop_type: focal_point

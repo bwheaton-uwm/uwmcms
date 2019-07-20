@@ -180,6 +180,11 @@ footer:
       dist/css/footer.css: {}
       dist/css/footer-mobile.css: {}
 
+half-wide-hero:
+  css:
+    component:
+      dist/css/half-wide-hero.css: {}
+
 image-hero:
   css:
     component:

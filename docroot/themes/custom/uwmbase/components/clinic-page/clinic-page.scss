@@ -17,16 +17,7 @@
 
   .clinic-page__hours-ctas, .clinic-page__featured-view-all {
     .clinic-page__cta-btn {
-      background-color: theme-color('link-blue');
-      color: white;
-      text-align: center;
       padding: .5rem 1.5rem;
-      transition: ease-in 0.3s;
-      box-shadow: 0 3px 6px rgba(0,0,0,.15);
-    
-      &:hover {
-        background-color: #21509C;
-      }
     }
   }
 
@@ -283,6 +274,10 @@
       text-align: right;
       margin-top: .5rem;
       margin-bottom: 2rem;
+
+      .clinic-page__cta-btn {
+        text-transform: uppercase;
+      }
     }
   }
 

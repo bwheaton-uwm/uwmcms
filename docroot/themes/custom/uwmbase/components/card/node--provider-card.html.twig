@@ -61,7 +61,7 @@
            {% set specialties = content.field_res_expertises|uwm_filter_non_numeric_keys %}
            {% set elipses = specialties|length > 3 %}
 
-           <h3>{{ (specialties|length > 1 ? 'Specialties' : 'Specialty')|t }}</h3>
+           <h3>{{ (specialties|length > 1 ? 'Medical Specialties' : 'Medical Specialty')|t }}</h3>
 
            <div class="items">
              {{ specialties|uwm_replace_links_with_text|slice(0, 3)|join(' | ') }}{{ elipses ? '...' : '' }}
@@ -69,7 +69,7 @@
 
            {% if elipses %}
              <div class="see-all">
-               <a href="{{ url }}" rel="bookmark">{{ 'See all specialties'|t }}<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+               <a href="{{ url }}" rel="bookmark">{{ 'See all medical specialties'|t }}<i class="fa fa-angle-right" aria-hidden="true"></i></a>
              </div>
            {% endif %}
 

@@ -1,0 +1,349 @@
+/**
+ * Hero Content and Half-Wide Image paragraph type
+ *
+ * @see paragraph--half-wide-hero.html.twig
+ */
+
+@import 'init';
+
+.half-wide-hero {
+  @include uwmed-gradient-angled-dark-background();
+
+  .half-wide-hero__content {
+
+    .half-wide-hero__title {
+      margin-top: 0;
+      margin-bottom: 0.75rem; // 12px
+      padding: 0;
+    }
+
+    .half-wide-hero__subheading {
+      margin-bottom: 1rem;
+      font-size: 1.25rem; // 20px
+      line-height: 1.625rem; // 26px
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .half-wide-hero__additional-text {
+      margin: 1.5rem 0 1.875rem 0; // 24px 30px
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .half-wide-hero__ctas {
+
+      a.btn-cta-solid {
+        margin-bottom: 0.75rem; // 12px
+        // Reduce side padding a bit so standard 3 buttons fit on single line
+        // at xl+
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+      }
+
+    }
+  }
+
+  .half-wide-hero__image {
+    // Override grid col padding so image can be full page/container width.
+    padding-left: 0;
+    padding-right: 0;
+
+    img.img-fluid {
+      margin: 0;
+    }
+
+  }
+
+}
+
+// 576px+
+@include media-breakpoint-up('sm') {
+
+  .half-wide-hero__breadcrumb-mobile {
+    display: none;
+  }
+
+  .half-wide-hero {
+
+    .half-wide-hero__content {
+
+      .half-wide-hero__breadcrumb-nonmobile {
+        display: block;
+
+        .breadcrumb {
+          padding: 0.5rem 0 0.75rem 0; // 8px 12px
+        }
+      }
+
+      .half-wide-hero__ctas {
+        margin-bottom: 1.125rem; // 18px (+ 12px each button = 30px)
+
+        .field__items {
+          display: flex;
+          flex-wrap: wrap;
+
+          .field__item {
+            margin-right: 0.75rem; // 12px
+
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+
+    }
+
+    .half-wide-hero__image {
+
+      .half-wide-hero__image-overlay-mobile {
+        display: none;
+      }
+
+    }
+
+  }
+
+}
+
+// 768 - 991px
+@include media-breakpoint-only('md') {
+
+  .half-wide-hero {
+
+    .half-wide-hero__content {
+      padding-left: 2.75rem; // 44px
+      padding-right: 2.75rem; // 44px
+    }
+
+  }
+
+}
+
+// 992px+
+@include media-breakpoint-up('lg') {
+
+  .half-wide-hero {
+
+    .half-wide-hero__breadcrumb-nonmobile {
+      display: block;
+
+      .breadcrumb {
+        padding: 0.5rem 0 0.75rem 0; // 8px 12px
+      }
+    }
+
+    .half-wide-hero__image {
+      // At lg+ the image moves to the right side of the hero. Apply the left
+      // side padding to create standard gutter space between text on left and
+      // image on right.
+      @include container-padding-left();
+
+      // As the container gets wider, the text may wrap to fewer lines and
+      // reduce the hero container height. Set a min height so that less of the
+      // top and bottom of the image are cut off.
+      min-height: 310px;
+
+      position: relative;
+
+      // Pass container height down through media entity image wrappers.
+      .field--name-field-uwm-media,
+      .media--type-image,
+      .field--name-image {
+        height: 100%;
+      }
+
+      // Center image in its container and hide overflow.
+      // Ensure image fills height if text content makes container taller.
+      .media--type-image {
+        overflow: hidden;
+        // (Relative position required for overflow hidden?)
+        position: relative;
+
+        img {
+          min-height: 100%;
+          max-width: none;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+    }
+
+  }
+
+}
+
+// 1200px+
+@include media-breakpoint-up('xl') {
+
+  .half-wide-hero {
+
+    .half-wide-hero__image {
+      // Increase the min-height so less of the top and bottom of the image
+      // is cut off.
+      min-height: 330px;
+    }
+
+  }
+
+}
+
+// 1200 - 1599px
+@include media-breakpoint-only('xl') {
+
+  .half-wide-hero {
+
+    .half-wide-hero__content {
+      // Add extra left padding on text content.
+      padding-left: 2.75rem; // 44px
+    }
+
+  }
+
+}
+
+// 1600px+
+@include media-breakpoint-up('xl_mid') {
+
+  .half-wide-hero {
+
+    .half-wide-hero__image {
+      // At xl_mid+, container is no longer full page width. Add the right side
+      // padding to align image with container edge.
+      @include container-padding-right();
+    }
+
+  }
+
+}
+
+// 1200px-
+@include media-breakpoint-down('lg') {
+  .half-wide-hero {
+
+    .half-wide-hero__content {
+  
+      .half-wide-hero__title {
+        font-size: 2.5rem; // 40px
+        line-height: 2.875rem; // 46px
+      }
+
+    }
+
+  }
+}
+
+// 576px-
+@include media-breakpoint-down('xs') {
+
+  .half-wide-hero__breadcrumb-mobile {
+    @include container-padding();
+
+    .breadcrumb {
+      padding: 0.5rem 0; // 8px
+
+      .breadcrumb__text {
+        font-size: 0.875rem; // 14px
+      }
+
+      .breadcrumb__arrow {
+        width: 0.375rem; // 6px
+        margin: 0 0.125rem; // 2px
+      }
+    }
+
+  }
+
+  .half-wide-hero {
+    position: relative;
+
+    .half-wide-hero__content {
+      position: relative;
+      z-index: 1;
+      // Create top section matching image height, for absolute-positioned
+      // headings.
+      padding-top: 60%;
+
+      .half-wide-hero__breadcrumb-nonmobile {
+        display: none;
+      }
+
+      .half-wide-hero__headings {
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding-top: 1rem; // 16px
+        @include container-padding();
+      }
+  
+      .half-wide-hero__title {
+        color: color('white');
+        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.16);
+        font-size: 2rem; // 32px
+        line-height: 2.375rem; // 38px
+        margin-bottom: 0.375rem; // 6px
+      }
+  
+      .half-wide-hero__subheading {
+        color: color('white');
+        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.16);
+        font-size: 1rem; // 16px
+        line-height: 1.3125rem; // 21px
+      }
+
+      .half-wide-hero__additional-text {
+        margin: 0;
+        padding: 1rem 2.5rem; // 16px 40px
+      }
+  
+      .half-wide-hero__ctas {
+        padding: 1rem 0; // 16px
+
+        a.btn-cta-solid {
+          font-size: 1.25rem; // 20px
+        }
+
+        .field__item {
+
+          &:last-child a.btn-cta-solid {
+            margin-bottom: 0;
+          }
+
+        }
+      }
+    }
+  
+    .half-wide-hero__image {
+      position: absolute;
+      left: 0;
+      top: 0;
+      // Set proportional height for absolute-positioned image.
+      padding-top: 60%;
+
+      .media--type-image {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+
+      .half-wide-hero__image-overlay-mobile {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+    }
+  
+  }
+}
