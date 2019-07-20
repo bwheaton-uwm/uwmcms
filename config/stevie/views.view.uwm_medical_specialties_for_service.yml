@@ -58,8 +58,8 @@ display:
         type: default
         options:
           grouping: {  }
-          row_class: 'col mb-4 d-flex flex-column justify-content-between'
-          default_row_class: false
+          row_class: ''
+          default_row_class: true
       row:
         type: fields
       fields:
@@ -74,7 +74,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '<i class="uwm-icon uwm-icon--heart__light-gray mr-2"></i> {{ title }}'
+            text: '<i class="uwm-icon uwm-icon--heart__light-gray"></i>{{ title }}'
             make_link: false
             path: ''
             absolute: false
@@ -100,13 +100,13 @@ display:
             preserve_tags: ''
             html: false
           element_type: h3
-          element_class: 'medical-specialty-view__title h5 font-family-base mb-0 pt-0 mt-sm-3'
+          element_class: medical-specialty-view__item-title
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: false
+          element_default_classes: true
           empty: ''
           hide_empty: false
           empty_zero: false
@@ -165,7 +165,7 @@ display:
             preserve_tags: ''
             html: false
           element_type: ''
-          element_class: ''
+          element_class: medical-specialty-view__item-teaser
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
@@ -211,7 +211,7 @@ display:
             trim_whitespace: false
             alt: ''
             rel: ''
-            link_class: 'btn btn-cta mt-3'
+            link_class: 'btn btn-cta'
             prefix: ''
             suffix: ''
             target: ''
@@ -233,7 +233,7 @@ display:
           element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: false
+          element_default_classes: true
           empty: ''
           hide_empty: false
           empty_zero: false
@@ -327,7 +327,7 @@ display:
           not: false
           plugin_id: numeric
       display_extenders: {  }
-      css_class: 'medical-specialty-view container-xl'
+      css_class: medical-specialty-view
     cache_metadata:
       max-age: -1
       contexts:

@@ -1,51 +1,85 @@
+/**
+ * @file
+ * View of medical specialty teasers on a parent medical service page.
+ *
+ * @see views-view--uwm-medical-specialties-for-service.html.twig
+ * @see views-view-unformatted--uwm-medical-specialties-for-service--block-1.html.twig
+ */
+
 @import 'init';
 
 .medical-specialty-view {
-    .col {
-        flex-basis: 100%;
-        flex-grow: 0;
+
+  .views-row {
+    margin: 0 0 2rem 0; // 32px
+    display: flex;
+    flex-direction: column;
+    align-items: top;
+
+    // Allow the teaser field to grow, so the CTA buttons are at bottom of
+    // flex container and align across items.
+    .views-field-body {
+      flex-grow: 1;
     }
+
+    .medical-specialty-view__item-title {
+      font-family: $font-family-base;
+      font-size: 1.125rem; // 18px
+      line-height: 1.375rem; // 22px
+      font-weight: $font-weight-bold;
+      margin: 0 0 1rem 0;
+      padding: 0;
+
+      .uwm-icon {
+        width: 1.375rem; // 22px
+        height: 1.375rem; // 22px
+        vertical-align: middle;
+        margin-right: 0.75rem; // 12px
+      }
+    }
+
+    .medical-specialty-view__item-teaser {
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+
+    }
+
+    a.btn-cta {
+      margin-top: 1.25rem; // 20px
+      margin-bottom: 0;
+    }
+  }
+
 }
 
-@include media-breakpoint-between('sm', 'md'){
-    .medical-specialty-view {
-        .col {
-            flex-basis: 48%;
-        }
+@include media-breakpoint-only('sm'){
+  .medical-specialty-view {
 
-        .col:nth-child(odd) {
-            border-right: 1px solid #D9DBDD;
-        }
-
-        .col:last-child {
-            border-right: none;
-        }
+    .views-row:nth-child(odd) {
+      border-right: 1px solid theme-color('border-gray');
     }
+
+    .views-row:last-child {
+      border-right: none;
+    }
+
+  }
 }
 
 @include media-breakpoint-up('md') {
-    .medical-specialty-view__2-cols {
-        .col {
-            flex-basis: 48%;
-        }
+  .medical-specialty-view {
 
-        .col:nth-child(odd) {
-            border-right: 1px solid #D9DBDD;
-        }
+    .views-row {
+      border-right: 1px solid theme-color('border-gray');
+    }
 
-        .col:last-child {
-            border-right: none;
-        }
+    .views-row:nth-child(3n),
+    .views-row:last-child {
+        border-right: none;
     }
-    
-    .medical-specialty-view__3-cols {
-        .col {
-            flex-basis: 33%;
-            border-right: 1px solid #D9DBDD;
-        }
-    
-        .col:nth-child(3n), .col:last-child {
-            border-right: none;
-        }
-    }
+
+  }
+
 }
