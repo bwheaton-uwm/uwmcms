@@ -54,7 +54,7 @@ content:
       multiple_delimiter_precedes_last: never
       multiple_el_al_min: '3'
       multiple_el_al_first: '1'
-      markup: ''
+      markup: false
     third_party_settings: {  }
     type: name_default
     region: content
@@ -98,7 +98,7 @@ content:
     label: hidden
     settings:
       format: default
-      markup: ''
+      markup: false
       output: default
       multiple: default
       multiple_delimiter: ', '

@@ -68,7 +68,7 @@ content:
     label: above
     settings:
       format: default
-      markup: ''
+      markup: false
       output: default
       multiple: default
       multiple_delimiter: ', '

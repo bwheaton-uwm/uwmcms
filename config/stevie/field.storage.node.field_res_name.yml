@@ -11,7 +11,76 @@ id: node.field_res_name
 field_name: field_res_name
 entity_type: node
 type: name
-settings: {  }
+settings:
+  components:
+    title: true
+    given: true
+    middle: true
+    family: true
+    generational: true
+    credentials: true
+  minimum_components:
+    title: false
+    given: true
+    middle: false
+    family: true
+    generational: false
+    credentials: false
+  allow_family_or_given: false
+  labels:
+    title: Title
+    given: Given
+    middle: 'Middle name(s)'
+    family: Family
+    generational: Generational
+    credentials: Credentials
+  max_length:
+    title: 31
+    given: 63
+    middle: 127
+    family: 63
+    generational: 15
+    credentials: 255
+  autocomplete_source:
+    title:
+      - title
+    given: {  }
+    middle: {  }
+    family: {  }
+    generational:
+      - generation
+    credentials: {  }
+  autocomplete_separator:
+    title: ' '
+    given: ' -'
+    middle: ' -'
+    family: ' -'
+    generational: ' '
+    credentials: ', '
+  title_options:
+    - '-- --'
+    - Mr.
+    - Mrs.
+    - Miss
+    - Ms.
+    - Dr.
+    - Prof.
+  generational_options:
+    - '-- --'
+    - Jr.
+    - Sr.
+    - I
+    - II
+    - III
+    - IV
+    - V
+    - VI
+    - VII
+    - VIII
+    - IX
+    - X
+  sort_options:
+    title: false
 module: name
 locked: false
 cardinality: 1
