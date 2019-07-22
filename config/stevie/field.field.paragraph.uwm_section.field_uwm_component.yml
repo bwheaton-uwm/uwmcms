@@ -18,7 +18,7 @@ id: paragraph.uwm_section.field_uwm_component
 field_name: field_uwm_component
 entity_type: paragraph
 bundle: uwm_section
-label: Component
+label: Components
 description: "You can add the following components to a section:\r\n<ul>\r\n<li><strong>Basic Content</strong>: A rich text editor that supports common text formatting including lists and call to action buttons. Create columns, add embedded images, and use the 'view more' functionality.</li>\r\n<li><strong>Accordion</strong>: A multi-part component that groups content together in expandable panels.</li>\r\n<li><strong>Media</strong>: Add an asset from WebDAM, embed a YouTube video or add other media to a page.</li>\r\n<li><strong>Reusable Content</strong>: Display a piece of reusable content from Drupal's <a href=\"/admin/structure/block/block-content\" target=\"_blank\">custom block library</a>, or a webform.</li>\r\n</ul>"
 required: false
 translatable: false
@@ -103,9 +103,6 @@ settings:
       hours_of_operation:
         weight: -44
         enabled: false
-      reusable_content:
-        weight: -43
-        enabled: false
       uwm_3_col_proof_points:
         weight: -42
         enabled: false
@@ -132,5 +129,8 @@ settings:
         enabled: false
       uwm_text:
         weight: -34
+        enabled: false
+      half_wide_hero:
+        weight: 38
         enabled: false
 field_type: entity_reference_revisions

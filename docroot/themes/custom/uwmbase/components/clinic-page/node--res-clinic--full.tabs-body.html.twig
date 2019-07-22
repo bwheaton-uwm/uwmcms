@@ -31,8 +31,6 @@
 
     <div class="container-xl">
 
-      <h3 class="uwm-accent-heading uwm-accent-heading__title">Services</h3>
-
       <h2 class="leader">
         {% if content.field_clinic_services_header|render is not empty %}
           {{ content.field_clinic_services_header }}
@@ -81,14 +79,15 @@
   {{ content.field_uwm_sections }}
 {% endif %}
 
+{#
+   Body field
+#}
 {% if content.body.0 is not empty %}
   <section class="clinic-page__overview">
     <div class="container-xl">
 
-      <h3 id="clinic-overview-jump"
-          class="clinic-page__overview-header uwm-accent-heading uwm-accent-heading__title">
-        {{ is_hospital ? "Hospital Overview"|t : "Clinic Overview"|t }}
-      </h3>
+      {# Left sidebar "Overview" link destination #}
+      <a name="overview" id="overview"></a>
 
       {{ content.body }}
 
