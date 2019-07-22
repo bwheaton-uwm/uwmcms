@@ -45,6 +45,10 @@
   ]
 %}
 
+{#
+  Background color
+  Add to CSS classes for section
+#}
 {% if content.field_uwm_background_color|render %}
   {% set background_color = ['uwm-section--background-' ~ paragraph.field_uwm_background_color.entity.label|lower] %}
   {% set classes = classes|merge(background_color) %}
@@ -60,6 +64,11 @@
   {% endif %}
 
   <div class="container-xl">
+
+    {#
+      Section Heading (H2)
+      @see field--paragraph--field-uwm-section-heading.html.twig
+    #}
     {% if content.field_uwm_section_heading|render|striptags %}
       {{ content.field_uwm_section_heading }}
     {% else %}

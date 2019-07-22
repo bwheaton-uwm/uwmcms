@@ -855,6 +855,11 @@ function uwmbase_preprocess_paragraph__half_wide_hero(&$variables) {
 
 /**
  * Implements hook_preprocess_HOOK().
+ *
+ * NOTE: this preprocesses both Section and Sections for Medical Services
+ * paragraphs.
+ *
+ * @see uwmbase_preprocess_paragraph__uwm_sections_medical_services()
  */
 function uwmbase_preprocess_paragraph__uwm_section(&$variables) {
   $paragraph = $variables['paragraph'];
@@ -867,6 +872,7 @@ function uwmbase_preprocess_paragraph__uwm_section(&$variables) {
   // because:
   // - using a render array includes cache metadata,
   // - it's easy to configure to use an image style.
+  // Case 1: image (file) field, currently on Section paragraph type.
   if (!empty($variables['content']['field_uwm_image'][0])) {
     $fid = $paragraph->get('field_uwm_image')->getValue()[0]['target_id'];
     $file = File::load($fid);
@@ -877,7 +883,29 @@ function uwmbase_preprocess_paragraph__uwm_section(&$variables) {
     $style_url = ImageStyle::load('background_watermark_m')->buildUrl($uri);
     $variables['background_image_url'] = $style_url;
   }
+  // Case 2: media reference field, currently on Sections for Medical Services
+  // paragraph type.
+  elseif (!empty($variables['content']['field_uwm_media'][0])) {
+    // TODO: complete if cases arises for Medical Service or Specialty nodes.
+  }
 
+}
+
+/**
+ * Implements hook_preprocess_paragraph__uwm_sections_medical_services().
+ *
+ * 2019-07-17 NOTE:
+ * This paragraph type is used as for sections (parents of most components) on
+ * Medical Service and Medical Specialty node types. It would be desirable to
+ * consolidate and use the generic Section paragraph type everywhere. However,
+ * at the time of porting these pages to stevie, there was already much content
+ * populated in children of these Sections for Medical Services paragraphs. Thus
+ * we kept it, but aim to keep it in parity with generic Section paragraph in
+ * the theme code. Hence, it simply runs the same preprocessing as for Section
+ * paragraphs.
+ */
+function uwmbase_preprocess_paragraph__uwm_sections_medical_services(&$variables) {
+  uwmbase_preprocess_paragraph__uwm_section($variables);
 }
 
 /**
@@ -958,6 +986,7 @@ function uwmbase_preprocess_paragraph__uwm_grid(&$variables) {
  */
 function uwmbase_preprocess_field__paragraph__field_uwm_section_heading(&$variables) {
   // Define a variable that indicates if the heading should be accented.
+  // @see field--paragraph--field-uwm-section-heading.html.twig
   $variables['accented_heading'] = 0;
 
   if (isset($variables['element']['#object'])) {

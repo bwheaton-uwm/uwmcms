@@ -10,9 +10,10 @@ dependencies:
     - text
 third_party_settings:
   allowed_formats:
+    rich_text: rich_text
     basic_html: '0'
     unrestricted: '0'
-    rich_text: '0'
+    unrestricted_no_wysiwyg: '0'
     plain_text: '0'
 id: paragraph.uwm_sections_medical_services.field_uwm_section_heading
 field_name: field_uwm_section_heading

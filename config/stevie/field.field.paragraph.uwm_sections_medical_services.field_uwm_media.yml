@@ -1,0 +1,29 @@
+uuid: 85428aca-38d2-4b93-b561-c6bcb4106474
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_media
+    - media.type.image
+    - paragraphs.paragraphs_type.uwm_sections_medical_services
+id: paragraph.uwm_sections_medical_services.field_uwm_media
+field_name: field_uwm_media
+entity_type: paragraph
+bundle: uwm_sections_medical_services
+label: 'Section Background Image'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: changed
+      direction: DESC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
