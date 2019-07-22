@@ -6,6 +6,11 @@
  * Custom variables:
  * - style_as_cards: boolean; if any of the child paragraphs are either a Card
  *   type of paragraph or Card type of content block, style all as cards.
+ * - use_column_dividers: boolean; whether to style with divider lines between
+ *   card children instead of usual card styling, from checkbox field.
+ * - add_container: boolean, whether to add Bootstrap grid container wrapper
+ *   (via usual `.container-xl`). This is a fallback only if the Grid is not
+ *   within a Section or Sections for Medical Services parent paragraph.
  *
  * @see template_preprocess_paragraph()
  * @see uwmbase_preprocess_paragraph__uwm_grid()
