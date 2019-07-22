@@ -7,6 +7,7 @@ dependencies:
     - field.field.paragraph.uwm_section.field_uwm_accented_heading
     - field.field.paragraph.uwm_section.field_uwm_background_color
     - field.field.paragraph.uwm_section.field_uwm_component
+    - field.field.paragraph.uwm_section.field_uwm_css_class
     - field.field.paragraph.uwm_section.field_uwm_image
     - field.field.paragraph.uwm_section.field_uwm_section_heading
     - paragraphs.paragraphs_type.uwm_section
@@ -71,4 +72,5 @@ content:
     third_party_settings: {  }
     type: text_default
     region: content
-hidden: {  }
+hidden:
+  field_uwm_css_class: true

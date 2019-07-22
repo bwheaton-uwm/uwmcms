@@ -1,0 +1,19 @@
+uuid: 8ef6bf82-c6d2-4b63-ab90-db623a18d98f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_css_class
+    - paragraphs.paragraphs_type.uwm_sections_medical_services
+id: paragraph.uwm_sections_medical_services.field_uwm_css_class
+field_name: field_uwm_css_class
+entity_type: paragraph
+bundle: uwm_sections_medical_services
+label: 'Custom CSS classes'
+description: 'Add one or more custom CSS classes (space-delimited) for this component.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

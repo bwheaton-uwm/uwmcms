@@ -862,6 +862,8 @@ function uwmbase_preprocess_paragraph__half_wide_hero(&$variables) {
  * @see uwmbase_preprocess_paragraph__uwm_sections_medical_services()
  */
 function uwmbase_preprocess_paragraph__uwm_section(&$variables) {
+
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
   $paragraph = $variables['paragraph'];
 
   $variables['background_image_url'] = NULL;
@@ -887,6 +889,12 @@ function uwmbase_preprocess_paragraph__uwm_section(&$variables) {
   // paragraph type.
   elseif (!empty($variables['content']['field_uwm_media'][0])) {
     // TODO: complete if cases arises for Medical Service or Specialty nodes.
+  }
+
+  // Retrieve custom CSS classes from field.
+  $variables['custom_css_classes'] = '';
+  if ($paragraph->hasField('field_uwm_css_class') && !$paragraph->get('field_uwm_css_class')->isEmpty()) {
+    $variables['custom_css_classes'] = trim($paragraph->get('field_uwm_css_class')->first()->getValue()['value']);
   }
 
 }

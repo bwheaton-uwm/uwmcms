@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.uwm_section.field_uwm_accented_heading
     - field.field.paragraph.uwm_section.field_uwm_background_color
     - field.field.paragraph.uwm_section.field_uwm_component
+    - field.field.paragraph.uwm_section.field_uwm_css_class
     - field.field.paragraph.uwm_section.field_uwm_image
     - field.field.paragraph.uwm_section.field_uwm_section_heading
     - paragraphs.paragraphs_type.uwm_section
@@ -42,7 +43,7 @@ content:
     region: content
   field_uwm_component:
     type: paragraphs
-    weight: 5
+    weight: 6
     settings:
       title: component
       title_plural: components
@@ -59,9 +60,17 @@ content:
         add_above: '0'
     third_party_settings: {  }
     region: content
+  field_uwm_css_class:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_uwm_image:
     type: entity_browser_file
-    weight: 4
+    weight: 5
     settings:
       entity_browser: image_browser
       field_widget_edit: true

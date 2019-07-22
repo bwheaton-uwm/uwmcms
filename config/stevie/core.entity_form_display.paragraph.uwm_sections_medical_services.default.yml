@@ -7,6 +7,7 @@ dependencies:
     - field.field.paragraph.uwm_sections_medical_services.field_uwm_accented_heading
     - field.field.paragraph.uwm_sections_medical_services.field_uwm_background_color
     - field.field.paragraph.uwm_sections_medical_services.field_uwm_component
+    - field.field.paragraph.uwm_sections_medical_services.field_uwm_css_class
     - field.field.paragraph.uwm_sections_medical_services.field_uwm_media
     - field.field.paragraph.uwm_sections_medical_services.field_uwm_section_heading
     - paragraphs.paragraphs_type.uwm_sections_medical_services
@@ -39,7 +40,7 @@ content:
     type: options_select
     region: content
   field_uwm_component:
-    weight: 4
+    weight: 5
     settings:
       title: component
       title_plural: components
@@ -56,6 +57,14 @@ content:
         add_above: '0'
     third_party_settings: {  }
     type: paragraphs
+    region: content
+  field_uwm_css_class:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_uwm_section_heading:
     weight: 0
