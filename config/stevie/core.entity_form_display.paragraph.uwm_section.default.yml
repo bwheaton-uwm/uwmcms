@@ -46,16 +46,17 @@ content:
     settings:
       title: component
       title_plural: components
-      edit_mode: open
+      edit_mode: closed
       closed_mode: summary
       autocollapse: none
+      closed_mode_threshold: 0
       add_mode: button
       form_display_mode: default
       default_paragraph_type: _none
-      closed_mode_threshold: 0
       features:
         duplicate: duplicate
         collapse_edit_all: collapse_edit_all
+        add_above: '0'
     third_party_settings: {  }
     region: content
   field_uwm_image:
