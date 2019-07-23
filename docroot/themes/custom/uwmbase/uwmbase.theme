@@ -9,6 +9,8 @@
  */
 
 use Drupal\uwmcs_extension\TwigExtension;
+use Drupal\Component\Utility\UrlHelper;
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Database\Database;
 use Drupal\Core\Url;
@@ -190,6 +192,26 @@ function uwmbase_preprocess_html(&$variables, $hook) {
     $variables['attributes']['class'][] = 'ecare-page';
   }
 
+  // Customize the title of the Make an Appointment page if the provider
+  // uses open scheduling.
+  if ($currentPath == '/node/20836') {
+    // Get the current URI and parse it.
+    $uri_parts = UrlHelper::parse(\Drupal::request()->getRequestUri());
+
+    $variables['#cache']['contexts'] = Cache::mergeContexts($variables['#cache']['contexts'], ['url.query_args:ser']);
+
+    if (isset($uri_parts['query']['ser']) && isset($variables['head_title']['title'])) {
+      $ser = $uri_parts['query']['ser'];
+
+      // Load the provider node from the SER ID.
+      $node = _uwmbase_get_provider_by_ser($ser);
+      if ($node) {
+        // Add the provider name to the title.
+        $title = 'Make an appointment';
+        $variables['head_title']['title'] = str_replace($title, $title . ' with ' . trim($node->label()), $variables['head_title']['title']);
+      }
+    }
+  }
 }
 
 /**
@@ -479,14 +501,23 @@ function uwmbase_preprocess_node(&$variables, $hook) {
 
     /*****
      * Set the make an appointment URI for providers.
-     * If a provider's primary (first) clinic is Hall Health Center, use their
-     * appointment bookings URL.
      */
-    $variables['provider_appointments_uri'] = '/patient-care/making-an-appointment';
     foreach ($clinic_entities as $k => $clinic) {
+      // If a provider's primary (first) clinic is Hall Health Center, use their
+      // appointment bookings URL.
       $clinicUri = $clinic->entity->field_res_external_url->value;
       if ($k === 0 && stripos($clinicUri, 'hall-health-center') !== FALSE) {
         $variables['provider_appointments_uri'] = 'http://depts.washington.edu/hhpccweb/';
+      }
+    }
+    if (!isset($variables['provider_appointments_uri'])) {
+      $variables['provider_appointments_uri'] = '/patient-care/making-an-appointment';
+
+      // If the provider uses open scheduling and has an Epic ID (SER),
+      // add the ID to the appointment URI.
+      if (isset($node->field_res_is_open_scheduling) && $node->field_res_is_open_scheduling->value == '1'
+      && isset($node->field_res_ser_id) && $node->field_res_ser_id->value) {
+        $variables['provider_appointments_uri'] .= '?ser=' . $node->field_res_ser_id->value;
       }
     }
 
@@ -855,6 +886,11 @@ function uwmbase_preprocess_paragraph__half_wide_hero(&$variables) {
 
 /**
  * Implements hook_preprocess_HOOK().
+ *
+ * NOTE: this preprocesses both Section and Sections for Medical Services
+ * paragraphs.
+ *
+ * @see uwmbase_preprocess_paragraph__uwm_sections_medical_services()
  */
 function uwmbase_preprocess_paragraph__uwm_section(&$variables) {
   $paragraph = $variables['paragraph'];
@@ -867,6 +903,7 @@ function uwmbase_preprocess_paragraph__uwm_section(&$variables) {
   // because:
   // - using a render array includes cache metadata,
   // - it's easy to configure to use an image style.
+  // Case 1: image (file) field, currently on Section paragraph type.
   if (!empty($variables['content']['field_uwm_image'][0])) {
     $fid = $paragraph->get('field_uwm_image')->getValue()[0]['target_id'];
     $file = File::load($fid);
@@ -877,7 +914,29 @@ function uwmbase_preprocess_paragraph__uwm_section(&$variables) {
     $style_url = ImageStyle::load('background_watermark_m')->buildUrl($uri);
     $variables['background_image_url'] = $style_url;
   }
+  // Case 2: media reference field, currently on Sections for Medical Services
+  // paragraph type.
+  elseif (!empty($variables['content']['field_uwm_media'][0])) {
+    // TODO: complete if cases arises for Medical Service or Specialty nodes.
+  }
 
+}
+
+/**
+ * Implements hook_preprocess_paragraph__uwm_sections_medical_services().
+ *
+ * 2019-07-17 NOTE:
+ * This paragraph type is used as for sections (parents of most components) on
+ * Medical Service and Medical Specialty node types. It would be desirable to
+ * consolidate and use the generic Section paragraph type everywhere. However,
+ * at the time of porting these pages to stevie, there was already much content
+ * populated in children of these Sections for Medical Services paragraphs. Thus
+ * we kept it, but aim to keep it in parity with generic Section paragraph in
+ * the theme code. Hence, it simply runs the same preprocessing as for Section
+ * paragraphs.
+ */
+function uwmbase_preprocess_paragraph__uwm_sections_medical_services(&$variables) {
+  uwmbase_preprocess_paragraph__uwm_section($variables);
 }
 
 /**
@@ -949,6 +1008,7 @@ function uwmbase_preprocess_paragraph__uwm_grid(&$variables) {
  */
 function uwmbase_preprocess_field__paragraph__field_uwm_section_heading(&$variables) {
   // Define a variable that indicates if the heading should be accented.
+  // @see field--paragraph--field-uwm-section-heading.html.twig
   $variables['accented_heading'] = 0;
 
   if (isset($variables['element']['#object'])) {
@@ -1069,6 +1129,126 @@ function uwmbase_preprocess_paragraph__uwm_cta_link(&$variables) {
     }
   }
 
+}
+
+/**
+ * Implements hook_preprocess_field__paragraph__field_uwm_link__uwm_link().
+ *
+ * Customizes the "Book online" link text for providers that use open
+ * scheduling.
+ */
+function uwmbase_preprocess_field__paragraph__field_uwm_link(&$variables) {
+  if (!isset($variables['items'])) {
+    return;
+  }
+
+  // Get the current URI and parse it.
+  $uri_parts = UrlHelper::parse(\Drupal::request()->getRequestUri());
+
+  $variables['#cache']['contexts'] = Cache::mergeContexts($variables['#cache']['contexts'], ['url.query_args:ser']);
+
+  // Bail if a SER ID was not included in the query string.
+  if (!isset($uri_parts['query']['ser'])) {
+    return;
+  }
+
+  $ser = $uri_parts['query']['ser'];
+
+  // Load the provider node from the SER ID.
+  $node = _uwmbase_get_provider_by_ser($ser);
+  if (!$node) {
+    return;
+  }
+
+  foreach ($variables['items'] as &$item) {
+    // Bail if the title does not exist or if it is not "Book online".
+    if (!isset($item['content']['#title']) || $item['content']['#title'] != 'Book online') {
+      continue;
+    }
+
+    // Add the provider's name to the Book Online text.
+    $item['content']['#title'] .= ' with ' . trim($node->label());
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph__uwm_link_with_icon__uwm_card().
+ *
+ * Customizes the "Book Now" URL for providers that use open scheduling.
+ */
+function uwmbase_preprocess_paragraph__uwm_link_with_icon__uwm_card(&$variables) {
+  // Get the current URI and parse it.
+  $uri_parts = UrlHelper::parse(\Drupal::request()->getRequestUri());
+
+  $variables['#cache']['contexts'] = Cache::mergeContexts($variables['#cache']['contexts'], ['url.query_args:ser']);
+
+  // Bail if a SER ID was not included in the query string.
+  if (!isset($uri_parts['query']['ser'])) {
+    return;
+  }
+
+  $ser = $uri_parts['query']['ser'];
+
+  // Load the provider node from the SER ID.
+  $node = _uwmbase_get_provider_by_ser($ser);
+  if (!$node) {
+    return;
+  }
+
+  // Bail if the URL does not exist or if it does not end with
+  // "/openscheduling".
+  if (!isset($variables['content']['field_uwm_link'][0]['#url']) || stripos(strrev($variables['content']['field_uwm_link'][0]['#url']->toUriString()), strrev('/openscheduling')) !== 0) {
+    return;
+  }
+
+  // Update the URL with the provider's SER ID.
+  $uri = $variables['content']['field_uwm_link'][0]['#url']->toUriString();
+  $uri .= '/SignupAndSchedule/EmbeddedSchedule';
+  $uri_options = [
+    'query' => [
+      'id' => $ser,
+      'vt' => '9000',
+      'view' => 'plain',
+    ],
+    'absolute' => TRUE,
+  ];
+  $variables['content']['field_uwm_link'][0]['#url'] = Url::fromUri($uri, $uri_options);
+}
+
+/**
+ * Implements hook_preprocess_field__node__title__uwm_basic_page().
+ *
+ * Customizes the page title.
+ */
+function uwmbase_preprocess_field__node__title__uwm_basic_page(&$variables) {
+  $currentPath = \Drupal::service('path.current')->getPath();
+
+  // For the "Make an Appointment" page.
+  if ($currentPath == '/node/20836') {
+    // Get the current URI and parse it.
+    $uri_parts = UrlHelper::parse(\Drupal::request()->getRequestUri());
+
+    $variables['#cache']['contexts'] = Cache::mergeContexts($variables['#cache']['contexts'], ['url.query_args:ser']);
+
+    if (isset($uri_parts['query']['ser'])) {
+      $ser = $uri_parts['query']['ser'];
+
+      // Load the provider node from the SER ID.
+      $node = _uwmbase_get_provider_by_ser($ser);
+      if ($node) {
+        foreach ($variables['items'] as &$item) {
+          // Bail if the title does not exist or if it's not
+          // "Make an appointment".
+          if (!isset($item['content']['#context']['value']) || $item['content']['#context']['value'] != 'Make an appointment') {
+            continue;
+          }
+
+          // Define a provider name to add to the title.
+          $variables['provider_name'] = trim($node->label());
+        }
+      }
+    }
+  }
 }
 
 /**
@@ -1351,4 +1531,36 @@ function uwmbase_preprocess_pager(&$variables) {
     unset($variables['items']['pages'][$variables['last_page_number']]);
   }
 
+}
+
+/**
+ * Load a provider from a SER ID.
+ *
+ * @param int $ser
+ *   The SER ID.
+ *
+ * @return Drupal\node\Entity\Node
+ *   The node for the found provider.
+ */
+function _uwmbase_get_provider_by_ser($ser) {
+  $nodes = &drupal_static(__FUNCTION__);
+
+  if (!isset($nodes[$ser])) {
+    // Use the SER ID to look up the provider.
+    $query = Drupal::service('entity.query')
+      ->get('node')
+      ->condition('status', 1)
+      ->condition('field_res_ser_id', $ser);
+    $results = $query->execute();
+    if (empty($results)) {
+      return NULL;
+    }
+
+    $nid = array_shift($results);
+
+    // Load the provider node.
+    $nodes[$ser] = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
+  }
+
+  return $nodes[$ser];
 }

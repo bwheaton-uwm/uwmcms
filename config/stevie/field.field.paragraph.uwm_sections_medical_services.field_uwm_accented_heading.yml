@@ -1,0 +1,23 @@
+uuid: 8d3e426b-e3de-4e94-ac73-0a734c3a6e09
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_accented_heading
+    - paragraphs.paragraphs_type.uwm_sections_medical_services
+id: paragraph.uwm_sections_medical_services.field_uwm_accented_heading
+field_name: field_uwm_accented_heading
+entity_type: paragraph
+bundle: uwm_sections_medical_services
+label: 'Accented section heading'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean
