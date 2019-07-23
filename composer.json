@@ -230,6 +230,9 @@
       },
       "drupal/current_page_crumb": {
         "Cached breadcrumb not updating on node change": "https://www.drupal.org/files/issues/current_page_crumb-cache-fix-2871340-3.patch"
+      },
+      "drupal/schema_metatag": {
+        "Add the target property to PotentialAction of search on the WebPage schema type": "https://www.drupal.org/files/issues/2019-06-04/schema_metatag-searchaction_target_missing-2968062-22.patch"
       }
     }
   },
