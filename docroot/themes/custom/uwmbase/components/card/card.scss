@@ -31,6 +31,10 @@
     padding-top: 0;
     padding-bottom: 0;
 
+    ul, ol {
+      padding-left: 1.625rem; // 26px
+    }
+
     .list-group-item {
       padding: 0;
       margin: 0;
@@ -139,8 +143,9 @@
   z-index: 100;
 }
 
+// Customize cards in a grid that has column dividers.
 .uwm-grid-column-dividers {
-  // Customize cards in a grid that has column dividers.
+
   .field--name-field-uwm-card-header {
     padding: 0;
     h3 {
@@ -162,4 +167,55 @@
       margin-bottom: 0;
     }
   }
+}
+
+// Row of 3 intro cards on Medical Service/Specialty nodes.
+// This uses a custom css class added via field on Section (or Sections for
+// Medical Services) paragraph.
+// @TODO: move this to medical-services.scss -OR- could this be generalized for
+// h3 in the card header? new text-with-icon paragraph type?
+.uwm-section.specialty-intro-cards {
+
+  .card-deck {
+    padding-bottom: 0;
+  }
+
+  .card {
+
+    h3 {
+      font-family: $font-family-base;
+      font-size: 1.125rem; // 18px
+      line-height: 1.375rem; // 22px
+      font-weight: $font-weight-semi-bold;
+      margin: 0 0 1rem 0;
+      padding: 0 0 0 2.125rem; // 34px = 22px + 12px space for icon
+
+      background-image: url('/themes/custom/uwmbase/dist/assets/uwm-icons/icon_heart_light_gray.svg');
+      background-position: left center;
+      background-size: 1.375rem 1.375rem; // 22px
+      background-repeat: no-repeat;
+    }
+
+    .card-body {
+
+      p:last-child,
+      ul:last-child,
+      ol:last-child {
+        margin-bottom: 0;
+      }
+
+      ul, ol {
+        // Align bullet with middle of heart icon.
+        padding-left: 1.625rem; // 26px
+      }
+
+    }
+
+    a.btn-cta {
+      margin-top: 1.25rem; // 20px
+      margin-bottom: 0;
+    }
+
+  }
+
 }
