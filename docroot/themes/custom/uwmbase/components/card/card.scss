@@ -79,7 +79,9 @@
   }
 
   .uwm-grid-column-dividers .card-deck .card {
-    flex-basis: calc(50%);
+    flex-basis: 50%;
+    // IE 11 needs this...
+    max-width: 50%;
   }
 
 }
