@@ -138,17 +138,27 @@ function uwmbase_theme_registry_alter(&$theme_registry) {
 function uwmbase_page_attachments_alter(&$variables) {
 
   $currentPath = \Drupal::service('path.current')->getPath();
+  $isFrontPage = \Drupal::service('path.matcher')->isFrontPage();
 
   /***
-   * Replace double slashes in start of canonical_url:
+   * Do any special work on tags in the html head section:
    */
   if (!empty($variables['#attached']['html_head'])) {
     foreach ($variables['#attached']['html_head'] as &$value) {
 
+      // Replace double slashes in start of canonical_url.
       if ($value[1] === 'canonical_url' && isset($value[0]['#attributes']['href'])) {
         $value[0]['#attributes']['href'] = str_replace('.org//', '.org/',
             $value[0]['#attributes']['href']);
       }
+
+      // Remove schema_metatag's JSON-LD meta on search and front pages.
+      if ($isFrontPage || stripos($currentPath, '/search') !== FALSE) {
+
+        unset($variables['#attached']['html_head']['schema_metatag']);
+
+      }
+
     }
   }
 
