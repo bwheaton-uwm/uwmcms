@@ -237,3 +237,9 @@ h1.page-title {
 .uwm-section.uwm-section.uwm-accent-color__white .uwm-accent-heading--centered::after {
   border-top-color: color('white');
 }
+
+@include media-breakpoint-up('md') {
+  .text-md-nowrap {
+    white-space: nowrap !important;
+  }
+}
