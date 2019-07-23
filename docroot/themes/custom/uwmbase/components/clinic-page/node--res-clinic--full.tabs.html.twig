@@ -30,20 +30,25 @@
 
 
       {% if content.field_res_providers|render|trim is not empty %}
-      <li class="nav-item {{ hide_providers_css_class }}">
-        <a class="nav-item nav-link" id="providers-tab-tab" data-toggle="tab"
-          href="#providers-tab" role="tab" aria-controls="providers-tab"
-          aria-selected="false"
-          data-tab-history="true"
-          data-tab-history-changer="push"
-          data-tab-history-update-url="true">
-          {{ '<span>Care</span> <span>Providers</span>' }}
-        </a>
-      </li>
+        <li class="nav-item {{ hide_providers_css_class }}">
+
+          {# Left sidebar "Care Providers" link destination #}
+          <a class="nav-item nav-link" id="providers-tab-tab" data-toggle="tab"
+            href="#providers-tab" role="tab" aria-controls="providers-tab"
+            aria-selected="false"
+            data-tab-history="true"
+            data-tab-history-changer="push"
+            data-tab-history-update-url="true">
+            {# Use spans to designate line breaks for smaller screens. #}
+            {{ '<span>Care</span> <span>Providers</span>' }}
+          </a>
+        </li>
       {% endif %}
 
 
       <li class="nav-item">
+
+        {# Left sidebar "Directions" link destination #}
         <a class="nav-item nav-link" id="directions-tab-tab" data-toggle="tab"
           href="#directions-tab" role="tab" aria-controls="directions-tab"
           aria-selected="false"

@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: uwm_3_col_proof_points
-label: '3-Column Proof Points'
+label: '(OLD) 3-Column Proof Points'
 icon_uuid: null
-description: ''
+description: '** To be deleted after all instances are converted to Grid + Card components **'
 behavior_plugins: {  }

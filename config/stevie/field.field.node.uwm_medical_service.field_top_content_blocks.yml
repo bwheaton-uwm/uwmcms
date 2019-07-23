@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_top_content_blocks
     - node.type.uwm_medical_service
     - paragraphs.paragraphs_type.half_wide_hero
+    - paragraphs.paragraphs_type.uwm_sections_medical_services
   module:
     - entity_reference_revisions
 id: node.uwm_medical_service.field_top_content_blocks
@@ -24,101 +25,102 @@ settings:
     negate: 0
     target_bundles:
       half_wide_hero: half_wide_hero
+      uwm_sections_medical_services: uwm_sections_medical_services
     target_bundles_drag_drop:
-      award:
-        weight: 33
-        enabled: false
-      board_certification:
-        weight: 34
-        enabled: false
-      degree:
-        weight: 35
-        enabled: false
-      detailed_contact_card:
-        weight: 36
-        enabled: false
-      education_history:
-        weight: 37
-        enabled: false
       half_wide_hero:
         enabled: true
-        weight: 38
+        weight: -65
+      uwm_sections_medical_services:
+        enabled: true
+        weight: -64
+      award:
+        weight: -63
+        enabled: false
+      board_certification:
+        weight: -62
+        enabled: false
+      degree:
+        weight: -61
+        enabled: false
+      detailed_contact_card:
+        weight: -60
+        enabled: false
+      education_history:
+        weight: -59
+        enabled: false
       headshot_card:
-        weight: 39
+        weight: -58
         enabled: false
       hours_for_day:
-        weight: 40
+        weight: -57
         enabled: false
       hours_of_operation:
-        weight: 41
+        weight: -56
         enabled: false
       uwm_3_col_proof_points:
-        weight: 42
+        weight: -55
         enabled: false
       uwm_accent_heading:
-        weight: 43
+        weight: -54
         enabled: false
       uwm_accordion:
-        weight: 44
+        weight: -53
         enabled: false
       uwm_accordion_section:
-        weight: 45
+        weight: -52
         enabled: false
       uwm_accordion_sub_section:
-        weight: 46
+        weight: -51
         enabled: false
       uwm_basic_content:
-        weight: 47
+        weight: -50
         enabled: false
       uwm_block:
-        weight: 48
+        weight: -49
         enabled: false
       uwm_card:
-        weight: 49
+        weight: -48
         enabled: false
       uwm_content_reference:
-        weight: 50
+        weight: -47
         enabled: false
       uwm_cta_link:
-        weight: 51
+        weight: -46
         enabled: false
       uwm_featured_story:
-        weight: 52
+        weight: -45
         enabled: false
       uwm_full_html:
-        weight: 53
+        weight: -44
         enabled: false
       uwm_grid:
-        weight: 54
+        weight: -43
         enabled: false
       uwm_image:
-        weight: 55
+        weight: -42
         enabled: false
       uwm_image_hero:
-        weight: 56
+        weight: -41
         enabled: false
       uwm_link_with_icon:
-        weight: 57
+        weight: -40
         enabled: false
       uwm_media:
-        weight: 58
+        weight: -39
         enabled: false
       uwm_modal:
-        weight: 59
+        weight: -38
         enabled: false
       uwm_quiz_question:
-        weight: 60
+        weight: -37
         enabled: false
       uwm_section:
-        weight: 61
-        enabled: false
-      uwm_sections_medical_services:
-        weight: 62
+        weight: -36
         enabled: false
       uwm_text:
-        weight: 63
+        weight: -35
         enabled: false
       uwm_view:
-        weight: 64
+        weight: -34
         enabled: false
 field_type: entity_reference_revisions
