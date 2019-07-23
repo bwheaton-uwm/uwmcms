@@ -77,6 +77,10 @@
     flex-grow: 0;
   }
 
+  .uwm-grid-column-dividers .card-deck .card {
+    flex-basis: calc(50%);
+  }
+
 }
 
 @include media-breakpoint-up('sm') {
@@ -214,6 +218,24 @@
     a.btn-cta {
       margin-top: 1.25rem; // 20px
       margin-bottom: 0;
+    }
+
+  }
+
+  @include media-breakpoint-up('md') {
+
+    // Override card-deck default of all cards in single row to enforce
+    // 3 per row.
+    .card {
+      @include make-col(4);
+    }
+
+    .uwm-grid-column-dividers .card-deck > .card {
+      border-left: 1px solid theme-color('border-gray');
+
+      &:nth-of-type(3n+1) {
+        border-left: none;
+      }
     }
 
   }
