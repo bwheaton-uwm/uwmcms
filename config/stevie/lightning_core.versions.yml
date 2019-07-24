@@ -206,3 +206,6 @@ honeypot: 1.29.0
 image_style_quality: 1.3.0
 current_page_crumb: 1.2.0
 schema_metatag: 1.3.0
+schema_web_page: 1.3.0
+schema_web_site: 1.3.0
+schema_organization: 1.3.0
