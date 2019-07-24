@@ -59,7 +59,8 @@
                 <div class="col-sm-12 spl">
                     {% if content.field_res_expertises %}
                         {% set Specialties = content.field_res_expertises|uwm_filter_non_numeric_keys|uwm_replace_links_with_text|sort %}
-            <h5>{{ "Medical Specialties"| t }}</h5>
+
+                        <h5>{{ (Specialties|length > 1) ? "Medical Specialties" : "Medical Specialty"| t }}</h5>
                         <ul>
                             {% for i in Specialties %}
                                 <li>{{ i }}</li>

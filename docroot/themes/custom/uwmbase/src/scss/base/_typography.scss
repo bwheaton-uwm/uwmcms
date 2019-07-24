@@ -42,8 +42,8 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  padding-top: 3.125rem;
-  padding-bottom: 1.875rem;
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
 }
 
 h3, .h3 {
@@ -67,6 +67,14 @@ h1.page-title {
     margin-top: 4px;
     margin-right: -4px;
   }
+}
+
+.font-family-heading {
+  font-family: $font-family-heading;
+}
+
+.font-family-base {
+  font-family: $font-family-base;
 }
 
 %uwdm-no-underline-link-dark {
@@ -236,4 +244,10 @@ h1.page-title {
 .uwm-section.uwm-section.uwm-accent-color__white .uwm-accent-heading::after,
 .uwm-section.uwm-section.uwm-accent-color__white .uwm-accent-heading--centered::after {
   border-top-color: color('white');
+}
+
+@include media-breakpoint-up('md') {
+  .text-md-nowrap {
+    white-space: nowrap !important;
+  }
 }

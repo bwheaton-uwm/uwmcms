@@ -244,6 +244,11 @@ homepage:
     - core/picturefill
     - video_embed_field/responsive-video
 
+view-medical-specialties-for-services:
+  css:
+    component:
+      dist/css/view-medical-specialties-for-services.css: {}
+      
 # ZEN LIBRARIES - Override, remove, or replace these
 
 anchor-scroll:

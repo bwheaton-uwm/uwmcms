@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.uwm_medical_specialty.body
     - field.field.node.uwm_medical_specialty.field_meta_tags
     - field.field.node.uwm_medical_specialty.field_search_best_bets
     - field.field.node.uwm_medical_specialty.field_uwm_find_a_location_link
@@ -11,17 +12,26 @@ dependencies:
     - field.field.node.uwm_medical_specialty.field_uwm_page_path_name
     - field.field.node.uwm_medical_specialty.field_uwm_parent_page
     - field.field.node.uwm_medical_specialty.field_uwm_sections
+    - field.field.node.uwm_medical_specialty.field_uwm_weight
     - node.type.uwm_medical_specialty
   module:
     - entity_reference_revisions
     - image
     - metatag
+    - text
     - user
 id: node.uwm_medical_specialty.default
 targetEntityType: node
 bundle: uwm_medical_specialty
 mode: default
 content:
+  body:
+    weight: 8
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
   field_meta_tags:
     weight: 7
     label: above
@@ -78,6 +88,15 @@ content:
       link: ''
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
+    region: content
+  field_uwm_weight:
+    weight: 9
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
     region: content
   links:
     weight: 0

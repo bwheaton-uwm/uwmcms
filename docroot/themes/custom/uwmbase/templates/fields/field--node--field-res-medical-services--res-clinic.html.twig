@@ -47,7 +47,8 @@
   @see node--res-clinic--card.html.twig
  #}
 {% if view_mode is same as('card') %}
-  {% set label = 'Medical Specialty'|t %}
+
+  {% set label = (items|length > 1) ? 'Medical Specialties' : 'Medical Specialty'|t %}
   {% set more_services = (items|length > 3) %}
 
   <div{{ attributes.addClass(classes) }}>
