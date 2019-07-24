@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d2e4dfdd6429e03305dc80b9b9d249e9",
+    "content-hash": "d95e92db3519b589f60f36decde46bba",
     "packages": [
         {
             "name": "acquia/blt",
@@ -8254,6 +8254,10 @@
                     "homepage": "https://www.drupal.org/user/47194"
                 },
                 {
+                    "name": "joseph.olstad",
+                    "homepage": "https://www.drupal.org/user/1321830"
+                },
+                {
                     "name": "rjacobs",
                     "homepage": "https://www.drupal.org/user/422459"
                 },
@@ -11859,6 +11863,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "Add the target property to PotentialAction of search on the WebPage schema type": "https://www.drupal.org/files/issues/2019-06-04/schema_metatag-searchaction_target_missing-2968062-22.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
