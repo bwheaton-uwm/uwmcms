@@ -903,6 +903,8 @@ function uwmbase_preprocess_paragraph__half_wide_hero(&$variables) {
  * @see uwmbase_preprocess_paragraph__uwm_sections_medical_services()
  */
 function uwmbase_preprocess_paragraph__uwm_section(&$variables) {
+
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
   $paragraph = $variables['paragraph'];
 
   $variables['background_image_url'] = NULL;
@@ -930,6 +932,12 @@ function uwmbase_preprocess_paragraph__uwm_section(&$variables) {
     // TODO: complete if cases arises for Medical Service or Specialty nodes.
   }
 
+  // Retrieve custom CSS classes from field.
+  $variables['custom_css_classes'] = '';
+  if ($paragraph->hasField('field_uwm_css_class') && !$paragraph->get('field_uwm_css_class')->isEmpty()) {
+    $variables['custom_css_classes'] = trim($paragraph->get('field_uwm_css_class')->first()->getValue()['value']);
+  }
+
 }
 
 /**
@@ -954,6 +962,7 @@ function uwmbase_preprocess_paragraph__uwm_sections_medical_services(&$variables
  */
 function uwmbase_preprocess_paragraph__uwm_grid(&$variables) {
 
+  /** @var \Drupal\paragraphs\ParagraphInterface $grid_paragraph */
   $grid_paragraph = $variables['paragraph'];
 
   // If any of the child paragraphs are cards, style all as cards.
@@ -1011,6 +1020,17 @@ function uwmbase_preprocess_paragraph__uwm_grid(&$variables) {
       }
     }
   }
+
+  // Determine whether to add a Bootstrap grid container wrapper.
+  // The Section paragraph types provide the container in their templates, so
+  // this is a catch for any future case in which a Grid exists outside of
+  // a Section.
+  $variables['add_container'] = FALSE;
+  $parent = $grid_paragraph->getParentEntity();
+  if (!empty($parent) && !in_array($parent->bundle(), ['uwm_section', 'uwm_sections_medical_services'])) {
+    $variables['add_container'] = TRUE;
+  }
+
 }
 
 /**
