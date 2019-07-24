@@ -69,6 +69,14 @@ h1.page-title {
   }
 }
 
+.font-family-heading {
+  font-family: $font-family-heading;
+}
+
+.font-family-base {
+  font-family: $font-family-base;
+}
+
 %uwdm-no-underline-link-dark {
   color: $body-color;
   text-decoration: none;
@@ -236,4 +244,10 @@ h1.page-title {
 .uwm-section.uwm-section.uwm-accent-color__white .uwm-accent-heading::after,
 .uwm-section.uwm-section.uwm-accent-color__white .uwm-accent-heading--centered::after {
   border-top-color: color('white');
+}
+
+@include media-breakpoint-up('md') {
+  .text-md-nowrap {
+    white-space: nowrap !important;
+  }
 }

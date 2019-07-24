@@ -121,6 +121,11 @@ $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
     width: 18px;
     height: 18px;
   }
+  &.uwm-icon--heart__light-gray {
+    background-image: url('#{$icon-path}/icon_heart_light_gray.svg');
+    width: 18px;
+    height: 18px;
+  }
   &.uwm-icon--instagram {
     background-image: url('#{$icon-path}/icon_instagram.svg');
   }
