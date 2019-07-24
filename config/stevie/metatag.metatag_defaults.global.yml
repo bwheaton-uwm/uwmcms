@@ -17,3 +17,18 @@ tags:
   twitter_cards_page_url: 'https://www.uwmedicine.org[current-page:url:path]'
   twitter_cards_type: summary
   twitter_cards_title: '[current-page:title]'
+  schema_organization_id: 'https://www.uwmedicine.org#organization'
+  schema_organization_url: 'https://www.uwmedicine.org'
+  schema_organization_name: 'UW Medicine'
+  schema_organization_type: MedicalOrganization
+  schema_organization_contact_point: 'a:3:{s:5:"@type";s:12:"ContactPoint";s:9:"telephone";s:17:"+1 (206) 520-5000";s:11:"contactType";s:16:"Customer service";}'
+  schema_web_page_is_accessible_for_free: 'True'
+  schema_web_page_type: WebPage
+  schema_web_page_description: '[node:summary]'
+  schema_web_page_id: 'https://www.uwmedicine.org#webpage'
+  schema_web_page_author: 'a:4:{s:5:"@type";s:12:"Organization";s:3:"@id";s:39:"https://www.uwmedicine.org#organization";s:4:"name";s:11:"UW Medicine";s:3:"url";s:26:"https://www.uwmedicine.org";}'
+  schema_web_site_url: 'https://www.uwmedicine.org'
+  schema_web_site_potential_action: 'a:4:{s:5:"@type";s:12:"SearchAction";s:5:"query";s:56:"https://www.uwmedicine.org/search?s={search_term_string}";s:11:"query-input";s:32:"required name=search_term_string";s:6:"target";a:2:{s:5:"@type";s:10:"EntryPoint";s:11:"urlTemplate";s:56:"https://www.uwmedicine.org/search?s={search_term_string}";}}'
+  schema_web_site_type: WebSite
+  schema_web_site_id: 'https://www.uwmedicine.org#website'
+  schema_web_site_name: '[site:name]'

@@ -7,6 +7,7 @@ dependencies:
     - field.field.paragraph.uwm_sections_medical_services.field_uwm_accented_heading
     - field.field.paragraph.uwm_sections_medical_services.field_uwm_background_color
     - field.field.paragraph.uwm_sections_medical_services.field_uwm_component
+    - field.field.paragraph.uwm_sections_medical_services.field_uwm_css_class
     - field.field.paragraph.uwm_sections_medical_services.field_uwm_media
     - field.field.paragraph.uwm_sections_medical_services.field_uwm_section_heading
     - paragraphs.paragraphs_type.uwm_sections_medical_services
@@ -52,4 +53,5 @@ content:
     region: content
 hidden:
   field_uwm_accented_heading: true
+  field_uwm_css_class: true
   field_uwm_media: true
