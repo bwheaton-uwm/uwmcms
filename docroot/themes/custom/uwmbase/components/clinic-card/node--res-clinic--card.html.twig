@@ -130,12 +130,18 @@
         Phone number formatting is in the field template.
         @see field--node--field-res-phone-number--res-clinic.html.twig
       #}
+      {% set isHospital = node.field_res_is_hospital.0.value is not empty and node.field_res_is_hospital.0.value == '1' %}
       {% if content.field_res_phone_number.0 is not empty %}
+
         <div class="clinic-card__field clinic-card__field-phone">
 
-          <span class="uwm-icon uwm-icon--calendar" aria-hidden="true"></span>
-
-          <h3 class="clinic-card__subheader">{{ "Appointments"|t }}</h3>
+            {% if isHospital %}
+                <span class="uwm-icon uwm-icon--heart" aria-hidden="true"></span>
+                <h3 class="clinic-card__subheader">{{ "Contact"|t }}</h3>
+            {% else %}
+                <span class="uwm-icon uwm-icon--calendar" aria-hidden="true"></span>
+                <h3 class="clinic-card__subheader">{{ "Appointments"|t }}</h3>
+            {% endif %}
 
           <div class="clinic-card__phone-button">
             {{ content.field_res_phone_number }}
