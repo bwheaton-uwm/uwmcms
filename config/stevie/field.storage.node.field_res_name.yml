@@ -13,26 +13,25 @@ entity_type: node
 type: name
 settings:
   components:
-    title: true
     given: true
     middle: true
     family: true
     generational: true
     credentials: true
-  minimum_components:
     title: false
+  minimum_components:
     given: true
-    middle: false
     family: true
+    title: false
+    middle: false
     generational: false
     credentials: false
-  allow_family_or_given: false
   labels:
     title: Title
-    given: Given
+    given: 'First name'
     middle: 'Middle name(s)'
-    family: Family
-    generational: Generational
+    family: 'Last Name'
+    generational: Suffix
     credentials: Credentials
   max_length:
     title: 31
@@ -43,12 +42,12 @@ settings:
     credentials: 255
   autocomplete_source:
     title:
-      - title
+      title: title
     given: {  }
     middle: {  }
     family: {  }
     generational:
-      - generation
+      generational: '0'
     credentials: {  }
   autocomplete_separator:
     title: ' '
@@ -57,6 +56,7 @@ settings:
     family: ' -'
     generational: ' '
     credentials: ', '
+  allow_family_or_given: false
   title_options:
     - '-- --'
     - Mr.
@@ -81,6 +81,7 @@ settings:
     - X
   sort_options:
     title: false
+    generational: false
 module: name
 locked: false
 cardinality: 1

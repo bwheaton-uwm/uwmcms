@@ -41,11 +41,6 @@ settings:
     family: text
     generational: select
     credentials: text
-  component_layout: default
-  show_component_required_marker: true
-  credentials_inline: true
-  override_format: default
-  component_css: ''
   inline_css:
     title: ''
     given: ''
@@ -53,4 +48,9 @@ settings:
     family: ''
     generational: ''
     credentials: ''
+  component_css: ''
+  component_layout: default
+  show_component_required_marker: true
+  credentials_inline: true
+  override_format: default
 field_type: name
