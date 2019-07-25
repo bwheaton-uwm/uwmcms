@@ -15,6 +15,7 @@ use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\views\ViewExecutable;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_entity_presave().
@@ -92,7 +93,7 @@ function uwmcs_utils_entity_field_access($operation, FieldDefinitionInterface $f
 
   $account = \Drupal::currentUser();
   if ($operation === 'edit' && !$account->hasPermission('administer nodes') &&
-      in_array('staff_clinic_manager', $account->getRoles())
+    in_array('staff_clinic_manager', $account->getRoles())
   ) {
 
     if (in_array($field_definition->getName(), $allowedFields)) {
@@ -190,5 +191,40 @@ function uwmcs_utils_acquia_contenthub_process_webhook_alter($webhook) {
     }
 
   }
+
+}
+
+/**
+ * Implements hook_toolbar().
+ */
+function uwmcs_utils_toolbar() {
+
+  $items = [];
+
+  if (!empty($_ENV['AH_SITE_ENVIRONMENT'])) {
+
+    $env = 'ENV-' . $_ENV['AH_SITE_GROUP'] . '-' . $_ENV['AH_SITE_ENVIRONMENT'];
+
+    $items['uwm_env'] = [
+      '#type' => 'toolbar_item',
+      'tab' => [
+        '#type' => 'link',
+        '#title' => $env,
+        '#url' => Url::fromRoute('<front>'),
+        '#options' => [
+          'attributes' => [
+            'title' => $env,
+            'class' => [
+              strtolower($env), 'toolbar-item', 'text-info',
+            ],
+          ],
+        ],
+      ],
+      '#weight' => 999,
+    ];
+
+  }
+
+  return $items;
 
 }
