@@ -1,0 +1,29 @@
+uuid: 5a51b910-e77f-4955-8bce-a0770b9696f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.featured_story
+    - field.storage.block_content.field_uwm_media_image
+    - media.type.image
+id: block_content.featured_story.field_uwm_media_image
+field_name: field_uwm_media_image
+entity_type: block_content
+bundle: featured_story
+label: 'Background Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: changed
+      direction: DESC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

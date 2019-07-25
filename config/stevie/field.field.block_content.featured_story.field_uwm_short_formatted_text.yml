@@ -1,0 +1,29 @@
+uuid: 8656f5b1-3599-445b-b82c-e0b4c019f4fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.featured_story
+    - field.storage.block_content.field_uwm_short_formatted_text
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    rich_text: rich_text
+    basic_html: '0'
+    unrestricted: '0'
+    unrestricted_no_wysiwyg: '0'
+    plain_text: '0'
+id: block_content.featured_story.field_uwm_short_formatted_text
+field_name: field_uwm_short_formatted_text
+entity_type: block_content
+bundle: featured_story
+label: 'Accent Heading'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text
