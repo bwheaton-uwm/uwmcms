@@ -13,34 +13,53 @@ dependencies:
     - paragraphs.paragraphs_type.uwm_sections_medical_services
   module:
     - allowed_formats
+    - field_group
     - paragraphs
     - text
+third_party_settings:
+  field_group:
+    group_style_options:
+      children:
+        - field_uwm_accent_color
+        - field_uwm_accented_heading
+        - field_uwm_background_color
+        - field_uwm_css_class
+      parent_name: ''
+      weight: 1
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Style Options'
 id: paragraph.uwm_sections_medical_services.default
 targetEntityType: paragraph
 bundle: uwm_sections_medical_services
 mode: default
 content:
   field_uwm_accent_color:
-    weight: 2
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_uwm_accented_heading:
-    weight: 1
+    weight: 6
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_uwm_background_color:
-    weight: 3
+    weight: 7
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_uwm_component:
-    weight: 5
+    weight: 6
     settings:
       title: component
       title_plural: components
@@ -59,7 +78,7 @@ content:
     type: paragraphs
     region: content
   field_uwm_css_class:
-    weight: 4
+    weight: 8
     settings:
       size: 60
       placeholder: ''
