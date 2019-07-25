@@ -31,9 +31,21 @@
  * - is_admin: Flag for admin user status. Will be true when the current user
  *   is an administrator.
  *
+ * Custom variables:
+ * - background_image_url: string, URL to background image for entire section.
+ * - custom_css_classes: string, any custom CSS classes entered in
+ *   field_uwm_css_class.
+ *
  * @see template_preprocess_paragraph()
  * @see uwmbase_preprocess_paragraph__uwm_section()
  */
+#}
+{#
+  Add classes from field values:
+  - if there is a background image
+  - accent color
+  - background color
+  - custom entered classes
 #}
 {%
   set classes = [
@@ -41,18 +53,11 @@
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
     'paragraph--id--' ~ paragraph.id.value,
     background_image_url ? 'uwm-section--background-image',
-    content.field_uwm_accent_color.0 is not empty ? content.field_uwm_accent_color|render
+    content.field_uwm_accent_color.0 is not empty ? content.field_uwm_accent_color|render,
+    content.field_uwm_background_color.0 is not empty ? 'uwm-section--background-' ~ paragraph.field_uwm_background_color.entity.label|lower,
+    custom_css_classes|length > 0 ? custom_css_classes
   ]
 %}
-
-{#
-  Background color
-  Add to CSS classes for section
-#}
-{% if content.field_uwm_background_color|render %}
-  {% set background_color = ['uwm-section--background-' ~ paragraph.field_uwm_background_color.entity.label|lower] %}
-  {% set classes = classes|merge(background_color) %}
-{% endif %}
 
 <section{{ attributes.addClass(classes) }}>
 
