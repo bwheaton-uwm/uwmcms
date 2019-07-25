@@ -52,6 +52,7 @@ content:
     type: text_default
     region: content
 hidden:
+  search_api_excerpt: true
   field_uwm_accented_heading: true
   field_uwm_css_class: true
   field_uwm_media: true

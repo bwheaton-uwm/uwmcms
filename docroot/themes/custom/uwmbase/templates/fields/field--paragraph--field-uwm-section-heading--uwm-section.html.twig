@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * Theme override for Section Heading field on Section paragraph.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - label_hidden: Whether to show the field label or not.
+ * - title_attributes: HTML attributes for the title.
+ * - label: The label for the field.
+ * - multiple: TRUE if a field can contain multiple items.
+ * - items: List of all the field items. Each item contains:
+ *   - attributes: List of HTML attributes for each item.
+ *   - content: The field item's content.
+ * - entity_type: The entity type to which the field belongs.
+ * - field_name: The name of the field.
+ * - field_type: The type of the field.
+ * - label_display: The display settings for the label.
+ *
+ * Custom variables:
+ * - accented_heading: boolean, whether to style as accent heading.
+ *
+ * @see template_preprocess_field()
+ * @see uwmbase_preprocess_field__paragraph__field_uwm_section_heading()
+ */
+#}
+{%
+  set item_classes = [
+    'field',
+    'field--name-' ~ field_name|clean_class,
+    'field--type-' ~ field_type|clean_class,
+    accented_heading ? 'uwm-accent-heading',
+    accented_heading ? 'uwm-accent-heading__title',
+  ]
+%}
+
+{% for item in items %}
+  <h2{{ attributes.addClass(item_classes) }}>{{ item.content }}</h2>
+{% endfor %}

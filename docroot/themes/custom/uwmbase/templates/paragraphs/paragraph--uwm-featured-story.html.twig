@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Default theme implementation to display a paragraph in Bootstrap Paragraphs.
+ * Theme implementation to display a Featured Story paragraph.
  *
  * Available variables:
  * - paragraph: Full paragraph entity.
@@ -32,43 +32,35 @@
  *   is an administrator.
  *
  * @see template_preprocess_paragraph()
- *
- * @ingroup themeable
  */
 #}
 
-{# Renders Background field. #}
-{# Sets class name from values in database. #}
+{{ attach_library('uwmbase/featured-story') }}
 
-
-{# The template default set classes. #}
 {% set classes = [
-'uwm-section',
-view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-'paragraph--id--' ~ paragraph.id.value,
-'uwm-featured-story',
-content.field_uwm_bottom_border_options|render,
+  'uwm-section',
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  'paragraph--id--' ~ paragraph.id.value,
+  'uwm-featured-story',
+  content.field_uwm_bottom_border_options|render,
 ]
 %}
 
-{{ attach_library('uwmbase/featured-story') }}
-
-{% set bg_url =  content.field_uwm_image.0["#markup"] %}
-
-{% if content.field_uwm_background_color|render %}
-  {% set background_color = ['uwm-section--background-' ~ paragraph.field_uwm_background_color.entity.label|lower] %}
-  {% set classes = classes|merge(background_color) %}
-{% endif %}
-
-{# Prints div with classes, and content without Width and Background. #}
 <section{{ attributes.addClass(classes) }}>
-  <div class="uwm-featured-story__background">
-    {{ content.field_uwm_image }}
-  </div>
+  {% if content.field_uwm_image.0 is not empty %}
+    <div class="uwm-featured-story__background">
+      {{ content.field_uwm_image }}
+    </div>
+  {% endif %}
+
   <div class="container-xl">
     <div class="row">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-4 uwm-featured-story__content">
-        {{ content|without('field_uwm_image', 'field_uwm_bottom_border_options', 'field_uwm_modal') }}
+      <div class="uwm-featured-story__content col-12 col-md-8 col-lg-6 col-xl-4">
+
+        {{ content.uwm_text }}
+
+        {{ content.field_uwm_card_content }}
+
       </div>
     </div>
 

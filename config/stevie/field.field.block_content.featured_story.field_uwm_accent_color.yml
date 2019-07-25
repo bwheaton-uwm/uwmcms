@@ -1,0 +1,29 @@
+uuid: c4d6cb9e-3e21-44ed-9248-0506a17a2540
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.featured_story
+    - field.storage.block_content.field_uwm_accent_color
+    - taxonomy.vocabulary.uwm_accent_colors
+id: block_content.featured_story.field_uwm_accent_color
+field_name: field_uwm_accent_color
+entity_type: block_content
+bundle: featured_story
+label: 'Accent Color'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      uwm_accent_colors: uwm_accent_colors
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

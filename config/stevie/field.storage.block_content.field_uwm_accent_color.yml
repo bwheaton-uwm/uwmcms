@@ -1,0 +1,20 @@
+uuid: bfcf00f2-5aeb-4690-b1c1-f16ae0d820fa
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - taxonomy
+id: block_content.field_uwm_accent_color
+field_name: field_uwm_accent_color
+entity_type: block_content
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

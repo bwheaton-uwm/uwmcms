@@ -1,23 +1,22 @@
-uuid: edf6bf0e-984a-4499-9b80-b229459a65ef
+uuid: 6e872bde-fbaa-4c8d-a9e6-227bda9c290d
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.uwm_featured_story.field_uwm_accent_color
-    - field.field.paragraph.uwm_featured_story.field_uwm_bottom_border_options
-    - field.field.paragraph.uwm_featured_story.field_uwm_card_content
-    - field.field.paragraph.uwm_featured_story.field_uwm_image
-    - field.field.paragraph.uwm_featured_story.field_uwm_modal
-    - field.field.paragraph.uwm_featured_story.field_uwm_section_heading
-    - field.field.paragraph.uwm_featured_story.field_uwm_short_formatted_text
-    - paragraphs.paragraphs_type.uwm_featured_story
+    - block_content.type.featured_story
+    - field.field.block_content.featured_story.field_uwm_accent_color
+    - field.field.block_content.featured_story.field_uwm_bottom_border_options
+    - field.field.block_content.featured_story.field_uwm_card_content
+    - field.field.block_content.featured_story.field_uwm_media_image
+    - field.field.block_content.featured_story.field_uwm_modal
+    - field.field.block_content.featured_story.field_uwm_section_heading
+    - field.field.block_content.featured_story.field_uwm_short_formatted_text
   module:
     - entity_reference_revisions
-    - image
     - text
-id: paragraph.uwm_featured_story.default
-targetEntityType: paragraph
-bundle: uwm_featured_story
+id: block_content.featured_story.default
+targetEntityType: block_content
+bundle: featured_story
 mode: default
 content:
   field_uwm_card_content:
@@ -29,14 +28,14 @@ content:
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
     region: content
-  field_uwm_image:
+  field_uwm_media_image:
+    type: entity_reference_entity_view
     weight: 0
     label: hidden
     settings:
-      image_style: ''
-      image_link: ''
+      view_mode: default
+      link: false
     third_party_settings: {  }
-    type: image
     region: content
   field_uwm_modal:
     type: entity_reference_revisions_entity_view

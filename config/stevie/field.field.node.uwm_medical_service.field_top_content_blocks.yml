@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_top_content_blocks
     - node.type.uwm_medical_service
     - paragraphs.paragraphs_type.half_wide_hero
+    - paragraphs.paragraphs_type.uwm_featured_story
     - paragraphs.paragraphs_type.uwm_sections_medical_services
   module:
     - entity_reference_revisions
@@ -26,6 +27,7 @@ settings:
     target_bundles:
       half_wide_hero: half_wide_hero
       uwm_sections_medical_services: uwm_sections_medical_services
+      uwm_featured_story: uwm_featured_story
     target_bundles_drag_drop:
       half_wide_hero:
         enabled: true
@@ -33,61 +35,61 @@ settings:
       uwm_sections_medical_services:
         enabled: true
         weight: -64
-      award:
+      uwm_featured_story:
+        enabled: true
         weight: -63
-        enabled: false
-      board_certification:
+      award:
         weight: -62
         enabled: false
-      degree:
+      board_certification:
         weight: -61
         enabled: false
-      detailed_contact_card:
+      degree:
         weight: -60
         enabled: false
-      education_history:
+      detailed_contact_card:
         weight: -59
         enabled: false
-      headshot_card:
+      education_history:
         weight: -58
         enabled: false
-      hours_for_day:
+      headshot_card:
         weight: -57
         enabled: false
-      hours_of_operation:
+      hours_for_day:
         weight: -56
         enabled: false
-      uwm_3_col_proof_points:
+      hours_of_operation:
         weight: -55
         enabled: false
-      uwm_accent_heading:
+      uwm_3_col_proof_points:
         weight: -54
         enabled: false
-      uwm_accordion:
+      uwm_accent_heading:
         weight: -53
         enabled: false
-      uwm_accordion_section:
+      uwm_accordion:
         weight: -52
         enabled: false
-      uwm_accordion_sub_section:
+      uwm_accordion_section:
         weight: -51
         enabled: false
-      uwm_basic_content:
+      uwm_accordion_sub_section:
         weight: -50
         enabled: false
-      uwm_block:
+      uwm_basic_content:
         weight: -49
         enabled: false
-      uwm_card:
+      uwm_block:
         weight: -48
         enabled: false
-      uwm_content_reference:
+      uwm_card:
         weight: -47
         enabled: false
-      uwm_cta_link:
+      uwm_content_reference:
         weight: -46
         enabled: false
-      uwm_featured_story:
+      uwm_cta_link:
         weight: -45
         enabled: false
       uwm_full_html:
