@@ -1,0 +1,20 @@
+uuid: c31d063e-1c8f-4ed0-93c3-ac61b0ee880b
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - taxonomy
+id: block_content.field_uwm_bottom_border_options
+field_name: field_uwm_bottom_border_options
+entity_type: block_content
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,8 @@
+uuid: e5eaf93d-9eac-4011-b648-432cca41221c
+langcode: en
+status: true
+dependencies: {  }
+id: featured_story
+label: 'Featured Story'
+revision: 1
+description: 'A featured story has a background image with a content card over it. Optionally, it can include a video play button that opens a video in a modal.<br/>(This mirrors the <a href="/admin/structure/paragraphs_type/uwm_featured_story/fields" target="_blank">Featured Story paragraph type</a> as reusable blocks.)'

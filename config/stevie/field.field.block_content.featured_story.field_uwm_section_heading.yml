@@ -1,0 +1,29 @@
+uuid: cad88da8-9dd5-4283-bff2-f3c5d5895834
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.featured_story
+    - field.storage.block_content.field_uwm_section_heading
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    rich_text: rich_text
+    basic_html: '0'
+    unrestricted: '0'
+    unrestricted_no_wysiwyg: '0'
+    plain_text: '0'
+id: block_content.featured_story.field_uwm_section_heading
+field_name: field_uwm_section_heading
+entity_type: block_content
+bundle: featured_story
+label: 'Story Title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

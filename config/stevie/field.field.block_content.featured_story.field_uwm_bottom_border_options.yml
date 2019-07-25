@@ -1,0 +1,33 @@
+uuid: 7d3b9ca0-6a4b-4bb2-ac70-0d5255fef4ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.featured_story
+    - field.storage.block_content.field_uwm_bottom_border_options
+    - taxonomy.vocabulary.uwm_bottom_border_options
+  content:
+    - 'taxonomy_term:uwm_bottom_border_options:1272c598-bc1c-45df-987f-057d3d87250b'
+id: block_content.featured_story.field_uwm_bottom_border_options
+field_name: field_uwm_bottom_border_options
+entity_type: block_content
+bundle: featured_story
+label: 'Background Image Bottom Border'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    target_uuid: 1272c598-bc1c-45df-987f-057d3d87250b
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      uwm_bottom_border_options: uwm_bottom_border_options
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
