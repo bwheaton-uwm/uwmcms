@@ -32,10 +32,6 @@
     padding-top: 0;
     padding-bottom: 0;
 
-    ul, ol {
-      padding-left: 1.625rem; // 26px
-    }
-
     .list-group-item {
       padding: 0;
       margin: 0;
@@ -205,15 +201,15 @@
 
     .card-body {
 
+      // Align bullets below middle of heart icon.
+      ul, ol {
+        padding-left: 1.625rem; // 26px
+      }
+
       p:last-child,
       ul:last-child,
       ol:last-child {
         margin-bottom: 0;
-      }
-
-      ul, ol {
-        // Align bullet with middle of heart icon.
-        padding-left: 1.625rem; // 26px
       }
 
     }
