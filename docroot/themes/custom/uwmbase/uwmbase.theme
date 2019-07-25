@@ -1038,7 +1038,7 @@ function uwmbase_preprocess_paragraph__uwm_grid(&$variables) {
  */
 function uwmbase_preprocess_field__paragraph__field_uwm_section_heading(&$variables) {
   // Define a variable that indicates if the heading should be accented.
-  // @see field--paragraph--field-uwm-section-heading.html.twig
+  // @see field--paragraph--field-uwm-section-heading--uwm-section.html.twig
   $variables['accented_heading'] = 0;
 
   if (isset($variables['element']['#object'])) {

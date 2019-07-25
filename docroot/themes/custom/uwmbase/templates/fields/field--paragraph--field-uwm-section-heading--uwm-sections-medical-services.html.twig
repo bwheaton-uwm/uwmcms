@@ -1,0 +1,21 @@
+{% extends directory ~ "/templates/fields/field--paragraph--field-uwm-section-heading--uwm-section.html.twig" %}
+{#
+/**
+ * @file
+ * Theme override for Section Heading field on Sections for Medical Services
+ * paragraph.
+ *
+ * 2019-07-17 NOTE:
+ * This paragraph type is used as for sections (parents of most components) on
+ * Medical Service and Medical Specialty node types. It would be desirable to
+ * consolidate and use the generic Section paragraph type everywhere. However,
+ * at the time of porting these pages to stevie, there was already much content
+ * populated in children of these Sections for Medical Services paragraphs. Thus
+ * we kept it, but aim to keep it in parity with generic Section paragraph in
+ * the theme code. Hence, it simply inherits the Section paragraph's field
+ * template.
+ *
+ * @see template_preprocess_field()
+ * @see uwmbase_preprocess_field__paragraph__field_uwm_section_heading()
+ */
+#}

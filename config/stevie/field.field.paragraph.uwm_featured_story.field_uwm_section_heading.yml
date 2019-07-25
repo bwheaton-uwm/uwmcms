@@ -1,0 +1,29 @@
+uuid: fda9936a-6de3-4134-b909-a4fed5adec22
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_section_heading
+    - paragraphs.paragraphs_type.uwm_featured_story
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    rich_text: rich_text
+    basic_html: '0'
+    unrestricted: '0'
+    unrestricted_no_wysiwyg: '0'
+    plain_text: '0'
+id: paragraph.uwm_featured_story.field_uwm_section_heading
+field_name: field_uwm_section_heading
+entity_type: paragraph
+bundle: uwm_featured_story
+label: 'Story Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text
