@@ -1,8 +1,9 @@
-uuid: 58330678-ac35-415c-a37b-acfea8de7b34
+uuid: 84da30e6-91cc-445f-bcde-b4c520cf70b8
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.full
     - field.field.node.uwm_medical_specialty.body
     - field.field.node.uwm_medical_specialty.field_link
     - field.field.node.uwm_medical_specialty.field_meta_tags
@@ -24,10 +25,10 @@ dependencies:
     - metatag
     - text
     - user
-id: node.uwm_medical_specialty.default
+id: node.uwm_medical_specialty.full
 targetEntityType: node
 bundle: uwm_medical_specialty
-mode: default
+mode: full
 content:
   body:
     weight: 8
@@ -67,9 +68,10 @@ content:
     weight: 11
     label: above
     settings:
-      link: true
+      view_mode: card
+      link: false
     third_party_settings: {  }
-    type: entity_reference_label
+    type: entity_reference_entity_view
     region: content
   field_uwm_find_a_location_link:
     weight: 1
