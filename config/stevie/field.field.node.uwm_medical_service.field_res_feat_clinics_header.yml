@@ -1,0 +1,21 @@
+uuid: b221d0ac-07b2-4f04-823a-72cd378187ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_feat_clinics_header
+    - node.type.uwm_medical_service
+id: node.uwm_medical_service.field_res_feat_clinics_header
+field_name: field_res_feat_clinics_header
+entity_type: node
+bundle: uwm_medical_service
+label: 'Featured Clinics header'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 'Explore our featured clinics.'
+default_value_callback: ''
+settings: {  }
+field_type: string

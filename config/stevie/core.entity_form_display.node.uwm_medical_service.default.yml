@@ -4,7 +4,10 @@ status: true
 dependencies:
   config:
     - entity_browser.browser.image_browser
+    - field.field.node.uwm_medical_service.field_link
     - field.field.node.uwm_medical_service.field_meta_tags
+    - field.field.node.uwm_medical_service.field_res_feat_clinics_header
+    - field.field.node.uwm_medical_service.field_res_featured_clinics
     - field.field.node.uwm_medical_service.field_search_best_bets
     - field.field.node.uwm_medical_service.field_top_content_blocks
     - field.field.node.uwm_medical_service.field_uwm_find_a_location_link
@@ -17,22 +20,128 @@ dependencies:
   module:
     - content_moderation
     - entity_browser
+    - field_group
+    - link
     - metatag
     - paragraphs
     - path
+third_party_settings:
+  field_group:
+    group_featured_clinics:
+      children:
+        - field_res_feat_clinics_header
+        - field_res_featured_clinics
+        - field_link
+      parent_name: ''
+      weight: 2
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Featured Clinics'
+    group_node_meta_:
+      children:
+        - field_uwm_medical_service
+        - field_search_best_bets
+        - field_uwm_page_path_name
+        - path
+        - url_redirects
+        - field_meta_tags
+        - sticky
+        - moderation_state
+        - status
+      parent_name: ''
+      weight: 4
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Node Meta Information'
+    group_top_content:
+      children:
+        - field_top_content_blocks
+      parent_name: ''
+      weight: 1
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Top Content'
+    group_mic:
+      children:
+        - field_uwm_sections
+      parent_name: ''
+      weight: 3
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Main Content'
+    group_old:
+      children:
+        - field_uwm_find_a_provider_link
+        - field_uwm_image
+        - field_uwm_find_a_location_link
+      parent_name: ''
+      weight: 5
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Old
 id: node.uwm_medical_service.default
 targetEntityType: node
 bundle: uwm_medical_service
 mode: default
 content:
+  field_link:
+    weight: 9
+    settings:
+      placeholder_url: '/search/locations?s=&medical-services-filter=__xyz__'
+      placeholder_title: 'See All __xyz__ Clinics'
+    third_party_settings: {  }
+    type: link_default
+    region: content
   field_meta_tags:
-    weight: 11
+    weight: 16
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
     region: content
+  field_res_feat_clinics_header:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_res_featured_clinics:
+    weight: 7
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   field_search_best_bets:
-    weight: 14
+    weight: 11
     settings:
       match_operator: CONTAINS
       size: 60
@@ -42,7 +151,7 @@ content:
     region: content
   field_top_content_blocks:
     type: paragraphs
-    weight: 1
+    weight: 2
     settings:
       title: component
       title_plural: components
@@ -60,13 +169,13 @@ content:
     third_party_settings: {  }
     region: content
   field_uwm_find_a_location_link:
-    weight: 6
+    type: string_textfield
+    weight: 7
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_uwm_find_a_provider_link:
     weight: 5
     settings:
@@ -77,7 +186,7 @@ content:
     region: content
   field_uwm_image:
     type: entity_browser_file
-    weight: 2
+    weight: 6
     settings:
       entity_browser: image_browser
       field_widget_edit: true
@@ -90,7 +199,7 @@ content:
     region: content
     third_party_settings: {  }
   field_uwm_medical_service:
-    weight: 3
+    weight: 10
     settings:
       match_operator: CONTAINS
       size: 60
@@ -99,7 +208,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_uwm_page_path_name:
-    weight: 4
+    weight: 13
     settings:
       size: 60
       placeholder: ''
@@ -107,11 +216,11 @@ content:
     type: string_textfield
     region: content
   field_uwm_sections:
-    weight: 7
+    weight: 3
     settings:
       title: component
       title_plural: components
-      edit_mode: open
+      edit_mode: closed
       closed_mode: summary
       autocollapse: none
       closed_mode_threshold: 0
@@ -127,13 +236,13 @@ content:
     region: content
   moderation_state:
     type: moderation_state_default
-    weight: 9
+    weight: 18
     settings: {  }
     region: content
     third_party_settings: {  }
   path:
     type: path
-    weight: 12
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -141,12 +250,12 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 10
+    weight: 19
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 13
+    weight: 17
     region: content
     settings:
       display_label: true
@@ -160,7 +269,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 8
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }

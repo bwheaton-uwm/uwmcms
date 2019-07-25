@@ -70,3 +70,127 @@
     margin-left: 0.375rem; // 6px
   }
 }
+
+@mixin button-cta($color: "") {
+
+  @if $color == "" {
+    $color: $gray-500;
+  }
+
+  padding: 0 1em;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  background: white;
+  transition: all 0.45s ease-in;
+  height: 40px;
+  line-height: 40px;
+  color: theme-color('text');
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+
+  margin-bottom: 1rem;
+
+  border: 1px solid $color;
+
+  &::before {
+    background-position: left 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: color('white');
+
+    .uwmed-icon {
+      color: theme-color('secondary');
+    }
+
+    .fa-angle-right {
+      color: color('white');
+    }
+
+    &::before {
+      background: none;
+    }
+  }
+
+  z-index: 1;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition-property: transform;
+    transition-duration: 0.7s;
+    transition-timing-function: ease-out;
+    z-index: -1;
+    background-color: $color;
+  }
+
+  &:hover {
+    &::after {
+      transform: scaleX(1);
+
+      @media(hover: none) {
+        transition-duration: 0s;
+      }
+    }
+  }
+
+}
+
+
+
+@mixin button-cta-angled-edge($color: "") {
+
+  @if $color == "" {
+    $color: $gray-500;
+  }
+
+  @include button-cta($color);
+  @include angled-edge('inside top', 'lower right', $color, 15, 15);
+
+  &:hover {
+    background: none;
+  }
+  &::before {
+    background-position: left 0;
+  }
+  &::after {
+    background-color: $color;
+  }
+
+}
+
+@mixin button-cta-deep-shadowed($color: "") {
+
+  @if $color == "" {
+    $color: theme-color('link-blue');
+  }
+
+  background-color: $color;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: .5rem 1.5rem;
+  transition: ease-in 0.3s;
+  box-shadow: 0 3px 6px rgba(0,0,0,.15);
+  height: 40px;
+  line-height: 40px;
+  font-weight: 600;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+
+  &:hover {
+    background-color: #21509C;
+    color: white;
+    text-decoration: none;
+  }
+
+}

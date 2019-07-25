@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Custom template for field--name-field-res-featured-clinics.
+ *
+ * This template is a copy of ./core/modules/system/templates/field.html.twig
+ * but provides the field output without extra containers, which prevented
+ * Bootstrap flex rules from easily applying.
+ *
+ * @see template_preprocess_field()
+ *
+ * @ingroup themeable
+ */
+#}
+
+<div{{ attributes.addClass('field-'~field_name|clean_class) }}>
+
+    {% for item in items %}
+
+        {{ item.content }}
+
+    {% endfor %}
+
+</div>

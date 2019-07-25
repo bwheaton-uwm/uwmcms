@@ -1,0 +1,28 @@
+uuid: 4202aa49-bcf6-4069-85f0-2d254c9ee59a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_link
+    - node.type.uwm_medical_service
+  module:
+    - link
+id: node.uwm_medical_service.field_link
+field_name: field_link
+entity_type: node
+bundle: uwm_medical_service
+label: 'Featured Clinics CTA'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    attributes: {  }
+    uri: 'internal:/search/locations?'
+    title: 'See All Locations'
+    options: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link
