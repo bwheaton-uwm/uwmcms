@@ -6,15 +6,19 @@ dependencies:
     - field.storage.paragraph.field_uwm_bottom_border_options
     - paragraphs.paragraphs_type.uwm_featured_story
     - taxonomy.vocabulary.uwm_bottom_border_options
+  content:
+    - 'taxonomy_term:uwm_bottom_border_options:1272c598-bc1c-45df-987f-057d3d87250b'
 id: paragraph.uwm_featured_story.field_uwm_bottom_border_options
 field_name: field_uwm_bottom_border_options
 entity_type: paragraph
 bundle: uwm_featured_story
 label: 'Background Image Bottom Border'
 description: ''
-required: false
+required: true
 translatable: false
-default_value: {  }
+default_value:
+  -
+    target_uuid: 1272c598-bc1c-45df-987f-057d3d87250b
 default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'
