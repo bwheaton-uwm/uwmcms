@@ -3,11 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.uwm_featured_story.field_uwm_accent_color
     - field.field.paragraph.uwm_featured_story.field_uwm_bottom_border_options
     - field.field.paragraph.uwm_featured_story.field_uwm_card_content
     - field.field.paragraph.uwm_featured_story.field_uwm_image
     - field.field.paragraph.uwm_featured_story.field_uwm_modal
-    - field.field.paragraph.uwm_featured_story.uwm_text
+    - field.field.paragraph.uwm_featured_story.field_uwm_section_heading
+    - field.field.paragraph.uwm_featured_story.field_uwm_short_formatted_text
     - paragraphs.paragraphs_type.uwm_featured_story
   module:
     - entity_reference_revisions
@@ -18,16 +20,8 @@ targetEntityType: paragraph
 bundle: uwm_featured_story
 mode: default
 content:
-  field_uwm_bottom_border_options:
-    weight: 3
-    label: hidden
-    settings:
-      link: false
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   field_uwm_card_content:
-    weight: 0
+    weight: 3
     label: hidden
     settings:
       view_mode: default
@@ -36,7 +30,7 @@ content:
     type: entity_reference_revisions_entity_view
     region: content
   field_uwm_image:
-    weight: 1
+    weight: 0
     label: hidden
     settings:
       image_style: ''
@@ -46,18 +40,27 @@ content:
     region: content
   field_uwm_modal:
     type: entity_reference_revisions_entity_view
-    weight: 2
+    weight: 4
     label: hidden
     settings:
       view_mode: uwm_featured_story
       link: ''
     third_party_settings: {  }
     region: content
-  uwm_text:
-    weight: 4
-    label: above
+  field_uwm_section_heading:
+    weight: 2
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
-hidden: {  }
+  field_uwm_short_formatted_text:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  field_uwm_accent_color: true
+  field_uwm_bottom_border_options: true
