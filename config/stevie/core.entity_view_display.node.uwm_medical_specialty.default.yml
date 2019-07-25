@@ -106,3 +106,4 @@ content:
 hidden:
   content_moderation_control: true
   field_search_best_bets: true
+  search_api_excerpt: true
