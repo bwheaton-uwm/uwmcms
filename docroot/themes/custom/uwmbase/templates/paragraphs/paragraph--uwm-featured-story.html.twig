@@ -46,14 +46,19 @@
 
 {{ attach_library('uwmbase/featured-story') }}
 
+{#
+  Add classes from field values, with defaults if empty.
+  @see field--field-uwm-bottom-border-options.html.twig
+  @see field--field-uwm-accent-color.html.twig
+#}
 {%
   set classes = [
     'uwm-section',
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
     'paragraph--id--' ~ paragraph.id.value,
     'uwm-featured-story',
-    content.field_uwm_bottom_border_options|render,
-
+    content.field_uwm_bottom_border_options.0 ? content.field_uwm_bottom_border_options|render : 'uwm-bottom-border__angled',
+    content.field_uwm_accent_color.0 ? content.field_uwm_bottom_border_options|render,
     is_block_content ? 'uwm-featured-story--block-content',
   ]
 %}
@@ -77,14 +82,24 @@
     <div class="row">
       <div class="uwm-featured-story__content col-12 col-md-8 col-lg-6 col-xl-4">
 
-        {{ content.uwm_text }}
+        {# Accent Heading #}
+        {{ content.field_uwm_short_formatted_text }}
 
+        {# Story Title #}
+        {{ content.field_uwm_section_heading }}
+
+        {#
+          Content - may include:
+          - Basic Content components
+          - CTA Link components
+        #}
         {{ content.field_uwm_card_content }}
 
       </div>
     </div>
 
     {#
+      Modal paragraph
       @see paragraph--uwm-modal--uwm-featured-story.html.twig
     #}
     {{ content.field_uwm_modal }}
