@@ -6,19 +6,15 @@ dependencies:
     - block_content.type.featured_story
     - field.storage.block_content.field_uwm_bottom_border_options
     - taxonomy.vocabulary.uwm_bottom_border_options
-  content:
-    - 'taxonomy_term:uwm_bottom_border_options:1272c598-bc1c-45df-987f-057d3d87250b'
 id: block_content.featured_story.field_uwm_bottom_border_options
 field_name: field_uwm_bottom_border_options
 entity_type: block_content
 bundle: featured_story
 label: 'Background Image Bottom Border'
-description: ''
-required: true
+description: 'This defaults to the angled setting, if not selected here.'
+required: false
 translatable: false
-default_value:
-  -
-    target_uuid: 1272c598-bc1c-45df-987f-057d3d87250b
+default_value: {  }
 default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'

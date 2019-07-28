@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.uwm_featured_story.field_uwm_accent_color
+    - field.field.paragraph.uwm_featured_story.field_uwm_block
     - field.field.paragraph.uwm_featured_story.field_uwm_bottom_border_options
     - field.field.paragraph.uwm_featured_story.field_uwm_card_content
     - field.field.paragraph.uwm_featured_story.field_uwm_image
@@ -20,6 +21,15 @@ targetEntityType: paragraph
 bundle: uwm_featured_story
 mode: default
 content:
+  field_uwm_block:
+    weight: 5
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
   field_uwm_card_content:
     weight: 3
     label: hidden
