@@ -1,0 +1,29 @@
+uuid: 54a00703-e496-4342-92eb-122718fda45d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.featured_story
+    - field.storage.paragraph.field_uwm_block
+    - paragraphs.paragraphs_type.uwm_featured_story
+id: paragraph.uwm_featured_story.field_uwm_block
+field_name: field_uwm_block
+entity_type: paragraph
+bundle: uwm_featured_story
+label: 'Featured Story Block'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      featured_story: featured_story
+    sort:
+      field: info
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

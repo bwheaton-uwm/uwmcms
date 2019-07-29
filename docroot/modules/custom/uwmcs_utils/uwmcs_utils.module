@@ -201,7 +201,7 @@ function uwmcs_utils_toolbar() {
 
   $items = [];
 
-  if (!empty($_ENV['AH_SITE_ENVIRONMENT'])) {
+  if (!empty($_ENV['AH_SITE_ENVIRONMENT']) && !empty($_ENV['AH_SITE_GROUP'])) {
 
     $env = 'ENV-' . $_ENV['AH_SITE_GROUP'] . '-' . $_ENV['AH_SITE_ENVIRONMENT'];
 
@@ -215,7 +215,7 @@ function uwmcs_utils_toolbar() {
           'attributes' => [
             'title' => $env,
             'class' => [
-              strtolower($env), 'toolbar-item', 'text-info',
+              strtolower($env), 'toolbar-item',
             ],
           ],
         ],

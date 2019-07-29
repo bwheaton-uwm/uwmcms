@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.res_provider.field_res_biography
     - field.field.node.res_provider.field_res_board_certifications
     - field.field.node.res_provider.field_res_clinics
+    - field.field.node.res_provider.field_res_conditions_symptoms
     - field.field.node.res_provider.field_res_degrees
     - field.field.node.res_provider.field_res_education_history
     - field.field.node.res_provider.field_res_expertises
@@ -23,9 +24,11 @@ dependencies:
     - field.field.node.res_provider.field_res_node_videos
     - field.field.node.res_provider.field_res_npi
     - field.field.node.res_provider.field_res_personal_interests
+    - field.field.node.res_provider.field_res_procedures_treatments
     - field.field.node.res_provider.field_res_pubmed_ids
     - field.field.node.res_provider.field_res_puma_id
     - field.field.node.res_provider.field_res_ser_id
+    - field.field.node.res_provider.field_res_special_interests
     - field.field.node.res_provider.field_search_best_bets
     - field.field.node.res_provider.field_uwm_json_packet
     - field.field.node.res_provider.uwm_unique_id
@@ -96,6 +99,12 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  field_res_conditions_symptoms:
+    type: options_select
+    weight: 21
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_res_degrees:
     type: entity_reference_paragraphs
     weight: 9
@@ -152,14 +161,14 @@ content:
     type: string_textfield
     region: content
   field_res_is_open_scheduling:
-    weight: 30
+    weight: 33
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_res_isacceptingnewpts:
-    weight: 25
+    weight: 28
     settings:
       display_label: true
     third_party_settings: {  }
@@ -184,7 +193,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_meta_tags:
-    weight: 22
+    weight: 25
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
@@ -197,7 +206,7 @@ content:
     third_party_settings: {  }
   field_res_node_videos:
     type: entity_browser_entity_reference
-    weight: 32
+    weight: 34
     settings:
       entity_browser: media_browser
       field_widget_display: rendered_entity
@@ -211,7 +220,7 @@ content:
     region: content
     third_party_settings: {  }
   field_res_npi:
-    weight: 24
+    weight: 27
     settings:
       placeholder: ''
     third_party_settings: {  }
@@ -225,6 +234,12 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
+  field_res_procedures_treatments:
+    type: options_select
+    weight: 22
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_res_pubmed_ids:
     weight: 10
     settings:
@@ -233,21 +248,27 @@ content:
     type: number
     region: content
   field_res_puma_id:
-    weight: 23
+    weight: 26
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_res_ser_id:
-    weight: 29
+    weight: 32
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
+  field_res_special_interests:
+    type: options_select
+    weight: 23
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_search_best_bets:
-    weight: 28
+    weight: 31
     settings:
       match_operator: CONTAINS
       size: 60
@@ -256,7 +277,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   moderation_state:
-    weight: 26
+    weight: 29
     settings:
       size: 60
       placeholder: ''
@@ -281,7 +302,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 21
+    weight: 24
     region: content
     third_party_settings: {  }
   title:
@@ -302,7 +323,7 @@ content:
     region: content
     third_party_settings: {  }
   url_redirects:
-    weight: 27
+    weight: 30
     region: content
     settings: {  }
     third_party_settings: {  }

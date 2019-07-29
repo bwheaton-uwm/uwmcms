@@ -1,0 +1,20 @@
+uuid: 1e1b3d08-ff70-4c99-98c0-3b4c063219e8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_res_conditions_symptoms
+field_name: field_res_conditions_symptoms
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
