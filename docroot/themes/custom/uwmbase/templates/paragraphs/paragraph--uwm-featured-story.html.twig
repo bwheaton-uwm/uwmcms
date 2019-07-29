@@ -2,6 +2,7 @@
 /**
  * @file
  * Theme implementation to display a Featured Story paragraph.
+ * This template also renders Featured Story block_content entities.
  *
  * Available variables:
  * - paragraph: Full paragraph entity.
@@ -31,25 +32,49 @@
  * - is_admin: Flag for admin user status. Will be true when the current user
  *   is an administrator.
  *
+ * Custom variables:
+ * - is_block_content: boolean; true if this paragraph is rendering a referenced
+ *   Featured Story block_content entity (i.e. reusable component), coming from
+ *   `field_uwm_block`. In this case, preprocessing populates the `content`
+ *   variable with the referenced block's fields, so that this template renders
+ *   them directly instead of with nested templates.
+ *
+ * @see uwmbase_preprocess_paragraph__uwm_featured_story()
  * @see template_preprocess_paragraph()
  */
 #}
 
 {{ attach_library('uwmbase/featured-story') }}
 
-{% set classes = [
-  'uwm-section',
-  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-  'paragraph--id--' ~ paragraph.id.value,
-  'uwm-featured-story',
-  content.field_uwm_bottom_border_options|render,
-]
+{#
+  Add classes from field values, with defaults if empty.
+  @see field--field-uwm-bottom-border-options.html.twig
+  @see field--field-uwm-accent-color.html.twig
+#}
+{%
+  set classes = [
+    'uwm-section',
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    'paragraph--id--' ~ paragraph.id.value,
+    'uwm-featured-story',
+    content.field_uwm_bottom_border_options.0 ? content.field_uwm_bottom_border_options|render : 'uwm-bottom-border__angled',
+    content.field_uwm_accent_color.0 ? content.field_uwm_accent_color|render,
+    is_block_content ? 'uwm-featured-story--block-content',
+  ]
 %}
 
 <section{{ attributes.addClass(classes) }}>
+  {#
+    The Featured Story block_content type uses a media reference field in place
+    of the image file field on the paragraph type. Check for both here.
+  #}
   {% if content.field_uwm_image.0 is not empty %}
     <div class="uwm-featured-story__background">
       {{ content.field_uwm_image }}
+    </div>
+  {% elseif content.field_uwm_media_image.0 is not empty %}
+    <div class="uwm-featured-story__background">
+      {{ content.field_uwm_media_image }}
     </div>
   {% endif %}
 
@@ -57,14 +82,24 @@
     <div class="row">
       <div class="uwm-featured-story__content col-12 col-md-8 col-lg-6 col-xl-4">
 
-        {{ content.uwm_text }}
+        {# Accent Heading #}
+        {{ content.field_uwm_short_formatted_text }}
 
+        {# Story Title #}
+        {{ content.field_uwm_section_heading }}
+
+        {#
+          Content - may include:
+          - Basic Content components
+          - CTA Link components
+        #}
         {{ content.field_uwm_card_content }}
 
       </div>
     </div>
 
     {#
+      Modal paragraph
       @see paragraph--uwm-modal--uwm-featured-story.html.twig
     #}
     {{ content.field_uwm_modal }}

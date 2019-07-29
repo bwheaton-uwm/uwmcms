@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - block_content.type.basic
-    - block_content.type.featured_story
     - block_content.type.uwm_card
     - field.storage.paragraph.field_uwm_block
     - paragraphs.paragraphs_type.uwm_block
@@ -24,7 +23,6 @@ settings:
     target_bundles:
       basic: basic
       uwm_card: uwm_card
-      featured_story: featured_story
     sort:
       field: info
       direction: ASC

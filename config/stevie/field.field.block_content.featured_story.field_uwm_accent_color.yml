@@ -11,7 +11,7 @@ field_name: field_uwm_accent_color
 entity_type: block_content
 bundle: featured_story
 label: 'Accent Color'
-description: ''
+description: '<strong>On Specialty pages:</strong> This defaults to orange, if not selected here.'
 required: false
 translatable: false
 default_value: {  }
