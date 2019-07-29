@@ -81,6 +81,8 @@ third_party_settings:
     group_mic:
       children:
         - field_uwm_sections
+        - field_res_conditions_symptoms
+        - field_res_procedures_treatments
       parent_name: ''
       weight: 3
       format_type: tab
@@ -93,9 +95,9 @@ third_party_settings:
       label: 'Main Content'
     group_old:
       children:
-        - field_uwm_find_a_provider_link
-        - field_uwm_image
         - field_uwm_find_a_location_link
+        - field_uwm_image
+        - field_uwm_find_a_provider_link
       parent_name: ''
       weight: 5
       format_type: tab
@@ -127,7 +129,7 @@ content:
     region: content
   field_res_conditions_symptoms:
     type: options_select
-    weight: 6
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -150,7 +152,7 @@ content:
     region: content
   field_res_procedures_treatments:
     type: options_select
-    weight: 7
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -191,7 +193,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_uwm_find_a_provider_link:
-    weight: 5
+    weight: 9
     settings:
       size: 60
       placeholder: ''
@@ -200,7 +202,7 @@ content:
     region: content
   field_uwm_image:
     type: entity_browser_file
-    weight: 6
+    weight: 8
     settings:
       entity_browser: image_browser
       field_widget_edit: true
