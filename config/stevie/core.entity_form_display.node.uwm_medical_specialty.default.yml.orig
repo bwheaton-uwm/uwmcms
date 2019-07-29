@@ -7,10 +7,13 @@ dependencies:
     - field.field.node.uwm_medical_specialty.body
     - field.field.node.uwm_medical_specialty.field_link
     - field.field.node.uwm_medical_specialty.field_meta_tags
-    - field.field.node.uwm_medical_specialty.field_res_conditions_symptoms
+<<<<<<< HEAD
     - field.field.node.uwm_medical_specialty.field_res_feat_clinics_header
     - field.field.node.uwm_medical_specialty.field_res_featured_clinics
+=======
+    - field.field.node.uwm_medical_specialty.field_res_conditions_symptoms
     - field.field.node.uwm_medical_specialty.field_res_procedures_treatments
+>>>>>>> master
     - field.field.node.uwm_medical_specialty.field_search_best_bets
     - field.field.node.uwm_medical_specialty.field_uwm_find_a_location_link
     - field.field.node.uwm_medical_specialty.field_uwm_find_a_provider_link
@@ -48,8 +51,6 @@ third_party_settings:
       children:
         - body
         - field_uwm_sections
-        - field_res_conditions_symptoms
-        - field_res_procedures_treatments
       parent_name: ''
       weight: 2
       format_type: tab
@@ -116,7 +117,11 @@ bundle: uwm_medical_specialty
 mode: default
 content:
   body:
+<<<<<<< HEAD
     weight: 4
+=======
+    weight: 13
+>>>>>>> master
     settings:
       rows: 9
       summary_rows: 3
@@ -133,19 +138,34 @@ content:
     type: link_default
     region: content
   field_meta_tags:
-    weight: 21
+<<<<<<< HEAD
+    weight: 11
+=======
+    weight: 12
+>>>>>>> master
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
     region: content
+<<<<<<< HEAD
+  field_res_feat_clinics_header:
+    weight: 26
+=======
   field_res_conditions_symptoms:
     type: options_select
-    weight: 6
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_res_feat_clinics_header:
-    weight: 26
+  field_res_procedures_treatments:
+    type: options_select
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_search_best_bets:
+    weight: 11
+>>>>>>> master
     settings:
       size: 60
       placeholder: ''
@@ -161,14 +181,8 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
-  field_res_procedures_treatments:
-    type: options_select
-    weight: 7
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_search_best_bets:
-    weight: 20
+    weight: 10
     settings:
       match_operator: CONTAINS
       size: 60
@@ -177,7 +191,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_uwm_find_a_location_link:
-    weight: 17
+    weight: 7
     settings:
       size: 60
       placeholder: ''
@@ -185,7 +199,7 @@ content:
     type: string_textfield
     region: content
   field_uwm_find_a_provider_link:
-    weight: 18
+    weight: 8
     settings:
       size: 60
       placeholder: ''
@@ -207,7 +221,7 @@ content:
     region: content
     third_party_settings: {  }
   field_uwm_page_path_name:
-    weight: 19
+    weight: 9
     settings:
       size: 60
       placeholder: ''
@@ -215,7 +229,7 @@ content:
     type: string_textfield
     region: content
   field_uwm_parent_page:
-    weight: 16
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 60
@@ -243,7 +257,11 @@ content:
     type: paragraphs
     region: content
   field_uwm_weight:
-    weight: 22
+<<<<<<< HEAD
+    weight: 12
+=======
+    weight: 16
+>>>>>>> master
     settings:
       placeholder: ''
     third_party_settings: {  }
@@ -251,13 +269,13 @@ content:
     region: content
   moderation_state:
     type: moderation_state_default
-    weight: 25
+    weight: 15
     settings: {  }
     region: content
     third_party_settings: {  }
   path:
     type: path
-    weight: 23
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -265,7 +283,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 26
+    weight: 16
     region: content
     third_party_settings: {  }
   title:
@@ -277,7 +295,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 24
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }

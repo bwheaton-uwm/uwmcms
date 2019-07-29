@@ -148,6 +148,13 @@ medical-service-page:
   js:
     dist/js/medical-services.js: {}
 
+medical-specialty-page:
+  css:
+    component:
+      dist/css/medical-specialty.css: {}
+  js:
+    dist/js/medical-specialty.js: {}
+
 clinic-hours:
   js:
     dist/js/clinic-page-hours.js: {}
