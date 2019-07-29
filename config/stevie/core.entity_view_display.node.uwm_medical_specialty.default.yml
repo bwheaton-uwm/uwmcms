@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.node.uwm_medical_specialty.body
     - field.field.node.uwm_medical_specialty.field_meta_tags
+    - field.field.node.uwm_medical_specialty.field_res_conditions_symptoms
+    - field.field.node.uwm_medical_specialty.field_res_procedures_treatments
     - field.field.node.uwm_medical_specialty.field_search_best_bets
     - field.field.node.uwm_medical_specialty.field_uwm_find_a_location_link
     - field.field.node.uwm_medical_specialty.field_uwm_find_a_provider_link
@@ -39,6 +41,22 @@ content:
     third_party_settings: {  }
     type: metatag_empty_formatter
     region: content
+  field_res_conditions_symptoms:
+    type: entity_reference_label
+    weight: 9
+    region: content
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_res_procedures_treatments:
+    type: entity_reference_label
+    weight: 10
+    region: content
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
   field_uwm_find_a_location_link:
     weight: 1
     label: above
@@ -90,7 +108,7 @@ content:
     type: entity_reference_revisions_entity_view
     region: content
   field_uwm_weight:
-    weight: 9
+    weight: 11
     label: above
     settings:
       thousand_separator: ''

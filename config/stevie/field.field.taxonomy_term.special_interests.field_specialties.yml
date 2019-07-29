@@ -1,0 +1,29 @@
+uuid: 7ab2a70f-4d27-4615-af41-2a57f0572afc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_specialties
+    - taxonomy.vocabulary.special_interests
+    - taxonomy.vocabulary.specialities
+id: taxonomy_term.special_interests.field_specialties
+field_name: field_specialties
+entity_type: taxonomy_term
+bundle: special_interests
+label: Specialties
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      specialities: specialities
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

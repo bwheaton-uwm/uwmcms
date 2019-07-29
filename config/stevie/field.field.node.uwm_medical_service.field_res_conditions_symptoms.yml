@@ -1,0 +1,29 @@
+uuid: 5a61b356-f438-47ec-8a6d-ae2ff34e2ba2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_conditions_symptoms
+    - node.type.uwm_medical_service
+    - taxonomy.vocabulary.conditions_symptoms
+id: node.uwm_medical_service.field_res_conditions_symptoms
+field_name: field_res_conditions_symptoms
+entity_type: node
+bundle: uwm_medical_service
+label: 'Conditions & Symptoms'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      conditions_symptoms: conditions_symptoms
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
