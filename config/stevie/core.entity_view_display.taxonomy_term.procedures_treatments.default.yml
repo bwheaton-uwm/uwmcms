@@ -1,0 +1,30 @@
+uuid: beaf0258-3503-4cc0-bc52-6062485bc9fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.procedures_treatments.field_specialties
+    - taxonomy.vocabulary.procedures_treatments
+  module:
+    - text
+id: taxonomy_term.procedures_treatments.default
+targetEntityType: taxonomy_term
+bundle: procedures_treatments
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_specialties:
+    weight: 1
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden: {  }

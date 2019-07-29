@@ -1,0 +1,29 @@
+uuid: 06b10264-e73e-42d8-bf16-cddf7064ff79
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_conditions_symptoms
+    - node.type.res_clinic
+    - taxonomy.vocabulary.conditions_symptoms
+id: node.res_clinic.field_res_conditions_symptoms
+field_name: field_res_conditions_symptoms
+entity_type: node
+bundle: res_clinic
+label: 'Conditions & Symptoms'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      conditions_symptoms: conditions_symptoms
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

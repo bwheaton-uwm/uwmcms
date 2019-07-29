@@ -1,0 +1,9 @@
+uuid: 51188f69-3d1f-4a62-a6c4-84a9893ff21f
+langcode: en
+status: true
+dependencies: {  }
+name: 'Procedures & Treatments'
+vid: procedures_treatments
+description: ''
+hierarchy: 0
+weight: 0

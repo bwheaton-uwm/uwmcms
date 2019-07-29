@@ -1,0 +1,29 @@
+uuid: cdf85da1-8120-4247-a7be-c84d7c3671d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_special_interests
+    - node.type.res_provider
+    - taxonomy.vocabulary.special_interests
+id: node.res_provider.field_res_special_interests
+field_name: field_res_special_interests
+entity_type: node
+bundle: res_provider
+label: 'Special  Interests'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      special_interests: special_interests
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

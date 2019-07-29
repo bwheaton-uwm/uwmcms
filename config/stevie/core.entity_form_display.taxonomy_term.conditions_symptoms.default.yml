@@ -1,0 +1,29 @@
+uuid: 92abd53e-1fea-4aa5-a8db-41f1db0a7fe5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.conditions_symptoms.field_specialties
+    - taxonomy.vocabulary.conditions_symptoms
+id: taxonomy_term.conditions_symptoms.default
+targetEntityType: taxonomy_term
+bundle: conditions_symptoms
+mode: default
+content:
+  field_specialties:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  path: true

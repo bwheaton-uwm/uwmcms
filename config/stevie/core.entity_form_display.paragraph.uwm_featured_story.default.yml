@@ -5,6 +5,7 @@ dependencies:
   config:
     - entity_browser.browser.image_browser
     - field.field.paragraph.uwm_featured_story.field_uwm_accent_color
+    - field.field.paragraph.uwm_featured_story.field_uwm_block
     - field.field.paragraph.uwm_featured_story.field_uwm_bottom_border_options
     - field.field.paragraph.uwm_featured_story.field_uwm_card_content
     - field.field.paragraph.uwm_featured_story.field_uwm_image
@@ -24,7 +25,7 @@ third_party_settings:
       children:
         - field_uwm_bottom_border_options
         - field_uwm_accent_color
-      parent_name: ''
+      parent_name: group_custom
       weight: 1
       format_type: tab
       format_settings:
@@ -34,6 +35,49 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Style Options'
+    group_component:
+      children:
+        - group_custom
+        - group_reusable
+      parent_name: ''
+      weight: 20
+      format_type: tabs
+      format_settings:
+        id: ''
+        classes: ''
+        direction: horizontal
+      label: Component
+    group_reusable:
+      children:
+        - field_uwm_block
+      parent_name: group_component
+      weight: 20
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: false
+      label: Reusable
+    group_custom:
+      children:
+        - field_uwm_image
+        - group_style_options
+        - field_uwm_short_formatted_text
+        - field_uwm_section_heading
+        - field_uwm_card_content
+        - field_uwm_modal
+      parent_name: group_component
+      weight: 2
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: open
+        description: ''
+        required_fields: false
+      label: Custom
 id: paragraph.uwm_featured_story.default
 targetEntityType: paragraph
 bundle: uwm_featured_story
@@ -45,6 +89,12 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
+  field_uwm_block:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_uwm_bottom_border_options:
     weight: 2
     settings: {  }
@@ -52,7 +102,7 @@ content:
     type: options_select
     region: content
   field_uwm_card_content:
-    weight: 6
+    weight: 4
     settings:
       title: Component
       title_plural: Components
@@ -86,7 +136,7 @@ content:
     third_party_settings: {  }
   field_uwm_modal:
     type: paragraphs
-    weight: 7
+    weight: 5
     settings:
       title: Modal
       title_plural: Modals
@@ -104,7 +154,7 @@ content:
     third_party_settings: {  }
     region: content
   field_uwm_section_heading:
-    weight: 5
+    weight: 3
     settings:
       size: 60
       placeholder: ''
@@ -115,7 +165,7 @@ content:
     type: text_textfield
     region: content
   field_uwm_short_formatted_text:
-    weight: 4
+    weight: 2
     settings:
       size: 60
       placeholder: ''
