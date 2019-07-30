@@ -187,6 +187,11 @@ footer:
       dist/css/footer.css: {}
       dist/css/footer-mobile.css: {}
 
+featured-clinics-paragraph:
+  css:
+    component:
+      dist/css/featured-clinics-paragraph.css: {}
+
 half-wide-hero:
   css:
     component:
