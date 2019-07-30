@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Theme override for Featured Clinics field.
+ *
+ * Usages:
+ * - Featured Clinics paragraph type
+ *
+ * @see template_preprocess_field()
+ */
+#}
+{%
+  set classes = [
+    'field',
+    'field--name-' ~ field_name|clean_class,
+  ]
+%}
+{#
+  Add Bootstrap `.row` wrapper.
+  The container is in parent Section / Sections for Medical Services paragraph.
+  Clinics are rendered as cards, and have col-* classes. These must be direct
+  children of the row for flex display, so remove per-item wrappers.
+  @see components/clinic-card/node--res-clinic--card.html.twig
+#}
+<div{{ attributes.addClass(classes, 'row') }}>
+  {% for item in items %}
+    {{ item.content }}
+  {% endfor %}
+</div>
