@@ -8,7 +8,6 @@ dependencies:
     - field.field.node.uwm_medical_service.field_res_conditions_symptoms
     - field.field.node.uwm_medical_service.field_res_procedures_treatments
     - field.field.node.uwm_medical_service.field_search_best_bets
-    - field.field.node.uwm_medical_service.field_top_content_blocks
     - field.field.node.uwm_medical_service.field_uwm_find_a_location_link
     - field.field.node.uwm_medical_service.field_uwm_find_a_provider_link
     - field.field.node.uwm_medical_service.field_uwm_image
@@ -120,25 +119,6 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
-  field_top_content_blocks:
-    type: paragraphs
-    weight: 1
-    region: content
-    settings:
-      title: component
-      title_plural: components
-      edit_mode: closed
-      closed_mode: summary
-      autocollapse: none
-      closed_mode_threshold: 0
-      add_mode: button
-      form_display_mode: default
-      default_paragraph_type: _none
-      features:
-        duplicate: duplicate
-        collapse_edit_all: collapse_edit_all
-        add_above: '0'
-    third_party_settings: {  }
   field_uwm_find_a_location_link:
     type: string_textfield
     weight: 9
