@@ -39,6 +39,7 @@ permissions:
   - 'view paragraph content uwm_card'
   - 'view paragraph content uwm_content_reference'
   - 'view paragraph content uwm_cta_link'
+  - 'view paragraph content uwm_featured_clinics'
   - 'view paragraph content uwm_featured_story'
   - 'view paragraph content uwm_full_html'
   - 'view paragraph content uwm_grid'

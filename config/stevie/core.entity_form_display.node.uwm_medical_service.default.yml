@@ -4,14 +4,10 @@ status: true
 dependencies:
   config:
     - entity_browser.browser.image_browser
-    - field.field.node.uwm_medical_service.field_link
     - field.field.node.uwm_medical_service.field_meta_tags
     - field.field.node.uwm_medical_service.field_res_conditions_symptoms
-    - field.field.node.uwm_medical_service.field_res_feat_clinics_header
-    - field.field.node.uwm_medical_service.field_res_featured_clinics
     - field.field.node.uwm_medical_service.field_res_procedures_treatments
     - field.field.node.uwm_medical_service.field_search_best_bets
-    - field.field.node.uwm_medical_service.field_top_content_blocks
     - field.field.node.uwm_medical_service.field_uwm_find_a_location_link
     - field.field.node.uwm_medical_service.field_uwm_find_a_provider_link
     - field.field.node.uwm_medical_service.field_uwm_image
@@ -23,36 +19,18 @@ dependencies:
     - content_moderation
     - entity_browser
     - field_group
-    - link
     - metatag
     - paragraphs
     - path
 third_party_settings:
   field_group:
-    group_featured_clinics:
-      children:
-        - field_res_feat_clinics_header
-        - field_res_featured_clinics
-        - field_link
-      parent_name: ''
-      weight: 2
-      format_type: tab
-      format_settings:
-        id: ''
-        classes: ''
-        formatter: closed
-        description: ''
-        required_fields: true
-      label: 'Featured Clinics'
     group_node_meta_:
       children:
-        - field_uwm_medical_service
-        - field_search_best_bets
         - field_uwm_page_path_name
+        - field_search_best_bets
         - path
         - url_redirects
         - field_meta_tags
-        - sticky
         - moderation_state
         - status
       parent_name: ''
@@ -65,38 +43,24 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Node Meta Information'
-    group_top_content:
-      children:
-        - field_top_content_blocks
-      parent_name: ''
-      weight: 1
-      format_type: tab
-      format_settings:
-        id: ''
-        classes: ''
-        formatter: closed
-        description: ''
-        required_fields: true
-      label: 'Top Content'
     group_mic:
       children:
         - field_uwm_sections
-        - field_res_conditions_symptoms
-        - field_res_procedures_treatments
       parent_name: ''
-      weight: 3
+      weight: 2
       format_type: tab
       format_settings:
-        id: ''
-        classes: ''
+        label: 'Content Sections'
         formatter: closed
         description: ''
         required_fields: true
-      label: 'Main Content'
+        id: ''
+        classes: ''
+      label: 'Content Sections'
     group_old:
       children:
-        - field_uwm_find_a_location_link
         - field_uwm_image
+        - field_uwm_find_a_location_link
         - field_uwm_find_a_provider_link
       parent_name: ''
       weight: 5
@@ -108,56 +72,46 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Old
+    group_taxonomy:
+      children:
+        - field_uwm_medical_service
+        - field_res_conditions_symptoms
+        - field_res_procedures_treatments
+      parent_name: ''
+      weight: 3
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Taxonomy
 id: node.uwm_medical_service.default
 targetEntityType: node
 bundle: uwm_medical_service
 mode: default
 content:
-  field_link:
-    weight: 9
-    settings:
-      placeholder_url: '/search/locations?s=&medical-services-filter=__xyz__'
-      placeholder_title: 'See All __xyz__ Clinics'
-    third_party_settings: {  }
-    type: link_default
-    region: content
   field_meta_tags:
-    weight: 16
+    weight: 17
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
     region: content
   field_res_conditions_symptoms:
     type: options_select
-    weight: 4
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_res_feat_clinics_header:
-    weight: 6
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_res_featured_clinics:
-    weight: 7
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   field_res_procedures_treatments:
     type: options_select
-    weight: 5
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
   field_search_best_bets:
-    weight: 11
+    weight: 14
     settings:
       match_operator: CONTAINS
       size: 60
@@ -165,35 +119,16 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
-  field_top_content_blocks:
-    type: paragraphs
-    weight: 2
-    settings:
-      title: component
-      title_plural: components
-      edit_mode: closed
-      closed_mode: summary
-      autocollapse: none
-      closed_mode_threshold: 0
-      add_mode: button
-      form_display_mode: default
-      default_paragraph_type: half_wide_hero
-      features:
-        duplicate: duplicate
-        collapse_edit_all: collapse_edit_all
-        add_above: '0'
-    third_party_settings: {  }
-    region: content
   field_uwm_find_a_location_link:
     type: string_textfield
-    weight: 7
+    weight: 9
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   field_uwm_find_a_provider_link:
-    weight: 9
+    weight: 10
     settings:
       size: 60
       placeholder: ''
@@ -258,7 +193,7 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 14
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -269,13 +204,6 @@ content:
     weight: 19
     region: content
     third_party_settings: {  }
-  sticky:
-    type: boolean_checkbox
-    weight: 17
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
   title:
     type: string_textfield
     weight: 0
@@ -285,11 +213,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 15
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
   promote: true
+  sticky: true
   uid: true

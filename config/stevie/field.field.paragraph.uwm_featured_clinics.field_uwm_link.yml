@@ -1,0 +1,28 @@
+uuid: ea8dc199-0e03-40e0-ae8b-5500f46e6fea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_link
+    - paragraphs.paragraphs_type.uwm_featured_clinics
+  module:
+    - link
+id: paragraph.uwm_featured_clinics.field_uwm_link
+field_name: field_uwm_link
+entity_type: paragraph
+bundle: uwm_featured_clinics
+label: 'CTA Link'
+description: "To link to a pre-filtered location search:<br>\r\n<ul>\r\n<li>Go to /search/locations</li>\r\n<li>Fill in search terms or filters as desired and click search</li>\r\n<li>Copy the URL path, e.g. <code>/search/locations?s=&f%5B%5D=medical-service%3A43331</code> and fill it in the URL field here</li>\r\n</ul>"
+required: false
+translatable: true
+default_value:
+  -
+    attributes: {  }
+    uri: 'internal:/search/locations'
+    title: 'See All Locations'
+    options: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link
