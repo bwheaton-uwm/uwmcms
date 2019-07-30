@@ -4,10 +4,9 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.full
-    - field.field.node.uwm_medical_service.field_link
     - field.field.node.uwm_medical_service.field_meta_tags
-    - field.field.node.uwm_medical_service.field_res_feat_clinics_header
-    - field.field.node.uwm_medical_service.field_res_featured_clinics
+    - field.field.node.uwm_medical_service.field_res_conditions_symptoms
+    - field.field.node.uwm_medical_service.field_res_procedures_treatments
     - field.field.node.uwm_medical_service.field_search_best_bets
     - field.field.node.uwm_medical_service.field_top_content_blocks
     - field.field.node.uwm_medical_service.field_uwm_find_a_location_link
@@ -19,7 +18,6 @@ dependencies:
     - node.type.uwm_medical_service
   module:
     - entity_reference_revisions
-    - link
     - metatag
     - user
 id: node.uwm_medical_service.full
@@ -27,41 +25,12 @@ targetEntityType: node
 bundle: uwm_medical_service
 mode: full
 content:
-  field_link:
-    weight: 3
-    label: hidden
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    type: link
-    region: content
   field_meta_tags:
     weight: 5
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
-    region: content
-  field_res_feat_clinics_header:
-    type: string
-    weight: 1
-    region: content
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-  field_res_featured_clinics:
-    weight: 2
-    label: hidden
-    settings:
-      view_mode: card
-      link: false
-    third_party_settings: {  }
-    type: entity_reference_entity_view
     region: content
   field_top_content_blocks:
     type: entity_reference_revisions_entity_view
@@ -83,6 +52,8 @@ content:
     region: content
 hidden:
   content_moderation_control: true
+  field_res_conditions_symptoms: true
+  field_res_procedures_treatments: true
   field_search_best_bets: true
   field_uwm_find_a_location_link: true
   field_uwm_find_a_provider_link: true
