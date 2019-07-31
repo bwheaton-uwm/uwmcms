@@ -246,11 +246,12 @@ function uwmbase_preprocess_page(&$variables, $hook) {
     // template for layout reasons, and remove those blocks from page regions.
     // @see uwmbase_preprocess_paragraph__half_wide_hero()
     $medical_service_hero = FALSE;
+    $hero_field = 'field_uwm_sections';
 
-    if ($node->bundle() === 'uwm_medical_service' && $node->hasField('field_top_content_blocks') && !$node->get('field_top_content_blocks')->isEmpty()) {
+    if ($node->bundle() === 'uwm_medical_service' && $node->hasField($hero_field) && !$node->get($hero_field)->isEmpty()) {
 
       /** @var \Drupal\Core\Entity\EntityInterface[] $ref_entities */
-      $ref_entities = $node->get('field_top_content_blocks')->referencedEntities();
+      $ref_entities = $node->get($hero_field)->referencedEntities();
       $paragraph = $ref_entities[0];
       if ($paragraph->getEntityTypeId() === 'paragraph' && $paragraph->bundle() === 'half_wide_hero') {
         $medical_service_hero = TRUE;

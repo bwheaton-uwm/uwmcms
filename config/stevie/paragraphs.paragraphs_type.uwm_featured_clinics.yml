@@ -1,0 +1,9 @@
+uuid: 7ba91341-ba4a-4524-bf40-5a8f50446fc7
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_featured_clinics
+label: 'Featured Clinics'
+icon_uuid: null
+description: 'Display chosen clinics as cards.'
+behavior_plugins: {  }

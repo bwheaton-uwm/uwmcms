@@ -1,8 +1,8 @@
 diff --git a/docroot/.htaccess b/docroot/.htaccess
-index efce1877..966ba1cf 100755
+index efce1877..e3d12675 100755
 --- a/docroot/.htaccess
 +++ b/docroot/.htaccess
-@@ -1,3 +1,331 @@
+@@ -1,3 +1,449 @@
 +##
 +#
 +# Begin UW Medicine special .htaccess rules
@@ -83,17 +83,135 @@ index efce1877..966ba1cf 100755
 +  RewriteRule ^/node/255156$ https://www.uwmedicine.org/search/providers?s=&fs_p%5B0%5D=medical-service%3A10566 [NE,L,R=301]
 +
 +### OLD EDUCATION REDIRECTS SERVED FROM ww2 ###
-+#  RewriteCond %{REQUEST_URI} !^/financialaid$
-+#  RewriteCond %{REQUEST_URI} !^/admissions$
-+#  RewriteCond %{REQUEST_URI} !^/schoolofmedicine$
-+#  RewriteCond %{REQUEST_URI} !^/willedbody$
-+#  RewriteCond %{REQUEST_URI} !^/gme-survey$
-+#  RewriteCond %{REQUEST_URI} !^/GMESummit$
-+#  RewriteCond %{REQUEST_URI} !^/LABMED$
-+#  RewriteCond %{REQUEST_URI} !^/graduate-medical-education$
-+#  RewriteCond %{REQUEST_URI} !^/harborview/Pages/observation-request.aspx$
-+#  RewriteCond %{REQUEST_URI} !^/uw-medical-center/observership$
-+
++  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
++  RewriteCond %{REQUEST_URI} ^/education(/)?(?(1).*|$)$
++  RewriteCond %{REQUEST_URI} !^/education/Pages/default.aspx$
++  RewriteCond %{REQUEST_URI} !^/education/md-program$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/diversity$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/diversity$
++  RewriteCond %{REQUEST_URI} !^/education/about/mission$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/curriculum-preview$
++  RewriteCond %{REQUEST_URI} !^/education/pages/md-program/clinical-curriculum.aspx$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/the-college$
++  RewriteCond %{REQUEST_URI} !^/education/Pages/md-program/service-learning.aspx$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/wwami/wwami-community$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/wwami$
++  RewriteCond %{REQUEST_URI} !^/education/wwami$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/current-students/curriculum/programs/pathways$
++  RewriteCond %{REQUEST_URI} !^/education/pages/md-program/financial-aid.aspx$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/current-students/student-affairs/financial-aid$
++  RewriteCond %{REQUEST_URI} !^/financialaid$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/applicants$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/applicants/applications$
++  RewriteCond %{REQUEST_URI} !^/admissions$
++  RewriteCond %{REQUEST_URI} !^/education/md-phd-program$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/expectations$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/deadlines$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/applicants/course-requirements$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/applicants/applications$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/applicants/interview$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/admissions-resources$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/stats$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/applicants/decision$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/faqs$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/advisors$
++  RewriteCond %{REQUEST_URI} !^/education/about$
++  RewriteCond %{REQUEST_URI} !^/education/about/academic-departments$
++  RewriteCond %{REQUEST_URI} !^/education/about/administration$
++  RewriteCond %{REQUEST_URI} !^/education/about/department-chairs$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/why-uwsom$
++  RewriteCond %{REQUEST_URI} !^/education/about/willed-body-program$
++  RewriteCond %{REQUEST_URI} !^/schoolofmedicine$
++  RewriteCond %{REQUEST_URI} !^/willedbody$
++  RewriteCond %{REQUEST_URI} !^/education/about/awards$
++  RewriteCond %{REQUEST_URI} !^/education/about/diversity-commitment$
++  RewriteCond %{REQUEST_URI} !^/education/about/mission$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/contact-us$
++  RewriteCond %{REQUEST_URI} !^/education/Pages/md-program/financial-aid-contacts.aspx$
++  RewriteCond %{REQUEST_URI} !^/education/wwami/wwami-contact-us$
++  RewriteCond %{REQUEST_URI} !^/education/gme/contact$
++  RewriteCond %{REQUEST_URI} !^/education/about/willed-body-program/contact-information$
++  RewriteCond %{REQUEST_URI} !^/gme-survey$
++  RewriteCond %{REQUEST_URI} !^/education/phd-program$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/applicants/advice$
++  RewriteCond %{REQUEST_URI} !^/education/wwami/wwami-conferences/gme-summit$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/wwami/wwami-conferences/gme-summit$
++  RewriteCond %{REQUEST_URI} !^/GMESummit$
++  RewriteCond %{REQUEST_URI} !^/education/other-programs$
++  RewriteCond %{REQUEST_URI} !^/education/undergraduate-program$
++  RewriteCond %{REQUEST_URI} !^/education/medex$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/physicians$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/advisors$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/applicants/shadowing$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/admissions/directions-lodging$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/us-canadian-students/eligibility$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/us-canadian-students/adding-dropping$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/us-canadian-students/clinical-schedule$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/us-canadian-students/application-deadlines$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/departmental-courses$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/departmental-courses/pain-medicine$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/departmental-courses/emergency-medicine$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/departmental-courses/family-medicine$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/departmental-courses/internal-medicine$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/departmental-courses/lab-medicine$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/departmental-courses/neurological-surgery$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/departmental-courses/neurology$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/departmental-courses/ob-gyn$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/departmental-courses/opthalmology$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/departmental-courses/orthopaedics$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/departmental-courses/otolaryngology$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/departmental-courses/pathology$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/departmental-courses/pediatrics$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/departmental-courses/psychiatry$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/departmental-courses/radiation-oncology$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/international-students$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/visiting-students/international-students/application$
++  RewriteCond %{REQUEST_URI} !^/LABMED$
++  RewriteCond %{REQUEST_URI} !^/education/Pages/Resources-for-Visiting-Students.aspx$
++  RewriteCond %{REQUEST_URI} !^/education/gme$
++  RewriteCond %{REQUEST_URI} !^/graduate-medical-education$
++  RewriteCond %{REQUEST_URI} !^/education/gme/programs$
++  RewriteCond %{REQUEST_URI} !^/education/gme/residents-fellows$
++  RewriteCond %{REQUEST_URI} !^/education/Pages/gme/uw-nurf.aspx$
++  RewriteCond %{REQUEST_URI} !^/education/gme/prospective-residents$
++  RewriteCond %{REQUEST_URI} !^/education/gme/incoming-residents-and-fellows$
++  RewriteCond %{REQUEST_URI} !^/education/gme/policies-and-procedures$
++  RewriteCond %{REQUEST_URI} !^/education/gme/policies-and-procedures/supervision$
++  RewriteCond %{REQUEST_URI} !^/education/gme/npi-enrollment$
++  RewriteCond %{REQUEST_URI} !^/harborview/Pages/observation-request.aspx$
++  RewriteCond %{REQUEST_URI} !^/uw-medical-center/observership$
++  RewriteCond %{REQUEST_URI} !^/education/gme/residents-fellows/gme-wellness-service$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures$
++  RewriteCond %{REQUEST_URI} !^/education/Pages/Compliance-Vodcasts.aspx$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/compliance$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/mistreatment-policy$
++  RewriteCond %{REQUEST_URI} !^/education/Pages/How-to-Access-your-Compliance-Documents.aspx$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/current-students/student-affairs/usmle-board-exams$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/usmle-applications-registration$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/usmle-changing-scheduled-test-date$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/implications-if-examination-is-failed$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/current-students/student-affairs/importance-board-exam$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/compliance/background-check$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/compliance/cbc-incoming-students$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/compliance/cbc-continuing-students$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/compliance/cpr-for-providers$
++  RewriteCond %{REQUEST_URI} !^/education/Pages/Drug-Testing-for-Select-Clerkship-Rotations.aspx$
++  RewriteCond %{REQUEST_URI} !^/education/Pages/Drug-Testing-Procedure.aspx$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/compliance/hipaa-training$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/compliance/data-stewardship$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/compliance/universal-precautions-training$
++  RewriteCond %{REQUEST_URI} !^/education/Pages/body-fluid-exposure.aspx$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/compliance/e13-compliance-checklist$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/compliance/trust-compliance$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/compliance/immunizations$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/academic-progress$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/academic-policies$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/academic-progress/committee$
++  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/academic-progress/guidelines-for-academic-probation$
++  RewriteRule ^(.*)$ - [CO=uwm-proxied-page-visit:true:%{HTTP_HOST}:0:/,C]
++  RewriteRule ^(.*)$ https://www2.uwmedicine.org%{REQUEST_URI} [L,P]
 +
 +  ### SERVE THESE PAGES FROM www2.uwmedicine.org ###
 +  ### These can be removed when SharePoint is shut down ###
@@ -334,7 +452,7 @@ index efce1877..966ba1cf 100755
  #
  # Apache/PHP/Drupal settings:
  #
-@@ -34,7 +362,7 @@ AddEncoding gzip svgz
+@@ -34,7 +480,7 @@ AddEncoding gzip svgz
    php_value mbstring.http_input             pass
    php_value mbstring.http_output            pass
    php_flag mbstring.encoding_translation    off
@@ -343,7 +461,7 @@ index efce1877..966ba1cf 100755
    # not set.
    php_value always_populate_raw_post_data   -1
  </IfModule>
-@@ -150,6 +478,10 @@ AddEncoding gzip svgz
+@@ -150,6 +596,10 @@ AddEncoding gzip svgz
    # Copy and adapt this rule to directly execute PHP files in contributed or
    # custom modules or to run another PHP application in the same directory.
    RewriteCond %{REQUEST_URI} !/core/modules/statistics/statistics.php$
@@ -354,7 +472,7 @@ index efce1877..966ba1cf 100755
    # Deny access to any other PHP files that do not match the rules above.
    # Specifically, disallow autoload.php from being served directly.
    RewriteRule "^(.+/.*|autoload)\.php($|/)" - [F]
-@@ -160,12 +492,12 @@ AddEncoding gzip svgz
+@@ -160,12 +610,12 @@ AddEncoding gzip svgz
      # Serve gzip compressed CSS files if they exist and the client accepts gzip.
      RewriteCond %{HTTP:Accept-encoding} gzip
      RewriteCond %{REQUEST_FILENAME}\.gz -s
@@ -369,7 +487,7 @@ index efce1877..966ba1cf 100755
  
      # Serve correct content types, and prevent mod_deflate double gzip.
      RewriteRule \.css\.gz$ - [T=text/css,E=no-gzip:1]
-@@ -177,6 +509,17 @@ AddEncoding gzip svgz
+@@ -177,6 +627,17 @@ AddEncoding gzip svgz
        # Force proxies to cache gzipped & non-gzipped css/js files separately.
        Header append Vary Accept-Encoding
      </FilesMatch>
@@ -387,7 +505,7 @@ index efce1877..966ba1cf 100755
    </IfModule>
  </IfModule>
  
-@@ -186,4 +529,5 @@ AddEncoding gzip svgz
+@@ -186,4 +647,5 @@ AddEncoding gzip svgz
    Header always set X-Content-Type-Options nosniff
    # Disable Proxy header, since it's an attack vector.
    RequestHeader unset Proxy
