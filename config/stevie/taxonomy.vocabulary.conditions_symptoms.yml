@@ -1,0 +1,9 @@
+uuid: 6eeaeb66-e619-4c11-a175-3b6d2600fb75
+langcode: en
+status: true
+dependencies: {  }
+name: 'Conditions & Symptoms'
+vid: conditions_symptoms
+description: ''
+hierarchy: 0
+weight: 0

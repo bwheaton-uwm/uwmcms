@@ -1,0 +1,29 @@
+uuid: f39c65af-9b14-47da-aab7-4cb67dc40f68
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.procedures_treatments.field_specialties
+    - taxonomy.vocabulary.procedures_treatments
+id: taxonomy_term.procedures_treatments.default
+targetEntityType: taxonomy_term
+bundle: procedures_treatments
+mode: default
+content:
+  field_specialties:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  path: true

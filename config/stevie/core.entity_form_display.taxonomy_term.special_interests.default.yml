@@ -1,0 +1,29 @@
+uuid: e7c639e7-0ff6-47f0-9d52-688a8f6ce83d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.special_interests.field_specialties
+    - taxonomy.vocabulary.special_interests
+id: taxonomy_term.special_interests.default
+targetEntityType: taxonomy_term
+bundle: special_interests
+mode: default
+content:
+  field_specialties:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  path: true

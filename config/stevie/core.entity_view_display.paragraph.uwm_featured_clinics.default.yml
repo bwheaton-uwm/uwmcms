@@ -1,0 +1,37 @@
+uuid: 86af02b6-b154-4996-979b-8906c79b200f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_featured_clinics.field_uwm_featured_clinics
+    - field.field.paragraph.uwm_featured_clinics.field_uwm_link
+    - paragraphs.paragraphs_type.uwm_featured_clinics
+  module:
+    - link
+id: paragraph.uwm_featured_clinics.default
+targetEntityType: paragraph
+bundle: uwm_featured_clinics
+mode: default
+content:
+  field_uwm_featured_clinics:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: card
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_uwm_link:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    type: link
+    region: content
+hidden: {  }

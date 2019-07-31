@@ -1,0 +1,22 @@
+uuid: 20598172-a8e7-4065-87f9-449390d6061a
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.features_amenities
+id: taxonomy_term.features_amenities.default
+targetEntityType: taxonomy_term
+bundle: features_amenities
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  path: true

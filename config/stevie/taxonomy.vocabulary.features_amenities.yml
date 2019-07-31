@@ -1,0 +1,9 @@
+uuid: fb84c567-34bc-4b7f-bbba-8fed7742b9a2
+langcode: en
+status: true
+dependencies: {  }
+name: 'Features & Amenities'
+vid: features_amenities
+description: ''
+hierarchy: 0
+weight: 0

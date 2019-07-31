@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.res_clinic.field_res_box_number
     - field.field.node.res_clinic.field_res_building
     - field.field.node.res_clinic.field_res_clockwise_id
+    - field.field.node.res_clinic.field_res_conditions_symptoms
     - field.field.node.res_clinic.field_res_epic_department_ids
     - field.field.node.res_clinic.field_res_expertises
     - field.field.node.res_clinic.field_res_external_url
@@ -16,6 +17,7 @@ dependencies:
     - field.field.node.res_clinic.field_res_feat_clinics_header
     - field.field.node.res_clinic.field_res_feat_clinics_view_all
     - field.field.node.res_clinic.field_res_featured_clinics
+    - field.field.node.res_clinic.field_res_features_amenities
     - field.field.node.res_clinic.field_res_floor
     - field.field.node.res_clinic.field_res_hide_appt_ctas
     - field.field.node.res_clinic.field_res_hide_open_scheduling
@@ -28,8 +30,10 @@ dependencies:
     - field.field.node.res_clinic.field_res_medical_services
     - field.field.node.res_clinic.field_res_meta_tags
     - field.field.node.res_clinic.field_res_phone_number
+    - field.field.node.res_clinic.field_res_procedures_treatments
     - field.field.node.res_clinic.field_res_providers
     - field.field.node.res_clinic.field_res_room_number
+    - field.field.node.res_clinic.field_res_special_interests
     - field.field.node.res_clinic.field_search_best_bets
     - field.field.node.res_clinic.field_uwm_json_packet
     - field.field.node.res_clinic.field_uwm_sections
@@ -147,7 +151,7 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -159,7 +163,7 @@ content:
     type: boolean_checkbox
     region: content
   field_res_affiliates:
-    weight: 8
+    weight: 11
     settings:
       match_operator: CONTAINS
       size: 60
@@ -192,6 +196,12 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_res_conditions_symptoms:
+    type: options_select
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_res_epic_department_ids:
     weight: 24
     settings:
@@ -249,6 +259,12 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  field_res_features_amenities:
+    type: options_select
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_res_floor:
     weight: 33
     settings:
@@ -319,7 +335,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_meta_tags:
-    weight: 14
+    weight: 17
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
@@ -331,6 +347,12 @@ content:
     third_party_settings: {  }
     type: telephone_default
     region: content
+  field_res_procedures_treatments:
+    type: options_select
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_res_providers:
     weight: 5
     settings:
@@ -348,6 +370,12 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_res_special_interests:
+    type: options_select
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_search_best_bets:
     weight: 31
     settings:
@@ -405,7 +433,7 @@ content:
     third_party_settings: {  }
     region: content
   moderation_state:
-    weight: 15
+    weight: 18
     settings:
       size: 60
       placeholder: ''
@@ -416,21 +444,21 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 12
+    weight: 15
     region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 9
+    weight: 12
     third_party_settings: {  }
     region: content
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 13
+    weight: 16
     region: content
     third_party_settings: {  }
   title:
@@ -443,7 +471,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 11
+    weight: 14
     settings:
       match_operator: CONTAINS
       size: 60
@@ -451,7 +479,7 @@ content:
     region: content
     third_party_settings: {  }
   url_redirects:
-    weight: 16
+    weight: 19
     region: content
     settings: {  }
     third_party_settings: {  }

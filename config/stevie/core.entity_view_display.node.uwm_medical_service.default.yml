@@ -3,12 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.uwm_medical_service.field_link
     - field.field.node.uwm_medical_service.field_meta_tags
-    - field.field.node.uwm_medical_service.field_res_feat_clinics_header
-    - field.field.node.uwm_medical_service.field_res_featured_clinics
+    - field.field.node.uwm_medical_service.field_res_conditions_symptoms
+    - field.field.node.uwm_medical_service.field_res_procedures_treatments
     - field.field.node.uwm_medical_service.field_search_best_bets
-    - field.field.node.uwm_medical_service.field_top_content_blocks
     - field.field.node.uwm_medical_service.field_uwm_find_a_location_link
     - field.field.node.uwm_medical_service.field_uwm_find_a_provider_link
     - field.field.node.uwm_medical_service.field_uwm_image
@@ -18,7 +16,6 @@ dependencies:
     - node.type.uwm_medical_service
   module:
     - entity_reference_revisions
-    - link
     - metatag
     - user
 id: node.uwm_medical_service.default
@@ -26,53 +23,15 @@ targetEntityType: node
 bundle: uwm_medical_service
 mode: default
 content:
-  field_link:
-    weight: 3
-    label: hidden
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    type: link
-    region: content
   field_meta_tags:
-    weight: 5
+    weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
     region: content
-  field_res_feat_clinics_header:
-    type: string
-    weight: 1
-    region: content
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-  field_res_featured_clinics:
-    weight: 2
-    label: hidden
-    settings:
-      view_mode: card
-      link: false
-    third_party_settings: {  }
-    type: entity_reference_entity_view
-    region: content
-  field_top_content_blocks:
-    type: entity_reference_revisions_entity_view
-    weight: 0
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    region: content
   field_uwm_sections:
-    weight: 4
+    weight: 1
     label: hidden
     settings:
       view_mode: default
@@ -82,6 +41,8 @@ content:
     region: content
 hidden:
   content_moderation_control: true
+  field_res_conditions_symptoms: true
+  field_res_procedures_treatments: true
   field_search_best_bets: true
   field_uwm_find_a_location_link: true
   field_uwm_find_a_provider_link: true

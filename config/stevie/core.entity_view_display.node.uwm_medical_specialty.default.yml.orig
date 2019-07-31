@@ -1,0 +1,164 @@
+uuid: 58330678-ac35-415c-a37b-acfea8de7b34
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.uwm_medical_specialty.body
+    - field.field.node.uwm_medical_specialty.field_link
+    - field.field.node.uwm_medical_specialty.field_meta_tags
+<<<<<<< HEAD
+    - field.field.node.uwm_medical_specialty.field_res_feat_clinics_header
+    - field.field.node.uwm_medical_specialty.field_res_featured_clinics
+=======
+    - field.field.node.uwm_medical_specialty.field_res_conditions_symptoms
+    - field.field.node.uwm_medical_specialty.field_res_procedures_treatments
+>>>>>>> master
+    - field.field.node.uwm_medical_specialty.field_search_best_bets
+    - field.field.node.uwm_medical_specialty.field_uwm_find_a_location_link
+    - field.field.node.uwm_medical_specialty.field_uwm_find_a_provider_link
+    - field.field.node.uwm_medical_specialty.field_uwm_image
+    - field.field.node.uwm_medical_specialty.field_uwm_page_path_name
+    - field.field.node.uwm_medical_specialty.field_uwm_parent_page
+    - field.field.node.uwm_medical_specialty.field_uwm_sections
+    - field.field.node.uwm_medical_specialty.field_uwm_weight
+    - node.type.uwm_medical_specialty
+  module:
+    - entity_reference_revisions
+    - image
+    - link
+    - metatag
+    - text
+    - user
+id: node.uwm_medical_specialty.default
+targetEntityType: node
+bundle: uwm_medical_specialty
+mode: default
+content:
+  body:
+    weight: 8
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_link:
+    weight: 12
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_meta_tags:
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
+<<<<<<< HEAD
+  field_res_feat_clinics_header:
+    weight: 10
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_res_featured_clinics:
+    weight: 11
+=======
+  field_res_conditions_symptoms:
+    type: entity_reference_label
+    weight: 9
+    region: content
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_res_procedures_treatments:
+    type: entity_reference_label
+    weight: 10
+    region: content
+>>>>>>> master
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+<<<<<<< HEAD
+    type: entity_reference_label
+    region: content
+=======
+>>>>>>> master
+  field_uwm_find_a_location_link:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_uwm_find_a_provider_link:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_uwm_image:
+    weight: 6
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_uwm_page_path_name:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_uwm_parent_page:
+    weight: 4
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_uwm_sections:
+    weight: 5
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_uwm_weight:
+    weight: 11
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  content_moderation_control: true
+  field_search_best_bets: true
+  search_api_excerpt: true

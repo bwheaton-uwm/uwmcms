@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_uwm_sections
     - node.type.uwm_medical_service
+    - paragraphs.paragraphs_type.half_wide_hero
     - paragraphs.paragraphs_type.uwm_featured_story
     - paragraphs.paragraphs_type.uwm_sections_medical_services
   module:
@@ -26,101 +27,105 @@ settings:
     target_bundles:
       uwm_sections_medical_services: uwm_sections_medical_services
       uwm_featured_story: uwm_featured_story
+      half_wide_hero: half_wide_hero
     target_bundles_drag_drop:
       uwm_sections_medical_services:
         enabled: true
-        weight: -65
+        weight: -67
       uwm_featured_story:
         enabled: true
-        weight: -64
+        weight: -66
+      half_wide_hero:
+        enabled: true
+        weight: -65
       award:
-        weight: -63
+        weight: -64
         enabled: false
       board_certification:
-        weight: -62
+        weight: -63
         enabled: false
       degree:
-        weight: -61
+        weight: -62
         enabled: false
       detailed_contact_card:
-        weight: -60
+        weight: -61
         enabled: false
       education_history:
-        weight: -59
+        weight: -60
         enabled: false
       headshot_card:
-        weight: -58
+        weight: -59
         enabled: false
       hours_for_day:
-        weight: -57
+        weight: -58
         enabled: false
       hours_of_operation:
-        weight: -56
+        weight: -57
         enabled: false
       uwm_3_col_proof_points:
-        weight: -55
+        weight: -56
         enabled: false
       uwm_accordion:
-        weight: -54
+        weight: -55
         enabled: false
       uwm_accordion_section:
-        weight: -53
-        enabled: false
-      half_wide_hero:
-        weight: -52
+        weight: -54
         enabled: false
       uwm_accordion_sub_section:
-        weight: -51
+        weight: -53
         enabled: false
       uwm_basic_content:
-        weight: -50
+        weight: -52
         enabled: false
       uwm_block:
-        weight: -49
+        weight: -51
         enabled: false
       uwm_card:
-        weight: -48
+        weight: -50
         enabled: false
       uwm_cta_link:
-        weight: -47
+        weight: -49
         enabled: false
       uwm_accent_heading:
-        weight: -46
+        weight: -48
         enabled: false
       uwm_full_html:
-        weight: -45
+        weight: -47
         enabled: false
       uwm_grid:
-        weight: -44
+        weight: -46
         enabled: false
       uwm_image:
-        weight: -43
+        weight: -45
         enabled: false
       uwm_image_hero:
-        weight: -42
+        weight: -44
         enabled: false
       uwm_link_with_icon:
-        weight: -41
+        weight: -43
         enabled: false
       uwm_media:
-        weight: -40
+        weight: -42
         enabled: false
       uwm_content_reference:
-        weight: -39
+        weight: -41
         enabled: false
       uwm_modal:
-        weight: -38
+        weight: -40
         enabled: false
       uwm_section:
-        weight: -37
+        weight: -39
         enabled: false
       uwm_view:
-        weight: -36
+        weight: -38
         enabled: false
       uwm_quiz_question:
-        weight: -35
+        weight: -37
         enabled: false
       uwm_text:
-        weight: -34
+        weight: -36
+        enabled: false
+      uwm_featured_clinics:
+        weight: -35
         enabled: false
 field_type: entity_reference_revisions

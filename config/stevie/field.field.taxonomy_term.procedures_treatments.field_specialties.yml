@@ -1,0 +1,29 @@
+uuid: 8343a5a3-0e4d-4a1e-bf90-aec7343adb43
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_specialties
+    - taxonomy.vocabulary.procedures_treatments
+    - taxonomy.vocabulary.specialities
+id: taxonomy_term.procedures_treatments.field_specialties
+field_name: field_specialties
+entity_type: taxonomy_term
+bundle: procedures_treatments
+label: Specialties
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      specialities: specialities
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

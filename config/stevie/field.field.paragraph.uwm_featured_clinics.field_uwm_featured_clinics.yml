@@ -1,0 +1,29 @@
+uuid: e3bd5630-9cbc-403a-9bf5-3c94952c63ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_featured_clinics
+    - node.type.res_clinic
+    - paragraphs.paragraphs_type.uwm_featured_clinics
+id: paragraph.uwm_featured_clinics.field_uwm_featured_clinics
+field_name: field_uwm_featured_clinics
+entity_type: paragraph
+bundle: uwm_featured_clinics
+label: 'Featured Clinics'
+description: 'Start typing a clinic name and select from auto-complete options.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      res_clinic: res_clinic
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
