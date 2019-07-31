@@ -1,74 +1,99 @@
+/**
+ * @file
+ * Featured Story component
+ *
+ * Library: uwmbase/featured-story
+ *
+ * @see paragraph--uwm-featured-story.html.twig
+ * @see paragraph--uwm-modal--uwm-featured-story.html.twig
+ */
+
 @import 'init';
 
 .uwm-featured-story {
-    position: relative;
-}
+  position: relative;
 
-.uwm-featured-story__background,
-.uwm-bottom-border__angled .uwm-featured-story__background {
-  @include angled-edge('inside bottom', 'upper right', #fff, 50);
+  .uwm-featured-story__background,
+  .uwm-bottom-border__angled .uwm-featured-story__background {
+    @include angled-edge('inside bottom', 'upper right', #fff, 50);
 
     &::after {
       width: 100%;
       margin-bottom: -1px;
     }
+
+    .img-fluid {
+      margin: 0;
+    }
+
   }
 
-.uwm-featured-story__background .img-fluid {
-  margin: 0;
-}
-
-.uwm-bottom-border__straight .uwm-featured-story__background {
-  &::after {
-    content: none;
+  .uwm-bottom-border__straight .uwm-featured-story__background {
+    &::after {
+      content: none;
+    }
   }
-}
 
-.uwm-featured-story__title {
-  padding-top: 38px;
-  width: 100%;
-
-  text-transform: uppercase;
-  text-shadow: 0px 3px 6px rgba(0, 0, 0, 53);
-  color: white;
-  letter-spacing: .05em;
-  margin-bottom: 6px;
-  font-size: 14px;
-  font-weight: 500;
-  margin-top: 0;
-
-  position: absolute;
-  top: 0px;
-
-  @include media-breakpoint-up('lg') {
+  .uwm-featured-story__content {
+    padding-bottom: 2.375rem; // 38px
     position: static;
-    text-shadow: none;
-    color: theme-color('text');
+
+    .uwm-featured-story__title {
+      position: absolute;
+      top: 0;
+      margin-top: 0;
+      padding-top: 2.375rem; // 38px
+      padding-bottom: 1.25rem; // 20px
+      margin-bottom: 0;
+
+      text-shadow: 0px 3px 6px rgba(0, 0, 0, 53);
+      color: color('white');
+    }
+
+    .uwm-featured-story__heading {
+      padding-top: 0;
+      padding-bottom: 1.5rem; // 24px
+      margin-bottom: 0;
+      font-size: 2.1875rem; // 35px - standard h2 font size
+      font-weight: 400;
+    }
+
+    .card-body {
+      padding: 0;
+    }
+
+    .btn-cta:last-child {
+      margin-bottom: 0;
+    }
+
   }
-}
 
-.uwm-featured-story__content {
-  padding-bottom: 38px;
-  margin-top: 0;
-  position: static;
-
+  // Switch to content box overlay styling.
   @include media-breakpoint-up('lg') {
-    background-color: rgba(255, 255, 255, .9);
-    position: absolute;
-    padding-left: 38px;
-    padding-right: 38px;
-    top: 30px;
+
+    .uwm-featured-story__content {
+      // Note: the `position: relative` ancestor is .uwm-featured-story,
+      // not .container-xl or .row - so the % width set by .col-xl-4
+      // continues to grow, not based on the container...
+      position: absolute;
+      top: 30px;
+      background-color: rgba(255, 255, 255, .9);
+      padding: 2.375rem; // 38px
+
+      .uwm-featured-story__title {
+        position: static;
+        padding-top: 0;
+        text-shadow: none;
+        color: theme-color('text');
+      }
+
+    }
+
   }
 
-  .card-body {
-    padding: 0;
-  }
 }
 
-.uwm-featured-story__content-shadow {
-  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.15)
-}
-
+// Apply accent color to Story Title heading.
 .uwm-accent-color__purple .uwm-featured-story__heading {
   color: color('purple');
 }

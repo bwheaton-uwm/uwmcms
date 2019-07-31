@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Theme override for Accent Heading field on Featured Story paragraph.
+ *
+ * @see template_preprocess_field()
+ */
+#}
+{%
+  set classes = [
+    'field',
+    'field--name-' ~ field_name|clean_class,
+    'uwm-accent-heading',
+    'uwm-accent-heading__title',
+    'uwm-featured-story__title',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>{{ items.0.content }}</div>
