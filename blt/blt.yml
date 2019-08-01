@@ -48,6 +48,8 @@ disable-targets:
     security:
       check:
         updates: true
+    frontend:
+      run: true
 validate:
   twig:
     filesets: {  }
