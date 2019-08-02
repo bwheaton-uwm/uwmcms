@@ -98,6 +98,11 @@ ecare-page:
     component:
       dist/css/ecare-page.css: {}
 
+make-appt-page:
+  css:
+    component:
+      dist/css/make-appt-page.css: {}
+
 card:
   css:
     component:
@@ -260,7 +265,7 @@ view-medical-specialties-for-services:
   css:
     component:
       dist/css/view-medical-specialties-for-services.css: {}
-      
+
 # ZEN LIBRARIES - Override, remove, or replace these
 
 anchor-scroll:
