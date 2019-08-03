@@ -48,8 +48,11 @@
 
 {#
   Add classes from field values, with defaults if empty.
+  Note that preprocess may add defaults based on other logic in the
+  `field_defaults` variable.
   @see field--field-uwm-bottom-border-options.html.twig
   @see field--field-uwm-accent-color.html.twig
+  @see uwmbase_preprocess_paragraph()
 #}
 {%
   set classes = [
@@ -57,8 +60,11 @@
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
     'paragraph--id--' ~ paragraph.id.value,
     'uwm-featured-story',
-    content.field_uwm_bottom_border_options.0 ? content.field_uwm_bottom_border_options|render : 'uwm-bottom-border__angled',
-    content.field_uwm_accent_color.0 ? content.field_uwm_accent_color|render,
+
+    content.field_uwm_bottom_border_options.0 is not empty ? content.field_uwm_bottom_border_options|render : ( field_defaults.field_uwm_bottom_border_options is not empty ? field_defaults.field_uwm_bottom_border_options ),
+
+    content.field_uwm_accent_color.0 is not empty ? content.field_uwm_accent_color|render : ( field_defaults.field_uwm_accent_color is not empty ? field_defaults.field_uwm_accent_color ) ,
+
     is_block_content ? 'uwm-featured-story--block-content',
   ]
 %}

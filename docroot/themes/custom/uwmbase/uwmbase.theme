@@ -45,6 +45,20 @@ function _uwmbase_current_path_alias() {
 }
 
 /**
+ * Check if a given bundle is Medical Service or Medical Specialty.
+ *
+ * These node types have much in common and often need the same processing.
+ *
+ * @param string $bundle
+ *   The bundle name to test.
+ */
+function _uwmbase_is_med_service_specialty_type($bundle) {
+
+  return in_array($bundle, ['uwm_medical_service', 'uwm_medical_specialty']);
+
+}
+
+/**
  * Prepare the correct URL for a node's full page.
  *
  * This is primarily for clinic and provider full pages while they still live
@@ -808,7 +822,10 @@ function uwmbase_theme_suggestions_node_alter(array &$suggestions, array $variab
  */
 function uwmbase_preprocess_paragraph(&$variables) {
 
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
   $paragraph = $variables['paragraph'];
+
+  $parent = $paragraph->getParentEntity();
 
   // For any paragraph type, check if a parent Grid paragraph specified to
   // style all children as cards.
@@ -818,6 +835,47 @@ function uwmbase_preprocess_paragraph(&$variables) {
   // Add the Bootstrap 'card' css class.
   if ($variables['style_as_card']) {
     $variables['attributes']['class'][] = 'card';
+  }
+
+  // For outermost container paragraph types, check for fields that provide
+  // CSS classes to template and set any default values.
+  $variables['field_defaults'] = [];
+
+  if (in_array($paragraph->bundle(), [
+    'uwm_section',
+    'uwm_sections_medical_services',
+    'uwm_featured_story',
+  ])) {
+    foreach ([
+      'field_uwm_accent_color',
+      'field_uwm_bottom_border_options',
+      'field_uwm_background_color',
+    ] as $field_name) {
+
+      if ($paragraph->hasField($field_name) && $paragraph->get($field_name)->isEmpty()) {
+
+        switch ($field_name) {
+          case 'field_uwm_accent_color':
+
+            // Only set default for Medical Service/Specialty pages.
+            if ($parent->getEntityTypeId() === 'node' && _uwmbase_is_med_service_specialty_type($parent->bundle())) {
+              $variables['field_defaults'][$field_name] = 'uwm-accent-color__orange';
+            }
+
+            break;
+
+          case 'field_uwm_bottom_border_options':
+
+            // Set this default everywhere.
+            $variables['field_defaults'][$field_name] = 'uwm-bottom-border__angled';
+
+            break;
+
+        }
+
+      }
+
+    }
   }
 
 }

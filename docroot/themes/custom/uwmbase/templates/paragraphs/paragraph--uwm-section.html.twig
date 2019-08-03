@@ -53,8 +53,11 @@
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
     'paragraph--id--' ~ paragraph.id.value,
     background_image_url ? 'uwm-section--background-image',
-    content.field_uwm_accent_color.0 is not empty ? content.field_uwm_accent_color|render,
+
+    content.field_uwm_accent_color.0 is not empty ? content.field_uwm_accent_color|render : ( field_defaults.field_uwm_accent_color is not empty ? field_defaults.field_uwm_accent_color ),
+
     content.field_uwm_background_color.0 is not empty ? 'uwm-section--background-' ~ paragraph.field_uwm_background_color.entity.label|lower,
+
     custom_css_classes|length > 0 ? custom_css_classes
   ]
 %}
