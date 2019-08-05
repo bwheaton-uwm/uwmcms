@@ -2,6 +2,8 @@
  * @file
  * Featured Story component
  *
+ * This includes both the Featured Story paragraph type and block_content type.
+ *
  * Library: uwmbase/featured-story
  *
  * @see paragraph--uwm-featured-story.html.twig
@@ -13,25 +15,28 @@
 .uwm-featured-story {
   position: relative;
 
-  .uwm-featured-story__background,
-  .uwm-bottom-border__angled .uwm-featured-story__background {
-    @include angled-edge('inside bottom', 'upper right', #fff, 50);
+  .uwm-featured-story__background {
 
-    &::after {
-      width: 100%;
-      margin-bottom: -1px;
+    &.uwm-bottom-border--angled {
+      @include angled-edge('inside bottom', 'upper right', color('white'), 50);
+
+      &::after {
+        width: 100%;
+        margin-bottom: -1px;
+      }
+
+      .img-fluid {
+        margin: 0;
+      }
+
     }
 
-    .img-fluid {
-      margin: 0;
-    }
+    // &.uwm-bottom-border--straight {
+    //   &::after {
+    //     content: none;
+    //   }
+    // }
 
-  }
-
-  .uwm-bottom-border__straight .uwm-featured-story__background {
-    &::after {
-      content: none;
-    }
   }
 
   .uwm-featured-story__content {

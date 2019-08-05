@@ -38,20 +38,18 @@
  *   `field_uwm_block`. In this case, preprocessing populates the `content`
  *   variable with the referenced block's fields, so that this template renders
  *   them directly instead of with nested templates.
+ * - style_values: array; values of fields used for styling keyed by field name.
  *
- * @see uwmbase_preprocess_paragraph__uwm_featured_story()
  * @see template_preprocess_paragraph()
+ * @see uwmbase_preprocess_paragraph()
+ * @see uwmbase_preprocess_paragraph__uwm_featured_story()
  */
 #}
 
 {{ attach_library('uwmbase/featured-story') }}
 
 {#
-  Add classes from field values, with defaults if empty.
-  Note that preprocess may add defaults based on other logic in the
-  `field_defaults` variable.
-  @see field--field-uwm-bottom-border-options.html.twig
-  @see field--field-uwm-accent-color.html.twig
+  Note classes based on field values; defaults are set in preprocess.
   @see uwmbase_preprocess_paragraph()
 #}
 {%
@@ -61,12 +59,19 @@
     'paragraph--id--' ~ paragraph.id.value,
     'uwm-featured-story',
 
-    content.field_uwm_bottom_border_options.0 is not empty ? content.field_uwm_bottom_border_options|render : ( field_defaults.field_uwm_bottom_border_options is not empty ? field_defaults.field_uwm_bottom_border_options ),
-
-    content.field_uwm_accent_color.0 is not empty ? content.field_uwm_accent_color|render : ( field_defaults.field_uwm_accent_color is not empty ? field_defaults.field_uwm_accent_color ) ,
+    style_values.field_uwm_accent_color is not empty ?
+      'uwm-accent-color__' ~ style_values.field_uwm_accent_color|uwm_format_accent_class,
 
     is_block_content ? 'uwm-featured-story--block-content',
   ]
+%}
+
+{#
+  Bottom border CSS class (default value set in preprocess)
+#}
+{%
+  set bottom_border_class = style_values.field_uwm_bottom_border_options is not empty ?
+    'uwm-bottom-border--' ~ style_values.field_uwm_bottom_border_options|uwm_format_accent_class
 %}
 
 <section{{ attributes.addClass(classes) }}>
@@ -75,11 +80,11 @@
     of the image file field on the paragraph type. Check for both here.
   #}
   {% if content.field_uwm_image.0 is not empty %}
-    <div class="uwm-featured-story__background">
+    <div class="uwm-featured-story__background {{ bottom_border_class }}">
       {{ content.field_uwm_image }}
     </div>
   {% elseif content.field_uwm_media_image.0 is not empty %}
-    <div class="uwm-featured-story__background">
+    <div class="uwm-featured-story__background {{ bottom_border_class }}">
       {{ content.field_uwm_media_image }}
     </div>
   {% endif %}

@@ -838,36 +838,64 @@ function uwmbase_preprocess_paragraph(&$variables) {
   }
 
   // For outermost container paragraph types, check for fields that provide
-  // CSS classes to template and set any default values.
-  $variables['field_defaults'] = [];
+  // styling metadata for the template, and set any default values.
+  $variables['style_values'] = [];
 
   if (in_array($paragraph->bundle(), [
     'uwm_section',
     'uwm_sections_medical_services',
     'uwm_featured_story',
   ])) {
+
+    // Check if Featured Story paragraph references a Featured Story
+    // block_content entity, to use its fields instead.
+    $entity = $paragraph;
+    if ($paragraph->bundle() === 'uwm_featured_story' && !$paragraph->get('field_uwm_block')->isEmpty()) {
+      $entity = $paragraph->get('field_uwm_block')->referencedEntities()[0];
+    }
+
     foreach ([
       'field_uwm_accent_color',
       'field_uwm_bottom_border_options',
       'field_uwm_background_color',
     ] as $field_name) {
 
-      if ($paragraph->hasField($field_name) && $paragraph->get($field_name)->isEmpty()) {
+      if ($entity->hasField($field_name)) {
+
+        // Retrieve the field value, or the referenced entity from it.
+        $item = NULL;
+        $ref_entity = NULL;
+
+        if (!$entity->get($field_name)->isEmpty()) {
+          $items = $entity->get($field_name);
+
+          if ($items->getFieldDefinition()->getType() === 'entity_reference') {
+            $ref_entity = $items->referencedEntities()[0];
+          }
+          else {
+            $item = $items->first();
+          }
+        }
 
         switch ($field_name) {
           case 'field_uwm_accent_color':
 
-            // Only set default for Medical Service/Specialty pages.
-            if ($parent->getEntityTypeId() === 'node' && _uwmbase_is_med_service_specialty_type($parent->bundle())) {
-              $variables['field_defaults'][$field_name] = 'uwm-accent-color__orange';
+            if (!empty($ref_entity)) {
+              $variables['style_values'][$field_name] = $ref_entity->label();
+            }
+            else {
+              // For Medical Service/Specialty pages only, default to 'orange'.
+              if ($parent->getEntityTypeId() === 'node' && _uwmbase_is_med_service_specialty_type($parent->bundle())) {
+                $variables['style_values'][$field_name] = 'orange';
+              }
             }
 
             break;
 
           case 'field_uwm_bottom_border_options':
 
-            // Set this default everywhere.
-            $variables['field_defaults'][$field_name] = 'uwm-bottom-border__angled';
+            // Default to 'angled' everywhere.
+            $variables['style_values'][$field_name] = (!empty($ref_entity) ? $ref_entity->label() : 'angled');
 
             break;
 
