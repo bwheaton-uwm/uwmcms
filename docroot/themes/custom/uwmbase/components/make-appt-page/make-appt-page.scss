@@ -1,0 +1,21 @@
+/*
+ * Styles specific to the Make an Appointment page.
+ *
+ * Theme library: uwmbase/make-appt-page
+ *
+ * @see uwmbase_page_attachments_alter().
+ */
+
+@import 'init';
+
+.make-appt-page__title-link {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  a {
+    color: theme-color('link-blue');
+    text-decoration: none;
+    &:hover, &:focus {
+      text-decoration: underline;
+    }
+  }
+}
