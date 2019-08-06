@@ -23,18 +23,38 @@
 
   }
 
-  &.uwm-bottom-border--angled .uwm-featured-story__background {
-    @include angled-edge('inside bottom', 'upper right', color('white'), 50);
+  &.uwm-bottom-border--angled {
 
-    &::after {
-      width: 100%;
-      margin-bottom: -1px;
+    .uwm-featured-story__background {
+      @include angled-edge('inside bottom', 'upper right', color('white'), 50);
+
+      &::after {
+        width: 100%;
+        margin-bottom: -1px;
+      }
     }
+
+  }
+
+  &.uwm-bottom-border--straight {
+
+    // 992px-
+    @include media-breakpoint-down('md') {
+
+      // When bottom of image is straight, add spacing between image and
+      // content. (For angled case, the angled edge creates the space.)
+      .uwm-featured-story__background {
+        padding-bottom: 2rem; // 32px
+      }
+
+    }
+
   }
 
   .uwm-featured-story__content {
-    padding-bottom: 2.375rem; // 38px
+    @include make-col-ready();
     position: static;
+    padding-bottom: 2.375rem; // 38px
 
     .uwm-featured-story__title {
       position: absolute;
@@ -54,6 +74,17 @@
       margin-bottom: 0;
       font-size: 2.1875rem; // 35px - standard h2 font size
       font-weight: 400;
+
+      // 1200px-
+      @include media-breakpoint-down('lg') {
+
+        // Decrease the h2 size so it makes the content box a bit less tall, when
+        // the image height is decreasing at smaller widths.
+        font-size: 1.5rem; // 24px
+        padding-bottom: 1rem;
+
+      }
+
     }
 
     .card-body {
@@ -83,13 +114,21 @@
 
     }
 
-  }
+    // 768px+
+    @include media-breakpoint-up('md') {
 
-  // 992px+
-  // Switch to content box overlay styling.
-  @include media-breakpoint-up('lg') {
+      // 2/3 width
+      @include make-col(8);
 
-    .uwm-featured-story__content {
+    }
+
+    // 992px+
+    // Switch to content box overlay styling.
+    @include media-breakpoint-up('lg') {
+
+      // 1/2 width
+      @include make-col(6);
+
       // Note: the `position: relative` ancestor is .uwm-featured-story,
       // not .container-xl or .row - so the % width set by .col-xl-4
       // continues to grow, not based on the container...
@@ -108,38 +147,21 @@
 
     }
 
-  }
+    // 1200px+
+    @include media-breakpoint-up('xl') {
 
-  // 1200px-
-  @include media-breakpoint-down('lg') {
-
-    .uwm-featured-story__content {
-
-      // Decrease the h2 size so it makes the content box a bit less tall, when
-      // the image height is decreasing at smaller widths.
-      .uwm-featured-story__heading {
-        font-size: 1.5rem; // 24px
-        padding-bottom: 1rem;
-      }
+      // Set as make-col() does, but with custom percentage width.
+      flex: 0 0 40%;
+      max-width: 40%;
 
     }
 
-  }
+    // 1450px+
+    @media (min-width: 1450px) {
 
-  // 992px-
-  @include media-breakpoint-down('md') {
-
-    &.uwm-bottom-border--straight {
-
-      .uwm-featured-story__content {
-
-        // When bottom of image is straight, add spacing between image and
-        // heading. (For angled case, the angled edge creates the space.)
-        .uwm-featured-story__heading {
-          padding-top: 2rem; // 32px
-        }
-
-      }
+      // Set as make-col() does, but with custom percentage width.
+      flex: 0 0 33%;
+      max-width: 33%;
 
     }
 
