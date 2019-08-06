@@ -14,7 +14,7 @@ body.adminimal-admin-toolbar.user-role-authenticated {
   }
 
 
-  pre {
+  pre:not(.sf-dump) {
     background: #f4f4f4;
     border: 1px solid #ddd;
     border-left: 3px solid #f36d33;

@@ -1074,6 +1074,52 @@ function uwmbase_preprocess_paragraph__uwm_featured_story(&$variables) {
 
   }
 
+  // Check for a CTA link in the Featured Story's content that will open the
+  // associated modal. This is indicated by the content author by setting the
+  // link's URL as '#modal'.
+  if (!empty($variables['content']['field_uwm_modal'][0])) {
+    if (!empty($variables['content']['field_uwm_card_content'][0])) {
+      foreach (Element::children($variables['content']['field_uwm_card_content']) as $delta) {
+
+        // Get the referenced child paragraph.
+        $child = &$variables['content']['field_uwm_card_content'][$delta]['#paragraph'];
+        if ($child->bundle() === 'uwm_cta_link' && !$child->get('field_uwm_link')->isEmpty()) {
+
+          $link_item = $child->get('field_uwm_link')->first();
+          $link_item_value = $link_item->getValue();
+
+          if ($link_item_value['uri'] === 'internal:#modal') {
+
+            // Update the uri to reference the ID of the modal paragraph.
+            // This will be used later in rendering.
+            $link_item->setValue(array_merge($link_item_value, [
+              'uri' => 'internal:#modal-' . $variables['content']['field_uwm_modal'][0]['#paragraph']->id(),
+            ]));
+
+            // Pass a variable to the modal paragraph indicating that a
+            // CTA link will trigger the modal.
+            // @see uwmbase_preprocess_paragraph__uwm_modal()
+            $variables['content']['field_uwm_modal'][0]['#cta_to_modal'] = TRUE;
+
+          }
+
+        }
+
+      }
+    }
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_paragraph__uwm_modal().
+ */
+function uwmbase_preprocess_paragraph__uwm_modal(&$variables) {
+
+  // Check if parent Featured Story has a CTA link to open the modal, and pass
+  // that variable to template to skip rendering the 'play' button.
+  $variables['cta_to_modal'] = (isset($variables['elements']['#cta_to_modal']) && $variables['elements']['#cta_to_modal']);
+
 }
 
 /**
@@ -1249,6 +1295,12 @@ function uwmbase_preprocess_paragraph__uwm_cta_link(&$variables) {
 
   /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
   $paragraph = $variables['paragraph'];
+
+  // Extract link URL and title values for template.
+  if (!empty($variables['content']['field_uwm_link'][0])) {
+    $variables['field_uwm_link__url'] = $variables['content']['field_uwm_link'][0]['#url']->toString();
+    $variables['field_uwm_link__title'] = $variables['content']['field_uwm_link'][0]['#title'];
+  }
 
   // Create link attributes.
   $variables['link_attributes'] = new Attribute();
