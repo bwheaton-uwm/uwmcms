@@ -62,14 +62,26 @@
 
     .card-body {
       padding: 0;
-    }
 
-    .btn-cta:last-child {
-      margin-bottom: 0;
+      p:last-child {
+        margin-bottom: 0;
+      }
+
+      .btn-cta {
+        margin-top: 1rem;
+        margin-bottom: 0;
+        margin-right: 0.5rem;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
     }
 
   }
 
+  // 992px+
   // Switch to content box overlay styling.
   @include media-breakpoint-up('lg') {
 
@@ -88,6 +100,22 @@
         padding-top: 0;
         text-shadow: none;
         color: theme-color('text');
+      }
+
+    }
+
+  }
+
+  // 1200px-
+  @include media-breakpoint-down('lg') {
+
+    .uwm-featured-story__content {
+
+      // Decrease the h2 size so it makes the content box a bit less tall, when
+      // the image height is decreasing at smaller widths.
+      .uwm-featured-story__heading {
+        font-size: 1.5rem; // 24px
+        padding-bottom: 1rem;
       }
 
     }
