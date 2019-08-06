@@ -1,0 +1,7 @@
+name: UWMed Schema.org Physician
+type: module
+description: Makes Schema.org/Physician schema available in Metatag settings.
+core: 8.x
+package: UWMed
+dependencies:
+  - schema_metatag
