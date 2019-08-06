@@ -21,19 +21,15 @@
       margin: 0;
     }
 
-    &.uwm-bottom-border--angled {
-      @include angled-edge('inside bottom', 'upper right', color('white'), 50);
+  }
 
-      &::after {
-        width: 100%;
-        margin-bottom: -1px;
-      }
+  &.uwm-bottom-border--angled .uwm-featured-story__background {
+    @include angled-edge('inside bottom', 'upper right', color('white'), 50);
+
+    &::after {
+      width: 100%;
+      margin-bottom: -1px;
     }
-
-    // &.uwm-bottom-border--straight {
-    //
-    // }
-
   }
 
   .uwm-featured-story__content {
@@ -124,6 +120,25 @@
       .uwm-featured-story__heading {
         font-size: 1.5rem; // 24px
         padding-bottom: 1rem;
+      }
+
+    }
+
+  }
+
+  // 992px-
+  @include media-breakpoint-down('md') {
+
+    &.uwm-bottom-border--straight {
+
+      .uwm-featured-story__content {
+
+        // When bottom of image is straight, add spacing between image and
+        // heading. (For angled case, the angled edge creates the space.)
+        .uwm-featured-story__heading {
+          padding-top: 2rem; // 32px
+        }
+
       }
 
     }
