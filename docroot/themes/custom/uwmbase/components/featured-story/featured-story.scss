@@ -63,6 +63,14 @@
     .card-body {
       padding: 0;
 
+      .paragraph--type--uwm-basic-content {
+        margin-top: 1rem;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+
       p:last-child {
         margin-bottom: 0;
       }
