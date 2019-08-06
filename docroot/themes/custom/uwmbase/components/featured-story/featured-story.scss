@@ -78,6 +78,7 @@
       // not .container-xl or .row - so the % width set by .col-xl-4
       // continues to grow, not based on the container...
       position: absolute;
+      z-index: 1;
       top: 30px;
       background-color: rgba(255, 255, 255, .9);
       padding: 2.375rem; // 38px
