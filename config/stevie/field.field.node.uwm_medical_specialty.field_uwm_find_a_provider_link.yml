@@ -9,7 +9,7 @@ id: node.uwm_medical_specialty.field_uwm_find_a_provider_link
 field_name: field_uwm_find_a_provider_link
 entity_type: node
 bundle: uwm_medical_specialty
-label: 'Find a Provider Link'
+label: '(old) Find a Provider Link'
 description: ''
 required: false
 translatable: true

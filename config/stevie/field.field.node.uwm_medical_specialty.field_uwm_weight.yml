@@ -10,7 +10,7 @@ field_name: field_uwm_weight
 entity_type: node
 bundle: uwm_medical_specialty
 label: Weight
-description: ''
+description: 'This sets the order of this specialty, among other specialties, as they are displayed on their parent service page.'
 required: false
 translatable: false
 default_value: {  }
