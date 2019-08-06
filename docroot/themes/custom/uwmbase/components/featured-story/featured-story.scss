@@ -17,6 +17,10 @@
 
   .uwm-featured-story__background {
 
+    .img-fluid {
+      margin: 0;
+    }
+
     &.uwm-bottom-border--angled {
       @include angled-edge('inside bottom', 'upper right', color('white'), 50);
 
@@ -24,17 +28,10 @@
         width: 100%;
         margin-bottom: -1px;
       }
-
-      .img-fluid {
-        margin: 0;
-      }
-
     }
 
     // &.uwm-bottom-border--straight {
-    //   &::after {
-    //     content: none;
-    //   }
+    //
     // }
 
   }
