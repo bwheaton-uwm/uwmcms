@@ -35,6 +35,19 @@
       }
     }
 
+    // Urgent Care hours table (add CSS class in WYSIWYG)
+    table.hours {
+      width: 50%;
+      max-width: 16.25rem; // 260px
+      margin-bottom: 1rem; // 24px
+
+      td {
+        &:nth-child(2) {
+          text-align: right;
+        }
+      }
+    }
+
     .half-wide-hero__ctas {
 
       a.btn-cta-solid {
@@ -302,6 +315,10 @@
       .half-wide-hero__additional-text {
         margin: 0;
         padding: 1rem 2.5rem; // 16px 40px
+      }
+
+      table.hours {
+        width: 100%;
       }
   
       .half-wide-hero__ctas {
