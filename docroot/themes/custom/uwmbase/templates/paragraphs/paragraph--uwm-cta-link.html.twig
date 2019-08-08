@@ -8,22 +8,41 @@
  * - fluid_width: boolean, whether to style as fluid width
  * - btn_cta_solid: boolean, whether to style as solid-background-color button
  *   (instead of standard CTA button with upper left corner color)
+ * - field_uwm_link__url: string, the URL string value from field_uwm_link
+ * - field_uwm_link__title: string, the title string value from field_uwm_link
  *
  * @see uwmbase_preprocess_paragraph__uwm_cta_link()
  */
 #}
-{%
-  set link_classes = [
-    'btn',
-    btn_cta_solid ? 'btn-cta-solid' : 'btn-cta',
-    fluid_width ? 'btn-cta-fluid' : 'btn-cta-link',
-  ]
-%}
+{% if content.field_uwm_link.0 is not empty %}
+  {%
+    set link_classes = [
+      'btn',
+      btn_cta_solid ? 'btn-cta-solid' : 'btn-cta',
+      fluid_width ? 'btn-cta-fluid' : 'btn-cta-link',
+    ]
+  %}
 
-<a {{ link_attributes.addClass(link_classes) }} href="{{ content.field_uwm_link.0['#url'] }}">
-  <span class="btn__text">{{ content.field_uwm_link.0["#title"] }}</span>
-
-  {% if not fluid_width and not btn_cta_solid %}
-    <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+  {#
+    If this link is set to open a modal associated to parent Featured Story,
+    add the necessary attributes. (This takes the place of the 'play' button
+    otherwise added in the modal paragraph template.)
+    @see paragraph--uwm-modal--uwm-featured-story.html.twig
+  #}
+  {% if field_uwm_link__url starts with '#modal-' %}
+    <a {{ link_attributes.addClass(link_classes) }}
+       href="{{ field_uwm_link__url }}"
+       data-toggle="modal"
+       data-target="{{ field_uwm_link__url }}"
+    >
+  {% else %}
+    <a {{ link_attributes.addClass(link_classes) }} href="{{ field_uwm_link__url }}">
   {% endif %}
-</a>
+
+    <span class="btn__text">{{ field_uwm_link__title }}</span>
+
+    {% if not fluid_width and not btn_cta_solid %}
+      <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
+    {% endif %}
+  </a>
+{% endif %}

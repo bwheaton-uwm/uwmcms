@@ -132,6 +132,7 @@ h1.page-title {
  * Section paragraphs to override page-level color.
  */
 .uwm-accent-heading__title {
+  font-family: $font-family-heading;
   text-transform: uppercase;
   color: theme-color('text');
   letter-spacing: .05em;

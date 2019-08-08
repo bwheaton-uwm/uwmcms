@@ -37,15 +37,17 @@
  *   field_uwm_css_class.
  *
  * @see template_preprocess_paragraph()
+ * @see uwmbase_preprocess_paragraph()
  * @see uwmbase_preprocess_paragraph__uwm_section()
  */
 #}
 {#
-  Add classes from field values:
+  Add classes from field values; some defaults are set in preprocess:
   - if there is a background image
   - accent color
   - background color
   - custom entered classes
+  @see uwmbase_preprocess_paragraph()
 #}
 {%
   set classes = [
@@ -53,8 +55,12 @@
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
     'paragraph--id--' ~ paragraph.id.value,
     background_image_url ? 'uwm-section--background-image',
-    content.field_uwm_accent_color.0 is not empty ? content.field_uwm_accent_color|render,
+
+    style_values.field_uwm_accent_color is not empty ?
+      'uwm-accent-color__' ~ style_values.field_uwm_accent_color|uwm_format_accent_class,
+
     content.field_uwm_background_color.0 is not empty ? 'uwm-section--background-' ~ paragraph.field_uwm_background_color.entity.label|lower,
+
     custom_css_classes|length > 0 ? custom_css_classes
   ]
 %}
