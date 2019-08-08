@@ -13,22 +13,59 @@
 // Style guide: components.accordion
 
 .uwm-accordion {
-  padding-bottom: 3.125rem;
+  padding-bottom: 1.875rem;
+  .card {
+    box-shadow: none;
+  }
 }
 
-.uwm-accordion.uwm-acc-t-both {
-  svg {
-    margin-right: 1rem;
-    color: #3375D4;
+.uwm-accordion .card-header {
+  h3 {
+    font-weight: $font-weight-medium;
+    padding: 0;
+    margin: 0;
+    font-family: $font-family-sans-serif;
   }
+  svg {
+    .uwm-accent-color__blue & {
+      color: color('blue');
+    }
+    .uwm-accent-color__light-purple & {
+      color: color('light-purple');
+    }
+    .uwm-accent-color__orange & {
+      color: color('orange');
+    }
+    .uwm-accent-color__purple & {
+      color: color('purple');
+    }
+    .uwm-accent-color__teal & {
+      color: color('teal');
+    }
+    .uwm-accent-color__yellow & {
+      color: color('yellow');
+    }
+  }
+}
+
+.uwm-accordion__card-header {
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.uwm-accordion__header-link {
+  padding: .875em 1.25em;
+  background: color('gray');
   .fa-plus-circle {
     display: none;
+    margin-right: 1rem;
   }
   .fa-minus-circle {
     display: inline-block;
+    margin-right: 1rem;
   }
-
-  .collapsed {
+  &.collapsed {
     .fa-plus-circle {
       display: inline-block;
     }
@@ -36,15 +73,9 @@
       display: none;
     }
   }
-
-}
-
-.uwm-accordion .card-header h3 {
-  padding: 0;
-}
-
-.uwm-accordion .uwm-accordion__header-link {
-  padding: 1em 1.25em;
+  .uwm-section--background-gray & {
+    background: color('white');
+  }
 }
 
 .uwm-accordion .uwm-accordion__header-link.show-indicators:before {
@@ -73,31 +104,30 @@
   content: "\f068";
 }
 
-.uwm-accordion .uwm-accordion__body-separator {
-  border-color: #c3c5c8;
-  margin: 0 1em;
+.uwm-accordion__body-separator {
+  border-color: #cdd0d3;
+  margin: 0;
 }
 
 .uwm-accordion .collapsed .uwm-accordion__body-separator {
   display: none;
 }
 
-.uwm-accordion .card {
-  background-color: $card-cap-bg;
+.uwm-accordion__card {
+  background: color('gray');
+  .uwm-section--background-gray & {
+    background: color('white');
+  }
 }
 
-.uwm-section--background-gray .uwm-accordion .card, .uwm-section--background-gray .uwm-accordion .card-header {
-  background-color: $white;
-}
+.uwm-accordion__card-body {
+  margin: 0;
+  padding: 0 3.25em;
 
-.uwm-accordion .card-body {
-  padding: 0 2.8125em 2.125em;
-}
+  // !important needed to override ".card .card-body".
+  padding-bottom: 1.25em !important;
 
-.uwm-accordion .card-body .field__item:first-child {
-  padding-top: 1.875em;
-}
-
-.uwm-accordion .card-body .field--name-uwm-text p:last-child {
-  margin-bottom: 0;
+  & > .paragraph {
+    margin: 1em 0;
+  }
 }
