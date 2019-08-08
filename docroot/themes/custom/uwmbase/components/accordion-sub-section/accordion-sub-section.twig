@@ -1,0 +1,45 @@
+{# Prints Accordion Sub-section template. #}
+
+{#
+required variables
+paragraph = paragraph
+accordionTitle = content.uwm_accordion_section_title,
+accordionBody = content.uwm_accordion_section_body
+#}
+
+{# Sets Unique ID for Accordion from Paragraph ID. #}
+{% set paragraph_id = 'accordion-' ~ paragraph.id.value %}
+
+{% block component %}
+<div class="uwm-accordion-sub-section uwm-acc-t-both" id="{{ paragraph_id }}" role="tablist">
+
+  <div class="card mb-3">
+    <div class="card-header uwm-accordion-sub-section__card-header p-0 border-0" id="heading-{{ paragraph_id }}-{{ key + 1 }}">
+      <h3>
+        <button class="uwm-accordion-sub-section__header-link btn collapsed
+            w-100"
+                data-toggle="collapse"
+                data-target="#collapse-{{ paragraph_id }}-{{ key + 1 }}"
+                aria-expanded="false"
+                aria-controls="collapse-{{ paragraph_id }}-{{ key + 1 }}"
+        >
+          <div class="uwm-accordion-sub-section__header-link-text">
+            {{- accordionTitle|render|striptags }}
+          </div>
+          <div class="uwm-accordion-sub-section__header-link-icon">
+             <i class="fas fa-angle-down"></i><i class="fas fa-angle-up"></i>
+          </div>
+        </button>
+      </h3>
+    </div>
+
+    <div id="collapse-{{ paragraph_id }}-{{ key + 1 }}" class="collapse {{ show_accordion_panel}}" role="tabpanel" data-parent="#{{ paragraph_id }}" aria-labelledby="heading-{{ paragraph_id }}-{{ key + 1 }}">
+      <div class="card-body uwm-accordion-sub-section__card-body">
+        {{ accordionBody }}
+      </div>
+    </div>
+
+  </div>
+
+</div>
+{% endblock component %}

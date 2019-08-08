@@ -34,7 +34,7 @@ accordionSections = content.uwm_accordion_section #}
   {% if showIndicators %}
     {% set indicator_class = 'show-indicators' %}
   {%  endif %}
-  
+
   {# Loop through all of the accordion sections. #}
   {% for key, item in accordionSections if key|first != '#' %}
   {# Set variables if accordion should be open by default. #}
@@ -47,11 +47,11 @@ accordionSections = content.uwm_accordion_section #}
     {% set show_accordion_panel = '' %}
     {% set aria = 'false' %}
   {% endif %}
-  <div class="card border-0 mb-3">
-    <div class="card-header p-0 border-0" id="heading-{{ paragraph_id }}-{{ key + 1 }}">
-      <h3 class="mb-0">
-        <button class="uwm-accordion__header-link btn btn-link {{ indicator_class }} {{ show_accordion_heading }}
-            w-100 text-left text-blue"
+  <div class="card uwm-accordion__card border-0 mb-3">
+    <div class="card-header uwm-accordion__card-header p-0 border-0" id="heading-{{ paragraph_id }}-{{ key + 1 }}">
+      <h3>
+        <button class="uwm-accordion__header-link btn {{ indicator_class }} {{ show_accordion_heading }}
+            w-100"
                 data-toggle="collapse"
                 data-target="#collapse-{{ paragraph_id }}-{{ key + 1 }}"
                 aria-expanded="{{ aria }}"
@@ -63,8 +63,8 @@ accordionSections = content.uwm_accordion_section #}
     </div>
 
     <div id="collapse-{{ paragraph_id }}-{{ key + 1 }}" class="collapse {{ show_accordion_panel}}" role="tabpanel" data-parent="#{{ paragraph_id }}" aria-labelledby="heading-{{ paragraph_id }}-{{ key + 1 }}">
-      <hr class="uwm-accordion__body-separator" />
-      <div class="card-body pt-0">
+      <div class="card-body uwm-accordion__card-body">
+        <hr class="uwm-accordion__body-separator" />
         {# Loop through all of the accordion section bodies. #}
         {% for body_key, body_item in item['#paragraph'].uwm_accordion_section_body %}
           {# Use the same render array as item and set the '#paragraph'. #}
