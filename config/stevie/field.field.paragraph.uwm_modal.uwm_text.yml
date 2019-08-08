@@ -10,15 +10,17 @@ dependencies:
     - text
 third_party_settings:
   allowed_formats:
+    basic_html: basic_html
     unrestricted: '0'
+    unrestricted_no_wysiwyg: '0'
     rich_text: '0'
     plain_text: '0'
 id: paragraph.uwm_modal.uwm_text
 field_name: uwm_text
 entity_type: paragraph
 bundle: uwm_modal
-label: Title
-description: ''
+label: 'Caption under play button'
+description: 'Optionally add text to appear beneath the ''play'' button, in the lower right of the component.'
 required: false
 translatable: true
 default_value: {  }

@@ -38,18 +38,19 @@
  *   `field_uwm_block`. In this case, preprocessing populates the `content`
  *   variable with the referenced block's fields, so that this template renders
  *   them directly instead of with nested templates.
+ * - style_values: array; values of fields used for styling keyed by field name.
  *
- * @see uwmbase_preprocess_paragraph__uwm_featured_story()
  * @see template_preprocess_paragraph()
+ * @see uwmbase_preprocess_paragraph()
+ * @see uwmbase_preprocess_paragraph__uwm_featured_story()
  */
 #}
 
 {{ attach_library('uwmbase/featured-story') }}
 
 {#
-  Add classes from field values, with defaults if empty.
-  @see field--field-uwm-bottom-border-options.html.twig
-  @see field--field-uwm-accent-color.html.twig
+  Add classes based on field values; defaults are set in preprocess.
+  @see uwmbase_preprocess_paragraph()
 #}
 {%
   set classes = [
@@ -57,8 +58,13 @@
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
     'paragraph--id--' ~ paragraph.id.value,
     'uwm-featured-story',
-    content.field_uwm_bottom_border_options.0 ? content.field_uwm_bottom_border_options|render : 'uwm-bottom-border__angled',
-    content.field_uwm_accent_color.0 ? content.field_uwm_accent_color|render,
+
+    style_values.field_uwm_accent_color is not empty ?
+      'uwm-accent-color__' ~ style_values.field_uwm_accent_color|uwm_format_accent_class,
+
+    style_values.field_uwm_bottom_border_options is not empty ?
+      'uwm-bottom-border--' ~ style_values.field_uwm_bottom_border_options|uwm_format_accent_class,
+
     is_block_content ? 'uwm-featured-story--block-content',
   ]
 %}
@@ -80,12 +86,20 @@
 
   <div class="container-xl">
     <div class="row">
-      <div class="uwm-featured-story__content col-12 col-md-8 col-lg-6 col-xl-4">
+      <div class="uwm-featured-story__content">
 
-        {# Accent Heading #}
+        {#
+          Accent Heading
+          @see field--paragraph--field-uwm-short-formatted-text--uwm-featured-story.html.twig
+          @see field--block-content--field-uwm-short-formatted-text--featured-story.html.twig
+        #}
         {{ content.field_uwm_short_formatted_text }}
 
-        {# Story Title #}
+        {#
+          Story Title
+          @see field--paragraph--field-uwm-section-heading--uwm-featured-story.html.twig
+          @see field--block-content--field-uwm-section-heading--featured-story.html.twig
+        #}
         {{ content.field_uwm_section_heading }}
 
         {#

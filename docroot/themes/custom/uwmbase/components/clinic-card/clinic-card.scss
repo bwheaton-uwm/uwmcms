@@ -236,13 +236,21 @@
   .clinic-card__cta {
     padding: 0 1.5rem 1.5rem 1.5rem;
 
-    a.btn-cta {
+    &.uwm-accent-color__purple a.btn-cta {
+      // Ensure the accent color applies wherever cards are used, as they may be
+      // nested within a component that has its own accent color wrapper and
+      // the generic accent color styling will not have enough specificity for
+      // this context.
+      // @see _btn-cta.scss
+      @include button-cta-angled-edge(color('purple'));
+
       margin: 0;
+      width: 100%;
       box-shadow: 0 1px 6px $gray-200;
       text-align: center;
-      text-transform: uppercase;
       font-weight: $font-weight-semi-bold;
       font-size: 0.8125rem; // 13px
+
       @include media-breakpoint-up('md') {
         font-size: 0.875rem; // 14px
       }
