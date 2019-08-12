@@ -19,6 +19,7 @@ use Drupal\Core\Render\Element;
 use Drupal\Core\Template\Attribute;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\file\Entity\File;
+use Drupal\Component\Utility\Html;
 
 /*
  * Include helper functions used elsewhere below. This allows separating out
@@ -978,7 +979,30 @@ function uwmbase_preprocess_paragraph__uwm_section(&$variables) {
   /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
   $paragraph = $variables['paragraph'];
 
-  $variables['background_image_url'] = NULL;
+  /** @var \Drupal\Core\Entity\EntityInterface[] $children */
+  $children = (!$paragraph->get('field_uwm_component')->isEmpty() ? $paragraph->get('field_uwm_component')->referencedEntities() : NULL);
+
+  // Retrieve custom CSS classes from field.
+  $variables['custom_css_classes'] = '';
+  if ($paragraph->hasField('field_uwm_css_class') && !$paragraph->get('field_uwm_css_class')->isEmpty()) {
+    $variables['custom_css_classes'] = trim($paragraph->get('field_uwm_css_class')->first()->getValue()['value']);
+  }
+
+  // Set ID for an anchor, so that a link elsewhere on the page may jump to
+  // this section.
+  // (Might be nice to allow make this customizable with a field.)
+  $variables['section_anchor_id'] = NULL;
+
+  // Med Service/Specialty pages: if this section is featured clinics, provide
+  // anchor to jump from hero CTA to featured clinics.
+  if (!empty($children) && $children[0]->bundle() === 'uwm_featured_clinics') {
+    $variables['section_anchor_id'] = Html::getUniqueId('featured-clinics');
+  }
+
+  // Attach library for animated scroll to anchor.
+  if (!empty($variables['section_anchor_id'])) {
+    $variables['#attached']['library'][] = 'uwmbase/anchor-scroll';
+  }
 
   // Retrieve the background image URL.
   // This should be configured to display with the "URL to image" formatter.
@@ -986,6 +1010,8 @@ function uwmbase_preprocess_paragraph__uwm_section(&$variables) {
   // because:
   // - using a render array includes cache metadata,
   // - it's easy to configure to use an image style.
+  $variables['background_image_url'] = NULL;
+
   // Case 1: image (file) field, currently on Section paragraph type.
   if (!empty($variables['content']['field_uwm_image'][0])) {
     $fid = $paragraph->get('field_uwm_image')->getValue()[0]['target_id'];
@@ -1001,12 +1027,6 @@ function uwmbase_preprocess_paragraph__uwm_section(&$variables) {
   // paragraph type.
   elseif (!empty($variables['content']['field_uwm_media'][0])) {
     // TODO: complete if cases arises for Medical Service or Specialty nodes.
-  }
-
-  // Retrieve custom CSS classes from field.
-  $variables['custom_css_classes'] = '';
-  if ($paragraph->hasField('field_uwm_css_class') && !$paragraph->get('field_uwm_css_class')->isEmpty()) {
-    $variables['custom_css_classes'] = trim($paragraph->get('field_uwm_css_class')->first()->getValue()['value']);
   }
 
 }

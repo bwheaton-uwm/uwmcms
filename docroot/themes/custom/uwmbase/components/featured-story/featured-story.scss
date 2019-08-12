@@ -130,8 +130,10 @@
       @include make-col(6);
 
       // Note: the `position: relative` ancestor is .uwm-featured-story,
-      // not .container-xl or .row - so the % width set by .col-xl-4
-      // continues to grow, not based on the container...
+      // not .container-xl or .row - it seems that this content box's percentage
+      // width is of that ancestor, rather than .container-xl. Thus even when
+      // the container becomes fixed-width at 1200+, this content box width
+      // continues to grow, based on that ancestor...?
       position: absolute;
       z-index: 1;
       top: 30px;
