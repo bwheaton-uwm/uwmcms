@@ -11,7 +11,7 @@ id: node.uwm_medical_specialty.field_uwm_image
 field_name: field_uwm_image
 entity_type: node
 bundle: uwm_medical_specialty
-label: 'Hero Image'
+label: '(old) Hero Image'
 description: ''
 required: false
 translatable: false

@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for the UWMed Schema Physician module.
+ */
+
+/**
+ * Implements hook_metatags_alter().
+ */
+function uwmed_schema_physician_metatags_alter(array &$metatags, array &$context) {
+  // If the provider does not have a photo, use the default image.
+  if (isset($metatags['schema_physician_image']) && isset($context['entity'])) {
+    $entity = $context['entity'];
+    if ($entity->hasField('field_res_image') && $entity->get('field_res_image') && !$entity->get('field_res_image')->getValue()) {
+      $host = \Drupal::request()->getSchemeAndHttpHost();
+      $theme_path = \Drupal::theme()->getActiveTheme()->getPath();
+      $default_image = 'src/assets/provider-silhouette-brand.png';
+      $metatags['schema_physician_image'] = "$host/$theme_path/$default_image";
+    }
+  }
+}

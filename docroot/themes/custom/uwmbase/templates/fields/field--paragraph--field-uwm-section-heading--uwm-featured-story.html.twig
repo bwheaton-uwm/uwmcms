@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Theme override for the Story Title field on Featured Story paragraph.
+ *
+ * @see template_preprocess_field()
+ */
+#}
+{%
+  set classes = [
+    'field',
+    'field--name-' ~ field_name|clean_class,
+    'field--type-' ~ field_type|clean_class,
+    'uwm-featured-story__heading',
+  ]
+%}
+<h2{{ attributes.addClass(classes) }}>{{ items.0.content }}</h2>

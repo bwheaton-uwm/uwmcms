@@ -63,9 +63,8 @@
 
 {% block content %}
 
-    {{ attach_library('uwmbase/medical-specialty-page') }}
+  {{ attach_library('uwmbase/medical-specialty-page') }}
 
-    {{ content|without('field_res_featured_clinics') }}
-
+  {{ content.field_uwm_sections }}
 
 {% endblock %}

@@ -45,6 +45,20 @@ function _uwmbase_current_path_alias() {
 }
 
 /**
+ * Check if a given bundle is Medical Service or Medical Specialty.
+ *
+ * These node types have much in common and often need the same processing.
+ *
+ * @param string $bundle
+ *   The bundle name to test.
+ */
+function _uwmbase_is_med_service_specialty_type($bundle) {
+
+  return in_array($bundle, ['uwm_medical_service', 'uwm_medical_specialty']);
+
+}
+
+/**
  * Prepare the correct URL for a node's full page.
  *
  * This is primarily for clinic and provider full pages while they still live
@@ -224,25 +238,26 @@ function uwmbase_preprocess_page(&$variables, $hook) {
 
   if (!empty($node)) {
 
-    // Check if a Medical Service node has a 'Hero Content and Half-Wide Image'
-    // paragraph at the top. If so, render the page title and breadcrumb in that
-    // template for layout reasons, and remove those blocks from page regions.
+    // Check if a Medical Service or Medical Specialty node has a 'Hero Content
+    // and Half-Wide Image' paragraph at the top. If so, render the page title
+    // and breadcrumb in that template for layout reasons, and remove those
+    // blocks from page regions.
     // @see uwmbase_preprocess_paragraph__half_wide_hero()
-    $medical_service_hero = FALSE;
+    $ms_hero = FALSE;
     $hero_field = 'field_uwm_sections';
 
-    if ($node->bundle() === 'uwm_medical_service' && $node->hasField($hero_field) && !$node->get($hero_field)->isEmpty()) {
+    if (in_array($node->bundle(), ['uwm_medical_service', 'uwm_medical_specialty']) && $node->hasField($hero_field) && !$node->get($hero_field)->isEmpty()) {
 
       /** @var \Drupal\Core\Entity\EntityInterface[] $ref_entities */
       $ref_entities = $node->get($hero_field)->referencedEntities();
       $paragraph = $ref_entities[0];
       if ($paragraph->getEntityTypeId() === 'paragraph' && $paragraph->bundle() === 'half_wide_hero') {
-        $medical_service_hero = TRUE;
+        $ms_hero = TRUE;
       }
 
     }
 
-    if ($medical_service_hero && !empty($variables['page']['breadcrumb']['uwmbase_breadcrumbs'])) {
+    if ($ms_hero && !empty($variables['page']['breadcrumb']['uwmbase_breadcrumbs'])) {
       unset($variables['page']['breadcrumb']['uwmbase_breadcrumbs']);
 
       // There should be no other blocks in the 'breadcrumb' region. Unset the
@@ -259,7 +274,7 @@ function uwmbase_preprocess_page(&$variables, $hook) {
     // - On Medical Services nodes, there may be a hero paragraph that prints
     //   the title.
     if (!empty($variables['page']['title']['uwmbase_page_title'])) {
-      if ($node->bundle() === 'res_clinic' || $node->bundle() === 'uwm_homepage' || $medical_service_hero) {
+      if ($node->bundle() === 'res_clinic' || $node->bundle() === 'uwm_homepage' || $ms_hero) {
         unset($variables['page']['title']['uwmbase_page_title']);
 
         // There should be no other blocks in the 'title' region. Unset the
@@ -808,7 +823,10 @@ function uwmbase_theme_suggestions_node_alter(array &$suggestions, array $variab
  */
 function uwmbase_preprocess_paragraph(&$variables) {
 
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
   $paragraph = $variables['paragraph'];
+
+  $parent = $paragraph->getParentEntity();
 
   // For any paragraph type, check if a parent Grid paragraph specified to
   // style all children as cards.
@@ -818,6 +836,75 @@ function uwmbase_preprocess_paragraph(&$variables) {
   // Add the Bootstrap 'card' css class.
   if ($variables['style_as_card']) {
     $variables['attributes']['class'][] = 'card';
+  }
+
+  // For outermost container paragraph types, check for fields that provide
+  // styling metadata for the template, and set any default values.
+  $variables['style_values'] = [];
+
+  if (in_array($paragraph->bundle(), [
+    'uwm_section',
+    'uwm_sections_medical_services',
+    'uwm_featured_story',
+  ])) {
+
+    // Check if Featured Story paragraph references a Featured Story
+    // block_content entity, to use its fields instead.
+    $entity = $paragraph;
+    if ($paragraph->bundle() === 'uwm_featured_story' && !$paragraph->get('field_uwm_block')->isEmpty()) {
+      $entity = $paragraph->get('field_uwm_block')->referencedEntities()[0];
+    }
+
+    foreach ([
+      'field_uwm_accent_color',
+      'field_uwm_bottom_border_options',
+      'field_uwm_background_color',
+    ] as $field_name) {
+
+      if ($entity->hasField($field_name)) {
+
+        // Retrieve the field value, or the referenced entity from it.
+        $item = NULL;
+        $ref_entity = NULL;
+
+        if (!$entity->get($field_name)->isEmpty()) {
+          $items = $entity->get($field_name);
+
+          if ($items->getFieldDefinition()->getType() === 'entity_reference') {
+            $ref_entity = $items->referencedEntities()[0];
+          }
+          else {
+            $item = $items->first();
+          }
+        }
+
+        switch ($field_name) {
+          case 'field_uwm_accent_color':
+
+            if (!empty($ref_entity)) {
+              $variables['style_values'][$field_name] = $ref_entity->label();
+            }
+            else {
+              // For Medical Service/Specialty pages only, default to 'orange'.
+              if ($parent->getEntityTypeId() === 'node' && _uwmbase_is_med_service_specialty_type($parent->bundle())) {
+                $variables['style_values'][$field_name] = 'orange';
+              }
+            }
+
+            break;
+
+          case 'field_uwm_bottom_border_options':
+
+            // Default to 'angled' everywhere.
+            $variables['style_values'][$field_name] = (!empty($ref_entity) ? $ref_entity->label() : 'angled');
+
+            break;
+
+        }
+
+      }
+
+    }
   }
 
 }
@@ -860,9 +947,9 @@ function uwmbase_preprocess_paragraph__half_wide_hero(&$variables) {
     // layout.
     $variables['page_title'] = $parent->label();
 
-    // On Medical Service node, render the breadcrumb block in paragraph
-    // template for layout.
-    if ($parent->bundle() === 'uwm_medical_service') {
+    // On Medical Service or Medical Specialty node, render the breadcrumb block
+    // in paragraph template for layout.
+    if (in_array($parent->bundle(), ['uwm_medical_service', 'uwm_medical_specialty'])) {
 
       $block_storage = \Drupal::entityTypeManager()->getStorage('block');
       $block_builder = \Drupal::entityTypeManager()->getViewBuilder('block');
@@ -987,6 +1074,52 @@ function uwmbase_preprocess_paragraph__uwm_featured_story(&$variables) {
     $variables['is_block_content'] = TRUE;
 
   }
+
+  // Check for a CTA link in the Featured Story's content that will open the
+  // associated modal. This is indicated by the content author by setting the
+  // link's URL as '#modal'.
+  if (!empty($variables['content']['field_uwm_modal'][0])) {
+    if (!empty($variables['content']['field_uwm_card_content'][0])) {
+      foreach (Element::children($variables['content']['field_uwm_card_content']) as $delta) {
+
+        // Get the referenced child paragraph.
+        $child = &$variables['content']['field_uwm_card_content'][$delta]['#paragraph'];
+        if ($child->bundle() === 'uwm_cta_link' && !$child->get('field_uwm_link')->isEmpty()) {
+
+          $link_item = $child->get('field_uwm_link')->first();
+          $link_item_value = $link_item->getValue();
+
+          if ($link_item_value['uri'] === 'internal:#modal') {
+
+            // Update the uri to reference the ID of the modal paragraph.
+            // This will be used later in rendering.
+            $link_item->setValue(array_merge($link_item_value, [
+              'uri' => 'internal:#modal-' . $variables['content']['field_uwm_modal'][0]['#paragraph']->id(),
+            ]));
+
+            // Pass a variable to the modal paragraph indicating that a
+            // CTA link will trigger the modal.
+            // @see uwmbase_preprocess_paragraph__uwm_modal()
+            $variables['content']['field_uwm_modal'][0]['#cta_to_modal'] = TRUE;
+
+          }
+
+        }
+
+      }
+    }
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_paragraph__uwm_modal().
+ */
+function uwmbase_preprocess_paragraph__uwm_modal(&$variables) {
+
+  // Check if parent Featured Story has a CTA link to open the modal, and pass
+  // that variable to template to skip rendering the 'play' button.
+  $variables['cta_to_modal'] = (isset($variables['elements']['#cta_to_modal']) && $variables['elements']['#cta_to_modal']);
 
 }
 
@@ -1163,6 +1296,12 @@ function uwmbase_preprocess_paragraph__uwm_cta_link(&$variables) {
 
   /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
   $paragraph = $variables['paragraph'];
+
+  // Extract link URL and title values for template.
+  if (!empty($variables['content']['field_uwm_link'][0])) {
+    $variables['field_uwm_link__url'] = $variables['content']['field_uwm_link'][0]['#url']->toString();
+    $variables['field_uwm_link__title'] = $variables['content']['field_uwm_link'][0]['#title'];
+  }
 
   // Create link attributes.
   $variables['link_attributes'] = new Attribute();

@@ -61,6 +61,13 @@ accordion:
   - core/jquery
   - uwmbase/bootstrap
 
+accordion-sub-section:
+  css:
+    component:
+      dist/css/accordion-sub-section.css: {}
+  dependencies:
+  - uwmbase/accordion
+
 view-more:
   css:
     component:
