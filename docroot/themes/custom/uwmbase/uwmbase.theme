@@ -20,6 +20,7 @@ use Drupal\Core\Template\Attribute;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\file\Entity\File;
 use Drupal\Component\Utility\Html;
+use Drupal\media\MediaInterface;
 
 /*
  * Include helper functions used elsewhere below. This allows separating out
@@ -56,6 +57,20 @@ function _uwmbase_current_path_alias() {
 function _uwmbase_is_med_service_specialty_type($bundle) {
 
   return in_array($bundle, ['uwm_medical_service', 'uwm_medical_specialty']);
+
+}
+
+/**
+ * Check if a given media entity is "Remote Video" or "Video Embed".
+ *
+ * These two implement the same kind of media, and there are some of each.
+ *
+ * @param \Drupal\media\MediaInterface $media
+ *   The media entity to check.
+ */
+function _uwmbase_is_remote_video_media_type(MediaInterface $media) {
+
+  return in_array($media->bundle(), ['video', 'video_embed']);
 
 }
 
@@ -145,6 +160,15 @@ function uwmbase_theme_registry_alter(&$theme_registry) {
   if (!empty($theme_registry['address_plain__buildings'])) {
     $theme_registry['address_plain__buildings']['variables']['floor'] = '';
     $theme_registry['address_plain__buildings']['variables']['room'] = '';
+  }
+
+  // Add a variable for denoting that a video iframe is rendering in a modal.
+  // This happens in a Modal paragraph (within a Featured Story paragraph).
+  // @see uwmbase_preprocess_media__uwm_modal()
+  foreach (['video_embed_iframe', 'video_embed_iframe__youtube'] as $video_embed_hook) {
+    if (!empty($theme_registry[$video_embed_hook])) {
+      $theme_registry[$video_embed_hook]['variables']['in_modal'] = FALSE;
+    }
   }
 
 }
@@ -1466,6 +1490,28 @@ function uwmbase_preprocess_page_title(&$variables) {
       }
     }
   }
+}
+
+/**
+ * Implements uwmbase_preprocess_media__uwm_modal().
+ *
+ * Preprocess a media entity in the 'modal' view mode, i.e. rendered within a
+ * Modal paragraph.
+ */
+function uwmbase_preprocess_media__uwm_modal(&$variables) {
+
+  if (_uwmbase_is_remote_video_media_type($variables['media']) && !empty($variables['content']['field_media_video_embed_field'][0])) {
+
+    // Set a variable so that YouTube iframe markup could be rendered
+    // differently if in a modal.
+    // This field content is themed with 'video_embed_iframe'; the theme hook is
+    // altered to include our `in_modal` variable.
+    // @see uwmbase_theme_registry_alter()
+    // @see video-embed-iframe--youtube.html.twig
+    $variables['content']['field_media_video_embed_field'][0]['children']['#in_modal'] = TRUE;
+
+  }
+
 }
 
 /**
