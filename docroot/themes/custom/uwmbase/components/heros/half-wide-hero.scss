@@ -12,13 +12,13 @@
   .half-wide-hero__content {
 
     .half-wide-hero__title {
-      margin-top: 0;
+      margin-top: 1rem; // 16px
       margin-bottom: 0.75rem; // 12px
       padding: 0;
     }
 
     .half-wide-hero__subheading {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem; // 24px
       font-size: 1.25rem; // 20px
       line-height: 1.625rem; // 26px
 
@@ -89,7 +89,7 @@
         display: block;
 
         .breadcrumb {
-          padding: 0.5rem 0 0.75rem 0; // 8px 12px
+          padding: 1rem 0 0.75rem 0; // 16px 12px
         }
       }
 
