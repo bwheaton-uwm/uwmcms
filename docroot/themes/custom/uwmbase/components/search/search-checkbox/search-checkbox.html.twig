@@ -34,13 +34,14 @@
     {% for item in items %}
         {% set title = item.value['#title']['#value'] %}
         {% set facet_item_value = item.value['#attributes']['data-drupal-facet-item-value'] %}
-        
+
         {% set query = item.value['#url'].options['query'] %}
         {% set query_key = query['f'] is defined ? 'f' : query['fs_p'] is defined ? 'fs_p' : '' %}
                 {# Transform the Facets link to a select-option value #}
         {% set value = facet.id %}
         {% set value = value|replace({"provider_facet_accepting_patients": "accepting-patients:1"}) %}
-  
+        {% set value = value|replace({"provider_facet_open_scheduling": "open-scheduling:1"}) %}
+
 
         {# {{ devel_breakpoint() }} #}
 

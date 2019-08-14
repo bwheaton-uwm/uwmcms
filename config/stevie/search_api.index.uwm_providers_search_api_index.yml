@@ -3,14 +3,15 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_res_expertises
-    - field.storage.node.field_res_gender
     - field.storage.node.field_res_isacceptingnewpts
+    - field.storage.node.field_res_expertises
+    - field.storage.taxonomy_term.field_term_keywords
+    - field.storage.node.field_res_gender
+    - field.storage.node.field_res_is_open_scheduling
     - field.storage.node.field_res_languages
     - field.storage.node.field_res_medical_services
     - field.storage.node.field_res_name
     - field.storage.node.field_search_best_bets
-    - field.storage.taxonomy_term.field_term_keywords
     - search_api.server.acquia_search_server
   module:
     - taxonomy
@@ -72,6 +73,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_gender
+  field_res_is_open_scheduling:
+    label: 'Enabled for open scheduling?'
+    datasource_id: 'entity:node'
+    property_path: field_res_is_open_scheduling
+    type: boolean
+    dependencies:
+      config:
+        - field.storage.node.field_res_is_open_scheduling
   field_res_isacceptingnewpts:
     label: 'Accepting new patients'
     datasource_id: 'entity:node'
