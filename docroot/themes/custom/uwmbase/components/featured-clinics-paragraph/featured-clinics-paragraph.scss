@@ -9,9 +9,16 @@
  @import 'init';
 
 .uwm-featured-clinics {
-  padding-bottom: 2rem; // 32px
+  margin-bottom: 2rem; // 32px
+
+  // Negate the bottom margin on each card in last row, because it's a flex
+  // container and the child cards' bottom margins don't collapse.
+  .field--name-field-uwm-featured-clinics.row {
+    margin-bottom: -1.5rem;
+  }
 
   .field--name-field-uwm-link {
+    margin-top: 2rem; // 32px
     text-align: right;
 
     a {

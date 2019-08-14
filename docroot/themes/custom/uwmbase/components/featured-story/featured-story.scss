@@ -15,6 +15,13 @@
 .uwm-featured-story {
   position: relative;
 
+  // 992px+
+  // At switch to content box overlay / full background image, add top/bottom
+  // spacing to entire component.
+  @include media-breakpoint-up('lg') {
+    margin: 1.25rem 0; // 20px
+  }
+
   .uwm-featured-story__background {
 
     .img-fluid {
