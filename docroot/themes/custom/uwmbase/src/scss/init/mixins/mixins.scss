@@ -144,8 +144,6 @@
 
 }
 
-
-
 @mixin button-cta-angled-edge($color: "") {
 
   @if $color == "" {
@@ -191,6 +189,21 @@
     background-color: #21509C;
     color: white;
     text-decoration: none;
+  }
+
+}
+
+// Apply vertical border lines between grid items in a row (e.g. cards),
+// according to how many items are in each row.
+// Apply this mixin to each item, e.g. `.card` or `.views-row`.
+@mixin bordered-grid-items($per-row, $color: theme-color('border-gray')) {
+
+  border-right: 1px solid $color;
+
+  // No border on last item in the row and last item overall.
+  &:nth-child(#{$per-row}n),
+  &:last-child {
+    border-right: none;
   }
 
 }
