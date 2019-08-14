@@ -1,0 +1,61 @@
+uuid: a8a14e47-a0c4-4ba4-9a26-e9d923efd525
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.uwm_providers_search_api_index
+    - views.view.uwm_providers_search
+  module:
+    - search_api
+id: provider_facet_open_scheduling
+name: 'Provider Facet - Open scheduling'
+url_alias: open-scheduling
+weight: 3
+min_count: 1
+show_only_one_result: false
+field_identifier: field_res_is_open_scheduling
+facet_source_id: 'search_api:views_page__uwm_providers_search__page_1'
+widget:
+  type: checkbox
+  config:
+    show_numbers: false
+    soft_limit: 0
+    soft_limit_settings:
+      show_less_label: 'Show less'
+      show_more_label: 'Show more'
+query_operator: or
+use_hierarchy: false
+expand_hierarchy: false
+enable_parent_when_child_gets_disabled: true
+hard_limit: 0
+exclude: false
+only_visible_when_facet_source_is_visible: true
+processor_configs:
+  active_widget_order:
+    processor_id: active_widget_order
+    weights:
+      sort: 20
+    settings:
+      sort: DESC
+  boolean_item:
+    processor_id: boolean_item
+    weights:
+      build: 35
+    settings:
+      on_value: 'Only show providers with online scheduling'
+      off_value: ''
+  display_value_widget_order:
+    processor_id: display_value_widget_order
+    weights:
+      sort: 40
+    settings:
+      sort: ASC
+  url_processor_handler:
+    processor_id: url_processor_handler
+    weights:
+      pre_query: 50
+      build: 15
+    settings: {  }
+empty_behavior:
+  behavior: none
+show_title: false

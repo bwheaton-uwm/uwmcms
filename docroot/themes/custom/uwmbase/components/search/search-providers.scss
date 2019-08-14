@@ -34,10 +34,6 @@ body.is-path-search {
           padding-right: ($grid-gutter-width / 2);
         }
 
-        .dm-facet-id-provider_facet_accepting_patients {
-          margin-top: 1.5rem; // 24px
-        }
-
         .submit-wrapper {
           margin-top: 1.5rem; // 24px
         }
@@ -76,7 +72,8 @@ body.is-path-search {
           max-width: 204px;
         }
 
-        .dm-facet-id-provider_facet_accepting_patients {
+        .dm-facet-id-provider_facet_accepting_patients,
+        .dm-facet-id-provider_facet_open_scheduling {
           margin-bottom: 0;
         }
       }
@@ -138,4 +135,20 @@ body.is-path-search {
     background: transparent;
   }
 
+}
+
+.providers-search__checkboxes {
+  flex: 1 0 100%;
+  @include media-breakpoint-up('lg') {
+    margin-top: 1.5rem;
+  }
+}
+
+.providers-search__checkboxes .dm-facets-widget-checkbox {
+  // !important needed to override high specificity of other selectors.
+  max-width: none !important;
+  @include media-breakpoint-up('md') {
+    display: inline-block !important;
+    width: auto !important;
+  }
 }
