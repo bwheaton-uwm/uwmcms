@@ -203,7 +203,7 @@ function uwmcs_utils_toolbar() {
 
   if (!empty($_ENV['AH_SITE_ENVIRONMENT']) && !empty($_ENV['AH_SITE_GROUP'])) {
 
-    $env = 'ENV-' . $_ENV['AH_SITE_GROUP'] . '-' . $_ENV['AH_SITE_ENVIRONMENT'];
+    $env = strtoupper('ENV-' . $_ENV['AH_SITE_GROUP'] . '-' . $_ENV['AH_SITE_ENVIRONMENT']);
 
     $items['uwm_env'] = [
       '#type' => 'toolbar_item',
