@@ -240,5 +240,3 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
-
-Connection to uwmed.ssh.prod.acquia-sites.com closed.
