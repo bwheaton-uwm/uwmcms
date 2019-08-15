@@ -1,19 +1,19 @@
 /***
  * Special styles for isAdminRoute().
  */
-body.adminimal-admin-toolbar .toolbar-bar a.env-uwmed-dev {
+#toolbar-administration a.env-uwmed-dev {
   background: darkred !important;
   color: white !important;
   text-transform: uppercase;
 }
 
-body.adminimal-admin-toolbar .toolbar-bar a.env-uwmed-test {
+#toolbar-administration a.env-uwmed-test {
   background: darkgoldenrod !important;
   color: white !important;
   text-transform: uppercase;
 }
 
-body.adminimal-admin-toolbar .toolbar-bar a.env-uwmed-prod {
+#toolbar-administration a.env-uwmed-prod {
   background: darkblue !important;
   color: white !important;
   text-transform: uppercase;
