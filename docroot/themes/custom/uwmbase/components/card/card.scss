@@ -166,8 +166,8 @@
 }
 
 // Row of intro cards on Medical Service/Specialty nodes.
-// This uses a custom css class added via field on Sections for
-// Medical Services paragraph.
+// This custom css class is added via field on Sections for Medical Services
+// paragraph.
 // @TODO: move this to medical-services.scss -OR- could this be generalized for
 // h3 in the card header? new text-with-icon paragraph type?
 .uwm-section.specialty-intro-cards {

@@ -11,11 +11,15 @@
 
   &.uwm-section--background-gray {
     background-color: $gray-100;
-    margin-top: 3.125rem;
+    margin-top: 3.125rem; // 50px
 
     // Ensure equal top & bottom padding on a grey section - remove top/bottom
-    // space on first and last child elements that may have their own.
+    // space on first- and last-child elements that may have their own.
     padding: 2rem 0;
+
+    .h2-placeholder {
+      display: none;
+    }
 
     h2.field--name-field-uwm-section-heading:first-child {
       margin-top: 0;
@@ -23,10 +27,13 @@
     }
 
     .field--name-field-uwm-component > .field__item:last-child {
-      p:last-child, ul:last-child, ol:last-child {
+
+      p:last-child, ul:last-child, ol:last-child,
+      .uwm-grid__cards:last-child {
         margin-bottom: 0;
         padding-bottom: 0;
       }
+
     }
   }
 
