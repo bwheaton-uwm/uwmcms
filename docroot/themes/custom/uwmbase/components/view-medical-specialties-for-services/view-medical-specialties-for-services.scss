@@ -50,39 +50,32 @@
       margin-top: 1.25rem; // 20px
       margin-bottom: 0;
     }
-  }
 
-}
+    // 576+
+    // 2 per row
+    @include media-breakpoint-up('sm'){
+      @include bordered-grid-items(2);
+    }
 
-// 576+
-// 2 per row
-@include media-breakpoint-up('sm'){
+    // 768px+
+    // Change to 3 per row (standard)
+    // (If 2 or 4 total - stay at 2 per row)
+    @include media-breakpoint-up('md') {
+      &.col-md-4 {
+        @include bordered-grid-items(3);
+      }
+    }
 
-  .medical-specialty-view .views-row {
-    @include bordered-grid-items(2);
-  }
+    // 992px+
+    // 3 per row (standard)
+    // (If 2 total - stay at 2 per row)
+    // If 4 total - change to 4 per row
+    @include media-breakpoint-up('lg') {
+      &.col-lg-3 {
+        @include bordered-grid-items(4);
+      }
+    }
 
-}
-
-// 768px+
-// Change to 3 per row (standard)
-// (If 2 or 4 total - stay at 2 per row)
-@include media-breakpoint-up('md') {
-
-  .medical-specialty-view .views-row.col-md-4 {
-    @include bordered-grid-items(3);
-  }
-
-}
-
-// 992px+
-// 3 per row (standard)
-// (If 2 total - stay at 2 per row)
-// If 4 total - change to 4 per row
-@include media-breakpoint-up('lg') {
-
-  .medical-specialty-view .views-row.col-lg-3 {
-    @include bordered-grid-items(4);
   }
 
 }

@@ -21,10 +21,13 @@
 {% endif %}
 
 {#
-  Set Bootstrap cols based on total # of items:
+  Set number of items per row and responsive handling based on total # of items:
   2 items = 2 per row
   4 items = 2 per row, @ lg+ 4 per row
   3 or 5+ items = 2 per row, @ md+ 3 per row
+
+  Note: this matches handling for Grid with Cards and dividers styling/
+  @see paragraph--uwm-grid.html.twig
 #}
 {% for row in rows %}
   {%

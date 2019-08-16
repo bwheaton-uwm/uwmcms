@@ -1,5 +1,6 @@
 /**
- * Card content components, based on Bootstrap Cards
+ * Card content components (paragraphs), based on Bootstrap Cards. Most often,
+ * Cards are placed within Grids.
  * - Card paragraph type
  * - Card content block type (referenced in Reusable Content paragraph type)
  *
@@ -8,12 +9,25 @@
  * @see field--field-uwm-card-header.html.twig
  * @see field--field-uwm-card-content.html.twig
  * @see https://getbootstrap.com/docs/4.0/components/card/
+ * @see paragraph--uwm-grid.html.twig
  */
 
 @import 'init';
 
-.field--name-field-uwm-component .card-deck {
+.uwm-grid__cards {
   padding-bottom: 2em;
+
+  .uwm-grid__card {
+    margin-bottom: 1rem;
+
+    .card {
+      // The .col-* wrappers have equal height (as flex children of .row);
+      // set .card to inherit that (equal) height and ensure alignment of card
+      // header / body / footer flex-column children.
+      height: 100%;
+    }
+  }
+
 }
 
 .card {
@@ -60,32 +74,6 @@
     padding-right: $card-spacer-x;
   }
 
-}
-
-@include media-breakpoint-between('sm', 'md') {
-
-  // Between sm and lg breakpoints, cards are structured at 2 per row via a
-  // divider in the markup. Within a card-deck row, cards evenly fill the row,
-  // so rows of 1 are full-width cards. If there is an odd number of cards,
-  // ensure the last one matches the 50% width of the others.
-  // @see paragraph--uwm-grid.html.twig
-  .card-deck .card {
-    flex-basis: calc(50% - (2 * #{$card-deck-margin}));
-    flex-grow: 0;
-  }
-
-  .uwm-grid-column-dividers .card-deck .card {
-    flex-basis: 50%;
-    // IE 11 needs this...
-    max-width: 50%;
-  }
-
-}
-
-@include media-breakpoint-up('sm') {
-  .card-deck .card {
-    margin-bottom: $card-deck-margin;
-  }
 }
 
 // Reusable Content component styled as card, containing a webform
@@ -149,6 +137,11 @@
 // Customize cards in a grid that has column dividers.
 .uwm-grid-column-dividers {
 
+  .card {
+    box-shadow: none;
+    background: transparent;
+  }
+
   .field--name-field-uwm-card-header {
     padding: 0;
     h3 {
@@ -172,14 +165,14 @@
   }
 }
 
-// Row of 3 intro cards on Medical Service/Specialty nodes.
-// This uses a custom css class added via field on Section (or Sections for
-// Medical Services) paragraph.
+// Row of intro cards on Medical Service/Specialty nodes.
+// This uses a custom css class added via field on Sections for
+// Medical Services paragraph.
 // @TODO: move this to medical-services.scss -OR- could this be generalized for
 // h3 in the card header? new text-with-icon paragraph type?
 .uwm-section.specialty-intro-cards {
 
-  .card-deck {
+  .uwm-grid__cards {
     padding-bottom: 0;
   }
 
@@ -217,24 +210,6 @@
     a.btn-cta {
       margin-top: 1.25rem; // 20px
       margin-bottom: 0;
-    }
-
-  }
-
-  @include media-breakpoint-up('md') {
-
-    // Override card-deck default of all cards in single row to enforce
-    // 3 per row.
-    .card {
-      @include make-col(4);
-    }
-
-    .uwm-grid-column-dividers .card-deck > .card {
-      border-left: 1px solid theme-color('border-gray');
-
-      &:nth-of-type(3n+1) {
-        border-left: none;
-      }
     }
 
   }

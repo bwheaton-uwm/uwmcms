@@ -1175,13 +1175,29 @@ function uwmbase_preprocess_paragraph__uwm_grid(&$variables) {
   /** @var \Drupal\paragraphs\ParagraphInterface $grid_paragraph */
   $grid_paragraph = $variables['paragraph'];
 
+  /** @var \Drupal\paragraphs\ParagraphInterface[] $col_paragraphs */
+  $col_paragraphs = [];
+  if (!$grid_paragraph->get('field_uwm_columns')->isEmpty()) {
+    $col_paragraphs = $grid_paragraph->get('field_uwm_columns')->referencedEntities();
+  }
+
+  $variables['total_grid_items'] = count($col_paragraphs);
+
+  // Check field for desired number of items per row.
+  // NOTE: This setting is NOT currently used for cards case.
+  // @see paragraph--uwm-grid.html.twig
+  $variables['field_uwm_columns_per_row'] = NULL;
+  if ($grid_paragraph->hasField('field_uwm_columns_per_row') && !$grid_paragraph->get('field_uwm_columns_per_row')->isEmpty()) {
+    $variables['field_uwm_columns_per_row'] = $grid_paragraph->get('field_uwm_columns_per_row')->first()->getValue()['value'];
+  }
+
   // If any of the child paragraphs are cards, style all as cards.
   $variables['style_as_cards'] = FALSE;
 
-  if (!empty($variables['content']['field_uwm_columns']) && !$grid_paragraph->get('field_uwm_columns')->isEmpty()) {
+  if (!empty($variables['content']['field_uwm_columns'][0]) && !empty($col_paragraphs)) {
 
     /** @var \Drupal\paragraphs\ParagraphInterface $col_paragraph */
-    foreach ($grid_paragraph->get('field_uwm_columns')->referencedEntities() as $col_paragraph) {
+    foreach ($col_paragraphs as $col_paragraph) {
 
       // Check for Card paragraph type.
       if ($col_paragraph->bundle() === 'uwm_card') {

@@ -196,12 +196,21 @@
 // Apply vertical border lines between grid items in a row (e.g. cards),
 // according to how many items are in each row.
 // Apply this mixin to each item, e.g. `.card` or `.views-row`.
-@mixin bordered-grid-items($per-row, $color: theme-color('border-gray')) {
+// Pass $per-row as null if the number of items per row is variable -
+// particularly, a .card-deck wrapper by default has all child cards in one row,
+// rather than a fixed number per row.
+@mixin bordered-grid-items($per-row: null, $color: theme-color('border-gray')) {
 
   border-right: 1px solid $color;
 
-  // No border on last item in the row and last item overall.
-  &:nth-child(#{$per-row}n),
+  // No border on the last item in each row.
+  @if ($per-row) {
+    &:nth-child(#{$per-row}n) {
+      border-right: none;
+    }
+  }
+
+  // No border on the last item overall.
   &:last-child {
     border-right: none;
   }
