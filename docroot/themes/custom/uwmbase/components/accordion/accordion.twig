@@ -50,8 +50,15 @@ accordionSections = content.uwm_accordion_section #}
   <div class="card uwm-accordion__card border-0 mb-3">
     <div class="card-header uwm-accordion__card-header p-0 border-0" id="heading-{{ paragraph_id }}-{{ key + 1 }}">
       <h3>
+        {#
+          Include an 'id' on the button, to allow jump links to use the
+          animated scroll code that then triggers a click on the button and
+          opens this accordion section.
+          @see components/anchor-scroll/anchor-scroll.js
+        #}
         <button class="uwm-accordion__header-link btn {{ indicator_class }} {{ show_accordion_heading }}
             w-100"
+                id="button-{{ paragraph_id }}-{{ key + 1 }}"
                 data-toggle="collapse"
                 data-target="#collapse-{{ paragraph_id }}-{{ key + 1 }}"
                 aria-expanded="{{ aria }}"
