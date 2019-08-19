@@ -29,7 +29,7 @@
       .clinic-page__hours-ctas {
         display: flex;
         flex-wrap: wrap;
-        
+
         .clinic-page__ctas, .clinic-page__hours {
           flex-basis: 100%;
           justify-content: space-between;
@@ -38,8 +38,8 @@
         .clinic-page__ctas:not(.clinic-page__cta-hidden) {
 
           background-color: $white;
-          box-shadow: 0px 2px 3px #dcdcdc;  
-          
+          box-shadow: 0px 2px 3px #dcdcdc;
+
           .clinic-page__cta-header {
             padding: .625rem  1.5rem;
             background-color: #f2f2f2;
@@ -50,7 +50,7 @@
               padding: 0;
               margin: 0;
             }
-            
+
           }
 
           .clinic-page__cta-content {
@@ -70,7 +70,7 @@
             margin-top: -1.25rem; // cancel out parent padding
             margin-bottom: -1.25rem; // cancel out parent padding
           }
-          
+
           .clinic-page__cta-icon-calendar {
             background: $white url("#{$uwbase-images-folder}/calendar_thin_border.png") bottom center no-repeat;
           }
@@ -101,12 +101,12 @@
           }
         }
       }
-      
+
       .clinic-page__contact {
         .clinic-page__phone a {
           text-decoration: none;
         }
-        
+
         i.uw-s {
           @include uw-separator(-15deg);
           border-right-color: $gray-300;
@@ -169,7 +169,7 @@
         margin-top: 1.25rem; // 20px
         margin-bottom: 0.625rem; // 10px
         font-size: 1.25rem; // 20px
-         
+
         a {
           text-decoration: none;
           color: theme-color('link-blue');
@@ -345,10 +345,10 @@
   }
 
   .clinic-page__directions-tab {
-    
+
     .nav-tabs {
       border: 0 none;
-      
+
       .nav-link {
         border: 1px solid transparent;
         text-decoration: none;
@@ -409,9 +409,17 @@
 
   // Mobile/tablet
 
+  /// @TODO: global mobile header sizes
+  @include media-breakpoint-down('lg') {
+    h1 {
+      font-size: 2.5rem; // 40px
+      line-height: 1.15; // 46px
+    }
+  }
+
+  /// @TODO: global mobile header sizes
   @include media-breakpoint-down('md') {
     h1 {
-      // @TODO: global mobile header sizes
       font-size: 2rem; // 32px
     }
   }
@@ -475,7 +483,7 @@
         flex-direction: column;
 
         .clinic-page__hours-ctas {
-          order: 2;          
+          order: 2;
 
           .clinic-page__hours, .clinic-page__note {
             @include container-padding;
@@ -483,7 +491,7 @@
             background-color: $white;
             padding-top: 0.625rem; // 10px
             padding-bottom: 0.625rem; // 10px
-            box-shadow: 0px 2px 3px #dcdcdc;  
+            box-shadow: 0px 2px 3px #dcdcdc;
           }
 
           .clinic-page__note {
@@ -623,7 +631,7 @@
         .clinic-page__link {
           display: none;
         }
-        
+
         .clinic-page__urgent-wait {
           .clinic-page__urgent-wait-header {
             font-size: 1rem; // 16px

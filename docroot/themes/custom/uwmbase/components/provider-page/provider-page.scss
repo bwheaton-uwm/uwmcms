@@ -156,9 +156,24 @@ body.is-page-node-type-res-provider {
     color: #000;
   }
 
+  // Mobile/tablet
+
+  /// @TODO: global mobile header sizes
+  @include media-breakpoint-down('lg') {
+    h1 {
+      font-size: 2.5rem; // 40px
+      line-height: 1.15; // 46px
+    }
+  }
+
   @include media-breakpoint-up('md') {
     h1.page-header span.accepting-apts {
       display: none;
+    }
+
+    /// @TODO: global mobile header sizes
+    h1 {
+      font-size: 2rem; // 32px
     }
   }
 
