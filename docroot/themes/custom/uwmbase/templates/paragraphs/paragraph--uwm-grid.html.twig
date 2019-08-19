@@ -11,6 +11,7 @@
  * - add_container: boolean, whether to add Bootstrap grid container wrapper
  *   (via usual `.container-xl`). This is a fallback only if the Grid is not
  *   within a Section or Sections for Medical Services parent paragraph.
+ * - field_uwm_columns_per_row: integer; value extracted from this field.
  *
  * @see template_preprocess_paragraph()
  * @see uwmbase_preprocess_paragraph__uwm_grid()
@@ -32,39 +33,64 @@
   ]
 %}
 
-{% if content.field_uwm_columns_per_row %}
-  {% set number_columns = content.field_uwm_columns_per_row['#items'].getString() %}
-  {% set grid_classes = "col-lg-" ~ 12 / number_columns ~ " col-sm-6" %}
-{% endif %}
-
 {#
-  TODO: Bootstrap card deck places all cards in a single row, regardless of how
-  many there are. Refactor so the cards case does not use the card deck, but the
-  same logic as the general case - enabling the content author's choice in the
-  "Number of columns" field to apply.
-  This should be fairly minor styling changes; the key is to audit all existing
-  content uses of Grids containing Cards to ensure the styling does not break
-  and that the desired "Number of columns" is actually set.
+  Retrieve the desired number of items per row from field.
 
-  There is a backlog task:
+  Note: previously, if items were cards, the Bootstrap "card deck" wrapper was
+  used to place however many items there were into a single row. Thus this
+  field value was ignored, and the content may have incorrect values in it.
+  For the cards case now, automatically set a reasonable number of cards per
+  row (including responsive handling) based on total number of cards.
   @see https://www.wrike.com/open.htm?id=354924642
 #}
-{% if style_as_cards %}
-  <div {{ attributes.addClass(classes) }}>
-    <div class="card-deck">
-      {% for key, item in content.field_uwm_columns if key|first != '#' %}
-        {{ item }}
-      {% endfor %}
-    </div>
-  </div>
-{% else %}
-  <div {{ attributes.addClass(classes) }}>
-    <div class="row">
-      {% for key, item in content.field_uwm_columns if key|first != '#' %}
-        <div class="uwm-grid__item {{ grid_classes }}">
-          {{ item }}
-        </div>
-      {% endfor %}
-    </div>
-  </div>
+{% if field_uwm_columns_per_row is not empty %}
+  {% set grid_classes = 'col-sm-6 col-lg-' ~ 12 / field_uwm_columns_per_row %}
 {% endif %}
+
+{% if style_as_cards %}
+
+  {# 2 items = 2 per row #}
+  {% if total_grid_items == 2 %}
+    {% set grid_classes = 'col-sm-6' %}
+
+  {# 4 items = 2 per row, @ lg+ 4 per row #}
+  {% elseif total_grid_items == 4 %}
+    {% set grid_classes = 'col-sm-6 col-lg-3' %}
+
+  {# 3 or 5+ items #}
+  {% elseif (total_grid_items == 3 or total_grid_items > 4) %}
+
+    {#
+      Dividers styling:
+      If there are only vertical borders between items, not full card styling,
+      the card content has a bit more width, so we fit 3 @ 768px+
+      2 per row, @ md+ 3 per row
+    #}
+    {% if use_column_dividers %}
+      {% set grid_classes = 'col-sm-6 col-md-4' %}
+
+    {#
+      Normal card styling:
+      Card content is narrower because cards have both space between them and
+      side padding within each one - so we fit 3 @ 992px+
+      2 per row, @ lg+ 3 per row
+    #}
+    {% else %}
+      {% set grid_classes = 'col-sm-6 col-lg-4' %}
+
+    {% endif %}
+
+  {% endif %}
+
+{% endif %}
+
+
+<div {{ attributes.addClass(classes) }}>
+  <div class="{{ style_as_cards ? 'uwm-grid__cards' : 'uwm-grid__items' }} row">
+    {% for key, item in content.field_uwm_columns if key|first != '#' %}
+      <div class="{{ style_as_cards ? 'uwm-grid__card' : 'uwm-grid__item' }} {{ grid_classes }}">
+        {{ item }}
+      </div>
+    {% endfor %}
+  </div>
+</div>
