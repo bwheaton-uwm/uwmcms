@@ -24,16 +24,6 @@
 
     attach(context, settings) {
 
-      // Add listener for anchor links clicked:
-      window.addEventListener('hashchange', () => {
-        init();
-      });
-
-      // Add listener for page load:
-      window.addEventListener("DOMContentLoaded", (event) => {
-        init();
-      });
-
       /**
        * Our main function to scroll to an anchor.
        */
@@ -100,6 +90,16 @@
         });
 
       };
+
+      // Run on initial page load by checking `context`:
+      if (context === document) {
+        init();
+      }
+
+      // Add listener for anchor links clicked:
+      window.addEventListener('hashchange', () => {
+        init();
+      });
 
     }
 
