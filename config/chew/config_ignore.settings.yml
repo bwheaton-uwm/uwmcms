@@ -1,4 +1,5 @@
 ignored_config_entities:
-  - fb_instant_articles.settings
+  0: fb_instant_articles.settings
+  2: 'webform.webform.*'
 _core:
   default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk

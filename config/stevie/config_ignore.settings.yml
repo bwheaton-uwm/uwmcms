@@ -1,5 +1,7 @@
 ignored_config_entities:
-  - acquia_connector.settings
-  - media_acquiadam.settings
+  0: acquia_connector.settings
+  2: media_acquiadam.settings
+  4: d8_google_optimize_hide_page.settings
+  6: 'webform.webform.*'
 _core:
   default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk

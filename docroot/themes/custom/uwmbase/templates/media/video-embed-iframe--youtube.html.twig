@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Theme implementation to display an iframe YouTube embed.
+ *
+ * Custom variables:
+ * - in_modal: boolean, whether the video is displaying within a modal that
+ *   the user manually opens and closes. This is set when media is referenced
+ *   from within a Modal paragraph.
+ *
+ * TODO: The `in_modal` boolean is a step towards better handling YouTube videos
+ * displayed within a modal. See further code/notes in modal-video.js.
+ * @see https://www.wrike.com/open.htm?id=385720578
+ *
+ * @see uwmbase_theme_registry_alter()
+ * @see uwmbase_preprocess_media__uwm_modal()
+ * @see components/modal-video/modal-video.js
+ */
+#}
+{% if url is not empty %}
+  {%
+    set src =  url ~ (query is not empty ? '?' ~ query|url_encode) ~ (fragment is not empty ? '#' ~ fragment)
+  %}
+{% endif %}
+<iframe{{ attributes }}{% if src is not empty %} src="{{ src }}"{% endif %}></iframe>

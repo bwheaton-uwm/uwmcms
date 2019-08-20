@@ -24,6 +24,20 @@
   %}
 
   {#
+    If this is a link to an ID/anchor elsewhere on this page (URL starts with
+    '#') OR on a different page ('#' within URL), append the '---' to trigger
+    animated scroll handling (if the user did not enter the delimiter in the
+    field value).
+    Also bypass the custom case that opens a featured story modal.
+    @see components/anchor-scroll/anchor-scroll.js
+  #}
+  {% if ('#' in field_uwm_link__url)
+    and not ('---' in field_uwm_link__url)
+    and not (field_uwm_link__url starts with '#modal-') %}
+    {% set field_uwm_link__url = field_uwm_link__url ~ '---' %}
+  {% endif %}
+
+  {#
     If this link is set to open a modal associated to parent Featured Story,
     add the necessary attributes. (This takes the place of the 'play' button
     otherwise added in the modal paragraph template.)

@@ -3,34 +3,50 @@
 // Customize first-level paragraphs in a grid that has column dividers.
 .uwm-grid-column-dividers {
 
-  .card-deck > .paragraph,
-  .row > .paragraph {
-    box-shadow: none;
+  .uwm-grid__item,
+  .uwm-grid__card {
     margin: 0 0 2rem 0;
-    padding: 0;
-    background: transparent;
 
     // Add a divider between columns.
+    // 576px+
+    // 2 per row
     @include media-breakpoint-up('sm') {
-      border-left: 1px solid theme-color('border-gray');
-      padding-left: 15px;
-      padding-right: 15px;
+      @include bordered-grid-items(2);
     }
 
-    @include media-breakpoint-between('sm', 'md') {
-      // Between sm-lg, cards are 2-per-row.
-      &:nth-of-type(2n+1) {
-        border-left: none;
+    // 768px+
+    // May be 3 per row
+    @include media-breakpoint-up('md') {
+      &.col-md-4 {
+        @include bordered-grid-items(3);
       }
     }
 
+    // 992px+
+    // Handle 3, 4, 6 per row
     @include media-breakpoint-up('lg') {
-      // At lg+, by default all cards are in one row.
-      // (Hopefully we'll change this to apply the field in which the editor can
-      // choose how many per row; that requires refactoring to not use the
-      // Bootstrap .card-deck wrapper.)
-      &:first-of-type {
-        border-left: none;
+      &.col-lg-4 {
+        @include bordered-grid-items(3);
+      }
+      &.col-lg-3 {
+        @include bordered-grid-items(4);
+      }
+      &.col-lg-2 {
+        @include bordered-grid-items(6);
+      }
+    }
+
+    // 1200px+
+    // Handle 3, 4, 6 per row
+    @include media-breakpoint-up('xl') {
+      &.col-xl-4 {
+        @include bordered-grid-items(3);
+      }
+      &.col-xl-3 {
+        @include bordered-grid-items(4);
+      }
+      &.col-xl-2 {
+        @include bordered-grid-items(6);
       }
     }
 

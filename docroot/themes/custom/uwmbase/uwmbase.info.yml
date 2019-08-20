@@ -32,6 +32,13 @@ libraries-override:
 # The "libraries:" section will add a library to _all_ pages.
 libraries:
   - uwmbase/base
+  # Anchor scroll:
+  # There may be links on one page that desire to link to another page and
+  # scroll to an element on that page. But we cannot know in the code while
+  # loading that destination page that it needs to include this JS scroll
+  # functionality - the URL fragment is not sent to the server. Thus, include
+  # this globally to handle those cases when they arise.
+  - uwmbase/anchor-scroll
   # @TODO Remove these libraries and use attach_library() for all component styles.
   - uwmbase/box
   - uwmbase/comment
