@@ -846,6 +846,21 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
 }
 
 
+if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+
+    if ($_ENV['AH_SITE_ENVIRONMENT'] !== 'prod') {
+
+        /***
+        * Require a simple password on pre-production:
+        */
+        $file = DRUPAL_ROOT . '/sites/uwm-require-auth-cookie-page-blocker.php';
+        if (is_file($file)) {
+            include  $file
+        }
+
+    }
+
+}
 
 /**
  * Override domain detection in Acquia Purge.
