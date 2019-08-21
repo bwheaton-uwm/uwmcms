@@ -1,17 +1,16 @@
 <?php
 
-$shieldSite = new UwmAuthCookieRestriction();
-
+if(!class_exists('UwmAuthCookieFormBlocker')) {
 
 /**
  * Controller to check an auth cookie, or die with an auth form.
  */
-class UwmAuthCookieRestriction
+class UwmAuthCookieFormBlocker
 {
 
   CONST KEY_NAME = 'uwm-377211022-pre-production';
 
-  CONST PASSWORD = 'devdev';
+  CONST PASSWORD = 'dev dev';
 
   CONST BLOCKED_ENVIRONMENTS = ['dev', 'stage', 'ra'];
 
@@ -68,6 +67,8 @@ class UwmAuthCookieRestriction
    */
   public static function isClientAllowed() {
 
+
+ 
     // Do not test localhost.
     if (empty($_ENV['AH_SITE_ENVIRONMENT'])) {
       return TRUE;
@@ -96,6 +97,11 @@ class UwmAuthCookieRestriction
           return TRUE;
         }
       }
+    }
+
+   // Do not test drush or Travis.
+    if (!empty(PHP_SAPI) && PHP_SAPI === 'cli') {
+      return TRUE;
     }
 
     return FALSE;
@@ -177,4 +183,7 @@ AUTHFORM;
 
 }
 
+}
 
+
+$shieldSite = new UwmAuthCookieFormBlocker();
