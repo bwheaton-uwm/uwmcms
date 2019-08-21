@@ -778,8 +778,9 @@ if (!file_exists('/var/www/site-php') && empty($_ENV['AH_SITE_ENVIRONMENT'])) {
 }
 
 
-if (file_exists('/var/www/site-php')) {
-  require '/var/www/site-php/uwmed/uwmed-settings.inc';
+$file = '/var/www/site-php/uwmed/uwmed-settings.inc';
+if (file_exists($file)) {
+  require $file;
 }
 
 if (file_exists(DRUPAL_ROOT . '/sites/default/settings/cloud-memcache-d8.php')) {

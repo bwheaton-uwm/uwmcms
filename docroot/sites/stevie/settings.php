@@ -845,10 +845,13 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
 
 }
 
+
+
 /**
  * Override domain detection in Acquia Purge.
  */
 if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+
   switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     case 'prod':
       // Production environment.
