@@ -125,7 +125,8 @@ clinic-card:
     component:
       dist/css/clinic-card.css: {}
   dependencies:
-  - uwmbase/clockwise-wait-times
+    - uwmbase/clinic-hours
+    - uwmbase/clockwise-wait-times
 
 clockwise-wait-times:
   js:

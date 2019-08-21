@@ -1,0 +1,165 @@
+{#
+ #
+ # Display short-form text about location hours.
+ #
+ #}
+{% macro display_mobile_primary_hours_header(hours, has_primary_care = FALSE, has_urgent_care = FALSE) %}
+
+  <div class="clinic-page__hours-header-mobile primary">
+
+    <h2 class="clinic-page__hours-header">
+      {# @TODO: check for Primary Care in Medical Services #}
+      {{- hours.operation.always_open ? (
+      has_primary_care ?
+      "Primary Care"|t
+      : "Hours"|t
+      )
+      : (
+      has_urgent_care ?
+      "Primary Care"|t
+      : "Clinic Hours"|t
+      ) -}}
+    </h2>
+
+    <div class="clinic-page__open-current">
+      {% if hours.operation.always_open %}
+        <span>{{- "Always Open"|t -}}</span>
+        <span class="detail hidden"><em> - </em>{{ "This location is open 24 hours a day, 7 days a week."|t }}</span>
+      {% else %}
+        {#
+            Currently-open/closed text is displayed via JS.
+            @see clinic-page-hours.js
+        #}
+        <span
+                data-uwm-opens-at="{{ hours.operation.open_close|json_encode() }}"></span>
+      {% endif %}
+    </div>
+
+  </div>
+
+{% endmacro %}
+
+
+{#
+ #
+ # Display short-form text about location hours.
+ #
+ #}
+{% macro display_mobile_urgent_hours_header(hours) %}
+
+  <div class="clinic-page__hours-header-mobile urgent">
+
+    <h2 class="clinic-page__hours-header">{{ 'Urgent Care'|t }}</h2>
+
+    <div class="clinic-page__open-current">
+      {% if hours.urgent.always_open %}
+        <span>{{- "Always Open"|t -}}</span>
+        <span class="hidden"><em> - </em>{{ "This location is open 24 hours a day, 7 days a week."|t }}</span>
+      {% else %}
+        {#
+            Currently-open/closed text is displayed via JS.
+            @see clinic-page-hours.js
+        #}
+        <span data-uwm-opens-at="{{ hours.urgent.open_close|json_encode() }}"></span>
+      {% endif %}
+    </div>
+
+  </div>
+
+{% endmacro %}
+
+{% macro display_clinic_card_location_hours(hours, url, is_hospital = FALSE) %}
+
+  {% set always_open = hours.operation.always_open %}
+  {% set primary_hours = hours.operation.open_close %}
+  {% set urgent_hours = hours.urgent.open_close %}
+  {% set classes = [
+    always_open ? "always-open" : "",
+    primary_hours ? "has-primary-hours" : "",
+    urgent_hours ? "has-urgent-hours" : "",
+  ] %}
+
+  <div class="hours {{ classes|join(" ") }}">
+    {% if primary_hours == true and is_hospital == false %}
+      <div class="primary-hours">
+
+        {% if always_open == false %}
+          {#
+           # If derrived heading is difficult to understand it should be copied from above:
+           #
+           # @see display_mobile_primary_hours_header()
+           #}
+          {% set hide_heading = (primary_hours == true and urgent_hours == false) %}
+          {{- (
+          hide_heading ? "" :
+          (
+          always_open ?
+          (primary_hours ? "Primary Care: " : "Hours: ") :
+          (urgent_hours ? "Primary Care: " : "Clinic Hours: ")
+          )
+          ) |t -}}
+          <span class="opens-at" data-uwm-opens-at-style="times-only"
+                data-uwm-opens-at="{{ primary_hours|json_encode() }}"></span>
+        {% else %}
+          {{- "This location is open 24 hours a day, 7 days a week."|t -}}
+        {% endif %}
+
+      </div>
+    {% endif %}
+
+    {% if urgent_hours == true and is_hospital == false %}
+      <div class="urgent-hours">
+        {% if always_open == false %}
+          {{ "Urgent Care: "|t }}<span class="opens-at" data-uwm-opens-at-style="times-only"
+                                       data-uwm-opens-at="{{ urgent_hours|json_encode() }}"></span>
+        {% else %}
+          {{- "This location is open 24 hours a day, 7 days a week."|t -}}
+        {% endif %}
+
+      </div>
+    {% endif %}
+
+    {% if is_hospital %}
+      <div class="hospital-hours">{{- "This location is open 24 hours a day, 7 days a week."|t -}}</div>
+    {% endif %}
+
+    {% if is_hospital == false and always_open == false %}
+      <p class="see-more"><a href="{{ url }}" rel="bookmark">{{- "See full location hours…" }}<i
+                  class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+    {% endif %}
+
+  </div>
+
+{% endmacro %}
+
+{#
+ #
+ # Display a table of location days and open times.
+ #
+ #}
+{% macro display_days_table(days) %}
+
+  <table class="clinic-page__hours-table">
+    {# Hidden table header for accessibility #}
+    <thead class="visually-hidden">
+    <tr>
+      <th>{{ "Day of Week"|t }}</th>
+      <th>{{ "Hours Open"|t }}</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {#
+        Days are ordered as Monday-Sunday in preprocessing.
+    #}
+    {% for day in days %}
+      <tr>
+        <td class="day">{{ day.day_name }}</td>
+        <td
+                class="hours">{% if day.start and day.end %}{{ day.start ~ " - " ~ day.end }}{% else %}{{ "Closed"|t }}{% endif %}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+{% endmacro %}

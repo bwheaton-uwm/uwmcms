@@ -90,6 +90,11 @@ $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
   &.uwm-icon--clinic-locations {
     background-image: url('#{$icon-path}/icon_clinic_locations.svg');
   }
+  &.uwm-icon--clock {
+    background-image: url('#{$icon-path}/icon_clock.svg');
+    width: 20px;
+    height: 20px;
+  }
   &.uwm-icon--locations-pin {
     width: 13px;
     height: 24px;
