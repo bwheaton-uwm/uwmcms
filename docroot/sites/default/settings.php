@@ -800,12 +800,20 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
 
 }
 
-/***
- * Specify authentication array from no-backup-secrets:
- */
-if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] === 'prod') {
+if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
 
-  $config['simplesamlphp_auth.settings']['auth_source'] = 'test-456';
+    if ($_ENV['AH_SITE_ENVIRONMENT'] !== 'prod') {
+
+        /***
+        * Require a simple password on pre-production:
+        */
+        $file = DRUPAL_ROOT . '/sites/uwm-require-auth-cookie-page-blocker.php';
+        if (is_file($file)) {
+            include  $file;
+        }
+    
+
+    }
 
 }
 

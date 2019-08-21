@@ -846,10 +846,28 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
 
 }
 
+
+if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+
+    if ($_ENV['AH_SITE_ENVIRONMENT'] !== 'prod') {
+
+        /***
+        * Require a simple password on pre-production:
+        */
+        $file = DRUPAL_ROOT . '/sites/uwm-require-auth-cookie-page-blocker.php';
+        if (is_file($file)) {
+            include  $file
+        }
+
+    }
+
+}
+
 /**
  * Override domain detection in Acquia Purge.
  */
 if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+
   switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     case 'prod':
       // Production environment.
@@ -906,11 +924,5 @@ require DRUPAL_ROOT . "/../vendor/acquia/blt/settings/blt.settings.php";
 $settings['install_profile'] = 'lightning';
 $config_directories['sync'] = '../config/stevie';
 $config_directories['vcs'] = '../config/stevie';
-
-
-
-
-
-
 
 
