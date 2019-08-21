@@ -1,6 +1,6 @@
 <?php
 
-$sheildSite = new UwmAuthCookieRestriction();
+$shieldSite = new UwmAuthCookieRestriction();
 
 
 /**
@@ -47,7 +47,7 @@ class UwmAuthCookieRestriction
       // Check an auth cookie, or die with form:
       if ($_COOKIE[self::KEY_NAME] !== self::PASSWORD) {
 
-        getAuthForm();
+        self::getAuthForm();
         exit;
 
       }
@@ -124,7 +124,7 @@ class UwmAuthCookieRestriction
 <body>
 <pre>
 
-Please authenticate. Please provide a $hint username and password.
+Please authenticate. Please provide a '$hint' username and password.
 
 <form method="post">
 

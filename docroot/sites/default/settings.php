@@ -86,7 +86,7 @@
  * );
  * @endcode
  */
- $databases = array();
+$databases = array();
 
 /**
  * Customizing database settings.
@@ -768,7 +768,7 @@ $settings['file_scan_ignore_directories'] = [
 if (!file_exists('/var/www/site-php') && empty($_ENV['AH_SITE_ENVIRONMENT'])) {
 
   // Include local development settings
-	$devSettings = $app_root . '/' . $site_path . '/development.settings.php';
+  $devSettings = $app_root . '/' . $site_path . '/development.settings.php';
   if (file_exists($devSettings)) {
 
     include $devSettings;
@@ -790,9 +790,9 @@ if (file_exists(DRUPAL_ROOT . '/sites/default/settings/cloud-memcache-d8.php')) 
 if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
 
   $secrets_file = sprintf(
-      '/mnt/gfs/%s.%s/nobackup/default.secrets.settings.php',
-      $_ENV['AH_SITE_GROUP'],
-      $_ENV['AH_SITE_ENVIRONMENT']);
+    '/mnt/gfs/%s.%s/nobackup/default.secrets.settings.php',
+    $_ENV['AH_SITE_GROUP'],
+    $_ENV['AH_SITE_ENVIRONMENT']);
 
   if (file_exists($secrets_file)) {
     require $secrets_file;
@@ -800,22 +800,6 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
 
 }
 
-if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
-
-    if ($_ENV['AH_SITE_ENVIRONMENT'] !== 'prod') {
-
-        /***
-        * Require a simple password on pre-production:
-        */
-        $file = DRUPAL_ROOT . '/sites/uwm-require-auth-cookie-page-blocker.php';
-        if (is_file($file)) {
-            include  $file;
-        }
-    
-
-    }
-
-}
 
 /**
  * Override domain detection in Acquia Purge.
@@ -852,13 +836,29 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
         'www.uwmedicine.org',
       );
   }
-}
-
-// Do not purge in other environments (such as local development)
-else  {
+} // Do not purge in other environments (such as local development)
+else {
   $conf['acquia_purge_passivemode'] = TRUE;
 
 }
+
+
+if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+
+  if ($_ENV['AH_SITE_ENVIRONMENT'] !== 'prod') {
+
+    /***
+     * Require a simple password on pre-production:
+     */
+    $file = DRUPAL_ROOT . '/sites/uwm-require-auth-cookie-page-blocker.php';
+    if (is_file($file)) {
+      include $file;
+    }
+
+  }
+
+}
+
 
 /**
  * BLT makes the assumption that, if using multisite, the default configuration
