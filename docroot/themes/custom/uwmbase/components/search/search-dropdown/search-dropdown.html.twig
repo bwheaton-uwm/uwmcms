@@ -87,6 +87,7 @@
 
         {% set title = item.value['#title']['#value']|title %}
         {% set title = title|replace({"'S": "'s"}) %}
+        {% set title = title|replace({"’S": "’s"}) %}
         {% set title = title|replace({"Education": "School of Medicine"}) %}
         {% set title = "Patient Info" in title ? "Health & Patient Resources" : title %}
         {% set title = title == "F" ? "Female" : title %}
