@@ -1,11 +1,98 @@
 diff --git a/docroot/.htaccess b/docroot/.htaccess
-index efce1877..e3d12675 100755
+index efce1877..bf3f4789 100755
 --- a/docroot/.htaccess
 +++ b/docroot/.htaccess
-@@ -1,3 +1,449 @@
+@@ -1,3 +1,557 @@
++
++
++
++####
++## UWM: Redirect these pages
++## to their canonical sites:
++##
++####
++<IfModule mod_rewrite.c>
++
++    RewriteEngine on
++
++    # Redirect Right as Rain to Live URL
++    RewriteCond %{HTTP_HOST} chew.cms.uwmedicine.org [NC,OR]
++    RewriteCond %{HTTP_HOST} rightasrain.uw.edu [NC]
++    RewriteRule ^(.*)$ https://rightasrain.uwmedicine.org%{REQUEST_URI}  [L,R=301]
++
++    # Redirect Huddle to Live URL
++    RewriteCond %{HTTP_HOST} huddle.cms.uwmedicine.org [NC]
++    RewriteRule ^(.*)$ https://huddle.uwmedicine.org%{REQUEST_URI}  [L,R=301]
++
++    # Redirect naked airliftnw.org to www version
++    RewriteCond %{HTTP_HOST} ^airliftnw.org [NC]
++    RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
++
++    # Redirect airlift-nw.org/anything to uwmedicine.org/airlift-nw/anything
++    RewriteCond %{HTTP_HOST} www.airliftnw.org [NC]
++    RewriteRule ^(.*)$ https://www.uwmedicine.org/airliftnw%{REQUEST_URI} [L,R=301]
++
++    # Redirect education pages to their new site
++    # RewriteRule ^education/?$ https://education.uwmedicine.org/ [L,R=301]
++    # RewriteRule ^education/(.*)$ https://education.uwmedicine.org/$1 [L,R=301]
++
++</IfModule>
++
++
++
++####
++## UWM: Redirect most domains
++## to include www, https, and no trailing slash,
++## trying to avoid multiple redirects:
++##
++####
++<IfModule mod_rewrite.c>
++
++    RewriteEngine on
++
++    ## For uwmedicine.org, if a trailing slash, remove it and
++    ## go to https://www
++    RewriteCond %{REQUEST_FILENAME} !-d
++    RewriteCond %{HTTP_HOST} ^uwmedicine\.org [NC,OR]
++    RewriteCond %{HTTP_HOST} ^www\.uwmedicine\.org [NC]
++    RewriteCond %{REQUEST_URI} ^(.+)/$
++    RewriteRule ^(.*)\/{1}(\?.*)?$ https://www.uwmedicine.org/$1$2 [L,R=301]
++    ##
++    ## Test version:
++    RewriteCond %{REQUEST_FILENAME} !-d
++    RewriteCond %{HTTP_HOST} ^uwmedicinetest\.org [NC,OR]
++    RewriteCond %{HTTP_HOST} ^www\.uwmedicinetest\.org
++    RewriteCond %{REQUEST_URI} ^(.+)/$
++    RewriteRule ^(.*)\/{1}(\?.*)?$ https://www.uwmedicinetest.org/$1$2 [L,R=301]
++    
++    ## For uwmedicine.org, if no www,
++    ## go to https://www
++    RewriteCond %{HTTP_HOST} ^uwmedicine\.org [NC]
++    RewriteRule ^(.*)$ https://www.uwmedicine.org/$1 [L,R=301]
++    ##
++    ## Test version:
++    RewriteCond %{HTTP_HOST} ^uwmedicinetest\.org [NC]
++    RewriteRule ^(.*)$ https://www.uwmedicinetest.org/$1 [L,R=301]
++
++    ## For all hosts, if a trailing slash, remove it and
++    ## go to https://
++    RewriteCond %{REQUEST_FILENAME} !-d
++    RewriteCond %{REQUEST_URI} (.+)/$
++    RewriteRule ^(.*)/$ https://%{HTTP_HOST}/$1[L,R=301]
++
++    ## For all hosts, if not on https,
++    ## go to https://
++    RewriteCond %{HTTPS} off
++    RewriteCond %{HTTP:X-Forwarded-Proto} !https
++    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
++
++</IfModule>
++
++
++
 +##
 +#
-+# Begin UW Medicine special .htaccess rules
++# Begin old UW Medicine special .htaccess rules
 +#
 +#
 +##
@@ -69,7 +156,9 @@ index efce1877..e3d12675 100755
 +
 +  ### Before we do any proxying, handle these redirects ###
 +  # Pattern-based redirects for launched pages. These pages are served from Drupal.
-+  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
++  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org [OR]
++  RewriteCond %{HTTP_HOST} ^www.uwmedicinetest.org
++
 +  RewriteRule ^locations/(.*)/directions(/)?(?(2).*|$) "https://www.uwmedicine.org/locations/$1#directions-tab" [NE,L,R=301]
 +  RewriteRule ^locations/(.*)/care-providers(/)?(?(2).*|$) "https://www.uwmedicine.org/locations/$1#providers-tab" [NE,L,R=301]
 +  RewriteRule ^services/urgent-care/(providers|locations)$ "https://www.uwmedicine.org/services/urgent-care" [L,R=301]
@@ -83,7 +172,9 @@ index efce1877..e3d12675 100755
 +  RewriteRule ^/node/255156$ https://www.uwmedicine.org/search/providers?s=&fs_p%5B0%5D=medical-service%3A10566 [NE,L,R=301]
 +
 +### OLD EDUCATION REDIRECTS SERVED FROM ww2 ###
-+  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
++  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org [OR]
++  RewriteCond %{HTTP_HOST} ^www.uwmedicinetest.org
++
 +  RewriteCond %{REQUEST_URI} ^/education(/)?(?(1).*|$)$
 +  RewriteCond %{REQUEST_URI} !^/education/Pages/default.aspx$
 +  RewriteCond %{REQUEST_URI} !^/education/md-program$
@@ -210,12 +301,15 @@ index efce1877..e3d12675 100755
 +  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/academic-policies$
 +  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/academic-progress/committee$
 +  RewriteCond %{REQUEST_URI} !^/education/md-program/academic-policies-and-procedures/academic-progress/guidelines-for-academic-probation$
++
 +  RewriteRule ^(.*)$ - [CO=uwm-proxied-page-visit:true:%{HTTP_HOST}:0:/,C]
 +  RewriteRule ^(.*)$ https://www2.uwmedicine.org%{REQUEST_URI} [L,P]
 +
 +  ### SERVE THESE PAGES FROM www2.uwmedicine.org ###
 +  ### These can be removed when SharePoint is shut down ###
-+  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
++  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org [OR]
++  RewriteCond %{HTTP_HOST} ^www.uwmedicinetest.org
++
 +  RewriteCond %{REQUEST_URI} ^/dawgscare(/)?(?(1).*|$)$ [OR]
 +  RewriteCond %{REQUEST_URI} ^/we_care(/)?(?(1).*|$) [OR]
 +  RewriteCond %{REQUEST_URI} ^/services/obstetrics/uw-baby-pregnancy-app$ [OR]
@@ -252,12 +346,17 @@ index efce1877..e3d12675 100755
 +  RewriteCond %{REQUEST_URI} ^/locations/lopez-island-clinic/faqs/? [OR]
 +  RewriteCond %{REQUEST_URI} ^/services/urgent-care/tips/? [OR]
 +  RewriteCond %{REQUEST_URI} ^/patient-resources/email-patient(/)?(?(1).*|$)
++
 +  RewriteRule ^(.*)$ - [CO=uwm-proxied-page-visit:true:%{HTTP_HOST}:0:/,C]
 +  RewriteRule ^(.*)$ https://www2.uwmedicine.org%{REQUEST_URI} [L,P]
 +
++
++
 +  ### SERVE THESE PAGES FROM stevie.cms.uwmedicine.org ###
 +  ### These can be removed when cms.uwmedicine.org is decomissioned ###
-+  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
++  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org [OR]
++  RewriteCond %{HTTP_HOST} ^www.uwmedicinetest.org
++
 +  RewriteCond %{REQUEST_URI} ^/?$ [OR]
 +  RewriteCond %{REQUEST_URI} ^/services/primary-care/flu$ [OR]
 +  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/maternity-care/labor-delivery-tours$ [OR]
@@ -265,11 +364,16 @@ index efce1877..e3d12675 100755
 +  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/preparing-for-you [OR]
 +  RewriteCond %{REQUEST_URI} ^/services/primary-care/behavioral-health-integration-program [OR]
 +  RewriteCond %{REQUEST_URI} ^/locations/harborview-medical-center/centers-of-emphasis$
++
 +  RewriteRule ^(.*)$ https://stevie.cms.uwmedicine.org%{REQUEST_URI} [L,P]
++
++
 +
 +  ### SERVE THESE PAGES FROM cms.uwmedicine.org ###
 +  ### These can be removed when medical services and make an appointment are served from stevie ###
-+  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
++  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org [OR]
++  RewriteCond %{HTTP_HOST} ^www.uwmedicinetest.org
++
 +  #RewriteCond %{REQUEST_URI} ^/index.php$ [OR]
 +  #RewriteCond %{REQUEST_URI} ^/(user|admin|themes|core|simplesaml|sites|libraries|profiles|modules|node|sitemaps|lp)(/)?(?(1).*|$) [OR]
 +  #RewriteCond %{REQUEST_URI} ^/(views|editor|media_browser|toolbar|filter|contextual|history)/.+ [OR]
@@ -432,12 +536,16 @@ index efce1877..e3d12675 100755
 +  # Start Virtual Clinic #
 +  RewriteCond %{REQUEST_URI} ^/services/virtual-clinic$
 +  # End Virtual Clinic #
++
 +  RewriteRule ^(.*)$ - [CO=uwm-proxied-page-visit:true:%{HTTP_HOST}:0:/,C]
 +  RewriteRule ^(.*)$ https://cms.uwmedicine.org%{REQUEST_URI} [L,P]
 +
++
++
 +  ### SERVE EVERYTHING ELSE FROM stevie.cms.uwmedicine.org ###
 +  ### This can be removed when cms.uwmedicine.org is decomissioned ###
-+  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
++  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org [OR]
++  RewriteCond %{HTTP_HOST} ^www.uwmedicinetest.org
 +  RewriteRule ^(.*)$ https://stevie.cms.uwmedicine.org%{REQUEST_URI} [L,P]
 +
 +</IfModule>
@@ -452,7 +560,7 @@ index efce1877..e3d12675 100755
  #
  # Apache/PHP/Drupal settings:
  #
-@@ -34,7 +480,7 @@ AddEncoding gzip svgz
+@@ -34,7 +588,7 @@ AddEncoding gzip svgz
    php_value mbstring.http_input             pass
    php_value mbstring.http_output            pass
    php_flag mbstring.encoding_translation    off
@@ -461,7 +569,7 @@ index efce1877..e3d12675 100755
    # not set.
    php_value always_populate_raw_post_data   -1
  </IfModule>
-@@ -150,6 +596,10 @@ AddEncoding gzip svgz
+@@ -150,6 +704,10 @@ AddEncoding gzip svgz
    # Copy and adapt this rule to directly execute PHP files in contributed or
    # custom modules or to run another PHP application in the same directory.
    RewriteCond %{REQUEST_URI} !/core/modules/statistics/statistics.php$
@@ -472,7 +580,7 @@ index efce1877..e3d12675 100755
    # Deny access to any other PHP files that do not match the rules above.
    # Specifically, disallow autoload.php from being served directly.
    RewriteRule "^(.+/.*|autoload)\.php($|/)" - [F]
-@@ -160,12 +610,12 @@ AddEncoding gzip svgz
+@@ -160,12 +718,12 @@ AddEncoding gzip svgz
      # Serve gzip compressed CSS files if they exist and the client accepts gzip.
      RewriteCond %{HTTP:Accept-encoding} gzip
      RewriteCond %{REQUEST_FILENAME}\.gz -s
@@ -487,7 +595,7 @@ index efce1877..e3d12675 100755
  
      # Serve correct content types, and prevent mod_deflate double gzip.
      RewriteRule \.css\.gz$ - [T=text/css,E=no-gzip:1]
-@@ -177,6 +627,17 @@ AddEncoding gzip svgz
+@@ -177,6 +735,17 @@ AddEncoding gzip svgz
        # Force proxies to cache gzipped & non-gzipped css/js files separately.
        Header append Vary Accept-Encoding
      </FilesMatch>
@@ -505,7 +613,7 @@ index efce1877..e3d12675 100755
    </IfModule>
  </IfModule>
  
-@@ -186,4 +647,5 @@ AddEncoding gzip svgz
+@@ -186,4 +755,5 @@ AddEncoding gzip svgz
    Header always set X-Content-Type-Options nosniff
    # Disable Proxy header, since it's an attack vector.
    RequestHeader unset Proxy
