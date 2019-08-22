@@ -853,7 +853,7 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
      */
     $file = DRUPAL_ROOT . '/sites/uwm-require-auth-cookie-page-blocker.php';
     if (is_file($file)) {
-      include_once $file; 
+      include_once $file;
     }
 
   }

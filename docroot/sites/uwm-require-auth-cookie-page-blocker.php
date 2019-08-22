@@ -1,5 +1,27 @@
 <?php
 
+/**
+ * Confirms pre-production users have a custom auth cookie.
+ *
+ * This script checks for an authorization cookie if the script is
+ * included on our site code. Currently, it's included in settings.php,
+ * if the current environment (host) is Acquia dev, stage or ra.
+ *
+ * The script checks for the cookie and if missing, presents the user with a
+ * form to set the cookie. It can be disabled (without needing a release to servers)
+ * by setting a disable check flag in one of the configuration files that does not
+ * require deployments.
+ *
+ * To disabable the check, remove `include 'uwm-require-auth-cookie-page-blocker.php'`
+ * from our settings file or add `$_ENV['skipuwm-377211022-pre-production'] = 1;`
+ * to a settings file.
+ *
+ * The following settings files do not require build releases:
+ *
+ * @see /var/www/site-php/uwmed/stevie-settings.inc
+ * @see /mnt/gfs/%s.%s/nobackup/stevie.secrets.settings.php
+ */
+
 if (!class_exists('UwmAuthCookieFormBlocker')) {
 
   /**
@@ -10,7 +32,7 @@ if (!class_exists('UwmAuthCookieFormBlocker')) {
 
     CONST KEY_NAME = 'uwm-377211022-pre-production';
 
-    CONST PASSWORD = 'dev dev';
+    CONST PASSWORD = 'devdev';
 
     CONST BLOCKED_ENVIRONMENTS = ['dev', 'stage', 'ra'];
 
@@ -18,7 +40,8 @@ if (!class_exists('UwmAuthCookieFormBlocker')) {
       '128.208.0.0/16',
       '128.95.0.0/16',
       '140.142.0.0/16',
-      '198.48.64.0/19',/**/
+      '198.48.64.0/19',
+      '205.175.96.0/19',
       '69.91.128.0/17',
       '173.250.128.0/17',
       '108.179.128.0/18',
