@@ -109,10 +109,37 @@ body.is-path-search {
               background: #f8f9fa;
             }
           }
+
+          // This class is toggled in JS to show/hide the dropdown.
+          // @see search-geocode-input.js
+          &.uwm-display-dropdown {
+            .dropdown-menu {
+              display: block;
+            }
+          }
         }
 
-        .uwm-display-dropdown .dropdown-menu{
-          display: block;
+        // Below lg (992px), fields are stacked. Override absolute position of
+        // dropdown and transition its height, so that the fields below it move
+        // down to make space.
+        @include media-breakpoint-down('md') {
+          .dropdown {
+            transition: height 0.4s ease-in-out;
+            height: 0;
+
+            .dropdown-menu {
+              position: relative;
+              top: auto;
+              left: auto;
+              float: none;
+            }
+
+            // When shown, set the height - must be other than 'auto' for
+            // height transition to apply.
+            &.uwm-display-dropdown {
+              height: 3rem; // 48px
+            }
+          }
         }
 
         .status-message {
