@@ -20,7 +20,17 @@
  * @see uwmbase_preprocess_node()
  */
 #}
+
+{% import directory ~'/components/clinic-hours/clinic-hours-macros.twig' as _hoursMacro %}
+
 {{ attach_library('uwmbase/clinic-card') }}
+
+{% set has_urgent_care = hours.urgent is not empty %}
+{% set hide_appointment_ctas = node.field_res_hide_appt_ctas.value %}
+{% set hide_returning_patient_cta = node.field_res_hide_returning_cta.value %}
+{% set hide_open_scheduling_cta = node.field_res_hide_open_scheduling.value %}
+{% set has_open_scheduling = content.field_res_epic_department_ids.0 %}
+{% set isHospital = node.field_res_is_hospital.0.value is not empty and node.field_res_is_hospital.0.value == '1' %}
 
 {#
   Bootstrap grid:
@@ -40,7 +50,7 @@
   @see node--res-clinic--full.tabs.body.html.twig
   @see field--node--field-res-featured-clinics--res-clinic.html.twig
 #}
-<article {{ attributes.addClass(['clinic-card', 'col-sm-6', 'col-lg-4', 'col-xxl-3']) }}>
+<article {{ attributes.addClass(['clinic-card', 'col-sm-6', 'col-lg-4', 'col-xxl-3', (isHospital ? 'clinic-card-hospital' : '')]) }}>
   <div class="clinic-card__inner">
 
     {% if display_context != 'res_clinic' %}
@@ -66,7 +76,7 @@
         #}
         {% if content.field_res_image|render|trim is empty %}
           <a href="{{ url }}" rel="bookmark">
-            <img src="/{{ directory }}/src/assets/uwmed_location_card_placeholder.svg" alt="" class="img-fluid" />
+            <img src="/{{ directory }}/src/assets/uwmed_location_card_placeholder.svg" alt="" class="img-fluid"/>
           </a>
         {% else %}
           {{ content.field_res_image }}
@@ -105,7 +115,8 @@
                 @see components/clinic-page/node--res-clinic--full.tabs.html.twig
                 @see components/anchor-scroll/anchor-scroll.js
               #}
-              <a href="{{ url }}#directions-tab-tab---" class="clinic-card__street-address-link">{{ content.field_res_building.0 }}</a>
+              <a href="{{ url }}#directions-tab-tab---"
+                 class="clinic-card__street-address-link">{{ content.field_res_building.0 }}</a>
             {% else %}
               {{ content.field_res_building.0 }}
             {% endif %}
@@ -116,32 +127,46 @@
 
       {#
         Services
-        Header and "See all services" link (if > 3) are in the field template.
+        Header and "See all specialties" link (if > 3) are in the field template.
         @see field--node--field-res-medical-services--res-clinic.html.twig
       #}
       {% if content.field_res_medical_services.0 is not empty %}
         {{ content.field_res_medical_services }}
       {% endif %}
 
-      {# TODO: add "Hours today" when data migration is ready #}
+      {#
+        Location hours
+        @see node--res-clinic--full.html.twig
+        @see clinic-hours-macros.twig
+      #}
+      {% if hours is not empty %}
 
+        <div class="clinic-card__field clinic-card__location-hours icon">
+
+          <span class="uwm-icon uwm-icon--clock" aria-hidden="true"></span>
+
+          <h3 class="clinic-card__subheader">{{ "Hours Today"|t }}</h3>
+
+          {{ _hoursMacro.display_clinic_card_location_hours(hours, url, is_hospital) }}
+
+        </div>
+      {% endif %}
       {#
         Appointments: Phone number link
         Phone number formatting is in the field template.
         @see field--node--field-res-phone-number--res-clinic.html.twig
       #}
-      {% set isHospital = node.field_res_is_hospital.0.value is not empty and node.field_res_is_hospital.0.value == '1' %}
       {% if content.field_res_phone_number.0 is not empty %}
 
-        <div class="clinic-card__field clinic-card__field-phone">
+        <div class="clinic-card__field clinic-card__field-phone icon">
 
-            {% if isHospital %}
-                <span class="uwm-icon uwm-icon--heart" aria-hidden="true"></span>
-                <h3 class="clinic-card__subheader">{{ "Contact"|t }}</h3>
-            {% else %}
-                <span class="uwm-icon uwm-icon--calendar" aria-hidden="true"></span>
-                <h3 class="clinic-card__subheader">{{ "Appointments"|t }}</h3>
-            {% endif %}
+          {% if isHospital %}
+            <span class="uwm-icon uwm-icon--heart" aria-hidden="true"></span>
+            <h3 class="clinic-card__subheader">{{ "Contact"|t }}</h3>
+          {% else %}
+            <span class="uwm-icon uwm-icon--calendar" aria-hidden="true"></span>
+            <h3 class="clinic-card__subheader">{{ "Appointments"|t }}</h3>
+          {% endif %}
 
           <div class="clinic-card__phone-button">
             {{ content.field_res_phone_number }}
@@ -150,11 +175,13 @@
       {% endif %}
 
       {#
-        "Urgent care" clockwise snippet
+        "Urgent Care" clockwise snippet
         @see field--node--field-res-clockwise-id--res-clinic.html.twig
       #}
       {% if content.field_res_clockwise_id.0 is not empty %}
-        {{ content.field_res_clockwise_id }}
+        <div class="clinic-card__field clinic-card__clockwise-block icon">
+          {{ content.field_res_clockwise_id }}
+        </div>
       {% endif %}
     </div>
 

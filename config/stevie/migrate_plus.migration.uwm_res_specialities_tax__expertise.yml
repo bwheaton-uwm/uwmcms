@@ -37,6 +37,10 @@ source:
       name: res_term_keywords
       label: res_term_keywords
       selector: /attributes/res_term_keywords
+    -
+      name: field_res_include_in_search
+      label: field_res_include_in_search
+      selector: /attributes/field_res_include_in_search
 process:
   uuid: uuid
   tid:
@@ -46,6 +50,7 @@ process:
   name: name
   uwm_unique_id: uwm_unique_id
   field_term_keywords: res_term_keywords
+  field_res_include_in_search: field_res_include_in_search
 destination:
   plugin: 'entity:taxonomy_term'
   default_bundle: expertise

@@ -5,7 +5,6 @@
  * Theme library: uwmbase/clinic-card
  * Main template: node--res-clinic--card.html.twig
  */
-
 @import 'init';
 
 .clinic-card {
@@ -14,6 +13,21 @@
   // for display in the twig.
   h3.field__label.clinic-card__subheader {
     display: block !important;
+  }
+
+  .see-more {
+    margin-top: 0.375rem; // 6px
+    display: flex;
+    align-items: center;
+
+    a {
+      display: block;
+    }
+
+    .fa-angle-right {
+      margin-left: 0.4rem;
+      color: theme-color('link-blue');
+    }
   }
 
   // These cards are the Bootstrap grid cells (flex items); apply margin
@@ -116,6 +130,23 @@
       }
     }
 
+    .clinic-card__field.icon {
+      position: relative;
+      padding-left: 2.875rem; // 46px
+
+      .uwm-icon {
+        // Our icons are not uniform in size.
+        // Set background to 100% to allow resizing.
+        background-size: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 18px;
+        height: 18px;
+      }
+
+    }
+
     .clinic-card__subheader {
       margin: 0 0 0.5rem 0;
       padding: 0;
@@ -125,9 +156,9 @@
       font-weight: $font-weight-semi-bold;
     }
 
-    .field__item {
-      font-size: 0.875rem; // 14px
-    }
+    //.field__item {
+    //  font-size: 0.875rem; // 14px
+    //}
 
     .field--name-field-res-medical-services {
 
@@ -141,34 +172,16 @@
         margin-right: 2px;
       }
 
-      .see-more {
-        margin-top: 0.375rem; // 6px
-        display: flex;
-        align-items: center;
 
-        a {
-          display: block;
-          font-size: 14px;
-        }
-
-        .fa-angle-right {
-          margin-left: 0.4rem;
-          color: theme-color('link-blue');
-        }
-      }
     }
 
     .clinic-card__field-phone {
-      position: relative;
-      padding-left: 2.875rem; // 46px
 
       .uwm-icon--calendar, .uwm-icon--heart {
-        position: absolute;
-        left: 0;
-        top: 0;
         width: 18px;
         height: 16px;
       }
+
       .uwm-icon--heart {
         width: 18px;
         height: 16px;
@@ -201,23 +214,37 @@
       }
     }
 
-    .field--name-field-res-clockwise-id {
-      position: relative;
-      padding-left: 2.875rem; // 46px
-      
-      p {
-        font-size: .875rem; // 14px
-        margin-bottom: 0.375rem; // 6px
+    .clinic-card__field.clinic-card__location-hours {
+
+      .uwm-icon.uwm-icon--clock {
+        width: 20px;
+        height: 20px;
       }
 
-      .uwm-icon--urgent-care {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 18px;
-        height: 16px;
+      .opens-at strong {
+        display: none;
+      }
+
+    }
+
+    .clinic-card__clockwise-block {
+
+      .field--name-field-res-clockwise-id {
+
+        p {
+          margin-bottom: .2rem;
+        }
+
+        .uwm-icon--urgent-care {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 18px;
+          height: 18px;
+        }
       }
     }
+
   }
 
   a.clinic-card__buttons {
