@@ -147,6 +147,19 @@ body.is-path-search {
           font-size: 14px;
           padding-top: 0.25rem; // 4px
 
+          // Below lg (992px), fields are stacked. Transition the height so
+          // the fields below it move down when it appears.
+          @include media-breakpoint-down('md') {
+            transition: height 0.3s ease-in-out;
+            height: 0;
+
+            // When shown, set the height - must be other than 'auto' for
+            // height transition to apply.
+            &.show {
+              height: 1.25rem; // 20px
+            }
+          }
+
           @include media-breakpoint-up('lg') {
             position: absolute;
             top: 100%;

@@ -402,7 +402,16 @@
        */
       const setUserMessage = function (message) {
 
-        $addressContainer.find('.status-message').text(message);
+        const $status = $addressContainer.find('.status-message');
+
+        $status.text(message);
+
+        if (message == "") {
+          $status.removeClass('show');
+        }
+        else {
+          $status.addClass('show');
+        }
 
       };
 
