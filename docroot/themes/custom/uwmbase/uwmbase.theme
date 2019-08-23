@@ -8,17 +8,17 @@
  * @see https://drupal.org/node/1728096
  */
 
-use Drupal\uwmcs_extension\TwigExtension;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Cache\Cache;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Database\Database;
-use Drupal\Core\Url;
-use Drupal\node\NodeInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
-use Drupal\Core\Template\Attribute;
-use Drupal\image\Entity\ImageStyle;
+use Drupal\Core\Url;
 use Drupal\file\Entity\File;
+use Drupal\image\Entity\ImageStyle;
+use Drupal\node\NodeInterface;
+use Drupal\uwmcs_extension\TwigExtension;
+use Drupal\Core\Template\Attribute;
 use Drupal\Component\Utility\Html;
 use Drupal\media\MediaInterface;
 
@@ -190,7 +190,7 @@ function uwmbase_page_attachments_alter(&$variables) {
       // Replace double slashes in start of canonical_url.
       if ($value[1] === 'canonical_url' && isset($value[0]['#attributes']['href'])) {
         $value[0]['#attributes']['href'] = str_replace('.org//', '.org/',
-            $value[0]['#attributes']['href']);
+          $value[0]['#attributes']['href']);
       }
 
       // Remove schema_metatag's JSON-LD meta on search and front pages.
@@ -334,6 +334,15 @@ function uwmbase_preprocess_block(&$variables, $hook) {
  */
 function uwmbase_preprocess_node(&$variables, $hook) {
 
+  /***
+   * Set special CSS classes that describe the current context.
+   * These allow adding the classes in a node.twig and, allow
+   * GTM to find CTAs with those CSS classes.
+   *
+   * @see node--res-clinic--card.html.twig
+   */
+  $variables['css_parents_classes'] = get_css_classes_for_parent($variables);
+
   $currentPath = \Drupal::service('path.current')->getPath();
   $currentPath = \Drupal::service('path.alias_manager')
     ->getAliasByPath($currentPath);
@@ -358,6 +367,7 @@ function uwmbase_preprocess_node(&$variables, $hook) {
   }
 
   $variables['display_context'] = $displayContext;
+  $variables['node_title'] = $node->getTitle();
 
   // Clinic and provider cards have some elements conditionally displayed based
   // on the context in which they're rendered. Ensure cards are not cached
@@ -395,9 +405,9 @@ function uwmbase_preprocess_node(&$variables, $hook) {
   // use prepared node URL.
   foreach (Element::children($variables['content']) as $field) {
     if (!empty($variables['content'][$field][0]['#type'])
-        && $variables['content'][$field][0]['#type'] === 'link'
-        && !empty($variables['content'][$field][0]['#options']['entity_type'])
-        && $variables['content'][$field][0]['#options']['entity_type'] === 'node') {
+      && $variables['content'][$field][0]['#type'] === 'link'
+      && !empty($variables['content'][$field][0]['#options']['entity_type'])
+      && $variables['content'][$field][0]['#options']['entity_type'] === 'node') {
 
       foreach (Element::children($variables['content'][$field]) as $delta) {
 
@@ -550,7 +560,7 @@ function uwmbase_preprocess_node(&$variables, $hook) {
       // If the provider uses open scheduling and has an Epic ID (SER),
       // add the ID to the appointment URI.
       if (isset($node->field_res_is_open_scheduling) && $node->field_res_is_open_scheduling->value == '1'
-      && isset($node->field_res_ser_id) && $node->field_res_ser_id->value) {
+        && isset($node->field_res_ser_id) && $node->field_res_ser_id->value) {
         $variables['provider_appointments_uri'] .= '?ser=' . $node->field_res_ser_id->value;
       }
     }
@@ -760,8 +770,23 @@ function uwmbase_preprocess_container(&$variables) {
  * Implements template_preprocess_field().
  */
 function uwmbase_preprocess_field(&$variables, $hook) {
+
   $element = $variables['element'];
+  $node = \Drupal::request()->attributes->get('node');
+  if ($node) {
+    $variables['node_title'] = $node->getTitle();
+  }
+
   $element['#label_display'] = 'hidden';
+
+  /***
+   * Set special CSS classes that describe the current context.
+   * These allow adding the classes in a twig and, finding a
+   * link field in GTM using CSS classes.
+   *
+   * @see field--node--field-res-phone-number--res-clinic.html.twig
+   */
+  $variables['css_parents_classes'] = get_css_classes_for_parent($variables);
 
   // Pass the entity's current view mode to templates.
   // (Note that view mode is not used for theme hook suggestions here.)
@@ -850,8 +875,16 @@ function uwmbase_preprocess_paragraph(&$variables) {
 
   /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
   $paragraph = $variables['paragraph'];
+  $node = \Drupal::request()->attributes->get('node');
+  if ($node) {
+    $variables['node_title'] = $node->getTitle();
+  }
 
   $parent = $paragraph->getParentEntity();
+
+  // Add css classes to identify the parent field.
+  // This helps finding elements with CSS in Google Tag Manager.
+  $variables['css_parents_classes'] = get_css_classes_for_parent($variables);
 
   // For any paragraph type, check if a parent Grid paragraph specified to
   // style all children as cards.
@@ -1357,6 +1390,10 @@ function uwmbase_preprocess_paragraph__uwm_cta_link(&$variables) {
   /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
   $paragraph = $variables['paragraph'];
 
+  // Add css classes to identify the parent field.
+  // This helps finding elements with CSS in Google Tag Manager.
+  $variables['css_parents_classes'] = get_css_classes_for_parent($variables);
+
   // Extract link URL and title values for template.
   if (!empty($variables['content']['field_uwm_link'][0])) {
     $variables['field_uwm_link__url'] = $variables['content']['field_uwm_link'][0]['#url']->toString();
@@ -1588,6 +1625,11 @@ function uwmbase_theme_suggestions_views_view_fields_alter(array &$suggestions, 
  * Implements template_preprocess_views_view().
  */
 function uwmbase_preprocess_views_view(&$variables) {
+
+  $variables['css_parents_classes'] = get_css_classes_for_parent($variables);
+  $variables['css_parents_classes'] = array_merge($variables['css_parents_classes'],
+    'uwmbase_preprocess_views_view');
+
   /** @var \Drupal\views\ViewExecutable $view_ex */
   $view_ex = $variables['view'];
   $variables['total_rows'] = $view_ex->total_rows;
@@ -1624,6 +1666,14 @@ function uwmbase_preprocess_views_view(&$variables) {
     );
 
   }
+
+}
+
+/**
+ * Implements template_preprocess_views_view_unformatted().
+ */
+function uwmbase_preprocess_views_view_unformatted(&$variables) {
+  $variables['css_parents_classes'] = get_css_classes_for_parent($variables);
 
 }
 
@@ -1679,12 +1729,21 @@ function uwmbase_theme_suggestions_views_view_field_alter(array &$suggestions, a
 }
 
 /**
+ * Implements template_preprocess_views_view_field().
+ */
+function uwmbase_preprocess_views_view_field(&$variables) {
+
+  $variables['css_parents_classes'] = get_css_classes_for_parent($variables);
+
+}
+
+/**
  * Implements hook_theme_suggestions_form_element_alter().
  */
 function uwmbase_theme_suggestions_bef_radios_alter(array &$suggestions, array $variables) {
   if (array_key_exists('view_display_id', $_REQUEST)) {
     if ($_REQUEST['view_display_id'] == 'uwm_provider_resources_block' ||
-        strpos(_uwmbase_current_path_alias(), '/provider-resource') !== FALSE) {
+      strpos(_uwmbase_current_path_alias(), '/provider-resource') !== FALSE) {
       $suggestions[] = $variables['theme_hook_original'] . '__provider_resource';
     }
   }

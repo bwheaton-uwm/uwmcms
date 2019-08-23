@@ -37,6 +37,18 @@
   {{ attach_library('uwmbase/clinic-page') }}
 
   {{ title_suffix }}
+{#<pre>#}
+{#  {{ uwm_cta_link("Sign in &amp; book online"|t,#}
+{#    'https://ecare.uwmedicine.org/prod01/inside.asp?mode=apptsched',#}
+{#    ['btn-cta-solid', 'clinic-page__cta-btn']) }}#}
+{#  {{ uwm_cta_link() }}#}
+{#  {{ uwm_cta_link('L 2', '/search/locations?s=seattle') }}#}
+{#  {{ uwm_cta_link('L 3', '<front>') }}#}
+{#  {{ uwm_cta_link('L 4', '/locations/primary-care-ravenna') }}#}
+{#  {{ uwm_cta_link('L 5', '/locations/primary-care-ravenna?test=123#anchor-xyz') }}#}
+{#  {{ uwm_cta_link('L 6', '/node/20866') }}#}
+
+{#</pre>#}
 
   <div class="clinic-page__gradient_background">
 
@@ -49,9 +61,9 @@
           <div class="clinic-page__title">
             <h1 class="page-title">{{ label }}</h1>
           </div>
-          
-          <div class="clinic-page__hours-ctas">          
-            
+
+          <div class="clinic-page__hours-ctas">
+
             {# Primary CTA (make an appointment or contact information) #}
             <div class="clinic-page__ctas clinic-page__ctas-primary">
             {% if not hide_appointment_ctas %}
@@ -155,7 +167,14 @@
                     <h2>{{ "Returning Patients"|t }}</h2>
                   </div>
                   <div class="clinic-page__cta-content">
-                    <a class="btn btn-cta-solid clinic-page__cta-btn" href="https://ecare.uwmedicine.org/prod01/inside.asp?mode=apptsched">{{ "Sign in &amp; book online"|t }}</a>
+
+{#                    <a class="btn btn-cta-solid clinic-page__cta-btn" href="https://ecare.uwmedicine.org/prod01/inside.asp?mode=apptsched">{{ "Sign in &amp; book online"|t }}</a>#}
+                    {% set cta_special_attributes = []|merge({'data-context-title': label|render}) %}
+                    {#                    // @TODO Verify new CTA #}
+                    {{ uwm_cta_link("Sign in &amp; book online"|t,
+                      'https://ecare.uwmedicine.org/prod01/inside.asp?mode=apptsched',
+                      ['btn', 'btn-cta-solid', 'clinic-page__cta-btn'],
+                      cta_special_attributes) }}
                   </div>
                 </div>
               {% endif %}
@@ -235,19 +254,19 @@
               {{ content.field_res_image }}
             {% endif %}
           </div>
-          
+
           <address class="clinic-page__address">
             {% if content.field_res_building.0|render|striptags|trim is not empty %}
               <a href="#directions-tab-tab---">{{ content.field_res_building.0 }}</a>
             {% endif %}
           </address>
-                   
+
           {% if content.field_res_fax_number.0 is not empty %}
             <div class="clinic-page__fax">
               {{ content.field_res_fax_number }}
             </div>
           {% endif %}
-         
+
           <div class="clinic-page__link clinic-page__link-overview">
             <a href="#main-tab-tab---overview">{{ is_hospital ? "Hospital Overview"|t : "Overview"|t }}</a>
             <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -282,7 +301,7 @@
           {% endif %}
         </div>
         <div class="clinic-page__left-two"></div>
-        
+
       </section>
 
     </div>

@@ -16,25 +16,25 @@
 
 {% set modifier_class = attributes.class ~ ' row' %}
 
-
 {% block content %}
   {{ attach_library('uwmbase/node-display-card-brief') }}
-
   {#
 
   LEFT COLUMN
   #}
   <div class="left image col-xs-12 col-sm-5 ">
 
-    <a href="{{ url }}">
-      {% if content.field_res_image|render|trim is empty %}
+    {% set image = content.field_res_image %}
+    {% if content.field_res_image|render|trim is empty %}
+      {% set image %}
         <img
-          src="/{{ directory }}/src/assets/uwmed_location_card_placeholder.svg"
-          alt="" class="img-fluid"/>
-      {% else %}
-        {{ content.field_res_image }}
-      {% endif %}
-    </a>
+        src="/{{ directory }}/src/assets/uwmed_location_card_placeholder.svg"
+        alt="" class="img-fluid"/>
+      {% endset %}
+
+    {% endif %}
+
+    {{ uwm_cta_link(image|render, url, [css_parents_classes]) }}
 
   </div>
 
@@ -46,7 +46,7 @@
   <div class="right col-xs-12 col-sm-7">
 
     <h4 class="page-title">
-      <a href="{{ url }}">{{ label }}</a>
+      {{ uwm_cta_link(label|render, url, [css_parents_classes]) }}
     </h4>
 
 
@@ -61,8 +61,11 @@
       {% if node.field_res_phone_number.value %}
         {% set phone = node.field_res_phone_number.value|uwm_format_phone('-') %}
         <i class="uwm-icon uwm-icon--call-online"></i>
+{#        <a href="tel:{{ phone }}" class="{{ card_link_classes }}">{{ phone|replace({'-': '.'}) }}</a>#}
 
-        <a href="tel:{{ phone }}">{{ phone|replace({'-': '.'}) }}</a>
+        {% set cta_special_attributes = []|merge({'data-context-title': label|render}) %}
+        {{ uwm_cta_link(phone|replace({'-': '.'}), 'tel:'~phone, [css_parents_classes], cta_special_attributes) }}
+
       {% endif %}
     </p>
 

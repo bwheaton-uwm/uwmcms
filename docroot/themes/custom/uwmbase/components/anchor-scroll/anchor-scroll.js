@@ -66,8 +66,9 @@
           // Our element will have a "0" offset if hidden on the page. Wait
           // until animations have completed before scrolling to the element.
           setTimeout(() => {
+            let yPx = $target.offset().top;
             $('html,body').animate({
-              scrollTop: $target.offset().top
+              scrollTop: yPx
             }, 350);
 
           }, 600 * n);
@@ -85,7 +86,10 @@
 
         anchorsArray.forEach((anchor, i) => {
 
-          $(`[id = ${ anchor }]`).trigger('click');
+          let $elm = $(`[id = ${ anchor }]`);
+          if ($elm.length > 0) {
+            $elm.trigger('click');
+          }
 
         });
 

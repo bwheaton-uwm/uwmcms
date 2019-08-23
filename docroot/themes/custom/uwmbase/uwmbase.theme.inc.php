@@ -5,6 +5,80 @@
  * Helper file with extra routines or processing for uwmbase.theme.
  */
 
+use Drupal\Component\Utility\Html;
+
+/**
+ * Custom function for getting CSS classes based on field parent.
+ *
+ * We check if a parent entity exists, perhaps a type of BlockContent,
+ * Node or Paragraph, and add CSS classes based on information available.
+ * It'd be nice to always have the list of parent fields when something is
+ * rendered, like a paragrpah CTA, for example, but this can be hard
+ * to find. Use this function to check for parents and get the parent
+ * type values.
+ *
+ * @param array $variables
+ *   The variables array from a preprocess function.
+ *
+ * @return array
+ *   An empty array or array of CSS safe classes.
+ *
+ * @see hook_preprocess_paragraph()
+ * @see uwmbase_preprocess_paragraph__uwm_cta_link()
+ */
+function get_css_classes_for_parent(array $variables = []) {
+
+  $css_parents_classes = [];
+
+  // Check if item has view-mode:
+  if (!empty($variables['view_mode'])) {
+    $css_parents_classes[] = $variables['view_mode'];
+  }
+
+  // Check if views has information:
+  $node = $variables['node'] ?? NULL;
+  if (!empty($node)) {
+    if (method_exists($node, 'getType')) {
+      $css_parents_classes[] = $node->getType();
+    }
+  }
+
+  // Check if views has information:
+  $view = $variables['view'] ?? NULL;
+  if (!empty($view)) {
+    $css_parents_classes[] = $view->storage->id();
+    $css_parents_classes[] = $view->current_display;
+  }
+
+  // Check if paragraph has information:
+  $paragraph = $variables['paragraph'] ?? NULL;
+  if (!empty($paragraph) && is_object($paragraph) && method_exists($paragraph, 'getParentEntity')) {
+    $parent = $paragraph->getParentEntity();
+  }
+
+  if (!empty($parent) && is_object($parent)) {
+    if (method_exists($parent, 'getEntityTypeId') && !empty($parent->getEntityTypeId())) {
+      $css_parents_classes[] = $parent->getEntityTypeId();
+    }
+    if (method_exists($parent, 'getType') && !empty($parent->getType())) {
+      $css_parents_classes[] = $parent->getType();
+    }
+    if (!empty($parent->parent_field_name)) {
+      $css_parents_classes[] = $parent->parent_field_name->value;
+    }
+  }
+
+  $classes = [];
+  foreach ($css_parents_classes as $class) {
+    if (!empty($class)) {
+      $classes = Html::getClass('cta-parent-' . $class);
+    }
+  }
+
+  return $classes;
+
+}
+
 /**
  * If a node has field_uwm_json_packet, parse its JSON data into arrays.
  *
