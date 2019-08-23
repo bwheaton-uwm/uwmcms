@@ -118,9 +118,13 @@ body.is-path-search {
         .status-message {
           color: $purple;
           font-size: 14px;
-          position: absolute;
-          top: 100%;
-          left: 15px;
+          padding-top: 0.25rem; // 4px
+
+          @include media-breakpoint-up('lg') {
+            position: absolute;
+            top: 100%;
+            left: 15px;
+          }
         }
 
       }
