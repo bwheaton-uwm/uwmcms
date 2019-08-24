@@ -132,7 +132,7 @@
 
     .clinic-card__field.icon {
       position: relative;
-      padding-left: 2.875rem; // 46px
+      padding-left: 2.125rem; // 34px
 
       .uwm-icon {
         // Our icons are not uniform in size.
@@ -175,7 +175,7 @@
 
     }
 
-    .clinic-card__field-phone {
+    .clinic-card__appointments {
 
       .uwm-icon--calendar, .uwm-icon--heart {
         width: 18px;
@@ -187,13 +187,13 @@
         height: 16px;
       }
 
-      .clinic-card__phone-button {
-        display: inline-block;
+      .clinic-card__phone-button,
+      .clinic-card__book-online-button {
+        text-transform: uppercase;
 
         a {
           display: block;
           border: 1px solid $purple;
-          box-shadow: 0 1px 6px $gray-200;
           padding: 0.5rem 1rem;
           transition: all 0.3s ease-in;
           color: inherit;
@@ -211,6 +211,18 @@
             color: $white;
           }
         }
+      }
+    }
+    .clinic-card__appointment_buttons {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: -0.5rem;
+    }
+    .clinic-card__appointment_button {
+      margin-top: 0.5rem;
+      margin-right: .625rem;
+      &:last-of-type {
+        margin-right: 0;
       }
     }
 
@@ -243,6 +255,10 @@
           height: 18px;
         }
       }
+
+      .clinic-card__buttons {
+        font-weight: $font-weight-semi-bold;
+      }
     }
 
   }
@@ -273,7 +289,6 @@
 
       margin: 0;
       width: 100%;
-      box-shadow: 0 1px 6px $gray-200;
       text-align: center;
       font-weight: $font-weight-semi-bold;
       font-size: 0.8125rem; // 13px

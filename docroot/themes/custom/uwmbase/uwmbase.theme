@@ -772,9 +772,9 @@ function uwmbase_preprocess_container(&$variables) {
 function uwmbase_preprocess_field(&$variables, $hook) {
 
   $element = $variables['element'];
-  $node = \Drupal::request()->attributes->get('node');
-  if ($node) {
-    $variables['node_title'] = $node->getTitle();
+  if ($element['#entity_type'] == 'node' && isset($element['#object'])) {
+    $node = $element['#object'];
+    $variables['node_title'] = $node->label();
   }
 
   $element['#label_display'] = 'hidden';
