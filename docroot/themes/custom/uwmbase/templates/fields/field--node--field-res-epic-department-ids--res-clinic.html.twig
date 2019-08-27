@@ -13,9 +13,15 @@
 #}
 {% set depts = [] %}
 {% for item in items %}
-    {% set depts = depts|merge([item.content|render]) %}
+    {% set depts = depts|merge([item.content|render|trim]) %}
 {% endfor %}
 
 {% spaceless %}
-  <a class="btn{{ view_mode == 'full' ? ' btn-cta-solid clinic-page__cta-btn' }}" href={{"https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?vt=9000&view=plain&dept=#{depts|join(',')}"}}>{{ "Book online"|t }}</a>
+{#  <a class="btn{{ view_mode == 'full' ? ' btn-cta-solid clinic-page__cta-btn' }}" href={{"https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?vt=9000&view=plain&dept=#{depts|join(',')}"}}>{{ "Book online"|t }}</a>#}
+  {#              // @TODO Verify CTA link. #}
+  {% set classes = (view_mode == 'full' ? [css_parents_classes|join(' '), 'btn', 'btn-cta-solid', 'clinic-page__cta-btn'] : [css_parents_classes])  %}
+  {% set url = 'https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?vt=9000&view=plain&dept=' ~ depts|join(',')|replace(' ', '') %}
+  {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
+  {{ uwm_cta_link('Book online'|t, url, classes, cta_special_attributes) }}
+
 {% endspaceless %}

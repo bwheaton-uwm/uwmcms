@@ -2,11 +2,15 @@
 
 namespace Drupal\uwmcs_extension;
 
-use Drupal\uwmcs_reader\Controller\UwmMapper;
+use Drupal\node\Entity\Node;
+use Drupal\Component\Render\FormattableMarkup;
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Url;
+use Drupal\uwmcs_reader\Controller\UwmMapper;
 
 /**
- * A Twig extension that adds custom functions/filters.
+ * Provides custom twig filters or functions to themes.
  */
 class TwigExtension extends \Twig_Extension {
 
@@ -46,6 +50,11 @@ class TwigExtension extends \Twig_Extension {
         'uwm_get_sharepoint_location_image', [
           $this,
           'getSharepointLocationImage',
+        ]),
+      new \Twig_SimpleFunction(
+        'uwm_cta_link', [
+          $this,
+          'getCustomLinkRenderArray',
         ]),
     ];
   }
@@ -101,21 +110,16 @@ class TwigExtension extends \Twig_Extension {
 
   /**
    * Description text.
-   *
-   * @param bool $upperCase
-   *   Description text.
-   *
-   * @return string
-   *   Description text.
    */
-  public static function testFunction($upperCase = FALSE) {
-    $string = "The quick brown box jumps over the lazy dog 123.";
-    if ($upperCase) {
-      return strtoupper($string);
-    }
-    else {
-      return strtolower($string);
-    }
+  public static function testFunction(string $linkText = '', string $linkUrl = '') {
+
+    // @TODO Draft. Needs updates.
+    // Url::fromRoute('examples.description').
+    return [
+      '#title' => $linkText,
+      '#type' => 'link',
+      '#url' => $linkUrl,
+    ];
   }
 
   /**
@@ -285,7 +289,6 @@ class TwigExtension extends \Twig_Extension {
           $resultArray[] = $value;
         }
       }
-
       elseif (is_array($value) || is_object($value)) {
 
         self::extractArrayValues($value, $desiredKeyName, $resultArray);
@@ -413,7 +416,6 @@ class TwigExtension extends \Twig_Extension {
       $returnArray = Markup::create($title);
 
     }
-
     elseif (isset($data[0]['#type'])) {
 
       foreach ($returnArray as $key => $value) {
@@ -581,6 +583,157 @@ class TwigExtension extends \Twig_Extension {
 
     return $originalList;
 
+  }
+
+  /**
+   * Generates a Drupal "link" render element for theming.
+   *
+   * Many parts of the theme have links in twig templates. This twig
+   * function can be used normalizing CTA button links. We try to
+   * add classes useful in theming and for finding buttons in
+   * third-party tools like Google Tag Manager. We return a Drupal
+   * render array, so twig routines like `addClasses()` can be
+   * applied.
+   *
+   * Minimally, we should be able to provide a link with the classes
+   *    `.cta-from-`
+   *    `.cta-to-bios`
+   *
+   * <code>
+   * In a *.twig file, create a UWM CTA link as follows:
+   *
+   * {{ uwm_cta_link('Search our locations', '/search/locations') }}
+   * OR
+   *
+   * {% set cta = uwm_cta_link('Search our locations', '/search/locations') %}
+   * {{ cta.addClasses(['one', 'two']) }}
+   *
+   * </code>
+   *
+   * @param string $linkText
+   *   The link text.
+   * @param string $linkUrl
+   *   The link path.
+   * @param array $linkClasses
+   *   Array of CSS classes for link.
+   * @param array $attributes
+   *   Array to merge with link attributes.
+   *
+   * @return array
+   *   A Drupal link render array.
+   *
+   * @example See snippet above.
+   * @see \Drupal\Core\Render\Element\Link
+   * @see \Drupal\Core\Utility\LinkGeneratorInterface
+   */
+  public static function getCustomLinkRenderArray(string $linkText = '', string $linkUrl = '', array $linkClasses = [], array $attributes = []) {
+
+    $destinationUrl = NULL;
+    $destinationUrlString = NULL;
+    $destinationTitle = NULL;
+    $destinationClasses = ['uwm-cta'];
+    try {
+      /***
+       * The link render array requires a \Drupal\Url object containing
+       * URL information pointing to a internal or external link. Try to
+       * create one using $linkUrl.
+       */
+      if (in_array($linkUrl[0], ['/', '#', '?'])) {
+        // Links such as '/node/1'.
+        $destinationUrl = Url::fromUserInput($linkUrl);
+      }
+      else {
+        // Links such as 'http://www.google.com' or 'tel:800-555-1111'.
+        $destinationUrl = Url::fromUri($linkUrl);
+      }
+
+      $destinationUrlString = $destinationUrl->toString();
+      $destinationPath = parse_url($destinationUrlString, PHP_URL_PATH);
+
+      /***
+       * It's useful for analytics to have the link title on
+       * a CTA like "Location Details." Try to add the destination
+       * title here.
+       */
+      $destinationAlias = \Drupal::service('path.alias_manager')->getPathByAlias($destinationPath);
+      if (preg_match('/node\/(\d+)/', $destinationAlias, $matches)) {
+        $node = Node::load($matches[1]);
+        if ($node && $node->id()) {
+          $destinationTitle = trim($node->getTitle());
+        }
+      }
+
+    }
+    catch (\Exception $exception) {
+      // @TODO: Add Drupal watchdog message.
+      $i = NULL;
+    }
+
+    /***
+     * Add CSS classes for third-party tools
+     * to help distinguish this CTA in markup.
+     */
+    if ($destinationUrl && $destinationUrlString) {
+
+      $destPath = ltrim(parse_url($destinationUrlString, PHP_URL_PATH), '/');
+      $destHost = parse_url($destinationUrlString, PHP_URL_HOST);
+      if ($destHost) {
+        // Add hostname to css classes.
+        // For https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?vt=9000&view=plain&dept=#4011041,4011060,4011043
+        // add to-ecareuwmedicineorg.
+        $destinationClasses[] = 'cta-to-' . Html::getClass($destHost);
+      }
+
+      // Add basename to css classes.
+      // For https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?vt=9000&view=plain&dept=#4011041,4011060,4011043
+      // add to-prod01-openscheduling-signupandschedule-embeddedschedule.
+      if ($destPath) {
+        $destinationClasses[] = Html::getClass('cta-to-' . $destPath);
+      }
+    }
+
+    $currentPath = ltrim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+    if ($currentPath) {
+      $destinationClasses[] = Html::getClass('cta-from-' . $currentPath);
+    }
+
+    // Append classes from caller:
+    $flattenedArray = self::flattenArray($linkClasses);
+    $destinationClasses = array_merge($destinationClasses, $flattenedArray);
+
+    $attributes = array_merge([
+      'class' => $destinationClasses,
+      'data-context-title' => trim($destinationTitle),
+    ],
+    $attributes);
+
+    /***
+     * Return a Drupal render array for theming.
+     */
+    return [
+      '#type' => 'link',
+      '#title' => new FormattableMarkup($linkText, []),
+      '#url' => $destinationUrl,
+      '#attributes' => $attributes,
+    ];
+
+  }
+
+  /**
+   * Utility function to flatten multi-dimensional arrays.
+   *
+   * @param array $array
+   *   Array to flatten.
+   *
+   * @return array
+   *   A single-dimension array.
+   */
+  private static function flattenArray(array $array) {
+    $return = [];
+    array_walk_recursive($array, function ($a) use (&$return) {
+      $return[] = $a;
+    });
+    return $return;
   }
 
 }

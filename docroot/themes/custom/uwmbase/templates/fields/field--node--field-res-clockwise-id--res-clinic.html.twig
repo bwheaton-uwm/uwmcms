@@ -59,7 +59,11 @@
 
     <div class="uwm-clockwise__card " data-uwm-clockwise-wait-time="{{ value }}">
       <p class="js-wait-link">
-        <a class="clinic-card__buttons btn btn-outline-primary" href="/patient-care/making-an-appointment" target="_blank">{{ "Get in line"|t }}</a>
+{#        <a class="clinic-card__buttons btn btn-outline-primary" href="/patient-care/making-an-appointment" target="_blank">{{ "Get in line"|t }}</a>#}
+        {#              // @TODO Verify CTA link. #}
+        {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
+        {{ uwm_cta_link('Get in line'|t, '/patient-care/making-an-appointment', ['btn', 'clinic-card__buttons', 'btn-outline-primary'], cta_special_attributes) }}
+
       </p>
       <p class="js-wait-text">&nbsp;</p>
     </div>
@@ -79,7 +83,11 @@
     </div>
     <div class="clinic-page__cta-content">
       <span class="clinic-page__urgent-wait-link js-wait-link">
-        <a class="btn btn-cta-solid clinic-page__cta-btn" href="/patient-care/making-an-appointment" target="_blank">{{ "Get in line"|t }}</a>
+{#        <a class="btn btn-cta-solid clinic-page__cta-btn" href="/patient-care/making-an-appointment" target="_blank">{{ "Get in line"|t }}</a>#}
+        {#              // @TODO Verify CTA link. #}
+        {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
+        {{ uwm_cta_link('Get in line'|t, '/patient-care/making-an-appointment', ['btn', 'btn-cta-solid', 'clinic-page__cta-btn'], cta_special_attributes) }}
+
       </span>
       <div class="clinic-page__cta-icon clinic-page__cta-icon-clock"></div>
     </div>

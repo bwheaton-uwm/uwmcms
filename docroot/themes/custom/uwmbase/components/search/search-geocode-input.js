@@ -125,21 +125,56 @@
       };
 
       // On current-location icon click, toggle the dropdown.
+      // Note: this operates regardless of whether the value is empty (as other
+      // show/hide logic does), so that the icon is a consistent user control.
       $currentLocationDropdownToggle.on('click', e => {
         e.preventDefault();
 
         if ($currentLocationDropdownMenu.is(':hidden')) {
-          // Focus the address input; that handler opens the dropdown.
-          $addressInput.focus();
+          // Previously, this set focus on the address input, which both opened
+          // the dropdown and conveniently placed focus for user to type. But
+          // now the focus handler opens the dropdown conditionally, so call it
+          // directly here.
+          openDropdown();
         }
         else {
           closeDropdown();
         }
       });
 
-      // On address input focus, open dropdown.
+      // On address input focus, open dropdown - if value is empty. (This
+      // corresponds with handling on the `input` event below.)
       $addressInput.on('focus', e => {
-        openDropdown();
+        if ($addressInput.val().length === 0) {
+          openDropdown();
+        }
+      });
+
+      // If user types in address input, presume this means they opted to search
+      // by an entered value, not current location - so close dropdown; if user
+      // clears value, re-open dropdown.
+      // Use `input` event to track value change - i.e. upon character entered
+      // (vs. `change` which tracks value "committed"). This event is supported
+      // in relevant browsers for 'text' input type.
+      // @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+      $addressInput.on('input', e => {
+
+        // Check at a slight delay, with a flag to avoid overlapping checks.
+        if (!$addressInput.data('checkingTyped')) {
+          $addressInput.data('checkingTyped', true);
+
+          setTimeout(() => {
+            if ($addressInput.val().length === 0) {
+              openDropdown();
+            }
+            else {
+              closeDropdown();
+            }
+
+            $addressInput.data('checkingTyped', false);
+          }, 300);
+        }
+
       });
 
       // On address input blur, call geocoding.
@@ -367,7 +402,16 @@
        */
       const setUserMessage = function (message) {
 
-        $addressContainer.find('.status-message').text(message);
+        const $status = $addressContainer.find('.status-message');
+
+        $status.text(message);
+
+        if (message == "") {
+          $status.removeClass('show');
+        }
+        else {
+          $status.addClass('show');
+        }
 
       };
 

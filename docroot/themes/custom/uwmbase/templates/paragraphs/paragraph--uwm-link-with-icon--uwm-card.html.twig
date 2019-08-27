@@ -8,13 +8,18 @@
     <{{ element }}{{ attributes.addClass(classes) }} id="ppg-{{ paragraph.id() }}">
         {% block content %}
             {% spaceless %}
-                <a class="btn btn-default {{ link_classes }}" href="{{ url|render }}" target="{{ link_target }}">
-                    {#
-                      @see field--paragraph--field-uwm-icon.html.twig
-                      @see field--paragraph--field-uwm-link--uwm-link-with-icon.html.twig
-                    #}
-                    {{ content }}
-                </a>
+{#                <a class="btn btn-default {{ link_classes }}" href="{{ url|render }}" target="{{ link_target }}">#}
+{#                    #}{##}
+{#                      @see field--paragraph--field-uwm-icon.html.twig#}
+{#                      @see field--paragraph--field-uwm-link--uwm-link-with-icon.html.twig#}
+{#                    #}
+{#                    {{ content }}#}
+{#                </a>#}
+              {#                    // @TODO Verify new CTA #}
+              {{ uwm_cta_link(content|render,
+                url|render,
+                [link_classes, 'btn', 'btn-default']) }}
+
             {% endspaceless %}
         {% endblock content %}
     </{{ element }}>
