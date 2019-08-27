@@ -1628,7 +1628,7 @@ function uwmbase_preprocess_views_view(&$variables) {
 
   $variables['css_parents_classes'] = get_css_classes_for_parent($variables);
   $variables['css_parents_classes'] = array_merge($variables['css_parents_classes'],
-    'uwmbase_preprocess_views_view');
+    ['uwmbase_preprocess_views_view']);
 
   /** @var \Drupal\views\ViewExecutable $view_ex */
   $view_ex = $variables['view'];

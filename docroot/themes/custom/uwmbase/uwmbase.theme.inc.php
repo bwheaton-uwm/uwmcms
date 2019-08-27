@@ -164,6 +164,11 @@ function _uwmbase_get_clinic_hours_array(array $json_data = NULL) {
           'closes_next' => NULL,
         ];
 
+        // If the hours data is empty, set always open to FALSE.
+        if ($hours['hours'][0]['day'] == '') {
+          $data[$type]['always_open'] = FALSE;
+        }
+
         // Process each day's hours.
         if (!empty($hours['hours'])) {
           foreach ($hours['hours'] as $day) {

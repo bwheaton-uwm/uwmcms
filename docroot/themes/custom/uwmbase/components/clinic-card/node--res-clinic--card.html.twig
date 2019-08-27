@@ -148,7 +148,7 @@
         @see node--res-clinic--full.html.twig
         @see clinic-hours-macros.twig
       #}
-      {% if hours is not empty %}
+      {% if hours is not empty and (hours.operation.open_close.opens_next is not empty or hours.operation.always_open or hours.urgent.open_close.opens_next is not empty or hours.urgent.always_open or is_hospital) %}
 
         <div class="clinic-card__field clinic-card__location-hours icon">
 
