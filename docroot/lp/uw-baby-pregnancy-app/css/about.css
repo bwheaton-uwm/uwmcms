@@ -1,0 +1,161 @@
+﻿/* ------------ About Section ------------ */
+
+/*5/4/2016 Yuping added for fix insight page*/
+.insight_top_box .insight_main_btn, .insight_top_box button#submitForm {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0.6em 1.8em 1.5em;
+}
+
+/*5/4/2016 Yuping added for fix insight page*/
+.insight_top_box button#submitForm {	
+	width: 85% !important;
+}
+
+.about-section .navbar.vc_nav {
+    margin: 0 -15px;
+    border: 0;
+}
+
+.about-section .navbar.vc_nav .container {
+    padding: 0;
+}
+
+.about-section .navbar-collapse.vc_nav_bg {
+    width: 100%;
+    margin: 0;
+}
+
+.about-section .navbar.vc_nav .btn-navbar {
+    margin-bottom: 0;
+}
+
+.about-section .navbar-nav>li {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+#s4-bodyContainer section.top-bar,
+#s4-bodyContainer header div.container {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#s4-bodyContainer section.top-bar,
+#s4-bodyContainer .navbar-collapse.vc_nav_bg {
+    padding-left: 0;
+}
+
+.about-section .insight_top_container .insight_top_box {
+    width: 48.3%;
+    min-height: 420px; /*added 5/4/2016*/
+	position: relative; /*added 5/4/2016*/
+
+}
+
+@media (max-width: 767px) {
+    .about-section .insight_top_container .insight_top_box {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .about-section .navbar {
+        border-radius: 0;
+    }
+
+    .about-section .navbar-collapse.vc_nav_bg.collapse {
+        display: none !important;
+    }
+
+    .about-section .navbar-collapse.vc_nav_bg.collapse.in {
+        display: block !important;
+        margin-top: 30px;
+        padding-bottom: 10px;
+    }
+
+    .about-section .navbar-toggle {
+        display: inline-block;
+    }
+
+    .about-section .navbar-nav>li {
+        float: initial;
+    }
+
+    /* .about-section #content */
+    #rtc-page #s4-bodyContainer #content {
+        position: relative;
+        width: 100%;
+        margin-bottom: 40px;
+    }
+
+    #rtc-page #s4-bodyContainer #wrapper .container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    #rtc-page .rtc_caption {
+        width: 45%;
+    }
+}
+
+@media only screen and (min-width: 980px) {
+    .about-section .navbar-collapse.vc_nav_bg {
+        margin: -10px 0 0 0;
+        padding: 10px 0;
+    }
+
+    .about-section .navbar.vc_nav {
+        position: absolute;
+        left: 0;
+        right: 0;
+        padding: 0;
+        margin-top: -10px !important;
+        padding-left: 15px;
+        border-radius: 0;
+    }
+
+    .about-section .navbar-toggle {
+        display: none;
+    }
+
+    .about-section .navbar-collapse.vc_nav_bg.collapse,
+    .about-section .navbar-collapse.vc_nav_bg.collapse.in {
+        display: block !important;
+        margin-top: 0;
+    }
+
+    .about-section .navbar.vc_nav {
+        padding-left: 80px;
+    }
+
+    .about-section .navbar-nav>li {
+        float: left;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    #rtc-page #carousel-example-generic {
+        margin-top: 40px;
+    }
+
+    #rtc-page .rtc_secondPanel_container,
+    #rtc-page .rtc_fourthPanel_container {
+        margin-bottom: 40px;
+    }
+
+    #rtc-page .navbar-collapse.vc_nav_bg {
+        max-width: 1100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    html.rtc-section body #content {
+        margin-top: 40px;
+    }
+}
