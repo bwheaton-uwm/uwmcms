@@ -8,6 +8,7 @@
 
 nav {
   margin: 0;
+  padding: 0;
 }
 
 .w-nav-brand {
@@ -16,9 +17,11 @@ nav {
   text-decoration: none;
   color: #333333;
 }
+
 .w-nav-menu {
   position: relative;
   float: right;
+  line-height: 20px;
 }
 .w-nav-link {
   position: relative;
