@@ -15,6 +15,7 @@
 
          <!--Add 8/7/2015-->
         <link rel="stylesheet" href="css/jquery-ui.css">
+
         <script src="js/jquery-ui.min.js"></script>
         <link rel="stylesheet" href="css/jquery.ui.autocomplete.css">
         <script src="js/modernizr.min.js" type="text/javascript"></script>
@@ -24,6 +25,8 @@
         <script type="text/javascript" src="js/head.min.js"></script>
         <script type="text/javascript" src="js/jquery.fancybox.min.js"></script>
         <script type="text/javascript" src="js/jquery.animate-shadow-min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js" type="text/javascript"></script>
+        <script type="text/javascript">WebFont.load({  google: {    families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic","Lato:100,100italic,300,300italic,400,400italic,700,700italic,900,900italic","Raleway:200,300,regular,500,600,700,800,900","Encode Sans:300,regular,500,600,700","Open Sans Condensed:300,700"]  }});</script>
 
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"><link href="css/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
 
@@ -113,7 +116,10 @@
 
 
         <script type="text/javascript" src="js/pub-site-global-scripts.js"></script>
-       <script></script><link rel="stylesheet" href="css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="css/styles.css" media="all"><link rel="stylesheet" type="text/css" href="css/uwmsubnav.css" media="all">
+        <script></script>
+        <link rel="stylesheet" href="css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="css/styles.css" media="all"><link rel="stylesheet" type="text/css" href="css/uwmsubnav.css" media="all">
+        <link rel="stylesheet" type="text/css" href="css/header.css" media="all">
+        <link rel="stylesheet" type="text/css" href="css/footer.css" media="all">
         <script type="text/javascript" src="js/uwmgtm.js"></script>
 
     <script type="text/javascript" src="js/webapisecurity.js"></script></head>
@@ -369,22 +375,12 @@ $header.find('.logo a').attr('href', 'https://www.uwmedicine.org/education');
     </div>
 </section>
     <!-- top-bar -->
-<header class="clearfix">
-    <div class="container noindex">
-        <div class="row">
-            <strong class="logo"><a href="/">UW Medicine</a></strong>
-            <ul class="add-nav">
-                <li class="search1" style="display:none">
-                    <div class="ms-webpart-chrome ms-webpart-chrome-fullWidth ">
-		<div webpartid="00000000-0000-0000-0000-000000000000" haspers="true" id="WebPartWPQ1" width="100%" class="ms-WPBody noindex " onlyformepart="true" allowdelete="false" style><div componentid="SearchBoxScriptWebPart1_csr" id="SearchBoxScriptWebPart1_csr"><div id="SearchBox" name="Control"><div class="ms-srch-sb ms-srch-sb-border" id="SearchBoxScriptWebPart1_csr_sboxdiv"><input type="text" value="Search..." maxlength="2048" accesskey="S" title="Search..." id="SearchBoxScriptWebPart1_csr_sbox" autocomplete="off" autocorrect="off" onkeypress="EnsureScriptFunc('Search.ClientControls.js', 'Srch.U', function() {if (Srch.U.isEnterKey(String.fromCharCode(event.keyCode))) {$find('SearchBoxScriptWebPart1_csr').search($get('SearchBoxScriptWebPart1_csr_sbox').value);return Srch.U.cancelEvent(event);}})" onkeydown="EnsureScriptFunc('Search.ClientControls.js', 'Srch.U', function() {var ctl = $find('SearchBoxScriptWebPart1_csr');ctl.activateDefaultQuerySuggestionBehavior();})" onfocus="EnsureScriptFunc('Search.ClientControls.js', 'Srch.U', function() {var ctl = $find('SearchBoxScriptWebPart1_csr');ctl.hidePrompt();ctl.setBorder(true);})" onblur="EnsureScriptFunc('Search.ClientControls.js', 'Srch.U', function() {var ctl = $find('SearchBoxScriptWebPart1_csr'); if (ctl){ ctl.showPrompt(); ctl.setBorder(false);}})" class="ms-textSmall ms-srch-sb-prompt ms-helperText"><a title="Search" class="ms-srch-sb-searchLink" id="SearchBoxScriptWebPart1_csr_SearchLink" onclick="EnsureScriptFunc('Search.ClientControls.js', 'Srch.U', function() {$find('SearchBoxScriptWebPart1_csr').search($get('SearchBoxScriptWebPart1_csr_sbox').value);})" href="javascript: {}"><img src="images/searchresultui.png" class="ms-srch-sb-searchImg" id="searchImg" alt="Search"></a><div class="ms-qSuggest-container ms-shadow" id="AutoCompContainer"><div id="SearchBoxScriptWebPart1_csr_AutoCompList"></div></div></div></div></div><noscript><div id="SearchBoxScriptWebPart1_noscript">It looks like your browser does not have JavaScript enabled. Please turn on JavaScript and try again.</div></noscript><div id="SearchBoxScriptWebPart1">
-
-		</div><div class="ms-clear"></div></div>
-	</div>
-                </li>
-            </ul>
+    <div data-collapse="medium" data-animation="default" data-duration="400" class="navbar w-nav"><a href="#" class="brand w-nav-brand"><img src="images/uw-medicine-logo.png" alt="" class="image"></a>
+        <nav role="navigation" class="w-nav-menu"><a href="/patient-care/making-an-appointment" target="_blank" class="nav-link appointment w-nav-link">BOOK APPOINTMENT</a><a href="tel:+12065206055" class="nav-link phone w-nav-link">206.520.6055</a></nav>
+        <div class="menu-button w-nav-button">
+            <div class="icon w-icon-nav-menu"></div>
         </div>
     </div>
-</header>
         <!-- add-nav -->
 
 </div>
@@ -779,6 +775,7 @@ $header.find('.logo a').attr('href', 'https://www.uwmedicine.org/education');
     background-color: #f2f2f2;
     font-size: 16px;
     color: #ffffff;
+    margin-bottom: 20px;
 }
 .wcf_orange_bg {
     background-color: #f7be07;
@@ -1011,57 +1008,9 @@ $header.find('.logo a').attr('href', 'https://www.uwmedicine.org/education');
 
         <div class="noindex">
 
-            <footer class="noindex">
-    <a class="txt-mobile  visible-xs visible-sm hidden-md hidden-lg" href="/about/">About uw medicine</a><a class="txt-mobile visible-xs visible-sm hidden-md hidden-lg" href="/referrals/">for healthcare professionals</a>
-    <ul class="footer-nav first">
-        <li><a href="/harborview">Harborview medical center</a></li>
-        <li><a href="/northwest-hospital">Northwest hospital &amp; medical center</a></li>
-        <li><a href="/valley-medical-center">Valley medical center</a></li>
-        <li><a href="/uw-medical-center">UW medical center</a></li>
-    </ul>
-    <ul class="footer-nav second">
-        <li><a href="/neighborhood-clinics">UW neighborhood clinics</a></li>
-        <li><a href="/uw-physicians">UW physicians</a></li>
-        <li><a href="/education/about">UW school of medicine</a></li>
-        <li><a href="/airlift-nw">Airlift northwest</a></li>
-    </ul>
-    <ul class="footer-nav color">
-        <li><a href="/about/contact-us">Contact us</a></li>
-        <li><a href="http://www.acceleratemed.org/give/?source=MEDXCL,MDNOVT,UWMEDS,HCMISS,ADISUN,NWMEDI,VALLEY,MEDNEI,AIRFUN" target="_blank">Support UW Medicine</a></li>
-
-        <li><a href="/about/employment">Employment</a></li>
-        <li><a href="/volunteer-services">Volunteer services</a></li>
-        <li><a class="fancybox-custom" data-fancybox-height="550" data-fancybox-width="400" href="/feedback" data-fancybox-type="iframe">Website Feedback</a></li>
-    </ul>
-    <ul class="footer-nav color footer-spacing-fix">
-        <li><a href="http://www.washington.edu" target="_blank">University of Washington</a></li>
-        <li><a href="/about/alumni">Alumni</a></li>
-        <li><a href="http://www.washington.edu/home/peopledir" target="_blank">UW Directories</a></li>
-    </ul>
-<ul class="footer-nav second">
-        <li><a href="http://www.uwmedicine.org/aco" target="_blank">UW Medicine Accountable Care Network :</a>&nbsp;&nbsp; <a href="http://aco.uwmedicine.org/boeing/" target="_blank">Boeing</a></li>
-        <li><a href="http://aco.uwmedicine.org/umpplus/" target="_blank">UMP Plus</a></li>
-    </ul>
-    <div class="footer-bottom">
-        <div class="box" style="top:10px; width:250px;">
-            <ul class="social" style="width:250px; margin-left:0px;">
-                <li><a title="UW TV" href="http://uwtv.org?s=UW%20Medicine" target="_blank"><img style="margin-top:2px;" alt="UW TV" src="images/ico-uwtv.png"></a></li>
-                <li><a href="http://www.uwmedicinepulse.com/" target="_blank"><img style="margin-top:2px;" alt="UW Medicine Pulse" src="images/icon-podcast.png"></a></li>
-                <li><a href="https://www.instagram.com/uwmedicine/" target="_blank"><i class="fa fa-instagram"><span class="sr-only">Instagram</span></i></a></li>
-                <li><a href="https://www.linkedin.com/company/uw-medicine" target="_blank"><i class="fa fa-linkedin-square"><span class="sr-only">LinkedIn</span></i></a></li>
-                <li><a href="https://www.facebook.com/UWMedicine" target="_blank"><i class="fa fa-facebook-square"><span class="sr-only">Facebook</span></i></a></li>
-                <li><a href="https://twitter.com/uwmedicine" target="_blank"><i class="fa fa-twitter-square"><span class="sr-only">Twitter</span></i></a></li>
-                <li><a href="https://www.youtube.com/user/UWMedicineHealth" target="_blank"><i class="fa fa-youtube-square"><span class="sr-only">YouTube</span></i></a></li>
-            </ul>
+        <div class="copyright-footer">
+            <p class="footer">Copyright © 2019 University of Washington | All rights reserved</p>
         </div>
-        <p>Copyright © <span class="year"><script type="text/javascript">document.write(new Date().getFullYear());</script></span> University of Washington. </p>
-        <p>All rights reserved.</p>
-        <p>
-            <a href="http://www.washington.edu/online/privacy/" target="_blank" style="color:#fff;">Online Privacy Statement </a>&nbsp;&nbsp;|&nbsp;&nbsp<a href="/about/privacy" style="color:#fff;">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp<a href="/about/compliance/disclaimer" style="color:#fff;">Copyright and Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.washington.edu/online/terms/" target="_blank" style="color:#fff;">Website Terms and Conditions of Use</a>
-        </p>
-    </div>
-</footer>
-
 
         </div>
 
