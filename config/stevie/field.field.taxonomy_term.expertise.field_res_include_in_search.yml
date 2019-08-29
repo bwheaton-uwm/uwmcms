@@ -1,0 +1,23 @@
+uuid: b4153a85-f94c-4196-b693-142e109ac9b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_res_include_in_search
+    - taxonomy.vocabulary.expertise
+id: taxonomy_term.expertise.field_res_include_in_search
+field_name: field_res_include_in_search
+entity_type: taxonomy_term
+bundle: expertise
+label: 'Include in search'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

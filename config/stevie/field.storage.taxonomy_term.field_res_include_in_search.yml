@@ -1,0 +1,18 @@
+uuid: 3f38e35b-0439-415b-899a-b35ae9313387
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_res_include_in_search
+field_name: field_res_include_in_search
+entity_type: taxonomy_term
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
