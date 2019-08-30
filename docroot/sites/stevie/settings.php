@@ -86,7 +86,7 @@
  * );
  * @endcode
  */
- $databases = array();
+$databases = array();
 
 /**
  * Customizing database settings.
@@ -373,13 +373,13 @@ $settings['update_free_access'] = FALSE;
  * Be aware, however, that it is likely that this would allow IP
  * address spoofing unless more advanced precautions are taken.
  */
- $settings['reverse_proxy'] = TRUE;
+$settings['reverse_proxy'] = TRUE;
 
 /**
  * Specify every reverse proxy IP address in your environment.
  * This setting is required if $settings['reverse_proxy'] is TRUE.
  */
- $settings['reverse_proxy_addresses'] = array('54.214.196.152', '18.236.166.2', '35.163.192.230');
+$settings['reverse_proxy_addresses'] = array('54.214.196.152', '18.236.166.2', '35.163.192.230');
 
 /**
  * Set this value if your proxy server sends the client IP in a header
@@ -753,12 +753,11 @@ $settings['file_scan_ignore_directories'] = [
 ];
 
 
-
 /**
  * Our various overrides begin below. They are settings that are pulled in
  * with the host, Acquia settings file below, or the development settings.php
  * file, the no-backup settings include, and this block, with overrides per
- * environment. 
+ * environment.
  */
 if (!isset($_ENV['AH_SITE_ENVIRONMENT']) && !file_exists('/var/www/site-php')) {
 
@@ -767,8 +766,8 @@ if (!isset($_ENV['AH_SITE_ENVIRONMENT']) && !file_exists('/var/www/site-php')) {
    */
 
   // Enabling caching migrations:
-	$config['uwm_res_import.settings']['use_cache'] = TRUE;
-	$config['uwm_res_import.settings']['use_highwatermark'] = FALSE;
+  $config['uwm_res_import.settings']['use_cache'] = TRUE;
+  $config['uwm_res_import.settings']['use_highwatermark'] = FALSE;
 
   // Enable local Solr service on localhost:
   $config['search_api.server.uwmed_local_solr']['status'] = TRUE;
@@ -783,17 +782,16 @@ if (!isset($_ENV['AH_SITE_ENVIRONMENT']) && !file_exists('/var/www/site-php')) {
 
 }
 
-if(isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
 
   if ($_ENV['AH_SITE_ENVIRONMENT'] === 'dev') {
 
-	$config['uwm_res_import.settings']['use_cache'] = TRUE;
-	$config['uwm_res_import.settings']['use_highwatermark'] = FALSE;
+    $config['uwm_res_import.settings']['use_cache'] = TRUE;
+    $config['uwm_res_import.settings']['use_highwatermark'] = FALSE;
 
   }
 
 }
-
 
 
 /**
@@ -814,7 +812,7 @@ if(isset($_ENV['AH_SITE_ENVIRONMENT'])) {
 if (!file_exists('/var/www/site-php') && empty($_ENV['AH_SITE_ENVIRONMENT'])) {
 
   // Include local development settings
-	$devSettings = $app_root . '/' . $site_path . '/development.settings.php';
+  $devSettings = $app_root . '/' . $site_path . '/development.settings.php';
   if (file_exists($devSettings)) {
 
     include $devSettings;
@@ -824,7 +822,7 @@ if (!file_exists('/var/www/site-php') && empty($_ENV['AH_SITE_ENVIRONMENT'])) {
 }
 
 
-$file = '/var/www/site-php/uwmed/stevie-settings.inc'; 
+$file = '/var/www/site-php/uwmed/stevie-settings.inc';
 if (file_exists($file)) {
   require $file;
 }
@@ -832,6 +830,7 @@ if (file_exists($file)) {
 if (file_exists(DRUPAL_ROOT . '/sites/stevie/settings/cloud-memcache-d8.php')) {
   require DRUPAL_ROOT . '/sites/stevie/settings/cloud-memcache-d8.php';
 }
+
 
 if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
 
@@ -846,10 +845,28 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
 
 }
 
+
+if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+
+  if ($_ENV['AH_SITE_ENVIRONMENT'] !== 'prod') {
+
+    /***
+     * Require a simple auth password on pre-production:
+     */
+    $file = DRUPAL_ROOT . '/sites/uwm-require-auth-cookie-page-blocker.php';
+    if (is_file($file)) {
+        include_once $file;
+    }
+
+  }
+
+}
+
 /**
  * Override domain detection in Acquia Purge.
  */
 if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+
   switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     case 'prod':
       // Production environment.
@@ -881,13 +898,12 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
         'www.uwmedicine.org',
       );
   }
-}
-
-// Do not purge in other environments (such as local development)
-else  {
+} // Do not purge in other environments (such as local development)
+else {
   $conf['acquia_purge_passivemode'] = TRUE;
 
 }
+
 
 
 /**
@@ -906,11 +922,5 @@ require DRUPAL_ROOT . "/../vendor/acquia/blt/settings/blt.settings.php";
 $settings['install_profile'] = 'lightning';
 $config_directories['sync'] = '../config/stevie';
 $config_directories['vcs'] = '../config/stevie';
-
-
-
-
-
-
 
 
