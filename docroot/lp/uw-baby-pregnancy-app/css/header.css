@@ -86,6 +86,10 @@ nav {
   font-weight: 700;
 }
 
+.nav-link.appointment.w-nav-link {
+  color: #fff;
+}
+
 @media (max-width: 991px) {
   .navbar {
     padding-right: 25px;
