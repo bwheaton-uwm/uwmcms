@@ -1,0 +1,51 @@
+# The 'type' should be "label" for short meta tags and "text" for ones which
+# could get longer, especially ones which use a textarea field instead of a
+# textfield.
+metatag.metatag_tag.schema_clinic_address:
+  type: text
+  label: 'address'
+metatag.metatag_tag.schema_clinic_available_service:
+  type: text
+  label: 'availableService'
+metatag.metatag_tag.schema_clinic_description:
+  type: text
+  label: 'description'
+metatag.metatag_tag.schema_clinic_fax_number:
+  type: text
+  label: 'faxNumber'
+metatag.metatag_tag.schema_clinic_has_map:
+  type: text
+  label: 'hasMap'
+metatag.metatag_tag.schema_clinic_image:  
+  type: text
+  label: 'image'
+metatag.metatag_tag.schema_clinic_logo:
+  type: text
+  label: 'logo'
+metatag.metatag_tag.schema_clinic_medical_specialty:
+  type: text
+  label: 'medicalSpecialty'
+metatag.metatag_tag.schema_clinic_member:
+  type: text
+  label: 'member'
+metatag.metatag_tag.schema_clinic_member_of:
+  type: text
+  label: 'memberOf'
+metatag.metatag_tag.schema_clinic_name:
+  type: text
+  label: 'name'
+metatag.metatag_tag.schema_clinic_opening_hours:
+  type: text
+  label: 'openingHours'
+metatag.metatag_tag.schema_clinic_potential_action:
+  type: text
+  label: 'potentialAction'
+metatag.metatag_tag.schema_clinic_telephone:
+  type: text
+  label: 'telephone'
+metatag.metatag_tag.schema_clinic_type:
+  type: text
+  label: '@type'
+metatag.metatag_tag.schema_clinic_url:
+  type: text
+  label: 'url'
