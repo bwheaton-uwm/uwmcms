@@ -5,5 +5,6 @@ dependencies: {  }
 id: node__res_clinic
 label: 'Content: Res Clinic'
 tags:
+  schema_clinic_medical_specialty: 'a:3:{s:5:"pivot";s:1:"1";s:5:"@type";s:16:"MedicalSpecialty";s:4:"name";s:27:"[node:field_res_expertises]";}'
   schema_clinic_type: MedicalClinic
   schema_clinic_name: '[node:title]'
