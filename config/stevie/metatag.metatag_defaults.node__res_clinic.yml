@@ -1,0 +1,9 @@
+uuid: 267c3a0b-e1ba-4d28-83c4-7534c6d53d8a
+langcode: en
+status: true
+dependencies: {  }
+id: node__res_clinic
+label: 'Content: Res Clinic'
+tags:
+  schema_clinic_type: MedicalClinic
+  schema_clinic_name: '[node:title]'
