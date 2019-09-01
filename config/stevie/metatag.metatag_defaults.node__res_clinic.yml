@@ -8,3 +8,4 @@ tags:
   schema_clinic_medical_specialty: 'a:3:{s:5:"pivot";s:1:"1";s:5:"@type";s:16:"MedicalSpecialty";s:4:"name";s:27:"[node:field_res_expertises]";}'
   schema_clinic_type: MedicalClinic
   schema_clinic_name: '[node:title]'
+  schema_clinic_image: '[node:field_res_image:0:clinic_page_768_384]'
