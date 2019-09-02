@@ -90,7 +90,7 @@ if (!class_exists('UwmAuthCookieFormBlocker')) {
      *   String cookie name for headers.
      */
     private static function getCookieKeyName() {
-      return 'uwm.667823.' . $_SERVER['SERVER_NAME'];
+      return str_replace('.', '_', 'uwm.667823.' . $_SERVER['SERVER_NAME']);
     }
 
 
@@ -154,9 +154,9 @@ if (!class_exists('UwmAuthCookieFormBlocker')) {
      */
     private static function getAuthForm() {
 
-      $footer = $_SERVER['SERVER_SOFTWARE'] . ' ' . $_SERVER['SCRIPT_FILENAME'];
       $destination = $_SERVER['REQUEST_URI'];
       $cookie_name = self::getCookieKeyName();
+      $footer = $_SERVER['SERVER_SOFTWARE'] . ' ' . $_SERVER['SCRIPT_FILENAME'] . ' ' . $cookie_name;
 
       print <<< AUTHFORM
 
@@ -167,7 +167,7 @@ if (!class_exists('UwmAuthCookieFormBlocker')) {
 <body>
 <pre>
 
-Please provide a pass code for '$cookie_name'.
+Please provide a code for $cookie_name
 
 <form method="post">
 
