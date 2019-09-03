@@ -7,5 +7,6 @@ label: 'Content: Res Clinic'
 tags:
   schema_clinic_medical_specialty: 'a:3:{s:5:"pivot";s:1:"1";s:5:"@type";s:16:"MedicalSpecialty";s:4:"name";s:27:"[node:field_res_expertises]";}'
   schema_clinic_type: MedicalClinic
+  schema_clinic_address: 'a:6:{s:5:"@type";s:13:"PostalAddress";s:13:"streetAddress";s:204:"[node:field_res_building:entity:field_res_address:0:address_line1], [node:field_res_building:entity:field_res_address:0:address_line2], [node:field_res_floor:0:entity:name], [node:field_res_room_number:0]";s:15:"addressLocality";s:61:"[node:field_res_building:entity:field_res_address:0:locality]";s:13:"addressRegion";s:72:"[node:field_res_building:entity:field_res_address:0:administrative_area]";s:10:"postalCode";s:64:"[node:field_res_building:entity:field_res_address:0:postal_code]";s:14:"addressCountry";s:65:"[node:field_res_building:entity:field_res_address:0:country_code]";}'
   schema_clinic_name: '[node:title]'
   schema_clinic_image: '[node:field_res_image:0:clinic_page_768_384]'
