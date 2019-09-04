@@ -11,7 +11,7 @@
 }
 
 .brand {
-  padding-top: 14px;
+  padding: 20px;
 }
 
 nav {
@@ -57,51 +57,10 @@ nav {
   z-index: 10;
 }
 
-.nav-link {
-  padding-top: 20px;
-  font-family: 'Open Sans', sans-serif;
-  color: #fff;
-  font-size: 14px;
-  text-transform: uppercase;
-}
-
-.nav-link:hover {
-  text-decoration: none;
-  color:#fff;
-}
-
-.nav-link.phone {
-  font-size: 24px;
-}
-
-.nav-link.phone:hover {
-  font-weight: 700;
-}
-
-.nav-link.appointment {
-  padding-top: 23px;
-}
-
-.nav-link.appointment:hover {
-  font-weight: 700;
-}
-
-.nav-link.appointment.w-nav-link {
-  color: #fff;
-}
-
 @media (max-width: 991px) {
   .navbar {
     padding-right: 25px;
     padding-left: 25px;
-  }
-
-  .nav-link.phone {
-    background-color: #342466;
-  }
-
-  .nav-link.appointment {
-    background-color: #342466;
   }
 }
 
@@ -114,12 +73,6 @@ nav {
     padding-top: 0px;
     padding-right: 6px;
     padding-left: 6px;
-  }
-  .nav-link.phone {
-    background-color: #342466;
-  }
-  .nav-link.appointment {
-    background-color: #342466;
   }
 }
 
