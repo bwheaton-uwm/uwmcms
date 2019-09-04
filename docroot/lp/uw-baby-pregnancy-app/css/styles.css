@@ -1207,7 +1207,7 @@ footer .footer-nav.color .sep {
 .cols-a > :first-child {
   position: relative;
   z-index: 1;
-  float: right;
+  margin: 0 auto;
   width: 780px;
   padding: 1px 0 3em;
 }
