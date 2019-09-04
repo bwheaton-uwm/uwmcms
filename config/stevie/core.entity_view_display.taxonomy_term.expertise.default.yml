@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.taxonomy_term.expertise.field_res_include_in_search
     - field.field.taxonomy_term.expertise.field_res_providers
     - field.field.taxonomy_term.expertise.field_term_keywords
     - field.field.taxonomy_term.expertise.uwm_unique_id
@@ -23,6 +24,16 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_res_include_in_search:
+    weight: 2
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
   field_res_providers:
     weight: 1
     label: above
@@ -33,4 +44,5 @@ content:
     region: content
 hidden:
   field_term_keywords: true
+  search_api_excerpt: true
   uwm_unique_id: true

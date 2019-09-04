@@ -8,6 +8,7 @@ dependencies:
     - field.storage.node.field_featured
     - field.storage.node.field_res_affiliates
     - field.storage.taxonomy_term.field_res_address
+    - field.storage.node.field_res_expertises
     - field.storage.node.field_res_medical_services
     - field.storage.taxonomy_term.field_term_keywords
     - field.storage.node.field_res_providers
@@ -122,6 +123,47 @@ field_settings:
         - field.storage.node.field_res_building
         - field.storage.taxonomy_term.field_res_address
       module:
+        - taxonomy
+  field_res_expertises:
+    label: 'Clinic Expertises'
+    datasource_id: 'entity:node'
+    property_path: field_res_expertises
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_res_expertises
+  field_res_expertises_keywords:
+    label: 'Clinic Expertises » Taxonomy term » Term Keywords'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_expertises:entity:field_term_keywords'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_expertises
+        - field.storage.taxonomy_term.field_term_keywords
+      module:
+        - taxonomy
+  field_res_expertises_name:
+    label: 'Clinic Expertises » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_expertises:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_expertises
+      module:
+        - taxonomy
+        - taxonomy
+  field_res_expertises_name_string:
+    label: 'Clinic Expertises » Taxonomy term » Name String'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_expertises:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_res_expertises
+      module:
+        - taxonomy
         - taxonomy
   field_res_medical_services:
     label: 'Medical Services'
