@@ -4886,15 +4886,6 @@ input#SearchBoxScriptWebPart1_csr_sbox {
   text-align: left;
 }
 
-/* if javascript is disabled, scrolling doesn't work. However, making overflow anything WITH js enabled causes display problems */
-body {
-  overflow: auto;
-}
-
-.js body {
-  overflow: hidden;
-}
-
 .ms-srch-item:hover, .ms-srch-resultHover:hover, .edisc-SearchResultItemContainer:hover {
   /* [ReplaceColor(themeColor:"HoverBackground")] */
   background-color: #f2f0e4;
@@ -7150,7 +7141,7 @@ table.tblemail select, table.tblemail input {
     padding-right: 0;
 }
 #content .no-right-rail .cols-b aside {
-    display: none;    
+    display: none;
 }
 
 
@@ -7175,7 +7166,7 @@ div.providers-pager {
 .staywell .sw-outer {
     background-color: #f2f0e4;
     padding: 15px;
-    padding-top: 29px;    
+    padding-top: 29px;
 }
 
 .staywell .sw-more {
@@ -7296,7 +7287,7 @@ div.providers-pager {
     line-height: 1.2;
 }
 
-.staywell > h2 {	
+.staywell > h2 {
 	margin: 0 0 18px;
     color: #856822 !important;
     font-size: 22px;
@@ -7336,8 +7327,8 @@ div.providers-pager {
     border-radius: 25px;
     text-align: center;
     line-height: 20px;
-    vertical-align: middle;  
-    font-size:.8em;  
+    vertical-align: middle;
+    font-size:.8em;
     margin-right:5px;
 }
 
@@ -7744,7 +7735,7 @@ div.providers-pager {
 .fp-grid .fp-grid-item {
 	margin-bottom:10px;
 	background: #F8F5E0;
-	
+
 }
 .fp-grid .fp-grid-item img {
     /*max-height: 120px;
@@ -7768,7 +7759,7 @@ div.providers-pager {
 	margin-bottom:10px;
 	background: #F8F5E0;
 	overflow:hidden;
-	
+
 }
 .fpright-grid .fpright-grid-item img {
     height: 120px;
@@ -7789,14 +7780,14 @@ div.providers-pager {
 		margin-bottom:10px;
 		background: #F8F5E0;
 		overflow:hidden;
-		
+
 	}
 	.fp-grid .fp-grid-item img {
 	    height: 120px;
 	    float:left;
 	    margin-right: 10px;
 	}
-	
+
 	.fp-grid .fp-grid-item-detail{
 		padding: 10px;
 	}

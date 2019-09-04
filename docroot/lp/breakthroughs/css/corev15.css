@@ -26,7 +26,6 @@ line-height:normal;
 body
 {
 margin:0px;
-overflow:hidden;
 /* [ReplaceColor(themeColor:"PageBackground")] */ background-color:#fff;
 background-size:cover;
 background-repeat:no-repeat;
@@ -45,7 +44,6 @@ position:relative;
 }
 #s4-workspace
 {
-overflow:auto;
 position:relative;
 }
 #s4-bodyContainer
