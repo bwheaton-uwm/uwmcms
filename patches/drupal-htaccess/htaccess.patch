@@ -64,7 +64,7 @@ index efce1877..fdf28c05 100755
 +    RewriteCond %{HTTP_HOST} ^www\.uwmedicinetest\.org
 +    RewriteCond %{REQUEST_URI} ^(.+)/$
 +    RewriteRule ^(.*)\/{1}(\?.*)?$ https://www.uwmedicinetest.org/$1$2 [L,R=301]
-+    
++
 +    ## For uwmedicine.org, if no www,
 +    ## go to https://www
 +    RewriteCond %{HTTP_HOST} ^uwmedicine\.org [NC]
@@ -592,13 +592,13 @@ index efce1877..fdf28c05 100755
      RewriteCond %{REQUEST_FILENAME}\.gz -s
 -    RewriteRule ^(.*)\.css $1\.css\.gz [QSA]
 +    RewriteRule ^(.*)\.css$1\.css\.gz [QSA]
- 
+
      # Serve gzip compressed JS files if they exist and the client accepts gzip.
      RewriteCond %{HTTP:Accept-encoding} gzip
      RewriteCond %{REQUEST_FILENAME}\.gz -s
 -    RewriteRule ^(.*)\.js $1\.js\.gz [QSA]
 +    RewriteRule ^(.*)\.js$1\.js\.gz [QSA]
- 
+
      # Serve correct content types, and prevent mod_deflate double gzip.
      RewriteRule \.css\.gz$ - [T=text/css,E=no-gzip:1]
 @@ -177,6 +741,17 @@ AddEncoding gzip svgz
@@ -618,7 +618,7 @@ index efce1877..fdf28c05 100755
 +    #
    </IfModule>
  </IfModule>
- 
+
 @@ -186,4 +761,5 @@ AddEncoding gzip svgz
    Header always set X-Content-Type-Options nosniff
    # Disable Proxy header, since it's an attack vector.
