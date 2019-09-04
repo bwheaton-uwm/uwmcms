@@ -1,0 +1,42 @@
+uuid: 315af9f9-c749-4b22-b84a-9cdc465af471
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_res_tax__procedures_treatments
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: uwm
+label: uwm_res_tax__procedures_treatments
+source:
+  ids:
+    uuid:
+      type: string
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  item_selector: data/
+  track_changes: true
+  urls:
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/procedures_treatments?page[limit]=50&page[offset]=0&sort=-changed'
+  fields:
+    -
+      name: uuid
+      label: uuid
+      selector: /id
+    -
+      name: name
+      label: name
+      selector: /attributes/name
+process:
+  uuid: uuid
+  tid:
+    -
+      plugin: uwm_tid_from_any
+      source: uuid
+  name: name
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: procedures_treatments
+migration_dependencies: {  }
