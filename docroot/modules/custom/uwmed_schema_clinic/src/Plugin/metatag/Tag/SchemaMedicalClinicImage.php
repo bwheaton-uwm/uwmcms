@@ -2,7 +2,6 @@
 
 namespace Drupal\uwmed_schema_clinic\Plugin\metatag\Tag;
 
-use Drupal\Component\Utility\UrlHelper;
 use Drupal\schema_metatag\Plugin\metatag\Tag\SchemaNameBase;
 
 /**
@@ -44,19 +43,6 @@ class SchemaMedicalClinicImage extends SchemaNameBase {
     else {
       return $this->value;
     }
-  }
-
-  /**
-   * {@inheritdoc}
-   *
-   * Removes the query string from the URL.
-   *
-   * @TODO: is this necessary for image value to be crawled/accessed? The
-   * 'itok' param allows Drupal to generate the derivative if not yet present.
-   */
-  public static function outputValue($input_value) {
-    $url_parts = UrlHelper::parse($input_value);
-    return $url_parts['path'];
   }
 
 }
