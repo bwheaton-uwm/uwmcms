@@ -53,19 +53,25 @@
     "uwmcms-update-saml": [
       "sh ./patches/simplesaml/setup_simplesaml_patch.sh"
     ],
-    "uwmcms-patch-htccess": [
+    "uwmcms-patch-htaccess": [
       "sh ./patches/drupal-htaccess/htaccess_patch.sh ./patches/drupal-htaccess/htaccess.patch"
+    ],
+    "uwmcms-preprend-htaccess": [
+      "printf '%s\\n%s\\n' \"$(cat ./patches/drupal-htaccess/htaccess-prepend-contents.txt)\" \"$(cat ./docroot/.htaccess)\" > ./docroot/.htaccess \n"
     ],
     "post-install-cmd": [
       "@uwmcms-update-saml",
-      "@uwmcms-patch-htccess"
+      "@uwmcms-patch-htaccess",
+      "@uwmcms-preprend-htaccess"
     ],
     "post-update-cmd": [
       "@uwmcms-update-saml",
-      "@uwmcms-patch-htccess"
+      "@uwmcms-patch-htaccess",
+      "@uwmcms-preprend-htaccess"
     ],
     "post-drupal-scaffold-cmd": [
-      "@uwmcms-patch-htccess"
+      "@uwmcms-patch-htaccess",
+      "@uwmcms-preprend-htaccess"
     ]
   },
   "require":
