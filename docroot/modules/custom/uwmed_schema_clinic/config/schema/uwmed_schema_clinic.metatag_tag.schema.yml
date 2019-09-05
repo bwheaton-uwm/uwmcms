@@ -34,9 +34,9 @@ metatag.metatag_tag.schema_clinic_member_of:
 metatag.metatag_tag.schema_clinic_name:
   type: text
   label: 'name'
-metatag.metatag_tag.schema_clinic_opening_hours:
+metatag.metatag_tag.schema_clinic_opening_hours_spec:
   type: text
-  label: 'openingHours'
+  label: 'openingHoursSpecification'
 metatag.metatag_tag.schema_clinic_potential_action:
   type: text
   label: 'potentialAction'
