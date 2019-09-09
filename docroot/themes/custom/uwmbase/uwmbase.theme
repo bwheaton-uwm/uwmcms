@@ -225,6 +225,11 @@ function uwmbase_page_attachments_alter(&$variables) {
   if ($currentPath == '/node/20836') {
     $variables['#attached']['library'][] = 'uwmbase/make-appt-page';
   }
+
+  // Add library for Northwest Hospital Events Calendar page.
+  if ($currentPath == '/node/49301') {
+    $variables['#attached']['library'][] = 'uwmbase/trumba';
+  }
 }
 
 /**
