@@ -228,8 +228,12 @@
       "drupal/current_page_crumb": {
         "Cached breadcrumb not updating on node change": "https://www.drupal.org/files/issues/current_page_crumb-cache-fix-2871340-3.patch"
       },
+      "drupal/metatag": {
+        "Use custom delimiter instead of commas for multiple values": "https://www.drupal.org/files/issues/2019-07-15/3067803-token-alter-hook_1.patch"
+      },
       "drupal/schema_metatag": {
-        "Add the target property to PotentialAction of search on the WebPage schema type": "https://www.drupal.org/files/issues/2019-06-04/schema_metatag-searchaction_target_missing-2968062-22.patch"
+        "Add the target property to PotentialAction of search on the WebPage schema type": "https://www.drupal.org/files/issues/2019-06-04/schema_metatag-searchaction_target_missing-2968062-22.patch",
+        "Recipe step descriptions will explode on comma": "https://www.drupal.org/files/issues/2019-07-15/2976935-use-metatag-delimiter.patch"
       }
     }
   },

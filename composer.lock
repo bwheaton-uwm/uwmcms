@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5dc913b808a74987cc08da4423d7e53e",
+    "content-hash": "1b2ccd9514fb6e93b91016eeb9d14f11",
     "packages": [
         {
             "name": "acquia/blt",
@@ -9739,6 +9739,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "Use custom delimiter instead of commas for multiple values": "https://www.drupal.org/files/issues/2019-07-15/3067803-token-alter-hook_1.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -11861,7 +11864,8 @@
                     }
                 },
                 "patches_applied": {
-                    "Add the target property to PotentialAction of search on the WebPage schema type": "https://www.drupal.org/files/issues/2019-06-04/schema_metatag-searchaction_target_missing-2968062-22.patch"
+                    "Add the target property to PotentialAction of search on the WebPage schema type": "https://www.drupal.org/files/issues/2019-06-04/schema_metatag-searchaction_target_missing-2968062-22.patch",
+                    "Recipe step descriptions will explode on comma": "https://www.drupal.org/files/issues/2019-07-15/2976935-use-metatag-delimiter.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
