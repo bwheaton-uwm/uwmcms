@@ -201,6 +201,7 @@
           text-decoration: none;
           font-weight: $font-weight-semi-bold;
           font-size: 0.8125rem; // 13px
+          line-height: 1.5;
           @include media-breakpoint-up('md') {
             font-size: 0.875rem; // 14px
           }
