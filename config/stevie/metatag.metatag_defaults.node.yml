@@ -12,12 +12,3 @@ tags:
   description: '[node:summary]'
   og_url: 'https://www.uwmedicine.org/[current-page:url:path]'
   twitter_cards_page_url: 'https://www.uwmedicine.org/[current-page:url:path]'
-  schema_physician_member_of: 'a:2:{s:5:"@type";s:12:"Organization";s:4:"name";s:24:"[node:field_res_clinics]";}'
-  schema_physician_knows_language: '[node:field_res_languages]'
-  schema_physician_identifier: '[node:field_res_npi]'
-  schema_physician_image: '[node:field_res_image:0:portrait_l]'
-  schema_physician_type: Physician
-  schema_physician_name: '[node:title]'
-  schema_physician_is_accepting_new_patients: '[node:field_res_isacceptingnewpts:value]'
-  schema_physician_medical_specialty: 'a:2:{s:5:"@type";s:16:"MedicalSpecialty";s:4:"name";s:27:"[node:field_res_expertises]";}'
-  schema_physician_hospital_affiliation: 'a:3:{s:5:"@type";s:8:"Hospital";s:4:"name";s:24:"[node:field_res_clinics]";s:5:"image";a:2:{s:5:"@type";s:11:"ImageObject";s:3:"url";s:36:"[node:field_res_clinics:0:target_id]";}}'

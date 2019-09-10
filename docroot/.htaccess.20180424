@@ -1,0 +1,814 @@
+#
+# Apache/PHP/Drupal settings:
+#
+
+# Protect files and directories from prying eyes.
+<FilesMatch "\.(engine|inc|install|make|module|profile|po|sh|.*sql|theme|twig|tpl(\.php)?|xtmpl|yml)(~|\.sw[op]|\.bak|\.orig|\.save)?$|^(\.(?!well-known).*|Entries.*|Repository|Root|Tag|Template|composer\.(json|lock))$|^#.*#$|\.php(~|\.sw[op]|\.bak|\.orig|\.save)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+  </IfModule>
+</FilesMatch>
+
+# Don't show directory listings for URLs which map to a directory.
+Options -Indexes
+
+# Set the default handler.
+DirectoryIndex index.php index.html index.htm
+
+# Add correct encoding for SVGZ.
+AddType image/svg+xml svg svgz
+AddEncoding gzip svgz
+
+# Most of the following PHP settings cannot be changed at runtime. See
+# sites/default/default.settings.php and
+# Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
+# changed at runtime.
+
+# PHP 5, Apache 1 and 2.
+<IfModule mod_php5.c>
+  php_value assert.active                   0
+  php_flag session.auto_start               off
+  php_value mbstring.http_input             pass
+  php_value mbstring.http_output            pass
+  php_flag mbstring.encoding_translation    off
+  # PHP 5.6 has deprecated $HTTP_RAW_POST_DATA and produces warnings if this is
+  # not set.
+  php_value always_populate_raw_post_data   -1
+</IfModule>
+
+# Requires mod_expires to be enabled.
+<IfModule mod_expires.c>
+  # Enable expirations.
+  ExpiresActive On
+
+  # Cache all files for 2 weeks after access (A).
+  ExpiresDefault A1209600
+
+  <FilesMatch \.php$>
+    # Do not allow PHP scripts to be cached unless they explicitly send cache
+    # headers themselves. Otherwise all scripts would have to overwrite the
+    # headers set by mod_expires if they want another caching behavior. This may
+    # fail if an error occurs early in the bootstrap process, and it may cause
+    # problems if a non-Drupal PHP file is installed in a subdirectory.
+    ExpiresActive Off
+  </FilesMatch>
+</IfModule>
+
+# Set a fallback resource if mod_rewrite is not enabled. This allows Drupal to
+# work without clean URLs. This requires Apache version >= 2.2.16. If Drupal is
+# not accessed by the top level URL (i.e.: http://example.com/drupal/ instead of
+# http://example.com/), the path to index.php will need to be adjusted.
+<IfModule !mod_rewrite.c>
+  FallbackResource /index.php
+</IfModule>
+
+# Various rewrite rules.
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+
+  ## SSL RULES ##
+  # Redirect HTTP to HTTPS in Acquia Cloud
+  RewriteCond %{ENV:AH_SITE_ENVIRONMENT} (ra|dev|test|prod)
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Set "protossl" to "s" if we were accessed via https://.  This is used later
+  # if you enable "www." stripping or enforcement, in order to ensure that
+  # you don't bounce between http and https.
+  RewriteRule ^ - [E=protossl]
+  RewriteCond %{HTTPS} on
+  RewriteRule ^ - [E=protossl:s]
+
+  # Make sure Authorization HTTP header is available to PHP
+  # even when running as CGI or FastCGI.
+  RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+  ## UWMED CUSTOM REWRITES ##
+  # Redirect CHEW Dev URL to Live URL
+  RewriteCond %{HTTP_HOST} chew.cms.uwmedicine.org
+  RewriteRule ^(.*)$ https://rightasrain.uwmedicine.org%{REQUEST_URI} [L,R=301]
+
+  # Redirect Huddle Dev URL to Live URL
+  RewriteCond %{HTTP_HOST} huddle.cms.uwmedicine.org
+  RewriteRule ^(.*)$ https://huddle.uwmedicine.org%{REQUEST_URI} [L,R=301]
+
+  # Redirect naked uwmedicine.org and uwmedicinetest.org to www version
+  RewriteCond %{HTTP_HOST} ^uwmedicine(test)?.org
+  RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Reverse proxy rules. These images should be served from SharePoint
+  RewriteCond %{HTTP_HOST} ^www.uwmedicine(test)?.org
+  RewriteCond %{REQUEST_URI} ^/locations/.*/PublishingImages/.* [OR]
+  RewriteCond %{REQUEST_URI} ^/locations/primary-care-belltown/internal-medicine-residency-program/? [OR]
+  RewriteCond %{REQUEST_URI} ^/locations/primary-care-kent-des-moines/pediatric/? [OR]
+  RewriteCond %{REQUEST_URI} ^/locations/primary-care-kent-des-moines/residencia-pediatrica/? [OR]
+  RewriteCond %{REQUEST_URI} ^/locations/primary-care-northgate/family-medicine-residency-program/? [OR]
+  RewriteCond %{REQUEST_URI} ^/locations/orcas-island-clinic/faqs/? [OR]
+  RewriteCond %{REQUEST_URI} ^/locations/orcas-island-clinic/welcome/? [OR]
+  RewriteCond %{REQUEST_URI} ^/locations/lopez-island-clinic/welcome/? [OR]
+  RewriteCond %{REQUEST_URI} ^/locations/lopez-island-clinic/faqs/?
+  RewriteRule ^(.*)$ - [CO=uwm-proxied-page-visit:true:%{HTTP_HOST}:0:/,C]
+  RewriteRule ^(.*)$ https://www2.uwmedicine.org%{REQUEST_URI} [L,P]
+
+  # Reverse proxy rules. When pages are migrated from SharePoint to Drupal, add a
+  # rule below so Apache doesn't proxy to the www2 server
+  RewriteCond %{HTTP_HOST} ^www.uwmedicine(test)?.org
+  RewriteCond %{REQUEST_URI} !^/index.php$
+  RewriteCond %{REQUEST_URI} !^/(user|admin|themes|core|simplesaml|sites|libraries|profiles|modules|node)/?.*
+  RewriteCond %{REQUEST_URI} !^/?$
+  RewriteCond %{REQUEST_URI} !^/services/primary-care/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/location-hours/.*
+  RewriteCond %{REQUEST_URI} !^/locations/adult-medicine-harborview/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/family-medicine-harborview/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/general-internal-medicine-center-uwmc-roosevelt/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/hall-health-center/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/international-medicine-harborview/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/lopez-island-clinic/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/madison-harborview/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/northwest-primary-care-fremont-clinic/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/northwest-primary-care-lake-forest-park-clinic/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/northwest-primary-care-main-campus-clinic/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/northwest-primary-care-north-seattle-clinic/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/northwest-primary-care-outpatient-medical-center/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/orcas-island-clinic/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/pediatric-care-center-uwmc-roosevelt/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/pediatrics-harborview/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/pioneer-square/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/primary-care([-a-zA-Z])/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/senior-care-harborview/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/third-avenue-center/?.*
+  RewriteCond %{REQUEST_URI} !^/locations/womens-health-care-center-uwmc-roosevelt/?.*
+  RewriteCond %{REQUEST_URI} !^/bios/sheida-aalami$
+  RewriteCond %{REQUEST_URI} !^/bios/ayesha-appa$
+  RewriteCond %{REQUEST_URI} !^/bios/jessica-bender$
+  RewriteCond %{REQUEST_URI} !^/bios/russell-berg$
+  RewriteCond %{REQUEST_URI} !^/bios/sarah-bliss$
+  RewriteCond %{REQUEST_URI} !^/bios/kathryn-bolles$
+  RewriteCond %{REQUEST_URI} !^/bios/jay-brahmbhatt$
+  RewriteCond %{REQUEST_URI} !^/bios/terry-chen$
+  RewriteCond %{REQUEST_URI} !^/bios/lisa-chew$
+  RewriteCond %{REQUEST_URI} !^/bios/john-choe$
+  RewriteCond %{REQUEST_URI} !^/bios/james-darnton$
+  RewriteCond %{REQUEST_URI} !^/bios/pamela-dekeyser$
+  RewriteCond %{REQUEST_URI} !^/bios/aynsley-duncan$
+  RewriteCond %{REQUEST_URI} !^/bios/john-feller$
+  RewriteCond %{REQUEST_URI} !^/bios/erika-goldstein$
+  RewriteCond %{REQUEST_URI} !^/bios/j-goss$
+  RewriteCond %{REQUEST_URI} !^/bios/emily-grossniklaus$
+  RewriteCond %{REQUEST_URI} !^/bios/dana-iorio$
+  RewriteCond %{REQUEST_URI} !^/bios/margaret-isaac$
+  RewriteCond %{REQUEST_URI} !^/bios/sara-jackson$
+  RewriteCond %{REQUEST_URI} !^/bios/jocelyn-james$
+  RewriteCond %{REQUEST_URI} !^/bios/sarah-jin$
+  RewriteCond %{REQUEST_URI} !^/bios/meghan-kiefer$
+  RewriteCond %{REQUEST_URI} !^/bios/whitney-kiker$
+  RewriteCond %{REQUEST_URI} !^/bios/sarah-kirsch$
+  RewriteCond %{REQUEST_URI} !^/bios/jared-klein$
+  RewriteCond %{REQUEST_URI} !^/bios/carol-lawrence$
+  RewriteCond %{REQUEST_URI} !^/bios/andrew-fischer-lees$
+  RewriteCond %{REQUEST_URI} !^/bios/daniel-lessler$
+  RewriteCond %{REQUEST_URI} !^/bios/hillary-liss$
+  RewriteCond %{REQUEST_URI} !^/bios/amy-liu$
+  RewriteCond %{REQUEST_URI} !^/bios/james-logerfo$
+  RewriteCond %{REQUEST_URI} !^/bios/alice-mao$
+  RewriteCond %{REQUEST_URI} !^/bios/patrick-marcus$
+  RewriteCond %{REQUEST_URI} !^/bios/sarah-mcguffin$
+  RewriteCond %{REQUEST_URI} !^/bios/kevin-means$
+  RewriteCond %{REQUEST_URI} !^/bios/joseph-merrill$
+  RewriteCond %{REQUEST_URI} !^/bios/sophie-miller$
+  RewriteCond %{REQUEST_URI} !^/bios/kira-newman$
+  RewriteCond %{REQUEST_URI} !^/bios/katherine-perez$
+  RewriteCond %{REQUEST_URI} !^/bios/jordan-perlman$
+  RewriteCond %{REQUEST_URI} !^/bios/bruce-psaty$
+  RewriteCond %{REQUEST_URI} !^/bios/caroline-rhoads$
+  RewriteCond %{REQUEST_URI} !^/bios/kristen-rogers$
+  RewriteCond %{REQUEST_URI} !^/bios/elizabeth-schackmann$
+  RewriteCond %{REQUEST_URI} !^/bios/peter-schoonmaker$
+  RewriteCond %{REQUEST_URI} !^/bios/kyle-sears$
+  RewriteCond %{REQUEST_URI} !^/bios/brittany-sellers$
+  RewriteCond %{REQUEST_URI} !^/bios/john-sheffield$
+  RewriteCond %{REQUEST_URI} !^/bios/lauren-shih$
+  RewriteCond %{REQUEST_URI} !^/bios/katrina-sullivan$
+  RewriteCond %{REQUEST_URI} !^/bios/alex-tanabe$
+  RewriteCond %{REQUEST_URI} !^/bios/brandon-teng$
+  RewriteCond %{REQUEST_URI} !^/bios/genji-terasaki$
+  RewriteCond %{REQUEST_URI} !^/bios/lauren-thronson$
+  RewriteCond %{REQUEST_URI} !^/bios/rebecca-touger$
+  RewriteCond %{REQUEST_URI} !^/bios/judith-tsui$
+  RewriteCond %{REQUEST_URI} !^/bios/jill-watanabe$
+  RewriteCond %{REQUEST_URI} !^/bios/richard-whitten$
+  RewriteCond %{REQUEST_URI} !^/bios/tiffany-yuh$
+  RewriteCond %{REQUEST_URI} !^/bios/angela-zhou$
+  RewriteCond %{REQUEST_URI} !^/bios/blair-brown$
+  RewriteCond %{REQUEST_URI} !^/bios/frederick-chen$
+  RewriteCond %{REQUEST_URI} !^/bios/allison-cole$
+  RewriteCond %{REQUEST_URI} !^/bios/jane-huntington$
+  RewriteCond %{REQUEST_URI} !^/bios/andrea-jochim$
+  RewriteCond %{REQUEST_URI} !^/bios/amanda-kost$
+  RewriteCond %{REQUEST_URI} !^/bios/annette-lund$
+  RewriteCond %{REQUEST_URI} !^/bios/ramoncita-maestas$
+  RewriteCond %{REQUEST_URI} !^/bios/frederica-overstreet$
+  RewriteCond %{REQUEST_URI} !^/bios/judith-pauwels$
+  RewriteCond %{REQUEST_URI} !^/bios/jaqueline-raetz$
+  RewriteCond %{REQUEST_URI} !^/bios/diane-timberlake$
+  RewriteCond %{REQUEST_URI} !^/bios/ying-zhang$
+  RewriteCond %{REQUEST_URI} !^/bios/john-amory$
+  RewriteCond %{REQUEST_URI} !^/bios/ali-ansary$
+  RewriteCond %{REQUEST_URI} !^/bios/jacob-berman$
+  RewriteCond %{REQUEST_URI} !^/bios/antoinette-birs$
+  RewriteCond %{REQUEST_URI} !^/bios/diane-britt$
+  RewriteCond %{REQUEST_URI} !^/bios/david-dale$
+  RewriteCond %{REQUEST_URI} !^/bios/anne-eacker$
+  RewriteCond %{REQUEST_URI} !^/bios/courtney-enix$
+  RewriteCond %{REQUEST_URI} !^/bios/lee-eschenroeder$
+  RewriteCond %{REQUEST_URI} !^/bios/tyra-fainstad$
+  RewriteCond %{REQUEST_URI} !^/bios/erin-fouch$
+  RewriteCond %{REQUEST_URI} !^/bios/thomas-gallagher$
+  RewriteCond %{REQUEST_URI} !^/bios/barak-gaster$
+  RewriteCond %{REQUEST_URI} !^/bios/geoffrey-gottlieb$
+  RewriteCond %{REQUEST_URI} !^/bios/deborah-greenberg$
+  RewriteCond %{REQUEST_URI} !^/bios/madolyn-hollowed$
+  RewriteCond %{REQUEST_URI} !^/bios/jonathan-hourmozdi$
+  RewriteCond %{REQUEST_URI} !^/bios/carly-hudelson$
+  RewriteCond %{REQUEST_URI} !^/bios/joel-kaufman$
+  RewriteCond %{REQUEST_URI} !^/bios/hiba-khan$
+  RewriteCond %{REQUEST_URI} !^/bios/christopher-knight$
+  RewriteCond %{REQUEST_URI} !^/bios/david-koelle$
+  RewriteCond %{REQUEST_URI} !^/bios/lars-margolis$
+  RewriteCond %{REQUEST_URI} !^/bios/lauren-mathews$
+  RewriteCond %{REQUEST_URI} !^/bios/sierra-mccreery$
+  RewriteCond %{REQUEST_URI} !^/bios/mark-newman$
+  RewriteCond %{REQUEST_URI} !^/bios/kim-oconnor$
+  RewriteCond %{REQUEST_URI} !^/bios/dylan-oshea$
+  RewriteCond %{REQUEST_URI} !^/bios/douglas-paauw$
+  RewriteCond %{REQUEST_URI} !^/bios/genevieve-pagalilauan$
+  RewriteCond %{REQUEST_URI} !^/bios/thomas-payne$
+  RewriteCond %{REQUEST_URI} !^/bios/heidi-powell$
+  RewriteCond %{REQUEST_URI} !^/bios/scott-ramsey$
+  RewriteCond %{REQUEST_URI} !^/bios/alexa-rodin$
+  RewriteCond %{REQUEST_URI} !^/bios/samuel-rosenfeld$
+  RewriteCond %{REQUEST_URI} !^/bios/alison-roxby$
+  RewriteCond %{REQUEST_URI} !^/bios/erik-snider$
+  RewriteCond %{REQUEST_URI} !^/bios/thomas-staiger$
+  RewriteCond %{REQUEST_URI} !^/bios/ann-stapleton$
+  RewriteCond %{REQUEST_URI} !^/bios/kevin-stephenson$
+  RewriteCond %{REQUEST_URI} !^/bios/paul-sutton$
+  RewriteCond %{REQUEST_URI} !^/bios/christopher-wong$
+  RewriteCond %{REQUEST_URI} !^/bios/jennifer-wright$
+  RewriteCond %{REQUEST_URI} !^/bios/hilary-zetlen$
+  RewriteCond %{REQUEST_URI} !^/bios/joy-beatty$
+  RewriteCond %{REQUEST_URI} !^/bios/isaac-berlin$
+  RewriteCond %{REQUEST_URI} !^/bios/marguerite-mccadden$
+  RewriteCond %{REQUEST_URI} !^/bios/mariann-carle$
+  RewriteCond %{REQUEST_URI} !^/bios/kevin-carrabine$
+  RewriteCond %{REQUEST_URI} !^/bios/brendan-cassidy$
+  RewriteCond %{REQUEST_URI} !^/bios/christina-chavez$
+  RewriteCond %{REQUEST_URI} !^/bios/andy-chien$
+  RewriteCond %{REQUEST_URI} !^/bios/lili-church$
+  RewriteCond %{REQUEST_URI} !^/bios/margaret-coleman$
+  RewriteCond %{REQUEST_URI} !^/bios/carey-demartini$
+  RewriteCond %{REQUEST_URI} !^/bios/diane-derboghosian$
+  RewriteCond %{REQUEST_URI} !^/bios/david-dugdale$
+  RewriteCond %{REQUEST_URI} !^/bios/jennifer-edwards$
+  RewriteCond %{REQUEST_URI} !^/bios/lisa-erlanger$
+  RewriteCond %{REQUEST_URI} !^/bios/b-fellner$
+  RewriteCond %{REQUEST_URI} !^/bios/meghann-gerber$
+  RewriteCond %{REQUEST_URI} !^/bios/sarah-hanna$
+  RewriteCond %{REQUEST_URI} !^/bios/n-haulman$
+  RewriteCond %{REQUEST_URI} !^/bios/ricardo-hidalgo$
+  RewriteCond %{REQUEST_URI} !^/bios/treg-isaacson$
+  RewriteCond %{REQUEST_URI} !^/bios/mark-jacokes$
+  RewriteCond %{REQUEST_URI} !^/bios/katherine-johnson$
+  RewriteCond %{REQUEST_URI} !^/bios/mary-kauffman$
+  RewriteCond %{REQUEST_URI} !^/bios/douglas-kleemann$
+  RewriteCond %{REQUEST_URI} !^/bios/wendy-lendrum$
+  RewriteCond %{REQUEST_URI} !^/bios/howard-levine$
+  RewriteCond %{REQUEST_URI} !^/bios/brenda-mckenzie$
+  RewriteCond %{REQUEST_URI} !^/bios/jennifer-melsher$
+  RewriteCond %{REQUEST_URI} !^/bios/elizabeth-micks$
+  RewriteCond %{REQUEST_URI} !^/bios/britt-murphy$
+  RewriteCond %{REQUEST_URI} !^/bios/william-neighbor$
+  RewriteCond %{REQUEST_URI} !^/bios/ada-otter$
+  RewriteCond %{REQUEST_URI} !^/bios/elaine-roe$
+  RewriteCond %{REQUEST_URI} !^/bios/tanya-smith$
+  RewriteCond %{REQUEST_URI} !^/bios/patrice-staiger$
+  RewriteCond %{REQUEST_URI} !^/bios/christine-suydam$
+  RewriteCond %{REQUEST_URI} !^/bios/anne-terry$
+  RewriteCond %{REQUEST_URI} !^/bios/evelyn-vinopal$
+  RewriteCond %{REQUEST_URI} !^/bios/ryli-webster$
+  RewriteCond %{REQUEST_URI} !^/bios/maxine-weyant$
+  RewriteCond %{REQUEST_URI} !^/bios/nicole-ahrenholz$
+  RewriteCond %{REQUEST_URI} !^/bios/mahri-haider$
+  RewriteCond %{REQUEST_URI} !^/bios/jonathan-jackson$
+  RewriteCond %{REQUEST_URI} !^/bios/samantha-kaplan$
+  RewriteCond %{REQUEST_URI} !^/bios/phalla-kith$
+  RewriteCond %{REQUEST_URI} !^/bios/chipo-kwendakwema$
+  RewriteCond %{REQUEST_URI} !^/bios/alexandra-molnar$
+  RewriteCond %{REQUEST_URI} !^/bios/frank-stackhouse$
+  RewriteCond %{REQUEST_URI} !^/bios/genji-terasaki$
+  RewriteCond %{REQUEST_URI} !^/bios/shirou-wu$
+  RewriteCond %{REQUEST_URI} !^/bios/jared-baeten$
+  RewriteCond %{REQUEST_URI} !^/bios/lindley-barbee$
+  RewriteCond %{REQUEST_URI} !^/bios/ruanne-barnabas$
+  RewriteCond %{REQUEST_URI} !^/bios/christopher-behrens$
+  RewriteCond %{REQUEST_URI} !^/bios/connie-celum$
+  RewriteCond %{REQUEST_URI} !^/bios/ann-collier$
+  RewriteCond %{REQUEST_URI} !^/bios/james-cowan$
+  RewriteCond %{REQUEST_URI} !^/bios/heidi-crane$
+  RewriteCond %{REQUEST_URI} !^/bios/shireesha-dhanireddy$
+  RewriteCond %{REQUEST_URI} !^/bios/julia-dombrowski$
+  RewriteCond %{REQUEST_URI} !^/bios/paul-drain$
+  RewriteCond %{REQUEST_URI} !^/bios/shelia-dunaway$
+  RewriteCond %{REQUEST_URI} !^/bios/mckenna-eastment$
+  RewriteCond %{REQUEST_URI} !^/bios/carey-farquhar$
+  RewriteCond %{REQUEST_URI} !^/bios/matthew-golden$
+  RewriteCond %{REQUEST_URI} !^/bios/susan-graham$
+  RewriteCond %{REQUEST_URI} !^/bios/margaret-green$
+  RewriteCond %{REQUEST_URI} !^/bios/robert-harrington$
+  RewriteCond %{REQUEST_URI} !^/bios/thomas-hawn$
+  RewriteCond %{REQUEST_URI} !^/bios/corinne-heinen$
+  RewriteCond %{REQUEST_URI} !^/bios/christine-johnston$
+  RewriteCond %{REQUEST_URI} !^/bios/h-kim$
+  RewriteCond %{REQUEST_URI} !^/bios/mari-kitahata$
+  RewriteCond %{REQUEST_URI} !^/bios/hillary-liss$
+  RewriteCond %{REQUEST_URI} !^/bios/sharon-martens$
+  RewriteCond %{REQUEST_URI} !^/bios/wayne-mccormick$
+  RewriteCond %{REQUEST_URI} !^/bios/joseph-merrill$
+  RewriteCond %{REQUEST_URI} !^/bios/nazlee-navabi$
+  RewriteCond %{REQUEST_URI} !^/bios/rena-patel$
+  RewriteCond %{REQUEST_URI} !^/bios/deepa-rao$
+  RewriteCond %{REQUEST_URI} !^/bios/alison-roxby$
+  RewriteCond %{REQUEST_URI} !^/bios/chetan-seshadri$
+  RewriteCond %{REQUEST_URI} !^/bios/javeed-shah$
+  RewriteCond %{REQUEST_URI} !^/bios/john-sheffield$
+  RewriteCond %{REQUEST_URI} !^/bios/david-spach$
+  RewriteCond %{REQUEST_URI} !^/bios/joanne-stekler$
+  RewriteCond %{REQUEST_URI} !^/bios/brian-wood$
+  RewriteCond %{REQUEST_URI} !^/bios/sharon-brown-kunin$
+  RewriteCond %{REQUEST_URI} !^/bios/martin-cahn$
+  RewriteCond %{REQUEST_URI} !^/bios/amy-cheng$
+  RewriteCond %{REQUEST_URI} !^/bios/susan-jones-kubeska$
+  RewriteCond %{REQUEST_URI} !^/bios/melinda-kloepfer-rice$
+  RewriteCond %{REQUEST_URI} !^/bios/laurie-kreiter$
+  RewriteCond %{REQUEST_URI} !^/bios/amoy-ng$
+  RewriteCond %{REQUEST_URI} !^/bios/rebecca-olson$
+  RewriteCond %{REQUEST_URI} !^/bios/emily-pearson$
+  RewriteCond %{REQUEST_URI} !^/bios/lucas-smith$
+  RewriteCond %{REQUEST_URI} !^/bios/sean-yang$
+  RewriteCond %{REQUEST_URI} !^/bios/kathryn-harris$
+  RewriteCond %{REQUEST_URI} !^/bios/vara-kraft$
+  RewriteCond %{REQUEST_URI} !^/bios/alexander-krajina$
+  RewriteCond %{REQUEST_URI} !^/bios/daniel-stambor$
+  RewriteCond %{REQUEST_URI} !^/bios/kim-wheeling$
+  RewriteCond %{REQUEST_URI} !^/bios/suzanne-bladek$
+  RewriteCond %{REQUEST_URI} !^/bios/noah-dassel$
+  RewriteCond %{REQUEST_URI} !^/bios/joel-hagedorn$
+  RewriteCond %{REQUEST_URI} !^/bios/andre-zand$
+  RewriteCond %{REQUEST_URI} !^/bios/elizabeth-goldberg$
+  RewriteCond %{REQUEST_URI} !^/bios/jasmine-parhar$
+  RewriteCond %{REQUEST_URI} !^/bios/christina-ryan$
+  RewriteCond %{REQUEST_URI} !^/bios/cameron-soltani$
+  RewriteCond %{REQUEST_URI} !^/bios/seja-abudiab$
+  RewriteCond %{REQUEST_URI} !^/bios/sophia-agapova$
+  RewriteCond %{REQUEST_URI} !^/bios/kate-arbon$
+  RewriteCond %{REQUEST_URI} !^/bios/rebecca-asp$
+  RewriteCond %{REQUEST_URI} !^/bios/anna-baldwin$
+  RewriteCond %{REQUEST_URI} !^/bios/molly-bennett-kaufman$
+  RewriteCond %{REQUEST_URI} !^/bios/jonathan-berry$
+  RewriteCond %{REQUEST_URI} !^/bios/julia-bledsoe$
+  RewriteCond %{REQUEST_URI} !^/bios/lucy-bollinger$
+  RewriteCond %{REQUEST_URI} !^/bios/mersine-bryan$
+  RewriteCond %{REQUEST_URI} !^/bios/christine-caldwell$
+  RewriteCond %{REQUEST_URI} !^/bios/julie-campbell$
+  RewriteCond %{REQUEST_URI} !^/bios/julian-davies$
+  RewriteCond %{REQUEST_URI} !^/bios/bryan-fate$
+  RewriteCond %{REQUEST_URI} !^/bios/kelly-graiziger$
+  RewriteCond %{REQUEST_URI} !^/bios/h-mollie-grow$
+  RewriteCond %{REQUEST_URI} !^/bios/samantha-haley$
+  RewriteCond %{REQUEST_URI} !^/bios/catherine-karr$
+  RewriteCond %{REQUEST_URI} !^/bios/rachel-katzenellenbogen$
+  RewriteCond %{REQUEST_URI} !^/bios/cynthia-kertesz$
+  RewriteCond %{REQUEST_URI} !^/bios/nathan-lavoy$
+  RewriteCond %{REQUEST_URI} !^/bios/katherine-lion$
+  RewriteCond %{REQUEST_URI} !^/bios/rita-mangione-smith$
+  RewriteCond %{REQUEST_URI} !^/bios/heather-mcphillips$
+  RewriteCond %{REQUEST_URI} !^/bios/alex-morrison$
+  RewriteCond %{REQUEST_URI} !^/bios/douglas-opel$
+  RewriteCond %{REQUEST_URI} !^/bios/laurel-persa$
+  RewriteCond %{REQUEST_URI} !^/bios/mark-stein$
+  RewriteCond %{REQUEST_URI} !^/bios/pooja-tandon$
+  RewriteCond %{REQUEST_URI} !^/bios/whitney-waite$
+  RewriteCond %{REQUEST_URI} !^/bios/emily-yang$
+  RewriteCond %{REQUEST_URI} !^/bios/christiana-akwari$
+  RewriteCond %{REQUEST_URI} !^/bios/benjamin-al-haddad$
+  RewriteCond %{REQUEST_URI} !^/bios/carson-burns$
+  RewriteCond %{REQUEST_URI} !^/bios/elizabeth-dawson-hahn$
+  RewriteCond %{REQUEST_URI} !^/bios/beth-ebel$
+  RewriteCond %{REQUEST_URI} !^/bios/william-french$
+  RewriteCond %{REQUEST_URI} !^/bios/kari-gillenwater$
+  RewriteCond %{REQUEST_URI} !^/bios/abigail-grant$
+  RewriteCond %{REQUEST_URI} !^/bios/anisa-ibrahim$
+  RewriteCond %{REQUEST_URI} !^/bios/brian-johnston$
+  RewriteCond %{REQUEST_URI} !^/bios/benjamin-lang$
+  RewriteCond %{REQUEST_URI} !^/bios/megan-mcgeehan$
+  RewriteCond %{REQUEST_URI} !^/bios/jason-mendoza$
+  RewriteCond %{REQUEST_URI} !^/bios/barbara-moravec$
+  RewriteCond %{REQUEST_URI} !^/bios/suzinne-pak-gorstein$
+  RewriteCond %{REQUEST_URI} !^/bios/vaidehi-pidaparti$
+  RewriteCond %{REQUEST_URI} !^/bios/frederick-rivara$
+  RewriteCond %{REQUEST_URI} !^/bios/maithri-sarangam$
+  RewriteCond %{REQUEST_URI} !^/bios/sheela-sathyanarayana$
+  RewriteCond %{REQUEST_URI} !^/bios/shelley-wiechman$
+  RewriteCond %{REQUEST_URI} !^/bios/maria-busch$
+  RewriteCond %{REQUEST_URI} !^/bios/kelly-campbell$
+  RewriteCond %{REQUEST_URI} !^/bios/kyle-concannon$
+  RewriteCond %{REQUEST_URI} !^/bios/leslie-enzian$
+  RewriteCond %{REQUEST_URI} !^/bios/michael-hochman$
+  RewriteCond %{REQUEST_URI} !^/bios/maren-mann$
+  RewriteCond %{REQUEST_URI} !^/bios/alexandra-molnar$
+  RewriteCond %{REQUEST_URI} !^/bios/thomas-rea$
+  RewriteCond %{REQUEST_URI} !^/bios/alexandra-rich$
+  RewriteCond %{REQUEST_URI} !^/bios/nancy-sugg$
+  RewriteCond %{REQUEST_URI} !^/bios/katrina-sullivan$
+  RewriteCond %{REQUEST_URI} !^/bios/jeffrey-sung$
+  RewriteCond %{REQUEST_URI} !^/bios/dawn-taniguchi$
+  RewriteCond %{REQUEST_URI} !^/bios/katherine-bennett$
+  RewriteCond %{REQUEST_URI} !^/bios/carol-crawford$
+  RewriteCond %{REQUEST_URI} !^/bios/joe-huang$
+  RewriteCond %{REQUEST_URI} !^/bios/deborah-huang$
+  RewriteCond %{REQUEST_URI} !^/bios/carol-lawrence$
+  RewriteCond %{REQUEST_URI} !^/bios/wayne-mccormick$
+  RewriteCond %{REQUEST_URI} !^/bios/thuan-ong$
+  RewriteCond %{REQUEST_URI} !^/bios/may-reed$
+  RewriteCond %{REQUEST_URI} !^/bios/wendy-murphy$
+  RewriteCond %{REQUEST_URI} !^/bios/robert-wilson$
+  RewriteCond %{REQUEST_URI} !^/bios/michael-alperin$
+  RewriteCond %{REQUEST_URI} !^/bios/kirsten-pickard$
+  RewriteCond %{REQUEST_URI} !^/bios/david-l-russell$
+  RewriteCond %{REQUEST_URI} !^/bios/sona-bhatti$
+  RewriteCond %{REQUEST_URI} !^/bios/quratul-cheema$
+  RewriteCond %{REQUEST_URI} !^/bios/mark-damberg$
+  RewriteCond %{REQUEST_URI} !^/bios/jessica-kim$
+  RewriteCond %{REQUEST_URI} !^/bios/laura-montour$
+  RewriteCond %{REQUEST_URI} !^/bios/emily-ryan$
+  RewriteCond %{REQUEST_URI} !^/bios/tiffany-snyder$
+  RewriteCond %{REQUEST_URI} !^/bios/morgan-turner$
+  RewriteCond %{REQUEST_URI} !^/bios/linda-whittlesey$
+  RewriteCond %{REQUEST_URI} !^/bios/samantha-alspach$
+  RewriteCond %{REQUEST_URI} !^/bios/claire-angel$
+  RewriteCond %{REQUEST_URI} !^/bios/grace-bechle$
+  RewriteCond %{REQUEST_URI} !^/bios/emily-bulley$
+  RewriteCond %{REQUEST_URI} !^/bios/alexander-dragnich$
+  RewriteCond %{REQUEST_URI} !^/bios/cynthia-ferrucci$
+  RewriteCond %{REQUEST_URI} !^/bios/wendy-hansen$
+  RewriteCond %{REQUEST_URI} !^/bios/corinne-heinen$
+  RewriteCond %{REQUEST_URI} !^/bios/adam-jayne-jensen$
+  RewriteCond %{REQUEST_URI} !^/bios/serena-johnson$
+  RewriteCond %{REQUEST_URI} !^/bios/marina-kazulin$
+  RewriteCond %{REQUEST_URI} !^/bios/alexander-logan$
+  RewriteCond %{REQUEST_URI} !^/bios/nina-maisterra$
+  RewriteCond %{REQUEST_URI} !^/bios/mark-mayo$
+  RewriteCond %{REQUEST_URI} !^/bios/patrick-mcadams$
+  RewriteCond %{REQUEST_URI} !^/bios/jaclyn-mcloughlin$
+  RewriteCond %{REQUEST_URI} !^/bios/elijah-mun$
+  RewriteCond %{REQUEST_URI} !^/bios/elizabeth-paesch$
+  RewriteCond %{REQUEST_URI} !^/bios/karen-palalay$
+  RewriteCond %{REQUEST_URI} !^/bios/michelle-rappaport$
+  RewriteCond %{REQUEST_URI} !^/bios/elise-rasmussen$
+  RewriteCond %{REQUEST_URI} !^/bios/lindsay-ripley$
+  RewriteCond %{REQUEST_URI} !^/bios/mary-thomas$
+  RewriteCond %{REQUEST_URI} !^/bios/linda-wilson$
+  RewriteCond %{REQUEST_URI} !^/bios/alson-burke$
+  RewriteCond %{REQUEST_URI} !^/bios/neetilekha-choudhury$
+  RewriteCond %{REQUEST_URI} !^/bios/edward-dy$
+  RewriteCond %{REQUEST_URI} !^/bios/joseph-fiorito$
+  RewriteCond %{REQUEST_URI} !^/bios/esther-fuchs$
+  RewriteCond %{REQUEST_URI} !^/bios/maura-glynn-thami$
+  RewriteCond %{REQUEST_URI} !^/bios/sarah-halter$
+  RewriteCond %{REQUEST_URI} !^/bios/thomas-hei$
+  RewriteCond %{REQUEST_URI} !^/bios/tracy-irwin$
+  RewriteCond %{REQUEST_URI} !^/bios/diana-kao$
+  RewriteCond %{REQUEST_URI} !^/bios/deborah-katz$
+  RewriteCond %{REQUEST_URI} !^/bios/jennifer-kuehl$
+  RewriteCond %{REQUEST_URI} !^/bios/iman-majd$
+  RewriteCond %{REQUEST_URI} !^/bios/catherine-mchugh$
+  RewriteCond %{REQUEST_URI} !^/bios/janet-piehl$
+  RewriteCond %{REQUEST_URI} !^/bios/menaka-umapathy$
+  RewriteCond %{REQUEST_URI} !^/bios/heidi-spurgeon$
+  RewriteCond %{REQUEST_URI} !^/bios/heidi-tastet$
+  RewriteCond %{REQUEST_URI} !^/bios/pamela-yung$
+  RewriteCond %{REQUEST_URI} !^/bios/sherice-arnold-arrington$
+  RewriteCond %{REQUEST_URI} !^/bios/john-chaffee$
+  RewriteCond %{REQUEST_URI} !^/bios/christopher-coppeans$
+  RewriteCond %{REQUEST_URI} !^/bios/robert-dini$
+  RewriteCond %{REQUEST_URI} !^/bios/christopher-duong$
+  RewriteCond %{REQUEST_URI} !^/bios/victoria-fang$
+  RewriteCond %{REQUEST_URI} !^/bios/jaime-gerber$
+  RewriteCond %{REQUEST_URI} !^/bios/nan-shing-hsu$
+  RewriteCond %{REQUEST_URI} !^/bios/deborah-katz$
+  RewriteCond %{REQUEST_URI} !^/bios/raouf-maoud$
+  RewriteCond %{REQUEST_URI} !^/bios/sandra-anderson$
+  RewriteCond %{REQUEST_URI} !^/bios/yunyu-cao$
+  RewriteCond %{REQUEST_URI} !^/bios/seema-diddee$
+  RewriteCond %{REQUEST_URI} !^/bios/tadd-hsie$
+  RewriteCond %{REQUEST_URI} !^/bios/amy-ly$
+  RewriteCond %{REQUEST_URI} !^/bios/randy-mandell$
+  RewriteCond %{REQUEST_URI} !^/bios/kerry-meyer$
+  RewriteCond %{REQUEST_URI} !^/bios/patricia-read-williams$
+  RewriteCond %{REQUEST_URI} !^/bios/mary-thomas$
+  RewriteCond %{REQUEST_URI} !^/bios/michelle-vierra$
+  RewriteCond %{REQUEST_URI} !^/bios/jessie-wang$
+  RewriteCond %{REQUEST_URI} !^/bios/elizabeth-abernathey$
+  RewriteCond %{REQUEST_URI} !^/bios/erikka-allhusen$
+  RewriteCond %{REQUEST_URI} !^/bios/jennifer-azen$
+  RewriteCond %{REQUEST_URI} !^/bios/kathryn-bailey$
+  RewriteCond %{REQUEST_URI} !^/bios/matthew-blessing$
+  RewriteCond %{REQUEST_URI} !^/bios/lacey-bliss$
+  RewriteCond %{REQUEST_URI} !^/bios/matthew-burke$
+  RewriteCond %{REQUEST_URI} !^/bios/emma-cantor$
+  RewriteCond %{REQUEST_URI} !^/bios/joel-carey$
+  RewriteCond %{REQUEST_URI} !^/bios/nelson-chiu$
+  RewriteCond %{REQUEST_URI} !^/bios/jennifer-duong$
+  RewriteCond %{REQUEST_URI} !^/bios/katie-gagne$
+  RewriteCond %{REQUEST_URI} !^/bios/kari-gillenwater$
+  RewriteCond %{REQUEST_URI} !^/bios/leslie-graham$
+  RewriteCond %{REQUEST_URI} !^/bios/carolyn-houk$
+  RewriteCond %{REQUEST_URI} !^/bios/nicole-johnson$
+  RewriteCond %{REQUEST_URI} !^/bios/jessica-kim$
+  RewriteCond %{REQUEST_URI} !^/bios/eva-kiss$
+  RewriteCond %{REQUEST_URI} !^/bios/joseph-lauinger$
+  RewriteCond %{REQUEST_URI} !^/bios/jason-lavalle$
+  RewriteCond %{REQUEST_URI} !^/bios/anthony-liccini$
+  RewriteCond %{REQUEST_URI} !^/bios/rachel-lum-ho$
+  RewriteCond %{REQUEST_URI} !^/bios/brian-marcus$
+  RewriteCond %{REQUEST_URI} !^/bios/paul-morales$
+  RewriteCond %{REQUEST_URI} !^/bios/sheryl-morelli$
+  RewriteCond %{REQUEST_URI} !^/bios/brittany-sprigg$
+  RewriteCond %{REQUEST_URI} !^/bios/morhaf-al-achkar$
+  RewriteCond %{REQUEST_URI} !^/bios/laura-mae-baldwin$
+  RewriteCond %{REQUEST_URI} !^/bios/ian-bennett$
+  RewriteCond %{REQUEST_URI} !^/bios/sharon-brown-kunin$
+  RewriteCond %{REQUEST_URI} !^/bios/jeanne-cawse-lucas$
+  RewriteCond %{REQUEST_URI} !^/bios/kimberly-collins$
+  RewriteCond %{REQUEST_URI} !^/bios/mark-duncan$
+  RewriteCond %{REQUEST_URI} !^/bios/daniel-evans$
+  RewriteCond %{REQUEST_URI} !^/bios/david-evans$
+  RewriteCond %{REQUEST_URI} !^/bios/emily-godfrey$
+  RewriteCond %{REQUEST_URI} !^/bios/abigail-halperin$
+  RewriteCond %{REQUEST_URI} !^/bios/emily-hilderman$
+  RewriteCond %{REQUEST_URI} !^/bios/jo-jackson$
+  RewriteCond %{REQUEST_URI} !^/bios/matthew-jaffy$
+  RewriteCond %{REQUEST_URI} !^/bios/paul-james$
+  RewriteCond %{REQUEST_URI} !^/bios/misbah-keen$
+  RewriteCond %{REQUEST_URI} !^/bios/jessica-kim$
+  RewriteCond %{REQUEST_URI} !^/bios/bryna-mccollum$
+  RewriteCond %{REQUEST_URI} !^/bios/alexis-miller$
+  RewriteCond %{REQUEST_URI} !^/bios/thomas-norris$
+  RewriteCond %{REQUEST_URI} !^/bios/lynn-oliver$
+  RewriteCond %{REQUEST_URI} !^/bios/judith-pauwels$
+  RewriteCond %{REQUEST_URI} !^/bios/pamela-pentin$
+  RewriteCond %{REQUEST_URI} !^/bios/valerie-ross$
+  RewriteCond %{REQUEST_URI} !^/bios/tomoko-sairenji$
+  RewriteCond %{REQUEST_URI} !^/bios/christopher-sanford$
+  RewriteCond %{REQUEST_URI} !^/bios/terry-scott$
+  RewriteCond %{REQUEST_URI} !^/bios/brandi-shah$
+  RewriteCond %{REQUEST_URI} !^/bios/j-sherwood$
+  RewriteCond %{REQUEST_URI} !^/bios/grace-shih$
+  RewriteCond %{REQUEST_URI} !^/bios/david-siebert$
+  RewriteCond %{REQUEST_URI} !^/bios/philip-smith$
+  RewriteCond %{REQUEST_URI} !^/bios/nancy-stevens$
+  RewriteCond %{REQUEST_URI} !^/bios/christina-tanner$
+  RewriteCond %{REQUEST_URI} !^/bios/matthew-j-thompson$
+  RewriteCond %{REQUEST_URI} !^/bios/edward-vincent$
+  RewriteCond %{REQUEST_URI} !^/bios/eric-wall$
+  RewriteCond %{REQUEST_URI} !^/bios/megan-wilson$
+  RewriteCond %{REQUEST_URI} !^/bios/ying-zhang$
+  RewriteCond %{REQUEST_URI} !^/bios/eunice-chen$
+  RewriteCond %{REQUEST_URI} !^/bios/theresa-duggan$
+  RewriteCond %{REQUEST_URI} !^/bios/megan-gillespie$
+  RewriteCond %{REQUEST_URI} !^/bios/nhu-hang$
+  RewriteCond %{REQUEST_URI} !^/bios/karen-bar-joseph$
+  RewriteCond %{REQUEST_URI} !^/bios/denise-chang$
+  RewriteCond %{REQUEST_URI} !^/bios/thomas-cherry$
+  RewriteCond %{REQUEST_URI} !^/bios/susan-dini$
+  RewriteCond %{REQUEST_URI} !^/bios/lucy-hwang$
+  RewriteCond %{REQUEST_URI} !^/bios/deborah-katz$
+  RewriteCond %{REQUEST_URI} !^/bios/crystal-kong-wong$
+  RewriteCond %{REQUEST_URI} !^/bios/ashley-mccain$
+  RewriteCond %{REQUEST_URI} !^/bios/peter-mcgough$
+  RewriteCond %{REQUEST_URI} !^/bios/sue-moreni$
+  RewriteCond %{REQUEST_URI} !^/bios/tina-neogi$
+  RewriteCond %{REQUEST_URI} !^/bios/tim-rhodes$
+  RewriteCond %{REQUEST_URI} !^/bios/heather-riley$
+  RewriteCond %{REQUEST_URI} !^/bios/pamela-sheffield$
+  RewriteCond %{REQUEST_URI} !^/bios/jordan-stevens$
+  RewriteCond %{REQUEST_URI} !^/bios/zubin-vasavada$
+  RewriteCond %{REQUEST_URI} !^/bios/dayamal-waas$
+  RewriteCond %{REQUEST_URI} !^/bios/brandon-ware$
+  RewriteCond %{REQUEST_URI} !^/bios/melanie-andersen$
+  RewriteCond %{REQUEST_URI} !^/bios/tamara-atkins$
+  RewriteCond %{REQUEST_URI} !^/bios/seth-bagan$
+  RewriteCond %{REQUEST_URI} !^/bios/heather-chilcote$
+  RewriteCond %{REQUEST_URI} !^/bios/anita-chopra$
+  RewriteCond %{REQUEST_URI} !^/bios/havilah-debell$
+  RewriteCond %{REQUEST_URI} !^/bios/suzanne-el-attar$
+  RewriteCond %{REQUEST_URI} !^/bios/marion-folkemer$
+  RewriteCond %{REQUEST_URI} !^/bios/claire-jenkins$
+  RewriteCond %{REQUEST_URI} !^/bios/neysa-koury$
+  RewriteCond %{REQUEST_URI} !^/bios/ashley-mccain$
+  RewriteCond %{REQUEST_URI} !^/bios/elizabeth-okane$
+  RewriteCond %{REQUEST_URI} !^/bios/kaity-pak$
+  RewriteCond %{REQUEST_URI} !^/bios/sarah-roskam$
+  RewriteCond %{REQUEST_URI} !^/bios/nancy-ross$
+  RewriteCond %{REQUEST_URI} !^/bios/jennifer-shen$
+  RewriteCond %{REQUEST_URI} !^/bios/anna-shope$
+  RewriteCond %{REQUEST_URI} !^/bios/mary-thomas$
+  RewriteCond %{REQUEST_URI} !^/bios/mariebeth-velasquez$
+  RewriteCond %{REQUEST_URI} !^/bios/kathleen-mckeegan$
+  RewriteCond %{REQUEST_URI} !^/bios/ashleigh-adkins$
+  RewriteCond %{REQUEST_URI} !^/bios/martha-leonard$
+  RewriteCond %{REQUEST_URI} !^/bios/amarjit-rai$
+  RewriteCond %{REQUEST_URI} !^/bios/nathanael-russell$
+  RewriteCond %{REQUEST_URI} !^/bios/joel-stegen$
+  RewriteCond %{REQUEST_URI} !^/bios/natalia-usoltseva$
+  RewriteCond %{REQUEST_URI} !^/bios/debbie-vega$
+  RewriteCond %{REQUEST_URI} !^/bios/linda-vorvick$
+  RewriteCond %{REQUEST_URI} !^/bios/tim-burner$
+  RewriteCond %{REQUEST_URI} !^/bios/taryn-chlebowski$
+  RewriteCond %{REQUEST_URI} !^/bios/danielle-debelak$
+  RewriteCond %{REQUEST_URI} !^/bios/amy-farrar$
+  RewriteCond %{REQUEST_URI} !^/bios/erica-frahm$
+  RewriteCond %{REQUEST_URI} !^/bios/lisa-holland$
+  RewriteCond %{REQUEST_URI} !^/bios/randy-mandell$
+  RewriteCond %{REQUEST_URI} !^/bios/cheryl-mazurek$
+  RewriteCond %{REQUEST_URI} !^/bios/lynne-munoz$
+  RewriteCond %{REQUEST_URI} !^/bios/prachi-munshi$
+  RewriteCond %{REQUEST_URI} !^/bios/delilah-warrick$
+  RewriteCond %{REQUEST_URI} !^/bios/mary-thomas$
+  RewriteCond %{REQUEST_URI} !^/bios/elliot-twiggs$
+  RewriteCond %{REQUEST_URI} !^/bios/kristina-adams-waldorf$
+  RewriteCond %{REQUEST_URI} !^/bios/melanie-andersen$
+  RewriteCond %{REQUEST_URI} !^/bios/amy-baernstein$
+  RewriteCond %{REQUEST_URI} !^/bios/karen-bar-joseph$
+  RewriteCond %{REQUEST_URI} !^/bios/emily-bardolph$
+  RewriteCond %{REQUEST_URI} !^/bios/lyndsey-benson$
+  RewriteCond %{REQUEST_URI} !^/bios/marie-annette-brown$
+  RewriteCond %{REQUEST_URI} !^/bios/karen-carlson$
+  RewriteCond %{REQUEST_URI} !^/bios/seine-chiang$
+  RewriteCond %{REQUEST_URI} !^/bios/emalee-danforth$
+  RewriteCond %{REQUEST_URI} !^/bios/katherine-debiec$
+  RewriteCond %{REQUEST_URI} !^/bios/kathleen-errico$
+  RewriteCond %{REQUEST_URI} !^/bios/david-eschenbach$
+  RewriteCond %{REQUEST_URI} !^/bios/emily-godfrey$
+  RewriteCond %{REQUEST_URI} !^/bios/christopher-herndon$
+  RewriteCond %{REQUEST_URI} !^/bios/deborah-huang$
+  RewriteCond %{REQUEST_URI} !^/bios/justin-junn$
+  RewriteCond %{REQUEST_URI} !^/bios/elan-keehn$
+  RewriteCond %{REQUEST_URI} !^/bios/mary-laya$
+  RewriteCond %{REQUEST_URI} !^/bios/rekha-matken$
+  RewriteCond %{REQUEST_URI} !^/bios/adelaide-hearst$
+  RewriteCond %{REQUEST_URI} !^/bios/viksa-mendiratta$
+  RewriteCond %{REQUEST_URI} !^/bios/elizabeth-micks$
+  RewriteCond %{REQUEST_URI} !^/bios/sue-moreni$
+  RewriteCond %{REQUEST_URI} !^/bios/genevieve-neal-perry$
+  RewriteCond %{REQUEST_URI} !^/bios/alison-north$
+  RewriteCond %{REQUEST_URI} !^/bios/sarah-prager$
+  RewriteCond %{REQUEST_URI} !^/bios/megha-shankar$
+  RewriteCond %{REQUEST_URI} !^/bios/anna-shope$
+  RewriteCond %{REQUEST_URI} !^/bios/nancy-simon$
+  RewriteCond %{REQUEST_URI} !^/bios/ann-stapleton$
+  RewriteCond %{REQUEST_URI} !^/bios/jordan-stevens$
+  RewriteCond %{REQUEST_URI} !^/bios/eliza-sutton$
+  RewriteCond %{REQUEST_URI} !^/bios/meagan-williams$
+  RewriteCond %{REQUEST_URI} !^/bios/bo-yu$
+  RewriteRule ^(.*)$ - [CO=uwm-proxied-page-visit:true:%{HTTP_HOST}:0:/,C]
+  RewriteRule ^(.*)$ https://www2.uwmedicine.org%{REQUEST_URI} [L,P]
+
+  # Redirect migrated location directions sub-page to tab on redesigned clinic template
+  RewriteCond %{HTTP_HOST} ^www.uwmedicine(test)?.org
+  RewriteRule ^locations/(.*)/directions/?(.*)?$ "https://www.uwmedicine.org/locations/$1#directions-tab" [NE,L,R=301]
+
+  # Redirect migrated location providers sub-page to tab on redesigned clinic template
+  RewriteCond %{HTTP_HOST} ^www.uwmedicine(test)?.org
+  RewriteRule ^locations/(.*)/care-providers/?(.*)?$ "https://www.uwmedicine.org/locations/$1#providers-tab" [NE,L,R=301]
+
+  ## DRUPAL-SPECIFIC RULES ##
+    # Block access to "hidden" directories whose names begin with a period. This
+  # includes directories used by version control systems such as Subversion or
+  # Git to store control files. Files whose names begin with a period, as well
+  # as the control files used by CVS, are protected by the FilesMatch directive
+  # above.
+  #
+  # NOTE: This only works when mod_rewrite is loaded. Without mod_rewrite, it is
+  # not possible to block access to entire directories from .htaccess because
+  # <DirectoryMatch> is not allowed here.
+  #
+  # If you do not have mod_rewrite installed, you should remove these
+  # directories from your webroot or otherwise protect them from being
+  # downloaded.
+  RewriteRule "/\.|^\.(?!well-known/)" - [F]
+
+  # If your site can be accessed both with and without the 'www.' prefix, you
+  # can use one of the following settings to redirect users to your preferred
+  # URL, either WITH or WITHOUT the 'www.' prefix. Choose ONLY one option:
+  #
+  # To redirect all users to access the site WITH the 'www.' prefix,
+  # (http://example.com/foo will be redirected to http://www.example.com/foo)
+  # uncomment the following:
+  # RewriteCond %{HTTP_HOST} .
+  # RewriteCond %{HTTP_HOST} !^www\. [NC]
+  # RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  #
+  # To redirect all users to access the site WITHOUT the 'www.' prefix,
+  # (http://www.example.com/foo will be redirected to http://example.com/foo)
+  # uncomment the following:
+  # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  # RewriteRule ^ http%{ENV:protossl}://%1%{REQUEST_URI} [L,R=301]
+
+  # Modify the RewriteBase if you are using Drupal in a subdirectory or in a
+  # VirtualDocumentRoot and the rewrite rules are not working properly.
+  # For example if your site is at http://example.com/drupal uncomment and
+  # modify the following line:
+  # RewriteBase /drupal
+  #
+  # If your site is running in a VirtualDocumentRoot at http://example.com/,
+  # uncomment the following line:
+  # RewriteBase /
+
+  # Redirect common PHP files to their new locations.
+  RewriteCond %{REQUEST_URI} ^(.*)?/(install.php) [OR]
+  RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild.php)
+  RewriteCond %{REQUEST_URI} !core
+  RewriteRule ^ %1/core/%2 [L,QSA,R=301]
+
+  # Rewrite install.php during installation to see if mod_rewrite is working
+  RewriteRule ^core/install.php core/install.php?rewrite=ok [QSA,L]
+
+  # Pass all requests not referring directly to files in the filesystem to
+  # index.php.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !=/favicon.ico
+  RewriteRule ^ index.php [L,CO=uwm-non-proxied-page-visit:true:%{HTTP_HOST}:0:/]
+
+  # For security reasons, deny access to other PHP files on public sites.
+  # Note: The following URI conditions are not anchored at the start (^),
+  # because Drupal may be located in a subdirectory. To further improve
+  # security, you can replace '!/' with '!^/'.
+  # Allow access to PHP files in /core (like authorize.php or install.php):
+  RewriteCond %{REQUEST_URI} !/core/[^/]*\.php$
+  # Allow access to test-specific PHP files:
+  RewriteCond %{REQUEST_URI} !/core/modules/system/tests/https?.php
+  # Allow access to Statistics module's custom front controller.
+  # Copy and adapt this rule to directly execute PHP files in contributed or
+  # custom modules or to run another PHP application in the same directory.
+  RewriteCond %{REQUEST_URI} !/core/modules/statistics/statistics.php$
+
+
+  RewriteCond %{REQUEST_URI} !^/simplesaml
+
+
+
+
+  # Deny access to any other PHP files that do not match the rules above.
+  # Specifically, disallow autoload.php from being served directly.
+  RewriteRule "^(.+/.*|autoload)\.php($|/)" - [F]
+
+  # Rules to correctly serve gzip compressed CSS and JS files.
+  # Requires both mod_rewrite and mod_headers to be enabled.
+  <IfModule mod_headers.c>
+    # Serve gzip compressed CSS files if they exist and the client accepts gzip.
+    RewriteCond %{HTTP:Accept-encoding} gzip
+    RewriteCond %{REQUEST_FILENAME}\.gz -s
+    RewriteRule ^(.*)\.css $1\.css\.gz [QSA]
+
+    # Serve gzip compressed JS files if they exist and the client accepts gzip.
+    RewriteCond %{HTTP:Accept-encoding} gzip
+    RewriteCond %{REQUEST_FILENAME}\.gz -s
+    RewriteRule ^(.*)\.js $1\.js\.gz [QSA]
+
+    # Serve correct content types, and prevent mod_deflate double gzip.
+    RewriteRule \.css\.gz$ - [T=text/css,E=no-gzip:1]
+    RewriteRule \.js\.gz$ - [T=text/javascript,E=no-gzip:1]
+
+    <FilesMatch "(\.js\.gz|\.css\.gz)$">
+      # Serve correct encoding type.
+      Header set Content-Encoding gzip
+      # Force proxies to cache gzipped & non-gzipped css/js files separately.
+      Header append Vary Accept-Encoding
+    </FilesMatch>
+  </IfModule>
+</IfModule>
+
+# Various header fixes.
+<IfModule mod_headers.c>
+  # Disable content sniffing, since it's an attack vector.
+  Header always set X-Content-Type-Options nosniff
+  # Disable Proxy header, since it's an attack vector.
+  RequestHeader unset Proxy
+</IfModule>

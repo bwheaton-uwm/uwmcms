@@ -797,6 +797,23 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
 
 }
 
+
+if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+
+  if ($_ENV['AH_SITE_ENVIRONMENT'] !== 'prod') {
+
+    /***
+     * Require a simple auth password on pre-production:
+     */
+    $file = DRUPAL_ROOT . '/sites/uwm-require-auth-cookie-page-blocker.php';
+    if (is_file($file)) {
+        include_once $file;
+    }
+
+  }
+
+}
+
 /**
  * BLT makes the assumption that, if using multisite, the default configuration
  * directory should be shared between all multi-sites, and each multisite will

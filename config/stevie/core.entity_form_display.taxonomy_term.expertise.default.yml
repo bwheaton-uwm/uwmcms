@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.taxonomy_term.expertise.field_res_include_in_search
     - field.field.taxonomy_term.expertise.field_res_providers
     - field.field.taxonomy_term.expertise.field_term_keywords
     - field.field.taxonomy_term.expertise.uwm_unique_id
@@ -25,6 +26,13 @@ content:
       placeholder: ''
       rows: 5
     third_party_settings: {  }
+  field_res_include_in_search:
+    weight: 6
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_res_providers:
     weight: 3
     settings:

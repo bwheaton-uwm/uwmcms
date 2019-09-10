@@ -80,7 +80,6 @@ rdf: 8.4.5
 rest: 8.4.5
 search_api: 1.7.0
 search_api_db: 1.7.0
-search_api_views_taxonomy: 1.7.0
 seckit: 1.0.0
 serialization: 8.4.5
 shield: 1.2.0

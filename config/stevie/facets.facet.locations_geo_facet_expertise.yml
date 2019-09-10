@@ -1,20 +1,20 @@
-uuid: 4432343e-690f-42b9-a12a-d145018821db
+uuid: 54cb664f-34ca-4ea5-a88d-8fbba15f663d
 langcode: en
 status: true
 dependencies:
   config:
-    - search_api.index.uwm_providers_search_api_index
-    - views.view.uwm_providers_search
+    - search_api.index.uwm_locations_geo_search_api_index
+    - views.view.uwm_locations_geo_search
   module:
     - search_api
-id: provider_facet_expertise
-name: 'Provider Facet Expertise'
+id: locations_geo_facet_expertise
+name: 'Locations Geo Facet Expertise'
 url_alias: expertise
 weight: -1
 min_count: 1
 show_only_one_result: false
 field_identifier: field_res_expertises_name_string
-facet_source_id: 'search_api:views_page__uwm_providers_search__page_1'
+facet_source_id: 'search_api:views_page__uwm_locations_geo_search__page_1'
 widget:
   type: links
   config:

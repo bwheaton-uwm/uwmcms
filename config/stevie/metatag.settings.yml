@@ -1,4 +1,1 @@
-entity_type_groups:
-  node:
-    res_provider:
-      schema_physician: schema_physician
+entity_type_groups: {  }
