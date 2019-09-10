@@ -247,6 +247,10 @@
 
         p {
           margin-bottom: .2rem;
+
+          &.clinic-card__clockwise-button a {
+            padding: .5rem 1rem;
+          }
         }
 
         .uwm-icon--urgent-care {
