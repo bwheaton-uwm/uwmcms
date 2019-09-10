@@ -11,6 +11,9 @@ use Drupal\schema_metatag\Plugin\metatag\Tag\SchemaNameBase;
  * - 'name' should match the Schema.org element name.
  * - 'group' should match the id of the group that defines the Schema.org type.
  *
+ * Note: 'multiple' is set TRUE only to specially handle urgent care hours in
+ * addition to main/primary care hours. (See inline comments.)
+ *
  * @MetatagTag(
  *   id = "schema_clinic_opening_hours_spec",
  *   label = @Translation("Opening Hours Specification"),
@@ -20,7 +23,7 @@ use Drupal\schema_metatag\Plugin\metatag\Tag\SchemaNameBase;
  *   weight = 7,
  *   type = "string",
  *   secure = FALSE,
- *   multiple = FALSE
+ *   multiple = TRUE
  * )
  */
 class SchemaMedicalClinicOpeningHoursSpec extends SchemaNameBase {
@@ -139,18 +142,69 @@ class SchemaMedicalClinicOpeningHoursSpec extends SchemaNameBase {
         // primary care hours) as the main value.
         // Note: the `OpeningHoursSpecification` object does not have a special
         // format to indicate "always open". So, we don't need to output that
-        // separately from the per-day hour values.
+        // separately or differently from the per-day hour values.
         if (!empty($meta['operation'])) {
 
+          // We've set the plugin to allow "multiple" values, to enable us to
+          // return more than one top-level schema "tag". Thus the return value
+          // is formatted as an indexed array.
+          // @see \Drupal\metatag\MetatagManager::generateRawElements()
           $output = [
-            '#tag' => 'meta',
-            '#attributes' => [
-              'name' => $this->name,
-              'content' => static::outputValue($meta['operation']['days']),
-              'group' => $this->group,
-              'schema_metatag' => TRUE,
+            [
+              '#tag' => 'meta',
+              '#attributes' => [
+                'name' => $this->name,
+                'content' => static::outputValue($meta['operation']['days']),
+                'group' => $this->group,
+                'schema_metatag' => TRUE,
+              ],
             ],
           ];
+
+        }
+
+        if (!empty($meta['urgent'])) {
+
+          if (!is_array($output)) {
+
+            // Not sure if there are any cases of urgent hours present without
+            // main/primary hours, but handle it in case: make urgent the main
+            // hours.
+            $output = [
+              [
+                '#tag' => 'meta',
+                '#attributes' => [
+                  'name' => $this->name,
+                  'content' => static::outputValue($meta['urgent']['days']),
+                  'group' => $this->group,
+                  'schema_metatag' => TRUE,
+                ],
+              ],
+            ];
+
+          }
+          else {
+
+            // Add urgent care hours, as a 'department'.
+            // @see https://developers.google.com/search/docs/data-types/local-business#multiple_departments
+            $output[] = [
+              '#tag' => 'meta',
+              '#attributes' => [
+                'name' => 'department',
+                'content' => [
+                  // This nests a 'MedicalClinic' as a department within our
+                  // top-level 'MedicalClinic'. It feels weird, but is
+                  // nonetheless the most accurate representation.
+                  '@type' => 'MedicalClinic',
+                  'name' => 'Urgent Care',
+                  'openingHoursSpecification' => static::outputValue($meta['urgent']['days']),
+                ],
+                'group' => $this->group,
+                'schema_metatag' => TRUE,
+              ],
+            ];
+
+          }
 
         }
 
