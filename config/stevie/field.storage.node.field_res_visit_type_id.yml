@@ -1,11 +1,11 @@
-uuid: 3ff7dec9-bfdc-4af8-81b2-c7b226cef010
+uuid: dce01daf-ca56-4413-9a27-241344f65d30
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_res_visit_id
-field_name: field_res_visit_id
+id: node.field_res_visit_type_id
+field_name: field_res_visit_type_id
 entity_type: node
 type: integer
 settings:

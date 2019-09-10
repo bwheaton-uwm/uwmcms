@@ -29,7 +29,7 @@ dependencies:
     - field.field.node.res_provider.field_res_puma_id
     - field.field.node.res_provider.field_res_ser_id
     - field.field.node.res_provider.field_res_special_interests
-    - field.field.node.res_provider.field_res_visit_id
+    - field.field.node.res_provider.field_res_visit_type_id
     - field.field.node.res_provider.field_search_best_bets
     - field.field.node.res_provider.field_uwm_json_packet
     - field.field.node.res_provider.uwm_unique_id
@@ -268,7 +268,7 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_res_visit_id:
+  field_res_visit_type_id:
     weight: 35
     settings:
       placeholder: ''
