@@ -26,10 +26,6 @@
     "url": "https://github.com/uwmweb/uwmedicineorg_theme"
   },
   {
-    "type": "vcs",
-    "url": "https://github.com/uwmweb/uwm_paragraphs"
-  },
-  {
     "type": "package",
     "package":
     {
@@ -165,6 +161,7 @@
     "drupal/simplesamlphp_auth": "^3.0@RC",
     "drupal/simplify": "^1.0",
     "drupal/siteimprove": "^1.0",
+    "drupal/smtp": "^1.0",
     "drupal/taxonomy_menu": "^3.3",
     "drupal/term_csv_export_import": "^2.0@alpha",
     "drupal/trash": "^1.0@alpha",
@@ -174,12 +171,12 @@
     "drupal/views_bulk_operations": "^2.4",
     "drupal/views_taxonomy_term_name_depth": "^1.2",
     "drupal/views_url_alias": "^1.0",
+    "drupal/viewsreference": "^1.4",
     "drupal/webform": "^5.1",
     "drupal/xmlsitemap": "^1.0@alpha",
     "drupal/zen": "^7.0@alpha",
     "nategood/httpful": "^0.2.20",
     "uwmweb/ckeditor_bs_grid": "dev-uwm-develop",
-    "uwmweb/uwm_paragraphs": "dev-master",
     "uwmweb/uwmedicineorg_theme": "dev-master",
     "webflo/drupal-core-require-dev": "^8.6.10"
   },
@@ -231,8 +228,12 @@
       "drupal/current_page_crumb": {
         "Cached breadcrumb not updating on node change": "https://www.drupal.org/files/issues/current_page_crumb-cache-fix-2871340-3.patch"
       },
+      "drupal/metatag": {
+        "Use custom delimiter instead of commas for multiple values": "https://www.drupal.org/files/issues/2019-07-15/3067803-token-alter-hook_1.patch"
+      },
       "drupal/schema_metatag": {
-        "Add the target property to PotentialAction of search on the WebPage schema type": "https://www.drupal.org/files/issues/2019-06-04/schema_metatag-searchaction_target_missing-2968062-22.patch"
+        "Add the target property to PotentialAction of search on the WebPage schema type": "https://www.drupal.org/files/issues/2019-06-04/schema_metatag-searchaction_target_missing-2968062-22.patch",
+        "Recipe step descriptions will explode on comma": "https://www.drupal.org/files/issues/2019-07-15/2976935-use-metatag-delimiter.patch"
       }
     }
   },
