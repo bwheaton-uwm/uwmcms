@@ -161,6 +161,7 @@
     "drupal/simplesamlphp_auth": "^3.0@RC",
     "drupal/simplify": "^1.0",
     "drupal/siteimprove": "^1.0",
+    "drupal/smtp": "^1.0",
     "drupal/taxonomy_menu": "^3.3",
     "drupal/term_csv_export_import": "^2.0@alpha",
     "drupal/trash": "^1.0@alpha",
