@@ -124,6 +124,7 @@
     "drupal/jsonapi": "^1.23",
     "drupal/link_attributes": "^1.1",
     "drupal/linkit": "^4.3",
+    "drupal/mailsystem": "^4.1",
     "drupal/media_acquiadam": "^1.32",
     "drupal/media_entity": "^2",
     "drupal/media_entity_actions": "^1.0@alpha",
