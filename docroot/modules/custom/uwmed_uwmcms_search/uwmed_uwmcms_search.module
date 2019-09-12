@@ -8,6 +8,7 @@
 use Drupal\Core\Form\FormState;
 use Drupal\search_api\Query\QueryInterface;
 use Solarium\Core\Query\QueryInterface as SolariumQueryInterface;
+use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_page_attachments_alter().
@@ -58,6 +59,19 @@ function uwmed_uwmcms_search_views_pre_view($view, $display_id, &$args) {
       _uwmed_uwmcms_search_views_pre_view_uwm_locations_geo_search($view, $display_id, $args);
       break;
   }
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function uwmed_uwmcms_search_views_pre_render(ViewExecutable $view_ex) {
+
+  switch ($view_ex->id()) {
+    case 'uwm_providers_search':
+      _uwmed_uwmcms_search_views_pre_render_uwm_providers_search($view_ex);
+      break;
+  }
+
 }
 
 /**
@@ -372,6 +386,95 @@ function _uwmed_uwmcms_search_views_pre_view_uwm_locations_geo_search($view, $di
       $view->setHandler($display_id, 'filter', 'field_coordinates_geofield_latlong', $distance_filter);
     }
   }
+}
+
+/**
+ * Alter the uwm_providers_search view in the pre_render phase.
+ */
+function _uwmed_uwmcms_search_views_pre_render_uwm_providers_search(ViewExecutable $view_ex) {
+
+  $count = $view_ex->total_rows;
+
+  $input = $view_ex->getExposedInput();
+
+  // Retrieve any searched keywords.
+  $keywords = NULL;
+  if (!empty($input['s']) && is_string($input['s']) && strlen(trim($input['s'])) > 0) {
+    $keywords = trim($input['s']);
+  }
+
+  // Retrieve a Medical Specialty (or interim Areas of Expertise) term name from
+  // facet.
+  $specialty = NULL;
+  if (!empty($input['fs_p'])) {
+    // Note: for Medical Service vocabulary, this was: 'medical-service:'.
+    $prefix = 'expertise:';
+
+    foreach ($input['fs_p'] as $facet_val) {
+      if (strpos($facet_val, $prefix) === 0) {
+        $specialty_value = substr($facet_val, strlen($prefix));
+
+        // Depending on how the facet and associated indexed value are set up,
+        // the value used in the form field / query param may be either the
+        // term ID or term name. Assume the ID if numeric, otherwise the name.
+        if (is_numeric($specialty_value)) {
+          $term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load((int) $specialty_value);
+          if (!empty($term)) {
+            $specialty = $term->label();
+          }
+        }
+        else {
+          $specialty = $specialty_value;
+        }
+
+        break;
+      }
+
+    }
+  }
+
+  $title = NULL;
+
+  // Build the results title incorporating Specialty if used, otherwise keywords
+  // if used, and number of results. The Specialty filter takes precedence over
+  // keywords.
+  if (!empty($specialty)) {
+    $title = t("@count providers in @specialty", [
+      '@count' => $count,
+      '@specialty' => $specialty,
+    ]);
+  }
+  elseif (!empty($keywords)) {
+    $title = t("@count providers found for &ldquo;@keywords&rdquo;", [
+      '@count' => $count,
+      '@keywords' => $keywords,
+    ]);
+  }
+  else {
+
+    // If neither Specialty filter nor keywords were used, determine if a
+    // search was run by checking all inputs.
+    $searched = FALSE;
+    if (!empty($input)) {
+      foreach ($input as $k => $v) {
+        if (!empty($v)) {
+          $searched = TRUE;
+        }
+      }
+    }
+
+    // Set a generic results title if search was run.
+    if ($searched) {
+      $title = t("@count providers found", [
+        '@count' => $count,
+      ]);
+    }
+  }
+
+  if (!empty($title)) {
+    $view_ex->setTitle($title);
+  }
+
 }
 
 /**
