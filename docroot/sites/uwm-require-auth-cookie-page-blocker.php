@@ -59,7 +59,7 @@ if (!class_exists('UwmAuthCookieFormBlocker')) {
         // Set the auth cookie, if posted:
         if (isset($_POST[$cookieKeyName]) && ($_POST[$cookieKeyName] === $cookieKeyName)) {
 
-          setcookie($cookieKeyName, $cookieKeyName, strtotime("+1 month"));
+          setcookie($cookieKeyName, $cookieKeyName, strtotime("+1 month"), '/');
           header("Location: " . $_POST['destination'] ?? '/');
 
         } else if ($_COOKIE[$cookieKeyName] === $cookieKeyName) {
@@ -90,7 +90,7 @@ if (!class_exists('UwmAuthCookieFormBlocker')) {
      *   String cookie name for headers.
      */
     private static function getCookieKeyName() {
-      return str_replace('.', '_', 'uwm.667823.' . $_SERVER['SERVER_NAME']);
+      return str_replace('.', '_', 'uwm.66782344.' . $_SERVER['SERVER_NAME']);
     }
 
 
