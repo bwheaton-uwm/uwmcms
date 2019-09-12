@@ -439,6 +439,12 @@ function _uwmed_uwmcms_search_views_pre_render_uwm_providers_search(ViewExecutab
   // if used, and number of results. The Specialty filter takes precedence over
   // keywords.
   if (!empty($specialty)) {
+
+    // The term for Specialty may have only the first letter uppercased. Set
+    // the first letter of each word to uppercase, to make it appear here as a
+    // title and to match the values in filter dropdown.
+    $specialty = ucwords($specialty);
+
     $title = t("@count providers in @specialty", [
       '@count' => $count,
       '@specialty' => $specialty,
