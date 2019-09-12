@@ -58,7 +58,7 @@
     <h3 class="clinic-card__subheader">{{ label }}</h3>
 
     <div class="uwm-clockwise__card " data-uwm-clockwise-wait-time="{{ value }}">
-      <p class="js-wait-link">
+      <p class="js-wait-link clinic-card__clockwise-button">
 {#        <a class="clinic-card__buttons btn btn-outline-primary" href="/patient-care/making-an-appointment" target="_blank">{{ "Get in line"|t }}</a>#}
         {#              // @TODO Verify CTA link. #}
         {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
