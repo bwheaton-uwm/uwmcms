@@ -57,22 +57,15 @@
       "sh ./patches/drupal-htaccess/htaccess_patch.sh ./patches/drupal-htaccess/htaccess.patch"
     ],
     "uwmcms-preprend-htaccess": [
-      "printf '%s\\n%s\\n' \"$(cat ./patches/drupal-htaccess/htaccess-prepend-contents.txt)\" \"$(cat ./docroot/.htaccess)\" > ./docroot/.htaccess \n"
+      "sh ./patches/drupal-htaccess/htaccess_prepend.sh './patches/drupal-htaccess/htaccess_prepend_contents.htaccess' './docroot/.htaccess'"
     ],
     "post-install-cmd": [
       "@uwmcms-update-saml",
       "@uwmcms-patch-htaccess",
       "@uwmcms-preprend-htaccess"
     ],
-    "post-update-cmd": [
-      "@uwmcms-update-saml",
-      "@uwmcms-patch-htaccess",
-      "@uwmcms-preprend-htaccess"
-    ],
-    "post-drupal-scaffold-cmd": [
-      "@uwmcms-patch-htaccess",
-      "@uwmcms-preprend-htaccess"
-    ]
+    "post-update-cmd": [],
+    "post-drupal-scaffold-cmd": []
   },
   "require":
   {

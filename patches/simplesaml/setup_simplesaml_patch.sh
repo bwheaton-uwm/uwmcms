@@ -7,6 +7,8 @@ set -e
 # Copy default for defaul install.
 #
 
+echo ""
+echo ""
 echo "UWM-CMS: Seeting up vendor SimpleSAMLphp default configurations."
 
 SAMLDIR=vendor/simplesamlphp/simplesamlphp

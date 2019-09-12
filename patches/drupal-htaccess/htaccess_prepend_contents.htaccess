@@ -1,6 +1,4 @@
 
-
-
 ####
 ## UWM: Redirect these pages
 ## to their canonical sites:
@@ -40,10 +38,6 @@
 <IfModule mod_rewrite.c>
 
     RewriteEngine on
-
-    ## Skip this IfModule block
-    ## if using a .local host
-    #RewriteCond %{HTTP_HOST} !^(stevie\.)?uwmed\.local$
 
     ## For uwmedicine.org, if a trailing slash, remove it and
     ## go to https://www
@@ -136,10 +130,10 @@
     RewriteCond %{HTTP_HOST} ^www.uwmedicine.org [OR]
     RewriteCond %{HTTP_HOST} ^www.uwmedicinetest.org
 
-    RewriteRule ^/birth-facility(.*)?$ /lp/birth-facility$1 [NC,L]
-    RewriteRule ^/breakthroughs(.*)?$ /lp/breakthroughs$1 [NC,L]
-    RewriteRule ^/lung-cancer(.*)?$ /lp/lung-cancer$1 [NC,L]
-    RewriteRule ^/uw-baby-pregnancy-app(.*)?$ /lp/uw-baby-pregnancy-app$1 [NC,L]
+    # RewriteRule ^/birth-facility(.*)?$ /lp/birth-facility$1 [NC,L]
+    # RewriteRule ^/breakthroughs(.*)?$ /lp/breakthroughs$1 [NC,L]
+    # RewriteRule ^/lung-cancer(.*)?$ /lp/lung-cancer$1 [NC,L]
+    # RewriteRule ^/uw-baby-pregnancy-app(.*)?$ /lp/uw-baby-pregnancy-app$1 [NC,L]
 
 </IfModule>
 
@@ -230,14 +224,9 @@
 
   ### Before we do any proxying, handle these redirects ###
   # Pattern-based redirects for launched pages. These pages are served from Drupal.
-  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org [OR]
+#  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
 
-#  ## Provide these folders from the /lp/ directory without lp in the URL: ##
-#  RewriteRule ^/birth-facility(.*)?$ /lp/birth-facility$1 [NC,L]
-#  RewriteRule ^/breakthroughs(.*)?$ /lp/breakthroughs$1 [NC,L]
-#  RewriteRule ^/lung-cancer(.*)?$ /lp/lung-cancer$1 [NC,L]
-#  RewriteRule ^/uw-baby-pregnancy-app(.*)?$ /lp/uw-baby-pregnancy-app$1 [NC,L]
-#
+
 #  ## Other rewrites: ##
 #  RewriteRule ^locations/(.*)/directions(/)?(?(2).*|$) "https://www.uwmedicine.org/locations/$1#directions-tab" [NE,L,R=301]
 #  RewriteRule ^locations/(.*)/care-providers(/)?(?(2).*|$) "https://www.uwmedicine.org/locations/$1#providers-tab" [NE,L,R=301]
@@ -252,8 +241,7 @@
 #  RewriteRule ^/node/255156$ https://www.uwmedicine.org/search/providers?s=&fs_p%5B0%5D=medical-service%3A10566 [NE,L,R=301]
 
 ### OLD EDUCATION REDIRECTS SERVED FROM ww2 ###
-  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org [OR]
-  RewriteCond %{HTTP_HOST} ^www.uwmedicinetest.org
+  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
 
   RewriteCond %{REQUEST_URI} ^/education(/)?(?(1).*|$)$
   RewriteCond %{REQUEST_URI} !^/education/Pages/default.aspx$
@@ -389,69 +377,69 @@
 
   ### SERVE THESE PAGES FROM www2.uwmedicine.org ###
   ### These can be removed when SharePoint is shut down ###
-#  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
-#
-#  RewriteCond %{REQUEST_URI} ^/dawgscare(/)?(?(1).*|$)$ [OR]
-#  RewriteCond %{REQUEST_URI} ^/we_care(/)?(?(1).*|$) [OR]
-#  RewriteCond %{REQUEST_URI} ^/services/obstetrics/uw-baby-pregnancy-app$ [OR]
-#  RewriteCond %{REQUEST_URI} ^/services/obstetrics/birth-facility$ [OR]
-#  RewriteCond %{REQUEST_URI} ^/services/obstetrics/PublishingImages(/)?(?(1).*|$) [OR]
-#  RewriteCond %{REQUEST_URI} ^/flu(/)?(?(1).*|$) [OR]
-#  RewriteCond %{REQUEST_URI} ^/breakthroughs(/)?(?(1).*|$) [OR]
-#  RewriteCond %{REQUEST_URI} ^/aco(/)?(?(1).*|$) [OR]
-#  RewriteCond %{REQUEST_URI} ^/heart-health(/)?(?(1).*|$) [OR]
-#  RewriteCond %{REQUEST_URI} ^/public_kiosk_links(/)?(?(1).*|$) [OR]
-#  RewriteCond %{REQUEST_URI} ^/boeing-enrollment(/)?(?(1).*|$) [OR]
-#  RewriteCond %{REQUEST_URI} ^/lung-cancer(/)?(?(1).*|$) [OR]
-#  RewriteCond %{REQUEST_URI} ^/Pages/lobby-screen.aspx$ [OR]
-#  RewriteCond %{REQUEST_URI} ^/inolympia(/)?(?(1).*|$) [OR]
-#  RewriteCond %{REQUEST_URI} ^/insmokeypoint(/)?(?(1).*|$) [OR]
-#  RewriteCond %{REQUEST_URI} ^/inshoreline(/)?(?(1).*|$) [OR]
-#  RewriteCond %{REQUEST_URI} ^/inballard(/)?(?(1).*|$) [OR]
-#  RewriteCond %{REQUEST_URI} ^/som(/)?(?(1).*|$) [OR]
-#  RewriteCond %{REQUEST_URI} ^/referrals/refer-a-patient(/)?(?(1).*|$) [OR]
-#  RewriteCond %{REQUEST_URI} ^/PublishingImages(/)?(?(1).*|$) [OR]
-#  RewriteCond %{REQUEST_URI} ^/Style%20Library(/)?(?(1).*|$) [NC,OR]
-#  RewriteCond %{REQUEST_URI} ^/style\ library(/)?(?(1).*|$) [NC,OR]
-#  RewriteCond %{REQUEST_URI} ^/_Layouts(/)?(?(1).*|$) [NC,OR]
-#  RewriteCond %{REQUEST_URI} ^/ScriptResource.axd.* [OR]
-#  RewriteCond %{REQUEST_URI} ^/WebResource.axd.* [OR]
-#  RewriteCond %{REQUEST_URI} ^/locations/.*/PublishingImages/.* [OR]
-#  RewriteCond %{REQUEST_URI} ^/locations/primary-care-belltown/internal-medicine-residency-program/? [OR]
-#  RewriteCond %{REQUEST_URI} ^/locations/primary-care-kent-des-moines/pediatric/? [OR]
-#  RewriteCond %{REQUEST_URI} ^/locations/primary-care-kent-des-moines/residencia-pediatrica/? [OR]
-#  RewriteCond %{REQUEST_URI} ^/locations/primary-care-northgate/family-medicine-residency-program/? [OR]
-#  RewriteCond %{REQUEST_URI} ^/locations/orcas-island-clinic/faqs/? [OR]
-#  RewriteCond %{REQUEST_URI} ^/locations/orcas-island-clinic/welcome/? [OR]
-#  RewriteCond %{REQUEST_URI} ^/locations/lopez-island-clinic/welcome/? [OR]
-#  RewriteCond %{REQUEST_URI} ^/locations/lopez-island-clinic/faqs/? [OR]
-#  RewriteCond %{REQUEST_URI} ^/services/urgent-care/tips/? [OR]
-#  RewriteCond %{REQUEST_URI} ^/patient-resources/email-patient(/)?(?(1).*|$)
-#
-#  RewriteRule ^(.*)$ - [CO=uwm-proxied-page-visit:true:%{HTTP_HOST}:0:/,C]
-#  RewriteRule ^(.*)$ https://www2.uwmedicine.org%{REQUEST_URI} [L,P]
+  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
+
+  RewriteCond %{REQUEST_URI} ^/dawgscare(/)?(?(1).*|$)$ [OR]
+  RewriteCond %{REQUEST_URI} ^/we_care(/)?(?(1).*|$) [OR]
+  RewriteCond %{REQUEST_URI} ^/services/obstetrics/uw-baby-pregnancy-app$ [OR]
+  RewriteCond %{REQUEST_URI} ^/services/obstetrics/birth-facility$ [OR]
+  RewriteCond %{REQUEST_URI} ^/services/obstetrics/PublishingImages(/)?(?(1).*|$) [OR]
+  RewriteCond %{REQUEST_URI} ^/flu(/)?(?(1).*|$) [OR]
+  RewriteCond %{REQUEST_URI} ^/breakthroughs(/)?(?(1).*|$) [OR]
+  RewriteCond %{REQUEST_URI} ^/aco(/)?(?(1).*|$) [OR]
+  RewriteCond %{REQUEST_URI} ^/heart-health(/)?(?(1).*|$) [OR]
+  RewriteCond %{REQUEST_URI} ^/public_kiosk_links(/)?(?(1).*|$) [OR]
+  RewriteCond %{REQUEST_URI} ^/boeing-enrollment(/)?(?(1).*|$) [OR]
+  RewriteCond %{REQUEST_URI} ^/lung-cancer(/)?(?(1).*|$) [OR]
+  RewriteCond %{REQUEST_URI} ^/Pages/lobby-screen.aspx$ [OR]
+  RewriteCond %{REQUEST_URI} ^/inolympia(/)?(?(1).*|$) [OR]
+  RewriteCond %{REQUEST_URI} ^/insmokeypoint(/)?(?(1).*|$) [OR]
+  RewriteCond %{REQUEST_URI} ^/inshoreline(/)?(?(1).*|$) [OR]
+  RewriteCond %{REQUEST_URI} ^/inballard(/)?(?(1).*|$) [OR]
+  RewriteCond %{REQUEST_URI} ^/som(/)?(?(1).*|$) [OR]
+  RewriteCond %{REQUEST_URI} ^/referrals/refer-a-patient(/)?(?(1).*|$) [OR]
+  RewriteCond %{REQUEST_URI} ^/PublishingImages(/)?(?(1).*|$) [OR]
+  RewriteCond %{REQUEST_URI} ^/Style%20Library(/)?(?(1).*|$) [NC,OR]
+  RewriteCond %{REQUEST_URI} ^/style\ library(/)?(?(1).*|$) [NC,OR]
+  RewriteCond %{REQUEST_URI} ^/_Layouts(/)?(?(1).*|$) [NC,OR]
+  RewriteCond %{REQUEST_URI} ^/ScriptResource.axd.* [OR]
+  RewriteCond %{REQUEST_URI} ^/WebResource.axd.* [OR]
+  RewriteCond %{REQUEST_URI} ^/locations/.*/PublishingImages/.* [OR]
+  RewriteCond %{REQUEST_URI} ^/locations/primary-care-belltown/internal-medicine-residency-program/? [OR]
+  RewriteCond %{REQUEST_URI} ^/locations/primary-care-kent-des-moines/pediatric/? [OR]
+  RewriteCond %{REQUEST_URI} ^/locations/primary-care-kent-des-moines/residencia-pediatrica/? [OR]
+  RewriteCond %{REQUEST_URI} ^/locations/primary-care-northgate/family-medicine-residency-program/? [OR]
+  RewriteCond %{REQUEST_URI} ^/locations/orcas-island-clinic/faqs/? [OR]
+  RewriteCond %{REQUEST_URI} ^/locations/orcas-island-clinic/welcome/? [OR]
+  RewriteCond %{REQUEST_URI} ^/locations/lopez-island-clinic/welcome/? [OR]
+  RewriteCond %{REQUEST_URI} ^/locations/lopez-island-clinic/faqs/? [OR]
+  RewriteCond %{REQUEST_URI} ^/services/urgent-care/tips/? [OR]
+  RewriteCond %{REQUEST_URI} ^/patient-resources/email-patient(/)?(?(1).*|$)
+
+  RewriteRule ^(.*)$ - [CO=uwm-proxied-page-visit:true:%{HTTP_HOST}:0:/,C]
+  RewriteRule ^(.*)$ https://www2.uwmedicine.org%{REQUEST_URI} [L,P]
 
 
-#
-#  ### SERVE THESE PAGES FROM stevie.cms.uwmedicine.org ###
-#  ### These can be removed when cms.uwmedicine.org is decomissioned ###
-#  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org [OR]
-#
-#  RewriteCond %{REQUEST_URI} ^/?$ [OR]
-#  RewriteCond %{REQUEST_URI} ^/services/primary-care/flu$ [OR]
-#  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/maternity-care/labor-delivery-tours$ [OR]
-#  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/maternity-care/labor-delivery-tours/obstetrics-tour-registration [OR]
-#  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/preparing-for-you [OR]
-#  RewriteCond %{REQUEST_URI} ^/services/primary-care/behavioral-health-integration-program [OR]
-#  RewriteCond %{REQUEST_URI} ^/locations/harborview-medical-center/centers-of-emphasis$
-#
-#  RewriteRule ^(.*)$ https://stevie.cms.uwmedicine.org%{REQUEST_URI} [L,P]
+
+  ### SERVE THESE PAGES FROM stevie.cms.uwmedicine.org ###
+  ### These can be removed when cms.uwmedicine.org is decomissioned ###
+  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
+
+  RewriteCond %{REQUEST_URI} ^/?$ [OR]
+  RewriteCond %{REQUEST_URI} ^/services/primary-care/flu$ [OR]
+  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/maternity-care/labor-delivery-tours$ [OR]
+  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/maternity-care/labor-delivery-tours/obstetrics-tour-registration [OR]
+  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/preparing-for-you [OR]
+  RewriteCond %{REQUEST_URI} ^/services/primary-care/behavioral-health-integration-program [OR]
+  RewriteCond %{REQUEST_URI} ^/locations/harborview-medical-center/centers-of-emphasis$
+
+  RewriteRule ^(.*)$ https://stevie.cms.uwmedicine.org%{REQUEST_URI} [L,P]
 
 
 
   ### SERVE THESE PAGES FROM cms.uwmedicine.org ###
   ### These can be removed when medical services and make an appointment are served from stevie ###
-  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org [OR]
+  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
 
   #RewriteCond %{REQUEST_URI} ^/index.php$ [OR]
   #RewriteCond %{REQUEST_URI} ^/(user|admin|themes|core|simplesaml|sites|libraries|profiles|modules|node|sitemaps|lp)(/)?(?(1).*|$) [OR]
@@ -634,3 +622,5 @@
 #
 #
 ##
+
+

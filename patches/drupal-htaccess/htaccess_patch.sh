@@ -21,6 +21,8 @@ patch_file=$1
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
+echo ""
+echo ""
 echo "UWM-CMS: Running htaccess_patch.sh to add our custom htaccess rules."
 test=`patch -p1 -N --dry-run --silent < $patch_file 2>&1`
 
@@ -31,6 +33,7 @@ test=`patch -p1 -N --dry-run --silent < $patch_file 2>&1`
 
 if [ $? -eq 0 ];
 then
+
 
     echo "UWM-CMS: Applying our patch now:"
     echo "UWM-CMS: patch -p1 -N < $patch_file"
