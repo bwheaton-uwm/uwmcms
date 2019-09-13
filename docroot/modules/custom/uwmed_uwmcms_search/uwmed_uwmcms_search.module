@@ -515,8 +515,8 @@ function _uwmed_uwmcms_search_views_pre_render_set_results_title(ViewExecutable 
     $keywords = trim($input['s']);
   }
 
-  // Retrieve a Medical Specialty (or interim Areas of Expertise) term name from
-  // facet.
+  // Retrieve Medical Specialty (or interim Areas of Expertise) term name(s)
+  // from facet.
   $facet_key = NULL;
   switch ($view_ex->id()) {
 
@@ -530,11 +530,14 @@ function _uwmed_uwmcms_search_views_pre_render_set_results_title(ViewExecutable 
 
   }
 
-  $specialty = NULL;
+  // There may be links to pre-filtered searches with multiple values selected
+  // in the facet (even if the user cannot select multiple in the dropdown).
+  $specialty = [];
   if (!empty($facet_key) && !empty($input[$facet_key])) {
     // Note: for previously-used Medical Service vocabulary, this key was:
     // 'medical-service:'.
     $prefix = 'expertise:';
+    $prefix = 'medical-service:';
 
     foreach ($input[$facet_key] as $facet_val) {
       if (strpos($facet_val, $prefix) === 0) {
@@ -546,16 +549,13 @@ function _uwmed_uwmcms_search_views_pre_render_set_results_title(ViewExecutable 
         if (is_numeric($specialty_value)) {
           $term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load((int) $specialty_value);
           if (!empty($term)) {
-            $specialty = $term->label();
+            $specialty[] = $term->label();
           }
         }
         else {
-          $specialty = $specialty_value;
+          $specialty[] = $specialty_value;
         }
-
-        break;
       }
-
     }
   }
 
@@ -586,6 +586,9 @@ function _uwmed_uwmcms_search_views_pre_render_set_results_title(ViewExecutable 
   }
 
   if (!empty($specialty)) {
+
+    // Combine multiple terms, if there are.
+    $specialty = implode(", ", $specialty);
 
     // The term for Specialty may have only the first letter uppercased. Set
     // the first letter of each word to uppercase, to make it appear here as a
