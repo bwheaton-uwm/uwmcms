@@ -70,6 +70,10 @@ function uwmed_uwmcms_search_views_pre_render(ViewExecutable $view_ex) {
     case 'uwm_providers_search':
       _uwmed_uwmcms_search_views_pre_render_uwm_providers_search($view_ex);
       break;
+
+    case 'uwm_locations_geo_search':
+      _uwmed_uwmcms_search_views_pre_render_uwm_locations_geo_search($view_ex);
+      break;
   }
 
 }
@@ -296,6 +300,7 @@ function uwmed_uwmcms_search_preprocess_html(&$variables) {
   // @see _uwmed_uwmcms_search_views_pre_render_set_results_title()
   if (strpos($route_match->getRouteName(), 'view.') === 0 && in_array($route_params['view_id'], [
     'uwm_providers_search',
+    'uwm_locations_geo_search',
   ]) && !empty($variables['page']['#title'])) {
 
     $current_title = $variables['page']['#title'];
@@ -489,6 +494,13 @@ function _uwmed_uwmcms_search_views_pre_render_uwm_providers_search(ViewExecutab
 }
 
 /**
+ * Alter the uwm_locations_geo_search view in the pre_render phase.
+ */
+function _uwmed_uwmcms_search_views_pre_render_uwm_locations_geo_search(ViewExecutable $view_ex) {
+  _uwmed_uwmcms_search_views_pre_render_set_results_title($view_ex);
+}
+
+/**
  * Set a search view title according to results in the pre_render phase.
  */
 function _uwmed_uwmcms_search_views_pre_render_set_results_title(ViewExecutable $view_ex) {
@@ -505,12 +517,26 @@ function _uwmed_uwmcms_search_views_pre_render_set_results_title(ViewExecutable 
 
   // Retrieve a Medical Specialty (or interim Areas of Expertise) term name from
   // facet.
+  $facet_key = NULL;
+  switch ($view_ex->id()) {
+
+    case 'uwm_providers_search':
+      $facet_key = 'fs_p';
+      break;
+
+    case 'uwm_locations_geo_search':
+      $facet_key = 'f';
+      break;
+
+  }
+
   $specialty = NULL;
-  if (!empty($input['fs_p'])) {
-    // Note: for Medical Service vocabulary, this was: 'medical-service:'.
+  if (!empty($facet_key) && !empty($input[$facet_key])) {
+    // Note: for previously-used Medical Service vocabulary, this key was:
+    // 'medical-service:'.
     $prefix = 'expertise:';
 
-    foreach ($input['fs_p'] as $facet_val) {
+    foreach ($input[$facet_key] as $facet_val) {
       if (strpos($facet_val, $prefix) === 0) {
         $specialty_value = substr($facet_val, strlen($prefix));
 
@@ -533,12 +559,32 @@ function _uwmed_uwmcms_search_views_pre_render_set_results_title(ViewExecutable 
     }
   }
 
-  $title = NULL;
-  $head_title = NULL;
-
   // Build the results title incorporating Specialty if used, otherwise keywords
   // if used, and number of results. The Specialty filter takes precedence over
   // keywords.
+  $title = NULL;
+  $head_title = NULL;
+
+  $translation_mgr = \Drupal::translation();
+  $args = [];
+  $conjunction = NULL;
+
+  switch ($view_ex->id()) {
+
+    case 'uwm_providers_search':
+      $args['@result_type_singular'] = t("provider");
+      $args['@result_type_plural'] = t("providers");
+      $conjunction = "in";
+      break;
+
+    case 'uwm_locations_geo_search':
+      $args['@result_type_singular'] = t("location");
+      $args['@result_type_plural'] = t("locations");
+      $conjunction = "for";
+      break;
+
+  }
+
   if (!empty($specialty)) {
 
     // The term for Specialty may have only the first letter uppercased. Set
@@ -547,22 +593,36 @@ function _uwmed_uwmcms_search_views_pre_render_set_results_title(ViewExecutable 
     // @see uwmbase/components/search/search-dropdown/search-dropdown.html.twig
     $specialty = ucwords($specialty);
 
-    $title = t("@count providers in @specialty", [
-      '@count' => $count,
+    $args = array_merge($args, [
       '@specialty' => $specialty,
     ]);
 
-    $head_title = t("@count providers at UW Medicine in @specialty", [
-      '@count' => $count,
-      '@specialty' => $specialty,
-    ]);
+    $title = $translation_mgr->formatPlural(
+      $count,
+      "1 @result_type_singular {$conjunction} @specialty",
+      "@count @result_type_plural {$conjunction} @specialty",
+      $args
+    );
+
+    $head_title = $translation_mgr->formatPlural(
+      $count,
+      "1 @result_type_singular at UW Medicine {$conjunction} @specialty",
+      "@count @result_type_plural at UW Medicine {$conjunction} @specialty",
+      $args
+    );
 
   }
   elseif (!empty($keywords)) {
-    $title = t("@count providers found for &ldquo;@keywords&rdquo;", [
-      '@count' => $count,
-      '@keywords' => $keywords,
-    ]);
+
+    $title = $translation_mgr->formatPlural(
+      $count,
+      "1 @result_type_singular found for &ldquo;@keywords&rdquo;",
+      "@count @result_type_plural found for &ldquo;@keywords&rdquo;",
+      array_merge($args, [
+        '@keywords' => $keywords,
+      ])
+    );
+
   }
   else {
 
@@ -579,9 +639,14 @@ function _uwmed_uwmcms_search_views_pre_render_set_results_title(ViewExecutable 
 
     // Set a generic results title if search was run.
     if ($searched) {
-      $title = t("@count providers found", [
-        '@count' => $count,
-      ]);
+
+      $title = $translation_mgr->formatPlural(
+        $count,
+        "1 @result_type_singular found",
+        "@count @result_type_plural found",
+        $args
+      );
+
     }
   }
 
