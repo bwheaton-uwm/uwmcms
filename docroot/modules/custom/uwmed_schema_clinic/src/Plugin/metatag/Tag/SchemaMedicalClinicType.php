@@ -14,7 +14,7 @@ use Drupal\schema_metatag\Plugin\metatag\Tag\SchemaTypeBase;
  * @MetatagTag(
  *   id = "schema_clinic_type",
  *   label = @Translation("@type"),
- *   description = @Translation("REQUIRED. The type of medical clinic."),
+ *   description = @Translation("REQUIRED. The type of schema object."),
  *   name = "@type",
  *   group = "schema_medical_clinic",
  *   weight = 0,

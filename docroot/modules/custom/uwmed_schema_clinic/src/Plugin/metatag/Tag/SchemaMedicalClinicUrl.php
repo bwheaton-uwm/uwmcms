@@ -14,7 +14,7 @@ use Drupal\schema_metatag\Plugin\metatag\Tag\SchemaNameBase;
  * @MetatagTag(
  *   id = "schema_clinic_url",
  *   label = @Translation("URL"),
- *   description = @Translation("REQUIRED BY GOOGLE? The URL of the clinic web page."),
+ *   description = @Translation("The URL of the clinic web page."),
  *   name = "url",
  *   group = "schema_medical_clinic",
  *   weight = 15,

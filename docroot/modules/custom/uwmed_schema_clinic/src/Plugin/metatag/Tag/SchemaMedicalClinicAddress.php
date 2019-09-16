@@ -16,7 +16,7 @@ use Drupal\schema_metatag\Plugin\metatag\Tag\SchemaAddressBase;
  * @MetatagTag(
  *   id = "schema_clinic_address",
  *   label = @Translation("Address"),
- *   description = @Translation("REQUIRED BY GOOGLE? The address of the clinic."),
+ *   description = @Translation("RECOMMENDED BY GOOGLE. The address of the clinic."),
  *   name = "address",
  *   group = "schema_medical_clinic",
  *   weight = 4,

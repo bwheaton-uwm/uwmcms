@@ -13,7 +13,10 @@ use Drupal\schema_metatag\Plugin\metatag\Tag\SchemaPivotTrait;
  * - 'name' should match the Schema.org element name.
  * - 'group' should match the id of the group that defines the Schema.org type.
  *
- * @TODO: deal with terms containing commas getting exploded
+ * Note: this depends on two patches to prevent values containing commas from
+ * being exploded to multiple values:
+ * https://www.drupal.org/project/metatag/issues/3067803
+ * https://www.drupal.org/project/schema_metatag/issues/2976935
  *
  * @MetatagTag(
  *   id = "schema_clinic_medical_specialty",
