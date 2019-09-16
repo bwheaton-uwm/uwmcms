@@ -207,7 +207,7 @@ content:
     third_party_settings: {  }
   field_res_node_videos:
     type: entity_browser_entity_reference
-    weight: 34
+    weight: 35
     settings:
       entity_browser: media_browser
       field_widget_display: rendered_entity
@@ -269,7 +269,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_res_visit_type_id:
-    weight: 35
+    weight: 34
     settings:
       placeholder: ''
     third_party_settings: {  }

@@ -10,7 +10,7 @@ field_name: field_res_visit_type_id
 entity_type: node
 bundle: res_provider
 label: 'Visit Type ID'
-description: ''
+description: 'If the open scheduling option is enabled, the Book Online will use these Visit Type ID to create their unique booking link. If no IDs are set, it will default to a standard booking ID (9000)'
 required: false
 translatable: false
 default_value: {  }
