@@ -125,11 +125,11 @@
               @TODO check if multiple booking IDs exist & create multple booking options w/
               different IDs
             #}
-            {% set booking_id = node.field_res_visit_type_id.0.value ? node.field_res_visit_type_id.0.value : 9000 %}
+            {% set visit_type_id = node.field_res_visit_type_id.0.value ? node.field_res_visit_type_id.0.value : 9000 %}
 
             {# Determine whether or not to display the "Book Online" button. #}
             {% if node.field_res_is_open_scheduling.0.value == 1 and node.field_res_ser_id.0.value %}
-              {% set open_scheduling_url = "https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id=#{node.field_res_ser_id.0.value}&vt=#{booking_id}&view=plain" %}
+              {% set open_scheduling_url = "https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id=#{node.field_res_ser_id.0.value}&vt=#{visit_type_id}&view=plain" %}
 {#              <a class="provider-card__appointments-buttons btn btn-outline-primary provider-card__book-online" href="{{ open_scheduling_url }}" >#}
 {#              {{ 'Book online'|t }}</a>#}
 
