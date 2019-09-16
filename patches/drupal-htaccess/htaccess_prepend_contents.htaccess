@@ -94,17 +94,17 @@
     RewriteRule ^robots.txt robots_block.txt [L]
 
     # For www.uwmedicine,org, redirect old marketing urls:
-    RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
+    # RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
 
     # Redirect education pages to their new site
     # RewriteRule ^education/?$ https://education.uwmedicine.org/ [L,R=301]
     # RewriteRule ^education/(.*)$ https://education.uwmedicine.org/$1 [L,R=301]
 
     # Redirect these urls to their new, page tab urls:
-    RewriteRule ^locations/(.*)/directions(.*) locations/$1#directions-tab [NE,L,R=301]
-    RewriteRule ^locations/(.*)/care-providers(.*) locations/$1#providers-tab [NE,L,R=301]
-    RewriteRule ^services/urgent-care/(providers|locations)$ services/urgent-care [L,R=301]
-    RewriteRule ^services/urgent-care/(.+)#911-calls$ services/urgent-care#block-emergencymedicine [NE,L,R=301]
+    # RewriteRule ^locations/(.*)/directions(.*) locations/$1#directions-tab [NE,L,R=301]
+    # RewriteRule ^locations/(.*)/care-providers(.*) locations/$1#providers-tab [NE,L,R=301]
+    # RewriteRule ^services/urgent-care/(providers|locations)$ services/urgent-care [L,R=301]
+    # RewriteRule ^services/urgent-care/(.+)#911-calls$ services/urgent-care#block-emergencymedicine [NE,L,R=301]
 
     # RewriteRule ^services/urgent-care/(.+)$ "https://www.uwmedicine.org/locations/primary-care-$1 [L,R=301]
     # RewriteRule ^services/urgent-care/(.+)$ "https://www.uwmedicine.org/locations/primary-care-$1" [L,R=301]
@@ -125,10 +125,10 @@
 ####
 <IfModule mod_rewrite.c>
 
-    RewriteEngine on
+    # RewriteEngine on
 
-    RewriteCond %{HTTP_HOST} ^www.uwmedicine.org [OR]
-    RewriteCond %{HTTP_HOST} ^www.uwmedicinetest.org
+    # RewriteCond %{HTTP_HOST} ^www.uwmedicine.org [OR]
+    # RewriteCond %{HTTP_HOST} ^www.uwmedicinetest.org
 
     # RewriteRule ^/birth-facility(.*)?$ /lp/birth-facility$1 [NC,L]
     # RewriteRule ^/breakthroughs(.*)?$ /lp/breakthroughs$1 [NC,L]
@@ -149,8 +149,10 @@
     RewriteEngine on
 
 #    RewriteCond %{HTTP_HOST} ^www.uwmedicine.org [OR]
+#    RewriteRule ^(.*)$ https://stevie.cms.uwmedicine.org%{REQUEST_URI} [L,P]
+
     RewriteCond %{HTTP_HOST} ^www.uwmedicinetest.org
-    RewriteRule ^(.*)$ https://stevie.cms.uwmedicine.org%{REQUEST_URI} [L,P]
+    RewriteRule ^(.*)$ https://stevie.cmsdev.uwmedicine.org%{REQUEST_URI} [L,P]
 
 </IfModule>
 
@@ -166,8 +168,8 @@
   RewriteEngine on
 
   ### Redirect ALL education pages to //education.uwmedicine.org ###
-#  RewriteRule ^education/?$         https://education.uwmedicine.org/ [L,R=301]
-#  RewriteRule ^education/(.*)$         https://education.uwmedicine.org/$1 [L,R=301]
+#  # RewriteRule ^education/?$         https://education.uwmedicine.org/ [L,R=301]
+#  # RewriteRule ^education/(.*)$         https://education.uwmedicine.org/$1 [L,R=301]
 
 #
 #  ## SSL RULES ##
@@ -227,7 +229,6 @@
 #  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
 
 
-#  ## Other rewrites: ##
 #  RewriteRule ^locations/(.*)/directions(/)?(?(2).*|$) "https://www.uwmedicine.org/locations/$1#directions-tab" [NE,L,R=301]
 #  RewriteRule ^locations/(.*)/care-providers(/)?(?(2).*|$) "https://www.uwmedicine.org/locations/$1#providers-tab" [NE,L,R=301]
 #  RewriteRule ^services/urgent-care/(providers|locations)$ "https://www.uwmedicine.org/services/urgent-care" [L,R=301]
