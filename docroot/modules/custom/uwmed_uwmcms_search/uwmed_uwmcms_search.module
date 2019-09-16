@@ -9,6 +9,7 @@ use Drupal\Core\Form\FormState;
 use Drupal\search_api\Query\QueryInterface;
 use Solarium\Core\Query\QueryInterface as SolariumQueryInterface;
 use Drupal\views\ViewExecutable;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * Implements hook_page_attachments_alter().
@@ -308,6 +309,7 @@ function uwmed_uwmcms_search_preprocess_html(&$variables) {
     $original_head_title = $variables['head_title']['title'];
 
     // Find the original page title from view configuration.
+    /** @var \Drupal\views\Entity\View $view */
     $view = \Drupal::entityTypeManager()->getStorage('view')->load($route_params['view_id']);
     $display = $view->getDisplay($route_params['display_id']);
     if (!empty($display['display_options']['title'])) {
@@ -371,11 +373,30 @@ function uwmed_uwmcms_search_preprocess_block__page_title_block(&$variables) {
     // If a search view alteration has set a title string containing a different
     // page title and head title, remove the head title before rendering this
     // block.
+    // @TODO: This is weird and messy - but it seems there is no way to access
+    // the ViewExecutable in preprocess to use it to build the head_title.
     // @see _uwmed_uwmcms_search_views_pre_render_set_results_title()
-    $title = $variables['content']['#title']['#markup'];
-    if (strpos($title, '[head_title]') !== FALSE) {
-      $titles = explode('[head_title]', $title);
-      $variables['content']['#title']['#markup'] = $titles[0];
+    $title_str = NULL;
+
+    if (is_array($variables['content']['#title']) && !empty($variables['content']['#title']['#markup'])) {
+      $title_str = $variables['content']['#title']['#markup'];
+    }
+    elseif ($variables['content']['#title'] instanceof TranslatableMarkup) {
+      // Note: #title may also be a TranslatableMarkup object - to override it
+      // we would need to create a new TranslatableMarkup object and pass in the
+      // modified title as a variable. The code linter gives a warning about
+      // passing variables to t(), so skip that case as we don't need it now
+      // (and this is not a great implementation anyway).
+    }
+
+    // Check for custom delimiter.
+    if (!empty($title_str) && strpos($title_str, '[head_title]') !== FALSE) {
+      $titles = explode('[head_title]', $title_str);
+      $title_str = $titles[0];
+
+      if (is_array($variables['content']['#title']) && !empty($variables['content']['#title']['#markup'])) {
+        $variables['content']['#title']['#markup'] = $title_str;
+      }
     }
 
   }
@@ -658,8 +679,8 @@ function _uwmed_uwmcms_search_views_pre_render_set_results_title(ViewExecutable 
     // pass this to preprocess (where head title must be set) by placing both
     // in a single string, separated by custom delimiter token. It is cleaned
     // out of the page title in preprocessing that block.
-    // This is weird, but seems better than extracting the view info in
-    // preprocess.
+    // @TODO: This is weird and messy - but it seems there is no way to access
+    // the ViewExecutable in preprocess to use it to build the head_title.
     // @see uwmed_uwmcms_search_preprocess_html()
     // @see uwmed_uwmcms_search_preprocess_block__page_title_block()
     $view_ex->setTitle($title . (!empty($head_title) ? ('[head_title]' . $head_title) : ''));
