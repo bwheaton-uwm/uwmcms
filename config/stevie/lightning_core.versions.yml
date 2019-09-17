@@ -210,3 +210,4 @@ schema_web_page: 1.3.0
 schema_web_site: 1.3.0
 schema_organization: 1.3.0
 uwmed_schema_physician: 0.0.0
+uwmed_uwmcms_webforms: 0.0.0

@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for the UW Medicine Webforms module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter() for 'webform_submission_acn_request_add_form'.
+ *
+ * Alters the acn_request webform for new submissions (not editing existing).
+ */
+function uwmed_uwmcms_webforms_form_webform_submission_acn_request_add_form_alter(&$form, FormStateInterface $form_state) {
+
+  // Set a custom submit handler. Though this is not the "real" actions element,
+  // it passes it to the two actual ones. (Not sure why we can't alter those
+  // directly in after_build, since they are present at that point.)
+  $form['actions']['submit']['#submit'][] = '_uwmed_uwmcms_webforms_acn_request_submit';
+
+}
+
+/**
+ * Custom submit handler for acn_request form.
+ *
+ * Handle the two submit buttons differently - for Submit and Add More, set a
+ * message and reload (and clear) the form.
+ */
+function _uwmed_uwmcms_webforms_acn_request_submit(array &$form, FormStateInterface $form_state) {
+
+  $button = $form_state->getTriggeringElement();
+
+  // Submit buttons are distinguishable in the POST (and Form API) only if they
+  // have distinct `#name` attributes. The `#name` attribute is not exposed in
+  // the config form for submit elements; however, it can be provided by editing
+  // the yaml source and setting the `#submit__name` property.
+  // @see https://www.drupal.org/project/webform/issues/3069240
+  if ($button['#name'] === 'submit_another') {
+
+    // We want to reload the form page, but empty the values. There seems to be
+    // no method to unset the stored redirect, after setRedirect() or
+    // setRedirectUrl() has been called.
+    // "Redirecting" to the current page works to clear the form values, while
+    // $form_state->disableRedirect() kept them.
+    $route_match = \Drupal::routeMatch();
+    $form_state->setRedirect($route_match->getRouteName(), $route_match->getRawParameters()->all());
+
+    // TODO: Ideally this message would be configurable... markup element with
+    // access false initially, altered here?
+    drupal_set_message(t("Thank you for submitting your clinic. You may continue to submit another clinic."));
+
+  }
+}
