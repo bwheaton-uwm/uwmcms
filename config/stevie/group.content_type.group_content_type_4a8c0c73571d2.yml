@@ -1,0 +1,19 @@
+uuid: f7cc7a63-1a13-46c8-93ab-b61004446d68
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.owners_and_experts
+    - node.type.res_provider
+  module:
+    - gnode
+    - node
+id: group_content_type_4a8c0c73571d2
+label: 'Content Owners and Experts: Group node (Res Provider)'
+description: 'Adds <em class="placeholder">Res Provider</em> content to groups both publicly and privately.'
+group_type: owners_and_experts
+content_plugin: 'group_node:res_provider'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: true

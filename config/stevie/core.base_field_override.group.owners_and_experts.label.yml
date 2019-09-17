@@ -1,0 +1,18 @@
+uuid: 95508195-22eb-4b9f-a3b3-62aacc2f92c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.owners_and_experts
+id: group.owners_and_experts.label
+field_name: label
+entity_type: group
+bundle: owners_and_experts
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

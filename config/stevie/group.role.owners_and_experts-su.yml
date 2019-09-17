@@ -1,0 +1,14 @@
+uuid: 9f604ca6-d862-4fdb-aac5-fd811506fd81
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.owners_and_experts
+id: owners_and_experts-su
+label: 'Subject Matter Expert'
+weight: 5
+internal: false
+audience: member
+group_type: owners_and_experts
+permissions_ui: true
+permissions: {  }

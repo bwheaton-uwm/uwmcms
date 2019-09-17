@@ -1,0 +1,19 @@
+uuid: 75db36cd-cfc5-4105-a085-0ee044ac77d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.owners_and_experts
+    - node.type.uwm_hub_page
+  module:
+    - gnode
+    - node
+id: group_content_type_2e9fbe6ba92ff
+label: 'Content Owners and Experts: Group node (Hub page)'
+description: 'Adds <em class="placeholder">Hub page</em> content to groups both publicly and privately.'
+group_type: owners_and_experts
+content_plugin: 'group_node:uwm_hub_page'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: true

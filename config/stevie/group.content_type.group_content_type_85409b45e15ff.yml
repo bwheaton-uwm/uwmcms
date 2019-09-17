@@ -1,0 +1,19 @@
+uuid: 8bbd6c3d-0fa6-429d-b78a-377210a2c625
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.owners_and_experts
+    - node.type.uwm_homepage
+  module:
+    - gnode
+    - node
+id: group_content_type_85409b45e15ff
+label: 'Content Owners and Experts: Group node (Homepage)'
+description: 'Adds <em class="placeholder">Homepage</em> content to groups both publicly and privately.'
+group_type: owners_and_experts
+content_plugin: 'group_node:uwm_homepage'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: true

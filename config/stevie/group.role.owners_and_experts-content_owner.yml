@@ -1,0 +1,14 @@
+uuid: 30201b20-7dee-43e8-b421-6428bb7f9557
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.owners_and_experts
+id: owners_and_experts-content_owner
+label: 'Content Owner'
+weight: 4
+internal: false
+audience: member
+group_type: owners_and_experts
+permissions_ui: true
+permissions: {  }

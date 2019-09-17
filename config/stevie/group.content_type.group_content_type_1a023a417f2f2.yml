@@ -1,0 +1,19 @@
+uuid: 647b6f96-22b1-4463-98de-a508c96f2df7
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.owners_and_experts
+    - node.type.uwm_quiz
+  module:
+    - gnode
+    - node
+id: group_content_type_1a023a417f2f2
+label: 'Content Owners and Experts: Group node (Quiz)'
+description: 'Adds <em class="placeholder">Quiz</em> content to groups both publicly and privately.'
+group_type: owners_and_experts
+content_plugin: 'group_node:uwm_quiz'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: true

@@ -1,0 +1,14 @@
+uuid: 8692d426-9841-418c-ae48-76397f3887c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.owners_and_experts
+id: owners_and_experts-member
+label: Member
+weight: -100
+internal: true
+audience: member
+group_type: owners_and_experts
+permissions_ui: true
+permissions: {  }

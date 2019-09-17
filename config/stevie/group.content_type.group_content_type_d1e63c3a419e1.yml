@@ -1,0 +1,19 @@
+uuid: e06a98ff-a9f1-48cb-a95b-23174c4e1e27
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.owners_and_experts
+    - node.type.uwm_condition_spotlight
+  module:
+    - gnode
+    - node
+id: group_content_type_d1e63c3a419e1
+label: 'Content Owners and Experts: Group node (Condition Spotlight)'
+description: 'Adds <em class="placeholder">Condition Spotlight</em> content to groups both publicly and privately.'
+group_type: owners_and_experts
+content_plugin: 'group_node:uwm_condition_spotlight'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: true

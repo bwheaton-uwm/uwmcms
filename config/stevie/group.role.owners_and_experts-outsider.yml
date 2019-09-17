@@ -1,0 +1,14 @@
+uuid: 7f14be13-8a68-4b51-ac3b-3348c095f80d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.owners_and_experts
+id: owners_and_experts-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: owners_and_experts
+permissions_ui: true
+permissions: {  }
