@@ -19,6 +19,34 @@ function uwmed_uwmcms_webforms_form_webform_submission_acn_request_add_form_alte
   // directly in after_build, since they are present at that point.)
   $form['actions']['submit']['#submit'][] = '_uwmed_uwmcms_webforms_acn_request_submit';
 
+  // Add custom validation for Contact Phone field.
+  if (!empty($form['elements']['contact_information']['contact_phone'])) {
+    $form['elements']['contact_information']['contact_phone']['#element_validate'][] = '_uwmed_uwmcms_webforms_contact_phone_element_validate';
+  }
+
+}
+
+/**
+ * Custom #element_validate for Contact Phone field.
+ *
+ * Loosely check phone number format: ensure at least 10 digits.
+ */
+function _uwmed_uwmcms_webforms_contact_phone_element_validate(&$element, FormStateInterface $form_state, &$complete_form) {
+
+  $value = trim($element['#value']);
+
+  // Remove any non-digit characters.
+  $value_digits = preg_replace('/\D/', '', $value);
+
+  // Check if we have at least 10 digits: ###-###-####.
+  if (strlen($value_digits) < 10) {
+
+    $form_state->setError($element, t("The phone number %value is not valid.", [
+      '%value' => $value,
+    ]));
+
+  }
+
 }
 
 /**
