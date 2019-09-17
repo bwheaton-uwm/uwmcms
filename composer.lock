@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "15d3970ef1b1c554aca0a793e40a1254",
+    "content-hash": "fbf7ba5845e7925516f6254e63327b81",
     "packages": [
         {
             "name": "acquia/blt",
@@ -7801,6 +7801,61 @@
                 "source": "http://cgit.drupalcode.org/google_tag"
             },
             "time": "2018-09-05T01:15:11+00:00"
+        },
+        {
+            "name": "drupal/group",
+            "version": "1.0.0-rc4",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/group.git",
+                "reference": "8.x-1.0-rc4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/group-8.x-1.0-rc4.zip",
+                "reference": "8.x-1.0-rc4",
+                "shasum": "d5d55167523a3ddccef7f66159b4c417d950d6f5"
+            },
+            "require": {
+                "drupal/core": "^8.6",
+                "drupal/entity": "^1.0-rc1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-rc4",
+                    "datestamp": "1563460085",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "RC releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Kristiaan Van den Eynde",
+                    "homepage": "https://www.drupal.org/u/kristiaanvandeneynde",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Ronald te Brake",
+                    "homepage": "https://www.drupal.org/u/ronaldtebrake",
+                    "role": "Co-maintainer"
+                }
+            ],
+            "description": "This module allows you to group users, content and other entities",
+            "homepage": "http://drupal.org/project/group",
+            "support": {
+                "source": "https://git.drupalcode.org/project/group",
+                "issues": "https://drupal.org/project/issues/group"
+            }
         },
         {
             "name": "drupal/hierarchical_term_formatter",
@@ -21150,10 +21205,10 @@
                 "reference": "e2bd7a01273019212bcce473fa62e7c655d65b3a"
             },
             "dist": {
-                "type": "tar",
+                "type": "zip",
                 "url": "https://api.github.com/repos/uwmweb/ckeditor_bs_grid/zipball/e2bd7a01273019212bcce473fa62e7c655d65b3a",
                 "reference": "e2bd7a01273019212bcce473fa62e7c655d65b3a",
-                "shasum": "9585446f6d02f72814f29f0c3d88ad16ef412e88"
+                "shasum": ""
             },
             "require": {
                 "drupal/core": "~8"
@@ -21178,10 +21233,10 @@
                 "reference": "7073e3e440a3dc75812056d30259459f6f49ac52"
             },
             "dist": {
-                "type": "tar",
+                "type": "zip",
                 "url": "https://api.github.com/repos/uwmweb/uwmedicineorg_theme/zipball/7073e3e440a3dc75812056d30259459f6f49ac52",
                 "reference": "7073e3e440a3dc75812056d30259459f6f49ac52",
-                "shasum": "4c11c52f6fb4de38dbe52b03b3f179b8b7409417"
+                "shasum": ""
             },
             "type": "drupal-theme",
             "license": [
