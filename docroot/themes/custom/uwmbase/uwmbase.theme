@@ -254,11 +254,29 @@ function uwmbase_preprocess_page(&$variables, $hook) {
   $currentPath = \Drupal::service('path.current')->getPath();
   $variables['current_path'] = $currentPath;
 
+  $route_match = \Drupal::routeMatch();
+  $route_name = $route_match->getRouteName();
+
   /** @var \Drupal\Node\NodeInterface $node */
   $node = !empty($variables['node']) ? $variables['node'] : NULL;
 
   if (stripos($currentPath, '/search/locations/map') !== FALSE) {
     $variables['page']['show_sidebar_second'] = TRUE;
+  }
+
+  // Conditionally render the Highlighted region with Drupal status messages.
+  // Default to not render, per historical setup.
+  $variables['render_messages'] = FALSE;
+
+  // Render Drupal messages on webform pages, so that users can see error and
+  // confirmation messages.
+  if ($route_name === 'entity.webform.canonical') {
+    $variables['render_messages'] = TRUE;
+  }
+
+  // Render messages for admins, for utility.
+  if (in_array('administrator', \Drupal::currentUser()->getRoles())) {
+    $variables['render_messages'] = TRUE;
   }
 
   if (!empty($node)) {

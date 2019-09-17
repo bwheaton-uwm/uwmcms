@@ -103,6 +103,15 @@
             {% endblock %}
           {% endif %}
 
+          {#
+            Highlighted region - Drupal messages
+            Render if requested via preprocess logic.
+          #}
+          {% if render_messages and page.highlighted.uwmbase_messages is not empty %}
+            {% block highlighted_messages %}
+              <div class="col-sm-12">{{ page.highlighted.uwmbase_messages }}</div>
+            {% endblock %}
+          {% endif %}
 
           {# content_top #}
           {% block content_top %}
