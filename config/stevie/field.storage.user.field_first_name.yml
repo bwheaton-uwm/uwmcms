@@ -1,17 +1,18 @@
-uuid: f4954512-09eb-4991-b187-d96cff96caf2
+uuid: 61761f2d-8f11-4189-9544-ae00779aacbc
 langcode: en
 status: true
 dependencies:
   module:
-    - text
     - user
 id: user.field_first_name
 field_name: field_first_name
 entity_type: user
-type: text
+type: string
 settings:
   max_length: 255
-module: text
+  is_ascii: false
+  case_sensitive: false
+module: core
 locked: false
 cardinality: 1
 translatable: true

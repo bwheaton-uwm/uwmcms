@@ -911,7 +911,7 @@ display:
           entity_field: gid
           plugin_id: numeric
       display_extenders: {  }
-      title: Nodes
+      title: Content
     cache_metadata:
       max-age: -1
       contexts:
@@ -933,14 +933,13 @@ display:
       path: group/%group/nodes
       menu:
         type: tab
-        title: Nodes
+        title: Content
         description: ''
         expanded: false
         parent: ''
         weight: 25
         context: '0'
         menu_name: main
-        enabled: true
     cache_metadata:
       max-age: -1
       contexts:

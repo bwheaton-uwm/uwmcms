@@ -7,7 +7,6 @@ dependencies:
     - field.field.user.user.field_last_name
     - field.field.user.user.field_work_phone_number
   module:
-    - text
     - user
 id: user.user.default
 targetEntityType: user
@@ -15,11 +14,12 @@ bundle: user
 mode: default
 content:
   field_first_name:
-    weight: 6
+    weight: 9
     label: above
-    settings: {  }
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
-    type: text_default
+    type: string
     region: content
   field_last_name:
     weight: 7

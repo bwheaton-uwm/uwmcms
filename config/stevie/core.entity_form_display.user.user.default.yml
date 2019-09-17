@@ -9,7 +9,6 @@ dependencies:
   module:
     - path
     - telephone
-    - text
     - user
 id: user.user.default
 targetEntityType: user
@@ -27,12 +26,12 @@ content:
     third_party_settings: {  }
     region: content
   field_first_name:
-    weight: 31
+    weight: 34
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: text_textfield
+    type: string_textfield
     region: content
   field_last_name:
     weight: 32
