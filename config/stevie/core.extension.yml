@@ -160,6 +160,7 @@ module:
   simple_oauth_extras: 0
   simple_sitemap: 0
   siteimprove: 0
+  smtp: 0
   system: 0
   taxonomy: 0
   telephone: 0
@@ -175,6 +176,7 @@ module:
   uwmcs_search_teaser: 0
   uwmcs_searchfields: 0
   uwmcs_utils: 0
+  uwmed_schema_clinic: 0
   uwmed_schema_physician: 0
   uwmed_uwmcms_gtm: 0
   uwmed_uwmcms_search: 0
