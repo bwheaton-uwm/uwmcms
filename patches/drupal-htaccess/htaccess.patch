@@ -1,8 +1,30 @@
 diff --git a/docroot/.htaccess b/docroot/.htaccess
-index efce1877..bf091a87 100755
+index efce1877..4d752c05 100755
 --- a/docroot/.htaccess
 +++ b/docroot/.htaccess
-@@ -150,6 +150,17 @@ AddEncoding gzip svgz
+@@ -131,6 +131,21 @@ AddEncoding gzip svgz
+   # Rewrite install.php during installation to see if mod_rewrite is working
+   RewriteRule ^core/install.php core/install.php?rewrite=ok [QSA,L]
+ 
++  #
++  #
++  #
++  # UWM-CMS
++  # Test aliasing a folder as if in docroot
++  RewriteCond %{REQUEST_URI} ^/testing3333 [NC]
++  RewriteRule ^testing3333(.*)$ /sites/default/files$1 [PT,L]
++  RewriteCond %{REQUEST_URI} ^/testing4444 [NC]
++  RewriteRule ^testing4444(.*)$ /lp$1 [PT,L]
++  #
++  #
++  #
++  #
++  #
++
+   # Pass all requests not referring directly to files in the filesystem to
+   # index.php.
+   RewriteCond %{REQUEST_FILENAME} !-f
+@@ -150,6 +165,17 @@ AddEncoding gzip svgz
    # Copy and adapt this rule to directly execute PHP files in contributed or
    # custom modules or to run another PHP application in the same directory.
    RewriteCond %{REQUEST_URI} !/core/modules/statistics/statistics.php$
@@ -10,25 +32,26 @@ index efce1877..bf091a87 100755
 +  #
 +  #
 +  #
-+  # UWM Image caching:
++  # UWM-CMS
 +  # Allow access to simplesaml paths
 +  RewriteCond %{REQUEST_URI} !^/simplesaml
 +  #
 +  #
 +  #
-+  
++
    # Deny access to any other PHP files that do not match the rules above.
    # Specifically, disallow autoload.php from being served directly.
    RewriteRule "^(.+/.*|autoload)\.php($|/)" - [F]
-@@ -177,6 +188,19 @@ AddEncoding gzip svgz
+@@ -177,6 +203,20 @@ AddEncoding gzip svgz
        # Force proxies to cache gzipped & non-gzipped css/js files separately.
        Header append Vary Accept-Encoding
      </FilesMatch>
-+    
++
 +    #
 +    #
 +    #
-+    # UWM Image caching:
++    # UWM-CMS
++    # Image caching
 +    <FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
 +        # Set images to expire in one year
 +        Header set Cache-Control "max-age=31536000, public"
@@ -36,7 +59,14 @@ index efce1877..bf091a87 100755
 +    #
 +    #
 +    #
-+    
++
    </IfModule>
  </IfModule>
  
+@@ -186,4 +226,4 @@ AddEncoding gzip svgz
+   Header always set X-Content-Type-Options nosniff
+   # Disable Proxy header, since it's an attack vector.
+   RequestHeader unset Proxy
+-</IfModule>
+\ No newline at end of file
++</IfModule>
