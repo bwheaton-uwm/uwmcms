@@ -99,6 +99,10 @@ source:
     label: is_hospital
     selector: /attributes/is_hospital
 
+  - name: is_building
+    label: is_building
+    selector: /attributes/is_building
+
   #  - name: field_res_meta_tags
   #    label: field_res_meta_tags
   #    selector: /attributes/field_res_meta_tags
@@ -118,7 +122,7 @@ source:
   - name: field_res_feat_clinics_view_all
     label: field_res_feat_clinics_view_all
     selector: /attributes/field_res_feat_clinics_view_all
-    
+
   - name: uwm_unique_id
     label: uwm_unique_id
     selector: /attributes/uwm_unique_id
@@ -214,6 +218,7 @@ process:
   field_res_hide_returning_cta: field_res_hide_returning_cta
   field_res_iscallcenterserviced: field_res_iscallcenterserviced
   field_res_is_hospital: is_hospital
+  field_res_is_building: is_building
   #  field_res_meta_tags: field_res_meta_tags
   field_res_phone_number: field_res_phone_number
   field_res_room_number: field_res_room_number

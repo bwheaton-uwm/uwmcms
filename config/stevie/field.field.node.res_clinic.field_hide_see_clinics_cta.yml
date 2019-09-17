@@ -10,7 +10,7 @@ field_name: field_hide_see_clinics_cta
 entity_type: node
 bundle: res_clinic
 label: 'Hide see all clinics CTA?'
-description: ''
+description: 'If "is building" is checked, we show the "Make an Appointment" component and its "See all clinics at this location" CTA; use this checkbox to hide it.'
 required: false
 translatable: false
 default_value:

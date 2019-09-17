@@ -26,6 +26,11 @@
     .clinic-page__right {
       display: flex;
 
+      .center-wide__cta a.uwm-cta {
+        width: 100%;
+        text-align: center;
+      }
+
       .clinic-page__hours-ctas {
         display: flex;
         flex-wrap: wrap;
@@ -653,6 +658,10 @@
       .clinic-page__cta-btn {
         width: 100%;
       }
+    }
+
+    .clinic-page-see-all-clinics__cta {
+      display: none;
     }
 
   }
