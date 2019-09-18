@@ -1,0 +1,21 @@
+uuid: fd9d40b2-0ac3-420c-a623-047615f854ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_group_description
+    - group.type.owners_and_experts
+  module:
+    - text
+id: group.owners_and_experts.field_group_description
+field_name: field_group_description
+entity_type: group
+bundle: owners_and_experts
+label: 'Group Description'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

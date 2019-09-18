@@ -1,0 +1,41 @@
+uuid: f81bbebd-585a-4364-8d87-213736b84630
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.owners_and_experts.field_group_description
+    - group.type.owners_and_experts
+  module:
+    - text
+id: group.owners_and_experts.default
+targetEntityType: group
+bundle: owners_and_experts
+mode: default
+content:
+  field_group_description:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  label:
+    label: hidden
+    type: string
+    weight: 0
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_label
+    weight: 1
+    region: content
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  search_api_excerpt: true
