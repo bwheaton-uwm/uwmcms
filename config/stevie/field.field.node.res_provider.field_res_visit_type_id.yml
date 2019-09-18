@@ -1,0 +1,23 @@
+uuid: d9acbeb9-d589-4413-93da-da4661093756
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_visit_type_id
+    - node.type.res_provider
+id: node.res_provider.field_res_visit_type_id
+field_name: field_res_visit_type_id
+entity_type: node
+bundle: res_provider
+label: 'Visit Type ID'
+description: 'If the open scheduling option is enabled, the Book Online will use these Visit Type ID to create their unique booking link. If no IDs are set, it will default to a standard booking ID (9000)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

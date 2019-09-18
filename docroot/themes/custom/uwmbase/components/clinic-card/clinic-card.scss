@@ -188,7 +188,8 @@
       }
 
       .clinic-card__phone-button,
-      .clinic-card__book-online-button {
+      .clinic-card__book-online-button,
+      .clinic-card__clockwise-button {
         text-transform: uppercase;
 
         a {
@@ -200,6 +201,7 @@
           text-decoration: none;
           font-weight: $font-weight-semi-bold;
           font-size: 0.8125rem; // 13px
+          line-height: 1.5;
           @include media-breakpoint-up('md') {
             font-size: 0.875rem; // 14px
           }
@@ -245,6 +247,10 @@
 
         p {
           margin-bottom: .2rem;
+
+          &.clinic-card__clockwise-button a {
+            padding: .5rem 1rem;
+          }
         }
 
         .uwm-icon--urgent-care {

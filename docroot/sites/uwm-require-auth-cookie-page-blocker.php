@@ -30,10 +30,6 @@ if (!class_exists('UwmAuthCookieFormBlocker')) {
   class UwmAuthCookieFormBlocker
   {
 
-    CONST KEY_NAME = 'uwm-377211022-pre-production';
-
-    CONST PASSWORD = 'devdev';
-
     CONST BLOCKED_ENVIRONMENTS = ['dev', 'stage', 'ra'];
 
     CONST UNIVERSITY_RANGE_IPS = [
@@ -53,22 +49,31 @@ if (!class_exists('UwmAuthCookieFormBlocker')) {
      */
     function __construct() {
 
-
       $isAllowed = self::isClientAllowed();
+
+      $cookieKeyName = self::getCookieKeyName();
+
 
       if (!$isAllowed) {
 
         // Set the auth cookie, if posted:
-        if (isset($_POST[self::KEY_NAME]) && ($_POST[self::KEY_NAME] === self::PASSWORD)) {
+        if (isset($_POST[$cookieKeyName]) && ($_POST[$cookieKeyName] === $cookieKeyName)) {
 
-          setcookie(self::KEY_NAME, $_POST[self::KEY_NAME], strtotime("+1 week"));
-          header("Location: /");
+          setcookie($cookieKeyName, $cookieKeyName, strtotime("+1 month"), '/');
+          header("Location: " . $_POST['destination'] ?? '/');
 
-        }
+        } else if ($_COOKIE[$cookieKeyName] === $cookieKeyName) {
 
-        // Check an auth cookie, or die with form:
-        if ($_COOKIE[self::KEY_NAME] !== self::PASSWORD) {
+          // Do nothing.
 
+        } else {
+
+          // Bypass Varnish caching:
+          // $conf['cache'] = '0';
+          header('Cache-Control: max-age=-1');
+
+
+          // Die with cookie form:
           self::getAuthForm();
           exit;
 
@@ -76,6 +81,16 @@ if (!class_exists('UwmAuthCookieFormBlocker')) {
 
       }
 
+    }
+
+    /**
+     * Returns the name of the cookie to set.
+     *
+     * @return string
+     *   String cookie name for headers.
+     */
+    private static function getCookieKeyName() {
+      return str_replace('.', '_', 'uwm.66782344.' . $_SERVER['SERVER_NAME']);
     }
 
 
@@ -90,7 +105,6 @@ if (!class_exists('UwmAuthCookieFormBlocker')) {
      */
     public static function isClientAllowed() {
 
-
       // Do not test localhost.
       if (empty($_ENV['AH_SITE_ENVIRONMENT'])) {
         return TRUE;
@@ -101,8 +115,13 @@ if (!class_exists('UwmAuthCookieFormBlocker')) {
         return TRUE;
       }
 
+      // Do not test drush or Travis.
+      if (!empty(PHP_SAPI) && PHP_SAPI === 'cli') {
+        return TRUE;
+      }
+
       // Do not test if some override.
-      if (!empty($_ENV['skip' . self::KEY_NAME])) {
+      if (!empty($_ENV['skip' . self::getCookieKeyName()])) {
         return TRUE;
       }
 
@@ -121,10 +140,6 @@ if (!class_exists('UwmAuthCookieFormBlocker')) {
         }
       }
 
-      // Do not test drush or Travis.
-      if (!empty(PHP_SAPI) && PHP_SAPI === 'cli') {
-        return TRUE;
-      }
 
       return FALSE;
 
@@ -139,9 +154,9 @@ if (!class_exists('UwmAuthCookieFormBlocker')) {
      */
     private static function getAuthForm() {
 
-      $footer = $_SERVER['SERVER_SOFTWARE'] . ' ' . $_SERVER['SCRIPT_FILENAME'];
-      $hint = self::PASSWORD;
-      $auth_parameter = self::KEY_NAME;
+      $destination = $_SERVER['REQUEST_URI'];
+      $cookie_name = self::getCookieKeyName();
+      $footer = $_SERVER['SERVER_SOFTWARE'] . ' ' . $_SERVER['SCRIPT_FILENAME'] . ' ' . $cookie_name;
 
       print <<< AUTHFORM
 
@@ -152,14 +167,15 @@ if (!class_exists('UwmAuthCookieFormBlocker')) {
 <body>
 <pre>
 
-Please authenticate. Please provide a '$hint' username and password.
+Please provide a code for $cookie_name
 
 <form method="post">
 
-    First Name:   <input type="text" name="$auth_parameter">
-    Last Name:    <input type="text" name="password">
+    Pass code:   <input type="text" name="$cookie_name">
+                 <input type="hidden" name="destination" value="$destination">
 
     <button type="submit"> Submit </button>
+    
 </form>
 
 

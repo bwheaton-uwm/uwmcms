@@ -71,7 +71,7 @@ function get_css_classes_for_parent(array $variables = []) {
   $classes = [];
   foreach ($css_parents_classes as $class) {
     if (!empty($class)) {
-      $classes = Html::getClass('cta-parent-' . $class);
+      $classes[] = Html::getClass('cta-parent-' . $class);
     }
   }
 
