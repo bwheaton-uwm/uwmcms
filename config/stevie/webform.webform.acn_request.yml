@@ -22,8 +22,8 @@ settings:
   ajax_effect: ''
   ajax_speed: null
   page: true
-  page_submit_path: ''
-  page_confirm_path: ''
+  page_submit_path: /aco/for-providers
+  page_confirm_path: /aco/confirmation
   page_admin_theme: false
   form_title: source_entity_webform
   form_submit_once: false
