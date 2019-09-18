@@ -1523,13 +1523,23 @@ function uwmbase_preprocess_paragraph__uwm_link_with_icon__uwm_card(&$variables)
     return;
   }
 
+  // Get Visit Type ID to create an Online Scheduling button -
+  // default to Visit Type ID 9000 if one doesn't exist
+  // NOTE: Current state, only get first ID even if more than one exists.
+  // @TODO add check / functionality for multiple Visit Type IDs.
+
+  if ($node->get('field_res_visit_type_id')->get(0) != NULL) {
+    $first_visit_type_id = $node->get('field_res_visit_type_id')->get(0)->getString();
+  }
+  $set_visit_type_id = isset($first_visit_type_id) ? $first_visit_type_id : 9000;
+
   // Update the URL with the provider's SER ID.
   $uri = $variables['content']['field_uwm_link'][0]['#url']->toUriString();
   $uri .= '/SignupAndSchedule/EmbeddedSchedule';
   $uri_options = [
     'query' => [
       'id' => $ser,
-      'vt' => '9000',
+      'vt' => $set_visit_type_id,
       'view' => 'plain',
     ],
     'absolute' => TRUE,
@@ -1557,10 +1567,21 @@ function uwmbase_preprocess_page_title(&$variables) {
 
       // Load the provider node from the SER ID.
       $node = _uwmbase_get_provider_by_ser($ser);
+
+      // Get Visit Type ID to create an Online Scheduling button -
+      // default to Visit Type ID 9000 if one doesn't exist
+      // NOTE: Current state, only get first ID even if more than one exists.
+      // @TODO add check / functionality for multiple Visit Type IDs.
+
+      if ($node->get('field_res_visit_type_id')->get(0) != NULL) {
+        $first_visit_type_id = $node->get('field_res_visit_type_id')->get(0)->getString();
+      }
+      $set_visit_type_id = isset($first_visit_type_id) ? $first_visit_type_id : 9000;
+
       if ($node) {
         // Customize the link for the provider.
         $variables['title_suffix'] = [
-          '#markup' => '<div class="make-appt-page__title-link"><a href="https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=9000&view=plain">Book online with ' . trim($node->label()) . '</a></div>',
+          '#markup' => '<div class="make-appt-page__title-link"><a href="https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book online with ' . trim($node->label()) . '</a></div>',
           '#allowed_tags' => ['div', 'a'],
         ];
       }
