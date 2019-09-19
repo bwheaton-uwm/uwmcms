@@ -125,7 +125,7 @@
 ####
 <IfModule mod_rewrite.c>
 
-    # RewriteEngine on
+    RewriteEngine on
 
     RewriteCond %{HTTP_HOST} ^www.uwmedicine.org [OR]
     RewriteCond %{HTTP_HOST} ^www.uwmedicinetest.org
@@ -421,20 +421,20 @@
 #  RewriteRule ^(.*)$ https://www2.uwmedicine.org%{REQUEST_URI} [L,P]
 #
 
-
-  ### SERVE THESE PAGES FROM stevie.cms.uwmedicine.org ###
-  ### These can be removed when cms.uwmedicine.org is decomissioned ###
-  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
-
-  RewriteCond %{REQUEST_URI} ^/?$ [OR]
-  RewriteCond %{REQUEST_URI} ^/services/primary-care/flu$ [OR]
-  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/maternity-care/labor-delivery-tours$ [OR]
-  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/maternity-care/labor-delivery-tours/obstetrics-tour-registration [OR]
-  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/preparing-for-you [OR]
-  RewriteCond %{REQUEST_URI} ^/services/primary-care/behavioral-health-integration-program [OR]
-  RewriteCond %{REQUEST_URI} ^/locations/harborview-medical-center/centers-of-emphasis$
-
-  RewriteRule ^(.*)$ https://stevie.cms.uwmedicine.org%{REQUEST_URI} [L,P]
+#
+#  ### SERVE THESE PAGES FROM stevie.cms.uwmedicine.org ###
+#  ### These can be removed when cms.uwmedicine.org is decomissioned ###
+#  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
+#
+#  RewriteCond %{REQUEST_URI} ^/?$ [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/primary-care/flu$ [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/maternity-care/labor-delivery-tours$ [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/maternity-care/labor-delivery-tours/obstetrics-tour-registration [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children/preparing-for-you [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/primary-care/behavioral-health-integration-program [OR]
+#  RewriteCond %{REQUEST_URI} ^/locations/harborview-medical-center/centers-of-emphasis$
+#
+#  RewriteRule ^(.*)$ https://stevie.cms.uwmedicine.org%{REQUEST_URI} [L,P]
 
 
 
@@ -457,157 +457,157 @@
   RewriteCond %{REQUEST_URI} ^/locations/virtual-clinic$ [OR]
 
   # RewriteCond %{REQUEST_URI} ^/locations/.* [OR]
-
-  # Start Primary Care #
-  RewriteCond %{REQUEST_URI} ^/services/primary-care(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/urgent-care(/)?(?(1).*|$) [OR]
-
-
-  # Start Center for Women and Children
-  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/gynecology(/)?(?(1)(providers|locations|health-library|videos|approaches-to-gynecologic-care|family-planning|gynecologic-cancer|pediatric|urogynecology|robotic-assisted-gynecology|medical-discovery|grand-rounds-videos)|$)?(?(2).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/obstetrics(/)?(?(1)(providers|locations|childbirth-classes|pain-management|midwifery|birth-options|labor-and-delivery|approaches-to-obstetrics|you-and-your-baby|team|specialized-obstetrics|prenatal-diagnosis|lactation-services|grand-rounds-videos|nicu|diabetes-and-pregnancy|hypertension|teen-pregnancy|prematurity-prevention)|$)?(?(2).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/reproductive(/)?(?(1)(providers|locations|services|team|health-library|referrals|single-women-lgbt|medical-discovery)|$)?(?(2).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/cancer-care/cancer-types/breast$ [OR]
-  RewriteCond %{REQUEST_URI} ^/services/trauma-emergency-services/pediatric-trauma-and-burn-services$ [OR]
-
-  # Start Neurosciences #
-  RewriteCond %{REQUEST_URI} ^/services/neurosciences(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/neurological-surgery(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/neurology(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/epilepsy(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/multiple-sclerosis(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/stroke(/)?(?(1).*|$) [OR]
-
-  # Start Vascular #
-  RewriteCond %{REQUEST_URI} ^/services/vascular(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/vascular-care(/)?(?(1).*|$) [OR]
-
-  # Start Urology and Men's Health #
-  RewriteCond %{REQUEST_URI} ^/services/mens-health(/)?(?(1).*|$) [OR]
-
-  # Start Mental Health Care #
-  RewriteCond %{REQUEST_URI} ^/services/mental-health-care(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/psychiatry(/)?(?(1).*|$) [OR]
-
-  # Start Digestive Health Care #
-  RewriteCond %{REQUEST_URI} ^/services/transplant/liver-transplant(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/digestive-health(/)?(?(1).*|$) [OR]
-
-  # Start Dermatology Care #
-  RewriteCond %{REQUEST_URI} ^/services/dermatology(/)?(?(1).*|$) [OR]
-
-  # Start ENT #
-  RewriteCond %{REQUEST_URI} ^/services/ear-nose-and-throat-care(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/otolaryngology(/)?(?(1).*|$) [OR]
-
-  # Start Heart Institute #
-  RewriteCond %{REQUEST_URI} ^/services/heart-institute(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/cardiology(/)?(?(1)(providers|locations|referrals-general-cardiology|cardiac-surgery|cardiac-electrophysiology|atrial-fibrillation|interventional-cardiology|adult-congenital-heart-disease|advanced-heart-failure|structural-heart-services|hypertrophic-cardiomyopathy|prosthetic-heart-valve-consult-clinic|cardio-oncology|cardiovascular-genetics)|$)?(?(2).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/transplant/heart-transplant(/)?(?(1).*|$) [OR]
-
-  # Start Eye Institute #
-  RewriteCond %{REQUEST_URI} ^/services/eye-institute(/)?(?(1).*|$) [OR]
-
-  # Start Palliative Care #
-  RewriteCond %{REQUEST_URI} ^/services/palliative(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/palliative-care(/)?(?(1).*|$) [OR]
-
-  # Start Sleep Medicine #
-  RewriteCond %{REQUEST_URI} ^/services/sleep-institute(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/sleep-medicine(/)?(?(1).*|$) [OR]
-
-  # Start Allergy & Immunology #
-  RewriteCond %{REQUEST_URI} ^/services/allergy-immunology(/)?(?(1).*|$) [OR]
-
-  # Start Laboratory Medicine & Pathology #
-  RewriteCond %{REQUEST_URI} ^/services/laboratory-medicine-and-pathology(/)?(?(1).*|$) [OR]
-
-  # Start Liver Transplant #
-  RewriteCond %{REQUEST_URI} ^/services/liver(/)?(?(1)(providers|locations|transplant|transplant/living-donor-liver-transplant|infectious-disease|patients-families|referrals|transplant-team)|$)?(?(2).*|$) [OR]
-
-  # Start Rehab Medicine #
-  RewriteCond %{REQUEST_URI} ^/services/rehabilitation-medicine(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/rehabilitation(/)?(?(1)(providers|locations|neuro-rehab-program|health-library|videos|inpatient|faq|patient-education)|$)?(?(2).*|$) [OR]
-
-  # Start Radiology #
-  RewriteCond %{REQUEST_URI} ^/services/radiology(/)?(?(1)(providers|locations|videos|appointments|radiation-safety)|$)?(?(2).*|$) [OR]
-
-  # Start Cancer Care #
-  RewriteCond %{REQUEST_URI} ^/services/cancer-care(/)?(?(1).*|$) [OR]
-
-  # Start Orthopedic Surgery and Sports Medicine #
-  RewriteCond %{REQUEST_URI} ^/services/ssoh(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/orthopedic-surgery-sports-medicine(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/foot-ankle(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/hip-knee(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/hes(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/sports-medicine(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/sports-medicine-orthopedic-surgery [OR]
-
-  # Start Spine Care #
-  RewriteCond %{REQUEST_URI} ^/services/spine(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/spine-care(/)?(?(1).*|$) [OR]
-
-  # Start Burn Care #
-  RewriteCond %{REQUEST_URI} ^/services/burn-care(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/harborview/services/burn-center(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/trauma-emergency-services/getting-to-harborview(/)?(?(1).*|$) [OR]
-
-  # Start Trauma Care #
-  RewriteCond %{REQUEST_URI} ^/services/trauma-care(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^harborview/services/trauma(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^harborview/services/trauma-center(/)?(?(1).*|$) [OR]
-
-  # Start Lung Care #
-  RewriteCond %{REQUEST_URI} ^/services/lung-care(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/lung(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/transplant/lung-transplant(/)?(?(1).*|$) [OR]
-
-  # Start Reconstructive & Plastic Surgery #
-  RewriteCond %{REQUEST_URI} ^/services/reconstructive-surgery(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/surgery/reconstructive-and-plastic-surgery(/)?(?(1).*|$) [OR]
-
-  # Start Surgery #
-  RewriteCond %{REQUEST_URI} ^/services/surgery(/)?(?(1).*|$) [OR]
-
-  # Start Rheumatology #
-  RewriteCond %{REQUEST_URI} ^/services/rheumatology(/)?(?(1).*|$) [OR]
-
-  # Start Medical Genetics #
-  RewriteCond %{REQUEST_URI} ^/services/medical-genetics(/)?(?(1).*|$) [OR]
-
-  # Start Hematology #
-  RewriteCond %{REQUEST_URI} ^/services/hematology(/)?(?(1).*|$) [OR]
-
-  # Start Infectious Diseases #
-  RewriteCond %{REQUEST_URI} ^/services/infectious-diseases(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/patient-care/ebola(/)?(?(1).*|$) [OR]
-
-  # Start Anesthesiology & Pain Medicine #
-  RewriteCond %{REQUEST_URI} ^/services/pain(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/anesthesiology-and-pain-medicine(/)?(?(1).*|$) [OR]
-
-  # Start Diabetes and Endocrinology #
-  RewriteCond %{REQUEST_URI} ^/services/diabetes-endocrinology(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/diabetes(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/pituitary(/)?(?(1).*|$) [OR]
-
-  # Start Kidney Care #
-  RewriteCond %{REQUEST_URI} ^/services/kidney-care(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/transplant/kidney-transplant(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/kidney(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/kidney/kidney-genetics(/)?(?(1).*|$) [OR]
-
-  # Start Transplant #
-  RewriteCond %{REQUEST_URI} ^/services/transplant(/)?(?(1).*|$) [OR]
-
-  # Start Emergency Medicine #
-  RewriteCond %{REQUEST_URI} ^/services/trauma-emergency-services(/)?(?(1).*|$) [OR]
-  RewriteCond %{REQUEST_URI} ^/services/emergency-medicine(/)?(?(1).*|$) [OR]
-
-  # Start Virtual Clinic #
-  RewriteCond %{REQUEST_URI} ^/services/virtual-clinic$
+#
+#  # Start Primary Care #
+#  RewriteCond %{REQUEST_URI} ^/services/primary-care(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/urgent-care(/)?(?(1).*|$) [OR]
+#
+#
+#  # Start Center for Women and Children
+#  RewriteCond %{REQUEST_URI} ^/services/center-for-women-and-children(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/gynecology(/)?(?(1)(providers|locations|health-library|videos|approaches-to-gynecologic-care|family-planning|gynecologic-cancer|pediatric|urogynecology|robotic-assisted-gynecology|medical-discovery|grand-rounds-videos)|$)?(?(2).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/obstetrics(/)?(?(1)(providers|locations|childbirth-classes|pain-management|midwifery|birth-options|labor-and-delivery|approaches-to-obstetrics|you-and-your-baby|team|specialized-obstetrics|prenatal-diagnosis|lactation-services|grand-rounds-videos|nicu|diabetes-and-pregnancy|hypertension|teen-pregnancy|prematurity-prevention)|$)?(?(2).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/reproductive(/)?(?(1)(providers|locations|services|team|health-library|referrals|single-women-lgbt|medical-discovery)|$)?(?(2).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/cancer-care/cancer-types/breast$ [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/trauma-emergency-services/pediatric-trauma-and-burn-services$ [OR]
+#
+#  # Start Neurosciences #
+#  RewriteCond %{REQUEST_URI} ^/services/neurosciences(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/neurological-surgery(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/neurology(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/epilepsy(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/multiple-sclerosis(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/stroke(/)?(?(1).*|$) [OR]
+#
+#  # Start Vascular #
+#  RewriteCond %{REQUEST_URI} ^/services/vascular(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/vascular-care(/)?(?(1).*|$) [OR]
+#
+#  # Start Urology and Men's Health #
+#  RewriteCond %{REQUEST_URI} ^/services/mens-health(/)?(?(1).*|$) [OR]
+#
+#  # Start Mental Health Care #
+#  RewriteCond %{REQUEST_URI} ^/services/mental-health-care(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/psychiatry(/)?(?(1).*|$) [OR]
+#
+#  # Start Digestive Health Care #
+#  RewriteCond %{REQUEST_URI} ^/services/transplant/liver-transplant(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/digestive-health(/)?(?(1).*|$) [OR]
+#
+#  # Start Dermatology Care #
+#  RewriteCond %{REQUEST_URI} ^/services/dermatology(/)?(?(1).*|$) [OR]
+#
+#  # Start ENT #
+#  RewriteCond %{REQUEST_URI} ^/services/ear-nose-and-throat-care(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/otolaryngology(/)?(?(1).*|$) [OR]
+#
+#  # Start Heart Institute #
+#  RewriteCond %{REQUEST_URI} ^/services/heart-institute(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/cardiology(/)?(?(1)(providers|locations|referrals-general-cardiology|cardiac-surgery|cardiac-electrophysiology|atrial-fibrillation|interventional-cardiology|adult-congenital-heart-disease|advanced-heart-failure|structural-heart-services|hypertrophic-cardiomyopathy|prosthetic-heart-valve-consult-clinic|cardio-oncology|cardiovascular-genetics)|$)?(?(2).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/transplant/heart-transplant(/)?(?(1).*|$) [OR]
+#
+#  # Start Eye Institute #
+#  RewriteCond %{REQUEST_URI} ^/services/eye-institute(/)?(?(1).*|$) [OR]
+#
+#  # Start Palliative Care #
+#  RewriteCond %{REQUEST_URI} ^/services/palliative(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/palliative-care(/)?(?(1).*|$) [OR]
+#
+#  # Start Sleep Medicine #
+#  RewriteCond %{REQUEST_URI} ^/services/sleep-institute(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/sleep-medicine(/)?(?(1).*|$) [OR]
+#
+#  # Start Allergy & Immunology #
+#  RewriteCond %{REQUEST_URI} ^/services/allergy-immunology(/)?(?(1).*|$) [OR]
+#
+#  # Start Laboratory Medicine & Pathology #
+#  RewriteCond %{REQUEST_URI} ^/services/laboratory-medicine-and-pathology(/)?(?(1).*|$) [OR]
+#
+#  # Start Liver Transplant #
+#  RewriteCond %{REQUEST_URI} ^/services/liver(/)?(?(1)(providers|locations|transplant|transplant/living-donor-liver-transplant|infectious-disease|patients-families|referrals|transplant-team)|$)?(?(2).*|$) [OR]
+#
+#  # Start Rehab Medicine #
+#  RewriteCond %{REQUEST_URI} ^/services/rehabilitation-medicine(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/rehabilitation(/)?(?(1)(providers|locations|neuro-rehab-program|health-library|videos|inpatient|faq|patient-education)|$)?(?(2).*|$) [OR]
+#
+#  # Start Radiology #
+#  RewriteCond %{REQUEST_URI} ^/services/radiology(/)?(?(1)(providers|locations|videos|appointments|radiation-safety)|$)?(?(2).*|$) [OR]
+#
+#  # Start Cancer Care #
+#  RewriteCond %{REQUEST_URI} ^/services/cancer-care(/)?(?(1).*|$) [OR]
+#
+#  # Start Orthopedic Surgery and Sports Medicine #
+#  RewriteCond %{REQUEST_URI} ^/services/ssoh(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/orthopedic-surgery-sports-medicine(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/foot-ankle(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/hip-knee(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/hes(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/sports-medicine(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/sports-medicine-orthopedic-surgery [OR]
+#
+#  # Start Spine Care #
+#  RewriteCond %{REQUEST_URI} ^/services/spine(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/spine-care(/)?(?(1).*|$) [OR]
+#
+#  # Start Burn Care #
+#  RewriteCond %{REQUEST_URI} ^/services/burn-care(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/harborview/services/burn-center(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/trauma-emergency-services/getting-to-harborview(/)?(?(1).*|$) [OR]
+#
+#  # Start Trauma Care #
+#  RewriteCond %{REQUEST_URI} ^/services/trauma-care(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^harborview/services/trauma(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^harborview/services/trauma-center(/)?(?(1).*|$) [OR]
+#
+#  # Start Lung Care #
+#  RewriteCond %{REQUEST_URI} ^/services/lung-care(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/lung(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/transplant/lung-transplant(/)?(?(1).*|$) [OR]
+#
+#  # Start Reconstructive & Plastic Surgery #
+#  RewriteCond %{REQUEST_URI} ^/services/reconstructive-surgery(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/surgery/reconstructive-and-plastic-surgery(/)?(?(1).*|$) [OR]
+#
+#  # Start Surgery #
+#  RewriteCond %{REQUEST_URI} ^/services/surgery(/)?(?(1).*|$) [OR]
+#
+#  # Start Rheumatology #
+#  RewriteCond %{REQUEST_URI} ^/services/rheumatology(/)?(?(1).*|$) [OR]
+#
+#  # Start Medical Genetics #
+#  RewriteCond %{REQUEST_URI} ^/services/medical-genetics(/)?(?(1).*|$) [OR]
+#
+#  # Start Hematology #
+#  RewriteCond %{REQUEST_URI} ^/services/hematology(/)?(?(1).*|$) [OR]
+#
+#  # Start Infectious Diseases #
+#  RewriteCond %{REQUEST_URI} ^/services/infectious-diseases(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/patient-care/ebola(/)?(?(1).*|$) [OR]
+#
+#  # Start Anesthesiology & Pain Medicine #
+#  RewriteCond %{REQUEST_URI} ^/services/pain(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/anesthesiology-and-pain-medicine(/)?(?(1).*|$) [OR]
+#
+#  # Start Diabetes and Endocrinology #
+#  RewriteCond %{REQUEST_URI} ^/services/diabetes-endocrinology(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/diabetes(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/pituitary(/)?(?(1).*|$) [OR]
+#
+#  # Start Kidney Care #
+#  RewriteCond %{REQUEST_URI} ^/services/kidney-care(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/transplant/kidney-transplant(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/kidney(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/kidney/kidney-genetics(/)?(?(1).*|$) [OR]
+#
+#  # Start Transplant #
+#  RewriteCond %{REQUEST_URI} ^/services/transplant(/)?(?(1).*|$) [OR]
+#
+#  # Start Emergency Medicine #
+#  RewriteCond %{REQUEST_URI} ^/services/trauma-emergency-services(/)?(?(1).*|$) [OR]
+#  RewriteCond %{REQUEST_URI} ^/services/emergency-medicine(/)?(?(1).*|$) [OR]
+#
+#  # Start Virtual Clinic #
+#  RewriteCond %{REQUEST_URI} ^/services/virtual-clinic$
 
 
   RewriteRule ^(.*)$ - [CO=uwm-proxied-page-visit:true:%{HTTP_HOST}:0:/,C]
@@ -624,7 +624,7 @@
 ##
 #
 #
-# END UWMedicine rules
+# END UW Medicine rules
 #
 #
 ##
