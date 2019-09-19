@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\smtp\PHPMailer\PHPMailer;
 
 /**
  * Implements hook_form_FORM_ID_alter() for 'webform_submission_acn_request_add_form'.
@@ -17,11 +18,18 @@ function uwmed_uwmcms_webforms_form_webform_submission_acn_request_add_form_alte
   // Set a custom submit handler. Though this is not the "real" actions element,
   // it passes it to the two actual ones. (Not sure why we can't alter those
   // directly in after_build, since they are present at that point.)
-  $form['actions']['submit']['#submit'][] = '_uwmed_uwmcms_webforms_acn_request_submit';
+  if (!empty($form['actions']['submit'])) {
+    $form['actions']['submit']['#submit'][] = '_uwmed_uwmcms_webforms_acn_request_submit';
+  }
 
   // Add custom validation for Contact Phone field.
   if (!empty($form['elements']['contact_information']['contact_phone'])) {
     $form['elements']['contact_information']['contact_phone']['#element_validate'][] = '_uwmed_uwmcms_webforms_contact_phone_element_validate';
+  }
+
+  // Add a validation handler for the Contact Email field.
+  if (!empty($form['elements']['contact_information']['contact_email'])) {
+    $form['elements']['contact_information']['contact_email']['#element_validate'][] = '_uwmed_uwmcms_webforms_contact_email_element_validate';
   }
 
 }
@@ -42,6 +50,30 @@ function _uwmed_uwmcms_webforms_contact_phone_element_validate(&$element, FormSt
   if (strlen($value_digits) < 10) {
 
     $form_state->setError($element, t("The phone number %value is not valid.", [
+      '%value' => $value,
+    ]));
+
+  }
+
+}
+
+/**
+ * Custom #element_validate for Contact Email field.
+ *
+ * While Drupal core has built-in validation for email fields, the STMP module
+ * has its own and they have slightly different rules. Run the SMTP module's
+ * validator here to ensure the value will pass that check too (and not throw a
+ * fatal error).
+ *
+ * @see \Drupal\smtp\PHPMailer\PHPMailer::AddAnAddress()
+ */
+function _uwmed_uwmcms_webforms_contact_email_element_validate(&$element, FormStateInterface $form_state, &$complete_form) {
+
+  $value = trim($element['#value']);
+
+  if (!PHPMailer::ValidateAddress($value)) {
+
+    $form_state->setError($element, t("The email address %value is not valid.", [
       '%value' => $value,
     ]));
 
