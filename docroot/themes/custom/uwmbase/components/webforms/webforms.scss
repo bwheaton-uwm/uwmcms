@@ -129,7 +129,7 @@ form.webform-submission-form.webform-submission-health-news-signup-form {
 form.webform-submission-form.webform-submission-acn-request-form {
 
   // Tweak the "key" for required indicator
-  .form-item-intro span.form-required {
+  .form-type-webform-markup span.form-required {
     display: inline-block;
 
     &::after {
