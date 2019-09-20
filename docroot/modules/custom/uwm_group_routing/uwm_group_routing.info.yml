@@ -1,0 +1,6 @@
+name: UWM Group Routing
+description: Creates a custom route for the group module to reroute everything to admin
+package: UWM
+
+type: module
+core: 8.x

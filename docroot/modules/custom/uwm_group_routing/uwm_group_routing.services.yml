@@ -1,0 +1,5 @@
+services:
+  uwm_group_routing.route_subscriber:
+    class: Drupal\uwm_group_routing\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
