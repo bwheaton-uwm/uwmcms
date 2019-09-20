@@ -130,10 +130,13 @@
     RewriteCond %{HTTP_HOST} ^www.uwmedicine.org [OR]
     RewriteCond %{HTTP_HOST} ^www.uwmedicinetest.org
 
-    RewriteRule ^/birth-facility(.*)?$ /lp/birth-facility$1 [NC,PT,L]
-    RewriteRule ^/breakthroughs(.*)?$ /lp/breakthroughs$1 [NC,PT,L]
-    RewriteRule ^/lung-cancer(.*)?$ /lp/lung-cancer$1 [NC,PT,L]
-    RewriteRule ^/uw-baby-pregnancy-app(.*)?$ /lp/uw-baby-pregnancy-app$1 [NC,PT,L]
+    RewriteCond %{REQUEST_URI} ^/birth-facility(.*)?$ [OR]
+    RewriteCond %{REQUEST_URI} ^/breakthroughs(.*)?$ [OR]
+    RewriteCond %{REQUEST_URI} ^/lung-cancer(.*)?$ [OR]
+    RewriteCond %{REQUEST_URI} ^/uw-baby-pregnancy-app(.*)?$
+
+    #RewriteRule ^(.*)$ https://stevie.cmsdev.uwmedicine.org/lp2/%{REQUEST_URI} [L,P]
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}/lp%{REQUEST_URI} [L,P]
 
 </IfModule>
 
@@ -169,10 +172,10 @@
 <IfModule mod_rewrite.c>
   RewriteEngine on
 
-  ### Redirect ALL education pages to //education.uwmedicine.org ###
-#  # RewriteRule ^education/?$         https://education.uwmedicine.org/ [L,R=301]
-#  # RewriteRule ^education/(.*)$         https://education.uwmedicine.org/$1 [L,R=301]
-
+#  ### Redirect ALL education pages to //education.uwmedicine.org ###
+#   RewriteRule ^education/?$         https://education.uwmedicine.org/ [L,R=301]
+#   RewriteRule ^education/(.*)$         https://education.uwmedicine.org/$1 [L,R=301]
+#
 #
 #  ## SSL RULES ##
 #  # Redirect HTTP to HTTPS in Acquia Cloud
@@ -219,17 +222,17 @@
 #  RewriteCond %{HTTP_HOST} ^uwmedicine(test)?.org
 #  RewriteCond %{HTTP_HOST} !^www\. [NC]
 #  RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-
-
-  #########################
-  ### UWMEDICINE LAUNCH ###
-  #########################
-
-  ### Before we do any proxying, handle these redirects ###
-  # Pattern-based redirects for launched pages. These pages are served from Drupal.
+#
+#
+#
+#  ########################
+#  ## UWMEDICINE LAUNCH ###
+#  ########################
+#
+#  ## Before we do any proxying, handle these redirects ###
+#   Pattern-based redirects for launched pages. These pages are served from Drupal.
 #  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
-
+#
 #  RewriteRule ^locations/(.*)/directions(/)?(?(2).*|$) "https://www.uwmedicine.org/locations/$1#directions-tab" [NE,L,R=301]
 #  RewriteRule ^locations/(.*)/care-providers(/)?(?(2).*|$) "https://www.uwmedicine.org/locations/$1#providers-tab" [NE,L,R=301]
 #  RewriteRule ^services/urgent-care/(providers|locations)$ "https://www.uwmedicine.org/services/urgent-care" [L,R=301]
@@ -376,8 +379,8 @@
   RewriteRule ^(.*)$ https://www2.uwmedicine.org%{REQUEST_URI} [L,P]
 
 
-  ### SERVE THESE PAGES FROM www2.uwmedicine.org ###
-  ### These can be removed when SharePoint is shut down ###
+#  ### SERVE THESE PAGES FROM www2.uwmedicine.org ###
+#  ### These can be removed when SharePoint is shut down ###
 #  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
 #
 #  RewriteCond %{REQUEST_URI} ^/dawgscare(/)?(?(1).*|$)$ [OR]
@@ -420,11 +423,12 @@
 #  RewriteRule ^(.*)$ - [CO=uwm-proxied-page-visit:true:%{HTTP_HOST}:0:/,C]
 #  RewriteRule ^(.*)$ https://www2.uwmedicine.org%{REQUEST_URI} [L,P]
 #
-
+#
 #
 #  ### SERVE THESE PAGES FROM stevie.cms.uwmedicine.org ###
 #  ### These can be removed when cms.uwmedicine.org is decomissioned ###
 #  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
+#
 #
 #  RewriteCond %{REQUEST_URI} ^/?$ [OR]
 #  RewriteCond %{REQUEST_URI} ^/services/primary-care/flu$ [OR]
@@ -441,19 +445,19 @@
   ### SERVE THESE PAGES FROM cms.uwmedicine.org ###
   ### These can be removed when medical services and make an appointment are served from stevie ###
   RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
-
-  # RewriteCond %{REQUEST_URI} ^/index.php$ [OR]
-  # RewriteCond %{REQUEST_URI} ^/(user|admin|themes|core|simplesaml|sites|libraries|profiles|modules|node|sitemaps|lp)(/)?(?(1).*|$) [OR]
-  # RewriteCond %{REQUEST_URI} ^/(views|editor|media_browser|toolbar|filter|contextual|history)/.+ [OR]
+#
+#   RewriteCond %{REQUEST_URI} ^/index.php$ [OR]
+#   RewriteCond %{REQUEST_URI} ^/(user|admin|themes|core|simplesaml|sites|libraries|profiles|modules|node|sitemaps|lp)(/)?(?(1).*|$) [OR]
+#   RewriteCond %{REQUEST_URI} ^/(views|editor|media_browser|toolbar|filter|contextual|history)/.+ [OR]
 
   RewriteCond %{REQUEST_URI} ^/node/feedback(/)?(?(1).*|$) [OR]
-
-  # RewriteCond %{REQUEST_URI} ^/patient-care/making-an-appointment$ [OR]
-  # RewriteCond %{REQUEST_URI} ^/patient-resources/make-an-appointment$ [OR]
-
-  # RewriteCond %{REQUEST_URI} ^/Pages/bio.aspx.* [OR]
-
-  # SERVE VIRTUAL CLINIC FROM CMS AND ALL OTHER LOCATIONS FROM STEVIE #
+#
+#   RewriteCond %{REQUEST_URI} ^/patient-care/making-an-appointment$ [OR]
+#   RewriteCond %{REQUEST_URI} ^/patient-resources/make-an-appointment$ [OR]
+#
+#   RewriteCond %{REQUEST_URI} ^/Pages/bio.aspx.* [OR]
+#
+#   # SERVE VIRTUAL CLINIC FROM CMS AND ALL OTHER LOCATIONS FROM STEVIE #
   RewriteCond %{REQUEST_URI} ^/locations/virtual-clinic$ [OR]
 
   # RewriteCond %{REQUEST_URI} ^/locations/.* [OR]
@@ -612,7 +616,6 @@
 
   RewriteRule ^(.*)$ - [CO=uwm-proxied-page-visit:true:%{HTTP_HOST}:0:/,C]
   RewriteRule ^(.*)$ https://cms.uwmedicine.org%{REQUEST_URI} [L,P]
-
 
 
   ### SERVE EVERYTHING ELSE FROM stevie.cms.uwmedicine.org ###
