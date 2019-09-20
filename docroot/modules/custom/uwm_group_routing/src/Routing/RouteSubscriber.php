@@ -6,15 +6,13 @@ use Drupal\Core\Routing\RouteSubscriberBase;
 use Symfony\Component\Routing\RouteCollection;
 
 /**
- * Unifies the Group Module so all tabs use the admin theme
+ * Unifies the Group Module so all tabs use the admin theme.
  *
  * Class RouteSubscriber.
  *
  * @package Drupal\uwm_group_routing\Routing
  */
-
- class RouteSubscriber extends RouteSubscriberBase {
-
+class RouteSubscriber extends RouteSubscriberBase {
 
   /**
    * {@inheritdoc}
@@ -25,13 +23,9 @@ use Symfony\Component\Routing\RouteCollection;
     if ($route = $collection->get('view.group_members.page_1')) {
       $route->addOptions(['_admin_route' => TRUE]);
     }
-    if ($route =  $collection->get('view.group_nodes.page_1')) {
-      $route->addOptions(['_admin_route' => TRUE]);
-    }
-    if ($route =  $collection->get('page.group')) {
+    if ($route = $collection->get('view.group_nodes.page_1')) {
       $route->addOptions(['_admin_route' => TRUE]);
     }
   }
 
-
- }
+}
