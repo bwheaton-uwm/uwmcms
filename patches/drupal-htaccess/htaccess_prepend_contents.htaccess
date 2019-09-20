@@ -93,26 +93,26 @@
     RewriteCond %{ENV:AH_SITE_ENVIRONMENT} !prod
     RewriteRule ^robots.txt robots_block.txt [L]
 
-    # For www.uwmedicine,org, redirect old marketing urls:
-    # RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
-
-    # Redirect education pages to their new site
-    # RewriteRule ^education/?$ https://education.uwmedicine.org/ [L,R=301]
-    # RewriteRule ^education/(.*)$ https://education.uwmedicine.org/$1 [L,R=301]
-
-    # Redirect these urls to their new, page tab urls:
-    # RewriteRule ^locations/(.*)/directions(.*) locations/$1#directions-tab [NE,L,R=301]
-    # RewriteRule ^locations/(.*)/care-providers(.*) locations/$1#providers-tab [NE,L,R=301]
-    # RewriteRule ^services/urgent-care/(providers|locations)$ services/urgent-care [L,R=301]
-    # RewriteRule ^services/urgent-care/(.+)#911-calls$ services/urgent-care#block-emergencymedicine [NE,L,R=301]
-
-    # RewriteRule ^services/urgent-care/(.+)$ "https://www.uwmedicine.org/locations/primary-care-$1 [L,R=301]
-    # RewriteRule ^services/urgent-care/(.+)$ "https://www.uwmedicine.org/locations/primary-care-$1" [L,R=301]
-    # RewriteRule ^locations/urgent-care-(.+)$ "https://www.uwmedicine.org/locations/primary-care-$1" [L,R=301]
-    # RewriteRule "^/search#k=(.+)$" "https://www.uwmedicine.org/search?s=$1" [NE,L,R=301]
-    # RewriteRule "^/search/providers#k=(.+)$" "https://www.uwmedicine.org/search/providers?s=$1" [NE,L,R=301]
-    # RewriteRule "^/search/locations#k=(.+)$" "https://www.uwmedicine.org/search/locations?s=$1" [NE,L,R=301]
-    # RewriteRule ^/node/255156$ https://www.uwmedicine.org/search/providers?s=&fs_p%5B0%5D=medical-service%3A10566 [NE,L,R=301]
+#    # For www.uwmedicine,org, redirect old marketing urls:
+#    # RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
+#
+#    # Redirect education pages to their new site
+#    # RewriteRule ^education/?$ https://education.uwmedicine.org/ [L,R=301]
+#    # RewriteRule ^education/(.*)$ https://education.uwmedicine.org/$1 [L,R=301]
+#
+#    # Redirect these urls to their new, page tab urls:
+#    # RewriteRule ^locations/(.*)/directions(.*) locations/$1#directions-tab [NE,L,R=301]
+#    # RewriteRule ^locations/(.*)/care-providers(.*) locations/$1#providers-tab [NE,L,R=301]
+#    # RewriteRule ^services/urgent-care/(providers|locations)$ services/urgent-care [L,R=301]
+#    # RewriteRule ^services/urgent-care/(.+)#911-calls$ services/urgent-care#block-emergencymedicine [NE,L,R=301]
+#
+#    # RewriteRule ^services/urgent-care/(.+)$ "https://www.uwmedicine.org/locations/primary-care-$1 [L,R=301]
+#    # RewriteRule ^services/urgent-care/(.+)$ "https://www.uwmedicine.org/locations/primary-care-$1" [L,R=301]
+#    # RewriteRule ^locations/urgent-care-(.+)$ "https://www.uwmedicine.org/locations/primary-care-$1" [L,R=301]
+#    # RewriteRule "^/search#k=(.+)$" "https://www.uwmedicine.org/search?s=$1" [NE,L,R=301]
+#    # RewriteRule "^/search/providers#k=(.+)$" "https://www.uwmedicine.org/search/providers?s=$1" [NE,L,R=301]
+#    # RewriteRule "^/search/locations#k=(.+)$" "https://www.uwmedicine.org/search/locations?s=$1" [NE,L,R=301]
+#    # RewriteRule ^/node/255156$ https://www.uwmedicine.org/search/providers?s=&fs_p%5B0%5D=medical-service%3A10566 [NE,L,R=301]
 
 </IfModule>
 
@@ -135,8 +135,8 @@
     RewriteCond %{REQUEST_URI} ^/lung-cancer(.*)?$ [OR]
     RewriteCond %{REQUEST_URI} ^/uw-baby-pregnancy-app(.*)?$
 
-    #RewriteRule ^(.*)$ https://stevie.cmsdev.uwmedicine.org/lp2/%{REQUEST_URI} [L,P]
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}/lp%{REQUEST_URI} [L,P]
+    RewriteRule ^(.*)$ https://stevie.cmsdev.uwmedicine.org/lp/%{REQUEST_URI} [L,P]
+    #RewriteRule ^(.*)$ https://%{HTTP_HOST}/lp%{REQUEST_URI} [L,P]
 
 </IfModule>
 
@@ -439,19 +439,19 @@
 #  RewriteCond %{REQUEST_URI} ^/locations/harborview-medical-center/centers-of-emphasis$
 #
 #  RewriteRule ^(.*)$ https://stevie.cms.uwmedicine.org%{REQUEST_URI} [L,P]
-
-
-
-  ### SERVE THESE PAGES FROM cms.uwmedicine.org ###
-  ### These can be removed when medical services and make an appointment are served from stevie ###
-  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
 #
+#
+#
+#  ### SERVE THESE PAGES FROM cms.uwmedicine.org ###
+#  ### These can be removed when medical services and make an appointment are served from stevie ###
+  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
+
 #   RewriteCond %{REQUEST_URI} ^/index.php$ [OR]
 #   RewriteCond %{REQUEST_URI} ^/(user|admin|themes|core|simplesaml|sites|libraries|profiles|modules|node|sitemaps|lp)(/)?(?(1).*|$) [OR]
 #   RewriteCond %{REQUEST_URI} ^/(views|editor|media_browser|toolbar|filter|contextual|history)/.+ [OR]
-
-  RewriteCond %{REQUEST_URI} ^/node/feedback(/)?(?(1).*|$) [OR]
 #
+  RewriteCond %{REQUEST_URI} ^/node/feedback(/)?(?(1).*|$) [OR]
+
 #   RewriteCond %{REQUEST_URI} ^/patient-care/making-an-appointment$ [OR]
 #   RewriteCond %{REQUEST_URI} ^/patient-resources/make-an-appointment$ [OR]
 #
@@ -460,8 +460,8 @@
 #   # SERVE VIRTUAL CLINIC FROM CMS AND ALL OTHER LOCATIONS FROM STEVIE #
   RewriteCond %{REQUEST_URI} ^/locations/virtual-clinic$ [OR]
 
-  # RewriteCond %{REQUEST_URI} ^/locations/.* [OR]
-#
+#  # RewriteCond %{REQUEST_URI} ^/locations/.* [OR]
+##
 #  # Start Primary Care #
 #  RewriteCond %{REQUEST_URI} ^/services/primary-care(/)?(?(1).*|$) [OR]
 #  RewriteCond %{REQUEST_URI} ^/services/urgent-care(/)?(?(1).*|$) [OR]
