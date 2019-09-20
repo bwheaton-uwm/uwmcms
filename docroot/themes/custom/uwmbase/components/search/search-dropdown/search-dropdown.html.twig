@@ -55,7 +55,7 @@
   #
   #}
 {% set heading = heading ? heading :
-  'expertise' in facet.id|lower ? 'Expertise' :
+  'expertise' in facet.id|lower ? 'Medical Specialties' :
   'service' in facet.id|lower ? 'Medical Specialties' :
   facet.id == 'general_search_facet_uwmsearchwithin' ? 'Show me' :
   facet.id == 'locations_facet_uwmsearchwithin' ? 'Show me' :
