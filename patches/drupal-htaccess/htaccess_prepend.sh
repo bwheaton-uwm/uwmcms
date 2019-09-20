@@ -39,11 +39,16 @@ else
 
     echo "UWM-CMS: Prepending..."
     echo "UWM-CMS: The source is $1 and destination  $2."
-    printf '%s\n%s\n%s' "$(cat $source_file)" "$destination_file_marker_comment" \
-     "$(cat $destination_file)" \
-     > $destination_file
+    printf '%s\n%s\n%s' \
+        "$(cat $source_file)" \
+        "$destination_file_marker_comment" \
+        "$(cat $destination_file)" \
+        > $destination_file
+
     echo "UWM-CMS: Prepending done."
 
 fi
 
 
+echo ""
+echo ""

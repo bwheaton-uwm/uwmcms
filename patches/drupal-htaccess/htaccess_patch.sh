@@ -48,3 +48,6 @@ else
     echo "UWM-CMS: Seems the patch was already applied."
 
 fi
+
+echo ""
+echo ""
