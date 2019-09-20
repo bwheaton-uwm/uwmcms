@@ -8,6 +8,8 @@
 use Drupal\Core\Form\FormState;
 use Drupal\search_api\Query\QueryInterface;
 use Solarium\Core\Query\QueryInterface as SolariumQueryInterface;
+use Drupal\views\ViewExecutable;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * Implements hook_page_attachments_alter().
@@ -58,6 +60,23 @@ function uwmed_uwmcms_search_views_pre_view($view, $display_id, &$args) {
       _uwmed_uwmcms_search_views_pre_view_uwm_locations_geo_search($view, $display_id, $args);
       break;
   }
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function uwmed_uwmcms_search_views_pre_render(ViewExecutable $view_ex) {
+
+  switch ($view_ex->id()) {
+    case 'uwm_providers_search':
+      _uwmed_uwmcms_search_views_pre_render_uwm_providers_search($view_ex);
+      break;
+
+    case 'uwm_locations_geo_search':
+      _uwmed_uwmcms_search_views_pre_render_uwm_locations_geo_search($view_ex);
+      break;
+  }
+
 }
 
 /**
@@ -270,6 +289,120 @@ function uwmed_uwmcms_search_search_api_solr_query_alter(SolariumQueryInterface 
 }
 
 /**
+ * Implements hook_preprocess_html().
+ */
+function uwmed_uwmcms_search_preprocess_html(&$variables) {
+
+  $route_match = \Drupal::routeMatch();
+  $route_params = $route_match->getParameters()->all();
+
+  // Alter the head title for search result pages, corresponding to the
+  // page title as managed by views.
+  // @see _uwmed_uwmcms_search_views_pre_render_set_results_title()
+  if (strpos($route_match->getRouteName(), 'view.') === 0 && in_array($route_params['view_id'], [
+    'uwm_providers_search',
+    'uwm_locations_geo_search',
+  ]) && !empty($variables['page']['#title'])) {
+
+    $current_title = $variables['page']['#title'];
+    $original_title = NULL;
+    $original_head_title = $variables['head_title']['title'];
+
+    // Find the original page title from view configuration.
+    /** @var \Drupal\views\Entity\View $view */
+    $view = \Drupal::entityTypeManager()->getStorage('view')->load($route_params['view_id']);
+    $display = $view->getDisplay($route_params['display_id']);
+    if (!empty($display['display_options']['title'])) {
+      $original_title = $display['display_options']['title'];
+    }
+    else {
+      $display_default = $view->getDisplay('default');
+      $original_title = $display_default['display_options']['title'];
+    }
+
+    // If the page title has been altered, update the head title too.
+    if ($current_title !== $original_title) {
+
+      $head_title = $current_title;
+
+      // If the title string includes a different head title value, designated
+      // by the custom delimiter, retrieve it.
+      if (strpos($current_title, '[head_title]') !== FALSE) {
+        $titles = explode('[head_title]', $current_title);
+        $head_title = $titles[1];
+      }
+
+      // Replace pretty quotation marks (which would show up encoded).
+      $head_title = str_replace(
+        ['&lsquo;', '&rsquo;', '&ldquo;', '&rdquo;'],
+        ['\'', '\'', '"', '"'],
+        $head_title
+      );
+
+      // Replace the page title (token) part in the original head title.
+      $head_title = str_replace($original_title, $head_title, $original_head_title);
+
+      // Now that we have the full head title string, remove the "UW Medicine"
+      // site name suffix if duplicated in the page title part.
+      $head_title_suffix = '| UW Medicine';
+      if (strrpos($head_title, $head_title_suffix) === (strlen($head_title) - strlen($head_title_suffix))) {
+        $head_title_main = substr($head_title, 0, strrpos($head_title, '|'));
+        if (strpos($head_title_main, 'UW Medicine') !== FALSE) {
+          $head_title = $head_title_main;
+        }
+      }
+
+      // Set variable according to incoming structure. The head_title is an
+      // array, which is joined by '|'. Note that Metatag has already set this.
+      // @see metatag_preprocess_html()
+      $variables['head_title']['title'] = $head_title;
+
+    }
+
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_block__page_title_block().
+ */
+function uwmed_uwmcms_search_preprocess_block__page_title_block(&$variables) {
+
+  if (!empty($variables['content']['#type']) && $variables['content']['#type'] === 'page_title') {
+
+    // If a search view alteration has set a title string containing a different
+    // page title and head title, remove the head title before rendering this
+    // block.
+    // @TODO: This is weird and messy - but it seems there is no way to access
+    // the ViewExecutable in preprocess to use it to build the head_title.
+    // @see _uwmed_uwmcms_search_views_pre_render_set_results_title()
+    $title_str = NULL;
+
+    if (is_array($variables['content']['#title']) && !empty($variables['content']['#title']['#markup'])) {
+      $title_str = $variables['content']['#title']['#markup'];
+    }
+    elseif ($variables['content']['#title'] instanceof TranslatableMarkup) {
+      // Note: #title may also be a TranslatableMarkup object - to override it
+      // we would need to create a new TranslatableMarkup object and pass in the
+      // modified title as a variable. The code linter gives a warning about
+      // passing variables to t(), so skip that case as we don't need it now
+      // (and this is not a great implementation anyway).
+    }
+
+    // Check for custom delimiter.
+    if (!empty($title_str) && strpos($title_str, '[head_title]') !== FALSE) {
+      $titles = explode('[head_title]', $title_str);
+      $title_str = $titles[0];
+
+      if (is_array($variables['content']['#title']) && !empty($variables['content']['#title']['#markup'])) {
+        $variables['content']['#title']['#markup'] = $title_str;
+      }
+    }
+
+  }
+}
+
+/**
  * Customize the locations search form.
  *
  * @param array $form
@@ -372,6 +505,188 @@ function _uwmed_uwmcms_search_views_pre_view_uwm_locations_geo_search($view, $di
       $view->setHandler($display_id, 'filter', 'field_coordinates_geofield_latlong', $distance_filter);
     }
   }
+}
+
+/**
+ * Alter the uwm_providers_search view in the pre_render phase.
+ */
+function _uwmed_uwmcms_search_views_pre_render_uwm_providers_search(ViewExecutable $view_ex) {
+  _uwmed_uwmcms_search_views_pre_render_set_results_title($view_ex);
+}
+
+/**
+ * Alter the uwm_locations_geo_search view in the pre_render phase.
+ */
+function _uwmed_uwmcms_search_views_pre_render_uwm_locations_geo_search(ViewExecutable $view_ex) {
+  _uwmed_uwmcms_search_views_pre_render_set_results_title($view_ex);
+}
+
+/**
+ * Set a search view title according to results in the pre_render phase.
+ */
+function _uwmed_uwmcms_search_views_pre_render_set_results_title(ViewExecutable $view_ex) {
+
+  $count = $view_ex->total_rows;
+
+  $input = $view_ex->getExposedInput();
+
+  // Retrieve any searched keywords.
+  $keywords = NULL;
+  if (!empty($input['s']) && is_string($input['s']) && strlen(trim($input['s'])) > 0) {
+    $keywords = trim($input['s']);
+  }
+
+  // Retrieve Medical Specialty (or interim Areas of Expertise) term name(s)
+  // from facet.
+  $facet_key = NULL;
+  switch ($view_ex->id()) {
+
+    case 'uwm_providers_search':
+      $facet_key = 'fs_p';
+      break;
+
+    case 'uwm_locations_geo_search':
+      $facet_key = 'f';
+      break;
+
+  }
+
+  // There may be links to pre-filtered searches with multiple values selected
+  // in the facet (even if the user cannot select multiple in the dropdown).
+  $specialty = [];
+  if (!empty($facet_key) && !empty($input[$facet_key])) {
+    // Note: for previously-used Medical Service vocabulary, this key was:
+    // 'medical-service:'.
+    $prefix = 'expertise:';
+
+    foreach ($input[$facet_key] as $facet_val) {
+      if (strpos($facet_val, $prefix) === 0) {
+        $specialty_value = substr($facet_val, strlen($prefix));
+
+        // Depending on how the facet and associated indexed value are set up,
+        // the value used in the form field / query param may be either the
+        // term ID or term name. Assume the ID if numeric, otherwise the name.
+        if (is_numeric($specialty_value)) {
+          $term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load((int) $specialty_value);
+          if (!empty($term)) {
+            $specialty[] = $term->label();
+          }
+        }
+        else {
+          $specialty[] = $specialty_value;
+        }
+      }
+    }
+  }
+
+  // Build the results title incorporating Specialty if used, otherwise keywords
+  // if used, and number of results. The Specialty filter takes precedence over
+  // keywords.
+  $title = NULL;
+  $head_title = NULL;
+
+  $translation_mgr = \Drupal::translation();
+  $args = [];
+  $conjunction = NULL;
+
+  switch ($view_ex->id()) {
+
+    case 'uwm_providers_search':
+      $args['@result_type_singular'] = t("provider");
+      $args['@result_type_plural'] = t("providers");
+      $conjunction = "in";
+      break;
+
+    case 'uwm_locations_geo_search':
+      $args['@result_type_singular'] = t("location");
+      $args['@result_type_plural'] = t("locations");
+      $conjunction = "for";
+      break;
+
+  }
+
+  if (!empty($specialty)) {
+
+    // Combine multiple terms, if there are.
+    $specialty = implode(", ", $specialty);
+
+    // The term for Specialty may have only the first letter uppercased. Set
+    // the first letter of each word to uppercase, to make it appear here as a
+    // title and to match the values in filter dropdown.
+    // @see uwmbase/components/search/search-dropdown/search-dropdown.html.twig
+    $specialty = ucwords($specialty);
+
+    $args = array_merge($args, [
+      '@specialty' => $specialty,
+    ]);
+
+    $title = $translation_mgr->formatPlural(
+      $count,
+      "1 @result_type_singular {$conjunction} @specialty",
+      "@count @result_type_plural {$conjunction} @specialty",
+      $args
+    );
+
+    $head_title = $translation_mgr->formatPlural(
+      $count,
+      "1 @result_type_singular at UW Medicine {$conjunction} @specialty",
+      "@count @result_type_plural at UW Medicine {$conjunction} @specialty",
+      $args
+    );
+
+  }
+  elseif (!empty($keywords)) {
+
+    $title = $translation_mgr->formatPlural(
+      $count,
+      "1 @result_type_singular found for &ldquo;@keywords&rdquo;",
+      "@count @result_type_plural found for &ldquo;@keywords&rdquo;",
+      array_merge($args, [
+        '@keywords' => $keywords,
+      ])
+    );
+
+  }
+  else {
+
+    // If neither Specialty filter nor keywords were used, determine if a
+    // search was run by checking for any non-empty inputs.
+    $searched = FALSE;
+    if (!empty($input)) {
+      foreach ($input as $k => $v) {
+        if (!empty($v)) {
+          $searched = TRUE;
+        }
+      }
+    }
+
+    // Set a generic results title if search was run.
+    if ($searched) {
+
+      $title = $translation_mgr->formatPlural(
+        $count,
+        "1 @result_type_singular found",
+        "@count @result_type_plural found",
+        $args
+      );
+
+    }
+  }
+
+  if (!empty($title)) {
+
+    // If the head title is desired to be different from the page title (h1),
+    // pass this to preprocess (where head title must be set) by placing both
+    // in a single string, separated by custom delimiter token. It is cleaned
+    // out of the page title in preprocessing that block.
+    // @TODO: This is weird and messy - but it seems there is no way to access
+    // the ViewExecutable in preprocess to use it to build the head_title.
+    // @see uwmed_uwmcms_search_preprocess_html()
+    // @see uwmed_uwmcms_search_preprocess_block__page_title_block()
+    $view_ex->setTitle($title . (!empty($head_title) ? ('[head_title]' . $head_title) : ''));
+
+  }
+
 }
 
 /**
