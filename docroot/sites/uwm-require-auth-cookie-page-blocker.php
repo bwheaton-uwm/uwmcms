@@ -125,6 +125,11 @@ if (!class_exists('UwmAuthCookieFormBlocker')) {
         return TRUE;
       }
 
+      // Do not check SiteImprove tool
+      if (self::isAllowedBot()) {
+        return TRUE;
+      }
+
       // Do not check University or internal network.
       if (function_exists('ip2long')) {
 
@@ -217,6 +222,19 @@ AUTHFORM;
       }
 
       return $ipaddress;
+    }
+
+    private static function isAllowedBot() {
+
+      $userAgent = strtolower($_SERVER['HTTP_USER_AGENT']);
+
+      //"Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0) SiteCheck-sitecrawl by Siteimprove.com"
+      if (stripos($userAgent, strtolower(" by Siteimprove.com")) !== FALSE) {
+        return TRUE;
+      }
+
+      return FALSE;
+
     }
 
   }
