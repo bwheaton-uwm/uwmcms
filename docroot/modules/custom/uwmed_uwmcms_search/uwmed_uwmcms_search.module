@@ -607,6 +607,13 @@ function _uwmed_uwmcms_search_views_pre_render_set_results_title(ViewExecutable 
 
   if (!empty($specialty)) {
 
+    // TODO:
+    // Ensure unique specialty values. This is a workaround for the `expertise`
+    // query parameter being somehow programmatically duplicated when link field
+    // URLs are output.
+    // @see https://www.wrike.com/open.htm?id=401444121
+    $specialty = array_unique($specialty);
+
     // Combine multiple terms, if there are.
     $specialty = implode(", ", $specialty);
 
