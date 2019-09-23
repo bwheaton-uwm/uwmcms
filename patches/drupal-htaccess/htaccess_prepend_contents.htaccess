@@ -123,22 +123,22 @@
 ## so /lp/ is not required in the URL
 ##
 ####
-<IfModule mod_rewrite.c>
-
-    RewriteEngine on
-
-    RewriteCond %{HTTP_HOST} ^www.uwmedicine.org [OR]
-    RewriteCond %{HTTP_HOST} ^www.uwmedicinetest.org
-
-    RewriteCond %{REQUEST_URI} ^/birth-facility(.*)?$ [OR]
-    RewriteCond %{REQUEST_URI} ^/breakthroughs(.*)?$ [OR]
-    RewriteCond %{REQUEST_URI} ^/lung-cancer(.*)?$ [OR]
-    RewriteCond %{REQUEST_URI} ^/uw-baby-pregnancy-app(.*)?$
-
-    RewriteRule ^(.*)$ https://stevie.cmsdev.uwmedicine.org/lp/%{REQUEST_URI} [L,P]
-    #RewriteRule ^(.*)$ https://%{HTTP_HOST}/lp%{REQUEST_URI} [L,P]
-
-</IfModule>
+#<IfModule mod_rewrite.c>
+#
+#    RewriteEngine on
+#
+#    RewriteCond %{HTTP_HOST} ^www.uwmedicine.org [OR]
+#    RewriteCond %{HTTP_HOST} ^www.uwmedicinetest.org
+# 
+#    RewriteCond %{REQUEST_URI} ^/birth-facility(.*)?$ [OR]
+#    RewriteCond %{REQUEST_URI} ^/breakthroughs(.*)?$ [OR]
+#    RewriteCond %{REQUEST_URI} ^/lung-cancer(.*)?$ [OR]
+#    RewriteCond %{REQUEST_URI} ^/uw-baby-pregnancy-app(.*)?$
+#
+#    RewriteRule ^(.*)$ https://stevie.cmsdev.uwmedicine.org/lp/%{REQUEST_URI} [L,P]
+#    #RewriteRule ^(.*)$ https://%{HTTP_HOST}/lp%{REQUEST_URI} [L,P]
+#
+#</IfModule>
 
 
 
