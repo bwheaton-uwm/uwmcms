@@ -52,9 +52,12 @@ function uwmcs_utils_page_attachments(array &$attachments) {
   }
 
   // Add pointer information on the current environment and site:
-  $env = ' Site path- ' . \Drupal::service('site.path') ?? NULL;
-  $env .= ' Site UUID- ' . \Drupal::config('system.site')->get('uuid') ?? NULL;
-  $env .= ' ENV- ' . $_ENV['AH_SITE_ENVIRONMENT'] ?? NULL;
+  $env = ' Site path ';
+  $env .= \Drupal::service('site.path') ?? NULL;
+  $env .= ' Site UUID ';
+  $env .= \Drupal::config('system.site')->get('uuid') ?? NULL;
+  $env .= ' ENV ';
+  $env .= $_ENV['AH_SITE_ENVIRONMENT'] ?? NULL;
 
   $environment_pointer_metatag = [
     '#tag' => 'meta',
