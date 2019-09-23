@@ -88,6 +88,10 @@ source:
       label: field_res_hide_returning_cta
       selector: /attributes/field_res_hide_returning_cta
     -
+      name: field_hide_see_clinics_cta
+      label: field_hide_see_clinics_cta
+      selector: /attributes/hide_see_all_clinics_cta
+    -
       name: field_res_iscallcenterserviced
       label: field_res_iscallcenterserviced
       selector: /attributes/field_res_iscallcenterserviced
@@ -95,6 +99,10 @@ source:
       name: is_hospital
       label: is_hospital
       selector: /attributes/is_hospital
+    -
+      name: is_building
+      label: is_building
+      selector: /attributes/is_building
     -
       name: field_res_phone_number
       label: field_res_phone_number
@@ -171,8 +179,10 @@ process:
   field_res_hide_appt_ctas: field_res_hide_appt_ctas
   field_res_hide_open_scheduling: field_res_hide_open_scheduling
   field_res_hide_returning_cta: field_res_hide_returning_cta
+  field_hide_see_clinics_cta: field_hide_see_clinics_cta
   field_res_iscallcenterserviced: field_res_iscallcenterserviced
   field_res_is_hospital: is_hospital
+  field_res_is_building: is_building
   field_res_phone_number: field_res_phone_number
   field_res_room_number: field_res_room_number
   field_res_feat_clinics_header: field_res_feat_clinics_header

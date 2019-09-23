@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.res_clinic.body
     - field.field.node.res_clinic.field_featured
+    - field.field.node.res_clinic.field_hide_see_clinics_cta
     - field.field.node.res_clinic.field_res_affiliates
     - field.field.node.res_clinic.field_res_box_number
     - field.field.node.res_clinic.field_res_building
@@ -25,6 +26,7 @@ dependencies:
     - field.field.node.res_clinic.field_res_hours_of_operation
     - field.field.node.res_clinic.field_res_image
     - field.field.node.res_clinic.field_res_internal_url
+    - field.field.node.res_clinic.field_res_is_building
     - field.field.node.res_clinic.field_res_is_hospital
     - field.field.node.res_clinic.field_res_iscallcenterserviced
     - field.field.node.res_clinic.field_res_medical_services
@@ -59,6 +61,16 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
+  field_hide_see_clinics_cta:
+    weight: 24
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
     region: content
   field_res_building:
     weight: 3
@@ -187,6 +199,16 @@ content:
     third_party_settings: {  }
     type: responsive_image
     region: content
+  field_res_is_building:
+    weight: 23
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
   field_res_phone_number:
     weight: 1
     label: hidden
@@ -261,4 +283,5 @@ hidden:
   field_test_m_services3: true
   field_uwm_json_packet: true
   links: true
+  search_api_excerpt: true
   uwm_unique_id: true

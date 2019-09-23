@@ -1,8 +1,9 @@
 {#
    Featured Clinics for campus locations
 #}
-{% if content.field_res_featured_clinics.0 is not empty %}
+{% if node.field_res_featured_clinics|length %}
   <section class="clinic-page__featured-clinics">
+    <a name="featured-locations" id="featured-locations"></a>
 
     <div class="container-xl">
 
