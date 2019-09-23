@@ -42,12 +42,28 @@ function uwmcs_utils_menu_link_content_presave(EntityInterface $entity) {
  */
 function uwmcs_utils_page_attachments(array &$attachments) {
 
+  // Add our helper utility CSS rules for all users/ pages:
   $attachments['#attached']['library'][] = 'uwmcs_utils/uwm-page-css';
 
+  // Add our helper utility CSS rules on administrative routes:
   $admin_context = \Drupal::service('router.admin_context');
   if ($admin_context->isAdminRoute()) {
     $attachments['#attached']['library'][] = 'uwmcs_utils/uwm-admin-css';
   }
+
+  // Add pointer information on the current environment and site:
+  $env = ' Site path- ' . \Drupal::service('site.path') ?? NULL;
+  $env .= ' Site UUID- ' . \Drupal::config('system.site')->get('uuid') ?? NULL;
+  $env .= ' ENV- ' . $_ENV['AH_SITE_ENVIRONMENT'] ?? NULL;
+
+  $environment_pointer_metatag = [
+    '#tag' => 'meta',
+    '#attributes' => [
+      'name' => 'uwmcms-env-realm',
+      'content' => $env,
+    ],
+  ];
+  $attachments['#attached']['html_head'][] = [$environment_pointer_metatag, 'uwmcms-env-realm'];
 
 }
 

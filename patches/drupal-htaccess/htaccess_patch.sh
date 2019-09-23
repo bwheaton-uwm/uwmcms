@@ -11,6 +11,10 @@
 #
 # $ git diff -p ./docroot/.htaccess > ./patches/drupal-htaccess/htaccess.patch
 #
+# Or, if you have ignored htaccess updates, diff your local version against the master
+# branch to recreate the patch:
+# $  git diff -p origin/master:docroot/.htaccess docroot/.htaccess > ./patches/drupal-htaccess/htaccess.patch
+#
 # @endexample
 #
 # @see https://github.com/acquia/blt/issues/1135#issuecomment-285404408
@@ -21,6 +25,8 @@ patch_file=$1
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
+echo ""
+echo ""
 echo "UWM-CMS: Running htaccess_patch.sh to add our custom htaccess rules."
 test=`patch -p1 -N --dry-run --silent < $patch_file 2>&1`
 
@@ -32,6 +38,7 @@ test=`patch -p1 -N --dry-run --silent < $patch_file 2>&1`
 if [ $? -eq 0 ];
 then
 
+
     echo "UWM-CMS: Applying our patch now:"
     echo "UWM-CMS: patch -p1 -N < $patch_file"
     patch -p1 -N < $patch_file
@@ -41,3 +48,6 @@ else
     echo "UWM-CMS: Seems the patch was already applied."
 
 fi
+
+echo ""
+echo ""
