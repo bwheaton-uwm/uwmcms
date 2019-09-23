@@ -1,11 +1,19 @@
+/*
+ * Drupal messages
+ *
+ * (Initial styling from Zen)
+ */
+
 .messages,
 .messages--status {
   margin: 1.5rem 0;
   position: relative;
   padding: 10px 10px 10px 44px;
-  border: 1px solid #0072b9;
+  border: 1px solid #098091;
   background-color: #f6fcff;
-  color: #0072b9;
+  background-position: 10px 13px;
+  color: #098091;
+  box-shadow: none;
 }
 
 [dir="rtl"] .messages,
@@ -44,6 +52,11 @@
   list-style-image: none;
 }
 
+.messages--status {
+  background-image: none;
+  padding-left: 10px;
+}
+
 .messages--warning {
   border-color: #fd0;
   background-color: #fffce6;
@@ -63,3 +76,4 @@
 .messages--error path {
   fill: #c00;
 }
+ 

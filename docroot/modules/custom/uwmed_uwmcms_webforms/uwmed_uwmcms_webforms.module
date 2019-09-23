@@ -1,0 +1,114 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for the UW Medicine Webforms module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\smtp\PHPMailer\PHPMailer;
+
+/**
+ * Implements hook_form_FORM_ID_alter() for 'webform_submission_acn_request_add_form'.
+ *
+ * Alters the acn_request webform for new submissions (not editing existing).
+ */
+function uwmed_uwmcms_webforms_form_webform_submission_acn_request_add_form_alter(&$form, FormStateInterface $form_state) {
+
+  // Set a custom submit handler. Though this is not the "real" actions element,
+  // it passes it to the two actual ones. (Not sure why we can't alter those
+  // directly in after_build, since they are present at that point.)
+  if (!empty($form['actions']['submit'])) {
+    $form['actions']['submit']['#submit'][] = '_uwmed_uwmcms_webforms_acn_request_submit';
+  }
+
+  // Add custom validation for Contact Phone field.
+  if (!empty($form['elements']['contact_information']['contact_phone'])) {
+    $form['elements']['contact_information']['contact_phone']['#element_validate'][] = '_uwmed_uwmcms_webforms_contact_phone_element_validate';
+  }
+
+  // Add a validation handler for the Contact Email field.
+  if (!empty($form['elements']['contact_information']['contact_email'])) {
+    $form['elements']['contact_information']['contact_email']['#element_validate'][] = '_uwmed_uwmcms_webforms_contact_email_element_validate';
+  }
+
+}
+
+/**
+ * Custom #element_validate for Contact Phone field.
+ *
+ * Loosely check phone number format: ensure at least 10 digits.
+ */
+function _uwmed_uwmcms_webforms_contact_phone_element_validate(&$element, FormStateInterface $form_state, &$complete_form) {
+
+  $value = trim($element['#value']);
+
+  // Remove any non-digit characters.
+  $value_digits = preg_replace('/\D/', '', $value);
+
+  // Check if we have at least 10 digits: ###-###-####.
+  if (strlen($value_digits) < 10) {
+
+    $form_state->setError($element, t("The phone number %value is not valid.", [
+      '%value' => $value,
+    ]));
+
+  }
+
+}
+
+/**
+ * Custom #element_validate for Contact Email field.
+ *
+ * While Drupal core has built-in validation for email fields, the STMP module
+ * has its own and they have slightly different rules. Run the SMTP module's
+ * validator here to ensure the value will pass that check too (and not throw a
+ * fatal error).
+ *
+ * @see \Drupal\smtp\PHPMailer\PHPMailer::AddAnAddress()
+ */
+function _uwmed_uwmcms_webforms_contact_email_element_validate(&$element, FormStateInterface $form_state, &$complete_form) {
+
+  $value = trim($element['#value']);
+
+  if (!PHPMailer::ValidateAddress($value)) {
+
+    $form_state->setError($element, t("The email address %value is not valid.", [
+      '%value' => $value,
+    ]));
+
+  }
+
+}
+
+/**
+ * Custom submit handler for acn_request form.
+ *
+ * Handle the two submit buttons differently - for Submit and Add More, set a
+ * message and reload (and clear) the form.
+ */
+function _uwmed_uwmcms_webforms_acn_request_submit(array &$form, FormStateInterface $form_state) {
+
+  $button = $form_state->getTriggeringElement();
+
+  // Submit buttons are distinguishable in the POST (and Form API) only if they
+  // have distinct `#name` attributes. The `#name` attribute is not exposed in
+  // the config form for submit elements; however, it can be provided by editing
+  // the yaml source and setting the `#submit__name` property.
+  // @see https://www.drupal.org/project/webform/issues/3069240
+  if ($button['#name'] === 'submit_another') {
+
+    // We want to reload the form page, but empty the values. There seems to be
+    // no method to unset the stored redirect, after setRedirect() or
+    // setRedirectUrl() has been called.
+    // "Redirecting" to the current page works to clear the form values, while
+    // $form_state->disableRedirect() kept them.
+    $route_match = \Drupal::routeMatch();
+    $form_state->setRedirect($route_match->getRouteName(), $route_match->getRawParameters()->all());
+
+    // TODO: Ideally this message would be configurable... markup element with
+    // access false initially, altered here?
+    drupal_set_message(t("Thank you for submitting your clinic. You may continue to submit another clinic."));
+
+  }
+}

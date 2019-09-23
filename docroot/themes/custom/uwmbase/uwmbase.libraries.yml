@@ -225,6 +225,11 @@ featured-story:
     component:
       dist/css/featured-story.css: {}
 
+messages:
+  css:
+    component:
+      dist/css/messages.css: {}
+
 modal-video:
   css:
     component:
@@ -344,11 +349,6 @@ inline-sibling:
   css:
     component:
       components/asset-builds/css/inline-sibling.css: {}
-
-messages:
-  css:
-    component:
-      components/asset-builds/css/messages.css: {}
 
 more-link:
   css:

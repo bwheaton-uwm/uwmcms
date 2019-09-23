@@ -5,35 +5,55 @@
 
 @import 'init';
 
+/*
+ * General webform styles
+ */
 form.webform-submission-form {
+
+  // If it's a full-page webform, ensure space between page title and form.
+  // (The page title bottom spacing is dependent on other page components in
+  // different contexts.)
+  body.is-path-webform & {
+    margin-top: 2rem; // 32px
+  }
 
   .form-item {
     margin: 1rem 0;
-  }
 
-  input.form-text,
-  input.form-email {
-    width: 100%;
-    padding: 4px;
-    background: #efe7e8;
-    color: #000;
-    opacity: .7;
-    border: 1px solid #c3c5c8;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-    font-size: 0.875rem; // 14px
-
-    &::placeholder {
-      text-transform: uppercase;
+    > .description {
+      padding-top: 8px;
     }
   }
 
-  label {
+  input.form-text,
+  input.form-email,
+  input.form-tel,
+  input.form-url {
+    width: 100%;
+    padding: 4px;
+    font-size: 0.875rem; // 14px
+    border: 1px solid theme-color('border-gray');
+  }
+
+  label,
+  fieldset.radios--wrapper > legend,
+  fieldset.checkboxes--wrapper > legend {
+    font-weight: $font-weight-semi-bold;
+
     &.form-required {
       color: inherit;
     }
   }
 
+  .form-radios.webform-options-display-side-by-side > .form-item:not(:first-child),
+  .form-checkboxes.webform-options-display-side-by-side > .form-item:not(:first-child) {
+    margin-left: 1.5rem; // 24px
+  }
 
+  .form-item.form-type-radio > label,
+  .form-item.form-type-checkbox > label {
+    font-weight: inherit;
+  }
 
   .form-actions {
     margin-bottom: 0;
@@ -44,25 +64,102 @@ form.webform-submission-form {
     }
   }
 
-  // "Health News You Can Use" form
-  &.webform-submission-health-news-signup-form {
+  .webform-section-wrapper {
 
-    .form-item-privacy-confirmation {
-      display: block;
-      margin: 0;
-      font-size: 0.875rem; // 14px
-      font-style: italic;
-      font-weight: 300;
-
-      label {
-        font-weight: inherit;
-
-        &.form-required::after {
-          display: none;
-        }
-      }
+    > .description {
+      font-size: inherit;
     }
 
+  }
+
+}
+
+/*
+ * Webform confirmation
+ */
+.webform-confirmation {
+
+  // If it's a full-page webform, ensure space between page title and form.
+  // (The page title bottom spacing is dependent on other page components in
+  // different contexts.)
+  body.is-path-webform & {
+    margin-top: 2rem; // 32px
+  }
+
+}
+
+/*
+ * "Health News You Can Use" form
+ */
+form.webform-submission-form.webform-submission-health-news-signup-form {
+
+  input.form-text,
+  input.form-email {
+    background: #efe7e8;
+    border: 1px solid #c3c5c8;
+    color: #000;
+    opacity: .7;
+
+    &::placeholder {
+      text-transform: uppercase;
+    }
+  }
+
+  .form-item-privacy-confirmation {
+    display: block;
+    margin: 0;
+    font-size: 0.875rem; // 14px
+    font-style: italic;
+    font-weight: 300;
+
+    label {
+      font-weight: inherit;
+
+      &.form-required::after {
+        display: none;
+      }
+    }
+  }
+
+}
+
+/*
+ * ACN Request form
+ */
+form.webform-submission-form.webform-submission-acn-request-form {
+
+  // Tweak the "key" for required indicator
+  .form-type-webform-markup span.form-required {
+    display: inline-block;
+
+    &::after {
+      margin: 0 6px 0 0;
+    }
+  }
+
+  .webform-section-wrapper {
+    @include make-row();
+
+    > fieldset,
+    > .description {
+      @include make-col-ready();
+      @include make-col(12);
+    }
+
+    > .form-item:not(fieldset) {
+      @include make-col-ready();
+
+      @include media-breakpoint-up('md') {
+        @include make-col(6);
+      }
+    }
+  }
+
+  // Align the two submit buttons next to each other
+  .form-actions {
+    display: inline-block;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
   }
 
 }
