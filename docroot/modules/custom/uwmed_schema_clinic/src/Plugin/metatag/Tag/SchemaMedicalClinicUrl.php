@@ -24,5 +24,19 @@ use Drupal\schema_metatag\Plugin\metatag\Tag\SchemaNameBase;
  * )
  */
 class SchemaMedicalClinicUrl extends SchemaNameBase {
-  // Nothing here yet. Just a placeholder class for a plugin.
+
+  /**
+   * {@inheritdoc}
+   *
+   * The `[node:url:absolute]` token will generate the 'stevie' domain; replace
+   * with 'www' on prod.
+   */
+  public static function outputValue($input_value) {
+
+    $input_value = str_replace('stevie.cms.', 'www.', $input_value);
+
+    return $input_value;
+
+  }
+
 }
