@@ -1,0 +1,9 @@
+uuid: 1fe6b6d2-7db0-4c2b-a4a8-cd9104c5f577
+langcode: en
+status: true
+dependencies: {  }
+name: 'Medical Title'
+vid: medical_title
+description: ''
+hierarchy: 0
+weight: 0

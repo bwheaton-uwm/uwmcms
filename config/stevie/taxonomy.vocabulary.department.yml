@@ -1,0 +1,9 @@
+uuid: 24e7e7c7-e97a-4835-8343-89567e626d58
+langcode: en
+status: true
+dependencies: {  }
+name: Department
+vid: department
+description: 'E.g. Obstetrics & Gynecology, Primary Care, Cardiology'
+hierarchy: 0
+weight: 0
