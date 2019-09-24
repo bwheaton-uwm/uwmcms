@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.res_clinic.field_res_building
     - field.field.node.res_clinic.field_res_clockwise_id
     - field.field.node.res_clinic.field_res_conditions_symptoms
+    - field.field.node.res_clinic.field_res_department
     - field.field.node.res_clinic.field_res_epic_department_ids
     - field.field.node.res_clinic.field_res_expertises
     - field.field.node.res_clinic.field_res_external_url
@@ -213,6 +214,15 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_res_department:
+    weight: 37
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   field_res_epic_department_ids:
     weight: 25
     settings:
