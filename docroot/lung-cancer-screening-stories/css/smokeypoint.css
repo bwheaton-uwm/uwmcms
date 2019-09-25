@@ -1,0 +1,238 @@
+article.smokeypoint-section {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+article.smokeypoint-section .smokeyButton_Brown a, article.smokeypoint-section#default-page #neighbor .links section:first-of-type a, article.smokeypoint-section#default-page #Appointment .links section:first-of-type a, article.smokeypoint-section#default-page #map .links a {
+  color: #fff;
+  line-height: 1.2;
+  text-align: center;
+}
+article.smokeypoint-section .smokeyButton_Brown a:hover, article.smokeypoint-section#default-page #neighbor .links section:first-of-type a:hover, article.smokeypoint-section#default-page #Appointment .links section:first-of-type a:hover, article.smokeypoint-section#default-page #map .links a:hover {
+  text-decoration: none;
+}
+article.smokeypoint-section .smokeyButton_Brown a:hover div, article.smokeypoint-section#default-page #neighbor .links section:first-of-type a:hover div, article.smokeypoint-section#default-page #Appointment .links section:first-of-type a:hover div, article.smokeypoint-section#default-page #map .links a:hover div {
+  background: #F3F0E6;
+  color: #000;
+}
+article.smokeypoint-section .smokeyButton_Brown a div, article.smokeypoint-section#default-page #neighbor .links section:first-of-type a div, article.smokeypoint-section#default-page #Appointment .links section:first-of-type a div, article.smokeypoint-section#default-page #map .links a div {
+  background: #A29061;
+  padding: 1em 2em;
+  cursor: pointer;
+}
+article.smokeypoint-section .row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+article.smokeypoint-section .row-eq-height [class*="col-"] {
+  display: flex;
+  flex-direction: column;
+}
+article.smokeypoint-section#default-page .banner_container, article.smokeypoint-section#default-page section.row:nth-of-type(3), article.smokeypoint-section#default-page .clinic_campaign_bg3_container {
+  width: 200%;
+  margin-left: -50%;
+}
+@media only screen and (max-width: 1024px) {
+  article.smokeypoint-section#default-page .banner_container, article.smokeypoint-section#default-page section.row:nth-of-type(3), article.smokeypoint-section#default-page .clinic_campaign_bg3_container {
+    width: 100%;
+    margin-left: 0%;
+  }
+}
+article.smokeypoint-section#default-page #banner {
+  margin-top: 20px;
+}
+@media only screen and (max-width: 515px) {
+  article.smokeypoint-section#default-page #banner .textfour, article.smokeypoint-section#default-page #banner .textfive {
+    font-size: 19px;
+  }
+}
+article.smokeypoint-section#default-page #neighbor {
+  margin-top: 45px;
+  margin-bottom: 45px;
+}
+@media only screen and (max-width: 990px) {
+  article.smokeypoint-section#default-page #neighbor {
+    padding-left: 15px;
+  }
+}
+article.smokeypoint-section#default-page #neighbor h1 {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #333;
+}
+article.smokeypoint-section#default-page #neighbor .links section:first-of-type {
+  padding-left: 0px;
+}
+@media only screen and (max-width: 990px) {
+  article.smokeypoint-section#default-page #neighbor .links section:first-of-type {
+    padding-left: 15px;
+  }
+}
+article.smokeypoint-section#default-page #neighbor .links section:nth-of-type(2) div {
+  border: 1px solid #e2e2e2;
+}
+article.smokeypoint-section#default-page #neighbor .links section:nth-of-type(2) div p {
+  color: #000;
+  padding: 1em 2em;
+  margin: 0;
+  line-height: 1.15;
+  font-weight: bold;
+  text-align: center;
+}
+@media only screen and (max-width: 990px) {
+  article.smokeypoint-section#default-page #neighbor article:nth-of-type(2) {
+    margin-top: 10px;
+  }
+}
+article.smokeypoint-section#default-page #PrimaryCare {
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
+article.smokeypoint-section#default-page #PrimaryCare h2 {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #333;
+}
+article.smokeypoint-section#default-page #PrimaryCare div.mainContainer {
+  margin-bottom: 5px;
+}
+@media only screen and (max-width: 990px) {
+  article.smokeypoint-section#default-page #PrimaryCare div.mainContainer {
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+}
+article.smokeypoint-section#default-page #PrimaryCare div.mainContainer div.row article {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+article.smokeypoint-section#default-page #PrimaryCare div.mainContainer div.row article:nth-of-type(1) div p {
+  border: 1px solid #e2e2e2;
+  text-align: center;
+  padding: 6em 0.3em 2em;
+}
+article.smokeypoint-section#default-page #PrimaryCare div.mainContainer div.row article:nth-of-type(1) div p:nth-of-type(1) {
+  background: #fff url("../images/olympia_chronic_disease_1.png") no-repeat 50% 25%;
+}
+article.smokeypoint-section#default-page #PrimaryCare div.mainContainer div.row article:nth-of-type(1) div p:nth-of-type(2) {
+  background: #fff url("../images/olympia_screening_1.png") no-repeat 50% 25%;
+}
+article.smokeypoint-section#default-page #PrimaryCare div.mainContainer div.row article:nth-of-type(2) div p {
+  border: 1px solid #e2e2e2;
+  text-align: center;
+  padding: 6em 0.3em 2em;
+}
+article.smokeypoint-section#default-page #PrimaryCare div.mainContainer div.row article:nth-of-type(2) div p:nth-of-type(1) {
+  background: #fff url("../images/olympia_lab_1.png") no-repeat 50% 25%;
+}
+article.smokeypoint-section#default-page #PrimaryCare div.mainContainer div.row article:nth-of-type(2) div p:nth-of-type(2) {
+  background: #fff url("../images/olympia_women_1.png") no-repeat 50% 25%;
+}
+@media only screen and (max-width: 990px) {
+  article.smokeypoint-section#default-page #PrimaryCare div.secondaryContainer {
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+}
+article.smokeypoint-section#default-page #PrimaryCare div.secondaryContainer div.row article {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+article.smokeypoint-section#default-page #PrimaryCare div.secondaryContainer div.row article:nth-of-type(1) div p {
+  border: 1px solid #e2e2e2;
+  text-align: center;
+  padding: 6em 0.3em 2em;
+}
+article.smokeypoint-section#default-page #PrimaryCare div.secondaryContainer div.row article:nth-of-type(1) div p:nth-of-type(1) {
+  background: #fff url("../images/olympia_family_medicine_1.png") no-repeat 50% 25%;
+}
+article.smokeypoint-section#default-page #PrimaryCare div.secondaryContainer div.row article:nth-of-type(1) div p:nth-of-type(2) {
+  background: #fff url("../images/olympia_immunizations_1.png") no-repeat 50% 25%;
+}
+article.smokeypoint-section#default-page #PrimaryCare div.secondaryContainer div.row article:nth-of-type(2) div p {
+  border: 1px solid #e2e2e2;
+  text-align: center;
+  padding: 6em 0.3em 2em;
+}
+article.smokeypoint-section#default-page #PrimaryCare div.secondaryContainer div.row article:nth-of-type(2) div p:nth-of-type(1) {
+  background: #fff url("../images/olympia_exams_1.png") no-repeat 50% 25%;
+}
+article.smokeypoint-section#default-page #PrimaryCare div.secondaryContainer div.row article:nth-of-type(2) div p:nth-of-type(2) {
+  background: #fff url("../images/olympia_preventive_1.png") no-repeat 50% 25%;
+}
+@media only screen and (max-width: 767px) {
+  article.smokeypoint-section#default-page #CareForYou .row-eq-height {
+    margin-left: 5px;
+  }
+}
+article.smokeypoint-section#default-page #CareForYou .panel4_container {
+  height: initial !important;
+}
+article.smokeypoint-section#default-page #CareForYou .third_smokeypoint, article.smokeypoint-section#default-page #CareForYou .first_smokeypoint, article.smokeypoint-section#default-page #CareForYou .two_smokeypoint, article.smokeypoint-section#default-page #CareForYou .fourth_smokeypoint, article.smokeypoint-section#default-page #CareForYou .five_smokeypoint {
+  text-align: center;
+  padding: 10em 0.4em 0;
+}
+article.smokeypoint-section#default-page #CareForYou .third_smokeypoint {
+  background: url("../images/bio_fetty_scott_md_1.png") no-repeat 50% 0/120px 120px;
+}
+article.smokeypoint-section#default-page #CareForYou .fourth_smokeypoint {
+  background: url("../images/bio_hajazi_sam_md_1.png") no-repeat 50% 0/120px 120px;
+}
+article.smokeypoint-section#default-page #CareForYou .first_smokeypoint {
+  background: url("../images/bio_shannon_colleen_md_1.png") no-repeat 50% 0/120px 120px;
+}
+article.smokeypoint-section#default-page #CareForYou .two_smokeypoint {
+  background: url("../images/bio_usoltseva_natalia_md_1.png") no-repeat 50% 0/120px 120px;
+}
+article.smokeypoint-section#default-page #CareForYou .five_smokeypoint {
+  background: url("../images/bio_debbie_vega_md.png") no-repeat 50% 0/120px 120px;
+}
+article.smokeypoint-section#default-page #PrimaryCare section div {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+article.smokeypoint-section#default-page #Appointment {
+  padding-top: 6em;
+  padding-bottom: 6em;
+}
+article.smokeypoint-section#default-page #Appointment h3 {
+  font-weight: normal;
+  font-size: 1.6em;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 3em;
+}
+article.smokeypoint-section#default-page #Appointment .links section:last-of-type div {
+  background: #fff;
+}
+article.smokeypoint-section#default-page #Appointment .links section:last-of-type div p {
+  font-weight: bold;
+  color: #000;
+  line-height: 1.2;
+  padding: 1em 2em;
+  text-align: center;
+}
+@media only screen and (max-width: 990px) {
+  article.smokeypoint-section#default-page section.row:nth-of-type(3) {
+    width: 100%;
+    margin-left: 0%;
+  }
+}
+article.smokeypoint-section#default-page #map {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+article.smokeypoint-section#default-page #map h2 {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #333 !important;
+}
+@media only screen and (max-width: 990px) {
+  article.smokeypoint-section#default-page #map div {
+    text-align: center;
+  }
+}
+
+

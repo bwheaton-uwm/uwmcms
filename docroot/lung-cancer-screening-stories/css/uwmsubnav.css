@@ -1,0 +1,319 @@
+/*******
+    Sub Nav Styles - UW Medicine
+**/
+
+.navbar {
+    min-height: 0;
+    margin-bottom: 0;
+}
+
+nav.fade-block {
+    display: none;
+}
+
+.desktop-navigation {
+    display: block;
+    z-index: 998;
+}
+.mobile-navigation {
+    display: none;
+}
+@media (max-width: 980px) {
+    .desktop-navigation, .mobile-navigation {
+        display: none;
+    }
+    .mobile-navigation-modal, .mobile-navigation-modal .mobile-navigation, .mobile-navigation-modal  nav.fade-block {
+        display: block;
+    }
+}
+.desktop-navigation ul>li>a, 
+.mobile-navigation-modal ul>li>a {
+    display: inline-block;
+}
+
+/* Top Level Subnav List */
+#mobile-navigation-modal {
+	z-index:4000;
+}
+
+#mobile-navigation-modal .dropdown-backdrop {
+	display: none;
+}
+
+.desktop-navigation .dropdown-backdrop {
+	display: none;
+}
+
+.desktop-navigation .navbar-inner {
+    background: rgba(244, 241, 232, 1);
+}
+.desktop-navigation>.navbar-inner, 
+.mobile-navigation-modal>.navbar-inner {
+    border-top: solid 1px #e7e7e7;
+    border-bottom: solid 1px #e7e7e7;
+}
+.desktop-navigation .nav>.active>a, 
+.desktop-navigation .nav>.active>a:hover, 
+.desktop-navigation .nav>li>a:hover,
+.mobile-navigation-modal .nav>.active>a, 
+.mobile-navigation-modal .nav>.active>a:hover, 
+.mobile-navigation-modal .nav>li>a:hover {
+    background: #ebe4cc;
+    box-shadow: none;
+    display: inline-block;
+}
+.desktop-navigation ul.nav, 
+.mobile-navigation-modal ul.nav {
+    margin: 0;
+}
+.desktop-navigation ul.nav>li>a, 
+.mobile-navigation-modal ul.nav>li>a {
+    color: #856822;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 40px;
+}
+.desktop-navigation ul.nav>li.open>a,
+.desktop-navigation ul.nav>li.open>a:focus {
+    background-color: #ebe4cc;
+}
+.desktop-navigation .nav>li {
+    float: left;
+}
+
+/* Dropdown */
+
+.desktop-navigation .dropdown-menu {
+    border-radius: 0;
+}
+.desktop-navigation .dropdown>.dropdown-menu {
+    margin-top: 0;
+}
+.desktop-navigation .dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
+/* Chevrons - note: place <i> before text */
+
+.desktop-navigation .nav i {
+    float: right;
+    margin-left: 8px;
+    margin-top: 3px;
+}
+
+/* Dropdown Menu List */
+
+.desktop-navigation .dropdown-menu li a,
+.mobile-navigation-modal .dropdown-menu li a {
+    color: #333333;
+    min-width: 250px;
+    min-height: 35px;
+    padding-top: 8px;
+}
+.desktop-navigation .dropdown-menu li a:hover {
+    color: #fff;
+    background-color: #b69a59;
+    cursor: pointer !important;
+}
+.desktop-navigation .dropdown-menu li .nav-button, 
+.mobile-navigation-modal .dropdown-menu li .nav-button {
+    width: 100%;
+    background-color: #8a914b;
+    color: #ffffff;
+    border: none;
+    padding: 14px 10px;
+    border: 1px solid #ababab;
+    text-align: center;
+    font-weight: bold;
+}
+
+.desktop-navigation .dropdown-menu li a.has-button:hover, 
+.mobile-navigation-modal .dropdown-menu li a.has-button:hover {
+    color: #fff;
+    background-color: #fff;
+}
+
+.desktop-navigation .dropdown-menu li a.has-button:hover > .nav-button, 
+.mobile-navigation-modal .dropdown-menu li a.has-button:hover > .nav-button {
+    background-color: #7d8247;
+}
+
+.desktop-navigation .dropdown-menu li a.has-button, 
+.mobile-navigation-modal .dropdown-menu li a.has-button {
+    border-top: 1px solid #ebebeb;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+/* Dropdown Submenu */
+
+.desktop-navigation .dropdown-submenu {
+    position: relative;
+}
+.desktop-navigation .dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+}
+.desktop-navigation .dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+.desktop-navigation .dropdown-submenu.pull-left {
+    float: none;
+}
+.desktop-navigation .dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+}
+.desktop-navigation .dropdown-submenu li .nav-button, 
+.mobile-navigation-modal .dropdown-submenu li .nav-button {
+    background-color: #7ca1c5;
+    color: #ffffff;
+}
+.desktop-navigation .dropdown-submenu li:hover a.has-button .nav-button, 
+.mobile-navigation-modal .dropdown-submenu li:hover a.has-button .nav-button {
+    background-color: #6b8eaf;
+}
+
+/* Dropdown header styling */
+
+.desktop-navigation .dropdown-header {
+  color: #856822;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.desktop-navigation .dropdown-menu > .dropdown-header {
+  margin-top: 6px;
+}
+
+.desktop-navigation .dropdown-menu > .dropdown-header ~ .dropdown-header {
+  margin-top: 12px;
+}
+
+/* Wrap long names */
+
+.desktop-navigation .dropdown-menu li a.has-button, .mobile-navigation-modal .dropdown-menu li a.has-button {
+    border-top: 1px solid #ebebeb;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+.desktop-navigation .dropdown-menu li a, .mobile-navigation-modal .dropdown-menu li a {
+    color: #333333;
+    width: 250px;
+    min-height: 35px;
+    white-space: normal;
+    padding-top: 8px;
+}
+
+
+/****************
+        MOBILE SUBNAV
+        ***/
+
+.mobile-navigation-modal .modal-dialog {
+    width: 94%;
+    height: 94%;
+    margin: 3%;
+    padding: 0;
+}
+.mobile-navigation-modal .modal-content {
+    height: auto;
+    min-height: 100%;
+    border-radius: 0;
+    position: relative;
+}
+.mobile-navigation-modal .modal-header {
+    position: relative;
+    border: none;
+}
+.mobile-navigation-modal .modal-header .btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 2px;
+    border: 0;
+    font-size: 22px;
+    padding: 6px 6px 20px 20px;
+    z-index: 10;
+}
+.mobile-navigation-modal .modal-footer {
+    border: none; 
+}
+.mobile-navigation-modal .dropdown-menu {
+    position: relative;
+    float: none;
+    border: transparent;
+    box-shadow: none;
+}
+.mobile-navigation-modal .modal-footer form {
+    border-bottom: 1px solid #999;
+}
+.mobile-navigation-modal .modal-footer input.form-control {
+    width: 75%;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+}
+.mobile-navigation-modal .modal-footer button {
+    width: 30px;
+    float: left;
+    min-width: 20px;
+    padding: 4px;
+    border: none;
+    height: 20px;
+    font-size: 19px;
+}
+.mobile-navigation-modal li li li {
+    display: none;
+}
+/*********************
+            MOBILE OVERIDES 
+            ***/
+.mobile-navigation-modal .nav .open>a, .mobile-navigation-modal .nav .open>a:focus, .mobile-navigation-modal .nav .open>a:hover {
+    background-color: transparent;
+}
+.mobile-navigation-modal ul.nav>li>a {
+    padding: 8px 4px;
+}
+.mobile-navigation-modal i.fa {
+    float: right;
+    margin: 2px 0 0 6px;
+}
+.open .fa-angle-down:before {
+    content: "\f106";
+}
+.mobile-navigation-modal .btn-default:hover, 
+.mobile-navigation-modal input[type=button]:hover, 
+.mobile-navigation-modal input[type=reset]:hover, 
+.mobile-navigation-modal input[type=submit]:hover, 
+.mobile-navigation-modal button:hover
+ {
+    border-color: transparent;
+    background-color: transparent;
+}
+.mobile-navigation-modal li.dropdown {
+    margin-top: 26px;
+}
+.mobile-navigation-modal li.dropdown:first-child {
+    margin-top: 0;
+}
+nav .btn.btn-primary {
+    background: url(/Style%20Library/images/ico-03.gif) no-repeat 100% 5px;
+    height: 31px;
+    font: bold 14px/31px Arial, Helvetica, sans-serif;
+    text-align: right;
+    padding: 0 36px 0 0;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    float: right;
+    border: none;
+}
+
+.modal-backdrop {
+    z-index: 3500;
+}
