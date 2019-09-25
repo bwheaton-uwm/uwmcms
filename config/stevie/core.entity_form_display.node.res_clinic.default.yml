@@ -37,7 +37,6 @@ dependencies:
     - field.field.node.res_clinic.field_res_procedures_treatments
     - field.field.node.res_clinic.field_res_providers
     - field.field.node.res_clinic.field_res_room_number
-    - field.field.node.res_clinic.field_res_special_interests
     - field.field.node.res_clinic.field_search_best_bets
     - field.field.node.res_clinic.field_uwm_json_packet
     - field.field.node.res_clinic.field_uwm_sections
@@ -405,12 +404,6 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_res_special_interests:
-    type: options_select
-    weight: 9
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_search_best_bets:
     weight: 33
     settings:
