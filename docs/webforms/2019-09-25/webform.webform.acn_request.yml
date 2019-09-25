@@ -23,7 +23,7 @@ settings:
   ajax_speed: null
   page: true
   page_submit_path: /aco/for-providers
-  page_confirm_path: /aco/confirmation
+  page_confirm_path: ''
   page_admin_theme: false
   form_title: source_entity_webform
   form_submit_once: false
@@ -106,10 +106,10 @@ settings:
   draft_loaded_message: ''
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
-  confirmation_type: page
+  confirmation_type: url
   confirmation_title: 'Request to Join ACN Confirmation'
   confirmation_message: 'Thank you for your interest in joining the UW Medicine Accountable Care Network (ACN). We appreciate you taking the time to fill out the &ldquo;Request to Join the UW Medicine ACN&rdquo; form. The information you provided will help us evaluate your request based on network adequacy and other additional criteria. Please allow three to four weeks to be contacted by a representative of the UW Medicine ACN regarding next steps. Thank you again for your interest in the UW Medicine ACN.'
-  confirmation_url: ''
+  confirmation_url: 'https://www.uwmedicine.org/aco/confirmation'
   confirmation_attributes: {  }
   confirmation_back: false
   confirmation_back_label: 'Submit another clinic'
