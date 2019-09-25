@@ -67,6 +67,14 @@ source:
     label: field_res_epic_department_ids
     selector: /attributes/field_res_epic_department_ids
 
+  - name: field_res_patients_treated
+    label: field_res_patients_treated
+    selector: /attributes/field_res_patients_treated
+
+  - name: field_res_department
+    label: field_res_department
+    selector: /attributes/field_res_department
+
   - name: field_res_external_url
     label: field_res_external_url
     selector: /attributes/field_res_external_url
@@ -214,6 +222,7 @@ process:
 
   field_res_box_number: field_res_box_number
   field_res_epic_department_ids: field_res_epic_department_ids
+  field_res_department: field_res_department
   field_res_external_url: field_res_external_url
   field_res_fax_number: field_res_fax_number
   field_res_internal_url: field_res_internal_url
