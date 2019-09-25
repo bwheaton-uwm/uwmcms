@@ -1,0 +1,9 @@
+uuid: 8d6e1d8b-b405-48c3-a57e-56da4bc4d7ba
+langcode: en
+status: true
+dependencies: {  }
+name: 'Patients Treated'
+vid: patients_treated
+description: ''
+hierarchy: 0
+weight: 0

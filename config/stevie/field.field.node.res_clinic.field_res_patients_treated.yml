@@ -1,15 +1,16 @@
-uuid: 3ac372ab-f724-4410-a226-1749c6deb0ec
+uuid: 3c4c93c3-de19-408d-9617-7296d6859335
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_res_special_interests
+    - field.storage.node.field_res_patients_treated
     - node.type.res_clinic
-id: node.res_clinic.field_res_special_interests
-field_name: field_res_special_interests
+    - taxonomy.vocabulary.patients_treated
+id: node.res_clinic.field_res_patients_treated
+field_name: field_res_patients_treated
 entity_type: node
 bundle: res_clinic
-label: 'Special  Interests'
+label: 'Patients Treated'
 description: ''
 required: false
 translatable: false
@@ -18,7 +19,8 @@ default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'
   handler_settings:
-    target_bundles: {  }
+    target_bundles:
+      patients_treated: patients_treated
     sort:
       field: name
       direction: asc
