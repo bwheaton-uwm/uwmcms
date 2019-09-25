@@ -136,7 +136,6 @@ hidden:
   field_res_meta_tags: true
   field_res_procedures_treatments: true
   field_res_providers: true
-  field_res_special_interests: true
   field_search_best_bets: true
   field_test_m_services2: true
   field_test_m_services3: true
