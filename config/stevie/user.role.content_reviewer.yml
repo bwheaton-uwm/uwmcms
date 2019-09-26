@@ -1,0 +1,66 @@
+uuid: f6104baf-c96c-477f-a307-c41a0be54cca
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+third_party_settings:
+  lightning_core:
+    description: ''
+id: content_reviewer
+label: 'Content Reviewer'
+weight: 4
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'access contextual links'
+  - 'access files overview'
+  - 'access image_browser entity browser pages'
+  - 'access media_browser entity browser pages'
+  - 'access shortcuts'
+  - 'access site-wide contact form'
+  - 'access toolbar'
+  - 'access webform overview'
+  - 'bypass paragraphs type content access'
+  - 'switch shortcut sets'
+  - 'use editorial transition archive'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition publish'
+  - 'use editorial transition review'
+  - 'view any unpublished content'
+  - 'view latest version'
+  - 'view media'
+  - 'view own consumer entities'
+  - 'view paragraph content award'
+  - 'view paragraph content board_certification'
+  - 'view paragraph content degree'
+  - 'view paragraph content detailed_contact_card'
+  - 'view paragraph content education_history'
+  - 'view paragraph content half_wide_hero'
+  - 'view paragraph content headshot_card'
+  - 'view paragraph content hours_for_day'
+  - 'view paragraph content hours_of_operation'
+  - 'view paragraph content uwm_3_col_proof_points'
+  - 'view paragraph content uwm_accent_heading'
+  - 'view paragraph content uwm_accordion'
+  - 'view paragraph content uwm_accordion_section'
+  - 'view paragraph content uwm_accordion_sub_section'
+  - 'view paragraph content uwm_basic_content'
+  - 'view paragraph content uwm_block'
+  - 'view paragraph content uwm_card'
+  - 'view paragraph content uwm_content_reference'
+  - 'view paragraph content uwm_cta_link'
+  - 'view paragraph content uwm_featured_clinics'
+  - 'view paragraph content uwm_featured_story'
+  - 'view paragraph content uwm_full_html'
+  - 'view paragraph content uwm_grid'
+  - 'view paragraph content uwm_image'
+  - 'view paragraph content uwm_image_hero'
+  - 'view paragraph content uwm_link_with_icon'
+  - 'view paragraph content uwm_media'
+  - 'view paragraph content uwm_modal'
+  - 'view paragraph content uwm_quiz_question'
+  - 'view paragraph content uwm_section'
+  - 'view paragraph content uwm_sections_medical_services'
+  - 'view paragraph content uwm_text'
+  - 'view paragraph content uwm_view'
