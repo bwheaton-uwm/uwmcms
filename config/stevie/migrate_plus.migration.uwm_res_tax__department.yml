@@ -1,0 +1,42 @@
+uuid: a2c4d2e8-0966-4c18-b295-13ac66ac518c
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_res_tax__department
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: uwm
+label: uwm_res_tax__department
+source:
+  ids:
+    uuid:
+      type: string
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  item_selector: data/
+  track_changes: true
+  urls:
+    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/department?page[limit]=50&page[offset]=0&sort=-changed'
+  fields:
+    -
+      name: uuid
+      label: uuid
+      selector: /id
+    -
+      name: name
+      label: name
+      selector: /attributes/name
+process:
+  uuid: uuid
+  tid:
+    -
+      plugin: uwm_tid_from_any
+      source: uuid
+  name: name
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: department
+migration_dependencies: {  }
