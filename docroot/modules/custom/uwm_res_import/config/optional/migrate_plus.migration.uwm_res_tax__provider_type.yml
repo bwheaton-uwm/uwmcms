@@ -1,12 +1,12 @@
 #res taxonomy: buildings
-id: uwm_res_tax__academic_title
-label: uwm_res_tax__academic_title
+id: uwm_res_tax__provider_type
+label: uwm_res_tax__provider_type
 migration_group: uwm
 migration_dependencies: {}
 
 destination:
   plugin: entity:taxonomy_term
-  default_bundle: academic_title
+  default_bundle: provider_type
 
 
 source:
@@ -21,7 +21,7 @@ source:
   track_changes: true
 
   urls:
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/academic_title?page[limit]=50&page[offset]=0&sort=-changed
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/provider_type?page[limit]=50&page[offset]=0&sort=-changed
 
 
 
