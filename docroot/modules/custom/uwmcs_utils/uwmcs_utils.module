@@ -247,3 +247,35 @@ function uwmcs_utils_toolbar() {
   return $items;
 
 }
+
+/**
+ * Implements hook_entity_prepare_view().
+ *
+ * - On clinic nodes that are hospitals, remove all values from the providers
+ *   entity reference field, because there are too many to render.
+ */
+function uwmcs_utils_entity_prepare_view($entity_type_id, array $entities, array $displays, $view_mode) {
+
+  if ($entity_type_id === 'node' && !empty($displays['res_clinic']) && !empty($entities)) {
+
+    foreach ($entities as $node) {
+
+      // Clinic nodes that are hospitals may have hundreds of values in the
+      // providers entity reference field. Since Reservoir synchronizes clinic
+      // and provider entity ref fields that point to each other via
+      // Corresponding Entity Reference fields, it's easier (and more accurate)
+      // to keep that data in place. Loading that many nodes to render must be
+      // prevented though, as it is not performant.
+      // This hook runs before the field render arrays are built, so we can
+      // override the field value.
+      if ($node->bundle() === 'res_clinic' && $node->hasField('field_res_is_hospital') && !$node->get('field_res_is_hospital')->isEmpty() && (boolean) $node->get('field_res_is_hospital')->first()->getValue()['value']) {
+
+        $node->get('field_res_providers')->setValue([]);
+
+      }
+
+    }
+
+  }
+
+}
