@@ -29,7 +29,7 @@
 
   {% set text %}
     <span class="btn__text">{{ field_uwm_link__title }}</span>
-    {% if not fluid_width and not btn_cta_solid %}
+    {% if not fluid_width and btn_cta_style != 'Solid' %}
       <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
     {% endif %}
   {% endset %}
