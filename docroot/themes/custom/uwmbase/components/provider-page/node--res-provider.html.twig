@@ -111,7 +111,7 @@
 
         {% set open_scheduling_url = "https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id=#{node.field_res_ser_id.0.value}&vt=#{visit_type_id}&view=plain" %}
 
-        <iframesrc="{{ open_scheduling_url }}" scrolling="no" style="width: 100%;"></iframe>
+        <iframe src="{{ open_scheduling_url }}" scrolling="no" style="width: 100%;"></iframe>
 
     {% endif %}
 
