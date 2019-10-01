@@ -21203,11 +21203,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/uwmweb/ckeditor_bs_grid/zipball/e2bd7a01273019212bcce473fa62e7c655d65b3a",
                 "reference": "e2bd7a01273019212bcce473fa62e7c655d65b3a",
-<<<<<<< HEAD
-                "shasum": ""
-=======
                 "shasum": "507cfbd5c446bb4c2705b65a760388c3144e25fa"
->>>>>>> master
             },
             "require": {
                 "drupal/core": "~8"
@@ -21235,11 +21231,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/uwmweb/uwmedicineorg_theme/zipball/7073e3e440a3dc75812056d30259459f6f49ac52",
                 "reference": "7073e3e440a3dc75812056d30259459f6f49ac52",
-<<<<<<< HEAD
-                "shasum": ""
-=======
                 "shasum": "70e7db52bab4b117c91f99b9b1b8d3ecc213c502"
->>>>>>> master
             },
             "type": "drupal-theme",
             "license": [
