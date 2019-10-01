@@ -97,6 +97,27 @@
     </div>
 
 
+    {#
+      -- TEST --
+      Try embedding the ecare scheduling widget as an iframe.
+      This is for technical testing only, not realistically placed in layout.
+
+      Use same logic as exists in node--provider-card.html.twig
+    #}
+
+    {% if node.field_res_is_open_scheduling.0.value == 1 and node.field_res_ser_id.0.value %}
+
+        {% set visit_type_id = node.field_res_visit_type_id.0.value ? node.field_res_visit_type_id.0.value : 9000 %}
+
+        {% set open_scheduling_url = "https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id=#{node.field_res_ser_id.0.value}&vt=#{visit_type_id}&view=plain" %}
+
+        <iframesrc="{{ open_scheduling_url }}" scrolling="no" style="width: 100%;"></iframe>
+
+    {% endif %}
+
+    {#
+      -- END TEST --
+    #}
 
     {#{{ content }}#}
 
