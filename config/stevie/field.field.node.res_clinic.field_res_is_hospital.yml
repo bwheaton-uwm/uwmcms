@@ -10,7 +10,7 @@ field_name: field_res_is_hospital
 entity_type: node
 bundle: res_clinic
 label: 'Is hospital?'
-description: 'Check if this location is a hospital. This determines if "hospital" is used in place of "clinic" to describe this location on its page.'
+description: 'Check if this location is a hospital. This determines if "hospital" is used in place of "clinic" to describe this location on its page. Hospitals also do not display the Care Providers tab, as there are too many to display.'
 required: false
 translatable: false
 default_value:
