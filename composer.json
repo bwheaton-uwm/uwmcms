@@ -49,20 +49,19 @@
     "uwmcms-update-saml": [
       "sh ./patches/simplesaml/setup_simplesaml_patch.sh"
     ],
-    "uwmcms-patch-htccess": [
+    "uwmcms-patch-htaccess": [
       "sh ./patches/drupal-htaccess/htaccess_patch.sh ./patches/drupal-htaccess/htaccess.patch"
+    ],
+    "uwmcms-preprend-htaccess": [
+      "sh ./patches/drupal-htaccess/htaccess_prepend.sh './patches/drupal-htaccess/htaccess_prepend_contents.htaccess' './docroot/.htaccess'"
     ],
     "post-install-cmd": [
       "@uwmcms-update-saml",
-      "@uwmcms-patch-htccess"
+      "@uwmcms-patch-htaccess",
+      "@uwmcms-preprend-htaccess"
     ],
-    "post-update-cmd": [
-      "@uwmcms-update-saml",
-      "@uwmcms-patch-htccess"
-    ],
-    "post-drupal-scaffold-cmd": [
-      "@uwmcms-patch-htccess"
-    ]
+    "post-update-cmd": [],
+    "post-drupal-scaffold-cmd": []
   },
   "require":
   {
@@ -236,6 +235,9 @@
       "drupal/schema_metatag": {
         "Add the target property to PotentialAction of search on the WebPage schema type": "https://www.drupal.org/files/issues/2019-06-04/schema_metatag-searchaction_target_missing-2968062-22.patch",
         "Recipe step descriptions will explode on comma": "https://www.drupal.org/files/issues/2019-07-15/2976935-use-metatag-delimiter.patch"
+      },
+      "drupal/webform": {
+        "Adding multiple submit (webform_actions) elements with the same value": "https://www.drupal.org/files/issues/2019-07-22/3069240-4.patch"
       }
     }
   },

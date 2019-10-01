@@ -2,7 +2,10 @@
 
 {#{{ uwm_plugin_block('facet_block:locations_facet_uwmsearchwithin') }}#}
 
-{{ uwm_plugin_block('facet_block:locations_geo_facet_medical_services') }}
+{# {{ uwm_plugin_block('facet_block:locations_geo_facet_medical_services') }} #}
+
+{{ uwm_plugin_block('facet_block:locations_geo_facet_expertise') }}
+
 
 {{ include('@uwmbase/search/content-top/search-submit.twig',
   { reset_path: '/search/locations' }) }}

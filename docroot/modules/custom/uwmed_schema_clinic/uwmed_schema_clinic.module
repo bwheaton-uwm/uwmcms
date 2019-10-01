@@ -1,0 +1,89 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for the UWMed Schema.org: Medical Clinic module.
+ */
+
+ /**
+  * Implements hook_module_implements_alter().
+  *
+  * Run our hook_page_attachments_alter() before schema_metatag's. This allows
+  * us to alter all schema metatag values as PHP arrays, before they are
+  * converted to one JSON string.
+  */
+function uwmed_schema_clinic_module_implements_alter(&$implementations, $hook) {
+
+  if ($hook === 'page_attachments_alter') {
+
+    $reordered = [];
+
+    // Find the schema_metatag module and insert our module just before it.
+    foreach ($implementations as $module => $group) {
+
+      if ($module === 'schema_metatag') {
+        $reordered['uwmed_schema_clinic'] = $implementations['uwmed_schema_clinic'];
+      }
+      elseif ($module === 'uwmed_schema_clinic') {
+        continue;
+      }
+
+      $reordered[$module] = $group;
+
+    }
+
+    $implementations = $reordered;
+
+  }
+
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ *
+ * Alter schema metatags after they've been assembled. They are still PHP arrays
+ * at this point because we've moved our implementation to happen before
+ * schema_metatag converts them to one JSON string.
+ */
+function uwmed_schema_clinic_page_attachments_alter(array &$attachments) {
+
+  if (!empty($attachments['#attached']['html_head'])) {
+
+    $schema_clinic_image = NULL;
+    $schema_clinic_department = NULL;
+
+    foreach ($attachments['#attached']['html_head'] as $i => &$tag) {
+      if (!empty($tag[1])) {
+
+        if ($tag[1] === 'schema_clinic_image') {
+          $schema_clinic_image = $tag[0]['#attributes'];
+        }
+        elseif ($tag[1] === 'schema_clinic_opening_hours_spec_1' && $tag[0]['#attributes']['name'] === 'department') {
+          $schema_clinic_department = &$tag[0]['#attributes'];
+        }
+
+        // Remove any clinic schema values that turned out empty.
+        // SchemaNameBase::output() checks for completely empty values, but that
+        // does not cover multiple values that have been pivoted and have a
+        // '@type' (that would define each value) but no actual value.
+        if (strpos($tag[1], 'schema_clinic_') === 0 && $tag[0]['#attributes']['schema_metatag'] === TRUE) {
+          if (empty($tag[0]['#attributes']['content'])) {
+            unset($attachments['#attached']['html_head'][$i]);
+          }
+        }
+
+      }
+    }
+
+    // If Urgent Care hours are present under a 'department', copy the
+    // MedicalClinic's 'image' property to the department, because it's a
+    // sub-type of Organization and thus requires the image property.
+    if (!empty($schema_clinic_department) && !empty($schema_clinic_image)) {
+
+      $schema_clinic_department['content']['image'] = $schema_clinic_image['content'];
+
+    }
+
+  }
+
+}

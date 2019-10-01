@@ -1,0 +1,23 @@
+uuid: 62f869d6-8f38-4536-ae2f-e3964ee05acd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_is_building
+    - node.type.res_clinic
+id: node.res_clinic.field_res_is_building
+field_name: field_res_is_building
+entity_type: node
+bundle: res_clinic
+label: 'Is Building?'
+description: 'Change some of this page''s heading to use generic "Location" instead of "Clinic" terminology.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

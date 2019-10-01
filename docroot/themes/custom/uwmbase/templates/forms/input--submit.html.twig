@@ -18,4 +18,10 @@
     'btn-cta'
   ]
 %}
-<button{{ attributes.addClass(classes)|without('value') }}>{{ attributes.value }}{{ children }}</button>
+{#
+  Note: retain the `value` attribute on the button tag, as that is the value
+  it submits. This is key for Form API to determine which button submitted the
+  form -
+  @see FormBuilder::buttonWasClicked()
+#}
+<button{{ attributes.addClass(classes) }}>{{ attributes.value }}{{ children }}</button>

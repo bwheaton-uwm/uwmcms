@@ -3,13 +3,14 @@
  # Display short-form text about location hours.
  #
  #}
-{% macro display_mobile_primary_hours_header(hours, has_primary_care = FALSE, has_urgent_care = FALSE) %}
+{% macro display_mobile_primary_hours_header(hours, has_primary_care = FALSE, has_urgent_care = FALSE, is_location = FALSE) %}
 
   <div class="clinic-page__hours-header-mobile primary">
 
-    <h2 class="clinic-page__hours-header">
+
       {# @TODO: check for Primary Care in Medical Services #}
-      {{- hours.operation.always_open ? (
+      {% set hours_heading =
+       hours.operation.always_open ? (
       has_primary_care ?
       "Primary Care"|t
       : "Hours"|t
@@ -18,7 +19,11 @@
       has_urgent_care ?
       "Primary Care"|t
       : "Clinic Hours"|t
-      ) -}}
+      )
+      %}
+    {% set hours_heading = is_location ? "Location Hours" : hours_heading %}
+    <h2 class="clinic-page__hours-header">
+        {{- hours_heading -}}
     </h2>
 
     <div class="clinic-page__open-current">
@@ -68,7 +73,7 @@
 
 {% endmacro %}
 
-{% macro display_clinic_card_location_hours(hours, url, is_hospital = FALSE) %}
+{% macro display_clinic_card_location_hours(hours, url, is_hospital = FALSE, is_location = FALSE) %}
 
   {% set always_open = hours.operation.always_open %}
   {% set primary_hours = hours.operation.open_close %}
@@ -90,14 +95,16 @@
            # @see display_mobile_primary_hours_header()
            #}
           {% set hide_heading = (primary_hours == true and urgent_hours == false) %}
-          {{- (
-          hide_heading ? "" :
-          (
-          always_open ?
-          (primary_hours ? "Primary Care: " : "Hours: ") :
-          (urgent_hours ? "Primary Care: " : "Clinic Hours: ")
-          )
-          ) |t -}}
+          {% set heading_text = (
+            hide_heading ? "" :
+              (
+              always_open ?
+                (primary_hours ? "Primary Care: " : "Hours: ") :
+                (urgent_hours ? "Primary Care: " : "Clinic Hours: ")
+              )
+          ) %}
+          {% set heading_text = is_location ? "Location Hours" : heading_text %}
+          {{- heading_text|t -}}
           <span class="opens-at" data-uwm-opens-at-style="times-only"
                 data-uwm-opens-at="{{ primary_hours|json_encode() }}"></span>
         {% else %}

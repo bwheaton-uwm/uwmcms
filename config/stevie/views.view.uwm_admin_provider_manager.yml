@@ -1110,7 +1110,7 @@ display:
         title: 'Search Provider Videos'
         description: ''
         expanded: true
-        parent: system.admin_content
+        parent: 'views_view:views.uwm_admin_provider_manager.page_1'
         weight: 100
         context: '0'
         menu_name: admin

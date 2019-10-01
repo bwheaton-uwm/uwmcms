@@ -225,6 +225,11 @@ function uwmbase_page_attachments_alter(&$variables) {
   if ($currentPath == '/node/20836') {
     $variables['#attached']['library'][] = 'uwmbase/make-appt-page';
   }
+
+  // Add library for Northwest Hospital Events Calendar page.
+  if ($currentPath == '/node/49301') {
+    $variables['#attached']['library'][] = 'uwmbase/trumba';
+  }
 }
 
 /**
@@ -254,11 +259,29 @@ function uwmbase_preprocess_page(&$variables, $hook) {
   $currentPath = \Drupal::service('path.current')->getPath();
   $variables['current_path'] = $currentPath;
 
+  $route_match = \Drupal::routeMatch();
+  $route_name = $route_match->getRouteName();
+
   /** @var \Drupal\Node\NodeInterface $node */
   $node = !empty($variables['node']) ? $variables['node'] : NULL;
 
   if (stripos($currentPath, '/search/locations/map') !== FALSE) {
     $variables['page']['show_sidebar_second'] = TRUE;
+  }
+
+  // Conditionally render the Highlighted region with Drupal status messages.
+  // Default to not render, per historical setup.
+  $variables['render_messages'] = FALSE;
+
+  // Render Drupal messages on webform pages, so that users can see error and
+  // confirmation messages.
+  if ($route_name === 'entity.webform.canonical') {
+    $variables['render_messages'] = TRUE;
+  }
+
+  // Render messages for admins, for utility.
+  if (in_array('administrator', \Drupal::currentUser()->getRoles())) {
+    $variables['render_messages'] = TRUE;
   }
 
   if (!empty($node)) {
@@ -1500,13 +1523,23 @@ function uwmbase_preprocess_paragraph__uwm_link_with_icon__uwm_card(&$variables)
     return;
   }
 
+  // Get Visit Type ID to create an Online Scheduling button -
+  // default to Visit Type ID 9000 if one doesn't exist
+  // NOTE: Current state, only get first ID even if more than one exists.
+  // @TODO add check / functionality for multiple Visit Type IDs.
+
+  if ($node->get('field_res_visit_type_id')->get(0) != NULL) {
+    $first_visit_type_id = $node->get('field_res_visit_type_id')->get(0)->getString();
+  }
+  $set_visit_type_id = isset($first_visit_type_id) ? $first_visit_type_id : 9000;
+
   // Update the URL with the provider's SER ID.
   $uri = $variables['content']['field_uwm_link'][0]['#url']->toUriString();
   $uri .= '/SignupAndSchedule/EmbeddedSchedule';
   $uri_options = [
     'query' => [
       'id' => $ser,
-      'vt' => '9000',
+      'vt' => $set_visit_type_id,
       'view' => 'plain',
     ],
     'absolute' => TRUE,
@@ -1534,10 +1567,21 @@ function uwmbase_preprocess_page_title(&$variables) {
 
       // Load the provider node from the SER ID.
       $node = _uwmbase_get_provider_by_ser($ser);
+
+      // Get Visit Type ID to create an Online Scheduling button -
+      // default to Visit Type ID 9000 if one doesn't exist
+      // NOTE: Current state, only get first ID even if more than one exists.
+      // @TODO add check / functionality for multiple Visit Type IDs.
+
+      if ($node->get('field_res_visit_type_id')->get(0) != NULL) {
+        $first_visit_type_id = $node->get('field_res_visit_type_id')->get(0)->getString();
+      }
+      $set_visit_type_id = isset($first_visit_type_id) ? $first_visit_type_id : 9000;
+
       if ($node) {
         // Customize the link for the provider.
         $variables['title_suffix'] = [
-          '#markup' => '<div class="make-appt-page__title-link"><a href="https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=9000&view=plain">Book online with ' . trim($node->label()) . '</a></div>',
+          '#markup' => '<div class="make-appt-page__title-link"><a href="https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book online with ' . trim($node->label()) . '</a></div>',
           '#allowed_tags' => ['div', 'a'],
         ];
       }
@@ -1593,6 +1637,15 @@ function uwmbase_theme_suggestions_form_element_alter(array &$suggestions, array
  * Implements hook_preprocess_webform().
  */
 function uwmbase_preprocess_webform(&$variables) {
+
+  $variables['#attached']['library'][] = 'uwmbase/webforms';
+
+}
+
+/**
+ * Implements hook_preprocess_webform_confirmation().
+ */
+function uwmbase_preprocess_webform_confirmation(&$variables) {
 
   $variables['#attached']['library'][] = 'uwmbase/webforms';
 

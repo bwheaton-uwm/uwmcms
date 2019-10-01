@@ -106,6 +106,10 @@ source:
       label: field_res_ser_id
       selector: /attributes/field_res_ser_id
     -
+      name: field_res_visit_type_id
+      label: field_res_visit_type_id
+      selector: /attributes/field_res_visit_type_id
+    -
       name: field_res_is_open_scheduling
       label: field_res_is_open_scheduling
       selector: /attributes/field_res_is_open_scheduling
@@ -194,6 +198,7 @@ process:
   field_res_pubmed_ids: field_res_pubmed_ids
   field_res_puma_id: field_res_puma_id
   uwm_unique_id: uwm_unique_id
+  field_res_visit_type_id: field_res_visit_type_id
   field_res_affiliates:
     plugin: sub_process
     source: field_res_affiliates
