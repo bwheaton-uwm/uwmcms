@@ -117,4 +117,22 @@ class SchemaMedicalClinicPotentialAction extends SchemaNameBase {
     return $form;
   }
 
+  /**
+   * {@inheritdoc}
+   *
+   * The `[site:url]` token will generate the 'stevie' domain; replace with
+   * 'www' on prod.
+   */
+  public static function outputValue($input_value) {
+
+    if (is_array($input_value) && !empty($input_value['target']) && is_string($input_value['target'])) {
+
+      $input_value['target'] = str_replace('stevie.cms.', 'www.', $input_value['target']);
+
+    }
+
+    return $input_value;
+
+  }
+
 }
