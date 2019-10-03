@@ -16,6 +16,7 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\views\ViewExecutable;
 use Drupal\Core\Url;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_entity_presave().
@@ -245,6 +246,49 @@ function uwmcs_utils_toolbar() {
   }
 
   return $items;
+
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for 'node_res_clinic_edit_form'.
+ *
+ * - On clinic nodes that are hospitals, remove the Providers field widget,
+ * in case submitting the form would be too large of a request for the server.
+ */
+function uwmcs_utils_form_node_res_clinic_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  $node = $form_state->getFormObject()->getEntity();
+
+  // Clinic nodes that are hospitals may have hundreds of values in the
+  // providers entity reference field. Since Reservoir synchronizes clinic
+  // and provider entity ref fields that point to each other via
+  // Corresponding Entity Reference fields, it's easier (and more accurate)
+  // to keep that data in place.
+  // Editing that many values on the node form can be problematic as the data
+  // may be too large for requests. (Reservoir returned 413, Request Entity Too
+  // Large, upon submitting node form.)
+  if (!empty($form['field_res_providers'])) {
+    if ($node->hasField('field_res_is_hospital') && !$node->get('field_res_is_hospital')->isEmpty() && (boolean) $node->get('field_res_is_hospital')->first()->getValue()['value']) {
+
+      // Remove the field widget.
+      $form['field_res_providers']['widget']['#access'] = FALSE;
+
+      // Use the form element container to display explanatory message for
+      // content editors instead.
+      $form['field_res_providers']['hospital_message'] = [
+        '#theme' => 'status_messages',
+        '#message_list' => [
+          'warning' => [
+            t("This clinic is a hospital. While provider references are managed in Reservoir, this field is removed here because a hospital may have so many providers that this form will not work correctly."),
+          ],
+        ],
+        '#status_headings' => [
+          'warning' => t('Warning message'),
+        ],
+      ];
+
+    }
+  }
 
 }
 
