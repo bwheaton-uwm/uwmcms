@@ -73,7 +73,7 @@ source:
 
   - name: field_res_department
     label: field_res_department
-    selector: /attributes/field_res_department
+    selector: /relationships/field_res_department/data
 
   - name: field_res_external_url
     label: field_res_external_url
