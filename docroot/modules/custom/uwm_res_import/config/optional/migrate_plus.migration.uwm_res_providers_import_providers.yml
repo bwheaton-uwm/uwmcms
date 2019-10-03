@@ -157,23 +157,23 @@ source:
 
   - name: field_res_department
     label: field_res_department
-    selector: /attributes/field_res_department
+    selector: /relationships/field_res_department/data
 
   - name: field_res_medical_title
     label: field_res_medical_title
-    selector: /attributes/field_res_medical_title
+    selector: /relationships/field_res_medical_title/data
 
   - name: field_res_provider_type
     label: field_res_provider_type
-    selector: /attributes/field_res_provider_type
+    selector: /relationships/field_res_provider_type/data
 
   - name: field_res_academic_title
     label: field_res_academic_title
-    selector: /attributes/field_res_academic_title
+    selector: /relationships/field_res_academic_title/data
 
   - name: field_res_patients_treated
     label: field_res_patients_treated
-    selector: /relationships/field_res_patients_treated/data
+    selector: /attributes/field_res_patients_treated
 
 #  - name: field_res_education_history
 #    label: field_res_education_history
