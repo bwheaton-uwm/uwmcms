@@ -9,12 +9,13 @@
 @import 'init';
 
 .make-appt-page {
-  a {
+  .paragraph--type--uwm-basic-content a {
     color: theme-color('link-blue');
+    margin-bottom: 1rem;
+
     text-decoration: none;
     &:hover, &:focus {
       text-decoration: underline;
     }
   }
-
 }
