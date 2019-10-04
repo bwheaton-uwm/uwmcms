@@ -7,15 +7,11 @@
  */
 
 @import 'init';
+@import 'base/typography';
 
 .make-appt-page {
   .paragraph--type--uwm-basic-content a {
-    color: theme-color('link-blue');
-
-    text-decoration: none;
-    &:hover, &:focus {
-      text-decoration: underline;
-    }
+    @include link-blue-hover-underline;
   }
 
   .paragraph--view-mode--uwm-card a {
