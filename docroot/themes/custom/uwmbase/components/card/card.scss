@@ -64,13 +64,11 @@
         text-align: left;
         @include link-with-icons-aligned();
       }
-
-      .btn-cta-solid {
-        padding: .875rem 0;
-      }
-
     }
 
+    .btn-cta-solid {
+      margin: .875rem 0;
+    }
   }
 
   .field--name-field-uwm-card-footer {
