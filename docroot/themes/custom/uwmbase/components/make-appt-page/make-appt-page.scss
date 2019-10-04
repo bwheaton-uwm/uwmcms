@@ -9,13 +9,15 @@
 @import 'init';
 
 .make-appt-page__title-link {
-  font-size: 1.25rem;
-  margin-top: 1rem;
   a {
     color: theme-color('link-blue');
     text-decoration: none;
     &:hover, &:focus {
       text-decoration: underline;
     }
+  }
+
+  &--bold {
+    font-weight: 600;
   }
 }
