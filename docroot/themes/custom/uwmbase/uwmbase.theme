@@ -1533,7 +1533,7 @@ function uwmbase_preprocess_paragraph__uwm_basic_content__uwm_card(&$variables) 
   // Else swap it out with the book online link.
   // Note: This is an interem fix that will be removed with the update of providers no longer
   // linking to make an appointment page
-  $string = 'Primary care appointments and some specialties can be booked online 24/7';
+  $string = 'Your primary care appointments and some specialty care can be booked online';
   if (stristr($variables['content']['uwm_text'][0]['#text'], $string) !== false) {
     $variables['content']['uwm_text'][0]['#text'] = '<div class="make-appt-page__title-link"><a href="https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book with ' . '<span class="make-appt-page__title-link--bold">' . trim($node->label()) . '</span>' . '</a></div>';
   }
