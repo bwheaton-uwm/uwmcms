@@ -11,11 +11,15 @@
 .make-appt-page {
   .paragraph--type--uwm-basic-content a {
     color: theme-color('link-blue');
-    margin-bottom: 1rem;
 
     text-decoration: none;
     &:hover, &:focus {
       text-decoration: underline;
     }
+  }
+
+  .paragraph--view-mode--uwm-card a {
+    display: block;
+    margin-bottom: 1rem;
   }
 }
