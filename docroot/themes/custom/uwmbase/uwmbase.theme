@@ -905,12 +905,13 @@ function uwmbase_preprocess_paragraph(&$variables) {
 
   $parent = $paragraph->getParentEntity();
 
-  // Make an Appointment Page Override
-  // This targets the make an appointment page and adds a class to the page
-  // so that we can overrides the default
-  // link style from grey with underline to blue with no underline
-  // SEE themes > custom > uwmbase > components > make-appt-page > make_appt-page.scss
-  // @TODO make this a global link change and remove this override
+  // Make an Appointment Page Override:
+  // This targets the make an appointment page and adds a class to the page.
+  // so that we can overrides the default.
+  // link style from grey with underline to blue with no underline.
+  // SEE themes > custom > uwmbase > components >
+  // make-appt-page > make_appt-page.scss.
+  // @TODO make this a global link change and remove this override.
   $paragraph_id = $paragraph->id();
 
   if ($paragraph_id = 53086) {
@@ -1543,8 +1544,9 @@ function uwmbase_preprocess_paragraph__uwm_basic_content__uwm_card(&$variables) 
 
   // Bail if the text doesn't contain the text getting swapped out.
   // Else swap it out with the book online link.
-  // Note: This is an interem fix that will be removed with the update of providers no longer
-  // linking to make an appointment page
+  // Note: This is an interem fix that will be removed with
+  // the update of providers no longer linking to
+  // make an appointment page.
   $string = 'Your primary care appointments and some specialty care can be booked online';
   if (stristr($variables['content']['uwm_text'][0]['#text'], $string) !== false) {
     $variables['content']['uwm_text'][0]['#text'] = '<div><a href="https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book with ' . '<span class="font-weight-semi-bold">' . trim($node->label()) . '</span>' . '</a></div>';
