@@ -905,6 +905,18 @@ function uwmbase_preprocess_paragraph(&$variables) {
 
   $parent = $paragraph->getParentEntity();
 
+  // Make an Appointment Page Override
+  // This targets the make an appointment page and adds a class to the page
+  // so that we can overrides the default
+  // link style from grey with underline to blue with no underline
+  // SEE themes > custom > uwmbase > components > make-appt-page > make_appt-page.scss
+  // @TODO make this a global link change and remove this override
+  $paragraph_id = $paragraph->id();
+
+  if ($paragraph_id = 53086) {
+    $variables['attributes']['class'][] = 'make-appt-page';
+  }
+
   // Add css classes to identify the parent field.
   // This helps finding elements with CSS in Google Tag Manager.
   $variables['css_parents_classes'] = get_css_classes_for_parent($variables);
@@ -1535,7 +1547,7 @@ function uwmbase_preprocess_paragraph__uwm_basic_content__uwm_card(&$variables) 
   // linking to make an appointment page
   $string = 'Your primary care appointments and some specialty care can be booked online';
   if (stristr($variables['content']['uwm_text'][0]['#text'], $string) !== false) {
-    $variables['content']['uwm_text'][0]['#text'] = '<div class="make-appt-page__title-link"><a href="https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book with ' . '<span class="make-appt-page__title-link--bold">' . trim($node->label()) . '</span>' . '</a></div>';
+    $variables['content']['uwm_text'][0]['#text'] = '<div><a href="https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book with ' . '<span class="font-weight-semi-bold">' . trim($node->label()) . '</span>' . '</a></div>';
   }
 }
 

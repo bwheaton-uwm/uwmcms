@@ -8,7 +8,7 @@
 
 @import 'init';
 
-.make-appt-page__title-link {
+.make-appt-page {
   a {
     color: theme-color('link-blue');
     text-decoration: none;
@@ -17,7 +17,4 @@
     }
   }
 
-  &--bold {
-    font-weight: 600;
-  }
 }
