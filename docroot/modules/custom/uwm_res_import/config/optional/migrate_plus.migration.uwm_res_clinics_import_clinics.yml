@@ -69,7 +69,7 @@ source:
 
   - name: field_res_patients_treated
     label: field_res_patients_treated
-    selector: /attributes/field_res_patients_treated
+    selector: /relationships/field_res_patients_treated/data
 
   - name: field_res_department
     label: field_res_department
@@ -222,7 +222,6 @@ process:
 
   field_res_box_number: field_res_box_number
   field_res_epic_department_ids: field_res_epic_department_ids
-  field_res_department: field_res_department
   field_res_external_url: field_res_external_url
   field_res_fax_number: field_res_fax_number
   field_res_internal_url: field_res_internal_url
@@ -293,5 +292,17 @@ process:
   field_res_medical_services:
   - plugin: uwm_tid_for_uuid
     source: field_res_medical_services
+  - plugin: skip_on_empty
+    method: process
+
+field_res_department:
+  - plugin: uwm_tid_for_uuid
+    source: field_res_department
+  - plugin: skip_on_empty
+    method: process
+
+field_res_patients_treated:
+  - plugin: uwm_tid_for_uuid
+    source: field_res_patients_treated
   - plugin: skip_on_empty
     method: process
