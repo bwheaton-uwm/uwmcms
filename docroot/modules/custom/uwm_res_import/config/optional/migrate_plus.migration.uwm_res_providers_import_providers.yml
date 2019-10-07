@@ -173,7 +173,7 @@ source:
 
   - name: field_res_patients_treated
     label: field_res_patients_treated
-    selector: /attributes/field_res_patients_treated
+    selector: /relationships/field_res_patients_treated/data
 
 #  - name: field_res_education_history
 #    label: field_res_education_history
