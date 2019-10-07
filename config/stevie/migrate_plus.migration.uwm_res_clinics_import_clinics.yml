@@ -66,7 +66,7 @@ source:
     -
       name: field_res_patients_treated
       label: field_res_patients_treated
-      selector: /attributes/field_res_patients_treated
+      selector: /relationships/field_res_patients_treated/data
     -
       name: field_res_department
       label: field_res_department
@@ -181,7 +181,6 @@ process:
     default_value: 1
   field_res_box_number: field_res_box_number
   field_res_epic_department_ids: field_res_epic_department_ids
-  field_res_department: field_res_department
   field_res_external_url: field_res_external_url
   field_res_fax_number: field_res_fax_number
   field_res_internal_url: field_res_internal_url
