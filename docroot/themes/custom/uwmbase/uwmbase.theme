@@ -1466,6 +1466,41 @@ function uwmbase_preprocess_paragraph__uwm_cta_link(&$variables) {
     }
   }
 
+  // Get the current URI and parse it.
+  $uri_parts = UrlHelper::parse(\Drupal::request()->getRequestUri());
+
+  $variables['#cache']['contexts'] = Cache::mergeContexts($variables['#cache']['contexts'], ['url.query_args:ser']);
+
+  // Bail if a SER ID was not included in the query string.
+  if (!isset($uri_parts['query']['ser'])) {
+    return;
+  }
+
+  $ser = $uri_parts['query']['ser'];
+
+  // Load the provider node from the SER ID.
+  $node = _uwmbase_get_provider_by_ser($ser);
+  if (!$node) {
+    return;
+  }
+
+  // Get Visit Type ID to create an Online Scheduling button -
+  // default to Visit Type ID 9000 if one doesn't exist
+  // NOTE: Current state, only get first ID even if more than one exists.
+  // @TODO add check / functionality for multiple Visit Type IDs.
+
+  if ($node->get('field_res_visit_type_id')->get(0) != NULL) {
+    $first_visit_type_id = $node->get('field_res_visit_type_id')->get(0)->getString();
+  }
+  $set_visit_type_id = isset($first_visit_type_id) ? $first_visit_type_id : 9000;
+
+  // Bail if the text doesn't contain the text getting swapped out.
+  // Check if Button is Book Online. If so and if above ser is set,
+  // swap the link out.
+  if ($variables['field_uwm_link__title'] == 'Book online') {
+    $variables['field_uwm_link__url'] = 'https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=' . $set_visit_type_id . '&view=plain';
+  }
+
 }
 
 /**
@@ -1548,7 +1583,7 @@ function uwmbase_preprocess_paragraph__uwm_basic_content__uwm_card(&$variables) 
   // the update of providers no longer linking to
   // make an appointment page.
   $string = 'Your primary care appointments and some specialty care can be booked online';
-  if (stristr($variables['content']['uwm_text'][0]['#text'], $string) !== FALSE) {
+  if (isset($variables['content']['uwm_text'][0]['#text']) && stristr($variables['content']['uwm_text'][0]['#text'], $string) !== FALSE) {
     $variables['content']['uwm_text'][0]['#text'] = '<div><a href="https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book with ' . '<span class="font-weight-semi-bold">' . trim($node->label()) . '</span>' . '</a></div>';
   }
 }
