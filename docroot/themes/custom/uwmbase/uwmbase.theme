@@ -1453,7 +1453,7 @@ function uwmbase_preprocess_paragraph__uwm_cta_link(&$variables) {
 
   // Determine whether to use solid CTA styling variant.
   // @see src/scss/base/_btn-cta-solid.scss
-  // @TODO: might be nice to make this a boolean field on the paragraph too.
+  // @TODO: Add additional logic if styles expand past two styles.
   if (!empty($variables['content']['field_uwm_button_style'][0])) {
     $variables['btn_cta_style'] = $variables['content']['field_uwm_button_style'][0]['#markup'];
   }
