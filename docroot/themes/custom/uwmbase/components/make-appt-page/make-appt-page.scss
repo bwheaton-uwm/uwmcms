@@ -10,8 +10,16 @@
 @import 'base/typography';
 
 .make-appt-page {
-  .paragraph--type--uwm-basic-content a {
-    @include link-blue-hover-underline;
+  .paragraph--type--uwm-basic-content {
+    a {
+      @include link-blue-hover-underline;
+    }
+
+    h3 {
+      font-size: 1rem;
+      padding: 0;
+      font-weight: $font-weight-semi-bold;
+    }
   }
 
   .paragraph--view-mode--uwm-card a {
