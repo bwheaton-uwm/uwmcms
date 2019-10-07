@@ -558,25 +558,44 @@ function uwmbase_preprocess_node(&$variables, $hook) {
   }
   elseif ($node->bundle() === 'res_provider') {
     // Pass information about clinics associated with a provider.
-    $clinic_entities = $node->field_res_clinics;
+    /* (TORY TODO: test these changes --------------------------------------) */
+    /** @var \Drupal\Core\Field\EntityReferenceFieldItemListInterface $field_res_clinics */
+    $field_res_clinics = $node->get('field_res_clinics');
 
-    // Set the call center phone number as the default contact phone number.
-    // We'll keep this number set as the contact phone number if the provider
-    // has 0 clinics or if this provider has multiple clinics and all are
-    // serviced by call center.
-    $contact_phone_number = '2065205000';
-
-    /*****
-     * Set the make an appointment URI for providers.
-     */
-    foreach ($clinic_entities as $k => $clinic) {
-      // If a provider's primary (first) clinic is Hall Health Center, use their
-      // appointment bookings URL.
-      $clinicUri = $clinic->entity->field_res_external_url->value;
-      if ($k === 0 && stripos($clinicUri, 'hall-health-center') !== FALSE) {
-        $variables['provider_appointments_uri'] = 'http://depts.washington.edu/hhpccweb/';
+    // Get the referenced entities, keyed by field item delta.
+    // Note: If a clinic was deleted and there's still a field value referencing
+    // it, it will not be included in the `referencedEntities()` result. But the
+    // result array nonetheless maintains the actual deltas as keys - so we
+    // should not rely on the keys being 0, 1, 2, etc. Use `array_values()` to
+    // reset numerical keys and easily grab the first actual referenced clinic.
+    $clinic_entities = [];
+    $first_clinic = NULL;
+    if (!$field_res_clinics->isEmpty()) {
+      $clinic_entities = array_values($field_res_clinics->referencedEntities());
+      if (!empty($clinic_entities)) {
+        $first_clinic = $clinic_entities[0];
       }
     }
+
+    // Set a boolean for templates to know if there are any (valid) clinics.
+    // @see node--res--provider--tabs.html.twig
+    $variables['locations_tab'] = !empty($clinic_entities);
+
+    /*
+     * Set the make an appointment URI for providers.
+     */
+    // If a provider's primary (first) clinic is Hall Health Center, use their
+    // appointment bookings URL.
+    if (!empty($first_clinic)) {
+      if (!$first_clinic->get('field_res_external_url')->isEmpty()) {
+        $clinicUri = $first_clinic->get('field_res_external_url')->first()->getValue()['value'];
+        if (stripos($clinicUri, 'hall-health-center') !== FALSE) {
+          $variables['provider_appointments_uri'] = 'http://depts.washington.edu/hhpccweb/';
+        }
+      }
+    }
+
+    // Otherwise, direct to the Make an Appointment page.
     if (!isset($variables['provider_appointments_uri'])) {
       $variables['provider_appointments_uri'] = '/patient-care/making-an-appointment';
 
@@ -588,31 +607,47 @@ function uwmbase_preprocess_node(&$variables, $hook) {
       }
     }
 
-    if (count($clinic_entities) === 1) {
-      // If there is one and only one clinic, set the contact phone number to
-      // that clinic's phone number.
-      $contact_phone_number = $clinic_entities[0]->entity->field_res_phone_number->get(0)->value;
-    }
-    elseif (count($clinic_entities) > 1) {
-      // If there are multiple clinics, determine whether they are all serviced
-      // by the call center.
-      $all_serviced_by_call_center = TRUE;
-      foreach ($clinic_entities as $clinic) {
-        // If there are multiple clinics and all clinics are serviced by the
-        // call center, don't change the contact phone number.
-        if ($clinic->entity !== NULL && $clinic->entity->field_res_iscallcenterserviced->value === "1" && $all_serviced_by_call_center === TRUE) {
-          $all_serviced_by_call_center = TRUE;
+    /*
+     * Set the contact phone number for the provider.
+     */
+    // Set the call center phone number as the default contact phone number.
+    // We'll keep this number set as the contact phone number if the provider
+    // has 0 clinics or if this provider has multiple clinics and all are
+    // serviced by call center.
+    $contact_phone_number = '2065205000';
+
+    if (!empty($clinic_entities)) {
+      if (count($clinic_entities) === 1) {
+        // If there is one and only one clinic, set the contact phone number to
+        // that clinic's phone number.
+        if (!$first_clinic->get('field_res_phone_number')->isEmpty()) {
+          $contact_phone_number = $first_clinic->get('field_res_phone_number')->first()->getValue()['value'];
         }
-        // If there are multiple clinics and not all clinics are serviced by the
-        // call center, set the contact phone number to null so we can
-        // display the 'view contact information' button.
-        else {
-          $all_serviced_by_call_center = FALSE;
-          $contact_phone_number = NULL;
+      }
+      elseif (count($clinic_entities) > 1) {
+        // If there are multiple clinics, determine whether they are all
+        // serviced by the call center.
+        $all_serviced_by_call_center = TRUE;
+
+        foreach ($clinic_entities as $clinic_entity) {
+          // If there are multiple clinics and all clinics are serviced by the
+          // call center, don't change the contact phone number.
+          if (!empty($clinic_entity) && !$clinic_entity->get('field_res_iscallcenterserviced')->isEmpty() && $clinic_entity->get('field_res_iscallcenterserviced')->first()->getValue()['value'] === "1" && $all_serviced_by_call_center === TRUE) {
+            $all_serviced_by_call_center = TRUE;
+          }
+          // If there are multiple clinics and not all clinics are serviced by
+          // the call center, set the contact phone number to null so we can
+          // display the 'view contact information' button.
+          else {
+            $all_serviced_by_call_center = FALSE;
+            $contact_phone_number = NULL;
+          }
         }
       }
     }
+
     $variables['contact_phone_number'] = $contact_phone_number;
+    /* (END TORY TODO: test these changes ----------------------------------) */
 
     // Pass information about medical services associated with a provider.
     $medical_services = $node->field_res_medical_services;

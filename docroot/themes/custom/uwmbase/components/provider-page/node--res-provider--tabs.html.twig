@@ -4,9 +4,15 @@
 
     #}
 
-
+{#
+  The `locations_tab` boolean is now set in preprocess. That checks if the
+  clinic nodes referenced in the field load successfully, because if a clinic is
+  deleted, the providers that reference it may still have that clinic node ID
+  in the field value.
 
 {% set locations_tab = node.field_res_clinics is not empty %}
+#}
+
 {% set publications_tab = node.field_res_pubmed_ids is not empty %}
 {% set education_tab = node.uwm_json_packet_data.educationHistories is not empty %}
 
