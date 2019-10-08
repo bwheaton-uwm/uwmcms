@@ -1,5 +1,5 @@
-name: uwmcs_ecare_scheduling
-description: 'Adds EPIC eCare MyChart Open Scheduling tool.'
+name: UW Medicine eCare Scheduling
+description: 'Integration with EPIC eCare scheduling.'
 package: UWMed
 type: module
 core: 8.x

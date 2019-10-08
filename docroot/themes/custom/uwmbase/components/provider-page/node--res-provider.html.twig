@@ -25,6 +25,17 @@
 
     {{ title_suffix }}
 
+    <!-- TEST scheduling modal -->
+    {{ attach_library('drupal/ajax') }}
+
+    <p><a class="use-ajax" href="/uwm-schedule/provider/{{ node.id }}/nojs">Load schedule flow</a>
+
+    <div id="scheduling-flow" style="background: white; outline: 1px dotted grey; padding: 20px; margin: 30px 0;">
+        Schedule flow to load here
+    </div>
+
+    <!-- END TEST -->
+
 
     <div class="bg">
 
