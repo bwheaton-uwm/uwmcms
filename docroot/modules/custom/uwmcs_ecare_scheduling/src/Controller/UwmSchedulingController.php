@@ -33,8 +33,10 @@ class UwmSchedulingController extends ControllerBase {
 
       $response = new AjaxResponse();
 
+      // TODO: ensure theme hook exists, defined by uwmbase theme.
       $build = [
-        '#markup' => "<p>AJAX response</p>",
+        '#theme' => 'uwm_provider_scheduling_flow',
+        '#node' => $node,
       ];
 
       $response->addCommand(new HtmlCommand('#scheduling-flow', $build));

@@ -146,6 +146,24 @@ function _uwmbase_node_parse_json_field(NodeInterface $node) {
 }
 
 /**
+ * Implements hook_theme().
+ */
+function uwmbase_theme($existing, $type, $theme, $path) {
+
+  return [
+    // Define template for provider scheduling flow.
+    // @see modules/custom/uwmcs_ecare_scheduling/src/Controller/UwmSchedulingController
+    'uwm_provider_scheduling_flow' => [
+      'variables' => [
+        'node' => NULL,
+      ],
+      'path' => $path . '/components/scheduling',
+    ],
+  ];
+
+}
+
+/**
  * Implements hook_theme_registry_alter().
  */
 function uwmbase_theme_registry_alter(&$theme_registry) {
