@@ -2,9 +2,7 @@
 
 /**
  * @file
- * This custom module allows for a content editor
- * to view info for a Content Owner and Subject Matter Expert
- * if they have been added to that peice of content.
+ * Allows a content editor to view info for a content owner or sme.
  */
 
 use Drupal\node\NodeInterface;
@@ -13,6 +11,7 @@ use Drupal\node\NodeInterface;
  * Implements hook_form_alter().
  */
 function uwm_content_owners_form_alter(&$form, &$form_state, $form_id) {
+
   // Get the node id to add a context filter to the view
   // showing only the users that have been added to that peice of content.
   $node = \Drupal::routeMatch()->getParameter('node');
