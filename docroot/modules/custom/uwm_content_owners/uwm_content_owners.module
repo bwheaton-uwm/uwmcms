@@ -36,27 +36,30 @@ function uwm_content_owners_form_alter(&$form, &$form_state, $form_id){
                             ? render($sme_view)
                             : '<div>No subject matter experts have been added yet</div>';
 
-  $form['content_owner_view'] = array(
-    '#type' => 'details',
-    '#title' => t('Content Owner Info'),
-    '#description' => t(''),
-    '#group' => 'advanced',
-    '#open' => FALSE,
-    'markup' => array(
-      '#markup' => $content_owner_markup,
-    ),
-    '#weight' => 1000,
-  );
+  // Render this info only on the node edit forms
+  if ($form['#theme'][1] == 'node_form') {
+    $form['content_owner_view'] = array(
+      '#type' => 'details',
+      '#title' => t('Content Owner Info'),
+      '#description' => t(''),
+      '#group' => 'advanced',
+      '#open' => FALSE,
+      'markup' => array(
+        '#markup' => $content_owner_markup,
+      ),
+      '#weight' => 1000,
+    );
 
-  $form['sme_view'] = array(
-    '#type' => 'details',
-    '#title' => t('Subject Matter Expert Info'),
-    '#description' => t(''),
-    '#group' => 'advanced',
-    '#open' => FALSE,
-    'markup' => array(
-      '#markup' => $sme_markup,
-    ),
-    '#weight' => 1000,
-  );
+    $form['sme_view'] = array(
+      '#type' => 'details',
+      '#title' => t('Subject Matter Expert Info'),
+      '#description' => t(''),
+      '#group' => 'advanced',
+      '#open' => FALSE,
+      'markup' => array(
+        '#markup' => $sme_markup,
+      ),
+      '#weight' => 1000,
+    );
+  }
 }
