@@ -37,7 +37,7 @@ function uwm_content_owners_form_alter(&$form, &$form_state, $form_id){
                             : '<div>No subject matter experts have been added yet</div>';
 
   // Render this info only on the node edit forms
-  if ($form['#theme'][1] == 'node_form') {
+  if (isset($form['#theme'][1]) && $form['#theme'][1] == 'node_form') {
     $form['content_owner_view'] = array(
       '#type' => 'details',
       '#title' => t('Content Owner Info'),
