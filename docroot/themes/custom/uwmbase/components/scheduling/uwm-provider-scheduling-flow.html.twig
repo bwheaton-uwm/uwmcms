@@ -8,5 +8,44 @@
  */
 #}
 <div class="provider-scheduling">
-  hello from the theme
+  
+  <div class="provider-scheduling-step" data-step="visited-before">
+    <p class="step-text">{{ "Have you visited this doctor before?"|t }}</p>
+
+    <div class="step-buttons">
+
+      <a class="btn-cta-solid">{{ "No"|t }}</a>
+
+      <a class="btn-cta-solid">{{ "Yes"|t }}</a>
+
+    </div>
+  </div>
+
+
+  <div class="provider-scheduling-step" data-step="visit-type">
+    <p class="step-text">{{ "Choose an appointment type"|t }}</p>
+
+    <div class="step-buttons">
+
+      <a class="btn-cta-solid">{{ "Telemedicine remote visit"|t }}</a>
+
+      <a class="btn-cta-solid">{{ "New patient visit"|t }}</a>
+
+      <a class="btn-cta-solid">{{ "New pregnancy visit"|t }}</a>
+
+    </div>
+
+    <a class="step-back">{{ "Back"|t }}</a>
+
+  </div>
+
+
+  <div class="provider-scheduling-step" data-step="open-schedule">
+    
+    [ Embed open scheduling widget ]
+
+    <a class="step-back">{{ "Back"|t }}</a>
+
+  </div>
+
 </div>

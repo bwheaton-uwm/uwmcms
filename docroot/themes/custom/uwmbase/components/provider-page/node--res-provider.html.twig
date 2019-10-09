@@ -27,11 +27,40 @@
 
     <!-- TEST scheduling modal -->
     {{ attach_library('core/drupal.ajax') }}
+    {{ attach_library('uwmbase/modal') }}
 
-    <p><a class="use-ajax" href="/uwm-schedule/provider/{{ node.id }}/nojs">Load schedule flow</a>
 
-    <div id="scheduling-flow" style="background: white; outline: 1px dotted grey; padding: 20px; margin: 30px 0;">
-        Schedule flow to load here
+    {#
+      TODO: using same link here for Drupal ajax request and Bootstrap modal does NOT work.
+      For now, move the AJAX load link into the modal
+     #}
+    <button class="btn-cta-solid" data-toggle="modal" data-target="#scheduling-flow-modal">Open modal</button>
+
+    <div id="scheduling-flow-modal" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h3 class="modal-title">{{ "Book appointment online"|t }}</h3>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+
+            {# TODO (see above) #}
+            <p><a class="use-ajax" href="/uwm-schedule/provider/{{ node.id }}/nojs">Load schedule flow</a></p>
+
+            <div id="scheduling-flow">
+              Schedule flow to load here
+            </div>
+
+          </div>
+
+        </div>
+      </div>
     </div>
 
     <!-- END TEST -->

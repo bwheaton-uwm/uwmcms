@@ -48,6 +48,11 @@ trumba:
   js:
     //www.trumba.com/scripts/spuds.js?ver=5.1.2: { type: external, minified: true }
 
+bootstrap:
+  js:
+    dist/vendor/bootstrap/js/util.js: {}
+
+
 # uwmbase css/js libraries
 
 # Define css/js libraries for components. These are used to include styles and javascript only where needed rather
@@ -88,10 +93,6 @@ headshot-card:
   css:
     component:
       dist/css/headshot-card.css: {}
-
-bootstrap:
-  js:
-    dist/vendor/bootstrap/js/util.js: {}
 
 main-container:
   css:
@@ -230,6 +231,17 @@ messages:
     component:
       dist/css/messages.css: {}
 
+modal:
+  css:
+    component:
+      dist/css/modal.css: {}
+  js:
+    dist/vendor/bootstrap/js/modal.js: {}
+  dependencies:
+    - uwmbase/bootstrap
+
+# TODO: extract generic modal stuff out of here and add dependency `uwmbase/modal`,
+# if using it for provider scheduling flow
 modal-video:
   css:
     component:
