@@ -1584,7 +1584,7 @@ function uwmbase_preprocess_paragraph__uwm_basic_content__uwm_card(&$variables) 
   // make an appointment page.
   $string = 'Your primary care appointments and some specialty care can be booked online';
   if (isset($variables['content']['uwm_text'][0]['#text']) && stristr($variables['content']['uwm_text'][0]['#text'], $string) !== FALSE) {
-    $variables['content']['uwm_text'][0]['#text'] = '<div><a href="https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book with ' . '<span class="font-weight-semi-bold">' . trim($node->label()) . '</span>' . '</a></div>';
+    $variables['content']['uwm_text'][0]['#text'] = '<div class="make-appt-page--book-online-link"><a href="https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book with ' . '<span class="font-weight-semi-bold">' . trim($node->label()) . '</span>' . '</a></div>';
   }
 }
 
