@@ -45,7 +45,6 @@ function uwm_content_owners_form_alter(&$form, &$form_state, $form_id) {
     $form['content_owner_view'] = [
       '#type' => 'details',
       '#title' => t('Content Owner Info'),
-      '#description' => t(''),
       '#group' => 'advanced',
       '#open' => FALSE,
       'markup' => [
@@ -57,7 +56,6 @@ function uwm_content_owners_form_alter(&$form, &$form_state, $form_id) {
     $form['sme_view'] = [
       '#type' => 'details',
       '#title' => t('Subject Matter Expert Info'),
-      '#description' => t(''),
       '#group' => 'advanced',
       '#open' => FALSE,
       'markup' => [
