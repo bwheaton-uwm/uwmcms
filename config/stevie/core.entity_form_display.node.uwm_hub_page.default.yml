@@ -6,10 +6,12 @@ dependencies:
     - field.field.node.uwm_hub_page.field_meta_tags
     - field.field.node.uwm_hub_page.field_search_best_bets
     - field.field.node.uwm_hub_page.field_uwm_accent_color
+    - field.field.node.uwm_hub_page.field_uwm_content_owner
     - field.field.node.uwm_hub_page.field_uwm_hero
     - field.field.node.uwm_hub_page.field_uwm_page_path_name
     - field.field.node.uwm_hub_page.field_uwm_parent_page
     - field.field.node.uwm_hub_page.field_uwm_sections
+    - field.field.node.uwm_hub_page.field_uwm_subject_matter_experts
     - node.type.uwm_hub_page
   module:
     - content_moderation
@@ -57,6 +59,19 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Content Sections'
+    group_content_contacts:
+      children:
+        - field_uwm_content_owner
+        - field_uwm_subject_matter_experts
+      parent_name: ''
+      weight: 10
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Content Contacts'
 id: node.uwm_hub_page.default
 targetEntityType: node
 bundle: uwm_hub_page
@@ -69,7 +84,7 @@ content:
     type: metatag_firehose
     region: content
   field_search_best_bets:
-    weight: 27
+    weight: 9
     settings:
       match_operator: CONTAINS
       size: 60
@@ -82,6 +97,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
+  field_uwm_content_owner:
+    weight: 28
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   field_uwm_hero:
     weight: 26
@@ -135,6 +159,15 @@ content:
         collapse_edit_all: collapse_edit_all
     third_party_settings: {  }
     type: paragraphs
+    region: content
+  field_uwm_subject_matter_experts:
+    weight: 29
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   moderation_state:
     type: moderation_state_default

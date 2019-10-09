@@ -116,6 +116,7 @@ content:
 hidden:
   body: true
   field_featured: true
+  field_hide_see_clinics_cta: true
   field_res_affiliates: true
   field_res_box_number: true
   field_res_conditions_symptoms: true
@@ -131,6 +132,7 @@ hidden:
   field_res_hide_returning_cta: true
   field_res_hours_of_operation: true
   field_res_internal_url: true
+  field_res_is_building: true
   field_res_is_hospital: true
   field_res_iscallcenterserviced: true
   field_res_meta_tags: true
@@ -144,4 +146,5 @@ hidden:
   field_uwm_sections: true
   field_uwm_sections_2: true
   links: true
+  search_api_excerpt: true
   uwm_unique_id: true

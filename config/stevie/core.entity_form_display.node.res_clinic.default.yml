@@ -37,9 +37,11 @@ dependencies:
     - field.field.node.res_clinic.field_res_room_number
     - field.field.node.res_clinic.field_res_special_interests
     - field.field.node.res_clinic.field_search_best_bets
+    - field.field.node.res_clinic.field_uwm_content_owner
     - field.field.node.res_clinic.field_uwm_json_packet
     - field.field.node.res_clinic.field_uwm_sections
     - field.field.node.res_clinic.field_uwm_sections_2
+    - field.field.node.res_clinic.field_uwm_subject_matter_experts
     - field.field.node.res_clinic.uwm_unique_id
     - image.style.thumbnail
     - node.type.res_clinic
@@ -137,6 +139,19 @@ third_party_settings:
         description: ''
         required_fields: false
       label: 'Care Providers tab'
+    group_content_contacts:
+      children:
+        - field_uwm_content_owner
+        - field_uwm_subject_matter_experts
+      parent_name: ''
+      weight: 20
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Content Contacts'
 _core:
   default_config_hash: 2kAi-wYe7ZuIze154ZwVwwhYSRqonPwtA675m4-PbdU
 id: node.res_clinic.default
@@ -155,7 +170,7 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 15
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -174,7 +189,7 @@ content:
     type: boolean_checkbox
     region: content
   field_res_affiliates:
-    weight: 13
+    weight: 11
     settings:
       match_operator: CONTAINS
       size: 60
@@ -209,7 +224,7 @@ content:
     region: content
   field_res_conditions_symptoms:
     type: options_select
-    weight: 9
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -272,7 +287,7 @@ content:
     region: content
   field_res_features_amenities:
     type: options_select
-    weight: 12
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -344,7 +359,7 @@ content:
     type: boolean_checkbox
     region: content
   field_res_medical_services:
-    weight: 8
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 60
@@ -353,7 +368,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_meta_tags:
-    weight: 19
+    weight: 17
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
@@ -367,7 +382,7 @@ content:
     region: content
   field_res_procedures_treatments:
     type: options_select
-    weight: 10
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -390,7 +405,7 @@ content:
     region: content
   field_res_special_interests:
     type: options_select
-    weight: 11
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -405,6 +420,15 @@ content:
     region: content
   field_test_m_services3:
     weight: 27
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_uwm_content_owner:
+    weight: 21
     settings:
       match_operator: CONTAINS
       size: 60
@@ -450,8 +474,17 @@ content:
         add_above: '0'
     third_party_settings: {  }
     region: content
+  field_uwm_subject_matter_experts:
+    weight: 22
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   moderation_state:
-    weight: 20
+    weight: 18
     settings:
       size: 60
       placeholder: ''
@@ -462,21 +495,21 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 17
+    weight: 15
     region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 14
+    weight: 12
     third_party_settings: {  }
     region: content
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 18
+    weight: 16
     region: content
     third_party_settings: {  }
   title:
@@ -489,7 +522,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 16
+    weight: 14
     settings:
       match_operator: CONTAINS
       size: 60
@@ -497,7 +530,7 @@ content:
     region: content
     third_party_settings: {  }
   url_redirects:
-    weight: 21
+    weight: 19
     region: content
     settings: {  }
     third_party_settings: {  }
