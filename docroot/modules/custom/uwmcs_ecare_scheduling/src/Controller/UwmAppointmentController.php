@@ -8,14 +8,14 @@ use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\node\NodeInterface;
 
 /**
- * Controller for Epic scheduling integrations.
+ * Controller for Epic appointment-scheduling integrations.
  */
-class UwmSchedulingController extends ControllerBase {
+class UwmAppointmentController extends ControllerBase {
 
   /**
-   * Callback for '/uwm-schedule/provider/{node}/{nojs}' route.
+   * Callback for '/uwm-appointment/provider/{node}/{nojs}' route.
    *
-   * This expects an AJAX request and loads the scheduling flow for the given
+   * This expects an AJAX request and loads the appointment flow for the given
    * provider.
    *
    * @param \Drupal\node\NodeInterface $node
@@ -23,7 +23,7 @@ class UwmSchedulingController extends ControllerBase {
    * @param string $nojs
    *   Either 'ajax' or 'nojs', to indicate the type of request.
    */
-  public function providerSchedulingFlow(NodeInterface $node, $nojs) {
+  public function appointmentProviderFlow(NodeInterface $node, $nojs) {
 
     if ($node->bundle() !== 'res_provider') {
       // TODO: error-handle this?
@@ -35,11 +35,11 @@ class UwmSchedulingController extends ControllerBase {
 
       // TODO: ensure theme hook exists, defined by uwmbase theme.
       $build = [
-        '#theme' => 'uwm_provider_scheduling_flow',
+        '#theme' => 'uwm_appointment_provider_flow',
         '#node' => $node,
       ];
 
-      $response->addCommand(new HtmlCommand('#scheduling-flow', $build));
+      $response->addCommand(new HtmlCommand('#appointment-provider-flow', $build));
 
       return $response;
 

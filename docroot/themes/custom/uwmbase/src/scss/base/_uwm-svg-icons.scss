@@ -95,6 +95,11 @@ $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
     width: 20px;
     height: 20px;
   }
+  &.uwm-icon--close-x {
+    background-image: url('#{$icon-path}/icon_close_x.svg');
+    width: 18px;
+    height: 18px;
+  }
   &.uwm-icon--locations-pin {
     width: 13px;
     height: 24px;

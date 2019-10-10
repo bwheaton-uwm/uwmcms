@@ -1,0 +1,58 @@
+{#
+/**
+ * @file
+ * Default template for custom theme hook to display provider appointment flow.
+ *
+ * @see uwmcs_ecare_scheduling/src/Controller/UwmSchedulingController
+ *
+ */
+#}
+<div class="appointment-flow">
+  
+  <div class="appointment-flow__step" data-step="visited-before">
+    <p class="appointment-flow__step-text">{{ "Have you visited this doctor before?"|t }}</p>
+
+    <div class="appointment-flow__step-buttons">
+
+      <a href="#" class="appointment-flow__step-button btn-cta-solid">{{ "No"|t }}</a>
+
+      <a href="#" class="appointment-flow__step-button btn-cta-solid">{{ "Yes"|t }}</a>
+
+    </div>
+  </div>
+
+
+  <div class="appointment-flow__step" data-step="visit-type">
+    <p class="appointment-flow__step-text">{{ "Choose an appointment type"|t }}</p>
+
+    <div class="appointment-flow__step-buttons">
+
+      <a href="#" class="appointment-flow__step-button btn-cta-solid">{{ "Telemedicine remote visit"|t }}</a>
+
+      <a href="#" class="appointment-flow__step-button btn-cta-solid">{{ "New patient visit"|t }}</a>
+
+      <a href="#" class="appointment-flow__step-button btn-cta-solid">{{ "New wellness visit"|t }}</a>
+
+      <a href="#" class="appointment-flow__step-button btn-cta-solid">{{ "New pregnancy visit"|t }}</a>
+
+      <a href="#" class="appointment-flow__step-button btn-cta-solid">{{ "New evaluation visit"|t }}</a>
+
+    </div>
+
+    <div class="appointment-flow__step-back">
+      <i class="fa fa-angle-left" aria-hidden="true"></i>
+      <a href="#">{{ "Back"|t }}</a>
+    </div>
+
+  </div>
+
+
+  <div class="appointment-flow__step" data-step="open-schedule">
+    
+    <div>[ Embed open scheduling widget ]</div>
+
+    <a href="#" class="appointment-flow__step-back">{{ "Back"|t }}</a>
+
+  </div>
+
+</div>

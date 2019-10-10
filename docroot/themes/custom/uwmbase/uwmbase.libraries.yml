@@ -231,17 +231,23 @@ messages:
     component:
       dist/css/messages.css: {}
 
-modal:
+# TODO: extract bootstrap + common modal stuff?
+modal-base:
   css:
     component:
-      dist/css/modal.css: {}
+      dist/css/modal-base.css: {}
   js:
     dist/vendor/bootstrap/js/modal.js: {}
   dependencies:
     - uwmbase/bootstrap
 
-# TODO: extract generic modal stuff out of here and add dependency `uwmbase/modal`,
-# if using it for provider scheduling flow
+modal-appointment:
+  css:
+    component:
+      dist/css/modal-appointment.css: {}
+  dependencies:
+    - uwmbase/modal-base
+
 modal-video:
   css:
     component:
