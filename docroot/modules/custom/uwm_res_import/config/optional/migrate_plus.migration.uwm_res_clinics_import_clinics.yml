@@ -279,6 +279,18 @@ process:
   - plugin: skip_on_empty
     method: process
 
+  field_res_patients_treated:
+  - plugin: uwm_tid_for_uuid
+    source: field_res_patients_treated
+  - plugin: skip_on_empty
+    method: process
+
+  field_res_department:
+  - plugin: uwm_tid_for_uuid
+    source: field_res_department
+  - plugin: skip_on_empty
+    method: process
+
   field_res_expertises:
     plugin: sub_process
     source: field_res_expertises
@@ -292,17 +304,5 @@ process:
   field_res_medical_services:
   - plugin: uwm_tid_for_uuid
     source: field_res_medical_services
-  - plugin: skip_on_empty
-    method: process
-
-field_res_department:
-  - plugin: uwm_tid_for_uuid
-    source: field_res_department
-  - plugin: skip_on_empty
-    method: process
-
-field_res_patients_treated:
-  - plugin: uwm_tid_for_uuid
-    source: field_res_patients_treated
   - plugin: skip_on_empty
     method: process
