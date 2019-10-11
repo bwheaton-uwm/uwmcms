@@ -1,5 +1,62 @@
 @import 'init';
+@import 'base.scss';
 
-.eu-cookie-compliance-banner {
+.sliding-popup-bottom {
   background-color: $background-light-gray;
+  width: 100%;
+
+  .eu-cookie-compliance-content {
+    padding: 1.5rem;
+    max-width: 100%;
+
+    @include media-breakpoint-up('md') {
+      padding: 1.5rem 0;
+      margin: 0;
+      width: map-get($container-max-widths, xl);
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .eu-cookie-compliance-message {
+    max-width: 100%;
+
+    @include media-breakpoint-up('md') {
+      max-width: 80%;
+      float: none;
+      @include make-col(9)
+    }
+
+    .eu-cookie-compliance-more-button {
+      border: none;
+      background-color: transparent;
+      padding: 0;
+      color: $blue;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .eu-cookie-compliance-buttons {
+    float: none;
+    max-width: 100%;
+
+    @include media-breakpoint-up('md') {
+      @include make-col(3)
+    }
+
+    .eu-cookie-compliance-default-button {
+      @include btn-cta-solid($purple, $hover-purple);
+      width: 100%;
+      margin-top: 1.125rem;
+      border:none;
+
+      @include media-breakpoint-up('md') {
+        width: auto;
+        margin-top: 0;
+      }
+    }
+  }
 }
