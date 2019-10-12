@@ -10,7 +10,7 @@
     max-width: 100%;
 
     @include media-breakpoint-up('md') {
-      padding: 1.5rem 0;
+      padding: 1.5rem 0.9375rem;
       margin: 0;
       width: map-get($container-max-widths, xl);
       margin-left: auto;
@@ -22,9 +22,8 @@
     max-width: 100%;
 
     @include media-breakpoint-up('md') {
-      max-width: 80%;
-      float: none;
-      @include make-col(9)
+      max-width: 85%;
+      float: left;
     }
 
     .eu-cookie-compliance-more-button {
@@ -44,7 +43,7 @@
     max-width: 100%;
 
     @include media-breakpoint-up('md') {
-      @include make-col(3)
+      float: left;
     }
 
     .eu-cookie-compliance-default-button {
