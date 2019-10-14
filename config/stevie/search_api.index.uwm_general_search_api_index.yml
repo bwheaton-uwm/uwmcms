@@ -17,10 +17,10 @@ dependencies:
 id: uwm_general_search_api_index
 name: 'UWM General - Search API Index'
 description: ''
-read_only: false
+read_only: true
 field_settings:
   field_res_expertises_keywords:
-    label: 'Areas of Expertise » Taxonomy term » Term Keywords'
+    label: 'Medical Specialties » Taxonomy term » Term Keywords'
     datasource_id: 'entity:node'
     property_path: 'field_res_expertises:entity:field_term_keywords'
     type: text
@@ -31,7 +31,7 @@ field_settings:
       module:
         - taxonomy
   field_res_expertises_name:
-    label: 'Areas of Expertise » Taxonomy term » Name'
+    label: 'Medical Specialties » Taxonomy term » Name'
     datasource_id: 'entity:node'
     property_path: 'field_res_expertises:entity:name'
     type: text

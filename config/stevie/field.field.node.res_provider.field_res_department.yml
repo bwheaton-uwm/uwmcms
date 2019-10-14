@@ -1,18 +1,16 @@
-uuid: dd4fd072-674f-43fe-94f2-144147465ca0
+uuid: 33e839d8-ca3f-4912-9862-d3d327bf7bd4
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_res_expertises
+    - field.storage.node.field_res_department
     - node.type.res_provider
-    - taxonomy.vocabulary.expertise
-_core:
-  default_config_hash: nBxYzQHz96DY5fEGsl5JUIsIU6MK5g40pB8jp9u7gHc
-id: node.res_provider.field_res_expertises
-field_name: field_res_expertises
+    - taxonomy.vocabulary.department
+id: node.res_provider.field_res_department
+field_name: field_res_department
 entity_type: node
 bundle: res_provider
-label: 'Medical Specialties'
+label: Department
 description: ''
 required: false
 translatable: false
@@ -22,10 +20,10 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      expertise: expertise
+      department: department
     sort:
       field: name
       direction: asc
-    auto_create: true
+    auto_create: false
     auto_create_bundle: ''
 field_type: entity_reference

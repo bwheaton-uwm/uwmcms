@@ -185,7 +185,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Areas of Expertise'
+          label: 'Medical Specialties'
           exclude: false
           alter:
             alter_text: false

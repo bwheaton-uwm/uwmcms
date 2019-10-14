@@ -1,15 +1,16 @@
-uuid: 8343a5a3-0e4d-4a1e-bf90-aec7343adb43
+uuid: 91f8d20d-05ba-4b1d-bc83-2026466fd947
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.taxonomy_term.field_specialties
-    - taxonomy.vocabulary.procedures_treatments
-id: taxonomy_term.procedures_treatments.field_specialties
-field_name: field_specialties
-entity_type: taxonomy_term
-bundle: procedures_treatments
-label: Specialties
+    - field.storage.node.field_res_department
+    - node.type.res_clinic
+    - taxonomy.vocabulary.department
+id: node.res_clinic.field_res_department
+field_name: field_res_department
+entity_type: node
+bundle: res_clinic
+label: Department
 description: ''
 required: false
 translatable: true
@@ -18,7 +19,8 @@ default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'
   handler_settings:
-    target_bundles: {  }
+    target_bundles:
+      department: department
     sort:
       field: name
       direction: asc

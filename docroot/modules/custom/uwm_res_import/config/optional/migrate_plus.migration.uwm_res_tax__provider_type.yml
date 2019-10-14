@@ -1,12 +1,12 @@
 #res taxonomy: buildings
-id: uwm_res_tax__special_interests
-label: uwm_res_tax__special_interests
+id: uwm_res_tax__provider_type
+label: uwm_res_tax__provider_type
 migration_group: uwm
 migration_dependencies: {}
 
 destination:
   plugin: entity:taxonomy_term
-  default_bundle: special_interests
+  default_bundle: provider_type
 
 
 source:
@@ -21,7 +21,7 @@ source:
   track_changes: true
 
   urls:
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/special_interests?page[limit]=50&page[offset]=0&sort=-changed
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/provider_type?page[limit]=50&page[offset]=0&sort=-changed
 
 
 

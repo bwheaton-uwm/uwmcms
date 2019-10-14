@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 _core:
   default_config_hash: 3HklFjzE8MVl31PDSZb3SVuMbis3XCUo9CeNMCq7Bs4
-name: 'Areas of Expertise'
+name: 'Medical Specialties'
 vid: expertise
 description: ''
 hierarchy: 0

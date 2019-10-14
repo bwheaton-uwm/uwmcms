@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_res_isacceptingnewpts
     - field.storage.node.field_res_expertises
     - field.storage.taxonomy_term.field_term_keywords
-    - field.storage.node.field_res_gender
     - field.storage.node.field_res_is_open_scheduling
-    - field.storage.node.field_res_isacceptingnewpts
+    - field.storage.node.field_res_gender
     - field.storage.node.field_res_languages
     - field.storage.node.field_res_medical_services
     - field.storage.node.field_res_name
@@ -22,10 +22,10 @@ dependencies:
 id: uwm_providers_search_api_index
 name: 'UWM Providers - Search API Index'
 description: ''
-read_only: false
+read_only: true
 field_settings:
   field_res_expertises:
-    label: 'Areas of Expertise'
+    label: 'Medical Specialties'
     datasource_id: 'entity:node'
     property_path: field_res_expertises
     type: string
@@ -34,7 +34,7 @@ field_settings:
       config:
         - field.storage.node.field_res_expertises
   field_res_expertises_keywords:
-    label: 'Areas of Expertise » Taxonomy term » Term Keywords'
+    label: 'Medical Specialties » Taxonomy term » Term Keywords'
     datasource_id: 'entity:node'
     property_path: 'field_res_expertises:entity:field_term_keywords'
     type: text
@@ -45,7 +45,7 @@ field_settings:
       module:
         - taxonomy
   field_res_expertises_name:
-    label: 'Areas of Expertise » Taxonomy term » Name'
+    label: 'Medical Specialties » Taxonomy term » Name'
     datasource_id: 'entity:node'
     property_path: 'field_res_expertises:entity:name'
     type: text
@@ -56,7 +56,7 @@ field_settings:
         - taxonomy
         - taxonomy
   field_res_expertises_name_string:
-    label: 'Areas of Expertise » Taxonomy term » Name String'
+    label: 'Medical Specialties » Taxonomy term » Name String'
     datasource_id: 'entity:node'
     property_path: 'field_res_expertises:entity:name'
     type: string

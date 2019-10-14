@@ -1,0 +1,9 @@
+uuid: e0ba4077-1d8d-4670-8c42-8225896f8657
+langcode: en
+status: true
+dependencies: {  }
+name: 'Provider Type'
+vid: provider_type
+description: ''
+hierarchy: 0
+weight: 0

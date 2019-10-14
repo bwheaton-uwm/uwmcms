@@ -3,12 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.res_provider.field_res_academic_title
     - field.field.node.res_provider.field_res_affiliates
     - field.field.node.res_provider.field_res_biography
     - field.field.node.res_provider.field_res_board_certifications
     - field.field.node.res_provider.field_res_clinics
     - field.field.node.res_provider.field_res_conditions_symptoms
     - field.field.node.res_provider.field_res_degrees
+    - field.field.node.res_provider.field_res_department
     - field.field.node.res_provider.field_res_education_history
     - field.field.node.res_provider.field_res_expertises
     - field.field.node.res_provider.field_res_gender
@@ -18,16 +20,18 @@ dependencies:
     - field.field.node.res_provider.field_res_isacceptingnewpts
     - field.field.node.res_provider.field_res_languages
     - field.field.node.res_provider.field_res_medical_services
+    - field.field.node.res_provider.field_res_medical_title
     - field.field.node.res_provider.field_res_meta_tags
     - field.field.node.res_provider.field_res_name
     - field.field.node.res_provider.field_res_node_videos
     - field.field.node.res_provider.field_res_npi
+    - field.field.node.res_provider.field_res_patients_treated
     - field.field.node.res_provider.field_res_personal_interests
     - field.field.node.res_provider.field_res_procedures_treatments
+    - field.field.node.res_provider.field_res_provider_type
     - field.field.node.res_provider.field_res_pubmed_ids
     - field.field.node.res_provider.field_res_puma_id
     - field.field.node.res_provider.field_res_ser_id
-    - field.field.node.res_provider.field_res_special_interests
     - field.field.node.res_provider.field_res_visit_type_id
     - field.field.node.res_provider.field_search_best_bets
     - field.field.node.res_provider.field_uwm_json_packet
@@ -63,6 +67,14 @@ content:
       markup: false
     third_party_settings: {  }
     type: name_default
+    region: content
+  field_res_academic_title:
+    weight: 28
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
     region: content
   field_res_affiliates:
     weight: 8
@@ -113,6 +125,14 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+  field_res_department:
+    weight: 25
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
   field_res_education_history:
     type: entity_reference_revisions_entity_view
     weight: 12
@@ -182,6 +202,14 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
+  field_res_medical_title:
+    weight: 26
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
   field_res_name:
     type: name_default
     weight: 1
@@ -216,6 +244,14 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
+  field_res_patients_treated:
+    weight: 29
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
   field_res_personal_interests:
     weight: 6
     label: above
@@ -231,6 +267,14 @@ content:
     settings:
       link: true
     third_party_settings: {  }
+  field_res_provider_type:
+    weight: 27
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
   field_res_ser_id:
     weight: 18
     label: above
@@ -240,14 +284,6 @@ content:
     third_party_settings: {  }
     type: number_integer
     region: content
-  field_res_special_interests:
-    type: entity_reference_label
-    weight: 23
-    region: content
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
   field_res_visit_type_id:
     weight: 24
     label: above

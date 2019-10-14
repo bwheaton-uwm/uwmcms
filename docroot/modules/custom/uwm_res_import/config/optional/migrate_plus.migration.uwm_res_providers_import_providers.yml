@@ -155,6 +155,26 @@ source:
 #    label: field_res_degrees
 #    selector: /relationships/field_res_degrees/data
 
+  - name: field_res_department
+    label: field_res_department
+    selector: /relationships/field_res_department/data
+
+  - name: field_res_medical_title
+    label: field_res_medical_title
+    selector: /relationships/field_res_medical_title/data
+
+  - name: field_res_provider_type
+    label: field_res_provider_type
+    selector: /relationships/field_res_provider_type/data
+
+  - name: field_res_academic_title
+    label: field_res_academic_title
+    selector: /relationships/field_res_academic_title/data
+
+  - name: field_res_patients_treated
+    label: field_res_patients_treated
+    selector: /relationships/field_res_patients_treated/data
+
 #  - name: field_res_education_history
 #    label: field_res_education_history
 #    selector: /relationships/field_res_education_history/data
@@ -331,6 +351,55 @@ process:
 #      - plugin: skip_on_empty
 #        method: process
 
+  field_res_department:
+    plugin: sub_process
+    source: field_res_department
+    process:
+      target_id:
+      - plugin: uwm_tid_for_uuid
+        source: id
+      - plugin: skip_on_empty
+        method: process
+
+  field_res_medical_title:
+    plugin: sub_process
+    source: field_res_medical_title
+    process:
+      target_id:
+      - plugin: uwm_tid_for_uuid
+        source: id
+      - plugin: skip_on_empty
+        method: process
+
+  field_res_provider_type:
+    plugin: sub_process
+    source: field_res_provider_type
+    process:
+      target_id:
+      - plugin: uwm_tid_for_uuid
+        source: id
+      - plugin: skip_on_empty
+        method: process
+
+  field_res_academic_title:
+    plugin: sub_process
+    source: field_res_academic_title
+    process:
+      target_id:
+      - plugin: uwm_tid_for_uuid
+        source: id
+      - plugin: skip_on_empty
+        method: process
+
+  field_res_patients_treated:
+    plugin: sub_process
+    source: field_res_patients_treated
+    process:
+      target_id:
+      - plugin: uwm_tid_for_uuid
+        source: id
+      - plugin: skip_on_empty
+        method: process
 
   field_res_expertises:
     plugin: sub_process
