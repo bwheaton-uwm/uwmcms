@@ -578,7 +578,7 @@ function uwmbase_preprocess_node(&$variables, $hook) {
       }
     }
     if (!isset($variables['provider_appointments_uri'])) {
-      $variables['provider_appointments_uri'] = '/patient-care/making-an-appointment';
+      $variables['provider_appointments_uri'] = '/patient-resources/make-an-appointment';
 
       // If the provider uses open scheduling and has an Epic ID (SER),
       // add the ID to the appointment URI.
