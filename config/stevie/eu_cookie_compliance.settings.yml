@@ -66,4 +66,4 @@ withdraw_button_on_info_popup: false
 domain_all_sites: false
 _core:
   default_config_hash: HwyPQpj5lIcdzj0xE5VMS12fUdAv7dXaSueT8crtmHk
-cookie_session: 1
+cookie_session: 0
