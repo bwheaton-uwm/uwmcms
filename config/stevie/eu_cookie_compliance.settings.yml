@@ -14,7 +14,7 @@ popup_agreed:
 popup_agree_button_message: Accept
 popup_agreed_enabled: false
 popup_bg_hex: ''
-popup_clicking_confirmation: true
+popup_clicking_confirmation: false
 popup_scrolling_confirmation: false
 popup_delay: 1000
 show_disagree_button: true
@@ -66,4 +66,4 @@ withdraw_button_on_info_popup: false
 domain_all_sites: false
 _core:
   default_config_hash: HwyPQpj5lIcdzj0xE5VMS12fUdAv7dXaSueT8crtmHk
-cookie_session: 0
+cookie_session: 1
