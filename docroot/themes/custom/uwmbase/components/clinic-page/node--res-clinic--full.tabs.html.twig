@@ -29,7 +29,8 @@
       </li>
 
 
-      {% if content.field_res_providers|render|trim is not empty %}
+      {# See providers display logic in node--res-clinic--full.html.twig #}
+      {% if show_providers %}
         <li class="nav-item {{ hide_providers_css_class }}">
 
           {# Left sidebar "Care Providers" link destination #}
