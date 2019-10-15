@@ -43,7 +43,7 @@
     max-width: 100%;
 
     @include media-breakpoint-up('md') {
-      float: left;
+      float: right;
     }
 
     .eu-cookie-compliance-default-button {
