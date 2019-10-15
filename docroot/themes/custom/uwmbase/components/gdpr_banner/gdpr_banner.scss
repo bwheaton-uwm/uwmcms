@@ -9,7 +9,7 @@
     padding: 1.5rem;
     max-width: 100%;
 
-    @include media-breakpoint-up('md') {
+    @media (min-width: 769px) {
       padding: 1.5rem 0.9375rem;
       margin: 0;
       width: map-get($container-max-widths, xl);
@@ -21,7 +21,7 @@
   .eu-cookie-compliance-message {
     max-width: 100%;
 
-    @include media-breakpoint-up('md') {
+    @media (min-width: 769px) {
       max-width: 85%;
       float: left;
     }
@@ -42,7 +42,7 @@
     float: none;
     max-width: 100%;
 
-    @include media-breakpoint-up('md') {
+    @media (min-width: 769px) {
       float: right;
     }
 
@@ -52,7 +52,7 @@
       margin-top: 1.125rem;
       border:none;
 
-      @include media-breakpoint-up('md') {
+      @media (min-width: 769px) {
         width: auto;
         margin-top: 0;
       }
