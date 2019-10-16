@@ -25,46 +25,10 @@
 
     {{ title_suffix }}
 
-    <!-- TEST scheduling modal -->
-    {{ attach_library('core/drupal.ajax') }}
-    {{ attach_library('uwmbase/modal-appointment') }}
-
-
-    {#
-      TODO: using same link here for Drupal ajax request and Bootstrap modal does NOT work.
-      For now, move the AJAX load link into the modal
-     #}
-    <button class="btn-cta-solid" data-toggle="modal" data-target="#modal-appointment-provider">{{ "Book appointment online"|t }}</button>
-
-    <div id="modal-appointment-provider" class="modal uwm-modal-appointment" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-
-          <div class="modal-header">
-            <h3 class="modal-title">{{ "Book appointment online"|t }}</h3>
-
-            <button type="button" class="close" data-dismiss="modal" aria-label="{{ "Close"|t }}">
-              <span class="uwm-icon uwm-icon--close-x" aria-hidden="true"></span>
-            </button>
-          </div>
-
-          <div class="modal-body">
-
-            {# TODO (see above) #}
-            <p><a class="use-ajax" href="/uwm-appointment/provider/{{ node.id }}/nojs">Load schedule flow</a></p>
-
-            <div id="appointment-provider-flow">
-              Provider appointment flow to load here
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- END TEST -->
-
+    {# Include online booking actions, if relevant. (This is a temporary
+       spot in the markup, for testing.) #}
+    {% include directory ~ '/components/provider-page/node--res-provider--appointment-actions.html.twig'
+      with { 'modal_appt_context': 'provider_page' } %}
 
     <div class="bg">
 

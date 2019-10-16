@@ -93,10 +93,11 @@ body.is-page-node-type-res-provider .modal-backdrop {
     .appointment-flow {
 
       .appointment-flow__step {
+        // Display only the active step.
+        display: none;
 
-        // TEMP
-        &:not(:nth-child(2)) {
-          display: none;
+        &.active {
+          display: block;
         }
       }
 
@@ -137,6 +138,12 @@ body.is-page-node-type-res-provider .modal-backdrop {
         }
       }
 
+      // Never show the template button used for generating other button markup
+      // in Javascript.
+      .appointment-flow__step-button[data-btn-visit-type-id="template"] {
+        display: none;
+      }
+
       .appointment-flow__step-back {
         display: block;
         margin-top: 0.25rem; // 4px, + 20px bottom on buttons = 24px total
@@ -150,6 +157,16 @@ body.is-page-node-type-res-provider .modal-backdrop {
           font-size: 1rem;
           @include link-blue-hover-underline();
         }
+      }
+
+      .appointment-flow__open-scheduling {
+
+        iframe.appointment-flow__open-scheduling-embed {
+          display: block;
+          width: 100%;
+          border: 0 none;
+        }
+
       }
 
     }

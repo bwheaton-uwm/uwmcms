@@ -245,6 +245,8 @@ modal-appointment:
   css:
     component:
       dist/css/modal-appointment.css: {}
+  js:
+    dist/js/modal-appointment.js: {}
   dependencies:
     - uwmbase/modal-base
 

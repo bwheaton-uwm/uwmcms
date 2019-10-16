@@ -1,0 +1,53 @@
+{#
+/**
+ * @file
+ * Template for a provider's online appointment actions, if any.
+ *
+ * If the provider has open or direct scheduling in eCare, display a button to
+ * book an appointment online, which will either link to eCare or a modal
+ * flow to allow users to step through whether they are existing patient,
+ * choose a visit type, etc.
+ *
+ *
+ */
+#}
+
+{{ attach_library('core/drupal.ajax') }}
+{{ attach_library('uwmbase/modal-appointment') }}
+
+<button class="btn-cta-solid" data-toggle="modal" data-target="#modal-appointment-provider">{{ "Book appointment online"|t }}</button>
+
+{#
+  Add data attribute so that modal Javascript behavior may vary by context in
+  which the appointment modal is used.
+#}
+<div id="modal-appointment-provider" class="modal uwm-modal-appointment" data-modal-appt-context="{{ modal_appt_context }}" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h3 class="modal-title">{{ "Book appointment online"|t }}</h3>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="{{ "Close"|t }}">
+          <span class="uwm-icon uwm-icon--close-x" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        {# WIP: trying non-ajax version - include the flow template instead #}
+        {#
+        <p><a class="use-ajax" href="/uwm-appointment/provider/{{ node.id }}/nojs">Load schedule flow</a></p>
+
+        <div id="appointment-provider-flow">
+          Provider appointment flow to load here
+        </div>
+        #}
+
+        {% include directory ~ '/components/appointment-flow/uwm-appointment-provider-flow.html.twig' %}
+
+      </div>
+
+    </div>
+  </div>
+</div>
