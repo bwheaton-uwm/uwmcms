@@ -204,8 +204,14 @@
         }
 
         // Set the initial step:
+        // - Open, 1 type / No direct.
+        if (openSched && !openMultipleTypes && !directSched) {
+
+          stepForward($stepOpenSchedWidget);
+
+        }
         // - Open, multiple types / No direct.
-        if (openSched && openMultipleTypes && !directSched) {
+        else if (openSched && openMultipleTypes && !directSched) {
 
           stepForward($stepVisitType);
 
