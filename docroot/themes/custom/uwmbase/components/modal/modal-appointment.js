@@ -93,23 +93,53 @@
       }
 
       /*
-       * Update link 'href' and iframe 'src' values to apply or remove query
-       * string values based on provider and user selections.
+       * Update link 'href' and iframe 'src' url values to insert a value for a
+       * relevant query string key, based on provider and user selections.
        */
       function setUrlAttrQueryStringVal($elem, attrName, key, val) {
 
-        var attr = $elem.attr(attrName);
-
-        // On initial modification, store the base attribute, for resetting.
+        // In the original markup, the url query string contains the key and '='
+        // part, but not the value, for parameters we may set in the flow:
+        // e.g. "&key=". Store this original "base" url, so we can reset and set
+        // our key/value parameter pairs multiple times as needed.
+        var url = $elem.attr(attrName);
         var baseAttr = $elem.data('base-' + attrName);
+
+        // Store the current key/value pairs in easily accessible way.
+        var query = $elem.data('url-query') || {};
+        query[key] = val;
+        $elem.data('url-query', query);
+
         if (!baseAttr) {
-          $elem.data('base-' + attrName, attr);
+          // On first time setting a key/val, store the base url value for
+          // reference in resetting.
+          $elem.data('base-' + attrName, url);
+        }
+        else {
+          // If setting key/val that's already been set within current flow
+          // (e.g. user stepped back), reset first. Otherwise our string
+          // replacement will insert the new value alongside the existing one.
+          resetUrlAttr($elem, attrName);
+          url = $elem.attr(attrName);
         }
 
-        $elem.attr(attrName, attr.replace(key + '=', key + '=' + val));
+        // Update url with current key/value parameters.
+        for (var k in query) {
+          if (query.hasOwnProperty(k)) {
+            var v = query[k];
+            url = url.replace(k + '=', k + '=' + v);
+          }
+        }
+
+        $elem.attr(attrName, url);
 
       }
 
+      /*
+       * Update link 'href' and iframe 'src' url values to restore the original
+       * "base" url string, in which relevant keys in the query string have no
+       * value.
+       */
       function resetUrlAttr($elem, attrName) {
 
         $elem.attr(attrName, $elem.data('base-' + attrName));
@@ -157,6 +187,7 @@
       // visible before our adjustments.
       $modal.on('show.bs.modal', function (e) {
 
+        // TODO: use context.
         if (true /*modalContext !== 'provider_page'*/ && openSched) {
 
           // Update appointment type step with provider's available types.
@@ -241,8 +272,6 @@
             stepForward($stepOpenSchedWidget);
           }
           else if (openMultipleTypes) {
-            // TODO: confirm; design shows go to open sched widget, but I think
-            // we need appt types step.
             stepForward($stepVisitType);
           }
 
@@ -279,7 +308,8 @@
 
       if ($stepVisitType.length) {
 
-        // On a provider page, we know and have the buttons at page load.
+        // On a provider page, we know and have the buttons at page load,
+        // because they are rendered in template.
         // Otherwise, this is handled upon opening the modal.
         if (modalContext === 'provider_page') {
           stepVisitTypeButtonsSetClick();
@@ -312,10 +342,11 @@
           $prev.removeClass('active');
         }
 
-        // Remove previous step state.
-        prevStep = null;
+        // Remove steps state.
+        stepPath = [];
 
         // If not on a provider bio page, remove provider-specific values.
+        // TODO: use context.
         if (true /*modalContext !== 'provider_page'*/) {
 
           // Remove visit type buttons.
