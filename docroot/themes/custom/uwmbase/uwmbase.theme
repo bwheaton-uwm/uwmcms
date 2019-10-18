@@ -318,11 +318,13 @@ function uwmbase_preprocess_page(&$variables, $hook) {
     // Remove the page title block on certain types of pages:
     // - On Clinic node pages, the title is printed in the node template instead
     //   for layout reasons.
+    // - On Provider node pages, the title is printed in the node template
+    //   instead for layout reasons.
     // - On Homepage node, the main header text is within the hero.
     // - On Medical Services nodes, there may be a hero paragraph that prints
     //   the title.
     if (!empty($variables['page']['title']['uwmbase_page_title'])) {
-      if ($node->bundle() === 'res_clinic' || $node->bundle() === 'uwm_homepage' || $ms_hero) {
+      if ($node->bundle() === 'res_clinic' || $node->bundle() === 'res_provider' || $node->bundle() === 'uwm_homepage' || $ms_hero) {
         unset($variables['page']['title']['uwmbase_page_title']);
 
         // There should be no other blocks in the 'title' region. Unset the
@@ -698,6 +700,63 @@ function uwmbase_preprocess_node__uwm_homepage(&$variables) {
     $variables['content']['field_uwm_homepage_markup'][0]['#text'] = $markup;
   }
 
+}
+
+/**
+ * Implements hook_preprocess_node__res_provider().
+ */
+function uwmbase_preprocess_node__res_provider(&$variables) {
+  if (!empty($variables['elements']['#node'])) {
+    $node = $variables['elements']['#node'];
+
+    // Add a variable containing the parts of a provider's name.
+    if ($node->hasField('field_res_name') && !$node->get('field_res_name')->isEmpty()) {
+      $variables['provider_name_parts'] = $node->get('field_res_name')->first()->getValue();
+    }
+
+    // Determine if the provider has a photo.
+    if ($node->hasField('field_res_image')) {
+      $variables['has_photo'] = !$node->get('field_res_image')->isEmpty();
+    }
+
+    // Determine if the provider has a video.
+    if ($node->hasField('field_res_node_videos')) {
+      $variables['has_video'] = !$node->get('field_res_node_videos')->isEmpty();
+    }
+
+    // Determine if the provider has languages.
+    if ($node->hasField('field_res_languages')) {
+      $variables['has_languages'] = !$node->get('field_res_languages')->isEmpty();
+    }
+
+    // Determine taxonomy terms associated with the provider.
+    $variables['taxonomy_terms'] = [
+      'expertises' => [],
+      'conditions_symptoms' => [],
+      'procedures_treatments' => [],
+    ];
+    foreach (array_keys($variables['taxonomy_terms']) as $vocabulary) {
+      $terms = [];
+      $field_name = 'field_res_' . $vocabulary;
+      if ($node->hasField($field_name)) {
+        foreach ($node->get($field_name) as $item) {
+          if ($term_entity = $item->entity) {
+            if ($term_entity->hasField('field_link') && $uri = $term_entity->field_link->uri) {
+              $url = Url::fromUri($uri)->toString();
+            }
+            else {
+              $url = NULL;
+            }
+            $terms[] = [
+              'name' => $term_entity->label(),
+              'url' => $url,
+            ];
+          }
+        }
+      }
+      $variables['taxonomy_terms'][$vocabulary] = $terms;
+    }
+  }
 }
 
 /**
