@@ -11,17 +11,61 @@
  *
  */
 #}
+{#
+  Relevant variables from parent template:
 
-{{ attach_library('core/drupal.ajax') }}
+  modal_appt_context: string - where the modal is being used. One of:
+    'provider_page' - provider bio (node) page
+    'search_providers' - provider card on search results
+    'clinic_page_tab' - provider card on clinic page tab
+
+  ................
+    epic_id: the provider's Epic/SER ID number
+    open_scheduling: boolean - whether provider is enabled for open scheduling
+    visit_type_ids: array - provider's open scheduling visit type IDs, if any
+    direct_scheduling: boolean - whether provider is enabled for direct scheduling
+#}
+
+{# {{ attach_library('core/drupal.ajax') }} #}
+
 {{ attach_library('uwmbase/modal-appointment') }}
 
-<button class="btn-cta-solid" data-toggle="modal" data-target="#modal-appointment-provider">{{ "Book appointment online"|t }}</button>
+{# TODO: get these from however we store them #}
+{%
+  set visit_type_names = {
+    '9000': 'New Patient Appointment',
+    '4466': 'New Pregnancy Care',
+    '103619': 'New Wellness Appointment'
+  }
+%}
+
+{# TESTING 
+{% set modal_appt_context = 'whatever' %}
+#}
 
 {#
-  Add data attribute so that modal Javascript behavior may vary by context in
-  which the appointment modal is used.
+  Add data attributes on the button to pass the provider's Epic scheduling
+  values to the modal. The modal can retrieve these because the element that
+  triggered it is set as the `event.relatedTarget`.
+  @see https://getbootstrap.com/docs/4.1/components/modal/#varying-modal-content
 #}
-<div id="modal-appointment-provider" class="modal uwm-modal-appointment" data-modal-appt-context="{{ modal_appt_context }}" tabindex="-1" role="dialog">
+<button class="btn-cta-solid"
+  data-toggle="modal"
+  data-target="#modal-appointment-provider"
+  data-provider-epic-id="{{ epic_id }}"
+  data-provider-open-scheduling="{{ (open_scheduling ? '1' : '0') }}"
+  data-provider-visit-type-ids="{{ visit_type_ids|join('|') }}"
+  data-provider-direct-scheduling="{{ (direct_scheduling ? '1' : '0') }}">{{ "Book appointment online"|t }}</button>
+
+{#
+  Pass the modal context as data attribute for use in JS.
+  Since the modal intentionally exists only once in a page, we can set the
+  context value on it, and it's immediately accessible in JS. (The scheduling
+  data values that are specific to each provider must be set on that provider's
+  button that opens the modal.)
+#}
+<div id="modal-appointment-provider" class="modal uwm-modal-appointment" tabindex="-1" role="dialog"
+  data-modal-appt-context="{{ modal_appt_context }}">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
 

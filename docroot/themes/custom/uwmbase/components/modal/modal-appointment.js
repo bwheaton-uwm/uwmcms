@@ -18,27 +18,31 @@
         return;
       }
 
-      // Determine context of appointment modal. If we're on a provider's bio
-      // page, some things can stay static based on their data.
-      // Expected values:
-      // Provider bio (node) page: 'provider_page'
-      // Provider card on search results: 'search_providers'
-      // Provider card on clinic page tab: 'clinic_page_tab'.
+      // The context is the type of page on which the appointment modal is being
+      // used. If we're on a provider's bio page, any elements with provider-
+      // specific data (e.g. the Epic ID) can stay static throughout modal
+      // interaction. If the page has multiple provider cards, these values will
+      // be updated for the selected provider when the modal opens.
+      // Possible values:
+      // 'provider_page' - provider bio (node) page
+      // 'search_providers' - provider card on search results
+      // 'clinic_page_tab' - provider card on clinic page tab.
       var modalContext = $modal.attr('data-modal-appt-context') || null;
 
-      // TODO: data.
-      var epicID = 12345;
-      var openSched = true;
-      var visitTypeIDs = [ 12, 34, 56, 78, 90 ];
-      var openMultipleTypes = (visitTypeIDs.length > 1);
-      var directSched = true;
+      // Initialize provider-specific scheduling variables here, so they are
+      // accessible throughout handlers and functions. Values are set when the
+      // modal is shown.
+      var epicID = null;
+      var openScheduling = null;
+      var visitTypeIDs = null;
+      var openMultipleTypes = null;
+      var directScheduling = null;
 
+      // TODO: get these from however we store them.
       var visitTypeNames = {
-        '12': "New Appointment 12",
-        '34': "New Appointment 34",
-        '56': "New Appointment 56",
-        '78': "New Appointment 78",
-        '90': "New Appointment 90",
+        '9000': 'New Patient Appointment',
+        '4466': 'New Pregnancy Care',
+        '103619': 'New Wellness Appointment'
       };
 
       var $steps = $modal.find('.appointment-flow__step');
@@ -52,7 +56,7 @@
       var $linkOpenSched = $stepOpenSchedWidget.length ? $stepOpenSchedWidget.find('a.appointment-flow__open-scheduling-link') : null;
       var $linkDirectSched = $stepEcareAccount.length ? $stepEcareAccount.find('a.appointment-flow__direct-scheduling-link') : null;
 
-      // TODO: Is a var here a good way to store this?
+      // Track steps the user has visited, for use by Back links.
       var stepPath = [];
 
       /*
@@ -147,111 +151,140 @@
       }
 
       /*
-       * Set 'click' handler for visit type buttons.
-       *
-       * Provide this as a function so we can run it both on page load and when
-       * the modal is updated with a provider's visit types.
-       */
-      function stepVisitTypeButtonsSetClick() {
-
-        if ($stepVisitType.length && $stepOpenSchedWidget.length) {
-
-          $stepVisitType.find('a[data-btn-visit-type-id]').not('[data-btn-visit-type-id="template"]').click(function (e) {
-
-            e.preventDefault();
-
-            var visitTypeID = $(this).attr('data-btn-visit-type-id');
-
-            // Update open scheduling widget with the chosen visit type ID.
-            // TODO: bad to have iframe with a "broken" src?
-            setUrlAttrQueryStringVal($iframeOpenSched, 'src', 'vt', visitTypeID);
-            setUrlAttrQueryStringVal($linkOpenSched, 'href', 'vt', visitTypeID);
-
-            stepForward($stepOpenSchedWidget);
-
-          });
-
-        }
-
-      }
-
-      /*
        * Modal initialization
        */
       // On modal open, initialize everything.
       // "This event fires immediately when the show instance method is called."
       // (Bootstrap doc)
-      // Note: no step is shown by default, because the first step differs by
+      // Note: no step is shown on page load, because the first step differs by
       // appointment logic. Also, presumably this handler does not necessarily
       // finish running before the modal shows, so we don't want a step to be
       // visible before our adjustments.
       $modal.on('show.bs.modal', function (e) {
 
-        // TODO: use context.
-        if (true /*modalContext !== 'provider_page'*/ && openSched) {
+        // 1. Retrieve scheduling values specific to the selected provider from
+        // data attributes on the button that opened the modal.
+        // @see https://getbootstrap.com/docs/4.1/components/modal/#varying-modal-content
+        var $modalBtn = $(e.relatedTarget);
 
-          // Update appointment type step with provider's available types.
-          if (openMultipleTypes && $stepVisitType.length) {
+        epicID = $modalBtn.attr('data-provider-epic-id') || null;
 
-            var $btnContainer = $stepVisitType.find('.appointment-flow__step-buttons');
-            var $btnTemplate = $stepVisitType.find('a[data-btn-visit-type-id="template"]');
+        // Booleans are passed via attributes as "1" (true) or "0" (false).
+        // Convert string value to number first, because `"0"` converts to true.
+        // We also must check explicitly if the attribute is present; with the
+        // `||` shortcut, a legitimate `false` value would result in `null`.
+        if (typeof $modalBtn.attr('data-provider-open-scheduling') !== 'undefined') {
+          openScheduling = Boolean(Number($modalBtn.attr('data-provider-open-scheduling')));
+        }
 
-            for (var i = 0; i < visitTypeIDs.length; i++) {
+        // Multiple visit type IDs are delimited by '|'. Check if the attribute
+        // value string is non-empty, because splitting an empty string results
+        // in an array with one element that is the empty string, which is
+        // inaccurate.
+        var visitTypeIDsAttr = $modalBtn.attr('data-provider-visit-type-ids');
+        if (typeof visitTypeIDsAttr === 'string' && visitTypeIDsAttr.length > 0) {
+          // Note: by splitting a string, the result values are (numeric)
+          // strings. Both the number and equivalent numeric string work as
+          // object keys to access the value, so we can safely use these to get
+          // the visit type name and description.
+          visitTypeIDs = visitTypeIDsAttr.split('|');
+        }
 
-              var visitTypeID = visitTypeIDs[i];
+        openMultipleTypes = (visitTypeIDs ? visitTypeIDs.length > 1 : false);
 
-              // TODO: handle missing name bad data?
-              if (visitTypeNames.hasOwnProperty(visitTypeID)) {
+        if (typeof $modalBtn.attr('data-provider-direct-scheduling') !== 'undefined') {
+          directScheduling = Boolean(Number($modalBtn.attr('data-provider-direct-scheduling')));
+        }
 
-                var $btn = $btnTemplate.clone();
-                $btn.attr('data-btn-visit-type-id', visitTypeID);
-                $btn.text(visitTypeNames[visitTypeID]);
+        /*
+        console.log('modalContext:', modalContext, ', epicID:', epicID, ', openScheduling:', openScheduling, ', visitTypeIDs:', visitTypeIDs, ', openMultipleTypes:', openMultipleTypes, ', directScheduling:', directScheduling);
+        */
 
-                $btnContainer.append($btn);
+        // 2. If not on a provider page, update elements for the provider
+        // selected by user.
+        if (modalContext !== 'provider_page') {
+
+          if (openScheduling) {
+
+            // On appointment type step, add button for each of provider's
+            // available types.
+            // Note: since these are added after page load, the click event
+            // handler is on the step container, which catches and filters
+            // events bubbled from the buttons. See $stepVisitType init below.
+            if (openMultipleTypes && $stepVisitType.length) {
+
+              var $btnContainer = $stepVisitType.find('.appointment-flow__step-buttons');
+              var $btnTemplate = $stepVisitType.find('a[data-btn-visit-type-id="template"]');
+
+              for (var i = 0; i < visitTypeIDs.length; i++) {
+
+                var visitTypeID = visitTypeIDs[i];
+
+                // TODO: handle missing name bad data?
+                if (visitTypeNames.hasOwnProperty(visitTypeID)) {
+
+                  var $btn = $btnTemplate.clone();
+                  $btn.attr('data-btn-visit-type-id', visitTypeID);
+                  $btn.text(visitTypeNames[visitTypeID]);
+
+                  $btnContainer.append($btn);
+
+                }
 
               }
 
             }
 
-            // Attach click handlers to buttons.
-            stepVisitTypeButtonsSetClick();
+            // Update open scheduling widget with provider's Epic ID.
+            // TODO: bad to have iframe with a "broken" src at any point?
+            if ($stepOpenSchedWidget.length) {
+              setUrlAttrQueryStringVal($iframeOpenSched, 'src', 'id', epicID);
+              setUrlAttrQueryStringVal($linkOpenSched, 'href', 'id', epicID);
+            }
 
           }
 
-          // Update open scheduling widget with provider's Epic ID.
-          // TODO: bad to have iframe with a "broken" src at any point?
-          if ($stepOpenSchedWidget.length) {
-            setUrlAttrQueryStringVal($iframeOpenSched, 'src', 'id', epicID);
-            setUrlAttrQueryStringVal($linkOpenSched, 'href', 'id', epicID);
+          if (directScheduling && $stepEcareAccount.length) {
+
+            // Update direct scheduling link with provider's Epic ID.
+            setUrlAttrQueryStringVal($linkDirectSched, 'href', 'selProvId', epicID);
+
           }
 
         }
 
-        if (true /*modalContext !== 'provider_page'*/ && directSched && $stepEcareAccount.length) {
+        // 3. Set the initial step to display.
+        var $firstStep = null;
 
-          // Update direct scheduling link with provider's Epic ID.
-          setUrlAttrQueryStringVal($linkDirectSched, 'href', 'selProvId', epicID);
-
-        }
-
-        // Set the initial step:
         // - Open, 1 type / No direct.
-        if (openSched && !openMultipleTypes && !directSched) {
+        if (openScheduling && !openMultipleTypes && !directScheduling) {
 
-          stepForward($stepOpenSchedWidget);
+          $firstStep = $stepOpenSchedWidget;
 
         }
         // - Open, multiple types / No direct.
-        else if (openSched && openMultipleTypes && !directSched) {
+        else if (openScheduling && openMultipleTypes && !directScheduling) {
 
-          stepForward($stepVisitType);
+          $firstStep = $stepVisitType;
 
         }
         // - Open, 1 type / Direct
         // - Open, multiple types / Direct.
-        else if (openSched && directSched) {
+        else if (openScheduling && directScheduling) {
 
-          stepForward($stepVisitedBefore);
+          $firstStep = $stepVisitedBefore;
+
+        }
+
+        if ($firstStep) {
+
+          // The first step in the current flow may be not the first step in
+          // other flows, and thus have a Back link. Remove the Back link in
+          // this instance where it's the first one.
+          $firstStep.find('.appointment-flow__step-back').hide();
+
+          // Actually move to the first step!
+          stepForward($firstStep);
 
         }
 
@@ -308,12 +341,27 @@
 
       if ($stepVisitType.length) {
 
-        // On a provider page, we know and have the buttons at page load,
-        // because they are rendered in template.
-        // Otherwise, this is handled upon opening the modal.
-        if (modalContext === 'provider_page') {
-          stepVisitTypeButtonsSetClick();
-        }
+        // Set 'click' handler for visit type buttons.
+        // Use a delegated handler - attach the event to the step container
+        // and filter to events bubbling from the descendant buttons. Thus we
+        // handle buttons that exist at page load (on provider page) and those
+        // added at the time of modal opening (on other pages with multiple
+        // providers, which pass the provider data to the modal).
+        // @see https://api.jquery.com/on/
+        $stepVisitType.on('click', 'a[data-btn-visit-type-id][data-btn-visit-type-id!="template"]', function (e) {
+
+          e.preventDefault();
+
+          var visitTypeID = $(this).attr('data-btn-visit-type-id');
+
+          // Update open scheduling widget with the chosen visit type ID.
+          // TODO: bad to have iframe with a "broken" src?
+          setUrlAttrQueryStringVal($iframeOpenSched, 'src', 'vt', visitTypeID);
+          setUrlAttrQueryStringVal($linkOpenSched, 'href', 'vt', visitTypeID);
+
+          stepForward($stepOpenSchedWidget);
+
+        });
 
       }
 
@@ -336,7 +384,7 @@
       // user (will wait for CSS transitions to complete)." (Bootstrap doc)
       $modal.on('hidden.bs.modal', function (e) {
 
-        // Hide previous step.
+        // Hide whichever step the user was on.
         var $prev = $steps.filter('.active');
         if ($prev.length) {
           $prev.removeClass('active');
@@ -345,9 +393,11 @@
         // Remove steps state.
         stepPath = [];
 
+        // Show the Back link if it was hidden on this flow's first step.
+        $steps.find('.appointment-flow__step-back:hidden').show();
+
         // If not on a provider bio page, remove provider-specific values.
-        // TODO: use context.
-        if (true /*modalContext !== 'provider_page'*/) {
+        if (modalContext !== 'provider_page') {
 
           // Remove visit type buttons.
           if ($stepVisitType.length) {
