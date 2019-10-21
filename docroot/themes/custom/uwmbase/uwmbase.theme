@@ -1594,7 +1594,8 @@ function uwmbase_preprocess_paragraph__uwm_basic_content__uwm_card(&$variables) 
   if (stristr($textBoxContent, $genericString) !== FALSE) {
     // Swap out the generic text in the Book Online intro.
     $variables['content']['uwm_text'][0]['#text'] = '<div class="make-appt-page--book-online-link"><a href="' . $eCareLink . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book with ' . '<span class="font-weight-semi-bold">' . trim($node->label()) . '</span>' . '</a></div>';
-  } elseif (stristr($textBoxContent, $ecareString) !== FALSE) {
+  }
+  elseif (stristr($textBoxContent, $ecareString) !== FALSE) {
     // Swap out the Book in eCare link with specialized link.
     $variables['content']['uwm_text'][0]['#text'] = '<p>Returning patient? <a href="' . $eCareLink . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book in eCare.</a></p>';
   }
