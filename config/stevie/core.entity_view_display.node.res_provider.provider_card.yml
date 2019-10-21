@@ -271,8 +271,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
 hidden:
+  field_res_academic_title: true
+  field_res_department: true
   field_res_internal_url: true
+  field_res_medical_title: true
   field_res_meta_tags: true
+  field_res_patients_treated: true
+  field_res_provider_type: true
   field_res_pubmed_ids: true
   field_res_puma_id: true
   field_uwm_json_packet: true
