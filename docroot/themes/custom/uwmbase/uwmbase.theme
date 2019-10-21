@@ -795,7 +795,7 @@ function uwmbase_preprocess_container(&$variables) {
 function uwmbase_preprocess_responsive_image_formatter(array &$variables) {
 
   // Set up res provider to use parent node's title as an
-  // alt tag for the res provider image
+  // alt tag for the res provider image.
   $node = $variables['item']->getEntity();
 
   if ($node->bundle() == 'res_provider') {
@@ -810,8 +810,8 @@ function uwmbase_preprocess_responsive_image_formatter(array &$variables) {
 function uwmbase_preprocess_responsive_image(&$variables) {
 
   // Use the preprocessed template_preprocess_responsive_image_formatter()
-  // to set alt tag to parent node title
-  if (key_exists('data-node_label', $variables['img_element']['#attributes']) && $variables['responsive_image_style_id'] == 'provider_page_image') {
+  // to set alt tag to parent node title.
+  if (array_key_exists('data-node_label', $variables['img_element']['#attributes']) && $variables['responsive_image_style_id'] == 'provider_page_image') {
     $variables['img_element']['#attributes']['alt'] = 'Provider headshot of' . $variables['img_element']['#attributes']['data-node_label'];
   }
 }
