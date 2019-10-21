@@ -1577,15 +1577,28 @@ function uwmbase_preprocess_paragraph__uwm_basic_content__uwm_card(&$variables) 
   }
   $set_visit_type_id = isset($first_visit_type_id) ? $first_visit_type_id : 9000;
 
-  // Bail if the text doesn't contain the text getting swapped out.
-  // Else swap it out with the book online link.
+  // Swap out various peices of text with provider link if
+  // on a page with SER ID.
   // Note: This is an interem fix that will be removed with
   // the update of providers no longer linking to
   // make an appointment page.
-  $string = 'Your primary care appointments and some specialty care can be booked online';
-  if (isset($variables['content']['uwm_text'][0]['#text']) && stristr($variables['content']['uwm_text'][0]['#text'], $string) !== FALSE) {
-    $variables['content']['uwm_text'][0]['#text'] = '<div class="make-appt-page--book-online-link"><a href="https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book with ' . '<span class="font-weight-semi-bold">' . trim($node->label()) . '</span>' . '</a></div>';
+  $eCareLink = 'https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=';
+  $textBoxContent = $variables['content']['uwm_text'][0]['#text'];
+  $genericString = 'Your primary care appointments and some specialty care can be booked online';
+  $ecareString = 'Book in eCare';
+
+  if (empty($textBoxContent)) {
+    return;
   }
+
+  if (stristr($textBoxContent, $genericString) !== FALSE) {
+    // Swap out the generic text in the Book Online intro.
+    $variables['content']['uwm_text'][0]['#text'] = '<div class="make-appt-page--book-online-link"><a href="' . $eCareLink . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book with ' . '<span class="font-weight-semi-bold">' . trim($node->label()) . '</span>' . '</a></div>';
+  } elseif (stristr($textBoxContent, $ecareString) !== FALSE) {
+    // Swap out the Book in eCare link with specialized link.
+    $variables['content']['uwm_text'][0]['#text'] = '<p>Returning patient? <a href="' . $eCareLink . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book in eCare.</a></p>';
+  }
+
 }
 
 /**
