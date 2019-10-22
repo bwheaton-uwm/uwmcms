@@ -6,79 +6,54 @@
 
 
 
-{% set locations_tab = node.field_res_clinics is not empty %}
-{% set publications_tab = node.field_res_pubmed_ids is not empty %}
-{% set education_tab = node.uwm_json_packet_data.educationHistories is not empty %}
+{% set research_tab = node.field_res_pubmed_ids is not empty %}
 
 
-<nav class="uw-navtabs nowrap">
-
-  <ul class="nav nav-tabs flex-nowrap" id="nav-tab"
-      role="tablist">
+<nav class="provider-page__tabs-nav uw-navtabs uw-navtabs--blue-accent">
+  <ul class="nav nav-tabs" id="nav-tab" role="tablist">
     <li class="nav-item">
 
       <a class="nav-item nav-link active" id="overview-tab-tab"
-         data-toggle="tab"
-         href="#overview-tab" role="tab" aria-controls="overview-tab"
-         data-tab-history="true"
-         data-tab-history-changer="push"
-         data-tab-history-update-url="true">
-
+        data-toggle="tab"
+        href="#overview-tab" role="tab" aria-controls="overview-tab"
+        data-tab-history="true"
+        data-tab-history-changer="push"
+        data-tab-history-update-url="true">
         {{ 'Overview'|t }}
       </a>
     </li>
 
-    {% if locations_tab %}
-      <li class="nav-item">
-        <a class="nav-item nav-link" id="locations-tab-tab" data-toggle="tab"
-           href="#locations-tab" role="tab" aria-controls="locations-tab"
-           aria-selected="false"
-           data-tab-history="true"
-           data-tab-history-changer="push"
-           data-tab-history-update-url="true">
+    <li class="nav-item">
+      <a class="nav-item nav-link" id="about-tab-tab"
+        data-toggle="tab"
+        href="#about-tab" role="tab" aria-controls="about-tab"
+        aria-selected="false"
+        data-tab-history="true"
+        data-tab-history-changer="push"
+        data-tab-history-update-url="true">
+        {{ 'About Me'|t }}
+      </a>
+    </li>
 
-          {{ 'Locations'|t }}
-        </a>
-      </li>
-    {% endif %}
-
-    {% if education_tab %}
-      <li class="nav-item">
-        <a class="nav-item nav-link" id="education-tab-tab" data-toggle="tab"
-           href="#education-tab" role="tab" aria-controls="education-tab"
-           aria-selected="false"
-           data-tab-history="true"
-           data-tab-history-changer="push"
-           data-tab-history-update-url="true">
-
-          {{ 'Education'|t }}
-        </a>
-      </li>
-    {% endif %}
-
-    {% if publications_tab %}
+    {% if research_tab %}
       {#
-      We set the publications tab to "disabled", so that the
-      ./providers-page.js can complete a callback, and their publications
+      We set the research tab to "disabled", so that the
+      ./providers-page.js can complete a callback, and their research
       information has populated. The javascript enables the tab once complete.
       #}
       <li class="nav-item">
-        <a class="nav-item nav-link disabled" id="publications-tab-tab"
+        <a class="nav-item nav-link disabled" id="research-tab-tab"
            data-toggle="tab"
-           href="#publications-tab" role="tab" aria-controls="providers-tab"
+           href="#research-tab" role="tab" aria-controls="research-tab"
            aria-selected="false"
            data-tab-history="true"
            data-tab-history-changer="push"
            data-tab-history-update-url="true">
-
-          {{ 'Publications'|t }}
+          {{ 'Research'|t }}
         </a>
       </li>
     {% endif %}
-
-
   </ul>
-
 </nav>
 
 
@@ -90,60 +65,21 @@
 
 #}
 
-<div class="tab-content uwm-tab-content tab-content uwm-accent-color__blue"
-     id="nav-tabContent">
-
-  <section class="tab-pane show active" id="overview-tab" role="tabpanel"
-           aria-labelledby="overview-tab-tab">
-
-    {#
-    BIOGRAPHY
-    #}
+<div class="tab-content uwm-tab-content tab-content uwm-accent-color__blue" id="nav-tabContent">
+  <section class="tab-pane show active fade" id="overview-tab" role="tabpanel" aria-labelledby="overview-tab-tab">
     <a name="overview" id="overview"></a>
-    {% include directory ~ '/components/provider-page/node--res-provider--tabs-main.html.twig' %}
-
+    {% include directory ~ '/components/provider-page/node--res-provider--tabs-overview.html.twig' %}
   </section>
 
-
-  {% if locations_tab %}
-    <section class="tab-pane" id="locations-tab" role="tabpanel"
-             aria-labelledby="locations-tab-tab">
-
-      {#
-      OFFICE LOCATIONS
-      #}
-      <a name="locations" id="locations"></a>
-      {% include directory ~ '/components/provider-page/node--res-provider--tabs-locations.html.twig' %}
-
-    </section>
-  {% endif %}
-
-
-  {% if education_tab %}
-  <section class="tab-pane fade"
-           id="education-tab" role="tabpanel"
-           aria-labelledby="education-tab-tab">
-
-    {#
-    EDUCATION
-    #}
-    <a name="education" id="education"></a>
-    {% include directory ~ '/components/provider-page/node--res-provider--tabs-education.html.twig' %}
-
+  <section class="tab-pane fade" id="about-tab" role="tabpanel" aria-labelledby="about-tab-tab">
+    <a name="about" id="about"></a>
+    {% include directory ~ '/components/provider-page/node--res-provider--tabs-about.html.twig' %}
   </section>
-  {% endif %}
 
-  {% if publications_tab %}
-    <section class="tab-pane fade"
-             id="publications-tab" role="tabpanel"
-             aria-labelledby="publications-tab-tab">
-
-      {#
-      PUBLICATIONS
-      #}
-      <a name="publications" id="publications"></a>
-      {% include directory ~ '/components/provider-page/node--res-provider--tabs-publications.html.twig' %}
-
+  {% if research_tab %}
+    <section class="tab-pane fade" id="research-tab" role="tabpanel" aria-labelledby="research-tab-tab">
+      <a name="research" id="research"></a>
+      {% include directory ~ '/components/provider-page/node--res-provider--tabs-research.html.twig' %}
     </section>
   {% endif %}
 

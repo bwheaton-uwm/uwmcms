@@ -14,15 +14,13 @@
 
 {% extends "@uwmbase/containers/article/article.twig" %}
 
-{% set modifier_class = attributes.class ~ ' row' %}
+{% set modifier_class = attributes.class ~ ' provider-page__location clinic-card-brief' %}
 
 {% block content %}
-  {{ attach_library('uwmbase/node-display-card-brief') }}
-  {#
+  {{ attach_library('uwmbase/clinic-card-brief') }}
 
-  LEFT COLUMN
-  #}
-  <div class="left image col-xs-12 col-sm-5 ">
+  {# SECTION 1 #}
+  <div class="clinic-card-brief__section1">
 
     {% set image = content.field_res_image %}
     {% if content.field_res_image|render|trim is empty %}
@@ -38,67 +36,44 @@
 
   </div>
 
+  {# SECTION 2#}
+  <div class="clinic-card-brief__section2">
 
-  {#
-
-  RIGHT COLUMN
-  #}
-  <div class="right col-xs-12 col-sm-7">
-
-    <h4 class="page-title">
-      {{ uwm_cta_link(label|render, url, [css_parents_classes]) }}
+    <h4 class="clinic-card-brief__title">
+      {{ uwm_cta_link(label|render, url, [css_parents_classes, 'text-link-blue', 'no-underline']) }}
     </h4>
 
+    {% if node.field_res_building.target_id %}
+      <address class="clinic-card-brief__address">
+        <i class="uwm-icon uwm-icon--clinic-locations clinic-card-brief__address-icon"></i>
+        <div class="clinic-card-brief__address-content">
+          {{ drupal_entity('taxonomy_term', node.field_res_building.target_id, 'building_address')|render|striptags('<span>')|raw }}
+        </div>
+      </address>
+    {% endif %}
 
-    <address class="k">
-      {% if node.field_res_building.target_id %}
-        <i class="uwm-icon uwm-icon--clinic-locations"></i>
-        {{ drupal_entity('taxonomy_term', node.field_res_building.target_id, 'building_address')|render|striptags('<span>')|raw }}
-      {% endif %}
-    </address>
+    {% if hours.operation.always_open or hours.operation.open_close %}
+      <div class="clinic-card-brief__opens">
+        <i class="uwm-icon uwm-icon--clock clinic-card-brief__opens-icon"></i>
+        <div class="clinic-card-brief__opens-content">
+          {% if hours.operation.always_open %}
+            {{- "Always Open"|t -}}
+          {% else %}
+            <span
+              data-uwm-opens-at="{{ hours.operation.open_close|json_encode() }}"></span>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
 
-    <p class="location-phone k">
-      {% if node.field_res_phone_number.value %}
+    {% if node.field_res_phone_number.value %}
+      <div class="clinic-card-brief__phone">
         {% set phone = node.field_res_phone_number.value|uwm_format_phone('-') %}
         <i class="uwm-icon uwm-icon--call-online"></i>
-{#        <a href="tel:{{ phone }}" class="{{ card_link_classes }}">{{ phone|replace({'-': '.'}) }}</a>#}
-
         {% set cta_special_attributes = []|merge({'data-context-title': label|render}) %}
-        {{ uwm_cta_link(phone|replace({'-': '.'}), 'tel:'~phone, [css_parents_classes], cta_special_attributes) }}
-
-      {% endif %}
-    </p>
-
-    <p class="services k">
-      {#{{ devel_breakpoint() }}#}
-      {% if content.field_res_expertises %}
-        {% set expertises = content.field_res_expertises|uwm_filter_non_numeric_keys %}
-        <i class="uwm-icon uwm-icon--accepting-patients" aria-hidden="true"></i>
-        {{ expertises|slice(0, 4)|uwm_replace_links_with_text|sort|join(', ') }}{{ expertises|length > 4 ? '...' : '' }}
-        {#{{ node.field_res_medical_services|uwm_filter_non_numeric_keys|uwm_replace_links_with_text|sort|slice(5)|join(', ') }}#}
-      {% endif %}
-    </p>
-
-    <p class="opens k">
-      {% if hours.operation.always_open or hours.operation.open_close %}
-        <i class="uwm-icon uwm-icon--appointment"></i>
-        {#{% if hours.urgent.always_open %}#}
-        {#{{- "Urgent Care: Always open"|t -}}#}
-        {#{% else %}#}
-        {#<span data-uwm-opens-at="{{ hours.urgent.open_close|json_encode() }}"></span>#}
-        {#{% endif %}#}
-        {#{% endif %}#}
-        {% if hours.operation.always_open %}
-          {{- "Always Open"|t -}}
-        {% else %}
-          <span
-            data-uwm-opens-at="{{ hours.operation.open_close|json_encode() }}"></span>
-        {% endif %}
-      {% endif %}
-    </p>
+        {{ uwm_cta_link(phone|replace({'-': '.'}), 'tel:'~phone, [css_parents_classes]|merge(['btn', 'btn-cta-solid']), cta_special_attributes) }}
+      </div>
+    {% endif %}
   </div>
-
-
-
 
 {% endblock content %}

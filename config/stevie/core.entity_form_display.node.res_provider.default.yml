@@ -114,10 +114,13 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_conditions_symptoms:
-    type: options_select
+    type: entity_reference_autocomplete
     weight: 21
     region: content
-    settings: {  }
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_res_degrees:
     type: entity_reference_paragraphs
@@ -273,10 +276,13 @@ content:
     type: text_textarea
     region: content
   field_res_procedures_treatments:
-    type: options_select
+    type: entity_reference_autocomplete
     weight: 22
     region: content
-    settings: {  }
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_res_provider_type:
     weight: 39
