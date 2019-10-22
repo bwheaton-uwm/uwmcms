@@ -66,7 +66,7 @@ content:
     type: text_default
     region: content
   field_hide_see_clinics_cta:
-    weight: 24
+    weight: 23
     label: above
     settings:
       format: default
@@ -93,14 +93,14 @@ content:
     region: content
   field_res_conditions_symptoms:
     type: entity_reference_label
-    weight: 22
+    weight: 21
     region: content
     label: above
     settings:
       link: true
     third_party_settings: {  }
   field_res_department:
-    weight: 25
+    weight: 24
     label: above
     settings:
       link: true
@@ -157,7 +157,7 @@ content:
     region: content
   field_res_features_amenities:
     type: entity_reference_label
-    weight: 21
+    weight: 20
     region: content
     label: above
     settings:
@@ -211,7 +211,7 @@ content:
     type: responsive_image
     region: content
   field_res_is_building:
-    weight: 23
+    weight: 22
     label: above
     settings:
       format: default
@@ -221,7 +221,7 @@ content:
     type: boolean
     region: content
   field_res_patients_treated:
-    weight: 27
+    weight: 25
     label: above
     settings:
       link: true
@@ -278,14 +278,6 @@ content:
       link: ''
     third_party_settings: {  }
     region: content
-  field_uwm_subject_matter_experts:
-    weight: 26
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
 hidden:
   field_featured: true
   field_res_affiliates: true
@@ -300,7 +292,9 @@ hidden:
   field_search_best_bets: true
   field_test_m_services2: true
   field_test_m_services3: true
+  field_uwm_content_owner: true
   field_uwm_json_packet: true
+  field_uwm_subject_matter_experts: true
   links: true
   search_api_excerpt: true
   uwm_unique_id: true
