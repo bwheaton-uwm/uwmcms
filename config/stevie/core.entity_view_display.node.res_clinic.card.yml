@@ -143,9 +143,11 @@ hidden:
   field_search_best_bets: true
   field_test_m_services2: true
   field_test_m_services3: true
+  field_uwm_content_owner: true
   field_uwm_json_packet: true
   field_uwm_sections: true
   field_uwm_sections_2: true
+  field_uwm_subject_matter_experts: true
   links: true
   search_api_excerpt: true
   uwm_unique_id: true
