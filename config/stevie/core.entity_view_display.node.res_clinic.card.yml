@@ -120,6 +120,7 @@ hidden:
   field_res_affiliates: true
   field_res_box_number: true
   field_res_conditions_symptoms: true
+  field_res_department: true
   field_res_expertises: true
   field_res_external_url: true
   field_res_fax_number: true
@@ -136,9 +137,9 @@ hidden:
   field_res_is_hospital: true
   field_res_iscallcenterserviced: true
   field_res_meta_tags: true
+  field_res_patients_treated: true
   field_res_procedures_treatments: true
   field_res_providers: true
-  field_res_special_interests: true
   field_search_best_bets: true
   field_test_m_services2: true
   field_test_m_services3: true

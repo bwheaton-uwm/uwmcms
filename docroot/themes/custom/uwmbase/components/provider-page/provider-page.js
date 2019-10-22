@@ -32,8 +32,8 @@
 
             });
 
-            $('#publications-tab-tab', context).removeClass('disabled');
-            $container.html(` <ul> ${  items.reverse().join('')  } </ul> `);
+            $('#research-tab-tab', context).removeClass('disabled');
+            $container.html(` <ul class="provider-page__research"> ${  items.reverse().join('')  } </ul> `);
 
           });
 
@@ -90,7 +90,7 @@
     }
 
     if (str !== '') {
-      return `<li class="pubs">${  str  }</li>`;
+      return `<li class="provider-page__research-item">${  str  }</li>`;
     }
 
   }

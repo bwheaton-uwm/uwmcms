@@ -3,13 +3,24 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.taxonomy_term.conditions_symptoms.field_link
     - field.field.taxonomy_term.conditions_symptoms.field_specialties
     - taxonomy.vocabulary.conditions_symptoms
+  module:
+    - link
 id: taxonomy_term.conditions_symptoms.default
 targetEntityType: taxonomy_term
 bundle: conditions_symptoms
 mode: default
 content:
+  field_link:
+    weight: 3
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
   field_specialties:
     weight: 1
     settings: {  }

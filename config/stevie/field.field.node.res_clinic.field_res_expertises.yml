@@ -10,7 +10,7 @@ id: node.res_clinic.field_res_expertises
 field_name: field_res_expertises
 entity_type: node
 bundle: res_clinic
-label: 'Clinic Expertises'
+label: 'Medical Specialties'
 description: ''
 required: false
 translatable: true

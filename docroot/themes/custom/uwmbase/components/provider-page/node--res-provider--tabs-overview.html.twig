@@ -1,0 +1,44 @@
+{#
+
+//    OVERVIEW
+
+#}
+
+{% set has_locations = content.field_res_clinics|render|striptags|trim is not empty ? true : false %}
+{% set column_attributes = create_attribute({'class': ['col-12']}) %}
+
+{% if has_locations %}
+  <h3 class="provider-page__section2-subheading">Locations</h3>
+  <div class="provider-page__locations">
+    {% for i in node.field_res_clinics %}
+      {{ drupal_entity('node', i.target_id, 'card_brief') }}
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% if has_video or has_languages %}
+  {% if has_video and has_languages %}
+    {% set column_classes = ['col-md-6'] %}
+  {% endif %}
+
+  <div class="row">
+    {% if has_video %}
+      <div{{ column_attributes.addClass(column_classes) }}>
+        <h3 class="provider-page__section2-subheading">Meet the Provider</h3>
+        {{ content.field_res_node_videos }}
+      </div>
+    {% endif %}
+
+    {% if has_languages %}
+      <div{{ column_attributes.addClass(column_classes) }}>
+        <h3 class="provider-page__section2-subheading">Languages</h3>
+        <ul class="provider-page__languages">
+          {% set Languages = content.field_res_languages|uwm_filter_non_numeric_keys|uwm_replace_links_with_text|sort %}
+          {% for i in Languages %}
+            <li class="provider-page__languages-item">{{ i }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

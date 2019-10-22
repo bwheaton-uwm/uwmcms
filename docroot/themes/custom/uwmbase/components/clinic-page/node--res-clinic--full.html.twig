@@ -42,6 +42,16 @@
   {% set hide_contact_clinic_ctas = true %}
 {% endif %}
 
+{#
+  Set a boolean for showing the Care Providers jump link and tab.
+  Clinic nodes that are hospitals have providers referenced, but they should not
+  be displayed because there are too many. Note that attempting to load and
+  render hundreds of nodes is a performance issue, so the field value is
+  overridden to be empty before the render array is built.
+  @see uwmcs_utils_entity_prepare_view()
+#}
+{% set show_providers = (content.field_res_providers.0 is not empty) and (not is_hospital) %}
+
 
 {% block content %}
 
@@ -309,7 +319,8 @@
             <i class="fa fa-angle-right" aria-hidden="true"></i>
           </div>
 
-          {% if content.field_res_providers|render|trim is not empty %}
+          {# See providers display logic above #}
+          {% if show_providers %}
             <div class="clinic-page__link clinic-page__link-providers {{ hide_providers_css_class }}">
               <a href="#providers-tab-tab---">{{ "Care Providers"|t }}</a>
               <i class="fa fa-angle-right" aria-hidden="true"></i>

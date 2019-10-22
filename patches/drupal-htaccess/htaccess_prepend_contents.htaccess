@@ -624,8 +624,8 @@
 
   ### SERVE EVERYTHING ELSE FROM stevie.cms.uwmedicine.org ###
   ### This can be removed when cms.uwmedicine.org is decomissioned ###
-  RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
-  RewriteRule ^(.*)$ https://stevie.cms.uwmedicine.org%{REQUEST_URI} [L,P]
+  # RewriteCond %{HTTP_HOST} ^www.uwmedicine.org
+  # RewriteRule ^(.*)$ https://stevie.cms.uwmedicine.org%{REQUEST_URI} [L,P]
 
 </IfModule>
 ##

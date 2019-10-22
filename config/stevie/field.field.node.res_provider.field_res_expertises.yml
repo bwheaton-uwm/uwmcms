@@ -12,7 +12,7 @@ id: node.res_provider.field_res_expertises
 field_name: field_res_expertises
 entity_type: node
 bundle: res_provider
-label: 'Areas of Expertise'
+label: 'Medical Specialties'
 description: ''
 required: false
 translatable: false

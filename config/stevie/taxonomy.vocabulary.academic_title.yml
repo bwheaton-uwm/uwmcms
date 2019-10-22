@@ -1,0 +1,9 @@
+uuid: da4c10f7-26b7-4959-a6f5-08602fce0cf5
+langcode: en
+status: true
+dependencies: {  }
+name: 'Academic Title'
+vid: academic_title
+description: ''
+hierarchy: 0
+weight: 0

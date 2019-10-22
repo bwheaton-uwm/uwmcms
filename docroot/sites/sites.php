@@ -79,6 +79,7 @@ $sites['content.cmsdev.uwmedicine.org'] = 'contentrepo';
 $sites['content.cmsstage.uwmedicine.org'] = 'contentrepo';
 $sites['content.cmsra.uwmedicine.org'] = 'contentrepo';
 
+$sites['www.uwmedicine.org'] = 'stevie';
 $sites['stevie.uwmed.local'] = 'stevie';
 $sites['stevie.cms.uwmedicine.org'] = 'stevie';
 $sites['stevie.cmsdev.uwmedicine.org'] = 'stevie';

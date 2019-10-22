@@ -1,0 +1,47 @@
+#res taxonomy: buildings
+id: uwm_res_tax__patients_treated
+label: uwm_res_tax__patients_treated
+migration_group: uwm
+migration_dependencies: {}
+
+destination:
+  plugin: entity:taxonomy_term
+  default_bundle: patients_treated
+
+
+source:
+  ids:
+    uuid:
+      type: string
+
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  item_selector: data/
+  track_changes: true
+
+  urls:
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/patients_treated?page[limit]=50&page[offset]=0&sort=-changed
+
+
+
+  fields:
+
+  - name: uuid
+    label: uuid
+    selector: /id
+  - name: name
+    label: name
+    selector: /attributes/name
+
+
+
+process:
+
+  uuid: uuid
+
+  tid:
+  - plugin: uwm_tid_from_any
+    source: uuid
+
+  name: name

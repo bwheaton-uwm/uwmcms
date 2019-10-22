@@ -29,26 +29,28 @@
  #
  #
 #}
-
 {% if node.uwm_json_packet_data.educationHistories is not empty %}
+  <h3 class="provider-page__section2-subheading">{{ 'Education and Training'|t }}</h3>
+  <ul class="provider-page__education">
+    {% for e in node.uwm_json_packet_data.educationHistories|uwm_sort_parts('gradYear')|reverse %}
+      <li class="provider-page__education-item">
+        <div class="provider-page__education-institution">{{ e.institutionName }}</div>
 
-  {% for e in node.uwm_json_packet_data.educationHistories|uwm_sort_parts('gradYear')|reverse %}
+        {% set ed = [] %}
+        {% if e.educationType %}
+          {% set ed = ed|merge([e.educationType]) %}
+        {% endif %}
+        {% if e.gradYear %}
+          {% set ed = ed|merge([e.gradYear]) %}
+        {% endif %}
+        {% if e.specialty %}
+          {% set ed = ed|merge([e.specialty]) %}
+        {% endif %}
 
-    <h5>{{ e.institutionName }}</h5>
-    {% set ed = [] %}
-    {% if e.educationType %}
-      {% set ed = ed|merge([e.educationType]) %}
-    {% endif %}
-    {% if e.gradYear %}
-      {% set ed = ed|merge([e.gradYear]) %}
-    {% endif %}
-    {% if e.specialty %}
-      {% set ed = ed|merge([e.specialty]) %}
-    {% endif %}
-
-    <p>{{ ed|join(', ') }}</p>
-
-  {% endfor %}
+        <div class="provider-page__education-details">{{ ed|join(', ') }}</div>
+      </li>
+    {% endfor %}
+  </ul>
 {% endif %}
 
 
@@ -76,14 +78,9 @@
  #
  #}
 {% if node.uwm_json_packet_data.boardCertifications is not empty %}
-
-  <p>&nbsp;</p>
-  <h5>{{ "Board Certifications"| t }}</h5>
-
-  <ul>
+  <h3 class="provider-page__section2-subheading">{{ 'Board Certifications'|t }}</h3>
+  <ul class="provider-page__certifications">
     {% for e in node.uwm_json_packet_data.boardCertifications|uwm_sort_parts('certifiedYear')|reverse %}
-
-      {#<h5>{{ e.institutionName }}</h5>#}
       {% set ed = [] %}
       {% if e.specialtyName %}
         {% set ed = ed|merge([e.specialtyName]) %}
@@ -94,10 +91,7 @@
       {% if e.boardName %}
         {% set ed = ed|merge([e.boardName]) %}
       {% endif %}
-
-      <li>{{ ed|join(', ') }}</li>
-
+      <li class="provider-page__certifications-item">{{ ed|join(', ') }}</li>
     {% endfor %}
   </ul>
-
 {% endif %}
