@@ -117,7 +117,6 @@
     "drupal/geofield": "^1.0@beta",
     "drupal/geolocation": "^1.11",
     "drupal/google_tag": "1.x-dev",
-    "drupal/group": "^1.0",
     "drupal/hierarchical_term_formatter": "^1.0@alpha",
     "drupal/honeypot": "^1.27",
     "drupal/image_style_quality": "^1.3",
