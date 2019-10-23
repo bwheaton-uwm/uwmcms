@@ -23,6 +23,17 @@
 #}
 
 {#
+  Define URLs to eCare. If we are not on a provider page, provider-specific
+  query parameter values are left out and inserted by JS.
+#}
+{%
+  set url_direct_scheduling = 'https://ecare.uwmedicine.org/prod01/Scheduling?workflow=ExistingProvider&selProvId=' ~ (direct_scheduling and epic_id ? epic_id : '')
+%}
+{%
+  set url_open_scheduling = 'https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id=' ~ (open_scheduling and epic_id ? epic_id : '') ~ '&vt=' ~ (open_scheduling and visit_type_ids is not empty and visit_type_ids|length == 1 ? visit_type_ids.0 : '') ~ '&view=plain'
+%}
+
+{#
   Ensure that provider-specific values are not used in the wrong context.
 #}
 {% if modal_appt_context is not same as('provider_page') %}
@@ -59,7 +70,7 @@
         have an eCare account, link to full eCare site for direct scheduling.
         If not on provider page, 'selProvId' value is set by JS.
       #}
-      <a href="https://ecare.uwmedicine.org/prod01/Scheduling?workflow=ExistingProvider&selProvId={{ (direct_scheduling and epic_id ? epic_id : '') }}" target="_blank" class="appointment-flow__step-button btn-cta-solid appointment-flow__direct-scheduling-link" data-btn="yes">{{ "Yes"|t }}</a>
+      <a href="{{ url_direct_scheduling }}" target="_blank" class="appointment-flow__step-button btn-cta-solid appointment-flow__direct-scheduling-link" data-btn="yes">{{ "Yes"|t }}</a>
 
     </div>
 
@@ -110,23 +121,15 @@
 
   <div class="appointment-flow__step" data-step="open-schedule">
 
-    {#
-      On provider page, if enabled for open scheduling, update the open
-      scheduling url:
-      - set the provider's Epic ID
-      - if only one visit type, set that value (because the user will not be
-        choosing it)
-    #}
-
     {# TODO: temporary link while we are working to enable widget in iframe #}
     <p>
-      <a class="appointment-flow__open-scheduling-link" href="https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id={{ open_scheduling and epic_id ? epic_id : '' }}&vt={{ (open_scheduling and visit_type_ids is not empty and visit_type_ids|length == 1) ? visit_type_ids.0 : '' }}&view=plain" target="_blank">Link to open scheduling widget</a>
+      <a class="appointment-flow__open-scheduling-link" href="{{ url_open_scheduling }}" target="_blank">Link to open scheduling widget</a>
     </p>
     
     <div class="appointment-flow__open-scheduling">
 
       {# TODO: bad to have iframe with a "broken" src at any point? #}
-      <iframe class="appointment-flow__open-scheduling-embed" src="https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id={{ (open_scheduling and epic_id ? epic_id : '') }}&vt={{ (open_scheduling and visit_type_ids is not empty and visit_type_ids|length == 1) ? visit_type_ids.0 : '' }}&view=plain" scrolling="no"></iframe>
+      <iframe class="appointment-flow__open-scheduling-embed" src="{{ url_open_scheduling }}" scrolling="no"></iframe>
 
     </div>
 
