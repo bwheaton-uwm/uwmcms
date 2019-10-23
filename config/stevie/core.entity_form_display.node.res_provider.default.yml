@@ -42,11 +42,30 @@ dependencies:
     - node.type.res_provider
   module:
     - entity_browser
+    - field_group
     - image
     - metatag
     - name
     - paragraphs
     - text
+third_party_settings:
+  field_group:
+    group_scheduling:
+      children:
+        - field_res_isacceptingnewpts
+        - field_res_ser_id
+        - field_res_is_direct_scheduling
+        - field_res_is_open_scheduling
+        - field_res_visit_type_id
+      parent_name: ''
+      weight: 17
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: Scheduling
 _core:
   default_config_hash: 77XBUKV_0wuxEBya-hjylVX81oL60ENv19S2yPQ0xUw
 id: node.res_provider.default
@@ -56,7 +75,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 35
+    weight: 31
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -67,7 +86,7 @@ content:
     type: name_default
     region: content
   field_res_academic_title:
-    weight: 26
+    weight: 27
     settings:
       match_operator: CONTAINS
       size: 60
@@ -76,7 +95,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_affiliates:
-    weight: 18
+    weight: 19
     settings:
       match_operator: CONTAINS
       size: 60
@@ -85,7 +104,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_biography:
-    weight: 6
+    weight: 8
     settings:
       rows: 9
       summary_rows: 3
@@ -94,36 +113,6 @@ content:
     type: text_textarea_with_summary
     region: content
   field_res_board_certifications:
-    type: entity_reference_paragraphs
-    weight: 9
-    settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: open
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: ''
-    third_party_settings: {  }
-    region: content
-  field_res_clinics:
-    weight: 17
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
-  field_res_conditions_symptoms:
-    type: entity_reference_autocomplete
-    weight: 20
-    region: content
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_res_degrees:
     type: entity_reference_paragraphs
     weight: 11
     settings:
@@ -135,8 +124,38 @@ content:
       default_paragraph_type: ''
     third_party_settings: {  }
     region: content
+  field_res_clinics:
+    weight: 18
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_res_conditions_symptoms:
+    type: entity_reference_autocomplete
+    weight: 21
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_res_degrees:
+    type: entity_reference_paragraphs
+    weight: 13
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
   field_res_department:
-    weight: 23
+    weight: 24
     settings:
       match_operator: CONTAINS
       size: 60
@@ -146,7 +165,7 @@ content:
     region: content
   field_res_education_history:
     type: entity_reference_paragraphs
-    weight: 10
+    weight: 12
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -157,7 +176,7 @@ content:
     third_party_settings: {  }
     region: content
   field_res_expertises:
-    weight: 5
+    weight: 7
     settings:
       match_operator: CONTAINS
       size: 60
@@ -166,13 +185,13 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_gender:
-    weight: 3
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_res_image:
-    weight: 2
+    weight: 4
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -180,7 +199,7 @@ content:
     type: image_image
     region: content
   field_res_internal_url:
-    weight: 15
+    weight: 2
     settings:
       size: 60
       placeholder: ''
@@ -189,27 +208,27 @@ content:
     region: content
   field_res_is_direct_scheduling:
     type: boolean_checkbox
-    weight: 31
+    weight: 23
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_res_is_open_scheduling:
-    weight: 29
+    weight: 24
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_res_isacceptingnewpts:
-    weight: 28
+    weight: 21
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_res_languages:
-    weight: 4
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 60
@@ -218,7 +237,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_medical_services:
-    weight: 19
+    weight: 20
     settings:
       match_operator: CONTAINS
       size: 60
@@ -227,7 +246,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_medical_title:
-    weight: 24
+    weight: 25
     settings:
       match_operator: CONTAINS
       size: 60
@@ -236,7 +255,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_meta_tags:
-    weight: 33
+    weight: 29
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
@@ -249,7 +268,7 @@ content:
     third_party_settings: {  }
   field_res_node_videos:
     type: entity_browser_entity_reference
-    weight: 8
+    weight: 10
     settings:
       entity_browser: media_browser
       field_widget_display: rendered_entity
@@ -263,20 +282,20 @@ content:
     region: content
     third_party_settings: {  }
   field_res_npi:
-    weight: 12
+    weight: 14
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_res_patients_treated:
-    weight: 22
+    weight: 23
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_res_personal_interests:
-    weight: 7
+    weight: 9
     settings:
       rows: 5
       placeholder: ''
@@ -285,7 +304,7 @@ content:
     region: content
   field_res_procedures_treatments:
     type: entity_reference_autocomplete
-    weight: 21
+    weight: 22
     region: content
     settings:
       match_operator: CONTAINS
@@ -293,7 +312,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_res_provider_type:
-    weight: 25
+    weight: 26
     settings:
       match_operator: CONTAINS
       size: 60
@@ -302,35 +321,35 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_pubmed_ids:
-    weight: 14
+    weight: 16
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_res_puma_id:
-    weight: 13
+    weight: 15
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_res_ser_id:
-    weight: 27
+    weight: 22
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_res_visit_type_id:
-    weight: 30
+    weight: 25
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_search_best_bets:
-    weight: 32
+    weight: 28
     settings:
       match_operator: CONTAINS
       size: 60
@@ -339,7 +358,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   moderation_state:
-    weight: 38
+    weight: 34
     settings:
       size: 60
       placeholder: ''
@@ -350,7 +369,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 37
+    weight: 33
     third_party_settings: {  }
     region: content
   title:
@@ -363,7 +382,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 36
+    weight: 32
     settings:
       match_operator: CONTAINS
       size: 60
@@ -371,12 +390,12 @@ content:
     region: content
     third_party_settings: {  }
   url_redirects:
-    weight: 34
+    weight: 30
     region: content
     settings: {  }
     third_party_settings: {  }
   uwm_unique_id:
-    weight: 16
+    weight: 3
     settings:
       size: 60
       placeholder: ''
