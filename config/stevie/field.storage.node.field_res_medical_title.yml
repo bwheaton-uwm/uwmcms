@@ -1,12 +1,12 @@
-uuid: e8cffc45-8108-4fe5-bf1d-0aad6eaee211
+uuid: a1c293b6-4f73-4c63-a7f1-bdd437f89a1d
 langcode: en
 status: true
 dependencies:
   module:
     - node
     - taxonomy
-id: node.field_res_special_interests
-field_name: field_res_special_interests
+id: node.field_res_medical_title
+field_name: field_res_medical_title
 entity_type: node
 type: entity_reference
 settings:

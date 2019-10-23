@@ -3,14 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_res_affiliates
     - field.storage.node.field_res_building
     - field.storage.taxonomy_term.field_coordinates_geofield
-    - field.storage.node.field_featured
-    - field.storage.node.field_res_affiliates
     - field.storage.taxonomy_term.field_res_address
     - field.storage.node.field_res_expertises
-    - field.storage.node.field_res_medical_services
     - field.storage.taxonomy_term.field_term_keywords
+    - field.storage.node.field_featured
+    - field.storage.node.field_res_medical_services
     - field.storage.node.field_res_providers
     - field.storage.node.field_res_name
     - field.storage.node.field_search_best_bets
@@ -25,7 +25,7 @@ dependencies:
 id: uwm_locations_geo_search_api_index
 name: 'UWM Locations Geo - Search API Index'
 description: ''
-read_only: false
+read_only: true
 field_settings:
   field_coordinates_geofield_latlong:
     label: 'Building » Coordinates Geofield LatLon'
@@ -126,7 +126,7 @@ field_settings:
       module:
         - taxonomy
   field_res_expertises:
-    label: 'Clinic Expertises'
+    label: 'Medical Specialties'
     datasource_id: 'entity:node'
     property_path: field_res_expertises
     type: string
@@ -134,7 +134,7 @@ field_settings:
       config:
         - field.storage.node.field_res_expertises
   field_res_expertises_keywords:
-    label: 'Clinic Expertises » Taxonomy term » Term Keywords'
+    label: 'Medical Specialties » Taxonomy term » Term Keywords'
     datasource_id: 'entity:node'
     property_path: 'field_res_expertises:entity:field_term_keywords'
     type: text
@@ -145,7 +145,7 @@ field_settings:
       module:
         - taxonomy
   field_res_expertises_name:
-    label: 'Clinic Expertises » Taxonomy term » Name'
+    label: 'Medical Specialties » Taxonomy term » Name'
     datasource_id: 'entity:node'
     property_path: 'field_res_expertises:entity:name'
     type: text
@@ -156,7 +156,7 @@ field_settings:
         - taxonomy
         - taxonomy
   field_res_expertises_name_string:
-    label: 'Clinic Expertises » Taxonomy term » Name String'
+    label: 'Medical Specialties » Taxonomy term » Name String'
     datasource_id: 'entity:node'
     property_path: 'field_res_expertises:entity:name'
     type: string

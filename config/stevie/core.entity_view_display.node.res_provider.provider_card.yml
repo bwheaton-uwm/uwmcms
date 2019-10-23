@@ -1,0 +1,289 @@
+uuid: 23b2a5c1-3303-4267-9ba5-9a812cadf8f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.provider_card
+    - field.field.node.res_provider.field_res_academic_title
+    - field.field.node.res_provider.field_res_affiliates
+    - field.field.node.res_provider.field_res_biography
+    - field.field.node.res_provider.field_res_board_certifications
+    - field.field.node.res_provider.field_res_clinics
+    - field.field.node.res_provider.field_res_conditions_symptoms
+    - field.field.node.res_provider.field_res_degrees
+    - field.field.node.res_provider.field_res_department
+    - field.field.node.res_provider.field_res_education_history
+    - field.field.node.res_provider.field_res_expertises
+    - field.field.node.res_provider.field_res_gender
+    - field.field.node.res_provider.field_res_image
+    - field.field.node.res_provider.field_res_internal_url
+    - field.field.node.res_provider.field_res_is_open_scheduling
+    - field.field.node.res_provider.field_res_isacceptingnewpts
+    - field.field.node.res_provider.field_res_languages
+    - field.field.node.res_provider.field_res_medical_services
+    - field.field.node.res_provider.field_res_medical_title
+    - field.field.node.res_provider.field_res_meta_tags
+    - field.field.node.res_provider.field_res_name
+    - field.field.node.res_provider.field_res_node_videos
+    - field.field.node.res_provider.field_res_npi
+    - field.field.node.res_provider.field_res_patients_treated
+    - field.field.node.res_provider.field_res_personal_interests
+    - field.field.node.res_provider.field_res_procedures_treatments
+    - field.field.node.res_provider.field_res_provider_type
+    - field.field.node.res_provider.field_res_pubmed_ids
+    - field.field.node.res_provider.field_res_puma_id
+    - field.field.node.res_provider.field_res_ser_id
+    - field.field.node.res_provider.field_res_visit_type_id
+    - field.field.node.res_provider.field_search_best_bets
+    - field.field.node.res_provider.field_uwm_json_packet
+    - field.field.node.res_provider.uwm_unique_id
+    - node.type.res_provider
+    - responsive_image.styles.provider_card_headshot
+  module:
+    - entity_reference_revisions
+    - name
+    - options
+    - responsive_image
+    - text
+    - user
+_core:
+  default_config_hash: VprWwN3mbiPcSLh-Gc3vJcE50N6ggx16rsVBCVFsZNE
+id: node.res_provider.provider_card
+targetEntityType: node
+bundle: res_provider
+mode: provider_card
+content:
+  field_name:
+    weight: 0
+    label: above
+    settings:
+      format: full
+      output: default
+      multiple: default
+      multiple_delimiter: ', '
+      multiple_and: text
+      multiple_delimiter_precedes_last: never
+      multiple_el_al_min: '3'
+      multiple_el_al_first: '1'
+      markup: false
+    third_party_settings: {  }
+    type: name_default
+    region: content
+  field_res_affiliates:
+    weight: 8
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_res_biography:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_res_board_certifications:
+    type: entity_reference_revisions_entity_view
+    weight: 10
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_res_clinics:
+    weight: 7
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_res_conditions_symptoms:
+    type: entity_reference_label
+    weight: 21
+    region: content
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_res_degrees:
+    type: entity_reference_revisions_entity_view
+    weight: 16
+    region: content
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+  field_res_education_history:
+    type: entity_reference_revisions_entity_view
+    weight: 12
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_res_expertises:
+    weight: 11
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_res_gender:
+    weight: 4
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_res_image:
+    weight: 0
+    label: hidden
+    settings:
+      responsive_image_style: provider_card_headshot
+      image_link: ''
+    third_party_settings: {  }
+    type: responsive_image
+    region: content
+  field_res_is_open_scheduling:
+    weight: 19
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_res_isacceptingnewpts:
+    type: boolean
+    weight: 14
+    region: content
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+  field_res_languages:
+    weight: 3
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_res_medical_services:
+    weight: 9
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_res_name:
+    type: name_default
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      format: default
+      markup: false
+      output: default
+      multiple: default
+      multiple_delimiter: ', '
+      multiple_and: text
+      multiple_delimiter_precedes_last: never
+      multiple_el_al_min: '3'
+      multiple_el_al_first: '1'
+    third_party_settings: {  }
+  field_res_node_videos:
+    type: entity_reference_entity_view
+    weight: 20
+    label: hidden
+    settings:
+      view_mode: embedded
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_res_npi:
+    type: number_integer
+    weight: 2
+    region: content
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+  field_res_personal_interests:
+    weight: 6
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_res_procedures_treatments:
+    type: entity_reference_label
+    weight: 22
+    region: content
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_res_ser_id:
+    weight: 18
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_res_visit_type_id:
+    weight: 24
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_search_best_bets:
+    type: entity_reference_label
+    weight: 15
+    region: content
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+  links:
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uwm_unique_id:
+    type: string
+    weight: 17
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  field_res_academic_title: true
+  field_res_department: true
+  field_res_internal_url: true
+  field_res_medical_title: true
+  field_res_meta_tags: true
+  field_res_patients_treated: true
+  field_res_provider_type: true
+  field_res_pubmed_ids: true
+  field_res_puma_id: true
+  field_uwm_json_packet: true
+  search_api_excerpt: true

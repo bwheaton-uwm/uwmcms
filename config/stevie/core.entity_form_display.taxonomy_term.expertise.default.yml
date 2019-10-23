@@ -3,12 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.taxonomy_term.expertise.field_link
     - field.field.taxonomy_term.expertise.field_res_include_in_search
     - field.field.taxonomy_term.expertise.field_res_providers
     - field.field.taxonomy_term.expertise.field_term_keywords
     - field.field.taxonomy_term.expertise.uwm_unique_id
     - taxonomy.vocabulary.expertise
   module:
+    - link
     - path
     - text
 _core:
@@ -26,8 +28,16 @@ content:
       placeholder: ''
       rows: 5
     third_party_settings: {  }
-  field_res_include_in_search:
+  field_link:
     weight: 6
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_res_include_in_search:
+    weight: 7
     settings:
       display_label: true
     third_party_settings: {  }
