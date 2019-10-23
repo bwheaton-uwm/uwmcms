@@ -213,3 +213,4 @@ uwmed_schema_physician: 0.0.0
 smtp: 1.0.0-beta4
 uwmed_schema_clinic: 0.0.0
 uwmed_uwmcms_webforms: 0.0.0
+uwmcs_ecare_scheduling: 0.0.0
