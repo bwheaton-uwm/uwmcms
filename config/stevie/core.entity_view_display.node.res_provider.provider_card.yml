@@ -4,12 +4,14 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.provider_card
+    - field.field.node.res_provider.field_res_academic_title
     - field.field.node.res_provider.field_res_affiliates
     - field.field.node.res_provider.field_res_biography
     - field.field.node.res_provider.field_res_board_certifications
     - field.field.node.res_provider.field_res_clinics
     - field.field.node.res_provider.field_res_conditions_symptoms
     - field.field.node.res_provider.field_res_degrees
+    - field.field.node.res_provider.field_res_department
     - field.field.node.res_provider.field_res_education_history
     - field.field.node.res_provider.field_res_expertises
     - field.field.node.res_provider.field_res_gender
@@ -19,12 +21,15 @@ dependencies:
     - field.field.node.res_provider.field_res_isacceptingnewpts
     - field.field.node.res_provider.field_res_languages
     - field.field.node.res_provider.field_res_medical_services
+    - field.field.node.res_provider.field_res_medical_title
     - field.field.node.res_provider.field_res_meta_tags
     - field.field.node.res_provider.field_res_name
     - field.field.node.res_provider.field_res_node_videos
     - field.field.node.res_provider.field_res_npi
+    - field.field.node.res_provider.field_res_patients_treated
     - field.field.node.res_provider.field_res_personal_interests
     - field.field.node.res_provider.field_res_procedures_treatments
+    - field.field.node.res_provider.field_res_provider_type
     - field.field.node.res_provider.field_res_pubmed_ids
     - field.field.node.res_provider.field_res_puma_id
     - field.field.node.res_provider.field_res_ser_id
