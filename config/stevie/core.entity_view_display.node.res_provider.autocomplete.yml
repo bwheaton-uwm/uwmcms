@@ -75,6 +75,7 @@ hidden:
   field_res_biography: true
   field_res_board_certifications: true
   field_res_clinics: true
+  field_res_conditions_symptoms: true
   field_res_degrees: true
   field_res_education_history: true
   field_res_expertises: true
@@ -89,9 +90,12 @@ hidden:
   field_res_node_videos: true
   field_res_npi: true
   field_res_personal_interests: true
+  field_res_procedures_treatments: true
   field_res_pubmed_ids: true
   field_res_puma_id: true
   field_res_ser_id: true
+  field_res_special_interests: true
+  field_res_visit_type_id: true
   field_search_best_bets: true
   field_uwm_json_packet: true
   links: true
