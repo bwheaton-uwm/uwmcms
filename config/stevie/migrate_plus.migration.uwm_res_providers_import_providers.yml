@@ -18,8 +18,9 @@ source:
   data_parser_plugin: json
   include_raw_data: true
   track_changes: true
+  # TEST RESERVOIR URL - DO NOT COMMIT THIS TO MASTER! :D #
   urls:
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed'
+    - 'https://bios-reservoir-test.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed'
   ids:
     uuid:
       type: string
