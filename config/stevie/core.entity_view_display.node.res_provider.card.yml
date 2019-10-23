@@ -4,11 +4,14 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.card
+    - field.field.node.res_provider.field_res_academic_title
     - field.field.node.res_provider.field_res_affiliates
     - field.field.node.res_provider.field_res_biography
     - field.field.node.res_provider.field_res_board_certifications
     - field.field.node.res_provider.field_res_clinics
+    - field.field.node.res_provider.field_res_conditions_symptoms
     - field.field.node.res_provider.field_res_degrees
+    - field.field.node.res_provider.field_res_department
     - field.field.node.res_provider.field_res_education_history
     - field.field.node.res_provider.field_res_expertises
     - field.field.node.res_provider.field_res_gender
@@ -18,14 +21,19 @@ dependencies:
     - field.field.node.res_provider.field_res_isacceptingnewpts
     - field.field.node.res_provider.field_res_languages
     - field.field.node.res_provider.field_res_medical_services
+    - field.field.node.res_provider.field_res_medical_title
     - field.field.node.res_provider.field_res_meta_tags
     - field.field.node.res_provider.field_res_name
     - field.field.node.res_provider.field_res_node_videos
     - field.field.node.res_provider.field_res_npi
+    - field.field.node.res_provider.field_res_patients_treated
     - field.field.node.res_provider.field_res_personal_interests
+    - field.field.node.res_provider.field_res_procedures_treatments
+    - field.field.node.res_provider.field_res_provider_type
     - field.field.node.res_provider.field_res_pubmed_ids
     - field.field.node.res_provider.field_res_puma_id
     - field.field.node.res_provider.field_res_ser_id
+    - field.field.node.res_provider.field_res_visit_type_id
     - field.field.node.res_provider.field_search_best_bets
     - field.field.node.res_provider.field_uwm_json_packet
     - field.field.node.res_provider.uwm_unique_id
@@ -108,23 +116,31 @@ content:
       multiple_el_al_first: '1'
     third_party_settings: {  }
 hidden:
+  field_res_academic_title: true
   field_res_affiliates: true
   field_res_biography: true
   field_res_board_certifications: true
   field_res_clinics: true
+  field_res_conditions_symptoms: true
   field_res_degrees: true
+  field_res_department: true
   field_res_education_history: true
   field_res_gender: true
   field_res_internal_url: true
   field_res_is_open_scheduling: true
   field_res_isacceptingnewpts: true
+  field_res_medical_title: true
   field_res_meta_tags: true
   field_res_node_videos: true
   field_res_npi: true
+  field_res_patients_treated: true
   field_res_personal_interests: true
+  field_res_procedures_treatments: true
+  field_res_provider_type: true
   field_res_pubmed_ids: true
   field_res_puma_id: true
   field_res_ser_id: true
+  field_res_visit_type_id: true
   field_search_best_bets: true
   field_uwm_json_packet: true
   links: true

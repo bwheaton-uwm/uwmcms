@@ -1,16 +1,16 @@
-uuid: 3ac372ab-f724-4410-a226-1749c6deb0ec
+uuid: 28b79d83-0ca3-402f-9be9-7ca06c655c99
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_res_special_interests
-    - node.type.res_clinic
-    - taxonomy.vocabulary.special_interests
-id: node.res_clinic.field_res_special_interests
-field_name: field_res_special_interests
+    - field.storage.node.field_res_medical_title
+    - node.type.res_provider
+    - taxonomy.vocabulary.medical_title
+id: node.res_provider.field_res_medical_title
+field_name: field_res_medical_title
 entity_type: node
-bundle: res_clinic
-label: 'Special  Interests'
+bundle: res_provider
+label: 'Medical Title'
 description: ''
 required: false
 translatable: false
@@ -20,7 +20,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      special_interests: special_interests
+      medical_title: medical_title
     sort:
       field: name
       direction: asc

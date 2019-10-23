@@ -144,10 +144,10 @@ provider-card:
     component:
       dist/css/provider-card.css: {}
 
-node-display-card-brief:
+clinic-card-brief:
   css:
     component:
-      dist/css/card-brief.css: {}
+      dist/css/clinic-card-brief.css: {}
   dependencies:
   - uwmbase/clinic-hours
 

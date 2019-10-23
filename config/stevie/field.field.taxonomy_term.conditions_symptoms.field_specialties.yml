@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.storage.taxonomy_term.field_specialties
     - taxonomy.vocabulary.conditions_symptoms
-    - taxonomy.vocabulary.specialities
 id: taxonomy_term.conditions_symptoms.field_specialties
 field_name: field_specialties
 entity_type: taxonomy_term
@@ -19,8 +18,7 @@ default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'
   handler_settings:
-    target_bundles:
-      specialities: specialities
+    target_bundles: {  }
     sort:
       field: name
       direction: asc

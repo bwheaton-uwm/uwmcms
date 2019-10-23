@@ -3,177 +3,259 @@
 @import 'base/typography';
 
 body.is-page-node-type-res-provider {
-
-  h1.page-title {
-    margin-bottom: 40px;
-  }
-
-  h4 {
-    font-family: $font-family-sans-serif;
-    font-weight: $font-weight-normal;
-  }
-  h5 {
-    font-family: $font-family-sans-serif;
-    font-weight: $font-weight-semi-bold;
-  }
-  h6 {
-    font-weight: $font-weight-semi-bold;
-  }
-
   #main-container {
     @extend %uwmed-gradient-angled-dark-background;
   }
-
-  article.node-res_provider {
-
-    .field__label {
-      display: none;
+}
+.provider-page {
+  padding: 124px 0 46px 0;
+  @include media-breakpoint-up('sm') {
+    padding-top: 84px;
+  }
+  @include media-breakpoint-up('lg') {
+    padding-top: 54px;
+  }
+}
+.provider-page__section1 {
+  display: flex;
+  flex-wrap: wrap;
+  background: $white;
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.15);
+  margin-left: 9px;
+  margin-right: 9px;
+  padding: 0;
+  @include media-breakpoint-up('sm') {
+    padding-bottom: 24px;
+  }
+  @include media-breakpoint-up('lg') {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+.provider-page__section1-area1 {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  display: flex;
+  flex-direction: column;
+  margin-top: -100px;
+  > * {
+    order: 2;
+  }
+  @include media-breakpoint-up('sm') {
+    margin-top: -60px;
+  }
+  @include media-breakpoint-up('lg') {
+    margin-top: -30px;
+    padding: 0 15px 0 30px;
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+  }
+}
+.provider-page__section1-area1-subsection {
+  padding: 14px 24px 24px 24px;
+  @include media-breakpoint-up('sm') {
+    padding: 14px 30px 0 30px;
+  }
+  @include media-breakpoint-up('lg') {
+    padding: 16px 0 0 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.provider-page__section1-area2 {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  display: flex;
+  flex-direction: column;
+  @include media-breakpoint-up('sm') {
+    padding: 12px 30px 0 30px;
+  }
+  @include media-breakpoint-up('lg') {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%;
+    padding-top: 30px;
+    padding-left: 15px;
+  }
+}
+.provider-page__section1-area2-subsection {
+  padding: 24px;
+  border-top: 1px solid $border-gray;
+  @include media-breakpoint-up('sm') {
+    margin: 6px 0 0 0;
+    background: $light;
+    padding: 20px;
+    border-top: 0;
+  }
+}
+.provider-page__section1-area2-subsection--specialties {
+  flex-grow: 1;
+}
+.provider-page__section1-name {
+  margin: 6px 24px 0 24px;
+  font-size: 32px;
+  text-align: center;
+  @include media-breakpoint-up('sm') {
+    margin-left: 30px;
+    margin-right: 30px;
+    font-size: 40px;
+  }
+  @include media-breakpoint-up('lg') {
+    margin: 0 0 15px 0;
+    font-size: 57px;
+    text-align: left;
+  }
+}
+.provider-page__section1-photo {
+  width: 158px;
+  max-width: 158px;
+  margin: 0 auto;
+  order: 1;
+  flex: 0 0 auto;
+  img {
+    width: 100%;
+    margin: 0;
+    border-radius: 100%;
+    border: 5px solid $white;
+  }
+}
+.provider-page__section1-accepting-patients {
+  font-size: 16px;
+  text-align: center;
+  .uwm-icon {
+    width: 19px;
+    height: 19px;
+    margin-bottom: -3px;
+    margin-right: 8px;
+  }
+}
+.provider-page__section1-make-appt-btn {
+  margin-top: 16px;
+  text-align: center;
+  @include media-breakpoint-up('lg') {
+    margin-top: 18px;
+  }
+  .btn {
+    width: auto;
+  }
+}
+.provider-page__section1-taxonomy {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 0 auto;
+}
+.provider-page__section1-subheading {
+  font-family: $font-family-base;
+  font-size: 18px;
+  font-weight: $font-weight-semi-bold;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  @include media-breakpoint-up('sm') {
+    font-size: 16px;
+  }
+}
+.provider-page__section1-list {
+  margin: 0;
+  padding: 0 0 0 1.2em;
+}
+.provider-page__section1-list-item {
+  margin: 8px 0 0 0;
+  padding: 0 0 0 5px;
+}
+.provider-page__section1-area2-subsection--inline {
+  .provider-page__section1-subheading {
+    @include media-breakpoint-up('sm') {
+      display: inline;
+      &::after {
+        content: ": ";
+      }
     }
-
-    section.left {
-
-      h5 {
-        color: theme-color('heading-purple');
-      }
-
-      a {
-        @extend %uwdm-no-underline-link;
-      }
-
-      ul {
-        margin-top: 0;
-        margin-bottom: 9.5px;
-        padding-left: 1.5em;
-        li {
-          padding-bottom: 9.5px;
-          &:last-child {
-            padding-bottom: 0;
-          }
-        }
-      }
-
-      .uwm-icon {
-        width: 19px;
-        height: 19px;
-        margin-bottom: -3px;
-      }
-
-      div.spl {
-        margin-bottom: 1em;
-        padding-bottom: 1em;
-        border-bottom: 1px solid #dcdcdc;
-        &:last-child {
-          border-bottom-color: transparent;
-        }
-      }
-
-      .headshot {
-        @extend %uwdm-fluid-image;
-        img {
-          margin-bottom: 18px;
-        }
-
-      }
-
-    }
-
-    section.right {
-
-      .field {
-        margin-bottom: 2em;
-      }
-
-      .uwm-tab-content {
-
-        @extend %uwmed-box-shadow;
-        background: #fff;
-        margin-bottom: 40px;
-        padding: 30px;
-        min-height: 80%;
-
-        line-height: 1.4rem;
-
-        h3 {
-          padding: 0;
-          font-weight: 400;
-        }
-        li {
-          margin-bottom: 1rem;
-        }
-
-        article.node.node-res_clinic {
-          margin-bottom: 20px;
-          border-bottom: 1px solid #dcdcdc;
-
-          &:last-child {
-            border-bottom-color: transparent;
-          }
-
-          .k {
-            margin-left: 25px;
-            .uwm-icon {
-              margin-left: -25px;
-            }
-          }
-
-          .location-phone a {
-            @extend %uwdm-no-underline-link;
-          }
-
-        }
-
-      }
-
-      article.media.media--type-video {
-        h3.uwm-accent-heading {
-          font-weight: 500;
-        }
-      }
-
-
-
-    }
-
-    //aside.inner-sidebar {
-    //}
-
   }
-
-  .fa-check-circle {
-    color: green;
-  }
-  .fa-ban {
-    color: red;
-  }
-
-  h1.page-header span.accepting-apts {
-    font-size: 14px;
-    color: #000;
-  }
-
-  // Mobile/tablet
-
-  /// @TODO: global mobile header sizes
-  @include media-breakpoint-down('md') {
-    /// @TODO: global mobile header sizes
-    h1 {
-      font-size: 2.5rem; // 40px
-      line-height: 1.15; // 46px
+  .provider-page__section1-list {
+    @include media-breakpoint-up('sm') {
+      display: inline;
+      padding: 0;
+      list-style-type: none;
     }
   }
-
-  @include media-breakpoint-up('md') {
-    h1.page-header span.accepting-apts {
-      display: none;
+  .provider-page__section1-list-item {
+    @include media-breakpoint-up('sm') {
+      display: inline;
+      margin: 0;
+      padding: 0;
+      &::after {
+        content: ", ";
+      }
+      &:last-of-type::after {
+        content: none;
+      }
     }
   }
-
-  @include media-breakpoint-down('sm') {
-    /// @TODO: global mobile header sizes
-    h1 {
-      font-size: 2rem; // 32px
-      line-height: 1.1875; // 38px
-    }
+}
+.provider-page__section2 {
+  background: $white;
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.15);
+  margin: 20px 9px 0 9px;
+  padding: 0 30px 24px 30px;
+  @include media-breakpoint-up('lg') {
+    margin-left: 0;
+    margin-right: 0;
   }
-
+  nav.uw-navtabs--blue-accent ul.nav-tabs {
+    padding-bottom: 10px;
+  }
+}
+.provider-page__section2-subheading {
+  font-family: $font-family-base;
+  font-size: 24px;
+  font-weight: normal;
+  color: #474747;
+  margin: 24px 0 20px 0;
+  padding: 0 0 6px 0;
+  border-bottom: 1px solid $border-gray;
+}
+.provider-page__education {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.provider-page__education-item {
+  margin: 8px 0 0 0;
+  padding: 0;
+}
+.provider-page__education-institution {
+  font-size: 16px;
+  font-weight: $font-weight-semi-bold;
+  color: #474747;
+}
+.provider-page__education-details {
+  font-size: 16px;
+}
+.provider-page__certifications {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.provider-page__certifications-item {
+  margin: 8px 0 0 0;
+  padding: 0;
+}
+.provider-page__research {
+  margin: 24px 0 0 0;
+  padding: 0;
+  list-style-type: none;
+}
+.provider-page__research-item {
+  margin: 8px 0 0 0;
+  padding: 0;
+}
+.provider-page__languages {
+  margin: 0 0 0 1.2em;
+  padding: 0;
+  list-style-type: disc;
+}
+.provider-page__languages-item {
+  margin-top: 8px;
 }

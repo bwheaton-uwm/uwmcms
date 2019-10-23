@@ -1,0 +1,23 @@
+uuid: f2c3b307-65a6-4d5d-9b2a-d2d4a4fb3037
+langcode: en
+status: true
+dependencies:
+  module:
+    - image_style_quality
+name: square_l
+label: 'Square L'
+effects:
+  c00e4c43-81bc-4ae3-95d3-632d7baee23e:
+    uuid: c00e4c43-81bc-4ae3-95d3-632d7baee23e
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 480
+      anchor: center-top
+  0d8f186b-4b51-4050-8da0-abb24be2b047:
+    uuid: 0d8f186b-4b51-4050-8da0-abb24be2b047
+    id: image_style_quality
+    weight: 2
+    data:
+      quality: 70

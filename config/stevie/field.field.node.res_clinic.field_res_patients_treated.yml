@@ -1,0 +1,29 @@
+uuid: 3c4c93c3-de19-408d-9617-7296d6859335
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_patients_treated
+    - node.type.res_clinic
+    - taxonomy.vocabulary.patients_treated
+id: node.res_clinic.field_res_patients_treated
+field_name: field_res_patients_treated
+entity_type: node
+bundle: res_clinic
+label: 'Patients Treated'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      patients_treated: patients_treated
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

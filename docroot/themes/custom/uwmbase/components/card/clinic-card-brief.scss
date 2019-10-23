@@ -1,0 +1,67 @@
+@import 'card-base';
+
+.clinic-card-brief {
+  margin: 20px 0 0 0;
+  @include media-breakpoint-up('sm') {
+    display: flex;
+  }
+}
+.clinic-card-brief__section1 {
+  @include media-breakpoint-up('sm') {
+    width: 262px;
+    max-width: 262px;
+    margin-right: 20px;
+    flex: 0 0 auto;
+  }
+  @include media-breakpoint-up('md') {
+    margin-right: 30px;
+  }
+  .img-fluid {
+    margin: 0;
+    padding: 4px;
+    border: 1px solid $border-gray;
+    box-shadow: 3px 3px 6px rgba(0,0,0,0.16);
+  }
+}
+.clinic-card-brief__title {
+  font-family: $font-family-base;
+  font-size: 20px;
+  color: #474747;
+  margin: 12px 0 14px 0;
+  @include media-breakpoint-up('sm') {
+    margin-top: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+.clinic-card-brief__address {
+  display: flex;
+  align-items: flex-start;
+  color: #474747;
+  margin: 14px 0 7px 0;
+}
+.clinic-card-brief__address-icon {
+  flex: 0 0 auto;
+  width: 25px;
+  height: 25px;
+  margin: -1px 5px 0 -3px;
+}
+.clinic-card-brief__opens {
+  display: flex;
+  align-items: flex-start;
+  color: #474747;
+  margin: 7px 0 14px 0;
+}
+.clinic-card-brief__opens-icon {
+  flex: 0 0 auto;
+  width: 25px;
+  height: 25px;
+  margin: 2px 6px 0 0;
+}
+.clinic-card-brief__opens-content strong {
+  font-weight: $font-weight-semi-bold;
+}
+.clinic-card-brief__phone {
+  margin: 14px 0 0 0;
+}

@@ -1,5 +1,4 @@
 {% extends "@uwmbase/containers/article/article.twig" %}
-{#{% extends directory ~ "/templates/content/node.html.twig" %}#}
 
 {#
 /**
@@ -12,97 +11,117 @@
  */
 #}
 
-{% set modifier_class = attributes.class ~ ' container-xl zzzzzzzz' %}
-
-{% set acceptingAppointments = 'Yes'
-    in content.field_res_isacceptingnewpts.0 ? TRUE : FALSE %}
-
-
+{% set modifier_class = attributes.class ~ ' container-xl' %}
+{% set acceptingAppointments = 'Yes' in content.field_res_isacceptingnewpts.0 ? TRUE : FALSE %}
+{%
+  set taxonomy_subsection_attributes = create_attribute({
+    'class': [
+      'provider-page__section1-area2-subsection',
+      'col-12'
+    ]
+  })
+%}
+{%
+  set specialties_subsection_attributes = create_attribute({
+    'class': [
+      'provider-page__section1-area2-subsection',
+      taxonomy_terms.conditions_symptoms is not empty or taxonomy_terms.procedures_treatments is not empty ? 'provider-page__section1-area2-subsection--inline',
+      'col-12'
+    ]
+  })
+%}
 
 {% block content %}
-
     {{ attach_library('uwmbase/provider-page') }}
-
     {{ title_suffix }}
 
-    {# Include online booking actions, if relevant. (This is a temporary
-       spot in the markup, for testing.) #}
-    {% include directory ~ '/components/provider-page/node--res-provider--appointment-actions.html.twig'
-      with { 'modal_appt_context': 'provider_page' } %}
-
-    <div class="bg">
-
-        <div class="row">
-
-            <section class="left col-xs-12 col-sm-3">
-
-                <div class="col-xs-6 col-sm-12 headshot">
-                    {{ content.field_res_image }}
-                </div>
-
-                <div class="col-sm-12 spl">
-                    {% if acceptingAppointments %}
-                        <i class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></i>
-                        {{ "Accepting new patients"| t }}
+    <div class="bg provider-page">
+        <section class="provider-page__section1">
+            <div class="provider-page__section1-area1">
+                <h1 class="provider-page__section1-name page-title d-block d-lg-none">{{ label }}</h1>
+                <div class="provider-page__section1-photo">
+                    {% if has_photo %}
+                        {{ content.field_res_image }}
                     {% else %}
-                        <i class="uwm-icon uwm-icon--not-accepting-patients" aria-hidden="true"></i>
-                        {{ "Not accepting new patients"| t }}
+                        <img src="/{{ directory }}/dist/assets/provider-silhouette.svg" alt="" />
                     {% endif %}
                 </div>
-
-                <div class="col-sm-12 spl">
+                <div class="provider-page__section1-area1-subsection">
                     {% if acceptingAppointments %}
-                        <a href="{{ provider_appointments_uri }}">{{ "Make an Appointment"|t }}
-                            <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                        <div class="provider-page__section1-accepting-patients">
+                            <i class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></i>
+                            {{ "Accepting new patients"|t }}
+                        </div>
+                        <div class="provider-page__section1-make-appt-btn">
+                            {{ uwm_cta_link('Make an appointment'|t, provider_appointments_uri, ['btn', 'btn-cta-solid']) }}
+                        </div>
                     {% else %}
-                        <a href="/search/providers">{{ "Find a Provider"|t }}
-                            <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                        <div class="provider-page__section1-accepting-patients">
+                            <i class="uwm-icon uwm-icon--not-accepting-patients" aria-hidden="true"></i>
+                            {{ "Not accepting new patients"|t }}
+                        </div>
                     {% endif %}
                 </div>
-
-                <div class="col-sm-12 spl">
-                    {% if content.field_res_expertises %}
-                        {% set Specialties = content.field_res_expertises|uwm_filter_non_numeric_keys|uwm_replace_links_with_text|sort %}
-
-                        <h5>{{ (Specialties|length > 1) ? "Medical Specialties" : "Medical Specialty"| t }}</h5>
-                        <ul>
-                            {% for i in Specialties %}
-                                <li>{{ i }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
+            </div>
+            <div class="provider-page__section1-area2">
+                <h1 class="provider-page__section1-name page-title d-none d-lg-block">{{ label }}</h1>
+                <div class="provider-page__section1-taxonomy">
+                  {% if taxonomy_terms.expertises is not empty %}
+                      <div{{ specialties_subsection_attributes }}>
+                          <h2 class="provider-page__section1-subheading">{{ (taxonomy_terms.expertises|length > 1) ? "Medical Specialties"|t : "Medical Specialty"|t }}</h2>
+                          <ul class="provider-page__section1-list">
+                              {% for term in taxonomy_terms.expertises %}
+                                  <li class="provider-page__section1-list-item">
+                                      {% if term.url is not empty %}
+                                          {{ uwm_cta_link(term.name, term.url, ['text-link-blue', 'no-underline']) }}
+                                      {% else %}
+                                          {{ term.name }}
+                                      {% endif %}
+                                  </li>
+                              {% endfor %}
+                          </ul>
+                      </div>
+                  {% endif %}
+                  {% set taxonomy_subsection_classes = [
+                      taxonomy_terms.conditions_symptoms is not empty and taxonomy_terms.procedures_treatments is not empty ? 'col-md-6' : '',
+                  ] %}
+                  {% if taxonomy_terms.conditions_symptoms is not empty %}
+                      <div{{ taxonomy_subsection_attributes.addClass(taxonomy_subsection_classes) }}>
+                          <h2 class="provider-page__section1-subheading">{{ "Top Conditions &amp; Symptoms"|t }}</h2>
+                          <ul class="provider-page__section1-list">
+                              {% for term in taxonomy_terms.conditions_symptoms %}
+                                  <li class="provider-page__section1-list-item">
+                                      {% if term.url is not empty %}
+                                          {{ uwm_cta_link(term.name, term.url, ['text-link-blue', 'no-underline']) }}
+                                      {% else %}
+                                          {{ term.name }}
+                                      {% endif %}
+                                  </li>
+                              {% endfor %}
+                          </ul>
+                      </div>
+                  {% endif %}
+                  {% if taxonomy_terms.procedures_treatments is not empty %}
+                      <div{{ taxonomy_subsection_attributes.addClass(taxonomy_subsection_classes) }}>
+                          <h2 class="provider-page__section1-subheading">{{ "Top Procedures &amp; Treatments"|t }}</h2>
+                          <ul class="provider-page__section1-list">
+                              {% for term in taxonomy_terms.procedures_treatments %}
+                                  <li class="provider-page__section1-list-item">
+                                      {% if term.url is not empty %}
+                                          {{ uwm_cta_link(term.name, term.url, ['text-link-blue', 'no-underline']) }}
+                                      {% else %}
+                                          {{ term.name }}
+                                      {% endif %}
+                                  </li>
+                              {% endfor %}
+                          </ul>
+                      </div>
+                  {% endif %}
                 </div>
-
-                <div class="col-sm-12 spl">
-                    {% if content.field_res_languages %}
-                        {% set Languages = content.field_res_languages|uwm_filter_non_numeric_keys|uwm_replace_links_with_text|sort %}
-                        <h5>{{ "Languages"| t }}</h5>
-                        <ul>
-                            {% for i in Languages %}
-                                <li>{{ i }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                </div>
-
-            </section>
-
-
-            <section class="right col-xs-12 col-sm-9">
-
-                {% include directory ~ '/components/provider-page/node--res-provider--tabs.html.twig' %}
-
-                {#{{ content }}#}
-
-            </section>
-
-        </div>
-
+            </div>
+        </section>
+        <section class="provider-page__section2">
+            {% include directory ~ '/components/provider-page/node--res-provider--tabs.html.twig' %}
+        </section>
     </div>
-
-
-
-    {#{{ content }}#}
-
-
 {% endblock %}

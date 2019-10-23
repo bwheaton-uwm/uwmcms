@@ -186,7 +186,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Areas of Expertise'
+          label: 'Medical Specialties'
           exclude: false
           alter:
             alter_text: false
@@ -249,6 +249,8 @@ display:
             multi_type: separator
             multi_separator: ', '
             display_methods:
+              academic_title:
+                display_method: label
               affiliates:
                 display_method: label
                 view_mode: default
@@ -261,13 +263,21 @@ display:
               campuses:
                 display_method: label
                 view_mode: default
+              conditions_symptoms:
+                display_method: label
+                view_mode: default
               degrees:
                 display_method: label
                 view_mode: default
+              department:
+                display_method: label
               ed:
                 display_method: label
                 view_mode: default
               education_institutions:
+                display_method: label
+                view_mode: default
+              education_specialties:
                 display_method: label
                 view_mode: default
               education_types:
@@ -276,6 +286,8 @@ display:
               expertise:
                 display_method: label
                 view_mode: default
+              features_amenities:
+                display_method: label
               floors:
                 display_method: label
                 view_mode: default
@@ -285,10 +297,16 @@ display:
               medical_services:
                 display_method: label
                 view_mode: default
-              search_best_bets:
+              medical_title:
+                display_method: label
+              patients_treated:
+                display_method: label
+              procedures_treatments:
                 display_method: label
                 view_mode: default
-              specialities:
+              provider_type:
+                display_method: label
+              search_best_bets:
                 display_method: label
                 view_mode: default
               uwm_accent_colors:

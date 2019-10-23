@@ -1,0 +1,23 @@
+uuid: 3fe7e824-1a0d-439d-8aa6-e6c63416777c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_link
+    - taxonomy.vocabulary.procedures_treatments
+  module:
+    - link
+id: taxonomy_term.procedures_treatments.field_link
+field_name: field_link
+entity_type: taxonomy_term
+bundle: procedures_treatments
+label: Link
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link
