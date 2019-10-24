@@ -325,6 +325,11 @@ form-table:
     component:
       components/asset-builds/css/form-table.css: {}
 
+gdpr_banner:
+  css:
+    component:
+      dist/css/gdpr_banner.css: {}
+
 grid-paragraph:
   css:
     component:
