@@ -18,6 +18,8 @@
     'provider_page' - provider bio (node) page
     'search_providers' - provider card on search results
     'clinic_page_tab' - provider card on clinic page tab
+  class_prefix: string - prefix for CSS classes in this template, that groups
+    them within enclosing elements in the parent template
 
   ................
     epic_id: the provider's Epic/SER ID number
@@ -57,15 +59,17 @@
 {% if not direct_scheduling and not open_scheduling %}
   {# --- No online scheduling at all --- #}
 
-  <p>{{ "Call to schedule an appointment with this provider."|t }}</p>
+  <p class="{{ class_prefix }}-appt-call">{{ "Call to schedule an appointment with this provider."|t }}</p>
 
 {% elseif direct_scheduling and not open_scheduling %}
   {# --- Direct scheduling / No open scheduling --- #}
 
-  <p>{{ "Call to schedule an appointment with this provider."|t }}</p>
+  <p class="{{ class_prefix }}-appt-call">{{ "Call to schedule an appointment with this provider."|t }}</p>
 
   {% if url_direct_scheduling is not empty %}
-    <p><a href="{{ url_direct_scheduling }}" target="_blank">{{ "Returning patients with an eCare account can book online."|t }}</a></p>
+    <p class="{{ class_prefix }}-appt-link-direct">
+      <a href="{{ url_direct_scheduling }}" target="_blank">{{ "Returning patients with an eCare account can book online."|t }}</a><span class="uwm-icon uwm-icon--arrow-right-blue" aria-hidden="true"></span>
+    </p>
   {% endif %}
 
 {% elseif false and open_scheduling and visit_type_ids is not empty and visit_type_ids|length == 1 and not direct_scheduling %}
@@ -76,7 +80,7 @@
      the initial button, rather than opening within the modal. #}
 
     {% if url_open_scheduling_one_type is not empty %}
-    <a class="btn-cta-solid" href="{{ url_open_scheduling_one_type }}" target="_blank">{{ "Book appointment online"|t }}</a>
+      <a class="{{ class_prefix }}-appt-flow-btn btn-cta-solid" href="{{ url_open_scheduling_one_type }}" target="_blank">{{ "Book appointment online"|t }}</a>
     {% endif %}
 
 {% elseif open_scheduling %}
@@ -99,7 +103,7 @@
     triggered it is set as the `event.relatedTarget`.
     @see https://getbootstrap.com/docs/4.1/components/modal/#varying-modal-content
   #}
-  <button class="btn-cta-solid"
+  <button class="{{ class_prefix }}-appt-flow-btn btn-cta-solid"
     data-toggle="modal"
     data-target="#modal-appointment-provider"
     data-provider-epic-id="{{ epic_id }}"

@@ -52,15 +52,25 @@
                             <i class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></i>
                             {{ "Accepting new patients"|t }}
                         </div>
+                        {#
                         <div class="provider-page__section1-make-appt-btn">
                             {{ uwm_cta_link('Make an appointment'|t, provider_appointments_uri, ['btn', 'btn-cta-solid']) }}
                         </div>
+                        #}
                     {% else %}
                         <div class="provider-page__section1-accepting-patients">
                             <i class="uwm-icon uwm-icon--not-accepting-patients" aria-hidden="true"></i>
                             {{ "Not accepting new patients"|t }}
                         </div>
                     {% endif %}
+                    {# TODO: confirm how `field_res_isacceptingnewpts` should
+                       affect open/direct scheduling options available #}
+                    <div class="provider-page__section1-appt-actions">
+                        {% include directory ~ '/components/provider-page/node--res-provider--appointment-actions.html.twig' with {
+                            'modal_appt_context': 'provider_page',
+                            'class_prefix': 'provider-page__section1'
+                        } %}
+                    </div>
                 </div>
             </div>
             <div class="provider-page__section1-area2">

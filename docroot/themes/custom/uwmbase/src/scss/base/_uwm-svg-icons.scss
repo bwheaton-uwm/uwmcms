@@ -55,6 +55,11 @@ $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
   &.uwm-icon--appointment {
     background-image: url('#{$icon-path}/icon_appointment.svg');
   }
+  &.uwm-icon--arrow-right-blue {
+    background-image: url('#{$icon-path}/icon_arrow_right_blue.svg');
+    width: 15px;
+    height: 10px;
+  }
   &.uwm-icon--bike {
     background-image: url('#{$icon-path}/icon_bike.svg');
   }
