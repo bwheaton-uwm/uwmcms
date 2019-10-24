@@ -1,0 +1,34 @@
+{{ attach_library('uwmbase/ratings-summary') }}
+
+{% set ratings_summary_url = '#ratings-details' %}
+
+<div class="ratings-summary">
+  <div class="ratings-summary__stars-section">
+    {% include "@uwmbase/rating-stars/rating-stars.twig" with {'rating_stars_url': ratings_summary_url } %}
+    {% if ratings.summary.value %}
+      <div class="ratings-summary__stars-text">
+        <a href="{{ ratings_summary_url }}" class="ratings-summary__link text-link-blue no-underline">
+          {{ ratings.summary.value }} out of 5
+        </a>
+      </div>
+    {% endif %}
+  </div>
+  {% if ratings.summary.count.ratings or ratings.summary.count.comments %}
+    <div class="ratings-summary__count-section">
+      {% if ratings.summary.count.ratings %}
+        <div class="ratings-summary__ratings-count">
+          <a href="{{ ratings_summary_url }}" class="ratings-summary__link text-link-blue no-underline">
+            {{ ratings.summary.count.ratings }} ratings
+          </a>
+        </div>
+      {%  endif %}
+      {% if ratings.summary.count.comments %}
+        <div class="ratings-summary__comments-count">
+          <a href="{{ ratings_summary_url }}" class="ratings-summary__link text-link-blue no-underline">
+            {{ ratings.summary.count.comments }} comments
+          </a>
+        </div>
+      {%  endif %}
+    </div>
+  {%  endif %}
+</div>
