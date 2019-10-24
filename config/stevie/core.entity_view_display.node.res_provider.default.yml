@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.res_provider.field_ratings
     - field.field.node.res_provider.field_res_academic_title
     - field.field.node.res_provider.field_res_affiliates
     - field.field.node.res_provider.field_res_biography
@@ -67,6 +68,13 @@ content:
       markup: false
     third_party_settings: {  }
     type: name_default
+    region: content
+  field_ratings:
+    weight: 30
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
     region: content
   field_res_academic_title:
     weight: 28
