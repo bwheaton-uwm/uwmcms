@@ -12,6 +12,7 @@
 #}
 
 {% set modifier_class = attributes.class ~ ' container-xl' %}
+{% set modifier_class = has_ratings ? modifier_class ~ ' node-res_provider--has-ratings' : modifier_class ~ ' node-res_provider--no-ratings' %}
 {% set acceptingAppointments = 'Yes' in content.field_res_isacceptingnewpts.0 ? TRUE : FALSE %}
 {%
   set taxonomy_subsection_attributes = create_attribute({

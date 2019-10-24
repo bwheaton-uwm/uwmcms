@@ -729,6 +729,11 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
       $variables['has_languages'] = !$node->get('field_res_languages')->isEmpty();
     }
 
+    // Determine if the provider has ratings.
+    // TODO: Add logic here once the method of storing ratings has been
+    // determined and implemented.
+    $variables['has_ratings'] = FALSE;
+
     // Determine taxonomy terms associated with the provider.
     $variables['taxonomy_terms'] = [
       'expertises' => [],
