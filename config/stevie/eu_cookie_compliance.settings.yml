@@ -1,5 +1,5 @@
 uuid: ''
-cookie_lifetime: 100
+cookie_lifetime: 30
 domain: ''
 domains_option: 1
 domains_list: ''
@@ -19,7 +19,7 @@ popup_scrolling_confirmation: false
 popup_delay: 1000
 show_disagree_button: true
 popup_disagree_button_message: 'Website Privacy.'
-popup_enabled: true
+popup_enabled: false
 popup_find_more_button_message: 'More info'
 popup_height: null
 popup_hide_agreed: false
