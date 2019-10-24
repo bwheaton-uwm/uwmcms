@@ -60,10 +60,13 @@ content:
     third_party_settings: {  }
 hidden:
   field_node_videos: true
+  field_res_academic_title: true
   field_res_affiliates: true
   field_res_board_certifications: true
   field_res_clinics: true
+  field_res_conditions_symptoms: true
   field_res_degrees: true
+  field_res_department: true
   field_res_education_history: true
   field_res_expertises: true
   field_res_gender: true
@@ -73,15 +76,23 @@ hidden:
   field_res_isacceptingnewpts: true
   field_res_languages: true
   field_res_medical_services: true
+  field_res_medical_title: true
   field_res_meta_tags: true
   field_res_name: true
   field_res_node_videos: true
   field_res_npi: true
+  field_res_patients_treated: true
   field_res_personal_interests: true
+  field_res_procedures_treatments: true
+  field_res_provider_type: true
   field_res_pubmed_ids: true
   field_res_puma_id: true
   field_res_ser_id: true
+  field_res_visit_type_id: true
   field_search_best_bets: true
+  field_uwm_content_owner: true
   field_uwm_json_packet: true
+  field_uwm_subject_matter_experts: true
   links: true
+  search_api_excerpt: true
   uwm_unique_id: true
