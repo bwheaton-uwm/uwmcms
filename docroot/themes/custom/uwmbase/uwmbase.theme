@@ -8,6 +8,7 @@
  * @see https://drupal.org/node/1728096
  */
 
+use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Database\Database;
@@ -729,11 +730,6 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
       $variables['has_languages'] = !$node->get('field_res_languages')->isEmpty();
     }
 
-    // Determine if the provider has ratings.
-    // TODO: Add logic here once the method of storing ratings has been
-    // determined and implemented.
-    $variables['has_ratings'] = FALSE;
-
     // Determine taxonomy terms associated with the provider.
     $variables['taxonomy_terms'] = [
       'expertises' => [],
@@ -761,6 +757,15 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
       }
       $variables['taxonomy_terms'][$vocabulary] = $terms;
     }
+  }
+
+  // Add ratings data.
+  if ($node->hasField('field_ratings') && !$node->get('field_ratings')->isEmpty()) {
+    $variables['ratings'] = Json::decode($node->field_ratings->value);
+    $variables['has_ratings'] = TRUE;
+  }
+  else {
+    $variables['has_ratings'] = FALSE;
   }
 }
 
