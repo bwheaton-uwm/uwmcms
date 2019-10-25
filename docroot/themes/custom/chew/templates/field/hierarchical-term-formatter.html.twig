@@ -18,6 +18,7 @@
     <{{ wrapper }} class="terms-hierarchy">
   {% endif %}
   {# Shame we cannot use the join function. #}
+  <img src="{{ category_icon_url }}" alt="Icon for {{ category_term }} category" class="terms-icon" />
   {% for term in terms %}
     {{ term }}{% if loop.last == false %}{{ separator }}{% endif %}
   {% endfor %}

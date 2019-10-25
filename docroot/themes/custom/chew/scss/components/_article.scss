@@ -32,6 +32,14 @@
         }
       }
     }
+    img.terms-icon {
+      width: 2rem;
+      padding-right: .25em;
+
+      @media (min-width: $screen-sm) {
+        width: 2.4rem;
+      }
+    }
   }
   .block-entity-fieldnodefield-author,
   .block-entity-fieldnodecreated {

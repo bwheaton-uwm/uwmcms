@@ -76,6 +76,30 @@ function chew_preprocess_page__taxonomy__term(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess_hierarchical_term_formatter() for category headers.
+ */
+function chew_preprocess_hierarchical_term_formatter(&$variables) {
+  $variables['category_term'] = strip_tags($variables['terms'][0]['#value']->__toString());
+
+  // Set an icon specific to the terms that appear.
+  if (isset($variables['category_term'])) {
+    if ($variables['category_term'] === 'Body') {
+      $variables['category_icon_url'] = '/themes/custom/chew/images/category-icon--body.svg';
+    }
+    elseif ($variables['category_term'] === 'Mind') {
+      $variables['category_icon_url'] = '/themes/custom/chew/images/category-icon--mind.svg';
+    }
+    elseif ($variables['category_term'] === 'Life') {
+      $variables['category_icon_url'] = '/themes/custom/chew/images/category-icon--life.svg';
+    }
+    elseif ($variables['category_term'] === 'Well') {
+      $variables['category_icon_url'] = '/themes/custom/chew/images/category-icon--well.svg';
+    }
+  }
+
+}
+
+/**
  * Implements hook_preprocess_HOOK() for article author field templates.
  */
 function chew_preprocess_field__node__field_author__article(&$variables) {
