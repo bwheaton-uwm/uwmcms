@@ -41,6 +41,12 @@ body.is-page-node-type-res-provider .modal-backdrop {
       margin-top: 200px;
       margin-left: auto;
       margin-right: auto;
+      // This allows 2 buttons (@ 292px width) per row.
+      width: 90%;
+    }
+
+    // 992px+
+    @include media-breakpoint-up('lg') {
       width: 80%;
     }
 
@@ -88,7 +94,7 @@ body.is-page-node-type-res-provider .modal-backdrop {
   }
 
   .modal-body {
-    padding: 1.25rem 1.875rem 1.5rem 1.875rem; // 20px 30px 24px 30px
+    padding: 1.25rem 1.875rem; // 20px 30px
 
     .appointment-flow {
 
@@ -104,14 +110,34 @@ body.is-page-node-type-res-provider .modal-backdrop {
       .appointment-flow__step-text {
         margin: 0 0 1.25rem 0; // 20px
         font-size: 1.25rem; // 20px
+
+        // 576-768px
+        @include media-breakpoint-only('sm') {
+          // Align with stacked centered buttons.
+          text-align: center;
+        }
       }
 
       .appointment-flow__step-buttons {
 
         // 576px+
         @include media-breakpoint-up('sm') {
-          // Buttons align horizontally.
+          // Stack buttons and center them.
           display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          // Flex items' margins do not collapse - negate the bottom margin of
+          // the last button (or last row of buttons). This allows the next
+          // element down ("Back" link) to define the space above it.
+          margin-bottom: -1.25rem; // 20px
+        }
+
+        // 768px+
+        @include media-breakpoint-up('md') {
+          // Buttons align in rows.
+          display: flex;
+          flex-direction: row;
           flex-wrap: wrap;
 
           // To allow 20px between buttons and prevent the last button in a row
@@ -126,13 +152,18 @@ body.is-page-node-type-res-provider .modal-backdrop {
 
       .appointment-flow__step-button {
         display: block;
-        min-width: 275px;
 
         // 576px+
         @include media-breakpoint-up('sm') {
+          // Use a fixed width for consistency; text will wrap as needed.
+          width: 292px;
           margin-bottom: 1.25rem; // 20px
+        }
 
-          // Use equal side margin in expanded container - see above.
+        // 768px+
+        @include media-breakpoint-up('md') {
+          // Buttons are aligned in rows. Use equal side margin in expanded
+          // container - see .appointment-flow__step-buttons.
           margin-left: 0.625rem; // 10px
           margin-right: 0.625rem; // 10px
         }
@@ -146,16 +177,22 @@ body.is-page-node-type-res-provider .modal-backdrop {
 
       .appointment-flow__step-back {
         display: block;
-        margin-top: 0.25rem; // 4px, + 20px bottom on buttons = 24px total
+        margin-top: 1.25rem; // 20px
 
         .fa-angle-left {
           color: color('blue');
           margin-right: 2px;
+          width: 0.75rem; // 12px
+          height: 1.5rem; // 24px
+          vertical-align: middle;
         }
 
         a {
-          font-size: 1rem;
           @include link-blue-hover-underline();
+          font-size: 1rem;
+          line-height: 1.5rem; // 24px
+          display: inline-block;
+          vertical-align: middle;
         }
       }
 
@@ -201,14 +238,22 @@ body.is-page-node-type-res-provider .modal-backdrop {
 
       .appointment-flow {
 
+        .appointment-flow__step {
+          // Set fixed height that matches with height of buttons container
+          // (see .appointment-flow__step-buttons below), so that on mobile all
+          // steps have consistent height.
+          height: 20.875rem; // 334px
+        }
+
         .appointment-flow__step-text {
-          font-size: 1.25rem; // 18px
+          margin-bottom: 1rem; // 16px
+          font-size: 1.125rem; // 18px
         }
 
         .appointment-flow__step-buttons {
           // Mobile - buttons are stacked. Make this container fixed height to
           // show 4 full buttons and half of a 5th, if there are that many.
-          height: 14.6875rem; // 235px
+          height: 15.25rem; // 244px
           overflow-y: scroll;
         }
 
