@@ -25,6 +25,11 @@
       border-left: 1px solid $gray-light;
       a {
         color: $gray-dark;
+
+        &:hover,
+        &:focus {
+          color: $link-hover-color;
+        }
       }
     }
   }

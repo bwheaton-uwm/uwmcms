@@ -5,7 +5,6 @@
  * Custom PHP code for the CHEW theme.
  */
 
-use Drupal\Core\Render\Markup;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\taxonomy\TermInterface;
@@ -86,18 +85,6 @@ function chew_preprocess_field__node__field_author__article(&$variables) {
         $variables['items'][$id]['content']['#plain_text'] = t('By @author', ['@author' => $variables['items'][$id]['content']['#plain_text']]);
       }
     }
-  }
-}
-
-/**
- * Implements hook_preprocess_HOOK() for hierarchical term formatter templates.
- */
-function chew_preprocess_hierarchical_term_formatter(&$variables) {
-  // Remove the link from the child term if there is one.
-  if (isset($variables['terms'][1]['#value'])) {
-    $value = $variables['terms'][1]['#value']->__toString();
-    $value = preg_replace('#</?a[^>]*>#is', '', $value);
-    $variables['terms'][1]['#value'] = Markup::create($value);
   }
 }
 
