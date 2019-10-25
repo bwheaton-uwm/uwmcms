@@ -719,6 +719,11 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
       $variables['has_photo'] = !$node->get('field_res_image')->isEmpty();
     }
 
+    // Determine if the provider has locations.
+    if ($node->hasField('field_res_clinics')) {
+      $variables['has_locations'] = !$node->get('field_res_clinics')->isEmpty();
+    }
+
     // Determine if the provider has a video.
     if ($node->hasField('field_res_node_videos')) {
       $variables['has_video'] = !$node->get('field_res_node_videos')->isEmpty();
