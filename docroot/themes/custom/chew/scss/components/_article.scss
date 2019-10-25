@@ -9,27 +9,22 @@
   @include clearfix();
   margin-bottom: 1rem;
   .field--name-field-categories {
+    font-family: $font-family-sans-serif;
+
+    a {
+      color: $dark-gray;
+    }
     .taxonomy-term.count-1 {
-      font-size: $font-size-base * 1.25;
-      font-weight: bold;
-      padding-right: .25em;
+      text-transform: uppercase;
+      padding-right: .44em;
       @media (max-width: $screen-xs) {
         font-size: $font-size-base-xs * 1.25;
       }
     }
     .taxonomy-term.count-2 {
-      font-family: $font-family-sans-serif;
-      text-transform: uppercase;
       padding-left: .625em;
       font-size: .875em;
-      border-left: 1px solid $gray-light;
-      a {
-        color: $gray-dark;
-
-        &:hover,
-        &:focus {
-          color: $link-hover-color;
-        }
+      border-left: 1px solid $dark-gray;
       }
     }
     img.terms-icon {
