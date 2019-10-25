@@ -20,6 +20,8 @@
     open_scheduling: boolean - whether provider is enabled for open scheduling
     visit_type_ids: array - provider's open scheduling visit type IDs, if any
     direct_scheduling: boolean - whether provider is enabled for direct scheduling
+    visit_type_names: mapping - visit type ID to visit type name (from Epic)
+    visit_type_descriptions: mapping - visit type ID to visit type description
 #}
 
 {#
@@ -55,6 +57,11 @@
       <a href="#" class="appointment-flow__step-button btn-cta-solid" data-btn="yes">{{ "Yes"|t }}</a>
 
     </div>
+
+    <div class="appointment-flow__step-back">
+      <i class="fa fa-angle-left" aria-hidden="true"></i>
+      <a href="#">{{ "Back"|t }}</a>
+    </div>
   </div>
 
 
@@ -89,12 +96,17 @@
       {#
         On provider page, if enabled for open scheduling, generate their
         visit type buttons.
+
+        TODO: handle missing name/description bad data?
       #}
       {% if open_scheduling and visit_type_ids is not empty %}
 
         {% for visit_type_id in visit_type_ids %}
 
-          <a href="#" class="appointment-flow__step-button btn-cta-solid" data-btn-visit-type-id="{{ visit_type_id }}">{{ visit_type_names[visit_type_id] }}</a>
+          <a href="#" class="appointment-flow__step-button appointment-flow__step-button--name-desc btn-cta-solid" data-btn-visit-type-id="{{ visit_type_id }}">
+            <span class="appointment-flow__step-button-name">{{ visit_type_names[visit_type_id] }}</span>
+            <span class="appointment-flow__step-button-desc">{{ visit_type_descriptions[visit_type_id] }}</span>
+          </a>
 
         {% endfor %}
 
@@ -105,7 +117,10 @@
           buttons are generated in JS. Copy from this template element for each
           visit type to ensure consistent markup. It is never displayed.
         #}
-        <a href="#" class="appointment-flow__step-button btn-cta-solid" data-btn-visit-type-id="template">{{ "Template"|t }}</a>
+        <a href="#" class="appointment-flow__step-button appointment-flow__step-button--name-desc btn-cta-solid" data-btn-visit-type-id="template">
+          <span class="appointment-flow__step-button-name">Template name</span>
+          <span class="appointment-flow__step-button-desc">Template description</span>
+        </a>
 
       {% endif %}
 

@@ -45,6 +45,12 @@
         '103619': 'New Wellness Appointment'
       };
 
+      var visitTypeDescriptions = {
+        '9000': 'Initial appointment to establish care',
+        '4466': 'First visit for a new pregnancy',
+        '103619': 'Care for prevention and checkups'
+      };
+
       var $steps = $modal.find('.appointment-flow__step');
       var $stepVisitedBefore = $modal.find('[data-step="visited-before"]');
       var $stepEcareAccount = $modal.find('[data-step="ecare-account"]');
@@ -220,12 +226,16 @@
 
                 var visitTypeID = visitTypeIDs[i];
 
-                // TODO: handle missing name bad data?
+                // TODO: handle missing name/description bad data?
                 if (visitTypeNames.hasOwnProperty(visitTypeID)) {
 
                   var $btn = $btnTemplate.clone();
                   $btn.attr('data-btn-visit-type-id', visitTypeID);
-                  $btn.text(visitTypeNames[visitTypeID]);
+                  $btn.find('.appointment-flow__step-button-name').text(visitTypeNames[visitTypeID]);
+
+                  if (visitTypeDescriptions.hasOwnProperty(visitTypeID)) {
+                    $btn.find('.appointment-flow__step-button-desc').text(visitTypeDescriptions[visitTypeID]);
+                  }
 
                   $btnContainer.append($btn);
 
@@ -278,10 +288,9 @@
 
         if ($firstStep) {
 
-          // The first step in the current flow may be not the first step in
-          // other flows, and thus have a Back link. Remove the Back link in
-          // this instance where it's the first one.
-          $firstStep.find('.appointment-flow__step-back').hide();
+          // Denote the first step because it varies by appointment logic.
+          // (This class handles hiding the Back link on the first step.)
+          $firstStep.addClass('appointment-flow__step--first');
 
           // Actually move to the first step!
           stepForward($firstStep);
@@ -393,8 +402,8 @@
         // Remove steps state.
         stepPath = [];
 
-        // Show the Back link if it was hidden on this flow's first step.
-        $steps.find('.appointment-flow__step-back:hidden').show();
+        // Remove the first-step indicator class.
+        $steps.removeClass('appointment-flow__step--first');
 
         // If not on a provider bio page, remove provider-specific values.
         if (modalContext !== 'provider_page') {

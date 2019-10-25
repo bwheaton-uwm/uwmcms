@@ -24,17 +24,6 @@ body.is-page-node-type-res-provider .modal-backdrop {
     margin: 0;
     width: 100%;
     max-width: none;
-    //height: 432px;
-
-    // .modal-content {
-    //   height: inherit;
-    // }
-
-    // 576 - 767px
-    @include media-breakpoint-up('sm') {
-      margin-top: 252px;
-      height: auto;
-    }
 
     // 768px+
     @include media-breakpoint-up('md') {
@@ -139,6 +128,7 @@ body.is-page-node-type-res-provider .modal-backdrop {
           display: flex;
           flex-direction: row;
           flex-wrap: wrap;
+          align-items: stretch;
 
           // To allow 20px between buttons and prevent the last button in a row
           // from wrapping weirdly because its right margin doesn't fit, expand
@@ -169,10 +159,25 @@ body.is-page-node-type-res-provider .modal-backdrop {
         }
       }
 
+      // Variation with name and description text
+      .appointment-flow__step-button--name-desc {
+        padding: 1.25rem; // 20px
+      }
+
       // Never show the template button used for generating other button markup
       // in Javascript.
       .appointment-flow__step-button[data-btn-visit-type-id="template"] {
         display: none;
+      }
+
+      .appointment-flow__step-button-name {
+        display: block;
+        font-weight: $font-weight-semi-bold;
+      }
+
+      .appointment-flow__step-button-desc {
+        display: block;
+        margin-top: 0.5rem; // 8px
       }
 
       .appointment-flow__step-back {
@@ -194,6 +199,15 @@ body.is-page-node-type-res-provider .modal-backdrop {
           display: inline-block;
           vertical-align: middle;
         }
+      }
+
+      // This '--first' class is added in JS because the first step shown
+      // varies by appointment logic.
+      .appointment-flow__step--first .appointment-flow__step-back {
+        // Hide the "Back" link because there is no previous step.
+        // Use 'visibility' to keep its space in the layout, for consistency
+        // in the modal height.
+        visibility: hidden;
       }
 
       .appointment-flow__open-scheduling {
@@ -239,10 +253,8 @@ body.is-page-node-type-res-provider .modal-backdrop {
       .appointment-flow {
 
         .appointment-flow__step {
-          // Set fixed height that matches with height of buttons container
-          // (see .appointment-flow__step-buttons below), so that on mobile all
-          // steps have consistent height.
-          height: 20.875rem; // 334px
+          // Set min-height to ensure consistency for steps with 2 buttons.
+          min-height: 13.25rem; // 212px
         }
 
         .appointment-flow__step-text {
@@ -250,10 +262,15 @@ body.is-page-node-type-res-provider .modal-backdrop {
           font-size: 1.125rem; // 18px
         }
 
-        .appointment-flow__step-buttons {
-          // Mobile - buttons are stacked. Make this container fixed height to
-          // show 4 full buttons and half of a 5th, if there are that many.
-          height: 15.25rem; // 244px
+        .appointment-flow__step[data-step="visit-type"] .appointment-flow__step-buttons {
+          // Set maximum height on this container to show ~3 full buttons and
+          // half of a 4th, if there are that many.
+          // TODO: this number is calculated from 1-line name and description
+          // on each button. We cannot handle all cases statically, because the
+          // text wrapping in each button may vary. Only JS calculation can make
+          // this exact in all cases.
+          // This height works for ~360px wide and up.
+          max-height: 23.125rem; // 370px
           overflow-y: scroll;
         }
 
@@ -263,6 +280,12 @@ body.is-page-node-type-res-provider .modal-backdrop {
           &:not(:last-child) {
             margin-bottom: 1rem; // 16px
           }
+        }
+
+        // Variation with name and description text
+        .appointment-flow__step-button--name-desc {
+          padding-top: 1.125rem; // 18px
+          padding-bottom: 1.125rem; // 18px
         }
 
         .appointment-flow__step-back {
