@@ -858,7 +858,22 @@ function uwmbase_preprocess_responsive_image_formatter(array &$variables) {
   $node = $variables['item']->getEntity();
 
   if ($node->bundle() == 'res_provider') {
-    $variables['responsive_image']['#attributes']['data-node_label'] = $node->get('title')->getString();
+    $variables['responsive_image']['#attributes']['data-provider_label'] = $node->get('title')->getString();
+  }
+
+}
+
+/**
+ * Implements template_preprocess_image_formatter().
+ */
+function uwmbase_preprocess_image_formatter(array &$variables) {
+
+  // Set up res provider to use parent node's title as an
+  // alt tag for the res provider image.
+  $node = $variables['item']->getEntity();
+
+  if ($node->bundle() == 'res_provider') {
+    $variables['image']['#attributes']['data-provider_label'] = $node->get('title')->getString();
   }
 
 }
@@ -870,8 +885,20 @@ function uwmbase_preprocess_responsive_image(&$variables) {
 
   // Use the preprocessed template_preprocess_responsive_image_formatter()
   // to set alt tag to parent node title.
-  if (array_key_exists('data-node_label', $variables['img_element']['#attributes']) && $variables['responsive_image_style_id'] == 'provider_page_image') {
-    $variables['img_element']['#attributes']['alt'] = 'Provider headshot of' . $variables['img_element']['#attributes']['data-node_label'];
+  if (isset($variables['img_element']['#attributes']['data-provider_label'])) {
+    $variables['img_element']['#attributes']['alt'] = 'Provider headshot of' . $variables['img_element']['#attributes']['data-provider_label'];
+  }
+}
+
+/**
+ * Implements template_preprocess_image().
+ */
+function uwmbase_preprocess_image(&$variables) {
+
+  // Use the preprocessed template_responsive_image_formatter()
+  // to set alt tag to parent node title.
+  if (isset($variables['attributes']['data-provider_label'])) {
+    $variables['attributes']['alt'] = 'Provider headshot of' . $variables['attributes']['data-provider_label'];
   }
 }
 
