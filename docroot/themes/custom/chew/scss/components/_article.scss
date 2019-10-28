@@ -13,6 +13,12 @@
 
     a {
       color: $dark-gray;
+
+      &:hover,
+      &:active {
+        color: $light-rain;
+        font-weight: bold;
+      }
     }
     .taxonomy-term.count-1 {
       text-transform: uppercase;
@@ -25,7 +31,6 @@
       padding-left: .625em;
       font-size: .875em;
       border-left: 1px solid $dark-gray;
-      }
     }
     img.terms-icon {
       width: 2rem;
