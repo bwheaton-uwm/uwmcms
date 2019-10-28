@@ -55,7 +55,7 @@
 
 {% if label_hidden %}
   {% if multiple %}
-    <div{{ attributes.addClass(classes, 'field--items') }}>By
+    <div{{ attributes.addClass(classes, 'field--items') }}>
       {% for item in items %}
         <div{{ item.attributes.addClass('field--item') }}>{{ item.content }}</div>
       {% endfor %}
@@ -69,7 +69,7 @@
   <div{{ attributes.addClass(classes) }}>
     <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
     {% if multiple %}
-      <div class="field__items">By
+      <div class="field__items">
     {% endif %}
     {% for item in items %}
       <div{{ item.attributes.addClass('field--item') }}>{{ item.content }}</div>
