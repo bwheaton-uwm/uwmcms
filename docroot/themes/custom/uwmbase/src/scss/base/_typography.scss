@@ -14,6 +14,7 @@ h4, .h4 { font-weight: $h4-font-weight; }
 h5, .h5 { font-weight: $h5-font-weight; }
 h6, .h6 { font-weight: $h6-font-weight; }
 
+
 /* Custom styles */
 
 a.text-link-blue.no-underline {
@@ -89,6 +90,12 @@ h1.page-title {
 
 @each $color, $value in $colors {
   @include text-emphasis-variant(".text-#{$color}", $value);
+}
+
+/* Add font weights */
+
+.font-weight-semi-bold {
+  font-weight: $font-weight-semi-bold;
 }
 
 /*

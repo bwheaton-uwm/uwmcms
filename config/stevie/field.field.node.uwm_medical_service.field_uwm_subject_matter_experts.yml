@@ -1,0 +1,28 @@
+uuid: 2a0f72b7-1d74-4979-a663-7179eb190b0c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_subject_matter_experts
+    - node.type.uwm_medical_service
+id: node.uwm_medical_service.field_uwm_subject_matter_experts
+field_name: field_uwm_subject_matter_experts
+entity_type: node
+bundle: uwm_medical_service
+label: 'Subject Matter Experts'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: true
+field_type: entity_reference

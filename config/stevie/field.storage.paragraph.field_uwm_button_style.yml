@@ -1,0 +1,27 @@
+uuid: 44d5c0b7-34fd-4af4-b787-d460b01acfc1
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_uwm_button_style
+field_name: field_uwm_button_style
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: accent_slide
+      label: 'Accent Slide'
+    -
+      value: solid
+      label: Solid
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

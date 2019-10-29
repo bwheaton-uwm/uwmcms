@@ -59,6 +59,7 @@ libraries:
   - uwmbase/resizable-textarea
   - uwmbase/table-drag
   - uwmbase/pager
+  - uwmbase/gdpr_banner
 
 # @uwmbase twig component library
 

@@ -222,6 +222,7 @@ permissions:
   - 'delete uwm_medical_service revisions'
   - 'delete uwm_medical_specialty revisions'
   - 'delete uwm_quiz revisions'
+  - 'display eu cookie compliance popup'
   - 'dropzone upload files'
   - 'edit any acquia_dam_asset media'
   - 'edit any audio_file media'

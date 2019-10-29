@@ -1,0 +1,28 @@
+uuid: e7721d63-adff-474c-83bf-588136e7686b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_subject_matter_experts
+    - node.type.res_clinic
+id: node.res_clinic.field_uwm_subject_matter_experts
+field_name: field_uwm_subject_matter_experts
+entity_type: node
+bundle: res_clinic
+label: 'Subject Matter Experts'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: true
+field_type: entity_reference
