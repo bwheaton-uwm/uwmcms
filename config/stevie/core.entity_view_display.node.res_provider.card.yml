@@ -116,6 +116,7 @@ content:
       multiple_el_al_first: '1'
     third_party_settings: {  }
 hidden:
+  field_ratings: true
   field_res_academic_title: true
   field_res_affiliates: true
   field_res_biography: true
