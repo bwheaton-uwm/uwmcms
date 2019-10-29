@@ -6,6 +6,7 @@ dependencies:
     - 'block_content:basic:ec28e78c-1345-471b-8e03-ce4f30564b8a'
   module:
     - block_content
+    - ctools
   theme:
     - chew
 id: factchecked
@@ -22,4 +23,11 @@ settings:
   status: true
   info: ''
   view_mode: full
-visibility: {  }
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      article: article
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
