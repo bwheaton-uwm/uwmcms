@@ -580,7 +580,7 @@ function uwmbase_preprocess_node(&$variables, $hook) {
       }
     }
     if (!isset($variables['provider_appointments_uri'])) {
-      $variables['provider_appointments_uri'] = '/patient-care/making-an-appointment';
+      $variables['provider_appointments_uri'] = '/patient-resources/make-an-appointment';
 
       // If the provider uses open scheduling and has an Epic ID (SER),
       // add the ID to the appointment URI.
@@ -968,6 +968,19 @@ function uwmbase_preprocess_paragraph(&$variables) {
   }
 
   $parent = $paragraph->getParentEntity();
+
+  // Make an Appointment Page Override:
+  // This targets the make an appointment page and adds a class to the page.
+  // so that we can overrides the default.
+  // link style from grey with underline to blue with no underline.
+  // SEE themes > custom > uwmbase > components >
+  // make-appt-page > make_appt-page.scss.
+  // @TODO make this a global link change and remove this override.
+  $paragraph_id = $paragraph->id();
+
+  if ($paragraph_id = 53086) {
+    $variables['attributes']['class'][] = 'make-appt-page';
+  }
 
   // Add css classes to identify the parent field.
   // This helps finding elements with CSS in Google Tag Manager.
@@ -1504,15 +1517,52 @@ function uwmbase_preprocess_paragraph__uwm_cta_link(&$variables) {
 
   // Determine whether to use solid CTA styling variant.
   // @see src/scss/base/_btn-cta-solid.scss
-  // @TODO: might be nice to make this a boolean field on the paragraph too.
-  $variables['btn_cta_solid'] = FALSE;
+  // @TODO: Add additional logic if styles expand past two styles.
+  if (!empty($variables['content']['field_uwm_button_style'][0])) {
+    $variables['btn_cta_style'] = $variables['content']['field_uwm_button_style'][0]['#markup'];
+  }
 
   // Enforce the case of parent Hero Content and Half-Wide Image paragraph.
   $parent = $paragraph->getParentEntity();
   if (!empty($parent)) {
     if ($parent->getEntityTypeId() === 'paragraph' && $parent->bundle() === 'half_wide_hero') {
-      $variables['btn_cta_solid'] = TRUE;
+      $variables['btn_cta_style'] = 'Solid';
     }
+  }
+
+  // Get the current URI and parse it.
+  $uri_parts = UrlHelper::parse(\Drupal::request()->getRequestUri());
+
+  $variables['#cache']['contexts'] = Cache::mergeContexts($variables['#cache']['contexts'], ['url.query_args:ser']);
+
+  // Bail if a SER ID was not included in the query string.
+  if (!isset($uri_parts['query']['ser'])) {
+    return;
+  }
+
+  $ser = $uri_parts['query']['ser'];
+
+  // Load the provider node from the SER ID.
+  $node = _uwmbase_get_provider_by_ser($ser);
+  if (!$node) {
+    return;
+  }
+
+  // Get Visit Type ID to create an Online Scheduling button -
+  // default to Visit Type ID 9000 if one doesn't exist
+  // NOTE: Current state, only get first ID even if more than one exists.
+  // @TODO add check / functionality for multiple Visit Type IDs.
+
+  if ($node->get('field_res_visit_type_id')->get(0) != NULL) {
+    $first_visit_type_id = $node->get('field_res_visit_type_id')->get(0)->getString();
+  }
+  $set_visit_type_id = isset($first_visit_type_id) ? $first_visit_type_id : 9000;
+
+  // Bail if the text doesn't contain the text getting swapped out.
+  // Check if Button is Book Online. If so and if above ser is set,
+  // swap the link out.
+  if ($variables['field_uwm_link__title'] == 'Book online') {
+    $variables['field_uwm_link__url'] = 'https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=' . $set_visit_type_id . '&view=plain';
   }
 
 }
@@ -1555,6 +1605,64 @@ function uwmbase_preprocess_field__paragraph__field_uwm_link(&$variables) {
     // Add the provider's name to the Book Online text.
     $item['content']['#title'] .= ' with ' . trim($node->label());
   }
+}
+
+/**
+ * Implements hook_preprocess_paragraph__uwm_cta_link__uwm_card().
+ *
+ * Customizes the "Book Now" URL for providers that use open scheduling.
+ */
+function uwmbase_preprocess_paragraph__uwm_basic_content__uwm_card(&$variables) {
+  // Get the current URI and parse it.
+  $uri_parts = UrlHelper::parse(\Drupal::request()->getRequestUri());
+
+  $variables['#cache']['contexts'] = Cache::mergeContexts($variables['#cache']['contexts'], ['url.query_args:ser']);
+
+  // Bail if a SER ID was not included in the query string.
+  if (!isset($uri_parts['query']['ser'])) {
+    return;
+  }
+
+  $ser = $uri_parts['query']['ser'];
+
+  // Load the provider node from the SER ID.
+  $node = _uwmbase_get_provider_by_ser($ser);
+  if (!$node) {
+    return;
+  }
+
+  // Get Visit Type ID to create an Online Scheduling button -
+  // default to Visit Type ID 9000 if one doesn't exist
+  // NOTE: Current state, only get first ID even if more than one exists.
+  // @TODO add check / functionality for multiple Visit Type IDs.
+
+  if ($node->get('field_res_visit_type_id')->get(0) != NULL) {
+    $first_visit_type_id = $node->get('field_res_visit_type_id')->get(0)->getString();
+  }
+  $set_visit_type_id = isset($first_visit_type_id) ? $first_visit_type_id : 9000;
+
+  // Swap out various peices of text with provider link if
+  // on a page with SER ID.
+  // Note: This is an interem fix that will be removed with
+  // the update of providers no longer linking to
+  // make an appointment page.
+  $textBoxContent = $variables['content']['uwm_text'][0]['#text'];
+  $genericString = 'Your primary care appointments and some specialty care can be booked online';
+  $ecareString = 'Book in eCare';
+
+  if (empty($textBoxContent)) {
+    return;
+  }
+
+  if (stristr($textBoxContent, $genericString) !== FALSE) {
+    // Swap out the generic text in the Book Online intro.
+    $variables['content']['uwm_text'][0]['#text'] = '<div class="make-appt-page--book-online-link"><a href="https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book with ' . '<span class="font-weight-semi-bold">' . trim($node->label()) . '</span>' . '</a></div>';
+  }
+  elseif (stristr($textBoxContent, $ecareString) !== FALSE) {
+    // Swap out the Book in eCare link with specialized link.
+    $variables['content']['uwm_text'][0]['#text'] = '<p>Returning patient? <a href="https://ecare.uwmedicine.org/prod01/Scheduling?workflow=ExistingProvider&selProvId=' . $ser . '">Book in eCare.</a></p>';
+  }
+
 }
 
 /**
@@ -1642,13 +1750,6 @@ function uwmbase_preprocess_page_title(&$variables) {
       }
       $set_visit_type_id = isset($first_visit_type_id) ? $first_visit_type_id : 9000;
 
-      if ($node) {
-        // Customize the link for the provider.
-        $variables['title_suffix'] = [
-          '#markup' => '<div class="make-appt-page__title-link"><a href="https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book online with ' . trim($node->label()) . '</a></div>',
-          '#allowed_tags' => ['div', 'a'],
-        ];
-      }
     }
   }
 }

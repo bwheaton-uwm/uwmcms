@@ -64,9 +64,15 @@
         text-align: left;
         @include link-with-icons-aligned();
       }
-
     }
 
+    // A button by design will always be under a text block on a card
+    // The button needs 14px of margin space above it but a text block
+    // by default has 16px of margin space below it. This compensates
+    // for that
+    .btn-cta-solid {
+      margin: -2px 0 .875rem 0;
+    }
   }
 
   .field--name-field-uwm-card-footer {

@@ -1,0 +1,21 @@
+uuid: 6bb32264-e290-4639-837f-edd5dcf393b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uwm_button_style
+    - paragraphs.paragraphs_type.uwm_cta_link
+  module:
+    - options
+id: paragraph.uwm_cta_link.field_uwm_button_style
+field_name: field_uwm_button_style
+entity_type: paragraph
+bundle: uwm_cta_link
+label: 'UWM Button Style'
+description: 'Determines the css button style. Default is the accent color slide style. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
