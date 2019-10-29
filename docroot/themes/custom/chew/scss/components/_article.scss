@@ -19,15 +19,16 @@
   }
   .field--name-field-categories {
     font-family: $font-family-sans-serif;
-    font-size: $font-size-base;
+    font-size: $font-size-base-xs;
     line-height: 1;
+
+    @media (min-width: 768px) {
+      font-size: $font-size-base;
+    }
 
     .taxonomy-term.count-1 {
       text-transform: uppercase;
       padding-right: .5rem;
-      @media (max-width: $screen-xs) {
-        font-size: $font-size-base-xs * 1.25;
-      }
     }
     .taxonomy-term.count-2 a{
       padding-left: 1rem;
@@ -39,7 +40,7 @@
       display: inline-block;
       vertical-align: top;
 
-      @media (min-width: $screen-sm) {
+      @media (min-width: 768px) {
         width: 2.4rem;
       }
     }
@@ -50,8 +51,12 @@
     float: left;
     font-family: $font-family-sans-serif;
     color: $dark-gray;
-    font-size: $font-size-small;
+    font-size: $font-size-small * 0.875;
     line-height: 1;
+
+    @media (min-width: 768px) {
+      font-size: $font-size-small;
+    }
   }
   .block-entity-fieldnodefield-author {
     font-weight: 500;
@@ -63,7 +68,12 @@
     border-right: 1px solid $dark-gray;
   }
   .article__block--fact-checked {
-    padding-left: 1rem;
+    padding-top: 1rem;
+
+    @media (min-width: 768px) {
+      padding-left: 1rem;
+      padding-top: 0;
+    }
     img {
       width: 1.5rem;
       vertical-align: top;
