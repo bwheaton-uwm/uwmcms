@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.node.uwm_condition_spotlight.field_uwm_cards
+    - field.field.node.uwm_condition_spotlight.field_uwm_content_owner
+    - field.field.node.uwm_condition_spotlight.field_uwm_subject_matter_experts
     - field.field.node.uwm_condition_spotlight.field_uwm_taxonomy_term
     - node.type.uwm_condition_spotlight
   module:
@@ -16,7 +18,7 @@ mode: default
 content:
   field_uwm_cards:
     type: entity_reference_revisions_entity_view
-    weight: 104
+    weight: 2
     label: above
     settings:
       view_mode: default
@@ -24,7 +26,7 @@ content:
     third_party_settings: {  }
     region: content
   field_uwm_taxonomy_term:
-    weight: 103
+    weight: 1
     label: above
     settings:
       link: true
@@ -32,9 +34,12 @@ content:
     type: entity_reference_label
     region: content
   links:
-    weight: 100
+    weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   content_moderation_control: true
+  field_uwm_content_owner: true
+  field_uwm_subject_matter_experts: true
+  search_api_excerpt: true

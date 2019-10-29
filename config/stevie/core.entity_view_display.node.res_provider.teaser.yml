@@ -125,6 +125,8 @@ hidden:
   field_res_ser_id: true
   field_res_visit_type_id: true
   field_search_best_bets: true
+  field_uwm_content_owner: true
   field_uwm_json_packet: true
+  field_uwm_subject_matter_experts: true
   search_api_excerpt: true
   uwm_unique_id: true

@@ -5,16 +5,34 @@ dependencies:
   config:
     - entity_browser.browser.image_browser
     - field.field.node.uwm_quiz.body
+    - field.field.node.uwm_quiz.field_uwm_content_owner
     - field.field.node.uwm_quiz.field_uwm_formatted_text
     - field.field.node.uwm_quiz.field_uwm_image
     - field.field.node.uwm_quiz.field_uwm_sections
+    - field.field.node.uwm_quiz.field_uwm_subject_matter_experts
     - node.type.uwm_quiz
   module:
     - content_moderation
     - entity_browser
+    - field_group
     - paragraphs
     - path
     - text
+third_party_settings:
+  field_group:
+    group_content_contacts:
+      children:
+        - field_uwm_content_owner
+        - field_uwm_subject_matter_experts
+      parent_name: ''
+      weight: 20
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Content Contacts'
 id: node.uwm_quiz.default
 targetEntityType: node
 bundle: uwm_quiz
@@ -28,6 +46,15 @@ content:
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
+    region: content
+  field_uwm_content_owner:
+    weight: 26
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   field_uwm_formatted_text:
     weight: 4
@@ -62,6 +89,15 @@ content:
       default_paragraph_type: ''
     third_party_settings: {  }
     type: entity_reference_paragraphs
+    region: content
+  field_uwm_subject_matter_experts:
+    weight: 27
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   moderation_state:
     type: moderation_state_default

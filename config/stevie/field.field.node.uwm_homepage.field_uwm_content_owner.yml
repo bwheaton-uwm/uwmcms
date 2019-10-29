@@ -1,0 +1,28 @@
+uuid: 725e5e5b-8954-4669-8fc7-eb4484fbe6fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_content_owner
+    - node.type.uwm_homepage
+id: node.uwm_homepage.field_uwm_content_owner
+field_name: field_uwm_content_owner
+entity_type: node
+bundle: uwm_homepage
+label: 'Content Owner'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: true
+field_type: entity_reference
