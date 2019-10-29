@@ -17,14 +17,15 @@
     width: 35%;
     font-size: ceil(($font-size-base * 0.777777778));
     font-family: $font-family-sans-serif;
-    color: $gray-dark;
-    margin: 10px 0 0 2%;
+    color: #343638;
+    margin: 8px 0 0 2%;
     line-height: 1.25;
     @media (max-width: $screen-xs) {
       font-size: ceil(($font-size-base-xs * 0.778));
     }
   }
   &.view-mode-large {
-    margin-bottom: $line-height-computed;
+    //margin-bottom: $line-height-computed;
+    margin-bottom: 0;
   }
 }

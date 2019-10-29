@@ -1,0 +1,23 @@
+uuid: 30180b83-5ab6-430d-9755-0afc194507ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_style_as__take_the_next_st
+    - paragraphs.paragraphs_type.aside
+id: paragraph.aside.field_style_as__take_the_next_st
+field_name: field_style_as__take_the_next_st
+entity_type: paragraph
+bundle: aside
+label: 'Style as "Take the Next Steps"'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

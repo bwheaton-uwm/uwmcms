@@ -1,0 +1,58 @@
+//
+// - Chew Custom Icons.
+//
+
+
+$chew-icons-directory: '/themes/custom/chew/images/icons';
+
+
+.chew-icon {
+
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  vertical-align: bottom;
+
+  &.next-step {
+    @extend %chew-icon--next-step;
+
+    &.small {
+      @extend %chew-icon--next-step-small;
+    }
+  }
+
+  &.quick-read {
+    @extend %chew-icon--quick-read;
+
+    &.small {
+      @extend %chew-icon--quick-read-small;
+    }
+  }
+
+}
+
+%chew-icon--next-step {
+  background-image: url('#{$chew-icons-directory}/nextStepArrow_12x16.svg');
+  width: 12px;
+  height: 16px;
+}
+
+%chew-icon--next-step-small {
+  background-image: url('#{$chew-icons-directory}/nextStepArrow_9x12.svg');
+  width: 9px;
+  height: 12px;
+}
+
+%chew-icon--quick-read {
+  background-image: url('#{$chew-icons-directory}/quickRead_14x23.svg');
+  width: 14px;
+  height: 23px;
+}
+
+%chew-icon--quick-read-small {
+  background-image: url('#{$chew-icons-directory}/quickRead_9x15.svg');
+  width: 9px;
+  height: 15px;
+}
+

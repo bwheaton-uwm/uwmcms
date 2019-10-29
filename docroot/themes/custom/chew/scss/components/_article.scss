@@ -1,3 +1,7 @@
+//
+// - Styles for Article Nodes
+//
+
 body.page-node-type-article .main-container {
   // Set a max-width, so the article is 760 px wide.
   // We'll draw the image and quick-read wider, to
@@ -11,7 +15,7 @@ body.page-node-type-article .main-container {
   //}
 }
 
-.article {
+.article.full {
 
   // Set article image and quick-read
   // to 960 px wide and content to 760 px
@@ -25,11 +29,37 @@ body.page-node-type-article .main-container {
     }
   }
 
-  .paragraph--type--body-text {
+  color: $dark-gray-base;
+
+  h2 {
+    margin: 56px 0 28px 0;
+  }
+
+  .paragraph--type--body-text, .paragraph--type--aside {
+
+    // Add green border, which sits above
+    // baseline and is offset to the right.
     a {
-      border-bottom: 2px solid $brand-primary;
+      position: relative;
+      display: inline-block;
+      &:after {
+        content: '';
+        position: absolute;
+        left: 3px;
+        bottom: 4px;
+        height: 6px;
+        width: 100%;
+        background: #82cfcd;
+        z-index: -1;
+        opacity: .5;
+      }
     }
   }
+
+  .field--name-image .field.field--name-field-credit {
+    color: #343638;
+  }
+
 }
 
 .region-content-header {
@@ -85,3 +115,5 @@ body.page-node-type-article .main-container {
     margin-bottom: $line-height-computed;
   }
 }
+
+
