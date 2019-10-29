@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.res_provider.field_res_gender
     - field.field.node.res_provider.field_res_image
     - field.field.node.res_provider.field_res_internal_url
+    - field.field.node.res_provider.field_res_is_direct_scheduling
     - field.field.node.res_provider.field_res_is_open_scheduling
     - field.field.node.res_provider.field_res_isacceptingnewpts
     - field.field.node.res_provider.field_res_languages
@@ -334,6 +335,7 @@ content:
     third_party_settings: {  }
 hidden:
   field_res_internal_url: true
+  field_res_is_direct_scheduling: true
   field_res_meta_tags: true
   field_res_pubmed_ids: true
   field_res_puma_id: true

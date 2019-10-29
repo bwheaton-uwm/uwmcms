@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.res_provider.field_res_gender
     - field.field.node.res_provider.field_res_image
     - field.field.node.res_provider.field_res_internal_url
+    - field.field.node.res_provider.field_res_is_direct_scheduling
     - field.field.node.res_provider.field_res_is_open_scheduling
     - field.field.node.res_provider.field_res_isacceptingnewpts
     - field.field.node.res_provider.field_res_languages
@@ -85,6 +86,7 @@ hidden:
   field_res_gender: true
   field_res_image: true
   field_res_internal_url: true
+  field_res_is_direct_scheduling: true
   field_res_is_open_scheduling: true
   field_res_isacceptingnewpts: true
   field_res_languages: true

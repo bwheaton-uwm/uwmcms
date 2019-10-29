@@ -18,8 +18,9 @@ source:
   data_parser_plugin: json
   include_raw_data: true
   track_changes: true
+  # TEST RESERVOIR URL - DO NOT COMMIT THIS TO MASTER! :D #
   urls:
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed'
+    - 'https://bios-reservoir-test.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed'
   ids:
     uuid:
       type: string
@@ -110,6 +111,10 @@ source:
       label: field_res_is_open_scheduling
       selector: /attributes/field_res_is_open_scheduling
     -
+      name: field_res_is_direct_scheduling
+      label: field_res_is_direct_scheduling
+      selector: /attributes/field_res_is_direct_scheduling
+    -
       name: uwm_json_packet
       label: uwm_json_packet
       selector: /attributes/uwm_json_packet
@@ -198,6 +203,7 @@ process:
   field_res_meta_tags: field_res_meta_tags
   field_res_ser_id: field_res_ser_id
   field_res_is_open_scheduling: field_res_is_open_scheduling
+  field_res_is_direct_scheduling: field_res_is_direct_scheduling
   field_uwm_json_packet: uwm_json_packet
   field_res_name/title: field_res_name/title
   field_res_name/given: field_res_name/given
