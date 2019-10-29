@@ -276,6 +276,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
 hidden:
+  field_ratings: true
   field_res_academic_title: true
   field_res_department: true
   field_res_internal_url: true

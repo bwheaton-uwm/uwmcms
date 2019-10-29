@@ -40,5 +40,13 @@
         </ul>
       </div>
     {% endif %}
+
+    {% if has_ratings %}
+      {# See ratings-summary.twig for links to this anchor. #}
+      <a id="ratings-details">
+      <div class="col-12">
+        <h3 class="provider-page__section2-subheading">Patient Ratings and Comments</h3>
+      </div>
+    {% endif %}
   </div>
 {% endif %}
