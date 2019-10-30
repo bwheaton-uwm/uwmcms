@@ -58,12 +58,6 @@
       {% for item in items %}
         <div{{ item.attributes.addClass('field__item') }}>
           {{ item.content }}
-
-          {% if eCareBooking %}
-            {{ uwm_cta_link('Book in eCare', 'link') }}
-          {% elseif eCareCancel %}
-            {{ uwm_cta_link('Cancel using this form', 'link') }}
-          {% endif %}
         </div>
       {% endfor %}
     </div>
@@ -72,10 +66,16 @@
       <div{{ attributes.addClass(classes, 'field__item') }}>
         {{ item.content }}
 
-        {% if eCareBooking %}
-          {{ uwm_cta_link('Book in eCare', 'link') }}
-        {% elseif eCareCancel %}
-          {{ uwm_cta_link('Cancel using this form', 'link') }}
+        {#
+          * This sets variables related to eCare booking to generate
+          * GTM friendly links on the Make an Appointment page.
+          *
+          * @see hook_preprocess_field__uwm_text__uwm_basic_content()
+        #}
+        {% if eCareCancelText and eCareCancelLink %}
+          {{ uwm_cta_link(eCareCancelText, eCareCancelLink) }}
+        {% elseif eCareBookText and eCareBookLink %}
+          {{ uwm_cta_link(eCareBookText, eCareBookLink) }}
         {% endif %}
       </div>
     {% endfor %}
