@@ -11,6 +11,13 @@
     attach: function (context) {
       var details = $('.ratings-details__details');
 
+      function scrollToShowingInfo() {
+        let yPx = $('#ratings-details__showing-info').offset().top;
+        $('html,body').animate({
+          scrollTop: yPx
+        }, 350);
+      }
+
       // Add pagination.
       $('#ratings-details__details-section').pagination({
         dataSource: function (done) {
@@ -37,15 +44,26 @@
           data.forEach(function (i) {
             $(details[i - 1]).addClass('ratings-details__details--active');
           })
+
+          // Update the "showing x-y" text.
+          if (typeof pagination != 'undefined') {
+            let firstItem = ((pagination.pageNumber - 1) * pagination.pageSize) + 1;
+            let lastItem = firstItem + 9;
+            $('#ratings-details__showing-info-text').html('Showing ' + firstItem + '-' + lastItem);
+          }
         },
-        // Add extra classs to the page links.
+
+        // Add extra classs to the page links, scroll on click, remove the
+        // anchor tag from the any ellipses, and add span wrappers and icons.
         afterRender: function () {
-          $('.paginationjs-page').addClass('pager__item');
-          $('.paginationjs-prev').addClass('pager__item pager__item--text pager__item--previous');
-          $('.paginationjs-next').addClass('pager__item pager__item--text pager__item--next');
-          $('.paginationjs-ellipsis').addClass('pager__item pager__item--text pager__item--ellipsis');
+          $('.pager__items li').addClass('pager__item').click(function () {
+            scrollToShowingInfo();
+          });
+          $('.paginationjs-prev').addClass('pager__item--text pager__item--previous').find('a').contents().before('<i class="fa fa-angle-left arrow-linked" aria-hidden="true"></i>').wrap('<span class="link-text"></span>');
+          $('.paginationjs-next').addClass('pager__item--text pager__item--next').find('a').contents().before('<i class="fa fa-angle-right arrow-linked" aria-hidden="true"></i>').wrap('<span class="link-text"></span>');
+          $('.paginationjs-ellipsis').addClass('pager__item--text pager__item--ellipsis').find('a').contents().unwrap();
         }
-      })
+      });
     }
   };
 
