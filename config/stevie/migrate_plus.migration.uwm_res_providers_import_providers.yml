@@ -20,7 +20,7 @@ source:
   track_changes: true
   # TEST RESERVOIR URL - DO NOT COMMIT THIS TO MASTER! :D #
   urls:
-    - 'https://bios-reservoir-test.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed'
+    - 'http://bios-reservoir-test.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed'
   ids:
     uuid:
       type: string
