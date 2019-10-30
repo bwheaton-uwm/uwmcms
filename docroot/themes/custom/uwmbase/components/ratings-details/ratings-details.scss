@@ -1,0 +1,37 @@
+@import 'init';
+
+.ratings-details__section {
+  margin-top: 20px;
+}
+.ratings-details__ratings-count {
+  font-size: 18px;
+  font-weight: $font-weight-semi-bold;
+}
+.ratings-details__summary-stars-text {
+  margin-top: 8px;
+  font-size: 14px;
+}
+.ratings-details__comments-count {
+  font-size: 18px;
+  font-weight: $font-weight-semi-bold;
+}
+.ratings-details__details {
+  display: none;
+  & + & {
+    margin-top: 20px;
+  }
+}
+.ratings-details__details--active {
+  display: flex;
+}
+.ratings-details__details-comment {
+  margin: 0;
+}
+.ratings-details__details-date {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  @include media-breakpoint-up('md') {
+    margin-bottom: 0;
+  }
+}
