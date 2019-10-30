@@ -33,3 +33,11 @@
     margin-bottom: 0;
   }
 }
+
+// Remove the left and right margins on narrow screens.
+.ratings-details .pager .pager__items .pager__item {
+  @include media-breakpoint-down('xs') {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
