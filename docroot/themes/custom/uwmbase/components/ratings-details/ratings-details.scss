@@ -17,9 +17,7 @@
 }
 .ratings-details__details {
   display: none;
-  & + & {
-    margin-top: 20px;
-  }
+  margin-top: 20px;
 }
 .ratings-details__details--active {
   display: flex;
