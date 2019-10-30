@@ -930,6 +930,8 @@ function uwmbase_preprocess_field__paragraph__uwm_text__uwm_basic_content(&$vari
       $eCareCancel = "Don't have an eCare account?";
 
       if (stristr($textBoxContent, $eCareCancel) == TRUE) {
+        $variables['attributes']['class'][] = 'make-appt-page--margin-fix';
+
         $variables['eCareCancelText'] = "Cancel Using this form.";
         $variables['eCareCancelLink'] = "https://forms.office.com/Pages/ResponsePage.aspx?id=W9229i_wGkSZoBYqxQYL0njZ16GAnYNHqcbFU33QtSFURUo4WFEwWUhTVzdHMVBWRUhSUDlCSlVJUS4u";
       }
@@ -937,7 +939,7 @@ function uwmbase_preprocess_field__paragraph__uwm_text__uwm_basic_content(&$vari
       $variables['eCareBookText'] = "Book in eCare.";
 
       if (stristr($textBoxContent, $eCareBooking) == TRUE) {
-        $variables['attributes']['class'][] = 'make-appt-page--inline-elements';
+        $variables['attributes']['class'][] = 'make-appt-page--margin-fix make-appt-page--inline-elements';
 
         if (isset($ser)) {
           $variables['eCareBookLink'] = 'https://ecare.uwmedicine.org/prod01/Scheduling?workflow=ExistingProvider&selProvId=' . $ser;
