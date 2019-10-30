@@ -179,7 +179,6 @@ function chew_preprocess_media(&$variables) {
 /**
  * Implements hook_preprocess_NODE().
  */
-
 function chew_preprocess_node(&$variables) {
 
   /***
@@ -193,6 +192,4 @@ function chew_preprocess_node(&$variables) {
       $variables['attributes']['class'][] = 'node-term-category-' . strtolower($string);
     }
   }
-
 }
-
