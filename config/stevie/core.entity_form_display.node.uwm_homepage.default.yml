@@ -4,14 +4,32 @@ status: true
 dependencies:
   config:
     - field.field.node.uwm_homepage.field_meta_tags
+    - field.field.node.uwm_homepage.field_uwm_content_owner
     - field.field.node.uwm_homepage.field_uwm_homepage_markup
+    - field.field.node.uwm_homepage.field_uwm_subject_matter_experts
     - node.type.uwm_homepage
   module:
     - allowed_formats
     - content_moderation
+    - field_group
     - metatag
     - path
     - text
+third_party_settings:
+  field_group:
+    group_content_contacts:
+      children:
+        - field_uwm_content_owner
+        - field_uwm_subject_matter_experts
+      parent_name: ''
+      weight: 20
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Content Contacts'
 id: node.uwm_homepage.default
 targetEntityType: node
 bundle: uwm_homepage
@@ -29,6 +47,15 @@ content:
     third_party_settings: {  }
     type: metatag_firehose
     region: content
+  field_uwm_content_owner:
+    weight: 26
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   field_uwm_homepage_markup:
     weight: 1
     settings:
@@ -39,6 +66,15 @@ content:
         hide_help: '1'
         hide_guidelines: '0'
     type: text_textarea
+    region: content
+  field_uwm_subject_matter_experts:
+    weight: 27
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   moderation_state:
     type: moderation_state_default

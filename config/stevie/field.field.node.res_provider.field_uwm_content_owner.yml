@@ -1,0 +1,28 @@
+uuid: 98787e88-4b00-4c17-b890-d29937d6e872
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_content_owner
+    - node.type.res_provider
+id: node.res_provider.field_uwm_content_owner
+field_name: field_uwm_content_owner
+entity_type: node
+bundle: res_provider
+label: 'Content Owner'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: true
+field_type: entity_reference

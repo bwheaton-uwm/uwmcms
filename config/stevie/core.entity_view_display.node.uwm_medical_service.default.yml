@@ -7,12 +7,14 @@ dependencies:
     - field.field.node.uwm_medical_service.field_res_conditions_symptoms
     - field.field.node.uwm_medical_service.field_res_procedures_treatments
     - field.field.node.uwm_medical_service.field_search_best_bets
+    - field.field.node.uwm_medical_service.field_uwm_content_owner
     - field.field.node.uwm_medical_service.field_uwm_find_a_location_link
     - field.field.node.uwm_medical_service.field_uwm_find_a_provider_link
     - field.field.node.uwm_medical_service.field_uwm_image
     - field.field.node.uwm_medical_service.field_uwm_medical_service
     - field.field.node.uwm_medical_service.field_uwm_page_path_name
     - field.field.node.uwm_medical_service.field_uwm_sections
+    - field.field.node.uwm_medical_service.field_uwm_subject_matter_experts
     - node.type.uwm_medical_service
   module:
     - entity_reference_revisions
@@ -30,6 +32,14 @@ content:
     third_party_settings: {  }
     type: metatag_empty_formatter
     region: content
+  field_uwm_content_owner:
+    weight: 3
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
   field_uwm_sections:
     weight: 1
     label: hidden
@@ -38,6 +48,14 @@ content:
       link: ''
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
+    region: content
+  field_uwm_subject_matter_experts:
+    weight: 4
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
     region: content
 hidden:
   content_moderation_control: true

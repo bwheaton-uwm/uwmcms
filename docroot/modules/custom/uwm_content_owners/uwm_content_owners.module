@@ -1,0 +1,66 @@
+<?php
+
+/**
+ * @file
+ * Allows a content editor to view info for a content owner or sme.
+ */
+
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function uwm_content_owners_form_alter(&$form, &$form_state, $form_id) {
+
+  // Get the node id to add a context filter to the view
+  // showing only the users that have been added to that peice of content.
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof NodeInterface) {
+    $nid = $node->id();
+  }
+
+  // Check for the NID and if so create a variable to check for content.
+  if (!empty($nid)) {
+    $content_owner_items = views_get_view_result('list_of_content_contacts', 'block_1', $nid);
+    $sme_items = views_get_view_result('list_of_content_contacts', 'block_2', $nid);
+
+    // Grab the view with the contextual filter.
+    $content_owner_view = views_embed_view('list_of_content_contacts', 'block_1', $nid);
+    $sme_view = views_embed_view('list_of_content_contacts', 'block_2', $nid);
+  }
+
+  // If the view is rendered, grab the markup
+  // else print a helpful message for the content editor.
+  $content_owner_markup = (!empty($content_owner_items))
+                            ? render($content_owner_view)
+                            : '<div>No content owners have been added yet</div>';
+
+  $sme_markup = (!empty($sme_items))
+                            ? render($sme_view)
+                            : '<div>No subject matter experts have been added yet</div>';
+
+  // Render this info only on the node edit forms.
+  if (isset($form['#theme'][1]) && $form['#theme'][1] == 'node_form') {
+    $form['content_owner_view'] = [
+      '#type' => 'details',
+      '#title' => t('Content Owner Info'),
+      '#group' => 'advanced',
+      '#open' => FALSE,
+      'markup' => [
+        '#markup' => $content_owner_markup,
+      ],
+      '#weight' => 1000,
+    ];
+
+    $form['sme_view'] = [
+      '#type' => 'details',
+      '#title' => t('Subject Matter Expert Info'),
+      '#group' => 'advanced',
+      '#open' => FALSE,
+      'markup' => [
+        '#markup' => $sme_markup,
+      ],
+      '#weight' => 1000,
+    ];
+  }
+}

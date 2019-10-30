@@ -1,0 +1,5 @@
+name: uwmcs_content_owners
+description: 'Inserts Content owners and subject matter experts view into node'
+package: UWMed
+type: module
+core: 8.x

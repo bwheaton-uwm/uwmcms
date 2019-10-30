@@ -6,8 +6,10 @@
  * Custom variables:
  * - link_attributes: Attribute object for <a> tag
  * - fluid_width: boolean, whether to style as fluid width
- * - btn_cta_solid: boolean, whether to style as solid-background-color button
- *   (instead of standard CTA button with upper left corner color)
+ * - btn_cta_style: List select to determine button style. Currently the only
+ *     alternative option is 'Solid' which creates a blue cta
+ *     default is standard CTA button with upper left corner color
+ *     @TODO Add additional logic if other button styles are added
  * - field_uwm_link__url: string, the URL string value from field_uwm_link
  * - field_uwm_link__title: string, the title string value from field_uwm_link
  *
@@ -20,7 +22,7 @@
     'btn',
     attributes.class|join(' '),
     css_parents_classes|join(' '),
-    btn_cta_solid ? 'btn-cta-solid' : 'btn-cta',
+    btn_cta_style == 'Solid' ? 'btn-cta-solid' : 'btn-cta',
     fluid_width ? 'btn-cta-fluid' : 'btn-cta-link',
 
   ] %}
@@ -29,7 +31,7 @@
 
   {% set text %}
     <span class="btn__text">{{ field_uwm_link__title }}</span>
-    {% if not fluid_width and not btn_cta_solid %}
+    {% if not fluid_width and btn_cta_style != 'Solid' %}
       <span class="fa fa-angle-right fa-fw fa-lg" aria-hidden="true"></span>
     {% endif %}
   {% endset %}

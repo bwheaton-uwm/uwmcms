@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.res_provider.field_ratings
     - field.field.node.res_provider.field_res_academic_title
     - field.field.node.res_provider.field_res_affiliates
     - field.field.node.res_provider.field_res_biography
@@ -34,7 +35,9 @@ dependencies:
     - field.field.node.res_provider.field_res_ser_id
     - field.field.node.res_provider.field_res_visit_type_id
     - field.field.node.res_provider.field_search_best_bets
+    - field.field.node.res_provider.field_uwm_content_owner
     - field.field.node.res_provider.field_uwm_json_packet
+    - field.field.node.res_provider.field_uwm_subject_matter_experts
     - field.field.node.res_provider.uwm_unique_id
     - image.style.square_l
     - node.type.res_provider
@@ -67,6 +70,13 @@ content:
       markup: false
     third_party_settings: {  }
     type: name_default
+    region: content
+  field_ratings:
+    weight: 30
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
     region: content
   field_res_academic_title:
     weight: 28
@@ -301,6 +311,22 @@ content:
     settings:
       link: true
     third_party_settings: {  }
+  field_uwm_content_owner:
+    weight: 25
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_uwm_subject_matter_experts:
+    weight: 26
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
   links:
     weight: 13
     region: content

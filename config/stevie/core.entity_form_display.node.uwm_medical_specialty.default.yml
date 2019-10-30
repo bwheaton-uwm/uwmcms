@@ -9,12 +9,14 @@ dependencies:
     - field.field.node.uwm_medical_specialty.field_res_conditions_symptoms
     - field.field.node.uwm_medical_specialty.field_res_procedures_treatments
     - field.field.node.uwm_medical_specialty.field_search_best_bets
+    - field.field.node.uwm_medical_specialty.field_uwm_content_owner
     - field.field.node.uwm_medical_specialty.field_uwm_find_a_location_link
     - field.field.node.uwm_medical_specialty.field_uwm_find_a_provider_link
     - field.field.node.uwm_medical_specialty.field_uwm_image
     - field.field.node.uwm_medical_specialty.field_uwm_page_path_name
     - field.field.node.uwm_medical_specialty.field_uwm_parent_page
     - field.field.node.uwm_medical_specialty.field_uwm_sections
+    - field.field.node.uwm_medical_specialty.field_uwm_subject_matter_experts
     - field.field.node.uwm_medical_specialty.field_uwm_weight
     - node.type.uwm_medical_specialty
   module:
@@ -92,6 +94,19 @@ third_party_settings:
         description: ''
         required_fields: false
       label: Old
+    group_content_contacts:
+      children:
+        - field_uwm_content_owner
+        - field_uwm_subject_matter_experts
+      parent_name: ''
+      weight: 20
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Content Contacts'
 id: node.uwm_medical_specialty.default
 targetEntityType: node
 bundle: uwm_medical_specialty
@@ -126,6 +141,15 @@ content:
     third_party_settings: {  }
   field_search_best_bets:
     weight: 11
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_uwm_content_owner:
+    weight: 26
     settings:
       match_operator: CONTAINS
       size: 60
@@ -198,6 +222,15 @@ content:
         add_above: '0'
     third_party_settings: {  }
     type: paragraphs
+    region: content
+  field_uwm_subject_matter_experts:
+    weight: 27
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   field_uwm_weight:
     weight: 10

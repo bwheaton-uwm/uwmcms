@@ -86,7 +86,7 @@
  * );
  * @endcode
  */
- $databases = array();
+$databases = array();
 
 /**
  * Customizing database settings.
@@ -764,6 +764,19 @@ $settings['file_scan_ignore_directories'] = [
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
 
+/**
+ * Include development settings, if not on our Acquia host
+ */
+if (!isset($_ENV['AH_SITE_ENVIRONMENT']) && !is_dir('/var/www/site-php')) {
+  $file = $app_root . '/' . $site_path . '/development.settings.php';
+  if (file_exists($file)) {
+    include $file;
+  }
+}
+
+/**
+ * Include host settings when on Acquia Cloud
+ */
 if (file_exists('/var/www/site-php')) {
   require '/var/www/site-php/uwmed/chew-settings.inc';
 }
@@ -775,7 +788,7 @@ if (isset($settings['memcache']['servers'])) {
 
 if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
   $secrets_file = sprintf('/mnt/gfs/%s.%s/nobackup/chew.secrets.settings.php',
-    $_ENV['AH_SITE_GROUP'],$_ENV['AH_SITE_ENVIRONMENT']);
+    $_ENV['AH_SITE_GROUP'], $_ENV['AH_SITE_ENVIRONMENT']);
   if (file_exists($secrets_file)) {
     require $secrets_file;
   }
