@@ -34,6 +34,8 @@
   {% endif %}
   {% if ratings.details %}
     <div id="ratings-details__details-section" class="ratings-details__section">
+      <a id="ratings-details__showing-info"></a>
+      <div id="ratings-details__showing-info-text"></div>
       {% for details in ratings.details %}
         <div class="ratings-details__details row">
           <div class="col-12 col-md-3 col-lg-2">
