@@ -1,14 +1,14 @@
 {{ attach_library('uwmbase/ratings-summary') }}
 
-{% set ratings_summary_url = '#overview-tab-tab---ratings-details' %}
+{% set ratings_details_url = '#overview-tab-tab---ratings-details' %}
 
 <div class="ratings-summary">
   <div class="ratings-summary__stars-section">
-    {% include "@uwmbase/rating-stars/rating-stars.twig" with {'rating_stars_url': ratings_summary_url } %}
+    {% include "@uwmbase/rating-stars/rating-stars.twig" with {'stars': ratings.summary.stars, 'link_url': ratings_details_url } %}
     {% if ratings.summary.value %}
       <div class="ratings-summary__stars-text">
         <a href="{{ ratings_summary_url }}" class="ratings-summary__link text-link-blue no-underline">
-          {{ ratings.summary.value }} out of 5
+          {{ '@value out of 5'|t({'@value': ratings.summary.value}) }}
         </a>
       </div>
     {% endif %}
@@ -18,14 +18,14 @@
       {% if ratings.summary.count.ratings %}
         <div class="ratings-summary__ratings-count">
           <a href="{{ ratings_summary_url }}" class="ratings-summary__link text-link-blue no-underline">
-            {{ ratings.summary.count.ratings }} ratings
+            {{ '@count ratings'|t({'@count': ratings.summary.count.ratings}) }}
           </a>
         </div>
       {%  endif %}
       {% if ratings.summary.count.comments %}
         <div class="ratings-summary__comments-count">
           <a href="{{ ratings_summary_url }}" class="ratings-summary__link text-link-blue no-underline">
-            {{ ratings.summary.count.comments }} comments
+            {{ '@count comments'|t({'@count': ratings.summary.count.comments}) }}
           </a>
         </div>
       {%  endif %}
