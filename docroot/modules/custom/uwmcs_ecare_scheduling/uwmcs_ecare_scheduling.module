@@ -21,8 +21,7 @@ function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
 
     // Set defaults for when fields are not populated.
     $variables['accepting_new'] = FALSE;
-    // TODO: confirm this default.
-    $variables['accepting_returning'] = TRUE;
+    $variables['accepting_returning'] = FALSE;
 
     $variables['epic_id'] = NULL;
     $variables['direct_scheduling'] = FALSE;
