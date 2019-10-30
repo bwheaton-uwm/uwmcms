@@ -1,5 +1,19 @@
 @import 'init';
 
+// Remove the left and right margins on narrow screens.
+.ratings-details {
+  .pager {
+    padding: 0;
+    margin: 20px 0 6px 0;
+    .pager__items .pager__item {
+      @include media-breakpoint-down('xs') {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+}
+
 .ratings-details__section {
   margin-top: 20px;
 }
@@ -31,13 +45,5 @@
   font-size: 14px;
   @include media-breakpoint-up('md') {
     margin-bottom: 0;
-  }
-}
-
-// Remove the left and right margins on narrow screens.
-.ratings-details .pager .pager__items .pager__item {
-  @include media-breakpoint-down('xs') {
-    margin-left: 0;
-    margin-right: 0;
   }
 }
