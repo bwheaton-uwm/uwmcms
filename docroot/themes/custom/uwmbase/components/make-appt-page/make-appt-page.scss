@@ -27,4 +27,13 @@
     display: block;
     margin-bottom: 1rem;
   }
+
+  &--inline-elements {
+    margin-bottom: 1rem;
+
+    p {
+      display: inline-block;
+      margin-bottom: 0;
+    }
+  }
 }

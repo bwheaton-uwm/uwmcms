@@ -923,8 +923,6 @@ function uwmbase_preprocess_field__paragraph__uwm_text__uwm_basic_content(&$vari
   }
 
   if ($uri_parts['path'] == '/patient-resources/make-an-appointment') {
-    $variables['attributes']['class'][] = 'make-appt-page--inline-elements';
-
     foreach ($variables['items'] as &$item) {
       $textBoxContent = $item['content']['#text'];
       $eCareBooking = 'Returning patient?';
@@ -938,20 +936,21 @@ function uwmbase_preprocess_field__paragraph__uwm_text__uwm_basic_content(&$vari
 
       $variables['eCareBookText'] = "Book in eCare.";
 
-      if (isset($ser)) {
-        if (stristr($textBoxContent, $eCareBooking) == TRUE) {
+      if (stristr($textBoxContent, $eCareBooking) == TRUE) {
+        $variables['attributes']['class'][] = 'make-appt-page--inline-elements';
+
+        if (isset($ser)) {
           $variables['eCareBookLink'] = 'https://ecare.uwmedicine.org/prod01/Scheduling?workflow=ExistingProvider&selProvId=' . $ser;
         }
-        elseif (stristr($textBoxContent, $eCareGeneric) == TRUE) {
-          print_r('cool cool cool');
-          $item['content']['#text'] = '<div class="uwm-cta cta-to-ecareuwmedicineorg cta-to-prod01-openscheduling-signupandschedule-embeddedschedule cta-from-patient-resources-make-an-appointment make-appt-page--book-online-link"><a href="https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book with ' . '<span class="font-weight-semi-bold">' . trim($providerNode->label()) . '</span>' . '</a></div>';
-        }
-      }
-      else {
-        if (stristr($textBoxContent, $eCareBooking) == TRUE) {
+        else {
           $variables['eCareBookLink'] = 'https://ecare.uwmedicine.org/PROD01/Scheduling';
         }
       }
+
+      if (stristr($textBoxContent, $eCareGeneric) == TRUE && isset($ser)) {
+        $item['content']['#text'] = '<div class="uwm-cta cta-to-ecareuwmedicineorg cta-to-prod01-openscheduling-signupandschedule-embeddedschedule cta-from-patient-resources-make-an-appointment make-appt-page--book-online-link"><a href="https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book with ' . '<span class="font-weight-semi-bold">' . trim($providerNode->label()) . '</span>' . '</a></div>';
+      }
+
     }
   }
 }
