@@ -5,11 +5,11 @@
  * Custom PHP code for the CHEW theme.
  */
 
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Markup;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\taxonomy\TermInterface;
-use Drupal\Component\Utility\Html;
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter() for page templates.
@@ -181,15 +181,27 @@ function chew_preprocess_media(&$variables) {
  */
 function chew_preprocess_node(&$variables) {
 
+  $node = $variables['node'];
   /***
-   * Add category to node for theming.
+   * Add article category to the node, so the quick-read or
+   * pull quotes can be given color for theming.
    */
-  $node_terms = $variables['node']->field_categories->referencedEntities();
-  foreach ($node_terms as $term) {
-    $term_roots = \Drupal::service('entity_type.manager')->getStorage("taxonomy_term")->loadAllParents($term->id());
-    foreach ($term_roots as $root) {
-      $string = Html::cleanCssIdentifier($root->getName());
-      $variables['attributes']['class'][] = 'node-term-category-' . strtolower($string);
+  if ($node->hasField('field_categories')) {
+
+    $node_terms = $variables['node']->field_categories->referencedEntities();
+
+    foreach ($node_terms as $term) {
+
+      $term_roots = \Drupal::service('entity_type.manager')->getStorage("taxonomy_term")->loadAllParents($term->id());
+      foreach ($term_roots as $root) {
+
+        $name = Html::cleanCssIdentifier($root->getName());
+        $variables['attributes']['class'][] = 'node-term-category-' . strtolower($name);
+
+      }
+
     }
+
   }
+
 }
