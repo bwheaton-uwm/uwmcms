@@ -1,7 +1,8 @@
 var
   gulp = require('gulp'),
   $ = require('gulp-load-plugins')({lazy: true}),
-  args = require('yargs').argv;
+  args = require('yargs').argv,
+  sourcemaps = require('gulp-sourcemaps');
 
 var
   config = {
@@ -20,17 +21,26 @@ var
 
 gulp.task('sass', function() {
   return gulp.src('scss/*.scss')
+    .pipe(sourcemaps.init())
     .pipe($.sass({
       includePaths: config.sassIncludePaths
     }))
     .pipe($.autoprefixer({
       browsers: ['last 2 versions', 'ie >= 10']
     }))
+
+    .pipe(sourcemaps.write({includeContent: false}))
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(sourcemaps.write('../maps'))
     .pipe(gulp.dest('css'))
 });
 
 gulp.task('javascript', function() {
   return gulp.src(config.javascriptFiles)
+    .pipe(sourcemaps.init())
+    .pipe(sourcemaps.write({includeContent: false}))
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(sourcemaps.write('../../maps'))
     .pipe(gulp.dest('./js/vendor'));
 });
 

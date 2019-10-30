@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap-sass": "^3.4.1",
+    "gulp-sourcemaps": "^2.6.5",
     "install": "^0.8.9",
     "jquery": "^3.4.1",
     "jquery-validation": "^1.19.1",
