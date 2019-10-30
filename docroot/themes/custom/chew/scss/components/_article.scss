@@ -49,7 +49,7 @@ body.page-node-type-article .main-container {
   }
 
   p {
-    margin-bottom: 56px;
+    margin-bottom: 45px;
 
     &:last-child {
       margin-bottom: 0;
@@ -63,19 +63,28 @@ body.page-node-type-article .main-container {
     a {
       position: relative;
       display: inline-block;
-
       &:after {
-        content: '';
-        position: absolute;
-        left: 3px;
-        bottom: 5px;
-        height: 6px;
-        width: 100%;
-        background: #82cfcd;
-        z-index: -1;
-        opacity: .5;
+        @extend %link-border;
+      }
+      &:hover:after {
+        @extend %link-border;
+        opacity: 1 !important;
       }
     }
+
+
+    %link-border {
+      content: '';
+      position: absolute;
+      left: 3px;
+      bottom: 5px;
+      height: 6px;
+      width: 100%;
+      background: #82cfcd;
+      z-index: -1;
+      opacity: .5;
+    }
+
   }
 
   .field--name-image .field.field--name-field-credit {

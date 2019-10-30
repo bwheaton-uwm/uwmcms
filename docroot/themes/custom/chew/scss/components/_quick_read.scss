@@ -2,15 +2,13 @@
 
   margin: 24px 0 40px 0;
   padding: 32px 15px 32px 24px;
-  border-left: 8px solid $darkgreen;
-  background: $lightgreen;
   color: #343638;
 
   @media (min-width: $screen-xs) {
     padding: 24px 16px;
   }
   @media (min-width: $screen-md) {
-    padding: 32px 15px 32px 92px;
+    padding: 32px 100px 32px 92px;
   }
 
   .field--name-field-superheading {
@@ -44,4 +42,23 @@
     margin: 0;
   }
 
+}
+
+article.node-term-category-exercise, article.node-term-category-mind {
+  .paragraph--type--quick-read {
+    border-left: 8px solid $darkgreen;
+    background-color: $lightgreen;
+  }
+}
+article.node-term-category-life {
+  .paragraph--type--quick-read {
+    border-left: 8px solid $purple;
+    background-color: $light-purple;
+  }
+}
+article.node-term-category-well {
+  .paragraph--type--quick-read {
+    border-left: 8px solid $red;
+    background-color: $light-red;
+  }
 }

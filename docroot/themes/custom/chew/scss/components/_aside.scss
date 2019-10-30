@@ -47,11 +47,12 @@
     ul {
       list-style-type: none;
       margin: 0;
-
+      padding: 0;
       li:before {
-        @extend %chew-icon--next-step;
+        @extend .chew-icon.next-step;
+        @include chew_icon_svg_background('.next-step', $light-gray);
         display: inline-block;
-        content: ' ';
+        content: '';
         vertical-align: text-top;
         margin: 0 16px 24px 0;
       }

@@ -12,9 +12,7 @@
 
   .field--name-field-quote-text {
 
-    @extend %pull-quote-size;
-
-    //color: $brand-secondary;
+    border-top: 8px solid $darkgreen;
     font-family: $font-family-sans-serif;
     font-weight: 500;
     font-size: 20px;
@@ -30,8 +28,7 @@
 
   .field--name-field-quote-attribution {
 
-    @extend %pull-quote-size;
-    //color: $brand-secondary;
+    border-top: 8px solid $darkgreen;
     font-family: $font-family-sans-serif;
     font-size: ceil(($font-size-base * .778));
     text-align: right;
@@ -40,6 +37,46 @@
     }
   }
 
+  .field--name-field-quote-text, .field--name-field-quote-attribution {
+    @extend %pull-quote-size;
+  }
+
+}
+
+article.node-term-category-exercise, article.node-term-category-mind {
+  .field .paragraph--type--pull-quote {
+    .field--name-field-quote-text, .field--name-field-quote-attribution {
+      border-top: 8px solid $darkgreen;
+      @media (min-width: $screen-xs) {
+        border-left: 8px solid $darkgreen;
+        border-top: 0 none;
+      }
+    }
+  }
+}
+
+article.node-term-category-life {
+  .field .paragraph--type--pull-quote {
+    .field--name-field-quote-text, .field--name-field-quote-attribution {
+      border-top: 8px solid $purple;
+      @media (min-width: $screen-xs) {
+        border-left: 8px solid $purple;
+        border-top: 0 none;
+      }
+    }
+  }
+}
+
+article.node-term-category-well {
+  .field .paragraph--type--pull-quote {
+    .field--name-field-quote-text, .field--name-field-quote-attribution {
+      border-top: 8px solid $red;
+      @media (min-width: $screen-xs) {
+        border-left: 8px solid $red;
+        border-top: 0 none;
+      }
+    }
+  }
 }
 
 %pull-quote-size {
@@ -48,7 +85,6 @@
 
   max-width: 248px;
   float: none;
-  border-top: 8px solid $darkgreen;
 
   @media (min-width: $screen-xs) {
     max-width: 442px;
