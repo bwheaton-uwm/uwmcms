@@ -9,7 +9,7 @@
   @include clearfix();
   margin-bottom: 1rem;
   a {
-    color: $dark-gray;
+    color: $dark-gray-base;
 
     &:hover,
     &:active {
@@ -22,7 +22,7 @@
     font-size: $font-size-base-xs;
     line-height: 1;
 
-    @media (min-width: 768px) {
+    @media (min-width: $screen-sm) {
       font-size: $font-size-base;
     }
 
@@ -32,7 +32,7 @@
     }
     .taxonomy-term.count-2 a{
       padding-left: 1rem;
-      border-left: 1px solid $dark-gray;
+      border-left: 1px solid $dark-gray-base;
     }
     img.terms-icon {
       width: 2rem;
@@ -40,7 +40,7 @@
       display: inline-block;
       vertical-align: top;
 
-      @media (min-width: 768px) {
+      @media (min-width: $screen-sm) {
         width: 2.4rem;
       }
     }
@@ -50,27 +50,27 @@
   #block-factchecked {
     float: left;
     font-family: $font-family-sans-serif;
-    color: $dark-gray;
+    color: $dark-gray-base;
     font-size: $font-size-small * 0.875;
     line-height: 1;
 
-    @media (min-width: 768px) {
+    @media (min-width: $screen-sm) {
       font-size: $font-size-small;
     }
   }
   .block-entity-fieldnodefield-author {
     font-weight: 500;
     padding-right: 1rem;
-    border-right: 1px solid $dark-gray;
+    border-right: 1px solid $dark-gray-base;
   }
   .block-entity-fieldnodecreated {
     padding: 0 1rem;
-    border-right: 1px solid $dark-gray;
+    border-right: 1px solid $dark-gray-base;
   }
   .article__block--fact-checked {
     padding-top: 1rem;
 
-    @media (min-width: 768px) {
+    @media (min-width: $screen-sm) {
       padding-left: 1rem;
       padding-top: 0;
     }

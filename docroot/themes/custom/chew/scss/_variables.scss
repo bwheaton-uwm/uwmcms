@@ -9,11 +9,20 @@ $dark-rain: #006C8A;
 $light-rain: #82CFCD;
 $mountain-green: #008566;
 $well-coral: #C2513D;
+$lightgreen: rgb(229,244,241);
+$darkgreen: rgb(31,116,83);
+$light-gray: #dfe1e2;
+$light-purple: lighten(#37236a, 70%);
+$purple: #37236a;
+$red: #d53e39;
+$dark-red: #d53e39;
+$light-red: lighten(#d53e39, 45%);
 
 // Grayscale
-$dark-gray: #343638;
+$dark-gray-base: #343638;
 $medium-gray: #4B545A;
 $light-gray: #F5F5F5;
+$base-gray: #343638;
 
 $brand-secondary: #008566;
 $font-size-base-xs: 15px;
