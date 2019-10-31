@@ -3,14 +3,19 @@
     margin-bottom: 10px;
     > li {
       font-family: $font-family-sans-serif;
+
       > a {
         padding: 0;
         margin: 0;
-        line-height: 1.5;
-        font-size: floor(($font-size-base));
+        font-weight: 500;
+        line-height: 26px;
+        font-size: 14px;
+        color: $base-gray;
         @media (min-width: $screen-md) {
           margin-left: 25px;
-          font-size: floor(($font-size-base * 1.556));
+          font-size: 18px;
+          line-height: 26px;
+          text-transform: uppercase;
         }
         @media (min-width: $screen-lg) {
           margin-left: 50px;
