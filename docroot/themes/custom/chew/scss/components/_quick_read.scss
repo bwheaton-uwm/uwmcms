@@ -12,9 +12,7 @@
   }
 
   .field--name-field-superheading {
-    font-family: $font-family-sans-serif;
-    font-size: 19px;
-    line-height: 22px;
+    @extend .h2;
     color: $dark-gray-base;
     font-weight: bold;
     text-transform: uppercase;
@@ -26,9 +24,8 @@
   }
 
   .field--name-field-heading {
+    @extend .h2;
     margin-top: 0;
-    font-family: $font-family-sans-serif;
-    font-size: 19px;
     color: $dark-gray-base;
     display: inline;
   }

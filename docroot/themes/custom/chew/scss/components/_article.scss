@@ -32,12 +32,20 @@ body.page-node-type-article .main-container {
       margin-left: -36px;
       margin-right: -36px;
     }
+    .field.field--name-image {
+      max-height: 300px;
+      overflow: hidden;
+    }
   }
   @media (min-width: $screen-md) {
     .field.field--name-field-primary-media,
     .field.field--name-field-quick-read {
       margin-left: -100px;
       margin-right: -100px;
+    }
+    .field.field--name-image {
+      max-height: 440px;
+      overflow: hidden;
     }
   }
 
@@ -63,12 +71,15 @@ body.page-node-type-article .main-container {
     a {
       position: relative;
       display: inline-block;
+
       &:after {
         @extend %link-border;
       }
+
       &:hover:after {
-        @extend %link-border;
-        opacity: 1 !important;
+        //@extend %link-border;
+        //opacity: 1 !important;
+        font-weight: bold;
       }
     }
 
@@ -89,6 +100,10 @@ body.page-node-type-article .main-container {
 
   .field--name-image .field.field--name-field-credit {
     color: #343638;
+  }
+
+  .content-footer p {
+    margin-bottom: 16px;
   }
 
 }

@@ -50,7 +50,7 @@
       padding: 0;
       li:before {
         @extend .chew-icon.next-step;
-        @include chew_icon_svg_background('.next-step', $light-gray);
+        @include chew_icon_svg_background('.next-step', $dark-gray-base);
         display: inline-block;
         content: '';
         vertical-align: text-top;
