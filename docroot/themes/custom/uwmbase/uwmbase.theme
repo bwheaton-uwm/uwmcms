@@ -1600,6 +1600,11 @@ function uwmbase_preprocess_paragraph__uwm_cta_link(&$variables) {
     }
   }
 
+  $currentPath = \Drupal::service('path.current')->getPath();
+  if ($currentPath == '/node/20836' && $variables['content']['field_uwm_link'][0]['#title'] = 'Book online') {
+    $variables['book_online_ctaCustomClasses'] = TRUE;
+  }
+
   // Get the current URI and parse it.
   $uri_parts = UrlHelper::parse(\Drupal::request()->getRequestUri());
 
