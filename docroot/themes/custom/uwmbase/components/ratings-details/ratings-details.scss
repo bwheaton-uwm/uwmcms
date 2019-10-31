@@ -21,9 +21,29 @@
   font-size: 18px;
   font-weight: $font-weight-semi-bold;
 }
+.ratings-details__summary-stars-subsection {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 20px;
+  @include media-breakpoint-up('md') {
+    display: block;
+    margin-bottom: 0;
+  }
+}
+.ratings-details__summary-stars {
+  margin-top: -4px;
+  @include media-breakpoint-up('md') {
+    margin-top: 0;
+  }
+}
 .ratings-details__summary-stars-text {
-  margin-top: 8px;
   font-size: 14px;
+  margin-left: 10px;
+  @include media-breakpoint-up('md') {
+    margin-top: 8px;
+    margin-left: 0;
+  }
 }
 .ratings-details__comments-count {
   font-size: 18px;
