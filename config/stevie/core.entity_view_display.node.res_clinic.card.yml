@@ -6,16 +6,21 @@ dependencies:
     - core.entity_view_mode.node.card
     - field.field.node.res_clinic.body
     - field.field.node.res_clinic.field_featured
+    - field.field.node.res_clinic.field_hide_see_clinics_cta
     - field.field.node.res_clinic.field_res_affiliates
     - field.field.node.res_clinic.field_res_box_number
     - field.field.node.res_clinic.field_res_building
     - field.field.node.res_clinic.field_res_clockwise_id
+    - field.field.node.res_clinic.field_res_conditions_symptoms
+    - field.field.node.res_clinic.field_res_department
     - field.field.node.res_clinic.field_res_epic_department_ids
     - field.field.node.res_clinic.field_res_expertises
     - field.field.node.res_clinic.field_res_external_url
     - field.field.node.res_clinic.field_res_fax_number
     - field.field.node.res_clinic.field_res_feat_clinics_header
+    - field.field.node.res_clinic.field_res_feat_clinics_view_all
     - field.field.node.res_clinic.field_res_featured_clinics
+    - field.field.node.res_clinic.field_res_features_amenities
     - field.field.node.res_clinic.field_res_floor
     - field.field.node.res_clinic.field_res_hide_appt_ctas
     - field.field.node.res_clinic.field_res_hide_open_scheduling
@@ -23,11 +28,14 @@ dependencies:
     - field.field.node.res_clinic.field_res_hours_of_operation
     - field.field.node.res_clinic.field_res_image
     - field.field.node.res_clinic.field_res_internal_url
+    - field.field.node.res_clinic.field_res_is_building
     - field.field.node.res_clinic.field_res_is_hospital
     - field.field.node.res_clinic.field_res_iscallcenterserviced
     - field.field.node.res_clinic.field_res_medical_services
     - field.field.node.res_clinic.field_res_meta_tags
+    - field.field.node.res_clinic.field_res_patients_treated
     - field.field.node.res_clinic.field_res_phone_number
+    - field.field.node.res_clinic.field_res_procedures_treatments
     - field.field.node.res_clinic.field_res_providers
     - field.field.node.res_clinic.field_res_room_number
     - field.field.node.res_clinic.field_search_best_bets
