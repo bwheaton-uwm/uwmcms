@@ -54,6 +54,19 @@ body.page-node-type-article .main-container {
   h2 {
     margin: 28px 0;
     color: $dark-base-gray;
+    font-size: 20px;
+    line-height: 1.25;
+
+    @media (min-width: $screen-sm) {
+      font-size: 25px;
+      line-height: 1.32;
+    }
+
+    @media (min-width: $screen-md) {
+      font-size: 32px;
+      line-height: 1.25;
+    }
+
   }
 
   p {
@@ -100,7 +113,10 @@ body.page-node-type-article .main-container {
       // override default article link styles for header
       a {
         color: $dark-base-gray;
-        text-decoration: none;;
+
+        &:after {
+          background: none;
+        }
 
         &:hover,
         &:active {
