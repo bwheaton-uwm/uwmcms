@@ -43,7 +43,7 @@ $pager-light-purple-hover: #d6cee0;
         border-radius: 50%;
         line-height: 1.875rem; // 30px
         text-align: center;
-        color: $purple;
+        color: $heading-purple;
         text-decoration: none;
 
         &:hover {
@@ -65,7 +65,7 @@ $pager-light-purple-hover: #d6cee0;
 
       .fa-angle-left,
       .fa-angle-right {
-        color: $purple;
+        color: $heading-purple;
       }
     }
 
