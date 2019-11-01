@@ -196,7 +196,6 @@ function chew_preprocess_node(&$variables) {
       $variables['attributes']['class'][] = 'node-term-category-' . strtolower($name);
     }
 
-
   }
 
 }
