@@ -53,6 +53,13 @@
           }
         },
 
+        // If there are fewer than 11 details items, display all of them.
+        beforeInit: function () {
+          if (details.length < 11) {
+            details.addClass('ratings-details__details--active');
+          }
+        },
+
         // Add extra classs to the page links, scroll on click, remove the
         // anchor tag from the any ellipses, and add span wrappers and icons.
         afterRender: function () {
