@@ -4,7 +4,7 @@
 
 $chew-icons-directory: '/themes/custom/chew/images/icons';
 
-@mixin chew_icon_svg_background($icon-name: '', $icon-color: $base-gray) {
+@mixin chew_icon_svg_background($icon-name: '', $icon-color: $dark-base-gray) {
 
   // Remove leading "#" because it must be encoded for inline-svg
   $fill-color: str-slice("#{$icon-color}", 2);

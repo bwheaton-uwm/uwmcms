@@ -1,12 +1,24 @@
-
 $fa-font-path: "../node_modules/@fortawesome/fontawesome-free/webfonts/";
 $font-size-base-xs: 15px;
 
-$brand-secondary: #008566;
+// Color Overrides
+// Primary
 $uw_purple: #33006f;
+$uw_medicine_gray: #313E48;
 
-$base-gray: #343638;
-$light-gray: #dfe1e2;
+// Grayscale
+$dark-base-gray: #343638;
+$medium-gray: #4B545A;
+$light-gray: #F5F5F5;
+
+// Secondary
+$brand-secondary: #008566;
+
+$dark-rain: #006C8A;
+$light-rain: #82CFCD;
+
+$mountain-green: #008566;
+$well-coral: #C2513D;
 
 $light-green: rgb(229,244,241);
 $dark-green: rgb(31,116,83);

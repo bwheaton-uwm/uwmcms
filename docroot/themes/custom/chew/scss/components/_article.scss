@@ -49,11 +49,11 @@ body.page-node-type-article .main-container {
     }
   }
 
-  color: $base-gray;
+  color: $dark-base-gray;
 
   h2 {
     margin: 28px 0;
-    color: $base-gray;
+    color: $dark-base-gray;
   }
 
   p {
@@ -70,7 +70,7 @@ body.page-node-type-article .main-container {
     display: inline-block;
     &:hover {
       font-weight: bold;
-      color: $base-gray;
+      color: $dark-base-gray;
     }
     &:after {
       content: '';

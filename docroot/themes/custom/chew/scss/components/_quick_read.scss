@@ -13,11 +13,11 @@
 
   .field--name-field-superheading {
     @extend .h2;
-    color: $base-gray;
+    color: $dark-base-gray;
     font-weight: bold;
     text-transform: none;
     display: inline-block;
-    border-right: 1px solid $base-gray;
+    border-right: 1px solid $dark-base-gray;
     padding-right: 10px;
     margin: 0 5px 12px 0;
 
@@ -31,13 +31,13 @@
     @extend .h2;
     display: inline;
     margin-top: 0;
-    color: $base-gray;
+    color: $dark-base-gray;
     text-transform: none;
   }
 
   .field--name-field-body {
     font-family: $font-family-sans-serif;
-    color: $base-gray;
+    color: $dark-base-gray;
   }
 
   ul {
