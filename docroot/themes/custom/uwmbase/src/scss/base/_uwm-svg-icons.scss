@@ -52,6 +52,12 @@ $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
     width: 16px;
     height: 16px;
   }
+  // @TODO: remove this when we solve for svgs with color variation
+  &.uwm-icon--accepting-patients-purple {
+    background-image: url('#{$icon-path}/icon_accepting_patients_purple.svg');
+    width: 16px;
+    height: 16px;
+  }
   &.uwm-icon--appointment {
     background-image: url('#{$icon-path}/icon_appointment.svg');
   }

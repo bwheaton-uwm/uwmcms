@@ -58,15 +58,25 @@
                             `field_res_isacceptingreturnpts`
                             @see uwmcs_ecare_scheduling_preprocess_node()
                         #}
-                        {% if accepting_new %}
+                        {% if accepting_new and accepting_returning %}
+                            <i class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></i>
+                            {{ "Accepting new and returning patients"|t }}
+                        {% elseif accepting_returning and (not accepting_new)  %}
+                            <i class="uwm-icon uwm-icon--accepting-patients-purple" aria-hidden="true"></i>
+                            {{ "Accepting returning patients"|t }}
+                        {% elseif accepting_new and (not accepting_returning) %}
+                            {#
+                                NOTE: this case is probably unrealistic and
+                                indicates bad data. Handle it by providing
+                                what options we know we have.
+                            #}
                             <i class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></i>
                             {{ "Accepting new patients"|t }}
-                        {% elseif accepting_returning %}
-                            <i class="uwm-icon uwm-icon--not-accepting-patients" aria-hidden="true"></i>
-                            {{ "Not accepting new patients"|t }}
                         {% else %}
-                            <i class="uwm-icon uwm-icon--not-accepting-patients" aria-hidden="true"></i>
-                            {{ "Not accepting appointments"|t }}
+                            {#
+                                No message if provider does not accept any type
+                                of appointments.
+                            #}
                         {% endif %}
                     </div>
                     {% if accepting_returning or accepting_new %}
