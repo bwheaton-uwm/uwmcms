@@ -54,11 +54,11 @@ $pager-light-purple-hover: #d6cee0;
 
       &.is-active {
         a {
-          background-color: $purple;
+          background-color: $heading-purple;
           color: $white;
 
           &:hover {
-            background-color: $purple;
+            background-color: $heading-purple;
           }
         }
       }
