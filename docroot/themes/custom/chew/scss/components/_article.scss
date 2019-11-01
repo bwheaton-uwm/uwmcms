@@ -49,11 +49,11 @@ body.page-node-type-article .main-container {
     }
   }
 
-  color: $dark-gray-base;
+  color: $base-gray;
 
   h2 {
     margin: 28px 0;
-    color: $dark-gray-base;
+    color: $base-gray;
   }
 
   p {
@@ -64,27 +64,15 @@ body.page-node-type-article .main-container {
     }
   }
 
-  .paragraph--type--body-text, .paragraph--type--aside {
-
-    // Add green border, which sits above
-    // baseline and is offset to the right.
-    a {
-      position: relative;
-      display: inline-block;
-
-      &:after {
-        @extend %link-border;
-      }
-
-      &:hover:after {
-        //@extend %link-border;
-        //opacity: 1 !important;
-        font-weight: bold;
-      }
+  // Add green border, above baseline and offset right
+  a {
+    position: relative;
+    display: inline-block;
+    &:hover {
+      font-weight: bold;
+      color: $base-gray;
     }
-
-
-    %link-border {
+    &:after {
       content: '';
       position: absolute;
       left: 3px;
@@ -95,15 +83,23 @@ body.page-node-type-article .main-container {
       z-index: -1;
       opacity: .5;
     }
-
   }
 
   .field--name-image .field.field--name-field-credit {
     color: #343638;
   }
 
-  .content-footer p {
-    margin-bottom: 16px;
+  .content-footer {
+    @extend .body3;
+
+    .far {
+      width: 15px;
+      height: 15px;
+    }
+
+    p {
+      margin-bottom: 16px;
+    }
   }
 
 }

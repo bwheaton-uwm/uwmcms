@@ -1,15 +1,23 @@
+
+$fa-font-path: "../node_modules/@fortawesome/fontawesome-free/webfonts/";
+$font-size-base-xs: 15px;
+
 $brand-secondary: #008566;
 $uw_purple: #33006f;
 
-$lightgreen: rgb(229,244,241);
-$darkgreen: rgb(31,116,83);
-$dark-gray-base: #343638;
+$base-gray: #343638;
 $light-gray: #dfe1e2;
-$font-size-base-xs: 15px;
+
+$light-green: rgb(229,244,241);
+$dark-green: rgb(31,116,83);
+
+$dark-blue: #006c8a;
+$light-blue: lighten(#006c8a, 70%);
+
+$dark-purple: #37236a;
 $light-purple: lighten(#37236a, 70%);
-$purple: #37236a;
-$red: #d53e39;
+
 $dark-red: #d53e39;
 $light-red: lighten(#d53e39, 45%);
 
-$base-gray: #343638;
+

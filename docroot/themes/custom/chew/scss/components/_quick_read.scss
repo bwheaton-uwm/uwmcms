@@ -13,26 +13,31 @@
 
   .field--name-field-superheading {
     @extend .h2;
-    color: $dark-gray-base;
+    color: $base-gray;
     font-weight: bold;
-    text-transform: uppercase;
+    text-transform: none;
     display: inline-block;
-    border-right: 1px solid $dark-gray-base;
-    padding-right: .75em;
-    margin: 0 .75em 12px 0;
+    border-right: 1px solid $base-gray;
+    padding-right: 10px;
+    margin: 0 5px 12px 0;
+
+    i {
+      margin-right: 8px;
+    }
 
   }
 
   .field--name-field-heading {
     @extend .h2;
-    margin-top: 0;
-    color: $dark-gray-base;
     display: inline;
+    margin-top: 0;
+    color: $base-gray;
+    text-transform: none;
   }
 
   .field--name-field-body {
     font-family: $font-family-sans-serif;
-    color: $dark-gray-base;
+    color: $base-gray;
   }
 
   ul {
@@ -41,21 +46,27 @@
 
 }
 
-article.node-term-category-exercise, article.node-term-category-mind {
+article.node-term-category-body {
   .paragraph--type--quick-read {
-    border-left: 8px solid $darkgreen;
-    background-color: $lightgreen;
+    border-left: 8px solid $dark-green;
+    background-color: $light-green;
+  }
+}
+article.node-term-category-mind {
+  .paragraph--type--quick-read {
+    border-left: 8px solid $dark-blue;
+    background-color: $light-blue;
   }
 }
 article.node-term-category-life {
   .paragraph--type--quick-read {
-    border-left: 8px solid $purple;
+    border-left: 8px solid $dark-purple;
     background-color: $light-purple;
   }
 }
 article.node-term-category-well {
   .paragraph--type--quick-read {
-    border-left: 8px solid $red;
+    border-left: 8px solid $dark-red;
     background-color: $light-red;
   }
 }

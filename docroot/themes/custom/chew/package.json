@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.11.2",
     "bootstrap-sass": "^3.4.1",
     "gulp-sourcemaps": "^2.6.5",
     "install": "^0.8.9",
