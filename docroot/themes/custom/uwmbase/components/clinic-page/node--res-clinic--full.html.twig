@@ -287,6 +287,7 @@
                 </div>
               {% endif %}
             {% endif %}
+
           </div>
         </div>
 
@@ -335,6 +336,14 @@
         </div>
         {# Adding a second row of columns to accomodate 911 text at the very bottom in mobile and tablet #}
         <div class="clinic-page__right-two">
+          {#
+            This is a spot to add custom notes about a location
+          #}
+          {% if content.field_res_location_note.0 is not empty %}
+            <div class="clinic-page__note clinic-page__note-emergency">
+              {{ content.field_res_location_note }}
+            </div>
+          {% endif %}
           {#
              This text is stored in a custom content block so it's manageable
              in the admin UI.
