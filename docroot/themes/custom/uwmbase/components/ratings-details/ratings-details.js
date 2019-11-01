@@ -67,7 +67,7 @@
             scrollToShowingInfo();
           });
           $('.paginationjs-prev').addClass('pager__item--text pager__item--previous').find('a').contents().before('<i class="fa fa-angle-left arrow-linked" aria-hidden="true"></i>').wrap('<span class="link-text"></span>');
-          $('.paginationjs-next').addClass('pager__item--text pager__item--next').find('a').contents().before('<i class="fa fa-angle-right arrow-linked" aria-hidden="true"></i>').wrap('<span class="link-text"></span>');
+          $('.paginationjs-next').addClass('pager__item--text pager__item--next').find('a').contents().after('<i class="fa fa-angle-right arrow-linked" aria-hidden="true"></i>').wrap('<span class="link-text"></span>');
           $('.paginationjs-ellipsis').addClass('pager__item--text pager__item--ellipsis').find('a').contents().unwrap();
         }
       });
