@@ -189,18 +189,13 @@ function chew_preprocess_node(&$variables) {
   if ($node->hasField('field_categories')) {
 
     $node_terms = $variables['node']->field_categories->referencedEntities();
-
-    foreach ($node_terms as $term) {
-
-      $term_roots = \Drupal::service('entity_type.manager')->getStorage("taxonomy_term")->loadAllParents($term->id());
-      foreach ($term_roots as $root) {
-
-        $name = Html::cleanCssIdentifier($root->getName());
-        $variables['attributes']['class'][] = 'node-term-category-' . strtolower($name);
-
-      }
-
+    if (!empty($node_terms[0])) {
+      $term_parents = \Drupal::service('entity_type.manager')->getStorage("taxonomy_term")->loadAllParents($node_terms[0]->id());
+      $last = end($term_parents);
+      $name = Html::cleanCssIdentifier($last->getName());
+      $variables['attributes']['class'][] = 'node-term-category-' . strtolower($name);
     }
+
 
   }
 

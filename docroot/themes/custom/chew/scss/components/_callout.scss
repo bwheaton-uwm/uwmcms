@@ -8,6 +8,7 @@
     margin-left: 0;
     padding-left: ceil(($font-size-base-xs * 1.5));
   }
+
   .field--name-field-heading {
     font-size: ceil(($font-size-base * 1.5));
     font-weight: normal;
@@ -17,6 +18,7 @@
       font-size: $font-size-base-xs * 1.5;
     }
   }
+
   .field--name-field-body {
     font-family: $font-family-sans-serif;
     //font-size: $font-size-small;
@@ -25,4 +27,21 @@
       font-size: $font-size-small * .875;
     }
   }
+}
+
+
+article.node-term-category-body .paragraph--type--callout {
+  border-left-color: $dark-green;
+}
+
+article.node-term-category-mind .paragraph--type--callout {
+  border-left-color: $dark-blue;
+}
+
+article.node-term-category-life .paragraph--type--callout {
+  border-left-color: $dark-purple;
+}
+
+article.node-term-category-well .paragraph--type--callout {
+  border-left-color: $dark-red;
 }
