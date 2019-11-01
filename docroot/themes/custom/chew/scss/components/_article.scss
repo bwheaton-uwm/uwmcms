@@ -85,58 +85,58 @@ body.page-node-type-article .main-container {
     }
   }
 
-  // Header styles
-  .article-full--header {
-    @include clearfix();
-    font-family: $font-family-sans-serif;
-    font-size: $font-size-base-xs;
-    line-height: 1;
-    margin-bottom: 2.4rem;
+    // Header styles
+    .article-full--header {
+      @include clearfix();
+      font-family: $font-family-sans-serif;
+      font-size: $font-size-base-xs;
+      line-height: 1;
+      margin-bottom: 2.4rem;
 
-    @media (min-width: $screen-sm) {
-      font-size: $font-size-base;
-      margin-bottom: 3.2rem;
-    }
-    // override default article link styles for header
-    a {
-      color: $dark-gray-base;
-      text-decoration: none;;
+      @media (min-width: $screen-sm) {
+        font-size: $font-size-base;
+        margin-bottom: 3.2rem;
+      }
+      // override default article link styles for header
+      a {
+        color: $dark-base-gray;
+        text-decoration: none;;
 
-      &:hover,
-      &:active {
-        color: $light-rain;
-        font-weight: 500;
+        &:hover,
+        &:active {
+          color: $light-rain;
+          font-weight: 500;
+        }
       }
-    }
-    .article-full--header__metadata {
-      & * {
-        display: inline-block;
+      .article-full--header__metadata {
+        & * {
+          display: inline-block;
+        }
+        &:first-child {
+          font-weight:  500;
+        }
       }
-      &:first-child {
-        font-weight:  500;
-      }
-    }
-    .hierarchical-term-field {
-      & * {
-        display: inline-block;
-      }
-      .taxonomy-term.count-1 {
-        text-transform: uppercase;
-        padding: 0 .25rem;
-      }
-      .taxonomy-term.count-2 {
-        padding-left: .25rem;
-      }
-      img.terms-icon {
-        width: 2rem;
-        vertical-align: middle;
+      .hierarchical-term-field {
+        & * {
+          display: inline-block;
+        }
+        .taxonomy-term.count-1 {
+          text-transform: uppercase;
+          padding: 0 .25rem;
+        }
+        .taxonomy-term.count-2 {
+          padding-left: .25rem;
+        }
+        img.terms-icon {
+          width: 2rem;
+          vertical-align: middle;
 
-        @media (min-width: $screen-sm) {
-          width: 2.4rem;
+          @media (min-width: $screen-sm) {
+            width: 2.4rem;
+          }
         }
       }
     }
-  }
 
   .field--name-image .field.field--name-field-credit {
     color: #343638;
@@ -161,9 +161,4 @@ body.page-node-type-article .main-container {
   .paragraph {
     margin-bottom: $line-height-computed;
   }
-}
-
-
-
-
 }
