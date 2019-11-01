@@ -26,7 +26,7 @@
     </div>
   {% endif %}
   {% if ratings.summary.count.comments %}
-    <div class="ratings-details__section">
+    <div id="ratings-details__comments-count-section" class="ratings-details__section">
       <div class="ratings-details__comments-count">
         {{ '@count comments'|t({'@count': ratings.summary.count.comments}) }}
       </div>

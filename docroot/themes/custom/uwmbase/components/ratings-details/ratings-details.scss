@@ -4,7 +4,7 @@
 .ratings-details {
   .pager {
     padding: 0;
-    margin: 20px 0 6px 0;
+    margin: 30px 0 16px 0;
     .pager__items .pager__item {
       @include media-breakpoint-down('xs') {
         margin-left: 0;
@@ -13,9 +13,15 @@
     }
   }
 }
-
 .ratings-details__section {
   margin-top: 20px;
+}
+// Customize the top margin for the Comments Count section.
+#ratings-details__comments-count-section {
+  margin-top: 30px;
+  @include media-breakpoint-up('md') {
+    margin-top: 20px;
+  }
 }
 .ratings-details__ratings-count {
   font-size: 18px;
