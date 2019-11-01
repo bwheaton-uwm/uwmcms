@@ -1042,7 +1042,7 @@ function uwmbase_preprocess_paragraph(&$variables) {
   // @TODO make this a global link change and remove this override.
   $paragraph_id = $paragraph->id();
 
-  if ($paragraph_id = 53086) {
+  if ($paragraph_id == 53086) {
     $variables['attributes']['class'][] = 'make-appt-page';
   }
 
