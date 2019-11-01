@@ -5,9 +5,21 @@
     }
   }
 }
-.region-content-header {
+.article-full--header {
   @include clearfix();
-  margin-bottom: 1rem;
+  font-family: $font-family-sans-serif;
+  font-size: $font-size-base-xs;
+  line-height: 1;
+  margin-bottom: 2.4rem;
+
+  h1 {
+    margin: 1.6rem 0;
+  }
+
+  @media (min-width: $screen-sm) {
+    font-size: $font-size-base;
+    margin-bottom: 3.2rem;
+  }
   a {
     color: $dark-gray-base;
 
@@ -17,63 +29,35 @@
       font-weight: 500;
     }
   }
-  .field--name-field-categories {
-    font-family: $font-family-sans-serif;
-    font-size: $font-size-base-xs;
-    line-height: 1;
-
-    @media (min-width: $screen-sm) {
-      font-size: $font-size-base;
+  .article-full--header__metadata {
+    & * {
+      display: inline-block;
     }
-
+    &:first-child {
+      font-weight:  500;
+    }
+  }
+  .hierarchical-term-field {
+    & * {
+      display: inline-block;
+    }
     .taxonomy-term.count-1 {
       text-transform: uppercase;
-      padding-right: .5rem;
+      padding: 0 .25rem;
     }
-    .taxonomy-term.count-2 a{
-      padding-left: 1rem;
-      border-left: 1px solid $dark-gray-base;
+    .taxonomy-term.count-2 {
+      padding-left: .25rem;
     }
     img.terms-icon {
       width: 2rem;
-      padding-right: .25em;
-      display: inline-block;
-      vertical-align: top;
+      vertical-align: middle;
 
       @media (min-width: $screen-sm) {
         width: 2.4rem;
       }
     }
   }
-  .block-entity-fieldnodefield-author,
-  .block-entity-fieldnodecreated,
-  #block-factchecked {
-    float: left;
-    font-family: $font-family-sans-serif;
-    color: $dark-gray-base;
-    font-size: $font-size-small * 0.875;
-    line-height: 1;
-
-    @media (min-width: $screen-sm) {
-      font-size: $font-size-small;
-    }
-  }
-  .block-entity-fieldnodefield-author {
-    font-weight: 500;
-    padding-right: 1rem;
-    border-right: 1px solid $dark-gray-base;
-  }
-  .block-entity-fieldnodecreated {
-    padding: 0 1rem;
-    border-right: 1px solid $dark-gray-base;
-  }
   .article__block--fact-checked {
-    padding-top: 1rem;
-
-    @media (min-width: $screen-sm) {
-      padding-left: 1rem;
-      padding-top: 0;
-    }
     img {
       width: 1.5rem;
       vertical-align: top;
