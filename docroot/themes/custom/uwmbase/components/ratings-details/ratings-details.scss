@@ -1,16 +1,9 @@
 @import 'init';
 
-// Remove the left and right margins on narrow screens.
 .ratings-details {
   .pager {
     padding: 0;
     margin: 30px 0 16px 0;
-    .pager__items .pager__item {
-      @include media-breakpoint-down('xs') {
-        margin-left: 0;
-        margin-right: 0;
-      }
-    }
   }
 }
 .ratings-details__section {
