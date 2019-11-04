@@ -4,7 +4,6 @@
 
 #}
 
-{% set has_locations = content.field_res_clinics|render|striptags|trim is not empty ? true : false %}
 {% set column_attributes = create_attribute({'class': ['col-12']}) %}
 
 {% if has_locations %}
@@ -38,6 +37,14 @@
             <li class="provider-page__languages-item">{{ i }}</li>
           {% endfor %}
         </ul>
+      </div>
+    {% endif %}
+
+    {% if has_ratings %}
+      {# See ratings-summary.twig for links to this anchor. #}
+      <a id="ratings-details"></a>
+      <div class="col-12">
+        <h3 class="provider-page__section2-subheading">Patient Ratings and Comments</h3>
       </div>
     {% endif %}
   </div>

@@ -1,0 +1,42 @@
+{# SVG symbols must be defined in a parent template.
+See node-res-provider.html.twig, for example. #}
+
+{{ attach_library('uwmbase/rating-stars') }}
+
+<div class="rating-stars">
+  {% if rating_stars_url %}
+    <a class="rating-stars__link" href="{{ rating_stars_url }}">
+  {% endif %}
+
+  {% if ratings.summary.stars.full > 0 %}
+    {% for i in 1..ratings.summary.stars.full %}
+      <div class="rating-stars__star">
+        <svg class="rating-stars__star-svg">
+          <use xlink:href="#svg-rating-star-100" />
+        </svg>
+      </div>
+    {% endfor %}
+  {%  endif %}
+
+  {% if ratings.summary.stars.partial_pct > 0 and ratings.summary.stars.partial_pct < 100 %}
+    <div class="rating-stars__star">
+      <svg class="rating-stars__star-svg">
+        <use xlink:href="#svg-rating-star-{{ ratings.summary.stars.partial_pct }}" />
+      </svg>
+    </div>
+  {%  endif %}
+
+  {% if ratings.summary.stars.empty > 0 %}
+    {% for i in 1..ratings.summary.stars.empty %}
+      <div class="rating-stars__star">
+        <svg class="rating-stars__star-svg">
+          <use xlink:href="#svg-rating-star-0" />
+        </svg>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  {% if rating_stars_url %}
+    </a>
+  {% endif %}
+</div>

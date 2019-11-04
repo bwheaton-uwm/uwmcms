@@ -1,0 +1,29 @@
+uuid: 1efdf5ae-3acc-414f-b6bc-35ae09d9818a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_res_location_note
+    - node.type.res_clinic
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    rich_text: rich_text
+    basic_html: '0'
+    unrestricted: '0'
+    unrestricted_no_wysiwyg: '0'
+    plain_text: '0'
+id: node.res_clinic.field_res_location_note
+field_name: field_res_location_note
+entity_type: node
+bundle: res_clinic
+label: 'Location Note'
+description: 'Custom note to provide additional information about a clinic as needed'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

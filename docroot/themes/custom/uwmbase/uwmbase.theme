@@ -8,6 +8,7 @@
  * @see https://drupal.org/node/1728096
  */
 
+use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Database\Database;
@@ -719,6 +720,11 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
       $variables['has_photo'] = !$node->get('field_res_image')->isEmpty();
     }
 
+    // Determine if the provider has locations.
+    if ($node->hasField('field_res_clinics')) {
+      $variables['has_locations'] = !$node->get('field_res_clinics')->isEmpty();
+    }
+
     // Determine if the provider has a video.
     if ($node->hasField('field_res_node_videos')) {
       $variables['has_video'] = !$node->get('field_res_node_videos')->isEmpty();
@@ -728,11 +734,6 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
     if ($node->hasField('field_res_languages')) {
       $variables['has_languages'] = !$node->get('field_res_languages')->isEmpty();
     }
-
-    // Determine if the provider has ratings.
-    // TODO: Add logic here once the method of storing ratings has been
-    // determined and implemented.
-    $variables['has_ratings'] = FALSE;
 
     // Determine taxonomy terms associated with the provider.
     $variables['taxonomy_terms'] = [
@@ -761,6 +762,15 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
       }
       $variables['taxonomy_terms'][$vocabulary] = $terms;
     }
+  }
+
+  // Add ratings data.
+  if ($node->hasField('field_ratings') && !$node->get('field_ratings')->isEmpty()) {
+    $variables['ratings'] = Json::decode($node->field_ratings->value);
+    $variables['has_ratings'] = TRUE;
+  }
+  else {
+    $variables['has_ratings'] = FALSE;
   }
 }
 
@@ -851,6 +861,60 @@ function uwmbase_preprocess_comment(&$variables, $hook) {
  */
 function uwmbase_preprocess_container(&$variables) {
   $element = $variables['element'];
+}
+
+/**
+ * Implements template_preprocess_responsive_image_formatter().
+ */
+function uwmbase_preprocess_responsive_image_formatter(array &$variables) {
+
+  // Set up res provider to use parent node's title as an
+  // alt tag for the res provider image.
+  $node = $variables['item']->getEntity();
+
+  if ($node->bundle() == 'res_provider') {
+    $variables['responsive_image']['#attributes']['data-provider_label'] = $node->get('title')->getString();
+  }
+
+}
+
+/**
+ * Implements template_preprocess_image_formatter().
+ */
+function uwmbase_preprocess_image_formatter(array &$variables) {
+
+  // Set up res provider to use parent node's title as an
+  // alt tag for the res provider image.
+  $node = $variables['item']->getEntity();
+
+  if ($node->bundle() == 'res_provider') {
+    $variables['image']['#attributes']['data-provider_label'] = $node->get('title')->getString();
+  }
+
+}
+
+/**
+ * Implements template_preprocess_responsive_image().
+ */
+function uwmbase_preprocess_responsive_image(&$variables) {
+
+  // Use the preprocessed template_preprocess_responsive_image_formatter()
+  // to set alt tag to parent node title.
+  if (isset($variables['img_element']['#attributes']['data-provider_label'])) {
+    $variables['img_element']['#attributes']['alt'] = 'Provider headshot of' . $variables['img_element']['#attributes']['data-provider_label'];
+  }
+}
+
+/**
+ * Implements template_preprocess_image().
+ */
+function uwmbase_preprocess_image(&$variables) {
+
+  // Use the preprocessed template_responsive_image_formatter()
+  // to set alt tag to parent node title.
+  if (isset($variables['attributes']['data-provider_label'])) {
+    $variables['attributes']['alt'] = 'Provider headshot of' . $variables['attributes']['data-provider_label'];
+  }
 }
 
 /**
@@ -1048,7 +1112,7 @@ function uwmbase_preprocess_paragraph(&$variables) {
   // @TODO make this a global link change and remove this override.
   $paragraph_id = $paragraph->id();
 
-  if ($paragraph_id = 53086) {
+  if ($paragraph_id == 53086) {
     $variables['attributes']['class'][] = 'make-appt-page';
   }
 
