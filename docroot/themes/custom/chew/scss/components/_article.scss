@@ -155,10 +155,10 @@ body.page-node-type-article .main-container {
     }
     .fact-checked--header * {
       display: inline-block;
-      vertical-align: middle;
+      vertical-align: top;
 
       img {
-        margin-right: 5px;
+        margin-top: 1px;
         width: 1.4rem;
 
         @media (min-width: $screen-sm) {
