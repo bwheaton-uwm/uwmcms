@@ -159,6 +159,11 @@ body.page-node-type-article .main-container {
 
       img {
         margin-right: 5px;
+        width: 1.4rem;
+
+        @media (min-width: $screen-sm) {
+          width: 1.5rem;
+        }
       }
     }
   }
