@@ -56,6 +56,8 @@ body.page-node-type-article .main-container {
     color: $dark-base-gray;
     font-size: 20px;
     line-height: 1.25;
+    text-transform: none;
+    font-weight: 500;
 
     @media (min-width: $screen-sm) {
       font-size: 25px;
@@ -127,7 +129,7 @@ body.page-node-type-article .main-container {
       & * {
         display: inline-block;
       }
-      &:first-child {
+      div:first-child {
         font-weight:  500;
       }
     }
@@ -149,6 +151,14 @@ body.page-node-type-article .main-container {
         @media (min-width: $screen-sm) {
           width: 2.4rem;
         }
+      }
+    }
+    .fact-checked--header * {
+      display: inline-block;
+      vertical-align: middle;
+
+      img {
+        margin-right: 5px;
       }
     }
   }
