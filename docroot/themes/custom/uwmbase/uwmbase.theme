@@ -760,12 +760,6 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
           }
         }
       }
-
-      // Sort the terms by name.
-      usort($terms, function ($a, $b) {
-        return strcmp($a['name'], $b['name']);
-      });
-
       $variables['taxonomy_terms'][$vocabulary] = $terms;
     }
   }
