@@ -80,11 +80,11 @@
                           <ul class="provider-page__section1-list">
                               {% for term in taxonomy_terms.expertises %}
                                   <li class="provider-page__section1-list-item">
-                                      {% if term.url is not empty %}
-                                          {{ uwm_cta_link(term.name, term.url, ['text-link-blue', 'no-underline']) }}
-                                      {% else %}
-                                          {{ term.name }}
-                                      {% endif %}
+                                      {%- if term.url is not empty %}
+                                          {{- uwm_cta_link(term.name, term.url, ['text-link-blue', 'no-underline']) -}}
+                                      {%- else %}
+                                          {{- term.name -}}
+                                      {% endif -%}
                                   </li>
                               {% endfor %}
                           </ul>

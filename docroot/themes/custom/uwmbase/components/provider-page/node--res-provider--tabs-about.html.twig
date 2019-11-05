@@ -8,14 +8,15 @@
 {% set personal_interests = content.field_res_personal_interests|render|uwm_replace_markup|check_markup('rich_text') %}
 {% set provider_name = [provider_name_parts.given, provider_name_parts.middle, provider_name_parts.family]|join(' ') %}
 
-<h3 class="provider-page__section2-subheading">About {{ provider_name }}</h3>
+<h3 class="provider-page__section2-subheading">{{ 'About @name'|t({'@name': provider_name}) }}</h3>
 {% if biography is not empty %}
     {{ biography }}
-    {% if personal_interests is not empty %}
-        {{ personal_interests }}
-    {% endif %}
 {% else %}
-    <p>We’ll have {{ provider_name }}’s bio available soon.</p>
+    <p>{{ 'We’ll have @name’s bio available soon.'|t({'@name': provider_name}) }}</p>
+{% endif %}
+{% if personal_interests is not empty %}
+  <h3 class="provider-page__section2-subheading">{{ 'Personal Interests'|t }}</h3>
+    {{ personal_interests }}
 {% endif %}
 
 {% include directory ~ '/components/provider-page/node--res-provider--education.html.twig' %}
