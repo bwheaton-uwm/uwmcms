@@ -497,3 +497,7 @@ rating-stars:
   css:
     component:
       dist/css/rating-stars.css: {}
+
+healthgrades-connect:
+  js:
+    https://scripts.cip.healthgrades.com/hgcrm-utm-v1.0.js: {type: external, minified: false}

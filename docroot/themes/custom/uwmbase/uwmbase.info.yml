@@ -60,6 +60,7 @@ libraries:
   - uwmbase/table-drag
   - uwmbase/pager
   - uwmbase/gdpr_banner
+  - uwmbase/healthgrades-connect
 
 # @uwmbase twig component library
 
