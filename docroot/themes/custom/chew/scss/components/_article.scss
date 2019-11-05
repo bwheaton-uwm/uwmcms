@@ -52,7 +52,7 @@ body.page-node-type-article .main-container {
   color: $dark-base-gray;
 
   h2 {
-    margin: 28px 0;
+    margin: 28px 0 20px;
     color: $dark-base-gray;
     font-size: 20px;
     line-height: 1.25;
@@ -121,11 +121,14 @@ body.page-node-type-article .main-container {
 
       &:hover,
       &:active {
-        color: $light-rain;
+        color: $dark-rain;
         font-weight: 500;
       }
     }
     .article-full--header__metadata {
+      & > span {
+        margin: 0 2px;
+      }
       & * {
         display: inline-block;
       }
@@ -136,6 +139,7 @@ body.page-node-type-article .main-container {
     .hierarchical-term-field {
       & * {
         display: inline-block;
+        vertical-align: middle;
       }
       .taxonomy-term.count-1 {
         text-transform: uppercase;

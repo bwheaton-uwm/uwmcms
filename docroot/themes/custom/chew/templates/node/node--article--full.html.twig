@@ -11,8 +11,10 @@
         </h2>
       {{ title_suffix }}
       <div class='article-full--header__metadata'>
-        {{ content.field_author }} |
-        {{ node.getCreatedTime|format_date('long') }} |
+        {{ content.field_author }}
+        <span>|</span>
+        {{ node.getCreatedTime|format_date('long') }}
+        <span>|</span>
         <div class='fact-checked--header'>
           <span><img src='/themes/custom/chew/images/uwm-checkmark.svg' alt= 'Checkmark' /></span>
           <span>Fact Checked</span>
