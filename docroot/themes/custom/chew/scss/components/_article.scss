@@ -52,21 +52,24 @@ body.page-node-type-article .main-container {
   color: $dark-base-gray;
 
   h2 {
+    // mobile to tablet mimics H4
     margin: 28px 0 20px;
     color: $dark-base-gray;
     font-size: 20px;
-    line-height: 1.25;
+    line-height: 1.4; // 28px / 20 font
     text-transform: none;
     font-weight: 500;
 
     @media (min-width: $screen-sm) {
+      // tablet (900px) to desktop mimics H3
       font-size: 25px;
-      line-height: 1.32;
+      line-height: 1.32; // 33px / 25 font
     }
 
     @media (min-width: $screen-md) {
+      // desktop (1200px) up mimics H1
       font-size: 32px;
-      line-height: 1.25;
+      line-height: 1.25; // 40px / 32 font;
     }
   }
 
@@ -126,14 +129,28 @@ body.page-node-type-article .main-container {
       }
     }
     .article-full--header__metadata {
+      div {
+        // mobile author & meta mimics Body 4
+        font-size: 14px;
+        line-height: 0.63;
+        font-weight: 400;
+
+        &:first-child {
+          // mobile author adds bold
+          font-weight:  500;
+        }
+
+        @media (min-width: $screen-sm) {
+          // tablet author & meta mimics H8/Body 3
+          font-size: 16px;
+          line-height: .66;
+        }
+      }
       & > span {
         margin: 0 2px;
       }
       & * {
         display: inline-block;
-      }
-      div:first-child {
-        font-weight:  500;
       }
     }
     .hierarchical-term-field {
