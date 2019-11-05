@@ -24,7 +24,13 @@
     css_parents_classes|join(' '),
     btn_cta_style == 'Solid' ? 'btn-cta-solid' : 'btn-cta',
     fluid_width ? 'btn-cta-fluid' : 'btn-cta-link',
+  ] %}
 
+  {% set book_online_classes = [
+    'uwm-cta',
+    'cta-to-ecareuwmedicineorg',
+    'cta-to-prod01-openscheduling',
+    'cta-from-patient-resources-make-an-appointment'
   ] %}
 
   {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
@@ -69,9 +75,18 @@
 
   {#      // @TODO: Verify new CTA #}
 
-
-  {{ uwm_cta_link(text, field_uwm_link__url, link_classes, cta_special_attributes) }}
-
+  {#
+    Check if the Book online button on Make an appointemnt page.
+    If so - provide custom classes, as it's a dynamic link and the uwm_cta_link
+    will change the classes - which are needed for GTM
+  #}
+  {% if book_online_ctaCustomClasses %}
+    <a {{ link_attributes.addClass(book_online_classes, link_classes) }} href="{{ field_uwm_link__url }}">
+      <span class="btn__text">{{ field_uwm_link__title }}
+    </a>
+  {% else %}
+    {{ uwm_cta_link(text, field_uwm_link__url, link_classes, cta_special_attributes) }}
+  {% endif %}
 
   {#  {% else %}#}
   {#    <a {{ link_attributes.addClass(link_classes) }} href="{{ field_uwm_link__url }}">#}
