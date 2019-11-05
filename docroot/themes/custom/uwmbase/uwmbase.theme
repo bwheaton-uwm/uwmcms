@@ -996,7 +996,7 @@ function uwmbase_preprocess_field__paragraph__uwm_text__uwm_basic_content(&$vari
       if (stristr($textBoxContent, $eCareCancel) == TRUE) {
         $variables['attributes']['class'][] = 'make-appt-page--margin-fix';
 
-        $variables['eCareCancelText'] = "Cancel Using this form.";
+        $variables['eCareCancelText'] = "Cancel using this form.";
         $variables['eCareCancelLink'] = "https://forms.office.com/Pages/ResponsePage.aspx?id=W9229i_wGkSZoBYqxQYL0njZ16GAnYNHqcbFU33QtSFURUo4WFEwWUhTVzdHMVBWRUhSUDlCSlVJUS4u";
       }
 
