@@ -1,0 +1,15 @@
+.rating-stars,
+.rating-stars__link {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.rating-stars__star {
+  flex: 0 0 auto;
+  & + & {
+    margin-left: 8px;
+  }
+}
+.rating-stars__star-svg {
+  width: 19px;
+  height: 18px;
+}

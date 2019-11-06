@@ -507,3 +507,13 @@ search-providers:
       dist/css/search-providers.css: { }
   dependencies:
   - uwmbase/search
+
+ratings-summary:
+  css:
+    component:
+      dist/css/ratings-summary.css: {}
+
+rating-stars:
+  css:
+    component:
+      dist/css/rating-stars.css: {}

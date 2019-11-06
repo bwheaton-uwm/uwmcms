@@ -8,6 +8,7 @@
  * @see https://drupal.org/node/1728096
  */
 
+use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Database\Database;
@@ -737,6 +738,11 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
       $variables['has_photo'] = !$node->get('field_res_image')->isEmpty();
     }
 
+    // Determine if the provider has locations.
+    if ($node->hasField('field_res_clinics')) {
+      $variables['has_locations'] = !$node->get('field_res_clinics')->isEmpty();
+    }
+
     // Determine if the provider has a video.
     if ($node->hasField('field_res_node_videos')) {
       $variables['has_video'] = !$node->get('field_res_node_videos')->isEmpty();
@@ -746,11 +752,6 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
     if ($node->hasField('field_res_languages')) {
       $variables['has_languages'] = !$node->get('field_res_languages')->isEmpty();
     }
-
-    // Determine if the provider has ratings.
-    // TODO: Add logic here once the method of storing ratings has been
-    // determined and implemented.
-    $variables['has_ratings'] = FALSE;
 
     // Determine taxonomy terms associated with the provider.
     $variables['taxonomy_terms'] = [
@@ -779,6 +780,15 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
       }
       $variables['taxonomy_terms'][$vocabulary] = $terms;
     }
+  }
+
+  // Add ratings data.
+  if ($node->hasField('field_ratings') && !$node->get('field_ratings')->isEmpty()) {
+    $variables['ratings'] = Json::decode($node->field_ratings->value);
+    $variables['has_ratings'] = TRUE;
+  }
+  else {
+    $variables['has_ratings'] = FALSE;
   }
 }
 
@@ -872,6 +882,60 @@ function uwmbase_preprocess_container(&$variables) {
 }
 
 /**
+ * Implements template_preprocess_responsive_image_formatter().
+ */
+function uwmbase_preprocess_responsive_image_formatter(array &$variables) {
+
+  // Set up res provider to use parent node's title as an
+  // alt tag for the res provider image.
+  $node = $variables['item']->getEntity();
+
+  if ($node->bundle() == 'res_provider') {
+    $variables['responsive_image']['#attributes']['data-provider_label'] = $node->get('title')->getString();
+  }
+
+}
+
+/**
+ * Implements template_preprocess_image_formatter().
+ */
+function uwmbase_preprocess_image_formatter(array &$variables) {
+
+  // Set up res provider to use parent node's title as an
+  // alt tag for the res provider image.
+  $node = $variables['item']->getEntity();
+
+  if ($node->bundle() == 'res_provider') {
+    $variables['image']['#attributes']['data-provider_label'] = $node->get('title')->getString();
+  }
+
+}
+
+/**
+ * Implements template_preprocess_responsive_image().
+ */
+function uwmbase_preprocess_responsive_image(&$variables) {
+
+  // Use the preprocessed template_preprocess_responsive_image_formatter()
+  // to set alt tag to parent node title.
+  if (isset($variables['img_element']['#attributes']['data-provider_label'])) {
+    $variables['img_element']['#attributes']['alt'] = 'Provider headshot of' . $variables['img_element']['#attributes']['data-provider_label'];
+  }
+}
+
+/**
+ * Implements template_preprocess_image().
+ */
+function uwmbase_preprocess_image(&$variables) {
+
+  // Use the preprocessed template_responsive_image_formatter()
+  // to set alt tag to parent node title.
+  if (isset($variables['attributes']['data-provider_label'])) {
+    $variables['attributes']['alt'] = 'Provider headshot of' . $variables['attributes']['data-provider_label'];
+  }
+}
+
+/**
  * Implements template_preprocess_field().
  */
 function uwmbase_preprocess_field(&$variables, $hook) {
@@ -903,6 +967,76 @@ function uwmbase_preprocess_field(&$variables, $hook) {
     $variables['node_url'] = $element['#object']->uwm_url;
   }
 
+}
+
+/**
+ * Implements hook_preprocess_field__uwm_text__uwm_basic_content().
+ */
+function uwmbase_preprocess_field__paragraph__uwm_text__uwm_basic_content(&$variables) {
+  /***
+   * Set variables on the Make an Appointment page
+   * so we can render GTM friendly links in content for
+   * the generic Make an Appointement page
+   *
+   * Also checks if on a Provider page, if so, links specific
+   * to the Provider's SER ID will be updated.
+   *
+   * @see field--paragraph--uwm-text-basic-content.html.twig
+   */
+
+  // Get the current URI and parse it to check if on
+  // Make an Appointment page and grab SER id.
+  $uri_parts = UrlHelper::parse(\Drupal::request()->getRequestUri());
+  $variables['#cache']['contexts'] = Cache::mergeContexts($variables['#cache']['contexts'], ['url.query_args:ser']);
+
+  if (isset($uri_parts['query']['ser'])) {
+    $ser = $uri_parts['query']['ser'];
+    $providerNode = _uwmbase_get_provider_by_ser($ser);
+
+    // Get Visit Type ID to create an Online Scheduling button -
+    // default to Visit Type ID 9000 if one doesn't exist
+    // NOTE: Current state, only get first ID even if more than one exists.
+    // @TODO add check / functionality for multiple Visit Type IDs.
+
+    if ($providerNode->get('field_res_visit_type_id')->get(0) != NULL) {
+      $first_visit_type_id = $providerNode->get('field_res_visit_type_id')->get(0)->getString();
+    }
+    $set_visit_type_id = isset($first_visit_type_id) ? $first_visit_type_id : 9000;
+  }
+
+  if ($uri_parts['path'] == '/patient-resources/make-an-appointment') {
+    foreach ($variables['items'] as &$item) {
+      $textBoxContent = $item['content']['#text'];
+      $eCareBooking = 'Returning patient?';
+      $eCareGeneric = 'Your primary care appointments and some specialty care can be booked online.';
+      $eCareCancel = "Don't have an eCare account?";
+
+      if (stristr($textBoxContent, $eCareCancel) == TRUE) {
+        $variables['attributes']['class'][] = 'make-appt-page--margin-fix';
+
+        $variables['eCareCancelText'] = "Cancel using this form.";
+        $variables['eCareCancelLink'] = "https://forms.office.com/Pages/ResponsePage.aspx?id=W9229i_wGkSZoBYqxQYL0njZ16GAnYNHqcbFU33QtSFURUo4WFEwWUhTVzdHMVBWRUhSUDlCSlVJUS4u";
+      }
+
+      $variables['eCareBookText'] = "Book in eCare.";
+
+      if (stristr($textBoxContent, $eCareBooking) == TRUE) {
+        $variables['attributes']['class'][] = 'make-appt-page--margin-fix make-appt-page--inline-elements';
+
+        if (isset($ser)) {
+          $variables['eCareBookLink'] = 'https://ecare.uwmedicine.org/prod01/Scheduling?workflow=ExistingProvider&selProvId=' . $ser;
+        }
+        else {
+          $variables['eCareBookLink'] = 'https://ecare.uwmedicine.org/PROD01/Scheduling';
+        }
+      }
+
+      if (stristr($textBoxContent, $eCareGeneric) == TRUE && isset($ser)) {
+        $item['content']['#text'] = '<div class="uwm-cta cta-to-ecareuwmedicineorg cta-to-prod01-openscheduling-signupandschedule-embeddedschedule cta-from-patient-resources-make-an-appointment make-appt-page--book-online-link"><a href="https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book with ' . '<span class="font-weight-semi-bold">' . trim($providerNode->label()) . '</span>' . '</a></div>';
+      }
+
+    }
+  }
 }
 
 /**
@@ -996,7 +1130,7 @@ function uwmbase_preprocess_paragraph(&$variables) {
   // @TODO make this a global link change and remove this override.
   $paragraph_id = $paragraph->id();
 
-  if ($paragraph_id = 53086) {
+  if ($paragraph_id == 53086) {
     $variables['attributes']['class'][] = 'make-appt-page';
   }
 
@@ -1548,6 +1682,11 @@ function uwmbase_preprocess_paragraph__uwm_cta_link(&$variables) {
     }
   }
 
+  $currentPath = \Drupal::service('path.current')->getPath();
+  if ($currentPath == '/node/20836' && $variables['content']['field_uwm_link'][0]['#title'] == 'Book online') {
+    $variables['book_online_ctaCustomClasses'] = TRUE;
+  }
+
   // Get the current URI and parse it.
   $uri_parts = UrlHelper::parse(\Drupal::request()->getRequestUri());
 
@@ -1623,64 +1762,6 @@ function uwmbase_preprocess_field__paragraph__field_uwm_link(&$variables) {
     // Add the provider's name to the Book Online text.
     $item['content']['#title'] .= ' with ' . trim($node->label());
   }
-}
-
-/**
- * Implements hook_preprocess_paragraph__uwm_cta_link__uwm_card().
- *
- * Customizes the "Book Now" URL for providers that use open scheduling.
- */
-function uwmbase_preprocess_paragraph__uwm_basic_content__uwm_card(&$variables) {
-  // Get the current URI and parse it.
-  $uri_parts = UrlHelper::parse(\Drupal::request()->getRequestUri());
-
-  $variables['#cache']['contexts'] = Cache::mergeContexts($variables['#cache']['contexts'], ['url.query_args:ser']);
-
-  // Bail if a SER ID was not included in the query string.
-  if (!isset($uri_parts['query']['ser'])) {
-    return;
-  }
-
-  $ser = $uri_parts['query']['ser'];
-
-  // Load the provider node from the SER ID.
-  $node = _uwmbase_get_provider_by_ser($ser);
-  if (!$node) {
-    return;
-  }
-
-  // Get Visit Type ID to create an Online Scheduling button -
-  // default to Visit Type ID 9000 if one doesn't exist
-  // NOTE: Current state, only get first ID even if more than one exists.
-  // @TODO add check / functionality for multiple Visit Type IDs.
-
-  if ($node->get('field_res_visit_type_id')->get(0) != NULL) {
-    $first_visit_type_id = $node->get('field_res_visit_type_id')->get(0)->getString();
-  }
-  $set_visit_type_id = isset($first_visit_type_id) ? $first_visit_type_id : 9000;
-
-  // Swap out various peices of text with provider link if
-  // on a page with SER ID.
-  // Note: This is an interem fix that will be removed with
-  // the update of providers no longer linking to
-  // make an appointment page.
-  $textBoxContent = $variables['content']['uwm_text'][0]['#text'];
-  $genericString = 'Your primary care appointments and some specialty care can be booked online';
-  $ecareString = 'Book in eCare';
-
-  if (empty($textBoxContent)) {
-    return;
-  }
-
-  if (stristr($textBoxContent, $genericString) !== FALSE) {
-    // Swap out the generic text in the Book Online intro.
-    $variables['content']['uwm_text'][0]['#text'] = '<div class="make-appt-page--book-online-link"><a href="https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $ser . '&vt=' . $set_visit_type_id . '&view=plain">Book with ' . '<span class="font-weight-semi-bold">' . trim($node->label()) . '</span>' . '</a></div>';
-  }
-  elseif (stristr($textBoxContent, $ecareString) !== FALSE) {
-    // Swap out the Book in eCare link with specialized link.
-    $variables['content']['uwm_text'][0]['#text'] = '<p>Returning patient? <a href="https://ecare.uwmedicine.org/prod01/Scheduling?workflow=ExistingProvider&selProvId=' . $ser . '">Book in eCare.</a></p>';
-  }
-
 }
 
 /**

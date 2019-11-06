@@ -27,4 +27,16 @@
     display: block;
     margin-bottom: 1rem;
   }
+
+  &--margin-fix {
+    margin-bottom: 1rem;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  &--inline-elements p {
+    display: inline-block;
+  }
 }

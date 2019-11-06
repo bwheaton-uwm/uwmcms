@@ -102,6 +102,7 @@ content:
 hidden:
   field_name: true
   field_node_videos: true
+  field_ratings: true
   field_res_academic_title: true
   field_res_affiliates: true
   field_res_biography: true
