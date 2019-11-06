@@ -39,6 +39,8 @@ docroot/themes/custom/*/node_modules
 docroot/themes/custom/*/css
 docroot/themes/custom/*/dist
 docroot/themes/custom/*/styleguide
+docroot/themes/custom/*/maps
+
 docroot/robots.txt
 
 # Ignore build artifacts
