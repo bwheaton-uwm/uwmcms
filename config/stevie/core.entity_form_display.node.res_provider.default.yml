@@ -45,7 +45,8 @@ dependencies:
   module:
     - entity_browser
     - field_group
-    - image
+    - focal_point
+    - lightning_media
     - metatag
     - name
     - paragraphs
@@ -200,10 +201,15 @@ content:
   field_res_image:
     weight: 13
     settings:
-      progress_indicator: throbber
       preview_image_style: thumbnail
-    third_party_settings: {  }
-    type: image_image
+      preview_link: true
+      offsets: '50,50'
+      progress_indicator: throbber
+    third_party_settings:
+      lightning_media:
+        file_links: true
+        remove_button: true
+    type: image_focal_point
     region: content
   field_res_internal_url:
     weight: 11
