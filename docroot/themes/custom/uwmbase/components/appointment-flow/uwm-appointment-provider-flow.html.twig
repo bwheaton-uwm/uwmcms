@@ -54,9 +54,39 @@
 
       <a href="#" class="appointment-flow__step-button btn-cta-solid" data-btn="no">{{ "No"|t }}</a>
 
-      <a href="#" class="appointment-flow__step-button btn-cta-solid" data-btn="yes">{{ "Yes"|t }}</a>
+      {#
+        If only direct scheduling is available, this step can link directly to
+        eCare, because the initial link states the eCare account is required.
+      #}
+      {% if accepting_returning and direct_scheduling and ((not accepting_new) or (not open_scheduling)) %}
+        <a href="{{ url_direct_scheduling }}" target="_blank" class="appointment-flow__step-button btn-cta-solid" data-btn="yes">{{ "Yes"|t }}</a>
+      {% else %}
+        <a href="#" class="appointment-flow__step-button btn-cta-solid" data-btn="yes">{{ "Yes"|t }}</a>
+      {% endif %}
 
     </div>
+
+    <div class="appointment-flow__step-back">
+      <i class="fa fa-angle-left" aria-hidden="true"></i>
+      <a href="#">{{ "Back"|t }}</a>
+    </div>
+  </div>
+
+
+  <div class="appointment-flow__step" data-step="call-instead-all">
+    <p class="appointment-flow__step-text"><strong>{{ "Returning patients who have seen this provider within the last three years can book online."|t }}</strong></p>
+    <p class="appointment-flow__step-text">{{ "Please call to schedule instead. Phone numbers for each location this provider practices can be viewed on the overview tab."|t }}</p>
+
+    <div class="appointment-flow__step-back">
+      <i class="fa fa-angle-left" aria-hidden="true"></i>
+      <a href="#">{{ "Back"|t }}</a>
+    </div>
+  </div>
+
+
+  <div class="appointment-flow__step" data-step="call-instead-returning">
+    <p class="appointment-flow__step-text"><strong>{{ "Returning patients who have seen this provider within the last three years can book online."|t }}</strong></p>
+    <p class="appointment-flow__step-text">{{ "Please call to schedule instead. Phone numbers for each location this provider practices can be viewed on the overview tab."|t }}</p>
 
     <div class="appointment-flow__step-back">
       <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -75,7 +105,6 @@
       {#
         If the provider has direct scheduling and the user has indicated they
         have an eCare account, link to full eCare site for direct scheduling.
-        If not on provider page, 'selProvId' value is set by JS.
       #}
       <a href="{{ url_direct_scheduling }}" target="_blank" class="appointment-flow__step-button btn-cta-solid appointment-flow__direct-scheduling-link" data-btn="yes">{{ "Yes"|t }}</a>
 
@@ -99,7 +128,7 @@
 
         TODO: handle missing name/description bad data?
       #}
-      {% if open_scheduling and visit_type_ids is not empty %}
+      {% if open_scheduling and (visit_type_ids is not empty) %}
 
         {% for visit_type_id in visit_type_ids %}
 

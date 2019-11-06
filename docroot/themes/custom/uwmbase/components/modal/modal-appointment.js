@@ -32,6 +32,8 @@
       // Initialize provider-specific scheduling variables here, so they are
       // accessible throughout handlers and functions. Values are set when the
       // modal is shown.
+      var acceptingNew = null;
+      var acceptingReturning = null;
       var epicID = null;
       var openScheduling = null;
       var visitTypeIDs = null;
@@ -53,6 +55,8 @@
 
       var $steps = $modal.find('.appointment-flow__step');
       var $stepVisitedBefore = $modal.find('[data-step="visited-before"]');
+      var $stepCallInsteadAll = $modal.find('[data-step="call-instead-all"]');
+      var $stepCallInsteadReturning = $modal.find('[data-step="call-instead-returning"]');
       var $stepEcareAccount = $modal.find('[data-step="ecare-account"]');
       var $stepVisitType = $modal.find('[data-step="visit-type"]');
       var $stepOpenSchedWidget = $modal.find('[data-step="open-schedule"]');
@@ -173,20 +177,48 @@
         // @see https://getbootstrap.com/docs/4.1/components/modal/#varying-modal-content
         var $modalBtn = $(e.relatedTarget);
 
-        epicID = $modalBtn.attr('data-provider-epic-id') || null;
+        // Booleans for:
+        // - Accepting new patients (manual status)
+        // - Accepting returning patients (manual status)
+        // - Open scheduling enabled (determined by Epic)
+        // - Direct scheduling enabled (determined by Epic)
+        // Booleans attributes are "1" (true) or "0" (false).
+        var booleanAttrs = [
+          'data-provider-accepting-new',
+          'data-provider-accepting-returning',
+          'data-provider-open-scheduling',
+          'data-provider-direct-scheduling'
+        ];
+        for (var i = 0; i < booleanAttrs.length; i++) {
 
-        // Booleans are passed via attributes as "1" (true) or "0" (false).
-        // Convert string value to number first, because `"0"` converts to true.
-        // We also must check explicitly if the attribute is present; with the
-        // `||` shortcut, a legitimate `false` value would result in `null`.
-        if (typeof $modalBtn.attr('data-provider-open-scheduling') !== 'undefined') {
-          openScheduling = Boolean(Number($modalBtn.attr('data-provider-open-scheduling')));
+          if (typeof $modalBtn.attr(booleanAttrs[i]) !== 'undefined') {
+            var value = Boolean(Number($modalBtn.attr(booleanAttrs[i])));
+
+            switch (booleanAttrs[i]) {
+              case 'data-provider-accepting-new':
+                acceptingNew = value;
+                break;
+
+              case 'data-provider-accepting-returning':
+                acceptingReturning = value;
+                break;
+
+              case 'data-provider-open-scheduling':
+                openScheduling = value;
+              break;
+
+              case 'data-provider-direct-scheduling':
+                directScheduling = value;
+                break;
+            }
+          }
+
         }
 
-        // Multiple visit type IDs are delimited by '|'. Check if the attribute
-        // value string is non-empty, because splitting an empty string results
-        // in an array with one element that is the empty string, which is
-        // inaccurate.
+        // Provider's Epic ID.
+        epicID = $modalBtn.attr('data-provider-epic-id') || null;
+
+        // Visit type IDs for open scheduling - delimited by '|'.
         var visitTypeIDsAttr = $modalBtn.attr('data-provider-visit-type-ids');
         if (typeof visitTypeIDsAttr === 'string' && visitTypeIDsAttr.length > 0) {
           // Note: by splitting a string, the result values are (numeric)
@@ -196,14 +228,11 @@
           visitTypeIDs = visitTypeIDsAttr.split('|');
         }
 
+        // Multiple visit types?
         openMultipleTypes = (visitTypeIDs ? visitTypeIDs.length > 1 : false);
 
-        if (typeof $modalBtn.attr('data-provider-direct-scheduling') !== 'undefined') {
-          directScheduling = Boolean(Number($modalBtn.attr('data-provider-direct-scheduling')));
-        }
-
         /*
-        console.log('modalContext:', modalContext, ', epicID:', epicID, ', openScheduling:', openScheduling, ', visitTypeIDs:', visitTypeIDs, ', openMultipleTypes:', openMultipleTypes, ', directScheduling:', directScheduling);
+        console.log('modalContext:', modalContext, 'acceptingNew:', acceptingNew, ', acceptingReturning:', acceptingReturning, ', epicID:', epicID, ', openScheduling:', openScheduling, ', visitTypeIDs:', visitTypeIDs, ', openMultipleTypes:', openMultipleTypes, ', directScheduling:', directScheduling);
         */
 
         // 2. If not on a provider page, update elements for the provider
@@ -264,24 +293,48 @@
         }
 
         // 3. Set the initial step to display.
+        // -------------------------------------------------------------------
+        // Note: realistically, if provider is accepting new, they should also
+        // be accepting returning. However, respect the data, and do not offer
+        // the direct scheduling option if set as not accepting returning.
+        // (This should be logged as likely bad data.)
+        // ------------------------------------------------------------------.
         var $firstStep = null;
 
-        // - Open, 1 type / No direct.
-        if (openScheduling && !openMultipleTypes && !directScheduling) {
+        if (acceptingNew && openScheduling) {
 
-          $firstStep = $stepOpenSchedWidget;
+          if (acceptingReturning && directScheduling) {
+
+            // Open and direct scheduling available.
+            // Start by asking if user is within the time frame to be a
+            // returning patient.
+            $firstStep = $stepVisitedBefore;
+
+          }
+          else {
+
+            // Only open scheduling available.
+            if (openMultipleTypes) {
+
+              // If multiple visit types, start by selecting visit type.
+              $firstStep = $stepVisitType;
+
+            }
+            else {
+
+              // Only one visit type; go straight to open scheduling widget.
+              $firstStep = $stepOpenSchedWidget;
+
+            }
+
+          }
 
         }
-        // - Open, multiple types / No direct.
-        else if (openScheduling && openMultipleTypes && !directScheduling) {
+        else if (acceptingReturning && directScheduling) {
 
-          $firstStep = $stepVisitType;
-
-        }
-        // - Open, 1 type / Direct
-        // - Open, multiple types / Direct.
-        else if (openScheduling && directScheduling) {
-
+          // Only direct scheduling available.
+          // Start by asking if user is within the time frame to be a
+          // returning patient.
           $firstStep = $stepVisitedBefore;
 
         }
@@ -305,26 +358,61 @@
 
       if ($stepVisitedBefore.length) {
 
-        // "Have you visited this doctor before?" => No.
+        // "Have you visited this provider in the last three years?" => No.
         $stepVisitedBefore.find('a[data-btn="no"]').click(function (e) {
 
           e.preventDefault();
 
-          if (!openMultipleTypes) {
-            stepForward($stepOpenSchedWidget);
+          if (acceptingNew) {
+            if (openScheduling) {
+
+              // Offer open scheduling when it's available.
+              if (openMultipleTypes) {
+                stepForward($stepVisitType);
+              }
+              else {
+                stepForward($stepOpenSchedWidget);
+              }
+
+            }
+            else {
+
+              // Show message that only returning patients within 3 years can
+              // book online; anyone may call.
+              stepForward($stepCallInsteadAll);
+
+            }
           }
-          else if (openMultipleTypes) {
-            stepForward($stepVisitType);
+          else {
+
+            // Show message that only returning patients within 3 years can
+            // book online; returning patients may call.
+            stepForward($stepCallInsteadReturning);
+
           }
 
         });
 
-        // "Have you visited this doctor before?" => Yes.
+        // "Have you visited this provider in the last three years?" => Yes.
+        // If only direct scheduling is available, this button links directly
+        // to eCare (via the template), because user is coming from the
+        // returning patients link that already specifies eCare requirement.
+        // If open scheduling is available too, it moves to eCare account step.
+        //
+        // Note: We set this handler at time of attach behaviors. It would be
+        // ideal not to set it if the button is just a link - but we don't get
+        // the provider scheduling variables until the modal opens. So we can
+        // only check for open scheduling when the handler runs, not when we
+        // first set it.
         $stepVisitedBefore.find('a[data-btn="yes"]').click(function (e) {
 
-          e.preventDefault();
+          if (acceptingNew && openScheduling) {
 
-          stepForward($stepEcareAccount);
+            e.preventDefault();
+
+            stepForward($stepEcareAccount);
+
+          }
 
         });
 

@@ -59,6 +59,24 @@
 {% endif %}
 
 {#
+  Set data attributes for the link/button to pass the provider's accepting
+  patients statuses and Epic scheduling values to the modal.
+  The modal can retrieve these because the element that triggered it is set as
+  the `event.relatedTarget`.
+  @see https://getbootstrap.com/docs/4.1/components/modal/#varying-modal-content
+#}
+{% set modal_attrs %}
+  data-toggle="modal"
+  data-target="#modal-appointment-provider"
+  data-provider-accepting-new="{{ (accepting_new ? '1' : '0') }}"
+  data-provider-accepting-returning="{{ (accepting_returning ? '1' : '0') }}"
+  data-provider-epic-id="{{ epic_id }}"
+  data-provider-open-scheduling="{{ (open_scheduling ? '1' : '0') }}"
+  data-provider-visit-type-ids="{{ visit_type_ids|join('|') }}"
+  data-provider-direct-scheduling="{{ (direct_scheduling ? '1' : '0') }}"
+{% endset %}
+
+{#
   Output possible appointment actions.
 #}
 {% if not accepting_returning and not accepting_new %}
@@ -70,15 +88,25 @@
 
   <p class="{{ class_prefix }}-appt-call">{{ "Returning patients can call to schedule an appointment with this provider."|t }}</p>
 
-  {# Direct scheduling link, if enabled #}
+  {#
+    Direct scheduling link, if enabled.
+    This opens the modal to first check if user has visited within the last
+    3 years, which is required to use eCare.
+  #}
   {% if direct_scheduling and (url_direct_scheduling is not empty) %}
     <p class="{{ class_prefix }}-appt-link-direct">
-      <a href="{{ url_direct_scheduling }}" target="_blank">{{ "Returning patients with an eCare account can book online."|t }}</a><span class="uwm-icon uwm-icon--arrow-right-blue" aria-hidden="true"></span>
+      <a href="#modal-appointment-provider" {{ modal_attrs }}>{{ "Returning patients with an eCare account can book online."|t }}</a><span class="uwm-icon uwm-icon--arrow-right-blue" aria-hidden="true"></span>
     </p>
   {% endif %}
 
-{% elseif accepting_returning and accepting_new %}
-  {# --- Accepting new and returning patients --- #}
+{% elseif accepting_new %}
+  {# --- Accepting new and (should be) returning patients --- #}
+  {# ------------------------------------------------------------------------
+    Note: realistically, if provider is accepting new, they should also be
+    accepting returning. However, respect the data, and do not offer the
+    direct scheduling option if set as not accepting returning.
+    (This should be logged as likely bad data.)
+  ------------------------------------------------------------------------ #}
 
   {% if not direct_scheduling and not open_scheduling %}
     {# --- No online scheduling at all --- #}
@@ -90,9 +118,14 @@
 
     <p class="{{ class_prefix }}-appt-call">{{ "Call to schedule an appointment with this provider."|t }}</p>
 
-    {% if url_direct_scheduling is not empty %}
+    {#
+      Direct scheduling link, if enabled.
+      This opens the modal to first check if user has visited within the last
+      3 years, which is required to use eCare.
+    #}
+    {% if accepting_returning and (url_direct_scheduling is not empty) %}
       <p class="{{ class_prefix }}-appt-link-direct">
-        <a href="{{ url_direct_scheduling }}" target="_blank">{{ "Returning patients with an eCare account can book online."|t }}</a><span class="uwm-icon uwm-icon--arrow-right-blue" aria-hidden="true"></span>
+        <a href="#modal-appointment-provider" {{ modal_attrs }}>{{ "Returning patients with an eCare account can book online."|t }}</a><span class="uwm-icon uwm-icon--arrow-right-blue" aria-hidden="true"></span>
       </p>
     {% endif %}
 
@@ -113,7 +146,20 @@
            Open scheduling, 1 appt type / Direct scheduling
            Open scheduling, multiple types / Direct scheduling --- #}
 
-    {# TODO: get these from however we store them #}
+    {# Button to open modal #}
+    <button class="{{ class_prefix }}-appt-flow-btn btn-cta-solid" {{ modal_attrs }}>{{ "Book appointment online"|t }}</button>
+
+  {% endif %}
+{% endif %}
+
+{#
+  Appointment flow modal - if there are any online options.
+#}
+{% if (accepting_returning and direct_scheduling) or (accepting_new and open_scheduling) %}
+
+  {# Get open scheduling visit types labels. #}
+  {# TODO: get these from however we store them #}
+  {% if accepting_new and open_scheduling %}
     {%
       set visit_type_names = {
         '9000': 'New Patient Appointment',
@@ -128,60 +174,45 @@
         '103619': 'Care for prevention and checkups'
       }
     %}
+  {% endif %}
 
-    {#
-      Add data attributes on the button to pass the provider's Epic scheduling
-      values to the modal. The modal can retrieve these because the element that
-      triggered it is set as the `event.relatedTarget`.
-      @see https://getbootstrap.com/docs/4.1/components/modal/#varying-modal-content
-    #}
-    <button class="{{ class_prefix }}-appt-flow-btn btn-cta-solid"
-      data-toggle="modal"
-      data-target="#modal-appointment-provider"
-      data-provider-epic-id="{{ epic_id }}"
-      data-provider-open-scheduling="{{ (open_scheduling ? '1' : '0') }}"
-      data-provider-visit-type-ids="{{ visit_type_ids|join('|') }}"
-      data-provider-direct-scheduling="{{ (direct_scheduling ? '1' : '0') }}">{{ "Book appointment online"|t }}</button>
+  {#
+    Pass the modal context as data attribute for use in JS.
+    Since the modal intentionally exists only once in a page, we can set the
+    context value on it, and it's immediately accessible in JS. (The scheduling
+    data values that are specific to each provider must be set on that
+    provider's button that opens the modal.)
+  #}
+  <div id="modal-appointment-provider" class="modal fade uwm-modal-appointment" tabindex="-1" role="dialog"
+    data-modal-appt-context="{{ modal_appt_context }}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
 
-    {#
-      Pass the modal context as data attribute for use in JS.
-      Since the modal intentionally exists only once in a page, we can set the
-      context value on it, and it's immediately accessible in JS. (The scheduling
-      data values that are specific to each provider must be set on that provider's
-      button that opens the modal.)
-    #}
-    <div id="modal-appointment-provider" class="modal fade uwm-modal-appointment" tabindex="-1" role="dialog"
-      data-modal-appt-context="{{ modal_appt_context }}">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">{{ "Book appointment online"|t }}</h3>
 
-          <div class="modal-header">
-            <h3 class="modal-title">{{ "Book appointment online"|t }}</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="{{ "Close"|t }}">
+            <span class="uwm-icon uwm-icon--close-x" aria-hidden="true"></span>
+          </button>
+        </div>
 
-            <button type="button" class="close" data-dismiss="modal" aria-label="{{ "Close"|t }}">
-              <span class="uwm-icon uwm-icon--close-x" aria-hidden="true"></span>
-            </button>
+        <div class="modal-body">
+
+          {# WIP: trying non-ajax version - include the flow template instead #}
+          {#
+          <p><a class="use-ajax" href="/uwm-appointment/provider/{{ node.id }}/nojs">Load schedule flow</a></p>
+
+          <div id="appointment-provider-flow">
+            Provider appointment flow to load here
           </div>
+          #}
 
-          <div class="modal-body">
-
-            {# WIP: trying non-ajax version - include the flow template instead #}
-            {#
-            <p><a class="use-ajax" href="/uwm-appointment/provider/{{ node.id }}/nojs">Load schedule flow</a></p>
-
-            <div id="appointment-provider-flow">
-              Provider appointment flow to load here
-            </div>
-            #}
-
-            {% include directory ~ '/components/appointment-flow/uwm-appointment-provider-flow.html.twig' %}
-
-          </div>
+          {% include directory ~ '/components/appointment-flow/uwm-appointment-provider-flow.html.twig' %}
 
         </div>
+
       </div>
     </div>
-
-  {% endif %}
+  </div>
 
 {% endif %}
