@@ -7,15 +7,36 @@
  */
 
 @import 'init';
+@import 'base/typography';
 
-.make-appt-page__title-link {
-  font-size: 1.25rem;
-  margin-top: 1rem;
-  a {
-    color: theme-color('link-blue');
-    text-decoration: none;
-    &:hover, &:focus {
-      text-decoration: underline;
+.make-appt-page {
+  .paragraph--type--uwm-basic-content {
+    a {
+      @include link-blue-hover-underline;
     }
+
+    /* Adds specific styling for Make an Appointment in-card subheaders */
+    h3 {
+      font-size: 1rem;
+      padding: 0;
+      font-weight: $font-weight-semi-bold;
+    }
+  }
+
+  &--book-online-link {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  &--margin-fix {
+    margin-bottom: 1rem;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  &--inline-elements p {
+    display: inline-block;
   }
 }

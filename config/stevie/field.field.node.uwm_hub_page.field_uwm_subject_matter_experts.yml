@@ -1,0 +1,28 @@
+uuid: 22970fa4-4a90-4363-8bb8-03b35aff66d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_subject_matter_experts
+    - node.type.uwm_hub_page
+id: node.uwm_hub_page.field_uwm_subject_matter_experts
+field_name: field_uwm_subject_matter_experts
+entity_type: node
+bundle: uwm_hub_page
+label: 'Subject Matter Experts'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: true
+field_type: entity_reference

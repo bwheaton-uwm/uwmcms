@@ -1,0 +1,28 @@
+uuid: 1f2e4d2a-64d5-41ee-af8c-c2d54d3ad876
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_content_owner
+    - node.type.res_clinic
+id: node.res_clinic.field_uwm_content_owner
+field_name: field_uwm_content_owner
+entity_type: node
+bundle: res_clinic
+label: 'Content Owner'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: true
+field_type: entity_reference
