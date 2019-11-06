@@ -99,14 +99,28 @@
     </p>
   {% endif %}
 
-{% elseif accepting_new %}
-  {# --- Accepting new and (should be) returning patients --- #}
+{% elseif accepting_new and not accepting_returning %}
+  {# *** Accepting new patients only *** #}
   {# ------------------------------------------------------------------------
     Note: realistically, if provider is accepting new, they should also be
     accepting returning. However, respect the data, and do not offer the
     direct scheduling option if set as not accepting returning.
     (This should be logged as likely bad data.)
   ------------------------------------------------------------------------ #}
+
+  {% if not open_scheduling %}
+
+    <p class="{{ class_prefix }}-appt-call">{{ "Call to schedule an appointment with this provider."|t }}</p>
+
+  {% elseif open_scheduling %}
+
+    {# Button to open modal #}
+    <button class="{{ class_prefix }}-appt-flow-btn btn-cta-solid" {{ modal_attrs }}>{{ "Book appointment online"|t }}</button>
+
+  {% endif %}
+
+{% elseif accepting_new and accepting_returning %}
+  {# --- Accepting new and returning patients --- #}
 
   {% if not direct_scheduling and not open_scheduling %}
     {# --- No online scheduling at all --- #}
@@ -119,26 +133,15 @@
     <p class="{{ class_prefix }}-appt-call">{{ "Call to schedule an appointment with this provider."|t }}</p>
 
     {#
-      Direct scheduling link, if enabled.
+      Direct scheduling link
       This opens the modal to first check if user has visited within the last
       3 years, which is required to use eCare.
     #}
-    {% if accepting_returning and (url_direct_scheduling is not empty) %}
+    {% if url_direct_scheduling is not empty %}
       <p class="{{ class_prefix }}-appt-link-direct">
         <a href="#modal-appointment-provider" {{ modal_attrs }}>{{ "Returning patients with an eCare account can book online."|t }}</a><span class="uwm-icon uwm-icon--arrow-right-blue" aria-hidden="true"></span>
       </p>
     {% endif %}
-
-  {% elseif false and open_scheduling and visit_type_ids is not empty and visit_type_ids|length == 1 and not direct_scheduling %}
-    {# --- TEMP? Open scheduling only, 1 appt type --- #}
-
-    {# TODO: this case only needs to be separated from the below if we are
-      NOT embedding the open scheduling widget - in which case it's linked from
-      the initial button, rather than opening within the modal. #}
-
-      {% if url_open_scheduling_one_type is not empty %}
-        <a class="{{ class_prefix }}-appt-flow-btn btn-cta-solid" href="{{ url_open_scheduling_one_type }}" target="_blank">{{ "Book appointment online"|t }}</a>
-      {% endif %}
 
   {% elseif open_scheduling %}
     {# --- Open scheduling only, 1 appt type
@@ -146,8 +149,24 @@
            Open scheduling, 1 appt type / Direct scheduling
            Open scheduling, multiple types / Direct scheduling --- #}
 
-    {# Button to open modal #}
-    <button class="{{ class_prefix }}-appt-flow-btn btn-cta-solid" {{ modal_attrs }}>{{ "Book appointment online"|t }}</button>
+    {% if false and (not direct_scheduling) and (visit_type_ids is not empty) and (visit_type_ids|length == 1) %}
+      {#
+        TODO: Open scheduling only, 1 appt type
+        This case only needs to be separated if we are NOT embedding the open
+        scheduling widget - in which case it's linked from the button, rather
+        than opening within the modal.
+      #}
+
+      {% if url_open_scheduling_one_type is not empty %}
+        <a class="{{ class_prefix }}-appt-flow-btn btn-cta-solid" href="{{ url_open_scheduling_one_type }}" target="_blank">{{ "Book appointment online"|t }}</a>
+      {% endif %}
+
+    {% else %}
+
+      {# Button to open modal #}
+      <button class="{{ class_prefix }}-appt-flow-btn btn-cta-solid" {{ modal_attrs }}>{{ "Book appointment online"|t }}</button>
+
+    {% endif %}
 
   {% endif %}
 {% endif %}

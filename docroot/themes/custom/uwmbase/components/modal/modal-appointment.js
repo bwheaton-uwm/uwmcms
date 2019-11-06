@@ -425,11 +425,11 @@
 
           e.preventDefault();
 
-          if (!openMultipleTypes) {
-            stepForward($stepOpenSchedWidget);
-          }
-          else if (openMultipleTypes) {
+          if (openMultipleTypes) {
             stepForward($stepVisitType);
+          }
+          else {
+            stepForward($stepOpenSchedWidget);
           }
 
         });
