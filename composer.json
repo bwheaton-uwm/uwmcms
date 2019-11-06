@@ -58,9 +58,12 @@
     "post-install-cmd": [
       "@uwmcms-update-saml",
       "@uwmcms-patch-htaccess",
-      "@uwmcms-preprend-htaccess"
+      "@uwmcms-preprend-htaccess",
+      "composer show > .composer_show.out"
     ],
-    "post-update-cmd": [],
+    "post-update-cmd": [
+      "composer show > .composer_show.out"
+    ],
     "post-drupal-scaffold-cmd": []
   },
   "require":
