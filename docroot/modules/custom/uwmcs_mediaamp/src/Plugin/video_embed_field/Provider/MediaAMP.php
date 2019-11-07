@@ -15,15 +15,37 @@ use Drupal\video_embed_field\ProviderPluginBase;
  */
 class MediaAMP extends ProviderPluginBase {
 
+  /**
+   * Description here.
+   *
+   * @var string
+   */
   protected static $providerMatch = 'player.mediaamp.io';
 
+  /**
+   * Description here.
+   *
+   * @var string
+   */
   protected static $providerIdMatch = '\/media\/(?<mediaid>[^?\/]+)';
 
+  /**
+   * Description here.
+   *
+   * @var string
+   */
   protected static $accountEmbedUrl = 'https://player.mediaamp.io/p/U8-EDC/PfS6F0yR_GNu/embed/select/media/%s';
 
+  /**
+   * Description here.
+   *
+   * @var string
+   */
   protected static $accountFeedUrl = 'https://feed.theplatform.com/f/U8-EDC/DmdisEvWzzBl?byPid=%s';
 
   /**
+   * Description here.
+   *
    * {@inheritdoc}
    */
   public static function getIdFromInput($input) {

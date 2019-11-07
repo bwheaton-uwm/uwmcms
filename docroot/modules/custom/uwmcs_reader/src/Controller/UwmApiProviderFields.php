@@ -10,7 +10,7 @@ class UwmApiProviderFields implements UwmImFieldsInterface {
   /**
    * Description here.
    *
-   * @param \stdClass $imApiProvider
+   * @param object $imApiProvider
    *   Description here.
    */
   public static function addFieldData(\stdClass &$imApiProvider) {
@@ -29,7 +29,7 @@ class UwmApiProviderFields implements UwmImFieldsInterface {
   /**
    * Description here.
    *
-   * @param \stdClass $providerData
+   * @param object $providerData
    *   Description here.
    */
   public static function getProviderLocations(\stdClass &$providerData) {
@@ -67,7 +67,7 @@ class UwmApiProviderFields implements UwmImFieldsInterface {
   /**
    * Description here.
    *
-   * @param \stdClass $providerData
+   * @param object $providerData
    *   Description here.
    */
   public static function getProviderPublications(\stdClass &$providerData) {
