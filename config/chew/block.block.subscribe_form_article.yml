@@ -6,6 +6,7 @@ dependencies:
     - 'block_content:basic:e16cbb23-63ad-4324-b4b3-2a6ab61d74f1'
   module:
     - block_content
+    - ctools
     - node
   theme:
     - chew
@@ -29,5 +30,12 @@ visibility:
     bundles:
       article: article
     negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      article: article
+    negate: true
     context_mapping:
       node: '@node.node_route_context:node'

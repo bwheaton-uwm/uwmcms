@@ -1,17 +1,22 @@
-.paragraph--type--pull-quote {
-  margin-top: ceil(($font-size-base * 2));
-  margin-bottom: ceil(($font-size-base * 2));
-  margin-left: ceil(($font-size-base * 4));
-  margin-right: ceil(($font-size-base * 4));
-  @media (max-width: $screen-xs) {
-    margin-left: 0;
-    margin-right: 0;
+.field .paragraph--type--pull-quote {
+
+  @extend .row;
+  color: #343638;
+
+  @media (min-width: $screen-xs) {
+    margin: 40px 0;
   }
+  @media (min-width: $screen-md) {
+    margin: 48px 0;
+  }
+
   .field--name-field-quote-text {
-    color: $brand-secondary;
+
+    border-top: 8px solid $dark-green;
     font-family: $font-family-sans-serif;
     font-weight: 500;
-    font-size: ceil(($font-size-base * 1.5));
+    font-size: 20px;
+    line-height: 28px;
     position: relative;
     padding-left: ceil(($font-size-base * 2));
 
@@ -20,8 +25,10 @@
       padding-left: ceil(($font-size-base-xs * .8));
     }
   }
+
   .field--name-field-quote-attribution {
-    color: $brand-secondary;
+
+    border-top: 8px solid $dark-green;
     font-family: $font-family-sans-serif;
     font-size: ceil(($font-size-base * .778));
     text-align: right;
@@ -29,4 +36,72 @@
       font-size: $font-size-base-xs;
     }
   }
+
+  .field--name-field-quote-text, .field--name-field-quote-attribution {
+    @extend %pull-quote-size;
+  }
+
+}
+
+article.node-term-category-body {
+  .field .paragraph--type--pull-quote {
+    .field--name-field-quote-text, .field--name-field-quote-attribution {
+      border-top: 8px solid $dark-green;
+      @media (min-width: $screen-xs) {
+        border-left: 8px solid $dark-green;
+        border-top: 0 none;
+      }
+    }
+  }
+}
+article.node-term-category-mind {
+  .field .paragraph--type--pull-quote {
+    .field--name-field-quote-text, .field--name-field-quote-attribution {
+      border-top: 8px solid $dark-blue;
+      @media (min-width: $screen-xs) {
+        border-left: 8px solid $dark-blue;
+        border-top: 0 none;
+      }
+    }
+  }
+}
+article.node-term-category-life {
+  .field .paragraph--type--pull-quote {
+    .field--name-field-quote-text, .field--name-field-quote-attribution {
+      border-top: 8px solid $dark-purple;
+      @media (min-width: $screen-xs) {
+        border-left: 8px solid $dark-purple;
+        border-top: 0 none;
+      }
+    }
+  }
+}
+article.node-term-category-well {
+  .field .paragraph--type--pull-quote {
+    .field--name-field-quote-text, .field--name-field-quote-attribution {
+      border-top: 8px solid $dark-red;
+      @media (min-width: $screen-xs) {
+        border-left: 8px solid $dark-red;
+        border-top: 0 none;
+      }
+    }
+  }
+}
+
+%pull-quote-size {
+
+  @extend .center-block;
+
+  max-width: 248px;
+  float: none;
+
+  @media (min-width: $screen-xs) {
+    max-width: 442px;
+    border-top: 0 none;
+    border-left: 8px solid $dark-green;
+  }
+  @media (min-width: $screen-md) {
+    max-width: 560px;
+  }
+
 }

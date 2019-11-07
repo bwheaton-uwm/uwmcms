@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.aside.field_body
     - field.field.paragraph.aside.field_heading
+    - field.field.paragraph.aside.field_style_as__take_the_next_st
     - paragraphs.paragraphs_type.aside
   module:
     - text
@@ -27,4 +28,6 @@ content:
     third_party_settings: {  }
     type: text_default
     region: content
-hidden: {  }
+hidden:
+  field_style_as__take_the_next_st: true
+  search_api_excerpt: true

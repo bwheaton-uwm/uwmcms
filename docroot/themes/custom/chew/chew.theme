@@ -5,6 +5,7 @@
  * Custom PHP code for the CHEW theme.
  */
 
+use Drupal\Component\Utility\Html;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\taxonomy\TermInterface;
@@ -184,4 +185,28 @@ function chew_preprocess_media(&$variables) {
   if ($variables['view_mode']) {
     $variables['attributes']['class'][] = 'view-mode-' . $variables['view_mode'];
   }
+}
+
+/**
+ * Implements hook_preprocess_NODE().
+ */
+function chew_preprocess_node(&$variables) {
+
+  $node = $variables['node'];
+  /***
+   * Add article category to the node, so the quick-read or
+   * pull quotes can be given color for theming.
+   */
+  if ($node->hasField('field_categories')) {
+
+    $node_terms = $variables['node']->field_categories->referencedEntities();
+    if (!empty($node_terms[0])) {
+      $term_parents = \Drupal::service('entity_type.manager')->getStorage("taxonomy_term")->loadAllParents($node_terms[0]->id());
+      $last = end($term_parents);
+      $name = Html::cleanCssIdentifier($last->getName());
+      $variables['attributes']['class'][] = 'node-term-category-' . strtolower($name);
+    }
+
+  }
+
 }
