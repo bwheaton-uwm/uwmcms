@@ -3,7 +3,28 @@
 
 {% block content_block %}
   <div{{ content_attributes.addClass('content') }}>
-    {{ content }}
+    <div class='article-full--header'>
+      {{ content.field_categories }}
+      {{ title_prefix }}
+        <h2{{ title_attributes }}>
+          {{ label }}
+        </h2>
+      {{ title_suffix }}
+      <div class='article-full--header__metadata'>
+        {{ content.field_author }}
+        <span>|</span>
+        {{ node.getCreatedTime|format_date('long') }}
+        <span>|</span>
+        <div class='fact-checked--header'>
+          <span><img src='/themes/custom/chew/images/uwm-checkmark.svg' alt= 'Checkmark' /></span>
+          <span>Fact Checked</span>
+        </div>
+      </div>
+    </div>
+    <div>
+    {{ content.field_primary_media }}
+    {{ content.field_quick_read }}
+    {{ content.field_sections }}
   </div>
   <div class="content-footer">
     <p><i class="far fa-check-circle"></i> <strong>Fact Checked:</strong> Each of our articles are reviewed for accuracy by an expert from UW Medicine or the University of Washington.</p>
@@ -11,7 +32,3 @@
 
   </div>
 {% endblock %}
-
-
-
-
