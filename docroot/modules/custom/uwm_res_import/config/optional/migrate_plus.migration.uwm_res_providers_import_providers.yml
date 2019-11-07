@@ -79,10 +79,6 @@ source:
     label: field_res_internal_url
     selector: /attributes/field_res_internal_url
 
-  - name: field_res_isacceptingnewpts
-    label: field_res_isacceptingnewpts
-    selector: /attributes/field_res_isacceptingnewpts
-
   - name: field_res_meta_tags
     label: field_res_meta_tags
     selector: /attributes/field_res_meta_tags
@@ -111,6 +107,14 @@ source:
     label: uwm_unique_id
     selector: /attributes/uwm_unique_id
 
+  - name: field_res_isacceptingnewpts
+    label: field_res_isacceptingnewpts
+    selector: /attributes/field_res_isacceptingnewpts
+
+  - name: field_res_isacceptingreturnpts
+    label: field_res_isacceptingreturnpts
+    selector: /attributes/field_res_isacceptingreturnpts
+
   - name: field_res_ser_id
     label: field_res_ser_id
     selector: /attributes/field_res_ser_id
@@ -118,6 +122,14 @@ source:
   - name: field_res_is_open_scheduling
     label: field_res_is_open_scheduling
     selector: /attributes/field_res_is_open_scheduling
+
+  - name: field_res_is_direct_scheduling
+    label: field_res_is_direct_scheduling
+    selector: /attributes/field_res_is_direct_scheduling
+
+  - name: field_res_visit_type_id
+    label: field_res_visit_type_id
+    selector: /attributes/field_res_visit_type_id
 
   - name: uwm_json_packet
     label: uwm_json_packet
@@ -260,10 +272,14 @@ process:
 
   field_res_gender: field_res_gender
   field_res_internal_url: field_res_internal_url
-  field_res_isacceptingnewpts: field_res_isacceptingnewpts
   field_res_meta_tags: field_res_meta_tags
+
+  field_res_isacceptingnewpts: field_res_isacceptingnewpts
+  field_res_isacceptingreturnpts: field_res_isacceptingreturnpts
   field_res_ser_id: field_res_ser_id
   field_res_is_open_scheduling: field_res_is_open_scheduling
+  field_res_is_direct_scheduling: field_res_is_direct_scheduling
+  field_res_visit_type_id: field_res_visit_type_id
 
   field_uwm_json_packet: uwm_json_packet
 

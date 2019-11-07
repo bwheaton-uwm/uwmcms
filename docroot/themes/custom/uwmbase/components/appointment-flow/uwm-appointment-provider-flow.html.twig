@@ -1,0 +1,187 @@
+{#
+/**
+ * @file
+ * Default template for custom theme hook to display provider appointment flow.
+ *
+ * @see uwmcs_ecare_scheduling/src/Controller/UwmSchedulingController
+ *
+ */
+#}
+{#
+  Relevant variables from parent template:
+
+  modal_appt_context: string - where the modal is being used. One of:
+    'provider_page' - provider bio (node) page
+    'search_providers' - provider card on search results
+    'clinic_page_tab' - provider card on clinic page tab
+
+  If on the provider bio page only:
+    epic_id: the provider's Epic/SER ID number
+    open_scheduling: boolean - whether provider is enabled for open scheduling
+    visit_type_ids: array - provider's open scheduling visit type IDs, if any
+    direct_scheduling: boolean - whether provider is enabled for direct scheduling
+    visit_type_names: mapping - visit type ID to visit type name (from Epic)
+    visit_type_descriptions: mapping - visit type ID to visit type description
+#}
+
+{#
+  Define URLs to eCare. If we are not on a provider page, provider-specific
+  query parameter values are left out and inserted by JS.
+#}
+{%
+  set url_direct_scheduling = 'https://ecare.uwmedicine.org/prod01/Scheduling?workflow=ExistingProvider&selProvId=' ~ (direct_scheduling and epic_id ? epic_id : '')
+%}
+{%
+  set url_open_scheduling = 'https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id=' ~ (open_scheduling and epic_id ? epic_id : '') ~ '&vt=' ~ (open_scheduling and visit_type_ids is not empty and visit_type_ids|length == 1 ? visit_type_ids.0 : '') ~ '&view=plain'
+%}
+
+{#
+  Ensure that provider-specific values are not used in the wrong context.
+#}
+{% if modal_appt_context is not same as('provider_page') %}
+  {% set epic_id = null %}
+  {% set open_scheduling = null %}
+  {% set visit_type_ids = null %}
+  {% set direct_scheduling = null %}
+{% endif %}
+
+<div class="appointment-flow">
+  
+  <div class="appointment-flow__step" data-step="visited-before">
+    <p class="appointment-flow__step-text">{{ "Have you visited this provider in the last three years?"|t }}</p>
+
+    <div class="appointment-flow__step-buttons">
+
+      <a href="#" class="appointment-flow__step-button btn-cta-solid" data-btn="no">{{ "No"|t }}</a>
+
+      {#
+        If only direct scheduling is available, this step can link directly to
+        eCare, because the initial link states the eCare account is required.
+      #}
+      {% if accepting_returning and direct_scheduling and ((not accepting_new) or (not open_scheduling)) %}
+        <a href="{{ url_direct_scheduling }}" target="_blank" class="appointment-flow__step-button btn-cta-solid" data-btn="yes">{{ "Yes"|t }}</a>
+      {% else %}
+        <a href="#" class="appointment-flow__step-button btn-cta-solid" data-btn="yes">{{ "Yes"|t }}</a>
+      {% endif %}
+
+    </div>
+
+    <div class="appointment-flow__step-back">
+      <i class="fa fa-angle-left" aria-hidden="true"></i>
+      <a href="#">{{ "Back"|t }}</a>
+    </div>
+  </div>
+
+
+  <div class="appointment-flow__step" data-step="call-instead-all">
+    <p class="appointment-flow__step-text"><strong>{{ "Please call to schedule instead."|t }}</strong></p>
+    <p class="appointment-flow__step-text">{{ "Only returning patients who have seen this provider within the last three years can book online. Phone numbers for each location where this provider practices can be viewed on the overview tab."|t }}</p>
+
+    <div class="appointment-flow__step-back">
+      <i class="fa fa-angle-left" aria-hidden="true"></i>
+      <a href="#">{{ "Back"|t }}</a>
+    </div>
+  </div>
+
+
+  <div class="appointment-flow__step" data-step="call-instead-returning">
+    <p class="appointment-flow__step-text"><strong>{{ "Please call to schedule instead."|t }}</strong></p>
+    <p class="appointment-flow__step-text">{{ "Only returning patients who have seen this provider within the last three years can book online. Phone numbers for each location where this provider practices can be viewed on the overview tab."|t }}</p>
+
+    <div class="appointment-flow__step-back">
+      <i class="fa fa-angle-left" aria-hidden="true"></i>
+      <a href="#">{{ "Back"|t }}</a>
+    </div>
+  </div>
+
+
+  <div class="appointment-flow__step" data-step="ecare-account">
+    <p class="appointment-flow__step-text">{{ "Do you have an eCare (patient) account?"|t }}</p>
+
+    <div class="appointment-flow__step-buttons">
+
+      <a href="#" class="appointment-flow__step-button btn-cta-solid" data-btn="no">{{ "No"|t }}</a>
+
+      {#
+        If the provider has direct scheduling and the user has indicated they
+        have an eCare account, link to full eCare site for direct scheduling.
+      #}
+      <a href="{{ url_direct_scheduling }}" target="_blank" class="appointment-flow__step-button btn-cta-solid appointment-flow__direct-scheduling-link" data-btn="yes">{{ "Yes"|t }}</a>
+
+    </div>
+
+    <div class="appointment-flow__step-back">
+      <i class="fa fa-angle-left" aria-hidden="true"></i>
+      <a href="#">{{ "Back"|t }}</a>
+    </div>
+  </div>
+
+
+  <div class="appointment-flow__step" data-step="visit-type">
+    <p class="appointment-flow__step-text">{{ "Choose an appointment type"|t }}</p>
+
+    <div class="appointment-flow__step-buttons">
+
+      {#
+        On provider page, if enabled for open scheduling, generate their
+        visit type buttons.
+
+        TODO: handle missing name/description bad data?
+      #}
+      {% if open_scheduling and (visit_type_ids is not empty) %}
+
+        {% for visit_type_id in visit_type_ids %}
+
+          <a href="#" class="appointment-flow__step-button appointment-flow__step-button--name-desc btn-cta-solid" data-btn-visit-type-id="{{ visit_type_id }}">
+            <span class="appointment-flow__step-button-name">{{ visit_type_names[visit_type_id] }}</span>
+            <span class="appointment-flow__step-button-desc">{{ visit_type_descriptions[visit_type_id] }}</span>
+          </a>
+
+        {% endfor %}
+
+      {% else %}
+
+        {#
+          If we don't have a specific provider in this context, visit type
+          buttons are generated in JS. Copy from this template element for each
+          visit type to ensure consistent markup. It is never displayed.
+        #}
+        <a href="#" class="appointment-flow__step-button appointment-flow__step-button--name-desc btn-cta-solid" data-btn-visit-type-id="template">
+          <span class="appointment-flow__step-button-name">Template name</span>
+          <span class="appointment-flow__step-button-desc">Template description</span>
+        </a>
+
+      {% endif %}
+
+    </div>
+
+    <div class="appointment-flow__step-back">
+      <i class="fa fa-angle-left" aria-hidden="true"></i>
+      <a href="#">{{ "Back"|t }}</a>
+    </div>
+
+  </div>
+
+
+  <div class="appointment-flow__step" data-step="open-schedule">
+
+    {# TODO: temporary link while we are working to enable widget in iframe #}
+    <p>
+      <a class="appointment-flow__open-scheduling-link" href="{{ url_open_scheduling }}" target="_blank">Link to open scheduling widget</a>
+    </p>
+    
+    <div class="appointment-flow__open-scheduling">
+
+      {# TODO: bad to have iframe with a "broken" src at any point? #}
+      <iframe class="appointment-flow__open-scheduling-embed" src="{{ url_open_scheduling }}" scrolling="no"></iframe>
+
+    </div>
+
+    <div class="appointment-flow__step-back">
+      <i class="fa fa-angle-left" aria-hidden="true"></i>
+      <a href="#">{{ "Back"|t }}</a>
+    </div>
+
+  </div>
+
+</div>

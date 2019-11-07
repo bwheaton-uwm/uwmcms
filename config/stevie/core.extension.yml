@@ -172,6 +172,7 @@ module:
   user: 0
   uwm_commands: 0
   uwm_res_import: 0
+  uwmcs_ecare_scheduling: 0
   uwmcs_extension: 0
   uwmcs_search_teaser: 0
   uwmcs_searchfields: 0

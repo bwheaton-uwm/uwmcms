@@ -12,6 +12,90 @@ use Drupal\uwmcs_ecare_scheduling\Controller\ECareController;
  */
 function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
 
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $variables['node'];
+
+  // Pass Epic/scheduling metadata field values, and manual accepting-patients
+  // boolean fields, to node template for use in appointment actions and flow.
+  if ($node->bundle() === 'res_provider') {
+
+    // Set defaults for when fields are not populated.
+    $variables['accepting_new'] = FALSE;
+    $variables['accepting_returning'] = FALSE;
+
+    $variables['epic_id'] = NULL;
+    $variables['direct_scheduling'] = FALSE;
+    $variables['open_scheduling'] = FALSE;
+    $variables['visit_type_ids'] = NULL;
+
+    $field_vars = [
+      'field_res_isacceptingnewpts' => 'accepting_new',
+      'field_res_isacceptingreturnpts' => 'accepting_returning',
+      'field_res_ser_id' => 'epic_id',
+      'field_res_is_direct_scheduling' => 'direct_scheduling',
+      'field_res_is_open_scheduling' => 'open_scheduling',
+      'field_res_visit_type_id' => 'visit_type_ids',
+    ];
+
+    foreach ($field_vars as $field_name => $var_name) {
+
+      if ($node->hasField($field_name) && !$node->get($field_name)->isEmpty()) {
+        $field = $node->get($field_name);
+
+        switch ($field_name) {
+          case 'field_res_ser_id':
+            // Get the exact value.
+            $variables[$var_name] = $field->first()->getValue()['value'];
+            break;
+
+          case 'field_res_isacceptingnewpts':
+          case 'field_res_isacceptingreturnpts':
+          case 'field_res_is_open_scheduling':
+          case 'field_res_is_direct_scheduling':
+            // Convert to boolean.
+            $variables[$var_name] = (boolean) $field->first()->getValue()['value'];
+            break;
+
+          case 'field_res_visit_type_id':
+            // Collect multiple values.
+            foreach ($field->getValue() as $val) {
+              $variables[$var_name][] = $val['value'];
+            }
+            break;
+
+        }
+
+      }
+
+    }
+
+    // TODO: remove temporary testing info.
+    $variables['testing_data'] = [
+      '#theme' => 'status_messages',
+      '#message_list' => [
+        'warning' => [
+          t("<strong>Provider scheduling data:</strong><br/><br/>
+          Accepting new? @accepting_new<br/>
+          Accepting returning? @accepting_returning<br/><br/>
+          Epic ID: @epic_id<br/>
+          Direct scheduling enabled? @direct_scheduling<br/>
+          Open scheduling enabled? @open_scheduling<br/>
+          Visit type IDs: @visit_type_ids",
+          [
+            '@accepting_new' => ($variables['accepting_new'] ? "yes" : "no"),
+            '@accepting_returning' => ($variables['accepting_returning'] ? "yes" : "no"),
+            '@epic_id' => ($variables['epic_id'] ? $variables['epic_id'] : "--"),
+            '@direct_scheduling' => ($variables['direct_scheduling'] ? "yes" : "no"),
+            '@open_scheduling' => ($variables['open_scheduling'] ? "yes" : "no"),
+            '@visit_type_ids' => ($variables['visit_type_ids'] ? implode(", ", $variables['visit_type_ids']) : "--"),
+          ]),
+        ],
+      ],
+    ];
+
+  }
+
+  // TODO: unused?
   if (!empty($variables['node'])
       && $variables['node']->getType() === 'fact_page'
   ) {
@@ -23,5 +107,5 @@ function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
     $variables['ecare_modal'] = $eCareCtrl->eCareWidget();
 
   }
-
+  // End TODO.
 }

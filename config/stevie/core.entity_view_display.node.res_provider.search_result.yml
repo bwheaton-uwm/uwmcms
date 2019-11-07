@@ -17,8 +17,10 @@ dependencies:
     - field.field.node.res_provider.field_res_gender
     - field.field.node.res_provider.field_res_image
     - field.field.node.res_provider.field_res_internal_url
+    - field.field.node.res_provider.field_res_is_direct_scheduling
     - field.field.node.res_provider.field_res_is_open_scheduling
     - field.field.node.res_provider.field_res_isacceptingnewpts
+    - field.field.node.res_provider.field_res_isacceptingreturnpts
     - field.field.node.res_provider.field_res_languages
     - field.field.node.res_provider.field_res_medical_services
     - field.field.node.res_provider.field_res_medical_title
@@ -35,7 +37,9 @@ dependencies:
     - field.field.node.res_provider.field_res_ser_id
     - field.field.node.res_provider.field_res_visit_type_id
     - field.field.node.res_provider.field_search_best_bets
+    - field.field.node.res_provider.field_uwm_content_owner
     - field.field.node.res_provider.field_uwm_json_packet
+    - field.field.node.res_provider.field_uwm_subject_matter_experts
     - field.field.node.res_provider.uwm_unique_id
     - node.type.res_provider
   module:
@@ -86,8 +90,10 @@ hidden:
   field_res_gender: true
   field_res_image: true
   field_res_internal_url: true
+  field_res_is_direct_scheduling: true
   field_res_is_open_scheduling: true
   field_res_isacceptingnewpts: true
+  field_res_isacceptingreturnpts: true
   field_res_languages: true
   field_res_medical_services: true
   field_res_medical_title: true

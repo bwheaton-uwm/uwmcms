@@ -13,7 +13,6 @@
 
 {% set modifier_class = attributes.class ~ ' container-xl' %}
 {% set modifier_class = has_ratings ? modifier_class ~ ' node-res_provider--has-ratings' : modifier_class ~ ' node-res_provider--no-ratings' %}
-{% set acceptingAppointments = 'Yes' in content.field_res_isacceptingnewpts.0 ? TRUE : FALSE %}
 {%
   set taxonomy_subsection_attributes = create_attribute({
     'class': [
@@ -36,6 +35,10 @@
     {{ attach_library('uwmbase/provider-page') }}
     {{ title_suffix }}
 
+    {# TODO: remove temporary testing info.
+       @see uwmcs_ecare_scheduling_preprocess_node() #}
+    {{ testing_data }}
+
     <div class="bg provider-page">
         <section class="provider-page__section1">
             <div class="provider-page__section1-area1">
@@ -48,25 +51,45 @@
                     {% endif %}
                 </div>
                 <div class="provider-page__section1-area1-subsection">
-                    {% if acceptingAppointments %}
-                        <div class="provider-page__section1-accepting-patients">
+                    <div class="provider-page__section1-accepting-patients">
+                        {#
+                            These booleans are pulled from fields:
+                            `field_res_isacceptingnewpts`
+                            `field_res_isacceptingreturnpts`
+                            @see uwmcs_ecare_scheduling_preprocess_node()
+                        #}
+                        {% if accepting_new and accepting_returning %}
+                            <i class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></i>
+                            {{ "Accepting new and returning patients"|t }}
+                        {% elseif accepting_returning and (not accepting_new)  %}
+                            <i class="uwm-icon uwm-icon--accepting-patients-purple" aria-hidden="true"></i>
+                            {{ "Accepting returning patients"|t }}
+                        {% elseif accepting_new and (not accepting_returning) %}
+                            {#
+                                NOTE: this case is probably unrealistic and
+                                indicates bad data. Handle it by providing
+                                what options we know we have.
+                            #}
                             <i class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></i>
                             {{ "Accepting new patients"|t }}
-                        </div>
-                    {% else %}
-                        <div class="provider-page__section1-accepting-patients">
-                            <i class="uwm-icon uwm-icon--not-accepting-patients" aria-hidden="true"></i>
-                            {{ "Not accepting new patients"|t }}
-                        </div>
-                    {% endif %}
+                        {% else %}
+                            {#
+                                No message if provider does not accept any type
+                                of appointments.
+                            #}
+                        {% endif %}
+                    </div>
 
                     {% if has_ratings %}
                         {% include "@uwmbase/ratings-summary/ratings-summary.twig" %}
                     {% endif %}
 
-                    {% if acceptingAppointments %}
-                        <div class="provider-page__section1-make-appt-btn">
-                            {{ uwm_cta_link('Make an appointment'|t, provider_appointments_uri, ['btn', 'btn-cta-solid']) }}
+                    {% if accepting_returning or accepting_new %}
+                        <div class="provider-page__section1-appt-actions">
+                            {% include directory ~ '/components/provider-page/node--res-provider--appointment-actions.html.twig' with {
+                                'modal_appt_context': 'provider_page',
+                                'class_prefix': 'provider-page__section1'
+                            } %}
                         </div>
                     {% endif %}
                 </div>
@@ -131,6 +154,46 @@
         <section class="provider-page__section2">
             {% include directory ~ '/components/provider-page/node--res-provider--tabs.html.twig' %}
         </section>
+
+        {#
+            TEST: embed open scheduling iframe using POC environment.
+            Use default markup example provided.
+        #}
+        {% if epic_id is not empty and open_scheduling and visit_type_ids is not empty %}
+
+            {% set ecare_poc_host = 'https://pocecare18.epic.medical.washington.edu/poc' %}
+            {% set ecare_poc_domain = 'https://pocecare18.epic.medical.washington.edu' %}
+
+            <section>
+                <h2>Test open scheduling widget - eCare POC environment:</h2>
+
+                <div id="scheduleContainer">
+                    <iframe id="openSchedulingFrame" scrolling="no" src="{{ ecare_poc_host }}/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id={{ epic_id }}&vt={{ visit_type_ids.0 }}&view=plain"></iframe>
+                </div>
+
+                <link href="{{ ecare_poc_host }}/Content/EmbeddedWidget.css" rel="stylesheet" type="text/css">
+
+                <script src="{{ ecare_poc_host }}/Content/EmbeddedWidgetController.js" type="text/javascript"></script>
+
+                <script type="text/javascript">
+                    var EWC = new EmbeddedWidgetController({
+                        // Replace with the hostname of your Open Scheduling site
+                        'hostname':'{{ ecare_poc_domain }}',
+
+                        // Must equal media query in EpicWP.css + any left/right margin of the host page. Should also change in EmbeddedWidget.css
+                        'matchMediaString':'(max-width: 747px)',
+
+                        //Show a button on top of the widget that lets the user see the slots in fullscreen.
+                        'showToggleBtn':true,
+
+                        //The toggle button’s help text for screen reader.
+                        'toggleBtnExpandHelpText': 'Expand to see the slots in fullscreen',
+                        'toggleBtnCollapseHelpText': 'Exit fullscreen',
+                    });
+                </script>
+            </section>
+
+        {% endif %}
     </div>
 
     {% if has_ratings %}
