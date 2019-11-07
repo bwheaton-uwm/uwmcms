@@ -53,19 +53,16 @@
 ]
 %}
 
-{% set icon = '<i class="chew-icon quick-read"></i>' %}
-
-
 {% if label_hidden %}
   {% if multiple %}
     <div{{ attributes.addClass(classes, 'field--items') }}>
       {% for item in items %}
-        <h3{{ item.attributes.addClass('field--item') }}>{{ icon|raw }} {{ item.content }}</h3>
+        <h3{{ item.attributes.addClass('field--item') }}>{{ item.content }}</h3>
       {% endfor %}
     </div>
   {% else %}
     {% for item in items %}
-      <h3{{ attributes.addClass(classes, 'field--item') }}>{{ icon|raw }} {{ item.content }}</h3>
+      <h3{{ attributes.addClass(classes, 'field--item') }}>{{ item.content }}</h3>
     {% endfor %}
   {% endif %}
 {% else %}
@@ -75,7 +72,7 @@
     <div class="field--items">
       {% endif %}
       {% for item in items %}
-        <h3{{ item.attributes.addClass('field--item') }}>{{ icon|raw }} {{ item.content }}</h3>
+        <h3{{ item.attributes.addClass('field--item') }}>{{ item.content }}</h3>
       {% endfor %}
       {% if multiple %}
     </div>

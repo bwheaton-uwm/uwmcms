@@ -189,10 +189,7 @@ body.page-node-type-article .main-container {
     }
   }
 
-  .field--name-image .field.field--name-field-credit {
-    color: #343638;
-  }
-
+  // Footer Styles
   .content-footer {
     @extend .body3;
 
@@ -204,7 +201,6 @@ body.page-node-type-article .main-container {
     p {
       margin-bottom: 16px;
     }
-  }
 
 }
 .field--name-field-sections {
