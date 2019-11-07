@@ -3,21 +3,22 @@ langcode: en
 status: true
 dependencies:
   module:
+    - focal_point
     - image_style_quality
 name: square_l
 label: 'Square L'
 effects:
-  c00e4c43-81bc-4ae3-95d3-632d7baee23e:
-    uuid: c00e4c43-81bc-4ae3-95d3-632d7baee23e
-    id: image_scale_and_crop
-    weight: 1
-    data:
-      width: 480
-      height: 480
-      anchor: center-top
   0d8f186b-4b51-4050-8da0-abb24be2b047:
     uuid: 0d8f186b-4b51-4050-8da0-abb24be2b047
     id: image_style_quality
-    weight: 2
+    weight: -8
     data:
       quality: 70
+  fa41b897-ac8b-4f7c-addb-735ba80b854a:
+    uuid: fa41b897-ac8b-4f7c-addb-735ba80b854a
+    id: focal_point_scale_and_crop
+    weight: -10
+    data:
+      width: 480
+      height: 480
+      crop_type: focal_point

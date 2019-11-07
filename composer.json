@@ -58,9 +58,12 @@
     "post-install-cmd": [
       "@uwmcms-update-saml",
       "@uwmcms-patch-htaccess",
-      "@uwmcms-preprend-htaccess"
+      "@uwmcms-preprend-htaccess",
+      "composer show > .composer_show.out"
     ],
-    "post-update-cmd": [],
+    "post-update-cmd": [
+      "composer show > .composer_show.out"
+    ],
     "post-drupal-scaffold-cmd": []
   },
   "require":
@@ -113,7 +116,7 @@
     "drupal/fb_instant_articles": "2.x-dev",
     "drupal/field_formatter_range": "^1.0",
     "drupal/field_group": "^1.0@RC",
-    "drupal/focal_point": "^1.0@beta",
+    "drupal/focal_point": "^1.2",
     "drupal/geocoder": "^2.0@beta",
     "drupal/geofield": "^1.0@beta",
     "drupal/geolocation": "^1.11",
