@@ -81,7 +81,7 @@ the default. Otherwise, the About Me tab should be the default. #}
   </section>
 
   {% if research_tab %}
-    <section class="{{ tab_pane_classes|join(' ') }}" role="tabpanel" aria-labelledby="research-tab-tab">
+    <section class="{{ tab_pane_classes|join(' ') }}" id="research-tab" role="tabpanel" aria-labelledby="research-tab-tab">
       <a name="research" id="research"></a>
       {% include directory ~ '/components/provider-page/node--res-provider--tabs-research.html.twig' %}
     </section>
