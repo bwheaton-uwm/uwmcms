@@ -189,19 +189,6 @@ body.page-node-type-article .main-container {
     }
   }
 
-  // Quick Read Styles
-  .paragraph--type--quick-read {
-    .field--name-field-superheading,
-    .field--name-field-heading {
-      @extend .h3;
-    }
-
-    .field--name-field-superheading {
-      text-transform: uppercase;
-    }
-
-  }
-
   // Footer Styles
   .content-footer {
     @extend .body3;

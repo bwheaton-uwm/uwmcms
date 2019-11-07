@@ -1,3 +1,12 @@
+@mixin quick_read_box_color($background-color, $border-color) {
+    border-top: 8px solid $border-color;
+    background-color: $border-color;
+
+    @media ($screen-sm) {
+      border-top: none;
+      border-left: 8px solid $border-color;
+    }
+}
 .paragraph--type--quick-read {
 
   margin: 24px 0 40px 0;
@@ -11,14 +20,13 @@
     padding: 32px 100px 32px 92px;
   }
 
+  .quick-read--header span {
+    padding: 0 5px;
+  }
+
   .field--name-field-superheading {
-    @extend .h2;
-    color: $dark-base-gray;
-    font-weight: bold;
-    text-transform: none;
+    text-transform: uppercase;
     display: inline-block;
-    border-right: 1px solid $dark-base-gray;
-    padding-right: 10px;
     margin: 0 5px 12px 0;
 
     i {
@@ -28,11 +36,7 @@
   }
 
   .field--name-field-heading {
-    @extend .h2;
-    display: inline;
     margin-top: 0;
-    color: $dark-base-gray;
-    text-transform: none;
   }
 
   .field--name-field-body {
@@ -48,25 +52,21 @@
 
 article.node-term-category-body {
   .paragraph--type--quick-read {
-    border-left: 8px solid $dark-green;
-    background-color: $light-green;
+    @include quick_read_box_color($mountain-green-light, $mountain-green);
   }
 }
 article.node-term-category-mind {
   .paragraph--type--quick-read {
-    border-left: 8px solid $dark-blue;
-    background-color: $light-blue;
+    @include quick_read_box_color($light-blue, $dark-blue);
   }
 }
 article.node-term-category-life {
   .paragraph--type--quick-read {
-    border-left: 8px solid $dark-purple;
-    background-color: $light-purple;
+    @include quick_read_box_color($light-purple, $dark-purple);
   }
 }
 article.node-term-category-well {
   .paragraph--type--quick-read {
-    border-left: 8px solid $dark-red;
-    background-color: $light-red;
+    @include quick_read_box_color($light-red, $dark-red);
   }
 }
