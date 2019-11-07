@@ -1,0 +1,2903 @@
+{
+  "id": "e29abb50-f067-40fc-b620-3d39f8e2a2d7",
+  "version": "2.0",
+  "name": "Release Scripts",
+  "url": "https://www.uwmedicine.org",
+  "tests": [{
+    "id": "cdc2d893-51fb-4547-aa13-33df21b6d0ac",
+    "name": "HOME PAGE",
+    "commands": [{
+      "id": "c441f918-5eca-43f4-800d-4e10ff624d8b",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": "https://www.uwmedicine.org"
+    }, {
+      "id": "7ad0db98-b836-4817-8b57-25d92d0d7e2c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1696x1066",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5b9401c3-a69b-4f7e-ada0-0b6f73d678d5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.hero__btn-cta:nth-child(1)",
+      "targets": [
+        ["css=.hero__btn-cta:nth-child(1)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Make an appointment')])[5]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section[2]/section/article/section/div[2]/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/patient-resources/make-an-appointment')])[3]", "xpath:href"],
+        ["xpath=//div[2]/div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a0ca2b3f-7058-4f1c-ab0f-25d70e81b298",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img[@alt='UW Medicine']", "xpath:img"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b1e027d8-ee83-41a6-8284-6a65e0363502",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Find urgent care",
+      "targets": [
+        ["linkText=Find urgent care", "linkText"],
+        ["css=.hero__btn-cta:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Find urgent care')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section[2]/section/article/section/div[2]/div/a[2]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/services/urgent-care')])[3]", "xpath:href"],
+        ["xpath=//div[2]/div/a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Find urgent care')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a768f925-7118-4a1b-a174-f7234c1c5440",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.col-sm-12 img",
+      "targets": [
+        ["css=.col-sm-12 img", "css:finder"],
+        ["xpath=//img[@alt='UW Medicine']", "xpath:img"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1fcb4914-39c9-40b4-a960-b311001991cf",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-sm-12 img",
+      "targets": [
+        ["css=.col-sm-12 img", "css:finder"],
+        ["xpath=//img[@alt='UW Medicine']", "xpath:img"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "99c21bec-95a7-4de6-a0cc-7f50131e2c4d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Find a provider",
+      "targets": [
+        ["linkText=Find a provider", "linkText"],
+        ["css=.hero__btn-cta:nth-child(3)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Find a provider')])[3]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section[2]/section/article/section/div[2]/div/a[3]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/search/providers')])[3]", "xpath:href"],
+        ["xpath=//div[2]/div/a[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e4b93f40-bcb9-4e09-90e1-766be3f1bdad",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img[@alt='UW Medicine']", "xpath:img"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0f8b96ab-da7e-4d9e-aab6-59a30bb0775f",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Find a location",
+      "targets": [
+        ["linkText=Find a location", "linkText"],
+        ["css=.hero__btn-cta:nth-child(4)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Find a location')])[5]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section[2]/section/article/section/div[2]/div/a[4]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/search/locations')])[5]", "xpath:href"],
+        ["xpath=//div[2]/div/a[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c7d703e5-2cf7-4f36-93d5-334807a3f494",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img[@alt='UW Medicine']", "xpath:img"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "254a30c7-1b02-4ce8-bfa3-cf667651254a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-play > path",
+      "targets": [
+        ["css=.fa-play > path", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "0553dd30-0bf5-4a16-bcf3-9af1cdd15909",
+      "comment": "",
+      "command": "click",
+      "target": "css=.close > span",
+      "targets": [
+        ["css=.close > span", "css:finder"],
+        ["xpath=//div[@id='modal-section-1']/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'×')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1f8b7fe8-6ffc-4f13-b842-1217f470b8b2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.uwm-accent-color__blue .homepage-section__link",
+      "targets": [
+        ["css=.uwm-accent-color__blue .homepage-section__link", "css:finder"],
+        ["xpath=//a[contains(text(),'School of Medicine Home')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section[2]/section/article/div[2]/div/section[3]/div[2]/div[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/school-of-medicine')])[8]", "xpath:href"],
+        ["xpath=//section[3]/div[2]/div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "05017a59-f6e8-48d0-904f-7f558c615b9c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img[@alt='UW Medicine']", "xpath:img"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5ff4941b-ad85-4ac9-a59c-17be5389cce3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.accelerate-promotion-block__cta > .btn",
+      "targets": [
+        ["css=.accelerate-promotion-block__cta > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Learn More')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section[2]/section/article/section[3]/div/div/div/div[3]/a", "xpath:idRelative"],
+        ["xpath=//a[@href='http://www.acceleratemed.org']", "xpath:href"],
+        ["xpath=//div/div/div[3]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "86316576-cfa9-4d7f-bf31-2180fd0640c4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.site-logo",
+      "targets": [
+        ["css=.site-logo", "css:finder"],
+        ["xpath=//img[@alt='Accelerate: The Campaign for UW Medicine']", "xpath:img"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dc340221-2fec-4726-8cb8-0a6a7e4fc4ac",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "b0d75d19-b6d3-40cc-b9cd-085807a45121",
+    "name": "PROVIDER SEARCH",
+    "commands": [{
+      "id": "a872478e-d4b1-4ab2-b001-8e467cd599f5",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "780b5f6f-99f2-4c04-b65b-604bdb078826",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1680x1050",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8db61a94-1355-4c0f-b832-a4ac141c7bc2",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Find a provider",
+      "targets": [
+        ["linkText=Find a provider", "linkText"],
+        ["css=.hero__btn-cta:nth-child(3)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Find a provider')])[3]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section[2]/section/article/section/div[2]/div/a[3]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/search/providers')])[3]", "xpath:href"],
+        ["xpath=//div[2]/div/a[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "11fc01f9-d980-4dd3-af95-0dc8ddad1fc4",
+      "comment": "",
+      "command": "click",
+      "target": "id=edit-s",
+      "targets": [
+        ["id=edit-s", "id"],
+        ["css=#edit-s", "css:finder"],
+        ["xpath=//input[@id='edit-s']", "xpath:attributes"],
+        ["xpath=//form[@id='views-exposed-form-uwm-providers-search-page-1']/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8fdeea23-8212-4601-ad5f-37fff758b52a",
+      "comment": "",
+      "command": "click",
+      "target": "css=#ui-id-3 .autocomplete-suggestion-suggestion-suffix",
+      "targets": [
+        ["css=#ui-id-3 .autocomplete-suggestion-suggestion-suffix", "css:finder"],
+        ["xpath=//a[@id='ui-id-3']/div/span[2]", "xpath:idRelative"],
+        ["xpath=//li[2]/a/div/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,' S. Dean')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5efafebf-a8ac-468c-bfe9-ab09a250ca01",
+      "comment": "",
+      "command": "type",
+      "target": "id=edit-s",
+      "targets": [
+        ["id=edit-s", "id"],
+        ["css=#edit-s", "css:finder"],
+        ["xpath=//input[@id='edit-s']", "xpath:attributes"],
+        ["xpath=//form[@id='views-exposed-form-uwm-providers-search-page-1']/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/div/input", "xpath:position"]
+      ],
+      "value": "Larry S. Dean"
+    }, {
+      "id": "86c4f2c8-22ce-4edd-9c0f-73b89c0af544",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=SEARCH",
+      "targets": [
+        ["linkText=SEARCH", "linkText"],
+        ["css=.d-none > .uwm-accent-color__purple > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'SEARCH')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[8]/span/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[8]", "xpath:href"],
+        ["xpath=//span/a", "xpath:position"],
+        ["xpath=//a[contains(.,'SEARCH')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "87efd889-7abe-4a35-a159-9dbf6c582857",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=RESET",
+      "targets": [
+        ["linkText=RESET", "linkText"],
+        ["css=.d-none > .uwm-accent-color__blue > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'RESET')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[8]/span[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/search/providers')])[8]", "xpath:href"],
+        ["xpath=//span[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'RESET')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fa694ffe-143c-48ab-b0d0-2e582fe0113f",
+      "comment": "",
+      "command": "click",
+      "target": "id=provider_facet_open_scheduling",
+      "targets": [
+        ["id=provider_facet_open_scheduling", "id"],
+        ["css=#provider_facet_open_scheduling", "css:finder"],
+        ["xpath=//input[@id='provider_facet_open_scheduling']", "xpath:attributes"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[9]/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4873523f-dffd-4bbc-9d04-e4be71f383eb",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=SEARCH",
+      "targets": [
+        ["linkText=SEARCH", "linkText"],
+        ["css=.d-none > .uwm-accent-color__purple > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'SEARCH')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[8]/span/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[8]", "xpath:href"],
+        ["xpath=//span/a", "xpath:position"],
+        ["xpath=//a[contains(.,'SEARCH')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9906085a-b09c-40e3-ada6-5c3a6680e5ca",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=RESET",
+      "targets": [
+        ["linkText=RESET", "linkText"],
+        ["css=.d-none > .uwm-accent-color__blue > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'RESET')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[8]/span[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/search/providers')])[109]", "xpath:href"],
+        ["xpath=//span[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'RESET')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e612998e-44d0-41d0-8354-7ee75da58dbc",
+      "comment": "",
+      "command": "click",
+      "target": "id=provider_facet_accepting_patients",
+      "targets": [
+        ["id=provider_facet_accepting_patients", "id"],
+        ["css=#provider_facet_accepting_patients", "css:finder"],
+        ["xpath=//input[@id='provider_facet_accepting_patients']", "xpath:attributes"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[9]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[9]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ba252418-747d-4801-8c70-75748f2e4cd4",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=SEARCH",
+      "targets": [
+        ["linkText=SEARCH", "linkText"],
+        ["css=.d-none > .uwm-accent-color__purple > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'SEARCH')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[8]/span/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[8]", "xpath:href"],
+        ["xpath=//span/a", "xpath:position"],
+        ["xpath=//a[contains(.,'SEARCH')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fa42ff2e-67fe-40a9-b0aa-b84d1e1b7a34",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=RESET",
+      "targets": [
+        ["linkText=RESET", "linkText"],
+        ["css=.d-none > .uwm-accent-color__blue > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'RESET')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[8]/span[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/search/providers')])[521]", "xpath:href"],
+        ["xpath=//span[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'RESET')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "23f35935-2c24-45ab-85a1-72618be657d1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.dm-facets-selector:nth-child(2) .filter-option-inner-inner",
+      "targets": [
+        ["css=.dm-facets-selector:nth-child(2) .filter-option-inner-inner", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/button/div/div/div", "xpath:idRelative"],
+        ["xpath=//button/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0f28dfa8-6278-4ce1-a01c-9d1c02785676",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(2) .text",
+      "targets": [
+        ["css=li:nth-child(2) .text", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/div/div[2]/ul/li[2]/a/span[2]", "xpath:idRelative"],
+        ["xpath=//li[2]/a/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Anesthesiology And Pain Medicine(258)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a4891077-1e99-4088-b6dd-507c6cd4ff31",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Allergy And Immunology"
+    }, {
+      "id": "03403dc3-b9e5-452a-a01e-a7c7cd45371b",
+      "comment": "",
+      "command": "addSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Anesthesiology And Pain Medicine"
+    }, {
+      "id": "26b3b05f-63e4-4243-9039-26647cfb3397",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Burn Care"
+    }, {
+      "id": "5a1e0a90-a038-4688-9a2a-9b8fe277e91e",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Cancer Care"
+    }, {
+      "id": "9e6f6985-88df-410a-8e66-4e51416ad381",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Center For Women And Children"
+    }, {
+      "id": "4ffa502a-5980-498f-9edc-a7d81a84d791",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Colorectal Services"
+    }, {
+      "id": "ed2c1bb4-2aef-4a47-b8f2-9c115c429a71",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Dermatology"
+    }, {
+      "id": "47a1b15e-a203-4277-a3de-e0c13a1d2722",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Diabetes And Endocrinology Care"
+    }, {
+      "id": "07bed3f5-c280-4850-a4d9-0c6f9bd64b6f",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Digestive Health"
+    }, {
+      "id": "dd32f6e4-1c87-4447-be61-0073042cc484",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Ear, Nose, And Throat Care"
+    }, {
+      "id": "91a127e2-5159-4682-a544-1290f6648550",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Eye Institute"
+    }, {
+      "id": "d6be25ab-e170-4660-bcff-3c5f292a54a6",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Foot & Ankle Center"
+    }, {
+      "id": "28533e73-4c31-4ee8-b7b2-8c7f68cffe8a",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Gynecology"
+    }, {
+      "id": "1cbee441-ea35-44b4-a69b-5273429541b0",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Hand, Elbow, & Shoulder Center"
+    }, {
+      "id": "2613997a-884f-4bae-81b5-e461544047d7",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Heart Institute"
+    }, {
+      "id": "a71edfa1-6931-4bde-b3c3-d02d612360c9",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Hematology"
+    }, {
+      "id": "45621527-9990-405b-94c6-2ee63adea2e7",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Hip & Knee Center"
+    }, {
+      "id": "9a637def-52da-485d-80bc-b3f51e245cdd",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Infectious Disease"
+    }, {
+      "id": "e2af2f3f-46c2-4e4a-8a82-4d8bc4aeec21",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Kidney Care"
+    }, {
+      "id": "864a7719-be34-4ef4-a941-8a357874614f",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Lab Medicine And Pathology"
+    }, {
+      "id": "612c741e-2fd0-4bd7-8ddd-2fd619ebc667",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Liver Care And Transplantation Services"
+    }, {
+      "id": "eeb22f03-7b48-455b-830f-1ea38e8cc6ba",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Lung Care"
+    }, {
+      "id": "0895ffde-4770-45a9-a869-5338bf8a72e8",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Maternity Care"
+    }, {
+      "id": "0ac6a1c7-db57-47b4-9d75-a18e0465986e",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Medical Genetics"
+    }, {
+      "id": "bf5b7407-1e0f-4c72-928b-7c30588918e8",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Men's Health"
+    }, {
+      "id": "74c0fd76-58e4-4d6f-8aef-1abbba58b3ac",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Mental Health Care"
+    }, {
+      "id": "63623c66-b06c-4af5-9a55-213b9130d7b0",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Multiple Sclerosis"
+    }, {
+      "id": "c258edf2-4c67-433d-a890-6f5ae8407d46",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Neurological Surgery"
+    }, {
+      "id": "e616500f-f65a-4be1-a026-3ca4d1900407",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Neurology"
+    }, {
+      "id": "997fd249-7c14-4c9e-8deb-d314f2ed8850",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Neurosciences"
+    }, {
+      "id": "c0284149-e400-431d-82af-a4409c7e3291",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Orthopedic Oncology Center"
+    }, {
+      "id": "5870df83-3331-4d31-a93e-7c74744cbfae",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Otolaryngology [Ent] - Head And Neck Surgery"
+    }, {
+      "id": "9dca17a6-f526-4994-b62f-407cbb2e36b4",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Palliative Care"
+    }, {
+      "id": "28caac76-a501-4f02-aa96-4b15fbdea00c",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Pediatric Care"
+    }, {
+      "id": "8ffb8416-8c1c-428b-83f3-e81c1485496b",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Pituitary Program"
+    }, {
+      "id": "77b5eedd-ae65-456a-a4aa-fa5348ff969f",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Plastic Surgery"
+    }, {
+      "id": "e01cb319-9091-4010-9ede-188850c661f9",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Primary Care"
+    }, {
+      "id": "b8b184d2-0459-4a22-9fbf-54b5a8913bb4",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Pulmonary Medicine"
+    }, {
+      "id": "586c5b04-ce12-4586-831e-cf79ff153c6a",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Radiation Oncology"
+    }, {
+      "id": "34969023-10a4-47b9-8aa4-c4508414f936",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Radiology Services"
+    }, {
+      "id": "f2603475-74a6-46c7-a9c4-600e9b73c175",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Rehabilitation Medicine"
+    }, {
+      "id": "1e7ccbcc-0bab-47a3-b969-18f5f2cf34f1",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Reproductive Care"
+    }, {
+      "id": "22f03a19-e882-4a8a-8690-f1960fcfe597",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Rheumatology"
+    }, {
+      "id": "57f3b3d3-ff18-4cf3-a0fc-ce2d4b4a7d3b",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Sleep Center"
+    }, {
+      "id": "05f47853-1605-4b5b-bb8b-e1910519253b",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Spine Care"
+    }, {
+      "id": "286e9897-7a6c-415a-b9b2-90b76a496173",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Sports Concussion"
+    }, {
+      "id": "56f6262f-2a32-4150-af6e-a309066999f6",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Sports Medicine & Orthopedic Surgery"
+    }, {
+      "id": "dc62df3d-1ef0-4f6c-9e37-0d8156b7efaa",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Sports Medicine Center"
+    }, {
+      "id": "63d4f533-d990-4272-9147-2385a8784618",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Stroke Center"
+    }, {
+      "id": "1a134d37-5faf-4c26-9780-9a1e6514e0a5",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Surgery"
+    }, {
+      "id": "2d71ac3e-1363-4010-83a2-43b579c9cdce",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Thoracic Surgery And Thoracic Oncology"
+    }, {
+      "id": "e89dcd19-c8e7-4c26-b870-a9fbdf5503e4",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Transplant Services"
+    }, {
+      "id": "43f3f46f-3c7c-46f5-8f39-b73b88e1e22f",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Trauma & Emergency Medicine"
+    }, {
+      "id": "0ac466a6-484f-416c-b092-dd614d859827",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Urgent Care"
+    }, {
+      "id": "692bc43b-2add-47cc-a8f0-869842dcd26c",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Urogynecology And Female Urology"
+    }, {
+      "id": "5a16e278-3f96-473d-9a06-6271698cd85a",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Vascular Care"
+    }, {
+      "id": "4e1a311b-271c-4f07-b2c9-1b7e7c13ab7f",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Weight Loss Management"
+    }, {
+      "id": "37ce999f-1b59-4c54-97ec-4d273a09f7ea",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Women’s Services"
+    }, {
+      "id": "03abf63d-9070-46fa-bda5-187bd1438d67",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=SEARCH",
+      "targets": [
+        ["linkText=SEARCH", "linkText"],
+        ["css=.d-none > .uwm-accent-color__purple > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'SEARCH')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[8]/span/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[8]", "xpath:href"],
+        ["xpath=//span/a", "xpath:position"],
+        ["xpath=//a[contains(.,'SEARCH')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "83e912e5-331a-49c3-ab53-7c315753f593",
+      "comment": "",
+      "command": "click",
+      "target": "css=.dm-facets-selector:nth-child(5) .filter-option-inner-inner",
+      "targets": [
+        ["css=.dm-facets-selector:nth-child(5) .filter-option-inner-inner", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/button/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[4]/div/button/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0ab9979c-e95d-40a6-9d3f-1291b16bd21c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Afrikaans(5)",
+      "targets": [
+        ["linkText=Afrikaans(5)", "linkText"],
+        ["css=li:nth-child(1) > .dropdown-item", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/div/div[2]/ul/li/a", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Afrikaans(5)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "86d7ffbf-cde2-428e-9bc3-2c66833c8262",
+      "comment": "",
+      "command": "addSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Afrikaans"
+    }, {
+      "id": "b7559085-bbc8-4cb1-8d3b-05e41cc7c4fc",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Arabic"
+    }, {
+      "id": "d01627cb-bad0-408e-ae26-b37f7bc2491c",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Berber (Other)"
+    }, {
+      "id": "f8ddcb4a-c49f-458a-97d9-5559c470748d",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Cantonese"
+    }, {
+      "id": "a62e3d0f-b7f6-4452-b795-9e090b754535",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Chinese"
+    }, {
+      "id": "c210f1cd-58f1-44ee-bb2b-2406b476dccd",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=English"
+    }, {
+      "id": "2c95e247-a45d-4ea3-925a-591f40ccec32",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=French"
+    }, {
+      "id": "47bf4914-d18d-4f40-ba82-b282eaa09e5f",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Georgian"
+    }, {
+      "id": "e07df8db-a21c-42f8-b4f0-b38931a7ea33",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=German"
+    }, {
+      "id": "3c84379d-ee99-4a1f-8d14-86e91c47e371",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Hebrew"
+    }, {
+      "id": "4b267d7e-538c-48f0-9b26-3bce4876b771",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Hindi"
+    }, {
+      "id": "3861b449-b3d5-4ef3-850e-05e179913a02",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Hungarian"
+    }, {
+      "id": "e8aedda6-4073-4575-ab72-c66496415442",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Italian"
+    }, {
+      "id": "7f97daae-5f38-427c-b7a1-fbd48d8cf0c2",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Japanese"
+    }, {
+      "id": "a9a44dbc-e6c4-4439-9761-461315b7f0ff",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Kannada"
+    }, {
+      "id": "84afc2ad-e734-4d98-bbd6-a2e4840e03d5",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Korean"
+    }, {
+      "id": "36b9ec19-c9e7-4d66-89ce-42895d4621bc",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Latvian"
+    }, {
+      "id": "1bc7b5d1-d959-42b8-8e00-b3c1cf21c855",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Malay"
+    }, {
+      "id": "79fb2120-8bd1-41e4-9bab-e8654ae362ff",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Mandarin Chinese"
+    }, {
+      "id": "70b88279-b61c-4298-b1b5-cc7d47cfcd0b",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Marathi"
+    }, {
+      "id": "7a846f3e-0836-4480-b898-73d82ad753f5",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Panjabi"
+    }, {
+      "id": "25574345-0b7d-4f54-9dd7-63560633eef8",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Polish"
+    }, {
+      "id": "0d0c6189-e07b-4d9c-8e8a-5307ede886d3",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Portuguese"
+    }, {
+      "id": "34489505-37f0-4f50-86f3-10b8ef4de56d",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Romanian"
+    }, {
+      "id": "b42b5c77-0f62-4f04-ac2a-bf874cd35463",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Russian"
+    }, {
+      "id": "7ad72344-dfe6-478a-8129-3b07b8fc1c1b",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Serbian"
+    }, {
+      "id": "0d67b710-ee27-4c61-b0ff-354458ba017a",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Spanish"
+    }, {
+      "id": "d78d2674-c603-4d38-88b5-dff192f5ab1a",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Swedish"
+    }, {
+      "id": "ed625c87-a45a-498c-9ebb-b4b73d7a01ec",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Tagalog"
+    }, {
+      "id": "fe60edf2-06a7-47e6-8253-f5b18912e2d1",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Tamil"
+    }, {
+      "id": "f0658845-9267-4cfd-a075-7350a6f7bba5",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Telugu"
+    }, {
+      "id": "1eebf2fa-95b2-41fe-8d5d-f5f402f48a1f",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Thai"
+    }, {
+      "id": "763d13cc-1681-4240-a7e3-76b522de0768",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Turkish"
+    }, {
+      "id": "37aed41e-60dc-4d69-8861-ff8131a40d91",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Vietnamese"
+    }, {
+      "id": "bcb216cc-3e78-448c-ad37-263f881f5a4e",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[4]/div/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div/select", "xpath:position"]
+      ],
+      "value": "label=Xhosa"
+    }, {
+      "id": "eae04c19-f7b6-451f-a34b-1bb88473f19d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.dm-facets-selector:nth-child(7) .filter-option-inner",
+      "targets": [
+        ["css=.dm-facets-selector:nth-child(7) .filter-option-inner", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[6]/div/button/div/div", "xpath:idRelative"],
+        ["xpath=//div[6]/div/button/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6d3fb5be-1521-42c4-b720-5b7eaa9fa46b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.inner:nth-child(1) > .dropdown-menu > li:nth-child(2) > .dropdown-item",
+      "targets": [
+        ["css=.inner:nth-child(1) > .dropdown-menu > li:nth-child(2) > .dropdown-item", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[6]/div/div/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//div[6]/div/div/div/ul/li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Male')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1be652f4-7c09-474f-bc19-1ac540472c87",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[6]/div/select", "xpath:idRelative"],
+        ["xpath=//div[6]/div/select", "xpath:position"]
+      ],
+      "value": "label=Female"
+    }, {
+      "id": "1575b0a7-6bfd-47d4-bf77-d8bd190e18aa",
+      "comment": "",
+      "command": "addSelection",
+      "target": "css=.show > .selectpicker",
+      "targets": [
+        ["css=.show > .selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[6]/div/select", "xpath:idRelative"],
+        ["xpath=//div[6]/div/select", "xpath:position"]
+      ],
+      "value": "label=Male"
+    }, {
+      "id": "bce1a2f1-bfc5-4777-9bc1-38a830676c8e",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=SEARCH",
+      "targets": [
+        ["linkText=SEARCH", "linkText"],
+        ["css=.d-none > .uwm-accent-color__purple > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'SEARCH')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[8]/span/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[8]", "xpath:href"],
+        ["xpath=//span/a", "xpath:position"],
+        ["xpath=//a[contains(.,'SEARCH')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b76664f1-9c6a-4e45-a716-6f19a63e0a5e",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Anesthesiology Clinical Services at UWMC",
+      "targets": [
+        ["linkText=Anesthesiology Clinical Services at UWMC", "linkText"],
+        ["css=.node:nth-child(1) .provider-card__locations a", "css:finder"],
+        ["xpath=//a[contains(text(),'Anesthesiology Clinical Services at UWMC')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section[2]/div/section/div/div/div/article/div/div[2]/div[3]/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://www.uwmedicine.org/locations/anesthesiology-uwmc')]", "xpath:href"],
+        ["xpath=//div[3]/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Anesthesiology Clinical Services at UWMC')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "0bc7e49d-c8b5-4a9e-91c3-485b6d0dd774",
+    "name": "LOCATION SEARCH",
+    "commands": [{
+      "id": "66815edc-0353-46ea-9aa8-7cff17a65b6a",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "865485a5-ac1b-4f66-9883-cc93bffd39ae",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1696x1066",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aed9f619-3a9e-42ae-915e-2b755cdc1ae9",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Find a location",
+      "targets": [
+        ["linkText=Find a location", "linkText"],
+        ["css=.hero__btn-cta:nth-child(4)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Find a location')])[5]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section[2]/section/article/section/div[2]/div/a[4]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/search/locations')])[5]", "xpath:href"],
+        ["xpath=//div[2]/div/a[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "07cca283-63a4-4026-bd6d-c1dcda4f7d7f",
+      "comment": "",
+      "command": "click",
+      "target": "id=edit-s",
+      "targets": [
+        ["id=edit-s", "id"],
+        ["css=#edit-s", "css:finder"],
+        ["xpath=//input[@id='edit-s']", "xpath:attributes"],
+        ["xpath=//form[@id='views-exposed-form-uwm-locations-geo-search-page-1']/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cbe86811-9922-4db8-afd0-d672c569d84b",
+      "comment": "",
+      "command": "type",
+      "target": "id=edit-s",
+      "targets": [
+        ["id=edit-s", "id"],
+        ["css=#edit-s", "css:finder"],
+        ["xpath=//input[@id='edit-s']", "xpath:attributes"],
+        ["xpath=//form[@id='views-exposed-form-uwm-locations-geo-search-page-1']/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/div/input", "xpath:position"]
+      ],
+      "value": "ballard"
+    }, {
+      "id": "be60a671-06f8-460c-acab-a5e6b07030aa",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=SEARCH",
+      "targets": [
+        ["linkText=SEARCH", "linkText"],
+        ["css=.submit", "css:finder"],
+        ["xpath=//a[contains(text(),'SEARCH')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[3]/span/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[10]", "xpath:href"],
+        ["xpath=//div[3]/span/a", "xpath:position"],
+        ["xpath=//a[contains(.,'SEARCH')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1c9c7572-3e98-4589-a877-5fd5b6cfbc93",
+      "comment": "",
+      "command": "click",
+      "target": "id=edit-l",
+      "targets": [
+        ["id=edit-l", "id"],
+        ["name=l", "name"],
+        ["css=#edit-l", "css:finder"],
+        ["xpath=//input[@id='edit-l']", "xpath:attributes"],
+        ["xpath=//div[@id='edit-location-address-keywords']/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "566e0636-6faa-4b7b-a81b-dd506ae7b53a",
+      "comment": "",
+      "command": "click",
+      "target": "id=edit-s",
+      "targets": [
+        ["id=edit-s", "id"],
+        ["css=#edit-s", "css:finder"],
+        ["xpath=//input[@id='edit-s']", "xpath:attributes"],
+        ["xpath=//form[@id='views-exposed-form-uwm-locations-geo-search-page-1']/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3c93c3fe-31ce-49b9-8045-82fbf4ad7319",
+      "comment": "",
+      "command": "type",
+      "target": "id=edit-s",
+      "targets": [
+        ["id=edit-s", "id"],
+        ["css=#edit-s", "css:finder"],
+        ["xpath=//input[@id='edit-s']", "xpath:attributes"],
+        ["xpath=//form[@id='views-exposed-form-uwm-locations-geo-search-page-1']/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8950bc1f-896e-4915-8d73-5f4f542528db",
+      "comment": "",
+      "command": "click",
+      "target": "id=edit-l",
+      "targets": [
+        ["id=edit-l", "id"],
+        ["name=l", "name"],
+        ["css=#edit-l", "css:finder"],
+        ["xpath=//input[@id='edit-l']", "xpath:attributes"],
+        ["xpath=//div[@id='edit-location-address-keywords']/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "30ca4425-d495-4a19-b66b-cde6753a0aba",
+      "comment": "",
+      "command": "click",
+      "target": "id=umlDropdownLink",
+      "targets": [
+        ["id=umlDropdownLink", "id"],
+        ["linkText=Use my location", "linkText"],
+        ["css=#umlDropdownLink", "css:finder"],
+        ["xpath=//a[contains(text(),'Use my location')]", "xpath:link"],
+        ["xpath=//a[@id='umlDropdownLink']", "xpath:attributes"],
+        ["xpath=//div[@id='edit-location-address-keywords']/div/span/div/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[9]", "xpath:href"],
+        ["xpath=//span/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Use my location')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6fe3585c-4ec7-4bcd-a04e-282b9e227956",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=SEARCH",
+      "targets": [
+        ["linkText=SEARCH", "linkText"],
+        ["css=.submit", "css:finder"],
+        ["xpath=//a[contains(text(),'SEARCH')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[3]/span/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[10]", "xpath:href"],
+        ["xpath=//div[3]/span/a", "xpath:position"],
+        ["xpath=//a[contains(.,'SEARCH')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "25fcaf78-f867-411c-bcf9-8fff92654b6c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.filter-option",
+      "targets": [
+        ["css=.filter-option", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/button/div", "xpath:idRelative"],
+        ["xpath=//button/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "28c0437b-3e34-46ac-949f-225be3d64259",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(4) .text",
+      "targets": [
+        ["css=li:nth-child(4) .text", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/div/div[2]/ul/li[4]/a/span[2]", "xpath:idRelative"],
+        ["xpath=//li[4]/a/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Cancer Care(31)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "207d0b9c-3103-4a22-9a05-db751a2dbb7b",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Allergy And Immunology"
+    }, {
+      "id": "795a4fc3-bef7-4573-84d3-bc48f0b1700d",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Anesthesiology And Pain Medicine"
+    }, {
+      "id": "73fd99a3-f9aa-4dbf-ba4d-f22b060e432d",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Burn Care"
+    }, {
+      "id": "71302823-7c9c-4d4d-8105-271744b935da",
+      "comment": "",
+      "command": "addSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Cancer Care"
+    }, {
+      "id": "ddda1e25-9054-43bd-8d0a-5d4a90ca61d6",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Center For Women And Children"
+    }, {
+      "id": "2cac65b9-a8ac-425d-a219-814590c39c78",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Colorectal Services"
+    }, {
+      "id": "016215d6-29f1-480e-9428-555c7713a114",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Dermatology"
+    }, {
+      "id": "9dc0636f-2d68-4b53-bf2f-a156c7fd4a56",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Diabetes And Endocrinology Care"
+    }, {
+      "id": "b14b47fd-df8b-4e00-b389-e90ae6cde02e",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Digestive Health"
+    }, {
+      "id": "b3c5ea37-0847-4b12-860a-8261d17fc7dd",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Ear, Nose, And Throat Care"
+    }, {
+      "id": "79ec710b-d0f8-4d4d-89da-f8e566295982",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Eye Institute"
+    }, {
+      "id": "86adf084-6c7d-45da-b5a2-1da66449a99b",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Foot & Ankle Center"
+    }, {
+      "id": "d5499d15-e9e1-4648-94fb-8e276643c681",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Gynecology"
+    }, {
+      "id": "278b6b58-6b2b-4a02-8bf4-7cd2d66973cc",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Hand, Elbow, & Shoulder Center"
+    }, {
+      "id": "f64acec4-8fcc-4f0c-ade9-8f322c90b2e0",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Heart Institute"
+    }, {
+      "id": "d940c68e-fd29-4689-9e3a-4e23ad9580db",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Hematology"
+    }, {
+      "id": "2e625400-eb07-4b65-8f30-0f1dd0671964",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Hip & Knee Center"
+    }, {
+      "id": "1d9bddbc-480d-4635-9e29-13cbd683ba62",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Infectious Disease"
+    }, {
+      "id": "acd40816-7ef8-47ed-ba19-0bfb635893b8",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Kidney Care"
+    }, {
+      "id": "12081c7a-5bc8-4d4b-9b61-a94de31a3cc6",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Lab Medicine And Pathology"
+    }, {
+      "id": "377e12d0-9578-42d1-b11a-020212c6e524",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Liver Care And Transplantation Services"
+    }, {
+      "id": "4b7efe17-f99f-466c-b2d6-f6dcb633b776",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Lung Care"
+    }, {
+      "id": "8fdf50d7-a065-49d6-ad29-c826db3b2d7b",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Maternity Care"
+    }, {
+      "id": "ef4eb857-b4dc-4710-8408-3611ce80bbb5",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Medical Genetics"
+    }, {
+      "id": "156ab442-8811-4989-815e-4b171b4de7dc",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Men's Health"
+    }, {
+      "id": "85e2d7ef-b003-43f9-86bd-c1abaa06b411",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Mental Health Care"
+    }, {
+      "id": "73670498-83ee-41d5-9b58-f82fb16f0957",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Multiple Sclerosis"
+    }, {
+      "id": "c0dbca37-2deb-4076-a888-2d48d6732f24",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Neurological Surgery"
+    }, {
+      "id": "90bdc0dd-78dd-42d4-80a2-e9092e8795cb",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Neurology"
+    }, {
+      "id": "2afe431e-38d8-49d9-a236-19148a457526",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Neurosciences"
+    }, {
+      "id": "95211ab5-d4ac-4a59-aa14-15160f39e373",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Orthopedic Oncology Center"
+    }, {
+      "id": "22c69568-e989-4738-ae20-5dcd96e1efe2",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Otolaryngology [Ent] - Head And Neck Surgery"
+    }, {
+      "id": "e0e95723-6af1-41e3-a3ca-847b7d3c4203",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Palliative Care"
+    }, {
+      "id": "0c131948-87b2-492b-9769-96a5b15f1a3d",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Pituitary Program"
+    }, {
+      "id": "7f82b907-3622-4589-ae1f-a7200cac109a",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Plastic Surgery"
+    }, {
+      "id": "be06b25e-1029-44a1-a706-41135152101c",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Primary Care"
+    }, {
+      "id": "cf8897a9-e272-47a8-9e90-3aa4e0872c8c",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Pulmonary Medicine"
+    }, {
+      "id": "1b4910fa-ab19-4dd8-a37d-f352eeef7c55",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Radiation Oncology"
+    }, {
+      "id": "8d03a1bc-7425-4a69-8de4-996d99cd054d",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Radiology Services"
+    }, {
+      "id": "2dc5cd98-8e5f-46f1-8e1b-b375b8dd132f",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Rehabilitation Medicine"
+    }, {
+      "id": "6f9c1a32-0429-4dfd-a763-59ab2ebccdd5",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Reproductive Care"
+    }, {
+      "id": "547ce545-fd99-4a96-a520-e115facd4f64",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Rheumatology"
+    }, {
+      "id": "1ed76b5d-02c3-4bb1-925c-333b05054745",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Sleep Center"
+    }, {
+      "id": "e8fcc4ba-ff4f-4207-a155-86db37723c22",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Spine Care"
+    }, {
+      "id": "deaf9338-2a35-4db0-b205-60c6e75cc8f6",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Sports Concussion"
+    }, {
+      "id": "adfc6e15-b75d-4daf-b69c-ffd0e17b700d",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Sports Medicine & Orthopedic Surgery"
+    }, {
+      "id": "75b8e0e4-1ea7-4fdc-a049-3541cdbf698a",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Sports Medicine Center"
+    }, {
+      "id": "eb38aaf2-bebb-4489-8f3e-a6d5ea697f65",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Stroke Center"
+    }, {
+      "id": "940ea8d9-2130-4a5e-9154-0ca7b5e80cf2",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Surgery"
+    }, {
+      "id": "45201606-35b4-49d3-bdd3-9058233c6aba",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Transplant Services"
+    }, {
+      "id": "4bc16c73-a53a-4d8c-ba88-0d193e99aaae",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Trauma & Emergency Medicine"
+    }, {
+      "id": "53bcff67-a705-4597-9ce9-b41590e51b37",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Urgent Care"
+    }, {
+      "id": "70c26c0e-3e63-42f7-b2c0-e0e134688b99",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Urogynecology And Female Urology"
+    }, {
+      "id": "2e0641f1-9060-4c73-a736-ca3281f67eb2",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Vascular Care"
+    }, {
+      "id": "73325388-6e22-42c0-9905-7b454b3c0811",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Weight Loss Management"
+    }, {
+      "id": "0551634a-4afc-467b-b1b0-da1eb2878628",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "css=.selectpicker",
+      "targets": [
+        ["css=.selectpicker", "css:finder"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Women’s Services"
+    }, {
+      "id": "de88c34e-0f89-48a0-9b06-9c83b4d4e45b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=SEARCH",
+      "targets": [
+        ["linkText=SEARCH", "linkText"],
+        ["css=.submit", "css:finder"],
+        ["xpath=//a[contains(text(),'SEARCH')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[3]/span/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[10]", "xpath:href"],
+        ["xpath=//div[3]/span/a", "xpath:position"],
+        ["xpath=//a[contains(.,'SEARCH')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "efa230fa-3474-4baf-87be-685d38f2ba10",
+      "comment": "",
+      "command": "click",
+      "target": "id=edit-l",
+      "targets": [
+        ["id=edit-l", "id"],
+        ["name=l", "name"],
+        ["css=#edit-l", "css:finder"],
+        ["xpath=//input[@id='edit-l']", "xpath:attributes"],
+        ["xpath=//div[@id='edit-location-address-keywords']/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "452dbb21-a1cc-4194-a88b-d56c11de455d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=RESET",
+      "targets": [
+        ["linkText=RESET", "linkText"],
+        ["css=.reset", "css:finder"],
+        ["xpath=//a[contains(text(),'RESET')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[3]/span[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/search/locations')])[61]", "xpath:href"],
+        ["xpath=//span[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'RESET')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "140e3e42-4a17-416c-9bdd-05a90693f6b6",
+      "comment": "",
+      "command": "click",
+      "target": "id=edit-l",
+      "targets": [
+        ["id=edit-l", "id"],
+        ["name=l", "name"],
+        ["css=#edit-l", "css:finder"],
+        ["xpath=//input[@id='edit-l']", "xpath:attributes"],
+        ["xpath=//div[@id='edit-location-address-keywords']/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "acc51bbf-0b0f-4e58-9707-d7771e285898",
+      "comment": "",
+      "command": "type",
+      "target": "id=edit-l",
+      "targets": [
+        ["id=edit-l", "id"],
+        ["name=l", "name"],
+        ["css=#edit-l", "css:finder"],
+        ["xpath=//input[@id='edit-l']", "xpath:attributes"],
+        ["xpath=//div[@id='edit-location-address-keywords']/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "98107"
+    }, {
+      "id": "ab7bb5ff-f0b7-4cd8-bc15-6ef3542c7ca8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=SEARCH",
+      "targets": [
+        ["linkText=SEARCH", "linkText"],
+        ["css=.submit", "css:finder"],
+        ["xpath=//a[contains(text(),'SEARCH')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[3]/span/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[10]", "xpath:href"],
+        ["xpath=//div[3]/span/a", "xpath:position"],
+        ["xpath=//a[contains(.,'SEARCH')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2fb6b558-e195-4174-8286-f09dfc85961a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=RESET",
+      "targets": [
+        ["linkText=RESET", "linkText"],
+        ["css=.reset", "css:finder"],
+        ["xpath=//a[contains(text(),'RESET')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[3]/span[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/search/locations')])[61]", "xpath:href"],
+        ["xpath=//span[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'RESET')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f9cfd1f1-1a92-4a09-bf5f-7956eb3bebd8",
+      "comment": "",
+      "command": "click",
+      "target": "id=edit-l",
+      "targets": [
+        ["id=edit-l", "id"],
+        ["name=l", "name"],
+        ["css=#edit-l", "css:finder"],
+        ["xpath=//input[@id='edit-l']", "xpath:attributes"],
+        ["xpath=//div[@id='edit-location-address-keywords']/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "92c7030b-06df-4a83-a215-4c271505133f",
+      "comment": "",
+      "command": "type",
+      "target": "id=edit-l",
+      "targets": [
+        ["id=edit-l", "id"],
+        ["name=l", "name"],
+        ["css=#edit-l", "css:finder"],
+        ["xpath=//input[@id='edit-l']", "xpath:attributes"],
+        ["xpath=//div[@id='edit-location-address-keywords']/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "queen anne"
+    }, {
+      "id": "5c81ae45-152f-46e3-8f6d-b4d53780408e",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=SEARCH",
+      "targets": [
+        ["linkText=SEARCH", "linkText"],
+        ["css=.submit", "css:finder"],
+        ["xpath=//a[contains(text(),'SEARCH')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[3]/span/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[10]", "xpath:href"],
+        ["xpath=//div[3]/span/a", "xpath:position"],
+        ["xpath=//a[contains(.,'SEARCH')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "102bf06f-75ff-40cf-b961-9591410f2909",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=RESET",
+      "targets": [
+        ["linkText=RESET", "linkText"],
+        ["css=.reset", "css:finder"],
+        ["xpath=//a[contains(text(),'RESET')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[2]/span[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/search/locations')])[5]", "xpath:href"],
+        ["xpath=//span[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'RESET')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "35eb5000-0573-4faa-bd87-fa4308fdb90b",
+      "comment": "",
+      "command": "click",
+      "target": "id=edit-l",
+      "targets": [
+        ["id=edit-l", "id"],
+        ["name=l", "name"],
+        ["css=#edit-l", "css:finder"],
+        ["xpath=//input[@id='edit-l']", "xpath:attributes"],
+        ["xpath=//div[@id='edit-location-address-keywords']/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f8093e3a-9112-4257-8dee-f1276f90ac2e",
+      "comment": "",
+      "command": "type",
+      "target": "id=edit-l",
+      "targets": [
+        ["id=edit-l", "id"],
+        ["name=l", "name"],
+        ["css=#edit-l", "css:finder"],
+        ["xpath=//input[@id='edit-l']", "xpath:attributes"],
+        ["xpath=//div[@id='edit-location-address-keywords']/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "seattle"
+    }, {
+      "id": "ac065eb1-ede6-4934-8c9e-a4fd850c352d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=SEARCH",
+      "targets": [
+        ["linkText=SEARCH", "linkText"],
+        ["css=.submit", "css:finder"],
+        ["xpath=//a[contains(text(),'SEARCH')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[3]/span/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[10]", "xpath:href"],
+        ["xpath=//div[3]/span/a", "xpath:position"],
+        ["xpath=//a[contains(.,'SEARCH')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a00469ef-1eb9-4ebe-98fa-eb4c737cd14b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=RESET",
+      "targets": [
+        ["linkText=RESET", "linkText"],
+        ["css=.reset", "css:finder"],
+        ["xpath=//a[contains(text(),'RESET')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div/div[3]/span[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/search/locations')])[61]", "xpath:href"],
+        ["xpath=//span[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'RESET')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "022c306e-727d-4550-b1bd-848e5a4ca76b",
+    "name": "LOCATION CARD",
+    "commands": [{
+      "id": "7e024bd6-7d1e-4506-b29d-15489f98055a",
+      "comment": "",
+      "command": "click",
+      "target": "name=s",
+      "targets": [
+        ["name=s", "name"],
+        ["css=.form-control:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='s']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "66aa180f-49b8-4869-ad15-7d1a9a420005",
+      "comment": "",
+      "command": "type",
+      "target": "name=s",
+      "targets": [
+        ["name=s", "name"],
+        ["css=.form-control:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='s']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "ballard"
+    }, {
+      "id": "75f936f0-41f7-45e9-bf91-6bfc268436f8",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "name=s",
+      "targets": [
+        ["name=s", "name"],
+        ["css=.form-control:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='s']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "abf7cbc0-9b10-4cd9-91a7-0ecb754f2004",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Search Locations >",
+      "targets": [
+        ["linkText=Search Locations >", "linkText"],
+        ["css=.locations > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Search Locations >')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section/div/div[2]/div/div[4]/div[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/search/locations?s=ballard')]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Search Locations >')]", "xpath:innerText"]
+      ],
+      "value": "",
+      "opensWindow": true,
+      "windowHandleName": "win1041",
+      "windowTimeout": 2000
+    }, {
+      "id": "8b0de823-9706-4030-b19c-8ef2790aa5e1",
+      "comment": "",
+      "command": "storeWindowHandle",
+      "target": "root",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "643e8341-acca-40de-b0fe-35f1149a113f",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win6636}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8a00f575-0733-4817-afc0-8ceaf18212ef",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c93c351d-0e98-48ee-a777-1a384751789d",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${root}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3036fdca-d8c1-459c-a708-8c36df532d87",
+      "comment": "",
+      "command": "click",
+      "target": "css=.clinic-card__cta > .cta-to-locations-meridian-womens-health-ballard",
+      "targets": [
+        ["css=.clinic-card__cta > .cta-to-locations-meridian-womens-health-ballard", "css:finder"],
+        ["xpath=//a[contains(text(),'See location details')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section[2]/div/section/div/div/div/article/div/div[3]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, 'https://www.uwmedicine.org/locations/meridian-womens-health-ballard')])[6]", "xpath:href"],
+        ["xpath=//div[3]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c331ff02-134e-4eaa-8b24-945a4f413b26",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win9373}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b33bc670-39fa-4aa1-a114-467aee2e9400",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win9558}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d8ec4cc8-881c-46fa-86c3-db1c012a75aa",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win1041}",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "0b42f63b-4775-477f-be12-bba22a63f057",
+    "name": "PROVIDER BIO CARD",
+    "commands": [{
+      "id": "bb6103b5-190c-4609-bb6a-257f9ac28bac",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "15d9c87f-2c6f-4519-a7f2-c6dcb6efefa1",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1696x1066",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "90abfbef-a87c-4619-a146-2ccd8528188f",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Find a provider",
+      "targets": [
+        ["linkText=Find a provider", "linkText"],
+        ["css=.show > .dropdown-item:nth-child(6)", "css:finder"],
+        ["xpath=//a[contains(text(),'Find a provider')]", "xpath:link"],
+        ["xpath=//div[@id='mainNavigation']/ul/li/div/a[6]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/search/providers')]", "xpath:href"],
+        ["xpath=//a[6]", "xpath:position"],
+        ["xpath=//a[contains(.,'Find a provider')]", "xpath:innerText"]
+      ],
+      "value": "",
+      "opensWindow": true,
+      "windowHandleName": "win7027",
+      "windowTimeout": 2000
+    }, {
+      "id": "aeaa6975-071c-4a31-b10a-397e392755cd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.current-offset-1 > a",
+      "targets": [
+        ["css=.current-offset-1 > a", "css:finder"],
+        ["xpath=//div[@id='main-container']/section[2]/div/section/div/div/nav/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '?s=&page=1')]", "xpath:href"],
+        ["xpath=//nav/ul/li[2]/a", "xpath:position"]
+      ],
+      "value": "",
+      "opensWindow": true,
+      "windowHandleName": "win5631",
+      "windowTimeout": 2000
+    }, {
+      "id": "791b6f7a-571d-4741-b000-6e22c4396080",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Pioneer Square Clinic",
+      "targets": [
+        ["linkText=Pioneer Square Clinic", "linkText"],
+        ["css=.node:nth-child(6) .provider-card__locations a", "css:finder"],
+        ["xpath=//a[contains(text(),'Pioneer Square Clinic')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section[2]/div/section/div/div/div/article[6]/div/div[2]/div[3]/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://www.uwmedicine.org/locations/pioneer-square')]", "xpath:href"],
+        ["xpath=//article[6]/div/div[2]/div[3]/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Pioneer Square Clinic')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "15f70aac-7496-47c1-b695-0a459904ae50",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=uw-main-navigation-I want to...",
+      "targets": [
+        ["id=uw-main-navigation-I want to...", "id"],
+        ["linkText=I want to...", "linkText"],
+        ["css=.nav-item:nth-child(7) > #uw-main-navigation-I\\ want\\ to\\.\\.\\.", "css:finder"],
+        ["xpath=//a[contains(text(),'I want to...')]", "xpath:link"],
+        ["xpath=//a[@id='uw-main-navigation-I want to...']", "xpath:attributes"],
+        ["xpath=//div[@id='mainNavigation']/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[4]", "xpath:href"],
+        ["xpath=//div[3]/div/ul/li[4]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "abe40151-893c-4b56-9151-93ed7ce27b7a",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "id=uw-main-navigation-I want to...",
+      "targets": [
+        ["id=uw-main-navigation-I want to...", "id"],
+        ["linkText=I want to...", "linkText"],
+        ["css=.show > #uw-main-navigation-I\\ want\\ to\\.\\.\\.", "css:finder"],
+        ["xpath=//a[contains(text(),'I want to...')]", "xpath:link"],
+        ["xpath=//a[@id='uw-main-navigation-I want to...']", "xpath:attributes"],
+        ["xpath=//div[@id='mainNavigation']/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[4]", "xpath:href"],
+        ["xpath=//div[3]/div/ul/li[4]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "77a7a335-f507-43a7-8000-5fe42b324330",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win3208}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "56c2fe22-893e-4e7a-b806-0b479d27a40f",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win6351}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1f333854-c7c7-471f-b49b-37c37e9b2c85",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win7027}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "791b6eb2-7b29-4801-a916-48321eabf5b8",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win5631}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b6a89ac8-7185-45fa-bfab-b8b2ba5c921b",
+      "comment": "",
+      "command": "click",
+      "target": "id=locations-tab-tab",
+      "targets": [
+        ["id=locations-tab-tab", "id"],
+        ["css=#locations-tab-tab", "css:finder"],
+        ["xpath=//a[contains(text(),'Locations')]", "xpath:link"],
+        ["xpath=//a[@id='locations-tab-tab']", "xpath:attributes"],
+        ["xpath=//ul[@id='nav-tab']/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '#locations-tab')]", "xpath:href"],
+        ["xpath=//nav/ul/li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3230af89-33c4-4b6d-afeb-27802da04594",
+      "comment": "",
+      "command": "click",
+      "target": "id=education-tab-tab",
+      "targets": [
+        ["id=education-tab-tab", "id"],
+        ["css=#education-tab-tab", "css:finder"],
+        ["xpath=//a[contains(text(),'Education')]", "xpath:link"],
+        ["xpath=//a[@id='education-tab-tab']", "xpath:attributes"],
+        ["xpath=//ul[@id='nav-tab']/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '#education-tab')]", "xpath:href"],
+        ["xpath=//nav/ul/li[3]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "18aba280-e601-4925-ad6d-e9598664176f",
+      "comment": "",
+      "command": "click",
+      "target": "id=publications-tab-tab",
+      "targets": [
+        ["id=publications-tab-tab", "id"],
+        ["css=#publications-tab-tab", "css:finder"],
+        ["xpath=//a[contains(text(),'Publications')]", "xpath:link"],
+        ["xpath=//a[@id='publications-tab-tab']", "xpath:attributes"],
+        ["xpath=//ul[@id='nav-tab']/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '#publications-tab')]", "xpath:href"],
+        ["xpath=//nav/ul/li[4]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d0c7df29-7083-42c4-a19e-3f464f683578",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Make an Appointment",
+      "targets": [
+        ["linkText=Make an Appointment", "linkText"],
+        ["css=.col-sm-12 > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Make an Appointment')]", "xpath:link"],
+        ["xpath=//div[@id='main-container']/section[2]/section/article/div/div/section/div[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/patient-care/making-an-appointment?ser=234010')]", "xpath:href"],
+        ["xpath=//div[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Make an Appointment')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "39625f5c-7cfa-4f7c-95c4-098e334f0669",
+      "comment": "",
+      "command": "click",
+      "target": "css=.make-appt-page__title-link > a",
+      "targets": [
+        ["css=.make-appt-page__title-link > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Book online with Kristina  M. Adams Waldorf M.D., F.A.C.O.G.')]", "xpath:link"],
+        ["xpath=//div[@id='block-uwmbase-page-title']/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://ecare.uwmedicine.org/prod01/openscheduling/SignupAndSchedule/EmbeddedSchedule?id=234010&vt=9000&view=plain')]", "xpath:href"],
+        ["xpath=//div[2]/div/a", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "89427a50-4068-41ac-b4f0-f4dc7d0ff342",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["cdc2d893-51fb-4547-aa13-33df21b6d0ac"]
+  }],
+  "urls": ["https://www.uwmedicine.org/"],
+  "plugins": []
+}
