@@ -79,6 +79,10 @@ body.is-page-node-type-res-provider .modal-backdrop {
       border: none;
       background: none;
       cursor: pointer;
+
+      .uwm-icon--close-x {
+        display: block;
+      }
     }
   }
 
@@ -244,8 +248,10 @@ body.is-page-node-type-res-provider .modal-backdrop {
         height: 14px;
 
         .uwm-icon--close-x {
-          width: inherit;
-          height: inherit;
+          // Set width/height explicitly (instead of using `inherit`) to work
+          // correctly on iOS browsers.
+          width: 14px;
+          height: 14px;
         }
       }
     }
