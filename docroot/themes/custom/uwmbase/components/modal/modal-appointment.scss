@@ -79,6 +79,10 @@ body.is-page-node-type-res-provider .modal-backdrop {
       border: none;
       background: none;
       cursor: pointer;
+
+      .uwm-icon--close-x {
+        display: block;
+      }
     }
   }
 
@@ -184,20 +188,24 @@ body.is-page-node-type-res-provider .modal-backdrop {
         display: block;
         margin-top: 1.25rem; // 20px
 
-        .fa-angle-left {
-          color: color('blue');
-          margin-right: 2px;
-          width: 0.75rem; // 12px
-          height: 1.5rem; // 24px
-          vertical-align: middle;
-        }
-
         a {
-          @include link-blue-hover-underline();
+          @include link-with-icon-blue-hover-underline();
           font-size: 1rem;
           line-height: 1.5rem; // 24px
           display: inline-block;
-          vertical-align: middle;
+
+          .fa-angle-left {
+            color: color('blue');
+            margin-right: 2px;
+            width: 0.75rem; // 12px
+            height: 1.5rem; // 24px
+            vertical-align: middle;
+          }
+
+          .link__text {
+            display: inline-block;
+            vertical-align: middle;
+          }
         }
       }
 
@@ -240,8 +248,10 @@ body.is-page-node-type-res-provider .modal-backdrop {
         height: 14px;
 
         .uwm-icon--close-x {
-          width: inherit;
-          height: inherit;
+          // Set width/height explicitly (instead of using `inherit`) to work
+          // correctly on iOS browsers.
+          width: 14px;
+          height: 14px;
         }
       }
     }

@@ -56,6 +56,23 @@
   }
 }
 
+// Links - blue text w/ no underline; underline on hover
+// This allows link to contain an icon so that the icon is clickable too,
+// but only the text is underlined on hover.
+// Link text must be its own descendant element of <a> with class .link__text
+@mixin link-with-icon-blue-hover-underline {
+  color: theme-color('link-blue');
+  text-decoration: none;
+
+  &:hover, &:focus {
+    text-decoration: none;
+
+    .link__text {
+      text-decoration: underline;
+    }
+  }
+}
+
 // Display a link or button with icon(s) using flexbox.
 // It does not need to have the .btn-cta class.
 // The text must be a child element with class .btn__text (not directly in <a>).
