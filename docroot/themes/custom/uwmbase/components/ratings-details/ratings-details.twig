@@ -1,0 +1,59 @@
+{{ attach_library('uwmbase/ratings-details') }}
+
+<div class="ratings-details">
+  {% if ratings.summary.count.ratings %}
+    <div class="ratings-details__section">
+      <div class="ratings-details__ratings-count">
+        {{ '@count ratings'|t({'@count': ratings.summary.count.ratings}) }}
+      </div>
+    </div>
+  {% endif %}
+  {% if ratings.summary.stars %}
+    <div class="ratings-details__section">
+      <div class="row">
+        <div class="ratings-details__summary-stars-subsection col-12 col-md-3 col-lg-2">
+          <div class="ratings-details__summary-stars">
+            {% include "@uwmbase/rating-stars/rating-stars.twig" with {'stars': ratings.summary.stars} %}
+          </div>
+          <div class="ratings-details__summary-stars-text">
+            {{ '@value out of 5'|t({'@value': ratings.summary.value}) }}
+          </div>
+        </div>
+        <div class="col-12 col-md-9 col-lg-10">
+          <p class="ratings-details__details-comment">At UW Medicine, your feedback is important to us. While different care providers have their own unique strengths, we strive to be as transparent as possible with our quality of care. <a class="text-link-blue no-underline" href="/" target="_blank">Learn more <i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if ratings.summary.count.comments %}
+    <div id="ratings-details__comments-count-section" class="ratings-details__section">
+      <div class="ratings-details__comments-count">
+        {{ '@count comments'|t({'@count': ratings.summary.count.comments}) }}
+      </div>
+    </div>
+  {% endif %}
+  {% if ratings.details %}
+    <div id="ratings-details__details-section" class="ratings-details__section">
+      <a id="ratings-details__showing-info"></a>
+      <div id="ratings-details__showing-info-text"></div>
+      {% for details in ratings.details %}
+        <div class="ratings-details__details row">
+          <div class="col-12 col-md-3 col-lg-2">
+            {% if details.stars %}
+              <div class="ratings-details__details-stars">
+                {% include "@uwmbase/rating-stars/rating-stars.twig" with {'stars': details.stars} %}
+              </div>
+              <div class="ratings-details__details-date">
+                {{ details.date }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="col-12 col-md-9 col-lg-10">
+            <p class="ratings-details__details-comment">{{ details.comment }}</p>
+          </div>
+        </div>
+      {% endfor %}
+      <div id="paginationjs" class="ratings-details__details-pagination"></div>
+    </div>
+  {% endif %}
+</div>

@@ -493,7 +493,23 @@ ratings-summary:
     component:
       dist/css/ratings-summary.css: {}
 
+ratings-details:
+  css:
+    component:
+      dist/css/ratings-details.css: {}
+  js:
+    dist/js/ratings-details.js: {}
+  dependencies:
+  - uwmbase/paginationjs
+  - uwmbase/pager
+
 rating-stars:
   css:
     component:
       dist/css/rating-stars.css: {}
+
+paginationjs:
+  js:
+    dist/js/paginationjs.min.js: { minified: true }
+  dependencies:
+  - core/jquery
