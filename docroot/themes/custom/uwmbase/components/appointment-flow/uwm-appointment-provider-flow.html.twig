@@ -45,6 +45,22 @@
   {% set direct_scheduling = null %}
 {% endif %}
 
+{#
+  Define the "Back" link markup.
+#}
+{% set back_link %}
+  <div class="appointment-flow__step-back">
+    <a href="#">
+      <i class="fa fa-angle-left" aria-hidden="true"></i>
+      <span class="link__text">{{ "Back"|t }}</span>
+    </a>
+  </div>
+{% endset %}
+
+{#
+  Render all possible flow steps. The JS handles logic for showing/hiding
+  each next/previous step.
+#}
 <div class="appointment-flow">
   
   <div class="appointment-flow__step" data-step="visited-before">
@@ -66,10 +82,7 @@
 
     </div>
 
-    <div class="appointment-flow__step-back">
-      <i class="fa fa-angle-left" aria-hidden="true"></i>
-      <a href="#">{{ "Back"|t }}</a>
-    </div>
+    {{ back_link }}
   </div>
 
 
@@ -77,10 +90,7 @@
     <p class="appointment-flow__step-text"><strong>{{ "Please call to schedule instead."|t }}</strong></p>
     <p class="appointment-flow__step-text">{{ "Only returning patients who have seen this provider within the last three years can book online. Phone numbers for each location where this provider practices can be viewed on the overview tab."|t }}</p>
 
-    <div class="appointment-flow__step-back">
-      <i class="fa fa-angle-left" aria-hidden="true"></i>
-      <a href="#">{{ "Back"|t }}</a>
-    </div>
+    {{ back_link }}
   </div>
 
 
@@ -88,10 +98,7 @@
     <p class="appointment-flow__step-text"><strong>{{ "Please call to schedule instead."|t }}</strong></p>
     <p class="appointment-flow__step-text">{{ "Only returning patients who have seen this provider within the last three years can book online. Phone numbers for each location where this provider practices can be viewed on the overview tab."|t }}</p>
 
-    <div class="appointment-flow__step-back">
-      <i class="fa fa-angle-left" aria-hidden="true"></i>
-      <a href="#">{{ "Back"|t }}</a>
-    </div>
+    {{ back_link }}
   </div>
 
 
@@ -110,10 +117,7 @@
 
     </div>
 
-    <div class="appointment-flow__step-back">
-      <i class="fa fa-angle-left" aria-hidden="true"></i>
-      <a href="#">{{ "Back"|t }}</a>
-    </div>
+    {{ back_link }}
   </div>
 
 
@@ -155,11 +159,7 @@
 
     </div>
 
-    <div class="appointment-flow__step-back">
-      <i class="fa fa-angle-left" aria-hidden="true"></i>
-      <a href="#">{{ "Back"|t }}</a>
-    </div>
-
+    {{ back_link }}
   </div>
 
 
@@ -177,11 +177,7 @@
 
     </div>
 
-    <div class="appointment-flow__step-back">
-      <i class="fa fa-angle-left" aria-hidden="true"></i>
-      <a href="#">{{ "Back"|t }}</a>
-    </div>
-
+    {{ back_link }}
   </div>
 
 </div>
