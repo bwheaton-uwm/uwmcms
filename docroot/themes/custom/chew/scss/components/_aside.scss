@@ -15,16 +15,10 @@
   }
 
   .field--name-field-body {
-    font-family: $font-family-sans-serif;
-    font-size: $font-size-small;
-    color: $gray-dark;
-    @media (max-width: $screen-xs) {
-      font-size: $font-size-small * .875;
-    }
+    @extend .callout;
   }
 
   &.paragraph-style--take-next-steps {
-
     margin: 32px 0;
     padding: 24px 0;
 
@@ -33,7 +27,7 @@
       padding: 32px 0;
     }
 
-    h2 {
+    h3 {
       margin: 0 0 24px 0;
     }
 
