@@ -11,14 +11,7 @@
   }
 
   .field--name-field-heading {
-    font-family: $font-family-sans-serif;
-    font-size: ceil(($font-size-base * 1.125));
-    font-weight: 500;
-    //color: $brand-secondary;
     margin-top: 0;
-    @media (max-width: $screen-xs) {
-      font-size: $font-size-base-xs * 1.125;
-    }
   }
 
   .field--name-field-body {
