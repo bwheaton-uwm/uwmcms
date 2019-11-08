@@ -24,6 +24,11 @@
     RewriteCond %{HTTP_HOST} www.airliftnw.org [NC]
     RewriteRule ^(.*)$ https://www.uwmedicine.org/airliftnw%{REQUEST_URI} [L,R=301]
 
+    # Redirect anything nwentassociates.org to their uwmedicine.org page
+    RewriteCond %{HTTP_HOST} nwentassociates.org [NC,OR]
+    RewriteCond %{HTTP_HOST} www.nwentassociates.org [NC]
+    RewriteRule ^(.*)$ https://www.uwmedicine.org/locations/northwest-ent-associates [L,R=301]
+
 </IfModule>
 
 
