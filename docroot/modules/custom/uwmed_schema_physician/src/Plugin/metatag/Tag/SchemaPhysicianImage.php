@@ -2,7 +2,6 @@
 
 namespace Drupal\uwmed_schema_physician\Plugin\metatag\Tag;
 
-use Drupal\Component\Utility\UrlHelper;
 use Drupal\schema_metatag\Plugin\metatag\Tag\SchemaNameBase;
 
 /**
@@ -32,8 +31,7 @@ class SchemaPhysicianImage extends SchemaNameBase {
    * Removes the query string from the URL.
    */
   public static function outputValue($input_value) {
-    $url_parts = UrlHelper::parse($input_value);
-    return $url_parts['path'];
+    // Nothing here yet. Just a placeholder class for a plugin.
   }
 
 }
