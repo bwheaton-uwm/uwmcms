@@ -27,35 +27,11 @@
     # Redirect anything nwentassociates.org to their uwmedicine.org page
     RewriteCond %{HTTP_HOST} nwentassociates.org [NC,OR]
     RewriteCond %{HTTP_HOST} www.nwentassociates.org [NC]
-    RewriteRule ^(.*)$ https://www.uwmedicine.org/locations/northwest-ent-associates [L,R=301]
+    RewriteRule ^ https://www.uwmedicine.org/locations/northwest-ent-associates [L,R=301]
 
-#    # Redirect eastside.uwmedicine.org to their uwmedicine.org pages
-#    RewriteCond %{HTTP_HOST} eastside.uwmedicine.wpengine.com [NC,OR]
-#    RewriteCond %{HTTP_HOST} eastside.uwmedicine.org [NC]
-#    RewriteRule ^about/?$ https://www.uwmedicine.org/locations/eastside-specialty-center#main-tab-tab---overview [NE,L,R=301]
-#    RewriteRule ^all-providers(.*)?$ https://www.uwmedicine.org/locations/eastside-specialty-center#providers-tab [NE,L,R=301]
-#    RewriteRule ^directions/?$ https://www.uwmedicine.org/locations/eastside-specialty-center#directions-tab [NE,L,R=301]
-#    RewriteRule ^providers(.*)$ https://www.uwmedicine.org/locations/eastside-specialty-center#providers-tab [NE,L,R=301]
-#    RewriteRule ^request-appointment/?$ https://www.uwmedicine.org/locations/eastside-specialty-center [NE,L,R=301]
-#    RewriteRule ^services/?$ https://www.uwmedicine.org/locations/eastside-specialty-center [NE,L,R=301]
-#    RewriteRule ^services/gastrointestinal-endoscopy/?$ https://www.uwmedicine.org/locations/digestive-health-center-eastside-specialty-center [NE,L,R=301]
-#    RewriteRule ^services/vascular-surgery/?$ https://www.uwmedicine.org/locations/vascular-laboratory-eastside-specialty-center [NE,L,R=301]
-#    RewriteRule ^services/rehabilitation-medicine/?$ https://www.uwmedicine.org/locations/sports-medicine-center-eastside [NE,L,R=301]
-#    RewriteRule ^services/sports-medicine/?$ https://www.uwmedicine.org/locations/sports-medicine-center-eastside [NE,L,R=301]
-#    RewriteRule ^services/audiology/?$ https://www.uwmedicine.org/locations/otolaryngology-eastside [NE,L,R=301]
-#    RewriteRule ^services/cardiology/?$ https://www.uwmedicine.org/locations/cardiology-eastside-specialty-center [NE,L,R=301]
-#    RewriteRule ^services/ear-nose-throat/?$ https://www.uwmedicine.org/locations/otolaryngology-eastside [NE,L,R=301]
-#    RewriteRule ^services/general-surgery/?$ https://www.uwmedicine.org/locations/general-surgery-eastside-specialty-center [NE,L,R=301]
-#    RewriteRule ^services/allergy/?$ https://www.uwmedicine.org/locations/allergy-eastside [NE,L,R=301]
-#    RewriteRule ^services/neurology/?$ https://www.uwmedicine.org/locations/neurology-eastside [NE,L,R=301]
-#    RewriteRule ^services/hand-elbow-shoulder-center/?$ https://www.uwmedicine.org/locations/hand-elbow-shoulder-center-eastside [NE,L,R=301]
-#    RewriteRule ^services/sports-medicine-center/?$ https://www.uwmedicine.org/locations/sports-medicine-center-eastside [NE,L,R=301]
-#    RewriteRule ^services/spine-center/?$ https://www.uwmedicine.org/locations/spine-center-eastside [NE,L,R=301]
-#    RewriteRule ^services/urology/?$ https://www.uwmedicine.org/locations/urology-eastside [NE,L,R=301]
-#    RewriteRule ^services/orthopedics/?$ https://www.uwmedicine.org/locations/orthopaedics-eastside [NE,L,R=301]
-#    RewriteRule ^services/digestive-health/?$ https://www.uwmedicine.org/locations/digestive-health-center-eastside-specialty-center [NE,L,R=301]
-#    RewriteRule ^services/radiology/?$ https://www.uwmedicine.org/locations/radiology-eastside [NE,L,R=301]
-#    RewriteRule ^(.*) https://www.uwmedicine.org/locations/eastside-specialty-center/$1 [NE,L,R=301]
+    # Redirect eastside.uwmedicine.org to their uwmedicine.org pages
+    RewriteCond %{HTTP_HOST} eastside.uwmedicine(.wpengine)?.org [NC]
+    RewriteRule ^ https://www.uwmedicine.org/locations/eastside-specialty-center%{REQUEST_URI} [L,R]
 
 </IfModule>
 
