@@ -6,7 +6,6 @@ use Drupal\schema_metatag\SchemaMetatagManager;
 use Drupal\schema_metatag\Plugin\metatag\Tag\SchemaAddressTrait;
 use Drupal\schema_metatag\Plugin\metatag\Tag\SchemaPersonOrgBase;
 use Drupal\image\Entity\ImageStyle;
-use Drupal\Component\Utility\UrlHelper;
 
 /**
  * Provides a plugin for the 'schema_physician_name' meta tag.
@@ -134,10 +133,6 @@ class SchemaPhysicianHospitalAffiliation extends SchemaPersonOrgBase {
 
       if ($entity->hasField('field_res_image') && $file = $entity->get('field_res_image')->entity) {
         $url = $image_style->buildUrl($file->getFileUri());
-
-        // Remove the query string from the URL.
-        $url_parts = UrlHelper::parse($url);
-        $url = $url_parts['path'];
       }
 
       // If the clinic has no image, use the default image.
