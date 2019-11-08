@@ -1,5 +1,7 @@
 {{ attach_library('uwmbase/ratings-details') }}
 
+{% set cta_special_attributes = {'data-context-title': node_title|trim, 'data-context-npi': npi} %}
+
 <div class="ratings-details">
   {% if ratings.summary.count.ratings %}
     <div class="ratings-details__section">
@@ -53,7 +55,11 @@
           </div>
         </div>
       {% endfor %}
-      <div id="paginationjs" class="ratings-details__details-pagination"></div>
+      <div id="paginationjs" class="ratings-details__details-pagination">
+        {# Add a dummy link to generate classes and data attributes that are
+          copied to the pagination items. See ratings.details.js #}
+        {{ uwm_cta_link('', '#', [css_parents_classes, 'd-none'], cta_special_attributes) }}
+      </div>
     </div>
   {% endif %}
 </div>
