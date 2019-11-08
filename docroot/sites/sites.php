@@ -54,6 +54,9 @@
  * @see https://www.drupal.org/documentation/install/multi-site
  */
 
+// TEMP: map the CD environment domain.
+$sites['uwmedode6.prod.acquia-sites.com'] = 'stevie';
+
 $sites['chew.uwmed.local'] = 'chew';
 $sites['chew.cmsdev.uwmedicine.org'] = 'chew';
 $sites['chew.cmsstage.uwmedicine.org'] = 'chew';
