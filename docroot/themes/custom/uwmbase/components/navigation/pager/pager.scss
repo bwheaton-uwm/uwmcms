@@ -90,8 +90,8 @@ $pager-light-purple-hover: #d6cee0;
     .pager__item--previous,
     .pager__item--next {
       .arrow-linked {
-        height: 1.5rem; // 24px
-        width: auto;
+        height: 1.4375rem; // 23px
+        width: .6875; // 11px
         vertical-align: -0.375rem; // -6px
       }
     }

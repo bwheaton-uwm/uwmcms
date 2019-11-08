@@ -5,7 +5,11 @@ See node-res-provider.html.twig, for example. #}
 
 <div class="rating-stars">
   {% if link_url %}
-    <a class="rating-stars__link" href="{{ link_url }}">
+    {% if use_cta_link %}
+      {{ uwm_cta_link('', link_url, [cta_classes, 'rating-stars__link'], cta_special_attributes)|render|replace({'</a>': ''})|raw }}
+    {% else %}
+      <a class="rating-stars__link" href="{{ link_url }}">
+    {% endif %}
   {% endif %}
 
   {% if stars.full > 0 %}
@@ -36,7 +40,7 @@ See node-res-provider.html.twig, for example. #}
     {% endfor %}
   {% endif %}
 
-  {% if url %}
+  {% if link_url %}
     </a>
   {% endif %}
 </div>

@@ -790,6 +790,11 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
   else {
     $variables['has_ratings'] = FALSE;
   }
+
+  // Get the NPI for CTA links.
+  if ($node->hasField('field_res_npi') && !$node->get('field_res_npi')->isEmpty()) {
+    $variables['npi'] = $node->field_res_npi->value;
+  }
 }
 
 /**
