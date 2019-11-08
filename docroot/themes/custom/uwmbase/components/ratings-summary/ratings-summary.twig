@@ -1,15 +1,15 @@
 {{ attach_library('uwmbase/ratings-summary') }}
 
 {% set ratings_details_anchor_id = '#overview-tab-tab---ratings-details' %}
+{% set cta_link_classes = ['ratings-summary__link', 'text-link-blue', 'no-underline']  %}
+{% set cta_special_attributes = {'data-context-title': node_title|trim, 'data-context-npi': npi} %}
 
 <div class="ratings-summary">
   <div class="ratings-summary__stars-section">
     {% include "@uwmbase/rating-stars/rating-stars.twig" with {'stars': ratings.summary.stars, 'link_url': ratings_details_anchor_id } %}
     {% if ratings.summary.value %}
       <div class="ratings-summary__stars-text">
-        <a href="{{ ratings_details_anchor_id }}" class="ratings-summary__link text-link-blue no-underline">
-          {{ '@value out of 5'|t({'@value': ratings.summary.value}) }}
-        </a>
+        {{ uwm_cta_link('@value out of 5'|t({'@value': ratings.summary.value}), ratings_details_anchor_id, [css_parents_classes, cta_link_classes], cta_special_attributes) }}
       </div>
     {% endif %}
   </div>
@@ -17,16 +17,12 @@
     <div class="ratings-summary__count-section">
       {% if ratings.summary.count.ratings %}
         <div class="ratings-summary__ratings-count">
-          <a href="{{ ratings_details_anchor_id }}" class="ratings-summary__link text-link-blue no-underline">
-            {{ '@count ratings'|t({'@count': ratings.summary.count.ratings}) }}
-          </a>
+          {{ uwm_cta_link('@count ratings'|t({'@count': ratings.summary.count.ratings}), ratings_details_anchor_id, [css_parents_classes, cta_link_classes], cta_special_attributes) }}
         </div>
       {%  endif %}
       {% if ratings.summary.count.comments %}
         <div class="ratings-summary__comments-count">
-          <a href="{{ ratings_details_anchor_id }}" class="ratings-summary__link text-link-blue no-underline">
-            {{ '@count comments'|t({'@count': ratings.summary.count.comments}) }}
-          </a>
+          {{ uwm_cta_link('@count comments'|t({'@count': ratings.summary.count.comments}), ratings_details_anchor_id, [css_parents_classes, cta_link_classes], cta_special_attributes) }}
         </div>
       {%  endif %}
     </div>
