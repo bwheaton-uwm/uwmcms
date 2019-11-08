@@ -64,9 +64,18 @@
         // anchor tag from the any ellipses, and add span wrappers and icons.
         afterRender: function () {
           $('.pager__items li').addClass('pager__item')
-            .not('.paginationjs-ellipsis').click(function () {
+            .not('.paginationjs-ellipsis, .is-active').click(function () {
               scrollToShowingInfo();
           });
+
+          // Get CTA classes and data attributes and add them to the
+          // pagination links.
+          var dummyAnchor = $('#paginationjs').find('.cta-parent-res-provider');
+          $('.paginationjs-pages').find('.pager__item').not('.is-active').find('a')
+            .addClass(dummyAnchor.attr('class').replace(' d-none', ''))
+            .attr('data-context-title', dummyAnchor.attr('data-context-title'))
+            .attr('data-context-npi', dummyAnchor.attr('data-context-npi'));
+
           $('.paginationjs-prev').addClass('pager__item--text pager__item--previous').find('a').contents().before('<i class="fa fa-angle-left arrow-linked" aria-hidden="true"></i>').wrap('<span class="link-text"></span>');
           $('.paginationjs-next').addClass('pager__item--text pager__item--next').find('a').contents().after('<i class="fa fa-angle-right arrow-linked" aria-hidden="true"></i>').wrap('<span class="link-text"></span>');
           $('.paginationjs-ellipsis').addClass('pager__item--text pager__item--ellipsis').find('a').contents().unwrap();
