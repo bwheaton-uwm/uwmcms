@@ -85,10 +85,6 @@ body.page-node-type-article .main-container {
   a {
     position: relative;
     display: inline-block;
-    &:hover {
-      font-weight: bold;
-      color: $dark-base-gray;
-    }
     &:after {
       content: '';
       position: absolute;
@@ -96,9 +92,18 @@ body.page-node-type-article .main-container {
       bottom: 5px;
       height: 6px;
       width: 100%;
-      background: #82cfcd;
+      background: rgba($light-rain, 0.5);
       z-index: -1;
       opacity: .5;
+    }
+    &:hover {
+      font-weight: bold;
+      color: $dark-base-gray;
+
+      &:after {
+        content: '';
+        background: $light-rain
+      }
     }
   }
 
