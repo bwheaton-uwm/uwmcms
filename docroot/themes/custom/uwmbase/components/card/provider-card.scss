@@ -50,24 +50,31 @@ article.node-res_provider.view-mode-provider_card {
       }
     }
 
-    h2.provider-card__title {
-
+    // Wrap name and "accepting patients" text next to absolute-positioned image
+    .provider-card__intro {
       padding-left: 120px;
       padding-top: 10px;
       min-height: 150px; // Clear image absolute position
+      padding-bottom: 1.5rem;
+    }
 
-      .accepting-patients {
-        display: block;
-        color: theme-color('text');
-        padding: 8px 0 0 25px;
-        position: relative;
-        .uwm-icon {
-          background-size: 100%;
-          position: absolute;
-          left: 0;
-          width: 18px;
-          height: 18px;
-        }
+    .provider-card__title {
+      margin: 0;
+      padding: 0;
+    }
+
+    .provider-card__accepting-patients {
+      padding: 8px 0 0 25px;
+      position: relative;
+      font-size: 14px;
+
+      .uwm-icon {
+        position: absolute;
+        left: 0;
+        top: 10px;
+        background-size: 100%;
+        width: 18px;
+        height: 18px;
       }
     }
 

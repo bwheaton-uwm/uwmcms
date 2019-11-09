@@ -20,45 +20,67 @@
 
 {% set modifier_class = attributes.class ~ ' col-sm-6 col-lg-4 col-xxl-3' %}
 
- {% block content %}
-   {{ attach_library('uwmbase/provider-card') }}
+{% block content %}
+  {{ attach_library('uwmbase/provider-card') }}
 
-   {#{{ content }}#}
+  <div class="inner">
 
-   <div class="inner">
+    <div class="provider-card__image">
+      {#       // @TODO: VERIFY NEW CTA#}
+      {% set image = content.field_res_image %}
+      {% if content.field_res_image|render|trim is empty %}
+        {% set image %}
+          <img src="/{{ directory }}/src/assets/provider-silhouette-brand.png" alt="" class="img-fluid" />
+        {% endset %}
+      {% endif %}
 
-     <div class="provider-card__image">
-       {#       // @TODO: VERIFY NEW CTA#}
-       {% set image = content.field_res_image %}
-       {% if content.field_res_image|render|trim is empty %}
-         {% set image %}
-           <img src="/{{ directory }}/src/assets/provider-silhouette-brand.png" alt="" class="img-fluid" />
-         {% endset %}
-       {% endif %}
-
-       {{ uwm_cta_link(image|render, url, [css_parents_classes]) }}
+      {{ uwm_cta_link(image|render, url, [css_parents_classes]) }}
 
 
-     </div>
+    </div>
 
-     <h2 class="provider-card__title">
-{#       <a href="{{ url }}" rel="bookmark">{{ label }}</a>#}
+    <div class="provider-card__intro">
+      <h2 class="provider-card__title">
+  {#       <a href="{{ url }}" rel="bookmark">{{ label }}</a>#}
 
-{#       // @TODO: VERIFY NEW CTA#}
-       {{ uwm_cta_link(label|render, url, [css_parents_classes]) }}
+  {#       // @TODO: VERIFY NEW CTA#}
+        {{ uwm_cta_link(label|render, url, [css_parents_classes]) }}
+      </h2>
 
-       {% if node.field_res_isacceptingnewpts.0.value == 1 %}
-         <span class="accepting-patients small"><span
-             class="uwm-icon uwm-icon--accepting-patients-teal"
-             aria-hidden="true"></span>
-           {{ "Accepting new patients"|t }}</span>
-       {% endif %}
+      {#
+        Indicate if provider is accepting new and/or returning patients.
+        These booleans are pulled from fields:
+        `field_res_isacceptingnewpts`
+        `field_res_isacceptingreturnpts`
+        @see uwmcs_ecare_scheduling_preprocess_node()
+      #}
+      {% if accepting_returning or accepting_new %}
+        <div class="provider-card__accepting-patients">
+          {% if accepting_new and accepting_returning %}
+            <span class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></span>
+            {{ "Accepting new and returning patients"|t }}
+          {% elseif accepting_returning and (not accepting_new)  %}
+            <span class="uwm-icon uwm-icon--accepting-patients-purple" aria-hidden="true"></span>
+            {{ "Accepting returning patients"|t }}
+          {% elseif accepting_new and (not accepting_returning) %}
+            {#
+                NOTE: this case is probably unrealistic and indicates bad data.
+                Handle it by providing what options we know we have.
+            #}
+            <span class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></span>
+            {{ "Accepting new patients"|t }}
+          {% else %}
+            {#
+              No message if provider does not accept any type of appointments.
+            #}
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
 
-     </h2>
+    {{ title_suffix }}
 
-     {{ title_suffix }}
-
-     <div class="fields-container">
+    <div class="fields-container">
 
 
        <div class="provider-card__specialties full-wide">
