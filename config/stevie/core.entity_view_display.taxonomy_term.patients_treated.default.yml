@@ -1,0 +1,30 @@
+uuid: b0fd19e1-1623-42cf-bec9-8a420b4959eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.patients_treated.field_term_keywords
+    - taxonomy.vocabulary.patients_treated
+  module:
+    - text
+id: taxonomy_term.patients_treated.default
+targetEntityType: taxonomy_term
+bundle: patients_treated
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_term_keywords:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+hidden:
+  search_api_excerpt: true

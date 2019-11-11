@@ -1,0 +1,19 @@
+uuid: 427b6bcd-3e80-46d6-affc-dd09030afbad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_term_keywords
+    - taxonomy.vocabulary.procedures_treatments
+id: taxonomy_term.procedures_treatments.field_term_keywords
+field_name: field_term_keywords
+entity_type: taxonomy_term
+bundle: procedures_treatments
+label: 'Term Keywords'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

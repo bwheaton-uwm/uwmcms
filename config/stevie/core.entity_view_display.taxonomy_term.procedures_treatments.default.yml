@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.taxonomy_term.procedures_treatments.field_link
     - field.field.taxonomy_term.procedures_treatments.field_specialties
+    - field.field.taxonomy_term.procedures_treatments.field_term_keywords
     - taxonomy.vocabulary.procedures_treatments
   module:
     - link
@@ -40,6 +41,13 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  field_term_keywords:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
     region: content
 hidden:
   search_api_excerpt: true
