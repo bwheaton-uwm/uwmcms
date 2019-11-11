@@ -35,10 +35,13 @@ field_settings:
         'entity:node':
           res_provider: autocomplete
         'entity:taxonomy_term':
+          conditions_symptoms: autocomplete
           expertise: autocomplete
           medical_services: autocomplete
+          patients_treated: autocomplete
+          procedures_treatments: autocomplete
   status:
-    label: null
+    label: status
     datasource_id: 'entity:node'
     property_path: status
     type: boolean
@@ -48,7 +51,7 @@ field_settings:
       module:
         - node
   uid:
-    label: null
+    label: uid
     datasource_id: 'entity:node'
     property_path: uid
     type: integer
