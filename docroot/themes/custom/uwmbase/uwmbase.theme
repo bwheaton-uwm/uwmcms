@@ -252,6 +252,17 @@ function uwmbase_page_attachments_alter(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess().
+ */
+function uwmbase_preprocess(&$variables, $hook) {
+
+  // Use `Request` object instead of `path.current` service to get the
+  // end-user-facing requested path, not a Drupal internal path.
+  $variables['request_path'] = ltrim(urldecode(\Drupal::request()->getPathInfo()), '/');
+
+}
+
+/**
  * Implements hook_preprocess_html().
  */
 function uwmbase_preprocess_html(&$variables, $hook) {
