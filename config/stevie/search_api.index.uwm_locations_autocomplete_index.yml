@@ -63,7 +63,11 @@ datasource_settings:
     bundles:
       default: false
       selected:
+        - conditions_symptoms
+        - features_amenities
         - medical_services
+        - patients_treated
+        - procedures_treatments
     languages:
       default: true
       selected: {  }
@@ -75,7 +79,6 @@ processor_settings:
     weights:
       preprocess_query: -30
   entity_status: {  }
-  exclude_unreferenced_terms: {  }
   html_filter:
     all_fields: true
     fields:
