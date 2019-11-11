@@ -3,12 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_res_expertises
+    - field.storage.node.field_res_conditions_symptoms
     - field.storage.taxonomy_term.field_term_keywords
+    - field.storage.node.field_res_expertises
+    - field.storage.node.field_res_features_amenities
     - field.storage.node.field_res_isacceptingnewpts
     - field.storage.node.field_res_medical_services
+    - field.storage.node.field_res_patients_treated
+    - field.storage.node.field_res_procedures_treatments
     - field.storage.node.field_search_best_bets
-    - search_api.server.acquia_search_server
+    - search_api.server.uwmed_local_solr
   module:
     - taxonomy
     - node
@@ -17,8 +21,30 @@ dependencies:
 id: uwm_general_search_api_index
 name: 'UWM General - Search API Index'
 description: ''
-read_only: true
+read_only: false
 field_settings:
+  field_res_conditions_symptoms_keywords:
+    label: 'Conditions & Symptoms » Taxonomy term » Term Keywords'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_conditions_symptoms:entity:field_term_keywords'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_conditions_symptoms
+        - field.storage.taxonomy_term.field_term_keywords
+      module:
+        - taxonomy
+  field_res_conditions_symptoms_name:
+    label: 'Conditions & Symptoms » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_conditions_symptoms:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_conditions_symptoms
+      module:
+        - taxonomy
+        - taxonomy
   field_res_expertises_keywords:
     label: 'Medical Specialties » Taxonomy term » Term Keywords'
     datasource_id: 'entity:node'
@@ -38,6 +64,28 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_expertises
+      module:
+        - taxonomy
+        - taxonomy
+  field_res_features_amenities_keywords:
+    label: 'Features & Amenities » Taxonomy term » Term Keywords'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_features_amenities:entity:field_term_keywords'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_features_amenities
+        - field.storage.taxonomy_term.field_term_keywords
+      module:
+        - taxonomy
+  field_res_features_amenities_name:
+    label: 'Features & Amenities » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_features_amenities:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_features_amenities
       module:
         - taxonomy
         - taxonomy
@@ -78,6 +126,50 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_res_medical_services
+      module:
+        - taxonomy
+        - taxonomy
+  field_res_patients_treated_keywords:
+    label: 'Patients Treated » Taxonomy term » Term Keywords'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_patients_treated:entity:field_term_keywords'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_patients_treated
+        - field.storage.taxonomy_term.field_term_keywords
+      module:
+        - taxonomy
+  field_res_patients_treated_name:
+    label: 'Patients Treated » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_patients_treated:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_patients_treated
+      module:
+        - taxonomy
+        - taxonomy
+  field_res_procedures_treatments_keywords:
+    label: 'Procedures & Treatments » Taxonomy term » Term Keywords'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_procedures_treatments:entity:field_term_keywords'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_procedures_treatments
+        - field.storage.taxonomy_term.field_term_keywords
+      module:
+        - taxonomy
+  field_res_procedures_treatments_name:
+    label: 'Procedures & Treatments » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_res_procedures_treatments:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_res_procedures_treatments
       module:
         - taxonomy
         - taxonomy
@@ -182,6 +274,24 @@ processor_settings:
     weights:
       postprocess_query: 0
   ignore_character:
+    all_fields: false
+    fields:
+      - field_res_conditions_symptoms_keywords
+      - field_res_conditions_symptoms_name
+      - field_res_expertises_keywords
+      - field_res_expertises_name
+      - field_res_features_amenities_keywords
+      - field_res_features_amenities_name
+      - field_res_medical_services_keywords
+      - field_res_medical_services_name
+      - field_res_patients_treated_keywords
+      - field_res_patients_treated_name
+      - field_res_procedures_treatments_keywords
+      - field_res_procedures_treatments_name
+      - field_search_best_bets_keywords
+      - field_search_best_bets_name
+      - title
+      - uwmsearchwithin
     ignorable: '[''¿¡!?,.:;]'
     ignorable_classes:
       - Pc
@@ -191,17 +301,24 @@ processor_settings:
       - Pi
       - Po
       - Ps
-    all_fields: false
     weights:
       preprocess_index: -10
       preprocess_query: -10
   ignorecase:
     all_fields: false
     fields:
+      - field_res_conditions_symptoms_keywords
+      - field_res_conditions_symptoms_name
       - field_res_expertises_keywords
       - field_res_expertises_name
+      - field_res_features_amenities_keywords
+      - field_res_features_amenities_name
       - field_res_medical_services_keywords
       - field_res_medical_services_name
+      - field_res_patients_treated_keywords
+      - field_res_patients_treated_name
+      - field_res_procedures_treatments_keywords
+      - field_res_procedures_treatments_name
       - field_search_best_bets_keywords
       - field_search_best_bets_name
       - title
@@ -213,10 +330,18 @@ processor_settings:
   stemmer:
     all_fields: false
     fields:
+      - field_res_conditions_symptoms_keywords
+      - field_res_conditions_symptoms_name
       - field_res_expertises_keywords
       - field_res_expertises_name
+      - field_res_features_amenities_keywords
+      - field_res_features_amenities_name
       - field_res_medical_services_keywords
       - field_res_medical_services_name
+      - field_res_patients_treated_keywords
+      - field_res_patients_treated_name
+      - field_res_procedures_treatments_keywords
+      - field_res_procedures_treatments_name
       - field_search_best_bets_keywords
       - field_search_best_bets_name
       - title
@@ -229,10 +354,18 @@ processor_settings:
   tokenizer:
     all_fields: false
     fields:
+      - field_res_conditions_symptoms_keywords
+      - field_res_conditions_symptoms_name
       - field_res_expertises_keywords
       - field_res_expertises_name
+      - field_res_features_amenities_keywords
+      - field_res_features_amenities_name
       - field_res_medical_services_keywords
       - field_res_medical_services_name
+      - field_res_patients_treated_keywords
+      - field_res_patients_treated_name
+      - field_res_procedures_treatments_keywords
+      - field_res_procedures_treatments_name
       - field_search_best_bets_keywords
       - field_search_best_bets_name
       - title
@@ -245,10 +378,18 @@ processor_settings:
   transliteration:
     all_fields: false
     fields:
+      - field_res_conditions_symptoms_keywords
+      - field_res_conditions_symptoms_name
       - field_res_expertises_keywords
       - field_res_expertises_name
+      - field_res_features_amenities_keywords
+      - field_res_features_amenities_name
       - field_res_medical_services_keywords
       - field_res_medical_services_name
+      - field_res_patients_treated_keywords
+      - field_res_patients_treated_name
+      - field_res_procedures_treatments_keywords
+      - field_res_procedures_treatments_name
       - field_search_best_bets_keywords
       - field_search_best_bets_name
       - title
@@ -271,4 +412,4 @@ options:
   index_directly: false
   cron_limit: 50
   overridden_by_acquia_search: 2
-server: acquia_search_server
+server: uwmed_local_solr
