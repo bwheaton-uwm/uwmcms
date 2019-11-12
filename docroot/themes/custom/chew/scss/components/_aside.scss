@@ -12,10 +12,23 @@
 
   .field--name-field-heading {
     margin-top: 0;
+    @extend .h4;
+
+    @media (max-width: $screen-sm) {
+      font-size: 20px;
+      line-height: 28px;
+    }
   }
 
   .field--name-field-body {
-    @extend .callout;
+    @extend .body3;
+    margin-left: 19px;
+
+    @media (min-width: $screen-sm) {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 32px;
+    }
   }
 
   &.paragraph-style--take-next-steps {
@@ -40,8 +53,11 @@
         @include chew_icon_svg_background('.next-step', $dark-base-gray);
         display: inline-block;
         content: '';
-        vertical-align: text-top;
-        margin: 0 16px 24px 0;
+        vertical-align: middle;
+        background-repeat: no-repeat;
+        width: 16px;
+        height: 10px;
+        margin-left: -17px;
       }
     }
 
