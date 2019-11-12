@@ -412,4 +412,5 @@ options:
   index_directly: false
   cron_limit: 50
   overridden_by_acquia_search: 2
-server: uwmed_local_solr
+server: acquia_search_server
+
