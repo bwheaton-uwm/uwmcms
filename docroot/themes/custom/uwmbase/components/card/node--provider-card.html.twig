@@ -109,59 +109,59 @@
 
         <span class="uwm-icon uwm-icon--calendar" aria-hidden="true"></span>
 
-        <div class="btn-group">
+        <h3>{{ 'Appointments'|t }}</h3>
 
-          <h3>{{ 'Appointments'|t }}</h3>
+        {% if is_urgent_care_provider %}
 
-          {% if is_urgent_care_provider %}
+          {# If a provider is an Urgent Care provider then patients can't book appointments directly. #}
+          <p class="provider-card__urgent-care">{{ "Urgent care providers cannot be scheduled directly."|t }}</p>
+          <p><a href="/services/urgent-care">{{ "See urgent care clinics and wait <br />times"|t }}<i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
 
-            {# If a provider is an Urgent Care provider then patients can't book appointments directly. #}
-            <p class="provider-card__urgent-care">Urgent care providers cannot be scheduled directly.</p>
-            <p><a href="/services/urgent-care">See urgent care clinics and wait <br />times<i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+        {% else %}
+
+          {# Determine whether to display a phone number or "View Contact Details" button. #}
+          {% if contact_phone_number %}
+
+            {#
+            <a class="provider-card__appointments-buttons btn btn-outline-primary provider-card__phone-number"
+            href={{"tel:#{contact_phone_number}"}}>{{ contact_phone_number|uwm_format_phone('.') }}</a>
+            #}
+
+            {# // @TODO Verify CTA link. #}
+            {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
+            {{ uwm_cta_link(contact_phone_number|uwm_format_phone('.'),
+            'tel:' ~ contact_phone_number|uwm_format_phone,
+              [css_parents_classes, 'provider-card__appointments-buttons', 'btn', 'btn-outline-primary', 'provider-card__phone-number'],
+              cta_special_attributes) }}
 
           {% else %}
 
-            {# Determine whether to display a phone number or "View Contact Details" button. #}
-            {% if contact_phone_number %}
-
-              {#
-              <a class="provider-card__appointments-buttons btn btn-outline-primary provider-card__phone-number"
-              href={{"tel:#{contact_phone_number}"}}>{{ contact_phone_number|uwm_format_phone('.') }}</a>
-              #}
-
-              {# // @TODO Verify CTA link. #}
-              {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
-              {{ uwm_cta_link(contact_phone_number|uwm_format_phone('.'),
-              'tel:' ~ contact_phone_number|uwm_format_phone,
-                [css_parents_classes, 'provider-card__appointments-buttons', 'btn', 'btn-outline-primary', 'provider-card__phone-number'],
-                cta_special_attributes) }}
-
-            {% else %}
-
-              {#
-              <a class="provider-card__appointments-buttons btn btn-outline-primary provider-card__contact-information"
-              href={{"https://www.uwmedicine.org/#{node.field_res_internal_url.0.value}#locations"}}>view contact details</a>
-              #}
-
-              {# // @TODO Verify CTA link. #}
-              {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
-              {{ uwm_cta_link('view contact details'|t,
-                "https://www.uwmedicine.org/#{node.field_res_internal_url.0.value}#locations",
-                [css_parents_classes, 'provider-card__appointments-buttons', 'btn', 'btn-outline-primary', 'provider-card__contact-information'],
-                cta_special_attributes) }}
-
-            {% endif %}
-
             {#
-              Add any (online) appointment actions available for this provider.
+            <a class="provider-card__appointments-buttons btn btn-outline-primary provider-card__contact-information"
+            href={{"https://www.uwmedicine.org/#{node.field_res_internal_url.0.value}#locations"}}>view contact details</a>
             #}
-            {% include '@uwmbase/card/node--provider-card--appointment-actions.html.twig' with {
-              'modal_appt_context': 'provider_card',
-              'class_prefix': 'provider-card__appointments'
-            } %}
+
+            {# // @TODO Verify CTA link. #}
+            {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
+            {{ uwm_cta_link('View contact details'|t,
+              "https://www.uwmedicine.org/#{node.field_res_internal_url.0.value}#locations",
+              [css_parents_classes, 'provider-card__appointments-buttons', 'btn', 'btn-outline-primary', 'provider-card__contact-information'],
+              cta_special_attributes) }}
 
           {% endif %}
-        </div>
+
+          {#
+            Add any (online) appointment actions available for this provider:
+            - "Book Online" button to modal appointment flow
+            - "Returning patients..." link to modal then to eCare
+          #}
+          {% include '@uwmbase/card/node--provider-card--appointment-actions.html.twig' with {
+            'modal_appt_context': 'provider_card',
+            'class_prefix': 'provider-card__appointments'
+          } %}
+
+        {% endif %}
+
       </div>
 
       {% if not display_context == "res_clinic" %}

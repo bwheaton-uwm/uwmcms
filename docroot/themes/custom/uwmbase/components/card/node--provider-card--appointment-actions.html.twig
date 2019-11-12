@@ -63,10 +63,10 @@
       class_prefix ~ '-appt-flow-btn',
       'btn',
       'btn-outline-primary',
-      'uwm-cta',
-      'cta-from-' ~ request_path|clean_class,
       'provider-card__appointments-buttons',
       'provider-card__book-online',
+      'uwm-cta',
+      'cta-from-' ~ request_path|clean_class,
     ]|merge(css_parents_classes),
     'data-context-title': node_title|trim
   })
@@ -74,9 +74,10 @@
 {%
   set link_returning_attrs = create_attribute({
     'class': [
+      class_prefix ~ '-appt-link-direct',
+      'provider-card__book-online-returning',
       'uwm-cta',
       'cta-from-' ~ request_path|clean_class,
-      'provider-card__book-online-returning',
     ]|merge(css_parents_classes),
     'data-context-title': node_title|trim
   })
@@ -116,9 +117,7 @@
     3 years, which is required to use eCare.
   #}
   {% if direct_scheduling and (url_direct_scheduling is not empty) %}
-    <p class="{{ class_prefix }}-appt-link-direct">
-      <a href="#modal-appointment-provider" {{ modal_attrs }} {{ link_returning_attrs }}>{{ "Returning patients with eCare: Sign in to book online."|t }}</a>
-    </p>
+    <a href="#modal-appointment-provider" {{ modal_attrs }} {{ link_returning_attrs }}>{{ "Returning patients with eCare: Sign in to book online."|t }}</a>
   {% endif %}
 
 {% elseif accepting_new and not accepting_returning %}
@@ -152,9 +151,7 @@
       3 years, which is required to use eCare.
     #}
     {% if url_direct_scheduling is not empty %}
-      <p class="{{ class_prefix }}-appt-link-direct">
-        <a href="#modal-appointment-provider" {{ modal_attrs }} {{ link_returning_attrs }}>{{ "Returning patients with eCare: Sign in to book online."|t }}</a>
-      </p>
+      <a href="#modal-appointment-provider" {{ modal_attrs }} {{ link_returning_attrs }}>{{ "Returning patients with eCare: Sign in to book online."|t }}</a>
     {% endif %}
 
   {% elseif open_scheduling %}
