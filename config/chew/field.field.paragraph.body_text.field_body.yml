@@ -11,6 +11,8 @@ dependencies:
 third_party_settings:
   allowed_formats:
     rich_text: rich_text
+    article_editing_options: '0'
+    full_html: '0'
     minimal_html: '0'
     plain_text: '0'
 id: paragraph.body_text.field_body

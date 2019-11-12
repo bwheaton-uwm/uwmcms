@@ -1,0 +1,8 @@
+uuid: 3c0d00fd-28ae-42d8-bbc0-3e3c9ac646ad
+langcode: en
+status: true
+dependencies: {  }
+name: 'Article Editing Options'
+format: article_editing_options
+weight: 0
+filters: {  }

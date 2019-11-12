@@ -50,6 +50,7 @@ permissions:
   - 'update media'
   - 'use editorial transition create_new_draft'
   - 'use editorial transition publish'
+  - 'use text format article_editing_options'
   - 'use text format minimal_html'
   - 'use text format rich_text'
   - 'view any unpublished content'
