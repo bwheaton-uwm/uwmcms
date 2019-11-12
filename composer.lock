@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e0bd1c41a93c8235a4d6ec71f484f21",
+    "content-hash": "c19f7d7dabbb072f5d599628b3c5e052",
     "packages": [
         {
             "name": "acquia/blt",
@@ -862,7 +862,7 @@
             "version": "v2.3.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/fengyuanchen/cropper.git",
+                "url": "git@github.com:fengyuanchen/cropper.git",
                 "reference": "30c58b29ee21010e17e58ebab165fbd84285c685"
             },
             "dist": {
@@ -895,7 +895,7 @@
             "version": "3.3.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jquery/jquery-dist.git",
+                "url": "git@github.com:jquery/jquery-dist.git",
                 "reference": "9e8ec3d10fad04748176144f108d7355662ae75e"
             },
             "dist": {
@@ -913,7 +913,7 @@
             "version": "v1.8.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/kenwheeler/slick.git",
+                "url": "git@github.com:kenwheeler/slick.git",
                 "reference": "0f40c9d6a02a5c08b5f4dd80fdada3a854a59bee"
             },
             "dist": {
@@ -15084,12 +15084,12 @@
             "version": "v3.6.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/oscarotero/Gettext.git",
+                "url": "https://github.com/php-gettext/Gettext.git",
                 "reference": "cd3be64443551e3a693117c4bccbe53e36282456"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Gettext/zipball/cd3be64443551e3a693117c4bccbe53e36282456",
+                "url": "https://api.github.com/repos/php-gettext/Gettext/zipball/cd3be64443551e3a693117c4bccbe53e36282456",
                 "reference": "cd3be64443551e3a693117c4bccbe53e36282456",
                 "shasum": ""
             },

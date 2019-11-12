@@ -177,6 +177,7 @@
     "drupal/xmlsitemap": "^1.0@alpha",
     "drupal/zen": "^7.0@alpha",
     "nategood/httpful": "^0.2.20",
+    "twig/twig": "1.37.1",
     "uwmweb/ckeditor_bs_grid": "dev-uwm-develop",
     "uwmweb/uwmedicineorg_theme": "dev-master",
     "webflo/drupal-core-require-dev": "^8.6.10"
