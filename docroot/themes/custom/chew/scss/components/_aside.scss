@@ -40,26 +40,33 @@
     }
 
     h3 {
-      margin: 0 0 24px 0;
+      margin: 0;
     }
 
     ul {
       list-style-type: none;
       margin: 0;
       padding: 0;
-      li:before {
-        @extend .chew-icon.next-step;
-        @include chew_icon_svg_background('.next-step', $dark-base-gray);
-        display: inline-block;
-        content: '';
-        vertical-align: middle;
-        background-repeat: no-repeat;
-        margin-left: -17px;
-        padding-left: 16px;
+      li {
+        padding-top: 16px;
 
-        @media (max-width: $screen-sm) {
-          height: 10px;
-          padding-left: 7px;
+        @media (min-width: $screen-sm) {
+          padding-top: 18px;
+        }
+        &:before {
+          @extend .chew-icon.next-step;
+          @include chew_icon_svg_background('.next-step', $dark-base-gray);
+          display: inline-block;
+          content: '';
+          vertical-align: middle;
+          background-repeat: no-repeat;
+          margin-left: -17px;
+          padding-left: 23px;
+
+          @media (max-width: $screen-sm) {
+            height: 10px;
+            padding-left: 10px;
+          }
         }
       }
     }
