@@ -17,8 +17,9 @@
     padding-top: 1.6rem;
     position: relative;
 
-    @media (max-width: $screen-sm) {
-      font-size: $font-size-base-xs * 1.25;
+    @media (min-width: $screen-sm) {
+      padding-top: 0;
+      padding-left: 1.6rem;
     }
   }
 
