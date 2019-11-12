@@ -17,8 +17,8 @@ body, body.temp-ok-delete-23999876 {
   color: $dark-base-gray;
 }
 
-h1, h2, h3, h4, h5, h6, h7,
-.h1, .h2, .h3, .h4, .h5, .h6, .h7 {
+h1, h2, h3, h4, h5, h6, h7, h8,
+.h1, .h2, .h3, .h4, .h5, .h6, .h7, .h8 {
   font-family: $font-family-sans-serif;
   /* "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif; */
   color: $dark-base-gray;
@@ -72,6 +72,12 @@ h7, .h7 {
   font-size: 20px;
   line-height: 28px;
   letter-spacing: 15px;
+}
+
+h8, .h8 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
 }
 
 .body2 {
