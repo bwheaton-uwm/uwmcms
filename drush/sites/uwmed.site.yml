@@ -6,24 +6,148 @@ local:
   user: vagrant
   ssh:
     options: '-o PasswordAuthentication=no -i $HOME/.vagrant.d/insecure_private_key'
+
+# Application 'uwmed', environment 'dev'.
 dev:
-  host: uwmeddev.ssh.prod.acquia-sites.com
-  options: { ac-env: dev, ac-realm: prod, ac-site: uwmed }
-  paths: { drush-script: drush9 }
   root: /var/www/html/uwmed.dev/docroot
-  uri: cmsdev.uwmedicine.org
+  ac-site: uwmed
+  ac-env: dev
+  ac-realm: prod
+  uri: uwmeddev.prod.acquia-sites.com
+  dev.livedev:
+    parent: '@uwmed.dev'
+    root: /mnt/gfs/uwmed.dev/livedev/docroot
+  host: uwmeddev.ssh.prod.acquia-sites.com
   user: uwmed.dev
-test:
-  host: uwmedstg.ssh.prod.acquia-sites.com
-  options: { ac-env: test, ac-realm: prod, ac-site: uwmed }
-  paths: { drush-script: drush9 }
-  root: /var/www/html/uwmed.test/docroot
-  uri: cmsstage.uwmedicine.org
-  user: uwmed.test
+  paths:
+    drush-script: drush9
+
+
+# Application 'uwmed', environment 'ode6'.
+ode6:
+  root: /var/www/html/uwmed.ode6/docroot
+  ac-site: uwmed
+  ac-env: ode6
+  ac-realm: prod
+  uri: uwmedode6.prod.acquia-sites.com
+  ode6.livedev:
+    parent: '@uwmed.ode6'
+    root: /mnt/gfs/uwmed.ode6/livedev/docroot
+  host: uwmedode6.ssh.prod.acquia-sites.com
+  user: uwmed.ode6
+  paths:
+    drush-script: drush9
+
+
+# Application 'uwmed', environment 'ode7'.
+ode7:
+  root: /var/www/html/uwmed.ode7/docroot
+  ac-site: uwmed
+  ac-env: ode7
+  ac-realm: prod
+  uri: uwmedode7.prod.acquia-sites.com
+  ode7.livedev:
+    parent: '@uwmed.ode7'
+    root: /mnt/gfs/uwmed.ode7/livedev/docroot
+  host: uwmedode7.ssh.prod.acquia-sites.com
+  user: uwmed.ode7
+  paths:
+    drush-script: drush9
+
+
+# Application 'uwmed', environment 'ode8'.
+ode8:
+  root: /var/www/html/uwmed.ode8/docroot
+  ac-site: uwmed
+  ac-env: ode8
+  ac-realm: prod
+  uri: uwmedode8.prod.acquia-sites.com
+  ode8.livedev:
+    parent: '@uwmed.ode8'
+    root: /mnt/gfs/uwmed.ode8/livedev/docroot
+  host: uwmedode8.ssh.prod.acquia-sites.com
+  user: uwmed.ode8
+  paths:
+    drush-script: drush9
+
+
+
+# Application 'uwmed', environment 'ode8'.
+ode9:
+  root: /var/www/html/uwmed.ode8/docroot
+  ac-site: uwmed
+  ac-env: ode9
+  ac-realm: prod
+  uri: uwmedode9.prod.acquia-sites.com
+  ode8.livedev:
+    parent: '@uwmed.ode9'
+    root: /mnt/gfs/uwmed.ode9/livedev/docroot
+  host: uwmedode9.ssh.prod.acquia-sites.com
+  user: uwmed.ode9
+  paths:
+    drush-script: drush9
+
+
+# Application 'uwmed', environment 'prod'.
 prod:
-  host: uwmed.ssh.prod.acquia-sites.com
-  options: { ac-env: prod, ac-realm: prod, ac-site: uwmed }
-  paths: { drush-script: drush9 }
   root: /var/www/html/uwmed.prod/docroot
-  uri: cms.uwmedicine.org
+  ac-site: uwmed
+  ac-env: prod
+  ac-realm: prod
+  uri: uwmed.prod.acquia-sites.com
+  prod.livedev:
+    parent: '@uwmed.prod'
+    root: /mnt/gfs/uwmed.prod/livedev/docroot
+  host: uwmed.ssh.prod.acquia-sites.com
   user: uwmed.prod
+  paths:
+    drush-script: drush9
+
+
+# Application 'uwmed', environment 'ra'.
+ra:
+  root: /var/www/html/uwmed.ra/docroot
+  ac-site: uwmed
+  ac-env: ra
+  ac-realm: prod
+  uri: uwmedra.prod.acquia-sites.com
+  ra.livedev:
+    parent: '@uwmed.ra'
+    root: /mnt/gfs/uwmed.ra/livedev/docroot
+  host: uwmedra.ssh.prod.acquia-sites.com
+  user: uwmed.ra
+  paths:
+    drush-script: drush9
+
+
+# Application 'uwmed', environment 'sandbox'.
+sandbox:
+  root: /var/www/html/uwmed.sandbox/docroot
+  ac-site: uwmed
+  ac-env: sandbox
+  ac-realm: prod
+  uri: uwmedsandbox.prod.acquia-sites.com
+  sandbox.livedev:
+    parent: '@uwmed.sandbox'
+    root: /mnt/gfs/uwmed.sandbox/livedev/docroot
+  host: uwmedsandbox.ssh.prod.acquia-sites.com
+  user: uwmed.sandbox
+  paths:
+    drush-script: drush9
+
+
+# Application 'uwmed', environment 'test'.
+test:
+  root: /var/www/html/uwmed.test/docroot
+  ac-site: uwmed
+  ac-env: test
+  ac-realm: prod
+  uri: uwmedstg.prod.acquia-sites.com
+  test.livedev:
+    parent: '@uwmed.test'
+    root: /mnt/gfs/uwmed.test/livedev/docroot
+  host: uwmedstg.ssh.prod.acquia-sites.com
+  user: uwmed.test
+  paths:
+    drush-script: drush9
+
