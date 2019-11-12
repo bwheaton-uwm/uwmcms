@@ -18,7 +18,11 @@ suggester_settings:
       'entity:node':
         res_clinic: ''
       'entity:taxonomy_term':
+        conditions_symptoms: ''
+        features_amenities: ''
         medical_services: ''
+        patients_treated: ''
+        procedures_treatments: ''
 suggester_weights:
   live_results: 0
 suggester_limits:
