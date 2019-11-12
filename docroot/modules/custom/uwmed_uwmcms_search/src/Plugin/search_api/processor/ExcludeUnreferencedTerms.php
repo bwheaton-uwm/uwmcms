@@ -64,6 +64,7 @@ class ExcludeUnreferencedTerms extends ProcessorPluginBase {
         'field_res_conditions_symptoms',
         'field_res_patients_treated',
         'field_res_procedures_treatments',
+        'field_res_features_amenities',
       ];
 
       foreach ($term_fields as $term_field) {
