@@ -52,6 +52,7 @@ permissions:
   - 'use editorial transition publish'
   - 'use text format article_editing_options'
   - 'use text format minimal_html'
+  - 'use text format paragraphs_with_headings'
   - 'use text format rich_text'
   - 'view any unpublished content'
   - 'view article revisions'

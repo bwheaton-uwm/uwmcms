@@ -1,12 +1,12 @@
-uuid: e3a3cb88-3be1-45bc-b7c6-f83034ba9961
+uuid: 0aadfdfc-cbd3-4070-8c5b-6681246b8217
 langcode: en
-status: false
+status: true
 dependencies:
   config:
-    - filter.format.article_editing_options
+    - filter.format.paragraphs_with_headings
   module:
     - ckeditor
-format: article_editing_options
+format: paragraphs_with_headings
 editor: ckeditor
 settings:
   toolbar:
@@ -23,15 +23,12 @@ settings:
           items:
             - DrupalLink
             - DrupalUnlink
+            - Linkit
         -
           name: Lists
           items:
             - BulletedList
             - NumberedList
-        -
-          name: Format
-          items:
-            - Styles
         -
           name: Tools
           items:
@@ -39,20 +36,24 @@ settings:
             - ShowBlocks
             - Source
         -
-          name: Import
+          name: Media
           items:
             - Cut
             - Copy
             - Paste
             - PasteText
             - PasteFromWord
+        -
+          name: Format
+          items:
+            - Styles
   plugins:
     language:
       language_list: un
     stylescombo:
       styles: "h2|Paragraph Heading\r\nh3|Paragraph Subheading\r\np|Body Style"
     linkit:
-      linkit_profile: ''
+      linkit_profile: default
 image_upload:
   status: false
   scheme: public
