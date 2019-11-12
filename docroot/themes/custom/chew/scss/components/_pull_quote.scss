@@ -12,17 +12,14 @@
 
   .field--name-field-quote-text {
 
+    @extend .h4;
     border-top: 8px solid $dark-green;
-    font-family: $font-family-sans-serif;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 28px;
+    padding-top: 1.6rem;
     position: relative;
-    padding-left: ceil(($font-size-base * 2));
 
-    @media (max-width: $screen-xs) {
-      font-size: $font-size-base-xs * 1.25;
-      padding-left: ceil(($font-size-base-xs * .8));
+    @media (min-width: $screen-sm) {
+      padding-top: 0;
+      padding-left: 1.6rem;
     }
   }
 
@@ -47,7 +44,7 @@ article.node-term-category-body {
   .field .paragraph--type--pull-quote {
     .field--name-field-quote-text, .field--name-field-quote-attribution {
       border-top: 8px solid $dark-green;
-      @media (min-width: $screen-xs) {
+      @media (min-width: $screen-sm) {
         border-left: 8px solid $dark-green;
         border-top: 0 none;
       }
@@ -58,7 +55,7 @@ article.node-term-category-mind {
   .field .paragraph--type--pull-quote {
     .field--name-field-quote-text, .field--name-field-quote-attribution {
       border-top: 8px solid $dark-blue;
-      @media (min-width: $screen-xs) {
+      @media (min-width: $screen-sm) {
         border-left: 8px solid $dark-blue;
         border-top: 0 none;
       }
@@ -69,7 +66,7 @@ article.node-term-category-life {
   .field .paragraph--type--pull-quote {
     .field--name-field-quote-text, .field--name-field-quote-attribution {
       border-top: 8px solid $dark-purple;
-      @media (min-width: $screen-xs) {
+      @media (min-width: $screen-sm) {
         border-left: 8px solid $dark-purple;
         border-top: 0 none;
       }
@@ -80,7 +77,7 @@ article.node-term-category-well {
   .field .paragraph--type--pull-quote {
     .field--name-field-quote-text, .field--name-field-quote-attribution {
       border-top: 8px solid $dark-red;
-      @media (min-width: $screen-xs) {
+      @media (min-width: $screen-sm) {
         border-left: 8px solid $dark-red;
         border-top: 0 none;
       }
@@ -95,7 +92,7 @@ article.node-term-category-well {
   max-width: 248px;
   float: none;
 
-  @media (min-width: $screen-xs) {
+  @media (min-width: $screen-sm) {
     max-width: 442px;
     border-top: 0 none;
     border-left: 8px solid $dark-green;

@@ -1,0 +1,64 @@
+uuid: 0aadfdfc-cbd3-4070-8c5b-6681246b8217
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.paragraphs_with_headings
+  module:
+    - ckeditor
+format: paragraphs_with_headings
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Formatting
+          items:
+            - Bold
+            - Italic
+            - RemoveFormat
+        -
+          name: Links
+          items:
+            - DrupalLink
+            - DrupalUnlink
+            - Linkit
+        -
+          name: Lists
+          items:
+            - BulletedList
+            - NumberedList
+        -
+          name: Tools
+          items:
+            - HorizontalRule
+            - ShowBlocks
+            - Source
+        -
+          name: Media
+          items:
+            - Cut
+            - Copy
+            - Paste
+            - PasteText
+            - PasteFromWord
+        -
+          name: Format
+          items:
+            - Styles
+  plugins:
+    language:
+      language_list: un
+    stylescombo:
+      styles: "h2|Paragraph Heading\r\nh3|Paragraph Subheading\r\np|Body Style"
+    linkit:
+      linkit_profile: default
+image_upload:
+  status: false
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

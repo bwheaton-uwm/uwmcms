@@ -194,6 +194,35 @@ body.page-node-type-article .main-container {
     }
   }
 
+  .field--name-field-body {
+    h2 {
+      @extend .h4;
+
+      @media (min-width: $screen-sm) {
+        font-weight: 500;
+        font-size: 25px;
+        line-height: 33px;
+      }
+    }
+
+    h3 {
+      @extend .h6;
+
+      @media (min-width: $screen-sm) {
+        font-size: 20px;
+        line-height: 28px;
+      }
+    }
+
+    p {
+      @media (max-width: $screen-sm) {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 26px;
+      }
+    }
+  }
+
   // Footer Styles
   .content-footer {
     @extend .body3;

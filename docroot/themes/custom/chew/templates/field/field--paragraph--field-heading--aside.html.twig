@@ -44,13 +44,15 @@
     'field--name-' ~ field_name|clean_class,
     'field--type-' ~ field_type|clean_class,
     'field--label-' ~ label_display,
-    'body4'
   ]
 %}
 {%
-  set field_value = (items|first).content|render
+  set title_classes = [
+    'field--label',
+    label_display == 'visually_hidden' ? 'sr-only',
+  ]
 %}
 
-<div{{ attributes.addClass(classes, 'field--item') }}>
-    {{ field_value|replace({ 'Photo by': 'PHOTO BY' }) }}
-</div>
+{% for item in items %}
+  <h3{{ attributes.addClass(classes, 'field--item') }}>{{ item.content }}</h3>
+{% endfor %}

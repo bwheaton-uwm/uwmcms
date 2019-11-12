@@ -21,6 +21,7 @@
 
   .quick-read--header {
     margin-bottom: 10px;
+
     & * {
       display: inline-block;
       margin: 0;
@@ -29,6 +30,20 @@
     span {
       padding: 0 5px;
       font-size: 22px;
+      vertical-align: top;
+    }
+  }
+
+  .field--name-field-superheading,
+  .field--name-field-heading {
+    @media (max-width: $screen-sm) {
+      font-size: 16px;
+      line-height: 26px;
+    }
+
+    @media (max-width: $screen-md) {
+      font-size: 20px;
+      line-height: 28px;
     }
   }
 
@@ -42,8 +57,13 @@
   }
 
   .field--name-field-body {
-    font-family: $font-family-sans-serif;
-    color: $dark-base-gray;
+    @extend .body3;
+
+    @media (min-width: $screen-sm) {
+      font-size: 18px;
+      line-height: 32px;
+    }
+
   }
 
   ul {
