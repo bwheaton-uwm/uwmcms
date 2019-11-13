@@ -95,7 +95,6 @@
 
     # Route non-production requests to the blocking robots.txt:
     RewriteCond %{ENV:AH_SITE_ENVIRONMENT} !prod
-    Header always set  X-Robots-Tag "noindex, nofollow"
     RewriteRule ^robots.txt robots_block.txt [L]
 
     # For www.uwmedicine,org, redirect old marketing urls:
