@@ -74,12 +74,11 @@ target-hooks:
   post-deploy:
     dir: '${docroot}'
     command: 'echo ''No post-deploy build configured.'''
-# TEMP: only deploy to sites relevant to this CD env.
 multisites:
 - default
-#- chew
-#- huddle
-#- calendar
+- chew
+- huddle
+- calendar
 - stevie
 behat:
   paths: {  }
