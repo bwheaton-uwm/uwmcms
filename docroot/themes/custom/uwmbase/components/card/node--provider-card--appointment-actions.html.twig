@@ -32,20 +32,29 @@
     direct_scheduling: boolean - whether provider is enabled for direct scheduling
 #}
 
+{%
+  set ecare_base_url = 'https://ecare.uwmedicine.org/prod01/'
+%}
+{# TEST -- DO NOT MERGE TO MASTER -- #}
+{%
+  set ecare_base_url = 'https://tstecare18.epic.medical.washington.edu/tst/'
+%}
+{# --------------------------------- #}
+
 {#
   Define URLs to eCare for this provider.
   Epic ID should be provided, but protect against bad data.
 #}
 {% if epic_id is not empty %}
   {% if direct_scheduling %}
-    {% set url_direct_scheduling = 'https://ecare.uwmedicine.org/prod01/Scheduling?workflow=ExistingProvider&selProvId=' ~ epic_id %}
+    {% set url_direct_scheduling = ecare_base_url ~ 'Scheduling?workflow=ExistingProvider&selProvId=' ~ epic_id %}
   {% endif %}
 
   {# TODO: this only needs to be defined here if we are NOT embedding the
      open scheduling widget - in which case it's linked from the initial button,
      rather than opening within the modal. #}
   {% if open_scheduling and visit_type_ids is not empty and visit_type_ids|length == 1 %}
-    {% set url_open_scheduling_one_type = 'https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id=' ~ epic_id ~ '&vt=' ~ visit_type_ids.0 ~ '&view=plain' %}
+    {% set url_open_scheduling_one_type = ecare_base_url ~ 'OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id=' ~ epic_id ~ '&vt=' ~ visit_type_ids.0 ~ '&view=plain' %}
   {% endif %}
 {% endif %}
 
