@@ -22,15 +22,15 @@
           </div>
         </div>
         <div class="col-12 col-md-9 col-lg-10">
-          <p class="ratings-details__details-comment">At UW Medicine, your feedback is important to us. While different care providers have their own unique strengths, we strive to be as transparent as possible with our quality of care. {{ uwm_cta_link('Learn more <i class="fa fa-angle-right" aria-hidden="true"></i>', '/', [css_parents_classes, 'text-link-blue', 'no-underline'], cta_special_attributes|merge({'target': '_blank'})) }}</p>
+          <p class="ratings-details__details-review">At UW Medicine, your feedback is important to us. While different care providers have their own unique strengths, we strive to be as transparent as possible with our quality of care. {{ uwm_cta_link('Learn more <i class="fa fa-angle-right" aria-hidden="true"></i>', '/', [css_parents_classes, 'text-link-blue', 'no-underline'], cta_special_attributes|merge({'target': '_blank'})) }}</p>
         </div>
       </div>
     </div>
   {% endif %}
-  {% if ratings.summary.count.comments %}
-    <div id="ratings-details__comments-count-section" class="ratings-details__section">
-      <div class="ratings-details__comments-count">
-        {{ '@count comments'|t({'@count': ratings.summary.count.comments}) }}
+  {% if ratings.summary.count.reviews %}
+    <div id="ratings-details__reviews-count-section" class="ratings-details__section">
+      <div class="ratings-details__reviews-count">
+        {{ '@count reviews'|t({'@count': ratings.summary.count.reviews}) }}
       </div>
     </div>
   {% endif %}
@@ -51,7 +51,7 @@
             {% endif %}
           </div>
           <div class="col-12 col-md-9 col-lg-10">
-            <p class="ratings-details__details-comment">{{ details.comment }}</p>
+            <p class="ratings-details__details-review">{{ details.review }}</p>
           </div>
         </div>
       {% endfor %}

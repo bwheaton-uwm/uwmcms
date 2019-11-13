@@ -9,8 +9,8 @@
 .ratings-details__section {
   margin-top: 20px;
 }
-// Customize the top margin for the Comments Count section.
-#ratings-details__comments-count-section {
+// Customize the top margin for the Reviews Count section.
+#ratings-details__reviews-count-section {
   margin-top: 30px;
   @include media-breakpoint-up('md') {
     margin-top: 20px;
@@ -44,7 +44,7 @@
     margin-left: 0;
   }
 }
-.ratings-details__comments-count {
+.ratings-details__reviews-count {
   font-size: 18px;
   font-weight: $font-weight-semi-bold;
 }
@@ -58,7 +58,7 @@
 .ratings-details__details--active {
   display: flex;
 }
-.ratings-details__details-comment {
+.ratings-details__details-review {
   margin: 0;
 }
 .ratings-details__details-date {
