@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6707f34f46eec68c34d6c5eb92b977a9",
+    "content-hash": "c19f7d7dabbb072f5d599628b3c5e052",
     "packages": [
         {
             "name": "acquia/blt",
@@ -896,7 +896,7 @@
             "version": "3.3.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jquery/jquery-dist.git",
+                "url": "git@github.com:jquery/jquery-dist.git",
                 "reference": "9e8ec3d10fad04748176144f108d7355662ae75e"
             },
             "dist": {
@@ -21517,7 +21517,7 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.42.3",
+            "version": "v1.37.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
