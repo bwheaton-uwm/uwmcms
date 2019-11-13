@@ -51,42 +51,49 @@
                     {% endif %}
                 </div>
                 <div class="provider-page__section1-area1-subsection">
-                    <div class="provider-page__section1-accepting-patients">
-                        {#
-                            These booleans are pulled from fields:
-                            `field_res_isacceptingnewpts`
-                            `field_res_isacceptingreturnpts`
-                            @see uwmcs_ecare_scheduling_preprocess_node()
-                        #}
-                        {% if accepting_new and accepting_returning %}
-                            <i class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></i>
-                            {{ "Accepting new and returning patients"|t }}
-                        {% elseif accepting_returning and (not accepting_new)  %}
-                            <i class="uwm-icon uwm-icon--accepting-patients-purple" aria-hidden="true"></i>
-                            {{ "Accepting returning patients"|t }}
-                        {% elseif accepting_new and (not accepting_returning) %}
-                            {#
-                                NOTE: this case is probably unrealistic and
-                                indicates bad data. Handle it by providing
-                                what options we know we have.
-                            #}
-                            <i class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></i>
-                            {{ "Accepting new patients"|t }}
-                        {% else %}
-                            {#
-                                No message if provider does not accept any type
-                                of appointments.
-                            #}
-                        {% endif %}
-                    </div>
+                    {#
+                        Indicate if provider is accepting new and/or returning
+                        patients.
+                        These booleans are pulled from fields:
+                        `field_res_isacceptingnewpts`
+                        `field_res_isacceptingreturnpts`
+                        @see uwmcs_ecare_scheduling_preprocess_node()
+                    #}
+                    {% if accepting_returning or accepting_new %}
+                        <div class="provider-page__section1-accepting-patients">
+                            {% if accepting_new and accepting_returning %}
+                                <span class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></span>
+                                {{ "Accepting new and returning patients"|t }}
+                            {% elseif accepting_returning and (not accepting_new)  %}
+                                <span class="uwm-icon uwm-icon--accepting-patients-purple" aria-hidden="true"></span>
+                                {{ "Accepting returning patients"|t }}
+                            {% elseif accepting_new and (not accepting_returning) %}
+                                {#
+                                    NOTE: this case is probably unrealistic and
+                                    indicates bad data. Handle it by providing
+                                    what options we know we have.
+                                #}
+                                <span class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></span>
+                                {{ "Accepting new patients"|t }}
+                            {% else %}
+                                {#
+                                    No message if provider does not accept any
+                                    type of appointments.
+                                #}
+                            {% endif %}
+                        </div>
+                    {% endif %}
 
                     {% if has_ratings %}
                         {% include "@uwmbase/ratings-summary/ratings-summary.twig" %}
                     {% endif %}
 
+                    {#
+                        Add appointment actions available for this provider.
+                    #}
                     {% if accepting_returning or accepting_new %}
                         <div class="provider-page__section1-appt-actions">
-                            {% include directory ~ '/components/provider-page/node--res-provider--appointment-actions.html.twig' with {
+                            {% include '@uwmbase/provider-page/node--res-provider--appointment-actions.html.twig' with {
                                 'modal_appt_context': 'provider_page',
                                 'class_prefix': 'provider-page__section1'
                             } %}

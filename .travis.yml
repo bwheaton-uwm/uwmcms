@@ -89,3 +89,10 @@ deploy:
      on:
        tags: true
        php: 7.2
+   # TEMP: deploy feature branch build to Acquia repo for CD env.
+   - provider: script
+     script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_branch"
+     skip_cleanup: true
+     on:
+       branch: feature/provider-appointment-visit-types-398644198
+       php: 7.2

@@ -25,8 +25,7 @@
       // be updated for the selected provider when the modal opens.
       // Possible values:
       // 'provider_page' - provider bio (node) page
-      // 'search_providers' - provider card on search results
-      // 'clinic_page_tab' - provider card on clinic page tab.
+      // 'provider_card' - provider card on search results or a clinic page tab.
       var modalContext = $modal.attr('data-modal-appt-context') || null;
 
       // Initialize provider-specific scheduling variables here, so they are

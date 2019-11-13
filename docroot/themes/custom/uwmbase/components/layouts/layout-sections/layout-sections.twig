@@ -181,6 +181,19 @@
       </section>
     {% endblock %}
 
+    {#
+      If preprocess has specified a modal template to be included on this page,
+      based on context, render it here.
+      Use cases:
+      - appointment flow modal
+      @see uwmbase_preprocess_page()
+    #}
+    {% if modal_include is not empty %}
+
+      {% include modal_include.template_path with modal_include.with_vars %}
+
+    {% endif %}
+
     <section class="content-bottom">
       <div class="wrap container-xl">
 

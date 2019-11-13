@@ -2,12 +2,12 @@
 /**
  * @file
  * Template to display a provider's available appointment actions in the
- * context of a provider bio page (Res Provider node in full view mode).
+ * context of a provider card (Res Provider node in Provider Card view mode).
  *
  * If available for this provider, this links to the modal appointment flow to
  * guide a user to open or direct scheduling in eCare.
  *
- * @see node--res-provider.html.twig
+ * @see node--provider-card.html.twig
  */
 #}
 
@@ -70,10 +70,12 @@
   set btn_online_attrs = create_attribute({
     'class': [
       class_prefix ~ '-appt-flow-btn',
-      'btn-cta-solid',
+      'btn',
+      'btn-outline-primary',
+      'provider-card__appointments-buttons',
+      'provider-card__book-online',
       'uwm-cta',
       'cta-from-' ~ request_path|clean_class,
-      'provider-page__book-online',
     ]|merge(css_parents_classes),
     'data-context-title': node_title|trim
   })
@@ -81,9 +83,10 @@
 {%
   set link_returning_attrs = create_attribute({
     'class': [
+      class_prefix ~ '-appt-link-direct',
+      'provider-card__book-online-returning',
       'uwm-cta',
       'cta-from-' ~ request_path|clean_class,
-      'provider-page__book-online-returning',
     ]|merge(css_parents_classes),
     'data-context-title': node_title|trim
   })
@@ -112,12 +115,10 @@
 #}
 {% if not accepting_returning and not accepting_new %}
   {# --- Not accepting any patients --- #}
-  {# Nothing here - handled in parent template. #}
+  {# Nothing available. #}
 
 {% elseif accepting_returning and not accepting_new %}
   {# --- Accepting returning patients only --- #}
-
-  <p class="{{ class_prefix }}-appt-call">{{ "Returning patients can call to schedule an appointment with this provider."|t }}</p>
 
   {#
     Direct scheduling link, if enabled.
@@ -125,9 +126,7 @@
     3 years, which is required to use eCare.
   #}
   {% if direct_scheduling and (url_direct_scheduling is not empty) %}
-    <p class="{{ class_prefix }}-appt-link-direct">
-      <a href="#modal-appointment-provider" {{ modal_attrs }} {{ link_returning_attrs }}>{{ "Returning patients with an eCare account can book online."|t }}</a><span class="uwm-icon uwm-icon--arrow-right-blue" aria-hidden="true"></span>
-    </p>
+    <a href="#modal-appointment-provider" {{ modal_attrs }} {{ link_returning_attrs }}>{{ "Returning patients with eCare: Sign in to book online."|t }}</a>
   {% endif %}
 
 {% elseif accepting_new and not accepting_returning %}
@@ -139,14 +138,10 @@
     (This should be logged as likely bad data.)
   ------------------------------------------------------------------------ #}
 
-  {% if not open_scheduling %}
-
-    <p class="{{ class_prefix }}-appt-call">{{ "Call to schedule an appointment with this provider."|t }}</p>
-
-  {% elseif open_scheduling %}
+  {% if open_scheduling %}
 
     {# Button to open modal #}
-    <button type="button" {{ modal_attrs }} {{ btn_online_attrs }}>{{ "Book appointment online"|t }}</button>
+    <button type="button" {{ modal_attrs }} {{ btn_online_attrs }}>{{ "Book online"|t }}</button>
 
   {% endif %}
 
@@ -156,12 +151,8 @@
   {% if not direct_scheduling and not open_scheduling %}
     {# --- No online scheduling at all --- #}
 
-    <p class="{{ class_prefix }}-appt-call">{{ "Call to schedule an appointment with this provider."|t }}</p>
-
   {% elseif direct_scheduling and not open_scheduling %}
     {# --- Direct scheduling only --- #}
-
-    <p class="{{ class_prefix }}-appt-call">{{ "Call to schedule an appointment with this provider."|t }}</p>
 
     {#
       Direct scheduling link
@@ -169,9 +160,7 @@
       3 years, which is required to use eCare.
     #}
     {% if url_direct_scheduling is not empty %}
-      <p class="{{ class_prefix }}-appt-link-direct">
-        <a href="#modal-appointment-provider" {{ modal_attrs }} {{ link_returning_attrs }}>{{ "Returning patients with an eCare account can book online."|t }}</a><span class="uwm-icon uwm-icon--arrow-right-blue" aria-hidden="true"></span>
-      </p>
+      <a href="#modal-appointment-provider" {{ modal_attrs }} {{ link_returning_attrs }}>{{ "Returning patients with eCare: Sign in to book online."|t }}</a>
     {% endif %}
 
   {% elseif open_scheduling %}
@@ -189,26 +178,15 @@
       #}
 
       {% if url_open_scheduling_one_type is not empty %}
-        <a href="{{ url_open_scheduling_one_type }}" target="_blank" {{ btn_online_attrs }}>{{ "Book appointment online"|t }}</a>
+        <a href="{{ url_open_scheduling_one_type }}" target="_blank" {{ btn_online_attrs }}>{{ "Book online"|t }}</a>
       {% endif %}
 
     {% else %}
 
       {# Button to open modal #}
-      <button type="button" {{ modal_attrs }} {{ btn_online_attrs }}>{{ "Book appointment online"|t }}</button>
+      <button type="button" {{ modal_attrs }} {{ btn_online_attrs }}>{{ "Book online"|t }}</button>
 
     {% endif %}
 
   {% endif %}
-{% endif %}
-
-{#
-  Appointment flow modal - if there are any online options.
-#}
-{% if (accepting_returning and direct_scheduling) or (accepting_new and open_scheduling) %}
-
-  {% include '@uwmbase/appointment-flow/uwm-appointment-modal.html.twig' with {
-    'flow_type': 'provider'
-  } %}
-
 {% endif %}

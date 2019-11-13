@@ -50,24 +50,31 @@ article.node-res_provider.view-mode-provider_card {
       }
     }
 
-    h2.provider-card__title {
-
+    // Wrap name and "accepting patients" text next to absolute-positioned image
+    .provider-card__intro {
       padding-left: 120px;
       padding-top: 10px;
       min-height: 150px; // Clear image absolute position
+      padding-bottom: 1.5rem;
+    }
 
-      .accepting-patients {
-        display: block;
-        color: theme-color('text');
-        padding: 8px 0 0 25px;
-        position: relative;
-        .uwm-icon {
-          background-size: 100%;
-          position: absolute;
-          left: 0;
-          width: 18px;
-          height: 18px;
-        }
+    .provider-card__title {
+      margin: 0;
+      padding: 0;
+    }
+
+    .provider-card__accepting-patients {
+      padding: 8px 0 0 25px;
+      position: relative;
+      font-size: 14px;
+
+      .uwm-icon {
+        position: absolute;
+        left: 0;
+        top: 10px;
+        background-size: 100%;
+        width: 18px;
+        height: 18px;
       }
     }
 
@@ -87,22 +94,27 @@ article.node-res_provider.view-mode-provider_card {
         @extend %s-with-icon; 
       }
 
-      .provider-card__appointments-buttons {
-        color: $text;
-        font-size: .875rem; // 14px
-        text-transform: uppercase;
-        margin-bottom: 4px;
-    
-        &:hover {
-          text-decoration: none;
-          color: white;
-        }
-      }
-    
       .provider-card__urgent-care {
         margin-bottom: 0.25rem // 4px;
       }
+
+      .provider-card__appointments-buttons {
+        color: theme-color('text');
+        font-size: .875rem; // 14px
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 0.25rem; // 4px
     
+        &:hover {
+          text-decoration: none;
+          color: theme-color('white');
+        }
+      }
+    
+      .provider-card__book-online-returning {
+        display: block;
+        margin-top: 0.375rem; // 6px (+4px margin-bottom on buttons above = 10px)
+      }
 
       .provider-card__locations {
         @extend %s-with-icon;

@@ -252,6 +252,17 @@ function uwmbase_page_attachments_alter(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess().
+ */
+function uwmbase_preprocess(&$variables, $hook) {
+
+  // Use `Request` object instead of `path.current` service to get the
+  // end-user-facing requested path, not a Drupal internal path.
+  $variables['request_path'] = ltrim(urldecode(\Drupal::request()->getPathInfo()), '/');
+
+}
+
+/**
  * Implements hook_preprocess_html().
  */
 function uwmbase_preprocess_html(&$variables, $hook) {
@@ -353,6 +364,26 @@ function uwmbase_preprocess_page(&$variables, $hook) {
         }
       }
     }
+
+  }
+
+  // Specify a modal to be included on the page. This enables rendering a modal
+  // once on the page and having multiple links/buttons trigger opening it.
+  // @see layout-sections.twig
+  $variables['modal_include'] = NULL;
+
+  // Modal appointment flow for providers, linked from provider cards:
+  // - provider search page
+  // - any clinic node page with providers tab.
+  if ($route_name === 'view.uwm_providers_search.page_1' || (!empty($node) && $node->bundle() === 'res_clinic' && !$node->get('field_res_providers')->isEmpty())) {
+
+    $variables['modal_include'] = [
+      'template_path' => '@uwmbase/appointment-flow/uwm-appointment-modal.html.twig',
+      'with_vars' => [
+        'flow_type' => 'provider',
+        'modal_appt_context' => 'provider_card',
+      ],
+    ];
 
   }
 

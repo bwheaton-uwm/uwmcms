@@ -20,177 +20,194 @@
 
 {% set modifier_class = attributes.class ~ ' col-sm-6 col-lg-4 col-xxl-3' %}
 
- {% block content %}
-   {{ attach_library('uwmbase/provider-card') }}
+{% block content %}
+  {{ attach_library('uwmbase/provider-card') }}
 
-   {#{{ content }}#}
+  <div class="inner">
 
-   <div class="inner">
+    <div class="provider-card__image">
+      {# // @TODO: VERIFY NEW CTA #}
+      {% set image = content.field_res_image %}
+      {% if content.field_res_image|render|trim is empty %}
+        {% set image %}
+          <img src="/{{ directory }}/src/assets/provider-silhouette-brand.png" alt="" class="img-fluid" />
+        {% endset %}
+      {% endif %}
 
-     <div class="provider-card__image">
-       {#       // @TODO: VERIFY NEW CTA#}
-       {% set image = content.field_res_image %}
-       {% if content.field_res_image|render|trim is empty %}
-         {% set image %}
-           <img src="/{{ directory }}/src/assets/provider-silhouette-brand.png" alt="" class="img-fluid" />
-         {% endset %}
-       {% endif %}
+      {{ uwm_cta_link(image|render, url, [css_parents_classes]) }}
+    </div>
 
-       {{ uwm_cta_link(image|render, url, [css_parents_classes]) }}
+    <div class="provider-card__intro">
+      <h2 class="provider-card__title">
+        {#
+        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+        #}
 
+        {# // @TODO: VERIFY NEW CTA#}
+        {{ uwm_cta_link(label|render, url, [css_parents_classes]) }}
+      </h2>
 
-     </div>
-
-     <h2 class="provider-card__title">
-{#       <a href="{{ url }}" rel="bookmark">{{ label }}</a>#}
-
-{#       // @TODO: VERIFY NEW CTA#}
-       {{ uwm_cta_link(label|render, url, [css_parents_classes]) }}
-
-       {% if node.field_res_isacceptingnewpts.0.value == 1 %}
-         <span class="accepting-patients small"><span
-             class="uwm-icon uwm-icon--accepting-patients-teal"
-             aria-hidden="true"></span>
-           {{ "Accepting new patients"|t }}</span>
-       {% endif %}
-
-     </h2>
-
-     {{ title_suffix }}
-
-     <div class="fields-container">
-
-
-       <div class="provider-card__specialties full-wide">
-
-         {% if content.field_res_expertises.0 %}
-
-           {% set specialties = content.field_res_expertises|uwm_filter_non_numeric_keys %}
-           {% set elipses = specialties|length > 3 %}
-
-           <h3>{{ (specialties|length > 1 ? 'Medical Specialties' : 'Medical Specialty')|t }}</h3>
-
-           <div class="items">
-             {{ specialties|uwm_replace_links_with_text|slice(0, 3)|join(' | ') }}{{ elipses ? '...' : '' }}
-           </div>
-
-           {% if elipses %}
-             <div class="see-all">
-               <a href="{{ url }}" rel="bookmark">{{ 'See all medical specialties'|t }}<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-             </div>
-           {% endif %}
-
-         {% endif %}
-
-       </div>
-
-       <div class="provider-card__appointments uwm-accent-color__purple full-wide">
-        {% set label = 'Appointments'|t %}
-        <span class="uwm-icon uwm-icon--calendar" aria-hidden="true"></span>
-        <div class="btn-group">
-          <h3>{{ label }}</h3>
-          {% if is_urgent_care_provider %}
-          {# If a provider is an Urgent Care provider then patients can't book appointments directly. #}
-            <p class="provider-card__urgent-care">Urgent care providers cannot be scheduled directly.</p>
-            <p><a href="/services/urgent-care">See urgent care clinics and wait <br />times<i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
-          {% else %}
-            {# Determine whether to display a phone number or "View Contact Details" button. #}
-            {% if contact_phone_number %}
-{#              <a class="provider-card__appointments-buttons btn btn-outline-primary provider-card__phone-number"#}
-{#              href={{"tel:#{contact_phone_number}"}}>{{ contact_phone_number|uwm_format_phone('.') }}</a>#}
-
-              {#              // @TODO Verify CTA link. #}
-              {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
-              {{ uwm_cta_link(contact_phone_number|uwm_format_phone('.'),
-              'tel:' ~ contact_phone_number|uwm_format_phone,
-                [css_parents_classes, 'provider-card__appointments-buttons', 'btn', 'btn-outline-primary', 'provider-card__phone-number'],
-                cta_special_attributes) }}
-
-            {% else %}
-{#              <a class="provider-card__appointments-buttons btn btn-outline-primary provider-card__contact-information"#}
-{#              href={{"https://www.uwmedicine.org/#{node.field_res_internal_url.0.value}#locations"}}>view contact details</a>#}
-
-              {#              // @TODO Verify CTA link. #}
-              {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
-              {{ uwm_cta_link('view contact details'|t,
-                "https://www.uwmedicine.org/#{node.field_res_internal_url.0.value}#locations",
-                [css_parents_classes, 'provider-card__appointments-buttons', 'btn', 'btn-outline-primary', 'provider-card__contact-information'],
-                cta_special_attributes) }}
-
-            {% endif %}
-
+      {#
+        Indicate if provider is accepting new and/or returning patients.
+        These booleans are pulled from fields:
+        `field_res_isacceptingnewpts`
+        `field_res_isacceptingreturnpts`
+        @see uwmcs_ecare_scheduling_preprocess_node()
+      #}
+      {% if accepting_returning or accepting_new %}
+        <div class="provider-card__accepting-patients">
+          {% if accepting_new and accepting_returning %}
+            <span class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></span>
+            {{ "Accepting new and returning patients"|t }}
+          {% elseif accepting_returning and (not accepting_new)  %}
+            <span class="uwm-icon uwm-icon--accepting-patients-purple" aria-hidden="true"></span>
+            {{ "Accepting returning patients"|t }}
+          {% elseif accepting_new and (not accepting_returning) %}
             {#
-              Determine if a Booking Visit ID exists
-              NOTE: Current state, only grab the first booking ID number, even if multiple exist
-              @TODO check if multiple booking IDs exist & create multple booking options w/
-              different IDs
+                NOTE: this case is probably unrealistic and indicates bad data.
+                Handle it by providing what options we know we have.
             #}
-            {% set visit_type_id = node.field_res_visit_type_id.0.value ? node.field_res_visit_type_id.0.value : 9000 %}
-
-            {# Determine whether or not to display the "Book Online" button. #}
-            {% if node.field_res_is_open_scheduling.0.value == 1 and node.field_res_ser_id.0.value %}
-              {% set open_scheduling_url = "https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id=#{node.field_res_ser_id.0.value}&vt=#{visit_type_id}&view=plain" %}
-{#              <a class="provider-card__appointments-buttons btn btn-outline-primary provider-card__book-online" href="{{ open_scheduling_url }}" >#}
-{#              {{ 'Book online'|t }}</a>#}
-
-              {#              // @TODO Verify CTA link. #}
-              {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
-              {{ uwm_cta_link('Book online'|t, open_scheduling_url,
-                [css_parents_classes, 'provider-card__appointments-buttons', 'btn', 'btn-outline-primary', 'provider-card__book-online'],
-                cta_special_attributes) }}
-
-            {% endif %}
+            <span class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></span>
+            {{ "Accepting new patients"|t }}
+          {% else %}
+            {#
+              No message if provider does not accept any type of appointments.
+            #}
           {% endif %}
         </div>
+      {% endif %}
+    </div>
+
+    {{ title_suffix }}
+
+    <div class="fields-container">
+
+      <div class="provider-card__specialties full-wide">
+
+        {% if content.field_res_expertises.0 %}
+
+          {% set specialties = content.field_res_expertises|uwm_filter_non_numeric_keys %}
+          {% set elipses = specialties|length > 3 %}
+
+          <h3>{{ (specialties|length > 1 ? 'Medical Specialties' : 'Medical Specialty')|t }}</h3>
+
+          <div class="items">
+            {{ specialties|uwm_replace_links_with_text|slice(0, 3)|join(' | ') }}{{ elipses ? '...' : '' }}
+          </div>
+
+          {% if elipses %}
+            <div class="see-all">
+              <a href="{{ url }}" rel="bookmark">{{ 'See all medical specialties'|t }}<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            </div>
+          {% endif %}
+
+        {% endif %}
+
+      </div>
+
+      <div class="provider-card__appointments uwm-accent-color__purple full-wide">
+
+        <span class="uwm-icon uwm-icon--calendar" aria-hidden="true"></span>
+
+        <h3>{{ 'Appointments'|t }}</h3>
+
+        {% if is_urgent_care_provider %}
+
+          {# If a provider is an Urgent Care provider then patients can't book appointments directly. #}
+          <p class="provider-card__urgent-care">{{ "Urgent care providers cannot be scheduled directly."|t }}</p>
+          <p><a href="/services/urgent-care">{{ "See urgent care clinics and wait <br />times"|t }}<i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+
+        {% else %}
+
+          {# Determine whether to display a phone number or "View Contact Details" button. #}
+          {% if contact_phone_number %}
+
+            {#
+            <a class="provider-card__appointments-buttons btn btn-outline-primary provider-card__phone-number"
+            href={{"tel:#{contact_phone_number}"}}>{{ contact_phone_number|uwm_format_phone('.') }}</a>
+            #}
+
+            {# // @TODO Verify CTA link. #}
+            {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
+            {{ uwm_cta_link(contact_phone_number|uwm_format_phone('.'),
+            'tel:' ~ contact_phone_number|uwm_format_phone,
+              [css_parents_classes, 'provider-card__appointments-buttons', 'btn', 'btn-outline-primary', 'provider-card__phone-number'],
+              cta_special_attributes) }}
+
+          {% else %}
+
+            {#
+            <a class="provider-card__appointments-buttons btn btn-outline-primary provider-card__contact-information"
+            href={{"https://www.uwmedicine.org/#{node.field_res_internal_url.0.value}#locations"}}>view contact details</a>
+            #}
+
+            {# // @TODO Verify CTA link. #}
+            {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
+            {{ uwm_cta_link('View contact details'|t,
+              "https://www.uwmedicine.org/#{node.field_res_internal_url.0.value}#locations",
+              [css_parents_classes, 'provider-card__appointments-buttons', 'btn', 'btn-outline-primary', 'provider-card__contact-information'],
+              cta_special_attributes) }}
+
+          {% endif %}
+
+          {#
+            Add any (online) appointment actions available for this provider:
+            - "Book Online" button to modal appointment flow
+            - "Returning patients..." link to modal then to eCare
+          #}
+          {% include '@uwmbase/card/node--provider-card--appointment-actions.html.twig' with {
+            'modal_appt_context': 'provider_card',
+            'class_prefix': 'provider-card__appointments'
+          } %}
+
+        {% endif %}
+
       </div>
 
       {% if not display_context == "res_clinic" %}
-       <div class="provider-card__locations full-wide">
+        <div class="provider-card__locations full-wide">
 
-         {% if content.field_res_clinics.0 and not is_urgent_care_provider %}
+          {% if content.field_res_clinics.0 and not is_urgent_care_provider %}
 
-           <span class="uwm-icon uwm-icon--locations-pin"
-                 aria-hidden="true"></span>
+            <span class="uwm-icon uwm-icon--locations-pin" aria-hidden="true"></span>
 
-           {% set locations = content.field_res_clinics|uwm_filter_non_numeric_keys %}
-           {% set elipses = locations|length > 3 %}
-           {% set locations = locations|slice(0, 3) %}
+            {% set locations = content.field_res_clinics|uwm_filter_non_numeric_keys %}
+            {% set elipses = locations|length > 3 %}
+            {% set locations = locations|slice(0, 3) %}
 
-           <h3>{{ (locations|length > 1 ? 'Locations' : 'Location')|t }}</h3>
+            <h3>{{ (locations|length > 1 ? 'Locations' : 'Location')|t }}</h3>
 
-           <div class="items">
-             {% for loc in locations %}
-               {{ loc }}
-               {% if not loop.last %} | {% endif %}
-             {% endfor %}
-             {{ elipses ? '...' : '' }}
-           </div>
+            <div class="items">
+              {% for loc in locations %}
+                {{ loc }}
+                {% if not loop.last %} | {% endif %}
+              {% endfor %}
+              {{ elipses ? '...' : '' }}
+            </div>
 
-           {% if elipses %}
-             <div class="see-all">
-               <a href="{{ url }}" rel="bookmark">{{ 'See all locations'|t }}<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-             </div>
-           {% endif %}
+            {% if elipses %}
+              <div class="see-all">
+                <a href="{{ url }}" rel="bookmark">{{ 'See all locations'|t }}<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+              </div>
+            {% endif %}
 
-         {% endif %}
+          {% endif %}
 
-       </div>
+        </div>
+      {% endif %}
 
-     </div>
-     {% endif %}
+    </div><!-- /.fields-container -->
 
     {% if not display_context == "res_clinic" %}
-     <div class="provider-card__see-more uwm-accent-color__purple full-wide">
-{#       <a class="btn btn-cta btn-cta-link"#}
-{#          href="{{ url }}" rel="bookmark">{{ 'See full bio'|t }}</a>#}
-       {#                    // @TODO Verify new CTA #}
-       {{ uwm_cta_link('See full bio'|t, url, [css_parents_classes, 'btn', 'btn-cta', 'btn-cta-link']) }}
+      <div class="provider-card__see-more uwm-accent-color__purple full-wide">
+        {#
+        <a class="btn btn-cta btn-cta-link" href="{{ url }}" rel="bookmark">{{ 'See full bio'|t }}</a>
+        #}
+        {# // @TODO Verify new CTA #}
+        {{ uwm_cta_link('See full bio'|t, url, [css_parents_classes, 'btn', 'btn-cta', 'btn-cta-link']) }}
+      </div>
+    {% endif %}
 
-     </div>
-     {% endif %}
+  </div><!-- /.inner -->
 
-   </div>
-
-{#{{ devel_breakpoint() }}#}
-
- {% endblock %}
+{% endblock %}

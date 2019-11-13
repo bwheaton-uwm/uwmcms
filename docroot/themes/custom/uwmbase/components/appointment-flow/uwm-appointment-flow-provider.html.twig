@@ -12,8 +12,7 @@
 
   modal_appt_context: string - where the modal is being used. One of:
     'provider_page' - provider bio (node) page
-    'search_providers' - provider card on search results
-    'clinic_page_tab' - provider card on clinic page tab
+    'provider_card' - provider card on search results or a clinic page tab
 
   If on the provider bio page only:
     epic_id: the provider's Epic/SER ID number
@@ -24,15 +23,24 @@
     visit_type_descriptions: mapping - visit type ID to visit type description
 #}
 
+{%
+  set ecare_base_url = 'https://ecare.uwmedicine.org/prod01/'
+%}
+{# TEST -- DO NOT MERGE TO MASTER -- #}
+{%
+  set ecare_base_url = 'https://tstecare18.epic.medical.washington.edu/tst/'
+%}
+{# --------------------------------- #}
+
 {#
   Define URLs to eCare. If we are not on a provider page, provider-specific
   query parameter values are left out and inserted by JS.
 #}
 {%
-  set url_direct_scheduling = 'https://ecare.uwmedicine.org/prod01/Scheduling?workflow=ExistingProvider&selProvId=' ~ (direct_scheduling and epic_id ? epic_id : '')
+  set url_direct_scheduling = ecare_base_url ~ 'Scheduling?workflow=ExistingProvider&selProvId=' ~ (direct_scheduling and epic_id ? epic_id : '')
 %}
 {%
-  set url_open_scheduling = 'https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id=' ~ (open_scheduling and epic_id ? epic_id : '') ~ '&vt=' ~ (open_scheduling and visit_type_ids is not empty and visit_type_ids|length == 1 ? visit_type_ids.0 : '') ~ '&view=plain'
+  set url_open_scheduling = ecare_base_url ~ 'OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id=' ~ (open_scheduling and epic_id ? epic_id : '') ~ '&vt=' ~ (open_scheduling and visit_type_ids is not empty and visit_type_ids|length == 1 ? visit_type_ids.0 : '') ~ '&view=plain'
 %}
 
 {#
