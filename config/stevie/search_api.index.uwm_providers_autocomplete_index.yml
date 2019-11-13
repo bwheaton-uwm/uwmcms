@@ -35,10 +35,13 @@ field_settings:
         'entity:node':
           res_provider: autocomplete
         'entity:taxonomy_term':
+          conditions_symptoms: autocomplete
           expertise: autocomplete
           medical_services: autocomplete
+          patients_treated: autocomplete
+          procedures_treatments: autocomplete
   status:
-    label: null
+    label: status
     datasource_id: 'entity:node'
     property_path: status
     type: boolean
@@ -48,7 +51,7 @@ field_settings:
       module:
         - node
   uid:
-    label: null
+    label: uid
     datasource_id: 'entity:node'
     property_path: uid
     type: integer
@@ -70,8 +73,11 @@ datasource_settings:
     bundles:
       default: false
       selected:
+        - conditions_symptoms
         - expertise
         - medical_services
+        - patients_treated
+        - procedures_treatments
     languages:
       default: true
       selected: {  }
@@ -83,7 +89,6 @@ processor_settings:
     weights:
       preprocess_query: -30
   entity_status: {  }
-  exclude_unreferenced_terms: {  }
   html_filter:
     all_fields: true
     fields:
@@ -140,9 +145,6 @@ processor_settings:
     weights:
       preprocess_index: 0
   uwm_exclude_unreferenced_terms: {  }
-  uwm_index_term_keywords:
-    weights:
-      preprocess_index: -45
 tracker_settings:
   default:
     indexing_order: fifo

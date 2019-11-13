@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies:
   module:
+    - taxonomy
     - node
     - search_api
     - uwmcs_searchfields
     - uwmed_uwmcms_search
-    - taxonomy
   config:
     - search_api.server.database
 id: uwm_locations_autocomplete_index
@@ -15,6 +15,14 @@ name: 'UWM Locations - Autocomplete Index'
 description: ''
 read_only: false
 field_settings:
+  name:
+    label: Name
+    datasource_id: 'entity:taxonomy_term'
+    property_path: name
+    type: text
+    dependencies:
+      module:
+        - taxonomy
   node_grants:
     label: 'Node access information'
     property_path: search_api_node_grants
@@ -63,7 +71,12 @@ datasource_settings:
     bundles:
       default: false
       selected:
+        - conditions_symptoms
+        - expertise
+        - features_amenities
         - medical_services
+        - patients_treated
+        - procedures_treatments
     languages:
       default: true
       selected: {  }
@@ -75,10 +88,10 @@ processor_settings:
     weights:
       preprocess_query: -30
   entity_status: {  }
-  exclude_unreferenced_terms: {  }
   html_filter:
     all_fields: true
     fields:
+      - name
       - title
     title: false
     alt: false
@@ -92,6 +105,10 @@ processor_settings:
       preprocess_index: -15
       preprocess_query: -15
   ignore_character:
+    all_fields: false
+    fields:
+      - name
+      - title
     ignorable: '[''¿¡!?,.:;]'
     ignorable_classes:
       - Pc
@@ -101,13 +118,13 @@ processor_settings:
       - Pi
       - Po
       - Ps
-    all_fields: false
     weights:
       preprocess_index: -10
       preprocess_query: -10
   ignorecase:
     all_fields: true
     fields:
+      - name
       - title
     weights:
       preprocess_index: -20
@@ -116,6 +133,7 @@ processor_settings:
   transliteration:
     all_fields: true
     fields:
+      - name
       - title
     weights:
       preprocess_index: -20

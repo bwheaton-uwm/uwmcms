@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.taxonomy_term.conditions_symptoms.field_link
     - field.field.taxonomy_term.conditions_symptoms.field_specialties
+    - field.field.taxonomy_term.conditions_symptoms.field_term_keywords
     - taxonomy.vocabulary.conditions_symptoms
   module:
     - link
@@ -41,5 +42,12 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
+  field_term_keywords:
+    type: basic_string
+    weight: 3
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   search_api_excerpt: true

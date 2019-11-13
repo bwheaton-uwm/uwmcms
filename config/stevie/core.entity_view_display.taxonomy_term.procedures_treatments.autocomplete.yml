@@ -1,0 +1,21 @@
+uuid: b4456f38-95d4-4d42-8166-7fe80545d32f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.autocomplete
+    - field.field.taxonomy_term.procedures_treatments.field_link
+    - field.field.taxonomy_term.procedures_treatments.field_specialties
+    - field.field.taxonomy_term.procedures_treatments.field_term_keywords
+    - taxonomy.vocabulary.procedures_treatments
+id: taxonomy_term.procedures_treatments.autocomplete
+targetEntityType: taxonomy_term
+bundle: procedures_treatments
+mode: autocomplete
+content: {  }
+hidden:
+  description: true
+  field_link: true
+  field_specialties: true
+  field_term_keywords: true
+  search_api_excerpt: true

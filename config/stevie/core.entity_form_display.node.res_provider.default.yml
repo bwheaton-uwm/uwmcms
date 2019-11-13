@@ -398,10 +398,13 @@ content:
     type: number
     region: content
   field_res_patients_treated:
-    weight: 21
-    settings: {  }
+    weight: 20
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: options_select
+    type: entity_reference_autocomplete
     region: content
   field_res_personal_interests:
     weight: 15
