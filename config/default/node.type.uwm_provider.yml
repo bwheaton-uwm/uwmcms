@@ -4,21 +4,16 @@ status: true
 dependencies:
   module:
     - menu_ui
-    - node_revision_delete
 third_party_settings:
   menu_ui:
     available_menus: {  }
     parent: ''
-  node_revision_delete:
-    minimum_revisions_to_keep: 4
-    minimum_age_to_delete: 0
-    when_to_delete: 0
 _core:
   default_config_hash: kF_fcqOqkXLxljTJZNl6FhSUdbkDrDuK_1UsL8NEeFk
 name: 'UW Provider'
 type: uwm_provider
 description: ''
 help: ''
-new_revision: true
+new_revision: false
 preview_mode: 1
 display_submitted: false
