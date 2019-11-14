@@ -52,6 +52,7 @@
         '103619': 'Care for prevention and checkups'
       };
 
+      // Find all modal steps.
       var $steps = $modal.find('.appointment-flow__step');
       var $stepVisitedBefore = $modal.find('[data-step="visited-before"]');
       var $stepCallInsteadAll = $modal.find('[data-step="call-instead-all"]');
@@ -60,10 +61,13 @@
       var $stepVisitType = $modal.find('[data-step="visit-type"]');
       var $stepOpenSchedWidget = $modal.find('[data-step="open-schedule"]');
 
+      // Find all elements that link to open/direct scheduling.
       var $iframeOpenSched = $stepOpenSchedWidget.length ? $stepOpenSchedWidget.find('iframe.appointment-flow__open-scheduling-embed') : null;
       // TODO: temporary link while we are working to enable widget in iframe.
       var $linkOpenSched = $stepOpenSchedWidget.length ? $stepOpenSchedWidget.find('a.appointment-flow__open-scheduling-link') : null;
-      var $linkDirectSched = $stepEcareAccount.length ? $stepEcareAccount.find('a.appointment-flow__direct-scheduling-link') : null;
+
+      var $visitedBeforeYesLinkDirect = $stepVisitedBefore.length ? $stepVisitedBefore.find('a[data-btn="yes-link-direct"]') : null;
+      var $ecareAccountYesLinkDirect = $stepEcareAccount.length ? $stepEcareAccount.find('a[data-btn="yes-link-direct"]') : null;
 
       // Track steps the user has visited, for use by Back links.
       var stepPath = [];
@@ -155,7 +159,9 @@
        */
       function resetUrlAttr($elem, attrName) {
 
-        $elem.attr(attrName, $elem.data('base-' + attrName));
+        if ($elem && $elem.length) {
+          $elem.attr(attrName, $elem.data('base-' + attrName));
+        }
 
       }
 
@@ -234,8 +240,8 @@
         console.log('modalContext:', modalContext, 'acceptingNew:', acceptingNew, ', acceptingReturning:', acceptingReturning, ', epicID:', epicID, ', openScheduling:', openScheduling, ', visitTypeIDs:', visitTypeIDs, ', openMultipleTypes:', openMultipleTypes, ', directScheduling:', directScheduling);
         */
 
-        // 2. If not on a provider page, update elements for the provider
-        // selected by user.
+        // 2. If not on a provider page, update elements for the provider for
+        // which the modal was opened.
         if (modalContext !== 'provider_page') {
 
           if (openScheduling) {
@@ -273,19 +279,59 @@
 
             }
 
-            // Update open scheduling widget with provider's Epic ID.
-            // TODO: bad to have iframe with a "broken" src at any point?
+            // Update open scheduling widget with provider's Epic ID, and the
+            // visit type if there's only one.
             if ($stepOpenSchedWidget.length) {
+
+              // TODO: bad to have iframe with a "broken" src at any point?
               setUrlAttrQueryStringVal($iframeOpenSched, 'src', 'id', epicID);
               setUrlAttrQueryStringVal($linkOpenSched, 'href', 'id', epicID);
+
+              if (!openMultipleTypes) {
+
+                setUrlAttrQueryStringVal($iframeOpenSched, 'src', 'vt', visitTypeIDs[0]);
+                setUrlAttrQueryStringVal($linkOpenSched, 'href', 'vt', visitTypeIDs[0]);
+
+              }
+
             }
 
           }
 
-          if (directScheduling && $stepEcareAccount.length) {
+          if (directScheduling) {
 
-            // Update direct scheduling link with provider's Epic ID.
-            setUrlAttrQueryStringVal($linkDirectSched, 'href', 'selProvId', epicID);
+            // For "Visited before?" step - determine what "Yes" button does.
+            // Two versions are provided in the markup; remove whichever will
+            // not be used.
+            if ($stepVisitedBefore.length) {
+
+              var $visitedBeforeYesStep = $stepVisitedBefore.find('a[data-btn="yes-step"]');
+
+              // If only direct scheduling is available, link directly to eCare,
+              // because the initial link states the eCare account is required.
+              if (!acceptingNew || !openScheduling) {
+
+                $visitedBeforeYesStep.remove();
+
+                // Update the eCare URL with provider's Epic ID.
+                setUrlAttrQueryStringVal($visitedBeforeYesLinkDirect, 'href', 'selProvId', epicID);
+
+              }
+              else {
+
+                $visitedBeforeYesLinkDirect.remove();
+
+              }
+
+            }
+
+            // Update eCare account step button that links to direct scheduling
+            // with provider's Epic ID.
+            if ($stepEcareAccount.length) {
+
+              setUrlAttrQueryStringVal($ecareAccountYesLinkDirect, 'href', 'selProvId', epicID);
+
+            }
 
           }
 
@@ -393,25 +439,17 @@
         });
 
         // "Have you visited this provider in the last three years?" => Yes.
-        // If only direct scheduling is available, this button links directly
-        // to eCare (via the template), because user is coming from the
-        // returning patients link that already specifies eCare requirement.
-        // If open scheduling is available too, it moves to eCare account step.
-        //
-        // Note: We set this handler at time of attach behaviors. It would be
-        // ideal not to set it if the button is just a link - but we don't get
-        // the provider scheduling variables until the modal opens. So we can
-        // only check for open scheduling when the handler runs, not when we
-        // first set it.
-        $stepVisitedBefore.find('a[data-btn="yes"]').click(function (e) {
+        // There are two versions of this button:
+        // - If only direct scheduling is available, this button links directly
+        // to eCare, because the initial link states the eCare account is
+        // required. No click handler needed.
+        // - If open scheduling is available too, move to eCare account step.
+        // Only one is present in the markup, so set the step version if it is.
+        $stepVisitedBefore.find('a[data-btn="yes-step"]').click(function (e) {
 
-          if (acceptingNew && openScheduling) {
+          e.preventDefault();
 
-            e.preventDefault();
-
-            stepForward($stepEcareAccount);
-
-          }
+          stepForward($stepEcareAccount);
 
         });
 
@@ -502,21 +540,11 @@
 
           }
 
-          // Remove provider's Epic ID and visit type from open scheduling
-          // widget embed.
-          if ($stepOpenSchedWidget.length) {
-
-            resetUrlAttr($iframeOpenSched, 'src');
-            resetUrlAttr($linkOpenSched, 'href');
-
-          }
-
-          // Remove provider's Epic ID from direct scheduling link.
-          if ($stepEcareAccount.length) {
-
-            resetUrlAttr($linkDirectSched, 'href');
-
-          }
+          // Remove provider's Epic ID and visit type from scheduling link URLs.
+          resetUrlAttr($iframeOpenSched, 'src');
+          resetUrlAttr($linkOpenSched, 'href');
+          resetUrlAttr($ecareAccountYesLinkDirect, 'href');
+          resetUrlAttr($visitedBeforeYesLinkDirect, 'href');
 
         }
 
