@@ -1,15 +1,15 @@
-uuid: 7b233dd6-b8b8-4dfe-a6ea-c3f381c6c82c
+uuid: 3420d108-e836-4919-98c3-edbb98ebda8e
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.uwm_medical_service
-id: node.uwm_medical_service.status
+    - node.type.fact_page
+id: node.fact_page.status
 field_name: status
 entity_type: node
-bundle: uwm_medical_service
-label: 'Publishing status'
-description: 'A boolean indicating the published state.'
+bundle: fact_page
+label: Published
+description: ''
 required: false
 translatable: true
 default_value:
