@@ -4,16 +4,21 @@ status: true
 dependencies:
   module:
     - menu_ui
+    - node_revision_delete
 third_party_settings:
   menu_ui:
     available_menus: {  }
     parent: ''
+  node_revision_delete:
+    minimum_revisions_to_keep: 4
+    minimum_age_to_delete: 0
+    when_to_delete: 0
 _core:
   default_config_hash: 5YJZbVUYycSo7ymVZnMwmvytiKmX03hJ0dloGv_lv-M
 name: 'UW Clinic'
 type: uwm_clinic
 description: ''
 help: ''
-new_revision: false
+new_revision: true
 preview_mode: 1
 display_submitted: false
