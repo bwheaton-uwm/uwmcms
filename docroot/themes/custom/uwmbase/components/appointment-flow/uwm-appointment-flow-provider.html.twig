@@ -79,13 +79,41 @@
       <a href="#" class="appointment-flow__step-button btn-cta-solid" data-btn="no">{{ "No"|t }}</a>
 
       {#
-        If only direct scheduling is available, this step can link directly to
-        eCare, because the initial link states the eCare account is required.
+        This "Yes" button may either:
+        - if only direct scheduling is available, link directly to eCare,
+          because the initial link states the eCare account is required.
+        - move to another step, via additional logic in JS.
+
+        If provider values are passed in from parent template, determine here
+        which button to show. If not, add both buttons so that JS logic can
+        determine it when the modal opens from a provider.
       #}
-      {% if accepting_returning and direct_scheduling and ((not accepting_new) or (not open_scheduling)) %}
-        <a href="{{ url_direct_scheduling }}" target="_blank" class="appointment-flow__step-button btn-cta-solid" data-btn="yes">{{ "Yes"|t }}</a>
-      {% else %}
-        <a href="#" class="appointment-flow__step-button btn-cta-solid" data-btn="yes">{{ "Yes"|t }}</a>
+      {% set yes_step, yes_link_direct = true, true %}
+
+      {% if (modal_appt_context is same as('provider_page')) %}
+        {% if accepting_returning and direct_scheduling and ((not accepting_new) or (not open_scheduling)) %}
+
+          {% set yes_link_direct = true %}
+          {% set yes_step = false %}
+
+        {% else %}
+
+          {% set yes_step = true %}
+          {% set yes_link_direct = false %}
+
+        {% endif %}
+      {% endif %}
+
+      {% if yes_link_direct %}
+
+        <a href="{{ url_direct_scheduling }}" target="_blank" class="appointment-flow__step-button btn-cta-solid" data-btn="yes-link-direct">{{ "Yes"|t }}</a>
+
+      {% endif %}
+
+      {% if yes_step %}
+
+        <a href="#" class="appointment-flow__step-button btn-cta-solid" data-btn="yes-step">{{ "Yes"|t }}</a>
+
       {% endif %}
 
     </div>
@@ -121,7 +149,7 @@
         If the provider has direct scheduling and the user has indicated they
         have an eCare account, link to full eCare site for direct scheduling.
       #}
-      <a href="{{ url_direct_scheduling }}" target="_blank" class="appointment-flow__step-button btn-cta-solid appointment-flow__direct-scheduling-link" data-btn="yes">{{ "Yes"|t }}</a>
+      <a href="{{ url_direct_scheduling }}" target="_blank" class="appointment-flow__step-button btn-cta-solid" data-btn="yes-link-direct">{{ "Yes"|t }}</a>
 
     </div>
 

@@ -8,10 +8,17 @@
 
 @import 'init';
 
-// Note: the modal backdrop is added by Bootstrap modal, just before the closing
-// body tag. So we can limit its styling to the provider page, but not more
-// specifically unless we add another class via JS.
-body.is-page-node-type-res-provider .modal-backdrop {
+// Set the backdrop color for appointment modal.
+// The backdrop element is inject by Bootstrap JS, just before the closing
+// body tag. So we can limit its styling to apply by the type of page, but not
+// specifically to this modal instance (unless we add another class via JS).
+// Page types currently using this modal:
+// - Provider bio page
+// - Provider search results (cards)
+// - Clinic page Care Providers tab (cards)
+body.is-page-node-type-res-provider .modal-backdrop,
+body.path-search-providers .modal-backdrop,
+body.is-page-node-type-res-clinic .modal-backdrop {
   background-color: #333D47;
   opacity: 0.64;
 }
