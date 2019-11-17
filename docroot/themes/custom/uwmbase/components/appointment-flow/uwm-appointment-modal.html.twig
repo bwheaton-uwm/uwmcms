@@ -21,25 +21,6 @@
 
 {{ attach_library('uwmbase/modal-appointment') }}
 
-{# Get open scheduling visit types labels. #}
-{# TODO: get these from however we store them #}
-{% if accepting_new and open_scheduling %}
-  {%
-    set visit_type_names = {
-      '9000': 'New Patient Appointment',
-      '4466': 'New Pregnancy Care',
-      '103619': 'New Wellness Appointment'
-    }
-  %}
-  {%
-    set visit_type_descriptions = {
-      '9000': 'Initial appointment to establish care',
-      '4466': 'First visit for a new pregnancy',
-      '103619': 'Care for prevention and checkups'
-    }
-  %}
-{% endif %}
-
 {#
   Pass the modal context as data attribute for use in JS.
   Since the modal intentionally exists only once in a page, we can set the

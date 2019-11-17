@@ -12,26 +12,39 @@
 #}
 
 {#
-  Relevant variables from parent template:
+  Relevant variables from preprocess and parent template:
 
+  Context values:
   modal_appt_context: string - where the modal is being used. One of:
     'provider_page' - provider bio (node) page
     'provider_card' - provider card on search results or a clinic page tab
   class_prefix: string - prefix for CSS classes in this template, that groups
     them within enclosing elements in the parent template
 
-  ................
-  Manually managed:
-    accepting_new: boolean - whether provider is accepting new patients
-    accepting_returning: boolean - whether provider is accepting new patients
+  Scheduling values, manually managed:
+  accepting_new: boolean - whether provider is accepting new patients
+  accepting_returning: boolean - whether provider is accepting new patients
 
-  Data from Epic:
-    epic_id: the provider's Epic/SER ID number
-    open_scheduling: boolean - whether provider is enabled for open scheduling
-    visit_type_ids: array - provider's open scheduling visit type IDs, if any
-    direct_scheduling: boolean - whether provider is enabled for direct scheduling
+  Scheduling values, from Epic:
+  epic_id: the provider's Epic/SER ID number
+  open_scheduling: boolean - whether provider is enabled for open scheduling
+  visit_type_ids: array - provider's open scheduling visit type IDs, if any
+  direct_scheduling: boolean - whether provider is enabled for direct scheduling
+
+  Visit type labels:
+  visit_type_names: array of desired display names, keyed by visit type ID
+  visit_type_descriptions: array of desired display descriptions, keyed by
+    visit type ID
+
+  NOTE: These values have been checked and adjusted for any bad data situations,
+  so the epic ID, visit type IDs, and visit type label variables can be used
+  safely when the corresponding open and direct scheduling booleans are true.
+  @see uwmcs_ecare_scheduling_preprocess_node()
 #}
 
+{#
+  Define URLs to eCare for this provider.
+#}
 {%
   set ecare_base_url = 'https://ecare.uwmedicine.org/prod01/'
 %}
@@ -41,21 +54,15 @@
 %}
 {# --------------------------------- #}
 
-{#
-  Define URLs to eCare for this provider.
-  Epic ID should be provided, but protect against bad data.
-#}
-{% if epic_id is not empty %}
-  {% if direct_scheduling %}
-    {% set url_direct_scheduling = ecare_base_url ~ 'Scheduling?workflow=ExistingProvider&selProvId=' ~ epic_id %}
-  {% endif %}
+{% if direct_scheduling %}
+  {% set url_direct_scheduling = ecare_base_url ~ 'Scheduling?workflow=ExistingProvider&selProvId=' ~ epic_id %}
+{% endif %}
 
-  {# TODO: this only needs to be defined here if we are NOT embedding the
-     open scheduling widget - in which case it's linked from the initial button,
-     rather than opening within the modal. #}
-  {% if open_scheduling and visit_type_ids is not empty and visit_type_ids|length == 1 %}
-    {% set url_open_scheduling_one_type = ecare_base_url ~ 'OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id=' ~ epic_id ~ '&vt=' ~ visit_type_ids.0 ~ '&view=plain' %}
-  {% endif %}
+{# TODO: this only needs to be defined here if we are NOT embedding the
+    open scheduling widget - in which case it's linked from the initial button,
+    rather than opening within the modal. #}
+{% if open_scheduling and visit_type_ids|length == 1 %}
+  {% set url_open_scheduling_one_type = ecare_base_url ~ 'OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id=' ~ epic_id ~ '&vt=' ~ visit_type_ids.0 ~ '&view=plain' %}
 {% endif %}
 
 {#
@@ -124,7 +131,7 @@
     This opens the modal to first check if user has visited within the last
     3 years, which is required to use eCare.
   #}
-  {% if direct_scheduling and (url_direct_scheduling is not empty) %}
+  {% if direct_scheduling %}
     <p class="{{ class_prefix }}-appt-link-direct">
       <a href="#modal-appointment-provider" {{ modal_attrs }} {{ link_returning_attrs }}>{{ "Returning patients with an eCare account can book online."|t }}</a><span class="uwm-icon uwm-icon--arrow-right-blue" aria-hidden="true"></span>
     </p>
@@ -168,11 +175,9 @@
       This opens the modal to first check if user has visited within the last
       3 years, which is required to use eCare.
     #}
-    {% if url_direct_scheduling is not empty %}
-      <p class="{{ class_prefix }}-appt-link-direct">
-        <a href="#modal-appointment-provider" {{ modal_attrs }} {{ link_returning_attrs }}>{{ "Returning patients with an eCare account can book online."|t }}</a><span class="uwm-icon uwm-icon--arrow-right-blue" aria-hidden="true"></span>
-      </p>
-    {% endif %}
+    <p class="{{ class_prefix }}-appt-link-direct">
+      <a href="#modal-appointment-provider" {{ modal_attrs }} {{ link_returning_attrs }}>{{ "Returning patients with an eCare account can book online."|t }}</a><span class="uwm-icon uwm-icon--arrow-right-blue" aria-hidden="true"></span>
+    </p>
 
   {% elseif open_scheduling %}
     {# --- Open scheduling only, 1 appt type
@@ -180,17 +185,14 @@
            Open scheduling, 1 appt type / Direct scheduling
            Open scheduling, multiple types / Direct scheduling --- #}
 
-    {% if false and (not direct_scheduling) and (visit_type_ids is not empty) and (visit_type_ids|length == 1) %}
+    {% if false and (visit_type_ids|length == 1) and (not direct_scheduling) %}
       {#
         TODO: Open scheduling only, 1 appt type
         This case only needs to be separated if we are NOT embedding the open
         scheduling widget - in which case it's linked from the button, rather
         than opening within the modal.
       #}
-
-      {% if url_open_scheduling_one_type is not empty %}
-        <a href="{{ url_open_scheduling_one_type }}" target="_blank" {{ btn_online_attrs }}>{{ "Book appointment online"|t }}</a>
-      {% endif %}
+      <a href="{{ url_open_scheduling_one_type }}" target="_blank" {{ btn_online_attrs }}>{{ "Book appointment online"|t }}</a>
 
     {% else %}
 
