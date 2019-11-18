@@ -10,7 +10,7 @@ interface UwmImFieldsInterface {
   /**
    * Description here.
    *
-   * @param object $imApiItem
+   * @param \stdClass $imApiItem
    *   Description here.
    *
    * @return mixed

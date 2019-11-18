@@ -267,10 +267,10 @@ class TwigExtension extends \Twig_Extension {
    *   Description here.
    *
    * @code
-   *   These are all valid:
-   *   {{ uwm_extract_parts(clinic, 'expertiseName') | uwm_join_parts(',<br>') |
+   * These are all valid:
+   * {{ uwm_extract_parts(clinic, 'expertiseName') | uwm_join_parts(',<br>') |
    *   raw }}
-   *   {{ uwm_extract_parts(clinic.expertise, 'expertiseName') | slice(0, 4) |
+   * {{ uwm_extract_parts(clinic.expertise, 'expertiseName') | slice(0, 4) |
    *   uwm_join_parts(',<br>') | raw }}
    * @endcode
    *
