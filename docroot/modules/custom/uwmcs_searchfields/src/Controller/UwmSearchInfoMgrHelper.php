@@ -82,7 +82,7 @@ class UwmSearchInfoMgrHelper {
    * @param mixed $entity
    *   Description here.
    *
-   * @return object
+   * @return \stdClass
    *   Description here.
    */
   public static function getEntityApiData($entity) {

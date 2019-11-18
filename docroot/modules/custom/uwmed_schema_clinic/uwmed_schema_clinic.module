@@ -5,13 +5,13 @@
  * Hook implementations for the UWMed Schema.org: Medical Clinic module.
  */
 
-/**
- * Implements hook_module_implements_alter().
- *
- * Run our hook_page_attachments_alter() before schema_metatag's. This allows
- * us to alter all schema metatag values as PHP arrays, before they are
- * converted to one JSON string.
- */
+ /**
+  * Implements hook_module_implements_alter().
+  *
+  * Run our hook_page_attachments_alter() before schema_metatag's. This allows
+  * us to alter all schema metatag values as PHP arrays, before they are
+  * converted to one JSON string.
+  */
 function uwmed_schema_clinic_module_implements_alter(&$implementations, $hook) {
 
   if ($hook === 'page_attachments_alter') {

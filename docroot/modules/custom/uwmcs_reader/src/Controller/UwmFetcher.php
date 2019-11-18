@@ -3,10 +3,9 @@
 namespace Drupal\uwmcs_reader\Controller;
 
 /***
- * UwmFetcher module.
- *
  * See https://www.drupal.org/docs/8/api/
- * routing-system/parameter-upcasting-in-routes.
+ * routing-system/parameter-upcasting-in-routes
+ *
  */
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Url;
@@ -18,25 +17,10 @@ use Httpful\Response;
  */
 class UwmFetcher {
 
-  /**
-   * Description here.
-   *
-   * @var string
-   */
   protected static $apiUri = 'https://webservices.uwmedicine.org';
 
-  /**
-   * Description here.
-   *
-   * @var string
-   */
   protected static $clinicEndpoint = '/api/clinic';
 
-  /**
-   * Description here.
-   *
-   * @var string
-   */
   protected static $providerEndpoint = '/api/bioinformation';
 
   /**
@@ -66,7 +50,7 @@ class UwmFetcher {
    * @param string $apiEndpoint
    *   Description here.
    *
-   * @return object
+   * @return \stdClass
    *   Description here.
    */
   public function getUrl(string $apiEndpoint = NULL) {
@@ -83,7 +67,7 @@ class UwmFetcher {
    * @param array $searchFields
    *   Description here.
    *
-   * @return object
+   * @return \stdClass
    *   Description here.
    */
   public function getProvider(array $searchFields = []) {
@@ -101,7 +85,7 @@ class UwmFetcher {
    * @param array $searchFields
    *   Description here.
    *
-   * @return object
+   * @return \stdClass
    *   Description here.
    */
   public function getClinic(array $searchFields = []) {
@@ -121,7 +105,7 @@ class UwmFetcher {
    * @param string|null $apiUri
    *   Description here.
    *
-   * @return object
+   * @return \stdClass
    *   Description here.
    */
   private function findItem(array $searchFields = [], string $apiUri = NULL) {
@@ -155,7 +139,7 @@ class UwmFetcher {
   /**
    * Return content for all providers.
    *
-   * @return object
+   * @return \stdClass
    *   Description here.
    */
   private function fetchItem(string $apiUri = NULL) {
@@ -188,7 +172,7 @@ class UwmFetcher {
    * @param string|null $apiUri
    *   Description here.
    *
-   * @return \Httpful\Response|object
+   * @return \Httpful\Response|\stdClass
    *   Description here.
    */
   private function getResponse(string $apiUri = NULL) {

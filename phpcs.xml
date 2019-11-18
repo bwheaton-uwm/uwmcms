@@ -15,7 +15,7 @@
   <arg value="p"/>
 
   <!-- Include existing standards. -->
-  <rule ref="vendor/drupal/coder/coder_sniffer/Drupal"/>
+  <rule ref="Drupal"/>
 <!--  <rule ref="DrupalPractice"/> -->
 
   <file>blt</file>

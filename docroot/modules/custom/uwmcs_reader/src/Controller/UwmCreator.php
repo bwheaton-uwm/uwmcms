@@ -3,12 +3,10 @@
 namespace Drupal\uwmcs_reader\Controller;
 
 /***
- * UwmCreator module.
- *
  * See https://www.drupal.org/docs/8/api/
- * routing-system/parameter-upcasting-in-routes.
+ * routing-system/parameter-upcasting-in-routes
+ *
  */
-
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Url;
@@ -19,32 +17,12 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  */
 class UwmCreator extends ControllerBase {
 
-  /**
-   * Description here.
-   *
-   * @var string
-   */
   private $pathAlias;
 
-  /**
-   * Description here.
-   *
-   * @var string
-   */
   private $apiAlias;
 
-  /**
-   * Description here.
-   *
-   * @var string
-   */
   private $contentType;
 
-  /**
-   * Description here.
-   *
-   * @var string
-   */
   private $requestUri;
 
   private const CREATE_NEW_NODES = TRUE;
@@ -154,7 +132,7 @@ class UwmCreator extends ControllerBase {
   /**
    * This is a description.
    *
-   * @param object $data
+   * @param \stdClass $data
    *   Description here.
    *
    * @return array
@@ -175,7 +153,7 @@ class UwmCreator extends ControllerBase {
   /**
    * This is a description.
    *
-   * @param object $data
+   * @param \stdClass $data
    *   Description here.
    *
    * @return array

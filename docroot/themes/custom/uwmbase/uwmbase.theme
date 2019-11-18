@@ -1033,6 +1033,7 @@ function uwmbase_preprocess_field__paragraph__uwm_text__uwm_basic_content(&$vari
     // default to Visit Type ID 9000 if one doesn't exist
     // NOTE: Current state, only get first ID even if more than one exists.
     // @TODO add check / functionality for multiple Visit Type IDs.
+
     if ($providerNode->get('field_res_visit_type_id')->get(0) != NULL) {
       $first_visit_type_id = $providerNode->get('field_res_visit_type_id')->get(0)->getString();
     }
@@ -1744,6 +1745,7 @@ function uwmbase_preprocess_paragraph__uwm_cta_link(&$variables) {
   // default to Visit Type ID 9000 if one doesn't exist
   // NOTE: Current state, only get first ID even if more than one exists.
   // @TODO add check / functionality for multiple Visit Type IDs.
+
   if ($node->get('field_res_visit_type_id')->get(0) != NULL) {
     $first_visit_type_id = $node->get('field_res_visit_type_id')->get(0)->getString();
   }
@@ -1832,6 +1834,7 @@ function uwmbase_preprocess_paragraph__uwm_link_with_icon__uwm_card(&$variables)
   // default to Visit Type ID 9000 if one doesn't exist
   // NOTE: Current state, only get first ID even if more than one exists.
   // @TODO add check / functionality for multiple Visit Type IDs.
+
   if ($node->get('field_res_visit_type_id')->get(0) != NULL) {
     $first_visit_type_id = $node->get('field_res_visit_type_id')->get(0)->getString();
   }
@@ -1876,6 +1879,7 @@ function uwmbase_preprocess_page_title(&$variables) {
       // default to Visit Type ID 9000 if one doesn't exist
       // NOTE: Current state, only get first ID even if more than one exists.
       // @TODO add check / functionality for multiple Visit Type IDs.
+
       if ($node->get('field_res_visit_type_id')->get(0) != NULL) {
         $first_visit_type_id = $node->get('field_res_visit_type_id')->get(0)->getString();
       }
@@ -1886,7 +1890,7 @@ function uwmbase_preprocess_page_title(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_media__uwm_modal().
+ * Implements uwmbase_preprocess_media__uwm_modal().
  *
  * Preprocess a media entity in the 'modal' view mode, i.e. rendered within a
  * Modal paragraph.

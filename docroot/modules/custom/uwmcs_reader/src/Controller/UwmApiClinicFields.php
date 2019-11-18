@@ -10,7 +10,7 @@ class UwmApiClinicFields implements UwmImFieldsInterface {
   /**
    * Description here.
    *
-   * @param object $imApiClinic
+   * @param \stdClass $imApiClinic
    *   Description here.
    */
   public static function addFieldData(\stdClass &$imApiClinic) {
@@ -90,7 +90,7 @@ class UwmApiClinicFields implements UwmImFieldsInterface {
   /**
    * Description here.
    *
-   * @param object $locationData
+   * @param \stdClass $locationData
    *   Description here.
    */
   public static function getClinicLocationDetails(\stdClass &$locationData) {
@@ -111,7 +111,7 @@ class UwmApiClinicFields implements UwmImFieldsInterface {
   /**
    * Description here.
    *
-   * @param object $locationData
+   * @param \stdClass $locationData
    *   Description here.
    */
   public static function getClinicProviderDetails(\stdClass &$locationData) {
