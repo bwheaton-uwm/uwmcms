@@ -1,0 +1,65 @@
+{{ attach_library('uwmbase/ratings-details') }}
+
+{% set cta_special_attributes = {'data-context-title': node_title|trim, 'data-context-npi': npi} %}
+
+<div class="ratings-details">
+  {% if ratings.summary.count.ratings %}
+    <div class="ratings-details__section">
+      <div class="ratings-details__ratings-count">
+        {{ '@count ratings'|t({'@count': ratings.summary.count.ratings}) }}
+      </div>
+    </div>
+  {% endif %}
+  {% if ratings.summary.stars %}
+    <div class="ratings-details__section">
+      <div class="row">
+        <div class="ratings-details__summary-stars-subsection col-12 col-md-3 col-lg-2">
+          <div class="ratings-details__summary-stars">
+            {% include "@uwmbase/rating-stars/rating-stars.twig" with {'stars': ratings.summary.stars} %}
+          </div>
+          <div class="ratings-details__summary-stars-text">
+            {{ '@value out of 5'|t({'@value': ratings.summary.value}) }}
+          </div>
+        </div>
+        <div class="col-12 col-md-9 col-lg-10">
+          <p class="ratings-details__details-review">At UW Medicine, your feedback is important to us. While different care providers have their own unique strengths, we strive to be as transparent as possible with our quality of care. {{ uwm_cta_link('Learn more <i class="fa fa-angle-right" aria-hidden="true"></i>', '/', [css_parents_classes, 'text-link-blue', 'no-underline'], cta_special_attributes|merge({'target': '_blank'})) }}</p>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if ratings.summary.count.reviews %}
+    <div id="ratings-details__reviews-count-section" class="ratings-details__section">
+      <div class="ratings-details__reviews-count">
+        {{ '@count reviews'|t({'@count': ratings.summary.count.reviews}) }}
+      </div>
+    </div>
+  {% endif %}
+  {% if ratings.details %}
+    <div id="ratings-details__details-section" class="ratings-details__section">
+      <a id="ratings-details__showing-info"></a>
+      <div id="ratings-details__showing-info-text"></div>
+      {% for details in ratings.details %}
+        <div class="ratings-details__details row">
+          <div class="col-12 col-md-3 col-lg-2">
+            {% if details.stars %}
+              <div class="ratings-details__details-stars">
+                {% include "@uwmbase/rating-stars/rating-stars.twig" with {'stars': details.stars} %}
+              </div>
+              <div class="ratings-details__details-date">
+                {{ details.date }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="col-12 col-md-9 col-lg-10">
+            <p class="ratings-details__details-review">{{ details.review }}</p>
+          </div>
+        </div>
+      {% endfor %}
+      <div id="paginationjs" class="ratings-details__details-pagination">
+        {# Add a dummy link to generate classes and data attributes that are
+          copied to the pagination items. See ratings.details.js #}
+        {{ uwm_cta_link('', '#', [css_parents_classes, 'd-none'], cta_special_attributes) }}
+      </div>
+    </div>
+  {% endif %}
+</div>

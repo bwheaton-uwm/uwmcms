@@ -4,12 +4,16 @@ See node-res-provider.html.twig, for example. #}
 {{ attach_library('uwmbase/rating-stars') }}
 
 <div class="rating-stars">
-  {% if rating_stars_url %}
-    <a class="rating-stars__link" href="{{ rating_stars_url }}">
+  {% if link_url %}
+    {% if use_cta_link %}
+      {{ uwm_cta_link('', link_url, [cta_classes, 'rating-stars__link'], cta_special_attributes)|render|replace({'</a>': ''})|raw }}
+    {% else %}
+      <a class="rating-stars__link" href="{{ link_url }}">
+    {% endif %}
   {% endif %}
 
-  {% if ratings.summary.stars.full > 0 %}
-    {% for i in 1..ratings.summary.stars.full %}
+  {% if stars.full > 0 %}
+    {% for i in 1..stars.full %}
       <div class="rating-stars__star">
         <svg class="rating-stars__star-svg">
           <use xlink:href="#svg-rating-star-100" />
@@ -18,16 +22,16 @@ See node-res-provider.html.twig, for example. #}
     {% endfor %}
   {%  endif %}
 
-  {% if ratings.summary.stars.partial_pct > 0 and ratings.summary.stars.partial_pct < 100 %}
+  {% if stars.partial_pct > 0 and stars.partial_pct < 100 %}
     <div class="rating-stars__star">
       <svg class="rating-stars__star-svg">
-        <use xlink:href="#svg-rating-star-{{ ratings.summary.stars.partial_pct }}" />
+        <use xlink:href="#svg-rating-star-{{ stars.partial_pct }}" />
       </svg>
     </div>
   {%  endif %}
 
-  {% if ratings.summary.stars.empty > 0 %}
-    {% for i in 1..ratings.summary.stars.empty %}
+  {% if stars.empty > 0 %}
+    {% for i in 1..stars.empty %}
       <div class="rating-stars__star">
         <svg class="rating-stars__star-svg">
           <use xlink:href="#svg-rating-star-0" />
@@ -36,7 +40,7 @@ See node-res-provider.html.twig, for example. #}
     {% endfor %}
   {% endif %}
 
-  {% if rating_stars_url %}
+  {% if link_url %}
     </a>
   {% endif %}
 </div>

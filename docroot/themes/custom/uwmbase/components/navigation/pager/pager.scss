@@ -24,16 +24,21 @@ $pager-light-purple-hover: #d6cee0;
       list-style-type: none;
       background-image: none;
       display: block;
-      // The links have 30px width to accommodate the circle background,
-      // and margins do not collapse between flex items. Approximate 30px space
-      // between links.
-      margin: 0 0.5rem; // 8px
+      margin: 0 0.25rem; // 4px
       font-size: 0.875rem; // 14px
 
-      // When "Previous"/"Next" text links appear at sm breakpoint, reduce
-      // margin slightly to allow to fit.
-      @include media-breakpoint-between('sm', 'sm') {
-        margin: 0 0.375rem; // 6px
+      &:first-of-type {
+        margin-left: 0;
+      }
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+
+      // Increase the left and right margins for medium width and above.
+      @include media-breakpoint-up('md') {
+        margin-left: .5rem; // 8px
+        margin-right: .5rem; // 8px
       }
 
       a {
@@ -43,7 +48,7 @@ $pager-light-purple-hover: #d6cee0;
         border-radius: 50%;
         line-height: 1.875rem; // 30px
         text-align: center;
-        color: $purple;
+        color: $heading-purple;
         text-decoration: none;
 
         &:hover {
@@ -54,18 +59,18 @@ $pager-light-purple-hover: #d6cee0;
 
       &.is-active {
         a {
-          background-color: $purple;
+          background-color: $heading-purple;
           color: $white;
 
           &:hover {
-            background-color: $purple;
+            background-color: $heading-purple;
           }
         }
       }
 
       .fa-angle-left,
       .fa-angle-right {
-        color: $purple;
+        color: $heading-purple;
       }
     }
 
@@ -79,6 +84,15 @@ $pager-light-purple-hover: #d6cee0;
         &:hover {
           background-color: transparent;
         }
+      }
+    }
+
+    .pager__item--previous,
+    .pager__item--next {
+      .arrow-linked {
+        height: 1.4375rem; // 23px
+        width: .6875rem; // 11px
+        vertical-align: -0.375rem; // -6px
       }
     }
 
@@ -119,7 +133,6 @@ $pager-light-purple-hover: #d6cee0;
       .pager__item--next {
 
         // Hide the desktop version.
-        .arrow-decorative,
         .link-text {
           display: none;
         }
@@ -127,13 +140,6 @@ $pager-light-purple-hover: #d6cee0;
         // Use arrow icon as the link.
         a {
           width: 1.875rem; // 30px
-
-          .arrow-linked {
-            height: 1.5rem; // 24px
-            width: auto;
-            vertical-align: -0.375rem; // -6px
-          }
-
           &:hover {
             background-color: $pager-light-purple-hover;
           }
@@ -143,26 +149,6 @@ $pager-light-purple-hover: #d6cee0;
 
     }
 
-  }
-
-}
-
-// Tablet/Desktop styles
-@include media-breakpoint-up('sm') {
-
-  .pager {
-    .pager__items {
-
-      .pager__item--previous,
-      .pager__item--next {
-        a {
-          .arrow-linked {
-            display: none;
-          }
-        }
-      }
-
-    }
   }
 
 }

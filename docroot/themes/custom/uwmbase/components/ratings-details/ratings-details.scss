@@ -1,0 +1,71 @@
+@import 'init';
+
+.ratings-details {
+  .pager {
+    padding: 0;
+    margin: 30px 0 0 0;
+  }
+}
+.ratings-details__section {
+  margin-top: 20px;
+}
+// Customize the top margin for the Reviews Count section.
+#ratings-details__reviews-count-section {
+  margin-top: 30px;
+  @include media-breakpoint-up('md') {
+    margin-top: 20px;
+  }
+}
+.ratings-details__ratings-count {
+  font-size: 18px;
+  font-weight: $font-weight-semi-bold;
+}
+.ratings-details__summary-stars-subsection {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 20px;
+  @include media-breakpoint-up('md') {
+    display: block;
+    margin-bottom: 0;
+  }
+}
+.ratings-details__summary-stars {
+  margin-top: -4px;
+  @include media-breakpoint-up('md') {
+    margin-top: 0;
+  }
+}
+.ratings-details__summary-stars-text {
+  font-size: 14px;
+  margin-left: 10px;
+  @include media-breakpoint-up('md') {
+    margin-top: 8px;
+    margin-left: 0;
+  }
+}
+.ratings-details__reviews-count {
+  font-size: 18px;
+  font-weight: $font-weight-semi-bold;
+}
+.ratings-details__details {
+  display: none;
+  margin-top: 30px;
+  @include media-breakpoint-up('md') {
+    margin-top: 20px;
+  }
+}
+.ratings-details__details--active {
+  display: flex;
+}
+.ratings-details__details-review {
+  margin: 0;
+}
+.ratings-details__details-date {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  @include media-breakpoint-up('md') {
+    margin-bottom: 0;
+  }
+}
