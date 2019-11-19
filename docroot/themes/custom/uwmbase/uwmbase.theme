@@ -814,7 +814,8 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
   }
 
   // Add ratings data.
-  if ($node->hasField('field_ratings') && !$node->get('field_ratings')->isEmpty()) {
+  // TODO: Remove environment check when ratings are ready to be shown.
+  if ($node->hasField('field_ratings') && !$node->get('field_ratings')->isEmpty() && AH_SITE_ENVIRONMENT != 'prod') {
     $variables['ratings'] = Json::decode($node->field_ratings->value);
     $variables['has_ratings'] = TRUE;
   }

@@ -22,16 +22,16 @@
       </div>
     {% endif %}
   </div>
-  {% if ratings.summary.count.ratings or ratings.summary.count.comments %}
+  {% if ratings.summary.count.ratings or ratings.summary.count.reviews %}
     <div class="ratings-summary__count-section">
       {% if ratings.summary.count.ratings %}
         <div class="ratings-summary__ratings-count">
           {{ uwm_cta_link('@count ratings'|t({'@count': ratings.summary.count.ratings}), ratings_details_anchor_id, [css_parents_classes, cta_link_classes], cta_special_attributes) }}
         </div>
       {%  endif %}
-      {% if ratings.summary.count.comments %}
-        <div class="ratings-summary__comments-count">
-          {{ uwm_cta_link('@count comments'|t({'@count': ratings.summary.count.comments}), ratings_details_anchor_id, [css_parents_classes, cta_link_classes], cta_special_attributes) }}
+      {% if ratings.summary.count.reviews %}
+        <div class="ratings-summary__reviews-count">
+          {{ uwm_cta_link('@count reviews'|t({'@count': ratings.summary.count.reviews}), ratings_details_anchor_id, [css_parents_classes, cta_link_classes], cta_special_attributes) }}
         </div>
       {%  endif %}
     </div>
