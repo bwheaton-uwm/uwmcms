@@ -178,6 +178,9 @@
                     <iframe id="openSchedulingFrame" scrolling="no" src="{{ ecare_poc_host }}/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id={{ epic_id }}&vt={{ visit_type_ids.0 }}&view=plain"></iframe>
                 </div>
 
+                {#
+                (including these in uwm-appointment-flow-provider for now)
+
                 <link href="{{ ecare_poc_host }}/Content/EmbeddedWidget.css" rel="stylesheet" type="text/css">
 
                 <script src="{{ ecare_poc_host }}/Content/EmbeddedWidgetController.js" type="text/javascript"></script>
@@ -198,6 +201,7 @@
                         'toggleBtnCollapseHelpText': 'Exit fullscreen',
                     });
                 </script>
+                #}
             </section>
 
         {% endif %}
