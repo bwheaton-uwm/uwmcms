@@ -1,0 +1,17 @@
+uuid: b43918ea-3965-475a-86cb-fdf3573697ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.autocomplete
+    - field.field.taxonomy_term.features_amenities.field_term_keywords
+    - taxonomy.vocabulary.features_amenities
+id: taxonomy_term.features_amenities.autocomplete
+targetEntityType: taxonomy_term
+bundle: features_amenities
+mode: autocomplete
+content: {  }
+hidden:
+  description: true
+  field_term_keywords: true
+  search_api_excerpt: true
