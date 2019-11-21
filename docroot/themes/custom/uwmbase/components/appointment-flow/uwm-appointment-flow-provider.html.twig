@@ -128,9 +128,22 @@
   </div>
 
 
+  {#
+    These two "call instead" steps currently display the same text content.
+    The only logical difference (which is implemented in the JS) is the first
+    is used if accepting new and returning, the second is used if accepting
+    returning only. These are kept separate in case any differentiation in the
+    text is desired in the future.
+  #}
   <div class="appointment-flow__step" data-step="call-instead-all">
     <p class="appointment-flow__step-text"><strong>{{ "Please call to schedule instead."|t }}</strong></p>
-    <p class="appointment-flow__step-text">{{ "Only returning patients who have seen this provider within the last three years can book online. Phone numbers for each location where this provider practices can be viewed on the overview tab."|t }}</p>
+    <p class="appointment-flow__step-text">
+      {% if modal_appt_context is same as('provider_page') %}
+        {{ "Only returning patients who have seen this provider within the last three years can book online. Phone numbers for each location where this provider practices can be viewed on the overview tab."|t }}
+      {% else %}
+        {{ "Only returning patients who have seen this provider within the last three years can book online."|t }}
+      {% endif %}
+    </p>
 
     {{ back_link }}
   </div>
@@ -138,7 +151,13 @@
 
   <div class="appointment-flow__step" data-step="call-instead-returning">
     <p class="appointment-flow__step-text"><strong>{{ "Please call to schedule instead."|t }}</strong></p>
-    <p class="appointment-flow__step-text">{{ "Only returning patients who have seen this provider within the last three years can book online. Phone numbers for each location where this provider practices can be viewed on the overview tab."|t }}</p>
+    <p class="appointment-flow__step-text">
+      {% if modal_appt_context is same as('provider_page') %}
+        {{ "Only returning patients who have seen this provider within the last three years can book online. Phone numbers for each location where this provider practices can be viewed on the overview tab."|t }}
+      {% else %}
+        {{ "Only returning patients who have seen this provider within the last three years can book online."|t }}
+      {% endif %}
+    </p>
 
     {{ back_link }}
   </div>
