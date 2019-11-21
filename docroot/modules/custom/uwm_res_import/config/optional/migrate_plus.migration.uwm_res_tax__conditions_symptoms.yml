@@ -33,6 +33,9 @@ source:
   - name: name
     label: name
     selector: /attributes/name
+  - name: res_term_keywords
+    label: res_term_keywords
+    selector: /attributes/res_term_keywords
 
 
 
@@ -45,3 +48,4 @@ process:
     source: uuid
 
   name: name
+  field_term_keywords: res_term_keywords
