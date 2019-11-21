@@ -225,12 +225,34 @@ body.is-page-node-type-res-clinic .modal-backdrop {
         visibility: hidden;
       }
 
-      .appointment-flow__open-scheduling {
+      .appointment-flow__open-scheduling-widget {
+        display: flex;
+        justify-content: center;
 
         iframe.appointment-flow__open-scheduling-embed {
           display: block;
-          width: 100%;
           border: 0 none;
+          
+          // ---------------------------------------------------------------
+          // TODO: confirm width/height unneeded due to EmbeddedWidget.css
+
+          // The widget styling is 100% width and auto height up to 699px.
+          // width: 100%;
+
+          // TODO: determine a desired fixed height within modal too.
+
+          // At 700px+ it switches to fixed width/height. Given the modal's own
+          // styling, this is just about the screen width at which the modal
+          // content div reaches 700px width, so we limit the iframe width to
+          // match its content and thus center it.
+          // @media (min-width: 845px) {
+          //   // Match fixed width: body.embedded
+          //   width: 700px;
+
+          //   // Match fixed height + margin: body.embedded .stepContainer
+          //   height: 500px; // approx 490px + 0.25rem
+          // }
+          // ---------------------------------------------------------------
         }
 
       }
