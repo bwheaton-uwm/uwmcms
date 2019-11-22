@@ -86,7 +86,9 @@ $config['system.performance']['js']['preprocess'] = FALSE;
  *
  * Do not use this setting until after the site is installed.
  */
-// $settings['cache']['bins']['render'] = 'cache.backend.null';
+$settings['cache']['bins']['render'] = 'cache.backend.null';
+
+
 /**
  * Disable Dynamic Page Cache.
  *
@@ -108,10 +110,10 @@ $settings['extension_discovery_scan_tests'] = FALSE;
 /**
  * Configure static caches.
  *
- * Note: you should test with the config, bootstrap, and discovery caches enabled to 
+ * Note: you should test with the config, bootstrap, and discovery caches enabled to
  * test that metadata is cached as expected. However, in the early stages of development,
- * you may want to disable them. Overrides to these bins must be explicitly set for each 
- * bin to change the default configuration provided by Drupal core in core.services.yml. 
+ * you may want to disable them. Overrides to these bins must be explicitly set for each
+ * bin to change the default configuration provided by Drupal core in core.services.yml.
  * See https://www.drupal.org/node/2754947
  */
 

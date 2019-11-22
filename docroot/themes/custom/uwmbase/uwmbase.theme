@@ -735,6 +735,13 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
       $variables['has_languages'] = !$node->get('field_res_languages')->isEmpty();
     }
 
+    // Determine if the provider has education hx.
+    if ($node->hasField('field_res_puma_education')) {
+      $education = $node->field_res_puma_education->value ?? [];
+      $education = json_decode($education);
+      $variables['education_history'] = $education;
+    }
+
     // Determine taxonomy terms associated with the provider.
     $variables['taxonomy_terms'] = [
       'expertises' => [],
