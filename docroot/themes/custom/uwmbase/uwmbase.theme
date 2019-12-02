@@ -764,9 +764,12 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
     }
   }
 
+  // Set $enable_ratings to TRUE to enable, or FALSE to disable, ratings
+  // for all providers in all environments.
+  $enable_ratings = (!empty($_ENV['AH_SITE_ENVIRONMENT']) && AH_SITE_ENVIRONMENT != 'prod') ? TRUE : FALSE;
+
   // Add ratings data.
-  // TODO: Remove environment check when ratings are ready to be shown.
-  if ($node->hasField('field_ratings') && !$node->get('field_ratings')->isEmpty() && AH_SITE_ENVIRONMENT != 'prod') {
+  if ($node->hasField('field_ratings') && !$node->get('field_ratings')->isEmpty() && $enable_ratings) {
     $variables['ratings'] = Json::decode($node->field_ratings->value);
     $variables['has_ratings'] = TRUE;
   }
