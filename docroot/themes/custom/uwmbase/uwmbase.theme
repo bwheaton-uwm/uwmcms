@@ -766,7 +766,7 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
 
   // Set $enable_ratings to TRUE to enable, or FALSE to disable, ratings
   // for all providers in all environments.
-  $enable_ratings = (AH_SITE_ENVIRONMENT != 'prod') ? TRUE : FALSE;
+  $enable_ratings = (!empty($_ENV['AH_SITE_ENVIRONMENT']) && AH_SITE_ENVIRONMENT != 'prod') ? TRUE : FALSE;
 
   // Add ratings data.
   if ($node->hasField('field_ratings') && !$node->get('field_ratings')->isEmpty() && $enable_ratings) {
