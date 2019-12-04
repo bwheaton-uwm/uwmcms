@@ -226,7 +226,14 @@
 
   <div class="appointment-flow__step" data-step="open-schedule">
 
-    <div class="appointment-flow__open-scheduling-widget">
+    {#
+      Embed the open scheduling widget as an iframe, with wrapper and css/js
+      assets. Note required ID attributes:
+      #scheduleContainer
+      #openSchedulingFrame
+      @see EmbeddedWidget.css, EmbeddedWidgetController.js
+    #}
+    <div id="scheduleContainer" class="appointment-flow__open-scheduling-widget">
 
       {#
         Note: provided markup uses `scrolling="no"`, but in mobile/tablet layout
