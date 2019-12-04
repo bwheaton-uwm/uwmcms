@@ -225,13 +225,17 @@ body.is-page-node-type-res-clinic .modal-backdrop {
         visibility: hidden;
       }
 
+      // Note: this is also #scheduleContainer as used in Epic assets
+      // @see EmbeddedWidget.css, EmbeddedWidgetController.js
       .appointment-flow__open-scheduling-widget {
         display: flex;
         justify-content: center;
 
+        // Note: this is also #openSchedulingFrame as used in Epic assets
+        // @see EmbeddedWidget.css, EmbeddedWidgetController.js
         iframe.appointment-flow__open-scheduling-embed {
-          display: block;
           border: 0 none;
+          display: block;
           
           // ---------------------------------------------------------------
           // TODO: confirm width/height unneeded due to EmbeddedWidget.css
