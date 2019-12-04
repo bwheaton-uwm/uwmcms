@@ -162,8 +162,6 @@ source:
     -
       name: node_videos
       label: node_videos
-      plugin: migration
-      migration: uwm_res_media_remote_videos
       selector: /relationships/node_videos/data
 process:
   uuid: uuid
@@ -309,8 +307,7 @@ process:
     process:
       target_id:
         -
-          plugin: migration_lookup
-          migration: uwm_res_media_remote_videos
+          plugin: uwm_media_id_for_uuid
           source: id
         -
           plugin: skip_on_empty
