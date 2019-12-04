@@ -29,6 +29,10 @@ source:
       name: name
       label: name
       selector: /attributes/name
+    -
+      name: res_term_keywords
+      label: res_term_keywords
+      selector: /attributes/res_term_keywords
 process:
   uuid: uuid
   tid:
@@ -36,6 +40,7 @@ process:
       plugin: uwm_tid_from_any
       source: uuid
   name: name
+  field_term_keywords: res_term_keywords
 destination:
   plugin: 'entity:taxonomy_term'
   default_bundle: features_amenities

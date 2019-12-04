@@ -1,0 +1,21 @@
+uuid: dbf83ac9-b868-4285-9972-32aa5bb8e70d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.autocomplete
+    - field.field.taxonomy_term.conditions_symptoms.field_link
+    - field.field.taxonomy_term.conditions_symptoms.field_specialties
+    - field.field.taxonomy_term.conditions_symptoms.field_term_keywords
+    - taxonomy.vocabulary.conditions_symptoms
+id: taxonomy_term.conditions_symptoms.autocomplete
+targetEntityType: taxonomy_term
+bundle: conditions_symptoms
+mode: autocomplete
+content: {  }
+hidden:
+  description: true
+  field_link: true
+  field_specialties: true
+  field_term_keywords: true
+  search_api_excerpt: true

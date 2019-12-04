@@ -1,31 +1,30 @@
-uuid: 20598172-a8e7-4065-87f9-449390d6061a
+uuid: 93dbf07f-404b-463c-8b3f-936bbe3adae4
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.taxonomy_term.features_amenities.field_term_keywords
     - taxonomy.vocabulary.features_amenities
+  module:
+    - text
 id: taxonomy_term.features_amenities.default
 targetEntityType: taxonomy_term
 bundle: features_amenities
 mode: default
 content:
-  field_term_keywords:
-    weight: 3
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textarea
-    region: content
-  name:
-    type: string_textfield
+  description:
+    label: hidden
+    type: text_default
     weight: 0
     region: content
-    settings:
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
+  field_term_keywords:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
 hidden:
-  description: true
-  path: true
+  search_api_excerpt: true

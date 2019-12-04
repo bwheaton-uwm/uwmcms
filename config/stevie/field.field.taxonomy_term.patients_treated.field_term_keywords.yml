@@ -1,0 +1,19 @@
+uuid: ca3bd174-e860-4d6f-8dc4-7dbd415ce9c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_term_keywords
+    - taxonomy.vocabulary.patients_treated
+id: taxonomy_term.patients_treated.field_term_keywords
+field_name: field_term_keywords
+entity_type: taxonomy_term
+bundle: patients_treated
+label: 'Term Keywords'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

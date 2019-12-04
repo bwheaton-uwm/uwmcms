@@ -27,7 +27,11 @@
     # Redirect anything nwentassociates.org to their uwmedicine.org page
     RewriteCond %{HTTP_HOST} nwentassociates.org [NC,OR]
     RewriteCond %{HTTP_HOST} www.nwentassociates.org [NC]
-    RewriteRule ^(.*)$ https://www.uwmedicine.org/locations/northwest-ent-associates [L,R=301]
+    RewriteRule ^ https://www.uwmedicine.org/locations/northwest-ent-associates [L,R=301]
+
+    # Redirect eastside.uwmedicine.org to their uwmedicine.org pages
+    RewriteCond %{HTTP_HOST} eastside.uwmedicine(.wpengine)?.org [NC]
+    RewriteRule ^ https://www.uwmedicine.org/locations/eastside-specialty-center%{REQUEST_URI} [L,R]
 
 </IfModule>
 

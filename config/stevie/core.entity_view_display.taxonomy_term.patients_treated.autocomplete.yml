@@ -1,0 +1,17 @@
+uuid: 2df01bb2-30cb-4791-9eb1-0d2bfeda9579
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.autocomplete
+    - field.field.taxonomy_term.patients_treated.field_term_keywords
+    - taxonomy.vocabulary.patients_treated
+id: taxonomy_term.patients_treated.autocomplete
+targetEntityType: taxonomy_term
+bundle: patients_treated
+mode: autocomplete
+content: {  }
+hidden:
+  description: true
+  field_term_keywords: true
+  search_api_excerpt: true
