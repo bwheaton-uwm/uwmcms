@@ -5,6 +5,7 @@ dependencies: {  }
 id: node__res_provider
 label: 'Content: Res Provider'
 tags:
+  description: '[node:field_res_biography:summary]'
   schema_physician_member_of: 'a:2:{s:5:"@type";s:12:"Organization";s:4:"name";s:24:"[node:field_res_clinics]";}'
   schema_physician_knows_language: '[node:field_res_languages]'
   schema_physician_identifier: '[node:field_res_npi]'
