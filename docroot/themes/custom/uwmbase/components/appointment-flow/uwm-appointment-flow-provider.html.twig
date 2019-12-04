@@ -226,36 +226,24 @@
 
   <div class="appointment-flow__step" data-step="open-schedule">
 
-    {# TODO: temporary link while we are working to enable widget in iframe #}
-    <p>
-      <a class="appointment-flow__open-scheduling-link" href="{{ url_open_scheduling }}" target="_blank">Link to open scheduling widget - eCare test environment</a>
-    </p>
-
     <div class="appointment-flow__open-scheduling-widget">
 
       {#
-        TEST: use eCare POC environment to access open scheduling
-        widget in iframe.
         Note: provided markup uses `scrolling="no"`, but in mobile/tablet layout
         only `scrolling="yes"` allows scrolling besides the full-screen toggle.
       #}
-      {% set ecare_poc_base_url = 'https://pocecare18.epic.medical.washington.edu/poc/' %}
-      {% set ecare_poc_domain = 'https://pocecare18.epic.medical.washington.edu' %}
-
       {# TODO: bad to have iframe with a "broken" src at any point? #}
-      <iframe id="openSchedulingFrame" scrolling="yes" class="appointment-flow__open-scheduling-embed" src="{{ url_open_scheduling|replace({
-        'tstecare18.epic.medical.washington.edu/tst/': 'pocecare18.epic.medical.washington.edu/poc/'
-      }) }}"></iframe>
+      <iframe id="openSchedulingFrame" scrolling="yes" class="appointment-flow__open-scheduling-embed" src="{{ url_open_scheduling }}"></iframe>
 
       {# TODO: attach with library #}
-      <link href="{{ ecare_poc_base_url }}Content/EmbeddedWidget.css" rel="stylesheet" type="text/css">
+      <link href="{{ ecare_base_url }}Content/EmbeddedWidget.css" rel="stylesheet" type="text/css">
 
-      <script src="{{ ecare_poc_base_url }}Content/EmbeddedWidgetController.js" type="text/javascript"></script>
+      <script src="{{ ecare_base_url }}Content/EmbeddedWidgetController.js" type="text/javascript"></script>
 
       <script type="text/javascript">
           var EWC = new EmbeddedWidgetController({
               // Replace with the hostname of your Open Scheduling site
-              'hostname': '{{ ecare_poc_domain }}',
+              'hostname': 'https://tstecare18.epic.medical.washington.edu',
 
               // Must equal media query in EpicWP.css + any left/right margin of the host page. Should also change in EmbeddedWidget.css
               'matchMediaString': '(max-width: 747px)',
