@@ -63,8 +63,6 @@
 
       // Find all elements that link to open/direct scheduling.
       var $iframeOpenSched = $stepOpenSchedWidget.length ? $stepOpenSchedWidget.find('iframe.appointment-flow__open-scheduling-embed') : null;
-      // TODO: temporary link while we are working to enable widget in iframe.
-      var $linkOpenSched = $stepOpenSchedWidget.length ? $stepOpenSchedWidget.find('a.appointment-flow__open-scheduling-link') : null;
 
       var $visitedBeforeYesLinkDirect = $stepVisitedBefore.length ? $stepVisitedBefore.find('a[data-btn="yes-link-direct"]') : null;
       var $ecareAccountYesLinkDirect = $stepEcareAccount.length ? $stepEcareAccount.find('a[data-btn="yes-link-direct"]') : null;
@@ -115,6 +113,16 @@
        */
       function setUrlAttrQueryStringVal($elem, attrName, key, val) {
 
+        // The element should exist - if not, there's a bug elsewhere; give a
+        // warning and exit.
+        if (!$elem.length) {
+          if (console) {
+            console.warn('setUrlAttrQueryStringVal() - element does not exist:', $elem);
+          }
+
+          return;
+        }
+
         // In the original markup, the url query string contains the key and '='
         // part, but not the value, for parameters we may set in the flow:
         // e.g. "&key=". Store this original "base" url, so we can reset and set
@@ -159,9 +167,17 @@
        */
       function resetUrlAttr($elem, attrName) {
 
-        if ($elem && $elem.length) {
-          $elem.attr(attrName, $elem.data('base-' + attrName));
+        // The element should exist - if not, there's a bug elsewhere; give a
+        // warning and exit.
+        if (!$elem.length) {
+          if (console) {
+            console.warn('resetUrlAttr() - element does not exist:', $elem);
+          }
+
+          return;
         }
+
+        $elem.attr(attrName, $elem.data('base-' + attrName));
 
       }
 
@@ -285,12 +301,10 @@
 
               // TODO: bad to have iframe with a "broken" src at any point?
               setUrlAttrQueryStringVal($iframeOpenSched, 'src', 'id', epicID);
-              setUrlAttrQueryStringVal($linkOpenSched, 'href', 'id', epicID);
 
               if (!openMultipleTypes) {
 
                 setUrlAttrQueryStringVal($iframeOpenSched, 'src', 'vt', visitTypeIDs[0]);
-                setUrlAttrQueryStringVal($linkOpenSched, 'href', 'vt', visitTypeIDs[0]);
 
               }
 
@@ -491,7 +505,6 @@
           // Update open scheduling widget with the chosen visit type ID.
           // TODO: bad to have iframe with a "broken" src?
           setUrlAttrQueryStringVal($iframeOpenSched, 'src', 'vt', visitTypeID);
-          setUrlAttrQueryStringVal($linkOpenSched, 'href', 'vt', visitTypeID);
 
           stepForward($stepOpenSchedWidget);
 
@@ -542,7 +555,6 @@
 
           // Remove provider's Epic ID and visit type from scheduling link URLs.
           resetUrlAttr($iframeOpenSched, 'src');
-          resetUrlAttr($linkOpenSched, 'href');
           resetUrlAttr($ecareAccountYesLinkDirect, 'href');
           resetUrlAttr($visitedBeforeYesLinkDirect, 'href');
 
