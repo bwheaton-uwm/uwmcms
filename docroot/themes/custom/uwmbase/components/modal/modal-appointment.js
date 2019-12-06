@@ -400,9 +400,17 @@
 
         if ($firstStep) {
 
-          // Denote the first step because it varies by appointment logic.
-          // (This class handles hiding the Back link on the first step.)
+          // Denote the first step, or the only step, because it varies by
+          // appointment logic. (These handle hiding the Back link on the
+          // first step.)
           $firstStep.addClass('appointment-flow__step--first');
+
+          // Going directly to the open scheduling widget (provider has open
+          // only, and only 1 visit type) is the only case that is always only
+          // one step, meaning the Back link would never be needed.
+          if ($firstStep.is($stepOpenSchedWidget)) {
+            $firstStep.addClass('appointment-flow__step--only');
+          }
 
           // Actually move to the first step!
           stepForward($firstStep);
