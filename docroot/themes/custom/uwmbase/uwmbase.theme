@@ -609,6 +609,13 @@ function uwmbase_preprocess_node(&$variables, $hook) {
 
   }
   elseif ($node->bundle() === 'res_provider') {
+
+    if ($node->hasField('field_res_puma_education')) {
+      $puma_education_values = $node->field_res_puma_education->value;
+      $puma_education_values_decoded = $puma_education_values ? json_decode($puma_education_values) : '';
+      $variables['res_puma_education'] = $puma_education_values_decoded;
+    }
+
     // Pass information about clinics associated with a provider.
     $clinic_entities = $node->field_res_clinics;
 
@@ -782,6 +789,13 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
     // Determine if the provider has languages.
     if ($node->hasField('field_res_languages')) {
       $variables['has_languages'] = !$node->get('field_res_languages')->isEmpty();
+    }
+
+    // Determine if the provider has education hx.
+    if ($node->hasField('field_res_puma_education')) {
+      $education = $node->field_res_puma_education->value ?? [];
+      $education = json_decode($education);
+      $variables['education_history'] = $education;
     }
 
     // Determine taxonomy terms associated with the provider.

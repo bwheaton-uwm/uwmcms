@@ -1,4 +1,4 @@
-uuid: 706554fc-8804-48fb-a1da-8d9ab6c423d7
+uuid: 9c7842d9-5460-46f3-b930-abe55ac666f2
 langcode: en
 status: true
 dependencies:
@@ -127,6 +127,10 @@ source:
       label: uwm_json_packet
       selector: /attributes/uwm_json_packet
     -
+      name: uwm_edw_puma_education
+      label: uwm_edw_puma_education
+      selector: /attributes/uwm_edw_puma_education
+    -
       name: field_res_affiliates
       label: field_res_affiliates
       selector: /relationships/field_res_affiliates/data
@@ -221,6 +225,7 @@ process:
   field_res_is_direct_scheduling: field_res_is_direct_scheduling
   field_res_visit_type_id: field_res_visit_type_id
   field_uwm_json_packet: uwm_json_packet
+  field_res_puma_education: uwm_edw_puma_education
   field_res_name/title: field_res_name/title
   field_res_name/given: field_res_name/given
   field_res_name/middle: field_res_name/middle
