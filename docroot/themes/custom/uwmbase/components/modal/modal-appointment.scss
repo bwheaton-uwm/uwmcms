@@ -216,13 +216,20 @@ body.is-page-node-type-res-clinic .modal-backdrop {
         }
       }
 
-      // This '--first' class is added in JS because the first step shown
-      // varies by appointment logic.
+      // These '--first' and '--only' classes are added in JS because the
+      // first step shown varies by appointment logic.
       .appointment-flow__step--first .appointment-flow__step-back {
         // Hide the "Back" link because there is no previous step.
         // Use 'visibility' to keep its space in the layout, for consistency
         // in the modal height.
         visibility: hidden;
+      }
+
+      .appointment-flow__step--only .appointment-flow__step-back {
+        // Hide the "Back" link because there is no previous step and no next
+        // step that would show it and shift the layout - thus it only creates
+        // extra space at the bottom.
+        display: none;
       }
 
       // Note: this is also #scheduleContainer as used in Epic assets
