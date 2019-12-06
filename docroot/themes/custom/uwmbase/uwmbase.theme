@@ -560,6 +560,13 @@ function uwmbase_preprocess_node(&$variables, $hook) {
 
   }
   elseif ($node->bundle() === 'res_provider') {
+
+    if ($node->hasField('field_res_puma_education')) {
+      $puma_education_values = $node->field_res_puma_education->value;
+      $puma_education_values_decoded = $puma_education_values ? json_decode($puma_education_values) : '';
+      $variables['res_puma_education'] = $puma_education_values_decoded;
+    }
+
     // Pass information about clinics associated with a provider.
     $clinic_entities = $node->field_res_clinics;
 
