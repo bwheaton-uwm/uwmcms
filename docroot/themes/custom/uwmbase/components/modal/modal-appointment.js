@@ -41,15 +41,17 @@
 
       // TODO: get these from however we store them.
       var visitTypeNames = {
-        '9000': 'New Patient Appointment',
-        '4466': 'New Pregnancy Care',
-        '103619': 'New Wellness Appointment'
+        '9000': 'Office',
+        '4466': 'New Pregnancy',
+        '103619': 'Wellness',
+        '9035': 'Flu Shot'
       };
 
       var visitTypeDescriptions = {
-        '9000': 'Initial appointment to establish care',
-        '4466': 'First visit for a new pregnancy',
-        '103619': 'Care for prevention and checkups'
+        '9000': 'A visit to address a specific concern',
+        '4466': 'A visit within the first 7-12 weeks of pregnancy',
+        '103619': 'A preventative care visit or routine physical exam',
+        '9035': 'An immunization against the flu (available at select locations)'
       };
 
       // Find all modal steps.
