@@ -66,7 +66,7 @@
                                 {{ "Accepting new and returning patients"|t }}
                             {% elseif accepting_returning and (not accepting_new)  %}
                                 <span class="uwm-icon uwm-icon--accepting-patients-purple" aria-hidden="true"></span>
-                                {{ "Accepting returning patients"|t }}
+                                {{ "Accepting returning patients only"|t }}
                             {% elseif accepting_new and (not accepting_returning) %}
                                 {#
                                     NOTE: this case is probably unrealistic and

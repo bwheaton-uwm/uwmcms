@@ -427,7 +427,7 @@
 
       if ($stepVisitedBefore.length) {
 
-        // "Have you visited this provider in the last three years?" => No.
+        // "Have you visited this provider within the last three years?" => No.
         $stepVisitedBefore.find('a[data-btn="no"]').click(function (e) {
 
           e.preventDefault();
@@ -462,7 +462,7 @@
 
         });
 
-        // "Have you visited this provider in the last three years?" => Yes.
+        // "Have you visited this provider within the last three years?" => Yes.
         // There are two versions of this button:
         // - If only direct scheduling is available, this button links directly
         // to eCare, because the initial link states the eCare account is

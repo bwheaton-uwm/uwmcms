@@ -124,7 +124,7 @@
 {% elseif accepting_returning and not accepting_new %}
   {# --- Accepting returning patients only --- #}
 
-  <p class="{{ class_prefix }}-appt-call">{{ "Returning patients can call to schedule an appointment with this provider."|t }}</p>
+  <p class="{{ class_prefix }}-appt-call">{{ "Only returning patients may call to schedule an appointment with this provider."|t }}</p>
 
   {#
     Direct scheduling link, if enabled.
@@ -133,7 +133,7 @@
   #}
   {% if direct_scheduling %}
     <p class="{{ class_prefix }}-appt-link-direct">
-      <a href="#modal-appointment-provider" {{ modal_attrs }} {{ link_returning_attrs }}>{{ "Returning patients with an eCare account can book online."|t }}</a><span class="uwm-icon uwm-icon--arrow-right-blue" aria-hidden="true"></span>
+      <a href="#modal-appointment-provider" {{ modal_attrs }} {{ link_returning_attrs }}>{{ "Returning patients with an eCare account can also book online."|t }}</a><span class="uwm-icon uwm-icon--arrow-right-blue" aria-hidden="true"></span>
     </p>
   {% endif %}
 
@@ -148,7 +148,7 @@
 
   {% if not open_scheduling %}
 
-    <p class="{{ class_prefix }}-appt-call">{{ "Call to schedule an appointment with this provider."|t }}</p>
+    <p class="{{ class_prefix }}-appt-call">{{ "Please call to schedule an appointment with this provider."|t }}</p>
 
   {% elseif open_scheduling %}
 
@@ -163,12 +163,12 @@
   {% if not direct_scheduling and not open_scheduling %}
     {# --- No online scheduling at all --- #}
 
-    <p class="{{ class_prefix }}-appt-call">{{ "Call to schedule an appointment with this provider."|t }}</p>
+    <p class="{{ class_prefix }}-appt-call">{{ "Please call to schedule an appointment with this provider."|t }}</p>
 
   {% elseif direct_scheduling and not open_scheduling %}
     {# --- Direct scheduling only --- #}
 
-    <p class="{{ class_prefix }}-appt-call">{{ "Call to schedule an appointment with this provider."|t }}</p>
+    <p class="{{ class_prefix }}-appt-call">{{ "Please call to schedule an appointment with this provider."|t }}</p>
 
     {#
       Direct scheduling link
@@ -176,7 +176,7 @@
       3 years, which is required to use eCare.
     #}
     <p class="{{ class_prefix }}-appt-link-direct">
-      <a href="#modal-appointment-provider" {{ modal_attrs }} {{ link_returning_attrs }}>{{ "Returning patients with an eCare account can book online."|t }}</a><span class="uwm-icon uwm-icon--arrow-right-blue" aria-hidden="true"></span>
+      <a href="#modal-appointment-provider" {{ modal_attrs }} {{ link_returning_attrs }}>{{ "Returning patients with an eCare account can also book online."|t }}</a><span class="uwm-icon uwm-icon--arrow-right-blue" aria-hidden="true"></span>
     </p>
 
   {% elseif open_scheduling %}

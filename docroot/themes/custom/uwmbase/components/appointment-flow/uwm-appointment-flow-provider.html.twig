@@ -78,7 +78,7 @@
 <div class="appointment-flow">
   
   <div class="appointment-flow__step" data-step="visited-before">
-    <p class="appointment-flow__step-text">{{ "Have you visited this provider in the last three years?"|t }}</p>
+    <p class="appointment-flow__step-text">{{ "Have you visited this provider within the last three years?"|t }}</p>
 
     <div class="appointment-flow__step-buttons">
 
@@ -136,12 +136,12 @@
     text is desired in the future.
   #}
   <div class="appointment-flow__step" data-step="call-instead-all">
-    <p class="appointment-flow__step-text"><strong>{{ "Please call to schedule instead."|t }}</strong></p>
+    <p class="appointment-flow__step-text"><strong>{{ "Please call to schedule your appointment instead."|t }}</strong></p>
     <p class="appointment-flow__step-text">
       {% if modal_appt_context is same as('provider_page') %}
-        {{ "Only returning patients who have seen this provider within the last three years can book online. Phone numbers for each location where this provider practices can be viewed on the overview tab."|t }}
+        {{ "We're sorry but only patients who have seen this provider within the last three years may book online. Phone numbers for this provider's practice locations can be found on the overview tab."|t }}
       {% else %}
-        {{ "Only returning patients who have seen this provider within the last three years can book online."|t }}
+        {{ "We're sorry but only patients who have seen this provider within the last three years may book online."|t }}
       {% endif %}
     </p>
 
@@ -150,12 +150,12 @@
 
 
   <div class="appointment-flow__step" data-step="call-instead-returning">
-    <p class="appointment-flow__step-text"><strong>{{ "Please call to schedule instead."|t }}</strong></p>
+    <p class="appointment-flow__step-text"><strong>{{ "Please call to schedule your appointment instead."|t }}</strong></p>
     <p class="appointment-flow__step-text">
       {% if modal_appt_context is same as('provider_page') %}
-        {{ "Only returning patients who have seen this provider within the last three years can book online. Phone numbers for each location where this provider practices can be viewed on the overview tab."|t }}
+        {{ "We're sorry but only patients who have seen this provider within the last three years may book online. Phone numbers for this provider's practice locations can be found on the overview tab."|t }}
       {% else %}
-        {{ "Only returning patients who have seen this provider within the last three years can book online."|t }}
+        {{ "We're sorry but only patients who have seen this provider within the last three years may book online."|t }}
       {% endif %}
     </p>
 
@@ -183,7 +183,7 @@
 
 
   <div class="appointment-flow__step" data-step="visit-type">
-    <p class="appointment-flow__step-text">{{ "Choose an appointment type"|t }}</p>
+    <p class="appointment-flow__step-text">{{ "Choose your appointment type"|t }}</p>
 
     <div class="appointment-flow__step-buttons">
 
