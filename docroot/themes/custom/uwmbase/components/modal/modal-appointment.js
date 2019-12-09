@@ -41,15 +41,17 @@
 
       // TODO: get these from however we store them.
       var visitTypeNames = {
-        '9000': 'New Patient Appointment',
-        '4466': 'New Pregnancy Care',
-        '103619': 'New Wellness Appointment'
+        '9000': 'Office',
+        '4466': 'New Pregnancy',
+        '103619': 'Wellness',
+        '9035': 'Flu Shot'
       };
 
       var visitTypeDescriptions = {
-        '9000': 'Initial appointment to establish care',
-        '4466': 'First visit for a new pregnancy',
-        '103619': 'Care for prevention and checkups'
+        '9000': 'A visit to address a specific concern',
+        '4466': 'A visit within the first 7-12 weeks of pregnancy',
+        '103619': 'A preventative care visit or routine physical exam',
+        '9035': 'An immunization against the flu (available at select locations)'
       };
 
       // Find all modal steps.
@@ -425,7 +427,7 @@
 
       if ($stepVisitedBefore.length) {
 
-        // "Have you visited this provider in the last three years?" => No.
+        // "Have you visited this provider within the last three years?" => No.
         $stepVisitedBefore.find('a[data-btn="no"]').click(function (e) {
 
           e.preventDefault();
@@ -460,7 +462,7 @@
 
         });
 
-        // "Have you visited this provider in the last three years?" => Yes.
+        // "Have you visited this provider within the last three years?" => Yes.
         // There are two versions of this button:
         // - If only direct scheduling is available, this button links directly
         // to eCare, because the initial link states the eCare account is
@@ -548,8 +550,9 @@
         // Remove steps state.
         stepPath = [];
 
-        // Remove the first-step indicator class.
+        // Remove the first-step/only-step indicator classes.
         $steps.removeClass('appointment-flow__step--first');
+        $steps.removeClass('appointment-flow__step--only');
 
         // If not on a provider bio page, remove provider-specific values.
         if (modalContext !== 'provider_page') {
