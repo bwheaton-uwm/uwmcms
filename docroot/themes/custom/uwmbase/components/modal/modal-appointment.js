@@ -317,17 +317,15 @@
           if (directScheduling) {
 
             // For "Visited before?" step - determine what "Yes" button does.
-            // Two versions are provided in the markup; remove whichever will
+            // Two versions are provided in the markup; hide whichever will
             // not be used.
             if ($stepVisitedBefore.length) {
-
-              var $visitedBeforeYesStep = $stepVisitedBefore.find('a[data-btn="yes-step"]');
 
               // If only direct scheduling is available, link directly to eCare,
               // because the initial link states the eCare account is required.
               if (!acceptingNew || !openScheduling) {
 
-                $visitedBeforeYesStep.remove();
+                $stepVisitedBefore.find('a[data-btn="yes-step"]').hide();
 
                 // Update the eCare URL with provider's Epic ID.
                 setUrlAttrQueryStringVal($visitedBeforeYesLinkDirect, 'href', 'selProvId', epicID);
@@ -335,7 +333,7 @@
               }
               else {
 
-                $visitedBeforeYesLinkDirect.remove();
+                $visitedBeforeYesLinkDirect.hide();
 
               }
 
@@ -561,6 +559,14 @@
           if ($stepVisitType.length) {
 
             $stepVisitType.find('a[data-btn-visit-type-id]').not('[data-btn-visit-type-id="template"]').remove();
+
+          }
+
+          // On the "Visited before?" step, restore both "Yes" button options.
+          if ($stepVisitedBefore.length) {
+
+            $stepVisitedBefore.find('a[data-btn="yes-step"]').show();
+            $visitedBeforeYesLinkDirect.show();
 
           }
 
