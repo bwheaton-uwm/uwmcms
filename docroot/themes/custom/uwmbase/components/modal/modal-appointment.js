@@ -550,8 +550,9 @@
         // Remove steps state.
         stepPath = [];
 
-        // Remove the first-step indicator class.
+        // Remove the first-step/only-step indicator classes.
         $steps.removeClass('appointment-flow__step--first');
+        $steps.removeClass('appointment-flow__step--only');
 
         // If not on a provider bio page, remove provider-specific values.
         if (modalContext !== 'provider_page') {
