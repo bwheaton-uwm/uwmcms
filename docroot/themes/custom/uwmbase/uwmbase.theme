@@ -829,15 +829,21 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
 
   // Set $enable_ratings to TRUE to enable, or FALSE to disable, ratings
   // for all providers in all environments.
-  $enable_ratings = (!empty($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] != 'prod') ? TRUE : FALSE;
+  $enable_ratings = TRUE;
+  if (!empty($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] == 'prod') {
+    $enable_ratings = FALSE;
+  }
 
   // Add ratings data.
   if ($node->hasField('field_ratings') && !$node->get('field_ratings')->isEmpty() && $enable_ratings) {
-    $variables['ratings'] = Json::decode($node->field_ratings->value);
-    $variables['has_ratings'] = TRUE;
-  }
-  else {
-    $variables['has_ratings'] = FALSE;
+    $raw_ratings = Json::decode($node->field_ratings->value);
+    if (!empty($raw_ratings)) {
+      $ratings = _uwmbase_process_ratings($raw_ratings);
+      if (!empty($ratings)) {
+        $variables['ratings'] = $ratings;
+      }
+    }
+    $variables['has_ratings'] = (!empty($variables['ratings']) ? TRUE : FALSE);
   }
 
   // Get the NPI for CTA links.
@@ -2272,4 +2278,82 @@ function _uwmbase_get_provider_by_ser($ser) {
   }
 
   return $nodes[$ser];
+}
+
+/**
+ * Process ratings into values usable by theme templates.
+ *
+ * @param array $raw_ratings
+ *   The ratings data in its original format.
+ *
+ * @return array
+ *   The processed ratings.
+ */
+function _uwmbase_process_ratings(array $raw_ratings) {
+  $ratings = [];
+
+  // Set the summary stars data.
+  if (!empty($raw_ratings['overallRating']['value'])) {
+    $ratings['summary']['value'] = $raw_ratings['overallRating']['value'];
+
+    $ratings['summary']['stars'] = _uwmbase_get_stars($raw_ratings['overallRating']['value'], 1);
+  }
+
+  // Set the ratings count.
+  if (!empty($raw_ratings['totalRatingCount'])) {
+    $ratings['summary']['count']['ratings'] = $raw_ratings['totalRatingCount'];
+  }
+
+  // Set the comment count.
+  if (!empty($raw_ratings['totalCommentCount'])) {
+    $ratings['summary']['count']['reviews'] = $raw_ratings['totalCommentCount'];
+  }
+
+  // Set the details data.
+  if (!empty($raw_ratings['comments'])) {
+    $ratings['details'] = [];
+    foreach ($raw_ratings['comments'] as $comment) {
+      $ratings['details'][] = [
+        'stars' => isset($comment['overallRating']['value']) ? _uwmbase_get_stars($comment['overallRating']['value']) : [],
+        'date' => isset($comment['mentionTime']) ? date('F j, Y', strtotime($comment['mentionTime'])) : '',
+        'review' => isset($comment['comment']) ? $comment['comment'] : '',
+      ];
+    }
+  }
+
+  return $ratings;
+}
+
+/**
+ * Determine stars from a rating value.
+ *
+ * @param float $value
+ *   The rating value.
+ * @param int $precision
+ *   The level of precision to use for rounding.
+ *
+ * @return array
+ *   The star elements to use to represent the rating value.
+ */
+function _uwmbase_get_stars($value, $precision = 0) {
+  $stars = [];
+
+  $value = round($value, $precision);
+
+  $stars_full = (int) $value;
+  $stars_empty = (int) (5 - $value);
+
+  if (isset($stars_full) && isset($stars_empty)) {
+    $stars = [
+      'full' => $stars_full,
+      'empty' => $stars_empty,
+    ];
+
+    if ($precision > 0) {
+      $stars['partial_pct'] = ($value - $stars_full) * 100;
+    }
+  }
+
+  return $stars;
+
 }

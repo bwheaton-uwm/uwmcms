@@ -1,6 +1,7 @@
 {{ attach_library('uwmbase/ratings-details') }}
 
 {% set cta_special_attributes = {'data-context-title': node_title|trim, 'data-context-npi': npi} %}
+{% set learn_more_path = '/bios/learn-more-about-ratings-and-reviews' %}
 
 <div class="ratings-details">
   {% if ratings.summary.count.ratings %}
@@ -22,7 +23,7 @@
           </div>
         </div>
         <div class="col-12 col-md-9 col-lg-10">
-          <p class="ratings-details__details-review">At UW Medicine, your feedback is important to us. While different care providers have their own unique strengths, we strive to be as transparent as possible with our quality of care. {{ uwm_cta_link('Learn more <i class="fa fa-angle-right" aria-hidden="true"></i>', '/', [css_parents_classes, 'text-link-blue', 'no-underline'], cta_special_attributes|merge({'target': '_blank'})) }}</p>
+          <p class="ratings-details__details-review">At UW Medicine, your feedback is important to us. While different care providers have their own unique strengths, we strive to be as transparent as possible with our quality of care. {{ uwm_cta_link('Learn more <i class="fa fa-angle-right" aria-hidden="true"></i>', learn_more_path, [css_parents_classes, 'text-link-blue', 'no-underline'], cta_special_attributes|merge({'target': '_blank'})) }}</p>
         </div>
       </div>
     </div>
