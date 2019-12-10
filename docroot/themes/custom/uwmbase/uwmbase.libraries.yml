@@ -52,6 +52,20 @@ bootstrap:
   js:
     dist/vendor/bootstrap/js/util.js: {}
 
+# When embedding the eCare open scheduling widget as an iframe, these assets
+# hosted on the eCare site, and a JS snippet, are required to be included in
+# the host (our) page.
+# TODO: TEST ECARE URLS - DO NOT MERGE TO MASTER ##############################
+ecare-open-schedule-embedded-widget:
+  css:
+    component:
+      # https://ecare.uwmedicine.org/prod01/Content/EmbeddedWidget.css: { type: external }
+      https://tstecare18.epic.medical.washington.edu/tst/Content/EmbeddedWidget.css: { type: external }
+  js:
+    # https://ecare.uwmedicine.org/prod01/Content/EmbeddedWidgetController.js: { type: external }
+    https://tstecare18.epic.medical.washington.edu/tst/Content/EmbeddedWidgetController.js: { type: external }
+    dist/js/uwm-ecare-open-schedule-embedded-widget.js: {}
+
 
 # uwmbase css/js libraries
 
