@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.card
+    - field.field.node.res_provider.field_ratings
     - field.field.node.res_provider.field_res_academic_title
     - field.field.node.res_provider.field_res_affiliates
     - field.field.node.res_provider.field_res_biography
@@ -17,6 +18,7 @@ dependencies:
     - field.field.node.res_provider.field_res_gender
     - field.field.node.res_provider.field_res_image
     - field.field.node.res_provider.field_res_internal_url
+    - field.field.node.res_provider.field_res_is_independent
     - field.field.node.res_provider.field_res_is_open_scheduling
     - field.field.node.res_provider.field_res_isacceptingnewpts
     - field.field.node.res_provider.field_res_languages
@@ -33,9 +35,12 @@ dependencies:
     - field.field.node.res_provider.field_res_pubmed_ids
     - field.field.node.res_provider.field_res_puma_id
     - field.field.node.res_provider.field_res_ser_id
+    - field.field.node.res_provider.field_res_specialties_unindexed
     - field.field.node.res_provider.field_res_visit_type_id
     - field.field.node.res_provider.field_search_best_bets
+    - field.field.node.res_provider.field_uwm_content_owner
     - field.field.node.res_provider.field_uwm_json_packet
+    - field.field.node.res_provider.field_uwm_subject_matter_experts
     - field.field.node.res_provider.uwm_unique_id
     - node.type.res_provider
     - responsive_image.styles.provider_card_headshot
@@ -115,6 +120,14 @@ content:
       multiple_el_al_min: '3'
       multiple_el_al_first: '1'
     third_party_settings: {  }
+  field_res_specialties_unindexed:
+    type: entity_reference_label
+    weight: 5
+    region: content
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
 hidden:
   field_ratings: true
   field_res_academic_title: true
@@ -128,6 +141,7 @@ hidden:
   field_res_education_history: true
   field_res_gender: true
   field_res_internal_url: true
+  field_res_is_independent: true
   field_res_is_open_scheduling: true
   field_res_isacceptingnewpts: true
   field_res_medical_title: true

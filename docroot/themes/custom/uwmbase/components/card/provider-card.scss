@@ -84,7 +84,7 @@ article.node-res_provider.view-mode-provider_card {
       }
 
       .provider-card__appointments {
-        @extend %s-with-icon; 
+        @extend %s-with-icon;
       }
 
       .provider-card__appointments-buttons {
@@ -92,17 +92,17 @@ article.node-res_provider.view-mode-provider_card {
         font-size: .875rem; // 14px
         text-transform: uppercase;
         margin-bottom: 4px;
-    
+
         &:hover {
           text-decoration: none;
           color: white;
         }
       }
-    
+
       .provider-card__urgent-care {
         margin-bottom: 0.25rem // 4px;
       }
-    
+
 
       .provider-card__locations {
         @extend %s-with-icon;
@@ -132,7 +132,7 @@ article.node-res_provider.view-mode-provider_card {
   }
 
   %s-with-icon {
-    padding-left: 2.875rem;
+    padding-left: 1.8125rem;
   }
 
 }
