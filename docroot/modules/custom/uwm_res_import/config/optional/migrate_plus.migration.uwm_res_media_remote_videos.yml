@@ -22,7 +22,7 @@ source:
   track_changes: true
 
 
-  urls: https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/media/remote_video?page[offset]=0&page[limit]=50&sort=-changed
+  urls: http://bios-reservoir-test.mktgweb.uwmedicine.org/jsonapi/media/remote_video?page[offset]=0&page[limit]=50&sort=-changed
 
   ids:
     uuid:

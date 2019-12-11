@@ -25,7 +25,7 @@ source:
 
 
   urls:
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed
+  - http://bios-reservoir-test.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed
   #- 'public://temp/providers.json'
 
   ids:
