@@ -35,9 +35,15 @@
     {{ attach_library('uwmbase/provider-page') }}
     {{ title_suffix }}
 
-    {# TODO: remove temporary testing info.
-       @see uwmcs_ecare_scheduling_preprocess_node() #}
-    {{ testing_data }}
+    {#
+        TODO: remove temporary testing info.
+        For now, hide it so it doesn't disturb the look of the page, but is
+        still available via inspecting the markup.
+        @see uwmcs_ecare_scheduling_preprocess_node()
+    #}
+    <div id="provider-appointment-debug" style="display: none !important;">
+        {{ testing_data }}
+    </div>
 
     <div class="bg provider-page">
         <section class="provider-page__section1">
