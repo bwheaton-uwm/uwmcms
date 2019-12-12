@@ -8,7 +8,7 @@
 #
 # @code
 # In settings.php:
-# $config['uwm_binaryfountain_reviews']['values']['example_one'] = 'This example value was overridden in ' . __FILE__;
+# $config['uwm_binaryfountain_reviews.binary_fountain']['values']['example_one'] = 'This example was overridden in ' . __FILE__;
 #
 # In a module:
 # $settings = \Drupal::config('uwm_binaryfountain_reviews');

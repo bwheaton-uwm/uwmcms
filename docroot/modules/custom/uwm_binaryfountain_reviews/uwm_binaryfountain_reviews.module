@@ -7,3 +7,16 @@
  * @see https://www.drupal.org/docs/8/api/restful-web-services-api/custom-rest-resources
  * @see https://opensenselabs.com/blog/tech/custom-rest-resource-drupal-8
  */
+
+/**
+ * Implements theme_preprocess_node().
+ */
+function uwm_binaryfountain_reviews_preprocess_node(&$variables) {
+
+  if (!empty($variables['node']) && $variables['node']->getType() === 'res_provider') {
+
+    $a = 1;
+
+  }
+
+}
