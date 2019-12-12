@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * @file
+ * UWM uwm_binaryfountain_reviews module.
+ *
+ * @see https://www.drupal.org/docs/8/api/restful-web-services-api/custom-rest-resources
+ * @see https://opensenselabs.com/blog/tech/custom-rest-resource-drupal-8
+ */

@@ -1,0 +1,8 @@
+# Test API endpoints
+
+uwm_binaryfountain_reviews.reviews:
+  path: 'uwm/bf/{providerNpi}'
+  defaults: { _controller: '\Drupal\uwm_binaryfountain_reviews\Controller\UwmBinaryFountainController::reviewsResponse' }
+  methods:  [GET]
+  requirements:
+    _access: 'TRUE'
