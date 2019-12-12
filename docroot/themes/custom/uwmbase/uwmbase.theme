@@ -279,6 +279,22 @@ function uwmbase_preprocess_html(&$variables, $hook) {
   if ($currentPath == '/node/20841') {
     $variables['attributes']['class'][] = 'ecare-page';
   }
+
+  // If this is a provider page.
+  if (!empty($variables['node_type']) && $variables['node_type'] == 'res_provider') {
+    // Load the node.
+    $path_parts = explode('/', $currentPath);
+    $nid = $path_parts[2];
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
+
+    // Add a class to indicate if the provider has ratings.
+    if ($node && _uwmbase_provider_has_ratings($node)) {
+      $variables['attributes']['class'][] = 'provider-has-ratings';
+    }
+    else {
+      $variables['attributes']['class'][] = 'provider-no-ratings';
+    }
+  }
 }
 
 /**
@@ -827,18 +843,8 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
     }
   }
 
-  // Set $enable_ratings to TRUE to enable, or FALSE to disable, ratings
-  // for all providers in all environments.
-  $enable_ratings = (!empty($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] != 'prod') ? TRUE : FALSE;
-
   // Add ratings data.
-  if ($node->hasField('field_ratings') && !$node->get('field_ratings')->isEmpty() && $enable_ratings) {
-    $variables['ratings'] = Json::decode($node->field_ratings->value);
-    $variables['has_ratings'] = TRUE;
-  }
-
-  // Add ratings data.
-  if ($node->hasField('field_ratings') && !$node->get('field_ratings')->isEmpty() && $enable_ratings) {
+  if (_uwmbase_provider_has_ratings($node)) {
     $raw_ratings = Json::decode($node->field_ratings->value);
     if (!empty($raw_ratings)) {
       $ratings = _uwmbase_process_ratings($raw_ratings);
@@ -2358,5 +2364,26 @@ function _uwmbase_get_stars($value, $precision = 0) {
   }
 
   return $stars;
+}
 
+/**
+ * Determine if a provider has ratings that should be displayed.
+ *
+ * @param \Drupal\Node\NodeInterface $node
+ *   The provider node.
+ *
+ * @return bool
+ *   TRUE if the provider has ratings that should be displayed, FALSE otherwise.
+ */
+function _uwmbase_provider_has_ratings(NodeInterface $node) {
+  // Set $enable_ratings to TRUE to enable, or FALSE to disable, ratings
+  // for all providers in all environments.
+  $enable_ratings = (!empty($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] == 'prod') ? FALSE : TRUE;
+
+  if ($node->hasField('field_ratings') && !$node->get('field_ratings')->isEmpty() && $enable_ratings) {
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
 }
