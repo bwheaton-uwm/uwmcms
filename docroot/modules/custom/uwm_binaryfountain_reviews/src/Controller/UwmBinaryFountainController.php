@@ -6,21 +6,20 @@ namespace Drupal\uwm_binaryfountain_reviews\Controller;
  * Simple class for Binary Fountain ratings and reviews.
  *
  * We bundle getting Binary Fountain responses here so functionality is in
- * one place and also, so themes can get reviews via AJAX, after pages load
- * or with a hook before page rendering. Note Binary Fountain API calls require
+ * one place so themes can get reviews via AJAX, after pages load or with
+ * a hook before page rendering. Note Binary Fountain API calls require
  * a secret access app_id and app_secret.
  *
  * @code
- * $ curl --data "appId=776743546280515&appSecret=89ff3ebe-700a-474c-8ca0-
- * 6010ed0db28d"  https://api.binaryfountain.com/api/service/v1/token/create
- * {"expiresIn":"2019-10-01 17:44:46","accessToken":"SaaPigG4bkMdxXx3EFy5_
- *
- * $ TOKEN='SaaPigG4bkMdxXx3EFy5_1569950086306'
+ * $ curl --data "appId=0000000"
+ *   https://api.binaryfountain.com/api/service/v1/token/create
+ * {"expiresIn":"2019-10-01 17:44:46","accessToken":"Saaa_
  *
  * $ curl -H "accessToken: $TOKEN" https://api.binaryfountain.com/api/service/
- * bsr/comments\?personId\=1001111111
- * {"status":{"message":"success","code":200},"data":{"client":"Baystate"
+ * bsr/comments\?personId\=$ID
+ * {"status":{"message":"success","code":200},"data":{"client":"Baystate"...
  *
+ * @see http://docs.guzzlephp.org/en/stable/psr7.html
  * @see https://drupalize.me/blog/201512/speak-http-drupal-httpclient
  */
 
@@ -35,30 +34,25 @@ use Symfony\Component\HttpFoundation\Request;
 class UwmBinaryFountainController extends ControllerBase {
 
   private $binaryFountainAppId = NULL;
+
   private $binaryFountainAppSecret = NULL;
+
   private $binaryFountainToken = NULL;
+
   private $binaryFountainTokenExpires = NULL;
 
   /**
-   * Response for route from routing yml.
-   *
-   * @param \Symfony\Component\HttpFoundation\Request $request
-   *   Description here.
-   *
-   * @return \Drupal\Component\Serialization\JsonResponse
-   *   Description here.
+   * UwmBinaryFountainController constructor.
    */
-  public function getExample(Request $request) {
+  public function __construct() {
 
-    $response['data'] = 'Some test data to return';
-    $response['xyz'] = [1234];
-
-    return new JsonResponse($response);
+    // Fetch a token for later requests.
+    $this->initSettings();
 
   }
 
   /**
-   * Endpoint with Binary Fountain provider ratings.
+   * Endpoint for viewing ratings and reviews json from Binary Fountain.
    *
    * @param string $providerNpi
    *   Provider id to fetch from Binary Fountain.
@@ -70,34 +64,93 @@ class UwmBinaryFountainController extends ControllerBase {
    */
   public function reviewsResponse(string $providerNpi, Request $request) {
 
-    $this->initSettings();
-
-    if ($providerNpi) {
-
-      try {
-        $response = $this->fetchRatings($providerNpi);
-
-      }
-      catch (\Exception $e) {
-        \Drupal::logger(__CLASS__)->error($e->getMessage());
-        return new JsonResponse([]);
-      }
-      return new JsonResponse($response);
-
-    }
-
-    return new JsonResponse([]);
+    $response = $this->getProviderBinaryFountainComments($providerNpi);
+    return new JsonResponse($response);
 
   }
 
   /**
-   * Initialize settings needed for the 3rd party service.
+   * Fetches the comments and ratings for a given provider from Binary Fountain.
+   *
+   * @param string|null $providerNpi
+   *   Provider id to fetch from Binary Fountain.
+   *
+   * @return array|mixed
+   *   An array containing the API response, or empty array if none.
+   */
+  public function getProviderBinaryFountainComments(string $providerNpi = NULL) {
+
+    if ($providerNpi) {
+
+      /***
+       * In our fetch-token and fetch-reviews methods below we
+       * throw an exception if getting a bad response. Exceptions are
+       * try/ catch statements are expensive, but let's use them to
+       * allow creating a trace, and also so we can always return
+       * [] for the remote API.
+       */
+      try {
+
+        $response = $this->fetchRatings($providerNpi);
+
+      }
+      catch (\Exception $e) {
+        \Drupal::logger(__FUNCTION__)
+          ->error($e->getMessage() . $e->getTraceAsString());
+        return [];
+      }
+
+      return $response;
+
+    }
+
+    return [];
+
+  }
+
+  /**
+   * Init settings needed for using the API.
    */
   private function initSettings() {
 
-    $uwm_container_settings = \Drupal::config('uwm_binaryfountain_reviews.binary_fountain');
-    $this->binaryFountainAppId = $uwm_container_settings->get('values.BINARY_FOUNTAIN_APP_ID');
-    $this->binaryFountainAppSecret = $uwm_container_settings->get('values.BINARY_FOUNTAIN_APP_SECRET');
+    $config = \Drupal::config('uwm_binaryfountain_reviews.binary_fountain');
+    $this->binaryFountainAppId = $config->get('values.BINARY_FOUNTAIN_APP_ID');
+    $this->binaryFountainAppSecret = $config->get('values.BINARY_FOUNTAIN_APP_SECRET');
+
+  }
+
+  /**
+   * Fetch the provider ratings and comments JSON from Binary Fountain.
+   */
+  private function fetchRatings(int $personId = NULL) {
+
+    $client = \Drupal::httpClient();
+
+    $request = $client->get('https://api.binaryfountain.com/api/service/bsr/comments', [
+      'headers' => [
+        'accessToken' => $this->fetchToken(),
+      ],
+      'query' => [
+        'personId' => $personId,
+      ],
+    ]);
+
+    // Check Guzzle response status:
+    if ($request && $request->getStatusCode() == 200) {
+
+      $responseBody = $request->getBody()->getContents();
+      if ($responseBody
+        && ($responseBodyDecoded = Json::decode($responseBody))
+        && !empty($responseBodyDecoded['data'])) {
+
+        return $responseBodyDecoded;
+
+      }
+      else {
+        throw new \Exception(__FUNCTION__ . ' Missing Binary Fountain response for NPI ' . $personId);
+      }
+
+    }
 
   }
 
@@ -116,23 +169,23 @@ class UwmBinaryFountainController extends ControllerBase {
         ],
       ]);
 
-      // Check Drupal Guzzle success:
-      if ($request->getStatusCode() == 200) {
+      // Check Guzzle response status:
+      if ($request && $request->getStatusCode() == 200) {
 
-        // @TODO: Validate JSON?
         $responseBody = $request->getBody()->getContents();
-        $responseBodyDecoded = Json::decode($responseBody);
+        if ($responseBody
+          && ($responseBodyDecoded = Json::decode($responseBody))
+          && !empty($responseBodyDecoded['accessToken'])) {
 
-        // Check api.binaryfountain.com success:
-        if (!empty($responseBodyDecoded['accessToken']) && $responseBodyDecoded['status']['code'] == 200) {
-
+          // @TODO: If valid for a few hours, save token to temp store.
           $this->binaryFountainToken = $responseBodyDecoded['accessToken'];
           $this->binaryFountainTokenExpires = $responseBodyDecoded['expiresIn'];
 
         }
-
+        else {
+          throw new \Exception(__FUNCTION__ . ' Missing Binary Fountain token response');
+        }
       }
-
     }
 
     if ($this->isValidToken()) {
@@ -140,34 +193,6 @@ class UwmBinaryFountainController extends ControllerBase {
     }
 
     return NULL;
-
-  }
-
-  /**
-   * Fetch the provider ratings and comments JSON from Binary Fountain.
-   */
-  private function fetchRatings(int $personId = NULL) {
-
-    $client = \Drupal::httpClient();
-    $query = [
-      'personId' => $personId,
-    ];
-    $headers = [
-      'accessToken' => $this->fetchToken(),
-    ];
-    $request = $client->get('https://api.binaryfountain.com/api/service/bsr/comments', [
-      'headers' => $headers,
-      'query' => $query,
-    ]);
-
-    // @TODO: Validate JSON?
-    $responseBody = $request->getBody()->getContents();
-    $responseBodyDecoded = Json::decode($responseBody);
-
-    // Check api.binaryfountain.com success:
-    if (!empty($responseBodyDecoded['status']['code']) && $responseBodyDecoded['status']['code'] == 200) {
-      return $responseBodyDecoded;
-    }
 
   }
 
