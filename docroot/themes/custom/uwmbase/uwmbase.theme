@@ -258,7 +258,7 @@ function uwmbase_preprocess_html(&$variables, $hook) {
     $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
     // Add a class to indicate if the provider has ratings.
-    if ($node && !empty($node['uwm_binaryfountain_reviews']['data'])) {
+    if ($node && !empty($node->uwm_binaryfountain_reviews['data'])) {
       $variables['attributes']['class'][] = 'provider-has-ratings';
     }
     else {
