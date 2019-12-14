@@ -64,7 +64,7 @@ class UwmBinaryFountainController extends ControllerBase {
    */
   public function reviewsResponse(string $providerNpi, Request $request) {
 
-    $response = $this->getProviderBinaryFountainComments($providerNpi);
+    $response = $this->getProviderBinaryFountainReviews($providerNpi);
     return new JsonResponse($response);
 
   }
@@ -75,10 +75,10 @@ class UwmBinaryFountainController extends ControllerBase {
    * @param string|null $providerNpi
    *   Provider id to fetch from Binary Fountain.
    *
-   * @return array|mixed
+   * @return array
    *   An array containing the API response, or empty array if none.
    */
-  public function getProviderBinaryFountainComments(string $providerNpi = NULL) {
+  public function getProviderBinaryFountainReviews(string $providerNpi = NULL) {
 
     if ($providerNpi) {
 
@@ -121,6 +121,15 @@ class UwmBinaryFountainController extends ControllerBase {
 
   /**
    * Fetch the provider ratings and comments JSON from Binary Fountain.
+   *
+   * @param int|null $personId
+   *   The National Provier Identifier or Binary Fountain person Id.
+   *
+   * @return array
+   *   The Binary Fountain reviews data or, an empty array.
+   *
+   * @throws \Exception
+   *   Exception thrown for bad response or missing response data attribute.
    */
   private function fetchRatings(int $personId = NULL) {
 
@@ -143,7 +152,7 @@ class UwmBinaryFountainController extends ControllerBase {
         && ($responseBodyDecoded = Json::decode($responseBody))
         && !empty($responseBodyDecoded['data'])) {
 
-        return $responseBodyDecoded;
+        return (array) $responseBodyDecoded;
 
       }
       else {
@@ -151,6 +160,8 @@ class UwmBinaryFountainController extends ControllerBase {
       }
 
     }
+
+    return [];
 
   }
 

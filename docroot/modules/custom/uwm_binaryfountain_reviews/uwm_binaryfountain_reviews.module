@@ -8,8 +8,7 @@
  * @see https://opensenselabs.com/blog/tech/custom-rest-resource-drupal-8
  */
 
-use Drupal\Component\Serialization\Json;
-use Drupal\node\NodeInterface;
+use Drupal\uwm_binaryfountain_reviews\Controller\UwmAttachNodeReviews;
 
 /**
  * Implements theme_preprocess_node().
@@ -21,15 +20,13 @@ function uwm_binaryfountain_reviews_preprocess_node(&$variables) {
   if ($node && $node->getType() === 'res_provider') {
 
     // Add ratings data.
-    if (__uwm_binaryfountain_reviews_provider_has_ratings($node)) {
-      $raw_ratings = Json::decode($node->field_ratings->value);
-      if (!empty($raw_ratings)) {
-        $ratings = __uwm_binaryfountain_reviews_process_ratings($raw_ratings);
-        if (!empty($ratings)) {
-          $variables['ratings'] = $ratings;
-        }
-      }
-      $variables['has_ratings'] = (!empty($variables['ratings']) ? TRUE : FALSE);
+    new UwmAttachNodeReviews($node);
+
+    if (__uwm_binaryfountain_reviews_enabled() && !empty($node->uwm_binaryfountain_reviews['data']['overallRating']['value'])) {
+
+      $variables['ratings'] = __uwm_binaryfountain_reviews_process_ratings($node->uwm_binaryfountain_reviews);
+      $variables['has_ratings'] = (bool) !empty($variables['ratings']);
+
     }
 
   }
@@ -116,22 +113,12 @@ function __uwm_binaryfountain_reviews_get_stars($value, $precision = 0) {
 /**
  * Determine if a provider has ratings that should be displayed.
  *
- * @param \Drupal\Node\NodeInterface $node
- *   The provider node.
- *
  * @return bool
  *   TRUE if the provider has ratings that should be displayed, FALSE otherwise.
  */
-function __uwm_binaryfountain_reviews_provider_has_ratings(NodeInterface $node) {
+function __uwm_binaryfountain_reviews_enabled() {
   // Set $enable_ratings to TRUE to enable, or FALSE to disable, ratings
   // for all providers in all environments.
-  $enable_ratings = (!empty($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] == 'prod') ? FALSE : TRUE;
+  return (!empty($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] == 'prod') ? FALSE : TRUE;
 
-  if ($node->hasField('field_ratings') && !$node->get('field_ratings')
-    ->isEmpty() && $enable_ratings) {
-    return TRUE;
-  }
-  else {
-    return FALSE;
-  }
 }
