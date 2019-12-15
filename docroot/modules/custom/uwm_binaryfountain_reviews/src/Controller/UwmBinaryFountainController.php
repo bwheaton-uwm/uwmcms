@@ -41,6 +41,8 @@ class UwmBinaryFountainController extends ControllerBase {
 
   private $binaryFountainTokenExpires = NULL;
 
+  const TOKEN_CACHE_KEY_NAME = 'UwmBinaryFountainControllerToken';
+
   /**
    * UwmBinaryFountainController constructor.
    */
@@ -170,6 +172,11 @@ class UwmBinaryFountainController extends ControllerBase {
    */
   private function fetchToken() {
 
+    if ($cache = \Drupal::cache()->get(self::TOKEN_CACHE_KEY_NAME)) {
+      $this->binaryFountainToken = $cache->data['accessToken'] ?? NULL;
+      $this->binaryFountainTokenExpires = $cache->data['expiresIn'] ?? NULL;
+    }
+
     if (!$this->isValidToken()) {
 
       $client = \Drupal::httpClient();
@@ -188,7 +195,15 @@ class UwmBinaryFountainController extends ControllerBase {
           && ($responseBodyDecoded = Json::decode($responseBody))
           && !empty($responseBodyDecoded['accessToken'])) {
 
-          // @TODO: If valid for a few hours, save token to temp store.
+          /***
+           * Our controller get re-initialized per node, or seems to,
+           * by dependency injection, rather than loading once per thread.
+           * Let;'s cache the results to avoid extra API calls and to reuse
+           * the token almost expiring.
+           */
+          \Drupal::cache()
+            ->set(self::TOKEN_CACHE_KEY_NAME, $responseBodyDecoded);
+
           $this->binaryFountainToken = $responseBodyDecoded['accessToken'];
           $this->binaryFountainTokenExpires = $responseBodyDecoded['expiresIn'];
 

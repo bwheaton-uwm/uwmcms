@@ -85,7 +85,7 @@ class UwmAttachNodeReviews {
       return FALSE;
     }
 
-    if (!$dateFetched || strtotime('-24 hours') >= $dateFetched) {
+    if (!$dateFetched || strtotime('-24 hours') >= strtotime($dateFetched)) {
       return FALSE;
     }
 
@@ -107,11 +107,13 @@ class UwmAttachNodeReviews {
      * Ensure we store a date fetched, at a minimum, so we're not refreshing
      * continously for providers missing data.
      */
-    $reviews[self::REVIEWS_DATE_REFRESHED_FIELD] = strtotime('now');
+    $reviews[self::REVIEWS_DATE_REFRESHED_FIELD] = date('r');
 
     $node = Node::load($this->node->id());
     $node->set('field_ratings', Json::encode($reviews));
     $node->save();
+
+    // Refresh live field so we don't need to reload the node.
     $this->setRatings(
       $node->field_ratings->value
     );
@@ -123,9 +125,7 @@ class UwmAttachNodeReviews {
    */
   private function removeRatings() {
 
-    // @TODO: Empty the provider ratings if unpublished from Binary Fountain.
-    // Is this needed, since we re-check daily?
-    $a = 1;
+    // @TODO: Empty the provider ratings. Is this needed since we check daily?
 
   }
 
