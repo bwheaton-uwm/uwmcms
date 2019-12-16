@@ -1,0 +1,29 @@
+uuid: 8c480c5f-d35c-4199-a131-f31dfab1ac7e
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.banner_content
+    - field.storage.block_content.field_uwm_section_heading
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    rich_text: rich_text
+    basic_html: '0'
+    unrestricted: '0'
+    unrestricted_no_wysiwyg: '0'
+    plain_text: '0'
+id: block_content.banner_content.field_uwm_section_heading
+field_name: field_uwm_section_heading
+entity_type: block_content
+bundle: banner_content
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

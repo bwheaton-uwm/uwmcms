@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.banner_content
     - block_content.type.basic
     - block_content.type.uwm_card
     - field.storage.paragraph.field_uwm_block
@@ -21,6 +22,7 @@ settings:
   handler: 'default:block_content'
   handler_settings:
     target_bundles:
+      banner_content: banner_content
       basic: basic
       uwm_card: uwm_card
     sort:
