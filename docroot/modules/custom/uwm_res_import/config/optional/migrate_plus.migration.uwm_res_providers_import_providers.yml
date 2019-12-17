@@ -131,6 +131,10 @@ source:
     label: field_res_visit_type_id
     selector: /attributes/field_res_visit_type_id
 
+  - name: field_res_is_independent
+    label: field_res_is_independent
+    selector: /attributes/field_res_is_independent
+
   - name: uwm_json_packet
     label: uwm_json_packet
     selector: /attributes/uwm_json_packet
@@ -208,6 +212,10 @@ source:
   - name: field_res_procedures_treatments
     label: field_res_procedures_treatments
     selector: /relationships/field_procedures_treatments/data
+
+  - name: field_res_specialties_unindexed
+    label: field_res_specialties_unindexed
+    selector: /relationships/field_res_specialties_unindexed/data
 
   - name: field_res_languages
     label: field_res_languages
@@ -294,6 +302,7 @@ process:
   field_res_is_open_scheduling: field_res_is_open_scheduling
   field_res_is_direct_scheduling: field_res_is_direct_scheduling
   field_res_visit_type_id: field_res_visit_type_id
+  field_res_is_independent: field_res_is_independent
 
   field_uwm_json_packet: uwm_json_packet
   field_res_puma_education: uwm_edw_puma_education
@@ -455,6 +464,16 @@ process:
   field_res_procedures_treatments:
     plugin: sub_process
     source: field_res_procedures_treatments
+    process:
+      target_id:
+      - plugin: uwm_tid_for_uuid
+        source: id
+      - plugin: skip_on_empty
+        method: process
+
+  field_res_specialties_unindexed:
+    plugin: sub_process
+    source: field_res_specialties_unindexed
     process:
       target_id:
       - plugin: uwm_tid_for_uuid

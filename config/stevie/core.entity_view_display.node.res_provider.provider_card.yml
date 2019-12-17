@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.provider_card
+    - field.field.node.res_provider.field_ratings
     - field.field.node.res_provider.field_res_academic_title
     - field.field.node.res_provider.field_res_affiliates
     - field.field.node.res_provider.field_res_biography
@@ -18,6 +19,7 @@ dependencies:
     - field.field.node.res_provider.field_res_image
     - field.field.node.res_provider.field_res_internal_url
     - field.field.node.res_provider.field_res_is_direct_scheduling
+    - field.field.node.res_provider.field_res_is_independent
     - field.field.node.res_provider.field_res_is_open_scheduling
     - field.field.node.res_provider.field_res_isacceptingnewpts
     - field.field.node.res_provider.field_res_isacceptingreturnpts
@@ -35,6 +37,7 @@ dependencies:
     - field.field.node.res_provider.field_res_pubmed_ids
     - field.field.node.res_provider.field_res_puma_id
     - field.field.node.res_provider.field_res_ser_id
+    - field.field.node.res_provider.field_res_specialties_unindexed
     - field.field.node.res_provider.field_res_visit_type_id
     - field.field.node.res_provider.field_search_best_bets
     - field.field.node.res_provider.field_uwm_content_owner
@@ -107,7 +110,7 @@ content:
     region: content
   field_res_conditions_symptoms:
     type: entity_reference_label
-    weight: 21
+    weight: 22
     region: content
     label: above
     settings:
@@ -115,7 +118,7 @@ content:
     third_party_settings: {  }
   field_res_degrees:
     type: entity_reference_revisions_entity_view
-    weight: 16
+    weight: 17
     region: content
     label: above
     settings:
@@ -124,7 +127,7 @@ content:
     third_party_settings: {  }
   field_res_education_history:
     type: entity_reference_revisions_entity_view
-    weight: 12
+    weight: 13
     label: above
     settings:
       view_mode: default
@@ -156,7 +159,7 @@ content:
     type: responsive_image
     region: content
   field_res_is_open_scheduling:
-    weight: 19
+    weight: 20
     label: above
     settings:
       format: default
@@ -167,7 +170,7 @@ content:
     region: content
   field_res_isacceptingnewpts:
     type: boolean
-    weight: 14
+    weight: 15
     region: content
     label: above
     settings:
@@ -209,7 +212,7 @@ content:
     third_party_settings: {  }
   field_res_node_videos:
     type: entity_reference_entity_view
-    weight: 20
+    weight: 21
     label: hidden
     settings:
       view_mode: embedded
@@ -234,14 +237,14 @@ content:
     region: content
   field_res_procedures_treatments:
     type: entity_reference_label
-    weight: 22
+    weight: 23
     region: content
     label: above
     settings:
       link: true
     third_party_settings: {  }
   field_res_ser_id:
-    weight: 18
+    weight: 19
     label: above
     settings:
       thousand_separator: ''
@@ -249,6 +252,14 @@ content:
     third_party_settings: {  }
     type: number_integer
     region: content
+  field_res_specialties_unindexed:
+    type: entity_reference_label
+    weight: 12
+    region: content
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
   field_res_visit_type_id:
     weight: 24
     label: above
@@ -260,20 +271,20 @@ content:
     region: content
   field_search_best_bets:
     type: entity_reference_label
-    weight: 15
+    weight: 16
     region: content
     label: above
     settings:
       link: true
     third_party_settings: {  }
   links:
-    weight: 13
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   uwm_unique_id:
     type: string
-    weight: 17
+    weight: 18
     region: content
     label: above
     settings:
@@ -285,6 +296,7 @@ hidden:
   field_res_department: true
   field_res_internal_url: true
   field_res_is_direct_scheduling: true
+  field_res_is_independent: true
   field_res_isacceptingreturnpts: true
   field_res_medical_title: true
   field_res_meta_tags: true

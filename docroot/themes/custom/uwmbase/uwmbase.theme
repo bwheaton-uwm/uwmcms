@@ -817,6 +817,7 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
     // Determine taxonomy terms associated with the provider.
     $variables['taxonomy_terms'] = [
       'expertises' => [],
+      'specialties_unindexed' => [],
       'conditions_symptoms' => [],
       'procedures_treatments' => [],
     ];
