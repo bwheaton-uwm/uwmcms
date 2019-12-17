@@ -22,8 +22,10 @@ class UwmAttachNodeReviews {
    *
    * @param \Drupal\node\NodeInterface $node
    *   The node from a node_load to attach review to.
+   * @param bool $forceRefresh
+   *   Boolean to indicate node should be refreshed despite date.
    */
-  public function __construct(NodeInterface &$node) {
+  public function __construct(NodeInterface &$node, $forceRefresh = FALSE) {
 
     /***
      * Create a dynamic property for modules or theming. It will contain the
@@ -38,7 +40,7 @@ class UwmAttachNodeReviews {
         $this->node->field_ratings->value
       );
 
-      if (!$this->validateRatings()) {
+      if (!$this->validateRatings() || $forceRefresh) {
 
         $this->refreshRatings();
 

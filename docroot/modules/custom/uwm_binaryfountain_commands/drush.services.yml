@@ -1,0 +1,6 @@
+services:
+  uwm_binaryfountain_update.commands:
+    class: \Drupal\uwm_binaryfountain_commands\Commands\UwmBinaryFountainCommands
+    tags:
+      - { name: drush.command }
+    arguments: ['@entity_type.manager', '@logger.factory']

@@ -1,0 +1,5 @@
+name: uwm_binaryfountain_commands
+type: module
+description: 'Drush command to refresh Binary Fountain reviews.'
+core: 8.x
+package: UWMed
