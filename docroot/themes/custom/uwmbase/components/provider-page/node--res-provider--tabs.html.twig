@@ -8,9 +8,10 @@
 
 {% set research_tab = node.field_res_pubmed_ids is not empty %}
 
-{# If the provider has locations or a video, the Overview tab should be
-the default. Otherwise, the About Me tab should be the default. #}
-{% set active_tab = has_locations or has_video ? 'overview' : 'about' %}
+{# If the provider has locations or a video and is not independent,
+the Overview tab should be the default. Otherwise, the About Me tab
+should be the default. #}
+{% set active_tab = (has_locations or has_video) and not is_independent ? 'overview' : 'about' %}
 
 <nav class="provider-page__tabs-nav uw-navtabs uw-navtabs--blue-accent">
   <ul class="nav nav-tabs" id="nav-tab" role="tablist">

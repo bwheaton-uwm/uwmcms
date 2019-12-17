@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.autocomplete
+    - field.field.node.res_provider.field_ratings
     - field.field.node.res_provider.field_res_academic_title
     - field.field.node.res_provider.field_res_affiliates
     - field.field.node.res_provider.field_res_biography
@@ -18,6 +19,7 @@ dependencies:
     - field.field.node.res_provider.field_res_image
     - field.field.node.res_provider.field_res_internal_url
     - field.field.node.res_provider.field_res_is_direct_scheduling
+    - field.field.node.res_provider.field_res_is_independent
     - field.field.node.res_provider.field_res_is_open_scheduling
     - field.field.node.res_provider.field_res_isacceptingnewpts
     - field.field.node.res_provider.field_res_isacceptingreturnpts
@@ -35,6 +37,7 @@ dependencies:
     - field.field.node.res_provider.field_res_pubmed_ids
     - field.field.node.res_provider.field_res_puma_id
     - field.field.node.res_provider.field_res_ser_id
+    - field.field.node.res_provider.field_res_specialties_unindexed
     - field.field.node.res_provider.field_res_visit_type_id
     - field.field.node.res_provider.field_search_best_bets
     - field.field.node.res_provider.field_uwm_content_owner
@@ -101,6 +104,7 @@ hidden:
   field_res_image: true
   field_res_internal_url: true
   field_res_is_direct_scheduling: true
+  field_res_is_independent: true
   field_res_is_open_scheduling: true
   field_res_isacceptingnewpts: true
   field_res_isacceptingreturnpts: true
@@ -117,6 +121,7 @@ hidden:
   field_res_pubmed_ids: true
   field_res_puma_id: true
   field_res_ser_id: true
+  field_res_specialties_unindexed: true
   field_res_visit_type_id: true
   field_search_best_bets: true
   field_uwm_content_owner: true

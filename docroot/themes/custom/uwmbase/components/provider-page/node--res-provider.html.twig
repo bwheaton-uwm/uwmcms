@@ -13,6 +13,9 @@
 
 {% set modifier_class = attributes.class ~ ' container-xl' %}
 {% set modifier_class = has_ratings ? modifier_class ~ ' node-res_provider--has-ratings' : modifier_class ~ ' node-res_provider--no-ratings' %}
+{% set is_independent = node.field_res_is_independent.0.value ? true : false %}
+{% set modifier_class = is_independent ? modifier_class ~ ' node-res_provider--is-independent' : modifier_class %}
+
 {%
   set taxonomy_subsection_attributes = create_attribute({
     'class': [
@@ -56,65 +59,71 @@
                         <img src="/{{ directory }}/dist/assets/provider-silhouette.svg" alt="" />
                     {% endif %}
                 </div>
-                <div class="provider-page__section1-area1-subsection">
-                    {#
-                        Indicate if provider is accepting new and/or returning
-                        patients.
-                        These booleans are pulled from fields:
-                        `field_res_isacceptingnewpts`
-                        `field_res_isacceptingreturnpts`
-                        @see uwmcs_ecare_scheduling_preprocess_node()
-                    #}
-                    {% if accepting_returning or accepting_new %}
-                        <div class="provider-page__section1-accepting-patients">
-                            {% if accepting_new and accepting_returning %}
-                                <span class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></span>
-                                {{ "Accepting new and returning patients"|t }}
-                            {% elseif accepting_returning and (not accepting_new)  %}
-                                <span class="uwm-icon uwm-icon--accepting-patients-purple" aria-hidden="true"></span>
-                                {{ "Accepting returning patients only"|t }}
-                            {% elseif accepting_new and (not accepting_returning) %}
-                                {#
-                                    NOTE: this case is probably unrealistic and
-                                    indicates bad data. Handle it by providing
-                                    what options we know we have.
-                                #}
-                                <span class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></span>
-                                {{ "Accepting new patients"|t }}
-                            {% else %}
-                                {#
-                                    No message if provider does not accept any
-                                    type of appointments.
-                                #}
+                {% if has_ratings or not is_independent %}
+                    <div class="provider-page__section1-area1-subsection">
+                        {% if not is_independent %}
+                            {#
+                                Indicate if provider is accepting new and/or returning
+                                patients.
+                                These booleans are pulled from fields:
+                                `field_res_isacceptingnewpts`
+                                `field_res_isacceptingreturnpts`
+                                @see uwmcs_ecare_scheduling_preprocess_node()
+                            #}
+                            {% if accepting_returning or accepting_new %}
+                                <div class="provider-page__section1-accepting-patients">
+                                    {% if accepting_new and accepting_returning %}
+                                        <span class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></span>
+                                        {{ "Accepting new and returning patients"|t }}
+                                    {% elseif accepting_returning and (not accepting_new)  %}
+                                        <span class="uwm-icon uwm-icon--accepting-patients-purple" aria-hidden="true"></span>
+                                        {{ "Accepting returning patients only"|t }}
+                                    {% elseif accepting_new and (not accepting_returning) %}
+                                        {#
+                                            NOTE: this case is probably unrealistic and
+                                            indicates bad data. Handle it by providing
+                                            what options we know we have.
+                                        #}
+                                        <span class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></span>
+                                        {{ "Accepting new patients"|t }}
+                                    {% else %}
+                                        {#
+                                            No message if provider does not accept any
+                                            type of appointments.
+                                        #}
+                                    {% endif %}
+                                </div>
                             {% endif %}
-                        </div>
-                    {% endif %}
+                        {% endif %}
+                    
+                        {% if has_ratings %}
+                            {% include "@uwmbase/ratings-summary/ratings-summary.twig" %}
+                        {% endif %}
 
-                    {% if has_ratings %}
-                        {% include "@uwmbase/ratings-summary/ratings-summary.twig" %}
-                    {% endif %}
-
-                    {#
-                        Add appointment actions available for this provider.
-                    #}
-                    {% if accepting_returning or accepting_new %}
-                        <div class="provider-page__section1-appt-actions">
-                            {% include '@uwmbase/provider-page/node--res-provider--appointment-actions.html.twig' with {
-                                'modal_appt_context': 'provider_page',
-                                'class_prefix': 'provider-page__section1'
-                            } %}
-                        </div>
-                    {% endif %}
-                </div>
-            </div>
+                        {% if not is_independent %}
+                            {#
+                                Add appointment actions available for this provider.
+                            #}
+                            {% if accepting_returning or accepting_new %}
+                                <div class="provider-page__section1-appt-actions">
+                                    {% include '@uwmbase/provider-page/node--res-provider--appointment-actions.html.twig' with {
+                                        'modal_appt_context': 'provider_page',
+                                        'class_prefix': 'provider-page__section1'
+                                    } %}
+                                </div>
+                            {% endif %}
+                        {% endif %}    
+                    </div><!-- /.provider-page__section1-area1-subsection -->
+                {% endif %}
+            </div><!-- /.provider-page__section1-area1 -->
             <div class="provider-page__section1-area2">
                 <h1 class="provider-page__section1-name page-title d-none d-lg-block">{{ label }}</h1>
                 <div class="provider-page__section1-taxonomy">
-                  {% if taxonomy_terms.expertises is not empty %}
+                  {% if taxonomy_terms.expertises is not empty or taxonomy_terms.specialties_unindexed is not empty %}
                       <div{{ specialties_subsection_attributes }}>
                           <h2 class="provider-page__section1-subheading">{{ (taxonomy_terms.expertises|length > 1) ? "Medical Specialties"|t : "Medical Specialty"|t }}</h2>
                           <ul class="provider-page__section1-list">
-                              {% for term in taxonomy_terms.expertises %}
+                              {% for term in taxonomy_terms.expertises|merge(taxonomy_terms.specialties_unindexed) %}
                                   <li class="provider-page__section1-list-item">
                                       {%- if term.url is not empty %}
                                           {{- uwm_cta_link(term.name, term.url, ['text-link-blue', 'no-underline']) -}}
