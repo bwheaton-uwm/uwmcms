@@ -1,0 +1,12 @@
+{
+    "name": "uwm/uwm_binaryfountain_commands",
+    "description": "Extension to provide new drush commands.",
+    "type": "drupal-drush",
+    "extra": {
+        "drush": {
+            "services": {
+                "drush.services.yml": "^9"
+            }
+        }
+    }
+}
