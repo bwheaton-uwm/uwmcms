@@ -4,9 +4,9 @@ namespace Drupal\uwm_binaryfountain_commands\Commands;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\node\Entity\Node;
 use Drupal\uwm_binaryfountain_reviews\Controller\UwmAttachNodeReviews;
 use Drush\Commands\DrushCommands;
-use Drupal\node\Entity\Node;
 
 /**
  * A Drush uwm_binaryfountain_commands command.
@@ -80,24 +80,26 @@ class UwmBinaryFountainCommands extends DrushCommands {
    * @command uwm:refresh-binary-fountain-review
    * @options providerNpi The provide NPI to match and update in Drupal.
    *
-   * @usage uwm:refresh-binary-fountain-review 888
-   *   Fetch new Binary Fountain API results for the provider having NPI 888.
+   * @return null
+   *   No return values used.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   *
+   * @usage uwm:refresh-binary-fountain-review 888
+   *   Fetch new Binary Fountain API results for the provider having NPI 888.
    */
   public function refreshBinaryFountainReview($providerNpi = NULL) {
 
     if (!$providerNpi) {
       $this->loggerChannelFactory->get(__CLASS__)
-        ->notice('@class did not receive provider NPI (@npi) to update', [
-          '@class' => __CLASS__,
+        ->notice('Did not receive provider NPI (@npi) to update', [
           '@npi' => $providerNpi,
         ]);
+      return NULL;
     }
 
-    $nodes = \Drupal::entityTypeManager()
-      ->getStorage('node')
+    $nodes = \Drupal::entityTypeManager()->getStorage('node')
       ->loadByProperties(['field_res_npi' => $providerNpi]);
 
     if ($node = reset($nodes)) {
@@ -105,8 +107,7 @@ class UwmBinaryFountainCommands extends DrushCommands {
       new UwmAttachNodeReviews($node, TRUE);
 
       $this->loggerChannelFactory->get(__CLASS__)
-        ->notice('@class Updating node (@nid) matching NPI (@npi).', [
-          '@class' => __CLASS__,
+        ->notice('Updating node (@nid) matching NPI (@npi).', [
           '@nid' => $node->id(),
           '@npi' => $providerNpi,
         ]);
@@ -114,8 +115,7 @@ class UwmBinaryFountainCommands extends DrushCommands {
     else {
 
       $this->loggerChannelFactory->get(__CLASS__)
-        ->warning('@class could not find provider matching NPI (@npi).', [
-          '@class' => __CLASS__,
+        ->warning('Could not find provider matching NPI (@npi).', [
           '@npi' => $providerNpi,
         ]);
 
@@ -136,13 +136,22 @@ class UwmBinaryFountainCommands extends DrushCommands {
    * @options refresh-all Flag to confirm many should be refreshed.
    * @options refresh-limit Flag to set the maximum number to update.
    *
-   * @usage uwm:refresh-all-binary-fountain-reviews --refresh-all true --refresh-limit 20
-   *   providerNpi is the National Provider Id of a single
+   * @return null
+   *   No return values used.
+   *
+   * @usage uwm:refresh-all-binary-fountain-reviews --refresh-all true
+   *   --refresh-limit 20 providerNpi is the National Provider Id of a single
    */
   public function refreshAllBinaryFountainReviews(array $options = [
     'refresh-all' => FALSE,
     'refresh-limit' => 10,
   ]) {
+
+    if (!$options['refresh-all']) {
+      $this->loggerChannelFactory->get(__CLASS__)
+        ->notice('We did not receive refresh-all flag so quitting early. Note a limit will still be enforced.');
+      return NULL;
+    }
 
     $result = \Drupal::entityQuery('node')
       ->condition('type', 'res_provider')
@@ -155,8 +164,7 @@ class UwmBinaryFountainCommands extends DrushCommands {
 
       $nodeIds = array_slice($result, 0, $options['refresh-limit']);
       $this->loggerChannelFactory->get(__CLASS__)
-        ->notice('@class Starting refresh of these nodes: @nodeIds.', [
-          '@class' => __CLASS__,
+        ->notice('Starting refresh of these nodes: @nodeIds.', [
           '@nodeIds' => implode(', ', $nodeIds),
         ]);
 
@@ -167,8 +175,7 @@ class UwmBinaryFountainCommands extends DrushCommands {
         new UwmAttachNodeReviews($node, TRUE);
 
         $this->loggerChannelFactory->get(__CLASS__)
-          ->notice('@class Updating node (@nid) reviews.', [
-            '@class' => __CLASS__,
+          ->notice('Updating node (@nid) reviews.', [
             '@nid' => $node->id(),
           ]);
 
