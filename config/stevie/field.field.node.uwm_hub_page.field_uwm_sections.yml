@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_uwm_sections
     - node.type.uwm_hub_page
+    - paragraphs.paragraphs_type.uwm_block
     - paragraphs.paragraphs_type.uwm_featured_story
     - paragraphs.paragraphs_type.uwm_section
   module:
@@ -25,60 +26,106 @@ settings:
     negate: 0
     target_bundles:
       uwm_section: uwm_section
+      uwm_block: uwm_block
       uwm_featured_story: uwm_featured_story
     target_bundles_drag_drop:
-      uwm_basic_content:
-        weight: -33
-        enabled: false
-      uwm_accordion:
-        weight: -32
-        enabled: false
-      uwm_accordion_section:
-        weight: -31
-        enabled: false
-      uwm_block:
-        weight: -30
-        enabled: false
-      uwm_full_html:
-        weight: -29
-        enabled: false
       uwm_section:
         enabled: true
-        weight: -28
-      uwm_view:
-        weight: -27
-        enabled: false
-      detailed_contact_card:
-        weight: -26
-        enabled: false
-      headshot_card:
-        weight: -25
-        enabled: false
-      uwm_card:
-        weight: -24
-        enabled: false
-      uwm_cta_link:
-        weight: -23
-        enabled: false
-      uwm_grid:
-        weight: -22
-        enabled: false
-      uwm_image:
-        weight: -21
-        enabled: false
-      uwm_image_hero:
-        weight: -20
-        enabled: false
-      uwm_link_with_icon:
-        weight: -19
-        enabled: false
-      uwm_media:
-        weight: -18
-        enabled: false
-      uwm_modal:
-        weight: 19
-        enabled: false
+        weight: -67
+      uwm_block:
+        enabled: true
+        weight: -66
       uwm_featured_story:
         enabled: true
-        weight: 28
+        weight: -65
+      uwm_basic_content:
+        weight: -64
+        enabled: false
+      uwm_accordion:
+        weight: -63
+        enabled: false
+      uwm_accordion_section:
+        weight: -62
+        enabled: false
+      uwm_full_html:
+        weight: -61
+        enabled: false
+      uwm_view:
+        weight: -60
+        enabled: false
+      detailed_contact_card:
+        weight: -59
+        enabled: false
+      headshot_card:
+        weight: -58
+        enabled: false
+      uwm_card:
+        weight: -57
+        enabled: false
+      uwm_cta_link:
+        weight: -56
+        enabled: false
+      uwm_grid:
+        weight: -55
+        enabled: false
+      uwm_image:
+        weight: -54
+        enabled: false
+      uwm_image_hero:
+        weight: -53
+        enabled: false
+      uwm_link_with_icon:
+        weight: -52
+        enabled: false
+      uwm_media:
+        weight: -51
+        enabled: false
+      uwm_modal:
+        weight: -50
+        enabled: false
+      award:
+        weight: -49
+        enabled: false
+      board_certification:
+        weight: -48
+        enabled: false
+      degree:
+        weight: -47
+        enabled: false
+      education_history:
+        weight: -46
+        enabled: false
+      half_wide_hero:
+        weight: -45
+        enabled: false
+      hours_for_day:
+        weight: -44
+        enabled: false
+      hours_of_operation:
+        weight: -43
+        enabled: false
+      uwm_3_col_proof_points:
+        weight: -42
+        enabled: false
+      uwm_accent_heading:
+        weight: -41
+        enabled: false
+      uwm_accordion_sub_section:
+        weight: -40
+        enabled: false
+      uwm_content_reference:
+        weight: -39
+        enabled: false
+      uwm_featured_clinics:
+        weight: -38
+        enabled: false
+      uwm_quiz_question:
+        weight: -37
+        enabled: false
+      uwm_sections_medical_services:
+        weight: -36
+        enabled: false
+      uwm_text:
+        weight: -35
+        enabled: false
 field_type: entity_reference_revisions

@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_uwm_sections
     - node.type.uwm_medical_service
     - paragraphs.paragraphs_type.half_wide_hero
+    - paragraphs.paragraphs_type.uwm_block
     - paragraphs.paragraphs_type.uwm_featured_story
     - paragraphs.paragraphs_type.uwm_sections_medical_services
   module:
@@ -28,6 +29,7 @@ settings:
       uwm_sections_medical_services: uwm_sections_medical_services
       uwm_featured_story: uwm_featured_story
       half_wide_hero: half_wide_hero
+      uwm_block: uwm_block
     target_bundles_drag_drop:
       uwm_sections_medical_services:
         enabled: true
@@ -38,46 +40,46 @@ settings:
       half_wide_hero:
         enabled: true
         weight: -65
-      award:
+      uwm_block:
+        enabled: true
         weight: -64
-        enabled: false
-      board_certification:
+      award:
         weight: -63
         enabled: false
-      degree:
+      board_certification:
         weight: -62
         enabled: false
-      detailed_contact_card:
+      degree:
         weight: -61
         enabled: false
-      education_history:
+      detailed_contact_card:
         weight: -60
         enabled: false
-      headshot_card:
+      education_history:
         weight: -59
         enabled: false
-      hours_for_day:
+      headshot_card:
         weight: -58
         enabled: false
-      hours_of_operation:
+      hours_for_day:
         weight: -57
         enabled: false
-      uwm_3_col_proof_points:
+      hours_of_operation:
         weight: -56
         enabled: false
-      uwm_accordion:
+      uwm_3_col_proof_points:
         weight: -55
         enabled: false
-      uwm_accordion_section:
+      uwm_accordion:
         weight: -54
         enabled: false
-      uwm_accordion_sub_section:
+      uwm_accordion_section:
         weight: -53
         enabled: false
-      uwm_basic_content:
+      uwm_accordion_sub_section:
         weight: -52
         enabled: false
-      uwm_block:
+      uwm_basic_content:
         weight: -51
         enabled: false
       uwm_card:
