@@ -1,0 +1,27 @@
+uuid: 7f2bb9ed-5e4c-4b4b-ba48-ab704b0fd8fd
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_uwm_background_color
+field_name: field_uwm_background_color
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: light-gray
+      label: 'Light gray'
+    -
+      value: mid-purple
+      label: Mid-purple
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,21 @@
+uuid: 82bbccdc-3c05-4225-819b-ae30962b755d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.banner_content
+    - field.storage.block_content.field_uwm_image_width
+  module:
+    - options
+id: block_content.banner_content.field_uwm_image_width
+field_name: field_uwm_image_width
+entity_type: block_content
+bundle: banner_content
+label: 'Image Width'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

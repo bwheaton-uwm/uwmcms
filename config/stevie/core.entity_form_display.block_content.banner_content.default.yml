@@ -5,18 +5,58 @@ dependencies:
   config:
     - block_content.type.banner_content
     - entity_browser.browser.media_browser
+    - field.field.block_content.banner_content.field_uwm_background_color
     - field.field.block_content.banner_content.field_uwm_body_content
+    - field.field.block_content.banner_content.field_uwm_image_area_width
+    - field.field.block_content.banner_content.field_uwm_image_position
+    - field.field.block_content.banner_content.field_uwm_image_width
     - field.field.block_content.banner_content.field_uwm_media_image
     - field.field.block_content.banner_content.field_uwm_section_heading
   module:
     - entity_browser
+    - field_group
     - paragraphs
     - text
+third_party_settings:
+  field_group:
+    group_image_a:
+      children:
+        - field_uwm_image_area_width
+        - field_uwm_image_position
+      parent_name: group_settings
+      weight: 6
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Image area options'
+    group_settings:
+      children:
+        - field_uwm_background_color
+        - field_uwm_image_width
+        - group_image_a
+      parent_name: ''
+      weight: 6
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: true
+        required_fields: true
+      label: Settings
 id: block_content.banner_content.default
 targetEntityType: block_content
 bundle: banner_content
 mode: default
 content:
+  field_uwm_background_color:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_uwm_body_content:
     type: paragraphs
     weight: 2
@@ -35,6 +75,24 @@ content:
         collapse_edit_all: collapse_edit_all
         add_above: '0'
     third_party_settings: {  }
+    region: content
+  field_uwm_image_area_width:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_uwm_image_position:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_uwm_image_width:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
     region: content
   field_uwm_media_image:
     type: entity_browser_entity_reference
@@ -69,7 +127,7 @@ content:
     third_party_settings: {  }
   moderation_state:
     type: string_textfield
-    weight: 4
+    weight: 8
     region: content
     settings:
       size: 60

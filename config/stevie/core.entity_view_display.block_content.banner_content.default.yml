@@ -4,17 +4,29 @@ status: true
 dependencies:
   config:
     - block_content.type.banner_content
+    - field.field.block_content.banner_content.field_uwm_background_color
     - field.field.block_content.banner_content.field_uwm_body_content
+    - field.field.block_content.banner_content.field_uwm_image_area_width
+    - field.field.block_content.banner_content.field_uwm_image_position
+    - field.field.block_content.banner_content.field_uwm_image_width
     - field.field.block_content.banner_content.field_uwm_media_image
     - field.field.block_content.banner_content.field_uwm_section_heading
   module:
     - entity_reference_revisions
+    - options
     - text
 id: block_content.banner_content.default
 targetEntityType: block_content
 bundle: banner_content
 mode: default
 content:
+  field_uwm_background_color:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
   field_uwm_body_content:
     type: entity_reference_revisions_entity_view
     weight: 4
@@ -24,12 +36,33 @@ content:
       link: ''
     third_party_settings: {  }
     region: content
+  field_uwm_image_area_width:
+    weight: 7
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_uwm_image_position:
+    weight: 8
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_uwm_image_width:
+    weight: 6
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
   field_uwm_media_image:
     weight: 0
     label: hidden
     settings:
-      link: true
       view_mode: default
+      link: false
     third_party_settings: {  }
     type: entity_reference_entity_view
     region: content

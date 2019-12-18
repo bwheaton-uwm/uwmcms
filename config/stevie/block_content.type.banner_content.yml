@@ -3,6 +3,6 @@ langcode: en
 status: true
 dependencies: {  }
 id: banner_content
-label: Banner Content
+label: 'Banner Content'
 revision: 1
 description: 'Banner Content can have an image, a heading, body text, and a button. It can be used as a reusable block.'
