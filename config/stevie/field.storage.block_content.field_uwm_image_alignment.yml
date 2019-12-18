@@ -1,22 +1,25 @@
-uuid: 9eb82a5f-bbd6-42db-97b8-8b0b6bd14943
+uuid: 569e5b8d-a66c-4e97-9cfb-db51d16682c6
 langcode: en
 status: true
 dependencies:
   module:
     - block_content
     - options
-id: block_content.field_uwm_image_position
-field_name: field_uwm_image_position
+id: block_content.field_uwm_image_alignment
+field_name: field_uwm_image_alignment
 entity_type: block_content
 type: list_string
 settings:
   allowed_values:
     -
-      value: left
-      label: Left
+      value: center
+      label: Center
     -
       value: right
       label: Right
+    -
+      value: left
+      label: Left
   allowed_values_function: ''
 module: options
 locked: false

@@ -6,6 +6,7 @@ dependencies:
     - block_content.type.banner_content
     - field.field.block_content.banner_content.field_uwm_background_color
     - field.field.block_content.banner_content.field_uwm_body_content
+    - field.field.block_content.banner_content.field_uwm_image_alignment
     - field.field.block_content.banner_content.field_uwm_image_area_width
     - field.field.block_content.banner_content.field_uwm_image_position
     - field.field.block_content.banner_content.field_uwm_image_width
@@ -21,7 +22,7 @@ bundle: banner_content
 mode: default
 content:
   field_uwm_background_color:
-    weight: 5
+    weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -29,29 +30,36 @@ content:
     region: content
   field_uwm_body_content:
     type: entity_reference_revisions_entity_view
-    weight: 4
+    weight: 2
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
     region: content
-  field_uwm_image_area_width:
+  field_uwm_image_alignment:
     weight: 7
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
+  field_uwm_image_area_width:
+    weight: 6
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
   field_uwm_image_position:
-    weight: 8
+    weight: 5
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
   field_uwm_image_width:
-    weight: 6
+    weight: 4
     label: hidden
     settings: {  }
     third_party_settings: {  }

@@ -7,6 +7,7 @@ dependencies:
     - entity_browser.browser.media_browser
     - field.field.block_content.banner_content.field_uwm_background_color
     - field.field.block_content.banner_content.field_uwm_body_content
+    - field.field.block_content.banner_content.field_uwm_image_alignment
     - field.field.block_content.banner_content.field_uwm_image_area_width
     - field.field.block_content.banner_content.field_uwm_image_position
     - field.field.block_content.banner_content.field_uwm_image_width
@@ -22,9 +23,9 @@ third_party_settings:
     group_image_a:
       children:
         - field_uwm_image_area_width
-        - field_uwm_image_position
+        - field_uwm_image_alignment
       parent_name: group_settings
-      weight: 6
+      weight: 7
       format_type: details
       format_settings:
         id: ''
@@ -36,6 +37,7 @@ third_party_settings:
       children:
         - field_uwm_background_color
         - field_uwm_image_width
+        - field_uwm_image_position
         - group_image_a
       parent_name: ''
       weight: 6
@@ -76,6 +78,12 @@ content:
         add_above: '0'
     third_party_settings: {  }
     region: content
+  field_uwm_image_alignment:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_uwm_image_area_width:
     weight: 7
     settings: {  }
@@ -83,7 +91,7 @@ content:
     type: options_select
     region: content
   field_uwm_image_position:
-    weight: 8
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     type: options_select
