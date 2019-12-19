@@ -1,0 +1,9 @@
+uuid: 0b9b40af-9bb1-4cfe-9611-3f097e5f78e1
+langcode: en
+status: true
+dependencies: {  }
+id: uwm_banner_content
+label: 'Banner Content'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

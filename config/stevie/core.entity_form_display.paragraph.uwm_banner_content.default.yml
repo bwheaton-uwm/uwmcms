@@ -1,0 +1,22 @@
+uuid: 22b76cb4-c48e-4e06-9824-6b094bcd4027
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uwm_banner_content.field_uwm_block
+    - paragraphs.paragraphs_type.uwm_banner_content
+id: paragraph.uwm_banner_content.default
+targetEntityType: paragraph
+bundle: uwm_banner_content
+mode: default
+content:
+  field_uwm_block:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

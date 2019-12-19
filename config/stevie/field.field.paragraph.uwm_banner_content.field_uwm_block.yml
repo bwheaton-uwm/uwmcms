@@ -1,0 +1,28 @@
+uuid: a5dfd1c7-53b3-4bff-a405-caf2bce26513
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.banner_content
+    - field.storage.paragraph.field_uwm_block
+    - paragraphs.paragraphs_type.uwm_banner_content
+id: paragraph.uwm_banner_content.field_uwm_block
+field_name: field_uwm_block
+entity_type: paragraph
+bundle: uwm_banner_content
+label: 'Content Block'
+description: 'Choose a reusable banner content block from the <a href="/admin/structure/block/block-content" target="new">block library</a>.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      banner_content: banner_content
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
