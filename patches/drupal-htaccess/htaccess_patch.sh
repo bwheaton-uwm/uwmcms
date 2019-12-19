@@ -38,12 +38,12 @@ test=`patch -p1 -N --dry-run --silent < $patch_file 2>&1`
 if [ $? -eq 0 ];
 then
 
-
     echo "UWM-CMS: Applying our patch now:"
     echo "UWM-CMS: patch -p1 -N < $patch_file"
     patch -p1 -N < $patch_file
 
 else
+
     echo "UWM-CMS: $test"
     echo "UWM-CMS: Seems the patch was already applied."
 

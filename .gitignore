@@ -40,7 +40,6 @@ docroot/themes/custom/*/css
 docroot/themes/custom/*/dist
 docroot/themes/custom/*/styleguide
 docroot/themes/custom/*/maps
-
 docroot/robots.txt
 
 # Ignore build artifacts
@@ -121,6 +120,7 @@ vendor/.git
 
 #Sass
 .sass-cache
+*.js.map
 *.css.map
 
 #Netbeans IDE
@@ -152,5 +152,8 @@ drush/sites/.checksums
 
 # Deprecation detector rules
 .rules
+
 docroot/.htaccess
 private_files
+custom_logs
+

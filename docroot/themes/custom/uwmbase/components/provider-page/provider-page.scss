@@ -70,7 +70,8 @@ body.is-page-node-type-res-provider {
   display: flex;
   flex-direction: column;
   @include media-breakpoint-up('sm') {
-    padding: 12px 30px 0 30px;
+    // Top padding is additional to 6px margin-top on .provider-page__section1-area2-subsection
+    padding: 16px 30px 0 30px;
   }
   @include media-breakpoint-up('lg') {
     flex: 0 0 66.66667%;
@@ -130,14 +131,43 @@ body.is-page-node-type-res-provider {
     margin-right: 8px;
   }
 }
-.provider-page__section1-make-appt-btn {
+.provider-page__section1-appt-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.provider-page__section1-appt-call {
+  margin-top: 14px;
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+.provider-page__section1-appt-link-direct {
+  margin-top: 14px;
+  margin-bottom: 0;
+  font-size: 1rem;
+
+  a {
+    @include link-blue-hover-underline;
+  }
+
+  .uwm-icon--arrow-right-blue {
+    display: inline-block;
+    margin-left: 0.375rem; // 6px
+  }
+
+  // Prevent the arrow from wrapping to next line separately from last word.
+  // (These widths are specific to the exact wording in the template.)
+  @media (min-width: 526px) and (max-width: 560px) {
+    max-width: 430px;
+  }
+
+}
+.provider-page__section1-appt-flow-btn {
+  display: block;
+  cursor: pointer;
   margin-top: 16px;
-  text-align: center;
   @include media-breakpoint-up('lg') {
     margin-top: 18px;
-  }
-  .btn {
-    width: auto;
   }
 }
 .provider-page__section1-taxonomy {

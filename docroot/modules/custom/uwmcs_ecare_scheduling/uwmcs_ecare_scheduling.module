@@ -6,12 +6,227 @@
  */
 
 use Drupal\uwmcs_ecare_scheduling\Controller\ECareController;
+use Drupal\Component\Render\FormattableMarkup;
 
 /**
  * Implements theme_preprocess_node().
  */
 function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
 
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $variables['node'];
+
+  // Retrieve appointment scheduling values and visit type labels to use in
+  // appointment flow template.
+  if ($node->bundle() === 'res_provider') {
+
+    // Set defaults for when fields are not populated.
+    $variables['accepting_new'] = FALSE;
+    $variables['accepting_returning'] = FALSE;
+
+    $variables['epic_id'] = NULL;
+    $variables['direct_scheduling'] = FALSE;
+    $variables['open_scheduling'] = FALSE;
+    $variables['visit_type_ids'] = NULL;
+
+    $field_vars = [
+      'field_res_isacceptingnewpts' => 'accepting_new',
+      'field_res_isacceptingreturnpts' => 'accepting_returning',
+      'field_res_ser_id' => 'epic_id',
+      'field_res_is_direct_scheduling' => 'direct_scheduling',
+      'field_res_is_open_scheduling' => 'open_scheduling',
+      'field_res_visit_type_id' => 'visit_type_ids',
+    ];
+
+    foreach ($field_vars as $field_name => $var_name) {
+
+      if ($node->hasField($field_name) && !$node->get($field_name)->isEmpty()) {
+        $field = $node->get($field_name);
+
+        switch ($field_name) {
+          case 'field_res_ser_id':
+            // Get the exact value.
+            $variables[$var_name] = $field->first()->getValue()['value'];
+            break;
+
+          case 'field_res_isacceptingnewpts':
+          case 'field_res_isacceptingreturnpts':
+          case 'field_res_is_open_scheduling':
+          case 'field_res_is_direct_scheduling':
+            // Convert to boolean.
+            $variables[$var_name] = (boolean) $field->first()->getValue()['value'];
+            break;
+
+          case 'field_res_visit_type_id':
+            // Collect multiple values.
+            foreach ($field->getValue() as $val) {
+              $variables[$var_name][] = $val['value'];
+            }
+            break;
+
+        }
+
+      }
+
+    }
+
+    // Get labels for open scheduling visit types.
+    // TODO: get these from however we store them.
+    $variables['visit_type_names'] = NULL;
+    $variables['visit_type_descriptions'] = NULL;
+
+    if ($variables['open_scheduling'] && !empty($variables['visit_type_ids'])) {
+
+      $variables['visit_type_names'] = [
+        9000 => 'Office',
+        4466 => 'New Pregnancy',
+        103619 => 'Wellness',
+        9035 => 'Flu Shot',
+      ];
+
+      $variables['visit_type_descriptions'] = [
+        9000 => 'A visit to address a specific concern',
+        4466 => 'A visit within the first 7-12 weeks of pregnancy',
+        103619 => 'A preventative care visit or routine physical exam',
+        9035 => 'An immunization against the flu (available at select locations)',
+      ];
+
+    }
+
+    // TODO: remove temporary testing info / convert to logging ---------------.
+    $visit_type_names_str = [];
+    $visit_type_desc_str = [];
+    if (!empty($variables['visit_type_ids'])) {
+      foreach ($variables['visit_type_ids'] as $vt_id) {
+        $visit_type_names_str[$vt_id] = $vt_id . ': ' . (!empty($variables['visit_type_names'][$vt_id]) ? $variables['visit_type_names'][$vt_id] : '--');
+        $visit_type_desc_str[$vt_id] = $vt_id . ': ' . (!empty($variables['visit_type_descriptions'][$vt_id]) ? $variables['visit_type_descriptions'][$vt_id] : '--');
+      }
+    }
+    $testing_data_original = [
+      '@epic_id_1' => ($variables['epic_id'] ? $variables['epic_id'] : "--"),
+      '@direct_scheduling_1' => ($variables['direct_scheduling'] ? "yes" : "no"),
+      '@open_scheduling_1' => ($variables['open_scheduling'] ? "yes" : "no"),
+      '@visit_type_ids_1' => ($variables['visit_type_ids'] ? implode(", ", $variables['visit_type_ids']) : "--"),
+      '@visit_type_names_1' => ($visit_type_names_str ? implode(" | ", $visit_type_names_str) : "--"),
+      '@visit_type_desc_1' => ($visit_type_desc_str ? implode(" | ", $visit_type_desc_str) : "--"),
+    ];
+
+    // Check and adjust for bad data.
+    // If necessary data is missing, disable open/direct scheduling accordingly
+    // or remove individual visit types, so that we don't create broken links to
+    // Epic. To the end user the experience is equivalent to when the provider
+    // doesn't have those options.
+    $bad_data_msg = [];
+
+    // 1) If no Epic ID, can't link to open or direct scheduling.
+    if (($variables['open_scheduling'] || $variables['direct_scheduling']) && empty($variables['epic_id'])) {
+      $variables['open_scheduling'] = FALSE;
+      $variables['direct_scheduling'] = FALSE;
+      $variables['visit_type_ids'] = NULL;
+
+      $visit_type_names_str = [];
+      $visit_type_desc_str = [];
+      $bad_data_msg[] = t("Open and/or direct scheduling enabled, but missing Epic ID. => Setting open and direct scheduling to disabled.");
+    }
+
+    // 2) Check for and remove any visit types missing the name or description.
+    if ($variables['open_scheduling'] && !empty($variables['visit_type_ids'])) {
+
+      foreach ($variables['visit_type_ids'] as $i => $vt_id) {
+        if (empty($variables['visit_type_names'][$vt_id]) || empty($variables['visit_type_descriptions'][$vt_id])) {
+          unset($variables['visit_type_ids'][$i]);
+
+          if (isset($visit_type_names_str[$vt_id])) {
+            unset($visit_type_names_str[$vt_id]);
+          }
+          if (isset($visit_type_desc_str[$vt_id])) {
+            unset($visit_type_desc_str[$vt_id]);
+          }
+          $bad_data_msg[] = t("Visit type @vt_id missing name and/or description. => Removing this visit type option.", ['@vt_id' => $vt_id]);
+        }
+      }
+
+    }
+
+    // 3) If no complete visit types (both name and description), can't link to
+    // open scheduling.
+    if ($variables['open_scheduling'] && empty($variables['visit_type_ids'])) {
+      $variables['open_scheduling'] = FALSE;
+
+      $visit_type_names_str = [];
+      $visit_type_desc_str = [];
+      $bad_data_msg[] = t("Open scheduling enabled, but missing valid visit types (having name and description). => Setting open scheduling to disabled.");
+    }
+
+    // TODO: remove temporary testing info / convert to logging ---------------.
+    if (!empty($bad_data_msg)) {
+      $testing_data_cleaned = [
+        '@epic_id_2' => ($variables['epic_id'] ? $variables['epic_id'] : "--"),
+        '@direct_scheduling_2' => ($variables['direct_scheduling'] ? "yes" : "no"),
+        '@open_scheduling_2' => ($variables['open_scheduling'] ? "yes" : "no"),
+        '@visit_type_ids_2' => ($variables['visit_type_ids'] ? implode(", ", $variables['visit_type_ids']) : "--"),
+        '@visit_type_names_2' => ($visit_type_names_str ? implode(" | ", $visit_type_names_str) : "--"),
+        '@visit_type_desc_2' => ($visit_type_desc_str ? implode(" | ", $visit_type_desc_str) : "--"),
+      ];
+
+      $variables['testing_data'] = [
+        '#theme' => 'status_messages',
+        '#message_list' => [
+          'warning' => [
+            t("<strong>Provider scheduling data:</strong><br/><br/>
+            Accepting new? @accepting_new<br/>
+            Accepting returning? @accepting_returning<br/><br/>
+            <em>Bad data found:</em><br/>
+            <em>@bad_data_msg</em><br/><br/>
+            <em>Original:</em><br/><br/>
+            Epic ID: @epic_id_1<br/>
+            Direct scheduling enabled? @direct_scheduling_1<br/>
+            Open scheduling enabled? @open_scheduling_1<br/>
+            Visit type IDs: @visit_type_ids_1<br/>
+            Visit type names: @visit_type_names_1<br/>
+            Visit type descriptions: @visit_type_desc_1<br/><br/>
+            <em>Cleaned:</em><br/><br/>
+            Epic ID: @epic_id_2<br/>
+            Direct scheduling enabled? @direct_scheduling_2<br/>
+            Open scheduling enabled? @open_scheduling_2<br/>
+            Visit type IDs: @visit_type_ids_2<br/>
+            Visit type names: @visit_type_names_2<br/>
+            Visit type descriptions: @visit_type_desc_2",
+            array_merge([
+              '@bad_data_msg' => new FormattableMarkup(implode("<br/>", $bad_data_msg), []),
+              '@accepting_new' => ($variables['accepting_new'] ? "yes" : "no"),
+              '@accepting_returning' => ($variables['accepting_returning'] ? "yes" : "no"),
+            ], $testing_data_original, $testing_data_cleaned)),
+          ],
+        ],
+      ];
+    }
+    else {
+      $variables['testing_data'] = [
+        '#theme' => 'status_messages',
+        '#message_list' => [
+          'warning' => [
+            t("<strong>Provider scheduling data:</strong><br/><br/>
+            Accepting new? @accepting_new<br/>
+            Accepting returning? @accepting_returning<br/><br/>
+            Epic ID: @epic_id_1<br/>
+            Direct scheduling enabled? @direct_scheduling_1<br/>
+            Open scheduling enabled? @open_scheduling_1<br/>
+            Visit type IDs: @visit_type_ids_1<br/>
+            Visit type names: @visit_type_names_1<br/>
+            Visit type descriptions: @visit_type_desc_1",
+            array_merge([
+              '@accepting_new' => ($variables['accepting_new'] ? "yes" : "no"),
+              '@accepting_returning' => ($variables['accepting_returning'] ? "yes" : "no"),
+            ], $testing_data_original)),
+          ],
+        ],
+      ];
+    }
+
+  }
+
+  // TODO: unused?
   if (!empty($variables['node'])
       && $variables['node']->getType() === 'fact_page'
   ) {
@@ -23,5 +238,5 @@ function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
     $variables['ecare_modal'] = $eCareCtrl->eCareWidget();
 
   }
-
+  // End TODO.
 }

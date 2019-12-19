@@ -48,6 +48,25 @@ trumba:
   js:
     //www.trumba.com/scripts/spuds.js?ver=5.1.2: { type: external, minified: true }
 
+bootstrap:
+  js:
+    dist/vendor/bootstrap/js/util.js: {}
+
+# When embedding the eCare open scheduling widget as an iframe, these assets
+# hosted on the eCare site, and a JS snippet, are required to be included in
+# the host (our) page.
+# TODO: TEST ECARE URLS - DO NOT MERGE TO MASTER ##############################
+ecare-open-schedule-embedded-widget:
+  css:
+    component:
+      # https://ecare.uwmedicine.org/prod01/Content/EmbeddedWidget.css: { type: external }
+      https://tstecare18.epic.medical.washington.edu/tst/Content/EmbeddedWidget.css: { type: external }
+  js:
+    # https://ecare.uwmedicine.org/prod01/Content/EmbeddedWidgetController.js: { type: external }
+    https://tstecare18.epic.medical.washington.edu/tst/Content/EmbeddedWidgetController.js: { type: external }
+    dist/js/uwm-ecare-open-schedule-embedded-widget.js: {}
+
+
 # uwmbase css/js libraries
 
 # Define css/js libraries for components. These are used to include styles and javascript only where needed rather
@@ -88,10 +107,6 @@ headshot-card:
   css:
     component:
       dist/css/headshot-card.css: {}
-
-bootstrap:
-  js:
-    dist/vendor/bootstrap/js/util.js: {}
 
 main-container:
   css:
@@ -229,6 +244,25 @@ messages:
   css:
     component:
       dist/css/messages.css: {}
+
+# TODO: extract bootstrap + common modal stuff?
+modal-base:
+  css:
+    component:
+      dist/css/modal-base.css: {}
+  js:
+    dist/vendor/bootstrap/js/modal.js: {}
+  dependencies:
+    - uwmbase/bootstrap
+
+modal-appointment:
+  css:
+    component:
+      dist/css/modal-appointment.css: {}
+  js:
+    dist/js/modal-appointment.js: {}
+  dependencies:
+    - uwmbase/modal-base
 
 modal-video:
   css:

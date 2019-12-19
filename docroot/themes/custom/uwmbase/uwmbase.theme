@@ -146,6 +146,24 @@ function _uwmbase_node_parse_json_field(NodeInterface $node) {
 }
 
 /**
+ * Implements hook_theme().
+ */
+function uwmbase_theme($existing, $type, $theme, $path) {
+
+  return [
+    // Define template for provider appointment flow.
+    // @see modules/custom/uwmcs_ecare_scheduling/src/Controller/UwmSchedulingController
+    'uwm_appointment_provider_flow' => [
+      'variables' => [
+        'node' => NULL,
+      ],
+      'path' => $path . '/components/appointment-flow',
+    ],
+  ];
+
+}
+
+/**
  * Implements hook_theme_registry_alter().
  */
 function uwmbase_theme_registry_alter(&$theme_registry) {
@@ -230,6 +248,17 @@ function uwmbase_page_attachments_alter(&$variables) {
   if ($currentPath == '/node/49301') {
     $variables['#attached']['library'][] = 'uwmbase/trumba';
   }
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function uwmbase_preprocess(&$variables, $hook) {
+
+  // Use `Request` object instead of `path.current` service to get the
+  // end-user-facing requested path, not a Drupal internal path.
+  $variables['request_path'] = ltrim(urldecode(\Drupal::request()->getPathInfo()), '/');
+
 }
 
 /**
@@ -350,6 +379,26 @@ function uwmbase_preprocess_page(&$variables, $hook) {
         }
       }
     }
+
+  }
+
+  // Specify a modal to be included on the page. This enables rendering a modal
+  // once on the page and having multiple links/buttons trigger opening it.
+  // @see layout-sections.twig
+  $variables['modal_include'] = NULL;
+
+  // Modal appointment flow for providers, linked from provider cards:
+  // - provider search page
+  // - any clinic node page with providers tab.
+  if ($route_name === 'view.uwm_providers_search.page_1' || (!empty($node) && $node->bundle() === 'res_clinic' && !$node->get('field_res_providers')->isEmpty())) {
+
+    $variables['modal_include'] = [
+      'template_path' => '@uwmbase/appointment-flow/uwm-appointment-modal.html.twig',
+      'with_vars' => [
+        'flow_type' => 'provider',
+        'modal_appt_context' => 'provider_card',
+      ],
+    ];
 
   }
 
@@ -575,6 +624,13 @@ function uwmbase_preprocess_node(&$variables, $hook) {
 
   }
   elseif ($node->bundle() === 'res_provider') {
+
+    if ($node->hasField('field_res_puma_education')) {
+      $puma_education_values = $node->field_res_puma_education->value;
+      $puma_education_values_decoded = $puma_education_values ? json_decode($puma_education_values) : '';
+      $variables['res_puma_education'] = $puma_education_values_decoded;
+    }
+
     // Pass information about clinics associated with a provider.
     $clinic_entities = $node->field_res_clinics;
 
@@ -748,6 +804,13 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
     // Determine if the provider has languages.
     if ($node->hasField('field_res_languages')) {
       $variables['has_languages'] = !$node->get('field_res_languages')->isEmpty();
+    }
+
+    // Determine if the provider has education hx.
+    if ($node->hasField('field_res_puma_education')) {
+      $education = $node->field_res_puma_education->value ?? [];
+      $education = json_decode($education);
+      $variables['education_history'] = $education;
     }
 
     // Determine taxonomy terms associated with the provider.

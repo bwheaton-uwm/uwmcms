@@ -57,11 +57,17 @@
 @import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
 
+// Fontawesome
+@import "node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "node_modules/@fortawesome/fontawesome-free/scss/regular";
+
+
 // Base-theme overrides.
 @import 'base_theme_overrides';
 
 // Base
 @import 'base/typography';
+@import 'base/chew_icons';
 
 // Components
 @import 'components/page';

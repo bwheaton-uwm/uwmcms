@@ -1,4 +1,35 @@
-$brand-secondary: #008566;
-$uw_purple: #33006f;
+//$fa-font-path: "../node_modules/@fortawesome/fontawesome-free/webfonts";
+$fa-font-path: "../fonts/fontawesome/webfonts";
 
 $font-size-base-xs: 15px;
+
+// Color Overrides
+// Primary
+$uw_purple: #33006f;
+$uw_medicine_gray: #313E48;
+
+// Grayscale
+$dark-base-gray: #343638;
+$medium-gray: #4B545A;
+$light-gray: #F5F5F5;
+
+// Secondary
+$brand-secondary: #008566;
+
+$dark-rain: #006C8A;
+$light-rain: #82CFCD;
+
+$mountain-green: #008566;
+$mountain-green-light: rgba($mountain-green, 0.05);
+$dark-green: rgb(31,116,83);
+
+$well-coral: #C2513D;
+
+$dark-blue: #006c8a;
+$light-blue: rgba($dark-blue, 0.05);
+
+$dark-purple: #37236a;
+$light-purple: rgba($dark-purple, 0.05);
+
+$dark-red: #d53e39;
+$light-red: rgba($dark-red, 0.05);

@@ -17,9 +17,9 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
   track_changes: true
-  urls: 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/media/remote_video?page[offset]=0&page[limit]=50&sort=-changed'
+  urls: 'http://bios-reservoir-test.mktgweb.uwmedicine.org/jsonapi/media/remote_video?page[offset]=0&page[limit]=50&sort=-changed'
   ids:
-    id:
+    uuid:
       type: string
   item_selector: data/
   fields:
@@ -28,9 +28,9 @@ source:
       label: id
       selector: id
     -
-      name: mid
-      label: mid
-      selector: /attributes/drupal_internal__mid
+      name: uuid
+      label: uuid
+      selector: id
     -
       name: name
       label: name
@@ -55,14 +55,17 @@ process:
   bundle:
     plugin: default_value
     default_value: video
+  uid:
+    plugin: default_value
+    default_value: 1
   name: name
   status: status
   created: created
   changed: changed
-  uid:
+  field_media_video_embed_field: video_url
+  field_media_in_library:
     plugin: default_value
     default_value: 1
-  field_media_video_embed_field: video_url
 destination:
   plugin: 'entity:media'
 migration_dependencies: null

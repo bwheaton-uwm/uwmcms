@@ -18,9 +18,11 @@ dependencies:
     - field.field.node.res_provider.field_res_gender
     - field.field.node.res_provider.field_res_image
     - field.field.node.res_provider.field_res_internal_url
+    - field.field.node.res_provider.field_res_is_direct_scheduling
     - field.field.node.res_provider.field_res_is_independent
     - field.field.node.res_provider.field_res_is_open_scheduling
     - field.field.node.res_provider.field_res_isacceptingnewpts
+    - field.field.node.res_provider.field_res_isacceptingreturnpts
     - field.field.node.res_provider.field_res_languages
     - field.field.node.res_provider.field_res_medical_services
     - field.field.node.res_provider.field_res_medical_title
@@ -293,7 +295,9 @@ hidden:
   field_res_academic_title: true
   field_res_department: true
   field_res_internal_url: true
+  field_res_is_direct_scheduling: true
   field_res_is_independent: true
+  field_res_isacceptingreturnpts: true
   field_res_medical_title: true
   field_res_meta_tags: true
   field_res_patients_treated: true

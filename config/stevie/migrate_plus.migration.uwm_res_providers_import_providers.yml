@@ -1,4 +1,4 @@
-uuid: 706554fc-8804-48fb-a1da-8d9ab6c423d7
+uuid: 9c7842d9-5460-46f3-b930-abe55ac666f2
 langcode: en
 status: true
 dependencies:
@@ -19,7 +19,7 @@ source:
   include_raw_data: true
   track_changes: true
   urls:
-    - 'https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed'
+    - 'http://bios-reservoir-test.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed'
   ids:
     uuid:
       type: string
@@ -70,10 +70,6 @@ source:
       label: field_res_internal_url
       selector: /attributes/field_res_internal_url
     -
-      name: field_res_isacceptingnewpts
-      label: field_res_isacceptingnewpts
-      selector: /attributes/field_res_isacceptingnewpts
-    -
       name: field_res_meta_tags
       label: field_res_meta_tags
       selector: /attributes/field_res_meta_tags
@@ -102,6 +98,14 @@ source:
       label: uwm_unique_id
       selector: /attributes/uwm_unique_id
     -
+      name: field_res_isacceptingnewpts
+      label: field_res_isacceptingnewpts
+      selector: /attributes/field_res_isacceptingnewpts
+    -
+      name: field_res_isacceptingreturnpts
+      label: field_res_isacceptingreturnpts
+      selector: /attributes/field_res_isacceptingreturnpts
+    -
       name: field_res_ser_id
       label: field_res_ser_id
       selector: /attributes/field_res_ser_id
@@ -110,6 +114,14 @@ source:
       label: field_res_is_open_scheduling
       selector: /attributes/field_res_is_open_scheduling
     -
+      name: field_res_is_direct_scheduling
+      label: field_res_is_direct_scheduling
+      selector: /attributes/field_res_is_direct_scheduling
+    -
+      name: field_res_visit_type_id
+      label: field_res_visit_type_id
+      selector: /attributes/field_res_visit_type_id
+    -
       name: field_res_is_independent
       label: field_res_is_independent
       selector: /attributes/field_res_is_independent
@@ -117,6 +129,10 @@ source:
       name: uwm_json_packet
       label: uwm_json_packet
       selector: /attributes/uwm_json_packet
+    -
+      name: uwm_edw_puma_education
+      label: uwm_edw_puma_education
+      selector: /attributes/uwm_edw_puma_education
     -
       name: field_res_affiliates
       label: field_res_affiliates
@@ -178,8 +194,6 @@ source:
     -
       name: node_videos
       label: node_videos
-      plugin: migration
-      migration: uwm_res_media_remote_videos
       selector: /relationships/node_videos/data
 process:
   uuid: uuid
@@ -210,12 +224,16 @@ process:
   field_res_biography/summary: field_res_biography/summary
   field_res_gender: field_res_gender
   field_res_internal_url: field_res_internal_url
-  field_res_isacceptingnewpts: field_res_isacceptingnewpts
   field_res_meta_tags: field_res_meta_tags
+  field_res_isacceptingnewpts: field_res_isacceptingnewpts
+  field_res_isacceptingreturnpts: field_res_isacceptingreturnpts
   field_res_ser_id: field_res_ser_id
   field_res_is_open_scheduling: field_res_is_open_scheduling
+  field_res_is_direct_scheduling: field_res_is_direct_scheduling
+  field_res_visit_type_id: field_res_visit_type_id
   field_res_is_independent: field_res_is_independent
   field_uwm_json_packet: uwm_json_packet
+  field_res_puma_education: uwm_edw_puma_education
   field_res_name/title: field_res_name/title
   field_res_name/given: field_res_name/given
   field_res_name/middle: field_res_name/middle
@@ -359,8 +377,7 @@ process:
     process:
       target_id:
         -
-          plugin: migration_lookup
-          migration: uwm_res_media_remote_videos
+          plugin: uwm_media_id_for_uuid
           source: id
         -
           plugin: skip_on_empty

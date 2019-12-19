@@ -1,51 +1,243 @@
-.article {
-  .paragraph--type--body-text {
-    a {
-      border-bottom: 2px solid $brand-primary;
-    }
+//
+// - Styles for Article Nodes
+//
+
+body.page-node-type-article .main-container {
+  // Set a max-width, so the article is 760 px wide.
+  // We'll draw the image and quick-read wider, to
+  // 960 px below, like medium.com. It's possible
+  // styling article.article instead but that risks
+  // sub-headings and other regions will hang odly wide.
+  @media (min-width: $screen-xs) {
+    max-width: 660px;
   }
-}
-.region-content-header {
-  @include clearfix();
-  margin-bottom: 1rem;
-  .field--name-field-categories {
-    .taxonomy-term.count-1 {
-      font-size: $font-size-base * 1.25;
-      font-weight: bold;
-      padding-right: .25em;
-      @media (max-width: $screen-xs) {
-        font-size: $font-size-base-xs * 1.25;
-      }
-    }
-    .taxonomy-term.count-2 {
-      font-family: $font-family-sans-serif;
-      text-transform: uppercase;
-      padding-left: .625em;
-      font-size: .875em;
-      border-left: 1px solid $gray-light;
-      a {
-        color: $gray-dark;
-      }
-    }
+  @media (min-width: $screen-md) {
+    max-width: 820px;
   }
-  .block-entity-fieldnodefield-author,
-  .block-entity-fieldnodecreated {
-    float: left;
-    font-family: $font-family-sans-serif;
-    text-transform: uppercase;
-    font-size: .875em;
-  }
-  .block-entity-fieldnodefield-author {
-    padding-right: 2em;
-    .field--name-field-author .field--item {
-      display: inline;
-    }
-  }
-  .block-entity-fieldnodecreated {
-    font-weight: bold;
-  }
+  // @TODO: add body class "has-right-sidebar", to disable this rule.
+  //&.has-right-sidebar {
+  //  max-width: auto;
+  //}
 }
 
+.article.full {
+
+  // Set article image and quick-read
+  // to 960 px wide and content to 760 px
+  // wide, preferring bootstraps native
+  // sizes.
+  @media (min-width: $screen-sm) {
+    .field.field--name-field-primary-media,
+    .field.field--name-field-quick-read {
+      margin-left: -36px;
+      margin-right: -36px;
+    }
+    .field.field--name-image {
+      max-height: 300px;
+      overflow: hidden;
+    }
+  }
+  @media (min-width: $screen-md) {
+    .field.field--name-field-primary-media,
+    .field.field--name-field-quick-read {
+      margin-left: -100px;
+      margin-right: -100px;
+    }
+    .field.field--name-image {
+      max-height: 440px;
+      overflow: hidden;
+    }
+  }
+
+  color: $dark-base-gray;
+
+  h2 {
+    // mobile to tablet mimics H4
+    margin: 28px 0 20px;
+    color: $dark-base-gray;
+    font-size: 20px;
+    line-height: 1.4; // 28px / 20 font
+    text-transform: none;
+    font-weight: 500;
+
+    @media (min-width: $screen-sm) {
+      // tablet (900px) to desktop mimics H3
+      font-size: 25px;
+      line-height: 1.32; // 33px / 25 font
+    }
+
+    @media (min-width: $screen-md) {
+      // desktop (1200px) up mimics H1
+      font-size: 32px;
+      line-height: 1.25; // 40px / 32 font;
+    }
+  }
+
+  p {
+    margin-bottom: 45px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Add green border, above baseline and offset right
+  a {
+    position: relative;
+    display: inline-block;
+    &:after {
+      content: '';
+      position: absolute;
+      left: 3px;
+      bottom: 5px;
+      height: 6px;
+      width: 100%;
+      background: rgba($light-rain, 0.5);
+      z-index: -1;
+      opacity: .5;
+    }
+    &:hover {
+      font-weight: bold;
+      color: $dark-base-gray;
+
+      &:after {
+        content: '';
+        background: $light-rain
+      }
+    }
+  }
+
+  // Header styles
+  .article-full--header {
+    @include clearfix();
+    font-family: $font-family-sans-serif;
+    font-size: $font-size-base-xs;
+    line-height: 1;
+    margin-bottom: 2.4rem;
+
+    @media (min-width: $screen-sm) {
+      font-size: $font-size-base;
+      margin-bottom: 3.2rem;
+    }
+    // override default article link styles for header
+    a {
+      color: $dark-base-gray;
+
+      &:after {
+        background: none;
+      }
+
+      &:hover,
+      &:active {
+        color: $dark-rain;
+        font-weight: 500;
+      }
+    }
+    .article-full--header__metadata {
+      div {
+        // mobile author & meta mimics Body 4
+        font-size: 14px;
+        line-height: 0.63;
+        font-weight: 400;
+
+        &:first-child {
+          // mobile author adds bold
+          font-weight:  500;
+        }
+
+        @media (min-width: $screen-sm) {
+          // tablet author & meta mimics H8/Body 3
+          font-size: 16px;
+          line-height: .66;
+        }
+      }
+      & > span {
+        margin: 0 2px;
+      }
+      & * {
+        display: inline-block;
+      }
+    }
+    .hierarchical-term-field {
+      & * {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .taxonomy-term.count-1 {
+        text-transform: uppercase;
+        padding: 0 .25rem;
+      }
+      .taxonomy-term.count-2 {
+        padding-left: .25rem;
+      }
+      img.terms-icon {
+        width: 2rem;
+        vertical-align: middle;
+
+        @media (min-width: $screen-sm) {
+          width: 2.4rem;
+        }
+      }
+    }
+    .fact-checked--header * {
+      display: inline-block;
+      vertical-align: top;
+
+      img {
+        margin-top: 1px;
+        width: 1.4rem;
+
+        @media (min-width: $screen-sm) {
+          width: 1.5rem;
+        }
+      }
+    }
+  }
+
+  .field--name-field-body {
+    h2 {
+      @extend .h4;
+
+      @media (min-width: $screen-sm) {
+        font-weight: 500;
+        font-size: 25px;
+        line-height: 33px;
+      }
+    }
+
+    h3 {
+      @extend .h6;
+
+      @media (min-width: $screen-sm) {
+        font-size: 20px;
+        line-height: 28px;
+      }
+    }
+
+    p {
+      @media (max-width: $screen-sm) {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 26px;
+      }
+    }
+  }
+
+  // Footer Styles
+  .content-footer {
+    @extend .body3;
+
+    .far {
+      width: 15px;
+      height: 15px;
+    }
+
+    p {
+      margin-bottom: 16px;
+    }
+  }
+
+}
 .field--name-field-sections {
   .paragraph {
     margin-bottom: $line-height-computed;
