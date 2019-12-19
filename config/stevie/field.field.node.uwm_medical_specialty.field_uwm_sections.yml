@@ -40,48 +40,48 @@ settings:
       half_wide_hero:
         enabled: true
         weight: -65
-      uwm_block:
-        enabled: true
-        weight: -64
       award:
-        weight: -63
+        weight: -64
         enabled: false
       board_certification:
-        weight: -62
+        weight: -63
         enabled: false
       degree:
-        weight: -61
+        weight: -62
         enabled: false
       detailed_contact_card:
-        weight: -60
+        weight: -61
         enabled: false
       education_history:
-        weight: -59
+        weight: -60
         enabled: false
       headshot_card:
-        weight: -58
+        weight: -59
         enabled: false
       hours_for_day:
-        weight: -57
+        weight: -58
         enabled: false
       hours_of_operation:
-        weight: -56
+        weight: -57
         enabled: false
       uwm_3_col_proof_points:
-        weight: -55
+        weight: -56
         enabled: false
       uwm_accordion:
-        weight: -54
+        weight: -55
         enabled: false
       uwm_accordion_section:
-        weight: -53
+        weight: -54
         enabled: false
       uwm_accordion_sub_section:
-        weight: -52
+        weight: -53
         enabled: false
       uwm_basic_content:
-        weight: -51
+        weight: -52
         enabled: false
+      uwm_block:
+        enabled: true
+        weight: -51
       uwm_card:
         weight: -50
         enabled: false
