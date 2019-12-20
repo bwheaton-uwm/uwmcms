@@ -7,6 +7,7 @@
 
 use Drupal\uwmcs_ecare_scheduling\Controller\ECareController;
 use Drupal\Component\Render\FormattableMarkup;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements theme_preprocess_node().
@@ -239,4 +240,17 @@ function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
 
   }
   // End TODO.
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for 'taxonomy_term_visit_type_labels'.
+ */
+function uwmcs_ecare_scheduling_form_taxonomy_term_visit_type_labels_form_alter(&$form, FormStateInterface $form_state) {
+
+  // For the Visit Type Labels terms - the taxonomy term Name property label
+  // cannot be configured, so alter it here.
+  if (!empty($form['name']['widget'][0]['value']['#title'])) {
+    $form['name']['widget'][0]['value']['#title'] = t("Visit Type ID");
+  }
+
 }

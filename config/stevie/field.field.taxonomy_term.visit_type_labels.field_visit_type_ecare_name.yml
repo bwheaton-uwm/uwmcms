@@ -1,0 +1,19 @@
+uuid: 2dedd76b-65f0-45c9-9e8e-0ec0fa876ab2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_visit_type_ecare_name
+    - taxonomy.vocabulary.visit_type_labels
+id: taxonomy_term.visit_type_labels.field_visit_type_ecare_name
+field_name: field_visit_type_ecare_name
+entity_type: taxonomy_term
+bundle: visit_type_labels
+label: 'Original eCare name'
+description: 'Not displayed - for admin reference only'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
