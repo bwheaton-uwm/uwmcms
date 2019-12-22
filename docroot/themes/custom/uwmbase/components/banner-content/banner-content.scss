@@ -25,21 +25,15 @@
     display: block;
     width: 100%;
     max-width: 100%;
-    margin: 0;
+    margin: 0 auto;
   }
-  &.uwm-banner-content__image-area--image-align-left img {
-    margin-right: auto;
-  }
-  &.uwm-banner-content__image-area--image-align-right img {
-    margin-left: auto;
-  }
-  &.uwm-banner-content__image-area--image-align-center img {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  @include media-breakpoint-down('sm') {
-    margin-left: auto;
-    margin-right: auto;
+  @include media-breakpoint-up('md') {
+    &.uwm-banner-content__image-area--image-align-left img {
+      margin-left: 0;
+    }
+    &.uwm-banner-content__image-area--image-align-right img {
+      margin-right: 0;
+    }
   }
 }
 .uwm-banner-content__image-area--image-width-extra-narrow img {
@@ -168,12 +162,42 @@
 .uwm-banner-content__heading {
   margin: 0;
   padding: 0;
+  font-size: 24px;
+  line-height: 1.25; // 30px
+  @include media-breakpoint-up('lg') {
+    font-size: 35px;
+    line-height: 1.17143; // 41px
+  }
   // Override for banner with mid-purple background.
   color: $white;
 }
 .uwm-banner-content__body {
   margin: 20px 0 0 0;
   padding: 0;
+  font-size: 16px;
+  line-height: 1.25; // 20px
+  // Center text by default so CTA is centered on narrow screens.
+  text-align: center;
+  @include media-breakpoint-up('md') {
+    text-align: left;
+  }
+  @include media-breakpoint-up('lg') {
+    font-size: 21px;
+    line-height: 1.2857; // 27px
+  }
   // Override for banner with mid-purple background.
   color: $white;
+  // Override for body paragraphs.
+  p {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    & + & {
+      margin-top: 1rem;
+    }
+  }
+  // Override for button.
+  .uwm-cta {
+    margin-top: 20px;
+  }
 }
