@@ -13,11 +13,11 @@ entity_type: block_content
 bundle: banner_content
 label: 'Image Alignment'
 description: 'The alignment of the image within the image area. This will only have an effect if the image area is wider than the image.'
-required: false
+required: true
 translatable: false
 default_value:
   -
-    value: center
+    value: left
 default_value_callback: ''
 settings: {  }
 field_type: list_string

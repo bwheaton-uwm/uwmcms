@@ -12,8 +12,8 @@ field_name: field_uwm_image_position
 entity_type: block_content
 bundle: banner_content
 label: 'Image Position'
-description: ''
-required: false
+description: 'Which side of the body content the image should appear.'
+required: true
 translatable: false
 default_value:
   -

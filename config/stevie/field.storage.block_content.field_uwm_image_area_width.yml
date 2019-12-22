@@ -15,6 +15,12 @@ settings:
       value: default
       label: 'Default (same as image width)'
     -
+      value: extra-narrow
+      label: 'Extra narrow'
+    -
+      value: narrow
+      label: Narrow
+    -
       value: medium
       label: Medium
     -
@@ -23,12 +29,6 @@ settings:
     -
       value: extra-wide
       label: 'Extra wide'
-    -
-      value: narrow
-      label: Narrow
-    -
-      value: extra-narrow
-      label: 'extra narrow'
   allowed_values_function: ''
 module: options
 locked: false

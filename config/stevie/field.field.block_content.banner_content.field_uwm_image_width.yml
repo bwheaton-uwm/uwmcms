@@ -12,10 +12,12 @@ field_name: field_uwm_image_width
 entity_type: block_content
 bundle: banner_content
 label: 'Image Width'
-description: ''
-required: false
+description: 'A width that is appropriate for the width of the image relative to its height.'
+required: true
 translatable: false
-default_value: {  }
+default_value:
+  -
+    value: medium
 default_value_callback: ''
 settings: {  }
 field_type: list_string

@@ -12,8 +12,8 @@ field_name: field_uwm_image_area_width
 entity_type: block_content
 bundle: banner_content
 label: 'Image Area Width'
-description: ''
-required: false
+description: 'The width of the image area if it should be wider than the image contained within it.'
+required: true
 translatable: false
 default_value:
   -
