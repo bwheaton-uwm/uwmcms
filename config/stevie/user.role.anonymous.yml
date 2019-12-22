@@ -35,6 +35,7 @@ permissions:
   - 'view paragraph content uwm_accordion'
   - 'view paragraph content uwm_accordion_section'
   - 'view paragraph content uwm_accordion_sub_section'
+  - 'view paragraph content uwm_banner_content'
   - 'view paragraph content uwm_basic_content'
   - 'view paragraph content uwm_block'
   - 'view paragraph content uwm_card'
