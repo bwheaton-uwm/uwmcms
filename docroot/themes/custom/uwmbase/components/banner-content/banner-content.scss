@@ -169,7 +169,9 @@
     line-height: 1.17143; // 41px
   }
   // Override for banner with mid-purple background.
-  color: $white;
+  .uwm-banner-content--bg-mid-purple & {
+    color: $white;
+  }
 }
 .uwm-banner-content__body {
   margin: 20px 0 0 0;
@@ -186,7 +188,9 @@
     line-height: 1.2857; // 27px
   }
   // Override for banner with mid-purple background.
-  color: $white;
+  .uwm-banner-content--bg-mid-purple & {
+    color: $white;
+  }
   // Override for body paragraphs.
   p {
     margin: 0;
