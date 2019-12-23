@@ -72,7 +72,7 @@
 // Extra narrow image.
 .uwm-banner-content__image-area--width-extra-narrow {
   @include media-breakpoint-up('md') {
-    // One columns wide.
+    // One column wide.
     flex: 0 0 8.333333%;
     max-width: 8.333333%;
   }
@@ -84,7 +84,7 @@
     flex: 0 0 16.666667%;
     max-width: 16.666667%;
     &.uwm-banner-content__image-area--image-width-extra-narrow img {
-      // One columns wide.
+      // One column wide.
       width: 50%;
     }
   }
@@ -96,7 +96,7 @@
     flex: 0 0 25%;
     max-width: 25%;
     &.uwm-banner-content__image-area--image-width-extra-narrow img {
-      // One columns wide.
+      // One column wide.
       width: 33.333333%;
     }
     &.uwm-banner-content__image-area--image-width-narrow img {
@@ -112,7 +112,7 @@
     flex: 0 0 33.333333%;
     max-width: 33.333333%;
     &.uwm-banner-content__image-area--image-width-extra-narrow img {
-      // One columns wide.
+      // One column wide.
       width: 25%;
     }
     &.uwm-banner-content__image-area--image-width-narrow img {
@@ -132,7 +132,7 @@
     flex: 0 0 41.666667%;
     max-width: 41.666667%;
     &.uwm-banner-content__image-area--image-width-extra-narrow img {
-      // One columns wide.
+      // One column wide.
       width: 20%;
     }
     &.uwm-banner-content__image-area--image-width-narrow img {
