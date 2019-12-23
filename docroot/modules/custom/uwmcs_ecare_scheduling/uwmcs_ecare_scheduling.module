@@ -10,7 +10,7 @@ use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Implements theme_preprocess_node().
+ * Implements MODULE_preprocess_node().
  */
 function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
 
@@ -282,6 +282,36 @@ function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
 
   }
   // End TODO.
+}
+
+/**
+ * Implements MODULE_preprocess_page().
+ */
+function uwmcs_ecare_scheduling_preprocess_page(&$variables) {
+
+  $route_match = \Drupal::routeMatch();
+  $route_name = $route_match->getRouteName();
+
+  /** @var \Drupal\Node\NodeInterface $node */
+  $node = !empty($variables['node']) ? $variables['node'] : NULL;
+
+  // On pages that may have provider cards that link to the modal appointment
+  // flow, set variable to render the modal markup once in the page.
+  // - provider search page
+  // - any clinic node page with providers tab.
+  // @see layout-sections.twig
+  if ($route_name === 'view.uwm_providers_search.page_1' || (!empty($node) && $node->bundle() === 'res_clinic' && !$node->get('field_res_providers')->isEmpty())) {
+
+    $variables['modal_include'] = [
+      'template_path' => '@uwmbase/appointment-flow/uwm-appointment-modal.html.twig',
+      'with_vars' => [
+        'flow_type' => 'provider',
+        'modal_appt_context' => 'provider_card',
+      ],
+    ];
+
+  }
+
 }
 
 /**
