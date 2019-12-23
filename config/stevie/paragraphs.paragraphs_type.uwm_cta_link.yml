@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: uwm_cta_link
-label: 'CTA Link'
+label: Button
 icon_uuid: null
 description: 'A CTA Link expands the full-width of its container, is in title case, and has a > character on the right.'
 behavior_plugins: {  }

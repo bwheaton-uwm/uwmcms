@@ -1,0 +1,8 @@
+uuid: c79b647c-0583-452c-bbeb-8a11b8f1f1aa
+langcode: en
+status: true
+dependencies: {  }
+id: banner_content
+label: 'Banner Content'
+revision: 1
+description: 'Banner Content can have an image, a heading, body text, and a button. It can be used as a reusable block.'

@@ -40,9 +40,12 @@ dependencies:
     - field.field.node.res_clinic.field_res_providers
     - field.field.node.res_clinic.field_res_room_number
     - field.field.node.res_clinic.field_search_best_bets
+    - field.field.node.res_clinic.field_uwm_banner_content
+    - field.field.node.res_clinic.field_uwm_content_owner
     - field.field.node.res_clinic.field_uwm_json_packet
     - field.field.node.res_clinic.field_uwm_sections
     - field.field.node.res_clinic.field_uwm_sections_2
+    - field.field.node.res_clinic.field_uwm_subject_matter_experts
     - field.field.node.res_clinic.uwm_unique_id
     - node.type.res_clinic
     - responsive_image.styles.clinic_page
@@ -209,6 +212,15 @@ content:
     label: hidden
     settings:
       link_to_entity: false
+    third_party_settings: {  }
+  field_uwm_banner_content:
+    type: entity_reference_revisions_entity_view
+    weight: 20
+    region: content
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
     third_party_settings: {  }
   field_uwm_sections:
     type: entity_reference_revisions_entity_view

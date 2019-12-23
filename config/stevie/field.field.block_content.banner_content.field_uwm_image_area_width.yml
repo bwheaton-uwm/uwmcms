@@ -1,0 +1,23 @@
+uuid: dd6b3030-a9d7-4904-afee-3dc76fc3a26c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.banner_content
+    - field.storage.block_content.field_uwm_image_area_width
+  module:
+    - options
+id: block_content.banner_content.field_uwm_image_area_width
+field_name: field_uwm_image_area_width
+entity_type: block_content
+bundle: banner_content
+label: 'Image Area Width'
+description: 'The width of the image area if it should be wider than the image contained within it.'
+required: true
+translatable: false
+default_value:
+  -
+    value: default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

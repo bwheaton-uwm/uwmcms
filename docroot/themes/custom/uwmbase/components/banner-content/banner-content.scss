@@ -1,0 +1,206 @@
+@import 'init';
+
+.uwm-banner-content {
+  margin: 5px 0;
+  padding: 30px 0;
+}
+.uwm-banner-content--bg-mid-purple {
+  background: $uwmed-mid-purple;
+}
+.uwm-banner-content--bg-light-gray {
+  background: $background-light-gray;
+}
+.uwm-banner-content__content {
+  align-items: center;
+}
+.uwm-banner-content__content--image-right {
+  @include media-breakpoint-up('md') {
+    flex-direction: row-reverse;
+  }
+}
+
+// Image widths and alignment.
+.uwm-banner-content__image-area {
+  flex: 0 0 100%;
+  max-width: 100%;
+
+  img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  @include media-breakpoint-up('md') {
+    &.uwm-banner-content__image-area--image-align-left img {
+      margin-left: 0;
+    }
+    &.uwm-banner-content__image-area--image-align-right img {
+      margin-right: 0;
+    }
+  }
+}
+.uwm-banner-content__image-area--image-width-extra-narrow img {
+  @include media-breakpoint-down('sm') {
+    width: 98px;
+    max-width: 98px;
+  }
+}
+.uwm-banner-content__image-area--image-width-narrow img {
+  @include media-breakpoint-down('sm') {
+    width: 162px;
+    max-width: 162px;
+  }
+}
+.uwm-banner-content__image-area--image-width-medium img {
+  @include media-breakpoint-down('sm') {
+    width: 226px;
+    max-width: 226px;
+  }
+}
+.uwm-banner-content__image-area--image-width-wide img {
+  @include media-breakpoint-down('sm') {
+    width: 290px;
+    max-width: 290px;
+  }
+}
+.uwm-banner-content__image-area--image-width-extra-wide img {
+  @include media-breakpoint-down('sm') {
+    width: 354px;
+    max-width: 354px;
+  }
+}
+// Extra narrow image.
+.uwm-banner-content__image-area--width-extra-narrow {
+  @include media-breakpoint-up('md') {
+    // Two columns wide.
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+  }
+}
+// Narrow image.
+.uwm-banner-content__image-area--width-narrow {
+  @include media-breakpoint-up('md') {
+    // Three columns wide.
+    flex: 0 0 25%;
+    max-width: 25%;
+    &.uwm-banner-content__image-area--image-width-extra-narrow img {
+      // Two columns wide.
+      width: 66.666667%;
+      max-width: 66.666667%;
+    }
+  }
+}
+// Medium image.
+.uwm-banner-content__image-area--width-medium {
+  @include media-breakpoint-up('md') {
+    // Four columns wide.
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    &.uwm-banner-content__image-area--image-width-extra-narrow img {
+      // Two columns wide.
+      width: 50%;
+    }
+    &.uwm-banner-content__image-area--image-width-narrow img {
+      // Three columns wide.
+      width: 75%;
+    }
+  }
+}
+// Wide image.
+.uwm-banner-content__image-area--width-wide {
+  @include media-breakpoint-up('md') {
+    // Five columns wide.
+    flex: 0 0 41.666667%;
+    max-width: 41.666667%;
+    &.uwm-banner-content__image-area--image-width-extra-narrow img {
+      // Two columns wide.
+      width: 40%;
+    }
+    &.uwm-banner-content__image-area--image-width-narrow img {
+      // Three columns wide.
+      width: 60%;
+    }
+    &.uwm-banner-content__image-area--image-width-medium img {
+      // Four columns wide.
+      width: 80%;
+    }
+  }
+}
+// Extra wide image.
+.uwm-banner-content__image-area--width-extra-wide {
+  @include media-breakpoint-up('md') {
+    // Six columns wide.
+    flex: 0 0 50%;
+    max-width: 50%;
+    &.uwm-banner-content__image-area--image-width-extra-narrow img {
+      // Two columns wide.
+      width: 33.333333%;
+    }
+    &.uwm-banner-content__image-area--image-width-narrow img {
+      // Three columns wide.
+      width: 50%;
+    }
+    &.uwm-banner-content__image-area--image-width-medium img {
+      // Four columns wide.
+      width: 66.666667%;
+    }
+    &.uwm-banner-content__image-area--image-width-wide img {
+      // Five columns wide.
+      width: 83.333333%;
+    }
+  }
+}
+
+.uwm-banner-content__body-area {
+  @include media-breakpoint-down('sm') {
+    .uwm-banner-content__image-area + & {
+      margin-top: 30px;
+    }
+  }
+}
+.uwm-banner-content__heading {
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  line-height: 1.25; // 30px
+  @include media-breakpoint-up('lg') {
+    font-size: 35px;
+    line-height: 1.17143; // 41px
+  }
+  // Override for banner with mid-purple background.
+  .uwm-banner-content--bg-mid-purple & {
+    color: $white;
+  }
+}
+.uwm-banner-content__body {
+  margin: 20px 0 0 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1.25; // 20px
+  // Center text by default so CTA is centered on narrow screens.
+  text-align: center;
+  @include media-breakpoint-up('md') {
+    text-align: left;
+  }
+  @include media-breakpoint-up('lg') {
+    font-size: 21px;
+    line-height: 1.2857; // 27px
+  }
+  // Override for banner with mid-purple background.
+  .uwm-banner-content--bg-mid-purple & {
+    color: $white;
+  }
+  // Override for body paragraphs.
+  p {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    & + & {
+      margin-top: 1rem;
+    }
+  }
+  // Override for button.
+  .uwm-cta {
+    margin-top: 20px;
+  }
+}
