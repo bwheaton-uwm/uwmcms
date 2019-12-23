@@ -365,6 +365,13 @@
 
   </div>
 
+  {#
+     "Banner Content" paragraph field
+  #}
+  {% if content.field_uwm_banner_content.0 is not empty %}
+    {{ content.field_uwm_banner_content }}
+  {% endif %}
+
   <div class="clinic-page__tabs">
 
     {% include directory ~ '/components/clinic-page/node--res-clinic--full.tabs.html.twig' %}
