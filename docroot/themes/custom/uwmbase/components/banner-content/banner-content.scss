@@ -21,6 +21,9 @@
 
 // Image widths and alignment.
 .uwm-banner-content__image-area {
+  flex: 0 0 100%;
+  max-width: 100%;
+
   img {
     display: block;
     width: 100%;
@@ -149,10 +152,6 @@
 }
 
 .uwm-banner-content__body-area {
-  width: 100%;
-  @include media-breakpoint-up('md') {
-    width: auto;
-  }
   @include media-breakpoint-down('sm') {
     .uwm-banner-content__image-area + & {
       margin-top: 30px;
