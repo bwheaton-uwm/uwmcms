@@ -71,42 +71,65 @@ function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
 
     }
 
-    // Get display names and descriptions for open scheduling visit types.
+    // If the provider has open scheduling, get display names and descriptions
+    // for open scheduling visit types.
     // These are stored/edited as Visit Type Labels taxonomy terms.
     $variables['visit_type_names'] = [];
     $variables['visit_type_descriptions'] = [];
 
     if ($variables['open_scheduling'] && !empty($variables['visit_type_ids'])) {
 
-      $term_ids = \Drupal::entityQuery('taxonomy_term')
-        ->condition('vid', 'visit_type_labels')
-        ->execute();
+      // Load all name and description values only once, not per provider.
+      // Use NULL to indicate they have not been queried for yet, while an empty
+      // array means they were queried for but none retrieved.
+      static $visit_type_names = NULL;
+      static $visit_type_descriptions = NULL;
 
-      if (!empty($term_ids)) {
+      if (is_null($visit_type_names) && is_null($visit_type_descriptions)) {
 
-        /** @var \Drupal\taxonomy\TermInterface[] $terms */
-        $terms = \Drupal::entityTypeManager()
-          ->getStorage('taxonomy_term')
-          ->loadMultiple($term_ids);
+        $visit_type_names = [];
+        $visit_type_descriptions = [];
 
-        if (!empty($terms)) {
-          foreach ($terms as $term) {
+        $term_ids = \Drupal::entityQuery('taxonomy_term')
+          ->condition('vid', 'visit_type_labels')
+          ->execute();
 
-            // The visit type ID is stored as the term name.
-            $visit_type_id = (int) trim($term->getName());
+        if (!empty($term_ids)) {
 
-            if (!$term->get('field_visit_type_name')->isEmpty()) {
-              $variables['visit_type_names'][$visit_type_id] = $term->get('field_visit_type_name')->first()->getValue()['value'];
+          /** @var \Drupal\taxonomy\TermInterface[] $terms */
+          $terms = \Drupal::entityTypeManager()
+            ->getStorage('taxonomy_term')
+            ->loadMultiple($term_ids);
+
+          if (!empty($terms)) {
+            foreach ($terms as $term) {
+
+              // The term name should be the visit type ID, which is an integer.
+              // Bypass loading any that have been entered incorrectly.
+              $term_name = trim($term->getName());
+              if (!is_numeric($term_name) || strpos($term_name, '.') !== FALSE) {
+                continue;
+              }
+
+              $visit_type_id = (int) $term_name;
+
+              if (!$term->get('field_visit_type_name')->isEmpty()) {
+                $visit_type_names[$visit_type_id] = $term->get('field_visit_type_name')->first()->getValue()['value'];
+              }
+
+              if (!$term->get('field_visit_type_description')->isEmpty()) {
+                $visit_type_descriptions[$visit_type_id] = $term->get('field_visit_type_description')->first()->getValue()['value'];
+              }
+
             }
-
-            if (!$term->get('field_visit_type_description')->isEmpty()) {
-              $variables['visit_type_descriptions'][$visit_type_id] = $term->get('field_visit_type_description')->first()->getValue()['value'];
-            }
-
           }
-        }
 
+        }
       }
+
+      // Pass the ones for this provider's visit type IDs.
+      $variables['visit_type_names'] = array_intersect_key($visit_type_names, array_flip($variables['visit_type_ids']));
+      $variables['visit_type_descriptions'] = array_intersect_key($visit_type_descriptions, array_flip($variables['visit_type_ids']));
 
     }
 
@@ -119,6 +142,7 @@ function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
         $visit_type_desc_str[$vt_id] = $vt_id . ': ' . (!empty($variables['visit_type_descriptions'][$vt_id]) ? $variables['visit_type_descriptions'][$vt_id] : '--');
       }
     }
+
     $testing_data_original = [
       '@epic_id_1' => ($variables['epic_id'] ? $variables['epic_id'] : "--"),
       '@direct_scheduling_1' => ($variables['direct_scheduling'] ? "yes" : "no"),
