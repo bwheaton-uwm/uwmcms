@@ -52,7 +52,7 @@
       </address>
     {% endif %}
 
-    {% if hours.operation.always_open or hours.operation.open_close %}
+    {% if hours is not empty and (hours.operation.open_close.opens_next is not empty or hours.operation.always_open or hours.urgent.open_close.opens_next is not empty or hours.urgent.always_open or is_hospital) %}
       <div class="clinic-card-brief__opens">
         <i class="uwm-icon uwm-icon--clock clinic-card-brief__opens-icon"></i>
         <div class="clinic-card-brief__opens-content">
