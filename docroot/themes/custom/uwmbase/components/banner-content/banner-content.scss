@@ -72,80 +72,80 @@
 // Extra narrow image.
 .uwm-banner-content__image-area--width-extra-narrow {
   @include media-breakpoint-up('md') {
-    // One column wide.
-    flex: 0 0 8.333333%;
-    max-width: 8.333333%;
+    // Two columns wide.
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
   }
 }
 // Narrow image.
 .uwm-banner-content__image-area--width-narrow {
   @include media-breakpoint-up('md') {
-    // Two columns wide.
-    flex: 0 0 16.666667%;
-    max-width: 16.666667%;
+    // Three columns wide.
+    flex: 0 0 25%;
+    max-width: 25%;
     &.uwm-banner-content__image-area--image-width-extra-narrow img {
-      // One column wide.
-      width: 50%;
+      // Two columns wide.
+      width: 66.666667%;
     }
   }
 }
 // Medium image.
 .uwm-banner-content__image-area--width-medium {
   @include media-breakpoint-up('md') {
-    // Three columns wide.
-    flex: 0 0 25%;
-    max-width: 25%;
+    // Four columns wide.
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
     &.uwm-banner-content__image-area--image-width-extra-narrow img {
-      // One column wide.
-      width: 33.333333%;
+      // Two columns wide.
+      width: 50%;
     }
     &.uwm-banner-content__image-area--image-width-narrow img {
-      // Two columns wide.
-      width: 66.666667%;
+      // Three columns wide.
+      width: 75%;
     }
   }
 }
 // Wide image.
 .uwm-banner-content__image-area--width-wide {
   @include media-breakpoint-up('md') {
-    // Four columns wide.
-    flex: 0 0 33.333333%;
-    max-width: 33.333333%;
+    // Five columns wide.
+    flex: 0 0 41.666667%;
+    max-width: 41.666667%;
     &.uwm-banner-content__image-area--image-width-extra-narrow img {
-      // One column wide.
-      width: 25%;
+      // Two columns wide.
+      width: 40%;
     }
     &.uwm-banner-content__image-area--image-width-narrow img {
-      // Two columns wide.
-      width: 50%;
+      // Three columns wide.
+      width: 60%;
     }
     &.uwm-banner-content__image-area--image-width-medium img {
-      // Three columns wide.
-      width: 75%;
+      // Four columns wide.
+      width: 80%;
     }
   }
 }
 // Extra wide image.
 .uwm-banner-content__image-area--width-extra-wide {
   @include media-breakpoint-up('md') {
-    // Five columns wide.
-    flex: 0 0 41.666667%;
-    max-width: 41.666667%;
+    // Six columns wide.
+    flex: 0 0 50%;
+    max-width: 50%;
     &.uwm-banner-content__image-area--image-width-extra-narrow img {
-      // One column wide.
-      width: 20%;
+      // Two columns wide.
+      width: 33.333333%;
     }
     &.uwm-banner-content__image-area--image-width-narrow img {
-      // Two columns wide.
-      width: 40%;
+      // Three columns wide.
+      width: 50%;
     }
     &.uwm-banner-content__image-area--image-width-medium img {
-      // Three columns wide.
-      width: 60%;
+      // Four columns wide.
+      width: 66.666667%;
     }
     &.uwm-banner-content__image-area--image-width-wide img {
-      // Four columns wide.
-      width: 80%;
+      // Five columns wide.
+      width: 83.333333%;
     }
   }
 }
