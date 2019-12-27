@@ -1,0 +1,9 @@
+uuid: f96ec74e-d5aa-41fa-b3db-703bd58b80b3
+langcode: en
+status: true
+dependencies: {  }
+name: 'Visit Type Labels'
+vid: visit_type_labels
+description: 'Display name and description for online scheduling (eCare) visit types'
+hierarchy: 0
+weight: 0

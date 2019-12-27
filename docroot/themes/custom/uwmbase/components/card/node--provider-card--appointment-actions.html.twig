@@ -100,22 +100,26 @@
 %}
 
 {#
-  Set data attributes for the link/button to pass the provider's accepting
-  patients statuses and Epic scheduling values to the modal.
+  Set data attributes for the link/button to pass the provider's appointment
+  values to the modal.
   The modal can retrieve these because the element that triggered it is set as
   the `event.relatedTarget`.
   @see https://getbootstrap.com/docs/4.1/components/modal/#varying-modal-content
 #}
-{% set modal_attrs %}
-  data-toggle="modal"
-  data-target="#modal-appointment-provider"
-  data-provider-accepting-new="{{ (accepting_new ? '1' : '0') }}"
-  data-provider-accepting-returning="{{ (accepting_returning ? '1' : '0') }}"
-  data-provider-epic-id="{{ epic_id }}"
-  data-provider-open-scheduling="{{ (open_scheduling ? '1' : '0') }}"
-  data-provider-visit-type-ids="{{ visit_type_ids|join('|') }}"
-  data-provider-direct-scheduling="{{ (direct_scheduling ? '1' : '0') }}"
-{% endset %}
+{%
+  set modal_attrs = create_attribute({
+    'data-toggle': 'modal',
+    'data-target': '#modal-appointment-provider',
+    'data-provider-accepting-new': (accepting_new ? '1' : '0'),
+    'data-provider-accepting-returning': (accepting_returning ? '1' : '0'),
+    'data-provider-epic-id': epic_id,
+    'data-provider-direct-scheduling': (direct_scheduling ? '1' : '0'),
+    'data-provider-open-scheduling': (open_scheduling ? '1' : '0'),
+    'data-provider-visit-type-ids': visit_type_ids|join('|'),
+    'data-provider-visit-type-names': visit_type_names|json_encode(),
+    'data-provider-visit-type-descriptions': visit_type_descriptions|json_encode()
+  })
+%}
 
 {#
   Output possible appointment actions.

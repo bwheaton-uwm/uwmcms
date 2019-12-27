@@ -34,25 +34,12 @@
       var acceptingNew = null;
       var acceptingReturning = null;
       var epicID = null;
+      var directScheduling = null;
       var openScheduling = null;
       var visitTypeIDs = null;
+      var visitTypeNames = null;
+      var visitTypeDescriptions = null;
       var openMultipleTypes = null;
-      var directScheduling = null;
-
-      // TODO: get these from however we store them.
-      var visitTypeNames = {
-        '9000': 'Office',
-        '4466': 'New Pregnancy',
-        '103619': 'Wellness',
-        '9035': 'Flu Shot'
-      };
-
-      var visitTypeDescriptions = {
-        '9000': 'A visit to address a specific concern',
-        '4466': 'A visit within the first 7-12 weeks of pregnancy',
-        '103619': 'A preventative care visit or routine physical exam',
-        '9035': 'An immunization against the flu (available at select locations)'
-      };
 
       // Find all modal steps.
       var $steps = $modal.find('.appointment-flow__step');
@@ -244,18 +231,72 @@
         // Visit type IDs for open scheduling - delimited by '|'.
         var visitTypeIDsAttr = $modalBtn.attr('data-provider-visit-type-ids');
         if (typeof visitTypeIDsAttr === 'string' && visitTypeIDsAttr.length > 0) {
+
           // Note: by splitting a string, the result values are (numeric)
           // strings. Both the number and equivalent numeric string work as
           // object keys to access the value, so we can safely use these to get
           // the visit type name and description.
           visitTypeIDs = visitTypeIDsAttr.split('|');
+
+        }
+
+        // Visit type names - JSON string.
+        var visitTypeNamesAttr = $modalBtn.attr('data-provider-visit-type-names');
+        if (typeof visitTypeNamesAttr === 'string' && visitTypeNamesAttr.length > 0) {
+
+          visitTypeNames = {};
+
+          try {
+
+            visitTypeNames = JSON.parse(visitTypeNamesAttr);
+
+          }
+          catch (error) {
+
+            // JSON.parse() throws `SyntaxError` if bad syntax.
+            // This should never happen, since the template JSON-encodes this
+            // variable for output to the attribute. If it somehow does, we're
+            // in big trouble, because it's too late to set open scheduling
+            // disabled.
+            if (console) {
+              console.error('$modal.on(\'show.bs.modal\') - error parsing `data-provider-visit-type-names` attribute into JSON object. No open scheduling visit types will be available!');
+            }
+
+          }
+
+        }
+
+        // Visit type descriptions - JSON string.
+        var visitTypeDescriptionsAttr = $modalBtn.attr('data-provider-visit-type-descriptions');
+        if (typeof visitTypeDescriptionsAttr === 'string' && visitTypeDescriptionsAttr.length > 0) {
+
+          visitTypeDescriptions = {};
+
+          try {
+
+            visitTypeDescriptions = JSON.parse(visitTypeDescriptionsAttr);
+
+          }
+          catch (error) {
+
+            // JSON.parse() throws `SyntaxError` if bad syntax.
+            // This should never happen, since the template JSON-encodes this
+            // variable for output to the attribute. If it somehow does, we're
+            // in big trouble, because it's too late to set open scheduling
+            // disabled.
+            if (console) {
+              console.error('$modal.on(\'show.bs.modal\') - error parsing `data-provider-visit-type-descriptions` attribute into JSON object. No open scheduling visit types will be available!!');
+            }
+
+          }
+
         }
 
         // Multiple visit types?
         openMultipleTypes = (visitTypeIDs ? visitTypeIDs.length > 1 : false);
 
         /*
-        console.log('modalContext:', modalContext, 'acceptingNew:', acceptingNew, ', acceptingReturning:', acceptingReturning, ', epicID:', epicID, ', openScheduling:', openScheduling, ', visitTypeIDs:', visitTypeIDs, ', openMultipleTypes:', openMultipleTypes, ', directScheduling:', directScheduling);
+        console.log('modalContext:', modalContext, 'acceptingNew:', acceptingNew, ', acceptingReturning:', acceptingReturning, ', epicID:', epicID, ', openScheduling:', openScheduling, ', visitTypeIDs:', visitTypeIDs, ', visitTypeNames:', visitTypeNames, ', visitTypeDescriptions:', visitTypeDescriptions, ', openMultipleTypes:', openMultipleTypes, ', directScheduling:', directScheduling);
         */
 
         // 2. If not on a provider page, update elements for the provider for
@@ -278,7 +319,6 @@
 
                 var visitTypeID = visitTypeIDs[i];
 
-                // TODO: handle missing name/description bad data?
                 if (visitTypeNames.hasOwnProperty(visitTypeID)) {
 
                   var $btn = $btnTemplate.clone();

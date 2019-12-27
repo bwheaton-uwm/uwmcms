@@ -7,9 +7,105 @@
 
 use Drupal\uwmcs_ecare_scheduling\Controller\ECareController;
 use Drupal\Component\Render\FormattableMarkup;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Implements theme_preprocess_node().
+ * Implements hook_mail().
+ */
+function uwmcs_ecare_scheduling_mail($key, &$message, $params) {
+
+  switch ($key) {
+
+    // Send a notification when missing visit types are found during import of
+    // providers from Reservoir. This should happen rarely, so an email (rather
+    // than only a message and log entry) is helpful.
+    // @see ResProviderMigrationSubscriber::onMigratePostImport()
+    case 'validate_provider_visit_types':
+
+      // TODO: admin UI to configure this. Use state?
+      $message['to'] = 'gtory@uw.edu';
+
+      $translate_options = [
+        'langcode' => $message['langcode'],
+      ];
+
+      $message['subject'] = t("UWMedicine.org - Provider Scheduling Data Validation: Missing visit types", [], $translate_options);
+
+      $message['body'] = [
+        t("Reservoir => Stevie import validated for providers' visit type IDs.", [], $translate_options),
+        t("The following visit type IDs were imported on providers, but their visit type names/descriptions were not found:\n@visit_type_ids_missing", [
+          '@visit_type_ids_missing' => implode(", ", $params['visit_type_ids_missing']),
+        ], $translate_options),
+        t('<a href="/admin/structure/taxonomy/manage/visit_type_labels/overview" target="_blank">Add visit types here.</a>', [], $translate_options),
+      ];
+
+      break;
+
+  }
+
+}
+
+/**
+ * Load all Visit Type Labels terms that store display name and description.
+ */
+function _uwmcs_ecare_scheduling_load_visit_type_terms() {
+
+  // Load all name and description values only once.
+  // Use NULL to indicate they have not been queried for yet, while an empty
+  // array means they were queried for but none retrieved.
+  static $visit_types = NULL;
+
+  if (is_null($visit_types)) {
+
+    $visit_types = [];
+
+    $term_ids = \Drupal::entityQuery('taxonomy_term')
+      ->condition('vid', 'visit_type_labels')
+      ->execute();
+
+    if (!empty($term_ids)) {
+
+      /** @var \Drupal\taxonomy\TermInterface[] $terms */
+      $terms = \Drupal::entityTypeManager()
+        ->getStorage('taxonomy_term')
+        ->loadMultiple($term_ids);
+
+      if (!empty($terms)) {
+        foreach ($terms as $term) {
+
+          // The term name should be the visit type ID, which is an integer.
+          // Bypass loading any that have been entered incorrectly.
+          $term_name = trim($term->getName());
+          if (!is_numeric($term_name) || strpos($term_name, '.') !== FALSE) {
+            continue;
+          }
+
+          $visit_type_id = (int) $term_name;
+          $visit_types[$visit_type_id] = [
+            'name' => NULL,
+            'description' => NULL,
+          ];
+
+          if (!$term->get('field_visit_type_name')->isEmpty()) {
+            $visit_types[$visit_type_id]['name'] = $term->get('field_visit_type_name')->first()->getValue()['value'];
+          }
+
+          if (!$term->get('field_visit_type_description')->isEmpty()) {
+            $visit_types[$visit_type_id]['description'] = $term->get('field_visit_type_description')->first()->getValue()['value'];
+          }
+
+        }
+      }
+
+    }
+  }
+
+  return $visit_types;
+
+}
+
+/**
+ * Implements MODULE_preprocess_node().
  */
 function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
 
@@ -70,26 +166,25 @@ function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
 
     }
 
-    // Get labels for open scheduling visit types.
-    // TODO: get these from however we store them.
-    $variables['visit_type_names'] = NULL;
-    $variables['visit_type_descriptions'] = NULL;
+    // If the provider has open scheduling, get display names and descriptions
+    // for open scheduling visit types.
+    // These are stored/edited as Visit Type Labels taxonomy terms.
+    // Note: separate arrays came about during development process and would
+    // need some refactoring through appointment templates and JS.
+    $variables['visit_type_names'] = [];
+    $variables['visit_type_descriptions'] = [];
 
     if ($variables['open_scheduling'] && !empty($variables['visit_type_ids'])) {
 
-      $variables['visit_type_names'] = [
-        9000 => 'Office',
-        4466 => 'New Pregnancy',
-        103619 => 'Wellness',
-        9035 => 'Flu Shot',
-      ];
+      $visit_types = _uwmcs_ecare_scheduling_load_visit_type_terms();
 
-      $variables['visit_type_descriptions'] = [
-        9000 => 'A visit to address a specific concern',
-        4466 => 'A visit within the first 7-12 weeks of pregnancy',
-        103619 => 'A preventative care visit or routine physical exam',
-        9035 => 'An immunization against the flu (available at select locations)',
-      ];
+      // Pass the ones for this provider's visit type IDs.
+      foreach ($variables['visit_type_ids'] as $visit_type_id) {
+
+        $variables['visit_type_names'][$visit_type_id] = $visit_types[$visit_type_id]['name'];
+        $variables['visit_type_descriptions'][$visit_type_id] = $visit_types[$visit_type_id]['description'];
+
+      }
 
     }
 
@@ -102,13 +197,14 @@ function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
         $visit_type_desc_str[$vt_id] = $vt_id . ': ' . (!empty($variables['visit_type_descriptions'][$vt_id]) ? $variables['visit_type_descriptions'][$vt_id] : '--');
       }
     }
+
     $testing_data_original = [
       '@epic_id_1' => ($variables['epic_id'] ? $variables['epic_id'] : "--"),
       '@direct_scheduling_1' => ($variables['direct_scheduling'] ? "yes" : "no"),
       '@open_scheduling_1' => ($variables['open_scheduling'] ? "yes" : "no"),
-      '@visit_type_ids_1' => ($variables['visit_type_ids'] ? implode(", ", $variables['visit_type_ids']) : "--"),
-      '@visit_type_names_1' => ($visit_type_names_str ? implode(" | ", $visit_type_names_str) : "--"),
-      '@visit_type_desc_1' => ($visit_type_desc_str ? implode(" | ", $visit_type_desc_str) : "--"),
+      '@visit_type_ids_1' => (!empty($variables['visit_type_ids']) ? implode(", ", $variables['visit_type_ids']) : "--"),
+      '@visit_type_names_1' => (!empty($visit_type_names_str) ? implode(" | ", $visit_type_names_str) : "--"),
+      '@visit_type_desc_1' => (!empty($visit_type_desc_str) ? implode(" | ", $visit_type_desc_str) : "--"),
     ];
 
     // Check and adjust for bad data.
@@ -160,13 +256,15 @@ function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
 
     // TODO: remove temporary testing info / convert to logging ---------------.
     if (!empty($bad_data_msg)) {
+
+      // If bad data was found, output the original and cleaned data.
       $testing_data_cleaned = [
         '@epic_id_2' => ($variables['epic_id'] ? $variables['epic_id'] : "--"),
         '@direct_scheduling_2' => ($variables['direct_scheduling'] ? "yes" : "no"),
         '@open_scheduling_2' => ($variables['open_scheduling'] ? "yes" : "no"),
-        '@visit_type_ids_2' => ($variables['visit_type_ids'] ? implode(", ", $variables['visit_type_ids']) : "--"),
-        '@visit_type_names_2' => ($visit_type_names_str ? implode(" | ", $visit_type_names_str) : "--"),
-        '@visit_type_desc_2' => ($visit_type_desc_str ? implode(" | ", $visit_type_desc_str) : "--"),
+        '@visit_type_ids_2' => (!empty($variables['visit_type_ids']) ? implode(", ", $variables['visit_type_ids']) : "--"),
+        '@visit_type_names_2' => (!empty($visit_type_names_str) ? implode(" | ", $visit_type_names_str) : "--"),
+        '@visit_type_desc_2' => (!empty($visit_type_desc_str) ? implode(" | ", $visit_type_desc_str) : "--"),
       ];
 
       $variables['testing_data'] = [
@@ -239,4 +337,47 @@ function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
 
   }
   // End TODO.
+}
+
+/**
+ * Implements MODULE_preprocess_page().
+ */
+function uwmcs_ecare_scheduling_preprocess_page(&$variables) {
+
+  $route_match = \Drupal::routeMatch();
+  $route_name = $route_match->getRouteName();
+
+  /** @var \Drupal\Node\NodeInterface $node */
+  $node = !empty($variables['node']) ? $variables['node'] : NULL;
+
+  // On pages that may have provider cards that link to the modal appointment
+  // flow, set variable to render the modal markup once in the page.
+  // - provider search page
+  // - any clinic node page with providers tab.
+  // @see layout-sections.twig
+  if ($route_name === 'view.uwm_providers_search.page_1' || (!empty($node) && $node->bundle() === 'res_clinic' && !$node->get('field_res_providers')->isEmpty())) {
+
+    $variables['modal_include'] = [
+      'template_path' => '@uwmbase/appointment-flow/uwm-appointment-modal.html.twig',
+      'with_vars' => [
+        'flow_type' => 'provider',
+        'modal_appt_context' => 'provider_card',
+      ],
+    ];
+
+  }
+
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for 'taxonomy_term_visit_type_labels'.
+ */
+function uwmcs_ecare_scheduling_form_taxonomy_term_visit_type_labels_form_alter(&$form, FormStateInterface $form_state) {
+
+  // For the Visit Type Labels terms - the taxonomy term Name property label
+  // cannot be configured, so alter it here.
+  if (!empty($form['name']['widget'][0]['value']['#title'])) {
+    $form['name']['widget'][0]['value']['#title'] = t("Visit Type ID");
+  }
+
 }
