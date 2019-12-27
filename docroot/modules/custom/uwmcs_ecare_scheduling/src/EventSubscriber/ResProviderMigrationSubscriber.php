@@ -9,6 +9,7 @@ use Drupal\migrate\Event\MigratePreRowSaveEvent;
 use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\Core\Messenger\MessengerInterface;
 use Psr\Log\LoggerInterface;
+use Drupal\Core\Mail\MailManagerInterface;
 
 /**
  * Class ResProviderMigrationSubscriber.
@@ -53,6 +54,13 @@ class ResProviderMigrationSubscriber implements EventSubscriberInterface {
   protected $logger;
 
   /**
+   * The mail manager service.
+   *
+   * @var \Drupal\Core\Mail\MailManagerInterface
+   */
+  protected $mailManager;
+
+  /**
    * Local store of all visit types' names and descriptions.
    *
    * @var array
@@ -75,11 +83,14 @@ class ResProviderMigrationSubscriber implements EventSubscriberInterface {
    *   The messenger service.
    * @param \Psr\Log\LoggerInterface $logger
    *   The logger channel for service.
+   * @param \Drupal\Core\Mail\MailManagerInterface $mail_manager
+   *   The mail manager service.
    */
-  public function __construct(PrivateTempStoreFactory $private_temp_store_factory, MessengerInterface $messenger, LoggerInterface $logger) {
+  public function __construct(PrivateTempStoreFactory $private_temp_store_factory, MessengerInterface $messenger, LoggerInterface $logger, MailManagerInterface $mail_manager) {
 
     $this->messenger = $messenger;
     $this->logger = $logger;
+    $this->mailManager = $mail_manager;
 
     // In a batch situation there are multiple requests, so this object is
     // constructed on each request. Use a private temp store to record our
@@ -336,6 +347,23 @@ class ResProviderMigrationSubscriber implements EventSubscriberInterface {
         <a href=\"/admin/structure/taxonomy/manage/visit_type_labels/overview\" target=\"_blank\">Add them here.</a>", [
           '%visit_type_ids_missing' => implode(', ', $missing),
         ]);
+
+        // TODO: send only on prod / configurable in admin UI / env indicator
+        //
+        // Send email notification, since this import runs regularly and
+        // automatically, and admins are unlikely to see the output/log message.
+        // Set the 'to' address in the hook_mail() implementation.
+        // Use the site default language for now.
+        // @see uwmcs_ecare_scheduling_mail()
+        $this->mailManager->mail(
+          'uwmcs_ecare_scheduling',
+          'validate_provider_visit_types',
+          NULL,
+          \Drupal::languageManager()->getDefaultLanguage()->getId(),
+          [
+            'visit_type_ids_missing' => $missing,
+          ]
+        );
 
       }
       else {

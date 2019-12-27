@@ -10,6 +10,42 @@ use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
+ * Implements hook_mail().
+ */
+function uwmcs_ecare_scheduling_mail($key, &$message, $params) {
+
+  switch ($key) {
+
+    // Send a notification when missing visit types are found during import of
+    // providers from Reservoir. This should happen rarely, so an email (rather
+    // than only a message and log entry) is helpful.
+    // @see ResProviderMigrationSubscriber::onMigratePostImport()
+    case 'validate_provider_visit_types':
+
+      // TODO: admin UI to configure this. Use state?
+      $message['to'] = 'gtory@uw.edu';
+
+      $translate_options = [
+        'langcode' => $message['langcode'],
+      ];
+
+      $message['subject'] = t("UWMedicine.org - Provider Scheduling Data Validation: Missing visit types", [], $translate_options);
+
+      $message['body'] = [
+        t("Reservoir => Stevie import validated for providers' visit type IDs.", [], $translate_options),
+        t("The following visit type IDs were imported on providers, but their visit type names/descriptions were not found:\n@visit_type_ids_missing", [
+          '@visit_type_ids_missing' => implode(", ", $params['visit_type_ids_missing']),
+        ], $translate_options),
+        t('<a href="/admin/structure/taxonomy/manage/visit_type_labels/overview" target="_blank">Add visit types here.</a>', [], $translate_options),
+      ];
+
+      break;
+
+  }
+
+}
+
+/**
  * Load all Visit Type Labels terms that store display name and description.
  */
 function _uwmcs_ecare_scheduling_load_visit_type_terms() {
