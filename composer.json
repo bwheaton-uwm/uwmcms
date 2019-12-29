@@ -53,7 +53,8 @@
       "sh ./patches/drupal-htaccess/htaccess_patch.sh ./patches/drupal-htaccess/htaccess.patch"
     ],
     "uwmcms-preprend-htaccess": [
-      "sh ./patches/drupal-htaccess/htaccess_prepend.sh './patches/drupal-htaccess/htaccess_prepend_contents.htaccess' './docroot/.htaccess'"
+      "sh ./patches/drupal-htaccess/htaccess_prepend.sh './patches/drupal-htaccess/htaccess_prepend_contents.htaccess' './docroot/.htaccess'",
+      "sh ./patches/drupal-htaccess/htaccess_prepend.sh './patches/drupal-htaccess/htaccess_prepend_nwhospital.htaccess' './docroot/.htaccess'"
     ],
     "post-install-cmd": [
       "@uwmcms-update-saml",
