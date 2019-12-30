@@ -1,0 +1,82 @@
+# For more acquia-pipelines.yml pipelines examples, see
+# https://docs.acquia.com/acquia-cloud/develop/pipelines/yaml/examples/
+
+# Must have a value of at least 1.0.0
+# Version: 1.1.0
+#   Enables users to use a custom PHP version other than the default version.
+#   For default and supported PHP versions, see
+#   https://docs.acquia.com/acquia-cloud/develop/pipelines/yaml/#php7
+#   Note: As PHP is available by default, user need not mention 'php' as
+#   a service unless a custom PHP version is required.
+# Version: 1.2.0
+#   Adds support for the 'cde-databases' key in your YAML file.
+# Version: 1.3.0
+#   Adds memcached support.
+# For more info and supported versions, see
+# https://docs.acquia.com/acquia-cloud/develop/pipelines/yaml/#version-key
+version: 1.3.0
+
+# For more info on services supported, see
+# https://docs.acquia.com/acquia-cloud/develop/pipelines/yaml/#services-key
+services:
+  - mysql
+  - php:
+      version: 7.3
+  - memcached
+
+variables:
+  global:
+    COMPOSER_BIN: $SOURCE_DIR/vendor/bin
+    BLT_DIR: $SOURCE_DIR/vendor/acquia/blt
+    SCRIPTS_DIR: $SOURCE_DIR/custom-scripts
+    TEST_XYZ:
+      secure: 2acfIynfp734BVEt7dyeeacJxZi
+
+events:
+  build:
+    steps:
+      - setup-env:
+          type: script
+          script:
+            - date
+            - pwd
+            - set -x
+            - set +e
+            - composer validate --no-check-all --ansi
+            - composer install --ansi
+            - date
+      - validate:
+          type: script
+          script:
+            - source ${BLT_DIR}/scripts/pipelines/validate
+      # Uncomment these lines to test database updates using live content.
+      # - test-updates:
+      #     type: script
+      #     script:
+      #       - blt drupal:sync:default:site
+      - setup-app:
+          type: script
+          script:
+            - source ${BLT_DIR}/scripts/pipelines/setup_app
+      - tests:
+          type: script
+          script:
+            - source ${BLT_DIR}/scripts/pipelines/tests
+      - build-artifact:
+          type: script
+          script:
+            - source ${BLT_DIR}/scripts/pipelines/build_artifact
+
+  # When a GitHub pull request is merged, this deletes the coresponding ODE.
+  pr-merged:
+    steps:
+      - deploy:
+          script:
+            - pipelines-deploy
+
+  # When a GitHub pull request is closed, this deletes the coresponding ODE.
+  pr-closed:
+    steps:
+      - deploy:
+          script:
+            - pipelines-deploy
