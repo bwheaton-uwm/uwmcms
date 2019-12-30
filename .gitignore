@@ -153,3 +153,4 @@ drush/sites/.checksums
 # Deprecation detector rules
 .rules
  docroot/.htaccess
+private_files
