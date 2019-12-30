@@ -1,0 +1,124 @@
+<?php
+
+/**
+ * @file
+ * UWM uwm_binaryfountain_reviews module.
+ *
+ * @see https://www.drupal.org/docs/8/api/restful-web-services-api/custom-rest-resources
+ * @see https://opensenselabs.com/blog/tech/custom-rest-resource-drupal-8
+ */
+
+use Drupal\uwm_binaryfountain_reviews\Controller\UwmAttachNodeReviews;
+
+/**
+ * Implements theme_preprocess_node().
+ */
+function uwm_binaryfountain_reviews_preprocess_node(&$variables) {
+
+  $node = $variables['node'] ?? NULL;
+
+  if ($node && $node->getType() === 'res_provider') {
+
+    // Add ratings data.
+    new UwmAttachNodeReviews($node);
+
+    if (__uwm_binaryfountain_reviews_enabled() && !empty($node->uwm_binaryfountain_reviews['data']['overallRating']['value'])) {
+
+      $variables['ratings'] = __uwm_binaryfountain_reviews_process_ratings($node->uwm_binaryfountain_reviews);
+      $variables['has_ratings'] = (bool) !empty($variables['ratings']);
+
+    }
+
+  }
+
+}
+
+/**
+ * Process ratings into values usable by theme templates.
+ *
+ * @param array $raw_ratings
+ *   The ratings data in its original format.
+ *
+ * @return array
+ *   The processed ratings.
+ */
+function __uwm_binaryfountain_reviews_process_ratings(array $raw_ratings) {
+  $ratings = [];
+
+  // Set the summary stars data.
+  if (!empty($raw_ratings['overallRating']['value'])) {
+    $ratings['summary']['value'] = $raw_ratings['overallRating']['value'];
+
+    $ratings['summary']['stars'] = __uwm_binaryfountain_reviews_get_stars($raw_ratings['overallRating']['value'], 1);
+  }
+
+  // Set the ratings count.
+  if (!empty($raw_ratings['totalRatingCount'])) {
+    $ratings['summary']['count']['ratings'] = $raw_ratings['totalRatingCount'];
+  }
+
+  // Set the comment count.
+  if (!empty($raw_ratings['totalCommentCount'])) {
+    $ratings['summary']['count']['reviews'] = $raw_ratings['totalCommentCount'];
+  }
+
+  // Set the details data.
+  if (!empty($raw_ratings['comments'])) {
+    $ratings['details'] = [];
+    foreach ($raw_ratings['comments'] as $comment) {
+      $ratings['details'][] = [
+        'stars' => isset($comment['overallRating']['value']) ? __uwm_binaryfountain_reviews_get_stars($comment['overallRating']['value']) : [],
+        'date' => isset($comment['mentionTime']) ? date('F j, Y', strtotime($comment['mentionTime'])) : '',
+        'review' => isset($comment['comment']) ? $comment['comment'] : '',
+      ];
+    }
+  }
+
+  return $ratings;
+}
+
+/**
+ * Determine stars from a rating value.
+ *
+ * @param float $value
+ *   The rating value.
+ * @param int $precision
+ *   The level of precision to use for rounding.
+ *
+ * @return array
+ *   The star elements to use to represent the rating value.
+ */
+function __uwm_binaryfountain_reviews_get_stars($value, $precision = 0) {
+  $stars = [];
+
+  $value = round($value, $precision);
+
+  $stars_full = (int) $value;
+  $stars_empty = (int) (5 - $value);
+
+  if (isset($stars_full) && isset($stars_empty)) {
+    $stars = [
+      'full' => $stars_full,
+      'empty' => $stars_empty,
+    ];
+
+    if ($precision > 0) {
+      $stars['partial_pct'] = ($value - $stars_full) * 100;
+    }
+  }
+
+  return $stars;
+}
+
+/**
+ * Determine if a provider has ratings that should be displayed.
+ *
+ * @return bool
+ *   TRUE if the provider has ratings that should be displayed, FALSE otherwise.
+ */
+function __uwm_binaryfountain_reviews_enabled() {
+  // Set $enable_ratings to TRUE to enable, or FALSE to disable, ratings
+  // for all providers in all environments.
+  return (!empty($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] == 'prod') ? FALSE : TRUE;
+
+}
