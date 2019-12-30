@@ -53,7 +53,8 @@
       "sh ./patches/drupal-htaccess/htaccess_patch.sh ./patches/drupal-htaccess/htaccess.patch"
     ],
     "uwmcms-preprend-htaccess": [
-      "sh ./patches/drupal-htaccess/htaccess_prepend.sh './patches/drupal-htaccess/htaccess_prepend_contents.htaccess' './docroot/.htaccess'"
+      "sh ./patches/drupal-htaccess/htaccess_prepend.sh './patches/drupal-htaccess/htaccess_prepend_contents.htaccess' './docroot/.htaccess'",
+      "sh ./patches/drupal-htaccess/htaccess_prepend.sh './patches/drupal-htaccess/htaccess_prepend_nwhospital.htaccess' './docroot/.htaccess'"
     ],
     "post-install-cmd": [
       "@uwmcms-update-saml",
@@ -140,6 +141,7 @@
     "drupal/minifyhtml": "^1.1",
     "drupal/multiversion": "1.x-dev",
     "drupal/name": "^1.0@beta",
+    "drupal/node_revision_delete": "^1.0@beta",
     "drupal/page_manager": "^4.0@beta",
     "drupal/panels": "^4.3",
     "drupal/paragraphs": "^1.2",

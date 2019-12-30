@@ -13,7 +13,10 @@
 
 {% set modifier_class = attributes.class ~ ' container-xl' %}
 {% set modifier_class = has_ratings ? modifier_class ~ ' node-res_provider--has-ratings' : modifier_class ~ ' node-res_provider--no-ratings' %}
+{% set is_independent = node.field_res_is_independent.0.value ? true : false %}
+{% set modifier_class = is_independent ? modifier_class ~ ' node-res_provider--is-independent' : modifier_class %}
 {% set acceptingAppointments = 'Yes' in content.field_res_isacceptingnewpts.0 ? TRUE : FALSE %}
+
 {%
   set taxonomy_subsection_attributes = create_attribute({
     'class': [
@@ -47,38 +50,42 @@
                         <img src="/{{ directory }}/dist/assets/provider-silhouette.svg" alt="" />
                     {% endif %}
                 </div>
-                <div class="provider-page__section1-area1-subsection">
-                    {% if acceptingAppointments %}
-                        <div class="provider-page__section1-accepting-patients">
-                            <i class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></i>
-                            {{ "Accepting new patients"|t }}
-                        </div>
-                    {% else %}
-                        <div class="provider-page__section1-accepting-patients">
-                            <i class="uwm-icon uwm-icon--not-accepting-patients" aria-hidden="true"></i>
-                            {{ "Not accepting new patients"|t }}
-                        </div>
-                    {% endif %}
+                {% if  has_ratings or not is_independent %}
+                  <div class="provider-page__section1-area1-subsection">
+                      {% if not is_independent %}
+                          {% if acceptingAppointments %}
+                              <div class="provider-page__section1-accepting-patients">
+                                  <i class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></i>
+                                  {{ "Accepting new patients"|t }}
+                              </div>
+                          {% else %}
+                              <div class="provider-page__section1-accepting-patients">
+                                  <i class="uwm-icon uwm-icon--not-accepting-patients" aria-hidden="true"></i>
+                                  {{ "Not accepting new patients"|t }}
+                              </div>
+                          {% endif %}
+                      {% endif %}
 
-                    {% if has_ratings %}
-                        {% include "@uwmbase/ratings-summary/ratings-summary.twig" %}
-                    {% endif %}
+                      {% if has_ratings %}
+                          {% include "@uwmbase/ratings-summary/ratings-summary.twig" %}
+                      {% endif %}
 
-                    {% if acceptingAppointments %}
-                        <div class="provider-page__section1-make-appt-btn">
-                            {{ uwm_cta_link('Make an appointment'|t, provider_appointments_uri, ['btn', 'btn-cta-solid']) }}
-                        </div>
-                    {% endif %}
-                </div>
+                      {% if acceptingAppointments and not is_independent %}
+                          <div class="provider-page__section1-make-appt-btn">
+                              {{ uwm_cta_link('Make an appointment'|t, provider_appointments_uri, ['btn', 'btn-cta-solid']) }}
+                          </div>
+                      {% endif %}
+                  </div>
+                {% endif %}
             </div>
             <div class="provider-page__section1-area2">
                 <h1 class="provider-page__section1-name page-title d-none d-lg-block">{{ label }}</h1>
                 <div class="provider-page__section1-taxonomy">
-                  {% if taxonomy_terms.expertises is not empty %}
+                  {% if taxonomy_terms.expertises is not empty or taxonomy_terms.specialties_unindexed is not empty %}
                       <div{{ specialties_subsection_attributes }}>
                           <h2 class="provider-page__section1-subheading">{{ (taxonomy_terms.expertises|length > 1) ? "Medical Specialties"|t : "Medical Specialty"|t }}</h2>
                           <ul class="provider-page__section1-list">
-                              {% for term in taxonomy_terms.expertises %}
+                              {% for term in taxonomy_terms.expertises|merge(taxonomy_terms.specialties_unindexed) %}
                                   <li class="provider-page__section1-list-item">
                                       {%- if term.url is not empty %}
                                           {{- uwm_cta_link(term.name, term.url, ['text-link-blue', 'no-underline']) -}}

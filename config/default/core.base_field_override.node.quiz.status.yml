@@ -1,15 +1,15 @@
-uuid: 7b233dd6-b8b8-4dfe-a6ea-c3f381c6c82c
+uuid: 5e86c9df-4876-4b6c-9bcb-7b259293071c
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.uwm_medical_service
-id: node.uwm_medical_service.status
+    - node.type.quiz
+id: node.quiz.status
 field_name: status
 entity_type: node
-bundle: uwm_medical_service
-label: 'Publishing status'
-description: 'A boolean indicating the published state.'
+bundle: quiz
+label: Published
+description: ''
 required: false
 translatable: true
 default_value:

@@ -23,15 +23,4 @@ use Drupal\schema_metatag\Plugin\metatag\Tag\SchemaNameBase;
  *   multiple = FALSE
  * )
  */
-class SchemaPhysicianImage extends SchemaNameBase {
-
-  /**
-   * {@inheritdoc}
-   *
-   * Removes the query string from the URL.
-   */
-  public static function outputValue($input_value) {
-    // Nothing here yet. Just a placeholder class for a plugin.
-  }
-
-}
+class SchemaPhysicianImage extends SchemaNameBase {}

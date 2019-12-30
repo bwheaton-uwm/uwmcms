@@ -259,3 +259,7 @@ body.is-page-node-type-res-provider {
 .provider-page__languages-item {
   margin-top: 8px;
 }
+// Hide location phone numbers for independent providers.
+.node-res_provider--is-independent .clinic-card-brief__phone {
+  display: none;
+}
