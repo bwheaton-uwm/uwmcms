@@ -14,6 +14,10 @@ use Drupal\Core\Form\FormStateInterface;
  */
 function uwmcs_ecare_scheduling_mail($key, &$message, $params) {
 
+  // If currently on an Acquia cloud env, this is 'dev', 'test', or 'prod'.
+  // @see https://docs.acquia.com/acquia-cloud/develop/env-variable/
+  $env = (isset($_ENV['AH_SITE_ENVIRONMENT']) ? $_ENV['AH_SITE_ENVIRONMENT'] : NULL);
+
   switch ($key) {
 
     // Send a notification when missing visit types are found during import of
@@ -23,7 +27,21 @@ function uwmcs_ecare_scheduling_mail($key, &$message, $params) {
     case 'validate_provider_visit_types':
 
       // TODO: admin UI to configure this. Use state?
-      $message['to'] = 'gtory@uw.edu';
+      // For now, set recipients according to environment.
+      switch ($env) {
+        case 'prod':
+          $message['to'] = 'uwmbios@uw.edu';
+          break;
+
+        case 'dev':
+        case 'test':
+          $message['to'] = 'gtory@uw.edu,gillmcdo@uw.edu,montano3@uw.edu';
+          break;
+
+        default:
+          $message['to'] = 'gtory@uw.edu';
+          break;
+      }
 
       $translate_options = [
         'langcode' => $message['langcode'],
@@ -31,8 +49,12 @@ function uwmcs_ecare_scheduling_mail($key, &$message, $params) {
 
       $message['subject'] = t("UWMedicine.org - Provider Scheduling Data Validation: Missing visit types", [], $translate_options);
 
+      if ($env !== 'prod') {
+        $message['subject'] = "[TEST] " . (string) $message['subject'];
+      }
+
       $message['body'] = [
-        t("Reservoir => Stevie import validated for providers' visit type IDs.", [], $translate_options),
+        t("Reservoir-to-Stevie import validated for providers' visit type IDs.", [], $translate_options),
         t("The following visit type IDs were imported on providers, but their visit type names/descriptions were not found:\n@visit_type_ids_missing", [
           '@visit_type_ids_missing' => implode(", ", $params['visit_type_ids_missing']),
         ], $translate_options),

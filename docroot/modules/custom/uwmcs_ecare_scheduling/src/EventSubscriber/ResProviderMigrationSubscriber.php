@@ -348,8 +348,6 @@ class ResProviderMigrationSubscriber implements EventSubscriberInterface {
           '%visit_type_ids_missing' => implode(', ', $missing),
         ]);
 
-        // TODO: send only on prod / configurable in admin UI / env indicator
-        //
         // Send email notification, since this import runs regularly and
         // automatically, and admins are unlikely to see the output/log message.
         // Set the 'to' address in the hook_mail() implementation.
