@@ -194,6 +194,4 @@ class UwmBinaryFountainCommands extends DrushCommands {
 
   }
 
-
-
 }
