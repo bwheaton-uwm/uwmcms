@@ -1,0 +1,6 @@
+values:
+  example_one: 'See settings.php include override'
+  BINARY_FOUNTAIN_APP_ID: ''
+  BINARY_FOUNTAIN_APP_SECRET: ''
+_core:
+  default_config_hash: SV2ChsLReb4QY6ztfxp3j5f5BR_Zu2j7rG9pYIcwaZQ
