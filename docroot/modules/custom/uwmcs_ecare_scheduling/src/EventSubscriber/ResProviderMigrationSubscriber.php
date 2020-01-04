@@ -68,13 +68,6 @@ class ResProviderMigrationSubscriber implements EventSubscriberInterface {
   protected $visitTypes;
 
   /**
-   * ID of the batch that's currently running this migration via the UI, if any.
-   *
-   * @var int
-   */
-  protected $batchId = NULL;
-
-  /**
    * Constructor.
    *
    * @param \Drupal\Core\TempStore\PrivateTempStoreFactory $private_temp_store_factory
@@ -121,7 +114,6 @@ class ResProviderMigrationSubscriber implements EventSubscriberInterface {
     // The 'results' use the migration ID as the key.
     if (!empty($batch) && !empty($batch['sets'][$batch['current_set']]['results']) && isset($batch['sets'][$batch['current_set']]['results'][self::MIGRATION_ID])) {
 
-      $this->batchId = $batch['id'];
       return $batch;
 
     }
@@ -195,11 +187,16 @@ class ResProviderMigrationSubscriber implements EventSubscriberInterface {
 
     }
 
-    // If at the beginning, initialize the temp store value for recording
-    // missing visit types.
+    // If at the beginning, initialize the temp store values.
     if (!empty($import_beginning)) {
 
+      // Set (or reset) array to collect visit type IDs found to be missing
+      // name/description.
       $this->privateTempStore->set('visit_types_missing', []);
+
+      // Denote if running via admin UI in batches, to handle reporting
+      // differently.
+      $this->privateTempStore->set('ui_batch', ($import_beginning === 'batch'));
 
     }
 
@@ -257,6 +254,16 @@ class ResProviderMigrationSubscriber implements EventSubscriberInterface {
             $missing[] = $visit_type_id;
             $this->privateTempStore->set('visit_types_missing', $missing);
 
+            // If running via admin UI in batches, report this now.
+            // @see self::onMigratePostImport()
+            if ($this->privateTempStore->get('ui_batch')) {
+
+              $this->reportMissingVisitTypes([
+                $visit_type_id,
+              ]);
+
+            }
+
           }
 
         }
@@ -275,6 +282,10 @@ class ResProviderMigrationSubscriber implements EventSubscriberInterface {
    * NOTE: When import is run via Drush, this event occurs once at the end of
    * the entire import (after all rows are processed). When run via the
    * admin UI, it occurs at the end of each batch.
+   * The batch method often does not process all source items, making it
+   * difficult/impossible to determine when at the end of the last batch.
+   * Thus if currently running via admin UI batches, we do NOT handle this event
+   * as happening at the end of the import (i.e. do not do any reporting).
    *
    * @param \Drupal\migrate\Event\MigrateImportEvent $event
    *   The import event object.
@@ -288,93 +299,90 @@ class ResProviderMigrationSubscriber implements EventSubscriberInterface {
       return;
     }
 
-    // Determine if this is really the end of import, and not the end of a
-    // batch (other than the last).
-    $import_end = FALSE;
-
-    // Check for a current batch running this migration import.
-    if ($batch = $this->getMigrationBatch()) {
-
-      // Determine if all rows have been processed.
-      // This post-import event runs at the end of MigrateExecutable::import(),
-      // but that's before the batch 'counter' is updated. So 'counter' is
-      // currently the total as of the previous batch.
-      // In MigrateExecutable::import(), MigrateBatchExecutable::checkStatus()
-      // runs for each row processed and increments 'batch_counter'. Thus it's
-      // the total of how many rows have been processed in the batch.
-      // Add that to 'counter' to get the total as of this batch.
-      if (($batch['sets'][$batch['current_set']]['sandbox']['counter']
-        + $batch['sets'][$batch['current_set']]['sandbox']['batch_counter'])
-        === $batch['sets'][$batch['current_set']]['sandbox']['total']) {
-
-        $import_end = TRUE;
-
-      }
-
-    }
-    else {
-
-      // If this migration batch does not exist currently, assume running via
-      // Drush.
-      $import_end = TRUE;
-
-    }
-
-    if ($import_end) {
+    // Since we are not reliably detecting the end of the entire import when
+    // running via batches, check if running NOT using batches. That implies
+    // running via Drush, in which case this event occurs only at the end of the
+    // entire import - allowing to do a final report.
+    //
+    // Note: do not clear the temp store values, because if running batches we
+    // need to maintain visit type IDs across batches. They are cleared when
+    // the beginning of entire import is detected.
+    // @see self::onMigratePreImport()
+    if (!$this->getMigrationBatch()) {
 
       $missing = $this->privateTempStore->get('visit_types_missing');
 
       if (!empty($missing)) {
 
-        // Output message to page (if run via UI) or console (if via Drush).
-        $this->messenger->addMessage(t("Providers import from Reservoir - the following visit type IDs were imported on providers, but their visit type names/descriptions were not found:<br/>
-        %visit_type_ids_missing<br/>
-        <a href=\"/admin/structure/taxonomy/manage/visit_type_labels/overview\" target=\"_blank\">Add them here.</a>", [
-          '%visit_type_ids_missing' => implode(', ', $missing),
-        ]), 'error');
-
-        // Record message in the Drupal database log.
-        // The 'Type' in the Recent Log Messages page is 'provider_visit_types'.
-        // Note: The logger categorizes messages into levels.
-        // @see https://api.drupal.org/api/drupal/vendor%21psr%21log%21Psr%21Log%21LogLevel.php/class/LogLevel/8.6.x
-        //
-        // TODO: if run via Drush, this also outputs to the console, which is
-        // duplicative of the message set above, but does not have HTML stripped
-        // and reformatted. This is because (?) Drush implements a logger that
-        // gets registered.
-        $this->logger->error("Providers import from Reservoir - the following visit type IDs were imported on providers, but their visit type names/descriptions were not found:<br/>
-        %visit_type_ids_missing<br/>
-        <a href=\"/admin/structure/taxonomy/manage/visit_type_labels/overview\" target=\"_blank\">Add them here.</a>", [
-          '%visit_type_ids_missing' => implode(', ', $missing),
-        ]);
-
-        // Send email notification, since this import runs regularly and
-        // automatically, and admins are unlikely to see the output/log message.
-        // Set the 'to' address in the hook_mail() implementation.
-        // Use the site default language for now.
-        // @see uwmcs_ecare_scheduling_mail()
-        $this->mailManager->mail(
-          'uwmcs_ecare_scheduling',
-          'validate_provider_visit_types',
-          NULL,
-          \Drupal::languageManager()->getDefaultLanguage()->getId(),
-          [
-            'visit_type_ids_missing' => $missing,
-          ]
-        );
+        $this->reportMissingVisitTypes($missing);
 
       }
       else {
 
         // Output success message.
+        // (Unfortunately there's no good way to output this message if running
+        // via batches, because each batch may or may not have $missing empty.)
         $this->messenger->addMessage(t("Providers import from Reservoir - all visit type IDs on imported providers have their visit type name and description."));
 
       }
 
-      // Clear the temp store value now that we've logged it.
-      $this->privateTempStore->delete('visit_types_missing');
-
     }
+
+  }
+
+  /**
+   * Report visit type ID(s) that are missing name/description.
+   *
+   * This reports in 3 ways:
+   * - output message to UI or console
+   * - entry in Drupal database log, with type 'provider_visit_types'
+   * - notification email.
+   *
+   * @param array $missing
+   *   Array of visit type IDs to report.
+   */
+  protected function reportMissingVisitTypes(array $missing) {
+
+    if (empty($missing)) {
+      return;
+    }
+
+    // Output message to page (if run via UI) or console (if via Drush).
+    $this->messenger->addMessage(t("Providers import from Reservoir - the following visit type IDs were imported on providers, but their visit type names/descriptions were not found:<br/>
+    %visit_type_ids_missing<br/>
+    <a href=\"/admin/structure/taxonomy/manage/visit_type_labels/overview\" target=\"_blank\">Add them here.</a>", [
+      '%visit_type_ids_missing' => implode(', ', $missing),
+    ]), 'error');
+
+    // Record message in the Drupal database log.
+    // The 'Type' in the Recent Log Messages page is 'provider_visit_types'.
+    // Note: The logger categorizes messages into levels.
+    // @see https://api.drupal.org/api/drupal/vendor%21psr%21log%21Psr%21Log%21LogLevel.php/class/LogLevel/8.6.x
+    //
+    // TODO: if run via Drush, this also outputs to the console, which is
+    // duplicative of the message set above, but does not have HTML stripped
+    // and reformatted. This is because (?) Drush implements a logger that
+    // gets registered.
+    $this->logger->error("Providers import from Reservoir - the following visit type IDs were imported on providers, but their visit type names/descriptions were not found:<br/>
+    %visit_type_ids_missing<br/>
+    <a href=\"/admin/structure/taxonomy/manage/visit_type_labels/overview\" target=\"_blank\">Add them here.</a>", [
+      '%visit_type_ids_missing' => implode(', ', $missing),
+    ]);
+
+    // Send email notification, since this import runs regularly and
+    // automatically, and admins are unlikely to see the output/log message.
+    // Set the 'to' address in the hook_mail() implementation.
+    // Use the site default language for now.
+    // @see uwmcs_ecare_scheduling_mail()
+    $this->mailManager->mail(
+      'uwmcs_ecare_scheduling',
+      'validate_provider_visit_types',
+      NULL,
+      \Drupal::languageManager()->getDefaultLanguage()->getId(),
+      [
+        'visit_type_ids_missing' => $missing,
+      ]
+    );
 
   }
 
