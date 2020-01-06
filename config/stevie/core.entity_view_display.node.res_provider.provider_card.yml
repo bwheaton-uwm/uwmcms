@@ -285,6 +285,7 @@ hidden:
   field_res_patients_treated: true
   field_res_provider_type: true
   field_res_pubmed_ids: true
+  field_res_puma_education: true
   field_res_puma_id: true
   field_uwm_content_owner: true
   field_uwm_json_packet: true

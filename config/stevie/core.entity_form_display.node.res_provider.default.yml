@@ -69,8 +69,8 @@ third_party_settings:
       label: 'Content Contacts'
     group_provider_basics:
       children:
-        - field_res_puma_id
         - field_res_npi
+        - field_res_puma_id
         - field_res_ser_id
         - field_res_gender
         - field_res_degrees
@@ -156,7 +156,7 @@ content:
     type: string_textarea
     region: content
   field_res_academic_title:
-    weight: 11
+    weight: 12
     settings:
       match_operator: CONTAINS
       size: 60
@@ -214,7 +214,7 @@ content:
     third_party_settings: {  }
   field_res_degrees:
     type: entity_reference_paragraphs
-    weight: 8
+    weight: 9
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -255,7 +255,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_gender:
-    weight: 7
+    weight: 8
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -289,14 +289,14 @@ content:
     type: boolean_checkbox
     region: content
   field_res_isacceptingnewpts:
-    weight: 10
+    weight: 11
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_res_languages:
-    weight: 9
+    weight: 10
     settings:
       match_operator: CONTAINS
       size: 60
@@ -314,7 +314,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_medical_title:
-    weight: 13
+    weight: 14
     settings:
       match_operator: CONTAINS
       size: 60
@@ -404,21 +404,21 @@ content:
     type: string_textarea
     region: content
   field_res_puma_id:
-    weight: 4
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
-    type: number
-    region: content
-  field_res_ser_id:
     weight: 6
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
+  field_res_ser_id:
+    weight: 7
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
   field_res_visit_type_id:
-    weight: 12
+    weight: 13
     settings:
       placeholder: ''
     third_party_settings: {  }
