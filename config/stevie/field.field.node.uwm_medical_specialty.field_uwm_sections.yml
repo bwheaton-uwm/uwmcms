@@ -6,6 +6,8 @@ dependencies:
     - field.storage.node.field_uwm_sections
     - node.type.uwm_medical_specialty
     - paragraphs.paragraphs_type.half_wide_hero
+    - paragraphs.paragraphs_type.uwm_banner_content
+    - paragraphs.paragraphs_type.uwm_block
     - paragraphs.paragraphs_type.uwm_featured_story
     - paragraphs.paragraphs_type.uwm_sections_medical_services
   module:
@@ -28,14 +30,22 @@ settings:
       uwm_sections_medical_services: uwm_sections_medical_services
       uwm_featured_story: uwm_featured_story
       half_wide_hero: half_wide_hero
+      uwm_block: uwm_block
+      uwm_banner_content: uwm_banner_content
     target_bundles_drag_drop:
       uwm_sections_medical_services:
         enabled: true
-        weight: -67
+        weight: -69
       uwm_featured_story:
         enabled: true
-        weight: -66
+        weight: -68
       half_wide_hero:
+        enabled: true
+        weight: -67
+      uwm_block:
+        enabled: true
+        weight: -66
+      uwm_banner_content:
         enabled: true
         weight: -65
       award:
@@ -77,55 +87,52 @@ settings:
       uwm_basic_content:
         weight: -52
         enabled: false
-      uwm_block:
+      uwm_card:
         weight: -51
         enabled: false
-      uwm_card:
+      uwm_accent_heading:
         weight: -50
         enabled: false
-      uwm_accent_heading:
+      uwm_content_reference:
         weight: -49
         enabled: false
-      uwm_content_reference:
+      uwm_cta_link:
         weight: -48
         enabled: false
-      uwm_cta_link:
+      uwm_full_html:
         weight: -47
         enabled: false
-      uwm_full_html:
+      uwm_grid:
         weight: -46
         enabled: false
-      uwm_grid:
+      uwm_image:
         weight: -45
         enabled: false
-      uwm_image:
+      uwm_image_hero:
         weight: -44
         enabled: false
-      uwm_image_hero:
+      uwm_link_with_icon:
         weight: -43
         enabled: false
-      uwm_link_with_icon:
+      uwm_featured_clinics:
         weight: -42
         enabled: false
-      uwm_featured_clinics:
+      uwm_media:
         weight: -41
         enabled: false
-      uwm_media:
+      uwm_modal:
         weight: -40
         enabled: false
-      uwm_modal:
+      uwm_section:
         weight: -39
         enabled: false
-      uwm_section:
+      uwm_text:
         weight: -38
         enabled: false
-      uwm_text:
+      uwm_view:
         weight: -37
         enabled: false
-      uwm_view:
-        weight: -36
-        enabled: false
       uwm_quiz_question:
-        weight: -35
+        weight: -36
         enabled: false
 field_type: entity_reference_revisions

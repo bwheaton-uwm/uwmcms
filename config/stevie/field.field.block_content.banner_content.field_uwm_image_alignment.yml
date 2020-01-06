@@ -1,0 +1,23 @@
+uuid: 7f1a26df-863d-43f8-a17a-c6740d8f3a97
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.banner_content
+    - field.storage.block_content.field_uwm_image_alignment
+  module:
+    - options
+id: block_content.banner_content.field_uwm_image_alignment
+field_name: field_uwm_image_alignment
+entity_type: block_content
+bundle: banner_content
+label: 'Image Alignment'
+description: 'The alignment of the image within the image area. This will only have an effect if the image area is wider than the image.'
+required: true
+translatable: false
+default_value:
+  -
+    value: left
+default_value_callback: ''
+settings: {  }
+field_type: list_string

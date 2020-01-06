@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_uwm_sections
     - node.type.uwm_hub_page
+    - paragraphs.paragraphs_type.uwm_banner_content
     - paragraphs.paragraphs_type.uwm_featured_story
     - paragraphs.paragraphs_type.uwm_section
   module:
@@ -26,6 +27,7 @@ settings:
     target_bundles:
       uwm_section: uwm_section
       uwm_featured_story: uwm_featured_story
+      uwm_banner_content: uwm_banner_content
     target_bundles_drag_drop:
       uwm_basic_content:
         weight: -33
@@ -81,4 +83,52 @@ settings:
       uwm_featured_story:
         enabled: true
         weight: 28
+      award:
+        weight: 35
+        enabled: false
+      board_certification:
+        weight: 36
+        enabled: false
+      degree:
+        weight: 37
+        enabled: false
+      education_history:
+        weight: 39
+        enabled: false
+      half_wide_hero:
+        weight: 40
+        enabled: false
+      hours_for_day:
+        weight: 42
+        enabled: false
+      hours_of_operation:
+        weight: 43
+        enabled: false
+      uwm_3_col_proof_points:
+        weight: 44
+        enabled: false
+      uwm_accent_heading:
+        weight: 45
+        enabled: false
+      uwm_accordion_sub_section:
+        weight: 48
+        enabled: false
+      uwm_banner_content:
+        enabled: true
+        weight: 49
+      uwm_content_reference:
+        weight: 53
+        enabled: false
+      uwm_featured_clinics:
+        weight: 55
+        enabled: false
+      uwm_quiz_question:
+        weight: 64
+        enabled: false
+      uwm_sections_medical_services:
+        weight: 66
+        enabled: false
+      uwm_text:
+        weight: 67
+        enabled: false
 field_type: entity_reference_revisions

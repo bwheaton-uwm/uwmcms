@@ -1,0 +1,23 @@
+uuid: 1b1d18df-4b7f-466a-ae58-941763e120cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.banner_content
+    - field.storage.block_content.field_uwm_image_position
+  module:
+    - options
+id: block_content.banner_content.field_uwm_image_position
+field_name: field_uwm_image_position
+entity_type: block_content
+bundle: banner_content
+label: 'Image Position'
+description: 'Which side of the body content the image should appear.'
+required: true
+translatable: false
+default_value:
+  -
+    value: left
+default_value_callback: ''
+settings: {  }
+field_type: list_string
