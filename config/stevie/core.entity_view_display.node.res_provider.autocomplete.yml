@@ -119,6 +119,7 @@ hidden:
   field_res_procedures_treatments: true
   field_res_provider_type: true
   field_res_pubmed_ids: true
+  field_res_puma_education: true
   field_res_puma_id: true
   field_res_ser_id: true
   field_res_specialties_unindexed: true
