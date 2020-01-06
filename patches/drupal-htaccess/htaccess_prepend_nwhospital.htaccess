@@ -2109,7 +2109,10 @@
     RewriteCond %{HTTP_HOST} ^www.nwhospital.org$ [NC]
     RewriteRule ^workflow-test/?$ https://www.uwmedicine.org/locations/northwest-hospital [L,R=301,NE]
 
-     # Redirect any paths that haven't yet matched to uwmedicine.org.
+    RewriteCond %{HTTP_HOST} ^www.nwhospital.org$ [NC]
+    RewriteRule ^visitorinfo/billing.asp$ https://www.uwmedicine.org/patient-resources/billing-and-insurance/nwh-and-uwmc-billing [L,R=301,NE]
+
+    # Redirect any paths that haven't yet matched to uwmedicine.org.
     RewriteCond %{HTTP_HOST} ^www.nwhospital.org$ [NC]
     RewriteRule ^(.*)$ https://www.uwmedicine.org%{REQUEST_URI} [L,R=301]
  </IfModule>
