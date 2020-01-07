@@ -36,10 +36,19 @@
       var epicID = null;
       var directScheduling = null;
       var openScheduling = null;
+      var openMultipleTypes = null;
       var visitTypeIDs = null;
       var visitTypeNames = null;
       var visitTypeDescriptions = null;
-      var openMultipleTypes = null;
+
+      // Analytics - set up strings to identify click events in the appointment
+      // flow. The prefix and scheduling status strings apply to all elements
+      // for this provider.
+      // These are combined (space-delimited) into a `data-analytics-id`
+      // attribute on relevant elements, with another string that identifies
+      // specific actions.
+      var analyticsPrefix = 'booking-appointment';
+      var analyticsSchedStatus = null;
 
       // Find all modal steps.
       var $steps = $modal.find('.appointment-flow__step');
@@ -295,6 +304,12 @@
         // Multiple visit types?
         openMultipleTypes = (visitTypeIDs ? visitTypeIDs.length > 1 : false);
 
+        // Build scheduling status part for `data-analytics-id` attribute value.
+        analyticsSchedStatus =
+          'open-' + (openScheduling ? 'yes' : 'no') +
+          ' multiple-visit-' + (openScheduling && openMultipleTypes ? 'yes' : 'no') +
+          ' direct-' + (directScheduling ? 'yes' : 'no');
+
         /*
         console.log('modalContext:', modalContext, 'acceptingNew:', acceptingNew, ', acceptingReturning:', acceptingReturning, ', epicID:', epicID, ', openScheduling:', openScheduling, ', visitTypeIDs:', visitTypeIDs, ', visitTypeNames:', visitTypeNames, ', visitTypeDescriptions:', visitTypeDescriptions, ', openMultipleTypes:', openMultipleTypes, ', directScheduling:', directScheduling);
         */
@@ -328,6 +343,8 @@
                   if (visitTypeDescriptions.hasOwnProperty(visitTypeID)) {
                     $btn.find('.appointment-flow__step-button-desc').text(visitTypeDescriptions[visitTypeID]);
                   }
+
+                  $btn.attr('data-analytics-id', $btn.attr('data-analytics-id').replace('[id]', visitTypeID));
 
                   $btnContainer.append($btn);
 
@@ -388,6 +405,20 @@
             }
 
           }
+
+          // Update all elements with `data-analytics-id` to set the scheduling
+          // status string part of the value.
+          $steps.find('[data-analytics-id*="[analytics_sched_status]"]').each(function () {
+
+            var $elem = $(this);
+
+            // Replace the placeholder set in template.
+            $elem.attr('data-analytics-id', $elem.attr('data-analytics-id').replace('[analytics_sched_status]', analyticsSchedStatus));
+
+            // Store this particular string so we can remove it on modal close.
+            $elem.data('reset-analytics-sched-status', analyticsSchedStatus);
+
+          });
 
         }
 
@@ -614,6 +645,18 @@
           resetUrlAttr($iframeOpenSched, 'src');
           resetUrlAttr($ecareAccountYesLinkDirect, 'href');
           resetUrlAttr($visitedBeforeYesLinkDirect, 'href');
+
+          // Reset scheduling status in analytics attribute to placeholder.
+          $steps.find('[data-analytics-id]').each(function () {
+
+            var $elem = $(this);
+
+            var resetStr = $elem.data('reset-analytics-sched-status');
+            if (resetStr) {
+              $elem.attr('data-analytics-id', $elem.attr('data-analytics-id').replace(resetStr, '[analytics_sched_status]'));
+            }
+
+          });
 
         }
 

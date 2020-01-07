@@ -18,9 +18,6 @@
     'provider_page' - provider bio (node) page
     'provider_card' - provider card on search results or a clinic page tab
 
-  analytics_prefix: string - part of `data-analytics-id` attribute value for
-    all elements
-
   If on the provider bio page only:
     epic_id: the provider's Epic/SER ID number
     open_scheduling: boolean - whether provider is enabled for open scheduling
@@ -28,8 +25,10 @@
     direct_scheduling: boolean - whether provider is enabled for direct scheduling
     visit_type_names: mapping - visit type ID to display name
     visit_type_descriptions: mapping - visit type ID to display description
+    analytics_prefix: string - part of `data-analytics-id` attribute value for
+      all elements
     analytics_sched_status: string - part of `data-analytics-id` attribute value
-      for all elements, indicating this provider's open & direct statuses
+      for all elements, indicating this provider's open and direct statuses
 #}
 
 {#
@@ -75,6 +74,26 @@
     </a>
   </div>
 {% endset %}
+
+{#
+  Analytics - set up strings to identify click events in the appointment flow.
+  The prefix and scheduling status strings apply to all elements for this
+  provider.
+  These are combined (space-delimited) into a `data-analytics-id` attribute on
+  relevant elements, with another string that identifies specific actions.
+  (When this flow is not on a provider page, these variables are not passed from
+  parent template.)
+#}
+{% if modal_appt_context is not same as('provider_page') %}
+  {%
+    set analytics_prefix = 'booking-appointment'
+  %}
+
+  {#
+    Set to a placeholder for replacement in JS.
+  #}
+  {% set analytics_sched_status = '[analytics_sched_status]' %}
+{% endif %}
 
 {#
   Render all possible flow steps. The JS handles logic for showing/hiding
@@ -267,10 +286,10 @@
           href="#"
           class="appointment-flow__step-button appointment-flow__step-button--name-desc btn-cta-solid"
           data-btn-visit-type-id="template"
-          data-analytics-id="{{ analytics_prefix ~ ' dialog-visit-type visit-type-template ' ~ analytics_sched_status }}"
+          data-analytics-id="{{ analytics_prefix ~ ' dialog-visit-type visit-type-[id] ' ~ analytics_sched_status }}"
         >
-          <span class="appointment-flow__step-button-name">Template name</span>
-          <span class="appointment-flow__step-button-desc">Template description</span>
+          <span class="appointment-flow__step-button-name">[Name]</span>
+          <span class="appointment-flow__step-button-desc">[Description]</span>
         </a>
 
       {% endif %}
