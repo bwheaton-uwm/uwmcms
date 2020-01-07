@@ -64,13 +64,30 @@
   {% set url_open_scheduling_one_type = ecare_base_url ~ 'OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id=' ~ epic_id ~ '&vt=' ~ visit_type_ids.0 ~ '&view=plain' %}
 {% endif %}
 
+
+
+{#
+  Analytics - set up strings to identify click events in the appointment flow.
+  The prefix and scheduling status strings apply to all elements for this
+  provider.
+  These are combined (space-delimited) into a `data-analytics-id` attribute on
+  relevant elements, with another string that identifies specific actions.
+#}
+{%
+  set analytics_prefix = 'booking-appointment'
+%}
+{%
+  set analytics_sched_status =
+    'open-' ~ (open_scheduling ? 'yes' : 'no') ~
+    ' multiple-visit-' ~ (open_scheduling and (visit_type_ids|length > 1) ? 'yes' : 'no') ~
+    ' direct-' ~ (direct_scheduling ? 'yes' : 'no')
+%}
+
 {#
   Set attributes for button and link to online options, including those needed
   for analytics tracking.
-  Note: `css_parents_classes` is set in uwmbase_preprocess_node().
-
-  TODO: confirm desired attributes for analytics.
-  TODO: confirm whether to use `uwm_cta_link()`.
+  Note: `css_parents_classes` is set in uwmbase_preprocess_node(); using it here
+  mirrors `uwm_cta_link()`.
 #}
 {%
   set btn_online_attrs = create_attribute({
@@ -81,7 +98,8 @@
       'cta-from-' ~ request_path|clean_class,
       'provider-page__book-online',
     ]|merge(css_parents_classes),
-    'data-context-title': node_title|trim
+    'data-context-title': node_title|trim,
+    'data-analytics-id': analytics_prefix ~ ' click ' ~ analytics_sched_status
   })
 %}
 {%
@@ -91,7 +109,8 @@
       'cta-from-' ~ request_path|clean_class,
       'provider-page__book-online-returning',
     ]|merge(css_parents_classes),
-    'data-context-title': node_title|trim
+    'data-context-title': node_title|trim,
+    'data-analytics-id': analytics_prefix ~ ' click ' ~ analytics_sched_status
   })
 %}
 
