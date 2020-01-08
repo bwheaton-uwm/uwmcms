@@ -102,9 +102,13 @@
       }
 
       /*
-       * Move forward to given step, as determined by flow logic.
+       * Move forward to given step or link, as determined by flow logic.
+       *
+       * If $toStep is null - the button clicked is a link to elsewhere, not to
+       * move to another step.
+       * If $fromBtn is null - this is the first step.
        */
-      function stepForward($step, $prevBtn) {
+      function stepForward($fromBtn, $toStep) {
 
         // For all modal elements with analytics attribute, add to the string
         // part that tracks the user's path.
@@ -114,12 +118,14 @@
 
         // First add the button clicked on the previous step, if any.
         // (The previous step was already added when it was current.)
-        if (stepPath.length > 0 && $prevBtn !== null) {
-          pathAdd += ('-' + $prevBtn.attr('data-analytics-btn'));
+        if (stepPath.length > 0 && $fromBtn !== null) {
+          pathAdd += ('-' + $fromBtn.attr('data-analytics-btn'));
         }
 
         // Then add the current step.
-        pathAdd += ('_' + $step.attr('data-analytics-dialog'));
+        if ($toStep !== null) {
+          pathAdd += ('_' + $toStep.attr('data-analytics-dialog'));
+        }
 
         $analyticsElems.each(function () {
 
@@ -133,10 +139,15 @@
 
         });
 
-        // Append current step to user's path.
-        stepPath.push($step.attr('data-step'));
+        if ($toStep !== null) {
 
-        setStep($step);
+          // Append current step to user's path.
+          stepPath.push($toStep.attr('data-step'));
+
+          // Move to this step.
+          setStep($toStep);
+
+        }
 
       }
 
@@ -166,12 +177,13 @@
             var $elem = $(this);
 
             $elem.attr('data-analytics-id', $elem.attr('data-analytics-id').replace(
-              /(path[^\s]*)_[^_]+_[^_]+/,
+              /(path[^\s]*)_[^_\s]+_[^_\s]+/,
               '$1_' + $prevStep.attr('data-analytics-dialog')
             ));
 
           });
 
+          // Move to this step.
           setStep($prevStep);
 
         }
@@ -557,7 +569,7 @@
           }
 
           // Actually move to the first step!
-          stepForward($firstStep, null);
+          stepForward(null, $firstStep);
 
         }
 
@@ -580,10 +592,10 @@
 
               // Offer open scheduling when it's available.
               if (openMultipleTypes) {
-                stepForward($stepVisitType, $btn);
+                stepForward($btn, $stepVisitType);
               }
               else {
-                stepForward($stepOpenSchedWidget, $btn);
+                stepForward($btn, $stepOpenSchedWidget);
               }
 
             }
@@ -591,7 +603,7 @@
 
               // Show message that only returning patients within 3 years can
               // book online; anyone may call.
-              stepForward($stepCallInsteadAll, $btn);
+              stepForward($btn, $stepCallInsteadAll);
 
             }
           }
@@ -599,7 +611,7 @@
 
             // Show message that only returning patients within 3 years can
             // book online; returning patients may call.
-            stepForward($stepCallInsteadReturning, $btn);
+            stepForward($btn, $stepCallInsteadReturning);
 
           }
 
@@ -609,15 +621,22 @@
         // There are two versions of this button:
         // - If only direct scheduling is available, this button links directly
         // to eCare, because the initial link states the eCare account is
-        // required. No click handler needed.
+        // required.
+        $stepVisitedBefore.find('a[data-btn="yes-link-direct"]').click(function (e) {
+
+          var $btn = $(this);
+
+          // No next step; just handle analytics.
+          stepForward($btn, null);
+
+        });
         // - If open scheduling is available too, move to eCare account step.
-        // Only one is present in the markup, so set the step version if it is.
         $stepVisitedBefore.find('a[data-btn="yes-step"]').click(function (e) {
 
           e.preventDefault();
           var $btn = $(this);
 
-          stepForward($stepEcareAccount, $btn);
+          stepForward($btn, $stepEcareAccount);
 
         });
 
@@ -632,11 +651,21 @@
           var $btn = $(this);
 
           if (openMultipleTypes) {
-            stepForward($stepVisitType, $btn);
+            stepForward($btn, $stepVisitType);
           }
           else {
-            stepForward($stepOpenSchedWidget, $btn);
+            stepForward($btn, $stepOpenSchedWidget);
           }
+
+        });
+
+        // "Do you have an eCare (patient) account?" => Yes (link to eCare).
+        $stepEcareAccount.find('a[data-btn="yes-link-direct"]').click(function (e) {
+
+          var $btn = $(this);
+
+          // No next step; just handle analytics.
+          stepForward($btn, null);
 
         });
 
@@ -656,13 +685,11 @@
           e.preventDefault();
           var $btn = $(this);
 
-          var visitTypeID = $btn.attr('data-btn-visit-type-id');
-
           // Update open scheduling widget with the chosen visit type ID.
           // TODO: bad to have iframe with a "broken" src?
-          setUrlAttrQueryStringVal($iframeOpenSched, 'src', 'vt', visitTypeID);
+          setUrlAttrQueryStringVal($iframeOpenSched, 'src', 'vt', $btn.attr('data-btn-visit-type-id'));
 
-          stepForward($stepOpenSchedWidget, $btn);
+          stepForward($btn, $stepOpenSchedWidget);
 
         });
 
