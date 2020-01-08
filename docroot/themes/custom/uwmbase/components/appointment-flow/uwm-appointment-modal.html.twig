@@ -22,6 +22,26 @@
 {{ attach_library('uwmbase/modal-appointment') }}
 
 {#
+  Analytics - set up strings to identify click events in the appointment flow.
+  The prefix and scheduling status strings apply to all elements for this
+  provider.
+  These are combined (space-delimited) into a `data-analytics-id` attribute on
+  relevant elements, with another string that identifies specific actions.
+  (When this flow is on a provider page, these variables are passed from the
+  parent template; otherwise set them up here.)
+#}
+{% if modal_appt_context is not same as('provider_page') %}
+  {%
+    set analytics_prefix = 'booking-appointment'
+  %}
+
+  {#
+    Set to a placeholder for replacement in JS.
+  #}
+  {% set analytics_sched_status = '[analytics_sched_status]' %}
+{% endif %}
+
+{#
   Pass the modal context as data attribute for use in JS.
   Since the modal intentionally exists only once in a page, we can set the
   context value on it, and it's immediately accessible in JS. (The scheduling
@@ -36,7 +56,13 @@
       <div class="modal-header">
         <h3 class="modal-title">{{ "Book appointment online"|t }}</h3>
 
-        <button type="button" class="close" data-dismiss="modal" aria-label="{{ "Close"|t }}">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="{{ "Close"|t }}"
+          data-analytics-id="{{ analytics_prefix ~ ' dialog-[analytics_dialog] [analytics_dialog]-exit ' ~ analytics_sched_status }}"
+        >
           <span class="uwm-icon uwm-icon--close-x" aria-hidden="true"></span>
         </button>
       </div>

@@ -59,6 +59,9 @@
       var $stepVisitType = $modal.find('[data-step="visit-type"]');
       var $stepOpenSchedWidget = $modal.find('[data-step="open-schedule"]');
 
+      // Find modal close button.
+      var $btnClose = $modal.find('button.close');
+
       // Find all elements that link to open/direct scheduling.
       var $iframeOpenSched = $stepOpenSchedWidget.length ? $stepOpenSchedWidget.find('iframe.appointment-flow__open-scheduling-embed') : null;
 
@@ -86,6 +89,19 @@
         }
 
         $step.addClass('active');
+
+        // Update analytics attribute on Close button to denote the current
+        // step ("dialog").
+        var dialogName = $step.attr('data-analytics-dialog');
+
+        $btnClose.attr('data-analytics-id', $btnClose.attr('data-analytics-id').replace(
+          /dialog-[^\s]+/,
+          'dialog-' + dialogName
+        )
+        .replace(
+          /[^\s]+-exit/,
+          dialogName + '-exit'
+        ));
 
       }
 
@@ -406,9 +422,9 @@
 
           }
 
-          // Update all elements with `data-analytics-id` to set the scheduling
-          // status string part of the value.
-          $steps.find('[data-analytics-id*="[analytics_sched_status]"]').each(function () {
+          // For all elements in the modal with analytics attribute, set the
+          // scheduling status string part of the value.
+          $modal.find('[data-analytics-id*="[analytics_sched_status]"]').each(function () {
 
             var $elem = $(this);
 
@@ -646,8 +662,9 @@
           resetUrlAttr($ecareAccountYesLinkDirect, 'href');
           resetUrlAttr($visitedBeforeYesLinkDirect, 'href');
 
-          // Reset scheduling status in analytics attribute to placeholder.
-          $steps.find('[data-analytics-id]').each(function () {
+          // For all elements in the modal with analytics attribute, reset the
+          // scheduling status string part to its placeholder.
+          $modal.find('[data-analytics-id]').each(function () {
 
             var $elem = $(this);
 

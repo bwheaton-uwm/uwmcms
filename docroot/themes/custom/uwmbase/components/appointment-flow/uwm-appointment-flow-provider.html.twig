@@ -81,8 +81,8 @@
   provider.
   These are combined (space-delimited) into a `data-analytics-id` attribute on
   relevant elements, with another string that identifies specific actions.
-  (When this flow is not on a provider page, these variables are not passed from
-  parent template.)
+  (When this flow is on a provider page, these variables are passed from the
+  parent template; otherwise set them up here.)
 #}
 {% if modal_appt_context is not same as('provider_page') %}
   {%
@@ -96,8 +96,11 @@
 {% endif %}
 
 {#
-  Render all possible flow steps. The JS handles logic for showing/hiding
-  each next/previous step.
+  Render all possible flow steps.
+  The JS handles logic for showing/hiding each next/previous step. Steps are
+  identified by `data-step` attribute.
+  For analytics support in JS, steps are identified by `data-analytics-dialog`
+  attribute.
 #}
 <div class="appointment-flow">
 
@@ -106,7 +109,7 @@
     Step: "Have you visited this provider within the last three years?"
     ----------------------------------------------------------------------------
   #}
-  <div class="appointment-flow__step" data-step="visited-before">
+  <div class="appointment-flow__step" data-step="visited-before" data-analytics-dialog="visited">
     <p class="appointment-flow__step-text">{{ "Have you visited this provider within the last three years?"|t }}</p>
 
     <div class="appointment-flow__step-buttons">
@@ -174,13 +177,17 @@
 
 
   {#
+    ----------------------------------------------------------------------------
+    Step: "Please call to schedule your appointment instead."
+    ----------------------------------------------------------------------------
+
     These two "call instead" steps currently display the same text content.
     The only logical difference (which is implemented in the JS) is the first
     is used if accepting new and returning, the second is used if accepting
     returning only. These are kept separate in case any differentiation in the
     text is desired in the future.
   #}
-  <div class="appointment-flow__step" data-step="call-instead-all">
+  <div class="appointment-flow__step" data-step="call-instead-all" data-analytics-dialog="call-instead">
     <p class="appointment-flow__step-text"><strong>{{ "Please call to schedule your appointment instead."|t }}</strong></p>
     <p class="appointment-flow__step-text">
       {% if modal_appt_context is same as('provider_page') %}
@@ -194,7 +201,7 @@
   </div>
 
 
-  <div class="appointment-flow__step" data-step="call-instead-returning">
+  <div class="appointment-flow__step" data-step="call-instead-returning" data-analytics-dialog="call-instead">
     <p class="appointment-flow__step-text"><strong>{{ "Please call to schedule your appointment instead."|t }}</strong></p>
     <p class="appointment-flow__step-text">
       {% if modal_appt_context is same as('provider_page') %}
@@ -213,7 +220,7 @@
     Step: "Do you have an eCare (patient) account?"
     ----------------------------------------------------------------------------
   #}
-  <div class="appointment-flow__step" data-step="ecare-account">
+  <div class="appointment-flow__step" data-step="ecare-account" data-analytics-dialog="ecare-account">
     <p class="appointment-flow__step-text">{{ "Do you have an eCare (patient) account?"|t }}</p>
 
     <div class="appointment-flow__step-buttons">
@@ -248,7 +255,7 @@
     Step: "Choose your appointment type"
     ----------------------------------------------------------------------------
   #}
-  <div class="appointment-flow__step" data-step="visit-type">
+  <div class="appointment-flow__step" data-step="visit-type" data-analytics-dialog="visit-type">
     <p class="appointment-flow__step-text">{{ "Choose your appointment type"|t }}</p>
 
     <div class="appointment-flow__step-buttons">
@@ -305,7 +312,7 @@
     Step: Open scheduling widget
     ----------------------------------------------------------------------------
   #}
-  <div class="appointment-flow__step" data-step="open-schedule">
+  <div class="appointment-flow__step" data-step="open-schedule" data-analytics-dialog="open-schedule">
 
     {#
       Embed the open scheduling widget as an iframe with wrapper div and attach
