@@ -62,6 +62,9 @@
       // Find modal close button.
       var $btnClose = $modal.find('button.close');
 
+      // Find all elements in modal with analytics attribute.
+      var $analyticsElems = $modal.find('[data-analytics-id]');
+
       // Find all elements that link to open/direct scheduling.
       var $iframeOpenSched = $stepOpenSchedWidget.length ? $stepOpenSchedWidget.find('iframe.appointment-flow__open-scheduling-embed') : null;
 
@@ -74,26 +77,19 @@
       /*
        * Set modal to given step.
        */
-      function setStep($step, storeStep) {
+      function setStep($step) {
 
-        var $prev = $steps.filter('.active');
-        if ($prev.length) {
-
-          // If moving forward, store the previous step for use by Back links.
-          if (storeStep) {
-            stepPath.push($prev.attr('data-step'));
-          }
-
-          $prev.removeClass('active');
-
+        // Hide currently active step (if any) and show new one.
+        var $activeStep = $steps.filter('.active');
+        if ($activeStep.length) {
+          $activeStep.removeClass('active');
         }
 
         $step.addClass('active');
 
-        // Update analytics attribute on Close button to denote the current
+        // Update analytics attribute on Close button to denote the new current
         // step ("dialog").
         var dialogName = $step.attr('data-analytics-dialog');
-
         $btnClose.attr('data-analytics-id', $btnClose.attr('data-analytics-id').replace(
           /dialog-[^\s]+/,
           'dialog-' + dialogName
@@ -105,17 +101,78 @@
 
       }
 
-      function stepForward($step) {
+      /*
+       * Move forward to given step, as determined by flow logic.
+       */
+      function stepForward($step, $prevBtn) {
 
-        setStep($step, true);
+        // For all modal elements with analytics attribute, add to the string
+        // part that tracks the user's path.
+        // Overall format:
+        // 'path_[dialog1]-[button1]_[dialog2]-[button2]_...'.
+        var pathAdd = '';
+
+        // First add the button clicked on the previous step, if any.
+        // (The previous step was already added when it was current.)
+        if (stepPath.length > 0 && $prevBtn !== null) {
+          pathAdd += ('-' + $prevBtn.attr('data-analytics-btn'));
+        }
+
+        // Then add the current step.
+        pathAdd += ('_' + $step.attr('data-analytics-dialog'));
+
+        $analyticsElems.each(function () {
+
+          var $elem = $(this);
+
+          // (In the replacement string, '$&' inserts the matched substring.)
+          $elem.attr('data-analytics-id', $elem.attr('data-analytics-id').replace(
+            /path[^\s]*/,
+            '$&' + pathAdd
+          ));
+
+        });
+
+        // Append current step to user's path.
+        stepPath.push($step.attr('data-step'));
+
+        setStep($step);
 
       }
 
+      /*
+       * Move backward to whichever step was prior to the current one.
+       *
+       * This handles the 'Back' links.
+       */
       function stepBack() {
 
-        if (stepPath.length > 0) {
+        // The user must have moved to at least a second step to move back by
+        // one.
+        if (stepPath.length >= 2) {
 
-          setStep($steps.filter('[data-step="' + stepPath.pop() + '"]'), false);
+          // Remove current step from user's path.
+          stepPath.pop();
+
+          // Move to the last step before that.
+          var $prevStep = $steps.filter('[data-step="' + stepPath[stepPath.length - 1] + '"]');
+
+          // For all modal elements with analytics attribute, remove the
+          // current step and the previous step's button from the user path
+          // string part.
+          // Backtrack 2 steps, then re-add the previous (without its button).
+          $analyticsElems.each(function () {
+
+            var $elem = $(this);
+
+            $elem.attr('data-analytics-id', $elem.attr('data-analytics-id').replace(
+              /(path[^\s]*)_[^_]+_[^_]+/,
+              '$1_' + $prevStep.attr('data-analytics-dialog')
+            ));
+
+          });
+
+          setStep($prevStep);
 
         }
 
@@ -320,7 +377,7 @@
         // Multiple visit types?
         openMultipleTypes = (visitTypeIDs ? visitTypeIDs.length > 1 : false);
 
-        // Build scheduling status part for `data-analytics-id` attribute value.
+        // Build scheduling status part for the analytics attribute value.
         analyticsSchedStatus =
           'open-' + (openScheduling ? 'yes' : 'no') +
           ' multiple-visit-' + (openScheduling && openMultipleTypes ? 'yes' : 'no') +
@@ -350,17 +407,17 @@
 
                 var visitTypeID = visitTypeIDs[i];
 
-                if (visitTypeNames.hasOwnProperty(visitTypeID)) {
+                if (visitTypeNames.hasOwnProperty(visitTypeID) && visitTypeDescriptions.hasOwnProperty(visitTypeID)) {
 
                   var $btn = $btnTemplate.clone();
-                  $btn.attr('data-btn-visit-type-id', visitTypeID);
-                  $btn.find('.appointment-flow__step-button-name').text(visitTypeNames[visitTypeID]);
 
-                  if (visitTypeDescriptions.hasOwnProperty(visitTypeID)) {
-                    $btn.find('.appointment-flow__step-button-desc').text(visitTypeDescriptions[visitTypeID]);
-                  }
+                  $btn.attr('data-btn-visit-type-id', visitTypeID);
+
+                  $btn.find('.appointment-flow__step-button-name').text(visitTypeNames[visitTypeID]);
+                  $btn.find('.appointment-flow__step-button-desc').text(visitTypeDescriptions[visitTypeID]);
 
                   $btn.attr('data-analytics-id', $btn.attr('data-analytics-id').replace('[id]', visitTypeID));
+                  $btn.attr('data-analytics-btn', $btn.attr('data-analytics-btn').replace('[id]', visitTypeID));
 
                   $btnContainer.append($btn);
 
@@ -424,7 +481,7 @@
 
           // For all elements in the modal with analytics attribute, set the
           // scheduling status string part of the value.
-          $modal.find('[data-analytics-id*="[analytics_sched_status]"]').each(function () {
+          $analyticsElems.filter('[data-analytics-id*="[analytics_sched_status]"]').each(function () {
 
             var $elem = $(this);
 
@@ -500,7 +557,7 @@
           }
 
           // Actually move to the first step!
-          stepForward($firstStep);
+          stepForward($firstStep, null);
 
         }
 
@@ -516,16 +573,17 @@
         $stepVisitedBefore.find('a[data-btn="no"]').click(function (e) {
 
           e.preventDefault();
+          var $btn = $(this);
 
           if (acceptingNew) {
             if (openScheduling) {
 
               // Offer open scheduling when it's available.
               if (openMultipleTypes) {
-                stepForward($stepVisitType);
+                stepForward($stepVisitType, $btn);
               }
               else {
-                stepForward($stepOpenSchedWidget);
+                stepForward($stepOpenSchedWidget, $btn);
               }
 
             }
@@ -533,7 +591,7 @@
 
               // Show message that only returning patients within 3 years can
               // book online; anyone may call.
-              stepForward($stepCallInsteadAll);
+              stepForward($stepCallInsteadAll, $btn);
 
             }
           }
@@ -541,7 +599,7 @@
 
             // Show message that only returning patients within 3 years can
             // book online; returning patients may call.
-            stepForward($stepCallInsteadReturning);
+            stepForward($stepCallInsteadReturning, $btn);
 
           }
 
@@ -557,8 +615,9 @@
         $stepVisitedBefore.find('a[data-btn="yes-step"]').click(function (e) {
 
           e.preventDefault();
+          var $btn = $(this);
 
-          stepForward($stepEcareAccount);
+          stepForward($stepEcareAccount, $btn);
 
         });
 
@@ -570,12 +629,13 @@
         $stepEcareAccount.find('a[data-btn="no"]').click(function (e) {
 
           e.preventDefault();
+          var $btn = $(this);
 
           if (openMultipleTypes) {
-            stepForward($stepVisitType);
+            stepForward($stepVisitType, $btn);
           }
           else {
-            stepForward($stepOpenSchedWidget);
+            stepForward($stepOpenSchedWidget, $btn);
           }
 
         });
@@ -594,14 +654,15 @@
         $stepVisitType.on('click', 'a[data-btn-visit-type-id][data-btn-visit-type-id!="template"]', function (e) {
 
           e.preventDefault();
+          var $btn = $(this);
 
-          var visitTypeID = $(this).attr('data-btn-visit-type-id');
+          var visitTypeID = $btn.attr('data-btn-visit-type-id');
 
           // Update open scheduling widget with the chosen visit type ID.
           // TODO: bad to have iframe with a "broken" src?
           setUrlAttrQueryStringVal($iframeOpenSched, 'src', 'vt', visitTypeID);
 
-          stepForward($stepOpenSchedWidget);
+          stepForward($stepOpenSchedWidget, $btn);
 
         });
 
@@ -639,6 +700,19 @@
         $steps.removeClass('appointment-flow__step--first');
         $steps.removeClass('appointment-flow__step--only');
 
+        // For all elements in the modal with analytics attribute, remove
+        // all steps/buttons appended to 'path' part.
+        $analyticsElems.each(function () {
+
+          var $elem = $(this);
+
+          $elem.attr('data-analytics-id', $elem.attr('data-analytics-id').replace(
+            /path[^\s]*/,
+            'path'
+          ));
+
+        });
+
         // If not on a provider bio page, remove provider-specific values.
         if (modalContext !== 'provider_page') {
 
@@ -664,7 +738,7 @@
 
           // For all elements in the modal with analytics attribute, reset the
           // scheduling status string part to its placeholder.
-          $modal.find('[data-analytics-id]').each(function () {
+          $analyticsElems.each(function () {
 
             var $elem = $(this);
 

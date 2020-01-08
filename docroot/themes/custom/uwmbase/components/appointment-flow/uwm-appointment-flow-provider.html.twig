@@ -100,7 +100,7 @@
   The JS handles logic for showing/hiding each next/previous step. Steps are
   identified by `data-step` attribute.
   For analytics support in JS, steps are identified by `data-analytics-dialog`
-  attribute.
+  attribute, and buttons by `data-analytics-btn`.
 #}
 <div class="appointment-flow">
 
@@ -118,7 +118,8 @@
         href="#"
         class="appointment-flow__step-button btn-cta-solid"
         data-btn="no"
-        data-analytics-id="{{ analytics_prefix ~ ' dialog-visited visited-no ' ~ analytics_sched_status }}"
+        data-analytics-btn="no"
+        data-analytics-id="{{ analytics_prefix ~ ' dialog-visited visited-no path ' ~ analytics_sched_status }}"
       >{{ "No"|t }}</a>
 
       {#
@@ -154,7 +155,8 @@
           target="_blank"
           class="appointment-flow__step-button btn-cta-solid"
           data-btn="yes-link-direct"
-          data-analytics-id="{{ analytics_prefix ~ ' dialog-visited visited-yes ' ~ analytics_sched_status }}"
+          data-analytics-btn="yes"
+          data-analytics-id="{{ analytics_prefix ~ ' dialog-visited visited-yes path ' ~ analytics_sched_status }}"
         >{{ "Yes"|t }}</a>
 
       {% endif %}
@@ -165,7 +167,8 @@
           href="#"
           class="appointment-flow__step-button btn-cta-solid"
           data-btn="yes-step"
-          data-analytics-id="{{ analytics_prefix ~ ' dialog-visited visited-yes ' ~ analytics_sched_status }}"
+          data-analytics-btn="yes"
+          data-analytics-id="{{ analytics_prefix ~ ' dialog-visited visited-yes path ' ~ analytics_sched_status }}"
         >{{ "Yes"|t }}</a>
 
       {% endif %}
@@ -229,7 +232,8 @@
         href="#"
         class="appointment-flow__step-button btn-cta-solid"
         data-btn="no"
-        data-analytics-id="{{ analytics_prefix ~ ' dialog-ecare-account ecare-account-no ' ~ analytics_sched_status }}"
+        data-analytics-btn="no"
+        data-analytics-id="{{ analytics_prefix ~ ' dialog-ecare-account ecare-account-no path ' ~ analytics_sched_status }}"
       >{{ "No"|t }}</a>
 
       {#
@@ -241,7 +245,8 @@
         target="_blank"
         class="appointment-flow__step-button btn-cta-solid"
         data-btn="yes-link-direct"
-        data-analytics-id="{{ analytics_prefix ~ ' dialog-ecare-account ecare-account-yes ' ~ analytics_sched_status }}"
+        data-analytics-btn="yes"
+        data-analytics-id="{{ analytics_prefix ~ ' dialog-ecare-account ecare-account-yes path ' ~ analytics_sched_status }}"
       >{{ "Yes"|t }}</a>
 
     </div>
@@ -273,7 +278,8 @@
               href="#"
               class="appointment-flow__step-button appointment-flow__step-button--name-desc btn-cta-solid"
               data-btn-visit-type-id="{{ visit_type_id }}"
-              data-analytics-id="{{ analytics_prefix ~ ' dialog-visit-type visit-type-' ~ visit_type_id ~ ' ' ~ analytics_sched_status }}"
+              data-analytics-btn="{{ visit_type_id }}"
+              data-analytics-id="{{ analytics_prefix ~ ' dialog-visit-type visit-type-' ~ visit_type_id ~ ' path ' ~ analytics_sched_status }}"
             >
               <span class="appointment-flow__step-button-name">{{ visit_type_names[visit_type_id] }}</span>
               <span class="appointment-flow__step-button-desc">{{ visit_type_descriptions[visit_type_id] }}</span>
@@ -293,7 +299,8 @@
           href="#"
           class="appointment-flow__step-button appointment-flow__step-button--name-desc btn-cta-solid"
           data-btn-visit-type-id="template"
-          data-analytics-id="{{ analytics_prefix ~ ' dialog-visit-type visit-type-[id] ' ~ analytics_sched_status }}"
+          data-analytics-btn="[id]"
+          data-analytics-id="{{ analytics_prefix ~ ' dialog-visit-type visit-type-[id] path ' ~ analytics_sched_status }}"
         >
           <span class="appointment-flow__step-button-name">[Name]</span>
           <span class="appointment-flow__step-button-desc">[Description]</span>
