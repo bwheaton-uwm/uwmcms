@@ -5,7 +5,6 @@
  * Custom module for small, utility-type routines.
  */
 
-use Drupal\Core\Render\Markup;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
@@ -13,6 +12,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\taxonomy\Entity\Term;
@@ -332,23 +332,29 @@ function uwmcs_utils_entity_prepare_view($entity_type_id, array $entities, array
 
 /**
  * Implements hook_preprocess_views_view_field().
+ *
+ * Temporary hook to enhance an administrator's view, to allow comparing
+ * new and old provider education values on the reports screen.
  */
 function uwmcs_utils_preprocess_views_view_field(&$variables) {
 
   $view = $variables['view'];
   $field = $variables['field'];
 
-  if ($view->id() == 'puma_education_admin_report' && $view->current_display == 'page_1' && $field->field == 'field_res_puma_education') {
+  if ($view->id() == 'puma_education_admin_report'
+    && $view->current_display == 'page_1'
+    && $field->field == 'field_res_puma_education') {
+
+    /***
+     * If on our puma-education-report, show PUMA and IM values in the column.
+     */
 
     $node = $variables["row"]->_entity;
-    if ($node->hasField('field_res_puma_education') &&
-      $node->hasField('field_uwm_json_packet')) {
+    $field1 = $field2 = '';
 
-      $field1 = $field2 = '';
+    if ($node->hasField('field_res_puma_education')) {
 
       $ed1 = json_decode($node->field_res_puma_education->value);
-      $ed2 = json_decode($node->field_uwm_json_packet->value);
-
       if ($ed1) {
         foreach ($ed1 as $value) {
           $field1 .= '<li>[ ' .
@@ -358,6 +364,11 @@ function uwmcs_utils_preprocess_views_view_field(&$variables) {
             $value->specialty . ' ]';
         }
       }
+    }
+
+    if ($node->hasField('field_uwm_json_packet')) {
+
+      $ed2 = json_decode($node->field_uwm_json_packet->value);
       if ($ed2 && isset($ed2->educationHistories)) {
         foreach ($ed2->educationHistories as $value) {
           $field2 .= '<li>[ ' .
@@ -369,7 +380,10 @@ function uwmcs_utils_preprocess_views_view_field(&$variables) {
       }
     }
 
-    $return = '<table><thead><tr><td>PUMA</td><td>IM</td></tr></thead><tr><td>' . $field1 . '</td><td>' . $field2 . '</td></tr></table><code>Diff: ' . (strlen($field1) - strlen($field2)) . '</code>';
+    $diff = abs(strlen($field1) - strlen($field2));
+    $style = $diff < 50 ? '' : 'background-color: lightgoldenrodyellow';
+
+    $return = '<table><thead><tr><td>PUMA</td><td>IM</td></tr></thead><tr><td>' . $field1 . '</td><td>' . $field2 . '</td></tr></table><pre style="' . $style . '">Diff: ' . $diff . '</pre>';
     $variables['output'] = Markup::create($return);
 
   }
