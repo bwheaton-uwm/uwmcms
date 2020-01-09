@@ -19,7 +19,7 @@ popup_scrolling_confirmation: false
 popup_delay: 1000
 show_disagree_button: true
 popup_disagree_button_message: 'Website Privacy.'
-popup_enabled: false
+popup_enabled: true
 popup_find_more_button_message: 'More info'
 popup_height: null
 popup_hide_agreed: false

@@ -1,4 +1,4 @@
-message: '@site is currently under maintenance. We should be back shortly. Thank you for your patience.'
+message: "<p>The UW Medicine website is temporarily unavailable. We are performing some scheduled maintenance and will be back online soon.</p>\r\n<p style=\"margin-top: 3rem;\">For any online appointment issues or information please contact the Call Center at 205.520.5000*</p>\r\n<p>Wait times are shortest between 7-9 a.m.</p>\r\n<p>(Full hours: Monday - Friday, 7 a.m. to 7 p.m)</p>\r\n<p><em>We are experiencing longer-than-anticipated wait times. We apologize for the inconvenience and are working diligently to resolve.</em></p>\r\n<p>We apologize for any inconvenience.</p>\r\n<p style=\"margin-top: 3rem;\">* If this is an emergency please call 911 immediately.</p>\r\n"
 langcode: en
 _core:
   default_config_hash: Z5MXifrF77GEAgx0GQ6iWT8wStjFuY8BD9OruofWTJ8

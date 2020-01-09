@@ -1583,6 +1583,63 @@ function uwmbase_preprocess_paragraph__uwm_grid(&$variables) {
 /**
  * Implements hook_preprocess_HOOK().
  */
+function uwmbase_preprocess_paragraph__uwm_banner_content(&$variables) {
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  // Bail early if no block is referenced or if block has no content.
+  if (!$paragraph->hasField('field_uwm_block')
+    || $paragraph->get('field_uwm_block')->isEmpty()
+    || empty($variables['content']['field_uwm_block'][0])) {
+    return;
+  }
+
+  // Get the referenced block.
+  $block = $paragraph->get('field_uwm_block')->referencedEntities()[0];
+
+  // Define default settings.
+  $settings = [
+    'background_color' => '',
+    'image_width' => 'medium',
+    'image_position' => 'left',
+    'image_area_width' => 'default',
+    'image_alignment' => 'center',
+  ];
+
+  // Override settings defaults with field values.
+  foreach ($settings as $key => $value) {
+    $field_name = 'field_uwm_' . $key;
+    if ($block->hasField($field_name) && !$block->get($field_name)->isEmpty()) {
+      $settings[$key] = $block->get($field_name)->value;
+    }
+  }
+
+  // If image area width is default, copy value from image width.
+  if ($settings['image_area_width'] == 'default') {
+    $settings['image_area_width'] = $settings['image_width'];
+  }
+
+  $variables['settings'] = $settings;
+
+  // Get the block content.
+  $block_render_array = $variables['content']['field_uwm_block'][0];
+  $block_field_names = Element::children($block_render_array);
+
+  // Copy the block content to the paragraph content.
+  foreach ($block_field_names as $field_name) {
+    $variables['content'][$field_name] = $block_render_array[$field_name];
+  }
+
+  // Replace the paragraph's cache metadata with the block_content's.
+  $variables['#cache'] = $block_render_array['#cache'];
+
+  // Remove the block reference field from the paragraph content.
+  unset($variables['content']['field_uwm_block']);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
 function uwmbase_preprocess_field__paragraph__field_uwm_section_heading(&$variables) {
   // Define a variable that indicates if the heading should be accented.
   // @see field--paragraph--field-uwm-section-heading--uwm-section.html.twig

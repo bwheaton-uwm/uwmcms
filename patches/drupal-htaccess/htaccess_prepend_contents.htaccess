@@ -94,8 +94,7 @@
 
 
 ####
-## UWM: Provide friendly redirects
-## for certain pages and URLs
+## UWM: Other special rules.
 ##
 ####
 <IfModule mod_rewrite.c>
