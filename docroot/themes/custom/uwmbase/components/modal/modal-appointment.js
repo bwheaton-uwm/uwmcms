@@ -390,10 +390,15 @@
         openMultipleTypes = (visitTypeIDs ? visitTypeIDs.length > 1 : false);
 
         // Build scheduling status part for the analytics attribute value.
+        // This corresponds to the pattern in templates:
+        // @see node--res-provider--appointment-actions.html.twig
+        // @see node--provider-card--appointment-actions.html.twig
         analyticsSchedStatus =
           'open-' + (openScheduling ? 'yes' : 'no') +
           ' multiple-visit-' + (openScheduling && openMultipleTypes ? 'yes' : 'no') +
-          ' direct-' + (directScheduling ? 'yes' : 'no');
+          ' direct-' + (directScheduling ? 'yes' : 'no') +
+          ' accept-new-' + (acceptingNew ? 'yes' : 'no') +
+          ' accept-return-' + (acceptingReturning ? 'yes' : 'no');
 
         /*
         console.log('modalContext:', modalContext, 'acceptingNew:', acceptingNew, ', acceptingReturning:', acceptingReturning, ', epicID:', epicID, ', openScheduling:', openScheduling, ', visitTypeIDs:', visitTypeIDs, ', visitTypeNames:', visitTypeNames, ', visitTypeDescriptions:', visitTypeDescriptions, ', openMultipleTypes:', openMultipleTypes, ', directScheduling:', directScheduling);

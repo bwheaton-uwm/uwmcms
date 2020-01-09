@@ -75,11 +75,17 @@
 {%
   set analytics_prefix = 'booking-appointment'
 %}
+{#
+  This corresponds to the pattern in JS:
+  @see modal-appointment.js
+#}
 {%
   set analytics_sched_status =
     'open-' ~ (open_scheduling ? 'yes' : 'no') ~
     ' multiple-visit-' ~ (open_scheduling and (visit_type_ids|length > 1) ? 'yes' : 'no') ~
-    ' direct-' ~ (direct_scheduling ? 'yes' : 'no')
+    ' direct-' ~ (direct_scheduling ? 'yes' : 'no') ~
+    ' accept-new-' ~ (accepting_new ? 'yes' : 'no') ~
+    ' accept-return-' ~ (accepting_returning ? 'yes' : 'no')
 %}
 
 {#
