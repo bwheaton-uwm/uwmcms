@@ -491,6 +491,10 @@
 
           }
 
+          // Update the set of analytics elements now that adjustments have been
+          // made for this provider.
+          $analyticsElems = $modal.find('[data-analytics-id]');
+
           // For all elements in the modal with analytics attribute, set the
           // scheduling status string part of the value.
           $analyticsElems.filter('[data-analytics-id*="[analytics_sched_status]"]').each(function () {
