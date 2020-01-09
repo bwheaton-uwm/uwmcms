@@ -29,9 +29,12 @@
          * Begin: Epic-provided JS.
          */
         var EWC = new EmbeddedWidgetController({
-          // TODO: TEST ECARE URL - DO NOT MERGE TO MASTER.
           // Replace with the hostname of your Open Scheduling site.
-          'hostname': 'https://tstecare18.epic.medical.washington.edu',
+          //
+          // TEST - DO NOT MERGE TO MASTER.
+          // 'hostname': 'https://tstecare18.epic.medical.washington.edu',.
+          // -----------------------------.
+          'hostname': 'https://ecare.uwmedicine.org',
 
           // Must equal media query in EpicWP.css + any left/right margin of the host page. Should also change in EmbeddedWidget.css.
           'matchMediaString': '(max-width: 747px)',
