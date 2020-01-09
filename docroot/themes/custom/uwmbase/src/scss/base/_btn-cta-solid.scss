@@ -7,7 +7,7 @@
 @mixin btn-cta-solid($background-color: color('blue'), $background-color-hover: $hover-blue) {
   background-color: $background-color;
   color: color('white');
-  padding: 0.5rem 1.5rem; // 8px 24x
+  padding: 0.5rem 1rem; // 8px 16x
   font-size: 1rem; // 16px
   text-align: center;
   text-decoration: none;
@@ -27,11 +27,12 @@
 
 /*
  * Color variants - default to blue
+ * Extra specifity necessary to override .btn properties.
  */
-.btn-cta-solid {
+.btn.btn-cta-solid {
   @include btn-cta-solid();
 }
 
-.btn-cta-solid--purple {
+.btn.btn-cta-solid--purple {
   @include btn-cta-solid(color('purple'), $hover-purple);
 }

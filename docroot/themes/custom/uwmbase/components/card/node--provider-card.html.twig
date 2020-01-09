@@ -34,13 +34,10 @@
        {% set image = content.field_res_image %}
        {% if content.field_res_image|render|trim is empty %}
          {% set image %}
-           <img src="/{{ directory }}/src/assets/provider-silhouette-brand.png" alt="" class="img-fluid" />
+           <img src="/{{ directory }}/dist/assets/provider-silhouette.svg" alt="" />
          {% endset %}
        {% endif %}
-
        {{ uwm_cta_link(image|render, url, [css_parents_classes]) }}
-
-
      </div>
 
      <h2 class="provider-card__title">
@@ -48,20 +45,18 @@
 
 {#       // @TODO: VERIFY NEW CTA#}
        {{ uwm_cta_link(label|render, url, [css_parents_classes]) }}
-
-       {% if node.field_res_isacceptingnewpts.0.value == 1 and not is_independent %}
-         <span class="accepting-patients small"><span
-             class="uwm-icon uwm-icon--accepting-patients-teal"
-             aria-hidden="true"></span>
-           {{ "Accepting new patients"|t }}</span>
-       {% endif %}
-
      </h2>
 
      {{ title_suffix }}
 
      <div class="fields-container">
 
+      {% if node.field_res_isacceptingnewpts.0.value == 1 and not is_independent %}
+        <div class="provider-card__accepting-patients">
+          <span class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></span>
+          {{ "Accepting new patients"|t }}
+        </div>
+      {% endif %}
 
        <div class="provider-card__specialties full-wide">
 
@@ -106,25 +101,25 @@
             {% else %}
               {# Determine whether to display a phone number or "View Contact Details" button. #}
               {% if contact_phone_number %}
-  {#              <a class="provider-card__appointments-buttons btn btn-outline-primary provider-card__phone-number"#}
+  {#              <a class="provider-card__appointments-button btn btn-cta-solid provider-card__phone-number"#}
   {#              href={{"tel:#{contact_phone_number}"}}>{{ contact_phone_number|uwm_format_phone('.') }}</a>#}
 
                 {#              // @TODO Verify CTA link. #}
                 {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
                 {{ uwm_cta_link(contact_phone_number|uwm_format_phone('.'),
                 'tel:' ~ contact_phone_number|uwm_format_phone,
-                  [css_parents_classes, 'provider-card__appointments-buttons', 'btn', 'btn-outline-primary', 'provider-card__phone-number'],
+                  [css_parents_classes, 'provider-card__appointments-button', 'btn', 'btn-cta-solid', 'provider-card__phone-number'],
                   cta_special_attributes) }}
 
               {% else %}
-  {#              <a class="provider-card__appointments-buttons btn btn-outline-primary provider-card__contact-information"#}
+  {#              <a class="provider-card__appointments-button btn btn-cta-solid provider-card__contact-information"#}
   {#              href={{"https://www.uwmedicine.org/#{node.field_res_internal_url.0.value}#locations"}}>view contact details</a>#}
 
                 {#              // @TODO Verify CTA link. #}
                 {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
                 {{ uwm_cta_link('view contact details'|t,
                   "https://www.uwmedicine.org/#{node.field_res_internal_url.0.value}#locations",
-                  [css_parents_classes, 'provider-card__appointments-buttons', 'btn', 'btn-outline-primary', 'provider-card__contact-information'],
+                  [css_parents_classes, 'provider-card__appointments-button', 'btn', 'btn-cta-solid', 'provider-card__contact-information'],
                   cta_special_attributes) }}
 
               {% endif %}
@@ -140,13 +135,13 @@
               {# Determine whether or not to display the "Book Online" button. #}
               {% if node.field_res_is_open_scheduling.0.value == 1 and node.field_res_ser_id.0.value %}
                 {% set open_scheduling_url = "https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id=#{node.field_res_ser_id.0.value}&vt=#{visit_type_id}&view=plain" %}
-  {#              <a class="provider-card__appointments-buttons btn btn-outline-primary provider-card__book-online" href="{{ open_scheduling_url }}" >#}
+  {#              <a class="provider-card__appointments-button btn btn-cta-solid provider-card__book-online" href="{{ open_scheduling_url }}" >#}
   {#              {{ 'Book online'|t }}</a>#}
 
                 {#              // @TODO Verify CTA link. #}
                 {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
                 {{ uwm_cta_link('Book online'|t, open_scheduling_url,
-                  [css_parents_classes, 'provider-card__appointments-buttons', 'btn', 'btn-outline-primary', 'provider-card__book-online'],
+                  [css_parents_classes, 'provider-card__appointments-button', 'btn', 'btn-cta-solid', 'provider-card__book-online'],
                   cta_special_attributes) }}
 
               {% endif %}

@@ -42,13 +42,13 @@ dependencies:
     - field.field.node.res_provider.field_uwm_json_packet
     - field.field.node.res_provider.field_uwm_subject_matter_experts
     - field.field.node.res_provider.uwm_unique_id
+    - image.style.square_l
     - node.type.res_provider
-    - responsive_image.styles.provider_card_headshot
   module:
     - entity_reference_revisions
+    - image
     - name
     - options
-    - responsive_image
     - text
     - user
 _core:
@@ -151,10 +151,10 @@ content:
     weight: 0
     label: hidden
     settings:
-      responsive_image_style: provider_card_headshot
+      image_style: square_l
       image_link: ''
     third_party_settings: {  }
-    type: responsive_image
+    type: image
     region: content
   field_res_is_open_scheduling:
     weight: 20

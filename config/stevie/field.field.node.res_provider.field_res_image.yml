@@ -30,9 +30,9 @@ settings:
   title_field: false
   title_field_required: false
   default_image:
-    uuid: 8a44d226-9202-419d-b269-3b571248d32c
-    alt: 'Provider Image'
-    title: 'Provider Image'
+    uuid: ''
+    alt: ''
+    title: ''
     width: 320
     height: 394
   handler: 'default:file'
