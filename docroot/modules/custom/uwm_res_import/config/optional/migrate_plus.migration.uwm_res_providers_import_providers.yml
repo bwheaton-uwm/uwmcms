@@ -25,7 +25,7 @@ source:
 
 
   urls:
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed
+  - http://bios-reservoir-test.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed
   #  - 'public://temp/providers.json'
 
   ids:
@@ -126,6 +126,10 @@ source:
   - name: uwm_json_packet
     label: uwm_json_packet
     selector: /attributes/uwm_json_packet
+
+  - name: uwm_edw_board_certs
+    label: uwm_edw_board_certs
+    selector: /attributes/uwm_edw_board_certs
 
   # - name: type
   #   label: type
@@ -277,6 +281,8 @@ process:
   field_res_is_independent: field_res_is_independent
 
   field_uwm_json_packet: uwm_json_packet
+
+  field_uwm_edw_board_certs: uwm_edw_board_certs
 
   #  field_res_name: field_res_name
   field_res_name/title: field_res_name/title
