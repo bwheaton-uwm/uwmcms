@@ -95,3 +95,33 @@
     {% endfor %}
   </ul>
 {% endif %}
+
+
+{#
+ #
+ #
+ #
+ #
+ # PUMA CERTIFICATIONS
+ #
+ #
+ #}
+{% if provider_certs is not empty %}
+
+  <h3 class="provider-page__section2-subheading">{{ 'PUMA Board Certifications'|t }}</h3>
+  <ul class="provider-page__certifications">
+    {% for e in provider_certs|uwm_sort_parts('certified_year')|reverse %}
+      {% set ed = [] %}
+      {% if e.specialty_name %}
+        {% set ed = ed|merge([e.specialty_name]) %}
+      {% endif %}
+      {% if e.certified_year %}
+        {% set ed = ed|merge([e.certified_year]) %}
+      {% endif %}
+      {% if e.board_name %}
+        {% set ed = ed|merge([e.board_name]) %}
+      {% endif %}
+      <li class="provider-page__certifications-item">{{ ed|join(', ') }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
