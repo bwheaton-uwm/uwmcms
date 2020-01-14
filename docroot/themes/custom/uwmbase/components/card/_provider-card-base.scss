@@ -12,7 +12,8 @@ article.node-res_provider.view-mode-provider_card {
   h2 {
     font-size: 1.25rem; // 20px
     font-family: $font-family-sans-serif;
-    //font-weight: $font-weight-semi-bold;
+    padding: 0;
+    margin: 0;
 
     a {
       font-size: inherit !important;
