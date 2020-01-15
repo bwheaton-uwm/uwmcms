@@ -82,7 +82,7 @@ class UwmBinaryFountainController extends ControllerBase {
    */
   public function getProviderBinaryFountainReviews(string $providerNpi = NULL) {
 
-    if ($providerNpi) {
+    if ($providerNpi && $this->binaryFountainAppId) {
 
       /***
        * In our fetch-token and fetch-reviews methods below we

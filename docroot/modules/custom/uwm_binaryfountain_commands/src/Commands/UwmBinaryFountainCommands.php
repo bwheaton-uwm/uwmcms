@@ -140,29 +140,26 @@ class UwmBinaryFountainCommands extends DrushCommands {
    * Refresh the reviews of all providers with Binary Fountain results.
    *
    * @param array $options
-   *   Additional options for the command.
+   *   Additional options for the command; note the "count" must be provided.
    *
    * @command uwm:refresh-all-binary-fountain-reviews
    *
-   * @option refresh-all Flag to confirm many should be refreshed.
-   * @option refresh-limit Flag to set the maximum number to update.
+   * @option force Flag to confirm nodes should be refreshed.
+   * @option count Flag to set the number to update.
    *
    * @default $options []
    *
-   * @usage uwm:refresh-all-binary-fountain-reviews --refresh-all=true
+   * @usage uwm:refresh-all-binary-fountain-reviews --refresh-all true
    *   --refresh-limit=20
    *
    * @return null
    *   No return values used.
    */
-  public function refreshAllBinaryFountainReviews(array $options = []) {
+  public function refreshAllBinaryFountainReviews(array $options = ['count' => 0, 'force' => FALSE]) {
 
-    $options['refresh-all'] = $options['refresh-all'] ?? FALSE;
-    $options['refresh-limit'] = $options['refresh-limit'] ?? 10;
-
-    if (!$options['refresh-all']) {
+    if (!$options['force']) {
       $this->loggerChannelFactory->get(__CLASS__)
-        ->notice('We did not receive refresh-all flag so quitting early. Note a limit will still be enforced.');
+        ->notice('We did not receive "force" flag. Quitting early.');
       return NULL;
     }
 
@@ -172,10 +169,9 @@ class UwmBinaryFountainCommands extends DrushCommands {
       ->sort('changed', 'ASC')
       ->execute();
 
-    // $this->batchDrushActivity($nids);
     if (is_array($result)) {
 
-      $nodeIds = array_slice($result, 0, $options['refresh-limit']);
+      $nodeIds = array_slice($result, 0, $options['count']);
       $this->loggerChannelFactory->get(__CLASS__)
         ->notice('Starting refresh of these nodes: @nodeIds.', [
           '@nodeIds' => implode(', ', $nodeIds),
@@ -195,98 +191,6 @@ class UwmBinaryFountainCommands extends DrushCommands {
       }
 
     }
-
-  }
-
-  /**
-   * Perform one or more migration processes.
-   *
-   * @param string $migration_names
-   *   ID of migration(s) to import. Delimit multiple using commas.
-   * @param array $options
-   *   Additional options for the command.
-   *
-   * @command uwm:test
-   *
-   * @option all Process all migrations.
-   * @option group A comma-separated list of migration groups to import
-   * @option tag Name of the migration tag to import
-   * @option limit Limit on the number of items to process in each migration
-   * @option feedback Frequency of progress messages, in items processed
-   * @option idlist Comma-separated list of IDs to import
-   * @option idlist-delimiter The delimiter for records, defaults to ':'
-   * @option update  In addition to processing unprocessed items from the
-   *   source, update previously-imported items with the current data
-   * @option force Force an operation to run, even if all dependencies are not
-   *   satisfied
-   * @option execute-dependencies Execute all dependent migrations first.
-   *
-   * @default $options []
-   *
-   * @usage uwm:test --all
-   *   Perform all migrations
-   * @usage uwm:test --group=beer
-   *   Import all migrations in the beer group
-   * @usage uwm:test --tag=user
-   *   Import all migrations with the user tag
-   * @usage uwm:test --group=beer --tag=user
-   *   Import all migrations in the beer group and with the user tag
-   * @usage uwm:test beer_term,beer_node
-   *   Import new terms and nodes
-   * @usage uwm:test beer_user --limit=2
-   *   Import no more than 2 users
-   * @usage uwm:test beer_user --idlist=5
-   *   Import the user record with source ID 5
-   * @usage uwm:test beer_node_revision --idlist=1:2,2:3,3:5
-   *   Import the node revision record with source IDs [1,2], [2,3], and [3,5]
-   *
-   * @validate-module-enabled migrate_tools
-   *
-   * @aliases mim, migrate-import
-   *
-   * @throws \Exception
-   *   If there are not enough parameters to the command.
-   */
-  public function test($migration_names = '', array $options = []) {
-    $options += [
-      'all' => NULL,
-      'group' => NULL,
-      'tag' => NULL,
-      'limit' => NULL,
-      'feedback' => NULL,
-      'idlist' => NULL,
-      'idlist-delimiter' => ':',
-      'update' => NULL,
-      'force' => NULL,
-      'execute-dependencies' => NULL,
-    ];
-    $group_names = $options['group'];
-    $tag_names = $options['tag'];
-    $all = $options['all'];
-    $additional_options = [];
-    if (!$all && !$group_names && !$migration_names && !$tag_names) {
-      throw new \Exception(dt('You must specify --all, --group, --tag or one or more migration names separated by commas'));
-    }
-
-    $possible_options = [
-      'limit',
-      'feedback',
-      'idlist',
-      'idlist-delimiter',
-      'update',
-      'force',
-      'execute-dependencies',
-    ];
-    foreach ($possible_options as $option) {
-      if ($options[$option]) {
-        $additional_options[$option] = $options[$option];
-      }
-    }
-
-    $this->loggerChannelFactory->get(__CLASS__)
-      ->notice('You said @options.', [
-        '@options' => print_r($options, 1),
-      ]);
 
   }
 
