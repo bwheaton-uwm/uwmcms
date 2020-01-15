@@ -48,7 +48,7 @@
           // Update the "showing x-y" text.
           if (typeof pagination != 'undefined') {
             let firstItem = ((pagination.pageNumber - 1) * pagination.pageSize) + 1;
-            let lastItem = firstItem + 9;
+            let lastItem = (firstItem + 9 > details.length) ? details.length : firstItem + 9;
             $('#ratings-details__showing-info-text').html('Showing ' + firstItem + '-' + lastItem);
           }
         },
