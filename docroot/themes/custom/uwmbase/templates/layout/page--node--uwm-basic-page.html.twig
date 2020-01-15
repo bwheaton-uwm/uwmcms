@@ -58,6 +58,13 @@
 {# Main #}
 {% block main %}
     <div id="main-container" role="main" {{ attributes.addClass(classes) }}>
+        {# Alerts #}
+        {% if page.alerts %}
+            {% block alerts %}
+                {{ page.alerts }}
+            {% endblock %}
+        {% endif %}
+
         {# Help #}
         {% if page.help %}
             {% block help %}
