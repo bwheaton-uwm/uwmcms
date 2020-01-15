@@ -1,0 +1,58 @@
+uuid: 654f1c5a-4d6a-45c9-ab5d-378aec98f907
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.visit_type_labels.field_visit_type_description
+    - field.field.taxonomy_term.visit_type_labels.field_visit_type_ecare_desc
+    - field.field.taxonomy_term.visit_type_labels.field_visit_type_ecare_name
+    - field.field.taxonomy_term.visit_type_labels.field_visit_type_name
+    - taxonomy.vocabulary.visit_type_labels
+id: taxonomy_term.visit_type_labels.default
+targetEntityType: taxonomy_term
+bundle: visit_type_labels
+mode: default
+content:
+  field_visit_type_description:
+    weight: 2
+    settings:
+      size: 100
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_visit_type_ecare_desc:
+    weight: 4
+    settings:
+      size: 100
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_visit_type_ecare_name:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_visit_type_name:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 12
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  path: true
