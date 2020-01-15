@@ -1,0 +1,26 @@
+#
+# Short yml to allow settings override.
+#
+# Initializing settings here so we can override them later, in Drupal's
+# settings.php files. This allows keeping any secret API credentials in
+# the non-public, non-git repo private settings file saved to Acquia.
+# our non-backedup, private no-backup.settings.php file.
+#
+# @code
+# In settings.php:
+# $config['uwm_binaryfountain_reviews.binary_fountain']['values']['example_one'] = 'This example was overridden in ' . __FILE__;
+#
+# In a module:
+# $settings = \Drupal::config('uwm_binaryfountain_reviews');
+# $special_value = $uwm_container_settings->get('values.example_one');
+#
+#
+# @see https://github.com/uwmweb/uwmcms-nobackup-secrets/
+# @see https://www.drupal.org/docs/8/creating-custom-modules/include-default-configuration-in-your-drupal-8-module
+# @see https://www.drupal.org/docs/8/api/state-api/overview
+#
+
+values:
+  example_one: 'See settings.php include override'
+  BINARY_FOUNTAIN_APP_ID: ''
+  BINARY_FOUNTAIN_APP_SECRET: ''
