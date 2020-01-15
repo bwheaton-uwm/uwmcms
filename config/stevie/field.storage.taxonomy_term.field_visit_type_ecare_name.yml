@@ -1,0 +1,21 @@
+uuid: 98a91c14-72f3-4e9e-872f-2687adb05f47
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_visit_type_ecare_name
+field_name: field_visit_type_ecare_name
+entity_type: taxonomy_term
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
