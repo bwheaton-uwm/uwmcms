@@ -188,10 +188,6 @@ source:
       plugin: migration
       migration: uwm_res_providers_import_provider_images
       selector: /relationships/field_res_image/data
-    -
-      name: node_videos
-      label: node_videos
-      selector: /relationships/node_videos/data
 process:
   uuid: uuid
   nid:
@@ -367,17 +363,6 @@ process:
       title: title
       height: meta/height
       width: meta/width
-  field_res_node_videos:
-    plugin: sub_process
-    source: node_videos
-    process:
-      target_id:
-        -
-          plugin: uwm_media_id_for_uuid
-          source: id
-        -
-          plugin: skip_on_empty
-          method: process
   field_res_languages:
     plugin: sub_process
     source: field_res_languages

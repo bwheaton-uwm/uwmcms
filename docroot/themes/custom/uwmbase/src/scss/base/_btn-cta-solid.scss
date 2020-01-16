@@ -7,7 +7,8 @@
 @mixin btn-cta-solid($background-color: color('blue'), $background-color-hover: $hover-blue) {
   background-color: $background-color;
   color: color('white');
-  padding: 0.5rem 1.5rem; // 8px 24x
+  // TODO: revert this to 8px 24px; override on provider cards to 8px 16px
+  padding: 0.5rem 1rem; // 8px 16x
   border: 0 none;
   font-size: 1rem; // 16px
   line-height: 1.5;
@@ -29,11 +30,13 @@
 
 /*
  * Color variants - default to blue
+ * Extra specificity necessary to override .btn properties.
  */
-.btn-cta-solid {
+// TODO: make these work for .btn-cta-solid alone
+.btn.btn-cta-solid {
   @include btn-cta-solid();
 }
 
-.btn-cta-solid--purple {
+.btn.btn-cta-solid--purple {
   @include btn-cta-solid(color('purple'), $hover-purple);
 }

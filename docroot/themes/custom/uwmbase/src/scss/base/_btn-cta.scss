@@ -43,14 +43,14 @@ p .btn-cta {
 
 .uwm-accent-color__purple .btn-cta,
 .uwm-section.uwm-accent-color__purple .btn-cta {
-    @include angled-edge('inside top', 'lower right', color('purple'), 15, 15);
-    border-color: color('purple');
+    @include angled-edge('inside top', 'lower right', $heading-purple, 15, 15);
+    border-color: $heading-purple;
 
     &::before {
         background-position: left 0;
     }
     &::after {
-        background-color: color('purple');
+        background-color: $heading-purple;
     }
 }
 

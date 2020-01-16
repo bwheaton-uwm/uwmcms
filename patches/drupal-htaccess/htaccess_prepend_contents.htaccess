@@ -37,6 +37,9 @@
     RewriteCond %{HTTP_HOST} eastside.uwmedicine(.wpengine)?.org [NC]
     RewriteRule ^ https://www.uwmedicine.org/locations/eastside-specialty-center%{REQUEST_URI} [L,R]
 
+    # Redirect careers.uwmedicine.org to uwmedicine.org/about/career-opportunities
+    RewriteCond %{HTTP_HOST} careers.uwmedicine.org [NC]
+    RewriteRule ^(.*)$ https://www.uwmedicine.org/about/career-opportunities [L,R=301]
 </IfModule>
 
 
