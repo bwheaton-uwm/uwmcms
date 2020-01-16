@@ -22,8 +22,7 @@ function uwm_binaryfountain_reviews_preprocess_node(&$variables) {
     // Add ratings data.
     new UwmAttachNodeReviews($node);
 
-    if (__uwm_binaryfountain_reviews_enabled() && !empty($node->uwm_binaryfountain_reviews['data']['overallRating']['value'])) {
-
+    if (__uwm_binaryfountain_reviews_enabled() && !empty($node->uwm_binaryfountain_reviews['data']['entities'][0]['overallRating']['value'])) {
       $variables['ratings'] = __uwm_binaryfountain_reviews_process_ratings($node->uwm_binaryfountain_reviews);
       $variables['has_ratings'] = (bool) !empty($variables['ratings']);
 
@@ -45,27 +44,33 @@ function uwm_binaryfountain_reviews_preprocess_node(&$variables) {
 function __uwm_binaryfountain_reviews_process_ratings(array $raw_ratings) {
   $ratings = [];
 
-  // Set the summary stars data.
-  if (!empty($raw_ratings['overallRating']['value'])) {
-    $ratings['summary']['value'] = $raw_ratings['overallRating']['value'];
+  if (empty($raw_ratings['data']['entities'])) {
+    return $ratings;
+  }
 
-    $ratings['summary']['stars'] = __uwm_binaryfountain_reviews_get_stars($raw_ratings['overallRating']['value'], 1);
+  $ratings_data = $raw_ratings['data']['entities'][0];
+
+  // Set the summary stars data.
+  if (!empty($ratings_data['overallRating']['value'])) {
+    $ratings['summary']['value'] = $ratings_data['overallRating']['value'];
+
+    $ratings['summary']['stars'] = __uwm_binaryfountain_reviews_get_stars($ratings_data['overallRating']['value'], 1);
   }
 
   // Set the ratings count.
-  if (!empty($raw_ratings['totalRatingCount'])) {
-    $ratings['summary']['count']['ratings'] = $raw_ratings['totalRatingCount'];
+  if (!empty($ratings_data['totalRatingCount'])) {
+    $ratings['summary']['count']['ratings'] = $ratings_data['totalRatingCount'];
   }
 
   // Set the comment count.
-  if (!empty($raw_ratings['totalCommentCount'])) {
-    $ratings['summary']['count']['reviews'] = $raw_ratings['totalCommentCount'];
+  if (!empty($ratings_data['totalCommentCount'])) {
+    $ratings['summary']['count']['reviews'] = $ratings_data['totalCommentCount'];
   }
 
   // Set the details data.
-  if (!empty($raw_ratings['comments'])) {
+  if (!empty($ratings_data['comments'])) {
     $ratings['details'] = [];
-    foreach ($raw_ratings['comments'] as $comment) {
+    foreach ($ratings_data['comments'] as $comment) {
       $ratings['details'][] = [
         'stars' => isset($comment['overallRating']['value']) ? __uwm_binaryfountain_reviews_get_stars($comment['overallRating']['value']) : [],
         'date' => isset($comment['mentionTime']) ? date('F j, Y', strtotime($comment['mentionTime'])) : '',
