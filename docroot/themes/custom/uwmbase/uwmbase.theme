@@ -619,7 +619,7 @@ function uwmbase_preprocess_node(&$variables, $hook) {
     // Pass specific variables from JSON data to the template.
     if ($node->hasField('field_uwm_edw_board_certs') && !$node->get('field_uwm_edw_board_certs')
       ->isEmpty()) {
-      $variables['provider_certs'] = Json::decode($node->field_uwm_edw_board_certs->value);
+      $variables['provider_certs'] = json_decode($node->field_uwm_edw_board_certs->value);
 
     }
 
