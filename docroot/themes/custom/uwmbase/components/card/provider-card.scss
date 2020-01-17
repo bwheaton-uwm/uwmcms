@@ -88,6 +88,7 @@ article.node-res_provider.view-mode-provider_card {
       }
 
       .provider-card__appointments-button {
+        display: inline-block;
         color: color('white');
         font-size: .875rem; // 14px
         text-transform: uppercase;
@@ -98,8 +99,7 @@ article.node-res_provider.view-mode-provider_card {
           color: color('white');
         }
 
-        // TODO: fix this for new Book Online button
-        &:last-of-type {
+        &:last-child {
           margin-right: 0;
         }
       }

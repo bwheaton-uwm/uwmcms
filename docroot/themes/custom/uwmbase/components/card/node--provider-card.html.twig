@@ -131,7 +131,7 @@
             {% if contact_phone_number %}
 
               {#
-              <a class="provider-card__appointments-button btn btn-cta-solid provider-card__phone-number"
+              <a class="provider-card__appointments-button btn-cta-solid provider-card__phone-number"
               href={{"tel:#{contact_phone_number}"}}>{{ contact_phone_number|uwm_format_phone('.') }}</a>
               #}
 
@@ -139,13 +139,13 @@
               {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
               {{ uwm_cta_link(contact_phone_number|uwm_format_phone('.'),
               'tel:' ~ contact_phone_number|uwm_format_phone,
-                [css_parents_classes, 'provider-card__appointments-button', 'btn', 'btn-cta-solid', 'provider-card__phone-number'],
+                [css_parents_classes, 'provider-card__appointments-button', 'btn-cta-solid', 'provider-card__phone-number'],
                 cta_special_attributes) }}
 
             {% else %}
 
               {#
-              <a class="provider-card__appointments-button btn btn-cta-solid provider-card__contact-information"
+              <a class="provider-card__appointments-button btn-cta-solid provider-card__contact-information"
               href={{"https://www.uwmedicine.org/#{node.field_res_internal_url.0.value}#locations"}}>view contact details</a>
               #}
 
@@ -153,7 +153,7 @@
               {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
               {{ uwm_cta_link('View contact details'|t,
                 "https://www.uwmedicine.org/#{node.field_res_internal_url.0.value}#locations",
-                [css_parents_classes, 'provider-card__appointments-button', 'btn', 'btn-cta-solid', 'provider-card__contact-information'],
+                [css_parents_classes, 'provider-card__appointments-button', 'btn-cta-solid', 'provider-card__contact-information'],
                 cta_special_attributes) }}
 
             {% endif %} {# /if contact_phone_number #}

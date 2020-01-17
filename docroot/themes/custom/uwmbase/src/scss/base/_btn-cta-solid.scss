@@ -7,7 +7,6 @@
 @mixin btn-cta-solid($background-color: color('blue'), $background-color-hover: $hover-blue) {
   background-color: $background-color;
   color: color('white');
-  // TODO: revert this to 8px 24px; override on provider cards to 8px 16px
   padding: 0.5rem 1rem; // 8px 16x
   border: 0 none;
   font-size: 1rem; // 16px
@@ -16,6 +15,7 @@
   text-decoration: none;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   transition: 0.3s ease-in-out;
+  cursor: pointer;
 
   &:focus {
     color: color('white');
@@ -29,14 +29,16 @@
 }
 
 /*
+ * Apply mixin to default css class.
  * Color variants - default to blue
  * Extra specificity necessary to override .btn properties.
  */
-// TODO: make these work for .btn-cta-solid alone
+.btn-cta-solid,
 .btn.btn-cta-solid {
   @include btn-cta-solid();
 }
 
+.btn-cta-solid--purple,
 .btn.btn-cta-solid--purple {
   @include btn-cta-solid(color('purple'), $hover-purple);
 }
