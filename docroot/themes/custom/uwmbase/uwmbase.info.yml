@@ -96,6 +96,7 @@ regions:
   title: Title
   help: Help
   content_top: Content top
+  alerts: Alerts
   content: Content
   bottom: Content bottom
   sidebar_first: First sidebar

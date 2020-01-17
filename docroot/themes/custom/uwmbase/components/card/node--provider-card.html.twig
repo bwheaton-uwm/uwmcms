@@ -32,22 +32,25 @@
       {% set image = content.field_res_image %}
       {% if content.field_res_image|render|trim is empty %}
         {% set image %}
-          <img src="/{{ directory }}/src/assets/provider-silhouette-brand.png" alt="" class="img-fluid" />
+          <img src="/{{ directory }}/dist/assets/provider-silhouette.svg" alt="" />
         {% endset %}
       {% endif %}
 
       {{ uwm_cta_link(image|render, url, [css_parents_classes]) }}
     </div>
 
-    <div class="provider-card__intro">
-      <h2 class="provider-card__title">
-        {#
-        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-        #}
+    <h2 class="provider-card__title">
+      {#
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+      #}
 
-        {# // @TODO: VERIFY NEW CTA#}
-        {{ uwm_cta_link(label|render, url, [css_parents_classes]) }}
-      </h2>
+      {# // @TODO: VERIFY NEW CTA#}
+      {{ uwm_cta_link(label|render, url, [css_parents_classes]) }}
+    </h2>
+
+    {{ title_suffix }}
+
+    <div class="fields-container">
 
       {#
         Indicate if provider is accepting new and/or returning patients.
@@ -67,10 +70,6 @@
               <span class="uwm-icon uwm-icon--accepting-patients-purple" aria-hidden="true"></span>
               {{ "Accepting returning patients only"|t }}
             {% elseif accepting_new and (not accepting_returning) %}
-              {#
-                  NOTE: this case is probably unrealistic and indicates bad data.
-                  Handle it by providing what options we know we have.
-              #}
               <span class="uwm-icon uwm-icon--accepting-patients-teal" aria-hidden="true"></span>
               {{ "Accepting new patients"|t }}
             {% else %}
@@ -81,11 +80,6 @@
           </div>
         {% endif %}
       {% endif %}
-    </div>
-
-    {{ title_suffix }}
-
-    <div class="fields-container">
 
       <div class="provider-card__specialties full-wide">
 
@@ -137,7 +131,7 @@
             {% if contact_phone_number %}
 
               {#
-              <a class="provider-card__appointments-buttons btn btn-outline-primary provider-card__phone-number"
+              <a class="provider-card__appointments-button btn-cta-solid provider-card__phone-number"
               href={{"tel:#{contact_phone_number}"}}>{{ contact_phone_number|uwm_format_phone('.') }}</a>
               #}
 
@@ -145,13 +139,13 @@
               {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
               {{ uwm_cta_link(contact_phone_number|uwm_format_phone('.'),
               'tel:' ~ contact_phone_number|uwm_format_phone,
-                [css_parents_classes, 'provider-card__appointments-buttons', 'btn', 'btn-outline-primary', 'provider-card__phone-number'],
+                [css_parents_classes, 'provider-card__appointments-button', 'btn-cta-solid', 'provider-card__phone-number'],
                 cta_special_attributes) }}
 
             {% else %}
 
               {#
-              <a class="provider-card__appointments-buttons btn btn-outline-primary provider-card__contact-information"
+              <a class="provider-card__appointments-button btn-cta-solid provider-card__contact-information"
               href={{"https://www.uwmedicine.org/#{node.field_res_internal_url.0.value}#locations"}}>view contact details</a>
               #}
 
@@ -159,7 +153,7 @@
               {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
               {{ uwm_cta_link('View contact details'|t,
                 "https://www.uwmedicine.org/#{node.field_res_internal_url.0.value}#locations",
-                [css_parents_classes, 'provider-card__appointments-buttons', 'btn', 'btn-outline-primary', 'provider-card__contact-information'],
+                [css_parents_classes, 'provider-card__appointments-button', 'btn-cta-solid', 'provider-card__contact-information'],
                 cta_special_attributes) }}
 
             {% endif %} {# /if contact_phone_number #}
