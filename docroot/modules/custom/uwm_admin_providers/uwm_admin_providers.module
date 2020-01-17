@@ -1,0 +1,109 @@
+<?php
+
+/**
+ * @file
+ * Module file for UW Medicine Administer Providers.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Database\Query\AlterableInterface;
+
+/**
+ * Implements hook_query_alter().
+ *
+ * On Providers Scheduling views, fix a join to prevent results that list
+ * providers multiple times.
+ */
+function uwm_admin_providers_query_alter(AlterableInterface $query) {
+
+  if ($query->hasAnyTag('views_uwm_providers_scheduling', 'views_uwm_providers_scheduling_bulk_edit')) {
+
+    // The Providers Scheduling views have a filter to non-empty visit type IDs.
+    // Because this joins to a multiple-value field, it returns a row per visit
+    // type on that provider. To filter this out, alter the join to add a
+    // `delta = 0` condition. But, if also matching to a single visit type, do
+    // not limit by delta, as the single visit type limits to one delta (not
+    // necessarily 0).
+    // Searching for conditions within the query object is difficult because
+    // they may be nested multiple levels to account for grouped AND/OR logic.
+    // Check for the relevant condition(s) by searching the query as a string.
+    $query_str = $query->__toString();
+    if (strpos($query_str, 'node__field_res_visit_type_id.field_res_visit_type_id_value IS NOT NULL') !== FALSE && strpos($query_str, 'node__field_res_visit_type_id.field_res_visit_type_id_value = ') === FALSE) {
+
+      $join_tables = &$query->getTables();
+
+      if (!empty($join_tables['node__field_res_visit_type_id'])) {
+
+        $join_tables['node__field_res_visit_type_id']['condition'] = 'node_field_data.nid = node__field_res_visit_type_id.entity_id AND node__field_res_visit_type_id.delta = :field_delta_singular AND node__field_res_visit_type_id.deleted = :views_join_condition_0';
+
+        $join_tables['node__field_res_visit_type_id']['arguments'][':field_delta_singular'] = 0;
+
+      }
+
+    }
+
+  }
+
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter() for 'views_exposed_form'.
+ *
+ * On Providers Scheduling views, group filter elements for improved layout.
+ */
+function uwm_admin_providers_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  /** @var \Drupal\views\ViewExecutable $view_ex */
+  $view_ex = $form_state->get('view');
+
+  if ($view_ex->id() === 'uwm_providers_scheduling' || $view_ex->id() === 'views_uwm_providers_scheduling_bulk_edit') {
+
+    $groups = [
+      'group_basic' => [
+        'status',
+        'title',
+        'field_res_npi_value',
+        'field_res_npi_value_empty',
+      ],
+      'group_accepting' => [
+        'field_res_isacceptingnewpts_value',
+        'field_res_isacceptingreturnpts_value',
+      ],
+      'group_epic_id' => [
+        'field_res_ser_id_value',
+        'field_res_ser_id_value_empty',
+      ],
+      'group_epic_scheduling' => [
+        'field_res_is_open_scheduling_value',
+        'field_res_visit_type_id_value',
+        'field_res_visit_type_id_value_empty',
+        'field_res_is_direct_scheduling_value',
+      ],
+    ];
+
+    foreach ($groups as $group => $field_names) {
+
+      $form[$group] = [
+        '#type' => 'fieldset',
+      ];
+
+      // Move each field into the group. Pull in the title (label) which is
+      // stored in separate '#info' property.
+      foreach ($field_names as $field_name) {
+        if (!empty($form[$field_name])) {
+
+          $form[$group][$field_name] = array_merge(
+            $form[$field_name],
+            ['#title' => $form['#info']['filter-' . $field_name]['label']]
+          );
+
+          unset($form[$field_name]);
+
+        }
+      }
+
+    }
+
+  }
+
+}
