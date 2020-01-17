@@ -56,7 +56,7 @@ function uwm_admin_providers_form_views_exposed_form_alter(&$form, FormStateInte
   /** @var \Drupal\views\ViewExecutable $view_ex */
   $view_ex = $form_state->get('view');
 
-  if ($view_ex->id() === 'uwm_providers_scheduling' || $view_ex->id() === 'views_uwm_providers_scheduling_bulk_edit') {
+  if ($view_ex->id() === 'uwm_providers_scheduling' || $view_ex->id() === 'uwm_providers_scheduling_bulk_edit') {
 
     $groups = [
       'group_basic' => [
@@ -104,6 +104,25 @@ function uwm_admin_providers_form_views_exposed_form_alter(&$form, FormStateInte
 
     }
 
+  }
+
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for 'views_bulk_operations_configure_action'.
+ *
+ * If bulk-editing provider node field values, work around the 'Name' field's
+ * required sub-form elements that incorrectly block editing other fields.
+ */
+function uwm_admin_providers_form_views_bulk_operations_configure_action_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  // The "name" field type has multiple sub-values and defines a setting,
+  // "minimum components", to allow configuring which values are required.
+  // When the field widget is rendered in the bulk edit form, it still sets
+  // those sub-value elements as required, even when the field is not one being
+  // bulk-edited. Thus, remove that setting to allow the form to submit.
+  if (!empty($form['node']['res_provider']['field_res_name']['widget'][0])) {
+    $form['node']['res_provider']['field_res_name']['widget'][0]['#minimum_components'] = [];
   }
 
 }
