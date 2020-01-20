@@ -8,3 +8,7 @@ dependencies:
   - migrate_plus
   - migrate_tools
   - config_ignore
+  # This provides:
+  # - a way to upload CSV files via UI for import
+  # - a way to list and download generated error log files from import
+  - filebrowser
