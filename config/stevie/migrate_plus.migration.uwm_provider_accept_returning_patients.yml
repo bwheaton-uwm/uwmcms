@@ -1,0 +1,58 @@
+uuid: 6dc19a51-d049-4611-baae-03297048d972
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - uwm_import_epic
+id: uwm_provider_accept_returning_patients
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: uwm_epic
+label: '(Temp) Provider "is accepting returning patients" field'
+source:
+  plugin: csv
+  path: '(populate this in Migrations admin UI)'
+  delimiter: ','
+  enclosure: '"'
+  header_row_count: 1
+  keys:
+    - npi
+  column_names:
+    -
+      npi: 'Provider NPI'
+    -
+      name: 'Provider Name'
+    -
+      accept_returning: 'Is accepting returning patients'
+process:
+  nid:
+    -
+      plugin: entity_lookup
+      source: npi
+      entity_type: node
+      bundle_key: type
+      bundle: res_provider
+      value_key: field_res_npi
+    -
+      plugin: skip_on_empty
+      method: row
+      message: 'Skipped importing for this provider - no Drupal node found with this NPI'
+  field_res_isacceptingreturnpts:
+    -
+      plugin: skip_on_empty
+      source: accept_returning
+      method: row
+      message: 'Skipped importing for this provider - missing value: accepting returning patients'
+    -
+      plugin: static_map
+      map:
+        'Yes': 1
+        'No': 0
+destination:
+  plugin: 'entity:node'
+  overwrite_properties:
+    - field_res_isacceptingreturnpts
+migration_dependencies: null
