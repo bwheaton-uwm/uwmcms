@@ -1,0 +1,36 @@
+uuid: 14658b71-f240-409c-9e5b-9482b3cd974b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hours_for_day.field_res_day
+    - field.field.paragraph.hours_for_day.field_res_end_time
+    - field.field.paragraph.hours_for_day.field_res_start_time
+    - paragraphs.paragraphs_type.hours_for_day
+id: paragraph.hours_for_day.default
+targetEntityType: paragraph
+bundle: hours_for_day
+mode: default
+content:
+  field_res_day:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_res_end_time:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_res_start_time:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true
