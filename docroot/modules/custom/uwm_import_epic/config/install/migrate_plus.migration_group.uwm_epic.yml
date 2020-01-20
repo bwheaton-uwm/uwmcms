@@ -1,0 +1,25 @@
+# The machine name of the group, by which it is referenced in individual
+# migrations.
+id: uwm_epic
+
+# A human-friendly label for the group.
+label: UWM Epic Imports
+
+# More information about the group.
+description: Imports from Epic data.
+
+# Short description of the type of source, e.g. "Drupal 6" or "WordPress".
+source_type: null
+
+# Here we add any default configuration settings to be shared among all
+# migrations in the group. For this example, the source tables are in the
+# Drupal (default) database, but usually if your source data is in a
+# database it will be external.
+shared_configuration: null
+
+# Add an enforced dependency so this configuration will be removed on module
+# uninstall.
+dependencies:
+  enforced:
+    module:
+      - uwm_import_epic

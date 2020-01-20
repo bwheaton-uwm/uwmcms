@@ -1,0 +1,15 @@
+uuid: c627d36d-1f01-4ecb-aaec-25cec7727a23
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - uwm_import_epic
+_core:
+  default_config_hash: QQGTnGjNHZDLlHRv4zp8x4T4k4PBw-DYyMufwSCJ964
+id: uwm_epic
+label: 'UWM Epic Imports'
+description: 'Imports from Epic data.'
+source_type: null
+module: null
+shared_configuration: null
