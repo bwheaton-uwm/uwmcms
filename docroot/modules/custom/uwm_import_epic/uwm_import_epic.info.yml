@@ -1,6 +1,6 @@
 type: module
 name: UWM Imports from Epic eCare Data
-description: 
+description: Migrations to import eCare data from CSVs, with error logging
 package: UWMed
 core: 8.x
 dependencies:
