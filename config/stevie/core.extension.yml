@@ -173,6 +173,7 @@ module:
   uwm_admin_providers: 0
   uwm_commands: 0
   uwm_content_owners: 0
+  uwm_import_epic: 0
   uwm_res_import: 0
   uwmcs_extension: 0
   uwmcs_search_teaser: 0
