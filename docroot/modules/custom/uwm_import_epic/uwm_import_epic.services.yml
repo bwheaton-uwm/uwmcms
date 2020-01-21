@@ -1,0 +1,8 @@
+services:
+  theme.negotiator.uwm_admin_theme:
+    class: Drupal\uwm_import_epic\Theme\UwmAdminThemeNegotiator
+    tags:
+      - { name: theme_negotiator, priority: 10 }
+    # Pass the services required by AdminNegotiator we extend.
+    # @see user.services.yml
+    arguments: ['@current_user', '@config.factory', '@entity.manager', '@router.admin_context']
