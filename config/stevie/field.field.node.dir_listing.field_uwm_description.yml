@@ -1,0 +1,29 @@
+uuid: 7ae03bc1-a287-4cf3-a63e-ca8e0fec27da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_description
+    - node.type.dir_listing
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: '0'
+    unrestricted: '0'
+    unrestricted_no_wysiwyg: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: node.dir_listing.field_uwm_description
+field_name: field_uwm_description
+entity_type: node
+bundle: dir_listing
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
