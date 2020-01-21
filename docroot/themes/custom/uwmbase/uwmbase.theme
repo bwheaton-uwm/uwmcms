@@ -471,10 +471,13 @@ function uwmbase_preprocess_node(&$variables, $hook) {
   // Parse custom JSON data field.
   _uwmbase_node_parse_json_field($node);
 
-  // Pass specific variables from JSON data to the template.
-  if (!empty($node->uwm_json_packet_data) && $node->bundle() === 'res_clinic') {
-    $variables['hours'] = _uwmbase_get_clinic_hours_array($node->uwm_json_packet_data);
+  // Get and process hours for a clinic.
+  if ($node->bundle() === 'res_clinic') {
+    // Get the hours from the clinic node.
+    $clinic_hours = _uwmbase_get_clinic_hours($node);
 
+    // Process the hours to prepare the data for the template.
+    $variables['hours'] = _uwmbase_process_clinic_hours($clinic_hours);
   }
 
   if (stripos($currentPath, '/provider-resource') !== FALSE) {

@@ -6,6 +6,8 @@
  */
 
 use Drupal\Component\Utility\Html;
+use Drupal\node\Entity\Node;
+use Drupal\paragraphs\Entity\Paragraph;
 
 /**
  * Custom function for getting CSS classes based on field parent.
@@ -80,28 +82,78 @@ function get_css_classes_for_parent(array $variables = []) {
 }
 
 /**
- * If a node has field_uwm_json_packet, parse its JSON data into arrays.
+ * Get hours from a clinic.
  *
- * Process some specific data and save result in $node->uwm_json_packet_data.
+ * @param \Drupal\node\Entity\Node $node
+ *   A clinic from which to get hours.
  *
- * @param array|null $json_data
- *   An array of data from json field.
- *
- * @return array|mixed
- *   Array of parsed clinic hours.
+ * @return array
+ *   Array of clinic hours data.
  */
-function _uwmbase_get_clinic_hours_array(array $json_data = NULL) {
+function _uwmbase_get_clinic_hours(Node $node) {
+  $clinic_hours = [
+    'hours_of_operation' => [
+      [
+        'always_open' => '',
+        'hours_type' => '',
+        'hours' => [
+          [
+            'day' => '',
+            'start' => '',
+            'end' => '',
+          ],
+        ],
+      ],
+    ],
+  ];
 
-  if (!empty($json_data) && is_array($json_data)) {
+  // Get updated values from other node fields.
+  $hours = &$clinic_hours['hours_of_operation'];
+  if ($node->hasField('field_res_hours_of_operation')) {
+    if ($field_res_hours_of_operation = $node->field_res_hours_of_operation->referencedEntities()) {
+      foreach ($field_res_hours_of_operation as $a => $b) {
+        $hours[$a] = [
+          'always_open' => $b->field_res_is_always_open->value,
+          'hours_type' => $b->field_res_hours_type->value,
+          'hours' => [],
+        ];
+
+        $hours_ppgs = $b->get('field_res_hours');
+        foreach ($hours_ppgs as $j => $k) {
+          $k = Paragraph::load($k->target_id);
+          $hours[$a]['hours'][$j] = [
+            'day' => $k->field_res_day->value,
+            'start' => $k->field_res_start_time->value,
+            'end' => $k->field_res_end_time->value,
+          ];
+        }
+      }
+    }
+  }
+
+  return $clinic_hours;
+}
+
+/**
+ * Process clinic hours and prepare the data for the template.
+ *
+ * @param array|null $clinic_hours
+ *   Hours for a clinic.
+ *
+ * @return array
+ *   Clinic hours that has been processed and prepared for the template.
+ */
+function _uwmbase_process_clinic_hours(array $clinic_hours = NULL) {
+  if (!empty($clinic_hours) && is_array($clinic_hours)) {
 
     // Process operation hours data.
-    if (!empty($json_data['hours_of_operation'])) {
+    if (!empty($clinic_hours['hours_of_operation'])) {
 
       // Restructure the data.
       $data = [];
 
       // Each value is from an Hours paragraph on Reservoir.
-      foreach ($json_data['hours_of_operation'] as $hours) {
+      foreach ($clinic_hours['hours_of_operation'] as $hours) {
 
         // Use a friendly type name as the key.
         $type = $hours['hours_type'];
@@ -275,13 +327,11 @@ function _uwmbase_get_clinic_hours_array(array $json_data = NULL) {
 
       }
 
-      $json_data['hours_of_operation'] = $data;
+      $clinic_hours['hours_of_operation'] = $data;
 
     }
 
-    // Save data to node.
-    return $json_data['hours_of_operation'];
-
+    return $clinic_hours['hours_of_operation'];
   }
 
 }
