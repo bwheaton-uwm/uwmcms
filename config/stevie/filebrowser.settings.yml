@@ -1,0 +1,29 @@
+filebrowser:
+  folder_path_encoded: ''
+  rights:
+    explore_subdirs: 1
+    download_archive: 0
+    create_folders: 0
+    download_manager: private
+    force_download: 1
+    forbidden_files: '.*'
+    whitelist: ''
+  uploads:
+    enabled: 1
+    allow_overwrite: 0
+    accepted: 'txt csv'
+  presentation:
+    default_view: list-view
+    encoding: UTF-8
+    hide_extension: 0
+    visible_columns:
+      icon: icon
+      created: created
+      size: size
+      mimetype: mimetype
+      description: description
+      name: name
+    default_sort: name
+    default_sort_order: asc
+_core:
+  default_config_hash: aZOIbJ0mDVxn0sGK6oSzaAVD92j7hTr5amHC4n9DCPg
