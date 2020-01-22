@@ -233,12 +233,6 @@ source:
     migration: uwm_res_providers_import_provider_images
     selector: /relationships/field_res_image/data
 
-  - name: node_videos
-    label: node_videos
-#    plugin: migration
-#    migration: uwm_res_media_remote_videos
-    selector: /relationships/node_videos/data
-
 
 process:
 
@@ -516,37 +510,6 @@ process:
       height: meta/height
       width: meta/width
 
-
-#  field_res_node_videos:
-#    plugin: sub_process
-#    source: node_videos
-#    process:
-#      target_id:
-#      - plugin: migration_lookup
-#        migration: uwm_res_media_remote_videos
-#        source: id
-#      - plugin: skip_on_empty
-#        method: process
-
-  field_res_node_videos:
-    plugin: sub_process
-    source: node_videos
-    process:
-      target_id:
-        - plugin: uwm_media_id_for_uuid
-          source: id
-        - plugin: skip_on_empty
-          method: process
-
-#  field_node_videos:
-#    plugin: sub_process
-#    source: node_videos
-#    process:
-#      target_id:
-#      - plugin: uwm_media_id_for_uuid
-#        source: id
-#      - plugin: skip_on_empty
-#        method: process
 
   #
   #  field_res_image/alt: title
