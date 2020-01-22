@@ -1,5 +1,0 @@
-type: module
-name: UWM Bulk Process Content
-description: Custom tools for bulk processing content.
-package: UWMed
-core: 8.x

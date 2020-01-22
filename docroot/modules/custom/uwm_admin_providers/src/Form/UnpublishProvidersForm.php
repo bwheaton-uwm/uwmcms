@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\uwm_bulk_process_content\Form;
+namespace Drupal\uwm_admin_providers\Form;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormBase;
@@ -8,7 +8,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Defines a form for bulk unplublishing providers.
+ * Defines a form for bulk unpublishing providers.
  */
 class UnpublishProvidersForm extends FormBase {
 
@@ -42,7 +42,7 @@ class UnpublishProvidersForm extends FormBase {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'uwm_bulk_process_content_unpublish_providers_form';
+    return 'uwm_admin_providers_unpublish_providers_form';
   }
 
   /**

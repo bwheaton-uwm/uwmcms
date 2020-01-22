@@ -1,7 +1,7 @@
-uwm_bulk_process_content.unpublish_providers:
+uwm_admin_providers.unpublish_providers:
   path: '/admin/content/unpublish-providers'
   defaults:
-    _form: '\Drupal\uwm_bulk_process_content\Form\UnpublishProvidersForm'
+    _form: '\Drupal\uwm_admin_providers\Form\UnpublishProvidersForm'
     _title: 'Unpublish providers'
   requirements:
     _role: 'content_manager + administrator'

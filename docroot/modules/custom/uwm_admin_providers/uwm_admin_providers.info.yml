@@ -1,0 +1,5 @@
+name: UW Medicine Administer Providers
+type: module
+description: Custom code to help administration of Providers content.
+core: 8.x
+package: UWMed
