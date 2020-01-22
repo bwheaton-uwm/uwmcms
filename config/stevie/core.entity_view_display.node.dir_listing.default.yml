@@ -1,0 +1,25 @@
+uuid: 747fa7a1-bf86-480b-90eb-9e93f2ae1752
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.dir_listing.field_uwm_description
+    - node.type.dir_listing
+  module:
+    - text
+    - user
+id: node.dir_listing.default
+targetEntityType: node
+bundle: dir_listing
+mode: default
+content:
+  field_uwm_description:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  links: true
+  search_api_excerpt: true

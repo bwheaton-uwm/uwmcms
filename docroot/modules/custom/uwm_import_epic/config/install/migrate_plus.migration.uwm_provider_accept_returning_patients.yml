@@ -1,0 +1,109 @@
+# Import 'accepting returning patients' field value from csv to Provider nodes:
+# - field_res_isacceptingreturnpts
+#
+# References:
+# https://www.drupal.org/docs/8/api/migrate-api/migrate-source-plugins/migrating-data-from-a-csv-source
+# https://www.drupal.org/project/drupal/issues/2949564
+# https://virtuoso-performance.com/blog/vpadmin/importing-specific-fields-overwriteproperties
+# https://www.mtech-llc.com/blog/ada-hernandez/entity-lookup-generate-migrate-process-plugins
+
+id: uwm_provider_accept_returning_patients
+label: (Temp) Provider "is accepting returning patients" field
+migration_group: uwm_epic
+
+# Add an enforced dependency so this configuration will be removed on module
+# uninstall.
+dependencies:
+  enforced:
+    module:
+      - uwm_import_epic
+
+# Define overwrite_properties so that the import *only* populates the fields
+# we want.
+destination:
+  plugin: entity:node
+  overwrite_properties:
+    # Is accepting returning patients?
+    - field_res_isacceptingreturnpts
+
+source:
+  plugin: 'csv'
+
+  # Full path to the file.
+  # The migration edit form is altered to allow setting this value in admin UI.
+  # @see uwm_import_epic_form_migration_edit_form_alter()
+  path: '(populate this in Migrations admin UI)'
+
+  # Column delimiter.
+  delimiter: ','
+
+  # Field enclosure.
+  enclosure: '"'
+
+  # The number of rows at the beginning which are not data.
+  header_row_count: 1
+
+  # The column(s) to use as a key. Each column specified will 
+  # create an index in the migration table and too many columns 
+  # may throw an index size error.
+
+  # (3.x version?)
+  # ids:
+  #   - npi
+
+  # (2.x version?)
+  keys:
+    - npi
+
+  # Here we identify the columns of interest in the source file. 
+  # Each numeric key is the 0-based index of the column. 
+  # For each column, the key below is the field name assigned to 
+  # the data on import, to be used in field mappings below. 
+  # The value is a user-friendly string for display by the 
+  # migration UI.
+
+  # (3.x version?)
+  # fields:
+  #   0:
+  #     name: npi
+  #     label: 'Provider NPI'
+  #   [etc]
+
+  # (2.x version?)
+  column_names:
+    - npi: 'Provider NPI'
+    - name: 'Provider Name'
+    - accept_returning: 'Is accepting returning patients'
+
+process:
+
+  # Node ID
+  # Map `nid` to look up existing provider node by NPI.
+  nid:
+    - plugin: entity_lookup
+      source: npi
+      entity_type: node
+      bundle_key: type
+      bundle: res_provider
+      value_key: field_res_npi
+    # If an existing node is not found, skip the row. (This is recorded as
+    # "ignored" in the migration result summary.)
+    - plugin: skip_on_empty
+      method: row
+      message: 'Skipped importing for this provider - no Drupal node found with this NPI'
+
+  # Is accepting returning patients?
+  # First check if this value is non-empty in the source row. The skip-on-empty
+  # process plugin overwrites existing node value if applied only to this field
+  # via 'process' method. Use 'row' method to bypass entire row due to
+  # incomplete source data.
+  # If not empty, map the "Yes" / "No" strings to boolean field 1 / 0 values.
+  field_res_isacceptingreturnpts:
+    - plugin: skip_on_empty
+      source: accept_returning
+      method: row
+      message: 'Skipped importing for this provider - missing value: accepting returning patients'
+    - plugin: static_map
+      map:
+        'Yes': 1
+        'No': 0

@@ -1,0 +1,122 @@
+<?php
+
+/**
+ * @file
+ * Module file for UWM Imports from Epic eCare Data.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter() for 'migration_edit_form'.
+ *
+ * Alter form for editing migrations to allow setting the filepath to csv
+ * source file via UI.
+ */
+function uwm_import_epic_form_migration_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  $migration_config = $form_state->getFormObject()->getEntity();
+
+  if (in_array($migration_config->id(), [
+    'uwm_epic_provider_scheduling',
+    'uwm_provider_accept_returning_patients',
+  ])) {
+
+    $csv_path = $migration_config->source['path'];
+
+    // Provide the private files directory real path in the UI as a convenience.
+    $private_realpath = NULL;
+    $private_stream = \Drupal::service('stream_wrapper.private');
+    if (!empty($private_stream)) {
+      /*
+       * TODO: this throws an error, but seems to be a correct call.
+       *
+       * Notice: Undefined offset: 1 in Drupal\Core\StreamWrapper\
+       * LocalStream->getTarget()
+       * (line 92 of core/lib/Drupal/Core/StreamWrapper/LocalStream.php).
+       * Drupal\Core\StreamWrapper\LocalStream->getTarget(NULL) (Line: 124)
+       * Drupal\Core\StreamWrapper\LocalStream->getLocalPath() (Line: 102)
+       * Drupal\Core\StreamWrapper\LocalStream->realpath() (Line: 31)
+       */
+      $private_realpath = $private_stream->realpath();
+    }
+
+    $form['csv_path'] = [
+      '#type' => 'textfield',
+      '#title' => t("Source CSV file"),
+      '#description' => t("Enter the full path to the file on the server.<br/>
+        The private files directory is: @private_files_dir", [
+          '@private_files_dir' => (!empty($private_realpath) ? $private_realpath : t("(not configured)")),
+        ]),
+      // Prevent using the element type's default 'maxlength' value of 128, as
+      // there may be long filepaths on the server.
+      '#maxlength' => NULL,
+      '#size' => 120,
+      '#element_validate' => [
+        '_uwm_import_epic_provider_scheduling_csv_path_validate',
+      ],
+      '#required' => TRUE,
+      '#default_value' => $csv_path,
+    ];
+
+    if (!empty($form['actions']['submit']['#type']) && $form['actions']['submit']['#type'] === 'submit') {
+
+      // Add a submit handler to run before the default ones.
+      array_unshift($form['actions']['submit']['#submit'], '_uwm_import_epic_provider_scheduling_migration_form_submit');
+
+    }
+
+  }
+
+}
+
+/**
+ * Element-validate handler for custom `csv_path` field on migration edit form.
+ */
+function _uwm_import_epic_provider_scheduling_csv_path_validate($element, FormStateInterface $form_state, $form) {
+
+  $csv_path = $element['#value'];
+
+  // The CSV migration source plugin enforces that the `path` property is not
+  // empty. We have to catch this early, before the plugin throws an exception.
+  // @see \Drupal\migrate_source_csv\Plugin\migrate\sourceCSV::__construct()
+  if (empty($csv_path)) {
+
+    $form_state->setError($element, t("File path must be set for this migration."));
+
+  }
+  // Validate that file exists on server.
+  elseif (!file_exists($csv_path)) {
+
+    $form_state->setError($element, t("File %path not found.", [
+      '%path' => $csv_path,
+    ]));
+
+  }
+  // Validate that file has .csv extension.
+  else {
+
+    $file_info = pathinfo($csv_path);
+    if (empty($file_info) || $file_info['extension'] !== 'csv') {
+
+      $form_state->setError($element, t("File must be in .csv format."));
+
+    }
+
+  }
+
+}
+
+/**
+ * Submit handler to save the `csv_path` value set on migration edit form.
+ */
+function _uwm_import_epic_provider_scheduling_migration_form_submit(array $form, FormStateInterface $form_state) {
+
+  // Assign the form value to the migration entity property.
+  // This handler runs before the defaults, which later take care of saving the
+  // entity.
+  // @see \Drupal\migrate_tools\Form\MigrationFormBase::save()
+  $migration_config = $form_state->getFormObject()->getEntity();
+  $migration_config->source['path'] = $form_state->getValue('csv_path');
+
+}

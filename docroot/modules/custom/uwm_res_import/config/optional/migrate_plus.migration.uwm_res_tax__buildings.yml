@@ -61,7 +61,13 @@ source:
     label: res_parking_directions
     selector: /attributes/res_parking_directions
 
+  - name: field_res_campus
+    label: field_res_campus
+    selector: /relationships/field_res_campus/data
 
+  - name: field_res_clinics
+    label: field_res_clinics
+    selector: /relationships/field_res_clinics/data
 
 
 process:
@@ -105,3 +111,15 @@ process:
   field_res_parking_directions/format:
     plugin: default_value
     default_value: unrestricted
+
+  field_res_campus:
+  - plugin: uwm_tid_for_uuid
+    source: field_res_campus
+  - plugin: skip_on_empty
+    method: process
+
+  field_res_clinics:
+  - plugin: uwm_nid_for_uuid
+    source: field_res_clinics
+  - plugin: skip_on_empty
+    method: process

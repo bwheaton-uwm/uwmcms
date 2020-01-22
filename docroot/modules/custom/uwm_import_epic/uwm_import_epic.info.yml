@@ -1,0 +1,14 @@
+type: module
+name: UWM Imports from Epic eCare Data
+description: Migrations to import eCare data from CSVs, with error logging
+package: UWMed
+core: 8.x
+dependencies:
+  - migrate_source_csv
+  - migrate_plus
+  - migrate_tools
+  - config_ignore
+  # This provides:
+  # - a way to upload CSV files via UI for import
+  # - a way to list and download generated error log files from import
+  - filebrowser

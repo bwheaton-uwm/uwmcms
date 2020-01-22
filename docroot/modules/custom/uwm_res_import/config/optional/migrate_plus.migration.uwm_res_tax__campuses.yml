@@ -13,33 +13,32 @@ source:
   ids:
     uuid:
       type: string
-    uwm_unique_id:
-      type: string
 
   plugin: url
   data_fetcher_plugin: http
   data_parser_plugin: json
   item_selector: data/
+  track_changes: true
 
   urls:
-  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/campuses?page[limit]=50&page[offset]=0&sort=name
+  - https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/taxonomy_term/campuses?page[limit]=50&page[offset]=0&sort=-changed
 
 
 
   fields:
-  
+
   - name: uuid
     label: uuid
     selector: /id
-    
+
   - name: name
     label: name
     selector: /attributes/name
-    
+
   - name: uwm_unique_id
     label: uwm_unique_id
     selector: /attributes/uwm_unique_id
-    
+
 
 
 process:
