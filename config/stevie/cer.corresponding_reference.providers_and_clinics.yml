@@ -1,0 +1,13 @@
+uuid: 14ae31e7-2b57-4bf2-9e57-a2ef8bae7222
+langcode: en
+status: true
+dependencies: {  }
+id: providers_and_clinics
+label: 'Providers and Clinics'
+enabled: true
+first_field: field_res_providers
+second_field: field_res_clinics
+bundles:
+  node:
+    - res_clinic
+    - res_provider
