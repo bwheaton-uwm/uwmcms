@@ -17,16 +17,16 @@ destination:
 source:
 
   plugin: url
-  #data_fetcher_plugin: http
-  data_fetcher_plugin: file
+  data_fetcher_plugin: http
+  #  data_fetcher_plugin: file
   data_parser_plugin: json
   include_raw_data: true
   track_changes: true
 
 
   urls:
-  #- https://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed
-  - 'public://temp/providers.json'
+  - http://bios-reservoir-test.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed
+  #  - 'public://temp/providers.json'
 
   ids:
     uuid:
@@ -123,6 +123,10 @@ source:
     label: uwm_json_packet
     selector: /attributes/uwm_json_packet
 
+  - name: uwm_edw_board_certs
+    label: uwm_edw_board_certs
+    selector: /attributes/uwm_edw_board_certs
+    
   - name: uwm_edw_puma_education
     label: uwm_edw_puma_education
     selector: /attributes/uwm_edw_puma_education
@@ -272,6 +276,7 @@ process:
   field_res_is_open_scheduling: field_res_is_open_scheduling
 
   field_uwm_json_packet: uwm_json_packet
+  field_uwm_edw_board_certs: uwm_edw_board_certs
   field_res_puma_education: uwm_edw_puma_education
 
   #  field_res_name: field_res_name
