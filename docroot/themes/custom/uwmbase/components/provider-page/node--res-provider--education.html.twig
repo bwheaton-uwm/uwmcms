@@ -28,28 +28,33 @@
  # EDUCATION
  #
  #}
-{% set puma_education_history = res_puma_education|uwm_sort_parts('university_name')|uwm_sort_parts('graduation_year')|reverse  %}
+{% set puma_education_history = res_puma_education|uwm_sort_parts('university_name')|uwm_sort_parts('graduation_year')|reverse %}
 
 {% if puma_education_history is not empty %}
   <h3 class="provider-page__section2-subheading">{{ 'PUMA Education and Training'|t }}</h3>
   <ul class="provider-page__education">
     {% for d in puma_education_history %}
-      <li class="provider-page__education-d">
-        <div class="provider-page__education-institution">{{ d.university_name }}</div>
+      {% if d not in hx %}
+        {% set hx = pumaEd|merge([d]) %}
 
-        {% set ed_history  = [] %}
-        {% if d.type  %}
-          {% set ed_history  = ed_history |merge([d.type]) %}
-        {% endif %}
-        {% if d.graduation_year %}
-          {% set ed_history  = ed_history |merge([d.graduation_year]) %}
-        {% endif %}
-        {% if d.specialty %}
-          {% set ed_history  = ed_history |merge([d.specialty]) %}
-        {% endif %}
+        <li class="provider-page__education-d">
+          <div class="provider-page__education-institution">{{ d.university_name }}</div>
 
-        <div class="provider-page__education-details">{{ ed_history |join(', ') }}</div>
-      </li>
+          {% set ed_history  = [] %}
+          {% if d.type %}
+            {% set ed_history  = ed_history |merge([d.type]) %}
+          {% endif %}
+          {% if d.graduation_year %}
+            {% set ed_history  = ed_history |merge([d.graduation_year]) %}
+          {% endif %}
+          {% if d.specialty %}
+            {% set ed_history  = ed_history |merge([d.specialty]) %}
+          {% endif %}
+
+          <div class="provider-page__education-details">{{ ed_history |join(', ') }}</div>
+        </li>
+
+      {% endif %}
     {% endfor %}
   </ul>
 {% endif %}
