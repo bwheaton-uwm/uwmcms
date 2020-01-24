@@ -9,20 +9,19 @@
  */
 
 use Drupal\Component\Serialization\Json;
-
+use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Database\Database;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
 use Drupal\file\Entity\File;
 use Drupal\image\Entity\ImageStyle;
+use Drupal\media\MediaInterface;
 use Drupal\node\NodeInterface;
 use Drupal\uwmcs_extension\TwigExtension;
-use Drupal\Core\Template\Attribute;
-use Drupal\Component\Utility\Html;
-use Drupal\media\MediaInterface;
 
 /*
  * Include helper functions used elsewhere below. This allows separating out
@@ -138,7 +137,7 @@ function _uwmbase_node_parse_json_field(NodeInterface $node) {
 
     // Process data only once in a request.
     // if (!empty($node->uwm_json_packet_data)).
-    $json_string = $node->field_uwm_json_packet->value;
+    $json_string = $node->field_uwm_json_packet->value ?? '';
     $json_data = json_decode($json_string, TRUE);
 
     $node->uwm_json_packet_data = $json_data;
@@ -167,7 +166,10 @@ function uwmbase_theme_registry_alter(&$theme_registry) {
   // Add a variable for denoting that a video iframe is rendering in a modal.
   // This happens in a Modal paragraph (within a Featured Story paragraph).
   // @see uwmbase_preprocess_media__uwm_modal()
-  foreach (['video_embed_iframe', 'video_embed_iframe__youtube'] as $video_embed_hook) {
+  foreach ([
+    'video_embed_iframe',
+    'video_embed_iframe__youtube',
+  ] as $video_embed_hook) {
     if (!empty($theme_registry[$video_embed_hook])) {
       $theme_registry[$video_embed_hook]['variables']['in_modal'] = FALSE;
     }
@@ -296,7 +298,11 @@ function uwmbase_preprocess_page(&$variables, $hook) {
     $ms_hero = FALSE;
     $hero_field = 'field_uwm_sections';
 
-    if (in_array($node->bundle(), ['uwm_medical_service', 'uwm_medical_specialty']) && $node->hasField($hero_field) && !$node->get($hero_field)->isEmpty()) {
+    if (in_array($node->bundle(), [
+      'uwm_medical_service',
+      'uwm_medical_specialty',
+    ]) && $node->hasField($hero_field) && !$node->get($hero_field)
+      ->isEmpty()) {
 
       /** @var \Drupal\Core\Entity\EntityInterface[] $ref_entities */
       $ref_entities = $node->get($hero_field)->referencedEntities();
@@ -554,25 +560,16 @@ function uwmbase_preprocess_node(&$variables, $hook) {
 
     // Retrieve whether this is a hospital from boolean field.
     $variables['is_hospital'] = FALSE;
-    if ($node->hasField('field_res_is_hospital') && !$node->get('field_res_is_hospital')->isEmpty()) {
+    if ($node->hasField('field_res_is_hospital') && !$node->get('field_res_is_hospital')
+      ->isEmpty()) {
 
-      $variables['is_hospital'] = (boolean) $node->get('field_res_is_hospital')->first()->getValue()['value'];
+      $variables['is_hospital'] = (boolean) $node->get('field_res_is_hospital')
+        ->first()
+        ->getValue()['value'];
     }
 
   }
   elseif ($node->bundle() === 'res_provider') {
-
-    // Pass specific variables from JSON data to the template.
-    if ($node->hasField('field_uwm_edw_board_certs') && !$node->get('field_uwm_edw_board_certs')
-      ->isEmpty()) {
-      $variables['provider_certs'] = json_decode($node->field_uwm_edw_board_certs->value);
-
-    }
-    if ($node->hasField('field_res_puma_education')) {
-      $puma_education_values = $node->field_res_puma_education->value;
-      $puma_education_values_decoded = $puma_education_values ? json_decode($puma_education_values) : '';
-      $variables['res_puma_education'] = $puma_education_values_decoded;
-    }
 
     // Pass information about clinics associated with a provider.
     $clinic_entities = $node->field_res_clinics;
@@ -725,8 +722,11 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
     $node = $variables['elements']['#node'];
 
     // Add a variable containing the parts of a provider's name.
-    if ($node->hasField('field_res_name') && !$node->get('field_res_name')->isEmpty()) {
-      $variables['provider_name_parts'] = $node->get('field_res_name')->first()->getValue();
+    if ($node->hasField('field_res_name') && !$node->get('field_res_name')
+      ->isEmpty()) {
+      $variables['provider_name_parts'] = $node->get('field_res_name')
+        ->first()
+        ->getValue();
     }
 
     // Determine if the provider has a photo.
@@ -746,14 +746,22 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
 
     // Determine if the provider has languages.
     if ($node->hasField('field_res_languages')) {
-      $variables['has_languages'] = !$node->get('field_res_languages')->isEmpty();
+      $variables['has_languages'] = !$node->get('field_res_languages')
+        ->isEmpty();
     }
 
     // Determine if the provider has education hx.
     if ($node->hasField('field_res_puma_education')) {
-      $education = $node->field_res_puma_education->value ?? [];
+      $education = $node->field_res_puma_education->value ?? '';
       $education = json_decode($education);
-      $variables['education_history'] = $education;
+      $variables['puma_education_history'] = $education;
+    }
+
+    // Determine if the provider has puma_board_certs.
+    if ($node->hasField('field_uwm_edw_board_certs')) {
+      $certs = $node->field_uwm_edw_board_certs->value ?? '';
+      $certs = json_decode($certs);
+      $variables['puma_board_certs'] = $certs;
     }
 
     // Determine taxonomy terms associated with the provider.
@@ -787,7 +795,8 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
 
   // Add ratings data.
   // TODO: Remove environment check when ratings are ready to be shown.
-  if ($node->hasField('field_ratings') && !$node->get('field_ratings')->isEmpty() && AH_SITE_ENVIRONMENT != 'prod') {
+  if ($node->hasField('field_ratings') && !$node->get('field_ratings')
+    ->isEmpty() && AH_SITE_ENVIRONMENT != 'prod') {
     $variables['ratings'] = Json::decode($node->field_ratings->value);
     $variables['has_ratings'] = TRUE;
   }
@@ -796,7 +805,8 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
   }
 
   // Get the NPI for CTA links.
-  if ($node->hasField('field_res_npi') && !$node->get('field_res_npi')->isEmpty()) {
+  if ($node->hasField('field_res_npi') && !$node->get('field_res_npi')
+    ->isEmpty()) {
     $variables['npi'] = $node->field_res_npi->value;
   }
 }
@@ -900,7 +910,8 @@ function uwmbase_preprocess_responsive_image_formatter(array &$variables) {
   $node = $variables['item']->getEntity();
 
   if ($node->bundle() == 'res_provider') {
-    $variables['responsive_image']['#attributes']['data-provider_label'] = $node->get('title')->getString();
+    $variables['responsive_image']['#attributes']['data-provider_label'] = $node->get('title')
+      ->getString();
   }
 
 }
@@ -915,7 +926,8 @@ function uwmbase_preprocess_image_formatter(array &$variables) {
   $node = $variables['item']->getEntity();
 
   if ($node->bundle() == 'res_provider') {
-    $variables['image']['#attributes']['data-provider_label'] = $node->get('title')->getString();
+    $variables['image']['#attributes']['data-provider_label'] = $node->get('title')
+      ->getString();
   }
 
 }
@@ -1008,7 +1020,9 @@ function uwmbase_preprocess_field__paragraph__uwm_text__uwm_basic_content(&$vari
     // @TODO add check / functionality for multiple Visit Type IDs.
 
     if ($providerNode->get('field_res_visit_type_id')->get(0) != NULL) {
-      $first_visit_type_id = $providerNode->get('field_res_visit_type_id')->get(0)->getString();
+      $first_visit_type_id = $providerNode->get('field_res_visit_type_id')
+        ->get(0)
+        ->getString();
     }
     $set_visit_type_id = isset($first_visit_type_id) ? $first_visit_type_id : 9000;
   }
@@ -1170,7 +1184,8 @@ function uwmbase_preprocess_paragraph(&$variables) {
     // Check if Featured Story paragraph references a Featured Story
     // block_content entity, to use its fields instead.
     $entity = $paragraph;
-    if ($paragraph->bundle() === 'uwm_featured_story' && !$paragraph->get('field_uwm_block')->isEmpty()) {
+    if ($paragraph->bundle() === 'uwm_featured_story' && !$paragraph->get('field_uwm_block')
+      ->isEmpty()) {
       $entity = $paragraph->get('field_uwm_block')->referencedEntities()[0];
     }
 
@@ -1268,7 +1283,10 @@ function uwmbase_preprocess_paragraph__half_wide_hero(&$variables) {
 
     // On Medical Service or Medical Specialty node, render the breadcrumb block
     // in paragraph template for layout.
-    if (in_array($parent->bundle(), ['uwm_medical_service', 'uwm_medical_specialty'])) {
+    if (in_array($parent->bundle(), [
+      'uwm_medical_service',
+      'uwm_medical_specialty',
+    ])) {
 
       $block_storage = \Drupal::entityTypeManager()->getStorage('block');
       $block_builder = \Drupal::entityTypeManager()->getViewBuilder('block');
@@ -1298,12 +1316,17 @@ function uwmbase_preprocess_paragraph__uwm_section(&$variables) {
   $paragraph = $variables['paragraph'];
 
   /** @var \Drupal\Core\Entity\EntityInterface[] $children */
-  $children = (!$paragraph->get('field_uwm_component')->isEmpty() ? $paragraph->get('field_uwm_component')->referencedEntities() : NULL);
+  $children = (!$paragraph->get('field_uwm_component')
+    ->isEmpty() ? $paragraph->get('field_uwm_component')
+    ->referencedEntities() : NULL);
 
   // Retrieve custom CSS classes from field.
   $variables['custom_css_classes'] = '';
-  if ($paragraph->hasField('field_uwm_css_class') && !$paragraph->get('field_uwm_css_class')->isEmpty()) {
-    $variables['custom_css_classes'] = trim($paragraph->get('field_uwm_css_class')->first()->getValue()['value']);
+  if ($paragraph->hasField('field_uwm_css_class') && !$paragraph->get('field_uwm_css_class')
+    ->isEmpty()) {
+    $variables['custom_css_classes'] = trim($paragraph->get('field_uwm_css_class')
+      ->first()
+      ->getValue()['value']);
   }
 
   // Set ID for an anchor, so that a link elsewhere on the page may jump to
@@ -1422,7 +1445,8 @@ function uwmbase_preprocess_paragraph__uwm_featured_story(&$variables) {
 
         // Get the referenced child paragraph.
         $child = &$variables['content']['field_uwm_card_content'][$delta]['#paragraph'];
-        if ($child->bundle() === 'uwm_cta_link' && !$child->get('field_uwm_link')->isEmpty()) {
+        if ($child->bundle() === 'uwm_cta_link' && !$child->get('field_uwm_link')
+          ->isEmpty()) {
 
           $link_item = $child->get('field_uwm_link')->first();
           $link_item_value = $link_item->getValue();
@@ -1472,7 +1496,8 @@ function uwmbase_preprocess_paragraph__uwm_grid(&$variables) {
   /** @var \Drupal\paragraphs\ParagraphInterface[] $col_paragraphs */
   $col_paragraphs = [];
   if (!$grid_paragraph->get('field_uwm_columns')->isEmpty()) {
-    $col_paragraphs = $grid_paragraph->get('field_uwm_columns')->referencedEntities();
+    $col_paragraphs = $grid_paragraph->get('field_uwm_columns')
+      ->referencedEntities();
   }
 
   $variables['total_grid_items'] = count($col_paragraphs);
@@ -1481,8 +1506,11 @@ function uwmbase_preprocess_paragraph__uwm_grid(&$variables) {
   // NOTE: This setting is NOT currently used for cards case.
   // @see paragraph--uwm-grid.html.twig
   $variables['field_uwm_columns_per_row'] = NULL;
-  if ($grid_paragraph->hasField('field_uwm_columns_per_row') && !$grid_paragraph->get('field_uwm_columns_per_row')->isEmpty()) {
-    $variables['field_uwm_columns_per_row'] = $grid_paragraph->get('field_uwm_columns_per_row')->first()->getValue()['value'];
+  if ($grid_paragraph->hasField('field_uwm_columns_per_row') && !$grid_paragraph->get('field_uwm_columns_per_row')
+    ->isEmpty()) {
+    $variables['field_uwm_columns_per_row'] = $grid_paragraph->get('field_uwm_columns_per_row')
+      ->first()
+      ->getValue()['value'];
   }
 
   // If any of the child paragraphs are cards, style all as cards.
@@ -1500,7 +1528,8 @@ function uwmbase_preprocess_paragraph__uwm_grid(&$variables) {
       }
 
       // Check for Reusable Content paragraph type, wrapping a Card block type.
-      if ($col_paragraph->bundle() === 'uwm_block' && !$col_paragraph->get('field_uwm_block')->isEmpty()) {
+      if ($col_paragraph->bundle() === 'uwm_block' && !$col_paragraph->get('field_uwm_block')
+        ->isEmpty()) {
 
         $block_id = $col_paragraph->get('field_uwm_block')
           ->first()
@@ -1547,7 +1576,10 @@ function uwmbase_preprocess_paragraph__uwm_grid(&$variables) {
   // a Section.
   $variables['add_container'] = FALSE;
   $parent = $grid_paragraph->getParentEntity();
-  if (!empty($parent) && !in_array($parent->bundle(), ['uwm_section', 'uwm_sections_medical_services'])) {
+  if (!empty($parent) && !in_array($parent->bundle(), [
+    'uwm_section',
+    'uwm_sections_medical_services',
+  ])) {
     $variables['add_container'] = TRUE;
   }
 
@@ -1720,7 +1752,9 @@ function uwmbase_preprocess_paragraph__uwm_cta_link(&$variables) {
   // @TODO add check / functionality for multiple Visit Type IDs.
 
   if ($node->get('field_res_visit_type_id')->get(0) != NULL) {
-    $first_visit_type_id = $node->get('field_res_visit_type_id')->get(0)->getString();
+    $first_visit_type_id = $node->get('field_res_visit_type_id')
+      ->get(0)
+      ->getString();
   }
   $set_visit_type_id = isset($first_visit_type_id) ? $first_visit_type_id : 9000;
 
@@ -1809,7 +1843,9 @@ function uwmbase_preprocess_paragraph__uwm_link_with_icon__uwm_card(&$variables)
   // @TODO add check / functionality for multiple Visit Type IDs.
 
   if ($node->get('field_res_visit_type_id')->get(0) != NULL) {
-    $first_visit_type_id = $node->get('field_res_visit_type_id')->get(0)->getString();
+    $first_visit_type_id = $node->get('field_res_visit_type_id')
+      ->get(0)
+      ->getString();
   }
   $set_visit_type_id = isset($first_visit_type_id) ? $first_visit_type_id : 9000;
 
@@ -1854,7 +1890,9 @@ function uwmbase_preprocess_page_title(&$variables) {
       // @TODO add check / functionality for multiple Visit Type IDs.
 
       if ($node->get('field_res_visit_type_id')->get(0) != NULL) {
-        $first_visit_type_id = $node->get('field_res_visit_type_id')->get(0)->getString();
+        $first_visit_type_id = $node->get('field_res_visit_type_id')
+          ->get(0)
+          ->getString();
       }
       $set_visit_type_id = isset($first_visit_type_id) ? $first_visit_type_id : 9000;
 
