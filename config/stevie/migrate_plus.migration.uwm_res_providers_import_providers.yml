@@ -130,6 +130,10 @@ source:
       label: uwm_json_packet
       selector: /attributes/uwm_json_packet
     -
+      name: uwm_edw_board_certs
+      label: uwm_edw_board_certs
+      selector: /attributes/uwm_edw_board_certs
+    -
       name: uwm_edw_puma_education
       label: uwm_edw_puma_education
       selector: /attributes/uwm_edw_puma_education

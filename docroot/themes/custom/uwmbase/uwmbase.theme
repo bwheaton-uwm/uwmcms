@@ -625,7 +625,6 @@ function uwmbase_preprocess_node(&$variables, $hook) {
       $variables['provider_certs'] = json_decode($node->field_uwm_edw_board_certs->value);
 
     }
-
     if ($node->hasField('field_res_puma_education')) {
       $puma_education_values = $node->field_res_puma_education->value;
       $puma_education_values_decoded = $puma_education_values ? json_decode($puma_education_values) : '';
@@ -813,7 +812,7 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
 
     // Determine if the provider has education hx.
     if ($node->hasField('field_res_puma_education')) {
-      $education = $node->field_res_puma_education->value ?? [];
+      $education = $node->field_res_puma_education->value ?? '';
       $education = json_decode($education);
       $variables['education_history'] = $education;
     }
