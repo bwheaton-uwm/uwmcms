@@ -1,0 +1,14 @@
+uuid: 32065fa1-fc3b-47df-8f98-3d43bb124ced
+langcode: en
+status: true
+dependencies: {  }
+id: medical_specialties_and_providers
+label: 'Medical Specialties and Providers'
+enabled: true
+first_field: field_res_expertises
+second_field: field_res_providers
+bundles:
+  node:
+    - res_provider
+  taxonomy_term:
+    - expertise

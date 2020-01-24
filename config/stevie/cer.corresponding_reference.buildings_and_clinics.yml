@@ -1,0 +1,14 @@
+uuid: 8bac4acf-312e-48f2-b6b3-213818a342e8
+langcode: en
+status: true
+dependencies: {  }
+id: buildings_and_clinics
+label: 'Buildings and Clinics'
+enabled: true
+first_field: field_res_building
+second_field: field_res_clinics
+bundles:
+  node:
+    - res_clinic
+  taxonomy_term:
+    - buildings

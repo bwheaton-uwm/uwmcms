@@ -1,0 +1,14 @@
+uuid: c6c42e98-71ff-4361-8181-b2b91f10515c
+langcode: en
+status: true
+dependencies: {  }
+id: affiliates_and_clinics
+label: 'Affiliates and Clinics'
+enabled: true
+first_field: field_res_affiliates
+second_field: field_res_clinics
+bundles:
+  node:
+    - res_clinic
+  taxonomy_term:
+    - affiliates

@@ -1,0 +1,14 @@
+uuid: 213ffc20-e68c-492e-b136-5bf30362c8f0
+langcode: en
+status: true
+dependencies: {  }
+id: medical_services_and_clinics
+label: 'Medical Services and Clinics'
+enabled: true
+first_field: field_res_medical_services
+second_field: field_res_clinics
+bundles:
+  node:
+    - res_clinic
+  taxonomy_term:
+    - medical_services
