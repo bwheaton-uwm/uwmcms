@@ -31,30 +31,35 @@
 {% set puma_education_history = res_puma_education|uwm_sort_parts('university_name')|uwm_sort_parts('graduation_year')|reverse %}
 
 {% if puma_education_history is not empty %}
+  {% set previous_entries = [] %}
+
   <h3 class="provider-page__section2-subheading">{{ 'PUMA Education and Training'|t }}</h3>
   <ul class="provider-page__education">
+
     {% for d in puma_education_history %}
-      {% if d not in hx %}
-        {% set hx = pumaEd|merge([d]) %}
 
-      <li class="provider-page__education-item">
+      {% set ed_history  = [] %}
+      {% if d.type %}
+        {% set ed_history  = ed_history |merge([d.type]) %}
+      {% endif %}
+      {% if d.graduation_year %}
+        {% set ed_history  = ed_history |merge([d.graduation_year]) %}
+      {% endif %}
+      {% if d.specialty %}
+        {% set ed_history  = ed_history |merge([d.specialty]) %}
+      {% endif %}
+
+      {% if d not in previous_entries %}
+
+        <li class="provider-page__education-item">
           <div class="provider-page__education-institution">{{ d.university_name }}</div>
-
-          {% set ed_history  = [] %}
-          {% if d.type %}
-            {% set ed_history  = ed_history |merge([d.type]) %}
-          {% endif %}
-          {% if d.graduation_year %}
-            {% set ed_history  = ed_history |merge([d.graduation_year]) %}
-          {% endif %}
-          {% if d.specialty %}
-            {% set ed_history  = ed_history |merge([d.specialty]) %}
-          {% endif %}
-
           <div class="provider-page__education-details">{{ ed_history |join(', ') }}</div>
         </li>
 
       {% endif %}
+
+      {% set previous_entries = previous_entries|merge([d]) %}
+
     {% endfor %}
   </ul>
 {% endif %}
@@ -103,6 +108,46 @@
  #
  #
  #
+ # PUMA CERTIFICATIONS
+ #
+ #
+ #}
+{% if puma_board_certs is not empty %}
+  {% set previous_entries = [] %}
+
+  <h3 class="provider-page__section2-subheading">{{ 'PUMA Board Certifications'|t }}</h3>
+  <ul class="provider-page__certifications">
+
+    {% for d in provider_certs|uwm_sort_parts('certified_year')|reverse %}
+
+      {% set cert = [] %}
+      {% if d.specialty_name %}
+        {% set cert = cert|merge([d.specialty_name]) %}
+      {% endif %}
+      {% if d.certified_year %}
+        {% set cert = cert|merge([d.certified_year]) %}
+      {% endif %}
+      {% if d.board_name %}
+        {% set cert = cert|merge([d.board_name]) %}
+      {% endif %}
+
+      {% if d not in previous_entries %}
+
+        <li class="provider-page__certifications-item">{{ cert|join(', ') }}</li>
+
+      {% endif %}
+
+      {% set previous_entries = previous_entries|merge([d]) %}
+
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{#
+ #
+ #
+ #
+ #
  # CERTIFICATIONS
  #
  #
@@ -120,36 +165,6 @@
       {% endif %}
       {% if e.boardName %}
         {% set ed = ed|merge([e.boardName]) %}
-      {% endif %}
-      <li class="provider-page__certifications-item">{{ ed|join(', ') }}</li>
-    {% endfor %}
-  </ul>
-{% endif %}
-
-
-{#
- #
- #
- #
- #
- # PUMA CERTIFICATIONS
- #
- #
- #}
-{% if provider_certs is not empty %}
-
-  <h3 class="provider-page__section2-subheading">{{ 'PUMA Board Certifications'|t }}</h3>
-  <ul class="provider-page__certifications">
-    {% for e in provider_certs|uwm_sort_parts('certified_year')|reverse %}
-      {% set ed = [] %}
-      {% if e.specialty_name %}
-        {% set ed = ed|merge([e.specialty_name]) %}
-      {% endif %}
-      {% if e.certified_year %}
-        {% set ed = ed|merge([e.certified_year]) %}
-      {% endif %}
-      {% if e.board_name %}
-        {% set ed = ed|merge([e.board_name]) %}
       {% endif %}
       <li class="provider-page__certifications-item">{{ ed|join(', ') }}</li>
     {% endfor %}

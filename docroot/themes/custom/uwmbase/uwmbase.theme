@@ -136,7 +136,7 @@ function _uwmbase_node_parse_json_field(NodeInterface $node) {
 
     // Process data only once in a request.
     // if (!empty($node->uwm_json_packet_data)).
-    $json_string = $node->field_uwm_json_packet->value;
+    $json_string = $node->field_uwm_json_packet->value ?? '';
     $json_data = json_decode($json_string, TRUE);
 
     $node->uwm_json_packet_data = $json_data;
@@ -619,18 +619,6 @@ function uwmbase_preprocess_node(&$variables, $hook) {
   }
   elseif ($node->bundle() === 'res_provider') {
 
-    // Pass specific variables from JSON data to the template.
-    if ($node->hasField('field_uwm_edw_board_certs') && !$node->get('field_uwm_edw_board_certs')
-      ->isEmpty()) {
-      $variables['provider_certs'] = json_decode($node->field_uwm_edw_board_certs->value);
-
-    }
-    if ($node->hasField('field_res_puma_education')) {
-      $puma_education_values = $node->field_res_puma_education->value;
-      $puma_education_values_decoded = $puma_education_values ? json_decode($puma_education_values) : '';
-      $variables['res_puma_education'] = $puma_education_values_decoded;
-    }
-
     // Pass information about clinics associated with a provider.
     $clinic_entities = $node->field_res_clinics;
 
@@ -814,7 +802,14 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
     if ($node->hasField('field_res_puma_education')) {
       $education = $node->field_res_puma_education->value ?? '';
       $education = json_decode($education);
-      $variables['education_history'] = $education;
+      $variables['puma_education_history'] = $education;
+    }
+
+    // Determine if the provider has puma_board_certs.
+    if ($node->hasField('field_uwm_edw_board_certs')) {
+      $certs = $node->field_uwm_edw_board_certs->value ?? '';
+      $certs = json_decode($certs);
+      $variables['puma_board_certs'] = $certs;
     }
 
     // Determine taxonomy terms associated with the provider.
