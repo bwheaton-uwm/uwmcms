@@ -35,6 +35,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Style Options'
+      region: content
 id: block_content.featured_story.default
 targetEntityType: block_content
 bundle: featured_story

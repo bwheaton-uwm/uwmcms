@@ -75,6 +75,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Clinic Top'
+      region: content
     group_clinic_bottom:
       children:
         - field_uwm_sections_2
@@ -87,6 +88,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Clinic Bottom'
+      region: content
     group_clinic_meta:
       children:
         - field_featured
@@ -112,6 +114,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Clinic Meta'
+      region: content
     group_services_resources_tab:
       children:
         - field_res_feat_clinics_header
@@ -131,6 +134,7 @@ third_party_settings:
         classes: ''
         required_fields: false
       label: 'Overview/Resources tab'
+      region: content
     group_care_providers_tab:
       children:
         - field_res_providers
@@ -143,6 +147,7 @@ third_party_settings:
         description: ''
         required_fields: false
       label: 'Care Providers tab'
+      region: content
     group_content_contacts:
       children:
         - field_uwm_content_owner
@@ -156,6 +161,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Content Contacts'
+      region: content
 _core:
   default_config_hash: 2kAi-wYe7ZuIze154ZwVwwhYSRqonPwtA675m4-PbdU
 id: node.res_clinic.default

@@ -42,6 +42,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'For Featured Articles'
+      region: content
     group_right_sidebar:
       children:
         - field_promotion
@@ -54,6 +55,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Right Sidebar'
+      region: content
     group_syndication:
       children:
         - field_syndication
@@ -67,6 +69,7 @@ third_party_settings:
         id: ''
         classes: ''
       label: 'Syndication Options'
+      region: content
 id: node.article.default
 targetEntityType: node
 bundle: article

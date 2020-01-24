@@ -38,6 +38,7 @@ third_party_settings:
         id: ''
         classes: ''
       label: 'Page Settings'
+      region: content
     group_hero_area:
       children:
         - field_uwm_hero
@@ -51,6 +52,7 @@ third_party_settings:
         classes: ''
         open: false
       label: 'Hero Area (Optional)'
+      region: content
     group_content_sections:
       children:
         - field_uwm_sections
@@ -63,6 +65,7 @@ third_party_settings:
         open: true
         required_fields: true
       label: 'Content Sections'
+      region: content
     group_content_contacts:
       children:
         - field_uwm_content_owner
@@ -76,6 +79,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Content Contacts'
+      region: content
 id: node.uwm_basic_page.default
 targetEntityType: node
 bundle: uwm_basic_page

@@ -71,6 +71,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Content Contacts'
+      region: content
     group_provider_basics:
       children:
         - field_res_name
@@ -92,6 +93,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Provider Basics'
+      region: content
     group_provider_categories:
       children:
         - field_res_expertises
@@ -112,6 +114,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Provider Categories'
+      region: content
     group_provider_biography:
       children:
         - field_res_biography
@@ -129,6 +132,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Provider Biography'
+      region: content
     group_provider_locations:
       children:
         - field_res_clinics
@@ -142,6 +146,7 @@ third_party_settings:
         open: false
         required_fields: false
       label: 'Provider Locations'
+      region: content
     group_appointment_scheduling:
       children:
         - field_res_isacceptingnewpts
@@ -159,6 +164,7 @@ third_party_settings:
         open: false
         required_fields: false
       label: 'Appointment Scheduling'
+      region: content
 _core:
   default_config_hash: 77XBUKV_0wuxEBya-hjylVX81oL60ENv19S2yPQ0xUw
 id: node.res_provider.default
