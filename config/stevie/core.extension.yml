@@ -18,6 +18,7 @@ module:
   block_content: 0
   breakpoint: 0
   bulk_edit_terms: 0
+  cer: 0
   ckeditor: 0
   ckeditor_bs_grid: 0
   ckeditor_templates: 0
@@ -61,6 +62,7 @@ module:
   field_group: 0
   field_ui: 0
   file: 0
+  filebrowser: 0
   filter: 0
   focal_point: 0
   geocoder: 0
@@ -170,6 +172,7 @@ module:
   twig_tweak: 0
   update: 0
   user: 0
+  uwm_admin_providers: 0
   uwm_commands: 0
   uwm_content_owners: 0
   uwm_res_import: 0

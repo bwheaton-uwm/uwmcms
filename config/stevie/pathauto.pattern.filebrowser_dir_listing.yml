@@ -1,0 +1,22 @@
+uuid: df0776d6-2982-4149-bdf1-624b0d5d5f7d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: filebrowser_dir_listing
+label: 'Filebrowser Directory Listing'
+type: 'canonical_entities:node'
+pattern: '/admin/files/[node:title]'
+selection_criteria:
+  7c7d7482-4315-45ca-93bc-7d4fd5df1d38:
+    id: node_type
+    bundles:
+      dir_listing: dir_listing
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 7c7d7482-4315-45ca-93bc-7d4fd5df1d38
+selection_logic: and
+weight: -10
+relationships: {  }

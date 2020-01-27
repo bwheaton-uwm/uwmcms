@@ -1,0 +1,52 @@
+uuid: 57629d09-2ddd-4507-8b82-da5af8f8b157
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hours_of_operation.field_res_hours
+    - field.field.paragraph.hours_of_operation.field_res_hours_type
+    - field.field.paragraph.hours_of_operation.field_res_is_always_open
+    - paragraphs.paragraphs_type.hours_of_operation
+  module:
+    - paragraphs
+id: paragraph.hours_of_operation.default
+targetEntityType: paragraph
+bundle: hours_of_operation
+mode: default
+content:
+  field_res_hours:
+    type: paragraphs
+    weight: 1
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: hours_for_day
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+        add_above: '0'
+    third_party_settings: {  }
+  field_res_hours_type:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_res_is_always_open:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true
