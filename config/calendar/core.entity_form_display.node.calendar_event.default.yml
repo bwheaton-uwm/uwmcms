@@ -43,6 +43,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Date & Duration'
+      region: content
     group_event_location:
       children:
         - field_event_location
@@ -57,6 +58,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Event Location'
+      region: content
 id: node.calendar_event.default
 targetEntityType: node
 bundle: calendar_event

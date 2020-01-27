@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.landing_page.field_sections
     - node.type.landing_page
   module:
+    - content_moderation
     - field_group
     - paragraphs
     - path
@@ -27,6 +28,7 @@ third_party_settings:
         classes: ''
         direction: horizontal
       label: Content
+      region: content
     group_featured:
       children:
         - field_content_reference
@@ -41,6 +43,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Featured
+      region: content
     group_sections:
       children:
         - field_sections
@@ -54,6 +57,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Sections
+      region: content
 _core:
   default_config_hash: JVO17C4YKV9arCq7zK-lWe9Y3kBUyWpKOHCA_fynk1g
 id: node.landing_page.default
@@ -105,6 +109,12 @@ content:
     third_party_settings: {  }
     type: paragraphs
     region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
   path:
     type: path
     weight: 9

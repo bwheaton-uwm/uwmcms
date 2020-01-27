@@ -36,6 +36,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Style Options'
+      region: content
 id: paragraph.uwm_section.default
 targetEntityType: paragraph
 bundle: uwm_section

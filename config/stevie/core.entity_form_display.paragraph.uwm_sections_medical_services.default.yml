@@ -34,6 +34,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Style Options'
+      region: content
 id: paragraph.uwm_sections_medical_services.default
 targetEntityType: paragraph
 bundle: uwm_sections_medical_services
