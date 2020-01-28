@@ -452,7 +452,7 @@ class ProviderSchedulingDataValidator {
           // files in the file system.
           $this->outputStatus('status', t('Finished validation.<br/>Log file saved at: <code>@filepath</code>. <a target="_blank" href=":url_directory">See all logs here.</a>', [
             '@filepath' => $filepath,
-            ':url_directory' => '/admin/content/private-files/provider-scheduling-data-validation-logs',
+            ':url_directory' => '/admin/files/private-files-provider-scheduling-data-validation-logs',
           ]));
 
         }
