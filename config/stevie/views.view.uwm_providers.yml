@@ -25,7 +25,7 @@ dependencies:
     - user
     - views_bulk_operations
 id: uwm_providers
-label: UWM Providers
+label: 'UWM Providers'
 module: views
 description: ''
 tag: ''

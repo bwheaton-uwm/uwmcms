@@ -26,7 +26,7 @@ dependencies:
     - user
     - views_bulk_operations
 id: uwm_clinics
-label: UWM Clinics
+label: 'UWM Clinics'
 module: views
 description: ''
 tag: ''
