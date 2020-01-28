@@ -218,3 +218,5 @@ uwm_content_owners: 0.0.0
 uwm_admin_providers: 0.0.0
 filebrowser: 2.0.0
 cer: 4.0.0-alpha2
+chosen_lib: 2.9.0
+chosen: 2.9.0
