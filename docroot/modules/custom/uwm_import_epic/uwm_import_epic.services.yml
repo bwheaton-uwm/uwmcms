@@ -1,4 +1,14 @@
 services:
+  uwm_import_epic.provider_scheduling_data_validator:
+    class: '\Drupal\uwm_import_epic\ProviderSchedulingDataValidator'
+    arguments: ['@file_system', '@tempstore.private', '@messenger', '@logger.channel.provider_scheduling_validator']
+  uwm_import_epic.provider_scheduling_migration_subscriber:
+    class: '\Drupal\uwm_import_epic\EventSubscriber\ProviderSchedulingMigrationSubscriber'
+    tags:
+      - { name: 'event_subscriber' }
+  logger.channel.provider_scheduling_validator:
+    parent: logger.channel_base
+    arguments: ['provider_scheduling_validator']
   theme.negotiator.uwm_admin_theme:
     class: Drupal\uwm_import_epic\Theme\UwmAdminThemeNegotiator
     tags:

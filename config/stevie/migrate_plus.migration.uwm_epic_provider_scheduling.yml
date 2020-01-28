@@ -1,0 +1,80 @@
+uuid: c701f5fc-9bfa-487d-8426-636237bc5abb
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - uwm_import_epic
+id: uwm_epic_provider_scheduling
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: uwm_epic
+label: 'Epic - eCare Provider Scheduling Data'
+source:
+  plugin: csv
+  path: '(populate this in Migrations admin UI)'
+  delimiter: ','
+  enclosure: '"'
+  header_row_count: 1
+  keys:
+    - epic_id
+    - npi
+  column_names:
+    -
+      epic_id: 'Provider ID (Epic ID / SER ID)'
+    -
+      npi: 'Provider NPI'
+    -
+      name: 'Provider Name'
+    -
+      enabled_open_sched: 'Is enabled for open scheduling'
+    -
+      enabled_direct_sched: 'Is enabled for direct scheduling'
+    -
+      visit_type_ids: 'Visit Type / Booking IDs (for open scheduling)'
+process:
+  nid:
+    -
+      plugin: entity_lookup
+      source: npi
+      entity_type: node
+      bundle_key: type
+      bundle: res_provider
+      value_key: field_res_npi
+  field_res_ser_id: epic_id
+  field_res_is_direct_scheduling:
+    -
+      plugin: static_map
+      source: enabled_direct_sched
+      map:
+        'Yes': 1
+        'No': 0
+      default_value: ''
+  field_res_is_open_scheduling:
+    -
+      plugin: static_map
+      source: enabled_open_sched
+      map:
+        'Yes': 1
+        'No': 0
+      default_value: ''
+  field_res_visit_type_id:
+    -
+      plugin: skip_on_empty
+      source: visit_type_ids
+      method: process
+    -
+      plugin: explode
+      delimiter: '|'
+destination:
+  plugin: 'entity:node'
+  overwrite_properties:
+    - field_res_ser_id
+    - field_res_is_direct_scheduling
+    - field_res_is_open_scheduling
+    - field_res_visit_type_id
+    - field_res_isacceptingreturnpts
+    - field_res_isacceptingnewpts
+migration_dependencies: null
