@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_res_npi
-    - field.storage.node.field_res_puma_education
+    - field.storage.node.field_uwm_edw_education
     - node.type.res_provider
   module:
     - node
@@ -356,10 +356,10 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_res_puma_education:
-          id: field_res_puma_education
-          table: node__field_res_puma_education
-          field: field_res_puma_education
+        field_uwm_edw_education:
+          id: field_uwm_edw_education
+          table: node__field_uwm_edw_education
+          field: field_uwm_edw_education
           relationship: none
           group_type: group
           admin_label: ''
@@ -520,10 +520,10 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: numeric
-        field_res_puma_education_value:
-          id: field_res_puma_education_value
-          table: node__field_res_puma_education
-          field: field_res_puma_education_value
+        field_uwm_edw_education_value:
+          id: field_uwm_edw_education_value
+          table: node__field_uwm_edw_education
+          field: field_uwm_edw_education_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -532,12 +532,12 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: field_res_puma_education_value_op
-            label: field_res_puma_education
+            operator_id: field_uwm_edw_education_value_op
+            label: field_uwm_edw_education
             description: ''
             use_operator: false
-            operator: field_res_puma_education_value_op
-            identifier: field_res_puma_education_value
+            operator: field_uwm_edw_education_value_op
+            identifier: field_uwm_edw_education_value
             required: false
             remember: false
             multiple: false
@@ -610,7 +610,7 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_res_npi'
-        - 'config:field.storage.node.field_res_puma_education'
+        - 'config:field.storage.node.field_uwm_edw_education'
   page_1:
     display_plugin: page
     id: page_1
@@ -630,4 +630,4 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_res_npi'
-        - 'config:field.storage.node.field_res_puma_education'
+        - 'config:field.storage.node.field_uwm_edw_education'
