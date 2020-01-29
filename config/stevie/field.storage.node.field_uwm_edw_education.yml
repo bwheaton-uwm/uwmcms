@@ -1,11 +1,11 @@
-uuid: 5a092e9f-60a1-4b90-b1fb-985cb264c3b5
+uuid: f0d5a118-8a76-4ce7-8154-cc3ec5bfc8f4
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_uwm_edw_board_certs
-field_name: field_uwm_edw_board_certs
+id: node.field_uwm_edw_education
+field_name: field_uwm_edw_education
 entity_type: node
 type: string_long
 settings:

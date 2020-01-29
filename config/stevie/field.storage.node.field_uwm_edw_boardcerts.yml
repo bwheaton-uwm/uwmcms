@@ -1,11 +1,11 @@
-uuid: 9cbcef99-e6ff-4604-9c36-50e8c1485bf6
+uuid: bebbf42c-b972-49ab-9796-32ae465edbf1
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_res_puma_education
-field_name: field_res_puma_education
+id: node.field_uwm_edw_boardcerts
+field_name: field_uwm_edw_boardcerts
 entity_type: node
 type: string_long
 settings:
