@@ -28,9 +28,12 @@
  # EDUCATION
  #
  #}
-{% set puma_education_history = res_puma_education|uwm_sort_parts('university_name')|uwm_sort_parts('graduation_year')|reverse %}
+{% set puma_education_history = puma_education_history|uwm_sort_parts('university_name')|uwm_sort_parts('graduation_year')|reverse %}
 
 {% if puma_education_history is not empty %}
+
+  {#  Some entries are unique but, for values we don't show users.#}
+  {#  Remove duplicate PUMA rows based on what we show: #}
   {% set previous_entries = [] %}
 
   <h3 class="provider-page__section2-subheading">{{ 'PUMA Education and Training'|t }}</h3>
@@ -38,27 +41,21 @@
 
     {% for d in puma_education_history %}
 
-      {% set ed_history  = [] %}
-      {% if d.type %}
-        {% set ed_history  = ed_history |merge([d.type]) %}
-      {% endif %}
-      {% if d.graduation_year %}
-        {% set ed_history  = ed_history |merge([d.graduation_year]) %}
-      {% endif %}
-      {% if d.specialty %}
-        {% set ed_history  = ed_history |merge([d.specialty]) %}
-      {% endif %}
-
-      {% if d not in previous_entries %}
+      {% set ed = [d.university_name, d.type, d.graduation_year, d.speciality] %}
+      {% if ed not in previous_entries %}
 
         <li class="provider-page__education-item">
           <div class="provider-page__education-institution">{{ d.university_name }}</div>
-          <div class="provider-page__education-details">{{ ed_history |join(', ') }}</div>
+          <div class="provider-page__education-details">
+
+            {% set str = d.type ~ ',' ~ d.graduation_year ~ ',' ~ d.specialty %}
+            {{ str | trim(',') | replace({',,': ','}) | replace({',': ', '}) }}
         </li>
 
+        {% set previous_entries = previous_entries|merge([ed]) %}
       {% endif %}
 
-      {% set previous_entries = previous_entries|merge([d]) %}
+
 
     {% endfor %}
   </ul>
@@ -118,7 +115,7 @@
   <h3 class="provider-page__section2-subheading">{{ 'PUMA Board Certifications'|t }}</h3>
   <ul class="provider-page__certifications">
 
-    {% for d in provider_certs|uwm_sort_parts('certified_year')|reverse %}
+    {% for d in puma_board_certs|uwm_sort_parts('certified_year')|reverse %}
 
       {% set cert = [] %}
       {% if d.specialty_name %}
@@ -131,13 +128,14 @@
         {% set cert = cert|merge([d.board_name]) %}
       {% endif %}
 
-      {% if d not in previous_entries %}
+
+      {% if cert not in previous_entries %}
 
         <li class="provider-page__certifications-item">{{ cert|join(', ') }}</li>
 
       {% endif %}
 
-      {% set previous_entries = previous_entries|merge([d]) %}
+      {% set previous_entries = previous_entries|merge([cert]) %}
 
     {% endfor %}
   </ul>

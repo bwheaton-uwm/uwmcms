@@ -32,13 +32,13 @@ dependencies:
     - field.field.node.res_provider.field_res_procedures_treatments
     - field.field.node.res_provider.field_res_provider_type
     - field.field.node.res_provider.field_res_pubmed_ids
-    - field.field.node.res_provider.field_res_puma_education
     - field.field.node.res_provider.field_res_puma_id
     - field.field.node.res_provider.field_res_ser_id
     - field.field.node.res_provider.field_res_visit_type_id
     - field.field.node.res_provider.field_search_best_bets
     - field.field.node.res_provider.field_uwm_content_owner
-    - field.field.node.res_provider.field_uwm_edw_board_certs
+    - field.field.node.res_provider.field_uwm_edw_boardcerts
+    - field.field.node.res_provider.field_uwm_edw_education
     - field.field.node.res_provider.field_uwm_json_packet
     - field.field.node.res_provider.field_uwm_subject_matter_experts
     - field.field.node.res_provider.uwm_unique_id
@@ -396,14 +396,6 @@ content:
     third_party_settings: {  }
     type: number
     region: content
-  field_res_puma_education:
-    weight: 20
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textarea
-    region: content
   field_res_puma_id:
     weight: 6
     settings:
@@ -443,8 +435,16 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
-  field_uwm_edw_board_certs:
-    weight: 21
+  field_uwm_edw_boardcerts:
+    weight: 39
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_uwm_edw_education:
+    weight: 38
     settings:
       rows: 5
       placeholder: ''
