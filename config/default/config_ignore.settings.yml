@@ -4,5 +4,6 @@ ignored_config_entities:
   - devel.toolbar.settings
   - system.menu.devel
   - d8_google_optimize_hide_page.settings
+  - 'webform.webform.*'
 _core:
   default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk
