@@ -1,15 +1,15 @@
-uuid: 43e5a56b-796e-47e8-83c2-0fe715fc1423
+uuid: 098f4232-28d4-4bb3-926e-530fb588082c
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_uwm_edw_board_certs
+    - field.storage.node.field_uwm_edw_education
     - node.type.res_provider
-id: node.res_provider.field_uwm_edw_board_certs
-field_name: field_uwm_edw_board_certs
+id: node.res_provider.field_uwm_edw_education
+field_name: field_uwm_edw_education
 entity_type: node
 bundle: res_provider
-label: uwm_edw_board_certs
+label: uwm_edw_education
 description: ''
 required: false
 translatable: false

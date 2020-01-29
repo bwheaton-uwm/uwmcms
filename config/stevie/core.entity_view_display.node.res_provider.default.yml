@@ -34,14 +34,14 @@ dependencies:
     - field.field.node.res_provider.field_res_procedures_treatments
     - field.field.node.res_provider.field_res_provider_type
     - field.field.node.res_provider.field_res_pubmed_ids
-    - field.field.node.res_provider.field_res_puma_education
     - field.field.node.res_provider.field_res_puma_id
     - field.field.node.res_provider.field_res_ser_id
     - field.field.node.res_provider.field_res_specialties_unindexed
     - field.field.node.res_provider.field_res_visit_type_id
     - field.field.node.res_provider.field_search_best_bets
     - field.field.node.res_provider.field_uwm_content_owner
-    - field.field.node.res_provider.field_uwm_edw_board_certs
+    - field.field.node.res_provider.field_uwm_edw_boardcerts
+    - field.field.node.res_provider.field_uwm_edw_education
     - field.field.node.res_provider.field_uwm_json_packet
     - field.field.node.res_provider.field_uwm_subject_matter_experts
     - field.field.node.res_provider.uwm_unique_id
@@ -301,15 +301,8 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  field_res_puma_education:
-    weight: 34
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
-    region: content
   field_res_ser_id:
-    weight: 19
+    weight: 18
     label: above
     settings:
       thousand_separator: ''
@@ -350,15 +343,22 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  field_uwm_edw_board_certs:
-    type: basic_string
+  field_uwm_edw_boardcerts:
     weight: 35
-    region: content
     label: above
     settings: {  }
     third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_uwm_edw_education:
+    weight: 34
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
   field_uwm_subject_matter_experts:
-    weight: 29
+    weight: 27
     label: above
     settings:
       link: true

@@ -1,15 +1,15 @@
-uuid: f62cc066-a77a-435d-8c25-ab7d1efbf586
+uuid: 42ce1b8c-3727-47d3-8a89-993bc74b4c60
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_res_puma_education
+    - field.storage.node.field_uwm_edw_boardcerts
     - node.type.res_provider
-id: node.res_provider.field_res_puma_education
-field_name: field_res_puma_education
+id: node.res_provider.field_uwm_edw_boardcerts
+field_name: field_uwm_edw_boardcerts
 entity_type: node
 bundle: res_provider
-label: res_puma_education‎
+label: uwm_edw_boardcerts
 description: ''
 required: false
 translatable: false

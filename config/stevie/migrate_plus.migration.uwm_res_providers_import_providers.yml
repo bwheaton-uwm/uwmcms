@@ -237,8 +237,8 @@ process:
   field_res_visit_type_id: field_res_visit_type_id
   field_res_is_independent: field_res_is_independent
   field_uwm_json_packet: uwm_json_packet
-  field_uwm_edw_board_certs: uwm_edw_board_certs
-  field_res_puma_education: uwm_edw_puma_education
+  field_uwm_edw_boardcerts: uwm_edw_board_certs
+  field_uwm_edw_education: uwm_edw_puma_education
   field_res_name/title: field_res_name/title
   field_res_name/given: field_res_name/given
   field_res_name/middle: field_res_name/middle
