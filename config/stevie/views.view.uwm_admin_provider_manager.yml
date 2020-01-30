@@ -1100,7 +1100,7 @@ display:
         - 'config:workflow_list'
   page_1:
     display_options:
-      path: admin/content/providers
+      path: admin/content/providers-old
       menu:
         type: normal
         title: 'Search Providers'
