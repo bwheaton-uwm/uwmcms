@@ -41,6 +41,10 @@ source:
       name: field_res_include_in_search
       label: field_res_include_in_search
       selector: /attributes/field_res_include_in_search
+    -
+      name: field_res_providers
+      label: field_res_providers
+      selector: /relationships/field_res_providers/data
 process:
   uuid: uuid
   tid:
@@ -51,6 +55,13 @@ process:
   uwm_unique_id: uwm_unique_id
   field_term_keywords: res_term_keywords
   field_res_include_in_search: field_res_include_in_search
+  field_res_providers:
+    -
+      plugin: uwm_nid_for_uuid
+      source: field_res_providers
+    -
+      plugin: skip_on_empty
+      method: process
 destination:
   plugin: 'entity:taxonomy_term'
   default_bundle: expertise
