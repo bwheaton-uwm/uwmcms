@@ -10,7 +10,6 @@ module: {  }
 theme: {  }
 blacklist: {  }
 graylist:
-  - config_ignore.settings
   - d8_google_optimize_hide_page.settings
 graylist_dependents: false
 graylist_skip_equal: true

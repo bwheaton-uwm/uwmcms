@@ -1,5 +1,5 @@
 ignored_config_entities:
-  0: acquia_lift.settings
-  2: acquia_contenthub.admin_settings
+  - acquia_lift.settings
+  - acquia_contenthub.admin_settings
 _core:
   default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk
