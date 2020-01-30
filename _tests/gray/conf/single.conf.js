@@ -1,5 +1,6 @@
 nightwatch_config = {
   src_folders : [ "tests/single" ],
+  page_objects_path : [ "page_objects"],
 
   selenium : {
     "start_process" : false,
