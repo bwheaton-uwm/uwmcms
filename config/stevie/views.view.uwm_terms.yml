@@ -727,7 +727,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          operator: word
+          operator: allwords
           value: ''
           group: 1
           exposed: true
@@ -747,6 +747,7 @@ display:
               replicator: '0'
               administrator: '0'
               content_manager: '0'
+              content_reviewer: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -763,27 +764,24 @@ display:
           entity_type: taxonomy_term
           entity_field: name
           plugin_id: string
-        parent_target_id:
-          id: parent_target_id
-          table: taxonomy_term__parent
-          field: parent_target_id
-          relationship: none
+        name_1:
+          id: name_1
+          table: taxonomy_term_field_data
+          field: name
+          relationship: parent_target_id
           group_type: group
           admin_label: ''
-          operator: '='
-          value:
-            min: ''
-            max: ''
-            value: ''
+          operator: contains
+          value: ''
           group: 1
           exposed: true
           expose:
-            operator_id: parent_target_id_op
+            operator_id: name_1_op
             label: Parent
             description: ''
             use_operator: false
-            operator: parent_target_id_op
-            identifier: parent_target_id
+            operator: name_1_op
+            identifier: parent
             required: false
             remember: false
             multiple: false
@@ -795,8 +793,6 @@ display:
               content_manager: '0'
               content_reviewer: '0'
             placeholder: ''
-            min_placeholder: ''
-            max_placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -810,8 +806,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: taxonomy_term
-          entity_field: parent
-          plugin_id: numeric
+          entity_field: name
+          plugin_id: string
         field_term_keywords_value:
           id: field_term_keywords_value
           table: taxonomy_term__field_term_keywords
@@ -898,6 +894,47 @@ display:
           entity_type: taxonomy_term
           entity_field: vid
           plugin_id: bundle
+        field_res_include_in_search_value:
+          id: field_res_include_in_search_value
+          table: taxonomy_term__field_res_include_in_search
+          field: field_res_include_in_search_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: All
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Include in search'
+            description: ''
+            use_operator: false
+            operator: field_res_include_in_search_value_op
+            identifier: field_res_include_in_search_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              replicator: '0'
+              administrator: '0'
+              content_manager: '0'
+              content_reviewer: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: boolean
         field_res_providers_target_id:
           id: field_res_providers_target_id
           table: taxonomy_term__field_res_providers
@@ -932,6 +969,69 @@ display:
             label: Providers
             description: ''
             identifier: field_res_providers_target_id
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: 'Yes'
+                operator: 'not empty'
+                value:
+                  value: ''
+                  min: ''
+                  max: ''
+              2:
+                title: 'No'
+                operator: empty
+                value:
+                  value: ''
+                  min: ''
+                  max: ''
+              3:
+                title: ''
+                operator: '='
+                value:
+                  value: ''
+                  min: ''
+                  max: ''
+          plugin_id: numeric
+        field_res_clinics_target_id:
+          id: field_res_clinics_target_id
+          table: taxonomy_term__field_res_clinics
+          field: field_res_clinics_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_res_clinics_target_id_op
+            label: 'Clinics (field_res_clinics)'
+            description: null
+            use_operator: false
+            operator: field_res_clinics_target_id_op
+            identifier: field_res_clinics_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+            min_placeholder: null
+            max_placeholder: null
+          is_grouped: true
+          group_info:
+            label: Clinics
+            description: ''
+            identifier: field_res_clinics_target_id
             optional: true
             widget: select
             multiple: false
@@ -1073,7 +1173,18 @@ display:
           plugin_id: result
       footer: {  }
       empty: {  }
-      relationships: {  }
+      relationships:
+        parent_target_id:
+          id: parent_target_id
+          table: taxonomy_term__parent
+          field: parent_target_id
+          relationship: none
+          group_type: group
+          admin_label: Parent
+          required: false
+          entity_type: taxonomy_term
+          entity_field: parent
+          plugin_id: standard
       arguments: {  }
       display_extenders: {  }
       filter_groups:

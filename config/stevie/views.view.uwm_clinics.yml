@@ -1453,7 +1453,7 @@ display:
             identifier: field_res_medical_services_target_id
             required: false
             remember: false
-            multiple: false
+            multiple: true
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
