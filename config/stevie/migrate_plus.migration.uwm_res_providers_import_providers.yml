@@ -19,7 +19,7 @@ source:
   include_raw_data: true
   track_changes: true
   urls:
-    - 'http://bios-reservoir-test.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed'
+    - 'http://bios-reservoir.mktgweb.uwmedicine.org/jsonapi/node/res_provider?page[limit]=50&page[offset]=0&sort=-changed'
   ids:
     uuid:
       type: string
@@ -137,10 +137,6 @@ source:
       name: uwm_edw_puma_education
       label: uwm_edw_puma_education
       selector: /attributes/uwm_edw_puma_education
-    -
-      name: uwm_edw_board_certs
-      label: uwm_edw_board_certs
-      selector: /attributes/uwm_edw_board_certs
     -
       name: field_res_affiliates
       label: field_res_affiliates
