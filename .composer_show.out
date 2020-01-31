@@ -126,7 +126,7 @@ drupal/fallback_formatter                      1.0.0
 drupal/fb_instant_articles                     2.x-dev 98b7a24        
 drupal/features                                3.8.0                  
 drupal/field_formatter_range                   1.0.0                  
-drupal/field_group                             3.0.0-rc2              
+drupal/field_group                             3.0.0                  
 drupal/filebrowser                             2.0.0                  
 drupal/focal_point                             1.2.0                  
 drupal/geocoder                                2.0.0-beta10           
