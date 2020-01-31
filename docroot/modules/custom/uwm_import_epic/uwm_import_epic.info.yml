@@ -12,3 +12,5 @@ dependencies:
   # - a way to upload CSV files via UI for import
   # - a way to list and download generated error log files from import
   - filebrowser
+  # Provides helper to load Visit Type Labels terms for validation.
+  - uwmcs_ecare_scheduling

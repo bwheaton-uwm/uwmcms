@@ -8,6 +8,72 @@
 use Drupal\uwmcs_ecare_scheduling\Controller\ECareController;
 
 /**
+ * Load all Visit Type Labels taxonomy terms.
+ *
+ * These terms hold a customized display name and description for each eCare
+ * open scheduling visit type ID. The appointment scheduling modal displays them
+ * on a button for each visit type that leads to the open scheduling widget.
+ *
+ * When provider scheduling data is imported from Epic, there is a check that
+ * a term exists for each visit type ID found on a provider.
+ */
+function _uwmcs_ecare_scheduling_load_visit_type_terms() {
+
+  // Load these only once in a request.
+  // Use NULL to indicate they have not been queried for yet, while an empty
+  // array means they were queried for but none retrieved.
+  static $visit_types = NULL;
+
+  if (is_null($visit_types)) {
+
+    $visit_types = [];
+
+    $term_ids = \Drupal::entityQuery('taxonomy_term')
+      ->condition('vid', 'visit_type_labels')
+      ->execute();
+
+    if (!empty($term_ids)) {
+
+      /** @var \Drupal\taxonomy\TermInterface[] $terms */
+      $terms = \Drupal::entityTypeManager()
+        ->getStorage('taxonomy_term')
+        ->loadMultiple($term_ids);
+
+      if (!empty($terms)) {
+        foreach ($terms as $term) {
+
+          // The term name should be the visit type ID, which is an integer.
+          // Bypass loading any that have been entered incorrectly.
+          $term_name = trim($term->getName());
+          if (!is_numeric($term_name) || strpos($term_name, '.') !== FALSE) {
+            continue;
+          }
+
+          $visit_type_id = (int) $term_name;
+          $visit_types[$visit_type_id] = [
+            'name' => NULL,
+            'description' => NULL,
+          ];
+
+          if (!$term->get('field_visit_type_name')->isEmpty()) {
+            $visit_types[$visit_type_id]['name'] = $term->get('field_visit_type_name')->first()->getValue()['value'];
+          }
+
+          if (!$term->get('field_visit_type_description')->isEmpty()) {
+            $visit_types[$visit_type_id]['description'] = $term->get('field_visit_type_description')->first()->getValue()['value'];
+          }
+
+        }
+      }
+
+    }
+  }
+
+  return $visit_types;
+
+}
+
+/**
  * Implements theme_preprocess_node().
  */
 function uwmcs_ecare_scheduling_preprocess_node(&$variables) {

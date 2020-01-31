@@ -6,6 +6,7 @@ use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\Core\Messenger\MessengerInterface;
 use Psr\Log\LoggerInterface;
+use Drupal\Core\Mail\MailManagerInterface;
 
 /**
  * Class ProviderSchedulingDataValidator.
@@ -52,18 +53,32 @@ class ProviderSchedulingDataValidator {
   private $useTempStore;
 
   /**
-   * Whether currently collecting messages for a single log (file).
+   * Whether currently collecting messages for a single log.
    *
    * @var bool
    */
   private $isLogging;
 
   /**
-   * Array of messages for current log (file).
+   * Messages for current log, if not using temp store.
    *
    * @var array
    */
   private $log;
+
+  /**
+   * Local store of all visit types' names and descriptions.
+   *
+   * @var array
+   */
+  protected $visitTypes;
+
+  /**
+   * Visit type IDs for which name/description is not found, for current log.
+   *
+   * @var array
+   */
+  protected $visitTypesMissingNameDesc;
 
   /**
    * The messenger service.
@@ -80,6 +95,13 @@ class ProviderSchedulingDataValidator {
   private $logger;
 
   /**
+   * The mail manager service.
+   *
+   * @var \Drupal\Core\Mail\MailManagerInterface
+   */
+  protected $mailManager;
+
+  /**
    * Constructor.
    *
    * @param \Drupal\Core\File\FileSystemInterface $file_system
@@ -90,12 +112,15 @@ class ProviderSchedulingDataValidator {
    *   The messenger service.
    * @param \Psr\Log\LoggerInterface $logger
    *   The logger channel for service.
+   * @param \Drupal\Core\Mail\MailManagerInterface $mail_manager
+   *   The mail manager service.
    */
-  public function __construct(FileSystemInterface $file_system, PrivateTempStoreFactory $private_temp_store_factory, MessengerInterface $messenger, LoggerInterface $logger) {
+  public function __construct(FileSystemInterface $file_system, PrivateTempStoreFactory $private_temp_store_factory, MessengerInterface $messenger, LoggerInterface $logger, MailManagerInterface $mail_manager) {
 
     $this->fileSystem = $file_system;
     $this->messenger = $messenger;
     $this->logger = $logger;
+    $this->mailManager = $mail_manager;
 
     // In a batch situation there are multiple requests, so this object is
     // constructed on each request. To determine if there's a log in progress
@@ -105,8 +130,9 @@ class ProviderSchedulingDataValidator {
     // Create or access our temp store collection.
     $this->privateTempStore = $this->privateTempStoreFactory->get('uwm_import_epic.scheduling_data_validator');
 
-    // If the logging status value is present and true, we are already using
-    // the temp store. (If a key/value is not set, it returns NULL.)
+    // If the temp store logging status value is present and true, we already
+    // have a log in progress.
+    // (If a key/value is not set in the store, this method returns NULL.)
     if ($this->privateTempStore->get('is_logging')) {
 
       $this->useTempStore = TRUE;
@@ -115,14 +141,13 @@ class ProviderSchedulingDataValidator {
     else {
 
       $this->useTempStore = FALSE;
+      $this->setIsLogging(FALSE);
 
     }
 
-    // These are only used for non-temp-store case. Particularly, the log data
-    // is structured differently in the temp store, so we do not load it into
-    // this object property.
-    $this->isLogging = FALSE;
-    $this->log = [];
+    // Load all Visit Type Labels terms which store name and description for
+    // visit type IDs.
+    $this->visitTypes = _uwmcs_ecare_scheduling_load_visit_type_terms();
 
   }
 
@@ -165,21 +190,6 @@ class ProviderSchedulingDataValidator {
     }
 
     $this->logger->log($level, $message);
-
-  }
-
-  /**
-   * Set initial log status values in temp store.
-   */
-  protected function initTempStore() {
-
-    // Initialize values.
-    if ($this->useTempStore) {
-
-      $this->privateTempStore->set('is_logging', FALSE);
-      $this->privateTempStore->set('log_count', 0);
-
-    }
 
   }
 
@@ -311,6 +321,77 @@ class ProviderSchedulingDataValidator {
   }
 
   /**
+   * Get visit types missing name/description, thus far in current log.
+   *
+   * @return array
+   *   Array of visit type IDs.
+   */
+  protected function getVisitTypesMissingNameDesc() {
+
+    if ($this->useTempStore) {
+
+      return $this->privateTempStore->get('visit_types_missing_name_desc');
+
+    }
+    else {
+
+      return $this->visitTypesMissingNameDesc;
+
+    }
+
+  }
+
+  /**
+   * Check if visit type is missing name/description; add to current log if so.
+   *
+   * @param int $visit_type_id
+   *   The visit type ID.
+   *
+   * @return bool
+   *   Whether the visit type ID is missing name/description stored as Visit
+   *   Type Labels taxonomy term.
+   */
+  protected function checkAddVisitTypeMissingNameDesc($visit_type_id) {
+
+    if (in_array($visit_type_id, $this->getVisitTypesMissingNameDesc())) {
+
+      return TRUE;
+
+    }
+    elseif (empty($this->visitTypes[$visit_type_id]) || empty($this->visitTypes[$visit_type_id]['name']) || empty($this->visitTypes[$visit_type_id]['description'])) {
+
+      // Record in the current log, adding each ID only once.
+      if ($this->useTempStore) {
+
+        $missing = $this->privateTempStore->get('visit_types_missing_name_desc');
+
+        if (!in_array($visit_type_id, $missing)) {
+
+          $missing[] = $visit_type_id;
+          $this->privateTempStore->set('visit_types_missing_name_desc', $missing);
+
+        }
+
+      }
+      else {
+
+        if (!in_array($visit_type_id, $this->visitTypesMissingNameDesc)) {
+
+          $this->visitTypesMissingNameDesc[] = $visit_type_id;
+
+        }
+
+      }
+
+      return TRUE;
+
+    }
+
+    return FALSE;
+
+  }
+
+  /**
    * Remove all current log messages and reset status.
    *
    * This is called after the import is completed and all log messages have been
@@ -338,12 +419,14 @@ class ProviderSchedulingDataValidator {
       }
 
       $this->privateTempStore->delete('log_count');
+      $this->privateTempStore->delete('visit_types_missing_name_desc');
       $this->privateTempStore->set('is_logging', FALSE);
 
     }
     else {
 
       $this->log = [];
+      $this->visitTypesMissingNameDesc = [];
       $this->isLogging = FALSE;
 
     }
@@ -355,9 +438,9 @@ class ProviderSchedulingDataValidator {
    *
    * @param bool $use_temp_store
    *   Whether to store the log status and messages in the 'temp store' in the
-   *   database, which persists across multiple requests. This option enables
-   *   successful logging when import is run via the admin UI and uses batches.
-   *   It is not necessary for running via Drush.
+   *   database. When the import is run via the admin UI, it uses batches, each
+   *   of which is a separate request; storing in the database persists values
+   *   across these requests. (It is not necessary for running via Drush.)
    */
   public function initLog($use_temp_store = FALSE) {
 
@@ -371,9 +454,21 @@ class ProviderSchedulingDataValidator {
 
         $this->outputStatus('status', t("Successfully initialized a log."));
 
+        // Determine if using the temp store to store logging values.
         $this->useTempStore = $use_temp_store;
-        if ($use_temp_store) {
-          $this->initTempStore();
+
+        // Initialize logging values.
+        if ($this->useTempStore) {
+
+          $this->privateTempStore->set('log_count', 0);
+          $this->privateTempStore->set('visit_types_missing_name_desc', []);
+
+        }
+        else {
+
+          $this->log = [];
+          $this->visitTypesMissingNameDesc = [];
+
         }
 
         $this->setIsLogging(TRUE);
@@ -431,6 +526,8 @@ class ProviderSchedulingDataValidator {
         $datetime = new \DateTime('now', new \DateTimeZone('America/Los_Angeles'));
         $filepath = self::LOG_DIRECTORY . '/uwm-provider-scheduling-data-validation--' . $datetime->format('Y-m-d--H.i.s-T') . '.csv';
 
+        // TODO: send notification email if log successfully saved; and attach
+        // file to email? or not because of privacy?
         /*
          * TODO: update this on 8.7.x+
          *
@@ -462,6 +559,18 @@ class ProviderSchedulingDataValidator {
           // migration.
           $this->outputStatus('error', t("Error finishing log: could not save log file to: @filepath. Check for additional error messages from the file system.", [
             '@filepath' => $filepath,
+          ]));
+
+        }
+
+        // Provide separate message for visit types missing name/description.
+        $visit_types_missing = $this->getVisitTypesMissingNameDesc();
+        if (!empty($visit_types_missing)) {
+
+          $this->outputStatus('error', t("Visit type IDs were found on providers, but their display names/descriptions were not found:<br/>
+          %visit_type_ids_missing<br/>
+          <a href=\"/admin/structure/taxonomy/manage/visit_type_labels/overview\" target=\"_blank\">Add them here.</a>", [
+            '%visit_type_ids_missing' => implode(', ', $visit_types_missing),
           ]));
 
         }
@@ -525,12 +634,14 @@ class ProviderSchedulingDataValidator {
     // in Wrike tasks are marked here.
     // @see https://www.wrike.com/open.htm?id=418746142
     // @see https://www.wrike.com/open.htm?id=417535639
+    // @see https://www.wrike.com/open.htm?id=411521672
     $log = [
       'incomplete_no' => [],
       'incomplete_partial' => [],
       'error' => [],
       'verify' => [],
       'auto_change' => [],
+      'visit_types' => [],
     ];
 
     // Incomplete source data cases: when the source row is missing value(s)
@@ -690,6 +801,22 @@ class ProviderSchedulingDataValidator {
 
     }
 
+    // (o)
+    // Log missing Visit Type Labels term or display name/description field
+    // value on term with same message for simplicity, because all are managed
+    // in one place.
+    if (!empty($values['visit_type_ids'])) {
+      foreach ($values['visit_type_ids'] as $visit_type_id) {
+
+        if ($this->checkAddVisitTypeMissingNameDesc($visit_type_id)) {
+
+          $log['visit_types'][] = "Visit type ID " . $visit_type_id . " present, but display name/description not found in Visit Type Labels taxonomy";
+
+        }
+
+      }
+    }
+
     // Store each message in the current log, including values to identify the
     // provider with the issue, type of issue, and specific message.
     if (!empty($log)) {
@@ -701,6 +828,7 @@ class ProviderSchedulingDataValidator {
         'incomplete_partial' => "Partially imported",
         'error' => "Logic error",
         'verify' => "Verify",
+        'visit_types' => "Visit type missing name/desc",
       ];
 
       foreach ($log as $type => $messages) {

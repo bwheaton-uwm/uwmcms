@@ -197,7 +197,7 @@ class ProviderSchedulingMigrationSubscriber implements EventSubscriberInterface 
     // [
     // "nid" => "321"
     // "field_res_ser_id" => "12345"
-    // "field_res_visit_type_id" => array:3 [
+    // "field_res_visit_type_id" => [
     // 0 => "1234"
     // 1 => "5432"
     // ]

@@ -1,7 +1,7 @@
 services:
   uwm_import_epic.provider_scheduling_data_validator:
     class: '\Drupal\uwm_import_epic\ProviderSchedulingDataValidator'
-    arguments: ['@file_system', '@tempstore.private', '@messenger', '@logger.channel.provider_scheduling_validator']
+    arguments: ['@file_system', '@tempstore.private', '@messenger', '@logger.channel.provider_scheduling_validator', '@plugin.manager.mail']
   uwm_import_epic.provider_scheduling_migration_subscriber:
     class: '\Drupal\uwm_import_epic\EventSubscriber\ProviderSchedulingMigrationSubscriber'
     tags:
