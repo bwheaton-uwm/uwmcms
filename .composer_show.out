@@ -165,7 +165,7 @@ drupal/migrate_source_csv                      2.2.0
 drupal/migrate_tools                           4.5.0                  
 drupal/minifyhtml                              1.6.0                  
 drupal/moderation_dashboard                    1.0.0-alpha1           
-drupal/moderation_sidebar                      1.1.0                  
+drupal/moderation_sidebar                      1.2.0                  
 drupal/multiversion                            1.x-dev fc90cb1        
 drupal/name                                    1.0.0-rc1              
 drupal/node_revision_delete                    1.0.0-beta3            
