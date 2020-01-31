@@ -85,7 +85,7 @@ drupal/cog                                     1.13.0
 drupal/components                              1.0.0                  
 drupal/conditional_fields                      1.0.0-alpha4           
 drupal/config_filter                           1.4.0                  
-drupal/config_ignore                           2.1.0                  
+drupal/config_ignore                           2.2.0                  
 drupal/config_installer                        1.8.0                  
 drupal/config_split                            1.4.0                  
 drupal/config_update                           1.6.0                  
@@ -126,7 +126,7 @@ drupal/fallback_formatter                      1.0.0
 drupal/fb_instant_articles                     2.x-dev 98b7a24        
 drupal/features                                3.8.0                  
 drupal/field_formatter_range                   1.0.0                  
-drupal/field_group                             3.0.0-rc2              
+drupal/field_group                             3.0.0                  
 drupal/filebrowser                             2.0.0                  
 drupal/focal_point                             1.2.0                  
 drupal/geocoder                                2.0.0-beta10           

@@ -20,10 +20,13 @@
   #}
 
   {% set value = items.0.content|render|trim %}
-{#  <a class="btn{{ view_mode == 'full' ? ' btn-cta-solid clinic-page__cta-btn' }}" href="tel:{{ value|uwm_format_phone }}">{{ value|uwm_format_phone('.') }}</a>#}
-  {#              // @TODO Verify CTA link. #}
-  {% set link_classes = (view_mode == 'full' ? [css_parents_classes, 'btn', 'btn-cta-solid', 'clinic-page__cta-btn'] : [css_parents_classes]) %}
+
+  {# <a class="btn{{ view_mode == 'full' ? ' btn-cta-solid clinic-page__cta-btn' }}" href="tel:{{ value|uwm_format_phone }}">{{ value|uwm_format_phone('.') }}</a> #}
+
+  {# // @TODO Verify CTA link. #}
+  {% set link_classes = (view_mode == 'full' ? css_parents_classes|merge(['btn-cta-solid', 'clinic-page__cta-btn']) : css_parents_classes) %}
   {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
+
   {{ uwm_cta_link(value|uwm_format_phone('.'), 'tel:' ~ value|uwm_format_phone, [link_classes], cta_special_attributes) }}
 
 {% endspaceless %}

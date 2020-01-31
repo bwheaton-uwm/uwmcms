@@ -15,21 +15,10 @@
     padding-bottom: 3rem;
   }
 
-  .clinic-page__hours-ctas, .clinic-page__featured-view-all {
-    .clinic-page__cta-btn {
-      padding: .5rem 1.5rem;
-    }
-  }
-
   .clinic-page__header {
 
     .clinic-page__right {
       display: flex;
-
-      .center-wide__cta a.uwm-cta {
-        width: 100%;
-        text-align: center;
-      }
 
       .clinic-page__hours-ctas {
         display: flex;
@@ -97,14 +86,15 @@
           }
         }
 
-        .clinic-page__cta-returning {
-          .clinic-page__cta-content {
-
-            .clinic-page__cta-btn {
-              flex-basis: 100%;
-            }
-          }
+        .clinic-page__cta-btn {
+          // Override default of .btn-cta-solid
+          padding: .5rem 1.5rem; // 8px 24px
         }
+
+        .clinic-page__cta-btn--full-width {
+          flex-basis: 100%;
+        }
+
       }
 
       .clinic-page__contact {
