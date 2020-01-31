@@ -9428,20 +9428,20 @@
         },
         {
             "name": "drupal/link_attributes",
-            "version": "1.5.0",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/link_attributes.git",
-                "reference": "8.x-1.5"
+                "reference": "8.x-1.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/link_attributes-8.x-1.5.zip",
-                "reference": "8.x-1.5",
-                "shasum": "48c0e6ac2c3f4843372abb394c1aabe380dfa604"
+                "url": "https://ftp.drupal.org/files/projects/link_attributes-8.x-1.10.zip",
+                "reference": "8.x-1.10",
+                "shasum": "3df450b83a05911575aaf9b234a3b43833d3c1c2"
             },
             "require": {
-                "drupal/core": "*"
+                "drupal/core": "^8 || ^9"
             },
             "type": "drupal-module",
             "extra": {
@@ -9449,8 +9449,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.5",
-                    "datestamp": "1537173781",
+                    "version": "8.x-1.10",
+                    "datestamp": "1580259496",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -9470,7 +9470,7 @@
             "description": "Provides a widget to allow settings of link attributes for menu links.",
             "homepage": "https://www.drupal.org/project/link_attributes",
             "support": {
-                "source": "http://cgit.drupalcode.org/link_attributes"
+                "source": "https://git.drupalcode.org/project/link_attributes"
             }
         },
         {
