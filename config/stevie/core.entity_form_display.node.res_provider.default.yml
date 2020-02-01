@@ -594,6 +594,8 @@ content:
     region: content
 hidden:
   created: true
+  field_uwm_edw_boardcerts: true
+  field_uwm_edw_education: true
   field_uwm_json_packet: true
   path: true
   promote: true
