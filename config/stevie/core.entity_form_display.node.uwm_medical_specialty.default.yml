@@ -43,6 +43,7 @@ third_party_settings:
         id: ''
         classes: ''
       label: 'Content Sections'
+      region: content
     group_node_meta_information:
       children:
         - field_uwm_page_path_name
@@ -65,6 +66,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Node Meta Information'
+      region: content
     group_taxonomy:
       children:
         - field_res_conditions_symptoms
@@ -79,6 +81,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Taxonomy
+      region: content
     group_old:
       children:
         - field_uwm_image
@@ -94,6 +97,7 @@ third_party_settings:
         description: ''
         required_fields: false
       label: Old
+      region: content
     group_content_contacts:
       children:
         - field_uwm_content_owner
@@ -107,6 +111,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Content Contacts'
+      region: content
 id: node.uwm_medical_specialty.default
 targetEntityType: node
 bundle: uwm_medical_specialty

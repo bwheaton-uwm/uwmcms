@@ -45,6 +45,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Node Meta Information'
+      region: content
     group_mic:
       children:
         - field_uwm_sections
@@ -59,6 +60,7 @@ third_party_settings:
         id: ''
         classes: ''
       label: 'Content Sections'
+      region: content
     group_old:
       children:
         - field_uwm_image
@@ -74,6 +76,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Old
+      region: content
     group_taxonomy:
       children:
         - field_uwm_medical_service
@@ -89,6 +92,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Taxonomy
+      region: content
     group_content_contacts:
       children:
         - field_uwm_content_owner
@@ -102,6 +106,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Content Contacts'
+      region: content
 id: node.uwm_medical_service.default
 targetEntityType: node
 bundle: uwm_medical_service

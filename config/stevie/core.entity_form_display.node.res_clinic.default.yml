@@ -53,102 +53,17 @@ dependencies:
     - image
     - metatag
     - paragraphs
+    - path
     - telephone
     - text
 third_party_settings:
   field_group:
-    group_clinic_top:
-      children:
-        - field_res_phone_number
-        - field_res_fax_number
-        - field_res_building
-        - field_res_room_number
-        - field_res_floor
-        - field_res_box_number
-        - field_res_image
-      parent_name: ''
-      weight: 3
-      format_type: fieldset
-      format_settings:
-        id: ''
-        classes: ''
-        description: ''
-        required_fields: true
-      label: 'Clinic Top'
-    group_clinic_bottom:
-      children:
-        - field_uwm_sections_2
-      parent_name: ''
-      weight: 7
-      format_type: fieldset
-      format_settings:
-        id: ''
-        classes: ''
-        description: ''
-        required_fields: true
-      label: 'Clinic Bottom'
-    group_clinic_meta:
-      children:
-        - field_featured
-        - field_res_is_hospital
-        - field_res_is_building
-        - field_res_iscallcenterserviced
-        - field_res_clockwise_id
-        - field_res_epic_department_ids
-        - field_res_hide_appt_ctas
-        - field_res_hide_open_scheduling
-        - field_res_hide_returning_cta
-        - field_hide_see_clinics_cta
-        - field_res_internal_url
-        - field_res_external_url
-        - uwm_unique_id
-        - field_search_best_bets
-      parent_name: ''
-      weight: 1
-      format_type: fieldset
-      format_settings:
-        id: ''
-        classes: ''
-        description: ''
-        required_fields: true
-      label: 'Clinic Meta'
-    group_services_resources_tab:
-      children:
-        - field_res_feat_clinics_header
-        - field_res_featured_clinics
-        - field_res_feat_clinics_view_all
-        - field_res_expertises
-        - field_uwm_sections
-        - body
-        - field_res_location_note
-      parent_name: ''
-      weight: 5
-      format_type: fieldset
-      format_settings:
-        label: 'Overview/Resources tab'
-        description: ''
-        id: ''
-        classes: ''
-        required_fields: false
-      label: 'Overview/Resources tab'
-    group_care_providers_tab:
-      children:
-        - field_res_providers
-      parent_name: ''
-      weight: 6
-      format_type: fieldset
-      format_settings:
-        id: ''
-        classes: ''
-        description: ''
-        required_fields: false
-      label: 'Care Providers tab'
     group_content_contacts:
       children:
         - field_uwm_content_owner
         - field_uwm_subject_matter_experts
       parent_name: ''
-      weight: 22
+      weight: 15
       format_type: details
       format_settings:
         id: ''
@@ -156,11 +71,12 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Content Contacts'
+      region: content
     group_hours:
       children:
         - field_res_hours_of_operation
       parent_name: ''
-      weight: 2
+      weight: 3
       format_type: tab
       format_settings:
         id: ''
@@ -169,6 +85,149 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Hours
+      region: content
+    group_providers:
+      children:
+        - field_res_providers
+      parent_name: ''
+      weight: 1
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Providers
+    group_booking:
+      children:
+        - field_res_iscallcenterserviced
+        - field_res_epic_department_ids
+        - field_res_hide_returning_cta
+        - field_res_hide_open_scheduling
+        - field_res_hide_appt_ctas
+        - field_hide_see_clinics_cta
+        - field_res_is_hospital
+        - field_res_is_building
+        - field_res_clockwise_id
+      parent_name: ''
+      weight: 2
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Booking
+    group_contact:
+      children:
+        - field_res_phone_number
+        - field_res_fax_number
+      parent_name: ''
+      weight: 4
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Contact
+    group_location:
+      children:
+        - field_res_building
+        - field_res_floor
+        - field_res_room_number
+        - field_res_box_number
+        - field_res_location_note
+      parent_name: ''
+      weight: 5
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Location
+    group_featured_clinics:
+      children:
+        - field_res_featured_clinics
+        - field_res_feat_clinics_header
+        - field_res_feat_clinics_view_all
+        - field_featured
+      parent_name: ''
+      weight: 6
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: 'Featured Clinics'
+    group_taxonomy_terms:
+      children:
+        - field_res_affiliates
+        - field_res_medical_services
+        - field_res_expertises
+        - field_res_conditions_symptoms
+        - field_res_procedures_treatments
+        - field_res_features_amenities
+        - field_res_department
+        - field_res_patients_treated
+        - field_search_best_bets
+      parent_name: ''
+      weight: 7
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: 'Taxonomy Terms'
+    group_urls:
+      children:
+        - field_res_external_url
+        - field_res_internal_url
+        - uwm_unique_id
+      parent_name: ''
+      weight: 13
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: URLs
+    group_content:
+      children:
+        - field_uwm_banner_content
+        - field_res_image
+        - body
+        - field_uwm_sections
+        - field_uwm_sections_2
+      parent_name: ''
+      weight: 14
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Content
 _core:
   default_config_hash: 2kAi-wYe7ZuIze154ZwVwwhYSRqonPwtA675m4-PbdU
 id: node.res_clinic.default
@@ -177,7 +236,7 @@ bundle: res_clinic
 mode: default
 content:
   body:
-    weight: 16
+    weight: 13
     settings:
       rows: 9
       summary_rows: 3
@@ -185,28 +244,22 @@ content:
     third_party_settings: {  }
     type: text_textarea_with_summary
     region: content
-  created:
-    type: datetime_timestamp
-    weight: 15
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_featured:
-    weight: 20
+    weight: 14
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_hide_see_clinics_cta:
-    weight: 29
+    weight: 28
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_res_affiliates:
-    weight: 13
+    weight: 11
     settings:
       match_operator: CONTAINS
       size: 60
@@ -215,7 +268,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_box_number:
-    weight: 33
+    weight: 11
     settings:
       size: 60
       placeholder: ''
@@ -223,7 +276,7 @@ content:
     type: string_textfield
     region: content
   field_res_building:
-    weight: 30
+    weight: 8
     settings:
       match_operator: CONTAINS
       size: 60
@@ -232,7 +285,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_clockwise_id:
-    weight: 24
+    weight: 31
     settings:
       size: 60
       placeholder: ''
@@ -241,7 +294,7 @@ content:
     region: content
   field_res_conditions_symptoms:
     type: entity_reference_autocomplete
-    weight: 9
+    weight: 14
     region: content
     settings:
       match_operator: CONTAINS
@@ -249,7 +302,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_res_department:
-    weight: 23
+    weight: 17
     settings:
       match_operator: CONTAINS
       size: 60
@@ -258,7 +311,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_epic_department_ids:
-    weight: 25
+    weight: 24
     settings:
       size: 60
       placeholder: ''
@@ -267,7 +320,7 @@ content:
     region: content
   field_res_expertises:
     type: entity_reference_autocomplete
-    weight: 14
+    weight: 13
     region: content
     settings:
       match_operator: CONTAINS
@@ -275,7 +328,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_res_external_url:
-    weight: 31
+    weight: 34
     settings:
       size: 60
       placeholder: ''
@@ -290,7 +343,7 @@ content:
     type: telephone_default
     region: content
   field_res_feat_clinics_header:
-    weight: 10
+    weight: 12
     settings:
       size: 60
       placeholder: ''
@@ -298,7 +351,7 @@ content:
     type: string_textfield
     region: content
   field_res_feat_clinics_view_all:
-    weight: 12
+    weight: 13
     settings:
       size: 60
       placeholder: ''
@@ -316,7 +369,7 @@ content:
     region: content
   field_res_features_amenities:
     type: entity_reference_autocomplete
-    weight: 12
+    weight: 16
     region: content
     settings:
       match_operator: CONTAINS
@@ -324,7 +377,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_res_floor:
-    weight: 32
+    weight: 9
     settings:
       match_operator: CONTAINS
       size: 60
@@ -333,21 +386,21 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_hide_appt_ctas:
-    weight: 26
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
-  field_res_hide_open_scheduling:
     weight: 27
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
+  field_res_hide_open_scheduling:
+    weight: 26
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_res_hide_returning_cta:
-    weight: 28
+    weight: 25
     settings:
       display_label: true
     third_party_settings: {  }
@@ -372,7 +425,7 @@ content:
         collapse_edit_all: collapse_edit_all
     third_party_settings: {  }
   field_res_image:
-    weight: 35
+    weight: 12
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -380,7 +433,7 @@ content:
     type: image_image
     region: content
   field_res_internal_url:
-    weight: 30
+    weight: 35
     settings:
       size: 60
       placeholder: ''
@@ -388,7 +441,7 @@ content:
     type: string_textfield
     region: content
   field_res_is_building:
-    weight: 22
+    weight: 30
     settings:
       display_label: true
     third_party_settings: {  }
@@ -396,7 +449,7 @@ content:
     region: content
   field_res_is_hospital:
     type: boolean_checkbox
-    weight: 21
+    weight: 29
     region: content
     settings:
       display_label: true
@@ -409,7 +462,7 @@ content:
     type: boolean_checkbox
     region: content
   field_res_location_note:
-    weight: 17
+    weight: 12
     settings:
       rows: 5
       placeholder: ''
@@ -417,7 +470,7 @@ content:
     type: text_textarea
     region: content
   field_res_medical_services:
-    weight: 8
+    weight: 12
     settings:
       match_operator: CONTAINS
       size: 60
@@ -426,13 +479,13 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_meta_tags:
-    weight: 19
+    weight: 16
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
     region: content
   field_res_patients_treated:
-    weight: 11
+    weight: 18
     settings:
       match_operator: CONTAINS
       size: 60
@@ -449,7 +502,7 @@ content:
     region: content
   field_res_procedures_treatments:
     type: entity_reference_autocomplete
-    weight: 10
+    weight: 15
     region: content
     settings:
       match_operator: CONTAINS
@@ -466,7 +519,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_res_room_number:
-    weight: 31
+    weight: 10
     settings:
       size: 60
       placeholder: ''
@@ -474,7 +527,7 @@ content:
     type: string_textfield
     region: content
   field_search_best_bets:
-    weight: 33
+    weight: 19
     settings:
       match_operator: CONTAINS
       size: 60
@@ -493,7 +546,7 @@ content:
     region: content
   field_uwm_banner_content:
     type: paragraphs
-    weight: 4
+    weight: 11
     settings:
       title: 'Banner Content'
       title_plural: 'Banner Content'
@@ -511,7 +564,7 @@ content:
     third_party_settings: {  }
     region: content
   field_uwm_content_owner:
-    weight: 21
+    weight: 1
     settings:
       match_operator: CONTAINS
       size: 60
@@ -520,7 +573,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_uwm_sections:
-    weight: 15
+    weight: 14
     settings:
       title: section
       title_plural: sections
@@ -540,7 +593,7 @@ content:
     region: content
   field_uwm_sections_2:
     type: paragraphs
-    weight: 8
+    weight: 15
     settings:
       title: section
       title_plural: sections
@@ -558,7 +611,7 @@ content:
     third_party_settings: {  }
     region: content
   field_uwm_subject_matter_experts:
-    weight: 22
+    weight: 2
     settings:
       match_operator: CONTAINS
       size: 60
@@ -567,34 +620,26 @@ content:
     type: entity_reference_autocomplete
     region: content
   moderation_state:
-    weight: 20
+    weight: 17
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
     region: content
-  promote:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 17
+  path:
+    type: path
+    weight: 19
     region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 14
+    weight: 20
     third_party_settings: {  }
     region: content
-  sticky:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 18
-    region: content
-    third_party_settings: {  }
   title:
     type: string_textfield
     weight: 0
@@ -603,22 +648,13 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  uid:
-    type: entity_reference_autocomplete
-    weight: 16
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    region: content
-    third_party_settings: {  }
   url_redirects:
-    weight: 21
+    weight: 18
     region: content
     settings: {  }
     third_party_settings: {  }
   uwm_unique_id:
-    weight: 32
+    weight: 36
     settings:
       size: 60
       placeholder: ''
@@ -626,6 +662,9 @@ content:
     type: string_textfield
     region: content
 hidden:
+  created: true
   field_test_m_services2: true
   field_uwm_json_packet: true
-  path: true
+  promote: true
+  sticky: true
+  uid: true

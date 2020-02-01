@@ -33,6 +33,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Content Contacts'
+      region: content
 id: node.uwm_quiz.default
 targetEntityType: node
 bundle: uwm_quiz

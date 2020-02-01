@@ -33,6 +33,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Image area options'
+      region: content
     group_settings:
       children:
         - field_uwm_background_color
@@ -49,6 +50,7 @@ third_party_settings:
         classes: ''
         required_fields: false
       label: Settings
+      region: content
 id: block_content.banner_content.default
 targetEntityType: block_content
 bundle: banner_content

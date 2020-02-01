@@ -5,19 +5,20 @@
  * Custom module for small, utility-type routines.
  */
 
+use Drupal\uwm_commands\Commands\UwmTempImportClinicImage;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\node\NodeInterface;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\views\ViewExecutable;
+use Drupal\Core\Url;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Markup;
-use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\Url;
-use Drupal\taxonomy\Entity\Term;
-use Drupal\uwm_commands\Commands\UwmTempImportClinicImage;
-use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_entity_presave().
@@ -260,7 +261,7 @@ function uwmcs_utils_form_node_res_clinic_edit_form_alter(&$form, FormStateInter
   $node = $form_state->getFormObject()->getEntity();
 
   // Clinic nodes that are hospitals may have hundreds of values in the
-  // providers entity reference field. Since Reservoir synchronizes clinic
+  // providers entity reference field. Since Stevie synchronizes clinic
   // and provider entity ref fields that point to each other via
   // Corresponding Entity Reference fields, it's easier (and more accurate)
   // to keep that data in place.
@@ -268,10 +269,9 @@ function uwmcs_utils_form_node_res_clinic_edit_form_alter(&$form, FormStateInter
   // may be too large for requests. (Reservoir returned 413, Request Entity Too
   // Large, upon submitting node form.)
   if (!empty($form['field_res_providers'])) {
-    if ($node->hasField('field_res_is_hospital') && !$node->get('field_res_is_hospital')
-      ->isEmpty() && (boolean) $node->get('field_res_is_hospital')
-      ->first()
-      ->getValue()['value']) {
+    if ($node->hasField('field_res_is_hospital')
+      && !$node->get('field_res_is_hospital')->isEmpty()
+      && (boolean) $node->get('field_res_is_hospital')->first()->getValue()['value']) {
 
       // Remove the field widget.
       $form['field_res_providers']['widget']['#access'] = FALSE;
@@ -282,7 +282,8 @@ function uwmcs_utils_form_node_res_clinic_edit_form_alter(&$form, FormStateInter
         '#theme' => 'status_messages',
         '#message_list' => [
           'warning' => [
-            t("This clinic is a hospital. While provider references are managed in Reservoir, this field is removed here because a hospital may have so many providers that this form will not work correctly."),
+            t("This clinic is a hospital. Providers may not be edited directly on a hospital, because it may have so many providers that this form will not work correctly.<br/><br/>
+            To associate a provider to a hospital, please edit that provider, and the relationship will be synchronized on the hospital."),
           ],
         ],
         '#status_headings' => [
@@ -291,6 +292,78 @@ function uwmcs_utils_form_node_res_clinic_edit_form_alter(&$form, FormStateInter
       ];
 
     }
+  }
+
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave() for 'node'.
+ */
+function uwmcs_utils_node_presave(NodeInterface $node) {
+
+  if ($node->bundle() === 'res_clinic') {
+
+    // When saving a clinic, sort the providers alphabetically by last name,
+    // then first name.
+    $field_providers = $node->get('field_res_providers');
+
+    if (!$field_providers->isEmpty()) {
+
+      $provider_nodes = $field_providers->referencedEntities();
+
+      $providers_sort = [];
+
+      // Keep a separate array for provider nodes somehow missing name field
+      // value.
+      $providers_empty = [];
+
+      foreach ($provider_nodes as $delta => $provider_node) {
+
+        $empty = TRUE;
+        if (!$provider_node->get('field_res_name')->isEmpty()) {
+
+          // Retrieve the "Family" component of the field (which should be
+          // required).
+          $name_value = $provider_node->get('field_res_name')->getValue();
+
+          if (!empty($name_value[0]['family']) && !empty($name_value[0]['given'])) {
+            $empty = FALSE;
+
+            // Build sortable name string from last name, first name, node ID.
+            // This ensures unique array keys in case of any two people with the
+            // same first and last names.
+            $name_sortby = trim($name_value[0]['family']) . '_' . trim($name_value[0]['given']) . '_' . $provider_node->id();
+
+            // Key by the sortable name string; value is the array structure
+            // that entity reference field value uses.
+            $providers_sort[$name_sortby] = [
+              'target_id' => $provider_node->id(),
+            ];
+
+          }
+
+        }
+
+        if ($empty) {
+
+          $providers_empty[$delta] = [
+            'target_id' => $provider_node->id(),
+          ];
+
+        }
+
+      }
+
+      // Sort by name string key.
+      ksort($providers_sort);
+
+      // Use array_values() to set numeric keys, which become the field deltas.
+      $provider_refs = array_values(array_merge($providers_sort, $providers_empty));
+
+      $field_providers->setValue($provider_refs);
+
+    }
+
   }
 
 }
@@ -315,10 +388,10 @@ function uwmcs_utils_entity_prepare_view($entity_type_id, array $entities, array
       // prevented though, as it is not performant.
       // This hook runs before the field render arrays are built, so we can
       // override the field value.
-      if ($node->bundle() === 'res_clinic' && $node->hasField('field_res_is_hospital') && !$node->get('field_res_is_hospital')
-        ->isEmpty() && (boolean) $node->get('field_res_is_hospital')
-        ->first()
-        ->getValue()['value']) {
+      if ($node->bundle() === 'res_clinic'
+        && $node->hasField('field_res_is_hospital')
+        && !$node->get('field_res_is_hospital')->isEmpty()
+        && (boolean) $node->get('field_res_is_hospital')->first()->getValue()['value']) {
 
         $node->get('field_res_providers')->setValue([]);
 

@@ -140,6 +140,8 @@ hidden:
   field_search_best_bets: true
   field_uwm_content_owner: true
   field_uwm_edw_board_certs: true
+  field_uwm_edw_boardcerts: true
+  field_uwm_edw_education: true
   field_uwm_json_packet: true
   field_uwm_subject_matter_experts: true
   search_api_excerpt: true

@@ -38,6 +38,7 @@ third_party_settings:
         classes: ''
         description: ''
       label: Details
+      region: content
 _core:
   default_config_hash: 6LOP74j-9VRkSLGIwoL8oVPRzSwHJ9_Uoiu0SxV0Ey0
 id: node.event.default

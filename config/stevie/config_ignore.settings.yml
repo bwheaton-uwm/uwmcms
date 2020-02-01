@@ -1,8 +1,8 @@
 ignored_config_entities:
-  0: acquia_connector.settings
-  2: media_acquiadam.settings
-  4: d8_google_optimize_hide_page.settings
-  6: 'webform.webform.*'
-  8: 'migrate_plus.migration.uwm_provider_accept_returning_patients:source.path'
+  - acquia_connector.settings
+  - media_acquiadam.settings
+  - d8_google_optimize_hide_page.settings
+  - 'webform.webform.*'
+  - 'migrate_plus.migration.uwm_provider_accept_returning_patients:source.path'
 _core:
   default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk
