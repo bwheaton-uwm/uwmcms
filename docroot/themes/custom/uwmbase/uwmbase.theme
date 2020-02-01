@@ -812,6 +812,20 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
       $variables['puma_board_certs'] = $certs;
     }
 
+    // Determine if the provider has education hx.
+    if ($node->hasField('field_uwm_edw_education')) {
+      $education = $node->field_uwm_edw_education->value ?? '';
+      $education = json_decode($education);
+      $variables['puma_education_history'] = $education;
+    }
+
+    // Determine if the provider has puma_board_certs.
+    if ($node->hasField('field_uwm_edw_boardcerts')) {
+      $certs = $node->field_uwm_edw_boardcerts->value ?? '';
+      $certs = json_decode($certs);
+      $variables['puma_board_certs'] = $certs;
+    }
+
     // Determine taxonomy terms associated with the provider.
     $variables['taxonomy_terms'] = [
       'expertises' => [],
