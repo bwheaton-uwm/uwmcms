@@ -204,10 +204,10 @@ process:
   field_res_biography/summary: field_res_biography/summary
   field_res_gender: field_res_gender
   field_res_internal_url: field_res_internal_url
-  field_res_isacceptingnewpts: field_res_isacceptingnewpts
+  # TEMP DISABLE # field_res_isacceptingnewpts: field_res_isacceptingnewpts
   field_res_meta_tags: field_res_meta_tags
-  field_res_ser_id: field_res_ser_id
-  field_res_is_open_scheduling: field_res_is_open_scheduling
+  # TEMP DISABLE # field_res_ser_id: field_res_ser_id
+  # TEMP DISABLE # field_res_is_open_scheduling: field_res_is_open_scheduling
   field_res_is_independent: field_res_is_independent
   field_uwm_json_packet: uwm_json_packet
   field_res_name/title: field_res_name/title
