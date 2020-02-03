@@ -4608,17 +4608,17 @@
         },
         {
             "name": "drupal/ckeditor_templates_ui",
-            "version": "1.0.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/ckeditor_templates_ui.git",
-                "reference": "8.x-1.0"
+                "reference": "8.x-1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ckeditor_templates_ui-8.x-1.0.zip",
-                "reference": "8.x-1.0",
-                "shasum": "3de279261dae14ab44323af6594524cbf1ebbff7"
+                "url": "https://ftp.drupal.org/files/projects/ckeditor_templates_ui-8.x-1.2.zip",
+                "reference": "8.x-1.2",
+                "shasum": "a722c30dfe9deb5c52e4574d844eb45c6982c89c"
             },
             "require": {
                 "drupal/ckeditor_templates": "*",
@@ -4630,8 +4630,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0",
-                    "datestamp": "1538341981",
+                    "version": "8.x-1.2",
+                    "datestamp": "1562680087",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4651,7 +4651,7 @@
             "description": "Provide ui for adding ckeditor templates",
             "homepage": "https://www.drupal.org/project/ckeditor_templates_ui",
             "support": {
-                "source": "http://cgit.drupalcode.org/ckeditor_templates_ui"
+                "source": "https://git.drupalcode.org/project/ckeditor_templates_ui"
             }
         },
         {
