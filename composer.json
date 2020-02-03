@@ -167,7 +167,7 @@
     "drupal/search_api_sorts": "^1.0@beta",
     "drupal/search_api_synonym": "^1.2",
     "drupal/sharethis": "2.x-dev",
-    "drupal/simple_sitemap": "^2.9",
+    "drupal/simple_sitemap": "^3.5",
     "drupal/simplesamlphp_auth": "^3.0@RC",
     "drupal/simplify": "^1.0",
     "drupal/siteimprove": "^1.0",
