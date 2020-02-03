@@ -85,7 +85,13 @@
     <div{{ content_attributes }}>
       {% if content.field_uwm_media_image.0 is not empty %}
         <div{{ image_area_attributes.addClass(image_area_classes) }}>
+          {% if content.field_uwm_more_info_url is not empty %}
+            <a href="{{ content.field_uwm_more_info_url }}">
+          {% endif %}
           {{ content.field_uwm_media_image }}
+          {% if content.field_uwm_more_info_url is not empty %}
+            </a>
+          {% endif %}
         </div>
       {% endif %}
 
