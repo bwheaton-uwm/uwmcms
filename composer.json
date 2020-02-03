@@ -153,7 +153,7 @@
     "drupal/path_redirect_import": "^1.0@beta",
     "drupal/permissions_by_term": "^1.19",
     "drupal/poll": "^1.1",
-    "drupal/rabbit_hole": "1.x-dev",
+    "drupal/rabbit_hole": "^1.0",
     "drupal/recaptcha": "^2.2",
     "drupal/redirect": "^1.0",
     "drupal/relaxed": "^1.0@beta",

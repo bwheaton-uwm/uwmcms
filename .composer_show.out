@@ -190,7 +190,7 @@ drupal/purge_processor_cron                    3.0.0-beta8
 drupal/purge_processor_lateruntime             3.0.0-beta8            
 drupal/purge_queuer_coretags                   3.0.0-beta8            
 drupal/qa_accounts                             1.0.0-alpha1           
-drupal/rabbit_hole                             1.x-dev 3727955        
+drupal/rabbit_hole                             1.0.0-beta6            
 drupal/recaptcha                               2.3.0                  
 drupal/redirect                                1.4.0                  
 drupal/relaxed                                 1.0.0-beta16           
