@@ -227,7 +227,7 @@ drupal/trash                                   1.0.0-alpha1
 drupal/twig_tweak                              1.9.0                  
 drupal/vbo_export                              2.1.0                  
 drupal/video_embed_field                       2.0.0                  
-drupal/views_bulk_edit                         2.2.0                  
+drupal/views_bulk_edit                         2.4.0                  
 drupal/views_bulk_operations                   2.4.0                  
 drupal/views_data_export                       1.0.0-beta3            
 drupal/views_ef_fieldset                       1.4.0                  
