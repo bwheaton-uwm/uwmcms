@@ -19,9 +19,17 @@ function uwm_binaryfountain_reviews_preprocess_node(&$variables) {
 
   if ($node && $node->getType() === 'res_provider') {
 
-    // Add ratings data.
+    /***
+     * Attach the Binary Fountain ratings data to the node. It's saved as JSON
+     * in the node field; calling this constructor attaches it as a dynamic
+     * PHP object.
+     * @see uwm_binaryfountain_commands/src/Commands/UwmBinaryFountainCommands
+     */
     new UwmAttachNodeReviews($node);
 
+    /***
+     * If ratings are available, prepare the data for theming and presentation.
+     */
     if (__uwm_binaryfountain_reviews_enabled() && !empty($node->uwm_binaryfountain_reviews['data']['entities'][0]['overallRating']['value'])) {
       $variables['ratings'] = __uwm_binaryfountain_reviews_process_ratings($node->uwm_binaryfountain_reviews);
       $variables['has_ratings'] = (bool) !empty($variables['ratings']);

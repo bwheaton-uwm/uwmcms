@@ -20,12 +20,12 @@ class UwmAttachNodeReviews {
   /**
    * UwmAttachNodeReviews constructor.
    *
+   * Attaches ratings JSON to the node as a PHP object.
+   *
    * @param \Drupal\node\NodeInterface $node
    *   The node from a node_load to attach review to.
-   * @param bool $forceRefresh
-   *   Boolean to indicate node should be refreshed despite date.
    */
-  public function __construct(NodeInterface &$node, $forceRefresh = FALSE) {
+  public function __construct(NodeInterface &$node) {
 
     /***
      * Create a dynamic property for modules or theming. It will contain the
@@ -37,14 +37,24 @@ class UwmAttachNodeReviews {
 
       $this->node =& $node;
       $this->setRatings(
-        $this->node->field_ratings->value
+            $this->node->field_ratings->value
       );
 
-      if (!$this->validateRatings() || $forceRefresh) {
+    }
 
-        $this->refreshRatings();
+  }
 
-      }
+  /**
+   * Gets BinaryFountain ratings if they're stale or a refresh was requested.
+   *
+   * @param bool $forceRefresh
+   *   Force a refresh, instead of refreshing once per 24 hrs.
+   */
+  public function getRatings($forceRefresh = FALSE) {
+
+    if (!$this->validateRatings() || $forceRefresh) {
+
+      $this->refreshRatings();
 
     }
 
@@ -98,7 +108,7 @@ class UwmAttachNodeReviews {
   /**
    * Saves newest provider reviews to the node, if outdated.
    */
-  private function refreshRatings(string $providerId = NULL) {
+  private function refreshRatings() {
 
     $fetcher = new UwmBinaryFountainController();
     $reviews = $fetcher->getProviderBinaryFountainReviews(

@@ -88,10 +88,13 @@ class UwmBinaryFountainCommands extends DrushCommands {
    * @param string $providerNpi
    *   The provide NPI to match and update in Drupal.
    *   Argument provided to the drush command.
+   * @param array $options
+   *   Additional options for the command.
    *
    * @command uwm:refresh-binary-fountain-review
    *
    * @option providerNpi The provide NPI to match and update in Drupal.
+   * @option force Flag to refresh the ratings despite their last refresh date.
    *
    * @return null
    *   No return values used.
@@ -99,10 +102,12 @@ class UwmBinaryFountainCommands extends DrushCommands {
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    *
-   * @usage uwm:refresh-binary-fountain-review 888
+   * @usage uwm:refresh-binary-fountain-review 111222000 --force
    *   Fetch new Binary Fountain API results for the provider having NPI 888.
    */
-  public function refreshBinaryFountainReview($providerNpi = NULL) {
+  public function refreshBinaryFountainReview($providerNpi = NULL, array $options = ['force' => FALSE]) {
+
+    $forceRefresh = (bool) $options['force'];
 
     if (!$providerNpi) {
       $this->loggerChannelFactory->get(__CLASS__)
@@ -117,7 +122,8 @@ class UwmBinaryFountainCommands extends DrushCommands {
 
     if ($node = reset($nodes)) {
 
-      new UwmAttachNodeReviews($node, TRUE);
+      $binaryFountain = new UwmAttachNodeReviews($node);
+      $binaryFountain->getRatings($forceRefresh);
 
       $this->loggerChannelFactory->get(__CLASS__)
         ->notice('Updating node (@nid) matching NPI (@npi).', [
@@ -144,24 +150,17 @@ class UwmBinaryFountainCommands extends DrushCommands {
    *
    * @command uwm:refresh-all-binary-fountain-reviews
    *
-   * @option force Flag to confirm nodes should be refreshed.
+   * @option force Flag to refresh the ratings despite their last refresh date.
    * @option count Flag to set the number to update.
    *
    * @default $options []
    *
    * @usage uwm:refresh-all-binary-fountain-reviews --refresh-all true
    *   --refresh-limit=20
-   *
-   * @return null
-   *   No return values used.
    */
   public function refreshAllBinaryFountainReviews(array $options = ['count' => 0, 'force' => FALSE]) {
 
-    if (!$options['force']) {
-      $this->loggerChannelFactory->get(__CLASS__)
-        ->notice('We did not receive "force" flag. Quitting early.');
-      return NULL;
-    }
+    $forceRefresh = (bool) $options['force'];
 
     $result = \Drupal::entityQuery('node')
       ->condition('type', 'res_provider')
@@ -181,7 +180,8 @@ class UwmBinaryFountainCommands extends DrushCommands {
 
       foreach ($nodes as $node) {
 
-        new UwmAttachNodeReviews($node, TRUE);
+        $binaryFountain = new UwmAttachNodeReviews($node);
+        $binaryFountain->getRatings($forceRefresh);
 
         $this->loggerChannelFactory->get(__CLASS__)
           ->notice('Updating node (@nid) reviews.', [
