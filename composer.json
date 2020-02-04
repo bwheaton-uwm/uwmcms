@@ -148,7 +148,7 @@
     "drupal/node_revision_delete": "^1.0@beta",
     "drupal/page_manager": "^4.0@beta",
     "drupal/panels": "^4.3",
-    "drupal/paragraphs": "^1.2",
+    "drupal/paragraphs": "1.9.0",
     "drupal/paragraphs_admin": "^1.0",
     "drupal/path_redirect_import": "^1.0@beta",
     "drupal/permissions_by_term": "^1.19",
