@@ -258,10 +258,9 @@ function uwmcs_utils_form_node_res_clinic_edit_form_alter(&$form, FormStateInter
   $node = $form_state->getFormObject()->getEntity();
 
   // Clinic nodes that are hospitals may have hundreds of values in the
-  // providers entity reference field. Since Stevie synchronizes clinic
-  // and provider entity ref fields that point to each other via
-  // Corresponding Entity Reference fields, it's easier (and more accurate)
-  // to keep that data in place.
+  // providers entity reference field. Since clinic/provider entity ref values
+  // are synchronized by the Corresponding Entity Reference module, it's easier
+  // (and more accurate) to keep that data in place.
   // Editing that many values on the node form can be problematic as the data
   // may be too large for requests. (Reservoir returned 413, Request Entity Too
   // Large, upon submitting node form.)
@@ -277,13 +276,48 @@ function uwmcs_utils_form_node_res_clinic_edit_form_alter(&$form, FormStateInter
         '#theme' => 'status_messages',
         '#message_list' => [
           'warning' => [
-            t("This clinic is a hospital. Providers may not be edited directly on a hospital, because it may have so many providers that this form will not work correctly.<br/><br/>
-            To associate a provider to a hospital, please edit that provider, and the relationship will be synchronized on the hospital."),
+            t("This clinic is a hospital. Providers may not be selected directly when editing the hospital, because it may have so many providers that this form will not work correctly.<br/><br/>
+            To associate a provider to a hospital, please edit that provider, and the relationship will be synchronized on the hospital. Currently associated providers are listed below.<br/><br/>
+            (The front-end hospital page also does not display the providers, because there are likely too many.)"),
           ],
         ],
         '#status_headings' => [
           'warning' => t('Warning message'),
         ],
+      ];
+
+      // Provide an easy way to see the currently referenced providers (and go
+      // edit them individually). Query the database directly to retrieve the
+      // referenced nodes' nid and title, rather than loading all node objects.
+      $result = \Drupal::database()->query("
+        SELECT f.entity_id AS nid_clinic,
+          f.delta AS delta,
+          f.field_res_providers_target_id AS nid_provider,
+          nf.title AS title_provider
+        FROM {node__field_res_providers} f
+        INNER JOIN {node_field_data} nf
+          ON nf.nid = f.field_res_providers_target_id
+        WHERE f.entity_id = :nid_clinic
+          AND f.bundle = :bundle_clinic
+          AND f.deleted = 0
+        ORDER BY f.entity_id, f.delta
+      ", [
+        ':nid_clinic' => $node->id(),
+        ':bundle_clinic' => 'res_clinic',
+      ])
+        ->fetchAll();
+
+      // List the referenced providers with links to edit them.
+      $markup = '<ul>';
+
+      foreach ($result as $row) {
+        $markup .= '<li><a href="/node/' . $row->nid_provider . '/edit" target="_blank">' . $row->title_provider . '</a></li>';
+      }
+
+      $markup .= '</ul>';
+
+      $form['field_res_providers']['value'] = [
+        '#markup' => $markup,
       ];
 
     }
@@ -376,13 +410,12 @@ function uwmcs_utils_entity_prepare_view($entity_type_id, array $entities, array
     foreach ($entities as $node) {
 
       // Clinic nodes that are hospitals may have hundreds of values in the
-      // providers entity reference field. Since Reservoir synchronizes clinic
-      // and provider entity ref fields that point to each other via
-      // Corresponding Entity Reference fields, it's easier (and more accurate)
-      // to keep that data in place. Loading that many nodes to render must be
-      // prevented though, as it is not performant.
-      // This hook runs before the field render arrays are built, so we can
-      // override the field value.
+      // providers entity reference field. Since clinic/provider entity ref
+      // values are synchronized by the Corresponding Entity Reference module,
+      // it's easier (and more accurate) to keep that data in place.
+      // Loading that many nodes to render must be prevented though, as it is
+      // not performant. This hook runs before the field render arrays are
+      // built, so we can override the field value.
       if ($node->bundle() === 'res_clinic' && $node->hasField('field_res_is_hospital') && !$node->get('field_res_is_hospital')->isEmpty() && (boolean) $node->get('field_res_is_hospital')->first()->getValue()['value']) {
 
         $node->get('field_res_providers')->setValue([]);
