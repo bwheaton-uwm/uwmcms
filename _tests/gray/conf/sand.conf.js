@@ -12,7 +12,7 @@ nightwatch_config = {
   test_settings: {
     default: {
       desiredCapabilities: {
-        "build": "Gray Working - Jan 29",
+        "build": "Gray Working - Feb 3",
         "project": "Grays Test Project",
         "browserstack.user": "uwmedicine2",
         "browserstack.key": "YswTgFnmBJdaRcJ86Bxy",

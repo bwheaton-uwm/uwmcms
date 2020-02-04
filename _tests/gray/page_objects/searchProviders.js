@@ -28,7 +28,16 @@ module.exports = {
 				appointmentsLabel: {
 					selector: ".btn-group h3"
 				},
-				calandarIcon: {
+				appointmentsBookOnlineButton: {
+					selector: ".provider-card__book-online"
+				},
+				appointmentsPhoneNumberButton: {
+					selector: ".provider-card__phone-number"
+				},
+				appointmentsViewContactDetailButton: {
+					selector: ".provider-card__contact-information"
+				},
+				calendarIcon: {
 					selector: ".uwm-icon--calendar"
 				},
 				cardTitle: {
@@ -47,7 +56,13 @@ module.exports = {
 					selector: ".items a:nth-child(1)"
 				},
 				locationItemsTwo: {
-					selector: ".items a:nth-child(1)"
+					selector: ".items a:nth-child(2)"
+				},
+				providerImage: {
+					selector: ".img-fluid"
+				},
+				providerImageDefault: {
+					selector: "article img"
 				},
 				seeMoreButton: {
 					selector: ".provider-card__see-more a.btn"
@@ -57,16 +72,8 @@ module.exports = {
 				},
 				specialtiesItems: {
 					selector: ".provider-card__specialties .items"
-				},
-				viewContantDetails: {
-					selector: ".provider-card__contact-information"
 				}
 			}
 		}
 	}
 };
-
-//
-// .uwm-header form svg.svg-inline--fa.fa-search
-
-

@@ -22,19 +22,20 @@ module.exports = {
 
 	var card = searchProviderPage.section.providerCard;
 	card
-		.assert.visible("@cardTitle", "Card Title is present")
-		.assert.visible("@accepting", "Accepting New Patients is present")
-		.assert.visible("@specialtiesLabel", "Medical Specialties label is present")
-		.assert.visible("@specialtiesItems", "Medical Specialties are listed is present")
-		.assert.visible("@appointmentsLabel", "Appointments label text is present")
-		.assert.visible("@calandarIcon", "Appointments calendar icon is present")
-		.assert.visible("@locationsLabel", "Locations label text is present")
-		.assert.visible("@locationsPinIcon", "Locations Pin icon is present")
+		.assert.visible("@cardTitle", "Card Title verified")
+		.assert.visible("@accepting", "Accepting New Patients verified")
+		.assert.visible("@specialtiesLabel", "Medical Specialties label verified")
+		.assert.visible("@specialtiesItems", "Medical Specialties are listed verified")
+		.assert.visible("@appointmentsLabel", "Appointments label text verified")
+		.assert.visible("@calendarIcon", "Appointments calendar icon verified")
+		.assert.visible("@locationsLabel", "Locations label text verified")
+		.assert.visible("@locationsPinIcon", "Locations Pin icon verified")
 		.assert.elementCount("@locationsItems", 2, "Correct number of Location links found")
-		.assert.visible("@locationsItemOne", "First location link is present")
-		.assert.visible("@locationItemsTwo", "Second location link is present")
-		.assert.visible("@viewContantDetails", "View Contact Details button is present")
-		.assert.visible("@seeMoreButton", "See More button is present")
+		.assert.visible("@locationsItemOne", "First location link verified")
+		.assert.visible("@locationItemsTwo", "Second location link verified")
+		.assert.visible("@appointmentsViewContactDetailButton",
+		                "View Contact Details button verified")
+		.assert.visible("@seeMoreButton", "See More button verified")
 	browser.end();
 	},
 };

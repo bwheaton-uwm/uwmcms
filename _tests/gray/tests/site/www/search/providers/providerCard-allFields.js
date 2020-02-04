@@ -1,7 +1,7 @@
 module.exports = {
 	"disabled": false,
 
-	"In Development: providerCard-allFields.js": function (browser) {
+	"www.search.providers.providerCard-allFields.js": function (browser) {
 
 	// Larry S Dean:
 	//		Name, Provider Image, Provider Name, Med Specialty Label, Multiple Med Specialties
