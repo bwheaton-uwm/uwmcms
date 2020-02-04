@@ -176,7 +176,7 @@
     "drupal/term_csv_export_import": "^2.0@alpha",
     "drupal/trash": "^1.0@alpha",
     "drupal/twig_tweak": "^1.9",
-    "drupal/vbo_export": "^2.0",
+    "drupal/vbo_export": "^3.0.0",
     "drupal/views_bulk_edit": "^2.2",
     "drupal/views_bulk_operations": "^2.4",
     "drupal/views_data_export": "^1.0@beta",
