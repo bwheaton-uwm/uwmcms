@@ -1,5 +1,34 @@
 module.exports = {
 	url: "https://www.uwmedicine.org/search/providers",
+	pagerPath: "?s=&page=",
+	commands: [
+		{
+			loadPage: function () {
+			// loads this page. Attempts to handle the Cookies Alert popup. Resizes the window
+			// and verifies it's on the expected page
+				return this
+					.navigate()
+					.waitForElementVisible("@cookiesAlertButton")
+        			.click("@cookiesAlertButton")
+        			.navigate()
+        			.waitForElementVisible("body")
+        			.resizeWindow(2048,1536)
+        			.assert.title("Find a provider | UW Medicine",
+        			              "verify /search/providers page title");
+			},
+			searchFor: function(searchText) {
+			// Verifies that the search bar is being shown, clears it, searches for the text
+			// provided, then waits for the results
+				return this
+					.assert.visible("@providerSearchBar")
+					.clearValue("@providerSearchBar")
+					.setValue("@providerSearchBar", searchText)
+					.assert.visible("@searchButton")
+					.click("@searchButton")
+					.waitForElementVisible("@resetButton");
+			}
+		}
+	],
 	elements: {
 		cookiesAlertButton: {
 			selector: ".eu-cookie-compliance-default-button"
@@ -72,6 +101,14 @@ module.exports = {
 				},
 				specialtiesItems: {
 					selector: ".provider-card__specialties .items"
+				}
+			}
+		},
+		pager: {
+			selector: ".js-pager__items",
+			elements: {
+				last: {
+					selector: ".pager__item--last span"
 				}
 			}
 		}

@@ -1,8 +1,9 @@
 module.exports = {
-	"disabled": false,
+	"disabled": true,
 
 	"www.search.providers.providerCard-allFields.js": function (browser) {
-
+	// This test ustilizes 3 providers, listed below, which between them should display all of the
+	// mandatory & optional search provider card fields.
 	// Larry S Dean:
 	//		Name, Provider Image, Provider Name, Med Specialty Label, Multiple Med Specialties
 	//		Appointments (calander icon, label, View Contact Details, See Full Bio button,
@@ -17,19 +18,9 @@ module.exports = {
 	];
 
 	var searchProviderPage = browser.page.searchProviders();
-	searchProviderPage.navigate()
-		.waitForElementVisible("@cookiesAlertButton")
-		.click("@cookiesAlertButton")
-		.navigate()
-		.waitForElementVisible("body")
-		.resizeWindow(2048,1536)
-		.assert.title("Find a provider | UW Medicine",
-		              "verify /search/providers page title")
-		.clearValue("@providerSearchBar")
-		.setValue("@providerSearchBar", name[0])
-		.assert.visible("@searchButton")
-		.click("@searchButton")
-		.waitForElementVisible("@resetButton")
+	searchProviderPage
+		.loadPage()
+		.searchFor(name[0])
 		// Should find exactly one result for "Larry S. Dean"
 		.assert.elementCount("article", 1, "Correct number of search rsults verified");
 
@@ -53,12 +44,7 @@ module.exports = {
 	//browser.assert.equal(true, true, "Lets label a section.");
 	// displays:   ✔ Passed [equal]: Lets label a section.
 	searchProviderPage
-		.assert.visible("@providerSearchBar")
-		.clearValue("@providerSearchBar")
-		.setValue("@providerSearchBar", name[1])
-		.assert.visible("@searchButton")
-		.click("@searchButton")
-		.waitForElementVisible("@resetButton")
+		.searchFor(name[1])
 		// Should find exactly one result for Elizabeth J. Abernathey
 		.assert.elementCount("article", 1, "Correct number of cards found");
 	card
@@ -70,12 +56,7 @@ module.exports = {
 
 
 	searchProviderPage
-		.assert.visible("@providerSearchBar")
-		.clearValue("@providerSearchBar")
-		.setValue("@providerSearchBar", name[2])
-		.assert.visible("@searchButton")
-		.click("@searchButton")
-		.waitForElementVisible("@resetButton")
+		.searchFor(name[2])
 		// Should find exactly one result for Rebecca J.Y. Abay
 		.assert.elementCount("article", 1, "Correct number of cards found");
 	card

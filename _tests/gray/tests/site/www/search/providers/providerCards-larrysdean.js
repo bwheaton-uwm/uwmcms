@@ -5,19 +5,10 @@ module.exports = {
 	const name = "Larry S. Dean";
 
 	var searchProviderPage = browser.page.searchProviders();
-	searchProviderPage.navigate()
-		.waitForElementVisible("@cookiesAlertButton")
-		.click("@cookiesAlertButton")
-		.navigate()
-		.waitForElementVisible("body")
-		.resizeWindow(2048,1536)
-		.assert.title("Find a provider | UW Medicine",
-		              "verify /search/providers page title")
-		.assert.visible("@providerSearchBar")
-		.setValue("@providerSearchBar", name)
-		.assert.visible("@searchButton")
-		.click("@searchButton")
-		.waitForElementVisible("@resetButton")
+	searchProviderPage
+		.loadPage()
+		.searchFor(name)
+		// There should be one and only one result
 		.assert.elementCount("article", 1, "Correct number of cards found");
 
 	var card = searchProviderPage.section.providerCard;
@@ -30,12 +21,13 @@ module.exports = {
 		.assert.visible("@calendarIcon", "Appointments calendar icon verified")
 		.assert.visible("@locationsLabel", "Locations label text verified")
 		.assert.visible("@locationsPinIcon", "Locations Pin icon verified")
+		// Larry S Dean should have 2 location links
 		.assert.elementCount("@locationsItems", 2, "Correct number of Location links found")
 		.assert.visible("@locationsItemOne", "First location link verified")
 		.assert.visible("@locationItemsTwo", "Second location link verified")
 		.assert.visible("@appointmentsViewContactDetailButton",
 		                "View Contact Details button verified")
-		.assert.visible("@seeMoreButton", "See More button verified")
+		.assert.visible("@seeMoreButton", "See More button is present")
 	browser.end();
 	},
 };
