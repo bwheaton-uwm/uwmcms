@@ -40,16 +40,19 @@
   padding-right: $grid-gutter-width / 2;
 }
 
-// Display a link or button with icon(s) using flexbox.
-// It does not need to have the .btn-cta class.
-// The text must be a child element with class .btn__text (not directly in <a>).
-// - Left icon aligned to text (top)
-// - Right icon (arrow) vertically centered
-// Example markup:
-//   <a class="btn btn-cta">
-//     <span class="btn__text">Read more</span>
-//     <span class="fa fa-angle-right"></span>
-//   </a>
+/*
+ * Display a link or button with icon(s) using flexbox.
+ * It does not need to have the .btn-cta class.
+ * The text must be a child element with class .btn__text (not directly in <a>).
+ * - Left icon aligned to text (top)
+ * - Right icon (arrow) vertically centered
+ *
+ * Example markup:
+ *   <a class="btn btn-cta">
+ *     <span class="btn__text">Read more</span>
+ *     <span class="fa fa-angle-right"></span>
+ *   </a>
+ */
 @mixin link-with-icons-aligned() {
   display: flex;
   align-items: center;
@@ -71,6 +74,12 @@
   }
 }
 
+/*
+ * CTA button styles
+ *
+ * @see base/_btn-cta.scss
+ */
+// Default class: .btn-cta
 @mixin button-cta($color: "") {
 
   @if $color == "" {
@@ -165,39 +174,43 @@
 
 }
 
-@mixin button-cta-deep-shadowed($color: "") {
-
-  @if $color == "" {
-    $color: theme-color('link-blue');
-  }
-
-  background-color: $color;
-  color: white;
+// Default class: .btn-cta-solid
+@mixin btn-cta-solid($background-color: color('blue'), $background-color-hover: $hover-blue) {
+  display: inline-block;
+  background-color: $background-color;
+  color: color('white');
+  // 2020-01-22: Confirmed this padding to be the desired default.
+  // @see https://www.wrike.com/open.htm?id=446798910
+  padding: 0.5rem 1rem; // 8px 16x
+  font-size: 1rem; // 16px
+  font-weight: 400;
+  line-height: 1.5;
   text-align: center;
-  text-transform: uppercase;
   text-decoration: none;
-  padding: .5rem 1.5rem;
-  transition: ease-in 0.3s;
-  box-shadow: 0 3px 6px rgba(0,0,0,.15);
-  height: 40px;
-  line-height: 40px;
-  font-weight: 600;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
 
-  &:hover {
-    background-color: #21509C;
-    color: white;
+  &:focus {
+    color: color('white');
     text-decoration: none;
   }
 
+  &:hover, &:active {
+    background-color: $background-color-hover;
+    color: color('white');
+    text-decoration: none;
+  }
 }
 
-// Apply vertical border lines between grid items in a row (e.g. cards),
-// according to how many items are in each row.
-// Apply this mixin to each item, e.g. `.card` or `.views-row`.
-// Pass $per-row as null if the number of items per row is unknown - in that
-// case, only the last item is set to not have the right border.
+/*
+ * Apply vertical border lines between grid items in a row (e.g. cards),
+ * according to how many items are in each row.
+ *
+ * Apply this mixin to each item, e.g. `.card` or `.views-row`.
+ * Pass $per-row as null if the number of items per row is unknown - in that
+ * case, only the last item is set to not have the right border.
+ */
 @mixin bordered-grid-items($per-row: null, $color: theme-color('border-gray')) {
 
   border-right: 1px solid $color;
