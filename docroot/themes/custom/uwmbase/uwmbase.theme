@@ -1684,7 +1684,15 @@ function uwmbase_preprocess_paragraph__uwm_banner_content(&$variables) {
 
   // Copy the block content to the paragraph content.
   foreach ($block_field_names as $field_name) {
-    $variables['content'][$field_name] = $block_render_array[$field_name];
+    if ($field_name == 'field_uwm_more_info_url') {
+      // Extract the URL to use for a link.
+      if (isset($block_render_array[$field_name][0]['#url'])) {
+        $variables['content'][$field_name] = $block_render_array[$field_name][0]['#url']->toString();
+      }
+    }
+    else {
+      $variables['content'][$field_name] = $block_render_array[$field_name];
+    }
   }
 
   // Replace the paragraph's cache metadata with the block_content's.
