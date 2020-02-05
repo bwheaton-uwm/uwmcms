@@ -3,6 +3,7 @@ ignored_config_entities:
   - media_acquiadam.settings
   - d8_google_optimize_hide_page.settings
   - 'webform.webform.*'
+  - 'migrate_plus.migration.uwm_epic_provider_scheduling:source.path'
   - 'migrate_plus.migration.uwm_provider_accept_returning_patients:source.path'
 _core:
   default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk

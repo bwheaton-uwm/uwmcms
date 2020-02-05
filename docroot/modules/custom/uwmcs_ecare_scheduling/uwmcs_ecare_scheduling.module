@@ -68,11 +68,18 @@ function uwmcs_ecare_scheduling_mail($key, &$message, $params) {
 }
 
 /**
- * Load all Visit Type Labels terms that store display name and description.
+ * Load all Visit Type Labels taxonomy terms.
+ *
+ * These terms hold a customized display name and description for each eCare
+ * open scheduling visit type ID. The appointment scheduling modal displays them
+ * on a button for each visit type that leads to the open scheduling widget.
+ *
+ * When provider scheduling data is imported from Epic, there is a check that
+ * a term exists for each visit type ID found on a provider.
  */
 function _uwmcs_ecare_scheduling_load_visit_type_terms() {
 
-  // Load all name and description values only once.
+  // Load these only once in a request.
   // Use NULL to indicate they have not been queried for yet, while an empty
   // array means they were queried for but none retrieved.
   static $visit_types = NULL;

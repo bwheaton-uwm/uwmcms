@@ -1,0 +1,160 @@
+# Import Epic scheduling metadata from csv to Provider nodes:
+# - field_res_ser_id
+# - field_res_is_direct_scheduling
+# - field_res_is_open_scheduling
+# - field_res_visit_type_id
+
+# References:
+# https://www.drupal.org/docs/8/api/migrate-api/migrate-source-plugins/migrating-data-from-a-csv-source
+# https://www.drupal.org/project/drupal/issues/2949564
+# https://virtuoso-performance.com/blog/vpadmin/importing-specific-fields-overwriteproperties
+# https://www.mtech-llc.com/blog/ada-hernandez/entity-lookup-generate-migrate-process-plugins
+
+id: uwm_epic_provider_scheduling
+label: Epic - eCare Provider Scheduling Data
+migration_group: uwm_epic
+
+# Add an enforced dependency so this configuration will be removed on module
+# uninstall.
+dependencies:
+  enforced:
+    module:
+      - uwm_import_epic
+
+# Define overwrite_properties so that the import *only* populates the fields
+# we want.
+destination:
+  plugin: entity:node
+  overwrite_properties:
+    # Epic ID / SER ID
+    - field_res_ser_id
+    # Is enabled for direct scheduling?
+    - field_res_is_direct_scheduling
+    # Is enabled for open scheduling?
+    - field_res_is_open_scheduling
+    # Visit type ID(s)
+    - field_res_visit_type_id
+    # These fields are NOT imported - but allow setting these values during the
+    # import according to logic based on the direct/open scheduling values that
+    # may be changed by import.
+    # @see ProviderSchedulingMigrationSubscriber::onMigratePreRowSave()
+    # Is accepting returning patients?
+    - field_res_isacceptingreturnpts
+    # Is accepting new patients?
+    - field_res_isacceptingnewpts
+
+source:
+  plugin: 'csv'
+
+  # Full path to the file.
+  # This is made editable in the UI via altering the migration form.
+  # @see uwm_import_epic_form_migration_edit_form_alter()
+  path: '(populate this in Migrations admin UI)'
+  #path: '/var/www/.../provider-booking-data-sample.csv'
+
+  # Column delimiter.
+  delimiter: ','
+
+  # Field enclosure.
+  enclosure: '"'
+
+  # The number of rows at the beginning which are not data.
+  header_row_count: 1
+
+  # The column(s) to use as a key. Each column specified will 
+  # create an index in the migration table and too many columns 
+  # may throw an index size error.
+
+  # Use Epic ID and NPI together to hopefully ensure uniqueness. It's unexpected
+  # but possible for NPI to be missing, but since the source is exported from
+  # Epic's data, the Epic ID should not be.
+
+  # (3.x version?)
+  # ids:
+  #   - epic_id
+  #   - npi
+
+  # (2.x version?)
+  keys:
+    - epic_id
+    - npi
+
+  # Here we identify the columns of interest in the source file. 
+  # Each numeric key is the 0-based index of the column. 
+  # For each column, the key below is the field name assigned to 
+  # the data on import, to be used in field mappings below. 
+  # The value is a user-friendly string for display by the 
+  # migration UI.
+
+  # (3.x version?)
+  # fields:
+  #   0:
+  #     name: epic_id
+  #     label: 'Provider ID (Epic ID / SER ID)'
+  #   [etc]
+
+  # (2.x version?)
+  column_names:
+    - epic_id: 'Provider ID (Epic ID / SER ID)'
+    - npi: 'Provider NPI'
+    - name: 'Provider Name'
+    - enabled_open_sched: 'Is enabled for open scheduling'
+    - enabled_direct_sched: 'Is enabled for direct scheduling'
+    - visit_type_ids: 'Visit Type / Booking IDs (for open scheduling)'
+
+# Note: we do not use the `skip_on_empty` plugin to handle missing source
+# values. Instead this is checked in the validator and handled in the
+# event subscriber.
+# @see ProviderSchedulingMigrationSubscriber::onMigratePreRowSave()
+# @see ProviderSchedulingDataValidator::validateOne()
+process:
+
+  # Node ID
+  # Map `nid` to look up existing provider node by NPI.
+  nid:
+    - plugin: entity_lookup
+      source: npi
+      entity_type: node
+      bundle_key: type
+      bundle: res_provider
+      value_key: field_res_npi
+
+  # Epic ID
+  field_res_ser_id: epic_id
+
+  # Is enabled for direct scheduling, in eCare?
+  # Map the "Yes" / "No" strings from export to boolean field 1 / 0 values.
+  # Set `default_value` to pass along an empty string when the source value
+  # isn't found in the map, so it reaches our pre-row-save event (for validation
+  # and logging) rather than skipping the row immediately.
+  field_res_is_direct_scheduling:
+    - plugin: static_map
+      source: enabled_direct_sched
+      map:
+        Yes: 1
+        No: 0
+      default_value: ''
+
+  # Is enabled for open scheduling, in eCare?
+  # Map the "Yes" / "No" strings from export to boolean field 1 / 0 values.
+  field_res_is_open_scheduling:
+    - plugin: static_map
+      source: enabled_open_sched
+      map:
+        Yes: 1
+        No: 0
+      default_value: ''
+
+  # Visit Type IDs for open scheduling
+  # In this case, an empty value may be valid and should be imported. Since
+  # exploding an empty string results in an array with one empty-string element
+  # (which is a bad value), use skip-on-empty with 'process' method, which
+  # correctly imports this as an empty value.
+  # If not empty, explode multiple values by the delimiter.
+  field_res_visit_type_id:
+    - plugin: skip_on_empty
+      source: visit_type_ids
+      method: process
+    - plugin: explode
+      # Quote this value, otherwise the import errors.
+      delimiter: '|'
