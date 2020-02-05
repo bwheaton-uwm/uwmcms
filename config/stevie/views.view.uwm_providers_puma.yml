@@ -30,7 +30,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'access content'
+          perm: 'access site reports'
       cache:
         type: tag
         options: {  }
