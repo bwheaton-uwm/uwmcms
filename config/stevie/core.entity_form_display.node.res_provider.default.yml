@@ -41,6 +41,8 @@ dependencies:
     - field.field.node.res_provider.field_res_visit_type_id
     - field.field.node.res_provider.field_search_best_bets
     - field.field.node.res_provider.field_uwm_content_owner
+    - field.field.node.res_provider.field_uwm_edw_boardcerts
+    - field.field.node.res_provider.field_uwm_edw_education
     - field.field.node.res_provider.field_uwm_json_packet
     - field.field.node.res_provider.field_uwm_subject_matter_experts
     - field.field.node.res_provider.uwm_unique_id
@@ -576,6 +578,8 @@ content:
     region: content
 hidden:
   created: true
+  field_uwm_edw_boardcerts: true
+  field_uwm_edw_education: true
   field_uwm_json_packet: true
   moderation_state: true
   promote: true
