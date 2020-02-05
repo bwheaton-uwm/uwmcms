@@ -9,8 +9,8 @@ id: node.res_clinic.field_res_feat_clinics_view_all
 field_name: field_res_feat_clinics_view_all
 entity_type: node
 bundle: res_clinic
-label: 'Featured Clinics: View All'
-description: ''
+label: '"See All Clinics" button'
+description: 'To add a "See All Clinics" button at the bottom of this section, enter a URL to link to. This should be relative, e.g. <code>/search/locations?s=Harborview</code>.'
 required: false
 translatable: false
 default_value: {  }
