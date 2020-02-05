@@ -108,7 +108,7 @@ module.exports = {
 			selector: ".js-pager__items",
 			elements: {
 				last: {
-					selector: ".pager__item--last span"
+					selector: ".pager__item--last a span:nth-child(2)"
 				}
 			}
 		}
