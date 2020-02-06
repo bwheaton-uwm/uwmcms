@@ -2,9 +2,8 @@
 
 set -ev
 
-# TEMP: only build sites on this CD env.
 blt frontend --site=default
-#blt frontend --site=chew
+blt frontend --site=chew
 blt frontend --site=stevie
 
 blt artifact:deploy --commit-msg "Automated commit by Travis CI for Build ${TRAVIS_BUILD_ID}" --branch "${TRAVIS_BRANCH}-build" --ignore-dirty --no-interaction --verbose
