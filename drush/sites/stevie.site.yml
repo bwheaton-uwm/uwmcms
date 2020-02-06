@@ -34,12 +34,3 @@ prod:
   root: /var/www/html/uwmed.prod/docroot
   uri: stevie.cms.uwmedicine.org
   user: uwmed.prod
-
-# CD environment.
-ode6:
-  host: uwmedode6.ssh.prod.acquia-sites.com
-  options: { ac-site: stevie }
-  paths: { drush-script: drush9 }
-  root: /var/www/html/uwmed.ode6/docroot
-  uri: uwmedode6.prod.acquia-sites.com
-  user: uwmed.ode6
