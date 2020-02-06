@@ -1,6 +1,5 @@
 module.exports = {
 	url: "https://www.uwmedicine.org/search/providers",
-	pagerPath: "?s=&page=",
 	commands: [
 		{
 			loadPage: function () {
@@ -12,7 +11,7 @@ module.exports = {
         			.click("@cookiesAlertButton")
         			.navigate()
         			.waitForElementVisible("body")
-        			.resizeWindow(2048,1536)
+        			.resizeWindow(2048, 1536)
         			.assert.title("Find a provider | UW Medicine",
         			              "verify /search/providers page title");
 			},
@@ -35,6 +34,9 @@ module.exports = {
 		},
 		pageTitle: {
 			selector: ".page-title"
+		},
+		providerCards: {
+			selector: "article"
 		},
 		providerSearchBar: {
 			selector: "#edit-s"

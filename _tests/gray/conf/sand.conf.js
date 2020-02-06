@@ -2,6 +2,7 @@ nightwatch_config = {
   src_folders : [ "/Users/gray/git/uwmcms/_tests/gray/tests/sand" ],
   page_objects_path : [ "/Users/gray/git/uwmcms/_tests/gray/page_objects"],
   custom_assertions_path : "/Users/gray/git/uwmcms/_tests/gray/custom_assertions",
+  custom_commands_path: "/Users/gray/git/uwmcms/_tests/gray/custom_commands",
 
   selenium : {
     "start_process" : false,

@@ -7,7 +7,7 @@ module.exports = {
 	// at least one occurence of every mandatory & optional provider card field. A configurable
 	// max number of cards to examine will be provided.
 		const maxCards = 10;
-		let numPages, ranPage, numCards, ranCard;
+		let ranPage, ranCard;
 		var searchUrl;
 		var foundFields = {
 			provImgDefault: false,
@@ -33,26 +33,18 @@ module.exports = {
 
 		searchProviderPage
 			.loadPage();
-		pager
-			.waitForElementVisible("@last")
-			.perform( function() {
-				browser.getText(".pager__item--last a span:nth-child(2)", function(result) {
-					// I am not sure why, but trying to use the pageObject alias ("@last") here
-					// breaks, you must use the straight css selector.
-					numPages = result.value;
-					searchUrl = "https://www.uwmedicine.org/search/providers?s=&page=" + (numPages-1);
-					browser.url(searchUrl);
+
+		pager // pick a random page from the list of resulting pages
+			.test();
+
+		searchProviderPage	// pick a random card on the loaded page
+			.perform(function() {
+				browser.elements("css selector", "article", function(result){
+					ranCard = Math.floor(Math.random() * (result.value.length-1));
 					return this;
 				})
-			});
-
-
-
-			// get numPages
-			// set ranPage = random(numPages)
-			// get numCards
-			// set ranCard = random(cardsDisplayed)
-			// verify card
+			})
+			.assert.equal("X", ranCard);
 
 	browser.end();
 	},
