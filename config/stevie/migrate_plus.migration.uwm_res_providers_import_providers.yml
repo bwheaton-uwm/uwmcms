@@ -130,6 +130,14 @@ source:
       label: uwm_json_packet
       selector: /attributes/uwm_json_packet
     -
+      name: uwm_edw_board_certs
+      label: uwm_edw_board_certs
+      selector: /attributes/uwm_edw_board_certs
+    -
+      name: uwm_edw_puma_education
+      label: uwm_edw_puma_education
+      selector: /attributes/uwm_edw_puma_education
+    -
       name: field_res_affiliates
       label: field_res_affiliates
       selector: /relationships/field_res_affiliates/data
@@ -225,6 +233,8 @@ process:
   field_res_visit_type_id: field_res_visit_type_id
   field_res_is_independent: field_res_is_independent
   field_uwm_json_packet: uwm_json_packet
+  field_uwm_edw_boardcerts: uwm_edw_board_certs
+  field_uwm_edw_education: uwm_edw_puma_education
   field_res_name/title: field_res_name/title
   field_res_name/given: field_res_name/given
   field_res_name/middle: field_res_name/middle

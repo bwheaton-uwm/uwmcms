@@ -10,7 +10,7 @@ field_name: field_featured
 entity_type: node
 bundle: res_clinic
 label: Featured
-description: 'Check if this is a featured location.'
+description: 'Mark as a featured clinic. This will display it on the location search landing page, before a search is run.'
 required: false
 translatable: false
 default_value:
