@@ -30,10 +30,6 @@
          */
         var EWC = new EmbeddedWidgetController({
           // Replace with the hostname of your Open Scheduling site.
-          //
-          // TEST - DO NOT MERGE TO MASTER.
-          // 'hostname': 'https://tstecare18.epic.medical.washington.edu',.
-          // -----------------------------.
           'hostname': 'https://ecare.uwmedicine.org',
 
           // Must equal media query in EpicWP.css + any left/right margin of the host page. Should also change in EmbeddedWidget.css.
