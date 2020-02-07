@@ -18,3 +18,7 @@
   color: white !important;
   text-transform: uppercase;
 }
+
+body.adminimal.path-admin .view-uwm-providers-puma td {
+  vertical-align: top;
+}
