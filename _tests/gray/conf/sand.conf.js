@@ -3,6 +3,7 @@ nightwatch_config = {
   page_objects_path : [ "/Users/gray/git/uwmcms/_tests/gray/page_objects"],
   custom_assertions_path : "/Users/gray/git/uwmcms/_tests/gray/custom_assertions",
   custom_commands_path: "/Users/gray/git/uwmcms/_tests/gray/custom_commands",
+  globals_path: "/Users/gray/git/uwmcms/_tests/gray/globals.js",
 
   selenium : {
     "start_process" : false,
@@ -13,7 +14,7 @@ nightwatch_config = {
   test_settings: {
     default: {
       desiredCapabilities: {
-        "build": "Gray Working - Feb 4",
+        "build": "Gray Working - Feb 7",
         "project": "Grays Test Project",
         "browserstack.user": "uwmedicine2",
         "browserstack.key": "YswTgFnmBJdaRcJ86Bxy",
