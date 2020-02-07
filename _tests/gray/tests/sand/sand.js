@@ -67,6 +67,11 @@ module.exports = {
 				.assert.equal(foundFields.provName, true, "foundFields set correctly.")
 			}
 		});
-
 	}
 };
+
+// Thought: maybe verify one thing at a time? get random card, check image, keep getting new cards
+// til you find one. Move to card default image, repeat. And so on. If each is it's own test within
+// the suite, it might mitigate the context-losing of variables? Might need to set the config flag
+// to enable persistant globals?
+// Thought: can we set a global variable to have it?
