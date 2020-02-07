@@ -53,25 +53,111 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       pager:
-        type: mini
+        type: full
         options:
           items_per_page: 25
           offset: 0
           id: 0
           total_pages: null
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« First'
+            last: 'Last »'
           expose:
-            items_per_page: false
+            items_per_page: true
             items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options: '5, 10, 25, 50, 500, 1000'
             items_per_page_options_all: false
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          tags:
-            previous: ‹‹
-            next: ››
+          quantity: 9
       style:
         type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          override: true
+          sticky: true
+          caption: ''
+          summary: ''
+          description: ''
+          columns:
+            node_bulk_form: node_bulk_form
+            nid: nid
+            field_res_npi: field_res_npi
+            title: title
+            changed: changed
+            field_res_puma_id: field_res_puma_id
+            field_uwm_edw_boardcerts: field_uwm_edw_boardcerts
+            field_uwm_edw_education: field_uwm_edw_education
+            field_uwm_json_packet: field_uwm_json_packet
+            operations: operations
+          info:
+            node_bulk_form:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            nid:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_res_npi:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            title:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            changed:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_res_puma_id:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_uwm_edw_boardcerts:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_uwm_edw_education:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_uwm_json_packet:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            operations:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          default: '-1'
+          empty_table: false
       row:
         type: fields
       fields:
@@ -912,7 +998,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: /admin/content/providers/education
+      path: admin/content/providers/education
     cache_metadata:
       max-age: 0
       contexts:

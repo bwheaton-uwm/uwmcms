@@ -5,19 +5,20 @@
  * Custom module for small, utility-type routines.
  */
 
-use Drupal\uwm_commands\Commands\UwmTempImportClinicImage;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\taxonomy\Entity\Term;
+use Drupal\uwm_commands\Commands\UwmTempImportClinicImage;
 use Drupal\views\ViewExecutable;
-use Drupal\Core\Url;
-use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_entity_presave().
@@ -63,7 +64,8 @@ function uwmcs_utils_preprocess_html(&$variables) {
   $variables['html_attributes'] = $variables['html_attributes'] ?? new Attribute();
 
   // Add details the environment and sub site:
-  $variables['html_attributes']['site-uuid'] = \Drupal::config('system.site')->get('uuid') ?? NULL;
+  $variables['html_attributes']['site-uuid'] = \Drupal::config('system.site')
+    ->get('uuid') ?? NULL;
   $variables['html_attributes']['site-env'] = $_ENV['AH_SITE_ENVIRONMENT'] ?? 'unknown';
   $variables['html_attributes']['site-file'] = __FILE__;
 
@@ -233,7 +235,8 @@ function uwmcs_utils_toolbar() {
           'attributes' => [
             'title' => $env,
             'class' => [
-              strtolower($env), 'toolbar-item',
+              strtolower($env),
+              'toolbar-item',
             ],
           ],
         ],
@@ -266,7 +269,10 @@ function uwmcs_utils_form_node_res_clinic_edit_form_alter(&$form, FormStateInter
   // may be too large for requests. (Reservoir returned 413, Request Entity Too
   // Large, upon submitting node form.)
   if (!empty($form['field_res_providers'])) {
-    if ($node->hasField('field_res_is_hospital') && !$node->get('field_res_is_hospital')->isEmpty() && (boolean) $node->get('field_res_is_hospital')->first()->getValue()['value']) {
+    if ($node->hasField('field_res_is_hospital') && !$node->get('field_res_is_hospital')
+      ->isEmpty() && (boolean) $node->get('field_res_is_hospital')
+      ->first()
+      ->getValue()['value']) {
 
       // Remove the field widget.
       $form['field_res_providers']['widget']['#access'] = FALSE;
@@ -383,11 +389,111 @@ function uwmcs_utils_entity_prepare_view($entity_type_id, array $entities, array
       // prevented though, as it is not performant.
       // This hook runs before the field render arrays are built, so we can
       // override the field value.
-      if ($node->bundle() === 'res_clinic' && $node->hasField('field_res_is_hospital') && !$node->get('field_res_is_hospital')->isEmpty() && (boolean) $node->get('field_res_is_hospital')->first()->getValue()['value']) {
+      if ($node->bundle() === 'res_clinic' && $node->hasField('field_res_is_hospital') && !$node->get('field_res_is_hospital')
+        ->isEmpty() && (boolean) $node->get('field_res_is_hospital')
+        ->first()
+        ->getValue()['value']) {
 
         $node->get('field_res_providers')->setValue([]);
 
       }
+
+    }
+
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_views_view_field().
+ *
+ * Temporary hook to enhance an administrator's view, to allow comparing
+ * new and old provider education values on the reports screen.
+ */
+function uwmcs_utils_preprocess_views_view_field(&$variables) {
+
+  $view = $variables['view'];
+  $field = $variables['field'];
+
+  if ($view->id() == 'uwm_providers_puma' && $view->current_display == 'page_1') {
+
+    $node = $variables["row"]->_entity;
+
+    /***
+     * In on our PUMA report, compare new and old education:
+     */
+    if ($field->field == 'field_uwm_edw_education') {
+
+      $field1 = $field2 = '';
+
+      $d = json_decode($node->field_uwm_edw_education->value);
+      if ($d) {
+        foreach ($d as $value) {
+          $field1 .= '<li>' .
+            $value->university_from_date . ', ' .
+            $value->university_name . ', ' .
+            $value->type . ', ' .
+            $value->specialty;
+        }
+      }
+
+      $d = json_decode($node->field_uwm_json_packet->value);
+      if ($d && isset($d->educationHistories)) {
+        foreach ($d->educationHistories as $value) {
+          $field2 .= '<li>' .
+            $value->startYear . ', ' .
+            $value->institutionName . ', ' .
+            $value->educationType . ', ' .
+            $value->specialty;
+        }
+      }
+
+      $diff = abs(strlen($field1) - strlen($field2));
+      $style = $diff < 50 ? '' : 'background-color: lightgoldenrodyellow';
+
+      $output = '<table><thead><tr><td>PUMA </td><td>IM </td></tr></thead>'
+        . '<tr valign="top"><td>' . $field1 . '</td><td>' . $field2 . '</td></tr>'
+        . '</table><pre style="' . $style . '">Diff: ' . $diff . '</pre>';
+
+      $variables['output'] = Markup::create($output);
+
+    }
+
+    /***
+     * In on our PUMA report, compare new and old board certs:
+     */
+    if ($field->field == 'field_uwm_edw_boardcerts') {
+
+      $field1 = $field2 = '';
+
+      $d = json_decode($node->field_uwm_edw_boardcerts->value);
+      if ($d) {
+        foreach ($d as $value) {
+          $field1 .= '<li>' .
+            $value->specialty_name . ', ' .
+            $value->certified_year . ', ' .
+            $value->board_name . ', ';
+        }
+      }
+
+      $d = json_decode($node->field_uwm_json_packet->value);
+      if ($d && isset($d->boardCertifications)) {
+        foreach ($d->boardCertifications as $value) {
+          $field2 .= '<li>' .
+            $value->specialtyName . ', ' .
+            $value->certifiedYear . ', ' .
+            $value->boardName . ', ';
+        }
+      }
+
+      $diff = abs(strlen($field1) - strlen($field2));
+      $style = $diff < 50 ? '' : 'background-color: lightgoldenrodyellow';
+
+      $output = '<table><thead><tr><td>PUMA </td><td>IM </td></tr></thead>'
+        . '<tr valign="top"><td>' . $field1 . '</td><td>' . $field2 . '</td></tr>'
+        . '</table><pre style="' . $style . '">Diff: ' . $diff . '</pre>';
+
+      $variables['output'] = Markup::create($output);
 
     }
 
