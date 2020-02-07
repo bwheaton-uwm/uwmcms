@@ -39,14 +39,21 @@
     {{ title_suffix }}
 
     {#
-        TODO: remove temporary testing info.
-        For now, hide it so it doesn't disturb the look of the page, but is
-        still available via inspecting the markup.
+        Render debug output of appointment data for this provider, which is
+        provided if the current user has permission to edit providers.
+        Hide the good data message so that it's there if desired as a convenient
+        reference; display the bad data message as a warning to admins.
         @see uwmcs_ecare_scheduling_preprocess_node()
     #}
-    <div id="provider-appointment-debug" style="display: none !important;">
-        {{ testing_data }}
-    </div>
+    {% if debug_appt_data_good is not empty %}
+        <div id="provider-appointment-debug" style="display: none !important;">
+            {{ debug_appt_data_good }}
+        </div>
+    {% elseif debug_appt_data_bad is not empty %}
+        <div id="provider-appointment-debug">
+            {{ debug_appt_data_bad }}
+        </div>
+    {% endif %}
 
     <div class="bg provider-page">
         <section class="provider-page__section1">
