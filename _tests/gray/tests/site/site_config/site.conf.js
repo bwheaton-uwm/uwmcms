@@ -1,7 +1,10 @@
 nightwatch_config = {
-  src_folders : [ "/Users/gray/git/uwmcms/_tests/gray/tests/site/www/search/providers" ],
+  src_folders : [ "/Users/gray/git/uwmcms/_tests/gray/tests/site" ],
   page_objects_path : [ "/Users/gray/git/uwmcms/_tests/gray/page_objects"],
   custom_assertions_path : "/Users/gray/git/uwmcms/_tests/gray/custom_assertions",
+  custom_commands_path: "/Users/gray/git/uwmcms/_tests/gray/custom_commands",
+  globals_path: "/Users/gray/git/uwmcms/_tests/gray/globals.js",
+
   selenium : {
     "start_process" : false,
     "host" : "hub-cloud.browserstack.com",
@@ -11,8 +14,8 @@ nightwatch_config = {
   test_settings: {
     default: {
       desiredCapabilities: {
-        "build": "demo-working-Win10-IE11-only",
-        "project": "UWMCMS",
+        "build": "Gray Working - Feb 7",
+        "project": "Grays Test Project",
         "browserstack.user": "uwmedicine2",
         "browserstack.key": "YswTgFnmBJdaRcJ86Bxy",
         "browserstack.debug": true,
