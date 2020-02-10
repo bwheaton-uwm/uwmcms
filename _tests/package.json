@@ -1,0 +1,22 @@
+{
+  "name": "uwmcms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "nightwatch": "^1.3.4"
+  },
+  "devDependencies": {
+    "chromedriver": "^80.0.0",
+    "geckodriver": "^1.19.1",
+    "selenium-server": "^3.141.59"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "nightwatch"
+  },
+  "author": "",
+  "license": "ISC"
+}
