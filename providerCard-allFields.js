@@ -1,5 +1,5 @@
 module.exports = {
-	"disabled": false,
+	"disabled": true,
 
 	"www.search.providers.providerCard-allFields.js": function (browser) {
 	// This test ustilizes 3 providers, listed below, which between them should display all of the

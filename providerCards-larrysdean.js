@@ -1,5 +1,5 @@
 module.exports = {
-	"disabled": false,
+	"disabled": true,
 
 	"Verifying a provider card for 'Larry S. Dean'.": function (browser) {
 	const name = "Larry S. Dean";

@@ -1,9 +1,9 @@
 nightwatch_config = {
-  src_folders : [ "/Users/gray/git/uwmcms/_tests/gray/tests/site" ],
-  page_objects_path : [ "/Users/gray/git/uwmcms/_tests/gray/page_objects"],
-  custom_assertions_path : "/Users/gray/git/uwmcms/_tests/gray/custom_assertions",
-  custom_commands_path: "/Users/gray/git/uwmcms/_tests/gray/custom_commands",
-  globals_path: "/Users/gray/git/uwmcms/_tests/gray/globals.js",
+  src_folders : [ "tests/tests/site" ],
+  page_objects_path : [ "page_objects"],
+  custom_assertions_path : "custom_assertions",
+  custom_commands_path: "custom_commands",
+  globals_path: "globals.js",
 
   selenium : {
     "start_process" : false,

@@ -1,6 +1,6 @@
 
 nightwatch_config = {
-  src_folders: ["tests/tests/site"],
+  src_folders: ["tests/site"],
   page_objects_path: ["tests/page_objects"],
   custom_assertions_path: "tests/custom_assertions",
   custom_commands_path: "tests/custom_commands",
