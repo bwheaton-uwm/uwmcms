@@ -1,5 +1,10 @@
 module.exports = {
 	"disabled": false,
+	"@tags": [
+		"provider",
+		"search",
+		"providercards"
+	],
 
 	"www.search.providers.providerCard-allFields.js": function (browser) {
 	// This test ustilizes 3 providers, listed below, which between them should display all of the

@@ -1,5 +1,11 @@
 module.exports = {
     "disabled": false,
+    "@tags": [
+        "working",
+        "provider",
+        "search",
+        "providercards"
+    ],
 
     // site.www.search.providers.verifyProvImgOnRandom()
     // Cycles thru randomly selected provider cards: pass if it finds a provider image,

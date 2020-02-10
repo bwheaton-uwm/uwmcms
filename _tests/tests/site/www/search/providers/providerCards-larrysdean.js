@@ -1,5 +1,10 @@
 module.exports = {
 	"disabled": false,
+	"@tags": [
+		"provider",
+		"search",
+		"providercards"
+	],
 
 	"Verifying a provider card for 'Larry S. Dean'.": function (browser) {
 	const name = "Larry S. Dean";
