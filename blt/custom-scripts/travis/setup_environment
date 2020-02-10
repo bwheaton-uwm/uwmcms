@@ -29,7 +29,7 @@ mysql -u root -e "CREATE DATABASE drupal_huddle; GRANT ALL ON drupal_huddle.* TO
 mysql -u root -e "CREATE DATABASE drupal_calendar; GRANT ALL ON drupal_calenda.* TO 'drupal'@'localhost';"
 
 # Clear drush release history cache, to pick up new releases.
-rm -f ~/.drush/cache/download/*---updates.drupal.org-release-history-*
+#rm -f ~/.drush/cache/download/*---updates.drupal.org-release-history-*
 # Verify that no git diffs (caused by line ending variation) exist.
 # - git diff --exit-code
 

@@ -41,9 +41,9 @@ modules:
 disable-targets:
   validate:
     twig: true
+    phpcs: true
   tests:
     behat:
-      all: true
       run: true
     security:
       check:
@@ -75,11 +75,11 @@ target-hooks:
     dir: '${docroot}'
     command: 'echo ''No post-deploy build configured.'''
 multisites:
-- default
-- chew
-- huddle
-- calendar
-- stevie
+  - chew
+  - huddle
+  - calendar
+  - stevie
+  - default
 behat:
   paths: {  }
   web-driver: selenium
