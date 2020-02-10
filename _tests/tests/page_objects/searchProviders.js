@@ -29,24 +29,15 @@ module.exports = {
 		}
 	],
 	elements: {
-		cookiesAlertButton: {
-			selector: ".eu-cookie-compliance-default-button"
-		},
-		pageTitle: {
-			selector: ".page-title"
-		},
-		providerCards: {
-			selector: "article"
-		},
-		providerSearchBar: {
-			selector: "#edit-s"
-		},
+		cookiesAlertButton: ".eu-cookie-compliance-default-button",
+		pageTitle: ".page-title",
+		providerCards: "article",
+		providerSearchBar: "#edit-s",
 		resetButton: {
 			selector: "//a[@class='btn btn-cta btn-cta-link reset']",
 			locateStrategy: "xpath"
 		},
-		searchButton: {
-			selector: ".submit"
+		searchButton: ".submit"
 		}
 	},
 	sections: {
