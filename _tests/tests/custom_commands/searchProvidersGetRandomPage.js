@@ -9,9 +9,15 @@ module.exports = {
 		this.getText(".pager__item--last a span:nth-child(2)", function(result) {
 			// Due to the way the cxommand queue is built, you cannot use pageObject "aliass" here.
 			// You need to use the underlying css selector.
-			ranPage = Math.floor(Math.random() * (result.value-1));
-			//searchUrl = "https://www.uwmedicine.org/search/providers?s=&page=" + (ranPage);
-			searchUrl = "https://www.uwmedicine.org/search/providers?s=&page=5";
+			ranPage = Math.floor(Math.random() * (result.value)) + 1;
+			if (ranPage < 1) {
+				console.log("Random page was less than 0.");
+				ranPage = 1;
+			}
+
+			searchUrl = "https://www.uwmedicine.org/search/providers?s=&page=" + (ranPage);
+			//searchUrl = "https://www.uwmedicine.org/search/providers?s=&page=5";
+			console.log("Debug: random page set to " + ranPage);
 			this.url(searchUrl);
 			return this;
 		})
