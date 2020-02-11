@@ -25,10 +25,10 @@ drush:
 modules:
   local:
     enable: [acquia_connector, dblog, devel, views_ui]
-    uninstall: [ shield, simplesamlphp_auth]
+    uninstall: [shield, simplesamlphp_auth]
   ci:
     enable: {  }
-    uninstall: []
+    uninstall: {  }
   dev:
     enable: [acquia_connector]
     uninstall: {  }
@@ -42,14 +42,9 @@ disable-targets:
   validate:
     twig: true
   tests:
-    behat:
-      all: true
-      run: true
-    security:
-      check:
-        updates: true
-    frontend:
-      run: true
+    behat: { all: true, run: true }
+    security: { check: { updates: true } }
+    frontend: { run: true }
 validate:
   twig:
     filesets: {  }
@@ -75,11 +70,11 @@ target-hooks:
     dir: '${docroot}'
     command: 'echo ''No post-deploy build configured.'''
 multisites:
-- default
-- chew
-- huddle
-- calendar
-- stevie
+  - default
+  - chew
+  - huddle
+  - calendar
+  - stevie
 behat:
   paths: {  }
   web-driver: selenium
