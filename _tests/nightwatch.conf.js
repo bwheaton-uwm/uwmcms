@@ -1,6 +1,5 @@
 //nightwatch.conf.js
 require('dotenv').config();
-
 module.exports = {
     src_folders: ["tests/site"],
     page_objects_path: ["tests/page_objects"],
@@ -26,7 +25,7 @@ module.exports = {
                 'browserName': 'chrome',
                 'chromeOptions': {
                     //'args': ['--headless']
-                }
+                },
             }
         }
     }

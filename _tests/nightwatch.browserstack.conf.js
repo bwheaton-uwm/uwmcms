@@ -1,35 +1,36 @@
 //nightwatch.browserstack.conf.js
-const baseConfig = require('./nightwatch.conf.js');
+require('dotenv').config();
+module.exports = {
+    src_folders: ["tests/site"],
+    page_objects_path: ["tests/page_objects"],
+    custom_assertions_path: "tests/custom_assertions",
+    custom_commands_path: "tests/custom_commands",
+    globals_path: "tests/globals.js",
 
-const config = {
-    ...baseConfig,
-    webdriver: {
+    "webdriver": {
         'start_process': false,
         'host': 'hub-cloud.browserstack.com',
         'port': 443
     },
-};
 
-config.test_settings.default.desiredCapabilities['browserstack.user'] = process.env.BROWSERSTACK_USER;
-config.test_settings.default.desiredCapabilities['browserstack.key'] = process.env.BROWSERSTACK_KEY;
-config.test_settings.default.desiredCapabilities.chromeOptions.args = [];
-
-config.test_settings.firefox = {
-    desiredCapabilities: {
-        "os": "Windows",
-        "os_version": "10",
-        "browser": "IE",
-        "browser_version": "11.0",
-        "resolution": "2048x1536",
-        ['browserstack.local']: false
+    "test_settings": {
+        "default": {
+            'screenshots': {
+                'enabled': true,
+                'on_failure': true,
+                'on_error': true,
+                'path': 'tests_output/screenshots'
+            },
+            "desiredCapabilities": {
+                "browserstack.user": process.env.BROWSERSTACK_USER,
+                "browserstack.key": process.env.BROWSERSTACK_KEY,
+                "os": "Windows",
+                "os_version": "10",
+                "browser": "IE",
+                "browser_version": "11.0",
+                "resolution": "2048x1536",
+                ['browserstack.local']: false
+            }
+        }
     }
 };
-
-// Code to copy seleniumhost/port into test settings
-for (var i in config.test_settings) {
-    var test_setting = config.test_settings[i];
-    test_setting['selenium_host'] = config.webdriver.host;
-    test_setting['selenium_port'] = config.webdriver.port;
-}
-
-module.exports = config;

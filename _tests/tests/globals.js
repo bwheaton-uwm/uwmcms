@@ -1,3 +1,4 @@
 module.exports = {
-	aTestVar: 100
+	"browserstackUser": process.env.BROWSERSTACK_USER,
+	"browserstackKey": process.env.BROWSERSTACK_KEY
 }

@@ -34,11 +34,10 @@ module.exports = {
 		providerCards: "article",
 		providerSearchBar: "#edit-s",
 		resetButton: {
-			selector: "//a[@class='btn btn-cta btn-cta-link reset']",
+			selector:  "//a[@class='btn btn-cta btn-cta-link reset']",
 			locateStrategy: "xpath"
 		},
-		searchButton: ".submit"
-		}
+		searchButton: ".submit",
 	},
 	sections: {
 		providerCard: {
