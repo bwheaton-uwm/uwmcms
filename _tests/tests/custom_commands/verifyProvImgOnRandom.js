@@ -1,6 +1,6 @@
 module.exports = {
-	command: async function() {
-		// verifyProvImageOnRandom()
+    command: async function () {
+        // verifyProvImageOnRandom()
         // When called from a Providers search results page, it verifies that a randomly
         // selected provider card has a valid provider Image or Default image
         self = this;
@@ -11,17 +11,19 @@ module.exports = {
             let defaultCss = "article:nth-child(" + ranCard + ") img";
 
             console.log(imageCss);
-            debugger;
             this.waitForElementVisible("article", "Provider card visible.");
             self.element("css selector", imageCss, function (imgResult) {
+                debugger;
+                console.log(imgResult);
                 if (imgResult.status != -1) {
                     // we found it.
                     self.moveTo(imageCss);
                     self.waitForElementVisible(imageCss, "Provider card Image found");
                 } else {
                     // we didn't find it.
-                    self.element("css selector", defaultCss, function (imgResult2) {
-                        if (imgResult2 != -1) {
+                    self.element("css selector", defaultCss, function (imgResult) {
+                        debugger;
+                        if (imgResult != -1) {
                             self.moveTo(defaultCss);
                             self.waitForElementVisible(defaultCss, "Provider card Image Default icon found.");
                         } else {
