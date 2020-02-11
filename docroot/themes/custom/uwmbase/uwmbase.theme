@@ -147,6 +147,24 @@ function _uwmbase_node_parse_json_field(NodeInterface $node) {
 }
 
 /**
+ * Implements hook_theme().
+ */
+function uwmbase_theme($existing, $type, $theme, $path) {
+
+  return [
+    // Define template for provider appointment flow.
+    // @see modules/custom/uwmcs_ecare_scheduling/src/Controller/UwmSchedulingController
+    'uwm_appointment_provider_flow' => [
+      'variables' => [
+        'node' => NULL,
+      ],
+      'path' => $path . '/components/appointment-flow',
+    ],
+  ];
+
+}
+
+/**
  * Implements hook_theme_registry_alter().
  */
 function uwmbase_theme_registry_alter(&$theme_registry) {
@@ -231,6 +249,17 @@ function uwmbase_page_attachments_alter(&$variables) {
   if ($currentPath == '/node/49301') {
     $variables['#attached']['library'][] = 'uwmbase/trumba';
   }
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function uwmbase_preprocess(&$variables, $hook) {
+
+  // Use `Request` object instead of `path.current` service to get the
+  // end-user-facing requested path, not a Drupal internal path.
+  $variables['request_path'] = ltrim(urldecode(\Drupal::request()->getPathInfo()), '/');
+
 }
 
 /**

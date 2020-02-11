@@ -52,8 +52,19 @@ $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
     width: 16px;
     height: 16px;
   }
+  // @TODO: remove this when we solve for svgs with color variation
+  &.uwm-icon--accepting-patients-purple {
+    background-image: url('#{$icon-path}/icon_accepting_patients_purple.svg');
+    width: 16px;
+    height: 16px;
+  }
   &.uwm-icon--appointment {
     background-image: url('#{$icon-path}/icon_appointment.svg');
+  }
+  &.uwm-icon--arrow-right-blue {
+    background-image: url('#{$icon-path}/icon_arrow_right_blue.svg');
+    width: 15px;
+    height: 10px;
   }
   &.uwm-icon--bike {
     background-image: url('#{$icon-path}/icon_bike.svg');
@@ -94,6 +105,11 @@ $icon-path: '/themes/custom/uwmbase/dist/assets/uwm-icons';
     background-image: url('#{$icon-path}/icon_clock.svg');
     width: 20px;
     height: 20px;
+  }
+  &.uwm-icon--close-x {
+    background-image: url('#{$icon-path}/icon_close_x.svg');
+    width: 18px;
+    height: 18px;
   }
   &.uwm-icon--locations-pin {
     width: 13px;

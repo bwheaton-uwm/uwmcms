@@ -1,0 +1,90 @@
+{#
+/**
+ * @file
+ * Template for the modal container for an appointment flow.
+ *
+ * This is intended to be included into other templates that open the modal
+ * according to context of that page.
+ *
+ * @see node--res-provider--appointment-actions.html.twig
+ * @see template_preprocess_page()
+ *
+ * Variables - may be passed from parent template, or via `include with`:
+ * - flow_type: 'provider' or 'clinic' - provided by parent template
+ * - modal_appt_context: string - where the modal is being used. One of:
+ *  'provider_page' - provider bio (node) page
+ *  'provider_card' - provider card on search results or a clinic page tab
+ */
+#}
+
+{# {{ attach_library('core/drupal.ajax') }} #}
+
+{{ attach_library('uwmbase/modal-appointment') }}
+
+{#
+  Analytics - set up strings to identify click events in the appointment flow.
+  The prefix and scheduling status strings apply to all elements for this
+  provider.
+  These are combined (space-delimited) into a `data-analytics-id` attribute on
+  relevant elements, with another string that identifies specific actions.
+  (When this flow is on a provider page, these variables are passed from the
+  parent template; otherwise set them up here.)
+#}
+{% if modal_appt_context is not same as('provider_page') %}
+  {%
+    set analytics_prefix = 'booking-appointment'
+  %}
+
+  {#
+    Set to a placeholder for replacement in JS.
+  #}
+  {% set analytics_sched_status = '[analytics_sched_status]' %}
+{% endif %}
+
+{#
+  Pass the modal context as data attribute for use in JS.
+  Since the modal intentionally exists only once in a page, we can set the
+  context value on it, and it's immediately accessible in JS. (The scheduling
+  data values that are specific to each provider must be set on that
+  provider's button that opens the modal.)
+#}
+<div id="modal-appointment-{{ flow_type }}" class="modal fade uwm-modal-appointment" tabindex="-1" role="dialog"
+  data-modal-appt-context="{{ modal_appt_context }}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h3 class="modal-title">{{ "Book appointment online"|t }}</h3>
+
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="{{ "Close"|t }}"
+          data-analytics-id="{{ analytics_prefix ~ ' dialog-[analytics_dialog] [analytics_dialog]-exit path ' ~ analytics_sched_status }}"
+        >
+          <span class="uwm-icon uwm-icon--close-x" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        {# WIP: trying non-ajax version - include the flow template instead #}
+        {#
+        <p><a class="use-ajax" href="/uwm-appointment/provider/{{ node.id }}/nojs">Load schedule flow</a></p>
+
+        <div id="appointment-provider-flow">
+          Provider appointment flow to load here
+        </div>
+        #}
+
+        {#
+          Include the particular flow, based on context from parent template.
+        #}
+        {% include '@uwmbase/appointment-flow/uwm-appointment-flow-' ~ flow_type ~ '.html.twig' %}
+
+      </div>
+
+    </div>
+  </div>
+</div>

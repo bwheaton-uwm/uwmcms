@@ -25,6 +25,9 @@
   display: inline-block;
 }
 
+/*
+ * Container
+ */
 // Apply just the left/right container padding to align elements with the
 // Bootstrap grid containers.
 @mixin container-padding() {
@@ -38,6 +41,36 @@
 
 @mixin container-padding-right() {
   padding-right: $grid-gutter-width / 2;
+}
+
+/*
+ * Links
+ */
+// Links - blue text w/ no underline; underline on hover
+@mixin link-blue-hover-underline {
+  color: theme-color('link-blue');
+  text-decoration: none;
+
+  &:hover, &:focus {
+    text-decoration: underline;
+  }
+}
+
+// Links - blue text w/ no underline; underline on hover
+// This allows link to contain an icon so that the icon is clickable too,
+// but only the text is underlined on hover.
+// Link text must be its own descendant element of <a> with class .link__text
+@mixin link-with-icon-blue-hover-underline {
+  color: theme-color('link-blue');
+  text-decoration: none;
+
+  &:hover, &:focus {
+    text-decoration: none;
+
+    .link__text {
+      text-decoration: underline;
+    }
+  }
 }
 
 /*
@@ -182,6 +215,7 @@
   // 2020-01-22: Confirmed this padding to be the desired default.
   // @see https://www.wrike.com/open.htm?id=446798910
   padding: 0.5rem 1rem; // 8px 16x
+  border: 0 none; // Override default <button> styling
   font-size: 1rem; // 16px
   font-weight: 400;
   line-height: 1.5;

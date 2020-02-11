@@ -1,0 +1,350 @@
+/**
+ * Appointment scheduling modal
+ *
+ * Library: uwmbase/modal-appointment
+ *
+ * @see https://getbootstrap.com/docs/4.0/components/modal/
+ */
+
+@import 'init';
+
+// Set the backdrop color for appointment modal.
+// The backdrop element is inject by Bootstrap JS, just before the closing
+// body tag. So we can limit its styling to apply by the type of page, but not
+// specifically to this modal instance (unless we add another class via JS).
+// Page types currently using this modal:
+// - Provider bio page
+// - Provider search results (cards)
+// - Clinic page Care Providers tab (cards)
+body.is-page-node-type-res-provider .modal-backdrop,
+body.path-search-providers .modal-backdrop,
+body.is-page-node-type-res-clinic .modal-backdrop {
+  background-color: #333D47;
+  opacity: 0.64;
+}
+
+.modal.uwm-modal-appointment {
+
+  .modal-dialog {
+
+    // 0 - 575px
+    margin: 0;
+    width: 100%;
+    max-width: none;
+
+    // 768px+
+    @include media-breakpoint-up('md') {
+      margin-top: 97px;
+      margin-left: auto;
+      margin-right: auto;
+      // This allows 2 buttons (@ 292px width) per row.
+      width: 90%;
+    }
+
+    // 992px+
+    @include media-breakpoint-up('lg') {
+      width: 80%;
+    }
+
+    // 1200px+
+    @include media-breakpoint-up('xl') {
+      max-width: 980px;
+    }
+
+  }
+
+  .modal-content {
+    box-shadow:0px 3px 6px rgba(0, 0, 0, 0.29);
+    border-radius: 0;
+    border: 0 none;
+  }
+
+  .modal-header {
+    border-radius: 0;
+    padding: 1rem 1.875rem; // 16px 30px
+    background-color: color('blue');
+    border-bottom: 0 none;
+    // Bootstrap modal applies flex layout. Add centered vertical alignment
+    // for title and close icon.
+    align-items: center;
+
+    .modal-title {
+      margin: 0;
+      padding: 0;
+      color: color('white');
+      font-family: $font-family-sans-serif;
+      font-size: 1.5rem; // 24px
+      font-weight: normal;
+    }
+
+    .close {
+      margin: 0;
+      padding: 0;
+      display: block;
+      width: 18px;
+      height: 18px;
+      border: none;
+      background: none;
+      cursor: pointer;
+
+      .uwm-icon--close-x {
+        display: block;
+      }
+    }
+  }
+
+  .modal-body {
+    padding: 1.25rem 1.875rem; // 20px 30px
+
+    .appointment-flow {
+
+      .appointment-flow__step {
+        // Display only the active step.
+        display: none;
+
+        &.active {
+          display: block;
+        }
+      }
+
+      .appointment-flow__step-text {
+        margin: 0 0 1.25rem 0; // 20px
+        font-size: 1.25rem; // 20px
+
+        // 576-768px
+        @include media-breakpoint-only('sm') {
+          // Align with stacked centered buttons.
+          text-align: center;
+        }
+      }
+
+      .appointment-flow__step-buttons {
+
+        // 576px+
+        @include media-breakpoint-up('sm') {
+          // Stack buttons and center them.
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          // Flex items' margins do not collapse - negate the bottom margin of
+          // the last button (or last row of buttons). This allows the next
+          // element down ("Back" link) to define the space above it.
+          margin-bottom: -1.25rem; // 20px
+        }
+
+        // 768px+
+        @include media-breakpoint-up('md') {
+          // Buttons align in rows.
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: stretch;
+
+          // To allow 20px between buttons and prevent the last button in a row
+          // from wrapping weirdly because its right margin doesn't fit, expand
+          // the container by half the 20px on each side, and give buttons
+          // equal left/right margin. (This is the trick Bootstrap grid uses.)
+          margin-left: -0.625rem; // -10px
+          margin-right: -0.625rem; // -10px
+        }
+
+      }
+
+      .appointment-flow__step-button {
+        display: block;
+
+        // 576px+
+        @include media-breakpoint-up('sm') {
+          // Use a fixed width for consistency; text will wrap as needed.
+          width: 292px;
+          margin-bottom: 1.25rem; // 20px
+        }
+
+        // 768px+
+        @include media-breakpoint-up('md') {
+          // Buttons are aligned in rows. Use equal side margin in expanded
+          // container - see .appointment-flow__step-buttons.
+          margin-left: 0.625rem; // 10px
+          margin-right: 0.625rem; // 10px
+        }
+      }
+
+      // Variation with name and description text
+      .appointment-flow__step-button--name-desc {
+        padding: 1.25rem; // 20px
+      }
+
+      // Never show the template button used for generating other button markup
+      // in Javascript.
+      .appointment-flow__step-button[data-btn-visit-type-id="template"] {
+        display: none;
+      }
+
+      .appointment-flow__step-button-name {
+        display: block;
+        font-weight: $font-weight-semi-bold;
+      }
+
+      .appointment-flow__step-button-desc {
+        display: block;
+        margin-top: 0.5rem; // 8px
+      }
+
+      .appointment-flow__step-back {
+        display: block;
+        margin-top: 1.25rem; // 20px
+
+        a {
+          @include link-with-icon-blue-hover-underline();
+          font-size: 1rem;
+          line-height: 1.5rem; // 24px
+          display: inline-block;
+
+          .fa-angle-left {
+            color: color('blue');
+            margin-right: 2px;
+            width: 0.75rem; // 12px
+            height: 1.5rem; // 24px
+            vertical-align: middle;
+          }
+
+          .link__text {
+            display: inline-block;
+            vertical-align: middle;
+          }
+        }
+      }
+
+      // These '--first' and '--only' classes are added in JS because the
+      // first step shown varies by appointment logic.
+      .appointment-flow__step--first .appointment-flow__step-back {
+        // Hide the "Back" link because there is no previous step.
+        // Use 'visibility' to keep its space in the layout, for consistency
+        // in the modal height.
+        visibility: hidden;
+      }
+
+      .appointment-flow__step--only .appointment-flow__step-back {
+        // Hide the "Back" link because there is no previous step and no next
+        // step that would show it and shift the layout - thus it only creates
+        // extra space at the bottom.
+        display: none;
+      }
+
+      // Note: this is also #scheduleContainer as used in Epic assets
+      // @see EmbeddedWidget.css, EmbeddedWidgetController.js
+      .appointment-flow__open-scheduling-widget {
+        display: flex;
+        justify-content: center;
+
+        // Note: this is also #openSchedulingFrame as used in Epic assets
+        // @see EmbeddedWidget.css, EmbeddedWidgetController.js
+        iframe.appointment-flow__open-scheduling-embed {
+          border: 0 none;
+          display: block;
+          
+          // ---------------------------------------------------------------
+          // TODO: confirm width/height unneeded due to EmbeddedWidget.css
+
+          // The widget styling is 100% width and auto height up to 699px.
+          // width: 100%;
+
+          // TODO: determine a desired fixed height within modal too.
+
+          // At 700px+ it switches to fixed width/height. Given the modal's own
+          // styling, this is just about the screen width at which the modal
+          // content div reaches 700px width, so we limit the iframe width to
+          // match its content and thus center it.
+          // @media (min-width: 845px) {
+          //   // Match fixed width: body.embedded
+          //   width: 700px;
+
+          //   // Match fixed height + margin: body.embedded .stepContainer
+          //   height: 500px; // approx 490px + 0.25rem
+          // }
+          // ---------------------------------------------------------------
+        }
+
+      }
+
+    }
+
+  }
+
+  // Mobile (575px-)
+  @include media-breakpoint-down('xs') {
+
+    .modal-header {
+      padding-left: 1.5rem; // 24px
+      padding-right: 1.5rem; // 24px
+
+      .modal-title {
+        font-size: 1.25rem; // 20px
+      }
+
+      .close {
+        width: 14px;
+        height: 14px;
+
+        .uwm-icon--close-x {
+          // Set width/height explicitly (instead of using `inherit`) to work
+          // correctly on iOS browsers.
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+
+    .modal-body {
+      padding-left: 1.5rem; // 24px
+      padding-right: 1.5rem; // 24px
+
+      .appointment-flow {
+
+        .appointment-flow__step {
+          // Set min-height to ensure consistency for steps with 2 buttons.
+          min-height: 13.25rem; // 212px
+        }
+
+        .appointment-flow__step-text {
+          margin-bottom: 1rem; // 16px
+          font-size: 1.125rem; // 18px
+        }
+
+        .appointment-flow__step[data-step="visit-type"] .appointment-flow__step-buttons {
+          // Set maximum height on this container to show ~3 full buttons and
+          // half of a 4th, if there are that many.
+          // TODO: this number is calculated from 1-line name and description
+          // on each button. We cannot handle all cases statically, because the
+          // text wrapping in each button may vary. Only JS calculation can make
+          // this exact in all cases.
+          // This height works for ~360px wide and up.
+          max-height: 23.125rem; // 370px
+          overflow-y: scroll;
+        }
+
+        .appointment-flow__step-button {
+          width: 100%;
+
+          &:not(:last-child) {
+            margin-bottom: 1rem; // 16px
+          }
+        }
+
+        // Variation with name and description text
+        .appointment-flow__step-button--name-desc {
+          padding-top: 1.125rem; // 18px
+          padding-bottom: 1.125rem; // 18px
+        }
+
+        .appointment-flow__step-back {
+          margin-top: 1.5rem; // 24px
+        }
+
+      }
+    }
+
+  }
+
+}
