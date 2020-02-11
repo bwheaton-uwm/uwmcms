@@ -5,27 +5,27 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "repositories": {
-        "0": {
+        "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
-        "1": {
+        "asset-packagist": {
             "type": "composer",
             "url": "https://asset-packagist.org"
         },
-        "2": {
+        "uwmbase-theme": {
             "type": "vcs",
             "url": "https://github.com/uwmweb/uwmbase"
         },
-        "3": {
+        "ckeditor-bs-grid": {
             "type": "vcs",
             "url": "https://github.com/uwmweb/ckeditor_bs_grid"
         },
-        "4": {
+        "uwmedicineorg-theme": {
             "type": "vcs",
             "url": "https://github.com/uwmweb/uwmedicineorg_theme"
         },
-        "5": {
+        "ckeditor-templates": {
             "type": "package",
             "package": {
                 "name": "ckeditor/templates",
@@ -39,14 +39,6 @@
                     "composer/installers": "~1.0"
                 }
             }
-        },
-        "drupal": {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        },
-        "asset-packagist": {
-            "type": "composer",
-            "url": "https://asset-packagist.org"
         }
     },
     "scripts": {
