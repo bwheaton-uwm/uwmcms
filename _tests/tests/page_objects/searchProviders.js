@@ -80,10 +80,12 @@ module.exports = {
 					selector: ".items a:nth-child(2)"
 				},
 				providerImage: {
-					selector: ".img-fluid"
+					selector: ".img-fluid",
+					suppressNotFoundErrors: true
 				},
 				providerImageDefault: {
-					selector: "article img"
+					selector: "article img",
+					suppressNotFoundErrors: true
 				},
 				seeMoreButton: {
 					selector: ".provider-card__see-more a.btn"

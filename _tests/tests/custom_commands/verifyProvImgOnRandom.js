@@ -11,14 +11,26 @@ module.exports = {
             let defaultCss = "article:nth-child(" + ranCard + ") img";
 
             console.log(imageCss);
+            debugger;
             this.waitForElementVisible("article", "Provider card visible.");
             self.element("css selector", imageCss, function (imgResult) {
-                if (imgResult.status != 0) {
-                    // we didn't find it.
-                    self.waitForElementVisible(defaultCss, "Provider card Default Image Icon found");
+                if (imgResult.status != -1) {
+                    // we found it.
+                    self.moveTo(imageCss);
+                    self.waitForElementVisible(imageCss, "Provider card Image found");
                 } else {
-                    self.waitForElementVisible(imageCss, "Provider card Image found.");
+                    // we didn't find it.
+                    self.element("css selector", defaultCss, function (imgResult2) {
+                        if (imgResult2 != -1) {
+                            self.moveTo(defaultCss);
+                            self.waitForElementVisible(defaultCss, "Provider card Image Default icon found.");
+                        } else {
+                            // Neither found, report an error
+                            self.waitForElementVisible(defaultCss, "Found neither default or image.");
+                        }
+                    })
                 }
+                return this;
             });
         });
         return this;

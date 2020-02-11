@@ -16,7 +16,6 @@ module.exports = {
         searchProviderPage
             .loadPage()
             .searchProvidersGetRandomPage()
-            .perform(() => { debugger; })
             .verifyProvImgOnRandom()
             .end();
     }
