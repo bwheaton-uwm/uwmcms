@@ -17,6 +17,7 @@ conditional_fields: 1.0.0-alpha4
 config: 8.4.5
 config_filter: 1.2.0
 config_ignore: 2.1.0
+config_split: 1.4.0
 contact: 8.4.5
 contact_storage: 1.0.0-beta9
 contextual: 8.4.5
@@ -45,7 +46,10 @@ help: 8.4.5
 history: 8.4.5
 image: 8.4.5
 inline_entity_form: 1.0.0-beta1
+layout_builder: 8.8.2
+layout_builder_styles: 1.0.0-beta1
 layout_discovery: 8.4.5
+lightning: 3.003.0
 lightning_contact_form: 1.0.0-rc2
 lightning_core: 1.0.0-rc2
 lightning_landing_page: 1.0.0-rc1
@@ -65,6 +69,8 @@ media: 8.4.5
 media_entity_actions: 1.0.0-alpha2
 media_entity_instagram: 2.0.0-alpha1
 media_entity_twitter: 2.0.0-alpha2
+media_library: 8.6.2
+menu_link_content: 8.4.5
 menu_ui: 8.4.5
 metatag: 1.4.0
 node: 8.4.5
@@ -74,7 +80,9 @@ panelizer: 4.0.0
 panelizer_quickedit: 4.0.0
 panels: 4.2.0
 panels_ipe: 4.2.0
+paragraphs: 1.2.0
 path: 8.4.5
+path_alias: 8.8.2
 quickedit: 8.4.5
 rdf: 8.4.5
 rest: 8.4.5
@@ -94,13 +102,8 @@ update: 8.4.5
 user: 8.4.5
 video_embed_field: 2.0.0-alpha2
 video_embed_media: 2.0.0-alpha2
+views: 8.4.5
 views_infinite_scroll: 1.5.0
 views_taxonomy_term_name_depth: 1.2.0
 views_templates: 1.0.0-alpha1
-menu_link_content: 8.4.5
-views: 8.4.5
-paragraphs: 1.2.0
-lightning: 3.003.0
 views_ui: 8.5.7
-media_library: 8.6.2
-config_split: 1.4.0
