@@ -14,9 +14,11 @@ dependencies:
     - field.field.node.event.field_note
     - image.style.thumbnail
     - node.type.event
+    - workflows.workflow.editorial
   module:
     - address
     - allowed_formats
+    - content_moderation
     - datetime
     - focal_point
     - link_attributes
@@ -104,6 +106,12 @@ content:
         hide_guidelines: '1'
     type: text_textarea
     region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
@@ -126,6 +134,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     region: content
     third_party_settings: {  }
 hidden:

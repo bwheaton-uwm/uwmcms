@@ -7,5 +7,4 @@ _core:
 name: 'Event categories'
 vid: event_categories
 description: 'Events may be associated with only one category.'
-hierarchy: 0
 weight: 0

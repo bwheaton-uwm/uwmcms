@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.calendar_event.field_event_categories
     - field.field.node.calendar_event.field_event_information
     - field.field.node.calendar_event.field_event_location
+    - field.field.node.calendar_event.field_featured_content
     - field.field.node.calendar_event.field_image
     - field.field.node.calendar_event.field_meta_tags
     - field.field.node.calendar_event.field_private_note
