@@ -30,6 +30,7 @@ docroot/.eslintignore
 docroot/.eslintrc.json
 docroot/.ht.router.php
 docroot/.htaccess
+docroot/autoload.php
 docroot/example.gitignore
 docroot/index.php
 docroot/INSTALL.txt
