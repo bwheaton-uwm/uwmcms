@@ -45,17 +45,8 @@
         "uwmcms-update-saml": [
             "sh ./patches/simplesaml/setup_simplesaml_patch.sh"
         ],
-        "uwmcms-patch-htaccess": [
-            "sh ./patches/drupal-htaccess/htaccess_patch.sh ./patches/drupal-htaccess/htaccess.patch"
-        ],
-        "uwmcms-prepend-htaccess": [
-            "sh ./patches/drupal-htaccess/htaccess_prepend.sh './patches/drupal-htaccess/htaccess_prepend_contents.htaccess' './docroot/.htaccess'",
-            "sh ./patches/drupal-htaccess/htaccess_prepend.sh './patches/drupal-htaccess/htaccess_prepend_nwhospital.htaccess' './docroot/.htaccess'"
-        ],
         "post-install-cmd": [
             "@uwmcms-update-saml",
-            "@uwmcms-patch-htaccess",
-            "@uwmcms-prepend-htaccess",
             "composer show > .composer_show.out"
         ],
         "post-update-cmd": [
