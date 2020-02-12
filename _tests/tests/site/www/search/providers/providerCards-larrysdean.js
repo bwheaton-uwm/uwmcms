@@ -3,7 +3,8 @@ module.exports = {
 	"@tags": [
 		"provider",
 		"search",
-		"providercards"
+		"providercards",
+    "larrydean"
 	],
 
 	"Verifying a provider card for 'Larry S. Dean'.": function (browser) {
