@@ -77,7 +77,7 @@
 
         "ckeditor/templates": "4.10.1",
         "drupal/access_unpublished": "1.0.0-alpha7",
-        "drupal/acquia_contenthub": "1.36.0",
+        "drupal/acquia_contenthub": "^1.45",
         "drupal/acquia_lift": "3.10.0",
         "drupal/acquia_search": "1.16.0",
         "drupal/address": "1.4.0",

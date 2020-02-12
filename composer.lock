@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce54fe14cd08ea45717edab9059bbc4d",
+    "content-hash": "8d66e7ee4f604ab3fb62c92f79c41de5",
     "packages": [
         {
             "name": "acquia/blt",
@@ -3157,17 +3157,17 @@
         },
         {
             "name": "drupal/acquia_contenthub",
-            "version": "1.36.0",
+            "version": "1.45.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/acquia_contenthub.git",
-                "reference": "8.x-1.36"
+                "reference": "8.x-1.45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/acquia_contenthub-8.x-1.36.zip",
-                "reference": "8.x-1.36",
-                "shasum": "923bff624c9de804f2d6d2702607f159b11042ae"
+                "url": "https://ftp.drupal.org/files/projects/acquia_contenthub-8.x-1.45.zip",
+                "reference": "8.x-1.45",
+                "shasum": "51a207c749da5124618bfe2825e36f9f1da48f2d"
             },
             "require": {
                 "acquia/content-hub-php": "^1.3.2",
@@ -3175,15 +3175,7 @@
                 "drupal/diff": "^1.0"
             },
             "require-dev": {
-                "drupal/acquia_contenthub_subscriber": "*",
-                "drupal/entity": "^1.0.0-beta1",
-                "drupal/entity_browser": "2.0-alpha2",
-                "drupal/entity_embed": "1.0.0-beta2",
-                "drupal/entity_reference_revisions": "1.4",
-                "drupal/field_permissions": "^1.0@beta",
-                "drupal/file_entity": "^2.0@beta",
-                "drupal/paragraphs": "1.2",
-                "drupal/workbench_moderation": "*"
+                "drupal/acquia_contenthub_subscriber": "*"
             },
             "type": "drupal-module",
             "extra": {
@@ -3191,8 +3183,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.36",
-                    "datestamp": "1545682681",
+                    "version": "8.x-1.45",
+                    "datestamp": "1579803486",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3201,7 +3193,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -3209,12 +3201,12 @@
                     "homepage": "https://www.drupal.org/user/61203"
                 },
                 {
-                    "name": "Jabb",
-                    "homepage": "https://www.drupal.org/user/584658"
-                },
-                {
                     "name": "abarrios",
                     "homepage": "https://www.drupal.org/user/109765"
+                },
+                {
+                    "name": "acquia",
+                    "homepage": "https://www.drupal.org/user/1231722"
                 },
                 {
                     "name": "attilatilman",
@@ -3223,6 +3215,14 @@
                 {
                     "name": "japerry",
                     "homepage": "https://www.drupal.org/user/45640"
+                },
+                {
+                    "name": "kaynen",
+                    "homepage": "https://www.drupal.org/user/733308"
+                },
+                {
+                    "name": "looking4justice",
+                    "homepage": "https://www.drupal.org/user/3607847"
                 },
                 {
                     "name": "m.yudin",
@@ -3248,7 +3248,7 @@
             "description": "Module allowing Drupal sites to connect to Acquia Content Hub.",
             "homepage": "https://www.drupal.org/project/acquia_contenthub",
             "support": {
-                "source": "http://cgit.drupalcode.org/acquia_contenthub"
+                "source": "https://git.drupalcode.org/project/acquia_contenthub"
             }
         },
         {
