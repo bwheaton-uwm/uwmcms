@@ -216,7 +216,10 @@
                 "[web-root]/README.txt": false,
                 "[web-root]/web.config": false,
                 "[web-root]/.ht.router.php": false,
-                "[web-root]/sites/default/default.services.yml": {
+                "[web-root]/.htaccess": {
+                    "prepend": "patches/drupal-htaccess/prepend.htaccess"
+                },
+               "[web-root]/sites/default/default.services.yml": {
                     "mode": "replace",
                     "path": "docroot/core/assets/scaffold/files/default.services.yml",
                     "overwrite": false
