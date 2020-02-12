@@ -2,8 +2,9 @@
  * @file
  * JS provided by Epic to initialize the eCare open scheduling embedded widget.
  *
- * The denoted section within this code is not written by UWM; should not be
- * modified unless per communication with Epic team.
+ * The denoted section within this code is not written by UWM; it should not be
+ * modified (except configuration values) unless per communication with Epic
+ * team.
  *
  * Library: uwmbase/ecare-open-schedule-embedded-widget.
  *
@@ -32,11 +33,19 @@
           // Replace with the hostname of your Open Scheduling site.
           'hostname': 'https://ecare.uwmedicine.org',
 
-          // Must equal media query in EpicWP.css + any left/right margin of the host page. Should also change in EmbeddedWidget.css.
+          // Must equal media query in EpicWP.css + any left/right margin of the
+          // host page. Should also change in EmbeddedWidget.css.
           'matchMediaString': '(max-width: 747px)',
 
-          // Show a button on top of the widget that lets the user see the slots in fullscreen.
-          'showToggleBtn': true,
+          // Show a button on top of the widget that lets the user see the slots
+          // in fullscreen.
+          // Note, 2020-02-12:
+          // This setting is supposed to control whether the button is added,
+          // but currently the setting is not properly read if its value is
+          // `false`.
+          // @see EmbeddedWidgetController.js:
+          // `settings.showToggleBtn ? this._showToggleBtn = settings.showToggleBtn : this._showToggleBtn = true;`.
+          'showToggleBtn': false,
 
           // The toggle button's help text for screen reader.
           'toggleBtnExpandHelpText': 'Expand to see the slots in fullscreen',

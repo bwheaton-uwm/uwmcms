@@ -266,6 +266,17 @@ body.is-page-node-type-res-clinic .modal-backdrop {
           // ---------------------------------------------------------------
         }
 
+        // For mobile, EmbeddedWidgetController.js injects this element which
+        // is intended to allow the user to toggle the embedded widget's layout
+        // to cover the full screen. However, that does not cooperate with our
+        // modal, instead making the widget iframe cover the rest of the modal
+        // and preventing access to the close button and "Back" link.
+        // Since this element is added to our page which is embedding the iframe
+        // (not within the iframe content), our css can access it.
+        a#toggleBtn {
+          display: none !important;
+        }
+
       }
 
     }
