@@ -112,11 +112,9 @@ module.exports = {
     browser.waitForElementVisible('.main-container')
       .getText('.field--name-field-author', function (result) {
         browser.assert.ok(result.value.length > 10);
-        console.log(result.value, result.value.length);
       })
       .getText('.field--name-field-sections .field--name-field-body', function (result) {
         browser.assert.ok(result.value.length > 400);
-        console.log(result.value, result.value.length);
       });
 
 
