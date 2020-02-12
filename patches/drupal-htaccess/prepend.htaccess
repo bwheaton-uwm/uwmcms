@@ -97,6 +97,7 @@
     ## go to https://
     RewriteCond %{HTTPS} off
     RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteCond %{ENV:AH_SITE_ENVIRONMENT} ^dev|test|prod$
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
 
 </IfModule>
