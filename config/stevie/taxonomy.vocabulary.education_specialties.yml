@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Education Specialties'
 vid: education_specialties
 description: ''
-hierarchy: 0
 weight: 0

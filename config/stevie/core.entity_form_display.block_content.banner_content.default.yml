@@ -136,12 +136,4 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  moderation_state:
-    type: string_textfield
-    weight: 8
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
 hidden: {  }

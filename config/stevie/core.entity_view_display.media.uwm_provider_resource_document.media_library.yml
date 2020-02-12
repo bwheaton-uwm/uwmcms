@@ -1,0 +1,49 @@
+uuid: 29cec61a-df6e-4945-ab64-1fbd83b064d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.uwm_provider_resource_document.field_media_file
+    - field.field.media.uwm_provider_resource_document.field_media_in_library
+    - field.field.media.uwm_provider_resource_document.field_uwm_description
+    - field.field.media.uwm_provider_resource_document.field_uwm_external_url
+    - field.field.media.uwm_provider_resource_document.field_uwm_prov_res_doc_type
+    - field.field.media.uwm_provider_resource_document.field_uwm_prov_res_media_type
+    - field.field.media.uwm_provider_resource_document.field_uwm_prov_res_specialty
+    - field.field.media.uwm_provider_resource_document.field_uwm_prov_res_sub_specialty
+    - field.field.media.uwm_provider_resource_document.field_uwm_teaser
+    - field.field.media.uwm_provider_resource_document.image
+    - image.style.medium
+    - media.type.uwm_provider_resource_document
+  module:
+    - image
+id: media.uwm_provider_resource_document.media_library
+targetEntityType: media
+bundle: uwm_provider_resource_document
+mode: media_library
+content:
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_style: medium
+      image_link: ''
+    weight: 0
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  field_media_file: true
+  field_media_in_library: true
+  field_uwm_description: true
+  field_uwm_external_url: true
+  field_uwm_prov_res_doc_type: true
+  field_uwm_prov_res_media_type: true
+  field_uwm_prov_res_specialty: true
+  field_uwm_prov_res_sub_specialty: true
+  field_uwm_teaser: true
+  image: true
+  name: true
+  search_api_excerpt: true
+  uid: true
