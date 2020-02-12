@@ -1,0 +1,31 @@
+uuid: 4b11cf8a-56d4-4271-b45a-34428463034f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.podcast.field_media_in_library
+    - field.field.media.podcast.field_media_soundcloud
+    - field.field.media.podcast.field_url
+    - media.type.podcast
+id: media.podcast.media_library
+targetEntityType: media
+bundle: podcast
+mode: media_library
+content:
+  name:
+    type: string_textfield
+    settings:
+      size: 60
+      placeholder: ''
+    weight: 0
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  field_media_in_library: true
+  field_media_soundcloud: true
+  field_url: true
+  path: true
+  status: true
+  uid: true
