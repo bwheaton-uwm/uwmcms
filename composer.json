@@ -80,7 +80,7 @@
         "drupal/acquia_contenthub": "^1.45",
         "drupal/acquia_lift": "3.10.0",
         "drupal/acquia_search": "1.16.0",
-        "drupal/address": "1.4.0",
+        "drupal/address": "^1.7",
         "drupal/admin_toolbar": "2.0.0",
         "drupal/adminimal_admin_toolbar": "1.10.0",
         "drupal/adminimal_theme": "1.5.0",
