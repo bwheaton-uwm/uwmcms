@@ -146,7 +146,7 @@
         "drupal/minifyhtml": "1.6.0",
         "drupal/name": "1.0.0-rc1",
         "drupal/node_revision_delete": "1.0.0-beta3",
-        "drupal/page_manager": "4.0.0-beta3",
+        "drupal/page_manager": "^4.0",
         "drupal/paragraphs": "1.9.0",
         "drupal/paragraphs_admin": "1.0.0",
         "drupal/path_redirect_import": "1.0.0-beta2",
