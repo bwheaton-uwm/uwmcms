@@ -9,6 +9,7 @@ module.exports = {
 
 
   before: function (browser) {
+    this.launch_url = browser.globals.sites.rar.launch_url;
   },
 
   after: function (browser) {
@@ -25,7 +26,7 @@ module.exports = {
     let blockRegion = '.region-sidebar-second';
 
     browser
-      .url('https://rightasrain.uwmedicine.org/')
+      .url(this.launch_url)
       .assert.titleContains('Rain')
       .waitForElementVisible(blockRegion)
       .assert.containsText(blockRegion, 'Subscribe to our newsletter');

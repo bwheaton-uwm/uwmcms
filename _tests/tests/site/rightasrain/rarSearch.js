@@ -7,6 +7,7 @@ module.exports = {
   ],
 
   before: function (browser) {
+    this.launch_url = browser.globals.sites.rar.launch_url;
   },
 
   after: function (browser) {
@@ -16,12 +17,15 @@ module.exports = {
   },
 
   afterEach: function (browser) {
+    browser.url(function (result) {
+      console.log('URL after this step: ', result);
+    });
   },
 
   'Verifying we can search for "heart" results': function (browser) {
-    
+
     browser
-      .url('https://rightasrain.uwmedicine.org/')
+      .url(this.launch_url)
 
     browser
       .assert.visible('.region-header input[name=search]')

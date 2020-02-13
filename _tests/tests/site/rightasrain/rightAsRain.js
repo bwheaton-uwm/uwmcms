@@ -7,6 +7,7 @@ module.exports = {
   ],
 
   before: function (browser) {
+    this.launch_url = browser.globals.sites.rar.launch_url;
   },
 
   after: function (browser) {
@@ -16,18 +17,12 @@ module.exports = {
   },
 
   afterEach: function (browser) {
-
-    console.log('afterEach up...');
-    browser.url(function (result) {
-      console.log(result);
-    });
-
   },
 
   'Verifying we can open RAR\'s home page': function (browser) {
 
     browser
-      .url('https://rightasrain.uwmedicine.org/')
+      .url(this.launch_url)
       .assert.titleContains('Rain');
 
   },
