@@ -1,7 +1,8 @@
 {
-    "name": "acquia/blt-project",
+    "name": "uwmweb/uwmcms",
     "description": "Project template for Drupal 8 sites built with BLT.",
     "type": "project",
+    "license": "proprietary",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "repositories": {
