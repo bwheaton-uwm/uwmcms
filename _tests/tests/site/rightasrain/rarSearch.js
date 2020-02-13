@@ -3,8 +3,7 @@ module.exports = {
   "disabled": false,
   "@tags": [
     "rar",
-    "search",
-    "jnm3"
+    "search"
   ],
 
   before: function (browser) {
@@ -17,17 +16,9 @@ module.exports = {
   },
 
   afterEach: function (browser) {
-
-    console.log('afterEach up...');
-    browser.url(function (result) {
-      console.log(result);
-    });
-
   },
 
-
   'Verifying we can search for "heart" results': function (browser) {
-
     browser
       .url('https://rightasrain.uwmedicine.org/')
 
@@ -36,33 +27,25 @@ module.exports = {
       .setValue('.region-header input[name=search]', 'Sleep')
       .assert.visible('.region-header button[type=submit]');
 
-    browser.click('.region-header button[type=submit]', function(result) {
-      this.assert.strictEqual(result.status, 0);
+    browser.click('.region-header button[type=submit]', function (result) {
+      console.log('Click result', result);
     });
-
-
   },
 
   'Verifying a search result is clickable': function (browser) {
-
     let linkSelector = '.view-content .views-row:last-of-type a';
-
-    browser.waitForElementVisible('.region-content .view-content  .views-row')
+    debugger;
+    browser
+      .waitForElementVisible('.region-content .view-content  .views-row')
       .assert.containsText('.region-content .view-content', 'Sleep');
 
-    browser.assert.visible(linkSelector);
-
-    browser.getAttribute('css selector', linkSelector, 'href', function (result) {
-
-      console.log('articleUrl', result.value);
-      browser.url(result.value);
-
-    });
-
+    browser
+      .waitForElementVisible(linkSelector)
+      .click("css selector", linkSelector)
+      .assert.urlContains("sleep-paralysis");
   },
 
   'Verifying we have article content and an author': function (browser) {
-
     browser.waitForElementVisible('.main-container')
       .getText('.field--name-field-author', function (result) {
         browser.assert.ok(result.value.length > 10);
@@ -70,8 +53,5 @@ module.exports = {
       .getText('.field--name-field-sections .field--name-field-body', function (result) {
         browser.assert.ok(result.value.length > 400);
       });
-
   }
-
-
 };
