@@ -8,6 +8,7 @@ module.exports = {
   ],
 
   before: function (browser) {
+    this.launch_url = browser.globals.sites.rar.launch_url;
   },
 
   after: function (browser) {
@@ -21,7 +22,7 @@ module.exports = {
 
   'Verifying RAR footer has a Facebook.com link': function (browser) {
 
-    browser.url('https://rightasrain.uwmedicine.org/');
+    browser.url(this.launch_url);
 
     browser.expect.element('.footer a[href*="facebook.com"]').to.be.present;
 

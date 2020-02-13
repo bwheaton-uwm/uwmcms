@@ -4,10 +4,12 @@ module.exports = {
   "@tags": [
     "rar",
     "basic",
+    "jnm4"
   ],
 
 
   before: function (browser) {
+    this.launch_url = browser.globals.sites.rar.launch_url;
   },
 
   after: function (browser) {
@@ -22,7 +24,7 @@ module.exports = {
   'Verifying we can open RAR\'s home page': function (browser) {
 
     browser
-      .url('https://rightasrain.uwmedicine.org/')
+      .url(this.launch_url)
       .assert.titleContains('Rain');
 
   },
