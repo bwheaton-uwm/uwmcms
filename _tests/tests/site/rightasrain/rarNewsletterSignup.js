@@ -7,41 +7,17 @@ module.exports = {
     "form"
   ],
 
-  //--window-position=-32000,-32000
-
-  url: "https://rightasrain.uwmedicine.org/",
 
   before: function (browser) {
-
-    console.log('Setting up...');
-
   },
 
   after: function (browser) {
-
-    console.log('Closing down...');
-    browser.end();
-
   },
 
   beforeEach: function (browser) {
-
-    console.log('beforeEach up...');
-
-    browser.url(function (result) {
-      console.log(result);
-    });
-
   },
 
   afterEach: function (browser) {
-
-    console.log('afterEach up...');
-
-    browser.url(function (result) {
-      console.log(result);
-    });
-
   },
 
   'Verifying we see RAR\'s subscribe widget': function (browser) {

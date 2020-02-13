@@ -6,9 +6,6 @@ module.exports = {
     "basic",
   ],
 
-  //--window-position=-32000,-32000
-
-  url: "https://rightasrain.uwmedicine.org/",
 
   before: function (browser) {
   },
@@ -20,12 +17,6 @@ module.exports = {
   },
 
   afterEach: function (browser) {
-
-    console.log('afterEach up...');
-    browser.url(function (result) {
-      console.log(result);
-    });
-
   },
 
   'Verifying we can open RAR\'s home page': function (browser) {
@@ -51,13 +42,11 @@ module.exports = {
   'Verifying we have a featured article, it\'s image and summary': function (browser) {
 
     browser
-      .assert.containsText('.region-content ' +
-      '.block-views-blockhighlighted-article-block ' +
-      '.field--name-field-long-summary',
-      '.')
-      .assert.visible('.region-content ' +
-      '.block-views-blockhighlighted-article-block ' +
-      '.field--name-field-primary-media img');
+      .waitForElementVisible('.region-content')
+      .assert.visible('.block-views-blockhighlighted-article-block .field--name-field-primary-media img')
+      .getText('.block-views-blockhighlighted-article-block .field--name-field-long-summary', function (result) {
+        browser.assert.ok(result.value.length > 100);
+      });
 
   },
 
