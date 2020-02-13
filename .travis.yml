@@ -1,3 +1,4 @@
+sudo: true
 language: php
 dist: xenial
 
@@ -5,6 +6,8 @@ dist: xenial
 # Making this version number greater than the production environment can have unintended consequences
 # including a non-functional prod environment.
 php: "7.2"
+matrix:
+  fast_finish: true
 
 env:
   global:
@@ -13,8 +16,12 @@ env:
     - LOCAL_BLT_DIR=$TRAVIS_BUILD_DIR/blt/
     - BUILD_DIR=$TRAVIS_BUILD_DIR
 
+jdk:
+  - oraclejdk8
 
 cache:
+  bundler: true
+  apt: true
   directories:
     - "$HOME/.composer/cache"
     - "$HOME/.drush/cache"
@@ -31,8 +38,9 @@ services:
 - mysql
 
 addons:
-  # ssh_known_hosts:
-  #   - svn-4786.devcloud.hosting.acquia.com
+  ssh_known_hosts:
+    - svn-23450.prod.hosting.acquia.com
+    - uwmeddev.ssh.prod.acquia-sites.com
   chrome: stable
 
 # @see https://docs.travis-ci.com/user/notifications
@@ -56,6 +64,7 @@ install:
 script:
   - source ${BLT_DIR}/scripts/travis/run_tests
 
+# The version below MUST match the php version indicated at the top of this file, otherwise the artifact won't build.
 deploy:
    - provider: script
      script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_branch"
