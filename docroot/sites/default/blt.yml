@@ -1,13 +1,13 @@
-#drush:
-#  aliases:
-#    remote: 'uwmed.dev'
-#
-#command-hooks:
-#  frontend-reqs:
-#    dir: '${docroot}/themes/custom/uwmed'
-#    command: 'npm install'
-#  frontend-assets:
-#    dir: '${docroot}/themes/custom/uwmed'
-#    command: 'gulp'
-#
-#cm.core.dirs.sync.path: ${cm.core.path}/default
+drush:
+  aliases:
+    remote: 'uwmed.dev'
+
+command-hooks:
+  frontend-reqs:
+    dir: '${docroot}/themes/custom/uwmed'
+    command: 'npm install'
+  frontend-assets:
+    dir: '${docroot}/themes/custom/uwmed'
+    command: 'gulp'
+
+cm.core.dirs.sync.path: ${cm.core.path}/default
