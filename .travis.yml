@@ -50,8 +50,8 @@ install:
   - source ${UWM_BLT}/custom-scripts/travis/setup_project
 
 script:
-  - source ${BLT_DIR}/scripts/travis/run_tests
-  - source ${BLT_DIR}/scripts/travis/simulate_deploy
+  - source ${UWM_BLT}/custom-scripts/travis/run_tests
+  - source ${UWM_BLT}/custom-scripts/simulate_deploy
   # Uncomment these lines to test database updates using live content.
   # - blt drupal:sync:default:site
 
