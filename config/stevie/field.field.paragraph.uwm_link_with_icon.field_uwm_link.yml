@@ -13,7 +13,7 @@ entity_type: paragraph
 bundle: uwm_link_with_icon
 label: Link
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

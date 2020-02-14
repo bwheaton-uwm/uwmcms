@@ -5,20 +5,20 @@
  * Custom module for small, utility-type routines.
  */
 
-use Drupal\uwm_commands\Commands\UwmTempImportClinicImage;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
-use Drupal\Core\Session\AccountInterface;
-use Drupal\node\NodeInterface;
-use Drupal\taxonomy\Entity\Term;
-use Drupal\views\ViewExecutable;
-use Drupal\Core\Url;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Url;
+use Drupal\node\NodeInterface;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\uwm_commands\Commands\UwmTempImportClinicImage;
+use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_entity_presave().
@@ -414,50 +414,87 @@ function uwmcs_utils_preprocess_views_view_field(&$variables) {
   $view = $variables['view'];
   $field = $variables['field'];
 
-  if ($view->id() == 'puma_education_admin_report'
-    && $view->current_display == 'page_1'
-    && $field->field == 'field_res_puma_education') {
-
-    /***
-     * If on our puma-education-report, show PUMA and IM values in the column.
-     */
+  if ($view->id() == 'uwm_providers_puma' && $view->current_display == 'page_1') {
 
     $node = $variables["row"]->_entity;
-    $field1 = $field2 = '';
 
-    if ($node->hasField('field_res_puma_education')) {
+    /***
+     * In on our PUMA report, compare new and old education:
+     */
+    if ($field->field == 'field_uwm_edw_education') {
 
-      $ed1 = json_decode($node->field_res_puma_education->value);
-      if ($ed1) {
-        foreach ($ed1 as $value) {
-          $field1 .= '<li>[ ' .
-            $value->university_from_date . ' | ' .
-            $value->university_name . ' | ' .
-            $value->type . ' | ' .
-            $value->specialty . ' ]';
+      $field1 = $field2 = '';
+
+      $d = json_decode($node->field_uwm_edw_education->value);
+      if ($d) {
+        foreach ($d as $value) {
+          $field1 .= '<li>' .
+            $value->university_from_date . ', ' .
+            $value->university_name . ', ' .
+            $value->type . ', ' .
+            $value->specialty;
         }
       }
-    }
 
-    if ($node->hasField('field_uwm_json_packet')) {
-
-      $ed2 = json_decode($node->field_uwm_json_packet->value);
-      if ($ed2 && isset($ed2->educationHistories)) {
-        foreach ($ed2->educationHistories as $value) {
-          $field2 .= '<li>[ ' .
-            $value->startYear . ' | ' .
-            $value->institutionName . ' | ' .
-            $value->educationType . ' | ' .
-            $value->specialty . ' ]';
+      $d = json_decode($node->field_uwm_json_packet->value);
+      if ($d && isset($d->educationHistories)) {
+        foreach ($d->educationHistories as $value) {
+          $field2 .= '<li>' .
+            $value->startYear . ', ' .
+            $value->institutionName . ', ' .
+            $value->educationType . ', ' .
+            $value->specialty;
         }
       }
+
+      $diff = abs(strlen($field1) - strlen($field2));
+      $style = $diff < 50 ? '' : 'background-color: lightgoldenrodyellow';
+
+      $output = '<table><thead><tr><td>PUMA </td><td>IM </td></tr></thead>'
+        . '<tr valign="top"><td>' . $field1 . '</td><td>' . $field2 . '</td></tr>'
+        . '</table><pre style="' . $style . '">Diff: ' . $diff . '</pre>';
+
+      $variables['output'] = Markup::create($output);
+
     }
 
-    $diff = abs(strlen($field1) - strlen($field2));
-    $style = $diff < 50 ? '' : 'background-color: lightgoldenrodyellow';
+    /***
+     * In on our PUMA report, compare new and old board certs:
+     */
+    if ($field->field == 'field_uwm_edw_boardcerts') {
 
-    $return = '<table><thead><tr><td>PUMA</td><td>IM</td></tr></thead><tr><td>' . $field1 . '</td><td>' . $field2 . '</td></tr></table><pre style="' . $style . '">Diff: ' . $diff . '</pre>';
-    $variables['output'] = Markup::create($return);
+      $field1 = $field2 = '';
+
+      $d = json_decode($node->field_uwm_edw_boardcerts->value);
+      if ($d) {
+        foreach ($d as $value) {
+          $field1 .= '<li>' .
+            $value->specialty_name . ', ' .
+            $value->certified_year . ', ' .
+            $value->board_name . ', ';
+        }
+      }
+
+      $d = json_decode($node->field_uwm_json_packet->value);
+      if ($d && isset($d->boardCertifications)) {
+        foreach ($d->boardCertifications as $value) {
+          $field2 .= '<li>' .
+            $value->specialtyName . ', ' .
+            $value->certifiedYear . ', ' .
+            $value->boardName . ', ';
+        }
+      }
+
+      $diff = abs(strlen($field1) - strlen($field2));
+      $style = $diff < 50 ? '' : 'background-color: lightgoldenrodyellow';
+
+      $output = '<table><thead><tr><td>PUMA </td><td>IM </td></tr></thead>'
+        . '<tr valign="top"><td>' . $field1 . '</td><td>' . $field2 . '</td></tr>'
+        . '</table><pre style="' . $style . '">Diff: ' . $diff . '</pre>';
+
+      $variables['output'] = Markup::create($output);
+
+    }
 
   }
 
