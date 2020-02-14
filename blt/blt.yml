@@ -47,6 +47,9 @@ disable-targets:
     frontend: { run: true }
     phpunit: { all: true, run: true }
     phpstan: { all: true, run: true }
+    deprecated:
+      modules: { all: true, run: true }
+      themes: { all: true, run: true }
 
 validate:
   twig:
