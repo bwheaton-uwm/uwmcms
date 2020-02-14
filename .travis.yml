@@ -62,6 +62,12 @@ deploy:
      script: "${UWM_BLT}/custom-scripts/travis/deploy_branch"
      skip_cleanup: true
      on:
+       branch: maintenance
+       php: 7.2
+   - provider: script
+     script: "${UWM_BLT}/custom-scripts/travis/deploy_branch"
+     skip_cleanup: true
+     on:
        branch: stage
        php: 7.2
    - provider: script
