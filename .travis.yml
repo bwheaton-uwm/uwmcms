@@ -23,8 +23,9 @@ services:
 - mysql
 
 addons:
-  # ssh_known_hosts:
-  #   - svn-4786.devcloud.hosting.acquia.com
+  ssh_known_hosts:
+    - svn-23450.prod.hosting.acquia.com
+    - uwmeddev.ssh.prod.acquia-sites.com
   chrome: stable
 
 # @see https://docs.travis-ci.com/user/notifications
