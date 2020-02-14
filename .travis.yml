@@ -52,9 +52,8 @@ install:
 script: []
   # Uncomment these lines to test database updates using live content.
   # - blt drupal:sync:default:site
-  # Temporarily disable tests
-  # - source ${BLT_DIR}/scripts/travis/run_tests
-  # - source ${BLT_DIR}/scripts/travis/simulate_deploy
+   - source ${BLT_DIR}/scripts/travis/run_tests
+   - source ${BLT_DIR}/scripts/travis/simulate_deploy
 
 # The version below MUST match the php version indicated at the top of this file, otherwise the artifact won't build.
 #deploy:
