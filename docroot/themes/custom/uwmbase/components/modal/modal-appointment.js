@@ -18,6 +18,32 @@
         return;
       }
 
+      /*
+       * Detect if device is iPhone or iPad running iOS version 12 or below.
+       */
+      function detectIOS12down() {
+
+        // Note: for iPad iOS 13+ this is not 'iPad', but we're not looking for
+        // that anyway.
+        if (/iPhone|iPad/.test(navigator.platform)) {
+
+          // Match e.g. '...OS 12...' or '...OS 13...'.
+          var versionMatch = navigator.appVersion.match(/OS (\d+)/);
+
+          if (versionMatch && versionMatch[1]) {
+            var versionMajor = parseInt(versionMatch[1], 10);
+
+            if (!isNaN(versionMajor) && versionMajor < 13) {
+              alert('iOS 12-');
+              return true;
+            }
+          }
+        }
+
+        return false;
+
+      }
+
       // The context is the type of page on which the appointment modal is being
       // used. If we're on a provider's bio page, any elements with provider-
       // specific data (e.g. the Epic ID) can stay static throughout modal
@@ -76,7 +102,11 @@
 
       // Determine whether to link out to the open scheduling widget, instead of
       // embedding it in the iframe.
-      var openSchedulingLinkOut = true;
+      // On iPhone/iPad running iOS versions 12 and below, iframes are maximized
+      // and do not scroll, so do not use it because without scrolling, the user
+      // cannot access additional appointment time slots.
+      // @see https://bugs.webkit.org/show_bug.cgi?id=149264
+      var openSchedulingLinkOut = detectIOS12down();
 
       if (openSchedulingLinkOut) {
 
