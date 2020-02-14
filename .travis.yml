@@ -42,7 +42,7 @@ before_install:
   - source ${BLT_DIR}/scripts/travis/exit_early
 
 install:
-  - source ${BLT_DIR}/scripts/travis/setup_environment
+  - source ${LOCAL_BLT_DIR}/custom-scripts/travis/setup_environment
   - source ${BLT_DIR}/scripts/travis/setup_project
 
 script:
