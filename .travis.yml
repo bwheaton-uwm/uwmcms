@@ -49,7 +49,7 @@ install:
   - source ${UWM_BLT}/custom-scripts/travis/setup_environment
   - source ${UWM_BLT}/custom-scripts/travis/setup_project
 
-script: 
+script:
   - source ${BLT_DIR}/scripts/travis/run_tests
   - source ${BLT_DIR}/scripts/travis/simulate_deploy
   # Uncomment these lines to test database updates using live content.

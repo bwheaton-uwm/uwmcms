@@ -18,11 +18,14 @@
   <rule ref="Drupal"/>
 <!--  <rule ref="DrupalPractice"/> -->
 
-  <file>blt</file>
-  <file>docroot/modules/custom</file>
-  <file>docroot/themes/custom</file>
+<!--  <file>blt</file>-->
+<!--  <file>docroot/modules/custom</file>-->
+<!--  <file>docroot/themes/custom</file>-->
   <file>tests</file>
 
+
+  <exclude-pattern>docroot/modules/custom</exclude-pattern>
+  <exclude-pattern>docroot/themes/custom</exclude-pattern>
   <exclude-pattern>*/behat</exclude-pattern>
   <exclude-pattern>*/external_libraries</exclude-pattern>
   <exclude-pattern>*/node_modules</exclude-pattern>
