@@ -57,28 +57,28 @@ script:
   # - blt drupal:sync:default:site
 
 # The version below MUST match the php version indicated at the top of this file, otherwise the artifact won't build.
-#deploy:
-#   - provider: script
-#     script: "${UWM_BLT}/custom-scripts/travis/deploy_branch"
-#     skip_cleanup: true
-#     on:
-#       branch: stage
-#       php: 7.2
-#   - provider: script
-#     script: "${UWM_BLT}/custom-scripts/travis/deploy_branch"
-#     skip_cleanup: true
-#     on:
-#       branch: develop
-#       php: 7.2
-#   - provider: script
-#     script: "${UWM_BLT}/custom-scripts/travis/deploy_branch"
-#     skip_cleanup: true
-#     on:
-#       branch: master
-#       php: 7.2
-#   - provider: script
-#     script: "${UWM_BLT}/custom-scripts/travis/deploy_tag"
-#     skip_cleanup: true
-#     on:
-#       tags: true
-#       php: 7.2
+deploy:
+   - provider: script
+     script: "${UWM_BLT}/custom-scripts/travis/deploy_branch"
+     skip_cleanup: true
+     on:
+       branch: stage
+       php: 7.2
+   - provider: script
+     script: "${UWM_BLT}/custom-scripts/travis/deploy_branch"
+     skip_cleanup: true
+     on:
+       branch: develop
+       php: 7.2
+   - provider: script
+     script: "${UWM_BLT}/custom-scripts/travis/deploy_branch"
+     skip_cleanup: true
+     on:
+       branch: master
+       php: 7.2
+   - provider: script
+     script: "${UWM_BLT}/custom-scripts/travis/deploy_tag"
+     skip_cleanup: true
+     on:
+       tags: true
+       php: 7.2
