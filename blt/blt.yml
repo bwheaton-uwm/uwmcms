@@ -73,11 +73,11 @@ target-hooks:
     dir: '${docroot}'
     command: 'echo ''No post-deploy build configured.'''
 multisites:
-  - default
   - chew
   - huddle
-  - calendar
   - stevie
+#  - default
+#  - calendar
 behat:
   paths: {  }
   web-driver: selenium
