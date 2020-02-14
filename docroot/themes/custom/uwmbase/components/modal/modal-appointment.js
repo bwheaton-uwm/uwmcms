@@ -74,10 +74,36 @@
       // Track steps the user has visited, for use by Back links.
       var stepPath = [];
 
+      // Determine whether to link out to the open scheduling widget, instead of
+      // embedding it in the iframe.
+      var openSchedulingLinkOut = true;
+
+      if (openSchedulingLinkOut) {
+
+        // Since the iframe will not be used, remove it to skip updating its
+        // src and reloading it behind the scenes. Instead create a link element
+        // to store the open scheduling URL as it's updated dynamically via
+        // setUrlAttrQueryStringVal(), and then to redirect when the user moves
+        // to open scheduling step. (It's not attached to the DOM because
+        // there's no need to display it.)
+        var $linkOpenSched = $('<a>').attr('href', $iframeOpenSched.attr('src'));
+        $iframeOpenSched.remove();
+
+      }
+
       /*
        * Set modal to given step.
        */
       function setStep($step) {
+
+        // If linking to the open scheduling widget, redirect and we're done.
+        if ($step.is($stepOpenSchedWidget) && openSchedulingLinkOut) {
+
+          window.location.href = $linkOpenSched.attr('href');
+
+          return;
+
+        }
 
         // Hide currently active step (if any) and show new one.
         var $activeStep = $steps.filter('.active');
@@ -194,7 +220,7 @@
        * Update link 'href' and iframe 'src' url values to insert a value for a
        * relevant query string key, based on provider and user selections.
        */
-      function setUrlAttrQueryStringVal($elem, attrName, key, val) {
+      function setUrlAttrQueryStringVal($elem, key, val) {
 
         // The element should exist - if not, there's a bug elsewhere; give a
         // warning and exit.
@@ -204,6 +230,12 @@
           }
 
           return;
+        }
+
+        var attrName = 'href';
+
+        if ($elem.is('iframe')) {
+          attrName = 'src';
         }
 
         // In the original markup, the url query string contains the key and '='
@@ -261,6 +293,16 @@
         }
 
         $elem.attr(attrName, $elem.data('base-' + attrName));
+
+      }
+
+      /*
+       * Update the open scheduling iframe or link url query string with given
+       * key/value.
+       */
+      function updateUrlOpenScheduling(key, val) {
+
+        setUrlAttrQueryStringVal(openSchedulingLinkOut ? $linkOpenSched : $iframeOpenSched, key, val);
 
       }
 
@@ -448,12 +490,11 @@
             // visit type if there's only one.
             if ($stepOpenSchedWidget.length) {
 
-              // TODO: bad to have iframe with a "broken" src at any point?
-              setUrlAttrQueryStringVal($iframeOpenSched, 'src', 'id', epicID);
+              updateUrlOpenScheduling('id', epicID);
 
               if (!openMultipleTypes) {
 
-                setUrlAttrQueryStringVal($iframeOpenSched, 'src', 'vt', visitTypeIDs[0]);
+                updateUrlOpenScheduling('vt', visitTypeIDs[0]);
 
               }
 
@@ -475,7 +516,7 @@
                 $stepVisitedBefore.find('a[data-btn="yes-step"]').hide();
 
                 // Update the eCare URL with provider's Epic ID.
-                setUrlAttrQueryStringVal($visitedBeforeYesLinkDirect, 'href', 'selProvId', epicID);
+                setUrlAttrQueryStringVal($visitedBeforeYesLinkDirect, 'selProvId', epicID);
 
               }
               else {
@@ -490,7 +531,7 @@
             // with provider's Epic ID.
             if ($stepEcareAccount.length) {
 
-              setUrlAttrQueryStringVal($ecareAccountYesLinkDirect, 'href', 'selProvId', epicID);
+              setUrlAttrQueryStringVal($ecareAccountYesLinkDirect, 'selProvId', epicID);
 
             }
 
@@ -695,8 +736,7 @@
           var $btn = $(this);
 
           // Update open scheduling widget with the chosen visit type ID.
-          // TODO: bad to have iframe with a "broken" src?
-          setUrlAttrQueryStringVal($iframeOpenSched, 'src', 'vt', $btn.attr('data-btn-visit-type-id'));
+          updateUrlOpenScheduling('vt', $btn.attr('data-btn-visit-type-id'));
 
           stepForward($btn, $stepOpenSchedWidget);
 
