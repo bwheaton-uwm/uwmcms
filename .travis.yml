@@ -23,7 +23,7 @@ cache:
   # - "docroot/themes/custom/mytheme/bower_components"
 
 services:
-- mysql
+  - mysql
 
 addons:
   ssh_known_hosts:
@@ -49,9 +49,9 @@ install:
   - source ${UWM_BLT}/custom-scripts/travis/setup_environment
   - source ${UWM_BLT}/custom-scripts/travis/setup_project
 
-script: []
-   - source ${BLT_DIR}/scripts/travis/run_tests
-   - source ${BLT_DIR}/scripts/travis/simulate_deploy
+script: 
+  - source ${BLT_DIR}/scripts/travis/run_tests
+  - source ${BLT_DIR}/scripts/travis/simulate_deploy
   # Uncomment these lines to test database updates using live content.
   # - blt drupal:sync:default:site
 
