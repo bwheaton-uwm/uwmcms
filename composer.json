@@ -47,11 +47,9 @@
             "sh ./patches/simplesaml/setup_simplesaml_patch.sh"
         ],
         "post-install-cmd": [
-            "@uwmcms-update-saml",
-            "composer show > .composer_show.out"
+            "@uwmcms-update-saml"
         ],
         "post-update-cmd": [
-            "composer show > .composer_show.out"
         ],
         "post-create-project-cmd": [
             "blt internal:create-project:init-repo"
