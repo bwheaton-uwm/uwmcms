@@ -1,11 +1,19 @@
 //nightwatch.browserstack.conf.js
 require('dotenv').config();
 module.exports = {
-    src_folders: ["tests/site"],
-    page_objects_path: ["tests/page_objects"],
     custom_assertions_path: "tests/custom_assertions",
-    custom_commands_path: "tests/custom_commands",
+    custom_commands_path: [
+        "tests/custom_commands",
+        "tests/custom_commands/footer",
+        "tests/custom_commands/header",
+    ],
     globals_path: "tests/globals.js",
+    page_objects_path: [
+        "tests/page_objects",
+        "tests/page_objects/header",
+        "tests/page_objects/footer",
+    ],
+    src_folders: ["tests/site"],
 
     "webdriver": {
         'start_process': false,
