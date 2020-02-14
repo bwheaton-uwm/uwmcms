@@ -45,6 +45,9 @@ disable-targets:
     behat: { all: true, run: true }
     security: { check: { updates: true } }
     frontend: { run: true }
+    phpunit: { all: true, run: true }
+    phpstan: { all: true, run: true }
+
 validate:
   twig:
     filesets: {  }
