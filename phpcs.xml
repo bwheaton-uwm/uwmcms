@@ -18,7 +18,7 @@
   <rule ref="Drupal"/>
 <!--  <rule ref="DrupalPractice"/> -->
 
-<!--  <file>blt</file>-->
+  <file>blt</file>
 <!--  <file>docroot/modules/custom</file>-->
 <!--  <file>docroot/themes/custom</file>-->
   <file>tests</file>
