@@ -299,8 +299,5 @@
         }
     },
     "autoload-dev": {
-        "psr-4": {
-            "Drupal\\Tests\\PHPUnit\\": "tests/phpunit/src/"
-        }
     }
 }
