@@ -45,30 +45,37 @@ before_install:
 
 install:
   - source ${LOCAL_BLT_DIR}/custom-scripts/travis/setup_environment
-  - source ${BLT_DIR}/scripts/travis/setup_project
+  - source ${LOCAL_BLT_DIR}/custom-scripts/travis/setup_project
 
-script:
+script: []
   # Uncomment these lines to test database updates using live content.
   # - blt drupal:sync:default:site
   # Temporarily disable tests
   # - source ${BLT_DIR}/scripts/travis/run_tests
-  - source ${BLT_DIR}/scripts/travis/simulate_deploy
+  # - source ${BLT_DIR}/scripts/travis/simulate_deploy
 
+# The version below MUST match the php version indicated at the top of this file, otherwise the artifact won't build.
 deploy:
    - provider: script
-     script: "${BLT_DIR}/scripts/travis/deploy_branch"
+     script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_branch"
+     skip_cleanup: true
+     on:
+       branch: stage
+       php: 7.2
+   - provider: script
+     script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_branch"
      skip_cleanup: true
      on:
        branch: develop
        php: 7.2
    - provider: script
-     script: "${BLT_DIR}/scripts/travis/deploy_branch"
+     script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_branch"
      skip_cleanup: true
      on:
        branch: master
        php: 7.2
    - provider: script
-     script: "${BLT_DIR}/scripts/travis/deploy_tag"
+     script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_tag"
      skip_cleanup: true
      on:
        tags: true
