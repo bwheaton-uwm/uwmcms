@@ -18,6 +18,32 @@
         return;
       }
 
+      /*
+       * Detect if device is iPhone or iPad running iOS version 12 or below.
+       */
+      function detectIOS12down() {
+
+        // Note: for iPad iOS 13+ this is not 'iPad', but we're not looking for
+        // that anyway.
+        if (/iPhone|iPad/.test(navigator.platform)) {
+
+          // Match e.g. '...OS 12...' or '...OS 13...'.
+          var versionMatch = navigator.appVersion.match(/OS (\d+)/);
+
+          if (versionMatch && versionMatch[1]) {
+            var versionMajor = parseInt(versionMatch[1], 10);
+
+            if (!isNaN(versionMajor) && versionMajor < 13) {
+              alert('iOS 12-');
+              return true;
+            }
+          }
+        }
+
+        return false;
+
+      }
+
       // The context is the type of page on which the appointment modal is being
       // used. If we're on a provider's bio page, any elements with provider-
       // specific data (e.g. the Epic ID) can stay static throughout modal
@@ -74,10 +100,40 @@
       // Track steps the user has visited, for use by Back links.
       var stepPath = [];
 
+      // Determine whether to link out to the open scheduling widget, instead of
+      // embedding it in the iframe.
+      // On iPhone/iPad running iOS versions 12 and below, iframes are maximized
+      // and do not scroll, so do not use it because without scrolling, the user
+      // cannot access additional appointment time slots.
+      // @see https://bugs.webkit.org/show_bug.cgi?id=149264
+      var openSchedulingLinkOut = detectIOS12down();
+
+      if (openSchedulingLinkOut) {
+
+        // Since the iframe will not be used, remove it to skip updating its
+        // src and reloading it behind the scenes. Instead create a link element
+        // to store the open scheduling URL as it's updated dynamically via
+        // setUrlAttrQueryStringVal(), and then to redirect when the user moves
+        // to open scheduling step. (It's not attached to the DOM because
+        // there's no need to display it.)
+        var $linkOpenSched = $('<a>').attr('href', $iframeOpenSched.attr('src'));
+        $iframeOpenSched.remove();
+
+      }
+
       /*
        * Set modal to given step.
        */
       function setStep($step) {
+
+        // If linking to the open scheduling widget, redirect and we're done.
+        if ($step.is($stepOpenSchedWidget) && openSchedulingLinkOut) {
+
+          window.location.href = $linkOpenSched.attr('href');
+
+          return;
+
+        }
 
         // Hide currently active step (if any) and show new one.
         var $activeStep = $steps.filter('.active');
@@ -194,7 +250,7 @@
        * Update link 'href' and iframe 'src' url values to insert a value for a
        * relevant query string key, based on provider and user selections.
        */
-      function setUrlAttrQueryStringVal($elem, attrName, key, val) {
+      function setUrlAttrQueryStringVal($elem, key, val) {
 
         // The element should exist - if not, there's a bug elsewhere; give a
         // warning and exit.
@@ -204,6 +260,12 @@
           }
 
           return;
+        }
+
+        var attrName = 'href';
+
+        if ($elem.is('iframe')) {
+          attrName = 'src';
         }
 
         // In the original markup, the url query string contains the key and '='
@@ -261,6 +323,16 @@
         }
 
         $elem.attr(attrName, $elem.data('base-' + attrName));
+
+      }
+
+      /*
+       * Update the open scheduling iframe or link url query string with given
+       * key/value.
+       */
+      function updateUrlOpenScheduling(key, val) {
+
+        setUrlAttrQueryStringVal(openSchedulingLinkOut ? $linkOpenSched : $iframeOpenSched, key, val);
 
       }
 
@@ -448,12 +520,11 @@
             // visit type if there's only one.
             if ($stepOpenSchedWidget.length) {
 
-              // TODO: bad to have iframe with a "broken" src at any point?
-              setUrlAttrQueryStringVal($iframeOpenSched, 'src', 'id', epicID);
+              updateUrlOpenScheduling('id', epicID);
 
               if (!openMultipleTypes) {
 
-                setUrlAttrQueryStringVal($iframeOpenSched, 'src', 'vt', visitTypeIDs[0]);
+                updateUrlOpenScheduling('vt', visitTypeIDs[0]);
 
               }
 
@@ -475,7 +546,7 @@
                 $stepVisitedBefore.find('a[data-btn="yes-step"]').hide();
 
                 // Update the eCare URL with provider's Epic ID.
-                setUrlAttrQueryStringVal($visitedBeforeYesLinkDirect, 'href', 'selProvId', epicID);
+                setUrlAttrQueryStringVal($visitedBeforeYesLinkDirect, 'selProvId', epicID);
 
               }
               else {
@@ -490,7 +561,7 @@
             // with provider's Epic ID.
             if ($stepEcareAccount.length) {
 
-              setUrlAttrQueryStringVal($ecareAccountYesLinkDirect, 'href', 'selProvId', epicID);
+              setUrlAttrQueryStringVal($ecareAccountYesLinkDirect, 'selProvId', epicID);
 
             }
 
@@ -695,8 +766,7 @@
           var $btn = $(this);
 
           // Update open scheduling widget with the chosen visit type ID.
-          // TODO: bad to have iframe with a "broken" src?
-          setUrlAttrQueryStringVal($iframeOpenSched, 'src', 'vt', $btn.attr('data-btn-visit-type-id'));
+          updateUrlOpenScheduling('vt', $btn.attr('data-btn-visit-type-id'));
 
           stepForward($btn, $stepOpenSchedWidget);
 
