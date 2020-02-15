@@ -27,14 +27,14 @@
         // that anyway.
         if (/iPhone|iPad/.test(navigator.platform)) {
 
-          // Match e.g. '...OS 12...' or '...OS 13...'.
+          // Extract the major iOS version. Example `navigator.appVersion`:
+          // `5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1`.
           var versionMatch = navigator.appVersion.match(/OS (\d+)/);
 
           if (versionMatch && versionMatch[1]) {
             var versionMajor = parseInt(versionMatch[1], 10);
 
             if (!isNaN(versionMajor) && versionMajor < 13) {
-              alert('iOS 12-');
               return true;
             }
           }
@@ -103,8 +103,10 @@
       // Determine whether to link out to the open scheduling widget, instead of
       // embedding it in the iframe.
       // On iPhone/iPad running iOS versions 12 and below, iframes are maximized
-      // and do not scroll, so do not use it because without scrolling, the user
-      // cannot access additional appointment time slots.
+      // and do not scroll, so do not use the open scheduling widget embedded in
+      // an iframe - because without scrolling, the user cannot trigger
+      // additional appointment time slots to load or access whatever might be
+      // cut off at the bottom of each widget step.
       // @see https://bugs.webkit.org/show_bug.cgi?id=149264
       var openSchedulingLinkOut = detectIOS12down();
 
