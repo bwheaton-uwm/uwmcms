@@ -25,7 +25,7 @@ module.exports = {
 	var searchProviderPage = browser.page.searchProviders();
 	searchProviderPage
 		.loadPage()
-		.searchFor(name[0])
+		.headerSearchFor(name[0])
 		// Should find exactly one result for "Larry S. Dean"
 		.assert.elementCount("article", 1, "Correct number of search rsults verified");
 

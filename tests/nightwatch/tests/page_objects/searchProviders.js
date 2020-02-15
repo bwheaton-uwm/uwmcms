@@ -15,17 +15,6 @@ module.exports = {
         			.assert.title("Find a provider | UW Medicine",
         			              "verify /search/providers page title");
 			},
-			searchFor: function(searchText) {
-			// Verifies that the search bar is being shown, clears it, searches for the text
-			// provided, then waits for the results
-				return this
-					.assert.visible("@providerSearchBar")
-					.clearValue("@providerSearchBar")
-					.setValue("@providerSearchBar", searchText)
-					.assert.visible("@searchButton")
-					.click("@searchButton")
-					.waitForElementVisible("@resetButton");
-			}
 		}
 	],
 	elements: {

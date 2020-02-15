@@ -13,7 +13,7 @@ module.exports = {
 	var searchProviderPage = browser.page.searchProviders();
 	searchProviderPage
 		.loadPage()
-		.searchFor(name)
+		.headerSearchFor(name)
 		// There should be one and only one result
 		.assert.elementCount("article", 1, "Correct number of cards found");
 
@@ -37,6 +37,3 @@ module.exports = {
 	browser.end();
 	},
 };
-
-
-
