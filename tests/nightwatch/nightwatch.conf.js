@@ -4,8 +4,8 @@ module.exports = {
     custom_assertions_path: "tests/custom_assertions",
     custom_commands_path: [
         "tests/custom_commands",
-        "tests/custom_commands/footer",
-        "tests/custom_commands/header",
+        //"tests/custom_commands/footer",
+        //"tests/custom_commands/header",
     ],
     globals_path: "tests/globals.js",
     page_objects_path: [

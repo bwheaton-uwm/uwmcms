@@ -16,6 +16,10 @@ module.exports = {
         header
             .headerSearchFor("Cat and dog");
 
+        searchProviderPage
+            .pause(30000)
+            .waitForElementVisible('@resetButton');
+
         var card = searchProviderPage.section.providerCard;
         card
             .assert.visible('@cardTitle', 'Card Title verified')

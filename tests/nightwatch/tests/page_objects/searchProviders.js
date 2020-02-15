@@ -1,5 +1,5 @@
 module.exports = {
-	url: "https://www.uwmedicine.org/search/providers",
+	url: 'https://www.uwmedicine.org/search/providers',
 	commands: [
 		{
 			loadPage: function () {
@@ -7,91 +7,91 @@ module.exports = {
 			// and verifies it's on the expected page
 				return this
 					.navigate()
-					.waitForElementVisible("@cookiesAlertButton")
-        			.click("@cookiesAlertButton")
-        			.navigate()
-        			.waitForElementVisible("body")
-        			.resizeWindow(2048, 1536)
-        			.assert.title("Find a provider | UW Medicine",
-        			              "verify /search/providers page title");
+					.waitForElementVisible('@cookiesAlertButton')
+        			.click('@cookiesAlertButton')
+        			//.navigate()
+        			.waitForElementVisible('body')
+        			//.resizeWindow(2048, 1536)
+        			.assert.title('Find a provider | UW Medicine',
+        			              'verify /search/providers page title');
 			},
 		}
 	],
 	elements: {
-		cookiesAlertButton: ".eu-cookie-compliance-default-button",
-		pageTitle: ".page-title",
-		providerCards: "article",
-		providerSearchBar: "#edit-s",
+		cookiesAlertButton: '.eu-cookie-compliance-default-button',
+		pageTitle: '.page-title',
+		providerCards: 'article',
+		providerSearchBar: '#edit-s',
 		resetButton: {
-			selector:  "//a[@class='btn btn-cta btn-cta-link reset']",
-			locateStrategy: "xpath"
+			selector:  '//a[@class="btn btn-cta btn-cta-link reset"]',
+			locateStrategy: 'xpath'
 		},
-		searchButton: ".submit",
+		searchButton: '.submit',
 	},
 	sections: {
 		providerCard: {
-			selector: "article",
+			selector: 'article',
 			elements: {
 				accepting: {
-					selector: ".provider-card__accepting-patients"
+					selector: '.provider-card__accepting-patients'
 				},
 				appointmentsLabel: {
-					selector: ".btn-group h3"
+					selector: '.btn-group h3'
 				},
 				appointmentsBookOnlineButton: {
-					selector: ".provider-card__book-online"
+					selector: '.provider-card__book-online'
 				},
 				appointmentsPhoneNumberButton: {
-					selector: ".provider-card__phone-number"
+					selector: '.provider-card__phone-number'
 				},
 				appointmentsViewContactDetailButton: {
-					selector: ".provider-card__contact-information"
+					selector: '.provider-card__contact-information'
 				},
 				calendarIcon: {
-					selector: ".uwm-icon--calendar"
+					selector: '.uwm-icon--calendar'
 				},
 				cardTitle: {
-					selector: ".provider-card__title"
+					selector: '.provider-card__title'
 				},
 				locationsLabel: {
-					selector: ".provider-card__locations h3"
+					selector: '.provider-card__locations h3'
 				},
 				locationsPinIcon: {
-					selector: ".uwm-icon--locations-pin"
+					selector: '.uwm-icon--locations-pin'
 				},
 				locationsItems: {
-					selector: ".items a"
+					selector: '.items a'
 				},
 				locationsItemOne: {
-					selector: ".items a:nth-child(1)"
+					selector: '.items a:nth-child(1)'
 				},
 				locationItemsTwo: {
-					selector: ".items a:nth-child(2)"
+					selector: '.items a:nth-child(2)'
 				},
 				providerImage: {
-					selector: ".img-fluid",
+					selector: '.img-fluid',
 					suppressNotFoundErrors: true
 				},
 				providerImageDefault: {
-					selector: "article img",
+					selector: 'article img',
 					suppressNotFoundErrors: true
 				},
 				seeMoreButton: {
-					selector: ".provider-card__see-more a.btn"
+					selector: '.provider-card__see-more a.btn'
 				},
 				specialtiesLabel: {
-					selector: ".provider-card__specialties h3",
+					selector: '.provider-card__specialties h3',
 				},
 				specialtiesItems: {
-					selector: ".provider-card__specialties .items"
+					selector: '.provider-card__specialties .items'
 				}
 			}
 		},
 		pager: {
-			selector: ".js-pager__items",
+			selector: '.js-pager__items',
 			elements: {
 				last: {
-					selector: ".pager__item--last a span:nth-child(2)"
+					selector: '.pager__item--last a span:nth-child(2)'
 				}
 			}
 		}
