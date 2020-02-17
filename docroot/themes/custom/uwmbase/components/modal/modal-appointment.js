@@ -23,21 +23,26 @@
        */
       function detectIOS12down() {
 
-        // Note: for iPad iOS 13+ this is not 'iPad', but we're not looking for
-        // that anyway.
-        if (/iPhone|iPad/.test(navigator.platform)) {
+        if (typeof navigator !== 'undefined' && typeof navigator.platform === 'string' && typeof navigator.appVersion === 'string') {
 
-          // Extract the major iOS version. Example `navigator.appVersion`:
-          // `5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1`.
-          var versionMatch = navigator.appVersion.match(/OS (\d+)/);
+          // Note: for iPad on iOS 13+ this value is not 'iPad', but we're not
+          // looking for that case anyway.
+          if (/iPhone|iPad/.test(navigator.platform)) {
 
-          if (versionMatch && versionMatch[1]) {
-            var versionMajor = parseInt(versionMatch[1], 10);
+            // Extract the major iOS version. Example `navigator.appVersion`:
+            // `5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1`.
+            var versionMatch = navigator.appVersion.match(/OS (\d+)/);
 
-            if (!isNaN(versionMajor) && versionMajor < 13) {
-              return true;
+            if (versionMatch && versionMatch[1]) {
+              var versionMajor = parseInt(versionMatch[1], 10);
+
+              if (!isNaN(versionMajor) && versionMajor < 13) {
+                return true;
+              }
             }
+
           }
+
         }
 
         return false;
