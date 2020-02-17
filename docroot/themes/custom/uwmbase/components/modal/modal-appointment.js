@@ -296,7 +296,7 @@
           // If setting key/val that's already been set within current flow
           // (e.g. user stepped back), reset first. Otherwise our string
           // replacement will insert the new value alongside the existing one.
-          resetUrlAttr($elem, attrName);
+          resetUrlAttr($elem);
           url = $elem.attr(attrName);
         }
 
@@ -317,7 +317,7 @@
        * "base" url string, in which relevant keys in the query string have no
        * value.
        */
-      function resetUrlAttr($elem, attrName) {
+      function resetUrlAttr($elem) {
 
         // The element should exist - if not, there's a bug elsewhere; give a
         // warning and exit.
@@ -327,6 +327,12 @@
           }
 
           return;
+        }
+
+        var attrName = 'href';
+
+        if ($elem.is('iframe')) {
+          attrName = 'src';
         }
 
         $elem.attr(attrName, $elem.data('base-' + attrName));
@@ -845,9 +851,9 @@
           }
 
           // Remove provider's Epic ID and visit type from scheduling link URLs.
-          resetUrlAttr($iframeOpenSched, 'src');
-          resetUrlAttr($ecareAccountYesLinkDirect, 'href');
-          resetUrlAttr($visitedBeforeYesLinkDirect, 'href');
+          resetUrlAttr(openSchedulingLinkOut ? $linkOpenSched : $iframeOpenSched);
+          resetUrlAttr($ecareAccountYesLinkDirect);
+          resetUrlAttr($visitedBeforeYesLinkDirect);
 
           // For all elements in the modal with analytics attribute, reset the
           // scheduling status string part to its placeholder.
