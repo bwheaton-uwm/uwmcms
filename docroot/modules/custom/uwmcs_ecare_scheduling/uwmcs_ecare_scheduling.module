@@ -2,10 +2,9 @@
 
 /**
  * @file
- * Custom module for Epic eCare MyChart OpenScheduling.
+ * Integration with EPIC eCare appointment scheduling.
  */
 
-use Drupal\uwmcs_ecare_scheduling\Controller\ECareController;
 use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Core\Form\FormStateInterface;
 
@@ -399,19 +398,6 @@ function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
 
   }
 
-  // TODO: unused?
-  if (!empty($variables['node'])
-      && $variables['node']->getType() === 'fact_page'
-  ) {
-
-    $eCareCtrl = new ECareController();
-
-    $variables['#attached']['library'][] = 'uwmcs_ecare_scheduling/epic-mychart-scheduling';
-    $variables['ecare_link'] = $eCareCtrl->eCareLink();
-    $variables['ecare_modal'] = $eCareCtrl->eCareWidget();
-
-  }
-  // End TODO.
 }
 
 /**
