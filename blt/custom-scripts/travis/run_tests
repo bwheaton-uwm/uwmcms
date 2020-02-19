@@ -5,11 +5,9 @@
 
 set -v
 
-echo "UWM run_tests"
-if [[ "$RUN_UWM_TESTS" = false ]]; then
-  echo "RUN_UWM_TESTS is false; exiting early"
+if [[ "${RUN_UWM_TESTS}" = false ]]; then
+  echo "UWM: RUN_UWM_TESTS false, so exiting early"
   exit 0;
-
 fi
 
 echo "`date`"
