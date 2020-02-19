@@ -6,8 +6,10 @@
 set -v
 
 if [[ "${RUN_UWM_TESTS}" == false ]]; then
+
   echo "UWM: RUN_UWM_TESTS false, so exiting early"
-  exit 0;
+  travis_terminate 0
+
 fi
 
 echo date

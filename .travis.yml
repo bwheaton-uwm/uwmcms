@@ -55,6 +55,7 @@ before_install:
 
 install:
   - source ${UWM_BLT}/custom-scripts/travis/setup_environment
+  - source ${UWM_BLT}/custom-scripts/travis/setup_databases
   - source ${UWM_BLT}/custom-scripts/travis/setup_project
 
 script:
