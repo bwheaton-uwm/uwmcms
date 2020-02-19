@@ -12,11 +12,11 @@ module.exports = {
         var testUrl = 'https://www.uwmedicine.org/';
         var testUrlValidation = 'body.is-path-frontpage';
         var searchText = 'location';
-
         header
             .loadPageAndAcceptCookies(testUrl, testUrlValidation)
             .verifyT1HeaderLinks(testUrl, testUrlValidation)
-            .verifyHeaderSearch(searchText);
+            .verifyHeaderSearch(searchText, testUrl, testUrlValidation)
+            .verifyT2HeaderLinks(testUrl, testUrlValidation);
         browser.end();
     },
 };
