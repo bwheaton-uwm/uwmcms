@@ -397,6 +397,96 @@ function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
 
     }
 
+    // Determine if eCare open scheduling widget is allowed to be in an iframe.
+    // (This is a permission setting Epic controls.)
+    // Check this only once in a request.
+    static $iframe_ok = NULL;
+
+    if (is_null($iframe_ok) && $variables['open_scheduling']) {
+
+      drupal_set_message("iframe check: initializing true...");
+
+      $iframe_ok = TRUE;
+
+      // Use test eCare env temporarily - it should send the denying header
+      // we want to check for.
+      /* $url = 'https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule'; */
+      $url = 'https://tstecare18.epic.medical.washington.edu/tst/OpenScheduling/SignupAndSchedule/EmbeddedSchedule';
+      $url .= '?id=' . $variables['epic_id'] . '&vt=' . $variables['visit_type_ids'][0] . '&view=plain';
+
+      $ch = curl_init($url);
+
+      // Include the headers for retrieval.
+      // Unfortunately we cannot use `CURLOPT_NOBODY`, which would retrieve
+      // only the headers, because it uses the `HEAD` method and the eCare
+      // server does not accept that.
+      curl_setopt($ch, CURLOPT_HEADER, TRUE);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+
+      // TODO: remove this for prod?
+      curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+
+      // Check each header with a callback function.
+      curl_setopt($ch, CURLOPT_HEADERFUNCTION, function ($ch_local, $header) use (&$iframe_ok) {
+
+        $length = strlen($header);
+
+        $header_parts = explode(':', $header, 2);
+
+        if (count($header_parts) === 2) {
+
+          // The 'X-Frame-Options: SAMEORIGIN' header indicates that the
+          // URL may be embedded in an iframe only on the same domain as
+          // its own. Since the eCare site is on a different domain than
+          // the uwmedicine site, this setting prevents our using the
+          // open scheduling widget in an iframe.
+          if (strtolower(trim($header_parts[0])) === 'x-frame-options' && strtolower(trim($header_parts[1])) === 'sameorigin') {
+
+            $iframe_ok = FALSE;
+
+          }
+
+        }
+
+        // This function must return the header length.
+        return $length;
+
+      });
+
+      $response = curl_exec($ch);
+
+      if ($response !== FALSE) {
+
+        if ($iframe_ok) {
+          drupal_set_message("('X-Frame-Options: SAMEORIGIN' header not found - use iframe)");
+        }
+        else {
+          drupal_set_message("'X-Frame-Options: SAMEORIGIN' header found - use link");
+        }
+
+      }
+      else {
+
+        // TODO: If something went wrong with curl request - should we assume
+        // eCare is somehow down and avoid using the iframe anyway?
+        drupal_set_message("error running curl request: " . curl_error($ch));
+
+      }
+
+      curl_close($ch);
+
+    }
+    else {
+
+      if (is_null($iframe_ok)) {
+        drupal_set_message("(iframe check not done yet)", 'status', TRUE);
+      }
+      else {
+        drupal_set_message("iframe check already done; value is: " . ($iframe_ok ? 'true' : 'false'), 'status', TRUE);
+      }
+
+    }
+
   }
 
   // TODO: unused?
