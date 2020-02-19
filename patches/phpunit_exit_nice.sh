@@ -23,8 +23,10 @@ echo "UWM-CMS: Making phpunit exit 0, if called with no options."
 
 FILE=vendor/bin/phpunit
 if [ ! -d $FILE ]; then
+    FILE=../vendor/bin/phpunit
+fi
+if [ ! -d $FILE ]; then
     FILE=../../vendor/bin/phpunit
-
 fi
 
 MATCH='require PHPUNIT_COMPOSER_INSTALL;'
