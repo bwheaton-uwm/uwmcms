@@ -18,7 +18,15 @@ module.exports = {
     'webdriver': {
         'start_process': true,
         'server_path': require('chromedriver').path,
-        'port': 9515
+        'port': 9515,
+        'request_timeout_options': {
+            'timeout': 90000,
+            'retry_attempts': 10
+        },
+        'keep_alive': {
+            'enabled': true,
+            'keepAliveMsecs': 2000
+        }
     },
 
     'test_settings': {

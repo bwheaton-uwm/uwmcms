@@ -1,12 +1,13 @@
-// tests.site.www.general.uwmHeader.js
+// tests.site.www.home.homepage.js
 module.exports = {
     'disabled': false,
     '@tags': [
+        'home',
         'header',
         'general'
     ],
 
-    'Verify T1 Header - elements and search bar for Home page': function (browser) {
+    'Home Page Verify T1 Header - elements and search bar': function (browser) {
         var header = browser.page.uwmHeader();
         var testUrl = 'https://www.uwmedicine.org/';
         var testUrlValidation = 'body.is-path-frontpage';

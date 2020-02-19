@@ -1,17 +1,24 @@
-// Gray: TODO
-// With implementing page_objects.header.uwmHeader.js, this file is redundant.
-// I will update this to be a valid page object for the Home page right after I am
-// done implementing the header and footer page objects
-
+// page_objects.uwmHome.js
 module.exports = {
-	url: "https://www.uwmedicine.org/",
+	url: 'https://www.uwmedicine.org/',
 	elements: {
-		searchBar: {
-			selector: "input[type=text]"
+		heroBackgroundImg: {
+			selector: 'section.hero--background-image'
 		},
-		submit: {
-			//selector: "/html/body/header/nav/div[1]/div[2]/form/div/svg"
-			selector: "input.form-control"
+		heroCtaBtn1: {
+			selector: 'div.hero__ctas a:nth-child(1)'
+		},
+		heroCtaBtn2: {
+			selector: 'div.hero__ctas a:nth-child(2)'
+		},
+		heroCtaBtn3: {
+			selector: 'div.hero__ctas a:nth-child(3)'
+		},
+		heroCtaBtn4: {
+			selector: 'div.hero__ctas a:nth-child(4)'
+		},
+		heroHeading: {
+			selector: 'div.hero__content h1'
 		}
 	}
 };
