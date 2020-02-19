@@ -526,8 +526,6 @@ class ProviderSchedulingDataValidator {
         $datetime = new \DateTime('now', new \DateTimeZone('America/Los_Angeles'));
         $filepath = self::LOG_DIRECTORY . '/uwm-provider-scheduling-data-validation--' . $datetime->format('Y-m-d--H.i.s-T') . '.csv';
 
-        // TODO: send notification email if log successfully saved; and attach
-        // file to email? or not because of privacy?
         /*
          * TODO: update this on 8.7.x+
          *
@@ -547,31 +545,75 @@ class ProviderSchedulingDataValidator {
           // private files directory where log files are saved. This node
           // type is provided by the Filebrowser module to provide UI access to
           // files in the file system.
-          $this->outputStatus('status', t('Finished validation.<br/>Log file saved at: <code>@filepath</code>. <a target="_blank" href=":url_directory">See all logs here.</a>', [
+          $url_logs_directory_node = '/admin/files/private-files-provider-scheduling-data-validation-logs';
+
+          $this->outputStatus('status', t('Finished validation.<br/>
+          Log file saved at: <code>@filepath</code>.<br/>
+          <a href=":url_directory_node" target="_blank">See all logs here.</a>', [
             '@filepath' => $filepath,
-            ':url_directory' => '/admin/files/private-files-provider-scheduling-data-validation-logs',
+            ':url_logs_directory_node' => $url_logs_directory_node,
           ]));
+
+          // Send email notification with link to logs admin page.
+          // Set 'to' address and language in the hook_mail() implementation.
+          // @see uwmcs_ecare_scheduling_mail()
+          $this->mailManager->mail(
+            'uwmcs_ecare_scheduling',
+            'provider_scheduling_data_validation',
+            NULL,
+            NULL,
+            [
+              'log_filepath' => $filepath,
+              'url_logs_directory_node' => $url_logs_directory_node,
+            ]
+          );
 
         }
         else {
 
-          // TODO: add link to a UI to re-run validation separately from
-          // migration.
-          $this->outputStatus('error', t("Error finishing log: could not save log file to: @filepath. Check for additional error messages from the file system.", [
+          // TODO: link to a UI to re-run validation separately from migration,
+          // if implemented.
+          $this->outputStatus('error', t('Error generating log file, intended to be saved at: <code>@filepath</code>.<br/>
+          Check for additional error messages from the file system in the <a href=":url_db_log" target="_blank">Drupal log</a>.', [
             '@filepath' => $filepath,
+            ':url_db_log' => '/admin/reports/dblog',
           ]));
+
+          // Send email notification of log file generation failure.
+          $this->mailManager->mail(
+            'uwmcs_ecare_scheduling',
+            'provider_scheduling_data_validation_log_failure',
+            NULL,
+            NULL,
+            [
+              'log_filepath' => $filepath,
+            ]
+          );
 
         }
 
-        // Provide separate message for visit types missing name/description.
+        // Provide separate message for visit types missing name/description,
+        // which are not tracked in the log.
         $visit_types_missing = $this->getVisitTypesMissingNameDesc();
         if (!empty($visit_types_missing)) {
 
-          $this->outputStatus('error', t("Visit type IDs were found on providers, but their display names/descriptions were not found:<br/>
+          $this->outputStatus('error', t('The following visit type IDs were found on providers, but their display names/descriptions were not found:<br/>
           %visit_type_ids_missing<br/>
-          <a href=\"/admin/structure/taxonomy/manage/visit_type_labels/overview\" target=\"_blank\">Add them here.</a>", [
+          <a href=":url_taxonomy_vocab" target="_blank">Add them here.</a>', [
             '%visit_type_ids_missing' => implode(', ', $visit_types_missing),
+            ':url_taxonomy_vocab' => '/admin/structure/taxonomy/manage/visit_type_labels/overview',
           ]));
+
+          $this->mailManager->mail(
+            'uwmcs_ecare_scheduling',
+            'provider_scheduling_data_validation_visit_types',
+            NULL,
+            NULL,
+            [
+              'visit_type_ids_missing' => $visit_types_missing,
+              'url_taxonomy_vocab' => '/admin/structure/taxonomy/manage/visit_type_labels/overview',
+            ]
+          );
 
         }
 

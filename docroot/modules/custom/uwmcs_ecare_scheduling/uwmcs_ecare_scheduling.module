@@ -84,51 +84,95 @@ function uwmcs_ecare_scheduling_mail($key, &$message, $params) {
   // @see https://docs.acquia.com/acquia-cloud/develop/env-variable/
   $env = (isset($_ENV['AH_SITE_ENVIRONMENT']) ? $_ENV['AH_SITE_ENVIRONMENT'] : NULL);
 
+  // For now, set recipients according to environment.
+  // TODO: admin UI to configure this. Use custom config + ignore?
+  switch ($env) {
+    case 'prod':
+      $message['to'] = 'uwmbios@uw.edu';
+      break;
+
+    case 'dev':
+    case 'test':
+      $message['to'] = 'gtory@uw.edu,gillmcdo@uw.edu,montano3@uw.edu';
+      break;
+
+    default:
+      $message['to'] = 'gtory@uw.edu';
+      break;
+  }
+
+  // Set options for message content to pass to t().
+  // Use the site default language for now.
+  $translate_options = [
+    'langcode' => \Drupal::languageManager()->getDefaultLanguage()->getId(),
+  ];
+
+  // Provide absolute URLs within emails.
+  global $base_url;
+
   switch ($key) {
 
-    // Send a notification when missing visit types are found during import of
-    // providers from Reservoir. This should happen rarely, so an email (rather
-    // than only a message and log entry) is helpful.
-    // @see ResProviderMigrationSubscriber::onMigratePostImport()
-    case 'validate_provider_visit_types':
+    // Send a notification when a log file is generated.
+    // @see ProviderSchedulingDataValidator::finishLog()
+    case 'provider_scheduling_data_validation':
 
-      // TODO: admin UI to configure this. Use state?
-      // For now, set recipients according to environment.
-      switch ($env) {
-        case 'prod':
-          $message['to'] = 'uwmbios@uw.edu';
-          break;
-
-        case 'dev':
-        case 'test':
-          $message['to'] = 'gtory@uw.edu,gillmcdo@uw.edu,montano3@uw.edu';
-          break;
-
-        default:
-          $message['to'] = 'gtory@uw.edu';
-          break;
-      }
-
-      $translate_options = [
-        'langcode' => $message['langcode'],
-      ];
-
-      $message['subject'] = t("UWMedicine.org - Provider Scheduling Data Validation: Missing visit types", [], $translate_options);
-
-      if ($env !== 'prod') {
-        $message['subject'] = "[TEST] " . (string) $message['subject'];
-      }
+      $message['subject'] = t("UWMedicine.org - Provider scheduling data validation: log generated", [], $translate_options);
 
       $message['body'] = [
-        t("Reservoir-to-Stevie import validated for providers' visit type IDs.", [], $translate_options),
-        t("The following visit type IDs were imported on providers, but their visit type names/descriptions were not found:\n@visit_type_ids_missing", [
-          '@visit_type_ids_missing' => implode(", ", $params['visit_type_ids_missing']),
+        t("Log file of issues generated after importing provider scheduling data from Epic:", [], $translate_options),
+        t("@log_filepath", [
+          '@log_filepath' => $params['log_filepath'],
         ], $translate_options),
-        t('<a href="/admin/structure/taxonomy/manage/visit_type_labels/overview" target="_blank">Add visit types here.</a>', [], $translate_options),
+        t('View log files here: :url_logs_directory_node', [
+          ':url_logs_directory_node' => $base_url . $params['url_logs_directory_node'],
+        ], $translate_options),
       ];
 
       break;
 
+    // Send a notification when there's an error generating log file.
+    // TODO: link to a UI to re-run validation separately from migration, if
+    // ever implemented.
+    // @see ProviderSchedulingDataValidator::finishLog()
+    case 'provider_scheduling_data_validation_log_failure':
+
+      $message['subject'] = t("UWMedicine.org - Error: Provider scheduling data validation: log file not generated", [], $translate_options);
+
+      $message['body'] = [
+        t("Error generating log file of issues after importing provider scheduling data from Epic."),
+        t("Log file was intended to be saved at: @log_filepath", [
+          '@log_filepath' => $params['log_filepath'],
+        ], $translate_options),
+        t('Check for additional error messages from the file system in the Drupal log: :url_db_log', [
+          ':url_db_log' => $base_url . '/admin/reports/dblog',
+        ], $translate_options),
+      ];
+
+      break;
+
+    // Send a notification for visit types missing name/description (which are
+    // tracked separately in validation from the log).
+    case 'provider_scheduling_data_validation_visit_types':
+
+      $message['subject'] = t("UWMedicine.org - Provider scheduling data validation: missing visit types", [], $translate_options);
+
+      $message['body'] = [
+        t("The following visit type IDs were found on providers, but their display names/descriptions were not found:", [], $translate_options),
+        t("@visit_type_ids_missing", [
+          '@visit_type_ids_missing' => implode(", ", $params['visit_type_ids_missing']),
+        ], $translate_options),
+        t('Add them here: :url_taxonomy_vocab', [
+          ':url_taxonomy_vocab' => $base_url . $params['url_taxonomy_vocab'],
+        ], $translate_options),
+      ];
+
+      break;
+
+  }
+
+  // Make it obvious if this email refers to a non-prod environment.
+  if ($env !== 'prod') {
+    $message['subject'] = "[TEST] " . (string) $message['subject'];
   }
 
 }
