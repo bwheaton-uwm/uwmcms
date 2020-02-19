@@ -44,16 +44,16 @@ disable-targets:
     twig: true
   tests:
     behat: { all: true, run: true }
-    composer: { validate: true }
-    deprecated: { modules: true, themes: true }
-    frontend: { run: true }
-    php: { lint: true }
-    phpcs: { sniff: { all: true } }
-    phpunit: { all: true, run: true }
+#    composer: { validate: true }
+#    deprecated: { modules: true, themes: true }
+#    frontend: { run: true }
+#    php: { lint: true }
+#    phpcs: { sniff: { all: true } }
+#    phpunit: { all: true, run: true }
     phpstan: { all: true, run: true }
-    security: { check: { updates: true } }
-    twig: { lint: { all: true } }
-    yaml: { lint: { all: true } }
+#    security: { check: { updates: true } }
+#    twig: { lint: { all: true } }
+#    yaml: { lint: { all: true } }
 
 validate:
   twig:
