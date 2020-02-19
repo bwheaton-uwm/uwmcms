@@ -5,12 +5,12 @@
 
 set -v
 
-if [[ "${RUN_UWM_TESTS}" == false ]]; then
-
-  echo "UWM: RUN_UWM_TESTS false, so exiting early"
-  travis_terminate 0;
-
-fi
+#if [[ "${RUN_UWM_TESTS}" == false ]]; then
+#
+#  echo "UWM: RUN_UWM_TESTS false, so exiting early"
+#  travis_terminate 0;
+#
+#fi
 
 echo date
 
