@@ -46,10 +46,15 @@
         "uwmcms-update-saml": [
             "sh ./patches/simplesaml/setup_simplesaml_patch.sh"
         ],
+        "uwmcms-phpunit-die-nice": [
+            "sh ./patches/phpunit_exit_nice.sh"
+        ],
         "post-install-cmd": [
-            "@uwmcms-update-saml"
+            "@uwmcms-update-saml",
+            "@uwmcms-phpunit-die-nice"
         ],
         "post-update-cmd": [
+            "@uwmcms-phpunit-die-nice"
         ],
         "post-create-project-cmd": [
             "blt internal:create-project:init-repo"
