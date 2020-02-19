@@ -24,9 +24,11 @@ cache:
     - "$HOME/.composer/cache/files"
     - "$HOME/.cache/composer/files"
     - "$HOME/.drush/cache"
-  # Cache front end dependencies to dramatically improve build time.
-  # - "docroot/themes/custom/mytheme/node_modules"
-  # - "docroot/themes/custom/mytheme/bower_components"
+    # Cache dependencies to dramatically improve build time.
+    - "tests/nightwatch/node_modules"
+    - "docroot/themes/custom/uwmbase/node_modules"
+    - "docroot/themes/custom/uwmed/node_modules"
+    - "docroot/themes/custom/chew/node_modules"
 
 services:
   - mysql
