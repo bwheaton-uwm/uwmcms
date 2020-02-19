@@ -36,15 +36,15 @@ echo ""
 
 MATCH='require PHPUNIT_COMPOSER_INSTALL;'
 REPLACE=' \
-/*** \
-  UWMCMS Patch \
-  ***/ \
+\/\/ \
+\/\/  UWMCMS Patch \
+\/\/ \
 if(empty($argv) || count($argv) < 2) exit (0); \
  \
  \
 '
 
-sed -i '' "s/${MATCH}/${REPLACE}${MATCH}/g" $FILE || exit 0
+sed -i '' "s/${MATCH}/${REPLACE}${MATCH}/g" "$FILE" || exit 0
 
 
 echo ""

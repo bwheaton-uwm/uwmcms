@@ -3,9 +3,11 @@
 set -ev
 
 vendor/bin/blt blt:telemetry:disable --no-interaction
+#vendor/bin/blt blt:status --no-interaction
 
-vendor/bin/blt blt:status --no-interaction
-
+vendor/bin/blt source:build:frontend --site=stevie
+vendor/bin/blt source:build:frontend --site=chew
+vendor/bin/blt source:build:frontend --site=default
 
 
 set +v
