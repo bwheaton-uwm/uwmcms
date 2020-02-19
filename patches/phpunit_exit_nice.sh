@@ -20,22 +20,31 @@ set -e
 echo ""
 echo ""
 echo "UWM-CMS: Making phpunit exit 0, if called with no options."
+echo ""
 
-FILE=vendor/bin/phpunit
+FILE="vendor/bin/phpunit"
 if [ ! -f $FILE ]; then
-    FILE=../vendor/bin/phpunit
+    FILE="../vendor/bin/phpunit"
 fi
 if [ ! -f $FILE ]; then
-    FILE=../../vendor/bin/phpunit
+    FILE="../../vendor/bin/phpunit"
 fi
+
+echo "`pwd`"
+echo "$FILE"
+echo ""
 
 MATCH='require PHPUNIT_COMPOSER_INSTALL;'
-REPLACE='/*** UWMCMS Patch ***/\
-if(empty($argv) || count($argv) < 2) exit (0);\
-\
+REPLACE=' \
+/*** \
+  UWMCMS Patch \
+  ***/ \
+if(empty($argv) || count($argv) < 2) exit (0); \
+ \
+ \
 '
 
-sed -i '' "s/${MATCH}/${REPLACE}${MATCH}/g" $FILE
+sed -i '' "s/${MATCH}/${REPLACE}${MATCH}/g" $FILE || exit 0
 
 
 echo ""
