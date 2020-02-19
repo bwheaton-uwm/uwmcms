@@ -424,7 +424,7 @@ function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
       // TODO: remove this for prod?
-      curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+      curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
 
       // Check each header with a callback function.
       curl_setopt($ch, CURLOPT_HEADERFUNCTION, function ($ch_local, $header) use (&$iframe_ok) {
