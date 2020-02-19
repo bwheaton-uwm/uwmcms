@@ -6,6 +6,8 @@
  */
 
 use Drupal\uwmcs_ecare_scheduling\Controller\ECareController;
+use Drupal\Component\Render\FormattableMarkup;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Load all Visit Type Labels taxonomy terms.
@@ -74,10 +76,337 @@ function _uwmcs_ecare_scheduling_load_visit_type_terms() {
 }
 
 /**
- * Implements theme_preprocess_node().
+ * Implements hook_mail().
+ */
+function uwmcs_ecare_scheduling_mail($key, &$message, $params) {
+
+  // If currently on an Acquia cloud env, this is 'dev', 'test', or 'prod'.
+  // @see https://docs.acquia.com/acquia-cloud/develop/env-variable/
+  $env = (isset($_ENV['AH_SITE_ENVIRONMENT']) ? $_ENV['AH_SITE_ENVIRONMENT'] : NULL);
+
+  switch ($key) {
+
+    // Send a notification when missing visit types are found during import of
+    // providers from Reservoir. This should happen rarely, so an email (rather
+    // than only a message and log entry) is helpful.
+    // @see ResProviderMigrationSubscriber::onMigratePostImport()
+    case 'validate_provider_visit_types':
+
+      // TODO: admin UI to configure this. Use state?
+      // For now, set recipients according to environment.
+      switch ($env) {
+        case 'prod':
+          $message['to'] = 'uwmbios@uw.edu';
+          break;
+
+        case 'dev':
+        case 'test':
+          $message['to'] = 'gtory@uw.edu,gillmcdo@uw.edu,montano3@uw.edu';
+          break;
+
+        default:
+          $message['to'] = 'gtory@uw.edu';
+          break;
+      }
+
+      $translate_options = [
+        'langcode' => $message['langcode'],
+      ];
+
+      $message['subject'] = t("UWMedicine.org - Provider Scheduling Data Validation: Missing visit types", [], $translate_options);
+
+      if ($env !== 'prod') {
+        $message['subject'] = "[TEST] " . (string) $message['subject'];
+      }
+
+      $message['body'] = [
+        t("Reservoir-to-Stevie import validated for providers' visit type IDs.", [], $translate_options),
+        t("The following visit type IDs were imported on providers, but their visit type names/descriptions were not found:\n@visit_type_ids_missing", [
+          '@visit_type_ids_missing' => implode(", ", $params['visit_type_ids_missing']),
+        ], $translate_options),
+        t('<a href="/admin/structure/taxonomy/manage/visit_type_labels/overview" target="_blank">Add visit types here.</a>', [], $translate_options),
+      ];
+
+      break;
+
+  }
+
+}
+
+/**
+ * Implements MODULE_preprocess_node().
  */
 function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
 
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $variables['node'];
+
+  // Retrieve appointment scheduling values and visit type labels to use in
+  // appointment flow template.
+  if ($node->bundle() === 'res_provider') {
+
+    // Set defaults for when fields are not populated.
+    $variables['accepting_new'] = FALSE;
+    $variables['accepting_returning'] = FALSE;
+
+    $variables['epic_id'] = NULL;
+    $variables['direct_scheduling'] = FALSE;
+    $variables['open_scheduling'] = FALSE;
+    $variables['visit_type_ids'] = NULL;
+
+    $field_vars = [
+      'field_res_isacceptingnewpts' => 'accepting_new',
+      'field_res_isacceptingreturnpts' => 'accepting_returning',
+      'field_res_ser_id' => 'epic_id',
+      'field_res_is_direct_scheduling' => 'direct_scheduling',
+      'field_res_is_open_scheduling' => 'open_scheduling',
+      'field_res_visit_type_id' => 'visit_type_ids',
+    ];
+
+    foreach ($field_vars as $field_name => $var_name) {
+
+      if ($node->hasField($field_name) && !$node->get($field_name)->isEmpty()) {
+        $field = $node->get($field_name);
+
+        switch ($field_name) {
+          case 'field_res_ser_id':
+            // Get the exact value.
+            $variables[$var_name] = $field->first()->getValue()['value'];
+            break;
+
+          case 'field_res_isacceptingnewpts':
+          case 'field_res_isacceptingreturnpts':
+          case 'field_res_is_open_scheduling':
+          case 'field_res_is_direct_scheduling':
+            // Convert to boolean.
+            $variables[$var_name] = (boolean) $field->first()->getValue()['value'];
+            break;
+
+          case 'field_res_visit_type_id':
+            // Collect multiple values.
+            foreach ($field->getValue() as $val) {
+              $variables[$var_name][] = $val['value'];
+            }
+            break;
+
+        }
+
+      }
+
+    }
+
+    // If the provider has open scheduling, get display names and descriptions
+    // for open scheduling visit types.
+    // These are stored/edited as Visit Type Labels taxonomy terms.
+    // Note: separate arrays came about during development process and would
+    // need some refactoring through appointment templates and JS.
+    $variables['visit_type_names'] = [];
+    $variables['visit_type_descriptions'] = [];
+
+    $visit_type_names_str = [];
+    $visit_type_desc_str = [];
+
+    if ($variables['open_scheduling'] && !empty($variables['visit_type_ids'])) {
+
+      $visit_types = _uwmcs_ecare_scheduling_load_visit_type_terms();
+
+      // Pass the ones for this provider's visit type IDs.
+      foreach ($variables['visit_type_ids'] as $vt_id) {
+
+        $variables['visit_type_names'][$vt_id] = (!empty($visit_types[$vt_id]['name']) ? $visit_types[$vt_id]['name'] : NULL);
+        $variables['visit_type_descriptions'][$vt_id] = (!empty($visit_types[$vt_id]['description']) ? $visit_types[$vt_id]['description'] : NULL);
+
+        $visit_type_names_str[$vt_id] = $vt_id . ': ' . (!empty($visit_types[$vt_id]['name']) ? $visit_types[$vt_id]['name'] : '--');
+        $visit_type_desc_str[$vt_id] = $vt_id . ': ' . (!empty($visit_types[$vt_id]['description']) ? $visit_types[$vt_id]['description'] : '--');
+
+      }
+
+    }
+
+    // Collect original data values for logging.
+    $debug_data_original = [
+      '@epic_id_1' => ($variables['epic_id'] ? $variables['epic_id'] : "--"),
+      '@direct_scheduling_1' => ($variables['direct_scheduling'] ? "yes" : "no"),
+      '@open_scheduling_1' => ($variables['open_scheduling'] ? "yes" : "no"),
+      '@visit_type_ids_1' => (!empty($variables['visit_type_ids']) ? implode(", ", $variables['visit_type_ids']) : "--"),
+      '@visit_type_names_1' => (!empty($visit_type_names_str) ? implode(" | ", $visit_type_names_str) : "--"),
+      '@visit_type_desc_1' => (!empty($visit_type_desc_str) ? implode(" | ", $visit_type_desc_str) : "--"),
+    ];
+
+    // Check and adjust for bad data, and log issues found.
+    // If necessary data is missing, disable open/direct scheduling accordingly
+    // or remove individual visit types, so that we don't create broken links to
+    // Epic. To the end user the experience is equivalent to when the provider
+    // doesn't have those options.
+    $bad_data_msg = [];
+
+    // 1) If no Epic ID, can't link to open or direct scheduling.
+    if (($variables['open_scheduling'] || $variables['direct_scheduling']) && empty($variables['epic_id'])) {
+
+      $variables['open_scheduling'] = FALSE;
+      $variables['direct_scheduling'] = FALSE;
+      $variables['visit_type_ids'] = NULL;
+
+      $visit_type_names_str = [];
+      $visit_type_desc_str = [];
+
+      $bad_data_msg[] = t("Open and/or direct scheduling enabled, but missing Epic ID. => Setting open and direct scheduling to disabled.");
+
+    }
+
+    // 2) Check for and remove any visit types missing the name or description.
+    if ($variables['open_scheduling'] && !empty($variables['visit_type_ids'])) {
+
+      foreach ($variables['visit_type_ids'] as $i => $vt_id) {
+        if (empty($variables['visit_type_names'][$vt_id]) || empty($variables['visit_type_descriptions'][$vt_id])) {
+
+          unset($variables['visit_type_ids'][$i]);
+
+          if (isset($visit_type_names_str[$vt_id])) {
+            unset($visit_type_names_str[$vt_id]);
+          }
+          if (isset($visit_type_desc_str[$vt_id])) {
+            unset($visit_type_desc_str[$vt_id]);
+          }
+
+          $bad_data_msg[] = t("Visit type @vt_id missing name and/or description. => Removing this visit type option.", ['@vt_id' => $vt_id]);
+
+        }
+      }
+
+    }
+
+    // 3) If no complete visit types (both name and description), can't link to
+    // open scheduling.
+    if ($variables['open_scheduling'] && empty($variables['visit_type_ids'])) {
+
+      $variables['open_scheduling'] = FALSE;
+
+      $visit_type_names_str = [];
+      $visit_type_desc_str = [];
+
+      $bad_data_msg[] = t("Open scheduling enabled, but missing valid visit types (having name and description). => Setting open scheduling to disabled.");
+
+    }
+
+    $admin_user = \Drupal::currentUser()->hasPermission('edit any res_provider content');
+
+    if (!empty($bad_data_msg)) {
+
+      // If bad data was found, provide a warning message that lists original
+      // data, issue(s) found, and cleaned data that will be actually used.
+      $debug_data_cleaned = [
+        '@epic_id_2' => ($variables['epic_id'] ? $variables['epic_id'] : "--"),
+        '@direct_scheduling_2' => ($variables['direct_scheduling'] ? "yes" : "no"),
+        '@open_scheduling_2' => ($variables['open_scheduling'] ? "yes" : "no"),
+        '@visit_type_ids_2' => (!empty($variables['visit_type_ids']) ? implode(", ", $variables['visit_type_ids']) : "--"),
+        '@visit_type_names_2' => (!empty($visit_type_names_str) ? implode(" | ", $visit_type_names_str) : "--"),
+        '@visit_type_desc_2' => (!empty($visit_type_desc_str) ? implode(" | ", $visit_type_desc_str) : "--"),
+      ];
+
+      $message_vars = array_merge([
+        '@bad_data_msg' => new FormattableMarkup(implode("<br/>", $bad_data_msg), []),
+        '@accepting_new' => ($variables['accepting_new'] ? "yes" : "no"),
+        '@accepting_returning' => ($variables['accepting_returning'] ? "yes" : "no"),
+      ], $debug_data_original, $debug_data_cleaned);
+
+      // Display message for admins.
+      // @see node--res-provider.html.twig
+      if ($admin_user) {
+        $variables['debug_appt_data_bad'] = [
+          '#theme' => 'status_messages',
+          '#message_list' => [
+            'warning' => [
+              t("<strong>Provider appointment data - bad data found:</strong><br/><br/>
+
+              Accepting new patients? @accepting_new<br/>
+              Accepting returning patients? @accepting_returning<br/><br/>
+        
+              <em>Original:</em><br/><br/>
+        
+              Epic ID: @epic_id_1<br/>
+              Direct scheduling enabled? @direct_scheduling_1<br/>
+              Open scheduling enabled? @open_scheduling_1<br/>
+              Visit type IDs (open): @visit_type_ids_1<br/>
+              Visit type names: @visit_type_names_1<br/>
+              Visit type descriptions: @visit_type_desc_1<br/><br/>
+        
+              <em>Issues and resolutions:</em><br/>
+              <em>@bad_data_msg</em><br/><br/>
+        
+              <em>Cleaned:</em><br/><br/>
+              Epic ID: @epic_id_2<br/>
+              Direct scheduling enabled? @direct_scheduling_2<br/>
+              Open scheduling enabled? @open_scheduling_2<br/>
+              Visit type IDs (open): @visit_type_ids_2<br/>
+              Visit type names: @visit_type_names_2<br/>
+              Visit type descriptions: @visit_type_desc_2", $message_vars),
+            ],
+          ],
+        ];
+      }
+
+      // Log message to Drupal database log.
+      \Drupal::logger('uwmcs_ecare_scheduling')->warning("<strong>Provider appointment data - bad data found:</strong><br/><br/>
+
+      Accepting new patients? @accepting_new<br/>
+      Accepting returning patients? @accepting_returning<br/><br/>
+
+      <em>Original:</em><br/><br/>
+
+      Epic ID: @epic_id_1<br/>
+      Direct scheduling enabled? @direct_scheduling_1<br/>
+      Open scheduling enabled? @open_scheduling_1<br/>
+      Visit type IDs (open): @visit_type_ids_1<br/>
+      Visit type names: @visit_type_names_1<br/>
+      Visit type descriptions: @visit_type_desc_1<br/><br/>
+
+      <em>Issues and resolutions:</em><br/>
+      <em>@bad_data_msg</em><br/><br/>
+
+      <em>Cleaned:</em><br/><br/>
+      Epic ID: @epic_id_2<br/>
+      Direct scheduling enabled? @direct_scheduling_2<br/>
+      Open scheduling enabled? @open_scheduling_2<br/>
+      Visit type IDs (open): @visit_type_ids_2<br/>
+      Visit type names: @visit_type_names_2<br/>
+      Visit type descriptions: @visit_type_desc_2", $message_vars);
+
+    }
+    else {
+
+      // If data is good, display a (hidden) status message for admins.
+      // @see node--res-provider.html.twig
+      if ($admin_user) {
+        $variables['debug_appt_data_good'] = [
+          '#theme' => 'status_messages',
+          '#message_list' => [
+            'status' => [
+              t("<strong>Provider appointment data:</strong><br/><br/>
+
+              Accepting new patients? @accepting_new<br/>
+              Accepting returning patients? @accepting_returning<br/><br/>
+
+              Epic ID: @epic_id_1<br/>
+              Direct scheduling enabled? @direct_scheduling_1<br/>
+              Open scheduling enabled? @open_scheduling_1<br/>
+              Visit type IDs (open): @visit_type_ids_1<br/>
+              Visit type names: @visit_type_names_1<br/>
+              Visit type descriptions: @visit_type_desc_1",
+              array_merge([
+                '@accepting_new' => ($variables['accepting_new'] ? "yes" : "no"),
+                '@accepting_returning' => ($variables['accepting_returning'] ? "yes" : "no"),
+              ], $debug_data_original)),
+            ],
+          ],
+        ];
+      }
+
+    }
+
+  }
+
+  // TODO: unused?
   if (!empty($variables['node'])
       && $variables['node']->getType() === 'fact_page'
   ) {
@@ -88,6 +417,49 @@ function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
     $variables['ecare_link'] = $eCareCtrl->eCareLink();
     $variables['ecare_modal'] = $eCareCtrl->eCareWidget();
 
+  }
+  // End TODO.
+}
+
+/**
+ * Implements MODULE_preprocess_page().
+ */
+function uwmcs_ecare_scheduling_preprocess_page(&$variables) {
+
+  $route_match = \Drupal::routeMatch();
+  $route_name = $route_match->getRouteName();
+
+  /** @var \Drupal\Node\NodeInterface $node */
+  $node = !empty($variables['node']) ? $variables['node'] : NULL;
+
+  // On pages that may have provider cards that link to the modal appointment
+  // flow, set variable to render the modal markup once in the page.
+  // - provider search page
+  // - any clinic node page with providers tab.
+  // @see layout-sections.twig
+  if ($route_name === 'view.uwm_providers_search.page_1' || (!empty($node) && $node->bundle() === 'res_clinic' && !$node->get('field_res_providers')->isEmpty())) {
+
+    $variables['modal_include'] = [
+      'template_path' => '@uwmbase/appointment-flow/uwm-appointment-modal.html.twig',
+      'with_vars' => [
+        'flow_type' => 'provider',
+        'modal_appt_context' => 'provider_card',
+      ],
+    ];
+
+  }
+
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for 'taxonomy_term_visit_type_labels'.
+ */
+function uwmcs_ecare_scheduling_form_taxonomy_term_visit_type_labels_form_alter(&$form, FormStateInterface $form_state) {
+
+  // For the Visit Type Labels terms - the taxonomy term Name property label
+  // cannot be configured, so alter it here.
+  if (!empty($form['name']['widget'][0]['value']['#title'])) {
+    $form['name']['widget'][0]['value']['#title'] = t("Visit Type ID");
   }
 
 }

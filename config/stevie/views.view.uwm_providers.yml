@@ -79,8 +79,8 @@ display:
           expose:
             items_per_page: true
             items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50, 100'
-            items_per_page_options_all: false
+            items_per_page_options: '25, 50, 100, 500'
+            items_per_page_options_all: true
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
@@ -1003,17 +1003,6 @@ display:
           field_api_classes: false
           plugin_id: field
       filters:
-        status:
-          value: '1'
-          table: node_field_data
-          field: status
-          plugin_id: boolean
-          entity_type: node
-          entity_field: status
-          id: status
-          expose:
-            operator: ''
-          group: 1
         type:
           id: type
           table: node_field_data
@@ -1068,6 +1057,53 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: string
+        field_res_npi_value:
+          id: field_res_npi_value
+          table: node__field_res_npi
+          field: field_res_npi_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_res_npi_value_op
+            label: 'NPI '
+            description: ''
+            use_operator: false
+            operator: field_res_npi_value_op
+            identifier: field_res_npi_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              replicator: '0'
+              administrator: '0'
+              content_manager: '0'
+              content_reviewer: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
         field_res_department_target_id:
           id: field_res_department_target_id
           table: node__field_res_department
