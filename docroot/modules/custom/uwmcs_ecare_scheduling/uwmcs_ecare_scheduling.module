@@ -405,16 +405,13 @@ function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
     if (is_null($iframe_ok) && $variables['open_scheduling']) {
 
       drupal_set_message("iframe check: initializing true...");
+      drupal_set_message("checking ecare prod url. TEMP: check for different header expected to be present: 'Server: Microsoft-IIS/8.5'");
 
       $iframe_ok = TRUE;
 
-      // Use test eCare env temporarily - it should send the denying header
-      // we want to check for.
-      /* $url = 'https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule'; */
-      $url = 'https://tstecare18.epic.medical.washington.edu/tst/OpenScheduling/SignupAndSchedule/EmbeddedSchedule';
-      $url .= '?id=' . $variables['epic_id'] . '&vt=' . $variables['visit_type_ids'][0] . '&view=plain';
+      $url_open_sched = 'https://ecare.uwmedicine.org/prod01/OpenScheduling/SignupAndSchedule/EmbeddedSchedule?id=' . $variables['epic_id'] . '&vt=' . $variables['visit_type_ids'][0] . '&view=plain';
 
-      $ch = curl_init($url);
+      $ch = curl_init($url_open_sched);
 
       // Include the headers for retrieval.
       // Unfortunately we cannot use `CURLOPT_NOBODY`, which would retrieve
@@ -423,8 +420,10 @@ function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
       curl_setopt($ch, CURLOPT_HEADER, TRUE);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
-      // TODO: remove this for prod?
-      curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+      // TODO: do we want this?
+      // good - protect against super long load time.
+      // bad - if we time out, we don't get an effective check.
+      /* curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); */
 
       // Check each header with a callback function.
       curl_setopt($ch, CURLOPT_HEADERFUNCTION, function ($ch_local, $header) use (&$iframe_ok) {
@@ -440,7 +439,10 @@ function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
           // its own. Since the eCare site is on a different domain than
           // the uwmedicine site, this setting prevents our using the
           // open scheduling widget in an iframe.
-          if (strtolower(trim($header_parts[0])) === 'x-frame-options' && strtolower(trim($header_parts[1])) === 'sameorigin') {
+          //
+          // TEMP: check for a different header that will actually be there.
+          /* x-frame-options sameorigin */
+          if (strtolower(trim($header_parts[0])) === 'server' && strtolower(trim($header_parts[1])) === 'microsoft-iis/8.5') {
 
             $iframe_ok = FALSE;
 
@@ -458,10 +460,10 @@ function uwmcs_ecare_scheduling_preprocess_node(&$variables) {
       if ($response !== FALSE) {
 
         if ($iframe_ok) {
-          drupal_set_message("('X-Frame-Options: SAMEORIGIN' header not found - use iframe)");
+          drupal_set_message("header not found -> use iframe");
         }
         else {
-          drupal_set_message("'X-Frame-Options: SAMEORIGIN' header found - use link");
+          drupal_set_message("header found -> use link");
         }
 
       }
