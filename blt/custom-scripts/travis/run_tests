@@ -6,16 +6,21 @@
 set -v
 
 echo "UWM run_tests"
-echo "`date`"
-echo "RUN_UWM_TESTS: $RUN_UWM_TESTS"
-echo "RUN_UWM_TESTS: ${RUN_UWM_TESTS}"
+if [[ "$RUN_UWM_TESTS" = false ]]; then
+  echo "RUN_UWM_TESTS is false; exiting early"
+  exit 0;
 
-#
-#vendor/bin/blt validate:all --no-interaction || { set +v && return 1; }
-#
-#travis_wait vendor/bin/blt setup --define drush.alias='${drush.aliases.ci}' --no-interaction --verbose || { set +v && return 1; }
-#
-#vendor/bin/blt tests:all --define drush.alias='${drush.aliases.ci}' --define tests.run-server=true --no-interaction --verbose || { set +v && return 1; }
+fi
+
+echo "`date`"
+
+vendor/bin/blt validate:all --no-interaction || { set +v && return 1; }
+
+travis_wait vendor/bin/blt setup --define drush.alias='${drush.aliases.ci}' --no-interaction --verbose || { set +v && return 1; }
+
+vendor/bin/blt tests:all --define drush.alias='${drush.aliases.ci}' --define tests.run-server=true --no-interaction --verbose || { set +v && return 1; }
+
+echo "`date`"
 
 
 set +v
