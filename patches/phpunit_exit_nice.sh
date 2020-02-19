@@ -22,10 +22,10 @@ echo ""
 echo "UWM-CMS: Making phpunit exit 0, if called with no options."
 
 FILE=vendor/bin/phpunit
-if [ ! -d $FILE ]; then
+if [ ! -f $FILE ]; then
     FILE=../vendor/bin/phpunit
 fi
-if [ ! -d $FILE ]; then
+if [ ! -f $FILE ]; then
     FILE=../../vendor/bin/phpunit
 fi
 
