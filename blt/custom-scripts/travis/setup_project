@@ -2,4 +2,9 @@
 
 set -ev
 
+vendor/bin/blt blt:status
+
+vendor/bin/blt blt:telemetry:disable
+
+
 set +v
