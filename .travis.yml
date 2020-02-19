@@ -13,6 +13,10 @@ env:
     #- LOCAL_BLT_DIR=$TRAVIS_BUILD_DIR/blt/
     - BUILD_DIR=$TRAVIS_BUILD_DIR
     - UWM_BLT=$TRAVIS_BUILD_DIR/blt/
+  jobs:
+    - RUN_UWM_TESTS=true
+    - RUN_UWM_TESTS=false
+
 
 cache:
   directories:
