@@ -85,9 +85,9 @@ multisites:
   - stevie
 #  - default
 #  - calendar
-behat:
-  paths: {  }
-  web-driver: selenium
+#behat:
+#  paths: {  }
+#  web-driver: selenium
 cm.allow-overrides: false
 cloud:
   appId: 9394ee80-5a9e-429f-a976-264b955abd86
