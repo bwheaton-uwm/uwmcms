@@ -33,7 +33,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'access content'
+          perm: 'edit any res_provider content'
       cache:
         type: tag
         options: {  }
