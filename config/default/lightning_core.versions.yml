@@ -113,7 +113,6 @@ twig_tweak: 1.9.0
 user: 8.4.5
 uwmcs_extension: 0.0.0
 uwmcs_mediaamp: 0.0.0
-uwmcs_reader: 0.0.0
 uwmcs_utils: 0.0.0
 uwmed_uwmcms_blocks: 0.0.0
 video_embed_field: 2.0.0-alpha2
