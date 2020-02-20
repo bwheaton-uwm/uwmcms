@@ -777,10 +777,10 @@ class ProviderSchedulingDataValidator {
       // IF provider is now being enabled for open scheduling,
       // THEN denote to set provider to accepting new patients.
       //
-      // (If they were already enabled for open scheduling, but are not
-      // accepting - that is an existing state that may be for some reason, so
-      // we do not change 'accepting' status but log it for verification.)
-      if (!empty($existing) && $values['open_enabled'] !== $existing['open_enabled']) {
+      // Note: compare existing value via `!== TRUE` to account for both a
+      // FALSE field value and an empty field value which takes effect
+      // as FALSE.
+      if (!empty($existing) && $existing['open_enabled'] !== TRUE) {
 
         $log['auto_change']['accepting_new'] = TRUE;
 
@@ -790,6 +790,9 @@ class ProviderSchedulingDataValidator {
       }
       else {
 
+        // If they were already enabled for open scheduling, but are not
+        // accepting - that is an existing state that may be for some reason,
+        // so we do not change 'accepting' status but log it for verification.
         $log['verify'][] = "Open scheduling is enabled, but not accepting new patients";
 
       }
@@ -797,7 +800,7 @@ class ProviderSchedulingDataValidator {
     }
 
     // (l)
-    if ($values['open_enabled'] === FALSE && !empty($existing) && $values['open_enabled'] !== $existing['open_enabled'] && $values['accepting_new'] === TRUE) {
+    if ($values['open_enabled'] === FALSE && !empty($existing) && $existing['open_enabled'] === TRUE && $values['accepting_new'] === TRUE) {
 
       $log['verify'][] = "CHANGED: Open scheduling has been turned off; verify if provider is still accepting new patients via phone calls";
 
@@ -810,10 +813,10 @@ class ProviderSchedulingDataValidator {
       // IF provider is now being enabled for direct scheduling,
       // THEN denote to set provider to accepting returning patients.
       //
-      // (If they were already enabled for direct scheduling, but are not
-      // accepting - that is an existing state that may be for some reason, so
-      // we do not change 'accepting' status but log it for verification.)
-      if (!empty($existing) && $values['direct_enabled'] !== $existing['direct_enabled']) {
+      // Note: compare existing value via `!== TRUE` to account for both a
+      // FALSE field value and an empty field value which takes effect
+      // as FALSE.
+      if (!empty($existing) && $existing['direct_enabled'] !== TRUE) {
 
         $log['auto_change']['accepting_returning'] = TRUE;
 
@@ -823,6 +826,9 @@ class ProviderSchedulingDataValidator {
       }
       else {
 
+        // If they were already enabled for direct scheduling, but are not
+        // accepting - that is an existing state that may be for some reason,
+        // so we do not change 'accepting' status but log it for verification.
         $log['verify'][] = "Direct scheduling is enabled, but not accepting returning patients";
 
       }
@@ -830,7 +836,7 @@ class ProviderSchedulingDataValidator {
     }
 
     // (n)
-    if ($values['direct_enabled'] === FALSE && !empty($existing) && $values['direct_enabled'] !== $existing['direct_enabled'] && $values['accepting_returning'] === TRUE) {
+    if ($values['direct_enabled'] === FALSE && !empty($existing) && $existing['direct_enabled'] === TRUE && $values['accepting_returning'] === TRUE) {
 
       $log['verify'][] = "CHANGED: Direct scheduling has been turned off; verify if provider is still accepting returning patients via phone calls";
 
