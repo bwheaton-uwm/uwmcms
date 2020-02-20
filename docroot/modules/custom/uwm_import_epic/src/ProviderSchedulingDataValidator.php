@@ -486,8 +486,10 @@ class ProviderSchedulingDataValidator {
       }
       else {
 
-        $this->outputStatus('error', t("Error initializing a log: could not create file directory to store logs or could not make the directory writeable. Directory attempted: <code>@directory</code>. Check for additional error messages from the file system.", [
+        $this->outputStatus('error', t('Error initializing a log: could not create file directory to store logs or could not make the directory writeable. Directory attempted: <code>@directory</code>.<br/>
+        Check for additional error messages from the file system in the <a href=":url_db_log" target="_blank">Drupal log</a>.', [
           '@directory' => self::LOG_DIRECTORY,
+          ':url_db_log' => '/admin/reports/dblog',
         ]));
 
       }
@@ -549,7 +551,7 @@ class ProviderSchedulingDataValidator {
 
           $this->outputStatus('status', t('Finished validation.<br/>
           Log file saved at: <code>@filepath</code>.<br/>
-          <a href=":url_directory_node" target="_blank">See all logs here.</a>', [
+          <a href=":url_logs_directory_node" target="_blank">See all logs here.</a>', [
             '@filepath' => $filepath,
             ':url_logs_directory_node' => $url_logs_directory_node,
           ]));

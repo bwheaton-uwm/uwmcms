@@ -139,7 +139,7 @@ function uwmcs_ecare_scheduling_mail($key, &$message, $params) {
       $message['subject'] = t("UWMedicine.org - Error: Provider scheduling data validation: log file not generated", [], $translate_options);
 
       $message['body'] = [
-        t("Error generating log file of issues after importing provider scheduling data from Epic."),
+        t("Error generating log file of issues after importing provider scheduling data from Epic.", [], $translate_options),
         t("Log file was intended to be saved at: @log_filepath", [
           '@log_filepath' => $params['log_filepath'],
         ], $translate_options),
