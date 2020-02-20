@@ -14,7 +14,7 @@ use Drupal\search_api\Processor\ProcessorProperty;
  *
  * The value is based on different properties for a content item, such as its
  * node-type, its path alias, terms associated with the node and so on. Allows
- * us to create a custom general content type category.
+ * us to create a custom general content type category..
  *
  * @SearchApiProcessor(
  *   id = "UwmSearchWithin",
@@ -79,7 +79,7 @@ class UwmSearchWithin extends ProcessorPluginBase {
     $entity = $item->getOriginalObject(TRUE)->getValue();
     if ($entity instanceof NodeInterface) {
 
-      // $data = UwmSearchUtils::extractAllApiMatches($node, self::FIELD_NAME);.
+      // $data = UwmSearchUtils::extractAllApiMatches($node, self::FIELD_NAME);
       $newValues = [];
 
       self::setValueForContentTypes($entity, $newValues);
