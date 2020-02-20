@@ -1707,7 +1707,7 @@ display:
         title: 'Providers - Scheduling - bulk edit'
         description: ''
         expanded: false
-        parent: system.admin_content
+        parent: 'views_view:views.uwm_providers_scheduling.page_1'
         weight: 111
         context: '0'
         menu_name: admin
