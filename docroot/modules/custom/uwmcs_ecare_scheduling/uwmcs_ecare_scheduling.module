@@ -161,7 +161,30 @@ function uwmcs_ecare_scheduling_mail($key, &$message, $params) {
         t("@visit_type_ids_missing", [
           '@visit_type_ids_missing' => implode(", ", $params['visit_type_ids_missing']),
         ], $translate_options),
-        t('Add them here: :url_taxonomy_vocab', [
+        t("Add them here: :url_taxonomy_vocab", [
+          ':url_taxonomy_vocab' => $base_url . $params['url_taxonomy_vocab'],
+        ], $translate_options),
+      ];
+
+      break;
+
+    // Send a notification when missing visit types are found during import of
+    // providers from Reservoir.
+    // @TODO: 2020-02-21, Tory:
+    // Once Reservoir is removed and confirmed migrations are no longer needed,
+    // this case and the corresponding migration subscriber can be deleted.
+    // @see ResProviderMigrationSubscriber
+    case 'res_validate_provider_visit_types':
+
+      $message['subject'] = t("UWMedicine.org - Provider scheduling data validation: missing visit types", [], $translate_options);
+
+      $message['body'] = [
+        t("Reservoir-to-Stevie import validated for providers' visit type IDs.", [], $translate_options),
+        t("The following visit type IDs were imported on providers, but their visit type names/descriptions were not found:", [], $translate_options),
+        t("@visit_type_ids_missing", [
+          '@visit_type_ids_missing' => implode(", ", $params['visit_type_ids_missing']),
+        ], $translate_options),
+        t("Add them here: :url_taxonomy_vocab", [
           ':url_taxonomy_vocab' => $base_url . $params['url_taxonomy_vocab'],
         ], $translate_options),
       ];

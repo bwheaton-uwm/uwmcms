@@ -17,6 +17,11 @@ use Drupal\Core\Mail\MailManagerInterface;
  * Subscribes to events when running the import of providers from Reservoir.
  * Validates whether any visit type IDs being imported on providers are missing
  * corresponding display name/description stored in Visit Type Labels terms.
+ *
+ * @TODO: 2020-02-21, Tory:
+ * Once Reservoir is removed and confirmed migrations are no longer needed,
+ * this entire class and the corresponding mail implementation in
+ * uwmcs_ecare_scheduling_mail() can be deleted.
  */
 class ResProviderMigrationSubscriber implements EventSubscriberInterface {
 
@@ -376,11 +381,12 @@ class ResProviderMigrationSubscriber implements EventSubscriberInterface {
     // @see uwmcs_ecare_scheduling_mail()
     $this->mailManager->mail(
       'uwmcs_ecare_scheduling',
-      'validate_provider_visit_types',
+      'res_validate_provider_visit_types',
       NULL,
-      \Drupal::languageManager()->getDefaultLanguage()->getId(),
+      NULL,
       [
         'visit_type_ids_missing' => $missing,
+        'url_taxonomy_vocab' => '/admin/structure/taxonomy/manage/visit_type_labels/overview',
       ]
     );
 
