@@ -137,12 +137,30 @@ function _uwmbase_node_parse_json_field(NodeInterface $node) {
 
     // Process data only once in a request.
     // if (!empty($node->uwm_json_packet_data)).
-    $json_string = $node->field_uwm_json_packet->value;
+    $json_string = $node->field_uwm_json_packet->value ?? '';
     $json_data = json_decode($json_string, TRUE);
 
     $node->uwm_json_packet_data = $json_data;
 
   }
+
+}
+
+/**
+ * Implements hook_theme().
+ */
+function uwmbase_theme($existing, $type, $theme, $path) {
+
+  return [
+    // Define template for provider appointment flow.
+    // @see modules/custom/uwmcs_ecare_scheduling/src/Controller/UwmSchedulingController
+    'uwm_appointment_provider_flow' => [
+      'variables' => [
+        'node' => NULL,
+      ],
+      'path' => $path . '/components/appointment-flow',
+    ],
+  ];
 
 }
 
@@ -231,6 +249,17 @@ function uwmbase_page_attachments_alter(&$variables) {
   if ($currentPath == '/node/49301') {
     $variables['#attached']['library'][] = 'uwmbase/trumba';
   }
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function uwmbase_preprocess(&$variables, $hook) {
+
+  // Use `Request` object instead of `path.current` service to get the
+  // end-user-facing requested path, not a Drupal internal path.
+  $variables['request_path'] = ltrim(urldecode(\Drupal::request()->getPathInfo()), '/');
+
 }
 
 /**
@@ -749,6 +778,20 @@ function uwmbase_preprocess_node__res_provider(&$variables) {
     // Determine if the provider has languages.
     if ($node->hasField('field_res_languages')) {
       $variables['has_languages'] = !$node->get('field_res_languages')->isEmpty();
+    }
+
+    // Determine if the provider has education hx.
+    if ($node->hasField('field_uwm_edw_education')) {
+      $education = $node->field_uwm_edw_education->value ?? '';
+      $education = json_decode($education);
+      $variables['puma_education_history'] = $education;
+    }
+
+    // Determine if the provider has puma_board_certs.
+    if ($node->hasField('field_uwm_edw_boardcerts')) {
+      $certs = $node->field_uwm_edw_boardcerts->value ?? '';
+      $certs = json_decode($certs);
+      $variables['puma_board_certs'] = $certs;
     }
 
     // Determine taxonomy terms associated with the provider.
@@ -1598,7 +1641,15 @@ function uwmbase_preprocess_paragraph__uwm_banner_content(&$variables) {
 
   // Copy the block content to the paragraph content.
   foreach ($block_field_names as $field_name) {
-    $variables['content'][$field_name] = $block_render_array[$field_name];
+    if ($field_name == 'field_uwm_more_info_url') {
+      // Extract the URL to use for a link.
+      if (isset($block_render_array[$field_name][0]['#url'])) {
+        $variables['content'][$field_name] = $block_render_array[$field_name][0]['#url']->toString();
+      }
+    }
+    else {
+      $variables['content'][$field_name] = $block_render_array[$field_name];
+    }
   }
 
   // Replace the paragraph's cache metadata with the block_content's.

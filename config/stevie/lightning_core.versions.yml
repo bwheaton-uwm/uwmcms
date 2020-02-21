@@ -221,3 +221,11 @@ viewsreference: 1.2.0
 webform_ui: 5.0.0-rc3
 workflows: 8.6.1
 workspace: 1.0.0-beta15
+uwmcs_ecare_scheduling: 0.0.0
+eu_cookie_compliance: 1.8.0
+uwm_content_owners: 0.0.0
+uwm_admin_providers: 0.0.0
+filebrowser: 2.0.0
+cer: 4.0.0-alpha2
+chosen_lib: 2.9.0
+chosen: 2.9.0

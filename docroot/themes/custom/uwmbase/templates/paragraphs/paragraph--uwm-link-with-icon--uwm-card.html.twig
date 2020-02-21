@@ -4,23 +4,33 @@
 {% set link_target = elements.field_link.0['#options'].attributes.target %}
 {% set link_target = link_target == "_self" ? "" : link_target %}
 {% set url = content.field_uwm_link.0['#url'] %}
-{% block paragraph %}
-    <{{ element }}{{ attributes.addClass(classes) }} id="ppg-{{ paragraph.id() }}">
-        {% block content %}
-            {% spaceless %}
-{#                <a class="btn btn-default {{ link_classes }}" href="{{ url|render }}" target="{{ link_target }}">#}
-{#                    #}{##}
-{#                      @see field--paragraph--field-uwm-icon.html.twig#}
-{#                      @see field--paragraph--field-uwm-link--uwm-link-with-icon.html.twig#}
-{#                    #}
-{#                    {{ content }}#}
-{#                </a>#}
-              {#                    // @TODO Verify new CTA #}
-              {{ uwm_cta_link(content|render,
-                url|render,
-                [link_classes, 'btn', 'btn-default']) }}
 
-            {% endspaceless %}
-        {% endblock content %}
-    </{{ element }}>
+{% block paragraph %}
+    {% if content.field_uwm_link.0 is not empty %}
+        <{{ element }}{{ attributes.addClass(classes) }} id="ppg-{{ paragraph.id() }}">
+            {% block content %}
+                {% spaceless %}
+
+                    {#
+                        The Link field template renders only the link text, so the
+                        URL is handled separately here.
+                        @see field--paragraph--field-uwm-icon.html.twig
+                        @see field--paragraph--field-uwm-link--uwm-link-with-icon.html.twig
+                    #}
+
+                    {#
+                    <a class="btn btn-default {{ link_classes }}" href="{{ url|render }}" target="{{ link_target }}">
+                        {{ content }}
+                    </a>
+                    #}
+
+                    {# // @TODO Verify new CTA #}
+                    {{ uwm_cta_link(content|render,
+                        url|render,
+                        [link_classes, 'btn', 'btn-default']) }}
+
+                {% endspaceless %}
+            {% endblock content %}
+        </{{ element }}>
+    {% endif %}
 {% endblock paragraph %}

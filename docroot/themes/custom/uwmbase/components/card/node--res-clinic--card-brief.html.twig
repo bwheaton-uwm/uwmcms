@@ -70,8 +70,8 @@
       <div class="clinic-card-brief__phone">
         {% set phone = node.field_res_phone_number.value|uwm_format_phone('-') %}
         <i class="uwm-icon uwm-icon--call-online"></i>
-        {% set cta_special_attributes = []|merge({'data-context-title': label|render}) %}
-        {{ uwm_cta_link(phone|replace({'-': '.'}), 'tel:'~phone, [css_parents_classes]|merge(['btn', 'btn-cta-solid']), cta_special_attributes) }}
+        {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
+        {{ uwm_cta_link(phone|replace({'-': '.'}), 'tel:'~phone, css_parents_classes|merge(['btn-cta-solid']), cta_special_attributes) }}
       </div>
     {% endif %}
   </div>

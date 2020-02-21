@@ -4,14 +4,14 @@
     white-space: normal;
 }
 
+.btn-cta {
+    @include button-cta();
+}
+
 .btn-cta .fa-angle-right {
     position: absolute;
     right: 2px;
     top: 10px;
-}
-
-.btn-cta {
-    @include button-cta();
 }
 
 p .btn-cta {
@@ -23,7 +23,7 @@ p .btn-cta {
 }
 
 /*
- * Accent colors
+ * Angled-edge accent color buttons
  *
  * Include higher-specificity selectors for .uwm-section to allow
  * Section paragraphs to override page-level color.
@@ -148,4 +148,17 @@ p .btn-cta {
             color: theme-color('text');
         }
     }
+}
+
+/*
+ * Solid background color buttons (default: blue)
+ *
+ * Note: these can and should be used without the .btn class.
+ */
+.btn-cta-solid {
+    @include btn-cta-solid();
+}
+
+.btn-cta-solid--purple {
+    @include btn-cta-solid(color('purple'), $hover-purple);
 }

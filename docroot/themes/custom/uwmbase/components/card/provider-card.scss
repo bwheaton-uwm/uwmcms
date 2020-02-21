@@ -83,26 +83,31 @@ article.node-res_provider.view-mode-provider_card {
         }
       }
 
+      .provider-card__urgent-care {
+        margin-bottom: 0.25rem // 4px;
+      }
+
       .provider-card__appointments-button {
-        color: $white;
+        display: inline-block;
+        color: color('white');
         font-size: .875rem; // 14px
         text-transform: uppercase;
         margin: 8px 8px 0 0;
 
         &:hover {
           text-decoration: none;
-          color: white;
+          color: color('white');
         }
 
-        &:last-of-type {
+        &:last-child {
           margin-right: 0;
         }
       }
 
-      .provider-card__urgent-care {
-        margin-bottom: 0.25rem // 4px;
+      .provider-card__book-online-returning {
+        display: block;
+        margin-top: 0.375rem; // 6px (+4px margin-bottom on buttons above = 10px)
       }
-
 
       .provider-card__locations {
         @extend %s-with-icon;

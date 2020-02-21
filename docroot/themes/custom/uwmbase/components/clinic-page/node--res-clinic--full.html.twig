@@ -113,6 +113,7 @@
                           <h2>{{ "Contact Information"|t }}</h2>
                         </div>
                         <div class="clinic-page__cta-content">
+                          {# @see field--node--field-res-phone-number--res-clinic.html.twig #}
                           {% if content.field_res_phone_number.0 is not empty %}
                             {{ content.field_res_phone_number }}
                           {% endif %}
@@ -129,7 +130,7 @@
                   {#                Double check for content: #}
                   {% if node.field_res_featured_clinics|length %}
 
-                    <div class="clinic-page__cta clinic-page-see-all-clinics__cta center-wide__cta">
+                    <div class="clinic-page__cta clinic-page-see-all-clinics__cta">
                       <div class="clinic-page__cta-header">
                         <h2>{{ "Make an Appointment"|t }}</h2>
                       </div>
@@ -137,7 +138,7 @@
 
                         {{ uwm_cta_link("See all clinics at this location"|t,
                           '#main-tab-tab---featured-locations',
-                          ['btn', 'btn-cta-solid', 'clinic-page__cta-btn'],
+                          ['btn-cta-solid', 'clinic-page__cta-btn', 'clinic-page__cta-btn--full-width'],
                           []) }}
                       </div>
                     </div>
@@ -198,14 +199,14 @@
             {% endif %}
 
 
-            {# Secondary CTA (returning patients or book online)#}
-            {# Urgent care Clockwise wait time and link #}
+            {# Secondary CTA (urgent care or returning patients book online) #}
             {% if hide_returning_patient_cta or hide_appointment_ctas %}
               <div class="clinic-page__ctas clinic-page__ctas-secondary clinic-page__cta-hidden">
               </div>
             {% else %}
               <div class="clinic-page__ctas clinic-page__ctas-secondary">
 
+                {# Urgent care Clockwise wait time and link #}
                 {# @see field--node--field-res-clockwise-id--res-clinic.html.twig #}
                 {% if content.field_res_clockwise_id.0 is not empty %}
                   {{ content.field_res_clockwise_id }}
@@ -216,13 +217,15 @@
                     </div>
                     <div class="clinic-page__cta-content">
 
-                      {#                    <a class="btn btn-cta-solid clinic-page__cta-btn" href="https://ecare.uwmedicine.org/prod01/inside.asp?mode=apptsched">{{ "Sign in &amp; book online"|t }}</a>#}
-                      {% set cta_special_attributes = []|merge({'data-context-title': label|render}) %}
-                      {#                    // @TODO Verify new CTA #}
+                      {# <a class="btn-cta-solid clinic-page__cta-btn clinic-page__cta-btn--full-width" href="https://ecare.uwmedicine.org/prod01/inside.asp?mode=apptsched">{{ "Sign in &amp; book online"|t }}</a> #}
+
+                      {# // @TODO Verify new CTA #}
+                      {% set cta_special_attributes = []|merge({'data-context-title': node_title|trim}) %}
                       {{ uwm_cta_link("Sign in &amp; book online"|t,
                         'https://ecare.uwmedicine.org/prod01/inside.asp?mode=apptsched',
-                        ['btn', 'btn-cta-solid', 'clinic-page__cta-btn'],
+                        ['btn-cta-solid', 'clinic-page__cta-btn', 'clinic-page__cta-btn--full-width'],
                         cta_special_attributes) }}
+
                     </div>
                   </div>
                 {% endif %}
