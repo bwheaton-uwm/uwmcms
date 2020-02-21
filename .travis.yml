@@ -69,7 +69,7 @@ deploy:
      script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_branch"
      skip_cleanup: true
      on:
-       branch: ci-environments
+       branch: ci-environments AND env(RUN_UWM_TESTS) = false
        php: 7.2
    - provider: script
      script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_branch"
