@@ -11,10 +11,9 @@ env:
     - COMPOSER_BIN=$TRAVIS_BUILD_DIR/vendor/bin
     - BLT_DIR=$TRAVIS_BUILD_DIR/vendor/acquia/blt
     - LOCAL_BLT_DIR=$TRAVIS_BUILD_DIR/blt/
-    - BUILD_DIR=$TRAVIS_BUILD_DIR
   jobs:
-    - RUN_UWM_TESTS=true
-    - RUN_UWM_TESTS=false
+    - RUN_TEST_ENVIRONMENT=true
+    - RUN_TEST_ENVIRONMENT=false
 
 
 cache:
@@ -58,8 +57,8 @@ install:
   - source ${LOCAL_BLT_DIR}/custom-scripts/travis/setup_project
 
 script:
-  - if [ "${RUN_UWM_TESTS}" == true ]; then source ${LOCAL_BLT_DIR}/custom-scripts/travis/run_tests; fi
-  - if [ "${RUN_UWM_TESTS}" == true ]; then source ${LOCAL_BLT_DIR}/custom-scripts/travis/simulate_deploy; fi
+  - if [ "${RUN_TEST_ENVIRONMENT}" == true ]; then source ${LOCAL_BLT_DIR}/custom-scripts/travis/run_tests; fi
+  - if [ "${RUN_TEST_ENVIRONMENT}" == true ]; then source ${LOCAL_BLT_DIR}/custom-scripts/travis/simulate_deploy; fi
   # Uncomment these lines to test database updates using live content.
   # - blt drupal:sync:default:site
 
@@ -70,29 +69,33 @@ deploy:
      skip_cleanup: true
      on:
        branch: ci-environments
-       condition: $RUN_UWM_TESTS = false
+       condition: $RUN_TEST_ENVIRONMENT = false
        php: 7.2
    - provider: script
      script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_branch"
      skip_cleanup: true
      on:
        branch: stage
+       condition: $RUN_TEST_ENVIRONMENT = false
        php: 7.2
    - provider: script
      script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_branch"
      skip_cleanup: true
      on:
        branch: develop
+       condition: $RUN_TEST_ENVIRONMENT = false
        php: 7.2
    - provider: script
      script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_branch"
      skip_cleanup: true
      on:
        branch: master
+       condition: $RUN_TEST_ENVIRONMENT = false
        php: 7.2
    - provider: script
      script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_tag"
      skip_cleanup: true
      on:
        tags: true
+       condition: $RUN_TEST_ENVIRONMENT = false
        php: 7.2
