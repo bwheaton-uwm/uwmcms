@@ -15,9 +15,18 @@
       {{ content.field_res_featured_clinics }}
 
       {% if content.field_res_feat_clinics_view_all.0 is not empty %}
-      <div class="clinic-page__featured-view-all">
-        <a class="btn btn-cta-solid clinic-page__cta-btn" href={{"#{content.field_res_feat_clinics_view_all.0}"}}>See all clinics</a>
-      </div>
+        <div class="clinic-page__featured-view-all">
+
+          {# <a class="btn-cta-solid clinic-page__cta-btn" href={{"#{content.field_res_feat_clinics_view_all.0}"}}>{{ "See all clinics"|t }}</a> #}
+
+          {# // @TODO Verify new CTA #}
+          {% set cta_special_attributes = []|merge({'data-context-title': node_title|trim}) %}
+          {{ uwm_cta_link("See all clinics"|t,
+            content.field_res_feat_clinics_view_all.0|render|striptags|trim,
+            ['btn-cta-solid', 'clinic-page__cta-btn'],
+            cta_special_attributes) }}
+
+        </div>
       {% endif %}
     </div>
 

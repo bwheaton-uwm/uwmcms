@@ -187,6 +187,24 @@
       </section>
     {% endblock %}
 
+    {#
+      If preprocess has specified a modal template to be included on this page,
+      based on context, render it here. (This enables rendering a modal
+      once on the page and having multiple links/buttons trigger opening it.)
+      Use cases:
+      - appointment flow modal
+      @see uwmcs_ecare_scheduling_preprocess_page()
+    #}
+    {% if modal_include is not empty and modal_include.template_path is not empty %}
+
+      {% if modal_include.with_vars is not empty %}
+        {% include modal_include.template_path with modal_include.with_vars %}
+      {% else %}
+        {% include modal_include.template_path %}
+      {% endif %}
+
+    {% endif %}
+
     <section class="content-bottom">
       <div class="wrap container-xl">
 

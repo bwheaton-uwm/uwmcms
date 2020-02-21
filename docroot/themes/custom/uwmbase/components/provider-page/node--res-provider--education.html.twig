@@ -27,31 +27,66 @@
  #
  # EDUCATION
  #
- #
-#}
-{% if node.uwm_json_packet_data.educationHistories is not empty %}
-  <h3 class="provider-page__section2-subheading">{{ 'Education and Training'|t }}</h3>
+ #}
+{% set puma_education_history = puma_education_history|uwm_sort_parts('university_name')|uwm_sort_parts('graduation_year')|reverse %}
+
+{% if puma_education_history is not empty %}
+
+  {#  Some entries are unique but, for values we don't show users.#}
+  {#  Remove duplicate PUMA rows based on what we show: #}
+  {% set previous_entries = [] %}
+
+  <h3 class="provider-page__section2-subheading puma-w422577376">{{ 'Education and Training'|t }}</h3>
   <ul class="provider-page__education">
-    {% for e in node.uwm_json_packet_data.educationHistories|uwm_sort_parts('gradYear')|reverse %}
-      <li class="provider-page__education-item">
-        <div class="provider-page__education-institution">{{ e.institutionName }}</div>
 
-        {% set ed = [] %}
-        {% if e.educationType %}
-          {% set ed = ed|merge([e.educationType]) %}
-        {% endif %}
-        {% if e.gradYear %}
-          {% set ed = ed|merge([e.gradYear]) %}
-        {% endif %}
-        {% if e.specialty %}
-          {% set ed = ed|merge([e.specialty]) %}
-        {% endif %}
+    {% for d in puma_education_history %}
 
-        <div class="provider-page__education-details">{{ ed|join(', ') }}</div>
-      </li>
+      {% set ed = [d.university_name, d.type, d.graduation_year, d.speciality] %}
+      {% if ed not in previous_entries %}
+
+        <li class="provider-page__education-item">
+          <div class="provider-page__education-institution">{{ d.university_name }}</div>
+          <div class="provider-page__education-details">
+
+            {% set str = d.type ~ ',' ~ d.graduation_year ~ ',' ~ d.specialty %}
+            {{ str | trim(',') | replace({',,': ','}) | replace({',': ', '}) }}
+        </li>
+
+        {% set previous_entries = previous_entries|merge([ed]) %}
+      {% endif %}
+
+
+
     {% endfor %}
   </ul>
 {% endif %}
+{#
+ # Old Information Manager education json packet:
+ #
+ #}
+{#{% if node.uwm_json_packet_data.educationHistories is not empty %}#}
+{#  <h3 class="provider-page__section2-subheading">{{ 'Education and Training'|t }}</h3>#}
+{#  <ul class="provider-page__education">#}
+{#    {% for e in node.uwm_json_packet_data.educationHistories|uwm_sort_parts('gradYear')|reverse %}#}
+{#      <li class="provider-page__education-item">#}
+{#        <div class="provider-page__education-institution">{{ e.institutionName }}</div>#}
+
+{#        {% set ed = [] %}#}
+{#        {% if e.educationType %}#}
+{#          {% set ed = ed|merge([e.educationType]) %}#}
+{#        {% endif %}#}
+{#        {% if e.gradYear %}#}
+{#          {% set ed = ed|merge([e.gradYear]) %}#}
+{#        {% endif %}#}
+{#        {% if e.specialty %}#}
+{#          {% set ed = ed|merge([e.specialty]) %}#}
+{#        {% endif %}#}
+
+{#        <div class="provider-page__education-details">{{ ed|join(', ') }}</div>#}
+{#      </li>#}
+{#    {% endfor %}#}
+{#  </ul>#}
+{#{% endif %}#}
 
 
 {#
@@ -73,25 +108,62 @@
  #
  #
  #
- # CERTIFICATIONS
+ # PUMA CERTIFICATIONS
  #
  #
  #}
-{% if node.uwm_json_packet_data.boardCertifications is not empty %}
-  <h3 class="provider-page__section2-subheading">{{ 'Board Certifications'|t }}</h3>
+{% if puma_board_certs is not empty %}
+  {% set previous_entries = [] %}
+
+  <h3 class="provider-page__section2-subheading puma-w422577376">{{ 'Board Certifications'|t }}</h3>
   <ul class="provider-page__certifications">
-    {% for e in node.uwm_json_packet_data.boardCertifications|uwm_sort_parts('certifiedYear')|reverse %}
-      {% set ed = [] %}
-      {% if e.specialtyName %}
-        {% set ed = ed|merge([e.specialtyName]) %}
+
+    {% for d in puma_board_certs|uwm_sort_parts('certified_year')|reverse %}
+
+      {% set cert = [] %}
+      {% if d.specialty_name %}
+        {% set cert = cert|merge([d.specialty_name]) %}
       {% endif %}
-      {% if e.certifiedYear %}
-        {% set ed = ed|merge([e.certifiedYear]) %}
+      {% if d.certified_year %}
+        {% set cert = cert|merge([d.certified_year]) %}
       {% endif %}
-      {% if e.boardName %}
-        {% set ed = ed|merge([e.boardName]) %}
+      {% if d.board_name %}
+        {% set cert = cert|merge([d.board_name]) %}
       {% endif %}
-      <li class="provider-page__certifications-item">{{ ed|join(', ') }}</li>
+
+
+      {% if cert not in previous_entries %}
+
+        <li class="provider-page__certifications-item">{{ cert|join(', ') }}</li>
+
+      {% endif %}
+
+      {% set previous_entries = previous_entries|merge([cert]) %}
+
     {% endfor %}
   </ul>
 {% endif %}
+
+
+{#
+ # Old Information Manager degrees json packet:
+ #
+ #}
+{#{% if node.uwm_json_packet_data.boardCertifications is not empty %}#}
+{#  <h3 class="provider-page__section2-subheading">{{ 'Board Certifications'|t }}</h3>#}
+{#  <ul class="provider-page__certifications">#}
+{#    {% for e in node.uwm_json_packet_data.boardCertifications|uwm_sort_parts('certifiedYear')|reverse %}#}
+{#      {% set ed = [] %}#}
+{#      {% if e.specialtyName %}#}
+{#        {% set ed = ed|merge([e.specialtyName]) %}#}
+{#      {% endif %}#}
+{#      {% if e.certifiedYear %}#}
+{#        {% set ed = ed|merge([e.certifiedYear]) %}#}
+{#      {% endif %}#}
+{#      {% if e.boardName %}#}
+{#        {% set ed = ed|merge([e.boardName]) %}#}
+{#      {% endif %}#}
+{#      <li class="provider-page__certifications-item">{{ ed|join(', ') }}</li>#}
+{#    {% endfor %}#}
+{#  </ul>#}
+{#{% endif %}#}

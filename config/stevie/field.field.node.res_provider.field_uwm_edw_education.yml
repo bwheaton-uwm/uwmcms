@@ -1,0 +1,19 @@
+uuid: 098f4232-28d4-4bb3-926e-530fb588082c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_edw_education
+    - node.type.res_provider
+id: node.res_provider.field_uwm_edw_education
+field_name: field_uwm_edw_education
+entity_type: node
+bundle: res_provider
+label: uwm_edw_education
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
