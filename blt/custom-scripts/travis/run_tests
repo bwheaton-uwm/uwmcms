@@ -17,17 +17,16 @@ echo date
 vendor/bin/blt validate:all --no-interaction || { set +v && return 1; }
 
 echo date
-
-#travis_wait vendor/bin/blt setup --define drush.alias='${drush.aliases.ci}' --no-interaction --verbose || { set +v && return 1; }
-
-#vendor/bin/blt tests:all --define drush.alias='${drush.aliases.ci}' --define tests.run-server=true --no-interaction --verbose || { set +v && return 1; }
-
+#
+# travis_wait vendor/bin/blt setup --define drush.alias='${drush.aliases.ci}' --no-interaction --verbose || { set +v && return 1; }
+#
+# vendor/bin/blt tests:all --define drush.alias='${drush.aliases.ci}' --define tests.run-server=true --no-interaction --verbose || { set +v && return 1; }
+#
 vendor/bin/blt tests:all --no-interaction --verbose || { set +v && return 1; }
 
 # Run the import/ export compare that is run on
 # Acquia following code-deploys. Errors here can prevent
 # installing a build.
-
 vendor/bin/blt artifact:update:drupal  --no-interaction --verbose --site=stevie
 vendor/bin/blt artifact:update:drupal  --no-interaction --verbose --site=stevie
 vendor/bin/blt artifact:update:drupal  --no-interaction --verbose --site=stevie
