@@ -1,6 +1,0 @@
-uwmcs_ecare_scheduling.appointment_provider_flow:
-  path: '/uwm-appointment/provider/{node}/{nojs}'
-  defaults: 
-    _controller: '\Drupal\uwmcs_ecare_scheduling\Controller\UwmAppointmentController::appointmentProviderFlow'
-  requirements: 
-    _permission: 'access content' 
