@@ -1163,7 +1163,7 @@ display:
     display_plugin: page
     id: widget_table
     display_title: 'Widget (table)'
-    position: 3
+    position: 4
     display_options:
       display_extenders: {  }
       path: admin/content/media-widget-table

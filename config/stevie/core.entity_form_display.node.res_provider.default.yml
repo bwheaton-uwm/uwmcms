@@ -48,7 +48,6 @@ dependencies:
     - field.field.node.res_provider.uwm_unique_id
     - image.style.thumbnail
     - node.type.res_provider
-    - workflows.workflow.editorial
   module:
     - entity_browser
     - field_group
