@@ -9,12 +9,14 @@ dependencies:
     - field.field.node.uwm_medical_specialty.field_res_conditions_symptoms
     - field.field.node.uwm_medical_specialty.field_res_procedures_treatments
     - field.field.node.uwm_medical_specialty.field_search_best_bets
+    - field.field.node.uwm_medical_specialty.field_uwm_content_owner
     - field.field.node.uwm_medical_specialty.field_uwm_find_a_location_link
     - field.field.node.uwm_medical_specialty.field_uwm_find_a_provider_link
     - field.field.node.uwm_medical_specialty.field_uwm_image
     - field.field.node.uwm_medical_specialty.field_uwm_page_path_name
     - field.field.node.uwm_medical_specialty.field_uwm_parent_page
     - field.field.node.uwm_medical_specialty.field_uwm_sections
+    - field.field.node.uwm_medical_specialty.field_uwm_subject_matter_experts
     - field.field.node.uwm_medical_specialty.field_uwm_weight
     - node.type.uwm_medical_specialty
   module:
@@ -36,10 +38,13 @@ hidden:
   field_res_conditions_symptoms: true
   field_res_procedures_treatments: true
   field_search_best_bets: true
+  field_uwm_content_owner: true
   field_uwm_find_a_location_link: true
   field_uwm_find_a_provider_link: true
   field_uwm_image: true
   field_uwm_page_path_name: true
   field_uwm_parent_page: true
   field_uwm_sections: true
+  field_uwm_subject_matter_experts: true
   field_uwm_weight: true
+  search_api_excerpt: true
