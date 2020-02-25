@@ -46,7 +46,7 @@ disable-targets:
     behat: { all: true, run: true }
     drupal: { run: true }
 #    composer: { validate: true }
-#    deprecated: { modules: true, themes: true }
+    deprecated: { modules: true, themes: true }
     frontend: { run: true }
 #    php: { lint: true }
 #    phpcs: { sniff: { all: true } }
