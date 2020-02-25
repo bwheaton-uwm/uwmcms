@@ -2,7 +2,7 @@
 
 set -v
 set +e
-travis_fold:start:uwm_simulate_deploy
+travis_start('uwm_simulate_deploy')
 
 
 simulate_deploy() {
@@ -20,7 +20,7 @@ echo "UWM finish simulate_deploy"
 date
 
 
-travis_fold:end:uwm_simulate_deploy
+travis_start('uwm_simulate_deploy')
 
 set +v
 set -e
