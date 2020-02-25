@@ -17,7 +17,6 @@ description: ''
 tag: ''
 base_table: taxonomy_term_field_data
 base_field: tid
-core: 8.x
 display:
   default:
     display_plugin: default
@@ -749,6 +748,8 @@ display:
               content_manager: '0'
               content_reviewer: '0'
             placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -793,6 +794,8 @@ display:
               content_manager: '0'
               content_reviewer: '0'
             placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -837,6 +840,8 @@ display:
               content_manager: '0'
               content_reviewer: '0'
             placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -879,6 +884,8 @@ display:
               content_manager: '0'
             reduce: false
             argument: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -922,6 +929,8 @@ display:
               administrator: '0'
               content_manager: '0'
               content_reviewer: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -964,6 +973,8 @@ display:
             placeholder: null
             min_placeholder: null
             max_placeholder: null
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: true
           group_info:
             label: Providers
@@ -1027,6 +1038,8 @@ display:
             placeholder: null
             min_placeholder: null
             max_placeholder: null
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: true
           group_info:
             label: Clinics
@@ -1095,6 +1108,8 @@ display:
             placeholder: ''
             min_placeholder: ''
             max_placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1133,6 +1148,8 @@ display:
             remember_roles:
               authenticated: authenticated
             placeholder: null
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: true
           group_info:
             label: 'Source URL'

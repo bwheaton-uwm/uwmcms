@@ -14,18 +14,13 @@ targetEntityType: paragraph
 bundle: uwm_view
 mode: default
 content:
-  moderation_state:
-    type: moderation_state_default
-    weight: 100
-    settings: {  }
-    region: content
-    third_party_settings: {  }
   uwm_view:
     weight: 2
     settings:
       match_operator: CONTAINS
       size: '60'
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
     type: viewsreference_autocomplete
     region: content

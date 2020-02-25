@@ -1,0 +1,44 @@
+uuid: 995bbbaf-62e4-40d9-9d33-f3f81cdf9c66
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.uwm_provider_resource_video.field_media_in_library
+    - field.field.media.uwm_provider_resource_video.field_media_video_embed_field
+    - field.field.media.uwm_provider_resource_video.field_uwm_description
+    - field.field.media.uwm_provider_resource_video.field_uwm_prov_res_media_type
+    - field.field.media.uwm_provider_resource_video.field_uwm_prov_res_specialty
+    - field.field.media.uwm_provider_resource_video.field_uwm_prov_res_sub_specialty
+    - field.field.media.uwm_provider_resource_video.field_uwm_prov_res_video_type
+    - field.field.media.uwm_provider_resource_video.field_uwm_teaser
+    - field.field.media.uwm_provider_resource_video.image
+    - media.type.uwm_provider_resource_video
+id: media.uwm_provider_resource_video.media_library
+targetEntityType: media
+bundle: uwm_provider_resource_video
+mode: media_library
+content:
+  name:
+    type: string_textfield
+    settings:
+      size: 60
+      placeholder: ''
+    weight: 0
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  field_media_in_library: true
+  field_media_video_embed_field: true
+  field_uwm_description: true
+  field_uwm_prov_res_media_type: true
+  field_uwm_prov_res_specialty: true
+  field_uwm_prov_res_sub_specialty: true
+  field_uwm_prov_res_video_type: true
+  field_uwm_teaser: true
+  image: true
+  path: true
+  preview: true
+  status: true
+  uid: true

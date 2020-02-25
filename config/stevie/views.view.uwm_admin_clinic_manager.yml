@@ -29,7 +29,6 @@ description: 'Find and manage content.'
 tag: default
 base_table: node_field_data
 base_field: nid
-core: 8.x
 display:
   default:
     display_options:
@@ -284,7 +283,7 @@ display:
           batch_size: 10
           form_step: true
           buttons: false
-          clear_on_exposed: 0
+          clear_on_exposed: false
           action_title: Action
           selected_actions:
             node_assign_owner_action: node_assign_owner_action
@@ -453,7 +452,7 @@ display:
           field_api_classes: false
           entity_type: content_moderation_state
           entity_field: moderation_state
-          plugin_id: field
+          plugin_id: moderation_state_field
         field_res_medical_services:
           id: field_res_medical_services
           table: node__field_res_medical_services
@@ -782,6 +781,8 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -825,6 +826,8 @@ display:
               administrator: '0'
               content_manager: '0'
             reduce: false
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -872,6 +875,8 @@ display:
               administrator: '0'
               content_manager: '0'
             reduce: false
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -917,6 +922,8 @@ display:
               authenticated: authenticated
             reduce: false
             argument: null
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -959,6 +966,8 @@ display:
               replicator: '0'
               administrator: '0'
               content_manager: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -999,6 +1008,8 @@ display:
               replicator: '0'
               administrator: '0'
               content_manager: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''

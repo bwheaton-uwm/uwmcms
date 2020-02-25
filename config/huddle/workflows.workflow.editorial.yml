@@ -81,3 +81,4 @@ type_settings:
       - news_brief
       - page
       - question
+  default_moderation_state: draft

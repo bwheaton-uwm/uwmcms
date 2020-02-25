@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Patients Treated'
 vid: patients_treated
 description: ''
-hierarchy: 0
 weight: 0

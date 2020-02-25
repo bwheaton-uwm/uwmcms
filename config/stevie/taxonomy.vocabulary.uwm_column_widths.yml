@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'UWM Column Widths'
 vid: uwm_column_widths
 description: ''
-hierarchy: 0
 weight: 0

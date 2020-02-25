@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'UWM Provider Resource Document Type'
 vid: uwm_provider_resource_doc_type
 description: ''
-hierarchy: 0
 weight: 0

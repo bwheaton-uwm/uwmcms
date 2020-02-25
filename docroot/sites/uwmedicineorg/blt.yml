@@ -1,11 +1,11 @@
-drush:
-  aliases:
-    remote: uwmedicineorg.dev
-    local: self
-cm.core.dirs.sync.path: '${cm.core.path}/uwmedicineorg'
-project:
-  machine_name: uwmedicineorg
-  human_name: uwmedicineorg
-  local:
-    protocol: http
-    hostname: beta.uwmed.local
+#drush:
+#  aliases:
+#    remote: uwmedicineorg.dev
+#    local: self
+#cm.core.dirs.sync.path: '${cm.core.path}/uwmedicineorg'
+#project:
+#  machine_name: uwmedicineorg
+#  human_name: uwmedicineorg
+#  local:
+#    protocol: http
+#    hostname: beta.uwmed.local

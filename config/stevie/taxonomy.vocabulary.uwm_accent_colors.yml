@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'UWM Accent Colors'
 vid: uwm_accent_colors
 description: ''
-hierarchy: 0
 weight: 0

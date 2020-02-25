@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.article.field_teaser
     - image.style.thumbnail_scaled_200px_wide_
     - node.type.article
+    - workflows.workflow.editorial
   module:
     - allowed_formats
     - content_moderation
@@ -223,6 +224,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
   field_teaser:
     weight: 4
@@ -270,6 +272,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
 hidden:
   promote: true

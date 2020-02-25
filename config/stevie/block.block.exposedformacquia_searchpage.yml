@@ -2,10 +2,6 @@ uuid: 78f77df4-6c14-4ae2-8346-e958a80a3ce4
 langcode: en
 status: true
 dependencies:
-  config:
-    - views.view.acquia_search
-  module:
-    - views
   theme:
     - bartik
 _core:
@@ -20,6 +16,6 @@ settings:
   id: 'views_exposed_filter_block:acquia_search-page'
   label: ''
   provider: views
-  label_display: visible
+  label_display: '0'
   views_label: ''
 visibility: {  }

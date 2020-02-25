@@ -32,4 +32,8 @@
   <exclude-pattern>gulpfile.js</exclude-pattern>
   <exclude-pattern>*.svg</exclude-pattern>
 
+  <!-- Temporarily exclude PHP and JS files.  -->
+  <exclude-pattern>*.php</exclude-pattern>
+  <exclude-pattern>*.js</exclude-pattern>
+
 </ruleset>
