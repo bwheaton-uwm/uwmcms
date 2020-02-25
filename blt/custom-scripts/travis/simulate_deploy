@@ -20,7 +20,7 @@ echo "UWM finish simulate_deploy"
 date
 
 
-travis_start('uwm_simulate_deploy')
+travis_end('uwm_simulate_deploy')
 
 set +v
 set -e
