@@ -10,135 +10,135 @@ module.exports = {
                 // end, I'm just verifying the page link appears, not that the page loads when
                 // clicked.
                 this
-                    .assert.visible('@iconFacebookLnk', 'Facebook icon link appears.');
+                    .assert.visible('@iconFacebookLink', 'Facebook icon link appears.');
                 this
-                    .assert.visible('@iconLinkedInLnk', 'LinkedIn icon link appears.');
+                    .assert.visible('@iconLinkedInLink', 'LinkedIn icon link appears.');
                 this
-                    .assert.visible('@iconTwitterLnk', 'Twitter icon link appears.');
+                    .assert.visible('@iconTwitterLink', 'Twitter icon link appears.');
                 this
-                    .assert.visible('@iconInstagramLnk', 'Instagram icon link appears.');
+                    .assert.visible('@iconInstagramLink', 'Instagram icon link appears.');
                 this
-                    .assert.visible('@iconYoutubeLnk', 'YouTube icon link appears.');
+                    .assert.visible('@iconYoutubeLink', 'YouTube icon link appears.');
 
                 return this;
             },
             verifyT1FooterLinks: function (pageUrl, testUrlValidation) {
                 this
-                    .assert.visible('@aboutLnk', 'About UW Medicine link appears.')
-                    .click('@aboutLnk')
-                    .waitForElementVisible('@aboutVal', 'Abount link loads correct page.')
+                    .assert.visible('@aboutLink', 'About UW Medicine link appears.')
+                    .click('@aboutLink')
+                    .waitForElementVisible('@aboutPage', 'Abount link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@mediaInqLnk', 'Media Inquiries link appears.')
-                    .click('@mediaInqLnk')
-                    .waitForElementVisible('@mediaInqVal', 'Media Inquiries link loads correct page.')
+                    .assert.visible('@mediaInqLink', 'Media Inquiries link appears.')
+                    .click('@mediaInqLink')
+                    .waitForElementVisible('@mediaInqPage', 'Media Inquiries link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@contactLnk', 'Contact Us link appears.')
-                    .click('@contactLnk')
-                    .waitForElementVisible('@contactVal', 'Contact Us link loads correct page.')
+                    .assert.visible('@contactLink', 'Contact Us link appears.')
+                    .click('@contactLink')
+                    .waitForElementVisible('@contactPage', 'Contact Us link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@volunteerLnk', 'Volunteer link appears.')
-                    .click('@volunteerLnk')
-                    .waitForElementVisible('@volunteerVal', 'Volunteer link loads correct page.')
+                    .assert.visible('@volunteerLink', 'Volunteer link appears.')
+                    .click('@volunteerLink')
+                    .waitForElementVisible('@volunteerPage', 'Volunteer link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@uweduLnk', 'UW.edu link appears.')
-                    .click('@uweduLnk')
-                    .waitForElementVisible('@uweduVal', 'UW.edu link loads correct page.')
+                    .assert.visible('@uweduLink', 'UW.edu link appears.')
+                    .click('@uweduLink')
+                    .waitForElementVisible('@uweduPage', 'UW.edu link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@providerLnk', 'Provider Resource link appears.')
-                    .click('@providerLnk')
-                    .waitForElementVisible('@providerVal', 'Provider Resource link loads correct page.')
+                    .assert.visible('@providerLink', 'Provider Resource link appears.')
+                    .click('@providerLink')
+                    .waitForElementVisible('@providerPage', 'Provider Resource link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
                     // Fact Book loads a PDF page. At this point. I'm not sure how to validate it since
                     // it doesn't seemt to have an HTML-like DOM.
-                    .assert.visible('@factBookLnk', 'Fact Book link appears.');
+                    .assert.visible('@factBookLink', 'Fact Book link appears.');
                 this
-                    .assert.visible('@careersLnk', 'Careers link appears.')
-                    .click('@careersLnk')
-                    .waitForElementVisible('@careersVal', 'Careers link loads correct page.')
+                    .assert.visible('@careersLink', 'Careers link appears.')
+                    .click('@careersLink')
+                    .waitForElementVisible('@careersPage', 'Careers link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@donateLnk', 'Donate link appears.')
-                    .click('@donateLnk')
-                    .waitForElementVisible('@donateVal', 'Donate link loads correct page.')
+                    .assert.visible('@donateLink', 'Donate link appears.')
+                    .click('@donateLink')
+                    .waitForElementVisible('@donatePage', 'Donate link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@feedbackLnk', 'Feedback link appears.')
-                    .click('@feedbackLnk')
-                    .waitForElementVisible('@feedbackVal', 'Feedback link loads correct page.')
+                    .assert.visible('@feedbackLink', 'Feedback link appears.')
+                    .click('@feedbackLink')
+                    .waitForElementVisible('@feedbackPage', 'Feedback link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@harborviewLnk', 'Harborview Medical Center link appears.')
-                    .click('@harborviewLnk')
-                    .waitForElementVisible('@harborviewVal', 'Harborview link loads correct page.')
+                    .assert.visible('@harborviewLink', 'Harborview Medical Center link appears.')
+                    .click('@harborviewLink')
+                    .waitForElementVisible('@harborviewPage', 'Harborview link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@valleyMedLnk', 'Valley Medical Center link appears.')
-                    .click('@valleyMedLnk')
-                    .waitForElementVisible('@valleyMedVal', 'Valley Medical Center link loads correct page.')
+                    .assert.visible('@valleyMedLink', 'Valley Medical Center link appears.')
+                    .click('@valleyMedLink')
+                    .waitForElementVisible('@valleyMedPage', 'Valley Medical Center link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@uwNeighborhoodLnk', 'UW Neighborhood Clinics link appears.')
-                    .click('@uwNeighborhoodLnk')
-                    .waitForElementVisible('@uwNeighborhoodVal', 'UW Neighborhood Clinics link loads correct page.')
+                    .assert.visible('@uwNeighborhoodLink', 'UW Neighborhood Clinics link appears.')
+                    .click('@uwNeighborhoodLink')
+                    .waitForElementVisible('@uwNeighborhoodPage', 'UW Neighborhood Clinics link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@uwSchoolLnk', 'UW School of Medicine link appears.')
-                    .click('@uwSchoolLnk')
-                    .waitForElementVisible('@uwSchoolVal', 'UW School of Medicine link loads correct page.')
+                    .assert.visible('@uwSchoolLink', 'UW School of Medicine link appears.')
+                    .click('@uwSchoolLink')
+                    .waitForElementVisible('@uwSchoolPage', 'UW School of Medicine link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@rightAsRainLnk', 'Right as Rain link appears.')
-                    .click('@rightAsRainLnk')
-                    .waitForElementVisible('@rightAsRainVal', 'Right as Rain link loads correct page.')
+                    .assert.visible('@rightAsRainLink', 'Right as Rain link appears.')
+                    .click('@rightAsRainLink')
+                    .waitForElementVisible('@rightAsRainPage', 'Right as Rain link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@uwMedCenterNWLnk', 'UW Med Center NW link appears.')
-                    .click('@uwMedCenterNWLnk')
-                    .waitForElementVisible('@uwMedCenterNWVal', 'UW Med Center NW link loads correct page.')
+                    .assert.visible('@uwMedCenterNWLink', 'UW Med Center NW link appears.')
+                    .click('@uwMedCenterNWLink')
+                    .waitForElementVisible('@uwMedCenterNWPage', 'UW Med Center NW link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@uwMedCenterMontlakeLnk', 'UW Med Center Montlake link appears.')
-                    .click('@uwMedCenterMontlakeLnk')
-                    .waitForElementVisible('@uwMedCenterMontlakeVal', 'UW Med Center Montlake link loads correct page.')
+                    .assert.visible('@uwMedCenterMontlakeLink', 'UW Med Center Montlake link appears.')
+                    .click('@uwMedCenterMontlakeLink')
+                    .waitForElementVisible('@uwMedCenterMontlakePage', 'UW Med Center Montlake link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@uwPhysiciansLnk', 'UW Physicians link appears.')
-                    .click('@uwPhysiciansLnk')
-                    .waitForElementVisible('@uwPhysiciansVal', 'UW Physicians link loads correct page.')
+                    .assert.visible('@uwPhysiciansLink', 'UW Physicians link appears.')
+                    .click('@uwPhysiciansLink')
+                    .waitForElementVisible('@uwPhysiciansPage', 'UW Physicians link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@airliftLnk', 'Airlift Northwest link appears.')
-                    .click('@airliftLnk')
-                    .waitForElementVisible('@airliftVal', 'Airlift NW link loads correct page.')
+                    .assert.visible('@airliftLink', 'Airlift Northwest link appears.')
+                    .click('@airliftLink')
+                    .waitForElementVisible('@airliftPage', 'Airlift NW link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@uwMedNewsroomLnk', 'UW Med Newsroom link appears.')
-                    .click('@uwMedNewsroomLnk')
-                    .waitForElementVisible('@uwMedNewsroomVal', 'UW Med Newsroom link loads correct page.')
+                    .assert.visible('@uwMedNewsroomLink', 'UW Med Newsroom link appears.')
+                    .click('@uwMedNewsroomLink')
+                    .waitForElementVisible('@uwMedNewsroomPage', 'UW Med Newsroom link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
 
@@ -146,27 +146,27 @@ module.exports = {
             },
             verifyT2FooterLinks: function (pageUrl, testUrlValidation) {
                 this
-                    .assert.visible('@onlinePrivacyLnk', 'Online Privacy Statement link appears.')
-                    .click('@onlinePrivacyLnk')
-                    .waitForElementVisible('@onlinePrivacyVal', 'Online Privacy link loads correct page.')
+                    .assert.visible('@onlinePrivacyLink', 'Online Privacy Statement link appears.')
+                    .click('@onlinePrivacyLink')
+                    .waitForElementVisible('@onlinePrivacyPage', 'Online Privacy link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@policiesLnk', 'Policies And Notices link appears.')
-                    .click('@policiesLnk')
-                    .waitForElementVisible('@policiesVal', 'Policies link loads correct page.')
+                    .assert.visible('@policiesLink', 'Policies And Notices link appears.')
+                    .click('@policiesLink')
+                    .waitForElementVisible('@policiesPage', 'Policies link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@copyrightLnk', 'Copyright link appears.')
-                    .click('@copyrightLnk')
-                    .waitForElementVisible('@copyrightVal', 'Copyright link loads correct page.')
+                    .assert.visible('@copyrightLink', 'Copyright link appears.')
+                    .click('@copyrightLink')
+                    .waitForElementVisible('@copyrightPage', 'Copyright link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .assert.visible('@websiteTermsLnk', 'Website Terms and Conditions link appears.')
-                    .click('@websiteTermsLnk')
-                    .waitForElementVisible('@websiteTermsVal', 'Website Terms and Conditions link loads correct page.')
+                    .assert.visible('@websiteTermsLink', 'Website Terms and Conditions link appears.')
+                    .click('@websiteTermsLink')
+                    .waitForElementVisible('@websiteTermsPage', 'Website Terms and Conditions link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
 
@@ -175,64 +175,64 @@ module.exports = {
         }
     ],
     elements: {
-		aboutLnk: '.foot-first li:nth-child(1) a',
-        aboutVal: 'body.path-node-20851',
-        airliftLnk: '.foot-second li:nth-child(8) a',
-        airliftVal: 'body.path-node-21546',
-        careersLnk: '.foot-first li:nth-child(6) a',
-        careersVal: 'body.path-node-21461',
-        contactLnk: '.foot-first li:nth-child(5) a',
-        contactVal: 'body.path-node-21466',
-        copyrightLnk: 'ul.list-inline li:nth-child(3)',
-        copyrightVal: 'body.path-node-22091',
-        donateLnk: '.foot-first li:nth-child(8) a',
-        donateVal: 'body.page-template-make-a-gift-php',
-        factBookLnk: '.foot-first li:nth-child(4) a',
-        factBookVal: 'Validate the link should be PDF',
-        feedbackLnk: '.foot-first li:nth-child(10) a',
-        feedbackVal: 'body.path-webform-website_feedback',
-        harborviewLnk: '.foot-second li:nth-child(1) a',
-        harborviewVal: 'body.path-node-23246',
-        iconFacebookLnk: '.uwmed-icon__facebook',
-        iconFacebookVal: 'div.lfloat i.fb_logo',
-        iconInstagramLnk: 'div.service-icons a:nth-child(3)',
-        iconInstagramVal: 'main.SCxLW',
-        iconLinkedInLnk: '.uwmed-icon__linkedin',
-        iconLinkedInVal: 'body#pagekey-auth_wall_desktop_company',
-        iconTwitterLnk: '.uwmed-icon__twitter',
-        iconTwitterVal: 'div#react-root',
-        iconYoutubeLnk: '.uwmed-icon__youtube',
-        iconYoutubeVal: 'div#channel-header-container img.yt-img-shadow',
-        mediaInqLnk: '.foot-first li:nth-child(3) a',
-        mediaInqVal: 'header.headroom--top',
-        onlinePrivacyLnk: 'ul.list-inline li:nth-child(1)',
-        onlinePrivacyVal: 'body.site-online',
-        policiesLnk: 'ul.list-inline li:nth-child(2)',
-        policiesVal: 'body.path-node-21821',
-        providerLnk: '.foot-first li:nth-child(2) a',
-        providerVal: '.specialties',
-        rightAsRainLnk: '.foot-second li:nth-child(9) a',
-        rightAsRainVal: 'div.dialog-off-canvas-main-canvas',
-        uweduLnk: '.foot-first li:nth-child(9) a',
-        uweduVal: 'body.home.blog.site-home',
-        uwMedCenterMontlakeLnk: '.foot-second li:nth-child(4) a',
-        uwMedCenterMontlakeVal: 'body.path-node-22556',
-        uwMedCenterNWLnk: '.foot-second li:nth-child(2) a',
-        uwMedCenterNWVal: 'body.path-node-22956',
-        uwMedNewsroomLnk: '.foot-second li:nth-child(10) a',
-        uwMedNewsroomVal: 'div#block-views-whats-new-block',
-        uwNeighborhoodLnk: '.foot-second li:nth-child(5) a',
-        uwNeighborhoodVal: 'body.path-search-locations',
-        uwPhysiciansLnk: '.foot-second li:nth-child(6) a',
-        uwPhysiciansVal: 'body.path-node-21861',
-        uwSchoolLnk: '.foot-second li:nth-child(7) a',
-        uwSchoolVal: 'body.path-node-20916',
-        valleyMedLnk: '.foot-second li:nth-child(3) a',
-        valleyMedVal: 'body.path-node-22496',
-        volunteerLnk: '.foot-first li:nth-child(7) a',
-        volunteerVal: 'body.path-node-22171',
-        websiteTermsLnk: 'ul.list-inline li:nth-child(4)',
-        websiteTermsVal: 'body.site-online.page-id-5'
+		aboutLink: '.foot-first li:nth-child(1) a',
+        aboutPage: 'body.path-node-20851',
+        airliftLink: '.foot-second li:nth-child(8) a',
+        airliftPage: 'body.path-node-21546',
+        careersLink: '.foot-first li:nth-child(6) a',
+        careersPage: 'body.path-node-21461',
+        contactLink: '.foot-first li:nth-child(5) a',
+        contactPage: 'body.path-node-21466',
+        copyrightLink: 'ul.list-inline li:nth-child(3)',
+        copyrightPage: 'body.path-node-22091',
+        donateLink: '.foot-first li:nth-child(8) a',
+        donatePage: 'body.page-template-make-a-gift-php',
+        factBookLink: '.foot-first li:nth-child(4) a',
+        factBookPage: 'Validate the link should be PDF',
+        feedbackLink: '.foot-first li:nth-child(10) a',
+        feedbackPage: 'body.path-webform-website_feedback',
+        harborviewLink: '.foot-second li:nth-child(1) a',
+        harborviewPage: 'body.path-node-23246',
+        iconFacebookLink: '.uwmed-icon__facebook',
+        iconFacebookPage: 'div.lfloat i.fb_logo',
+        iconInstagramLink: 'div.service-icons a:nth-child(3)',
+        iconInstagramPage: 'main.SCxLW',
+        iconLinkedInLink: '.uwmed-icon__linkedin',
+        iconLinkedInPage: 'body#pagekey-auth_wall_desktop_company',
+        iconTwitterLink: '.uwmed-icon__twitter',
+        iconTwitterPage: 'div#react-root',
+        iconYoutubeLink: '.uwmed-icon__youtube',
+        iconYoutubePage: 'div#channel-header-container img.yt-img-shadow',
+        mediaInqLink: '.foot-first li:nth-child(3) a',
+        mediaInqPage: 'header.headroom--top',
+        onlinePrivacyLink: 'ul.list-inline li:nth-child(1)',
+        onlinePrivacyPage: 'body.site-online',
+        policiesLink: 'ul.list-inline li:nth-child(2)',
+        policiesPage: 'body.path-node-21821',
+        providerLink: '.foot-first li:nth-child(2) a',
+        providerPage: '.specialties',
+        rightAsRainLink: '.foot-second li:nth-child(9) a',
+        rightAsRainPage: 'div.dialog-off-canvas-main-canvas',
+        uweduLink: '.foot-first li:nth-child(9) a',
+        uweduPage: 'body.home.blog.site-home',
+        uwMedCenterMontlakeLink: '.foot-second li:nth-child(4) a',
+        uwMedCenterMontlakePage: 'body.path-node-22556',
+        uwMedCenterNWLink: '.foot-second li:nth-child(2) a',
+        uwMedCenterNWPage: 'body.path-node-22956',
+        uwMedNewsroomLink: '.foot-second li:nth-child(10) a',
+        uwMedNewsroomPage: 'div#block-views-whats-new-block',
+        uwNeighborhoodLink: '.foot-second li:nth-child(5) a',
+        uwNeighborhoodPage: 'body.path-search-locations',
+        uwPhysiciansLink: '.foot-second li:nth-child(6) a',
+        uwPhysiciansPage: 'body.path-node-21861',
+        uwSchoolLink: '.foot-second li:nth-child(7) a',
+        uwSchoolPage: 'body.path-node-20916',
+        valleyMedLink: '.foot-second li:nth-child(3) a',
+        valleyMedPage: 'body.path-node-22496',
+        volunteerLink: '.foot-first li:nth-child(7) a',
+        volunteerPage: 'body.path-node-22171',
+        websiteTermsLink: 'ul.list-inline li:nth-child(4)',
+        websiteTermsPage: 'body.site-online.page-id-5'
 	}
 };
 

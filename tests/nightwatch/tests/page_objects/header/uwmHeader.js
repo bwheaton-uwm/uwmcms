@@ -44,31 +44,31 @@ module.exports = {
                 this
                     .assert.visible('@t1eCareLink', 'eCare Patient Portal link appears.')
                     .click('@t1eCareLink')
-                    .waitForElementVisible('@t1eCareValidation', 'eCare Patient Portal link loads correct page.')
+                    .waitForElementVisible('@t1eCarePage', 'eCare Patient Portal link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to requested page.');
                 this
                     .assert.visible('@t1providersLink', 'For Providers link appears.')
                     .click('@t1providersLink')
-                    .waitForElementVisible('@t1providersValidation', 'For Providers link loads correct page.')
+                    .waitForElementVisible('@t1providersPage', 'For Providers link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to requested page.');
                 this
                     .assert.visible('@t1researchLink', 'Research link appears.')
                     .click('@t1researchLink')
-                    .waitForElementVisible('@t1researchValidation', 'Research link loads correct page.')
+                    .waitForElementVisible('@t1researchPage', 'Research link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to requested page.');
                 this
                     .assert.visible('@t1schoolLink', 'School of Medicine link appears.')
                     .click('@t1schoolLink')
-                    .waitForElementVisible('@t1schoolValidation', 'School of Medicine link loads correct page.')
+                    .waitForElementVisible('@t1schoolPage', 'School of Medicine link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to requested page.');
                 this
                     .assert.visible('@t1contactLink', 'Contact Us link appears.')
                     .click('@t1contactLink')
-                    .waitForElementVisible('@t1contactValidation', 'Contact Us link loads correct page.')
+                    .waitForElementVisible('@t1contactPage', 'Contact Us link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '');
 
@@ -86,157 +86,157 @@ module.exports = {
                 this
                     .assert.visible('@t2findCareDD', 'Find care drop-down appears.')
                     .click('@t2findCareDD')
-                    .waitForElementVisible('@t2urgentCareLnk', 'Urgent Care link appears.')
-                    .click('@t2urgentCareLnk')
-                    .waitForElementVisible('@t2urgentCareVal', 'Urgent Care link loads correct page.')
+                    .waitForElementVisible('@t2urgentCareLink', 'Urgent Care link appears.')
+                    .click('@t2urgentCareLink')
+                    .waitForElementVisible('@t2urgentCarePage', 'Urgent Care link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible('@t2findCareDD', 'Returned to ' + pageUrl + '.');
                 this
                     .click('@t2findCareDD')
-                    .waitForElementVisible('@t2primaryCareLnk', 'Primary Care link appears.')
-                    .click('@t2primaryCareLnk')
-                    .waitForElementVisible('@t2primaryCareVal', 'Primary Care link loads correct page.')
+                    .waitForElementVisible('@t2primaryCareLink', 'Primary Care link appears.')
+                    .click('@t2primaryCareLink')
+                    .waitForElementVisible('@t2primaryCarePage', 'Primary Care link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible('@t2findCareDD', 'Returned to ' + pageUrl + '.');
                 this
                     .click('@t2findCareDD')
-                    .waitForElementVisible('@t2virtualClinicLnk', 'Virtual Clinic link appears.')
-                    .click('@t2virtualClinicLnk')
-                    .waitForElementVisible('@t2virtualClinicVal', 'Virtual Clinic link loads correct page.')
+                    .waitForElementVisible('@t2virtualClinicLink', 'Virtual Clinic link appears.')
+                    .click('@t2virtualClinicLink')
+                    .waitForElementVisible('@t2virtualClinicPage', 'Virtual Clinic link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible('@t2findCareDD', 'Returned to ' + pageUrl + '.');
                 this
                     .click('@t2findCareDD')
-                    .waitForElementVisible('@t2emergencyLnk', 'Emergency Rooms link appears.')
-                    .click('@t2emergencyLnk')
-                    .waitForElementVisible('@t2emergencyVal', 'Emergency Rooms link loads correct page.')
+                    .waitForElementVisible('@t2emergencyLink', 'Emergency Rooms link appears.')
+                    .click('@t2emergencyLink')
+                    .waitForElementVisible('@t2emergencyPage', 'Emergency Rooms link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible('@t2findCareDD', 'Returned to ' + pageUrl + '.');
                 this
                     .click('@t2findCareDD')
-                    .waitForElementVisible('@t2medSpecialtiesLnk', 'Medical Specialties link appears.')
-                    .click('@t2medSpecialtiesLnk')
-                    .waitForElementVisible('@t2medSpecialtiesVal', 'Medical Specialties link loads correct page.')
+                    .waitForElementVisible('@t2medSpecialtiesLink', 'Medical Specialties link appears.')
+                    .click('@t2medSpecialtiesLink')
+                    .waitForElementVisible('@t2medSpecialtiesPage', 'Medical Specialties link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible('@t2findCareDD', 'Returned to ' + pageUrl + '.');
                 this
                     .click('@t2findCareDD')
-                    .waitForElementVisible('@t2findProvider1Lnk', 'Find a Provider (under Find Care dropdown) link appears.')
-                    .click('@t2findProvider1Lnk')
-                    .waitForElementVisible('@t2findProviderVal', 'Find a Provider (under Find Care dropdown) link loads correct page.')
+                    .waitForElementVisible('@t2findProvider1Link', 'Find a Provider (under Find Care dropdown) link appears.')
+                    .click('@t2findProvider1Link')
+                    .waitForElementVisible('@t2findProviderPage', 'Find a Provider (under Find Care dropdown) link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible('@t2findCareDD', 'Returned to ' + pageUrl + '.');
                 this
                     .click('@t2findCareDD')
-                    .waitForElementVisible('@t2findLocation1Lnk', 'Find Location (under Find Care dropdown) link appears.')
-                    .click('@t2findLocation1Lnk')
-                    .waitForElementVisible('@t2findLocationVal', 'Find Location (under Find Care dropdown) link loads correct page.')
+                    .waitForElementVisible('@t2findLocation1Link', 'Find Location (under Find Care dropdown) link appears.')
+                    .click('@t2findLocation1Link')
+                    .waitForElementVisible('@t2findLocationPage', 'Find Location (under Find Care dropdown) link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible('@t2findCareDD', 'Returned to ' + pageUrl + '.');
                 this
-                    .waitForElementVisible('@t2makeAppt1Lnk', 'Make an appointment link appears.')
-                    .click('@t2makeAppt1Lnk')
-                    .waitForElementVisible('@t2makeApptVal', 'Make an appointment link loads correct page.')
+                    .waitForElementVisible('@t2makeAppt1Link', 'Make an appointment link appears.')
+                    .click('@t2makeAppt1Link')
+                    .waitForElementVisible('@t2makeApptPage', 'Make an appointment link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
                     .assert.visible('@t2findHealthDD', 'Find Health... drop-down appears.')
                     .click('@t2findHealthDD')
-                    .waitForElementVisible('@t2conditionsLnk', 'Conditions and symptoms link appears.')
-                    .click('@t2conditionsLnk')
-                    .waitForElementVisible('@t2conditionsVal', 'Conditions and symptoms link loads correct page.')
+                    .waitForElementVisible('@t2conditionsLink', 'Conditions and symptoms link appears.')
+                    .click('@t2conditionsLink')
+                    .waitForElementVisible('@t2conditionsPage', 'Conditions and symptoms link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible('@t2findHealthDD', 'Returned to ' + pageUrl + '.');
                 this
                     .click('@t2findHealthDD')
-                    .waitForElementVisible('@t2preventionLnk', 'Prevention and wellness link appears.')
-                    .click('@t2preventionLnk')
-                    .waitForElementVisible('@t2preventionVal', 'Prevention and wellness link loads correct page.')
+                    .waitForElementVisible('@t2preventionLink', 'Prevention and wellness link appears.')
+                    .click('@t2preventionLink')
+                    .waitForElementVisible('@t2preventionPage', 'Prevention and wellness link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible('@t2findCareDD', 'Returned to ' + pageUrl + '.');
                 this
                     .click('@t2findHealthDD')
-                    .waitForElementVisible('@t2patientResourcesLnk', 'Patient resources link appears.')
-                    .click('@t2patientResourcesLnk')
-                    .waitForElementVisible('@t2patientResourcesVal', 'Patient resources link loads correct page.')
+                    .waitForElementVisible('@t2patientResourcesLink', 'Patient resources link appears.')
+                    .click('@t2patientResourcesLink')
+                    .waitForElementVisible('@t2patientResourcesPage', 'Patient resources link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible('@t2findCareDD', 'Returned to ' + pageUrl + '.');
                 this
                     .click('@t2findHealthDD')
-                    .waitForElementVisible('@t2patientEducationLnk', 'Patient education link appears.')
-                    .click('@t2patientEducationLnk')
-                    .waitForElementVisible('@t2patientEducationVal', 'Patient education link loads correct page.')
+                    .waitForElementVisible('@t2patientEducationLink', 'Patient education link appears.')
+                    .click('@t2patientEducationLink')
+                    .waitForElementVisible('@t2patientEducationPage', 'Patient education link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
                     .assert.visible('@t2iWantToDD', 'I want to... drop-down appears.')
                     .click('@t2iWantToDD')
-                    .waitForElementVisible('@t2makeAppt2Lnk', 'Make an appointment link appears.')
-                    .click('@t2makeAppt2Lnk')
-                    .waitForElementVisible('@t2makeApptVal', 'Make and appointment link loads correct page.')
+                    .waitForElementVisible('@t2makeAppt2Link', 'Make an appointment link appears.')
+                    .click('@t2makeAppt2Link')
+                    .waitForElementVisible('@t2makeApptPage', 'Make and appointment link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible('@t2iWantToDD', 'Returned to ' + pageUrl + '.');
 
                 this
                     .click('@t2iWantToDD')
-                    .waitForElementVisible('@t2signUpLnk', 'Sign up or Sign in... link appears.')
-                    .click('@t2signUpLnk')
-                    .waitForElementVisible('@t2signUpVal', 'Sign up or Sign in... link loads correct page.')
+                    .waitForElementVisible('@t2signUpLink', 'Sign up or Sign in... link appears.')
+                    .click('@t2signUpLink')
+                    .waitForElementVisible('@t2signUpPage', 'Sign up or Sign in... link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
                     .click('@t2iWantToDD')
-                    .waitForElementVisible('@t2payBillLnk', 'Pay my bill link appears.')
-                    .click('@t2payBillLnk')
-                    .waitForElementVisible('@t2payBillVal', 'Pay my bill link loads correct page.')
+                    .waitForElementVisible('@t2payBillLink', 'Pay my bill link appears.')
+                    .click('@t2payBillLink')
+                    .waitForElementVisible('@t2payBillPage', 'Pay my bill link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible('@t2iWantToDD', 'Returned to ' + pageUrl + '.');
                 this
                     .click('@t2iWantToDD')
-                    .waitForElementVisible('@t2accessLnk', 'Access medical... link appears.')
-                    .click('@t2accessLnk')
-                    .waitForElementVisible('@t2accessVal', 'Access medical... link loads correct page.')
+                    .waitForElementVisible('@t2accessLink', 'Access medical... link appears.')
+                    .click('@t2accessLink')
+                    .waitForElementVisible('@t2accessPage', 'Access medical... link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible('@t2iWantToDD', 'Returned to ' + pageUrl + '.');
                 this
                     .click('@t2iWantToDD')
-                    .waitForElementVisible('@t2findInterpreterLnk', 'Find an interpreter link appears.')
-                    .click('@t2findInterpreterLnk')
-                    .waitForElementVisible('@t2findInterpreterVal', 'Find an interpreter link loads correct page.')
+                    .waitForElementVisible('@t2findInterpreterLink', 'Find an interpreter link appears.')
+                    .click('@t2findInterpreterLink')
+                    .waitForElementVisible('@t2findInterpreterPage', 'Find an interpreter link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible('@t2iWantToDD', 'Returned to ' + pageUrl + '.');
                 this
                     .click('@t2iWantToDD')
-                    .waitForElementVisible('@t2findLocation2Lnk', 'Find a location link appears.')
-                    .click('@t2findLocation2Lnk')
-                    .waitForElementVisible('@t2findLocationVal', 'Find a location link loads correct page.')
+                    .waitForElementVisible('@t2findLocation2Link', 'Find a location link appears.')
+                    .click('@t2findLocation2Link')
+                    .waitForElementVisible('@t2findLocationPage', 'Find a location link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible('@t2iWantToDD', 'Returned to ' + pageUrl + '.');
                 this
                     .click('@t2iWantToDD')
                     .waitForElementVisible('@t2iWantToDD', 'Find a pharmacy link appears.')
-                    .click('@t2findPharmaLnk')
-                    .waitForElementVisible('@t2findPharmaVal', 'Find a pharmacy link loads correct page.')
+                    .click('@t2findPharmaLink')
+                    .waitForElementVisible('@t2findPharmaPage', 'Find a pharmacy link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible('@t2iWantToDD', 'Returned to ' + pageUrl + '.');
                 this
                     .click('@t2iWantToDD')
-                    .waitForElementVisible('@t2viewPatientLnk', 'View all patient... link appears.')
-                    .click('@t2viewPatientLnk')
-                    .waitForElementVisible('@t2viewPatientVal', 'View all patient... link loads correct page.')
+                    .waitForElementVisible('@t2viewPatientLink', 'View all patient... link appears.')
+                    .click('@t2viewPatientLink')
+                    .waitForElementVisible('@t2viewPatientPage', 'View all patient... link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible('@t2iWantToDD', 'Returned to ' + pageUrl + '.');
                 this
                     .click('@t2iWantToDD')
-                    .waitForElementVisible('@t2referPatientLnk', 'Refer a patient link appears.')
-                    .click('@t2referPatientLnk')
-                    .waitForElementVisible('@t2referPatientVal', 'Refer a patient link loads correct page.')
+                    .waitForElementVisible('@t2referPatientLink', 'Refer a patient link appears.')
+                    .click('@t2referPatientLink')
+                    .waitForElementVisible('@t2referPatientPage', 'Refer a patient link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
-                    .waitForElementVisible('@t2makeGiftLnk', 'Make a Gift link appears.')
-                    .click('@t2makeGiftLnk')
-                    .waitForElementVisible('@t2makeGiftVal', 'Make a Gift link loads correct page.')
+                    .waitForElementVisible('@t2makeGiftLink', 'Make a Gift link appears.')
+                    .click('@t2makeGiftLink')
+                    .waitForElementVisible('@t2makeGiftPage', 'Make a Gift link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
 
@@ -271,35 +271,35 @@ module.exports = {
         },
         results: 'article.search-result-card',
         t1contactLink: '#quickLinksNavigation li:nth-child(9) a',
-        t1contactValidation: 'body.path-node-21466',
+        t1contactPage: 'body.path-node-21466',
         t1cookiesAlertButton: '.eu-cookie-compliance-default-button',
         t1eCareLink: '#quickLinksNavigation li:nth-child(1) a',
-        t1eCareValidation: 'body.path-node-20841',
+        t1eCarePage: 'body.path-node-20841',
         t1headerImage: '.uwm-header a.navbar-brand img',
         t1headerSearchBar: 'input[type=text]:nth-child(1)',
         t1headerSubmitBtn: 'form.header-search-form svg.fa-search:nth-child(2)',
-        t1homeValidation: 'body.is-path-frontpage',
+        t1homePage: 'body.is-path-frontpage',
         t1providersLink: '#quickLinksNavigation li:nth-child(3) a',
-        t1providersValidation: '.homepage-header-inset li:nth-child(1)',
+        t1providersPage: '.homepage-header-inset li:nth-child(1)',
         t1researchLink: '#quickLinksNavigation li:nth-child(5) a',
-        t1researchValidation: 'body.path-node-21421',
+        t1researchPage: 'body.path-node-21421',
         t1schoolLink: '#quickLinksNavigation li:nth-child(7) a',
-        t1schoolValidation: 'body.path-node-20876',
-        t2accessLnk: {
+        t1schoolPage: 'body.path-node-20876',
+        t2accessLink:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[4]/div[1]/a[4]',
             locateStrategy: 'xpath'
         },
-        t2accessVal: 'body.path-node-21516',
-        t2conditionsLnk: {
+        t2accessPage: 'body.path-node-21516',
+        t2conditionsLink:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[3]/div[1]/a[1]',
             locateStrategy: 'xpath'
         },
-        t2conditionsVal: 'body#ICP .bx-viewport',
-        t2emergencyLnk: {
+        t2conditionsPage: 'body#ICP .bx-viewport',
+        t2emergencyLink:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[1]/div[1]/a[4]',
             locateStrategy: 'xpath'
         },
-        t2emergencyVal: 'body.path-node-20736',
+        t2emergencyPage: 'body.path-node-20736',
         t2findCareDD: {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[1]/a[1]',
             locateStrategy: 'xpath'
@@ -308,99 +308,99 @@ module.exports = {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[3]/a[1]',
             locateStrategy: 'xpath'
         },
-        t2findInterpreterLnk: {
+        t2findInterpreterLink:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[4]/div[1]/a[5]',
             locateStrategy: 'xpath'
         },
-        t2findInterpreterVal: 'body.path-node-21371',
-        t2findLocation1Lnk: {
+        t2findInterpreterPage: 'body.path-node-21371',
+        t2findLocation1Link:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[1]/div[1]/a[7]',
             locateStrategy: 'xpath'
         },
-        t2findLocation2Lnk: {
+        t2findLocation2Link:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[4]/div[1]/a[6]',
             locateStrategy: 'xpath'
         },
-        t2findLocationVal: 'body.path-search-locations',
-        t2findPharmaLnk: {
+        t2findLocationPage: 'body.path-search-locations',
+        t2findPharmaLink:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[4]/div[1]/a[7]',
             locateStrategy: 'xpath'
         },
-        t2findPharmaVal: 'body.path-node-21376',
-        t2findProvider1Lnk: {
+        t2findPharmaPage: 'body.path-node-21376',
+        t2findProvider1Link:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[1]/div[1]/a[6]',
             locateStrategy: 'xpath'
         },
-        t2findProviderVal: 'body.path-search-providers',
+        t2findProviderPage: 'body.path-search-providers',
         t2iWantToDD: {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[4]/a[1]',
             locateStrategy: 'xpath'
         },
-        t2makeAppt1Lnk: {
+        t2makeAppt1Link:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[2]/a[1]',
             locateStrategy: 'xpath'
         },
-        t2makeApptVal: 'body.path-node-20836',
-        t2makeAppt2Lnk: {
+        t2makeApptPage: 'body.path-node-20836',
+        t2makeAppt2Link:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[4]/div[1]/a[1]',
             locateStrategy: 'xpath'
         },
-        t2makeGiftLnk: 'div#makeAGift a',
-        t2makeGiftVal: 'body.page-id-1096',
-        t2medSpecialtiesLnk: {
+        t2makeGiftLink:  'div#makeAGift a',
+        t2makeGiftPage: 'body.page-id-1096',
+        t2medSpecialtiesLink:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[1]/div[1]/a[5]',
             locateStrategy: 'xpath'
         },
-        t2medSpecialtiesVal: 'body.path-node-21746',
-        t2patientEducationLnk: {
+        t2medSpecialtiesPage: 'body.path-node-21746',
+        t2patientEducationLink:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[3]/div[1]/a[4]',
             locateStrategy: 'xpath'
         },
-        t2patientEducationVal: 'body.path-node-21386',
-        t2patientResourcesLnk: {
+        t2patientEducationPage: 'body.path-node-21386',
+        t2patientResourcesLink:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[3]/div[1]/a[3]',
             locateStrategy: 'xpath'
         },
-        t2patientResourcesVal: 'body.path-node-20866',
-        t2payBillLnk: {
+        t2patientResourcesPage: 'body.path-node-20866',
+        t2payBillLink:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[4]/div[1]/a[3]',
             locateStrategy: 'xpath'
         },
-        t2payBillVal: 'body.path-node-50051',
-        t2preventionLnk: {
+        t2payBillPage: 'body.path-node-50051',
+        t2preventionLink:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[3]/div[1]/a[2]',
             locateStrategy: 'xpath'
         },
-        t2preventionVal: 'body#ICP .BreadCrumbs ',
-        t2primaryCareLnk: {
+        t2preventionPage: 'body#ICP .BreadCrumbs ',
+        t2primaryCareLink:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[1]/div[1]/a[2]',
             locateStrategy: 'xpath'
         },
-        t2primaryCareVal: 'body.path-node-20701',
-        t2referPatientLnk: {
+        t2primaryCarePage: 'body.path-node-20701',
+        t2referPatientLink:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[4]/div[1]/a[9]',
             locateStrategy: 'xpath'
         },
-        t2referPatientVal: 'body.path-node-21401',
-        t2signUpLnk: {
+        t2referPatientPage: 'body.path-node-21401',
+        t2signUpLink:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[4]/div[1]/a[2]',
             locateStrategy: 'xpath'
         },
-        t2signUpVal: 'body.path-node-20841',
-        t2urgentCareLnk: {
+        t2signUpPage: 'body.path-node-20841',
+        t2urgentCareLink: {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[1]/div[1]/a[1]',
             locateStrategy: 'xpath'
         },
-        t2urgentCareVal: 'body.path-node-21946',
-        t2viewPatientLnk: {
+        t2urgentCarePage: 'body.path-node-21946',
+        t2viewPatientLink:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[4]/div[1]/a[8]',
             locateStrategy: 'xpath'
         },
-        t2viewPatientVal: 'body.path-node-20866',
-        t2virtualClinicLnk: {
+        t2viewPatientPage: 'body.path-node-20866',
+        t2virtualClinicLink:  {
             selector: '/html[1]/body[1]/header[1]/nav[1]/div[3]/div[1]/ul[1]/li[1]/div[1]/a[3]',
             locateStrategy: 'xpath'
         },
-        t2virtualClinicVal: 'body.path-node-49201'
+        t2virtualClinicPage: 'body.path-node-49201'
     }
 };
