@@ -878,3 +878,11 @@ $settings['install_profile'] = 'lightning';
 $config_directories['sync'] = '../config/default';
 $config_directories['vcs'] = '../config/default';
 
+/**
+ * IMPORTANT.
+ *
+ * Do not include additional settings here. Instead, add them to settings
+ * included by `blt.settings.php`. See BLT's documentation for more detail.
+ *
+ * @link https://docs.acquia.com/blt/
+ */

@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.gallery.field_body
     - field.field.node.gallery.field_category
     - field.field.node.gallery.field_date
+    - field.field.node.gallery.field_disqus_comments
     - field.field.node.gallery.field_featured_content
     - field.field.node.gallery.field_image
     - field.field.node.gallery.field_image_credit

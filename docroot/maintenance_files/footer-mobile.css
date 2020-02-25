@@ -1,0 +1,57 @@
+/*
+ * Customize Bootstrap Dropdown variables
+ * All available variables are here. Un-commented variables are overridden.
+ *
+ * @see node_modules/bootstrap/scss/_variables.scss
+ * @see node_modules/bootstrap/scss/_dropdown.scss
+ */
+body.adminimal-admin-toolbar.user-role-authenticated div#block-uwmbase-local-tasks {
+  margin: 1rem;
+}
+
+body.adminimal-admin-toolbar.user-role-authenticated pre:not(.sf-dump) {
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  border-left: 3px solid #f36d33;
+  color: #666;
+  font-family: monospace;
+  font-size: 11px;
+  line-height: 1.4em;
+  margin: 1em 1em 2em 2em;
+  padding: 1em 1.5em;
+  word-wrap: break-word;
+  max-height: 300px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+/* stylelint-disable */
+@media (max-width: 767.98px) {
+  .uwm-footer .wrapper {
+    padding: 0;
+  }
+  .uwm-footer .row.navigation-row .menu.nav i.uw-s {
+    display: none;
+  }
+  .uwm-footer .row.navigation-row .foot-first, .uwm-footer .row.navigation-row .foot-second, .uwm-footer .row.navigation-row .foot-third, .uwm-footer .row.navigation-row .foot-fourth {
+    text-align: center;
+  }
+  .uwm-footer .row.navigation-row .foot-third {
+    background: #efefef;
+    padding: 15px;
+    text-align: center;
+  }
+  .uwm-footer .row.navigation-row .foot-first .nav > li, .uwm-footer .row.navigation-row .nav > li {
+    margin: 0;
+    padding: 0 0 1em 0;
+  }
+  .uwm-footer .row.enterprise-row > div {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  .uwm-footer .row.enterprise-row .first.copyright, .uwm-footer .row.enterprise-row .second.navigation {
+    text-align: center;
+  }
+}
+
+/*# sourceMappingURL=footer-mobile.css.map */

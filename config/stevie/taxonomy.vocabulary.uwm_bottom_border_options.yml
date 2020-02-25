@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'UWM Bottom Border Options'
 vid: uwm_bottom_border_options
 description: 'Options for background image display in featured stories.'
-hierarchy: 0
 weight: 0

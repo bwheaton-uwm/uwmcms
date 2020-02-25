@@ -2,8 +2,9 @@ uuid: f190dbcb-7a0b-46f0-9ae2-a85b2efe705b
 langcode: en
 status: true
 dependencies:
-  content:
-    - 'file:file:135dd811-74ff-484b-9418-75f49516331f'
+  config:
+    - core.entity_view_mode.media.embedded
+    - entity_browser.browser.media_browser
   module:
     - entity_embed
     - media
@@ -21,4 +22,5 @@ type_settings:
   entity_browser: media_browser
   entity_browser_settings:
     display_review: false
-icon_uuid: 135dd811-74ff-484b-9418-75f49516331f
+icon: {  }
+icon_uuid: null

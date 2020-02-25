@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Academic Title'
 vid: academic_title
 description: ''
-hierarchy: 0
 weight: 0

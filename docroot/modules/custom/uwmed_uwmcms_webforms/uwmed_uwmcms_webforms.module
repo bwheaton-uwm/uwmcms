@@ -8,6 +8,7 @@
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\smtp\PHPMailer\PHPMailer;
 
+
 /**
  * Implements hook_form_FORM_ID_alter() for 'webform_submission_acn_request_add_form'.
  *
@@ -108,7 +109,7 @@ function _uwmed_uwmcms_webforms_acn_request_submit(array &$form, FormStateInterf
 
     // TODO: Ideally this message would be configurable... markup element with
     // access false initially, altered here?
-    drupal_set_message(t("Thank you for submitting your clinic. You may continue to submit another clinic."));
+    \Drupal::messenger()->addMessagee(t("Thank you for submitting your clinic. You may continue to submit another clinic."));
 
   }
 }

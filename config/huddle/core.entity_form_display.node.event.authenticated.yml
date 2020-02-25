@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.event.field_note
     - image.style.thumbnail
     - node.type.event
+    - workflows.workflow.editorial
   module:
     - address
     - content_moderation
@@ -193,6 +194,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     region: content
     third_party_settings: {  }
 hidden:

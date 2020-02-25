@@ -1,0 +1,24 @@
+uuid: b6612a5c-4546-41be-8d09-42484e26fd1d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.document.field_document
+    - field.field.media.document.field_media_in_library
+    - field.field.media.document.field_uwm_parent_page
+    - media.type.document
+id: media.document.media_library
+targetEntityType: media
+bundle: document
+mode: media_library
+content: {  }
+hidden:
+  created: true
+  field_document: true
+  field_media_in_library: true
+  field_uwm_parent_page: true
+  name: true
+  path: true
+  status: true
+  uid: true
