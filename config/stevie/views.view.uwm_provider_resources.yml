@@ -16,7 +16,6 @@ dependencies:
     - taxonomy.vocabulary.uwm_provider_resource_sub_specia
     - taxonomy.vocabulary.uwm_provider_resource_video_type
   content:
-    - 'taxonomy_term:expertise:c01c9f22-8c4c-415e-8595-34b01611ef47'
     - 'taxonomy_term:uwm_provider_resource_specialtie:2f9b9b41-b246-45c3-8ee9-c3d1709f67db'
   module:
     - better_exposed_filters
@@ -33,7 +32,6 @@ description: ''
 tag: ''
 base_table: media_field_data
 base_field: mid
-core: 8.x
 display:
   default:
     display_plugin: default
@@ -713,6 +711,8 @@ display:
           id: status
           expose:
             operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
           group: 1
         bundle:
           id: bundle
@@ -740,6 +740,8 @@ display:
               authenticated: authenticated
             reduce: false
             argument: null
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -783,6 +785,8 @@ display:
               administrator: '0'
               content_manager: '0'
             reduce: false
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -830,6 +834,8 @@ display:
               administrator: '0'
               content_manager: '0'
             reduce: false
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -878,6 +884,8 @@ display:
               administrator: '0'
               content_manager: '0'
             reduce: false
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -925,6 +933,8 @@ display:
               administrator: '0'
               content_manager: '0'
             reduce: false
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1052,6 +1062,8 @@ display:
           id: status
           expose:
             operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
           group: 1
         bundle:
           id: bundle
@@ -1080,6 +1092,8 @@ display:
               authenticated: authenticated
             reduce: false
             argument: null
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1124,6 +1138,8 @@ display:
               administrator: '0'
               content_manager: '0'
             reduce: false
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1171,6 +1187,8 @@ display:
               administrator: '0'
               content_manager: '0'
             reduce: false
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1218,6 +1236,8 @@ display:
               administrator: '0'
               content_manager: '0'
             reduce: false
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: 'Provider Resource Sub-specialties (field_uwm_prov_res_sub_specialty)'

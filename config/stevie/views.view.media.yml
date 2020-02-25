@@ -21,7 +21,6 @@ description: ''
 tag: ''
 base_table: media_field_data
 base_field: mid
-core: 8.x
 display:
   default:
     display_plugin: default
@@ -633,6 +632,8 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -674,6 +675,8 @@ display:
               anonymous: '0'
               administrator: '0'
             reduce: false
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -712,6 +715,8 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: true
           group_info:
             label: 'Published status'
@@ -735,6 +740,45 @@ display:
           plugin_id: boolean
           entity_type: media
           entity_field: status
+        status_extra:
+          group_info:
+            widget: select
+            group_items: {  }
+            multiple: false
+            description: ''
+            default_group_multiple: {  }
+            default_group: All
+            label: ''
+            identifier: ''
+            optional: true
+            remember: false
+          group: 1
+          relationship: none
+          exposed: false
+          expose:
+            use_operator: false
+            remember: false
+            operator_id: ''
+            multiple: false
+            description: ''
+            required: false
+            label: ''
+            operator_limit_selection: false
+            operator: ''
+            identifier: ''
+            operator_list: {  }
+            remember_roles:
+              authenticated: authenticated
+          entity_type: media
+          value: ''
+          field: status_extra
+          is_grouped: false
+          admin_label: ''
+          operator: '='
+          table: media_field_data
+          plugin_id: media_status
+          id: status_extra
+          group_type: group
       sorts:
         created:
           id: created
@@ -786,23 +830,24 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user
         - user.permissions
       tags:
-        - 'config:core.entity_view_display.media.document.default'
-        - 'config:core.entity_view_display.media.document.thumbnail'
-        - 'config:core.entity_view_display.media.uwm_provider_resource_document.default'
-        - 'config:core.entity_view_display.media.uwm_provider_resource_video.default'
-        - 'config:core.entity_view_display.media.acquia_dam_asset.default'
-        - 'config:core.entity_view_display.media.acquia_dam_asset.embedded'
-        - 'config:core.entity_view_display.media.acquia_dam_asset.thumbnail'
         - 'config:core.entity_view_display.media.audio_file.default'
         - 'config:core.entity_view_display.media.audio_file.embedded'
         - 'config:core.entity_view_display.media.audio_file.media_library'
         - 'config:core.entity_view_display.media.audio_file.thumbnail'
+        - 'config:core.entity_view_display.media.document.default'
         - 'config:core.entity_view_display.media.document.embedded'
         - 'config:core.entity_view_display.media.document.media_library'
+        - 'config:core.entity_view_display.media.document.thumbnail'
         - 'config:core.entity_view_display.media.image.default'
         - 'config:core.entity_view_display.media.image.embedded'
+        - 'config:core.entity_view_display.media.image.media_library'
+        - 'config:core.entity_view_display.media.image.responsive_hero'
+        - 'config:core.entity_view_display.media.image.responsive_hero_half'
+        - 'config:core.entity_view_display.media.image.responsive_home_section'
+        - 'config:core.entity_view_display.media.image.responsive_spotlight'
         - 'config:core.entity_view_display.media.image.thumbnail'
         - 'config:core.entity_view_display.media.instagram.default'
         - 'config:core.entity_view_display.media.instagram.embedded'
@@ -812,12 +857,22 @@ display:
         - 'config:core.entity_view_display.media.tweet.embedded'
         - 'config:core.entity_view_display.media.tweet.media_library'
         - 'config:core.entity_view_display.media.tweet.thumbnail'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_document.default'
         - 'config:core.entity_view_display.media.uwm_provider_resource_document.embedded'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_document.media_library'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_video.default'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_video.embedded'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_video.media_library'
         - 'config:core.entity_view_display.media.video.default'
         - 'config:core.entity_view_display.media.video.embedded'
+        - 'config:core.entity_view_display.media.video.labeled'
+        - 'config:core.entity_view_display.media.video.media_library'
         - 'config:core.entity_view_display.media.video.thumbnail'
+        - 'config:core.entity_view_display.media.video.uwm_modal'
         - 'config:core.entity_view_display.media.video_embed.default'
         - 'config:core.entity_view_display.media.video_embed.embedded'
+        - 'config:core.entity_view_display.media.video_embed.media_library'
+        - 'config:core.entity_view_display.media.video_embed.thumbnail'
         - 'config:core.entity_view_display.media.video_embed.uwm_modal'
         - 'config:core.entity_view_display.media.video_file.default'
         - 'config:core.entity_view_display.media.video_file.embedded'
@@ -980,6 +1035,8 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: true
           group_info:
             label: 'Publishing status'
@@ -1035,6 +1092,8 @@ display:
               landing_page_reviewer: '0'
               media_creator: '0'
               media_manager: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1084,6 +1143,8 @@ display:
               media_manager: '0'
             reduce: false
             argument: bundle
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1122,6 +1183,8 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1230,9 +1293,6 @@ display:
         - url.query_args
         - user.permissions
       tags:
-        - 'config:core.entity_view_display.media.acquia_dam_asset.default'
-        - 'config:core.entity_view_display.media.acquia_dam_asset.embedded'
-        - 'config:core.entity_view_display.media.acquia_dam_asset.thumbnail'
         - 'config:core.entity_view_display.media.audio_file.default'
         - 'config:core.entity_view_display.media.audio_file.embedded'
         - 'config:core.entity_view_display.media.audio_file.media_library'
@@ -1243,6 +1303,11 @@ display:
         - 'config:core.entity_view_display.media.document.thumbnail'
         - 'config:core.entity_view_display.media.image.default'
         - 'config:core.entity_view_display.media.image.embedded'
+        - 'config:core.entity_view_display.media.image.media_library'
+        - 'config:core.entity_view_display.media.image.responsive_hero'
+        - 'config:core.entity_view_display.media.image.responsive_hero_half'
+        - 'config:core.entity_view_display.media.image.responsive_home_section'
+        - 'config:core.entity_view_display.media.image.responsive_spotlight'
         - 'config:core.entity_view_display.media.image.thumbnail'
         - 'config:core.entity_view_display.media.instagram.default'
         - 'config:core.entity_view_display.media.instagram.embedded'
@@ -1254,12 +1319,20 @@ display:
         - 'config:core.entity_view_display.media.tweet.thumbnail'
         - 'config:core.entity_view_display.media.uwm_provider_resource_document.default'
         - 'config:core.entity_view_display.media.uwm_provider_resource_document.embedded'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_document.media_library'
         - 'config:core.entity_view_display.media.uwm_provider_resource_video.default'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_video.embedded'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_video.media_library'
         - 'config:core.entity_view_display.media.video.default'
         - 'config:core.entity_view_display.media.video.embedded'
+        - 'config:core.entity_view_display.media.video.labeled'
+        - 'config:core.entity_view_display.media.video.media_library'
         - 'config:core.entity_view_display.media.video.thumbnail'
+        - 'config:core.entity_view_display.media.video.uwm_modal'
         - 'config:core.entity_view_display.media.video_embed.default'
         - 'config:core.entity_view_display.media.video_embed.embedded'
+        - 'config:core.entity_view_display.media.video_embed.media_library'
+        - 'config:core.entity_view_display.media.video_embed.thumbnail'
         - 'config:core.entity_view_display.media.video_embed.uwm_modal'
         - 'config:core.entity_view_display.media.video_file.default'
         - 'config:core.entity_view_display.media.video_file.embedded'
@@ -1422,6 +1495,8 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: true
           group_info:
             label: 'Publishing status'
@@ -1477,6 +1552,8 @@ display:
               landing_page_reviewer: '0'
               media_creator: '0'
               media_manager: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1526,6 +1603,8 @@ display:
               media_creator: '0'
               media_manager: '0'
             reduce: false
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1564,6 +1643,8 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1634,9 +1715,6 @@ display:
         - url.query_args
         - user.permissions
       tags:
-        - 'config:core.entity_view_display.media.acquia_dam_asset.default'
-        - 'config:core.entity_view_display.media.acquia_dam_asset.embedded'
-        - 'config:core.entity_view_display.media.acquia_dam_asset.thumbnail'
         - 'config:core.entity_view_display.media.audio_file.default'
         - 'config:core.entity_view_display.media.audio_file.embedded'
         - 'config:core.entity_view_display.media.audio_file.media_library'
@@ -1647,6 +1725,11 @@ display:
         - 'config:core.entity_view_display.media.document.thumbnail'
         - 'config:core.entity_view_display.media.image.default'
         - 'config:core.entity_view_display.media.image.embedded'
+        - 'config:core.entity_view_display.media.image.media_library'
+        - 'config:core.entity_view_display.media.image.responsive_hero'
+        - 'config:core.entity_view_display.media.image.responsive_hero_half'
+        - 'config:core.entity_view_display.media.image.responsive_home_section'
+        - 'config:core.entity_view_display.media.image.responsive_spotlight'
         - 'config:core.entity_view_display.media.image.thumbnail'
         - 'config:core.entity_view_display.media.instagram.default'
         - 'config:core.entity_view_display.media.instagram.embedded'
@@ -1658,12 +1741,20 @@ display:
         - 'config:core.entity_view_display.media.tweet.thumbnail'
         - 'config:core.entity_view_display.media.uwm_provider_resource_document.default'
         - 'config:core.entity_view_display.media.uwm_provider_resource_document.embedded'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_document.media_library'
         - 'config:core.entity_view_display.media.uwm_provider_resource_video.default'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_video.embedded'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_video.media_library'
         - 'config:core.entity_view_display.media.video.default'
         - 'config:core.entity_view_display.media.video.embedded'
+        - 'config:core.entity_view_display.media.video.labeled'
+        - 'config:core.entity_view_display.media.video.media_library'
         - 'config:core.entity_view_display.media.video.thumbnail'
+        - 'config:core.entity_view_display.media.video.uwm_modal'
         - 'config:core.entity_view_display.media.video_embed.default'
         - 'config:core.entity_view_display.media.video_embed.embedded'
+        - 'config:core.entity_view_display.media.video_embed.media_library'
+        - 'config:core.entity_view_display.media.video_embed.thumbnail'
         - 'config:core.entity_view_display.media.video_embed.uwm_modal'
         - 'config:core.entity_view_display.media.video_file.default'
         - 'config:core.entity_view_display.media.video_file.embedded'
@@ -1676,7 +1767,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: admin/content/media-table
+      path: admin/content/media
       display_description: ''
       defaults:
         fields: true
@@ -1696,11 +1787,9 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user
         - user.permissions
       tags:
-        - 'config:core.entity_view_display.media.acquia_dam_asset.default'
-        - 'config:core.entity_view_display.media.acquia_dam_asset.embedded'
-        - 'config:core.entity_view_display.media.acquia_dam_asset.thumbnail'
         - 'config:core.entity_view_display.media.audio_file.default'
         - 'config:core.entity_view_display.media.audio_file.embedded'
         - 'config:core.entity_view_display.media.audio_file.media_library'
@@ -1711,6 +1800,11 @@ display:
         - 'config:core.entity_view_display.media.document.thumbnail'
         - 'config:core.entity_view_display.media.image.default'
         - 'config:core.entity_view_display.media.image.embedded'
+        - 'config:core.entity_view_display.media.image.media_library'
+        - 'config:core.entity_view_display.media.image.responsive_hero'
+        - 'config:core.entity_view_display.media.image.responsive_hero_half'
+        - 'config:core.entity_view_display.media.image.responsive_home_section'
+        - 'config:core.entity_view_display.media.image.responsive_spotlight'
         - 'config:core.entity_view_display.media.image.thumbnail'
         - 'config:core.entity_view_display.media.instagram.default'
         - 'config:core.entity_view_display.media.instagram.embedded'
@@ -1722,12 +1816,20 @@ display:
         - 'config:core.entity_view_display.media.tweet.thumbnail'
         - 'config:core.entity_view_display.media.uwm_provider_resource_document.default'
         - 'config:core.entity_view_display.media.uwm_provider_resource_document.embedded'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_document.media_library'
         - 'config:core.entity_view_display.media.uwm_provider_resource_video.default'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_video.embedded'
+        - 'config:core.entity_view_display.media.uwm_provider_resource_video.media_library'
         - 'config:core.entity_view_display.media.video.default'
         - 'config:core.entity_view_display.media.video.embedded'
+        - 'config:core.entity_view_display.media.video.labeled'
+        - 'config:core.entity_view_display.media.video.media_library'
         - 'config:core.entity_view_display.media.video.thumbnail'
+        - 'config:core.entity_view_display.media.video.uwm_modal'
         - 'config:core.entity_view_display.media.video_embed.default'
         - 'config:core.entity_view_display.media.video_embed.embedded'
+        - 'config:core.entity_view_display.media.video_embed.media_library'
+        - 'config:core.entity_view_display.media.video_embed.thumbnail'
         - 'config:core.entity_view_display.media.video_embed.uwm_modal'
         - 'config:core.entity_view_display.media.video_file.default'
         - 'config:core.entity_view_display.media.video_file.embedded'

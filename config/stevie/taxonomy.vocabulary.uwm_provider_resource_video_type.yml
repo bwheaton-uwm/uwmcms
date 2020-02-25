@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'UWM Provider Resource Video Type'
 vid: uwm_provider_resource_video_type
 description: ''
-hierarchy: 0
 weight: 0

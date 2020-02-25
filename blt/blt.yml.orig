@@ -1,0 +1,99 @@
+project:
+  machine_name: uwmed
+  prefix: UWM
+  human_name: 'UW Medicine'
+  profile:
+    name: lightning
+  local:
+    protocol: http
+    hostname: uwmed.local
+git:
+  default_branch: develop
+  remotes:
+    cloud: 'uwmed@svn-23450.prod.hosting.acquia.com:uwmed.git'
+  hooks:
+    pre-commit: '${repo.root}/git-config/hooks'
+    commit-msg: '${repo.root}/git-config/hooks'
+deploy:
+  tag_source: true
+drush:
+  aliases:
+    remote: '${project.machine_name}.dev'
+    local: self
+    ci: self
+  default_alias: '${drush.aliases.local}'
+modules:
+  local:
+    enable: [acquia_connector, dblog, devel, views_ui]
+    uninstall: [shield, simplesamlphp_auth]
+  ci:
+    enable: {  }
+    uninstall: {  }
+  dev:
+    enable: [acquia_connector]
+    uninstall: {  }
+  test:
+    enable: [acquia_connector]
+    uninstall: [devel, views_ui]
+  prod:
+    enable: [acquia_connector]
+    uninstall: [devel, views_ui]
+
+disable-targets:
+  validate:
+    twig: true
+  tests:
+    behat: { all: true, run: true }
+#    composer: { validate: true }
+#    deprecated: { modules: true, themes: true }
+#    frontend: { run: true }
+#    php: { lint: true }
+#    phpcs: { sniff: { all: true } }
+#    phpunit: { all: true, run: true }
+<<<<<<< HEAD
+#    phpstan: { all: true, run: true }
+=======
+    phpstan: { all: true, run: true }
+>>>>>>> maintenance/dual-build-environments
+#    security: { check: { updates: true } }
+#    twig: { lint: { all: true } }
+#    yaml: { lint: { all: true } }
+
+validate:
+  twig:
+    filesets: {  }
+    functions: [drupal_block, drupal_field, drupal_view, drupal_view_result, drupal_block, drupal_region, drupal_entity, drupal_entity_form, drupal_field, drupal_menu, drupal_form, drupal_image, drupal_token, drupal_config, drupal_title, drupal_url, drupal_link, drupal_messages, drupal_breadcrumb, drupal_dump, drupal_breakpoint, uwm_get_path_nid, uwm_get_api_nid, uwm_extract_parts, uwm_get_sharepoint_location_image, uwm_test_func, uwm_sort_by_list, uwm_plugin_block, uwm_cta_link]
+    filters: [token_replace, preg_replace, image_style, transliterate, check_markup, truncate, view, with, uwm_replace_markup, uwm_join_parts, uwm_sort_parts, uwm_format_phone, uwm_arraycount_styles, uwm_test_filter, uwm_format_accent_class, uwm_filter_non_numeric_keys, uwm_replace_links_with_text]
+target-hooks:
+  frontend-setup:
+    dir: '${docroot}'
+    command: 'echo ''No frontend-setup configured.'''
+  frontend-build:
+    dir: '${docroot}'
+    command: 'echo ''No frontend-build configured.'''
+  pre-config-import:
+    dir: '${docroot}'
+    command: 'echo ''No pre-config-import configured.'''
+  post-deploy-build:
+    dir: '${deploy.dir}/docroot'
+    command: 'echo ''No post-deploy build configured.'''
+  post-setup-build:
+    dir: '${docroot}'
+    command: 'echo ''No post-setup build configured.'''
+  post-deploy:
+    dir: '${docroot}'
+    command: 'echo ''No post-deploy build configured.'''
+multisites:
+  - chew
+  - huddle
+  - stevie
+#  - default
+#  - calendar
+behat:
+  paths: {  }
+  web-driver: selenium
+cm.allow-overrides: false
+cloud:
+  appId: 9394ee80-5a9e-429f-a976-264b955abd86
+setup:
+  strategy: sync

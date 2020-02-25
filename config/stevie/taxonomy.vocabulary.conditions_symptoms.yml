@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Conditions & Symptoms'
 vid: conditions_symptoms
 description: ''
-hierarchy: 0
 weight: 0

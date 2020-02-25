@@ -13,8 +13,10 @@ ckeditor_liststyle: 1.3.0
 config: 8.4.5
 config_filter: 1.2.0
 config_ignore: 2.1.0
+config_split: 1.4.0
 content_moderation: 8.4.5
 contextual: 8.4.5
+contribute: 1.0.0-beta7
 crop: 2.0.0-beta1
 ctools: 3.0.0
 ctools_block: 3.0.0
@@ -48,7 +50,10 @@ history: 8.4.5
 honeypot: 1.29.0
 image: 8.4.5
 inline_entity_form: 1.0.0-beta1
+layout_builder: 8.8.2
+layout_builder_styles: 1.0.0-beta1
 layout_discovery: 8.4.5
+lightning: 3.003.0
 lightning_core: 1.0.0-rc2
 lightning_landing_page: 1.0.0-rc1
 lightning_layout: 1.0.0-rc1
@@ -70,8 +75,10 @@ media_entity_actions: 1.0.0-alpha2
 media_entity_instagram: 2.0.0-alpha1
 media_entity_soundcloud: 0.0.0
 media_entity_twitter: 2.0.0-alpha2
+media_library: 8.6.2
 memcache: 2.0.0-rc1
 menu_block: 1.5.0
+menu_link_content: 8.4.5
 menu_ui: 8.4.5
 metatag: 1.4.0
 metatag_open_graph: 1.4.0
@@ -87,6 +94,7 @@ panels: 4.2.0
 panels_ipe: 4.2.0
 paragraphs: 1.2.0
 path: 8.4.5
+path_alias: 8.8.2
 pathauto: 1.0.0
 purge: 3.0.0-beta8
 purge_drush: 3.0.0-beta8
@@ -124,15 +132,10 @@ uwmcms_chew_views: 0.0.0
 uwmcs_mediaamp: 0.0.0
 video_embed_field: 2.0.0-alpha2
 video_embed_media: 2.0.0-alpha2
+views: 8.4.5
 views_infinite_scroll: 1.5.0
 views_ui: 8.4.5
 webform: 5.0.0-rc3
 webform_node: 5.0.0-rc3
 webform_ui: 5.0.0-rc3
 workflows: 8.4.5
-contribute: 1.0.0-beta7
-menu_link_content: 8.4.5
-views: 8.4.5
-lightning: 3.003.0
-config_split: 1.4.0
-media_library: 8.6.2

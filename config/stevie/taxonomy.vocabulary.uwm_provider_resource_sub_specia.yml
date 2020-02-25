@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'UWM Provider Resource Sub-specialties'
 vid: uwm_provider_resource_sub_specia
 description: ''
-hierarchy: 0
 weight: 0

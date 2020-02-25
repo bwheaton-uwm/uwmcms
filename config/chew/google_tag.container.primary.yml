@@ -1,0 +1,27 @@
+uuid: ea45b88a-71a8-48a1-b2c7-90744eda765c
+langcode: en
+status: true
+dependencies: {  }
+id: primary
+label: Primary
+weight: 0
+container_id: ''
+data_layer: dataLayer
+include_classes: false
+whitelist_classes: "google\nnonGooglePixels\nnonGoogleScripts\nnonGoogleIframes"
+blacklist_classes: "customScripts\ncustomPixels"
+include_environment: false
+environment_id: ''
+environment_token: ''
+path_toggle: 'exclude listed'
+path_list: "/admin*\n/batch*\n/node/add*\n/node/*/edit\n/node/*/delete\n/user/*/edit*\n/user/*/cancel*"
+role_toggle: 'include listed'
+role_list:
+  anonymous: anonymous
+  authenticated: '0'
+  administrator: '0'
+  site_administrator: '0'
+  editor: '0'
+status_toggle: 'exclude listed'
+status_list: "403\n404"
+conditions: {  }

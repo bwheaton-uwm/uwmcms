@@ -62,3 +62,4 @@ type_settings:
       - article
       - promotion
       - webform
+  default_moderation_state: draft

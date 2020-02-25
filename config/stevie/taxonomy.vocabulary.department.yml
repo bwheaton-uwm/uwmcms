@@ -5,5 +5,4 @@ dependencies: {  }
 name: Department
 vid: department
 description: 'E.g. Obstetrics & Gynecology, Primary Care, Cardiology'
-hierarchy: 0
 weight: 0
