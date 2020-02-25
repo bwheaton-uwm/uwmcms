@@ -44,7 +44,7 @@ disable-targets:
     twig: true
   tests:
     behat: { all: true, run: true }
-#    drupal: { run: true }
+    drupal: { run: true }
 #    composer: { validate: true }
 #    deprecated: { modules: true, themes: true }
     frontend: { run: true }
