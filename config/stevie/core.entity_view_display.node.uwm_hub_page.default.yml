@@ -37,14 +37,6 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  field_uwm_content_owner:
-    weight: 6
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   field_uwm_hero:
     weight: 0
     label: hidden
@@ -79,16 +71,10 @@ content:
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
     region: content
-  field_uwm_subject_matter_experts:
-    weight: 7
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
 hidden:
   content_moderation_control: true
   field_search_best_bets: true
+  field_uwm_content_owner: true
+  field_uwm_subject_matter_experts: true
   links: true
   search_api_excerpt: true
