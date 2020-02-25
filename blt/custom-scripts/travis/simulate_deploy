@@ -12,12 +12,12 @@ simulate_deploy() {
 }
 
 echo "UWM simulate_deploy"
-date
+echo "`date`"
 
 simulate_deploy || true
 
 echo "UWM finish simulate_deploy"
-date
+echo "`date`"
 
 #
 #travis_fold('uwm_simulate_deploy')
