@@ -73,88 +73,96 @@
 
           <div class="clinic-page__hours-ctas">
 
-            {# Primary CTA (make an appointment or contact information) #}
-{#            {% if not hide_appointment_ctas or not hide_see_all_clinics_cta %}#}
-              <div class="clinic-page__ctas clinic-page__ctas-primary">
+            {# "Make an Appointment" or "Contact Information" CTA box (left) #}
+            <div class="clinic-page__ctas clinic-page__ctas-primary">
 
-                {% if not hide_appointment_ctas %}
-                  {#                Double check for content: #}
-                  {% if (content.field_res_phone_number.0 is not empty)
-                    or (has_open_scheduling and not hide_open_scheduling_cta) %}
+              {% if not hide_appointment_ctas %}
 
-                    <div class="clinic-page__cta clinic-page__cta-appointment">
-                      <div class="clinic-page__cta-header">
-                        <h2>{{ "Make an Appointment"|t }}</h2>
-                      </div>
-                      <div class="clinic-page__cta-content">
-                        {# @see field--node--field-res-phone-number--res-clinic.html.twig #}
-                        {% if content.field_res_phone_number.0 is not empty %}
-                          {{ content.field_res_phone_number }}
-                        {% endif %}
+                {# "Make an Appointment" box #}
+                {% if (content.field_res_phone_number.0 is not empty) or (has_open_scheduling and not hide_open_scheduling_cta) %}
 
-                        {# @see field--node--field-res-epic-department-ids--res-clinic.html.twig #}
-                        {% if has_open_scheduling and not hide_open_scheduling_cta %}
-                          {{ content.field_res_epic_department_ids }}
-                        {% else %}
-                          <div class="clinic-page__cta-icon clinic-page__cta-icon-calendar d-none d-md-block"></div>
-                        {% endif %}
-                      </div>
+                  <div class="clinic-page__cta clinic-page__cta-appointment">
+                    <div class="clinic-page__cta-header">
+                      <h2>{{ "Make an Appointment"|t }}</h2>
                     </div>
+                    <div class="clinic-page__cta-content">
+                      {#
+                        Phone number button
+                        @see field--node--field-res-phone-number--res-clinic.html.twig
+                      #}
+                      {% if content.field_res_phone_number.0 is not empty %}
+                        {{ content.field_res_phone_number }}
+                      {% endif %}
 
-                  {% endif %}
+                      {#
+                        "Book online" button - eCare open scheduling
+                        @see field--node--field-res-epic-department-ids--res-clinic.html.twig
+                      #}
+                      {% if has_open_scheduling and not hide_open_scheduling_cta %}
+                        {{ content.field_res_epic_department_ids }}
+                      {% else %}
+                        <div class="clinic-page__cta-icon clinic-page__cta-icon-calendar d-none d-md-block"></div>
+                      {% endif %}
+                    </div>
+                  </div>
 
-                {% else %}
-                  {% if not hide_contact_clinic_ctas %}
-                    {#                  Double check for content: #}
-                    {% if content.field_res_phone_number.0 is not empty %}
-
-                      <div class="clinic-page__cta clinic-page__cta-contact">
-                        <div class="clinic-page__cta-header">
-                          <h2>{{ "Contact Information"|t }}</h2>
-                        </div>
-                        <div class="clinic-page__cta-content">
-                          {# @see field--node--field-res-phone-number--res-clinic.html.twig #}
-                          {% if content.field_res_phone_number.0 is not empty %}
-                            {{ content.field_res_phone_number }}
-                          {% endif %}
-                          <div class="clinic-page__cta-icon clinic-page__cta-icon-heart"></div>
-                        </div>
-                      </div>
-
-                    {% endif %}
-                  {% endif %}
                 {% endif %}
 
-                {# See featuerd locations jump link CTA #}
-                {% if is_building_type_location and not hide_see_all_clinics_cta %}
-                  {#                Double check for content: #}
-                  {% if node.field_res_featured_clinics|length %}
+              {% elseif not hide_contact_clinic_ctas %}
 
-                    <div class="clinic-page__cta clinic-page-see-all-clinics__cta">
-                      <div class="clinic-page__cta-header">
-                        <h2>{{ "Make an Appointment"|t }}</h2>
-                      </div>
-                      <div class="clinic-page__cta-content">
+                {# "Contact Information" box #}
+                {% if content.field_res_phone_number.0 is not empty %}
 
-                        {{ uwm_cta_link("See all clinics at this location"|t,
-                          '#main-tab-tab---featured-locations',
-                          ['btn-cta-solid', 'clinic-page__cta-btn', 'clinic-page__cta-btn--full-width'],
-                          []) }}
-                      </div>
+                  <div class="clinic-page__cta clinic-page__cta-contact">
+                    <div class="clinic-page__cta-header">
+                      <h2>{{ "Contact Information"|t }}</h2>
                     </div>
+                    <div class="clinic-page__cta-content">
 
-                  {% endif %}
+                      {#
+                        Phone number button
+                        @see field--node--field-res-phone-number--res-clinic.html.twig
+                      #}
+                      {{ content.field_res_phone_number }}
+
+                      <div class="clinic-page__cta-icon clinic-page__cta-icon-heart"></div>
+                    </div>
+                  </div>
+
                 {% endif %}
 
-              </div>
-{#            {% endif %}#}
+              {% endif %}
 
+              {#
+                "Make an Appointment" box -
+                "See all clinics at this location" button
+
+                TODO: confirm with Gillian/Emily whether unwanted and we can
+                remove this element.
+              #}
+              {% if is_building_type_location and node.field_res_featured_clinics|length and not hide_see_all_clinics_cta %}
+
+                <div class="clinic-page__cta clinic-page-see-all-clinics__cta">
+                  <div class="clinic-page__cta-header">
+                    <h2>{{ "Make an Appointment"|t }}</h2>
+                  </div>
+                  <div class="clinic-page__cta-content">
+
+                    {{ uwm_cta_link("See all clinics at this location"|t,
+                      '#main-tab-tab---featured-locations',
+                      ['btn-cta-solid', 'clinic-page__cta-btn', 'clinic-page__cta-btn--full-width'],
+                      []) }}
+                  </div>
+                </div>
+
+              {% endif %}
+
+            </div> <!-- /.clinic-page__ctas-primary -->
 
             {# Primary hours of operation #}
             {% if hours is not empty and hours.operation is not empty %}
               <div class="clinic-page__hours clinic-page__hours-primary">
-                <div
-                  class="clinic-page__hours-set clinic-page__hours-operation">
+                <div class="clinic-page__hours-set clinic-page__hours-operation">
 
                   <div class="clinic-page__hours-header-wrap">
 
@@ -198,28 +206,37 @@
               </div>
             {% endif %}
 
-
-            {# Secondary CTA (urgent care or returning patients book online) #}
+            {# "Walk-in Visit" or "Returning Patients" CTA box (right) #}
             {% if hide_returning_patient_cta or hide_appointment_ctas %}
+
               <div class="clinic-page__ctas clinic-page__ctas-secondary clinic-page__cta-hidden">
-              </div>
+              </div> <!-- /.clinic-page__ctas-secondary -->
+
             {% else %}
+
               <div class="clinic-page__ctas clinic-page__ctas-secondary">
 
-                {# Urgent care Clockwise wait time and link #}
-                {# @see field--node--field-res-clockwise-id--res-clinic.html.twig #}
+                {#
+                  "Walk-in Visit" box -
+                  Urgent care Clockwise wait time and link
+                  @see field--node--field-res-clockwise-id--res-clinic.html.twig
+                #}
                 {% if content.field_res_clockwise_id.0 is not empty %}
+
                   {{ content.field_res_clockwise_id }}
+
                 {% else %}
+
+                  {# "Returning Patients" box #}
                   <div class="clinic-page__cta clinic-page__cta-returning">
                     <div class="clinic-page__cta-header">
                       <h2>{{ "Returning Patients"|t }}</h2>
                     </div>
                     <div class="clinic-page__cta-content">
 
-                      {# <a class="btn-cta-solid clinic-page__cta-btn clinic-page__cta-btn--full-width" href="https://ecare.uwmedicine.org/prod01/inside.asp?mode=apptsched">{{ "Sign in &amp; book online"|t }}</a> #}
-
-                      {# // @TODO Verify new CTA #}
+                      {#
+                        "Sign in & book online" button - eCare direct scheduling
+                      #}
                       {% set cta_special_attributes = []|merge({'data-context-title': node_title|trim}) %}
                       {{ uwm_cta_link("Sign in &amp; book online"|t,
                         'https://ecare.uwmedicine.org/prod01/inside.asp?mode=apptsched',
@@ -228,8 +245,11 @@
 
                     </div>
                   </div>
+
                 {% endif %}
-              </div>
+
+              </div> <!-- /.clinic-page__ctas-secondary -->
+
             {% endif %}
 
             {# Secondary hours (urgent care) #}
