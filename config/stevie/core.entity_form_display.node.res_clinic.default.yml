@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.field.node.res_clinic.body
     - field.field.node.res_clinic.field_featured
-    - field.field.node.res_clinic.field_hide_see_clinics_cta
     - field.field.node.res_clinic.field_res_affiliates
     - field.field.node.res_clinic.field_res_box_number
     - field.field.node.res_clinic.field_res_building
@@ -107,7 +106,6 @@ third_party_settings:
         - field_res_hide_returning_cta
         - field_res_hide_open_scheduling
         - field_res_hide_appt_ctas
-        - field_hide_see_clinics_cta
         - field_res_is_hospital
         - field_res_is_building
         - field_res_clockwise_id
@@ -246,13 +244,6 @@ content:
     region: content
   field_featured:
     weight: 16
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
-  field_hide_see_clinics_cta:
-    weight: 28
     settings:
       display_label: true
     third_party_settings: {  }

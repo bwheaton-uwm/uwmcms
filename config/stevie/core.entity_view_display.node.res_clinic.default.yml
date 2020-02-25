@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.field.node.res_clinic.body
     - field.field.node.res_clinic.field_featured
-    - field.field.node.res_clinic.field_hide_see_clinics_cta
     - field.field.node.res_clinic.field_res_affiliates
     - field.field.node.res_clinic.field_res_box_number
     - field.field.node.res_clinic.field_res_building
@@ -66,16 +65,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
-    region: content
-  field_hide_see_clinics_cta:
-    weight: 23
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    type: boolean
     region: content
   field_res_building:
     weight: 3

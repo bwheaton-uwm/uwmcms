@@ -33,7 +33,6 @@
 {% set hide_returning_patient_cta = node.field_res_hide_returning_cta.value %}
 {% set hide_open_scheduling_cta = node.field_res_hide_open_scheduling.value %}
 {% set has_open_scheduling = content.field_res_epic_department_ids.0 %}
-{% set hide_see_all_clinics_cta = (node.field_hide_see_clinics_cta.value is empty or node.field_hide_see_clinics_cta.value == 1) %}
 
 {% set is_building_type_location = node.field_res_is_building.value %}
 
@@ -130,30 +129,6 @@
                   </div>
 
                 {% endif %}
-
-              {% endif %}
-
-              {#
-                "Make an Appointment" box -
-                "See all clinics at this location" button
-
-                TODO: confirm with Gillian/Emily whether unwanted and we can
-                remove this element.
-              #}
-              {% if is_building_type_location and node.field_res_featured_clinics|length and not hide_see_all_clinics_cta %}
-
-                <div class="clinic-page__cta clinic-page-see-all-clinics__cta">
-                  <div class="clinic-page__cta-header">
-                    <h2>{{ "Make an Appointment"|t }}</h2>
-                  </div>
-                  <div class="clinic-page__cta-content">
-
-                    {{ uwm_cta_link("See all clinics at this location"|t,
-                      '#main-tab-tab---featured-locations',
-                      ['btn-cta-solid', 'clinic-page__cta-btn', 'clinic-page__cta-btn--full-width'],
-                      []) }}
-                  </div>
-                </div>
 
               {% endif %}
 
