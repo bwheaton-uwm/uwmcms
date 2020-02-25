@@ -33,6 +33,7 @@
 {% set hide_returning_patient_cta = node.field_res_hide_returning_cta.value %}
 {% set hide_open_scheduling_cta = node.field_res_hide_open_scheduling.value %}
 {% set has_open_scheduling = content.field_res_epic_department_ids.0 %}
+{% set has_phone = content.field_res_phone_number.0 is not empty %}
 
 {% set is_building_type_location = node.field_res_is_building.value %}
 
@@ -78,20 +79,13 @@
               {% if not hide_appointment_ctas %}
 
                 {# "Make an Appointment" box #}
-                {% if (content.field_res_phone_number.0 is not empty) or (has_open_scheduling and not hide_open_scheduling_cta) %}
+                {% if (has_open_scheduling and not hide_open_scheduling_cta) or (has_phone) %}
 
                   <div class="clinic-page__cta clinic-page__cta-appointment">
                     <div class="clinic-page__cta-header">
                       <h2>{{ "Make an Appointment"|t }}</h2>
                     </div>
                     <div class="clinic-page__cta-content">
-                      {#
-                        Phone number button
-                        @see field--node--field-res-phone-number--res-clinic.html.twig
-                      #}
-                      {% if content.field_res_phone_number.0 is not empty %}
-                        {{ content.field_res_phone_number }}
-                      {% endif %}
 
                       {#
                         "Book online" button - eCare open scheduling
@@ -99,9 +93,24 @@
                       #}
                       {% if has_open_scheduling and not hide_open_scheduling_cta %}
                         {{ content.field_res_epic_department_ids }}
-                      {% else %}
+                      {% endif %}
+
+                      {#
+                        Phone number button
+                        @see field--node--field-res-phone-number--res-clinic.html.twig
+                      #}
+                      {% if has_phone %}
+                        {{ content.field_res_phone_number }}
+                      {% endif %}
+
+                      {#
+                        If not displaying both buttons, add calendar icon in the
+                        second space.
+                      #}
+                      {% if not (has_open_scheduling and not hide_open_scheduling_cta and has_phone) %}
                         <div class="clinic-page__cta-icon clinic-page__cta-icon-calendar d-none d-md-block"></div>
                       {% endif %}
+
                     </div>
                   </div>
 
@@ -110,7 +119,7 @@
               {% elseif not hide_contact_clinic_ctas %}
 
                 {# "Contact Information" box #}
-                {% if content.field_res_phone_number.0 is not empty %}
+                {% if has_phone %}
 
                   <div class="clinic-page__cta clinic-page__cta-contact">
                     <div class="clinic-page__cta-header">
