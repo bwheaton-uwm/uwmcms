@@ -58,7 +58,7 @@ install:
 
 script:
   - if [ "${RUN_TEST_ENVIRONMENT}" == true ]; then source ${LOCAL_BLT_DIR}/custom-scripts/travis/run_tests; fi
-  - if [ "${RUN_TEST_ENVIRONMENT}" == true ]; then source ${LOCAL_BLT_DIR}/custom-scripts/travis/simulate_deploy || true; fi
+  - if [ "${RUN_TEST_ENVIRONMENT}" == true ]; then source ${LOCAL_BLT_DIR}/custom-scripts/travis/simulate_deploy; fi
   # Uncomment these lines to test database updates using live content.
   # - blt drupal:sync:default:site
 
