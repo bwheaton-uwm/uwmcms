@@ -14,7 +14,7 @@
     "jquery": "^3.2.1",
     "jquery-validation": "^1.17.0",
     "jquery.easing": "^1.4.1",
-    "npm": "^4.6.1",
+    "npm": "^6.13.4",
     "tether": "^1.4.0"
   },
   "devDependencies": {
