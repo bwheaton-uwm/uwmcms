@@ -1,5 +1,6 @@
 ignored_config_entities:
   - fb_instant_articles.settings
   - 'webform.webform.*'
+  - 'google_tag.*'
 _core:
   default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk
