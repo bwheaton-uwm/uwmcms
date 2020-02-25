@@ -10,7 +10,7 @@ module.exports = {
     'Home Page Verify T1 Header - elements and search bar': function (browser) {
         const header = browser.page.uwmHeader();
         const footer = browser.page.uwmFooter();
-        const home = browser.page.uwmHome();
+        const body = browser.page.uwmHome();
         const testUrl = 'https://www.uwmedicine.org/';
         const testUrlValidation = 'body.is-path-frontpage';
         const searchText = 'location';
@@ -21,7 +21,7 @@ module.exports = {
             .verifyHeaderSearch(searchText, testUrl, testUrlValidation)
             .verifyT2HeaderLinks(testUrl, testUrlValidation);
 
-        home
+        body
             .verifyHeroCtaLinks(testUrl, testUrlValidation)
             .verifySectionLinks(testUrl, testUrlValidation)
             .verifySpotlightLinks(testUrl, testUrlValidation);
