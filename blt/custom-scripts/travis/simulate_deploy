@@ -1,7 +1,22 @@
 #!/usr/bin/env bash
 
-set -ev
+set -v
+
+#travis_fold('uwm_simulate_deploy')
+
+
+
+echo "UWM simulate_deploy"
+echo "`date`"
 
 blt artifact:deploy --verbose --no-interaction --dry-run --commit-msg "Automated commit by Travis CI for Build ${TRAVIS_BUILD_ID}" || true
+
+
+
+echo "UWM finish simulate_deploy"
+echo "`date`"
+
+#
+#travis_fold('uwm_simulate_deploy')
 
 set +v
