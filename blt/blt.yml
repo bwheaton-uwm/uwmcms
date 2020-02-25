@@ -47,6 +47,7 @@ disable-targets:
     drupal: { run: true }
 #    composer: { validate: true }
 #    deprecated: { modules: true, themes: true }
+    deprecated: { themes: true }
     frontend: { run: true }
 #    php: { lint: true }
 #    phpcs: { sniff: { all: true } }
