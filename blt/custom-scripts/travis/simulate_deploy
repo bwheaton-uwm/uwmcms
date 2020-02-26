@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -v
+set +e
 
 #travis_fold('uwm_simulate_deploy')
 
@@ -20,3 +21,4 @@ echo "`date`"
 #travis_fold('uwm_simulate_deploy')
 
 set +v
+set -e
