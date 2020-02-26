@@ -4,23 +4,22 @@ set -v
 set +e
 travis_fold:start:uwm_simulate_deploy
 
+#travis_fold('uwm_simulate_deploy')
 
-simulate_deploy() {
 
-  blt artifact:deploy --verbose --no-interaction --dry-run --commit-msg "Automated commit by Travis CI for Build ${TRAVIS_BUILD_ID}" || true
-
-}
 
 echo "UWM simulate_deploy"
-date
+echo "`date`"
 
-simulate_deploy || true
+blt artifact:deploy --verbose --no-interaction --dry-run --commit-msg "Automated commit by Travis CI for Build ${TRAVIS_BUILD_ID}" || true
+
+
 
 echo "UWM finish simulate_deploy"
-date
+echo "`date`"
 
-
-travis_fold:end:uwm_simulate_deploy
+#
+#travis_fold('uwm_simulate_deploy')
 
 set +v
 set -e
