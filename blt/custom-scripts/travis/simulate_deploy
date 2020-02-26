@@ -1,22 +1,17 @@
 #!/usr/bin/env bash
 
-set -v
+set -vx
+set +e
 
-#travis_fold('uwm_simulate_deploy')
+{
+
+ bash -c '
+    blt artifact:deploy --verbose --no-interaction --dry-run --ignore-dirty --commit-msg "Automated commit by Travis CI for Build ${TRAVIS_BUILD_ID}" || true
+'
+
+} || true
 
 
 
-echo "UWM simulate_deploy"
-echo "`date`"
-
-blt artifact:deploy --verbose --no-interaction --dry-run --commit-msg "Automated commit by Travis CI for Build ${TRAVIS_BUILD_ID}" || true
-
-
-
-echo "UWM finish simulate_deploy"
-echo "`date`"
-
-#
-#travis_fold('uwm_simulate_deploy')
-
-set +v
+set +vx
+set -e
