@@ -13,7 +13,8 @@ module.exports = {
                 this
                     .assert.visible('@patientResourcesLink', '"Patient Resources" breadcrumb link appears.')
                     .click('@patientResourcesLink')
-                    .waitForElementVisible('@patientResourcesPage', '"Patient Resources" breadcrumb link loads correct page.')
+                    .waitForElementVisible('@patientResourcesPage',
+                        '"Patient Resources" breadcrumb link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
 
@@ -75,7 +76,8 @@ module.exports = {
                 this
                     .assert.visible('@radiologyLink', 'Radiology appointments link appears.')
                     .click('@radiologyLink')
-                    .waitForElementVisible('@radiologyPage', 'Radiology appointments link loads correct page.')
+                    .waitForElementVisible('@radiologyPage',
+                        'Radiology appointments link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
                 this
@@ -87,7 +89,8 @@ module.exports = {
                 this
                     .assert.visible('@sccaLink', 'Seattle Cancer Care Alliance link appears.')
                     .click('@sccaLink')
-                    .waitForElementVisible('@sccaPage', 'Seattle Cancer Care Alliance link loads correct page.')
+                    .waitForElementVisible('@sccaPage',
+                        'Seattle Cancer Care Alliance link loads correct page.')
                     .navigate(pageUrl)
                     .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
 
@@ -97,14 +100,16 @@ module.exports = {
                 this
                     .assert.visible('@viewMoreLink', 'View More link appears.')
                     .moveToElement('@viewMoreLink', 0, 0)
-                    .assert.attributeContains('@viewMoreLink', 'aria-expanded', 'false', "View More is collapsed.")
+                    .assert.attributeContains('@viewMoreLink', 'aria-expanded', 'false',
+                        "View More is collapsed.")
                     .click('@viewMoreLink');
                 this.pause(3000);
                 this.assert.visible('@viewLessLink', "View Less link appears.")
                     .moveToElement('@viewLessLink', 1000, 1000)
                     .click('@viewLessLink');
                 this.pause(3000);
-                this.assert.attributeContains('@viewMoreLink', 'aria-expanded', 'false', "Clicking View More collapses the text.");
+                this.assert.attributeContains('@viewMoreLink', 'aria-expanded', 'false',
+                    "Clicking View More collapses the text.");
 
                 return this;
             },
