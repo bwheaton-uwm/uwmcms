@@ -1,3 +1,8 @@
+/**
+ * @file
+ * Global variables for UWM-CMS tests.
+ */
+
 const args = require('minimist')(process.argv);
 
 module.exports = {
@@ -23,7 +28,7 @@ module.exports = {
     "huddle": {
       "local": "http://huddle.uwmed.local",
       "dev": "https://huddle.cmsdev.uwmedicine.org",
-      "test": "https://huddle.cmstest.uwmedicine.org",
+      "test": "https://huddle.cmsstage.uwmedicine.org",
       "prod": "https://huddle.uwmedicine.org",
 
       get launch_url() {
@@ -47,8 +52,4 @@ module.exports = {
 
   }
 
-
 };
-
-
-
