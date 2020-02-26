@@ -33,6 +33,11 @@
     RewriteCond %{HTTP_HOST} www.nwentassociates.org [NC]
     RewriteRule ^ https://www.uwmedicine.org/locations/northwest-ent-associates [L,R=301]
 
+    # Redirect anything uwmedicine.com to uwmedicine.org
+    RewriteCond %{HTTP_HOST} uwmedicine.com [NC,OR]
+    RewriteCond %{HTTP_HOST} www.uwmedicine.com [NC]
+    RewriteRule ^ https://www.uwmedicine.org [L,R=301]
+
     # Redirect eastside.uwmedicine.org to their uwmedicine.org pages
     RewriteCond %{HTTP_HOST} eastside.uwmedicine(.wpengine)?.org [NC]
     RewriteRule ^ https://www.uwmedicine.org/locations/eastside-specialty-center%{REQUEST_URI} [L,R]
@@ -40,6 +45,20 @@
     # Redirect careers.uwmedicine.org to uwmedicine.org/about/career-opportunities
     RewriteCond %{HTTP_HOST} careers.uwmedicine.org [NC]
     RewriteRule ^(.*)$ https://www.uwmedicine.org/about/career-opportunities [L,R=301]
+
+    # Redirect Summit Cardiology URLs
+    RewriteCond %{HTTP_HOST} summitcardiology.com [NC,OR]
+    RewriteCond %{HTTP_HOST} www.summitcardiology.com [NC,OR]
+    RewriteCond %{HTTP_HOST} seattlecardiology.com [NC,OR]
+    RewriteCond %{HTTP_HOST} www.seattlecardiology.com [NC,OR]
+    RewriteCond %{HTTP_HOST} edmondscardiology.com [NC,OR]
+    RewriteCond %{HTTP_HOST} www.edmondscardiology.com [NC]
+    RewriteRule ^(.*)$ https://www.uwmedicine.org/locations/summit-cardiology-nwhmc [L,R=301]
+    RewriteCond %{HTTP_HOST} seattleheartdoctors.com [NC,OR]
+    RewriteCond %{HTTP_HOST} www.seattleheartdoctors.com [NC,OR]
+    RewriteCond %{HTTP_HOST} seattleheartdocs.com [NC,OR]
+    RewriteCond %{HTTP_HOST} www.seattleheartdocs.com [NC]
+    RewriteRule ^(.*)$ https://www.uwmedicine.org/locations/summit-cardiology-nwhmc#providers-tab [L,R=301]
 </IfModule>
 
 

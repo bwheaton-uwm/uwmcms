@@ -1064,7 +1064,7 @@ display:
         - 'config:field.storage.node.field_res_providers'
   page_1:
     display_options:
-      path: admin/content/clinics
+      path: admin/content/clinics-old
       menu:
         type: normal
         title: 'Search Clinics'
