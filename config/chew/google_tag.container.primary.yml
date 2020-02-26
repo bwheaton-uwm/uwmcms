@@ -1,11 +1,14 @@
 uuid: ea45b88a-71a8-48a1-b2c7-90744eda765c
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - ctools
+    - webform
 id: primary
 label: Primary
 weight: 0
-container_id: ''
+container_id: GTM-PJFW45K
 data_layer: dataLayer
 include_classes: false
 whitelist_classes: "google\nnonGooglePixels\nnonGoogleScripts\nnonGoogleIframes"
@@ -18,10 +21,24 @@ path_list: "/admin*\n/batch*\n/node/add*\n/node/*/edit\n/node/*/delete\n/user/*/
 role_toggle: 'include listed'
 role_list:
   anonymous: anonymous
-  authenticated: '0'
-  administrator: '0'
-  site_administrator: '0'
-  editor: '0'
 status_toggle: 'exclude listed'
-status_list: "403\n404"
-conditions: {  }
+status_list: ''
+conditions:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles: {  }
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+  'entity_bundle:webform_submission':
+    id: 'entity_bundle:webform_submission'
+    bundles: {  }
+    negate: false
+    context_mapping:
+      webform_submission: '@webform.webform_submission_route_context:webform_submission'
+  webform:
+    id: webform
+    webforms: {  }
+    negate: false
+    context_mapping: {  }
+
