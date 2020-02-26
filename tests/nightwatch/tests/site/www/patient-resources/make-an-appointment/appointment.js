@@ -1,4 +1,4 @@
-// tests.site.www.patient-resources.make-an-appointment.appointmentpat  .js
+// tests.site.www.patient-resources.make-an-appointment.appointment.js
 module.exports = {
     'disabled': false,
     '@tags': [
@@ -12,8 +12,8 @@ module.exports = {
         const header = browser.page.uwmHeader();
         const footer = browser.page.uwmFooter();
         const body = browser.page.makeAnAppointment();
-        const testUrl = 'https://www.uwmedicine.org/';
-        const testUrlValidation = 'body.is-path-frontpage';
+        const testUrl = 'https://www.uwmedicine.org/patient-resources/make-an-appointment';
+        const testUrlValidation = 'body.path-node-20836';
         const searchText = 'location';
 
         header
@@ -23,9 +23,11 @@ module.exports = {
             .verifyT2HeaderLinks(testUrl, testUrlValidation);
 
         body
-            .verifyHeroCtaLinks(testUrl, testUrlValidation)
-            .verifySectionLinks(testUrl, testUrlValidation)
-            .verifySpotlightLinks(testUrl, testUrlValidation);
+            .verifyBreadcrumbLinks(testUrl, testUrlValidation)
+            .verifyGridcardLinks(testUrl, testUrlValidation)
+            .verifySectionCollapse(testUrl, testUrlValidation)
+            .verifyRescheduleLinks(testUrl, testUrlValidation)
+            .verifyInterpreterLinks(testUrl, testUrlValidation);
 
         footer
             .verifySocialLinks(testUrl, testUrlValidation)
