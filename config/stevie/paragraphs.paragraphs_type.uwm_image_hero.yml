@@ -5,5 +5,5 @@ dependencies: {  }
 id: uwm_image_hero
 label: 'Image Hero'
 icon_uuid: null
-description: 'Page title is displayed over an image, with ghost buttons on the right.'
+description: 'Page title and subheading are displayed over an image, with optional ghost buttons on the right.'
 behavior_plugins: {  }
