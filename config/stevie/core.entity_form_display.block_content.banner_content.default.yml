@@ -12,10 +12,12 @@ dependencies:
     - field.field.block_content.banner_content.field_uwm_image_position
     - field.field.block_content.banner_content.field_uwm_image_width
     - field.field.block_content.banner_content.field_uwm_media_image
+    - field.field.block_content.banner_content.field_uwm_more_info_url
     - field.field.block_content.banner_content.field_uwm_section_heading
   module:
     - entity_browser
     - field_group
+    - link
     - paragraphs
     - text
 third_party_settings:
@@ -41,10 +43,9 @@ third_party_settings:
         - field_uwm_image_position
         - group_image_a
       parent_name: ''
-      weight: 6
+      weight: 5
       format_type: details
       format_settings:
-        label: Settings
         open: true
         id: ''
         classes: ''
@@ -120,6 +121,14 @@ content:
       field_widget_replace: false
     region: content
     third_party_settings: {  }
+  field_uwm_more_info_url:
+    weight: 4
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
   field_uwm_section_heading:
     weight: 1
     settings:
@@ -138,7 +147,7 @@ content:
     third_party_settings: {  }
   moderation_state:
     type: string_textfield
-    weight: 8
+    weight: 6
     region: content
     settings:
       size: 60

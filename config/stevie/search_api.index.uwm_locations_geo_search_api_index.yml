@@ -625,4 +625,3 @@ options:
   cron_limit: 50
   overridden_by_acquia_search: 2
 server: acquia_search_server
-

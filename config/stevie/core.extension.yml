@@ -19,6 +19,8 @@ module:
   breakpoint: 0
   bulk_edit_terms: 0
   cer: 0
+  chosen: 0
+  chosen_lib: 0
   ckeditor: 0
   ckeditor_bs_grid: 0
   ckeditor_templates: 0
@@ -176,6 +178,7 @@ module:
   uwm_commands: 0
   uwm_content_owners: 0
   uwm_res_import: 0
+  uwmcs_ecare_scheduling: 0
   uwmcs_extension: 0
   uwmcs_search_teaser: 0
   uwmcs_searchfields: 0

@@ -1,21 +1,24 @@
-uuid: 4833ceeb-a0e1-4b70-9d22-f2df0251bf14
+uuid: 9e32d89f-22aa-4245-8ece-fdf8a2129313
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.taxonomy_term.field_term_keywords
-    - system.menu.admin
+    - field.storage.node.field_res_npi
+    - field.storage.node.field_res_puma_id
+    - field.storage.node.field_uwm_edw_boardcerts
+    - field.storage.node.field_uwm_edw_education
+    - field.storage.node.field_uwm_json_packet
+    - node.type.res_provider
   module:
-    - taxonomy
+    - node
     - user
-    - views_bulk_operations
-id: uwm_term_manager
-label: 'UWM Term Manager'
+id: uwm_providers_puma
+label: 'UWM Providers PUMA'
 module: views
 description: ''
 tag: ''
-base_table: taxonomy_term_field_data
-base_field: tid
+base_table: node_field_data
+base_field: nid
 core: 8.x
 display:
   default:
@@ -27,7 +30,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'access content overview'
+          perm: 'access site reports'
       cache:
         type: tag
         options: {  }
@@ -64,8 +67,8 @@ display:
           expose:
             items_per_page: true
             items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 25, 50, 100, 500'
-            items_per_page_options_all: true
+            items_per_page_options: '5, 10, 25, 50, 500, 1000'
+            items_per_page_options_all: false
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
@@ -77,71 +80,73 @@ display:
           row_class: ''
           default_row_class: true
           override: true
-          sticky: false
+          sticky: true
           caption: ''
           summary: ''
           description: ''
           columns:
-            entity_browser_select: entity_browser_select
-            tid: tid
-            name: name
-            field_term_keywords: field_term_keywords
-            vid: vid
-            parent_target_id: parent_target_id
-            field_res_clinics: field_res_campus
-            field_res_providers: field_res_campus
-            field_res_campus: field_res_campus
+            node_bulk_form: node_bulk_form
+            nid: nid
+            field_res_npi: field_res_npi
+            title: title
+            changed: changed
+            field_res_puma_id: field_res_puma_id
+            field_uwm_edw_boardcerts: field_uwm_edw_boardcerts
+            field_uwm_edw_education: field_uwm_edw_education
+            field_uwm_json_packet: field_uwm_json_packet
             operations: operations
           info:
-            entity_browser_select:
+            node_bulk_form:
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            tid:
-              sortable: true
+            nid:
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            name:
-              sortable: true
+            field_res_npi:
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            field_term_keywords:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            vid:
-              sortable: true
+            title:
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            parent_target_id:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_res_clinics:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_res_providers:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_res_campus:
-              sortable: true
+            changed:
+              sortable: false
               default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_res_puma_id:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_uwm_edw_boardcerts:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_uwm_edw_education:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_uwm_json_packet:
               align: ''
               separator: ''
               empty_column: false
@@ -156,14 +161,14 @@ display:
       row:
         type: fields
       fields:
-        views_bulk_operations_bulk_form:
-          id: views_bulk_operations_bulk_form
-          table: views
-          field: views_bulk_operations_bulk_form
+        node_bulk_form:
+          id: node_bulk_form
+          table: node
+          field: node_bulk_form
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Views bulk operations'
+          label: 'Node operations bulk form'
           exclude: false
           alter:
             alter_text: false
@@ -204,51 +209,19 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          batch: true
-          batch_size: 25
-          form_step: true
-          buttons: false
-          clear_on_exposed: false
           action_title: Action
-          selected_actions:
-            vbo_export_generate_xlsx_action: vbo_export_generate_xlsx_action
-            vbo_export_generate_csv_action: vbo_export_generate_csv_action
-            views_bulk_edit: views_bulk_edit
-            views_bulk_operations_delete_entity: views_bulk_operations_delete_entity
-            pathauto_update_alias: pathauto_update_alias
-            'entity:save_action:taxonomy_term': 'entity:save_action:taxonomy_term'
-            'entity:unpublish_action:taxonomy_term': 'entity:unpublish_action:taxonomy_term'
-            'entity:publish_action:taxonomy_term': 'entity:publish_action:taxonomy_term'
-          preconfiguration:
-            vbo_export_generate_xlsx_action:
-              label_override: ''
-              strip_tags: 0
-            vbo_export_generate_csv_action:
-              label_override: ''
-              strip_tags: 0
-              separator: ;
-            views_bulk_edit:
-              label_override: ''
-              get_bundles_from_results: 1
-            views_bulk_operations_delete_entity:
-              label_override: ''
-            pathauto_update_alias:
-              label_override: ''
-            'entity:save_action:taxonomy_term':
-              label_override: ''
-            'entity:unpublish_action:taxonomy_term':
-              label_override: ''
-            'entity:publish_action:taxonomy_term':
-              label_override: ''
-          plugin_id: views_bulk_operations_bulk_form
-        tid:
-          id: tid
-          table: taxonomy_term_field_data
-          field: tid
+          include_exclude: exclude
+          selected_actions: {  }
+          entity_type: node
+          plugin_id: node_bulk_form
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Term ID'
+          label: ID
           exclude: false
           alter:
             alter_text: false
@@ -304,65 +277,17 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: taxonomy_term
-          entity_field: tid
+          entity_type: node
+          entity_field: nid
           plugin_id: field
-        name:
-          id: name
-          table: taxonomy_term_field_data
-          field: name
-          entity_type: taxonomy_term
-          entity_field: name
-          alter:
-            alter_text: false
-            make_link: false
-            absolute: false
-            trim: false
-            word_boundary: false
-            ellipsis: false
-            strip_tags: false
-            html: false
-          hide_empty: false
-          empty_zero: false
-          type: string
-          settings:
-            link_to_entity: true
-          plugin_id: term_name
+        field_res_npi:
+          id: field_res_npi
+          table: node__field_res_npi
+          field: field_res_npi
           relationship: none
           group_type: group
           admin_label: ''
-          label: Name
-          exclude: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_alter_empty: true
-          click_sort_column: value
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          convert_spaces: false
-        field_term_keywords:
-          id: field_term_keywords
-          table: taxonomy_term__field_term_keywords
-          field: field_term_keywords
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: Keywords
+          label: NPI
           exclude: false
           alter:
             alter_text: false
@@ -389,6 +314,248 @@ display:
             more_link_path: ''
             strip_tags: false
             trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          entity_type: node
+          entity_field: title
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            trim: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          settings:
+            link_to_entity: true
+          plugin_id: field
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Title
+          exclude: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        changed:
+          id: changed
+          table: node_field_data
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Changed
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: timestamp
+          settings:
+            date_format: short
+            custom_date_format: ''
+            timezone: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: node
+          entity_field: changed
+          plugin_id: field
+        field_res_puma_id:
+          id: field_res_puma_id
+          table: node__field_res_puma_id
+          field: field_res_puma_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'PUMA ID'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_uwm_edw_boardcerts:
+          id: field_uwm_edw_boardcerts
+          table: node__field_uwm_edw_boardcerts
+          field: field_uwm_edw_boardcerts
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: uwm_edw_boardcerts
+          exclude: false
+          alter:
+            alter_text: true
+            text: '{{ field_uwm_edw_boardcerts | replace({'','': '', ''}) | raw }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 400
+            word_boundary: false
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: true
             preserve_tags: ''
             html: false
           element_type: ''
@@ -417,18 +584,18 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        vid:
-          id: vid
-          table: taxonomy_term_field_data
-          field: vid
+        field_uwm_edw_education:
+          id: field_uwm_edw_education
+          table: node__field_uwm_edw_education
+          field: field_uwm_edw_education
           relationship: none
           group_type: group
           admin_label: ''
-          label: Vocabulary
+          label: uwm_edw_education
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: '{{ field_uwm_edw_education | replace({'','': '', ''}) | raw }}'
             make_link: false
             path: ''
             absolute: false
@@ -443,14 +610,14 @@ display:
             suffix: ''
             target: ''
             nl2br: false
-            max_length: 0
-            word_boundary: true
+            max_length: 400
+            word_boundary: false
             ellipsis: true
             more_link: false
             more_link_text: ''
             more_link_path: ''
             strip_tags: false
-            trim: false
+            trim: true
             preserve_tags: ''
             html: false
           element_type: ''
@@ -465,11 +632,10 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
+          click_sort_column: value
+          type: basic_string
+          settings: {  }
+          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -479,21 +645,19 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: taxonomy_term
-          entity_field: vid
           plugin_id: field
-        parent_target_id:
-          id: parent_target_id
-          table: taxonomy_term__parent
-          field: parent_target_id
+        field_uwm_json_packet:
+          id: field_uwm_json_packet
+          table: node__field_uwm_json_packet
+          field: field_uwm_json_packet
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Term Parents'
+          label: uwm_json_packet
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: '{{ field_uwm_json_packet | replace({'','': '', ''}) | raw }}'
             make_link: false
             path: ''
             absolute: false
@@ -508,14 +672,14 @@ display:
             suffix: ''
             target: ''
             nl2br: false
-            max_length: 0
-            word_boundary: true
+            max_length: 400
+            word_boundary: false
             ellipsis: true
             more_link: false
             more_link_text: ''
             more_link_path: ''
             strip_tags: false
-            trim: false
+            trim: true
             preserve_tags: ''
             html: false
           element_type: ''
@@ -530,11 +694,10 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
+          click_sort_column: value
+          type: basic_string
+          settings: {  }
+          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -544,12 +707,10 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: taxonomy_term
-          entity_field: parent
           plugin_id: field
         operations:
           id: operations
-          table: taxonomy_term_data
+          table: node
           field: operations
           relationship: none
           group_type: group
@@ -596,27 +757,39 @@ display:
           empty_zero: false
           hide_alter_empty: true
           destination: false
-          entity_type: taxonomy_term
+          entity_type: node
           plugin_id: entity_operations
       filters:
-        status:
-          id: status
-          table: taxonomy_term_field_data
-          field: status
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            res_provider: res_provider
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+        field_res_npi_value:
+          id: field_res_npi_value
+          table: node__field_res_npi
+          field: field_res_npi_value
           relationship: none
           group_type: group
           admin_label: ''
           operator: '='
-          value: All
+          value:
+            min: ''
+            max: ''
+            value: ''
           group: 1
           exposed: true
           expose:
-            operator_id: ''
-            label: Published
+            operator_id: field_res_npi_value_op
+            label: NPI
             description: ''
             use_operator: false
-            operator: status_op
-            identifier: status
+            operator: field_res_npi_value_op
+            identifier: field_res_npi_value
             required: false
             remember: false
             multiple: false
@@ -626,6 +799,10 @@ display:
               replicator: '0'
               administrator: '0'
               content_manager: '0'
+              content_reviewer: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -638,152 +815,162 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: boolean
-          entity_type: taxonomy_term
-          entity_field: status
-        name:
-          id: name
-          table: taxonomy_term_field_data
-          field: name
+          plugin_id: numeric
+        field_res_puma_id_value:
+          id: field_res_puma_id_value
+          table: node__field_res_puma_id
+          field: field_res_puma_id_value
           relationship: none
           group_type: group
           admin_label: ''
-          operator: word
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_res_puma_id_value_op
+            label: 'PUMA ID'
+            description: ''
+            use_operator: false
+            operator: field_res_puma_id_value_op
+            identifier: field_res_puma_id_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              replicator: '0'
+              administrator: '0'
+              content_manager: '0'
+              content_reviewer: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
+        field_uwm_edw_boardcerts_value:
+          id: field_uwm_edw_boardcerts_value
+          table: node__field_uwm_edw_boardcerts
+          field: field_uwm_edw_boardcerts_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
           value: ''
           group: 1
           exposed: true
           expose:
-            operator_id: name_op
-            label: Name
-            description: ''
+            operator_id: field_uwm_edw_boardcerts_value_op
+            label: 'uwm_edw_boardcerts (field_uwm_edw_boardcerts)'
+            description: null
             use_operator: false
-            operator: name_op
-            identifier: name
+            operator: field_uwm_edw_boardcerts_value_op
+            identifier: field_uwm_edw_boardcerts_value
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              replicator: '0'
-              administrator: '0'
-              content_manager: '0'
-            placeholder: ''
-          is_grouped: false
+            placeholder: null
+          is_grouped: true
           group_info:
-            label: ''
+            label: 'Board Certifications'
             description: ''
-            identifier: ''
+            identifier: field_uwm_edw_boardcerts_value
             optional: true
             widget: select
             multiple: false
             remember: false
             default_group: All
             default_group_multiple: {  }
-            group_items: {  }
-          entity_type: taxonomy_term
-          entity_field: name
+            group_items:
+              1:
+                title: 'Has value'
+                operator: 'not empty'
+                value: ''
+              2:
+                title: 'Has no value'
+                operator: empty
+                value: ''
           plugin_id: string
-        uuid:
-          id: uuid
-          table: taxonomy_term_data
-          field: uuid
+        field_uwm_edw_education_value:
+          id: field_uwm_edw_education_value
+          table: node__field_uwm_edw_education
+          field: field_uwm_edw_education_value
           relationship: none
           group_type: group
           admin_label: ''
-          operator: contains
+          operator: '='
           value: ''
           group: 1
           exposed: true
           expose:
-            operator_id: uuid_op
-            label: UUID
-            description: ''
+            operator_id: field_uwm_edw_education_value_op
+            label: 'uwm_edw_education (field_uwm_edw_education)'
+            description: null
             use_operator: false
-            operator: uuid_op
-            identifier: uuid
+            operator: field_uwm_edw_education_value_op
+            identifier: field_uwm_edw_education_value
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              replicator: '0'
-              administrator: '0'
-              content_manager: '0'
-            placeholder: ''
-          is_grouped: false
+            placeholder: null
+          is_grouped: true
           group_info:
-            label: ''
+            label: Education
             description: ''
-            identifier: ''
+            identifier: field_uwm_edw_education_value
             optional: true
             widget: select
             multiple: false
             remember: false
             default_group: All
             default_group_multiple: {  }
-            group_items: {  }
-          entity_type: taxonomy_term
-          entity_field: uuid
+            group_items:
+              1:
+                title: 'Has value'
+                operator: 'not empty'
+                value: ''
+              2:
+                title: 'Has no value'
+                operator: empty
+                value: ''
           plugin_id: string
-        vid:
-          id: vid
-          table: taxonomy_term_field_data
-          field: vid
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          order: DESC
+          entity_type: node
+          entity_field: created
+          plugin_id: date
           relationship: none
           group_type: group
           admin_label: ''
-          operator: in
-          value: {  }
-          group: 1
-          exposed: true
+          exposed: false
           expose:
-            operator_id: vid_op
-            label: Vocabulary
-            description: ''
-            use_operator: false
-            operator: vid_op
-            identifier: vid
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              replicator: '0'
-              administrator: '0'
-              content_manager: '0'
-            reduce: false
-            argument: ''
-          is_grouped: false
-          group_info:
             label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: taxonomy_term
-          entity_field: vid
-          plugin_id: bundle
-      sorts: {  }
-      title: 'UWM Term Manager'
-      header:
-        result:
-          id: result
-          table: views
-          field: result
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          content: 'Displaying @start - @end of @total'
-          plugin_id: result
+          granularity: second
+      title: 'UWM Providers Education'
+      header: {  }
       footer: {  }
       empty: {  }
       relationships: {  }
@@ -796,9 +983,14 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.taxonomy_term.field_term_keywords'
+        - 'config:field.storage.node.field_res_npi'
+        - 'config:field.storage.node.field_res_puma_id'
+        - 'config:field.storage.node.field_uwm_edw_boardcerts'
+        - 'config:field.storage.node.field_uwm_edw_education'
+        - 'config:field.storage.node.field_uwm_json_packet'
   page_1:
     display_plugin: page
     id: page_1
@@ -806,16 +998,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: admin/content/terms
-      menu:
-        type: normal
-        title: 'Search Terms'
-        description: ''
-        expanded: true
-        parent: system.admin_content
-        weight: 99
-        context: '0'
-        menu_name: admin
+      path: admin/content/providers/education
     cache_metadata:
       max-age: 0
       contexts:
@@ -823,6 +1006,11 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.taxonomy_term.field_term_keywords'
+        - 'config:field.storage.node.field_res_npi'
+        - 'config:field.storage.node.field_res_puma_id'
+        - 'config:field.storage.node.field_uwm_edw_boardcerts'
+        - 'config:field.storage.node.field_uwm_edw_education'
+        - 'config:field.storage.node.field_uwm_json_packet'

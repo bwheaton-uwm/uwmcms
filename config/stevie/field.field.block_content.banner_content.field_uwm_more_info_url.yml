@@ -1,0 +1,23 @@
+uuid: 9bbd46a4-e747-460e-a076-6afcf686d9b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.banner_content
+    - field.storage.block_content.field_uwm_more_info_url
+  module:
+    - link
+id: block_content.banner_content.field_uwm_more_info_url
+field_name: field_uwm_more_info_url
+entity_type: block_content
+bundle: banner_content
+label: 'More Info URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

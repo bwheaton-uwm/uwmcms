@@ -4,6 +4,10 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.search_result
+    - field.field.node.uwm_homepage.field_meta_tags
+    - field.field.node.uwm_homepage.field_uwm_content_owner
+    - field.field.node.uwm_homepage.field_uwm_homepage_markup
+    - field.field.node.uwm_homepage.field_uwm_subject_matter_experts
     - node.type.uwm_homepage
   module:
     - user
@@ -19,3 +23,8 @@ content:
     third_party_settings: {  }
 hidden:
   content_moderation_control: true
+  field_meta_tags: true
+  field_uwm_content_owner: true
+  field_uwm_homepage_markup: true
+  field_uwm_subject_matter_experts: true
+  search_api_excerpt: true

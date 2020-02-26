@@ -1,0 +1,9 @@
+services:
+  uwm_import_epic.res_provider_migration_subscriber:
+    class: '\Drupal\uwmcs_ecare_scheduling\EventSubscriber\ResProviderMigrationSubscriber'
+    tags:
+      - { name: 'event_subscriber' }
+    arguments: ['@tempstore.private', '@messenger', '@logger.channel.provider_visit_types', '@plugin.manager.mail']
+  logger.channel.provider_visit_types:
+    parent: logger.channel_base
+    arguments: ['provider_visit_types']
