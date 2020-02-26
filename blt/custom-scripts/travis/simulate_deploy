@@ -5,8 +5,9 @@ set +e
 
 {
 
- bash
-    blt artifact:deploy --verbose --no-interaction --dry-run --ignore-dirty --commit-msg "Automated commit by Travis CI for Build ${TRAVIS_BUILD_ID}"
+ bash -c '
+    blt artifact:deploy --verbose --no-interaction --dry-run --ignore-dirty --commit-msg "Automated commit by Travis CI for Build ${TRAVIS_BUILD_ID}" || true
+'
 
 } || true
 
