@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
-set -v
+set -vx
 set +e
 
 {
 
-
-  blt artifact:deploy --verbose --no-interaction --dry-run --ignore-dirty --commit-msg "Automated commit by Travis CI for Build ${TRAVIS_BUILD_ID}" || true
-
+ bash -c '
+    blt artifact:deploy --verbose --no-interaction --dry-run --ignore-dirty --commit-msg "Automated commit by Travis CI for Build ${TRAVIS_BUILD_ID}" || true
+'
 
 } || true
 
 
 
-set +v
+set +vx
 set -e
