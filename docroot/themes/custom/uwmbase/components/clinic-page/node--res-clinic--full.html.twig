@@ -88,11 +88,25 @@
                     <div class="clinic-page__cta-content">
 
                       {#
-                        "Book online" button - eCare open scheduling
-                        @see field--node--field-res-epic-department-ids--res-clinic.html.twig
+                        "Book online" button - eCare open (and possibly direct)
+                        scheduling via modal flow
                       #}
+                      {#
+                        Original:
+                        @see field--node--field-res-epic-department-ids--res-clinic.html.twig
+
                       {% if has_open_scheduling and not hide_open_scheduling_cta %}
                         {{ content.field_res_epic_department_ids }}
+                      {% endif %}
+                      #}
+
+                      {# TODO: update to open_scheduling per Epic values #}
+                      {% if has_open_scheduling and not hide_open_scheduling_cta %}
+
+                        {% include '@uwmbase/clinic-page/node--res-clinic--full.book-online-btn.html.twig' with {
+                          'modal_appt_context': 'clinic_page'
+                        } %}
+
                       {% endif %}
 
                       {#

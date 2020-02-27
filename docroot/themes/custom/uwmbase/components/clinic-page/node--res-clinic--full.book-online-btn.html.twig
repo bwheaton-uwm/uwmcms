@@ -1,0 +1,235 @@
+{#
+/**
+ * @file
+ * Template to display a clinic's Book Online button on the clinic page
+ * (Res Clinic node in full view mode).
+ *
+ * If available, this links to the modal appointment flow to guide a user to
+ * open or direct scheduling in eCare.
+ *
+ * @see node--res-clinic--full.html.twig
+ */
+#}
+
+{#
+  Relevant variables from preprocess and parent template:
+
+  Context values:
+  modal_appt_context: string - where the modal is being used. One of:
+    'clinic_page' - clinic (node) page
+    'clinic_card' - clinic card on search results
+
+  Scheduling values, from Epic:
+  open_scheduling: boolean - whether clinic (has any departments) enabled for
+    open scheduling
+  direct_scheduling: boolean - whether clinic (has any departments) enabled for
+    direct scheduling
+  [TODO: specialties/departments]
+
+  NOTE: These values have been checked and adjusted for any bad data situations,
+  so variables can be used safely within their appropriate conditions.
+  @see uwmcs_ecare_scheduling_preprocess_node()
+#}
+
+{#
+  Sample structured specialties/departments data...
+#}
+{%
+  set specialties = [
+
+    {
+      'name': 'Internal Medicine',
+      'departments': [
+        {
+          'id': 220070,
+          'name': 'U WHCC GEN INT MED',
+          'external_name': 'UWMC Women\'s Health Care Center Internal Medicine',
+          'open_scheduling': true,
+          'visit_type_ids': [ 9000, 103619 ],
+          'direct_scheduling': true
+        },
+        {
+          'id': 220073,
+          'name': 'U WHCC ARNP',
+          'external_name': 'UWMC Women\'s Health Care Center Nurse Practitioner Clinic',
+          'open_scheduling': true,
+          'visit_type_ids': [ 9000, 103619 ],
+          'direct_scheduling': true
+        }
+      ]
+    },
+
+    {
+      'name': 'Obstetrics and Gynecology',
+      'departments': [
+        {
+          'id': 220071,
+          'name': 'U WHCC GYNECOLOGY',
+          'external_name': 'UWMC Women\'s Health Care Center Gynecology',
+          'open_scheduling': true,
+          'visit_type_ids': [ 9000, 103619, 4466 ],
+          'direct_scheduling': true
+        },
+      ]
+    },
+
+    {
+      'name': 'Womens Health',
+      'departments': [
+        {
+          'id': 220060,
+          'name': 'U WHCC BREAST CLINIC',
+          'external_name': 'UWMC Women\'s Health Care Center Breast Clinic',
+          'open_scheduling': false,
+          'visit_type_ids': [],
+          'direct_scheduling': true
+        },
+      ]
+    }
+
+  ]
+%}
+
+{#
+  TEMP - placeholders for preprocess
+#}
+{% set open_scheduling = true %}
+{% set direct_scheduling = true %}
+
+{#
+  TODO:
+  Set single/multiple statuses.
+#}
+{%
+  set multiple_specialties = specialties|length > 1
+%}
+{#
+  Is it useful to set this boolean for multiple across all depts?
+  (vs. multiple within specialty/dept)
+#}
+{%
+  set multiple_visit_types_all = multiple_specialties or true
+%}
+
+{#
+  Define URLs to eCare for this clinic.
+#}
+{%
+  set ecare_base_url = 'https://ecare.uwmedicine.org/prod01/'
+%}
+
+{% if direct_scheduling %}
+  {% set url_direct_scheduling = ecare_base_url ~ 'inside.asp?mode=apptsched' %}
+{% endif %}
+
+{#
+  TODO: do we need this?
+  - one specialty
+    a) one dept
+      - one visit type
+    b) mult depts
+      - all have same one visit type
+  This is used only if we are NOT embedding the open scheduling widget as an
+  iframe in the modal, but linking to it from the initial button.
+#}
+{%
+  set url_open_scheduling_one_type = null
+%}
+{% if false and open_scheduling and not multiple_specialties %} {# and ... #}
+  {#
+  {% set url_open_scheduling_one_type = ecare_base_url ~ 'OpenScheduling/SignupAndSchedule/EmbeddedSchedule'
+     ~ '?dept=' ~ specialties.0...
+     ~ '&vt=' ~ specialties.0...
+     ~ '&view=plain' %}
+  #}
+{% endif %}
+
+{#
+  Analytics - set up strings to identify click events in the appointment flow.
+  The prefix and scheduling status strings apply to all elements.
+  These are combined (space-delimited) into a `data-analytics-id` attribute on
+  relevant elements, with another string that identifies specific actions.
+#}
+{%
+  set analytics_prefix = 'booking-appointment'
+%}
+{#
+  This corresponds to the pattern in JS:
+  @see modal-appointment.js
+
+  TODO: confirm/update
+#}
+{%
+  set analytics_sched_status =
+    'open-' ~ (open_scheduling ? 'yes' : 'no') ~
+    ' multiple-specialties-' ~ ((open_scheduling and multiple_specialties) ? 'yes' : 'no') ~
+    ' multiple-visit-' ~ ((open_scheduling and multiple_visit_types_all) ? 'yes' : 'no') ~
+    ' direct-' ~ (direct_scheduling ? 'yes' : 'no')
+%}
+
+{#
+  Set attributes for button and link to online options, including those needed
+  for analytics tracking.
+  Note: `css_parents_classes` is set in uwmbase_preprocess_node(); using it here
+  mirrors `uwm_cta_link()`.
+#}
+{%
+  set btn_online_attrs = create_attribute({
+    'class': [
+      'clinic-page__cta-btn',
+      'clinic-page__book-online',
+      'btn-cta-solid',
+      'uwm-cta',
+      'cta-from-' ~ request_path|clean_class
+    ]|merge(css_parents_classes),
+    'data-context-title': node_title|trim,
+    'data-analytics-id': analytics_prefix ~ ' click ' ~ analytics_sched_status
+  })
+%}
+
+{#
+  Set data attributes for the button to pass the scheduling values to the modal.
+  The modal can retrieve these because the element that triggered it is set as
+  the `event.relatedTarget`.
+  @see https://getbootstrap.com/docs/4.1/components/modal/#varying-modal-content
+
+  Note: do not need to pass ... are rendered via the template, not JS.
+
+  TODO: specialties/departments?
+#}
+{%
+  set modal_attrs = create_attribute({
+    'data-toggle': 'modal',
+    'data-target': '#modal-appointment-clinic',
+    'data-clinic-open-scheduling': (open_scheduling ? '1' : '0'),
+    'data-clinic-specialties': '',
+    'data-clinic-direct-scheduling': (direct_scheduling ? '1' : '0')
+  })
+%}
+
+{#
+  If clinic has open scheduling for any specialty/department, with or without
+  direct scheduling, output button and modal.
+#}
+{% if open_scheduling %}
+
+  {#
+    TODO: do we need this?
+    This is used only if we are NOT embedding the open scheduling widget as an
+    iframe in the modal, but linking to it from the initial button.
+  #}
+  {% if false and url_open_scheduling_one_type is not empty and (not direct_scheduling) %}
+
+    <a href="{{ url_open_scheduling_one_type }}" target="_blank" {{ btn_online_attrs }}>{{ "Book online"|t }}</a>
+
+  {% else %}
+
+    <button type="button" {{ modal_attrs }} {{ btn_online_attrs }}>{{ "Book online"|t }}</button>
+
+    {% include '@uwmbase/appointment-flow/uwm-appointment-modal.html.twig' with {
+      'flow_type': 'clinic'
+    } %}
+
+  {% endif %}
+
+{% endif %}

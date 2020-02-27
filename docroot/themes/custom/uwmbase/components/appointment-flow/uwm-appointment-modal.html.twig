@@ -7,30 +7,30 @@
  * according to context of that page.
  *
  * @see node--res-provider--appointment-actions.html.twig
- * @see template_preprocess_page()
+ * @see node--res-clinic--full.book-online-btn.html.twig
+ * @see uwmcs_ecare_scheduling_preprocess_page()
  *
  * Variables - may be passed from parent template, or via `include with`:
  * - flow_type: 'provider' or 'clinic' - provided by parent template
  * - modal_appt_context: string - where the modal is being used. One of:
  *  'provider_page' - provider bio (node) page
  *  'provider_card' - provider card on search results or a clinic page tab
+ *  'clinic_page' - clinic (node) page
+ *  'clinic_card' - clinic card on search results
  */
 #}
-
-{# {{ attach_library('core/drupal.ajax') }} #}
 
 {{ attach_library('uwmbase/modal-appointment') }}
 
 {#
   Analytics - set up strings to identify click events in the appointment flow.
-  The prefix and scheduling status strings apply to all elements for this
-  provider.
+  The prefix and scheduling status strings apply to all elements.
   These are combined (space-delimited) into a `data-analytics-id` attribute on
   relevant elements, with another string that identifies specific actions.
-  (When this flow is on a provider page, these variables are passed from the
-  parent template; otherwise set them up here.)
+  (When this flow is on a provider/clinic page, these variables are passed from
+  the parent template; otherwise set them up here.)
 #}
-{% if modal_appt_context is not same as('provider_page') %}
+{% if modal_appt_context not in ['provider_page', 'clinic_page'] %}
   {%
     set analytics_prefix = 'booking-appointment'
   %}
@@ -45,8 +45,8 @@
   Pass the modal context as data attribute for use in JS.
   Since the modal intentionally exists only once in a page, we can set the
   context value on it, and it's immediately accessible in JS. (The scheduling
-  data values that are specific to each provider must be set on that
-  provider's button that opens the modal.)
+  data values that are specific to each provider/clinic must be set on the
+  button that opens the modal.)
 #}
 <div id="modal-appointment-{{ flow_type }}" class="modal fade uwm-modal-appointment" tabindex="-1" role="dialog"
   data-modal-appt-context="{{ modal_appt_context }}">
