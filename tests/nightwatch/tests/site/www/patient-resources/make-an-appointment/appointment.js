@@ -2,6 +2,7 @@
 module.exports = {
     'disabled': false,
     '@tags': [
+        'gray',
         'header',
         'footer',
         'patient-resources',
@@ -24,10 +25,9 @@ module.exports = {
 
         body
             .verifyBreadcrumbLinks(testUrlValidation)
+            .verifyLooseLinks(testUrlValidation)
             .verifyGridcardLinks(testUrlValidation)
-            .verifySectionCollapse(testUrlValidation)
-            .verifyRescheduleLinks(testUrlValidation)
-            .verifyInterpreterLinks(testUrlValidation);
+            .verifySectionCollapse();
 
         footer
             .verifySocialLinks(testUrl, testUrlValidation)

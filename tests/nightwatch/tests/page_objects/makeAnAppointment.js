@@ -3,100 +3,63 @@ module.exports = {
     url: 'https://www.uwmedicine.org/patient-resources/make-an-appointment',
 	commands:[
 		{
-			verifyBreadcrumbLinks: function (testUrlValidation) {
-				this
-					.assert.visible('@homeLink', '"Home" breadcrumb link appears.')
-					.click('@homeLink')
-					.waitForElementVisible('@homePage', '"Home" breadcrumb link loads correct page.')
-					.navigate(this.url)
-					.waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
-                this
-                    .assert.visible('@patientResourcesLink', '"Patient Resources" breadcrumb link appears.')
-                    .click('@patientResourcesLink')
-                    .waitForElementVisible('@patientResourcesPage',
-                        '"Patient Resources" breadcrumb link loads correct page.')
-                    .navigate(this.url)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
+			verifyBreadcrumbLinks: function (urlValidator) {
+                const breadcrumbLinks = [
+                    '@homeLink',
+                    '@patientResourcesLink',
+                ];
+                const breadcrumbPages = [
+                    this.elements.homePage,
+                    this.elements.patientResourcesPage,
+                ];
+
+                for (let i=0; i<breadcrumbLinks.length; i++) {
+                    this.verifyLinkClick(breadcrumbLinks[i], breadcrumbPages[i], this.url,
+                        urlValidator, 'Breadcrumbs');
+                };
 
 				return this;
             },
-            verifyGridcardLinks: function (testUrlValidation) {
-                this
-                    .assert.visible('@bookLink', 'Book Online link appears.')
-                    .click('@bookLink')
-                    .waitForElementVisible('@bookPage', 'Book Online link loads correct page.')
-                    .navigate(this.url)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
-                this
-                    .assert.visible('@bookInEcareLink', 'Book in eCare link appears.')
-                    .click('@bookInEcareLink')
-                    .waitForElementVisible('@bookInEcarePage', 'Book in eCare link loads correct page.')
-                    .navigate(this.url)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
-                this
-                    // Telephone links attempt to open default app for telephony, we just verify the link
-                    // exists, not click-through.
-                    .assert.visible('@telLink', 'Phone Appointment link appears.')
-                this
-                    .assert.visible('@signInLink', 'Sign in to eCare link appears.')
-                    .click('@signInLink')
-                    .waitForElementVisible('@signInPage', 'Sign in to eCare link loads correct page.')
-                    .navigate(this.url)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
-                this
-                    .assert.visible('@cancelLink', 'Cancel Appointment link appears.')
-                    .click('@cancelLink')
-                    .waitForElementVisible('@cancelPage', 'Cancel Appointment link loads correct page.')
-                    .navigate(this.url)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
-                this
-                    .assert.visible('@cancelByFormLink', 'Cancel by Form link appears.')
-                    .click('@cancelByFormLink')
-                    .waitForElementVisible('@cancelByFormPage', 'Cancel by Form link loads correct page.')
-                    .navigate(this.url)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
-                this
-                    .assert.visible('@urgentLink', 'Urgent Care Locations link appears.')
-                    .click('@urgentLink')
-                    .waitForElementVisible('@urgentPage', 'Urgent Care Locations link loads correct page.')
-                    .navigate(this.url)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
-                this
-                    .assert.visible('@uwMedLink', 'UW Medicine link appears.')
-                    .click('@uwMedLink')
-                    .waitForElementVisible('@uwMedPage', 'UW Medicine link loads correct page.')
-                    .navigate(this.url)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
-                this
-                    .assert.visible('@emergencyLink', 'Emergency Rooms link appears.')
-                    .click('@emergencyLink')
-                    .waitForElementVisible('@emergencyPage', 'Emergency Rooms link loads correct page.')
-                    .navigate(this.url)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
-                this
-                    .assert.visible('@radiologyLink', 'Radiology appointments link appears.')
-                    .click('@radiologyLink')
-                    .waitForElementVisible('@radiologyPage',
-                        'Radiology appointments link loads correct page.')
-                    .navigate(this.url)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
-                this
-                    .assert.visible('@valleyLink', 'Valley Med Center appointments link appears.')
-                    .click('@valleyLink')
-                    .waitForElementVisible('@valleyPage', 'Valley Med Center link loads correct page.')
-                    .navigate(this.url)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
-                this
-                    .assert.visible('@sccaLink', 'Seattle Cancer Care Alliance link appears.')
-                    .click('@sccaLink')
-                    .waitForElementVisible('@sccaPage',
-                        'Seattle Cancer Care Alliance link loads correct page.')
-                    .navigate(this.url)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
+            verifyGridcardLinks: function (urlValidator) {
+                const gridcardLinks = [
+                    '@bookInEcareLink',
+                    '@bookLink',
+                    '@cancelByFormLink',
+                    '@cancelLink',
+                    '@emergencyLink',
+                    '@homeLink',
+                    '@patientResourcesLink',
+                    '@radiologyLink',
+                    '@sccaLink',
+                    '@signInLink',
+                    '@urgentLink',
+                    '@uwMedLink',
+                    '@valleyLink',
+                ];
+                const gridcardPages = [
+                    this.elements.bookInEcarePage,
+                    this.elements.bookPage,
+                    this.elements.cancelByFormPage,
+                    this.elements.cancelPage,
+                    this.elements.emergencyPage,
+                    this.elements.homePage,
+                    this.elements.patientResourcesPage,
+                    this.elements.radiologyPage,
+                    this.elements.sccaPage,
+                    this.elements.signInPage,
+                    this.elements.urgentPage,
+                    this.elements.uwMedPage,
+                    this.elements.valleyPage,
+                ];
+
+                for (let i = 0; i < gridcardLinks.length; i++) {
+                    this.verifyLinkClick(gridcardLinks[i], gridcardPages[i], this.url,
+                        urlValidator, 'Grid Cards');
+                };
 
                 return this;
             },
-            verifySectionCollapse: function (testUrlValidation) {
+            verifySectionCollapse: function () {
                 this
                     .assert.visible('@viewMoreLink', 'View More link appears.')
                     .moveToElement('@viewMoreLink', 0, 0)
@@ -113,31 +76,28 @@ module.exports = {
 
                 return this;
             },
-            verifyRescheduleLinks: function (testUrlValidation) {
-                // Telephone links attempt to open default app for telephony, we just verify the link
-                // exists, not click-through.
-                this
-                    .assert.visible('@callLink', ' link appears.')
+            verifyLooseLinks: function () {
+                const looseLinks = [
+                    '@callLink',
+                    '@telLink',
+                    '@amharicLink',
+                    '@arabicLink',
+                    '@cambodianLink',
+                    '@cantoneseLink',
+                    '@mandarinLink',
+                    '@farsiLink',
+                    '@koreanLink',
+                    '@russianLink',
+                    '@somaliLink',
+                    '@spanishLink',
+                    '@tigrinyaLink',
+                    '@vietnameseLink',
+                    '@TTYLink',
+                ];
 
-                return this;
-            },
-            verifyInterpreterLinks: function (testUrlValidation) {
-                // Telephone links attempt to open default app for telephony, we just verify the link
-                // exists, not click-through.
-                this
-                    .assert.visible('@amharicLink', 'Amharic link appears.')
-                    .assert.visible('@arabicLink', 'Arabic link appears.')
-                    .assert.visible('@cambodianLink', 'Cambodian link appears.')
-                    .assert.visible('@cantoneseLink', 'Cantonese link appears.')
-                    .assert.visible('@mandarinLink', 'Mandarin link appears.')
-                    .assert.visible('@farsiLink', 'Farsi link appears.')
-                    .assert.visible('@koreanLink', 'Korean link appears.')
-                    .assert.visible('@russianLink', 'Russian link appears.')
-                    .assert.visible('@somaliLink', 'Somali link appears.')
-                    .assert.visible('@spanishLink', 'Spanish link appears.')
-                    .assert.visible('@tigrinyaLink', 'Tigrinya link appears.')
-                    .assert.visible('@vietnameseLink', 'Vietnamese link appears.')
-                    .assert.visible('@TTYLink', 'TTY link appears.')
+                for (let i=0; i<looseLinks.length; i++) {
+                    this.verifyLink(looseLinks[i], 'Link ' + i + '.');
+                }
 
                 return this;
             }
@@ -147,15 +107,15 @@ module.exports = {
         amharicLink: '.col-lg-4:nth-child(1) .field__item div:nth-child(1) a',
         arabicLink: '.col-lg-4:nth-child(1) .field__item div:nth-child(2) a',
         bookInEcareLink: '.cta-to-prod01-scheduling',
-        bookInEcarePage: 'body.md_login_login',
+        bookInEcarePage: 'body.loginPage',
         bookLink: '.cta-to-prod01-openscheduling .btn__text',
         bookPage: 'body.md_openscheduling_index',
         callLink: '.mb-0 a',
         cambodianLink: '.col-lg-4:nth-child(1) .field__item div:nth-child(3) a',
         cancelByFormLink: '.cta-to-pages-responsepageaspx',
         cancelByFormPage: 'div#form-container',
-        cancelLink: '#main-container :nth-child(4) .btn__text',
-        cancelPage: 'body.md_login_login',
+        cancelLink: '.btn-cta-fluid:nth-child(4) .btn__text',
+        cancelPage: 'body',
         cantoneseLink: '.col-lg-4:nth-child(1) .field__item div:nth-child(4) a',
         emergencyLink: '#ppg-53061 .btn__text',
         emergencyPage: 'body.path-node-20736',
