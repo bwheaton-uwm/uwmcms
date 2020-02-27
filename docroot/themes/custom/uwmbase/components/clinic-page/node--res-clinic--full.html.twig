@@ -32,7 +32,7 @@
 {% set hide_contact_clinic_ctas = false %}
 {% set hide_returning_patient_cta = node.field_res_hide_returning_cta.value %}
 {% set hide_open_scheduling_cta = node.field_res_hide_open_scheduling.value %}
-{% set has_open_scheduling = content.field_res_epic_department_ids.0 %}
+{% set open_scheduling = content.field_res_epic_department_ids.0 %}
 {% set has_phone = content.field_res_phone_number.0 is not empty %}
 
 {% set is_building_type_location = node.field_res_is_building.value %}
@@ -79,7 +79,7 @@
               {% if not hide_appointment_ctas %}
 
                 {# "Make an Appointment" box #}
-                {% if (has_open_scheduling and not hide_open_scheduling_cta) or (has_phone) %}
+                {% if (open_scheduling and not hide_open_scheduling_cta) or (has_phone) %}
 
                   <div class="clinic-page__cta clinic-page__cta-appointment">
                     <div class="clinic-page__cta-header">
@@ -95,13 +95,13 @@
                         Original:
                         @see field--node--field-res-epic-department-ids--res-clinic.html.twig
 
-                      {% if has_open_scheduling and not hide_open_scheduling_cta %}
+                      {% if open_scheduling and not hide_open_scheduling_cta %}
                         {{ content.field_res_epic_department_ids }}
                       {% endif %}
                       #}
 
-                      {# TODO: update to open_scheduling per Epic values #}
-                      {% if has_open_scheduling and not hide_open_scheduling_cta %}
+                      {# TODO: set open_scheduling in preprocess #}
+                      {% if open_scheduling and not hide_open_scheduling_cta %}
 
                         {% include '@uwmbase/clinic-page/node--res-clinic--full.book-online-btn.html.twig' with {
                           'modal_appt_context': 'clinic_page'
@@ -121,7 +121,7 @@
                         If not displaying both buttons, add calendar icon in the
                         second space.
                       #}
-                      {% if not (has_open_scheduling and not hide_open_scheduling_cta and has_phone) %}
+                      {% if not (open_scheduling and not hide_open_scheduling_cta and has_phone) %}
                         <div class="clinic-page__cta-icon clinic-page__cta-icon-calendar d-none d-md-block"></div>
                       {% endif %}
 
@@ -204,6 +204,17 @@
               </div>
             {% endif %}
 
+            {#
+              TODO:
+              - confirm desired logic for showing Urgent Care (Clockwise) vs.
+                Returning Patients (direct scheduling link) box
+              - should `hide_returning_patient_cta` be used only for that?
+                (currently hides the Urgent Care box too)
+              - set `direct_scheduling` and `open_scheduling` in preprocess
+              - separate button template, for analytics attrs?
+            #}
+            {% set direct_scheduling = true %}
+
             {# "Walk-in Visit" or "Returning Patients" CTA box (right) #}
             {% if hide_returning_patient_cta or hide_appointment_ctas %}
 
@@ -226,23 +237,31 @@
                 {% else %}
 
                   {# "Returning Patients" box #}
-                  <div class="clinic-page__cta clinic-page__cta-returning">
-                    <div class="clinic-page__cta-header">
-                      <h2>{{ "Returning Patients"|t }}</h2>
-                    </div>
-                    <div class="clinic-page__cta-content">
+                  {% if (direct_scheduling and not open_scheduling) and not hide_returning_patient_cta %}
 
-                      {#
-                        "Sign in & book online" button - eCare direct scheduling
-                      #}
-                      {% set cta_special_attributes = []|merge({'data-context-title': node_title|trim}) %}
-                      {{ uwm_cta_link("Sign in &amp; book online"|t,
-                        'https://ecare.uwmedicine.org/prod01/inside.asp?mode=apptsched',
-                        ['btn-cta-solid', 'clinic-page__cta-btn', 'clinic-page__cta-btn--full-width'],
-                        cta_special_attributes) }}
+                    <div class="clinic-page__cta clinic-page__cta-returning">
+                      <div class="clinic-page__cta-header">
+                        <h2>{{ "Returning Patients"|t }}</h2>
+                      </div>
+                      <div class="clinic-page__cta-content">
 
+                        {#
+                          "Sign in and schedule" button - static link to eCare
+                          direct scheduling
+                        #}
+                        {% set cta_special_attributes = []|merge({
+                          'target': '_blank',
+                          'data-context-title': node_title|trim
+                        }) %}
+                        {{ uwm_cta_link("Sign in and schedule"|t,
+                          'https://ecare.uwmedicine.org/prod01/inside.asp?mode=apptsched',
+                          ['btn-cta-solid', 'clinic-page__cta-btn', 'clinic-page__cta-btn--full-width'],
+                          cta_special_attributes) }}
+
+                      </div>
                     </div>
-                  </div>
+
+                  {% endif %}
 
                 {% endif %}
 
