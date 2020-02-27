@@ -9,7 +9,7 @@ set +e
 cd tests/nightwatch
 
 npm install
-npm run test -- --tag rar;
+npm run tests -- --tag rar 
 
 
 cd -
