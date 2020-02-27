@@ -6,18 +6,8 @@
 set -v
 set +e
 
-#if [[ "${RUN_UWM_TESTS}" == false ]]; then
-#
-#  echo "UWM: RUN_UWM_TESTS false, so exiting early"
-#  travis_terminate 0;
-#
-#fi
-
-echo date
-
 vendor/bin/blt validate:all --no-interaction || true
 
-echo date
 #
 # travis_wait vendor/bin/blt setup --define drush.alias='${drush.aliases.ci}' --no-interaction --verbose || { set +v && return 1; }
 #
@@ -32,8 +22,6 @@ vendor/bin/blt artifact:update:drupal  --no-interaction --verbose --site=chew
 vendor/bin/blt artifact:update:drupal  --no-interaction --verbose --site=huddle
 vendor/bin/blt artifact:update:drupal  --no-interaction --verbose --site=stevie
 
-
-echo date
 
 
 set +v
