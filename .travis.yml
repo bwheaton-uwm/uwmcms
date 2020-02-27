@@ -49,6 +49,8 @@ before_install:
   #- composer self-update
   - composer validate --no-check-all --ansi
   - composer install
+  #- start your web application and listen on `localhost` to support Nightwatch web tests
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   # Exit build early if only documentation was changed in a Pull Request.
   - source ${BLT_DIR}/scripts/travis/exit_early
 
@@ -60,8 +62,7 @@ install:
 script:
   - if [ "${RUN_TEST_ENVIRONMENT}" == true ]; then source ${LOCAL_BLT_DIR}/custom-scripts/travis/run_tests; fi
   - if [ "${RUN_TEST_ENVIRONMENT}" == true ]; then source ${LOCAL_BLT_DIR}/custom-scripts/travis/simulate_deploy; fi
-  #- start your web application and listen on `localhost` to support Nightwatch web tests
-  - if [ "${RUN_WEBTESTS_ENVIRONMENT}" == true ]; then google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &; fi
+  - if [ "${RUN_WEBTESTS_ENVIRONMENT}" == true ]; then source ${LOCAL_BLT_DIR}/custom-scripts/travis/simulate_deploy; fi
   - if [ "${RUN_WEBTESTS_ENVIRONMENT}" == true ]; then source ${LOCAL_BLT_DIR}/custom-scripts/travis/simulate_deploy; fi
   # Uncomment these lines to test database updates using live content.
   # - blt drupal:sync:default:site
