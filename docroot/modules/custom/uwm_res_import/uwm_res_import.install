@@ -10,8 +10,10 @@
  */
 function uwm_res_import_uninstall() {
 
-  db_query("DELETE FROM {config} WHERE name LIKE '%uwm_res_import%'");
-  db_query("DELETE FROM {config} WHERE name LIKE '%migration.uwm_res%'");
+  $db = \Drupal::database();
+
+  $db->query("DELETE FROM {config} WHERE name LIKE '%uwm_res_import%'");
+  $db->query("DELETE FROM {config} WHERE name LIKE '%migration.uwm_res%'");
   drupal_flush_all_caches();
 
 }

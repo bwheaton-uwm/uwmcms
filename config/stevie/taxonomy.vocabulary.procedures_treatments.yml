@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Procedures & Treatments'
 vid: procedures_treatments
 description: ''
-hierarchy: 0
 weight: 0

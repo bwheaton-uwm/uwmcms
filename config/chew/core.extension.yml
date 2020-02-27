@@ -21,6 +21,7 @@ module:
   ctools: 0
   ctools_block: 0
   datetime: 0
+  devel: 0
   diff: 0
   draggableviews: 0
   dynamic_page_cache: 0
@@ -50,6 +51,8 @@ module:
   honeypot: 0
   image: 0
   inline_entity_form: 0
+  layout_builder: 0
+  layout_builder_styles: 0
   layout_discovery: 0
   lightning_core: 0
   lightning_landing_page: 0
@@ -90,6 +93,7 @@ module:
   panels_ipe: 0
   paragraphs: 0
   path: 0
+  path_alias: 0
   pathauto: 0
   purge: 0
   purge_drush: 0

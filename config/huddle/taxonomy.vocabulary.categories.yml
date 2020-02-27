@@ -7,5 +7,4 @@ _core:
 name: 'Article categories'
 vid: categories
 description: 'Articles may be associated with only one category.'
-hierarchy: 1
 weight: 0

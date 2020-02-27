@@ -15,8 +15,10 @@ dependencies:
     - field.field.node.bookshelf.field_teaser
     - image.style.158x246
     - node.type.bookshelf
+    - workflows.workflow.editorial
   module:
     - allowed_formats
+    - content_moderation
     - datetime
     - disqus
     - focal_point
@@ -110,6 +112,12 @@ content:
         hide_guidelines: '1'
     type: text_textarea
     region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
   path:
     type: path
     weight: 10
@@ -138,6 +146,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     region: content
     third_party_settings: {  }
 hidden:

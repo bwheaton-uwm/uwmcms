@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'UWM Condition Spotlight Type'
 vid: uwm_condition_spotlight_type
 description: ''
-hierarchy: 0
 weight: 0

@@ -768,7 +768,7 @@ if (file_exists('/var/www/site-php')) {
   require '/var/www/site-php/uwmed/huddle-settings.inc';
 }
 
-if (isset($settings['memcache']['servers'])) { 
+if (isset($settings['memcache']['servers'])) {
   // Memcache settings.
   $settings['cache']['default'] = 'cache.backend.memcache';
 }
@@ -801,3 +801,12 @@ require DRUPAL_ROOT . "/../vendor/acquia/blt/settings/blt.settings.php";
 $settings['install_profile'] = 'lightning';
 $config_directories['sync'] = '../config/huddle';
 $config_directories['vcs'] = '../config/huddle';
+
+/**
+ * IMPORTANT.
+ *
+ * Do not include additional settings here. Instead, add them to settings
+ * included by `blt.settings.php`. See BLT's documentation for more detail.
+ *
+ * @link https://docs.acquia.com/blt/
+ */

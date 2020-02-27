@@ -28,6 +28,7 @@ module:
   datetime: 0
   datetime_range: 0
   dblog: 0
+  devel: 0
   diff: 0
   duration_field: 0
   editor: 0
@@ -47,6 +48,8 @@ module:
   history: 0
   image: 0
   inline_entity_form: 0
+  layout_builder: 0
+  layout_builder_styles: 0
   layout_discovery: 0
   lightning_contact_form: 0
   lightning_core: 0
@@ -78,6 +81,7 @@ module:
   panels: 0
   panels_ipe: 0
   path: 0
+  path_alias: 0
   quickedit: 0
   rdf: 0
   rest: 0

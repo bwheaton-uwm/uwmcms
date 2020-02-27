@@ -7,5 +7,4 @@ _core:
 name: 'Gallery categories'
 vid: gallery_categories
 description: 'Galleries may be associated with only one category.'
-hierarchy: 0
 weight: 0

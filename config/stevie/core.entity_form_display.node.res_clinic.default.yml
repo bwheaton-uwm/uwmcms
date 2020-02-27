@@ -90,18 +90,20 @@ third_party_settings:
       children:
         - field_res_providers
       parent_name: ''
-      weight: 2
+      weight: 9
       format_type: details
       region: content
       format_settings:
+        description: ''
+        open: true
+        required_fields: true
         id: ''
         classes: ''
-        description: ''
-        open: false
-        required_fields: true
       label: Providers
     group_booking:
       children:
+        - field_res_phone_number
+        - field_res_fax_number
         - field_res_iscallcenterserviced
         - field_res_epic_department_ids
         - field_res_hide_returning_cta
@@ -112,31 +114,16 @@ third_party_settings:
         - field_res_is_building
         - field_res_clockwise_id
       parent_name: ''
-      weight: 3
-      format_type: details
-      region: content
-      format_settings:
-        id: ''
-        classes: ''
-        description: ''
-        open: false
-        required_fields: true
-      label: Booking
-    group_contact:
-      children:
-        - field_res_phone_number
-        - field_res_fax_number
-      parent_name: ''
       weight: 5
       format_type: details
       region: content
       format_settings:
+        description: ''
+        required_fields: true
         id: ''
         classes: ''
-        description: ''
         open: false
-        required_fields: true
-      label: Contact
+      label: 'Phone and Appointments'
     group_location:
       children:
         - field_featured
@@ -146,7 +133,7 @@ third_party_settings:
         - field_res_box_number
         - field_res_location_note
       parent_name: ''
-      weight: 6
+      weight: 3
       format_type: details
       region: content
       format_settings:
@@ -162,7 +149,7 @@ third_party_settings:
         - field_res_featured_clinics
         - field_res_feat_clinics_view_all
       parent_name: ''
-      weight: 7
+      weight: 8
       format_type: details
       region: content
       format_settings:
@@ -174,17 +161,17 @@ third_party_settings:
       label: 'Featured Clinics'
     group_taxonomy_terms:
       children:
-        - field_res_affiliates
-        - field_res_medical_services
         - field_res_expertises
         - field_res_conditions_symptoms
         - field_res_procedures_treatments
         - field_res_features_amenities
-        - field_res_department
         - field_res_patients_treated
+        - field_res_department
+        - field_res_medical_services
+        - field_res_affiliates
         - field_search_best_bets
       parent_name: ''
-      weight: 8
+      weight: 6
       format_type: details
       region: content
       format_settings:
@@ -197,7 +184,6 @@ third_party_settings:
     group_urls:
       children:
         - field_res_external_url
-        - field_res_internal_url
         - uwm_unique_id
       parent_name: ''
       weight: 10
@@ -218,7 +204,7 @@ third_party_settings:
         - field_uwm_sections
         - field_uwm_sections_2
       parent_name: ''
-      weight: 9
+      weight: 7
       format_type: details
       region: content
       format_settings:
@@ -241,6 +227,7 @@ content:
       rows: 9
       summary_rows: 3
       placeholder: ''
+      show_summary: false
     third_party_settings: {  }
     type: text_textarea_with_summary
     region: content
@@ -252,18 +239,19 @@ content:
     type: boolean_checkbox
     region: content
   field_hide_see_clinics_cta:
-    weight: 28
+    weight: 25
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_res_affiliates:
-    weight: 11
+    weight: 20
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
@@ -281,11 +269,12 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
   field_res_clockwise_id:
-    weight: 32
+    weight: 28
     settings:
       size: 60
       placeholder: ''
@@ -300,18 +289,20 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
   field_res_department:
-    weight: 17
+    weight: 18
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
   field_res_epic_department_ids:
-    weight: 24
+    weight: 21
     settings:
       size: 60
       placeholder: ''
@@ -326,6 +317,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
   field_res_external_url:
     weight: 34
@@ -336,7 +328,7 @@ content:
     type: string_textfield
     region: content
   field_res_fax_number:
-    weight: 29
+    weight: 19
     settings:
       placeholder: ''
     third_party_settings: {  }
@@ -364,6 +356,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
@@ -375,6 +368,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
   field_res_floor:
     weight: 18
@@ -382,25 +376,26 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
   field_res_hide_appt_ctas:
-    weight: 27
+    weight: 24
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_res_hide_open_scheduling:
-    weight: 26
+    weight: 23
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_res_hide_returning_cta:
-    weight: 25
+    weight: 22
     settings:
       display_label: true
     third_party_settings: {  }
@@ -433,7 +428,7 @@ content:
     type: image_image
     region: content
   field_res_internal_url:
-    weight: 35
+    weight: 2
     settings:
       size: 60
       placeholder: ''
@@ -441,7 +436,7 @@ content:
     type: string_textfield
     region: content
   field_res_is_building:
-    weight: 30
+    weight: 27
     settings:
       display_label: true
     third_party_settings: {  }
@@ -449,13 +444,13 @@ content:
     region: content
   field_res_is_hospital:
     type: boolean_checkbox
-    weight: 29
+    weight: 26
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_res_iscallcenterserviced:
-    weight: 23
+    weight: 20
     settings:
       display_label: true
     third_party_settings: {  }
@@ -470,11 +465,12 @@ content:
     type: text_textarea
     region: content
   field_res_medical_services:
-    weight: 12
+    weight: 19
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
@@ -485,16 +481,17 @@ content:
     type: metatag_firehose
     region: content
   field_res_patients_treated:
-    weight: 18
+    weight: 17
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
   field_res_phone_number:
-    weight: 28
+    weight: 18
     settings:
       placeholder: ''
     third_party_settings: {  }
@@ -508,6 +505,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
   field_res_providers:
     weight: 5
@@ -515,6 +513,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
@@ -527,11 +526,12 @@ content:
     type: string_textfield
     region: content
   field_search_best_bets:
-    weight: 19
+    weight: 21
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
@@ -541,6 +541,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
@@ -569,6 +570,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
@@ -616,6 +618,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
@@ -629,12 +632,12 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 1
+    weight: 0
     third_party_settings: {  }
     region: content
   title:
     type: string_textfield
-    weight: 0
+    weight: 1
     region: content
     settings:
       size: 60

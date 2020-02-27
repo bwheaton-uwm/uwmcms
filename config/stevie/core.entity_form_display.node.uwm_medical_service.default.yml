@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.uwm_medical_service.field_uwm_sections
     - field.field.node.uwm_medical_service.field_uwm_subject_matter_experts
     - node.type.uwm_medical_service
+    - workflows.workflow.editorial
   module:
     - content_moderation
     - entity_browser
@@ -136,6 +137,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
@@ -145,6 +147,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
@@ -184,6 +187,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
@@ -220,6 +224,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content

@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Event Category'
 vid: event_tags
 description: 'Set the category for an event.'
-hierarchy: 1
 weight: 0

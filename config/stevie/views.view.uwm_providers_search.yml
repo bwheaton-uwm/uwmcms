@@ -3,11 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_res_biography
     - search_api.index.uwm_providers_search_api_index
   module:
     - search_api
-    - text
     - user
 id: uwm_providers_search
 label: 'UWM Providers Search'
@@ -16,7 +14,6 @@ description: ''
 tag: ''
 base_table: search_api_index_uwm_providers_search_api_index
 base_field: search_api_id
-core: 8.x
 display:
   default:
     display_plugin: default
@@ -405,6 +402,8 @@ display:
               administrator: '0'
               content_manager: '0'
             placeholder: 'Enter a name, specialty or keyword...'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''

@@ -5,7 +5,7 @@ drush:
 command-hooks:
   frontend-reqs:
     dir: '${docroot}/themes/custom/chew'
-    command: 'npm install'
+    command: 'npm install; npm install gulp'
   frontend-assets:
     dir: '${docroot}/themes/custom/chew'
     command: 'gulp'

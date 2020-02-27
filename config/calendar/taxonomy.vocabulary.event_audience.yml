@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Event Audience'
 vid: event_audience
 description: 'Set the audience for an event.'
-hierarchy: 0
 weight: 0

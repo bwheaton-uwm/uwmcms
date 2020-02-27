@@ -19,5 +19,6 @@ settings:
   label: Search
   provider: search
   label_display: '0'
+  page_id: ''
   views_label: ''
 visibility: {  }

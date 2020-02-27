@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.gallery.field_sections
     - image.style.thumbnail_scaled_200px_wide_
     - node.type.gallery
+    - workflows.workflow.editorial
   module:
     - allowed_formats
     - content_moderation
@@ -246,6 +247,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     region: content
     third_party_settings: {  }
 hidden:

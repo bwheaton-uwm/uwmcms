@@ -14,7 +14,6 @@ description: ''
 tag: ''
 base_table: search_api_index_content
 base_field: search_api_id
-core: 8.x
 display:
   default:
     display_plugin: default
@@ -209,6 +208,8 @@ display:
               administrator: '0'
               site_administrator: '0'
               editor: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
