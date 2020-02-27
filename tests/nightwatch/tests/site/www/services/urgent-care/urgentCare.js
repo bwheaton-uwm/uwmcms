@@ -17,26 +17,28 @@ module.exports = {
         const searchText = 'location';
 
         header
-            .loadPageAndAcceptCookies(testUrl, testUrlValidation);
-            //.verifyT1HeaderLinks(testUrl, testUrlValidation)
-            //.verifyHeaderSearch(searchText, testUrl, testUrlValidation)
-            //.verifyT2HeaderLinks(testUrl, testUrlValidation);
+            .loadPageAndAcceptCookies(testUrl, testUrlValidation)
+            .verifyT1HeaderLinks(testUrl, testUrlValidation)
+            .verifyHeaderSearch(searchText, testUrl, testUrlValidation)
+            .verifyT2HeaderLinks(testUrl, testUrlValidation);
 
         const body = browser.page.urgentCare();
         body
-            //.verifyBreadcrumbLinks(testUrlValidation)
-            //.verifyLocationSiteLinks(testUrlValidation);
-            .verifyLocationAddressLinks(testUrlValidation);
-            //.verifyHoursSeeFullLinks(testUrlValidation);
-            //.verifyTelephoneLinks(testUrlValidation);
-            //.verifyBookOnlineLinks(testUrlValidation);
-            //.verifyGetInLineLinks(testUrlValidation);
-            //.verifySeeDetailsLinks(testUrlValidation);
+            .verifyBreadcrumbLinks(testUrlValidation)
+            .verifyLocationSiteLinks(testUrlValidation)
+            .verifyLocationAddressLinks(testUrlValidation)
+            .verifySeeAllSpecialties(testUrlValidation)
+            .verifySeeFullHoursLinks(testUrlValidation)
+            .verifyTelephoneLinks(testUrlValidation)
+            .verifyBookOnlineLinks(testUrlValidation)
+            .verifyGetInLineLinks(testUrlValidation)
+            .verifySeeDetailsLinks(testUrlValidation)
+            .verifyGetCareNowLinks(testUrlValidation);
 
-        //footer
-        //    .verifySocialLinks(testUrl, testUrlValidation)
-        //    .verifyT1FooterLinks(testUrl, testUrlValidation)
-        //    .verifyT2FooterLinks(testUrl, testUrlValidation);
+        footer
+            .verifySocialLinks(testUrl, testUrlValidation)
+            .verifyT1FooterLinks(testUrl, testUrlValidation)
+            .verifyT2FooterLinks(testUrl, testUrlValidation);
         browser.end();
     },
 };
