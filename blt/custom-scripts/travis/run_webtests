@@ -6,12 +6,21 @@
 set -v
 set +e
 
+echo "TRAVIS_BRANCH: ${TRAVIS_BRANCH}"
+pwd
+
 cd tests/nightwatch
 
+npm install nightwatch
+npm install geckodriver --save-dev
+npm install chromedriver --save-dev
+
+
 npm install
-npm run tests -- --tag rar 
+npm run tests -- --tag rar --verbose
 
 
 cd -
+pwd
 set +v
 set -e
