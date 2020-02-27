@@ -23,11 +23,11 @@ module.exports = {
             .verifyT2HeaderLinks(testUrl, testUrlValidation);
 
         body
-            .verifyBreadcrumbLinks(testUrl, testUrlValidation)
-            .verifyGridcardLinks(testUrl, testUrlValidation)
-            .verifySectionCollapse(testUrl, testUrlValidation)
-            .verifyRescheduleLinks(testUrl, testUrlValidation)
-            .verifyInterpreterLinks(testUrl, testUrlValidation);
+            .verifyBreadcrumbLinks(testUrlValidation)
+            .verifyGridcardLinks(testUrlValidation)
+            .verifySectionCollapse(testUrlValidation)
+            .verifyRescheduleLinks(testUrlValidation)
+            .verifyInterpreterLinks(testUrlValidation);
 
         footer
             .verifySocialLinks(testUrl, testUrlValidation)

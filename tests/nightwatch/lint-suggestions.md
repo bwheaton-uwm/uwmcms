@@ -1,4 +1,5 @@
 Lines should be broken at or before 110 characters.
+variablesFunctionsAndTheLikeInSnakeCase();
 Spaces between:
     functions and argument lists
     argument lists and function block start

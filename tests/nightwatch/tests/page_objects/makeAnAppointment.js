@@ -1,38 +1,38 @@
 // page_objects.makeAnAppointment.js
 module.exports = {
-	url: 'https://www.uwmedicine.org/',
+    url: 'https://www.uwmedicine.org/patient-resources/make-an-appointment',
 	commands:[
 		{
-			verifyBreadcrumbLinks: function (pageUrl, testUrlValidation) {
+			verifyBreadcrumbLinks: function (testUrlValidation) {
 				this
 					.assert.visible('@homeLink', '"Home" breadcrumb link appears.')
 					.click('@homeLink')
 					.waitForElementVisible('@homePage', '"Home" breadcrumb link loads correct page.')
-					.navigate(pageUrl)
-					.waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
+					.navigate(this.url)
+					.waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
                 this
                     .assert.visible('@patientResourcesLink', '"Patient Resources" breadcrumb link appears.')
                     .click('@patientResourcesLink')
                     .waitForElementVisible('@patientResourcesPage',
                         '"Patient Resources" breadcrumb link loads correct page.')
-                    .navigate(pageUrl)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
+                    .navigate(this.url)
+                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
 
 				return this;
             },
-            verifyGridcardLinks: function (pageUrl, testUrlValidation) {
+            verifyGridcardLinks: function (testUrlValidation) {
                 this
                     .assert.visible('@bookLink', 'Book Online link appears.')
                     .click('@bookLink')
                     .waitForElementVisible('@bookPage', 'Book Online link loads correct page.')
-                    .navigate(pageUrl)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
+                    .navigate(this.url)
+                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
                 this
                     .assert.visible('@bookInEcareLink', 'Book in eCare link appears.')
                     .click('@bookInEcareLink')
                     .waitForElementVisible('@bookInEcarePage', 'Book in eCare link loads correct page.')
-                    .navigate(pageUrl)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
+                    .navigate(this.url)
+                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
                 this
                     // Telephone links attempt to open default app for telephony, we just verify the link
                     // exists, not click-through.
@@ -41,62 +41,62 @@ module.exports = {
                     .assert.visible('@signInLink', 'Sign in to eCare link appears.')
                     .click('@signInLink')
                     .waitForElementVisible('@signInPage', 'Sign in to eCare link loads correct page.')
-                    .navigate(pageUrl)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
+                    .navigate(this.url)
+                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
                 this
                     .assert.visible('@cancelLink', 'Cancel Appointment link appears.')
                     .click('@cancelLink')
                     .waitForElementVisible('@cancelPage', 'Cancel Appointment link loads correct page.')
-                    .navigate(pageUrl)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
+                    .navigate(this.url)
+                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
                 this
                     .assert.visible('@cancelByFormLink', 'Cancel by Form link appears.')
                     .click('@cancelByFormLink')
                     .waitForElementVisible('@cancelByFormPage', 'Cancel by Form link loads correct page.')
-                    .navigate(pageUrl)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
+                    .navigate(this.url)
+                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
                 this
                     .assert.visible('@urgentLink', 'Urgent Care Locations link appears.')
                     .click('@urgentLink')
                     .waitForElementVisible('@urgentPage', 'Urgent Care Locations link loads correct page.')
-                    .navigate(pageUrl)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
+                    .navigate(this.url)
+                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
                 this
                     .assert.visible('@uwMedLink', 'UW Medicine link appears.')
                     .click('@uwMedLink')
                     .waitForElementVisible('@uwMedPage', 'UW Medicine link loads correct page.')
-                    .navigate(pageUrl)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
+                    .navigate(this.url)
+                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
                 this
                     .assert.visible('@emergencyLink', 'Emergency Rooms link appears.')
                     .click('@emergencyLink')
                     .waitForElementVisible('@emergencyPage', 'Emergency Rooms link loads correct page.')
-                    .navigate(pageUrl)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
+                    .navigate(this.url)
+                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
                 this
                     .assert.visible('@radiologyLink', 'Radiology appointments link appears.')
                     .click('@radiologyLink')
                     .waitForElementVisible('@radiologyPage',
                         'Radiology appointments link loads correct page.')
-                    .navigate(pageUrl)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
+                    .navigate(this.url)
+                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
                 this
                     .assert.visible('@valleyLink', 'Valley Med Center appointments link appears.')
                     .click('@valleyLink')
                     .waitForElementVisible('@valleyPage', 'Valley Med Center link loads correct page.')
-                    .navigate(pageUrl)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
+                    .navigate(this.url)
+                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
                 this
                     .assert.visible('@sccaLink', 'Seattle Cancer Care Alliance link appears.')
                     .click('@sccaLink')
                     .waitForElementVisible('@sccaPage',
                         'Seattle Cancer Care Alliance link loads correct page.')
-                    .navigate(pageUrl)
-                    .waitForElementVisible(testUrlValidation, 'Returned to ' + pageUrl + '.');
+                    .navigate(this.url)
+                    .waitForElementVisible(testUrlValidation, 'Returned to ' + this.url + '.');
 
                 return this;
             },
-            verifySectionCollapse: function (pageUrl, testUrlValidation) {
+            verifySectionCollapse: function (testUrlValidation) {
                 this
                     .assert.visible('@viewMoreLink', 'View More link appears.')
                     .moveToElement('@viewMoreLink', 0, 0)
@@ -113,7 +113,7 @@ module.exports = {
 
                 return this;
             },
-            verifyRescheduleLinks: function (pageUrl, testUrlValidation) {
+            verifyRescheduleLinks: function (testUrlValidation) {
                 // Telephone links attempt to open default app for telephony, we just verify the link
                 // exists, not click-through.
                 this
@@ -121,7 +121,7 @@ module.exports = {
 
                 return this;
             },
-            verifyInterpreterLinks: function (pageUrl, testUrlValidation) {
+            verifyInterpreterLinks: function (testUrlValidation) {
                 // Telephone links attempt to open default app for telephony, we just verify the link
                 // exists, not click-through.
                 this
