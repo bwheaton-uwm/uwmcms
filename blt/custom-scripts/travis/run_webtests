@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Ordinarily we'd use set -e here but that breaks travis_wait, so we use return
+# pattern below.
+
+set -v
+set +e
+
+cd tests/nightwatch
+
+npm install
+npm run test -- --tag rar;
+
+
+cd -
+set +v
+set -e

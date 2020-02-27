@@ -12,8 +12,9 @@ env:
     - BLT_DIR=$TRAVIS_BUILD_DIR/vendor/acquia/blt
     - LOCAL_BLT_DIR=$TRAVIS_BUILD_DIR/blt/
   jobs:
-    - RUN_TEST_ENVIRONMENT=true
-    - RUN_TEST_ENVIRONMENT=false
+    - RUN_TEST_ENVIRONMENT=false RUN_WEBTESTS_ENVIRONMENT=false
+    - RUN_TEST_ENVIRONMENT=true RUN_WEBTESTS_ENVIRONMENT=false
+    - RUN_TEST_ENVIRONMENT=false RUN_WEBTESTS_ENVIRONMENT=true
 
 
 cache:
@@ -59,6 +60,7 @@ install:
 script:
   - if [ "${RUN_TEST_ENVIRONMENT}" == true ]; then source ${LOCAL_BLT_DIR}/custom-scripts/travis/run_tests; fi
   - if [ "${RUN_TEST_ENVIRONMENT}" == true ]; then source ${LOCAL_BLT_DIR}/custom-scripts/travis/simulate_deploy; fi
+  - if [ "${RUN_WEBTESTS_ENVIRONMENT}" == true ]; then source ${LOCAL_BLT_DIR}/custom-scripts/travis/run_webtests; fi
   # Uncomment these lines to test database updates using live content.
   # - blt drupal:sync:default:site
 
