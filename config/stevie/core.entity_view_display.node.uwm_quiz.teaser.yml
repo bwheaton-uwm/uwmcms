@@ -5,9 +5,11 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.uwm_quiz.body
+    - field.field.node.uwm_quiz.field_uwm_content_owner
     - field.field.node.uwm_quiz.field_uwm_formatted_text
     - field.field.node.uwm_quiz.field_uwm_image
     - field.field.node.uwm_quiz.field_uwm_sections
+    - field.field.node.uwm_quiz.field_uwm_subject_matter_experts
     - node.type.uwm_quiz
   module:
     - text
@@ -27,11 +29,14 @@ content:
     region: content
   links:
     weight: 100
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   content_moderation_control: true
+  field_uwm_content_owner: true
   field_uwm_formatted_text: true
   field_uwm_image: true
   field_uwm_sections: true
+  field_uwm_subject_matter_experts: true
+  search_api_excerpt: true

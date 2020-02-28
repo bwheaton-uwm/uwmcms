@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Provider Type'
 vid: provider_type
 description: ''
-hierarchy: 0
 weight: 0

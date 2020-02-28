@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -vx
+set +e
+
+{
+
+ bash -c '
+    blt artifact:deploy --verbose --no-interaction --dry-run --ignore-dirty --commit-msg "Automated commit by Travis CI for Build ${TRAVIS_BUILD_ID}" || true
+'
+
+} || true
+
+
+
+set +vx
+set -e

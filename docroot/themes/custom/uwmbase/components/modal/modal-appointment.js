@@ -23,21 +23,26 @@
        */
       function detectIOS12down() {
 
-        // Note: for iPad iOS 13+ this is not 'iPad', but we're not looking for
-        // that anyway.
-        if (/iPhone|iPad/.test(navigator.platform)) {
+        if (typeof navigator !== 'undefined' && typeof navigator.platform === 'string' && typeof navigator.appVersion === 'string') {
 
-          // Match e.g. '...OS 12...' or '...OS 13...'.
-          var versionMatch = navigator.appVersion.match(/OS (\d+)/);
+          // Note: for iPad on iOS 13+ this value is not 'iPad', but we're not
+          // looking for that case anyway.
+          if (/iPhone|iPad/.test(navigator.platform)) {
 
-          if (versionMatch && versionMatch[1]) {
-            var versionMajor = parseInt(versionMatch[1], 10);
+            // Extract the major iOS version. Example `navigator.appVersion`:
+            // `5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1`.
+            var versionMatch = navigator.appVersion.match(/OS (\d+)/);
 
-            if (!isNaN(versionMajor) && versionMajor < 13) {
-              alert('iOS 12-');
-              return true;
+            if (versionMatch && versionMatch[1]) {
+              var versionMajor = parseInt(versionMatch[1], 10);
+
+              if (!isNaN(versionMajor) && versionMajor < 13) {
+                return true;
+              }
             }
+
           }
+
         }
 
         return false;
@@ -103,8 +108,10 @@
       // Determine whether to link out to the open scheduling widget, instead of
       // embedding it in the iframe.
       // On iPhone/iPad running iOS versions 12 and below, iframes are maximized
-      // and do not scroll, so do not use it because without scrolling, the user
-      // cannot access additional appointment time slots.
+      // and do not scroll, so do not use the open scheduling widget embedded in
+      // an iframe - because without scrolling, the user cannot trigger
+      // additional appointment time slots to load or access whatever might be
+      // cut off at the bottom of each widget step.
       // @see https://bugs.webkit.org/show_bug.cgi?id=149264
       var openSchedulingLinkOut = detectIOS12down();
 
@@ -289,7 +296,7 @@
           // If setting key/val that's already been set within current flow
           // (e.g. user stepped back), reset first. Otherwise our string
           // replacement will insert the new value alongside the existing one.
-          resetUrlAttr($elem, attrName);
+          resetUrlAttr($elem);
           url = $elem.attr(attrName);
         }
 
@@ -310,7 +317,7 @@
        * "base" url string, in which relevant keys in the query string have no
        * value.
        */
-      function resetUrlAttr($elem, attrName) {
+      function resetUrlAttr($elem) {
 
         // The element should exist - if not, there's a bug elsewhere; give a
         // warning and exit.
@@ -320,6 +327,12 @@
           }
 
           return;
+        }
+
+        var attrName = 'href';
+
+        if ($elem.is('iframe')) {
+          attrName = 'src';
         }
 
         $elem.attr(attrName, $elem.data('base-' + attrName));
@@ -838,9 +851,9 @@
           }
 
           // Remove provider's Epic ID and visit type from scheduling link URLs.
-          resetUrlAttr($iframeOpenSched, 'src');
-          resetUrlAttr($ecareAccountYesLinkDirect, 'href');
-          resetUrlAttr($visitedBeforeYesLinkDirect, 'href');
+          resetUrlAttr(openSchedulingLinkOut ? $linkOpenSched : $iframeOpenSched);
+          resetUrlAttr($ecareAccountYesLinkDirect);
+          resetUrlAttr($visitedBeforeYesLinkDirect);
 
           // For all elements in the modal with analytics attribute, reset the
           // scheduling status string part to its placeholder.

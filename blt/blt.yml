@@ -25,10 +25,10 @@ drush:
 modules:
   local:
     enable: [acquia_connector, dblog, devel, views_ui]
-    uninstall: [ shield, simplesamlphp_auth]
+    uninstall: [shield, simplesamlphp_auth]
   ci:
     enable: {  }
-    uninstall: []
+    uninstall: {  }
   dev:
     enable: [acquia_connector]
     uninstall: {  }
@@ -38,18 +38,24 @@ modules:
   prod:
     enable: [acquia_connector]
     uninstall: [devel, views_ui]
+
 disable-targets:
-  validate:
-    twig: true
+#  validate:
+#    twig: true
   tests:
-    behat:
-      all: true
-      run: true
-    security:
-      check:
-        updates: true
-    frontend:
-      run: true
+    behat: { all: true, run: true }
+#    drupal: { run: true }
+#    composer: { validate: true }
+#    deprecated: { modules: true, themes: true }
+#    frontend: { run: true }
+#    php: { lint: true }
+#    phpcs: { sniff: { all: true } }
+#    phpunit: { all: true, run: true }
+#    phpstan: { all: true, run: true }
+#    security: { check: { updates: true } }
+#    twig: { lint: { all: true } }
+#    yaml: { lint: { all: true } }
+
 validate:
   twig:
     filesets: {  }
@@ -75,14 +81,14 @@ target-hooks:
     dir: '${docroot}'
     command: 'echo ''No post-deploy build configured.'''
 multisites:
-- default
-- chew
-- huddle
-- calendar
-- stevie
-behat:
-  paths: {  }
-  web-driver: selenium
+  - chew
+  - huddle
+  - stevie
+#  - default
+#  - calendar
+#behat:
+#  paths: {  }
+#  web-driver: selenium
 cm.allow-overrides: false
 cloud:
   appId: 9394ee80-5a9e-429f-a976-264b955abd86

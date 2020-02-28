@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Medical Title'
 vid: medical_title
 description: ''
-hierarchy: 0
 weight: 0

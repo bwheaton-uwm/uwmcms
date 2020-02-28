@@ -113,12 +113,6 @@ content:
         hide_guidelines: '1'
     type: text_textfield
     region: content
-  moderation_state:
-    type: moderation_state_default
-    weight: 0
-    settings: {  }
-    region: content
-    third_party_settings: {  }
 hidden:
   created: true
   status: true

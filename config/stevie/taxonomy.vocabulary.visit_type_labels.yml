@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Visit Type Labels'
 vid: visit_type_labels
 description: 'Display name and description for online scheduling (eCare) visit types'
-hierarchy: 0
 weight: 0

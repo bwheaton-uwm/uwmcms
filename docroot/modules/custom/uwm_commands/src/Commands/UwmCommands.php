@@ -76,26 +76,5 @@ class UwmCommands extends DrushCommands {
     $this->migrateLastImportedStore->delete($migration);
   }
 
-  /**
-   * One-time import of clinic images.
-   *
-   * @param string $mappingFile
-   *   Json file describing source and destination ids.
-   *
-   * @command uwm:import-uwmed-clinic-images-to-stevie
-   *
-   * @usage uwm:import-uwmed-clinic-images-to-stevie
-   *   Imports images from @stevie to @uwmed bason on json file mapping.
-   */
-  public function importUwmedClinicImagesToStevie($mappingFile = NULL) {
-
-    // @TODO: Move this to a hook_update_N().
-    module_load_include('php', 'uwm_commands',
-      'src/Classes/UwmTempImportClinicImage');
-
-    $importer = new UwmTempImportClinicImage();
-    $importer::saveClinicImagesLocally($mappingFile);
-
-  }
 
 }

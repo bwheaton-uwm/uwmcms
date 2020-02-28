@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'UWM Background Colors'
 vid: uwm_background_colors
 description: ''
-hierarchy: 0
 weight: 0

@@ -6,7 +6,6 @@ dependencies:
     - block_content.type.basic
     - field.field.block_content.basic.body
   module:
-    - content_moderation
     - text
 _core:
   default_config_hash: S0f54eS7by2OoFl_NrvBK9UGTPx51cktxKhvwMy0Jls
@@ -21,6 +20,7 @@ content:
       rows: 9
       summary_rows: 3
       placeholder: ''
+      show_summary: false
     third_party_settings: {  }
     type: text_textarea_with_summary
     region: content
@@ -32,10 +32,4 @@ content:
       placeholder: ''
     third_party_settings: {  }
     region: content
-  moderation_state:
-    type: moderation_state_default
-    weight: 100
-    settings: {  }
-    region: content
-    third_party_settings: {  }
 hidden: {  }

@@ -1,0 +1,288 @@
+uuid: e2574d88-df6a-448f-905a-0a968c054d15
+langcode: en
+status: open
+dependencies:
+  module:
+    - honeypot
+third_party_settings:
+  honeypot:
+    honeypot: true
+open: null
+close: null
+weight: 0
+uid: 1
+template: false
+archive: false
+id: email_a_patient
+title: 'Email a Patient'
+description: ''
+category: ''
+elements: "header_markup:\n  '#type': processed_text\n  '#wrapper_attributes':\n    class:\n      - 'mb-4 mt-4'\n  '#text': \"<p>Emailing a patient is a convenient way to send a personal message of support. You can ​email a patient at either Harborview Medical Center or UW Medical Center​ by filling out and submitting the form below. The content of your message will be hand-printed and delivered to the patient in person. Patients are often surprised and appreciative of these personalized messages.​ ​​​​​</p>\\r\\n\"\n  '#format': rich_text\nmessage_destination:\n  '#type': select\n  '#title': 'Message destination'\n  '#options':\n    harborview: 'Harborview Medical Center'\n    uwmc: 'UW Medical Center'\n  '#required': true\nsender_name:\n  '#type': textfield\n  '#title': 'Sender''s name'\n  '#required': true\nsender_email:\n  '#type': email\n  '#title': 'Sender''s email'\n  '#required': true\nsender_phone_number:\n  '#type': tel\n  '#title': 'Sender''s phone number'\npatient_name:\n  '#type': textfield\n  '#title': 'Patient''s name'\n  '#required': true\npatient_room_number:\n  '#type': textfield\n  '#title': 'Patient''s room number'\n  '#placeholder': 'Hospital bed or room number, if known.'\nmessage:\n  '#type': textarea\n  '#title': Message\n  '#rows': '6'\nsend_me_a_copy:\n  '#type': checkbox\n  '#title': 'Send me a copy'\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit__label': 'Send Email'\nfooter_markup:\n  '#type': processed_text\n  '#wrapper_attributes':\n    class:\n      - 'mb-4 mt-4'\n  '#text': \"<p><span style=\\\"color: #d24310;\\\">​Do not send urgent or confidential information.</span> All messages are read and printed by volunteers. Also, out of respect for patient confidentiality, we cannot confirm delivery. Messages deemed inappropriate​, such as business solicitations, will be discarded.​​</p>\\r\\n\"\n  '#format': unrestricted"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: /patient-resources/email-patient
+  page_confirm_path: ''
+  form_title: source_entity_webform
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_remote_addr: true
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: true
+  form_details_toggle: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  submission_label: ''
+  submission_log: false
+  submission_views: {  }
+  submission_views_replace:
+    webform_routes: {  }
+    node_routes: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  submission_exception_message: 'Submission exception message?'
+  submission_locked_message: 'Submission locked message?'
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  previous_submission_message: 'Previous submission message?'
+  previous_submissions_message: 'Previous submissions message?'
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: inline
+  confirmation_title: 'Your Form Was Submitted'
+  confirmation_message: 'Your Email a Patient request has been submitted. The content of your message will be printed and delivered to the patient as promptly as possible.'
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: Back
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email_sender:
+    id: email
+    label: 'Email Sender a Form Copy'
+    handler_id: email_sender
+    status: true
+    conditions:
+      enabled:
+        ':input[name="send_me_a_copy"]':
+          checked: true
+    weight: -50
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:sender_email:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: no_reply@uw.edu
+      from_options: {  }
+      from_name: 'UW Medicine'
+      subject: 'Message to [webform_submission:values:patient_name]'
+      body: "<p><strong>Submitted on</strong><br />\r\n[webform_submission:created]</p>\r\n[webform_submission:values]"
+      excluded_elements:
+        send_me_a_copy: send_me_a_copy
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+  email_uwmc:
+    id: email
+    label: 'Email UWMC'
+    handler_id: email_uwmc
+    status: true
+    conditions:
+      enabled:
+        ':input[name="message_destination"]':
+          value: uwmc
+    weight: -49
+    settings:
+      states:
+        - completed
+      to_mail: healthed@uw.edu
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: no_reply@uw.edu
+      from_options: {  }
+      from_name: 'UW Medicine'
+      subject: 'Message for the patient: [webform_submission:values:patient_name]'
+      body: "<p><strong>Submitted on</strong><br />\r\n[webform_submission:created]</p>\r\n[webform_submission:values]"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+  email_harborview:
+    id: email
+    label: 'Email Harborview'
+    handler_id: email_harborview
+    status: true
+    conditions:
+      enabled:
+        ':input[name="message_destination"]':
+          value: harborview
+    weight: -48
+    settings:
+      states:
+        - completed
+      to_mail: patient@u.washington.edu
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: no_reply@uw.edu
+      from_options: {  }
+      from_name: 'UW Medicine'
+      subject: 'Message for the patient: [webform_submission:values:patient_name]'
+      body: "<p><strong>Submitted on</strong><br />\r\n[webform_submission:created]</p>\r\n[webform_submission:values]"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''

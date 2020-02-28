@@ -32,4 +32,5 @@
   <exclude-pattern>gulpfile.js</exclude-pattern>
   <exclude-pattern>*.svg</exclude-pattern>
 
+
 </ruleset>

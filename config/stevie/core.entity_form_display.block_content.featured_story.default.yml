@@ -14,7 +14,6 @@ dependencies:
     - field.field.block_content.featured_story.field_uwm_short_formatted_text
   module:
     - allowed_formats
-    - content_moderation
     - entity_browser
     - field_group
     - paragraphs
@@ -135,11 +134,5 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
-  moderation_state:
-    type: moderation_state_default
-    weight: 7
-    settings: {  }
-    region: content
     third_party_settings: {  }
 hidden: {  }

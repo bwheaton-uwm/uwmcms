@@ -5,5 +5,4 @@ dependencies: {  }
 name: Campus
 vid: campus
 description: 'Set a campus for an Event Location.'
-hierarchy: 0
 weight: 0
