@@ -15,7 +15,6 @@ env:
     - RUN_TEST_ENVIRONMENT=true
     - RUN_TEST_ENVIRONMENT=false
 
-
 cache:
   directories:
     - "$HOME/.composer/cache"
@@ -64,38 +63,22 @@ script:
 
 # The version below MUST match the php version indicated at the top of this file, otherwise the artifact won't build.
 deploy:
-   - provider: script
-     script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_branch"
-     skip_cleanup: true
-     on:
-       branch: ci-environments
-       condition: $RUN_TEST_ENVIRONMENT = false
-       php: 7.2
-   - provider: script
-     script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_branch"
-     skip_cleanup: true
-     on:
-       branch: stage
-       condition: $RUN_TEST_ENVIRONMENT = false
-       php: 7.2
-   - provider: script
-     script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_branch"
-     skip_cleanup: true
-     on:
-       branch: develop
-       condition: $RUN_TEST_ENVIRONMENT = false
-       php: 7.2
-   - provider: script
-     script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_branch"
-     skip_cleanup: true
-     on:
-       branch: master
-       condition: $RUN_TEST_ENVIRONMENT = false
-       php: 7.2
-   - provider: script
-     script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_tag"
-     skip_cleanup: true
-     on:
-       tags: true
-       condition: $RUN_TEST_ENVIRONMENT = false
-       php: 7.2
+  - provider: script
+    script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_branch"
+    skip_cleanup: true
+    on:
+      branches:
+        only:
+          - ci-environments
+          - develop
+          - stage
+          - master
+      condition: $RUN_TEST_ENVIRONMENT = false
+      php: 7.2
+  - provider: script
+    script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_tag"
+    skip_cleanup: true
+    on:
+      tags: true
+      condition: $RUN_TEST_ENVIRONMENT = false
+      php: 7.2

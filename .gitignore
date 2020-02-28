@@ -178,3 +178,5 @@ drush/sites/.checksums
 .rules
 custom_logs
 private_files
+.vscode
+
