@@ -17,7 +17,7 @@ npm install chromedriver --save-dev
 
 
 npm install
-npm run tests -- --tag rar --verbose
+npm run tests -- --tag rar 
 
 
 cd -
