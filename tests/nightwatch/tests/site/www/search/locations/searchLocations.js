@@ -6,7 +6,8 @@ module.exports = {
         'header',
         'footer',
         'locations',
-        'search'
+        'search',
+        'stevie'
     ],
 
     'Home Page Verify T1 Header - elements and search bar': function (browser) {
@@ -18,23 +19,22 @@ module.exports = {
         const searchText = 'location';
 
         header
-            .loadPageAndAcceptCookies(testUrl, testUrlValidation);
-        //    .verifyT1HeaderLinks(testUrl, testUrlValidation)
-        //    .verifyHeaderSearch(searchText, testUrl, testUrlValidation)
-        //    .verifyT2HeaderLinks(testUrl, testUrlValidation);
-
+            .loadPageAndAcceptCookies(testUrl, testUrlValidation)
+            .verifyT1HeaderLinks(testUrl, testUrlValidation)
+            .verifyHeaderSearch(searchText, testUrl, testUrlValidation)
+            .verifyT2HeaderLinks(testUrl, testUrlValidation);
 
         body
-            //.verifyTelLinks()
-            //.verifyCardLinks(testUrlValidation)
-            .verifyLocationSearchByCityZip();
-            //.verifyLocationSearchByMedSpecialtiy();
-            //.verifyLocationSearchByName();
+            .verifyTelLinks()
+            .verifyCardLinks(testUrlValidation)
+            .verifyLocationSearchByCityZip()
+            .verifyLocationSearchByMedSpecialtiy()
+            .verifyLocationSearchByName();
 
-        //footer
-        //    .verifySocialLinks(testUrl, testUrlValidation)
-        //    .verifyT1FooterLinks(testUrl, testUrlValidation)
-        //    .verifyT2FooterLinks(testUrl, testUrlValidation);
+        footer
+            .verifySocialLinks(testUrl, testUrlValidation)
+            .verifyT1FooterLinks(testUrl, testUrlValidation)
+            .verifyT2FooterLinks(testUrl, testUrlValidation);
         browser.end();
     },
 };
