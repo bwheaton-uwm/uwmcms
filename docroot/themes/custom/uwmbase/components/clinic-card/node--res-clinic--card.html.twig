@@ -15,6 +15,7 @@
  *   Uses:
  *   - 'res_clinic' - for Featured Clinics displayed as cards on another clinic
  *      (campus) full page
+ * - is_hospital: boolean, value of `field_res_is_hospital`
  *
  * @see template_preprocess_node()
  * @see uwmbase_preprocess_node()
@@ -25,12 +26,17 @@
 
 {{ attach_library('uwmbase/clinic-card') }}
 
-{% set has_urgent_care = hours.urgent is not empty %}
+{% set has_phone = content.field_res_phone_number.0 is not empty %}
+
+{# TODO: update 'hide' fields logic per discussion with Emily #}
 {% set hide_appointment_ctas = node.field_res_hide_appt_ctas.value %}
-{% set hide_returning_patient_cta = node.field_res_hide_returning_cta.value %}
+
+{# TODO: update `open_scheduling` via preprocess Epic values #}
+{% set open_scheduling = content.field_res_epic_department_ids.0 is not empty %}
 {% set hide_open_scheduling_cta = node.field_res_hide_open_scheduling.value %}
-{% set has_open_scheduling = content.field_res_epic_department_ids.0 %}
-{% set isHospital = node.field_res_is_hospital.0.value is not empty and node.field_res_is_hospital.0.value == '1' %}
+{% set hide_returning_patient_cta = node.field_res_hide_returning_cta.value %}
+
+{% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
 
 {#
   Bootstrap grid:
@@ -50,16 +56,15 @@
   @see node--res-clinic--full.tabs.body.html.twig
   @see field--node--field-res-featured-clinics--res-clinic.html.twig
 #}
-{% set classes = ['clinic-card'] %}
-<article {{ attributes.addClass(classes).addClass(['col-sm-6', 'col-lg-4', 'col-xxl-3']).addClass(css_parents_classes) }}>
+<article {{ attributes.addClass(['clinic-card', 'col-sm-6', 'col-lg-4', 'col-xxl-3']).addClass(css_parents_classes) }}>
   <div class="clinic-card__inner">
 
+    {#
+      Distance away (if searched by location coordinates)
+      This is a custom property added to the node in views preprocessing.
+      @see _uwmed_uwmcms_search_preprocess_views_view_uwm_locations_geo_search()
+    #}
     {% if display_context != 'res_clinic' %}
-      {#
-        Distance away (if searched by location coordinates)
-        This is a custom property added to the node in views preprocessing.
-        @see _uwmed_uwmcms_search_preprocess_views_view_uwm_locations_geo_search()
-      #}
       {% if node.view_field__distance_away_miles is not empty %}
         <div class="clinic-card__distance-miles">
           {{ node.view_field__distance_away_miles }} mi
@@ -67,24 +72,24 @@
       {% endif %}
     {% endif %}
 
+    {#
+      Clinic Image
+      The placeholder image is rendered here if the field is empty.
+      Link is applied in field template.
+      @see field--node--field-res-image--res-clinic.html.twig
+    #}
     {% if display_context != 'res_clinic' %}
       <div class="clinic-card__image">
-        {#
-          Clinic Image
-          The placeholder image is rendered here if the field is empty.
-          Link is applied in field template.
-          @see field--node--field-res-image--res-clinic.html.twig
-        #}
+
         {% set image = content.field_res_image %}
+
         {% if content.field_res_image|render|trim is empty %}
           {% set image %}
             <img src="/{{ directory }}/src/assets/uwmed_location_card_placeholder.svg" alt="" class="img-fluid"/>
           {% endset %}
-
         {% endif %}
-        {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
-        {{ uwm_cta_link(image|render, url, [css_parents_classes], cta_special_attributes) }}
 
+        {{ uwm_cta_link(image|render, url, css_parents_classes, cta_special_attributes) }}
 
       </div>
     {% endif %}
@@ -92,16 +97,17 @@
     <div class="clinic-card__details">
 
       {#
+        Clinic name and address
+
         The <address> element should contain the name for which the address is
-        relevant - thus wrapping the name and Building fields.
+        relevant - thus wrapping the title and Building fields.
       #}
       <address class="clinic-card__address">
 
         <h2 class="clinic-card__name">
-          {#          <a href="{{ url }}" rel="bookmark">{{ label }}</a>#}
-          {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
-          {{ uwm_cta_link(label|render, url, [css_parents_classes], cta_special_attributes) }}
+          {{ uwm_cta_link(label|render, url, css_parents_classes, cta_special_attributes) }}
         </h2>
+
         {{ title_suffix }}
 
         {% if display_context != 'res_clinic' %}
@@ -124,8 +130,7 @@
                 @see components/clinic-page/node--res-clinic--full.tabs.html.twig
                 @see components/anchor-scroll/anchor-scroll.js
               #}
-              <a href="{{ url }}#directions-tab-tab---"
-                 class="clinic-card__street-address-link">{{ content.field_res_building.0 }}</a>
+              <a href="{{ url }}#directions-tab-tab---" class="clinic-card__street-address-link">{{ content.field_res_building.0 }}</a>
             {% else %}
               {{ content.field_res_building.0 }}
             {% endif %}
@@ -149,7 +154,6 @@
         @see clinic-hours-macros.twig
       #}
       {% if hours is not empty and (hours.operation.open_close.opens_next is not empty or hours.operation.always_open or hours.urgent.open_close.opens_next is not empty or hours.urgent.always_open or is_hospital) %}
-
         <div class="clinic-card__field clinic-card__location-hours icon">
 
           <span class="uwm-icon uwm-icon--clock" aria-hidden="true"></span>
@@ -160,21 +164,15 @@
 
         </div>
       {% endif %}
+
       {#
-        Appointments: Phone number link
-        Phone number formatting is in the field template.
-        @see field--node--field-res-phone-number--res-clinic.html.twig
+        Appointments
       #}
-      {#
-        Appointments: Book online link
-        Phone number formatting is in the field template.
-        @see field--node--field-res-epic-department-ids--res-clinic.html.twig
-      #}
-      {% if content.field_res_phone_number.0 is not empty or content.field_res_epic_department_ids.0 is not empty %}
+      {% if has_phone or open_scheduling %}
 
         <div class="clinic-card__field clinic-card__appointments icon">
 
-          {% if isHospital %}
+          {% if is_hospital %}
             <span class="uwm-icon uwm-icon--heart" aria-hidden="true"></span>
             <h3 class="clinic-card__subheader">{{ "Contact"|t }}</h3>
           {% else %}
@@ -183,12 +181,12 @@
           {% endif %}
 
           <div class="clinic-card__appointment_buttons">
-            {% if content.field_res_phone_number.0 is not empty %}
-              <div class="clinic-card__appointment_button clinic-card__phone-button">
-                {#            {{ content.field_res_phone_number }}#}
 
-                {#              // @TODO Verify CTA link. #}
-                {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
+            {#
+              Phone number button
+            #}
+            {% if has_phone %}
+              <div class="clinic-card__appointment_button clinic-card__phone-button">
                 {% set tel = node.field_res_phone_number.0.value|trim %}
                 {{ uwm_cta_link(
                   tel|uwm_format_phone('.'),
@@ -197,17 +195,26 @@
                   cta_special_attributes) }}
               </div>
             {% endif %}
-            {% if content.field_res_epic_department_ids.0 is not empty %}
+
+            {#
+              "Book Online" button
+              @see field--node--field-res-epic-department-ids--res-clinic.html.twig
+            #}
+            {% if open_scheduling %}
               <div class="clinic-card__appointment_button clinic-card__book-online-button">
                 {{ content.field_res_epic_department_ids }}
               </div>
             {% endif %}
-          </div>
-        </div>
+
+          </div> <!-- /.clinic-card__appointment_buttons -->
+
+        </div> <!-- /.clinic-card__appointments -->
+
       {% endif %}
 
       {#
-        "Urgent Care" clockwise snippet
+        Urgent Care
+        "Get in Line" button (Clockwise)
         @see field--node--field-res-clockwise-id--res-clinic.html.twig
       #}
       {% if content.field_res_clockwise_id.0 is not empty %}
@@ -215,16 +222,20 @@
           {{ content.field_res_clockwise_id }}
         </div>
       {% endif %}
-    </div>
 
+    </div> <!-- /.clinic-card__details -->
+
+    {#
+      "See Location Details" button
+    #}
     {% if display_context != 'res_clinic' %}
       <div class="clinic-card__cta uwm-accent-color__purple">
-        {#        <a class="btn btn-cta" href="{{ url }}" rel="bookmark">{{ 'See location details'|t }}</a>#}
-
-        {#              // @TODO Verify CTA link. #}
-        {% set cta_special_attributes = []|merge({'data-context-title': label|render}) %}
+        {#
+          TODO: would be good to remove `clinic-card` class here as it is used
+          on the outer wrapper of the entire card.
+          This is not used in GTM, but may be used by Healthgrades tracking??
+        #}
         {{ uwm_cta_link('See location details'|t, url, [css_parents_classes, 'btn', 'btn-cta', 'clinic-card'], cta_special_attributes) }}
-
       </div>
     {% endif %}
 
