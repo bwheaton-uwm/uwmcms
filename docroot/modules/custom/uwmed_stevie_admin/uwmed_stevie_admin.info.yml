@@ -1,0 +1,7 @@
+name: UW Medicine CMS Stevie Admin
+type: module
+description: Customizations for Stevie site administration.
+package: UWMed
+core: 8.x
+dependencies:
+  - drupal:node
