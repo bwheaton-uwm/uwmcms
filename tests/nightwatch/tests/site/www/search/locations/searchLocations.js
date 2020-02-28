@@ -18,19 +18,23 @@ module.exports = {
         const searchText = 'location';
 
         header
-            .loadPageAndAcceptCookies(testUrl, testUrlValidation)
-            .verifyT1HeaderLinks(testUrl, testUrlValidation)
-            .verifyHeaderSearch(searchText, testUrl, testUrlValidation)
-            .verifyT2HeaderLinks(testUrl, testUrlValidation);
+            .loadPageAndAcceptCookies(testUrl, testUrlValidation);
+        //    .verifyT1HeaderLinks(testUrl, testUrlValidation)
+        //    .verifyHeaderSearch(searchText, testUrl, testUrlValidation)
+        //    .verifyT2HeaderLinks(testUrl, testUrlValidation);
+
 
         body
-            .verifyTelLinks()
-            .verifyCardLinks(testUrlValidation);
+            //.verifyTelLinks()
+            //.verifyCardLinks(testUrlValidation)
+            .verifyLocationSearchByCityZip();
+            //.verifyLocationSearchByMedSpecialtiy();
+            //.verifyLocationSearchByName();
 
-        footer
-            .verifySocialLinks(testUrl, testUrlValidation)
-            .verifyT1FooterLinks(testUrl, testUrlValidation)
-            .verifyT2FooterLinks(testUrl, testUrlValidation);
+        //footer
+        //    .verifySocialLinks(testUrl, testUrlValidation)
+        //    .verifyT1FooterLinks(testUrl, testUrlValidation)
+        //    .verifyT2FooterLinks(testUrl, testUrlValidation);
         browser.end();
     },
 };
