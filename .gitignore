@@ -180,3 +180,6 @@ custom_logs
 private_files
 .vscode
 
+tests/nightwatch/tests_output
+tests/nightwatch/node_modules
+tests/nightwatch/*.log

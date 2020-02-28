@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * Hook implentations and custom functionality.
+ */
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function uwmed_stevie_admin_form_node_form_alter(&$form, $form_state, $form_id) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  $entity = $form_state->getFormObject()->getEntity();
+
+  // When a node is first being created, include a warning about preview
+  // functionality and hide the Preview button.
+  if ($entity->isNew() && $form['actions']['preview']['#access'] && !$form_state->isSubmitted()) {
+    $form['preview_instructions'] = [
+      '#markup' => t('New content cannot be previewed until it has been saved. To preview your work, save the content unpublished, then edit it again and click the Preview button.'),
+      '#weight' => 100,
+      '#prefix' => ('<div class="messages messages--warning">'),
+      '#suffix' => ('</div>'),
+    ];
+
+    $form['actions']['preview']['#access'] = false;
+  }
+}
