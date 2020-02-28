@@ -45,7 +45,14 @@ module.exports = {
 
       });
 
-    // browser.expect.element(pageHeading).to.be.present;.
+  },
+
+  'Verifying provider book online CTA\'s work correctly': function (browser) {
+
+    const providerCards = browser.page.providerCards();
+
+    providerCards.openModalBookOnline();
+
   }
 
 };

@@ -17,6 +17,7 @@ module.exports = {
         "tests/page_objects",
         "tests/page_objects/header",
         "tests/page_objects/footer",
+        "tests/page_objects/provider_cards",
     ],
     src_folders: ["tests/site"],
 
@@ -46,7 +47,7 @@ module.exports = {
                 'browserName': 'chrome',
                 'chromeOptions': {
                     "args": [
-                        // "headless",
+                        "headless",
                         "window-size=1120,800"
                     ]
                 },
