@@ -1,11 +1,16 @@
-//nightwatch.conf.js
+/**
+ * @file
+ * Default configurations for NightwatchJs.
+ */
+
 require('dotenv').config();
+
 module.exports = {
     custom_assertions_path: "tests/custom_assertions",
     custom_commands_path: [
         "tests/custom_commands",
-        //"tests/custom_commands/footer",
-        //"tests/custom_commands/header",
+        // "tests/custom_commands/footer",.
+        // "tests/custom_commands/header",.
     ],
     globals_path: "tests/globals.js",
     page_objects_path: [
@@ -40,10 +45,10 @@ module.exports = {
             'desiredCapabilities': {
                 'browserName': 'chrome',
                 'chromeOptions': {
-                  "args": [
-                    //"headless",
-                    "window-size=1120,800"
-                  ]
+                    "args": [
+                        "headless",
+                        "window-size=1120,800"
+                    ]
                 },
             }
         }
