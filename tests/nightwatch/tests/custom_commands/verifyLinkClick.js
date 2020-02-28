@@ -21,7 +21,8 @@ module.exports = {
             .click(linkSelector)
             .waitForElementVisible(pageValidator)
             .url(returnUrl)
-            .waitForElementVisible(returnValidator, msg + 'Returned to ' + returnUrl + '.');
+            .waitForElementVisible(returnValidator);
+            //.waitForElementVisible(returnValidator, msg + 'Returned to ' + returnUrl + '.');
         return this;
     }
 };
