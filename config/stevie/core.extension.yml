@@ -186,6 +186,7 @@ module:
   uwmcs_utils: 0
   uwmed_schema_clinic: 0
   uwmed_schema_physician: 0
+  uwmed_stevie_admin: 0
   uwmed_uwmcms_gtm: 0
   uwmed_uwmcms_search: 0
   uwmed_uwmcms_sitemap: 0
