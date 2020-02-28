@@ -18,6 +18,7 @@ npm install chromedriver --save-dev
 
 npm install
 npm run tests -- --tag rar 
+npm run tests -- --tag stevie 
 
 
 cd -
