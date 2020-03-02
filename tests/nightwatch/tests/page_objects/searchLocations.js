@@ -59,7 +59,7 @@ module.exports = {
                     .waitForElementVisible(zipTextboxElement)
                     .clearValue(zipTextboxElement)
                     .setValue(zipTextboxElement, zip)
-                    .click(submitButton)
+                    .click(submitButton);
                 this.pause(5000);
 
                 this
@@ -72,12 +72,58 @@ module.exports = {
                 return this;
             },
 
-            verifyLocationSearchByMedSpecialtiy: function () {
-                //
+            verifyLocationSearchByMedSpecialtiy: function (browser) {
+                // Click the Medical Specialties dropdown to expose dropdown entries.
+                // -- The dropdown contains >1 item.
+                // -- The dropdown contains an entry for "Cardiology"
+                const medSpecDD = '@formMedSpecTopDDLink';
+                const medSpecDDLoaded = 'ul.dropdown-menu';
+                const medSpecDDItems = 'ul.dropdown-menu li';
+
+                this
+                    .waitForElementVisible(medSpecDD, 'Medical Specialty dropdown displayed.')
+                    .click(medSpecDD);
+                this.pause(5000);
+
+                this
+                    .waitForElementVisible(medSpecDDLoaded, 'Medical Specilty drop down expanded.');
+
+                browser.elements('css selector', medSpecDDItems, function (result) {
+                    return this.assert.ok(result.value.length > 1, 'More than one specialty listed.');
+                });
+
+                this.waitForElementVisible('@formMedSpecListItem8CardiologyText',
+                    'The Medical Specialty dropdown contains an entry for "Cardiology"');
+
+                return this;
             },
 
             verifyLocationSearchByName: function () {
-                //
+                // Searching for 'UW Neighborhood Ravenna Clinic' within “Enter a location name..”
+                // -- returned result set > 0.
+                // -- must contain 'UW Neighborhood Ravenna Clinic - Primary Care and Urgent Care Services'.
+                const nameSearchTB = '@formEnterNameTextbox';
+                const name = 'UW Neighborhood Ravenna Clinic';
+                const submitButton = '@formSubmit'
+                const resultsPageLoaded = 'body.search-with-results';
+                const resultPageTitleElement = 'div#block-uwmbase-page-title h1.page-title';
+                const secondResultTitle = 'article.clinic-card:nth-child(2) .field--name-title';
+                const expectedText = 'UW Neighborhood Ravenna Clinic - Primary Care and Urgent Care Services';
+
+                this
+                    .waitForElementVisible(nameSearchTB)
+                    .clearValue(nameSearchTB)
+                    .setValue(nameSearchTB, name)
+                    .click(submitButton)
+                this.pause(5000);
+
+                this
+                    .waitForElementVisible(resultsPageLoaded)
+                    .assert.containsText(resultPageTitleElement, 'locations found', "Multiple results found.")
+                    .waitForElementVisible('@formClinicResult')
+                    .assert.containsText(secondResultTitle, expectedText, 'Results include the expected clinic.');
+
+                return this;
             },
 
             verifyTelLinks: function (section) {

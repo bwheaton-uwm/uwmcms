@@ -28,7 +28,7 @@ module.exports = {
             .verifyTelLinks()
             .verifyCardLinks(testUrlValidation)
             .verifyLocationSearchByCityZip()
-            .verifyLocationSearchByMedSpecialtiy()
+            .verifyLocationSearchByMedSpecialtiy(browser)
             .verifyLocationSearchByName();
 
         footer
