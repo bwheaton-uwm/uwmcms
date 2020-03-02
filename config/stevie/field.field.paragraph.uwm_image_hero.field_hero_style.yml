@@ -1,0 +1,21 @@
+uuid: 38d74060-e2e4-419f-ae88-d102f1180146
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hero_style
+    - paragraphs.paragraphs_type.uwm_image_hero
+  module:
+    - options
+id: paragraph.uwm_image_hero.field_hero_style
+field_name: field_hero_style
+entity_type: paragraph
+bundle: uwm_image_hero
+label: 'Hero Style'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

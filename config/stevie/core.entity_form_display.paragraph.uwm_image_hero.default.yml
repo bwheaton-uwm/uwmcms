@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - entity_browser.browser.media_browser
+    - field.field.paragraph.uwm_image_hero.field_hero_style
     - field.field.paragraph.uwm_image_hero.field_uwm_hide_breadcrumb
     - field.field.paragraph.uwm_image_hero.field_uwm_links_with_icon
     - field.field.paragraph.uwm_image_hero.field_uwm_media
@@ -16,15 +17,21 @@ targetEntityType: paragraph
 bundle: uwm_image_hero
 mode: default
 content:
+  field_hero_style:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_uwm_hide_breadcrumb:
-    weight: 2
+    weight: 3
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_uwm_links_with_icon:
-    weight: 1
+    weight: 2
     settings:
       title: 'Link with Icon'
       title_plural: 'Links with Icon'
@@ -43,7 +50,7 @@ content:
     type: paragraphs
     region: content
   field_uwm_media:
-    weight: 0
+    weight: 1
     settings:
       entity_browser: media_browser
       field_widget_display: label

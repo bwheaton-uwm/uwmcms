@@ -3,17 +3,26 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.uwm_image_hero.field_hero_style
     - field.field.paragraph.uwm_image_hero.field_uwm_hide_breadcrumb
     - field.field.paragraph.uwm_image_hero.field_uwm_links_with_icon
     - field.field.paragraph.uwm_image_hero.field_uwm_media
     - paragraphs.paragraphs_type.uwm_image_hero
   module:
     - entity_reference_revisions
+    - options
 id: paragraph.uwm_image_hero.default
 targetEntityType: paragraph
 bundle: uwm_image_hero
 mode: default
 content:
+  field_hero_style:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
   field_uwm_hide_breadcrumb:
     weight: 2
     label: hidden
@@ -42,4 +51,5 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
     region: content
-hidden: {  }
+hidden:
+  search_api_excerpt: true

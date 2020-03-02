@@ -1,0 +1,27 @@
+uuid: 99860272-3a75-44d1-9569-2d6fa3616efe
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_hero_style
+field_name: field_hero_style
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: left_title_ghost_buttons
+      label: 'Left title with ghost buttons'
+    -
+      value: center_title_description
+      label: 'Center title with description'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
