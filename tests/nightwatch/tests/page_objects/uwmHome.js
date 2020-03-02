@@ -3,6 +3,33 @@ module.exports = {
 	url: 'https://www.uwmedicine.org/',
 	commands:[
 		{
+			verifyHomePageVideo: function (browser, testUrlValidation) {
+				// Video Player link should load.
+				// Clicking on it should launch the HTML5 video player
+				// That player's source should be not-null.
+				const videoPlayButton = '@videoPlayButton';
+				const videoIframeElement = '@iFrame';
+				const videoCloseButton = '@videoCloseButton';
+
+				this
+					.waitForElementVisible(videoPlayButton, "Video Player button displayed.")
+					.click(videoPlayButton);
+				this.pause(5000);
+
+				this
+					.waitForElementVisible(videoIframeElement, 'HTML5 Player loaded.');
+
+				browser.getAttribute('div.modal-body div.video-embed-field-provider-youtube iframe', 'src', function (result) {
+					return this.assert.ok(result.value !== "", "Video source is not null.");
+				});
+
+				this
+					.waitForElementVisible(videoCloseButton, "Video Player close button displayed.")
+					.click(videoCloseButton)
+					.waitForElementVisible(testUrlValidation, "HTML5 player closed.");
+
+				return this;
+			},
 			verifyHeroCtaLinks: function (pageUrl, testUrlValidation) {
 				//heroCtaBtn1
 				this
@@ -219,6 +246,7 @@ module.exports = {
 		homeSection3Btn5Val: 'body.path-node-20876',
 		homeSection3Btn6Lnk: '.uwm-accent-color__blue .col-lg:nth-child(2) .btn-cta',
 		homeSection3Btn6Val: 'body.page-id-33',
+		iFrame: 'div.modal-body div.video-embed-field-provider-youtube iframe',
 		spotlightBtn1Lnk: '.content-spotlight__item:nth-child(1) .btn-cta',
 		spotlightBtn1Val: 'body.page-node-type-article',
 		spotlightBtn2Lnk: '.content-spotlight__item:nth-child(2) .btn-cta',
@@ -226,6 +254,8 @@ module.exports = {
 		spotlightBtn3Lnk: '.content-spotlight__item:nth-child(3) .btn-cta',
 		spotlightBtn3Val: 'body.page-node-5157',
 		spotlightBtn4Lnk: '.content-spotlight__item:nth-child(4) .btn-cta',
-		spotlightBtn4Val: 'header.headroom--top'
+		spotlightBtn4Val: 'header.headroom--top',
+		videoPlayButton: 'svg.svg-inline--fa.fa-play',
+		videoCloseButton: 'div.modal-header button'
 	}
 };

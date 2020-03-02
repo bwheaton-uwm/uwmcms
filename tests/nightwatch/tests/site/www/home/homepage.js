@@ -2,6 +2,7 @@
 module.exports = {
     'disabled': false,
     '@tags': [
+        'gray',
         'home',
         'header',
         'general',
@@ -25,14 +26,13 @@ module.exports = {
         body
             .verifyHeroCtaLinks(testUrl, testUrlValidation)
             .verifySectionLinks(testUrl, testUrlValidation)
-            .verifySpotlightLinks(testUrl, testUrlValidation);
-
-            // TODO: Gray: verify video
+            .verifySpotlightLinks(testUrl, testUrlValidation)
+            .verifyHomePageVideo(browser, testUrlValidation);
 
             footer
-            .verifySocialLinks(testUrl, testUrlValidation)
-            .verifyT1FooterLinks(testUrl, testUrlValidation)
-            .verifyT2FooterLinks(testUrl, testUrlValidation);
+                .verifySocialLinks(testUrl, testUrlValidation)
+                .verifyT1FooterLinks(testUrl, testUrlValidation)
+                .verifyT2FooterLinks(testUrl, testUrlValidation);
         browser.end();
     },
 };

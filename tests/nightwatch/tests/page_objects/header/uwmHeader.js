@@ -19,11 +19,15 @@ module.exports = {
                 // pageUrl -- URL of the page to load
                 // testUrlValidation -- a css selector string use to check that the correct page
                 //                      has loaded. It should be unique to that page.
-                return this
+                this
                     .navigate(pageUrl)
                     .waitForElementVisible('@t1cookiesAlertButton', 'Cookies alert button found.')
-                    .click('@t1cookiesAlertButton')
+                    .click('@t1cookiesAlertButton');
+                this.pause(5000);
+                this
                     .waitForElementVisible(testUrlValidation, 'Requested page loaded.');
+
+                return this;
             },
             verifyT1HeaderLinks: function (pageUrl, testUrlValidation) {
                 // Abstracts out the tests for the T1 Header links.
