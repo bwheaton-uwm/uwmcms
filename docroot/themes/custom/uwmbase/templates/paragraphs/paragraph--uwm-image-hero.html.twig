@@ -40,7 +40,13 @@
 #}
 
 {% set element = element ?: 'div' %}
-{% set classes = classes ?: ['paragraph', 'paragraph--type--' ~ paragraph.bundle|clean_class, view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,] %}
+{%
+  set classes = classes ?: [
+    'paragraph', 'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    hero_style ? 'paragraph--hero-style-' ~ hero_style|clean_class,
+  ]
+%}
 
 {{ attach_library('uwmbase/image-hero') }}
 
@@ -63,7 +69,7 @@
           </div>
         </div>
         {% endblock %}
-      
+
     </div>
     {% if parent_page_title %}
     <div class="image-hero__back-button col-xs-12">
@@ -95,7 +101,7 @@
                  alt=""/>
             {{ content.field_subheading }}
           </div>
-          
+
         </div>
       </div>
     </div> #}
