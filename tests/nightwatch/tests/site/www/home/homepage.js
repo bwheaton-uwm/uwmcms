@@ -2,7 +2,6 @@
 module.exports = {
     'disabled': false,
     '@tags': [
-        'gray',
         'home',
         'header',
         'general',
