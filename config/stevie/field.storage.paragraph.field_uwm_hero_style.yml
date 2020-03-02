@@ -1,12 +1,12 @@
-uuid: 99860272-3a75-44d1-9569-2d6fa3616efe
+uuid: f8cf2a01-e79b-4836-a7f3-3f8bde92bf08
 langcode: en
 status: true
 dependencies:
   module:
     - options
     - paragraphs
-id: paragraph.field_hero_style
-field_name: field_hero_style
+id: paragraph.field_uwm_hero_style
+field_name: field_uwm_hero_style
 entity_type: paragraph
 type: list_string
 settings:

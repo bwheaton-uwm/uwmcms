@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.uwm_image_hero.field_hero_style
+    - field.field.paragraph.uwm_image_hero.field_uwm_hero_style
     - field.field.paragraph.uwm_image_hero.field_uwm_hide_breadcrumb
     - field.field.paragraph.uwm_image_hero.field_uwm_links_with_icon
     - field.field.paragraph.uwm_image_hero.field_uwm_media
@@ -16,8 +16,8 @@ targetEntityType: paragraph
 bundle: uwm_image_hero
 mode: default
 content:
-  field_hero_style:
-    weight: 3
+  field_uwm_hero_style:
+    weight: 4
     label: hidden
     settings: {  }
     third_party_settings: {  }
