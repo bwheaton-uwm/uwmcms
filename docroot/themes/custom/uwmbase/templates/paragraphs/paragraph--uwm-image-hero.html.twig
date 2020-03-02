@@ -48,8 +48,12 @@
   ]
 %}
 
-{{ attach_library('uwmbase/image-hero') }}
-
+{% if hero_style == 'left-title-ctas' %}
+  {{ attach_library('uwmbase/image-hero-left-title-ctas') }}
+{% endif %}
+{% if hero_style == 'center-title-description' %}
+  {{ attach_library('uwmbase/image-hero-center-title-description') }}
+{% endif %}
 
 {% block paragraph %}
   <{{ element }}{{ attributes.addClass(classes) }} id="ppg-{{ paragraph.id() }}">
