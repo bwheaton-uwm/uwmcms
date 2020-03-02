@@ -1,8 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
-id: uwm
-label: uwm
+id: uwm_edw
+label: uwm_edw
 description: ''
 source_type: ''
 module: null

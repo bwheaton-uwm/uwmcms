@@ -3,8 +3,6 @@
 namespace Drupal\uwm_puma_migrations\EventSubscriber;
 
 use Drupal\migrate\Event\MigrateEvents;
-use Drupal\migrate\Event\MigrateMapSaveEvent;
-use Drupal\migrate\Event\MigratePostRowSaveEvent;
 use Drupal\migrate\Event\MigratePreRowSaveEvent;
 use Drupal\migrate_plus\Event\MigrateEvents as MigratePlusEvents;
 use Drupal\migrate_plus\Event\MigratePrepareRowEvent;
@@ -28,7 +26,6 @@ class UwmPumaMigrationsSubscriber implements EventSubscriberInterface {
     $events[MigratePlusEvents::PREPARE_ROW] = ['prepareRow'];
     $events[MigrateEvents::POST_ROW_SAVE] = ['postRowSave'];
     return $events;
-
   }
 
   /**
@@ -48,24 +45,6 @@ class UwmPumaMigrationsSubscriber implements EventSubscriberInterface {
     if (in_array($v, ['n', 'no'])) {
       $row->setSourceProperty('is_internal', 0);
     }
-  }
-
-  /**
-   * Prepare a row to be imported.
-   *
-   * @param Drupal\migrate\Event\MigratePostRowSaveEvent $event
-   *   The event triggered when preparing a row in a migration.
-   */
-  public function postRowSave(MigratePostRowSaveEvent $event) {
-  }
-
-  /**
-   * React to migration mapping event.
-   *
-   * @param Drupal\migrate\Event\MigrateMapSaveEvent $event
-   *   The pre-save event.
-   */
-  public function mapSave(MigrateMapSaveEvent $event) {
   }
 
   /**
@@ -119,7 +98,7 @@ class UwmPumaMigrationsSubscriber implements EventSubscriberInterface {
    *   The previously saved node value.
    *
    * @return |null
-   *   Null; modifies by reference.
+   *   NULL; modifies by reference.
    *
    * @see uwm_puma_migrations/src/Plugin/migrate/process/UwmSerializeSourceRow.php
    * @TODO: Ensure new value is a [{...}] json array here, rather than where migrate prepares the field.
@@ -169,6 +148,7 @@ class UwmPumaMigrationsSubscriber implements EventSubscriberInterface {
      */
     $array = array_unique(array_merge($old_value_decoded, $new_value_decoded), SORT_REGULAR);
     $new_field_value = \GuzzleHttp\json_encode($array);
+
   }
 
 }

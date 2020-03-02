@@ -7,8 +7,8 @@
 #
 id: uwm_edw_puma_education
 label: 'uwm_edw_puma_education - Migration for special PUMA csv data, which updates the matching provider json field.'
-migration_group: uwm
-dependencies: {}
+migration_group: uwm_edw
+
 
 # Define overwrite_properties so that the import *only* populates the fields
 # we want.
