@@ -20,8 +20,8 @@
  * @example
  * {{ attach_library('uwmbase/clockwise-wait-times') }}
  * <div data-uwm-clockwise-wait-time="[clockwise-id]">
- *   <p class="js-wait-link"><a href="">Get in line</a></p>
- *   <p class="js-wait-text">&nbsp;</p>
+ *   <div class="js-wait-link"><a href="">Get in line</a></div>
+ *   <div class="js-wait-text">&nbsp;</div>
  * </div>
  */
 

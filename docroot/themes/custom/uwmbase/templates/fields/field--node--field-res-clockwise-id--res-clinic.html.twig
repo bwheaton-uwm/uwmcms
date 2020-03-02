@@ -49,24 +49,19 @@
  #}
 {% if view_mode is same as('card') %}
 
-{% set label = 'Urgent Care'|t %}
+  <div data-uwm-clockwise-wait-time="{{ value }}">
 
-  <div{{ attributes.addClass(classes) }}>
+    <div class="js-wait-link">
 
-    <span class="uwm-icon uwm-icon--urgent-care" aria-hidden="true"></span>
+      {% set cta_special_attributes = []|merge({
+        'data-context-title': node_title,
+        'target': '_blank'
+      }) %}
+      {{ uwm_cta_link('Get in line'|t, '/patient-care/making-an-appointment', [css_parents_classes, 'btn-cta-solid', 'clinic-card__appointment-button', 'clinic-card__urgent-care-button'], cta_special_attributes) }}
 
-    <h3 class="clinic-card__subheader">{{ label }}</h3>
-
-    <div class="uwm-clockwise__card " data-uwm-clockwise-wait-time="{{ value }}">
-      <p class="js-wait-link clinic-card__clockwise-button">
-{#        <a class="clinic-card__buttons btn btn-outline-primary" href="/patient-care/making-an-appointment" target="_blank">{{ "Get in line"|t }}</a>#}
-        {#              // @TODO Verify CTA link. #}
-        {% set cta_special_attributes = []|merge({'data-context-title': node_title}) %}
-        {{ uwm_cta_link('Get in line'|t, '/patient-care/making-an-appointment', ['btn', 'clinic-card__buttons', 'btn-outline-primary'], cta_special_attributes) }}
-
-      </p>
-      <p class="js-wait-text">&nbsp;</p>
     </div>
+
+    <div class="js-wait-text">&nbsp;</div>
 
   </div>
 

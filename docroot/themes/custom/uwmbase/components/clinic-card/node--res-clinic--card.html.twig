@@ -180,20 +180,20 @@
             <h3 class="clinic-card__subheader">{{ "Appointments"|t }}</h3>
           {% endif %}
 
-          <div class="clinic-card__appointment_buttons">
+          <div class="clinic-card__appointment-buttons">
 
             {#
               Phone number button
             #}
             {% if has_phone %}
-              <div class="clinic-card__appointment_button clinic-card__phone-button">
-                {% set tel = node.field_res_phone_number.0.value|trim %}
-                {{ uwm_cta_link(
-                  tel|uwm_format_phone('.'),
-                  'tel:' ~ tel|uwm_format_phone,
-                  [css_parents_classes, 'btn'],
-                  cta_special_attributes) }}
-              </div>
+
+              {% set tel = node.field_res_phone_number.0.value|trim %}
+              {{ uwm_cta_link(
+                tel|uwm_format_phone('.'),
+                'tel:' ~ tel|uwm_format_phone,
+                [css_parents_classes, 'btn-cta-solid', 'clinic-card__appointment-button', 'clinic-card__phone-button'],
+                cta_special_attributes) }}
+
             {% endif %}
 
             {#
@@ -201,12 +201,10 @@
               @see field--node--field-res-epic-department-ids--res-clinic.html.twig
             #}
             {% if open_scheduling %}
-              <div class="clinic-card__appointment_button clinic-card__book-online-button">
-                {{ content.field_res_epic_department_ids }}
-              </div>
+              {{ content.field_res_epic_department_ids }}
             {% endif %}
 
-          </div> <!-- /.clinic-card__appointment_buttons -->
+          </div> <!-- /.clinic-card__appointment-buttons -->
 
         </div> <!-- /.clinic-card__appointments -->
 
@@ -218,9 +216,17 @@
         @see field--node--field-res-clockwise-id--res-clinic.html.twig
       #}
       {% if content.field_res_clockwise_id.0 is not empty %}
-        <div class="clinic-card__field clinic-card__clockwise-block icon clinic-card__appointment_buttons">
+
+        <div class="clinic-card__field clinic-card__clockwise-block icon">
+
+          <span class="uwm-icon uwm-icon--urgent-care" aria-hidden="true"></span>
+
+          <h3 class="clinic-card__subheader">{{ 'Urgent Care'|t }}</h3>
+
           {{ content.field_res_clockwise_id }}
-        </div>
+
+        </div> <!-- /.clinic-card__clockwise-block -->
+
       {% endif %}
 
     </div> <!-- /.clinic-card__details -->

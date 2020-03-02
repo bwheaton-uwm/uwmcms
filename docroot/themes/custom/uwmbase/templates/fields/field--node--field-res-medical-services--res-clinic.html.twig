@@ -35,13 +35,7 @@
     'field--label-' ~ label_display,
   ]
 %}
-{%
-  set title_classes = [
-    'field__label',
-    label_display == 'visually_hidden' ? 'visually-hidden',
-    'clinic-card__subheader'
-  ]
-%}
+
 {#
   Card view mode -----------------------------------------------------------
   @see node--res-clinic--card.html.twig
@@ -53,7 +47,7 @@
 
   <div{{ attributes.addClass(classes) }}>
 
-    <h3{{ title_attributes.addClass(title_classes) }}>{{ label }}</h3>
+    <h3 class="clinic-card__subheader">{{ label }}</h3>
 
     <div class="field__items">
       {% for item in items|slice(start, 3) %}
@@ -71,6 +65,14 @@
 
 {# Other view modes --------------------------------------------------------- #}
 {% else %}
+
+  {%
+    set title_classes = [
+      'field__label',
+      label_display == 'visually_hidden' ? 'visually-hidden'
+    ]
+  %}
+
   {% if label_hidden %}
     <div{{ attributes.addClass(classes, 'field__items') }}>
       {% for item in items %}
