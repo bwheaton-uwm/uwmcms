@@ -60,7 +60,7 @@
             <div class="uwm-image-hero__content col-lg-8">
               <h1 class="uwm-image-hero__heading">{{ drupal_title() }}</h1>
             </div>
-            {% if content.field_uwm_links_with_icon %}
+            {% if hero_style == 'left-title-ctas' and content.field_uwm_links_with_icon %}
             <div
               class="uwm-image-hero__links-with-icon__desktop col-lg-3">
               {{ content.field_uwm_links_with_icon }}
@@ -71,7 +71,7 @@
         {% endblock %}
 
     </div>
-    {% if parent_page_title %}
+    {% if hero_style == 'left-title-ctas' and parent_page_title %}
     <div class="image-hero__back-button col-xs-12">
                 <a href="{{parent_page_url}}"><i class="fa fa-angle-left"></i> Back
                     to {{parent_page_title}}
@@ -81,7 +81,7 @@
     {% endif %}
   </{{ element }}>
 
-  {% if content.field_uwm_links_with_icon %}
+  {% if hero_style == 'left-title-ctas' and content.field_uwm_links_with_icon %}
     <div class="uwm-image-hero__links-with-icon container-xl p-0"> {# row #}
       {{ content.field_uwm_links_with_icon }}
     </div>
