@@ -1,0 +1,5 @@
+services:
+  uwm_puma_migrations_subscriber:
+    class: Drupal\uwm_puma_migrations\EventSubscriber\UwmPumaMigrationsSubscriber
+    tags:
+      - { name: "event_subscriber" }

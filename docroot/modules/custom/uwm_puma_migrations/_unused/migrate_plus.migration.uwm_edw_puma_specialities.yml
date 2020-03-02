@@ -1,0 +1,122 @@
+# Import from csv to provider nodes
+#
+# @see https://www.drupal.org/docs/8/api/migrate-api/migrate-source-plugins/migrating-data-from-a-csv-source
+# @see https://www.drupal.org/project/drupal/issues/2949564
+# @see https://virtuoso-performance.com/blog/vpadmin/importing-specific-fields-overwriteproperties
+# @see https://www.mtech-llc.com/blog/ada-hernandez/entity-lookup-generate-migrate-process-plugins
+#
+id: uwm_edw_puma_specialities
+label: 'uwm_edw_puma_specialities - Migration for special PUMA csv data, which updates the matching provider json field.'
+migration_group: uwm
+dependencies: {}
+
+# Define overwrite_properties so that the import *only* populates the fields
+# we want.
+destination:
+  plugin: entity:node
+  overwrite_properties:
+    - uwm_edw_puma_specialities
+
+
+source:
+  plugin: 'csv'
+  path: 'private://imports/uwm-provider-specialities.csv'
+
+  # Column delimiter.
+  delimiter: ','
+
+  # Field enclosure.
+  enclosure: '"'
+
+  # The number of rows at the beginning which are not data.
+  header_row_count: 1
+
+  # The column(s) to use as a key. Each column specified will
+  # create an index in the migration table and too many columns
+  # may throw an index size error.
+
+  # (3.x version?)
+  # ids:
+  #   - npi
+
+  # (2.x version?)
+  # Specify the keys that make each row unique. If we only used the leading column,
+  # subsequent rows would get skipped so, let's include the needed columns here.
+  keys:
+    - _puma_identifier
+    - puma_degree_cd
+    - epic_degree
+    - epic_provider_specialty
+    - epic_provider_type
+    - mso_primary_specialty
+    - mso_specialty_name
+    - _date_queried
+
+  # Here we identify the columns of interest in the source file.
+  # Each numeric key is the 0-based index of the column.
+  # For each column, the key below is the field name assigned to
+  # the data on import, to be used in field mappings below.
+  # The value is a user-friendly string for display by the
+  # migration UI.
+
+  # (3.x version?)
+  # fields:
+  #   0:
+  #     name: title
+  #     label: 'Title of in source csv article row'
+  #   [etc]
+
+  # (2.x version?)
+  # To make the CSV column values available for our
+  # migrate process plugin, we name them here.
+  column_names:
+    - _puma_identifier: _puma_identifier
+    - _mso_identifier: _mso_identifier
+    - _mso_prof_identifier: _mso_prof_identifier
+    - _epic_identifier: _epic_identifier
+    - _epic_npi_identifier: _epic_npi_identifier
+    - name_prefix: name_prefix
+    - lname: lname
+    - fname: fname
+    - mname: mname
+    - name_suffix: name_suffix
+    - physician_indicator: physician_indicator
+    - gender: gender
+    - puma_degree_cd: puma_degree_cd
+    - epic_degree: epic_degree
+    - epic_provider_specialty: epic_provider_specialty
+    - epic_provider_type: epic_provider_type
+    - mso_primary_specialty: mso_primary_specialty
+    - mso_specialty_name: mso_specialty_name_date_queried
+    - _date_queried: _date_queried
+
+  fields:
+    _puma_identifier: _puma_identifier
+
+process:
+
+  # Node ID
+  # Map `nid` to look up existing provider node by NPI.
+  nid:
+    - plugin: entity_lookup
+      source: _puma_identifier
+      entity_type: node
+      bundle_key: type
+      bundle: res_provider
+      value_key: field_res_puma_id
+    - plugin: skip_on_empty
+      method: row
+
+  type:
+    plugin: default_value
+    default_value: res_provider
+
+  uwm_edw_puma_specialities:
+    plugin: uwm_serialize_source_row
+    source: _puma_identifier
+
+  new_revision: false
+#  entity_type: node
+#  bundle_key: type
+#  bundle: res_provider
+

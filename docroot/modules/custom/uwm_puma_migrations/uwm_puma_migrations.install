@@ -1,0 +1,110 @@
+<?php
+/**
+ * Implements hook_uninstall().
+ */
+function uwm_puma_migrations_uninstall()
+{
+    db_query("DELETE FROM {config} WHERE name LIKE '%migration%uwm_puma%'");
+    db_query("DELETE FROM {key_value} WHERE name LIKE '%uwm_edw_puma_%'");
+
+    db_query("TRUNCATE TABLE {migrate_map_uwm_edw_board_certs}");
+    db_query("TRUNCATE TABLE {migrate_map_uwm_edw_puma_basics}");
+    db_query("TRUNCATE TABLE {migrate_map_uwm_edw_puma_education}");
+    db_query("TRUNCATE TABLE {migrate_map_uwm_edw_puma_provider_flags}");
+    db_query("TRUNCATE TABLE {migrate_map_uwm_edw_puma_specialities}");
+
+    db_query("TRUNCATE TABLE {migrate_message_uwm_edw_board_certs}");
+    db_query("TRUNCATE TABLE {migrate_message_uwm_edw_puma_basics}");
+    db_query("TRUNCATE TABLE {migrate_message_uwm_edw_puma_education}");
+    db_query("TRUNCATE TABLE {migrate_message_uwm_edw_puma_provider_flags}");
+    db_query("TRUNCATE TABLE {migrate_message_uwm_edw_puma_specialities}");
+
+    drupal_flush_all_caches();
+}
+
+
+/***
+ *
+ * Scratch copy for testing of the old migrate_map tables that
+ * have the unusual, extended key definitions:
+ *
+
+DROP TABLE IF EXISTS _dmigrate_map_uwm_edw_board_certs;
+CREATE TABLE `_dmigrate_map_uwm_edw_board_certs` (
+`source_ids_hash` varchar(191) NOT NULL COMMENT 'Hash of source ids. Used as primary key',
+`sourceid1` varchar(191) NOT NULL,
+`sourceid2` varchar(191) DEFAULT NULL,
+`sourceid3` varchar(191) DEFAULT NULL,
+`sourceid4` varchar(191) DEFAULT NULL,
+`sourceid5` varchar(191) DEFAULT NULL,
+`sourceid6` varchar(191) DEFAULT NULL,
+`sourceid7` varchar(191) DEFAULT NULL,
+`sourceid8` varchar(191) DEFAULT NULL,
+`sourceid9` varchar(191) DEFAULT NULL,
+`destid1` int(10) unsigned DEFAULT NULL,
+`source_row_status` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Indicates current status of the source row',
+`rollback_action` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Flag indicating what to do for this item on rollback',
+`last_imported` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'UNIX timestamp of the last time this row was imported',
+`hash` varchar(191) DEFAULT NULL COMMENT 'Hash of source row data, for detecting changes',
+PRIMARY KEY (`source_ids_hash`),
+KEY `source` (`sourceid1`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Mappings from source identifier value(s) to destination…';
+
+DROP TABLE IF EXISTS _dmigrate_map_uwm_edw_puma_basics;
+CREATE TABLE `_dmigrate_map_uwm_edw_puma_basics` (
+`source_ids_hash` varchar(64) NOT NULL COMMENT 'Hash of source ids. Used as primary key',
+`sourceid1` varchar(255) NOT NULL,
+`sourceid2` varchar(255) NOT NULL,
+`destid1` int(10) unsigned DEFAULT NULL,
+`source_row_status` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Indicates current status of the source row',
+`rollback_action` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Flag indicating what to do for this item on rollback',
+`last_imported` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'UNIX timestamp of the last time this row was imported',
+`hash` varchar(64) DEFAULT NULL COMMENT 'Hash of source row data, for detecting changes',
+PRIMARY KEY (`source_ids_hash`),
+KEY `source` (`sourceid1`(191),`sourceid2`(191))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Mappings from source identifier value(s) to destination…';
+
+
+DROP TABLE IF EXISTS _dmigrate_map_uwm_edw_puma_education;
+CREATE TABLE `_dmigrate_map_uwm_edw_puma_education` (
+`source_ids_hash` varchar(191) NOT NULL,
+`sourceid1` varchar(191) NOT NULL,
+`sourceid2` varchar(191) DEFAULT NULL,
+`sourceid3` varchar(191) DEFAULT NULL,
+`sourceid4` varchar(191) DEFAULT NULL,
+`sourceid5` varchar(191) DEFAULT NULL,
+`sourceid6` varchar(191) DEFAULT NULL,
+`sourceid7` varchar(191) DEFAULT NULL,
+`destid1` int(10) unsigned DEFAULT NULL,
+`source_row_status` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Indicates current status of the source row',
+`rollback_action` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Flag indicating what to do for this item on rollback',
+`last_imported` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'UNIX timestamp of the last time this row was imported',
+`hash` varchar(191) DEFAULT NULL COMMENT 'Hash of source row data, for detecting changes',
+PRIMARY KEY (`source_ids_hash`),
+KEY `source` (`sourceid1`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Mappings from source identifier value(s) to destination…';
+
+DROP TABLE IF EXISTS _dmigrate_map_uwm_edw_puma_specialities;
+CREATE TABLE `_dmigrate_map_uwm_edw_puma_specialities` (
+`source_ids_hash` varchar(191) NOT NULL,
+`sourceid1` varchar(191) NOT NULL,
+`sourceid2` varchar(191) DEFAULT NULL,
+`sourceid3` varchar(191) DEFAULT NULL,
+`sourceid4` varchar(191) DEFAULT NULL,
+`sourceid5` varchar(191) DEFAULT NULL,
+`sourceid6` varchar(191) DEFAULT NULL,
+`sourceid7` varchar(191) DEFAULT NULL,
+`sourceid8` varchar(191) DEFAULT NULL,
+`destid1` int(10) unsigned DEFAULT NULL,
+`source_row_status` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Indicates current status of the source row',
+`rollback_action` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Flag indicating what to do for this item on rollback',
+`last_imported` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'UNIX timestamp of the last time this row was imported',
+`hash` varchar(191) DEFAULT NULL COMMENT 'Hash of source row data, for detecting changes',
+PRIMARY KEY (`source_ids_hash`),
+KEY `source` (`sourceid1`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Mappings from source identifier value(s) to destination…';
+ *
+ *
+ *
+ *
+ */

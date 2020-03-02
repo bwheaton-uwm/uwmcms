@@ -1,0 +1,9 @@
+type: module
+name: uwm_puma_migrations
+description: Custom migrations for migrating education and speciality info from PUMA CSVs.
+package: UWM
+core: 8.x
+dependencies:
+  - migrate_plus
+  - migrate_tools
+  - migrate_source_csv
