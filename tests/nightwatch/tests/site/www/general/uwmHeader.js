@@ -3,7 +3,8 @@ module.exports = {
     'disabled': false,
     '@tags': [
         'header',
-        'general'
+        'general',
+        'stevie'
     ],
 
     'Verify T1 Header - elements and search bar for Home page': function (browser) {

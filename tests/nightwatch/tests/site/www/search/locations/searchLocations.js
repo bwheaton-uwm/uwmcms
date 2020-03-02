@@ -6,7 +6,8 @@ module.exports = {
         'header',
         'footer',
         'locations',
-        'search'
+        'search',
+        'stevie'
     ],
 
     'Home Page Verify T1 Header - elements and search bar': function (browser) {
@@ -25,7 +26,10 @@ module.exports = {
 
         body
             .verifyTelLinks()
-            .verifyCardLinks(testUrlValidation);
+            .verifyCardLinks(testUrlValidation)
+            .verifyLocationSearchByCityZip()
+            .verifyLocationSearchByMedSpecialtiy()
+            .verifyLocationSearchByName();
 
         footer
             .verifySocialLinks(testUrl, testUrlValidation)

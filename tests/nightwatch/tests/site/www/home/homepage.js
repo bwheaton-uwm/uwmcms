@@ -4,7 +4,8 @@ module.exports = {
     '@tags': [
         'home',
         'header',
-        'general'
+        'general',
+        'stevie'
     ],
 
     'Home Page Verify T1 Header - elements and search bar': function (browser) {
@@ -26,7 +27,9 @@ module.exports = {
             .verifySectionLinks(testUrl, testUrlValidation)
             .verifySpotlightLinks(testUrl, testUrlValidation);
 
-        footer
+            // TODO: Gray: verify video
+
+            footer
             .verifySocialLinks(testUrl, testUrlValidation)
             .verifyT1FooterLinks(testUrl, testUrlValidation)
             .verifyT2FooterLinks(testUrl, testUrlValidation);

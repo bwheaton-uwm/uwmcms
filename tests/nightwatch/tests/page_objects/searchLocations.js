@@ -40,6 +40,46 @@ module.exports = {
 
 				return this;
             },
+
+            verifyLocationSearchByCityZip: function () {
+                // Searching a zip code (98107) should:
+                //--return a result set that contain more than 1 item. (350)
+                //--pagination must be greater than 1.
+                //--result set must contain a clinic called “Advanced Manual Therapy & Sports
+                //  Rehabilitation at Ballard”
+                const zip = '98107';
+                const zipTextboxElement = '@formEnterZipOrCityTextbox';
+                const submitButton = '@formSubmit';
+                const resultsPageLoaded = 'body.search-with-results';
+                const resultPageTitleElement = 'div#block-uwmbase-page-title h1.page-title';
+                const firstResultTitle = 'article.clinic-card:nth-child(1) .field--name-title';
+                const expectedText = 'Advanced Manual Therapy & Sports Rehabilitation at Ballard';
+
+                this
+                    .waitForElementVisible(zipTextboxElement)
+                    .clearValue(zipTextboxElement)
+                    .setValue(zipTextboxElement, zip)
+                    .click(submitButton)
+                this.pause(5000);
+
+                this
+                    .waitForElementVisible(resultsPageLoaded)
+                    .assert.containsText(resultPageTitleElement, 'locations found', "Multiple results found.")
+                    .waitForElementVisible('@pager', "There are enough results to require pagination.")
+                    .waitForElementVisible('@formClinicResult')
+                    .assert.containsText(firstResultTitle, expectedText, 'Results include the expected clinic.');
+
+                return this;
+            },
+
+            verifyLocationSearchByMedSpecialtiy: function () {
+                //
+            },
+
+            verifyLocationSearchByName: function () {
+                //
+            },
+
             verifyTelLinks: function (section) {
                 const telLinks = [
                     '@nwTelLink',
@@ -78,6 +118,7 @@ module.exports = {
         nwTelLink: '.cta-to-877-694-4677',
         nwSeeDetailsLink: '.cta-to-locations-northwest-hospital.clinic-card',
         nwviewSeeDetailsPage: 'body.path-node-22956',
+        pager: '.pager',
         valleyNameLink: '.cta-to-locations-valley-medical-center span.field--name-title',
         valleyNamePage: 'body.path-node-22496',
         valleyAddressLink: '.cta-parent-res-clinic:nth-child(4) .clinic-card__street-address',
@@ -85,20 +126,17 @@ module.exports = {
         valleyTelLink: '.cta-to-425-690-1000',
         valleySeeDetailsLink: '.cta-to-locations-valley-medical-center.clinic-card',
         valleyviewSeeDetailsPage: 'body.path-node-22496',
-        EnterNameTextbox: 'input.dm-form-item-collection',
-        EnterZipOrCityTextbox: 'input#edit-l',
-        UseMyLocationDDLink: 'a#umlDropdownLink',
-        MedSpecTopDDLink: 'div.filter-option-inner-inner',
-        MedSpecDDTextBox: 'div.bs-searchbox input.form-control',
-        MedSpecDDNoResults: 'ul.dropdown-menu li:nth-child(1).no-results',
-        MedSpecTextBoxFirstResult: 'ul.dropdown-menu li:nth-child(1)',
-        MedSpecListItem8CardiologyText: 'ul.dropdown-menu li:nth-child(8) a span:nth-child(2)',
-        MedSpecListItem8CardiologyCount: 'ul.dropdown-menu li:nth-child(8) a span:nth-child(2) small',
-        MedSpecSubmit: 'a.btn-cta-link.submit'
+        formClinicResult: '.cta-parent-res-clinic',
+        formEnterNameTextbox: 'input.dm-form-item-collection',
+        formEnterZipOrCityTextbox: 'input#edit-l',
+        formUseMyLocationDDLink: 'a#umlDropdownLink',
+        formMedSpecTopDDLink: 'div.filter-option-inner-inner',
+        formMedSpecDDTextBox: 'div.bs-searchbox input.form-control',
+        formMedSpecDDNoResults: 'ul.dropdown-menu li:nth-child(1).no-results',
+        formMedSpecTextBoxFirstResult: 'ul.dropdown-menu li:nth-child(1)',
+        formMedSpecListItem8CardiologyText: 'ul.dropdown-menu li:nth-child(8) a span:nth-child(2)',
+        formMedSpecListItem8CardiologyCount: 'ul.dropdown-menu li:nth-child(8) a span:nth-child(2) small',
+        formReset: 'a.btn-cta-link.reset',
+        formSubmit: 'a.btn-cta-link.submit'
     }
 };
-
-
-
-
-

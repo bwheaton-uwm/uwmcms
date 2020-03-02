@@ -5,7 +5,8 @@ module.exports = {
         'header',
         'footer',
         'patient-resources',
-        'appointments'
+        'appointments',
+        'stevie'
     ],
 
     'Home Page Verify T1 Header - elements and search bar': function (browser) {
