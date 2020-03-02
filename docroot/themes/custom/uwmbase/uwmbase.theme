@@ -1291,9 +1291,9 @@ function uwmbase_preprocess_paragraph__uwm_image_hero(&$variables) {
   if ($paragraph->hasField('field_uwm_hero_style')) {
     $variables['hero_style'] = str_replace('_', '-', $paragraph->get('field_uwm_hero_style')->value);
   }
-  // Set 'left-title-ghost-buttons' as the hero style if it's undefined.
+  // Set 'left-title-ctas' as the hero style if it's undefined.
   if (empty($variables['hero_style'])) {
-    $variables['hero_style'] = 'left-title-ghost-buttons';
+    $variables['hero_style'] = 'left-title-ctas';
   }
 
   // Set a variable for the page description.
