@@ -52,7 +52,7 @@ before_install:
 
 install:
   - source ${LOCAL_BLT_DIR}/custom-scripts/travis/setup_environment
-  - source ${LOCAL_BLT_DIR}/custom-scripts/travis/setup_databases
+  - if [ "${RUN_TEST_ENVIRONMENT}" == true ]; then source ${LOCAL_BLT_DIR}/custom-scripts/travis/setup_databases; fi
   - source ${LOCAL_BLT_DIR}/custom-scripts/travis/setup_project
 
 script:
@@ -67,18 +67,11 @@ deploy:
     script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_branch"
     skip_cleanup: true
     on:
-      branches:
-        only:
-          - ci-environments
-          - develop
-          - stage
-          - master
       condition: $RUN_TEST_ENVIRONMENT = false
-      php: 7.2
+      branch: stage
   - provider: script
     script: "${LOCAL_BLT_DIR}/custom-scripts/travis/deploy_tag"
     skip_cleanup: true
     on:
       tags: true
       condition: $RUN_TEST_ENVIRONMENT = false
-      php: 7.2
