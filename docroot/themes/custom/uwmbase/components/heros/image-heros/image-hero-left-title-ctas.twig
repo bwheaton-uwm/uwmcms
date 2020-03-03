@@ -1,0 +1,55 @@
+{#
+/**
+ * @file
+ * Template to display an image hero.
+ */
+#}
+
+{% set element = element ?: 'div' %}
+{%
+  set classes = classes ?: [
+    'paragraph', 'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    hero_style ? 'paragraph--hero-style--' ~ hero_style|clean_class,
+  ]
+%}
+
+{{ attach_library('uwmbase/image-hero-left-title-ctas') }}
+
+
+{% block paragraph %}
+  <{{ element }}{{ attributes.addClass(classes) }} id="ppg-{{ paragraph.id() }}">
+    <div class="uwm-image-hero__background" style="background-image: url({{ file_url(content.field_uwm_media.0['#media'].image.entity.uri.value) }})">
+        {% block content %}
+        <div class="container container-xl">
+          <div class="row uwm-image-hero justify-content-between">
+            <div class="uwm-image-hero__content col-lg-8">
+              <h1 class="uwm-image-hero__heading">{{ drupal_title() }}</h1>
+            </div>
+            {% if content.field_uwm_links_with_icon %}
+            <div
+              class="uwm-image-hero__links-with-icon__desktop col-lg-3">
+              {{ content.field_uwm_links_with_icon }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endblock %}
+
+    </div>
+    {% if parent_page_title %}
+    <div class="image-hero__back-button col-xs-12">
+                <a href="{{parent_page_url}}"><i class="fa fa-angle-left"></i> Back
+                    to {{parent_page_title}}
+                    <i class="right-border-angle hidden-xs" aria-hidden="true"></i>
+                </a>
+            </div>
+    {% endif %}
+  </{{ element }}>
+
+  {% if content.field_uwm_links_with_icon %}
+    <div class="uwm-image-hero__links-with-icon container-xl p-0"> {# row #}
+      {{ content.field_uwm_links_with_icon }}
+    </div>
+  {% endif %}
+{% endblock paragraph %}

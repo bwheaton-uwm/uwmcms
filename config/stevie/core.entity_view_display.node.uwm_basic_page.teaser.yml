@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.uwm_basic_page.field_uwm_content_owner
     - field.field.node.uwm_basic_page.field_uwm_diagonal_gray_bg
     - field.field.node.uwm_basic_page.field_uwm_hero
+    - field.field.node.uwm_basic_page.field_uwm_page_description
     - field.field.node.uwm_basic_page.field_uwm_page_path_name
     - field.field.node.uwm_basic_page.field_uwm_parent_page
     - field.field.node.uwm_basic_page.field_uwm_sections
@@ -35,6 +36,7 @@ hidden:
   field_uwm_content_owner: true
   field_uwm_diagonal_gray_bg: true
   field_uwm_hero: true
+  field_uwm_page_description: true
   field_uwm_page_path_name: true
   field_uwm_parent_page: true
   field_uwm_sections: true

@@ -1,0 +1,29 @@
+uuid: c38c1fb7-5db1-4ccf-9841-592c653beefb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uwm_page_description
+    - node.type.uwm_basic_page
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    unrestricted: '0'
+    unrestricted_no_wysiwyg: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: node.uwm_basic_page.field_uwm_page_description
+field_name: field_uwm_page_description
+entity_type: node
+bundle: uwm_basic_page
+label: 'Page Description'
+description: 'A short description of the content or purpose of the page. This will be displayed in the hero if the selected hero style supports it.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

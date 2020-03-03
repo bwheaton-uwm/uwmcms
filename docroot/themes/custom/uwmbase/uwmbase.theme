@@ -1287,6 +1287,19 @@ function uwmbase_preprocess_paragraph__uwm_image_hero(&$variables) {
     }
   }
 
+  // Set a variable for the hero style.
+  if ($paragraph->hasField('field_uwm_hero_style')) {
+    $variables['hero_style'] = str_replace('_', '-', $paragraph->get('field_uwm_hero_style')->value);
+  }
+  // Set 'left-title-ctas' as the hero style if it's undefined.
+  if (empty($variables['hero_style'])) {
+    $variables['hero_style'] = 'left-title-ctas';
+  }
+
+  // Set a variable for the page description.
+  if ($parent->hasField('field_uwm_page_description')) {
+    $variables['page_description'] = $parent->get('field_uwm_page_description')->value;
+  }
 }
 
 /**

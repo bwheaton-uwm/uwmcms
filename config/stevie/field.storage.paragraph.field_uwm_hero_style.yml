@@ -1,0 +1,27 @@
+uuid: f8cf2a01-e79b-4836-a7f3-3f8bde92bf08
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_uwm_hero_style
+field_name: field_uwm_hero_style
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: left_title_ctas
+      label: 'Left title with CTAs'
+    -
+      value: center_title_description
+      label: 'Center title with description'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

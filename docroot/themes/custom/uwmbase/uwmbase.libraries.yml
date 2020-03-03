@@ -227,10 +227,15 @@ half-wide-hero:
     component:
       dist/css/half-wide-hero.css: {}
 
-image-hero:
+image-hero-left-title-ctas:
   css:
     component:
-      dist/css/image-hero.css: {}
+      dist/css/image-hero-left-title-ctas.css: {}
+
+image-hero-center-title-description:
+  css:
+    component:
+      dist/css/image-hero-center-title-description.css: {}
 
 featured-story:
   css:

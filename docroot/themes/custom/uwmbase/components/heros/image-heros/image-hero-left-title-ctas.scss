@@ -39,7 +39,7 @@
     @include media-breakpoint-up('lg') {
         margin-top: 60px;
         text-align: left;
-    }   
+    }
 }
 
 .uwm-image-hero .uwm-links-with-icon__item, .uwm-image-hero__links-with-icon {
@@ -111,7 +111,7 @@
 .uwm-image-hero__links-with-icon__desktop {
     position: relative;
     top: 60px;
-    
+
     display: none;
 
     @include media-breakpoint-up('lg') {

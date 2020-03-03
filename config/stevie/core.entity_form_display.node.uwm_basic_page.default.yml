@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.uwm_basic_page.field_uwm_content_owner
     - field.field.node.uwm_basic_page.field_uwm_diagonal_gray_bg
     - field.field.node.uwm_basic_page.field_uwm_hero
+    - field.field.node.uwm_basic_page.field_uwm_page_description
     - field.field.node.uwm_basic_page.field_uwm_page_path_name
     - field.field.node.uwm_basic_page.field_uwm_parent_page
     - field.field.node.uwm_basic_page.field_uwm_sections
@@ -21,6 +22,7 @@ dependencies:
     - metatag
     - paragraphs
     - path
+    - text
 third_party_settings:
   field_group:
     group_page_settings:
@@ -30,10 +32,9 @@ third_party_settings:
         - field_uwm_accent_color
         - field_uwm_diagonal_gray_bg
       parent_name: ''
-      weight: 1
+      weight: 2
       format_type: details
       format_settings:
-        label: 'Page Settings'
         open: true
         required_fields: true
         id: ''
@@ -44,10 +45,9 @@ third_party_settings:
       children:
         - field_uwm_hero
       parent_name: ''
-      weight: 2
+      weight: 3
       format_type: details
       format_settings:
-        label: 'Hero Area (Optional)'
         required_fields: true
         id: ''
         classes: ''
@@ -58,7 +58,7 @@ third_party_settings:
       children:
         - field_uwm_sections
       parent_name: ''
-      weight: 3
+      weight: 4
       format_type: details
       format_settings:
         id: ''
@@ -72,7 +72,7 @@ third_party_settings:
         - field_uwm_content_owner
         - field_uwm_subject_matter_experts
       parent_name: ''
-      weight: 4
+      weight: 5
       format_type: details
       format_settings:
         id: ''
@@ -87,13 +87,13 @@ bundle: uwm_basic_page
 mode: default
 content:
   field_meta_tags:
-    weight: 6
+    weight: 7
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
     region: content
   field_search_best_bets:
-    weight: 9
+    weight: 10
     settings:
       match_operator: CONTAINS
       size: 60
@@ -127,7 +127,7 @@ content:
     region: content
   field_uwm_hero:
     type: paragraphs
-    weight: 7
+    weight: 12
     settings:
       title: Hero
       title_plural: Hero
@@ -142,6 +142,14 @@ content:
         duplicate: duplicate
         collapse_edit_all: collapse_edit_all
     third_party_settings: {  }
+    region: content
+  field_uwm_page_description:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
     region: content
   field_uwm_page_path_name:
     weight: 3
@@ -180,7 +188,7 @@ content:
     type: paragraphs
     region: content
   field_uwm_subject_matter_experts:
-    weight: 11
+    weight: 12
     settings:
       match_operator: CONTAINS
       size: 60
@@ -191,13 +199,13 @@ content:
     region: content
   moderation_state:
     type: moderation_state_default
-    weight: 5
+    weight: 6
     settings: {  }
     region: content
     third_party_settings: {  }
   path:
     type: path
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -210,7 +218,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }

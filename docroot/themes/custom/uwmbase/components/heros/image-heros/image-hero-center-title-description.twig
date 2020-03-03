@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Template to display an image hero.
+ */
+#}
+
+{% set element = element ?: 'div' %}
+{%
+  set classes = classes ?: [
+    'paragraph', 'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    hero_style ? 'paragraph--hero-style--' ~ hero_style|clean_class,
+  ]
+%}
+
+{{ attach_library('uwmbase/image-hero-center-title-description') }}
+
+
+{% block paragraph %}
+  <{{ element }}{{ attributes.addClass(classes) }} id="ppg-{{ paragraph.id() }}">
+    <div class="uwm-image-hero__image" style="background-image: url({{ file_url(content.field_uwm_media.0['#media'].image.entity.uri.value) }})">
+    </div>
+    {% block content %}
+    <div class="container container-xl">
+      <div class="uwm-image-hero__content">
+        <h1 class="uwm-image-hero__heading">{{ drupal_title() }}</h1>
+        {% if page_description %}
+          <p class="uwm-image-hero__description">{{ page_description }}</p>
+        {% endif %}
+      </div>
+    </div>
+    {% endblock %}
+  </{{ element }}>
+{% endblock paragraph %}
