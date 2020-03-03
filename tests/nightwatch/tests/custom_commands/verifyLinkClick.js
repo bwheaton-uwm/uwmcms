@@ -16,8 +16,8 @@ module.exports = {
         //      msg: Short-form message expanded to output action taken
         this
             // DEBUG: to help debugging, swap the comment below, to see the full selector text in output
-            .assert.visible(linkSelector)
-            //.assert.visible(linkSelector, msg + ' link appears.')
+            //.assert.visible(linkSelector)
+            .assert.visible(linkSelector, msg + ' link appears.')
             .click(linkSelector)
             .waitForElementVisible(pageValidator)
             .url(returnUrl)

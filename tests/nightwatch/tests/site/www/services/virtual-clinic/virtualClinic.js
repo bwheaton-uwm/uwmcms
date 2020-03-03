@@ -17,8 +17,11 @@ module.exports = {
 
         browser
             .loadPageAndHandleCookiesAlert(testUrl, testUrlValidation, browser);
-        //body
-            //.verifyTelLinks()
+
+        body
+            .verifyCTALinks()
+            .verifyDownloadLinks()
+            .verifyLooseLinks();
 
         browser.end();
     },
