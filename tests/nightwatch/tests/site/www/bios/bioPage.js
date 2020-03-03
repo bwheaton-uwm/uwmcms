@@ -51,7 +51,11 @@ module.exports = {
 
     const providerCards = browser.page.providerCards();
 
-    providerCards.openModalBookOnline();
+    providerCards.browser = browser;
+
+    providerCards.openBookOnlineModal(browser);
+    providerCards.testModalDimensionsAndColor(browser);
+    providerCards.testBookOnlineDirectScheduling(browser);
 
   }
 
