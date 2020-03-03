@@ -1,13 +1,13 @@
 {#
 /**
  * @file
- * Template to display a clinic's Book Online button on the clinic page
- * (Res Clinic node in full view mode).
+ * Template to display a clinics's Book Online button or returning patients link
+ * in the context of a clinic card (Res Clinic node in Card view mode).
  *
  * If available, this links to the modal appointment flow to guide a user to
  * open or direct scheduling in eCare.
  *
- * @see node--res-clinic--full.html.twig
+ * @see node--res-clinic--card.html.twig
  */
 #}
 
@@ -90,10 +90,22 @@
   ]
 %}
 
-{#
-  TEMP - placeholders for preprocess
-#}
-{% set direct_scheduling = random(4) > 1 %}
+{%
+  set visit_types = {
+    '9000': {
+      'name': 'Office Visit',
+      'description': 'A visit to address a specific concern'
+    },
+    '103619': {
+      'name': 'Wellness Visit',
+      'description': 'A preventative care visit or routine physical exam'
+    },
+    '4466': {
+      'name': 'New Pregnancy Visit',
+      'description': 'A visit within the first 7-12 weeks of pregnancy'
+    }
+  }
+%}
 
 {#
   TODO:
@@ -180,11 +192,23 @@
 {%
   set btn_online_attrs = create_attribute({
     'class': [
-      'clinic-page__cta-btn',
-      'clinic-page__book-online',
+      'clinic-card__appointment-button',
+      'clinic-card__book-online-button',
       'btn-cta-solid',
       'uwm-cta',
-      'cta-from-' ~ request_path|clean_class
+      'cta-from-' ~ request_path|clean_class,
+    ]|merge(css_parents_classes),
+    'data-context-title': node_title|trim,
+    'data-analytics-id': analytics_prefix ~ ' click ' ~ analytics_sched_status
+  })
+%}
+
+{%
+  set link_returning_attrs = create_attribute({
+    'class': [
+      'clinic-card__book-online-returning',
+      'uwm-cta',
+      'cta-from-' ~ request_path|clean_class,
     ]|merge(css_parents_classes),
     'data-context-title': node_title|trim,
     'data-analytics-id': analytics_prefix ~ ' click ' ~ analytics_sched_status
@@ -192,14 +216,15 @@
 %}
 
 {#
-  Set data attributes for the button to pass the scheduling values to the modal.
+  Set data attributes for the button/link to pass the scheduling values to the
+  modal.
   The modal can retrieve these because the element that triggered it is set as
   the `event.relatedTarget`.
   @see https://getbootstrap.com/docs/4.1/components/modal/#varying-modal-content
 
   Note: do not need to pass ... are rendered via the template, not JS.
 
-  TODO: specialties/departments?
+  TODO: specialties/departments
 #}
 {%
   set modal_attrs = create_attribute({
@@ -207,7 +232,8 @@
     'data-target': '#modal-appointment-clinic',
     'data-clinic-open-scheduling': (open_scheduling ? '1' : '0'),
     'data-clinic-specialties': '',
-    'data-clinic-direct-scheduling': (direct_scheduling ? '1' : '0')
+    'data-clinic-direct-scheduling': (direct_scheduling ? '1' : '0'),
+    'data-clinic-visit-types': visit_types|json_encode()
   })
 %}
 
@@ -230,10 +256,26 @@
 
     <button type="button" {{ modal_attrs }} {{ btn_online_attrs }}>{{ "Book online"|t }}</button>
 
-    {% include '@uwmbase/appointment-flow/uwm-appointment-modal.html.twig' with {
-      'flow_type': 'clinic'
-    } %}
-
   {% endif %}
+
+{% endif %}
+
+{#
+  After the potential Book Online button, close the buttons div.
+  @see node--res-clinic--card.html.twig
+#}
+</div> <!-- /.clinic-card__appointment-buttons -->
+
+{#
+  Output "Returning patients..." link if clinic has only direct scheduling.
+  This is outside of the buttons div.
+#}
+{% if direct_scheduling and not open_scheduling %}
+
+  {#
+    This opens the modal to first check if user has visited within the last
+    3 years, which is required to use eCare.
+  #}
+  <a href="#modal-appointment-clinic" {{ modal_attrs }} {{ link_returning_attrs }}>{{ "Returning patients with eCare: Sign in to book online."|t }}</a>
 
 {% endif %}

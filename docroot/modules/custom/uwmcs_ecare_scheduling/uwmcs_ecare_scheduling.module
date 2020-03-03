@@ -411,6 +411,14 @@ function uwmcs_ecare_scheduling_preprocess_page(&$variables) {
   /** @var \Drupal\Node\NodeInterface $node */
   $node = !empty($variables['node']) ? $variables['node'] : NULL;
 
+  // Provide a way for a page to include a single modal to be opened by multiple
+  // triggering elements on a page (rather than rendering the modal markup for
+  // each triggering element).
+  // Particularly, clinic pages may have both the provider appointment modal
+  // (from provider cards) and clinic appointment modal (from featured clinic
+  // cards) - thus support both.
+  $variables['modal_includes'] = [];
+
   // On pages that may have provider cards that link to the modal appointment
   // flow, set variable to render the modal markup once in the page.
   // - provider search page
@@ -418,11 +426,28 @@ function uwmcs_ecare_scheduling_preprocess_page(&$variables) {
   // @see layout-sections.twig
   if ($route_name === 'view.uwm_providers_search.page_1' || (!empty($node) && $node->bundle() === 'res_clinic' && !$node->get('field_res_providers')->isEmpty())) {
 
-    $variables['modal_include'] = [
+    $variables['modal_includes'][] = [
       'template_path' => '@uwmbase/appointment-flow/uwm-appointment-modal.html.twig',
       'with_vars' => [
         'flow_type' => 'provider',
         'modal_appt_context' => 'provider_card',
+      ],
+    ];
+
+  }
+
+  // On pages that may have clinic cards that link to the modal appointment
+  // flow, set variable to render the modal markup once in the page.
+  // - location search page
+  // - any clinic node page with featured clinics.
+  // @see layout-sections.twig
+  if ($route_name === 'view.uwm_locations_geo_search.page_1' || (!empty($node) && $node->bundle() === 'res_clinic' && !$node->get('field_res_featured_clinics')->isEmpty())) {
+
+    $variables['modal_includes'][] = [
+      'template_path' => '@uwmbase/appointment-flow/uwm-appointment-modal.html.twig',
+      'with_vars' => [
+        'flow_type' => 'clinic',
+        'modal_appt_context' => 'clinic_card',
       ],
     ];
 
