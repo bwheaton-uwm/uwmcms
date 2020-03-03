@@ -19,16 +19,17 @@
 
 {% block paragraph %}
   <{{ element }}{{ attributes.addClass(classes) }} id="ppg-{{ paragraph.id() }}">
-    <div class="uwm-image-hero__background" style="background-image: url({{ file_url(content.field_uwm_media.0['#media'].image.entity.uri.value) }})">
-        {% block content %}
-        <div class="container container-xl">
-          <div class="row uwm-image-hero justify-content-between">
-            <div class="uwm-image-hero__content col-lg-8">
-              <h1 class="uwm-image-hero__heading">{{ drupal_title() }}</h1>
-            </div>
-          </div>
-        </div>
-        {% endblock %}
+    <div class="uwm-image-hero__image" style="background-image: url({{ file_url(content.field_uwm_media.0['#media'].image.entity.uri.value) }})">
     </div>
+    {% block content %}
+    <div class="container container-xl">
+      <div class="uwm-image-hero__content">
+        <h1 class="uwm-image-hero__heading">{{ drupal_title() }}</h1>
+        {% if page_description %}
+          <p class="uwm-image-hero__description">{{ page_description }}</p>
+        {% endif %}
+      </div>
+    </div>
+    {% endblock %}
   </{{ element }}>
 {% endblock paragraph %}
